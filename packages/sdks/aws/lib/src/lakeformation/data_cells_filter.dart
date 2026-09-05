@@ -16,14 +16,14 @@ import 'data_cells_filter_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lakeformation.DataCellsFilter("example", {tableData: {
+///     rowFilter: {
+///         filterExpression: "my_column='example'",
+///     },
 ///     databaseName: exampleAwsGlueCatalogDatabase.name,
 ///     name: "example",
 ///     tableCatalogId: current.accountId,
 ///     tableName: exampleAwsGlueCatalogTable.name,
 ///     columnNames: ["my_column"],
-///     rowFilter: {
-///         filterExpression: "my_column='example'",
-///     },
 /// }});
 /// ```
 /// ```python
@@ -31,14 +31,14 @@ import 'data_cells_filter_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lakeformation.DataCellsFilter("example", table_data={
+///     "row_filter": {
+///         "filter_expression": "my_column='example'",
+///     },
 ///     "database_name": example_aws_glue_catalog_database["name"],
 ///     "name": "example",
 ///     "table_catalog_id": current["accountId"],
 ///     "table_name": example_aws_glue_catalog_table["name"],
 ///     "column_names": ["my_column"],
-///     "row_filter": {
-///         "filter_expression": "my_column='example'",
-///     },
 /// })
 /// ```
 /// ```csharp
@@ -53,6 +53,10 @@ import 'data_cells_filter_timeouts.dart';
 ///     {
 ///         TableData = new Aws.LakeFormation.Inputs.DataCellsFilterTableDataArgs
 ///         {
+///             RowFilter = new Aws.LakeFormation.Inputs.DataCellsFilterTableDataRowFilterArgs
+///             {
+///                 FilterExpression = "my_column='example'",
+///             },
 ///             DatabaseName = exampleAwsGlueCatalogDatabase.Name,
 ///             Name = "example",
 ///             TableCatalogId = current.AccountId,
@@ -60,10 +64,6 @@ import 'data_cells_filter_timeouts.dart';
 ///             ColumnNames = new[]
 ///             {
 ///                 "my_column",
-///             },
-///             RowFilter = new Aws.LakeFormation.Inputs.DataCellsFilterTableDataRowFilterArgs
-///             {
-///                 FilterExpression = "my_column='example'",
 ///             },
 ///         },
 ///     });
@@ -82,15 +82,15 @@ import 'data_cells_filter_timeouts.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.NewDataCellsFilter(ctx, "example", &lakeformation.DataCellsFilterArgs{
 /// 			TableData: &lakeformation.DataCellsFilterTableDataArgs{
+/// 				RowFilter: &lakeformation.DataCellsFilterTableDataRowFilterArgs{
+/// 					FilterExpression: pulumi.String("my_column='example'"),
+/// 				},
 /// 				DatabaseName:   pulumi.Any(exampleAwsGlueCatalogDatabase.Name),
 /// 				Name:           pulumi.String("example"),
 /// 				TableCatalogId: pulumi.Any(current.AccountId),
 /// 				TableName:      pulumi.Any(exampleAwsGlueCatalogTable.Name),
 /// 				ColumnNames: pulumi.StringArray{
 /// 					pulumi.String("my_column"),
-/// 				},
-/// 				RowFilter: &lakeformation.DataCellsFilterTableDataRowFilterArgs{
-/// 					FilterExpression: pulumi.String("my_column='example'"),
 /// 				},
 /// 			},
 /// 		})
@@ -112,14 +112,14 @@ import 'data_cells_filter_timeouts.dart';
 ///
 /// resource "aws_lakeformation_datacellsfilter" "example" {
 ///   table_data = {
+///     row_filter = {
+///       filter_expression = "my_column='example'"
+///     }
 ///     database_name    = exampleAwsGlueCatalogDatabase.name
 ///     name             = "example"
 ///     table_catalog_id = current.accountId
 ///     table_name       = exampleAwsGlueCatalogTable.name
 ///     column_names     = ["my_column"]
-///     row_filter = {
-///       filter_expression = "my_column='example'"
-///     }
 ///   }
 /// }
 /// ```
@@ -148,14 +148,14 @@ import 'data_cells_filter_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new DataCellsFilter("example", DataCellsFilterArgs.builder()
 ///             .tableData(DataCellsFilterTableDataArgs.builder()
+///                 .rowFilter(DataCellsFilterTableDataRowFilterArgs.builder()
+///                     .filterExpression("my_column='example'")
+///                     .build())
 ///                 .databaseName(exampleAwsGlueCatalogDatabase.name())
 ///                 .name("example")
 ///                 .tableCatalogId(current.accountId())
 ///                 .tableName(exampleAwsGlueCatalogTable.name())
 ///                 .columnNames("my_column")
-///                 .rowFilter(DataCellsFilterTableDataRowFilterArgs.builder()
-///                     .filterExpression("my_column='example'")
-///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -168,14 +168,14 @@ import 'data_cells_filter_timeouts.dart';
 ///     type: aws:lakeformation:DataCellsFilter
 ///     properties:
 ///       tableData:
+///         rowFilter:
+///           filterExpression: my_column='example'
 ///         databaseName: ${exampleAwsGlueCatalogDatabase.name}
 ///         name: example
 ///         tableCatalogId: ${current.accountId}
 ///         tableName: ${exampleAwsGlueCatalogTable.name}
 ///         columnNames:
 ///           - my_column
-///         rowFilter:
-///           filterExpression: my_column='example'
 /// ```
 ///
 ///
@@ -189,10 +189,6 @@ import 'data_cells_filter_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const excludedColumns = new aws.lakeformation.DataCellsFilter("excluded_columns", {tableData: {
-///     databaseName: example.name,
-///     name: "exclude-pii",
-///     tableCatalogId: current.accountId,
-///     tableName: exampleAwsGlueCatalogTable.name,
 ///     columnWildcard: {
 ///         excludedColumnNames: [
 ///             "ssn",
@@ -202,6 +198,10 @@ import 'data_cells_filter_timeouts.dart';
 ///     rowFilter: {
 ///         allRowsWildcard: {},
 ///     },
+///     databaseName: example.name,
+///     name: "exclude-pii",
+///     tableCatalogId: current.accountId,
+///     tableName: exampleAwsGlueCatalogTable.name,
 /// }});
 /// ```
 /// ```python
@@ -209,10 +209,6 @@ import 'data_cells_filter_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// excluded_columns = aws.lakeformation.DataCellsFilter("excluded_columns", table_data={
-///     "database_name": example["name"],
-///     "name": "exclude-pii",
-///     "table_catalog_id": current["accountId"],
-///     "table_name": example_aws_glue_catalog_table["name"],
 ///     "column_wildcard": {
 ///         "excluded_column_names": [
 ///             "ssn",
@@ -222,6 +218,10 @@ import 'data_cells_filter_timeouts.dart';
 ///     "row_filter": {
 ///         "all_rows_wildcard": {},
 ///     },
+///     "database_name": example["name"],
+///     "name": "exclude-pii",
+///     "table_catalog_id": current["accountId"],
+///     "table_name": example_aws_glue_catalog_table["name"],
 /// })
 /// ```
 /// ```csharp
@@ -236,10 +236,6 @@ import 'data_cells_filter_timeouts.dart';
 ///     {
 ///         TableData = new Aws.LakeFormation.Inputs.DataCellsFilterTableDataArgs
 ///         {
-///             DatabaseName = example.Name,
-///             Name = "exclude-pii",
-///             TableCatalogId = current.AccountId,
-///             TableName = exampleAwsGlueCatalogTable.Name,
 ///             ColumnWildcard = new Aws.LakeFormation.Inputs.DataCellsFilterTableDataColumnWildcardArgs
 ///             {
 ///                 ExcludedColumnNames = new[]
@@ -252,6 +248,10 @@ import 'data_cells_filter_timeouts.dart';
 ///             {
 ///                 AllRowsWildcard = null,
 ///             },
+///             DatabaseName = example.Name,
+///             Name = "exclude-pii",
+///             TableCatalogId = current.AccountId,
+///             TableName = exampleAwsGlueCatalogTable.Name,
 ///         },
 ///     });
 ///
@@ -269,10 +269,6 @@ import 'data_cells_filter_timeouts.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.NewDataCellsFilter(ctx, "excluded_columns", &lakeformation.DataCellsFilterArgs{
 /// 			TableData: &lakeformation.DataCellsFilterTableDataArgs{
-/// 				DatabaseName:   pulumi.Any(example.Name),
-/// 				Name:           pulumi.String("exclude-pii"),
-/// 				TableCatalogId: pulumi.Any(current.AccountId),
-/// 				TableName:      pulumi.Any(exampleAwsGlueCatalogTable.Name),
 /// 				ColumnWildcard: &lakeformation.DataCellsFilterTableDataColumnWildcardArgs{
 /// 					ExcludedColumnNames: pulumi.StringArray{
 /// 						pulumi.String("ssn"),
@@ -282,6 +278,10 @@ import 'data_cells_filter_timeouts.dart';
 /// 				RowFilter: &lakeformation.DataCellsFilterTableDataRowFilterArgs{
 /// 					AllRowsWildcard: &lakeformation.DataCellsFilterTableDataRowFilterAllRowsWildcardArgs{},
 /// 				},
+/// 				DatabaseName:   pulumi.Any(example.Name),
+/// 				Name:           pulumi.String("exclude-pii"),
+/// 				TableCatalogId: pulumi.Any(current.AccountId),
+/// 				TableName:      pulumi.Any(exampleAwsGlueCatalogTable.Name),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -302,16 +302,16 @@ import 'data_cells_filter_timeouts.dart';
 ///
 /// resource "aws_lakeformation_datacellsfilter" "excluded_columns" {
 ///   table_data = {
-///     database_name    = example.name
-///     name             = "exclude-pii"
-///     table_catalog_id = current.accountId
-///     table_name       = exampleAwsGlueCatalogTable.name
 ///     column_wildcard = {
 ///       excluded_column_names = ["ssn", "credit_card"]
 ///     }
 ///     row_filter = {
 ///       all_rows_wildcard = {}
 ///     }
+///     database_name    = example.name
+///     name             = "exclude-pii"
+///     table_catalog_id = current.accountId
+///     table_name       = exampleAwsGlueCatalogTable.name
 ///   }
 /// }
 /// ```
@@ -342,10 +342,6 @@ import 'data_cells_filter_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var excludedColumns = new DataCellsFilter("excludedColumns", DataCellsFilterArgs.builder()
 ///             .tableData(DataCellsFilterTableDataArgs.builder()
-///                 .databaseName(example.name())
-///                 .name("exclude-pii")
-///                 .tableCatalogId(current.accountId())
-///                 .tableName(exampleAwsGlueCatalogTable.name())
 ///                 .columnWildcard(DataCellsFilterTableDataColumnWildcardArgs.builder()
 ///                     .excludedColumnNames(
 ///                         "ssn",
@@ -355,6 +351,10 @@ import 'data_cells_filter_timeouts.dart';
 ///                     .allRowsWildcard(DataCellsFilterTableDataRowFilterAllRowsWildcardArgs.builder()
 ///                         .build())
 ///                     .build())
+///                 .databaseName(example.name())
+///                 .name("exclude-pii")
+///                 .tableCatalogId(current.accountId())
+///                 .tableName(exampleAwsGlueCatalogTable.name())
 ///                 .build())
 ///             .build());
 ///
@@ -368,16 +368,16 @@ import 'data_cells_filter_timeouts.dart';
 ///     name: excluded_columns
 ///     properties:
 ///       tableData:
-///         databaseName: ${example.name}
-///         name: exclude-pii
-///         tableCatalogId: ${current.accountId}
-///         tableName: ${exampleAwsGlueCatalogTable.name}
 ///         columnWildcard:
 ///           excludedColumnNames:
 ///             - ssn
 ///             - credit_card
 ///         rowFilter:
 ///           allRowsWildcard: {}
+///         databaseName: ${example.name}
+///         name: exclude-pii
+///         tableCatalogId: ${current.accountId}
+///         tableName: ${exampleAwsGlueCatalogTable.name}
 /// ```
 ///
 ///
@@ -389,10 +389,6 @@ import 'data_cells_filter_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const rowAndColumn = new aws.lakeformation.DataCellsFilter("row_and_column", {tableData: {
-///     databaseName: example.name,
-///     name: "marketing-filtered",
-///     tableCatalogId: current.accountId,
-///     tableName: exampleAwsGlueCatalogTable.name,
 ///     columnWildcard: {
 ///         excludedColumnNames: [
 ///             "salary",
@@ -402,6 +398,10 @@ import 'data_cells_filter_timeouts.dart';
 ///     rowFilter: {
 ///         filterExpression: "department = 'Marketing'",
 ///     },
+///     databaseName: example.name,
+///     name: "marketing-filtered",
+///     tableCatalogId: current.accountId,
+///     tableName: exampleAwsGlueCatalogTable.name,
 /// }});
 /// ```
 /// ```python
@@ -409,10 +409,6 @@ import 'data_cells_filter_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// row_and_column = aws.lakeformation.DataCellsFilter("row_and_column", table_data={
-///     "database_name": example["name"],
-///     "name": "marketing-filtered",
-///     "table_catalog_id": current["accountId"],
-///     "table_name": example_aws_glue_catalog_table["name"],
 ///     "column_wildcard": {
 ///         "excluded_column_names": [
 ///             "salary",
@@ -422,6 +418,10 @@ import 'data_cells_filter_timeouts.dart';
 ///     "row_filter": {
 ///         "filter_expression": "department = 'Marketing'",
 ///     },
+///     "database_name": example["name"],
+///     "name": "marketing-filtered",
+///     "table_catalog_id": current["accountId"],
+///     "table_name": example_aws_glue_catalog_table["name"],
 /// })
 /// ```
 /// ```csharp
@@ -436,10 +436,6 @@ import 'data_cells_filter_timeouts.dart';
 ///     {
 ///         TableData = new Aws.LakeFormation.Inputs.DataCellsFilterTableDataArgs
 ///         {
-///             DatabaseName = example.Name,
-///             Name = "marketing-filtered",
-///             TableCatalogId = current.AccountId,
-///             TableName = exampleAwsGlueCatalogTable.Name,
 ///             ColumnWildcard = new Aws.LakeFormation.Inputs.DataCellsFilterTableDataColumnWildcardArgs
 ///             {
 ///                 ExcludedColumnNames = new[]
@@ -452,6 +448,10 @@ import 'data_cells_filter_timeouts.dart';
 ///             {
 ///                 FilterExpression = "department = 'Marketing'",
 ///             },
+///             DatabaseName = example.Name,
+///             Name = "marketing-filtered",
+///             TableCatalogId = current.AccountId,
+///             TableName = exampleAwsGlueCatalogTable.Name,
 ///         },
 ///     });
 ///
@@ -469,10 +469,6 @@ import 'data_cells_filter_timeouts.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.NewDataCellsFilter(ctx, "row_and_column", &lakeformation.DataCellsFilterArgs{
 /// 			TableData: &lakeformation.DataCellsFilterTableDataArgs{
-/// 				DatabaseName:   pulumi.Any(example.Name),
-/// 				Name:           pulumi.String("marketing-filtered"),
-/// 				TableCatalogId: pulumi.Any(current.AccountId),
-/// 				TableName:      pulumi.Any(exampleAwsGlueCatalogTable.Name),
 /// 				ColumnWildcard: &lakeformation.DataCellsFilterTableDataColumnWildcardArgs{
 /// 					ExcludedColumnNames: pulumi.StringArray{
 /// 						pulumi.String("salary"),
@@ -482,6 +478,10 @@ import 'data_cells_filter_timeouts.dart';
 /// 				RowFilter: &lakeformation.DataCellsFilterTableDataRowFilterArgs{
 /// 					FilterExpression: pulumi.String("department = 'Marketing'"),
 /// 				},
+/// 				DatabaseName:   pulumi.Any(example.Name),
+/// 				Name:           pulumi.String("marketing-filtered"),
+/// 				TableCatalogId: pulumi.Any(current.AccountId),
+/// 				TableName:      pulumi.Any(exampleAwsGlueCatalogTable.Name),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -502,16 +502,16 @@ import 'data_cells_filter_timeouts.dart';
 ///
 /// resource "aws_lakeformation_datacellsfilter" "row_and_column" {
 ///   table_data = {
-///     database_name    = example.name
-///     name             = "marketing-filtered"
-///     table_catalog_id = current.accountId
-///     table_name       = exampleAwsGlueCatalogTable.name
 ///     column_wildcard = {
 ///       excluded_column_names = ["salary", "bonus"]
 ///     }
 ///     row_filter = {
 ///       filter_expression = "department = 'Marketing'"
 ///     }
+///     database_name    = example.name
+///     name             = "marketing-filtered"
+///     table_catalog_id = current.accountId
+///     table_name       = exampleAwsGlueCatalogTable.name
 ///   }
 /// }
 /// ```
@@ -541,10 +541,6 @@ import 'data_cells_filter_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var rowAndColumn = new DataCellsFilter("rowAndColumn", DataCellsFilterArgs.builder()
 ///             .tableData(DataCellsFilterTableDataArgs.builder()
-///                 .databaseName(example.name())
-///                 .name("marketing-filtered")
-///                 .tableCatalogId(current.accountId())
-///                 .tableName(exampleAwsGlueCatalogTable.name())
 ///                 .columnWildcard(DataCellsFilterTableDataColumnWildcardArgs.builder()
 ///                     .excludedColumnNames(
 ///                         "salary",
@@ -553,6 +549,10 @@ import 'data_cells_filter_timeouts.dart';
 ///                 .rowFilter(DataCellsFilterTableDataRowFilterArgs.builder()
 ///                     .filterExpression("department = 'Marketing'")
 ///                     .build())
+///                 .databaseName(example.name())
+///                 .name("marketing-filtered")
+///                 .tableCatalogId(current.accountId())
+///                 .tableName(exampleAwsGlueCatalogTable.name())
 ///                 .build())
 ///             .build());
 ///
@@ -566,16 +566,16 @@ import 'data_cells_filter_timeouts.dart';
 ///     name: row_and_column
 ///     properties:
 ///       tableData:
-///         databaseName: ${example.name}
-///         name: marketing-filtered
-///         tableCatalogId: ${current.accountId}
-///         tableName: ${exampleAwsGlueCatalogTable.name}
 ///         columnWildcard:
 ///           excludedColumnNames:
 ///             - salary
 ///             - bonus
 ///         rowFilter:
 ///           filterExpression: department = 'Marketing'
+///         databaseName: ${example.name}
+///         name: marketing-filtered
+///         tableCatalogId: ${current.accountId}
+///         tableName: ${exampleAwsGlueCatalogTable.name}
 /// ```
 ///
 ///
@@ -589,16 +589,16 @@ import 'data_cells_filter_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const rowOnly = new aws.lakeformation.DataCellsFilter("row_only", {tableData: {
-///     databaseName: example.name,
-///     name: "regional-filter",
-///     tableCatalogId: current.accountId,
-///     tableName: exampleAwsGlueCatalogTable.name,
 ///     columnWildcard: {
 ///         excludedColumnNames: [],
 ///     },
 ///     rowFilter: {
 ///         filterExpression: "region = 'US-WEST'",
 ///     },
+///     databaseName: example.name,
+///     name: "regional-filter",
+///     tableCatalogId: current.accountId,
+///     tableName: exampleAwsGlueCatalogTable.name,
 /// }});
 /// ```
 /// ```python
@@ -606,16 +606,16 @@ import 'data_cells_filter_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// row_only = aws.lakeformation.DataCellsFilter("row_only", table_data={
-///     "database_name": example["name"],
-///     "name": "regional-filter",
-///     "table_catalog_id": current["accountId"],
-///     "table_name": example_aws_glue_catalog_table["name"],
 ///     "column_wildcard": {
 ///         "excluded_column_names": [],
 ///     },
 ///     "row_filter": {
 ///         "filter_expression": "region = 'US-WEST'",
 ///     },
+///     "database_name": example["name"],
+///     "name": "regional-filter",
+///     "table_catalog_id": current["accountId"],
+///     "table_name": example_aws_glue_catalog_table["name"],
 /// })
 /// ```
 /// ```csharp
@@ -630,10 +630,6 @@ import 'data_cells_filter_timeouts.dart';
 ///     {
 ///         TableData = new Aws.LakeFormation.Inputs.DataCellsFilterTableDataArgs
 ///         {
-///             DatabaseName = example.Name,
-///             Name = "regional-filter",
-///             TableCatalogId = current.AccountId,
-///             TableName = exampleAwsGlueCatalogTable.Name,
 ///             ColumnWildcard = new Aws.LakeFormation.Inputs.DataCellsFilterTableDataColumnWildcardArgs
 ///             {
 ///                 ExcludedColumnNames = new() { },
@@ -642,6 +638,10 @@ import 'data_cells_filter_timeouts.dart';
 ///             {
 ///                 FilterExpression = "region = 'US-WEST'",
 ///             },
+///             DatabaseName = example.Name,
+///             Name = "regional-filter",
+///             TableCatalogId = current.AccountId,
+///             TableName = exampleAwsGlueCatalogTable.Name,
 ///         },
 ///     });
 ///
@@ -659,16 +659,16 @@ import 'data_cells_filter_timeouts.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lakeformation.NewDataCellsFilter(ctx, "row_only", &lakeformation.DataCellsFilterArgs{
 /// 			TableData: &lakeformation.DataCellsFilterTableDataArgs{
-/// 				DatabaseName:   pulumi.Any(example.Name),
-/// 				Name:           pulumi.String("regional-filter"),
-/// 				TableCatalogId: pulumi.Any(current.AccountId),
-/// 				TableName:      pulumi.Any(exampleAwsGlueCatalogTable.Name),
 /// 				ColumnWildcard: &lakeformation.DataCellsFilterTableDataColumnWildcardArgs{
 /// 					ExcludedColumnNames: pulumi.StringArray{},
 /// 				},
 /// 				RowFilter: &lakeformation.DataCellsFilterTableDataRowFilterArgs{
 /// 					FilterExpression: pulumi.String("region = 'US-WEST'"),
 /// 				},
+/// 				DatabaseName:   pulumi.Any(example.Name),
+/// 				Name:           pulumi.String("regional-filter"),
+/// 				TableCatalogId: pulumi.Any(current.AccountId),
+/// 				TableName:      pulumi.Any(exampleAwsGlueCatalogTable.Name),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -689,16 +689,16 @@ import 'data_cells_filter_timeouts.dart';
 ///
 /// resource "aws_lakeformation_datacellsfilter" "row_only" {
 ///   table_data = {
-///     database_name    = example.name
-///     name             = "regional-filter"
-///     table_catalog_id = current.accountId
-///     table_name       = exampleAwsGlueCatalogTable.name
 ///     column_wildcard = {
 ///       excluded_column_names = []
 ///     }
 ///     row_filter = {
 ///       filter_expression = "region = 'US-WEST'"
 ///     }
+///     database_name    = example.name
+///     name             = "regional-filter"
+///     table_catalog_id = current.accountId
+///     table_name       = exampleAwsGlueCatalogTable.name
 ///   }
 /// }
 /// ```
@@ -728,16 +728,16 @@ import 'data_cells_filter_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var rowOnly = new DataCellsFilter("rowOnly", DataCellsFilterArgs.builder()
 ///             .tableData(DataCellsFilterTableDataArgs.builder()
-///                 .databaseName(example.name())
-///                 .name("regional-filter")
-///                 .tableCatalogId(current.accountId())
-///                 .tableName(exampleAwsGlueCatalogTable.name())
 ///                 .columnWildcard(DataCellsFilterTableDataColumnWildcardArgs.builder()
 ///                     .excludedColumnNames()
 ///                     .build())
 ///                 .rowFilter(DataCellsFilterTableDataRowFilterArgs.builder()
 ///                     .filterExpression("region = 'US-WEST'")
 ///                     .build())
+///                 .databaseName(example.name())
+///                 .name("regional-filter")
+///                 .tableCatalogId(current.accountId())
+///                 .tableName(exampleAwsGlueCatalogTable.name())
 ///                 .build())
 ///             .build());
 ///
@@ -751,14 +751,14 @@ import 'data_cells_filter_timeouts.dart';
 ///     name: row_only
 ///     properties:
 ///       tableData:
-///         databaseName: ${example.name}
-///         name: regional-filter
-///         tableCatalogId: ${current.accountId}
-///         tableName: ${exampleAwsGlueCatalogTable.name}
 ///         columnWildcard:
 ///           excludedColumnNames: []
 ///         rowFilter:
 ///           filterExpression: region = 'US-WEST'
+///         databaseName: ${example.name}
+///         name: regional-filter
+///         tableCatalogId: ${current.accountId}
+///         tableName: ${exampleAwsGlueCatalogTable.name}
 /// ```
 ///
 ///
@@ -788,7 +788,7 @@ class DataCellsFilter extends pulumi.CustomResource {
           'aws:lakeformation/dataCellsFilter:DataCellsFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     tableData = registerOutput<DataCellsFilterTableData>('tableData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCellsFilterTableData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -800,11 +800,12 @@ class DataCellsFilter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataCellsFilterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataCellsFilter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -818,6 +819,20 @@ class DataCellsFilter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    tableData = registerOutput<DataCellsFilterTableData>('tableData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCellsFilterTableData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<DataCellsFilterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCellsFilterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DataCellsFilter] resource.
+  DataCellsFilter.reference(String urn)
+    : super(
+        'aws:lakeformation/dataCellsFilter:DataCellsFilter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     tableData = registerOutput<DataCellsFilterTableData>('tableData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCellsFilterTableData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<DataCellsFilterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCellsFilterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

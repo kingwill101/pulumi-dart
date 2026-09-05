@@ -10,29 +10,29 @@ import 'domain_configuration_tls_config.dart';
 /// {@macro pulumi_iot_domain_configuration_domain_configuration_args_doc}
 class DomainConfigurationArgs {
   /// An enumerated string that speciﬁes the application-layer protocol. Valid values are `SECURE_MQTT`, `MQTT_WSS`, `HTTPS` or `DEFAULT`.
-  final pulumi.Input<String>? applicationProtocol;
+  final pulumi.Input<String?>? applicationProtocol;
   /// An enumerated string that speciﬁes the authentication type. Valid values are `CUSTOM_AUTH_X509`, `CUSTOM_AUTH`, `AWS_X509`, `AWS_SIGV4` or `DEFAULT`.
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// An object that specifies the authorization service for a domain. See the `authorizerConfig` Block below for details.
-  final pulumi.Input<DomainConfigurationAuthorizerConfig>? authorizerConfig;
+  final pulumi.Input<DomainConfigurationAuthorizerConfig?>? authorizerConfig;
   /// Fully-qualified domain name.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The name of the domain configuration. This value must be unique to a region.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARNs of the certificates that IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN. This value is not required for Amazon Web Services-managed domains. When using a custom `domainName`, the cert must include it.
-  final pulumi.Input<List<String>>? serverCertificateArns;
+  final pulumi.Input<List<String>?>? serverCertificateArns;
   /// The type of service delivered by the endpoint. Note: Amazon Web Services IoT Core currently supports only the `DATA` service type.
-  final pulumi.Input<String>? serviceType;
+  final pulumi.Input<String?>? serviceType;
   /// The status to which the domain configuration should be set. Valid values are `ENABLED` and `DISABLED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// An object that specifies the TLS configuration for a domain. See the `tlsConfig` Block below for details.
-  final pulumi.Input<DomainConfigurationTlsConfig>? tlsConfig;
+  final pulumi.Input<DomainConfigurationTlsConfig?>? tlsConfig;
   /// The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority. This value is not required for Amazon Web Services-managed domains.
-  final pulumi.Input<String>? validationCertificateArn;
+  final pulumi.Input<String?>? validationCertificateArn;
 
   /// Creates a new [DomainConfigurationArgs].
   /// [applicationProtocol] An enumerated string that speciﬁes the application-layer protocol. Valid values are `SECURE_MQTT`, `MQTT_WSS`, `HTTPS` or `DEFAULT`.

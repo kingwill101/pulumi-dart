@@ -13,13 +13,13 @@ class GetPrefixListArgs {
   /// The arguments of this data source act as filters for querying the available
   /// prefix lists. The given filters must match exactly one prefix list
   /// whose data will be exported as attributes.
-  final pulumi.Input<List<GetPrefixListFilter>>? filters;
+  final pulumi.Input<List<GetPrefixListFilter>?>? filters;
   /// Name of the prefix list to select.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the prefix list to select.
-  final pulumi.Input<String>? prefixListId;
+  final pulumi.Input<String?>? prefixListId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetPrefixListArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

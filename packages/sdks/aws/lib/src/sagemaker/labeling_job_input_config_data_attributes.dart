@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LabelingJobInputConfigDataAttributes {
   /// Declares that your content is free of personally identifiable information or adult content. Valid values: `FreeOfPersonallyIdentifiableInformation`, `FreeOfAdultContent`.
-  final pulumi.Input<List<String>>? contentClassifiers;
+  final pulumi.Input<List<String>?>? contentClassifiers;
 
   /// Creates a new [LabelingJobInputConfigDataAttributes].
   /// [contentClassifiers] Declares that your content is free of personally identifiable information or adult content. Valid values: `FreeOfPersonallyIdentifiableInformation`, `FreeOfAdultContent`.

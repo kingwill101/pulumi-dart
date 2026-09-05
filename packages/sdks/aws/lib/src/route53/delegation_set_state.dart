@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering DelegationSet resources.
 class DelegationSetState {
-  /// The Amazon Resource Name (ARN) of the Delegation Set.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Delegation Set.
+  final pulumi.Input<String?>? arn;
   /// A list of authoritative name servers for the hosted zone
   /// (effectively a list of NS records).
-  final pulumi.Input<List<String>>? nameServers;
+  final pulumi.Input<List<String>?>? nameServers;
   /// This is a reference name used in Caller Reference
   /// (helpful for identifying single delegation set amongst others)
-  final pulumi.Input<String>? referenceName;
+  final pulumi.Input<String?>? referenceName;
 
   /// Creates a new [DelegationSetState].
-  /// [arn] The Amazon Resource Name (ARN) of the Delegation Set.
+  /// [arn] ARN of the Delegation Set.
   /// [nameServers] A list of authoritative name servers for the hosted zone
   /// [referenceName] This is a reference name used in Caller Reference
   const DelegationSetState({

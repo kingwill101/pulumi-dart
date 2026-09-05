@@ -6,75 +6,75 @@ import 'get_application_portal_option.dart';
 /// Result data returned by getApplication.
 class GetApplicationResult {
   /// AWS account ID.
-  final String applicationAccount;
-  final String applicationArn;
+  final String? applicationAccount;
+  final String? applicationArn;
   /// ARN of the application provider.
-  final String applicationProviderArn;
+  final String? applicationProviderArn;
   /// Description of the application.
-  final String description;
+  final String? description;
   /// ARN of the application.
-  final String id;
+  final String? id;
   /// ARN of the instance of IAM Identity Center.
-  final String instanceArn;
+  final String? instanceArn;
   /// Name of the application.
-  final String name;
+  final String? name;
   /// Options for the portal associated with an application. See `portalOptions` Block below.
-  final List<GetApplicationPortalOption> portalOptions;
-  final String region;
+  final List<GetApplicationPortalOption>? portalOptions;
+  final String? region;
   /// Status of the application.
-  final String status;
+  final String? status;
 
   /// Creates a new [GetApplicationResult].
   /// [applicationAccount] AWS account ID.
-  /// [applicationArn] Required.
+  /// [applicationArn] Optional.
   /// [applicationProviderArn] ARN of the application provider.
   /// [description] Description of the application.
   /// [id] ARN of the application.
   /// [instanceArn] ARN of the instance of IAM Identity Center.
   /// [name] Name of the application.
   /// [portalOptions] Options for the portal associated with an application. See `portalOptions` Block below.
-  /// [region] Required.
+  /// [region] Optional.
   /// [status] Status of the application.
   const GetApplicationResult({
-    required this.applicationAccount,
-    required this.applicationArn,
-    required this.applicationProviderArn,
-    required this.description,
-    required this.id,
-    required this.instanceArn,
-    required this.name,
-    required this.portalOptions,
-    required this.region,
-    required this.status,
+    this.applicationAccount,
+    this.applicationArn,
+    this.applicationProviderArn,
+    this.description,
+    this.id,
+    this.instanceArn,
+    this.name,
+    this.portalOptions,
+    this.region,
+    this.status,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationAccount': applicationAccount,
-      'applicationArn': applicationArn,
-      'applicationProviderArn': applicationProviderArn,
-      'description': description,
-      'id': id,
-      'instanceArn': instanceArn,
-      'name': name,
-      'portalOptions': pulumi.Input.encodeList<GetApplicationPortalOption, Map<String, dynamic>>(portalOptions, (value) => value.toMap()),
-      'region': region,
-      'status': status,
+      'applicationAccount': ?applicationAccount,
+      'applicationArn': ?applicationArn,
+      'applicationProviderArn': ?applicationProviderArn,
+      'description': ?description,
+      'id': ?id,
+      'instanceArn': ?instanceArn,
+      'name': ?name,
+      'portalOptions': ?(() { final guardedValue = portalOptions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetApplicationPortalOption, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
+      'status': ?status,
     };
   }
 
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
-      applicationAccount: map['applicationAccount'] as String,
-      applicationArn: map['applicationArn'] as String,
-      applicationProviderArn: map['applicationProviderArn'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      instanceArn: map['instanceArn'] as String,
-      name: map['name'] as String,
-      portalOptions: pulumi.Input.decodeList<GetApplicationPortalOption>(map['portalOptions']!, (value) => GetApplicationPortalOption.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
-      status: map['status'] as String,
+      applicationAccount: (() { final guardedValue = map['applicationAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      applicationArn: (() { final guardedValue = map['applicationArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      applicationProviderArn: (() { final guardedValue = map['applicationProviderArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceArn: (() { final guardedValue = map['instanceArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      portalOptions: (() { final guardedValue = map['portalOptions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetApplicationPortalOption>(guardedValue, (value) => GetApplicationPortalOption.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -6,19 +6,19 @@ import 'virtual_gateway_spec_backend_defaults_client_policy_tls_validation.dart'
 
 class VirtualGatewaySpecBackendDefaultsClientPolicyTls {
   /// Listener's TLS certificate.
-  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate>? certificate;
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate?>? certificate;
   /// Whether the policy is enforced. Default is `true`.
-  final pulumi.Input<bool>? enforce;
+  final pulumi.Input<bool?>? enforce;
   /// One or more ports that the policy is enforced for.
-  final pulumi.Input<List<int>>? ports;
-  /// Listener's Transport Layer Security (TLS) validation context.
+  final pulumi.Input<List<int>?>? ports;
+  /// Listener's TLS validation context.
   final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation> validation;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTls].
   /// [certificate] Listener's TLS certificate.
   /// [enforce] Whether the policy is enforced. Default is `true`.
   /// [ports] One or more ports that the policy is enforced for.
-  /// [validation] Listener's Transport Layer Security (TLS) validation context.
+  /// [validation] Listener's TLS validation context.
   const VirtualGatewaySpecBackendDefaultsClientPolicyTls({
     this.certificate,
     this.enforce,

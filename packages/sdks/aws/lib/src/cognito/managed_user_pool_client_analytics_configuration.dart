@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedUserPoolClientAnalyticsConfiguration {
   /// Application ARN for an AWS End User Messaging application. It conflicts with `externalId` and `roleArn`.
-  final pulumi.Input<String>? applicationArn;
+  final pulumi.Input<String?>? applicationArn;
   /// Unique identifier for an AWS End User Messaging application.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// ID for the Analytics Configuration and conflicts with `applicationArn`.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// ARN of an IAM role that authorizes Amazon Cognito to publish events to AWS End User Messaging analytics. It conflicts with `applicationArn`.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// If `userDataShared` is set to `true`, Amazon Cognito will include user data in the events it publishes to AWS End User Messaging analytics.
-  final pulumi.Input<bool>? userDataShared;
+  final pulumi.Input<bool?>? userDataShared;
 
   /// Creates a new [ManagedUserPoolClientAnalyticsConfiguration].
   /// [applicationArn] Application ARN for an AWS End User Messaging application. It conflicts with `externalId` and `roleArn`.

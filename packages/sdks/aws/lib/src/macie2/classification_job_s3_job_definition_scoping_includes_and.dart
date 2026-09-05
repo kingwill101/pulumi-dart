@@ -6,9 +6,9 @@ import 'classification_job_s3_job_definition_scoping_includes_and_tag_scope_term
 
 class ClassificationJobS3JobDefinitionScopingIncludesAnd {
   /// A property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. (documented below)
-  final pulumi.Input<ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm>? simpleScopeTerm;
+  final pulumi.Input<ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm?>? simpleScopeTerm;
   /// A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an object from the job. (documented below)
-  final pulumi.Input<ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm>? tagScopeTerm;
+  final pulumi.Input<ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm?>? tagScopeTerm;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingIncludesAnd].
   /// [simpleScopeTerm] A property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. (documented below)

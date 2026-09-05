@@ -21,21 +21,19 @@ import 'tag_tag.dart';
 ///     clusterName: "example",
 ///     nodeGroupName: "example",
 /// });
-/// const exampleTag: aws.autoscaling.Tag[] = [];
-/// std.tosetOutput({
-///     input: std.flattenOutput({
-///         input: example.resources.apply(resources => resources.map(resources => (resources.autoscalingGroups))),
-///     }).apply(invoke => .map(asg => (asg.name))),
-/// }).result.apply(rangeBody => {
-///     for (const range of rangeBody.map((v, k) => ({key: k, value: v}))) {
-///         exampleTag.push(new aws.autoscaling.Tag(`example-${range.key}`, {
-///             autoscalingGroupName: range.value,
+/// const exampleTag: {[key: string]: aws.autoscaling.Tag} = {};
+/// std.flattenOutput({
+///     input: example.resources.apply(resources => resources.map(resources => (resources.autoscalingGroups))),
+/// }).apply(invoke => {
+///     for (const range of Object.entries(.map(asg => (asg.name)).reduce((__obj, entry) => ({ ...__obj, [String(entry)]: entry }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
+///         exampleTag[range.key] = new aws.autoscaling.Tag(`example-${range.key}`, {
 ///             tag: {
 ///                 key: "k8s.io/cluster-autoscaler/node-template/label/eks.amazonaws.com/capacityType",
 ///                 value: "SPOT",
 ///                 propagateAtLaunch: false,
 ///             },
-///         }));
+///             autoscalingGroupName: range.value,
+///         });
 ///     }
 /// });
 /// ```
@@ -48,18 +46,18 @@ import 'tag_tag.dart';
 /// example = aws.eks.NodeGroup("example",
 ///     cluster_name="example",
 ///     node_group_name="example")
-/// example_tag: list[aws.autoscaling.Tag] = []
+/// example_tag: dict[str, aws.autoscaling.Tag] = {}
 /// def create_example(range_body):
-///     for example_tag_range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
-///         example_tag.append(aws.autoscaling.Tag(f"example-{example_tag_range['key']}",
-///             autoscaling_group_name=example_tag_range["value"],
+///     for example_tag_range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
+///         example_tag[example_tag_range['key']] = aws.autoscaling.Tag(f"example-{example_tag_range['key']}",
 ///             tag={
 ///                 "key": "k8s.io/cluster-autoscaler/node-template/label/eks.amazonaws.com/capacityType",
 ///                 "value": "SPOT",
 ///                 "propagate_at_launch": False,
-///             }))
+///             },
+///             autoscaling_group_name=example_tag_range["value"])
 ///
-/// invoke.result.apply(create_example)
+/// std.flatten_output(input=example.resources.apply(lambda resources: [resources.autoscaling_groups for resources in resources])).apply(lambda resolved_outputs: create_example({str(entry): entry for entry in [asg["name"] for asg in resolved_outputs['invoke'].result]}))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -77,17 +75,32 @@ import 'tag_tag.dart';
 ///     });
 ///
 ///     var exampleTag = new List<Aws.AutoScaling.Tag>();
-///     foreach (var range in )
+///     foreach (var range in Std.Flatten.Invoke(new()
+///     {
+///         Input = example.Resources.Apply(resources => resources.Select(resources =>
+///         {
+///             return resources.AutoscalingGroups;
+///         }).ToList()),
+///     }).Apply(invoke => .Select(asg =>
+///     {
+///         return asg.Name;
+///     }).ToList().ToDictionary(item => {
+///         var entry = item.Value;
+///         return entry;
+///     }, item => {
+///         var entry = item.Value;
+///         return entry;
+///     })).Select(pair => new { pair.Key, pair.Value }))
 ///     {
 ///         exampleTag.Add(new Aws.AutoScaling.Tag($"example-{range.Key}", new()
 ///         {
-///             AutoscalingGroupName = range.Value,
 ///             TagDetails = new Aws.AutoScaling.Inputs.TagTagArgs
 ///             {
 ///                 Key = "k8s.io/cluster-autoscaler/node-template/label/eks.amazonaws.com/capacityType",
 ///                 Value = "SPOT",
 ///                 PropagateAtLaunch = false,
 ///             },
+///             AutoscalingGroupName = range.Value,
 ///         }));
 ///     }
 /// });
@@ -109,13 +122,13 @@ import 'tag_tag.dart';
 ///   node_group_name = "example"
 /// }
 /// resource "aws_autoscaling_tag" "example" {
-///   for_each               = toset([for asg in flatten([for resources in aws_eks_nodegroup.example.resources : resources.autoscalingGroups]) : asg.name])
-///   autoscaling_group_name = each.value
+///   for_each = {for entry in [for asg in flatten([for resources in aws_eks_nodegroup.example.resources : resources.autoscalingGroups]) : asg.name] : entry => entry}
 ///   tag = {
 ///     key                 = "k8s.io/cluster-autoscaler/node-template/label/eks.amazonaws.com/capacityType"
 ///     value               = "SPOT"
 ///     propagate_at_launch = false
 ///   }
+///   autoscaling_group_name = each.value
 /// }
 /// ```
 /// ```yaml
@@ -129,11 +142,11 @@ import 'tag_tag.dart';
 ///     type: aws:autoscaling:Tag
 ///     name: example
 ///     properties:
-///       autoscalingGroupName: ${range.value}
 ///       tag:
 ///         key: k8s.io/cluster-autoscaler/node-template/label/eks.amazonaws.com/capacityType
 ///         value: SPOT
 ///         propagateAtLaunch: false
+///       autoscalingGroupName: ${range.value}
 ///     options: {}
 /// ```
 ///
@@ -165,7 +178,7 @@ class Tag extends pulumi.CustomResource {
           'aws:autoscaling/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');
@@ -177,11 +190,12 @@ class Tag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -195,6 +209,20 @@ class Tag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    region = registerOutput<String>('region');
+    tag = registerOutput<TagTag>('tag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Tag] resource.
+  Tag.reference(String urn)
+    : super(
+        'aws:autoscaling/tag:Tag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     region = registerOutput<String>('region');
     tag = registerOutput<TagTag>('tag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagTag.fromMap((guardedValue as Map).cast<String, dynamic>()); });

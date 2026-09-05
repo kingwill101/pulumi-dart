@@ -5,23 +5,23 @@ import 'key_value_store_timeouts.dart';
 
 /// Input properties used for looking up and filtering KeyValueStore resources.
 class KeyValueStoreState {
-  /// Amazon Resource Name (ARN) identifying your CloudFront KeyValueStore.
-  final pulumi.Input<String>? arn;
+  /// ARN identifying your CloudFront KeyValueStore.
+  final pulumi.Input<String?>? arn;
   /// Comment.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// ETag hash of the KeyValueStore.
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// Unique name for your CloudFront KeyValueStore.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<KeyValueStoreTimeouts>? timeouts;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<KeyValueStoreTimeouts?>? timeouts;
 
   /// Creates a new [KeyValueStoreState].
-  /// [arn] Amazon Resource Name (ARN) identifying your CloudFront KeyValueStore.
+  /// [arn] ARN identifying your CloudFront KeyValueStore.
   /// [comment] Comment.
   /// [etag] ETag hash of the KeyValueStore.
   /// [lastModifiedTime] Optional.

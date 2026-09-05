@@ -11,58 +11,58 @@ import 'domain_timeouts.dart';
 /// Input properties used for looking up and filtering Domain resources.
 class DomainState {
   /// Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.
-  final pulumi.Input<String>? abuseContactEmail;
+  final pulumi.Input<String?>? abuseContactEmail;
   /// Phone number for reporting abuse.
-  final pulumi.Input<String>? abuseContactPhone;
+  final pulumi.Input<String?>? abuseContactPhone;
   /// Details about the domain administrative contact. See Contact Blocks for more details.
-  final pulumi.Input<DomainAdminContact>? adminContact;
+  final pulumi.Input<DomainAdminContact?>? adminContact;
   /// Whether domain administrative contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? adminPrivacy;
+  final pulumi.Input<bool?>? adminPrivacy;
   /// Whether the domain registration is set to renew automatically. Default: `true`.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// Details about the domain billing contact. See Contact Blocks for more details.
-  final pulumi.Input<List<DomainBillingContact>>? billingContacts;
+  final pulumi.Input<List<DomainBillingContact>?>? billingContacts;
   /// Whether domain billing contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? billingPrivacy;
+  final pulumi.Input<bool?>? billingPrivacy;
   /// The date when the domain was created as found in the response to a WHOIS query.
-  final pulumi.Input<String>? creationDate;
+  final pulumi.Input<String?>? creationDate;
   /// The name of the domain.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The number of years that you want to register the domain for. Domains are registered for a minimum of one year. Increasing the duration renews the domain.
-  final pulumi.Input<int>? durationInYears;
+  final pulumi.Input<int?>? durationInYears;
   /// The date when the registration for the domain is set to expire.
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// The ID of the public Route 53 hosted zone created for the domain. This hosted zone is deleted when the domain is deregistered.
-  final pulumi.Input<String>? hostedZoneId;
+  final pulumi.Input<String?>? hostedZoneId;
   /// The list of nameservers for the domain. See `nameServer` Blocks for more details.
-  final pulumi.Input<List<DomainNameServer>>? nameServers;
+  final pulumi.Input<List<DomainNameServer>?>? nameServers;
   /// Details about the domain registrant. See Contact Blocks for more details.
-  final pulumi.Input<DomainRegistrantContact>? registrantContact;
+  final pulumi.Input<DomainRegistrantContact?>? registrantContact;
   /// Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? registrantPrivacy;
+  final pulumi.Input<bool?>? registrantPrivacy;
   /// Name of the registrar of the domain as identified in the registry.
-  final pulumi.Input<String>? registrarName;
+  final pulumi.Input<String?>? registrarName;
   /// Web address of the registrar.
-  final pulumi.Input<String>? registrarUrl;
+  final pulumi.Input<String?>? registrarUrl;
   /// List of [domain name status codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
-  final pulumi.Input<List<String>>? statusLists;
+  final pulumi.Input<List<String>?>? statusLists;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Details about the domain technical contact. See Contact Blocks for more details.
-  final pulumi.Input<DomainTechContact>? techContact;
+  final pulumi.Input<DomainTechContact?>? techContact;
   /// Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? techPrivacy;
-  final pulumi.Input<DomainTimeouts>? timeouts;
+  final pulumi.Input<bool?>? techPrivacy;
+  final pulumi.Input<DomainTimeouts?>? timeouts;
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
   /// &gt; **NOTE:** You must specify the same privacy setting for `adminPrivacy`, `registrantPrivacy` and `techPrivacy`.
-  final pulumi.Input<bool>? transferLock;
+  final pulumi.Input<bool?>? transferLock;
   /// The last updated date of the domain as found in the response to a WHOIS query.
-  final pulumi.Input<String>? updatedDate;
+  final pulumi.Input<String?>? updatedDate;
   /// The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.
-  final pulumi.Input<String>? whoisServer;
+  final pulumi.Input<String?>? whoisServer;
 
   /// Creates a new [DomainState].
   /// [abuseContactEmail] Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.
@@ -162,7 +162,7 @@ class DomainState {
       billingPrivacy: (() { final guardedValue = map['billingPrivacy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       creationDate: (() { final guardedValue = map['creationDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      durationInYears: (() { final guardedValue = map['durationInYears']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      durationInYears: (() { final guardedValue = map['durationInYears']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostedZoneId: (() { final guardedValue = map['hostedZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nameServers: (() { final guardedValue = map['nameServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainNameServer>(guardedValue, (value) => DomainNameServer.fromMap((value as Map).cast<String, dynamic>()))); })(),

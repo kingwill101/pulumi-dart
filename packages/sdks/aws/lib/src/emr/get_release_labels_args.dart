@@ -9,9 +9,9 @@ import 'get_release_labels_filters.dart';
 /// {@macro pulumi_emr_get_release_labels_get_release_labels_args_doc}
 class GetReleaseLabelsArgs {
   /// Filters the results of the request. Prefix specifies the prefix of release labels to return. Application specifies the application (with/without version) of release labels to return. See Filters.
-  final pulumi.Input<GetReleaseLabelsFilters>? filters;
+  final pulumi.Input<GetReleaseLabelsFilters?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetReleaseLabelsArgs].
   /// [filters] Filters the results of the request. Prefix specifies the prefix of release labels to return. Application specifies the application (with/without version) of release labels to return. See Filters.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeviceDevice {
   /// A description for the device.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the device.
   final pulumi.Input<String> deviceName;
   /// Amazon Web Services Internet of Things (IoT) object name.
-  final pulumi.Input<String>? iotThingName;
+  final pulumi.Input<String?>? iotThingName;
 
   /// Creates a new [DeviceDevice].
   /// [description] A description for the device.

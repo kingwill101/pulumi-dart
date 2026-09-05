@@ -126,9 +126,9 @@ import 'resource_association_state.dart';
 class ResourceAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
+  /// ARN of the resource to associate with the RAM Resource Share.
   late final pulumi.Output<String> resourceArn;
-  /// Amazon Resource Name (ARN) of the RAM Resource Share.
+  /// ARN of the RAM Resource Share.
   late final pulumi.Output<String> resourceShareArn;
 
   /// Creates a new [ResourceAssociation].
@@ -143,7 +143,7 @@ class ResourceAssociation extends pulumi.CustomResource {
           'aws:ram/resourceAssociation:ResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
@@ -155,11 +155,12 @@ class ResourceAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -173,6 +174,20 @@ class ResourceAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    resourceShareArn = registerOutput<String>('resourceShareArn');
+  }
+
+  /// Creates a typed reference to an existing [ResourceAssociation] resource.
+  ResourceAssociation.reference(String urn)
+    : super(
+        'aws:ram/resourceAssociation:ResourceAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     resourceShareArn = registerOutput<String>('resourceShareArn');

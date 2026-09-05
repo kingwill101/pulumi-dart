@@ -15,8 +15,6 @@ import 'virtual_gateway_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appmesh.VirtualGateway("example", {
-///     name: "example-virtual-gateway",
-///     meshName: "example-service-mesh",
 ///     spec: {
 ///         listeners: [{
 ///             portMapping: {
@@ -25,6 +23,8 @@ import 'virtual_gateway_state.dart';
 ///             },
 ///         }],
 ///     },
+///     name: "example-virtual-gateway",
+///     meshName: "example-service-mesh",
 ///     tags: {
 ///         Environment: "test",
 ///     },
@@ -35,8 +35,6 @@ import 'virtual_gateway_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appmesh.VirtualGateway("example",
-///     name="example-virtual-gateway",
-///     mesh_name="example-service-mesh",
 ///     spec={
 ///         "listeners": [{
 ///             "port_mapping": {
@@ -45,6 +43,8 @@ import 'virtual_gateway_state.dart';
 ///             },
 ///         }],
 ///     },
+///     name="example-virtual-gateway",
+///     mesh_name="example-service-mesh",
 ///     tags={
 ///         "Environment": "test",
 ///     })
@@ -59,8 +59,6 @@ import 'virtual_gateway_state.dart';
 /// {
 ///     var example = new Aws.AppMesh.VirtualGateway("example", new()
 ///     {
-///         Name = "example-virtual-gateway",
-///         MeshName = "example-service-mesh",
 ///         Spec = new Aws.AppMesh.Inputs.VirtualGatewaySpecArgs
 ///         {
 ///             Listeners = new[]
@@ -75,6 +73,8 @@ import 'virtual_gateway_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-virtual-gateway",
+///         MeshName = "example-service-mesh",
 ///         Tags =
 ///         {
 ///             { "Environment", "test" },
@@ -94,8 +94,6 @@ import 'virtual_gateway_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewVirtualGateway(ctx, "example", &appmesh.VirtualGatewayArgs{
-/// 			Name:     pulumi.String("example-virtual-gateway"),
-/// 			MeshName: pulumi.String("example-service-mesh"),
 /// 			Spec: &appmesh.VirtualGatewaySpecArgs{
 /// 				Listeners: appmesh.VirtualGatewaySpecListenerArray{
 /// 					&appmesh.VirtualGatewaySpecListenerArgs{
@@ -106,6 +104,8 @@ import 'virtual_gateway_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("example-virtual-gateway"),
+/// 			MeshName: pulumi.String("example-service-mesh"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("test"),
 /// 			},
@@ -127,8 +127,6 @@ import 'virtual_gateway_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_virtualgateway" "example" {
-///   name      = "example-virtual-gateway"
-///   mesh_name = "example-service-mesh"
 ///   spec = {
 ///     listeners = [{
 ///       "portMapping" = {
@@ -137,6 +135,8 @@ import 'virtual_gateway_state.dart';
 ///       }
 ///     }]
 ///   }
+///   name      = "example-virtual-gateway"
+///   mesh_name = "example-service-mesh"
 ///   tags = {
 ///     "Environment" = "test"
 ///   }
@@ -167,8 +167,6 @@ import 'virtual_gateway_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VirtualGateway("example", VirtualGatewayArgs.builder()
-///             .name("example-virtual-gateway")
-///             .meshName("example-service-mesh")
 ///             .spec(VirtualGatewaySpecArgs.builder()
 ///                 .listeners(VirtualGatewaySpecListenerArgs.builder()
 ///                     .portMapping(VirtualGatewaySpecListenerPortMappingArgs.builder()
@@ -177,6 +175,8 @@ import 'virtual_gateway_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("example-virtual-gateway")
+///             .meshName("example-service-mesh")
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
 ///
@@ -188,13 +188,13 @@ import 'virtual_gateway_state.dart';
 ///   example:
 ///     type: aws:appmesh:VirtualGateway
 ///     properties:
-///       name: example-virtual-gateway
-///       meshName: example-service-mesh
 ///       spec:
 ///         listeners:
 ///           - portMapping:
 ///               port: 8080
 ///               protocol: http
+///       name: example-virtual-gateway
+///       meshName: example-service-mesh
 ///       tags:
 ///         Environment: test
 /// ```
@@ -208,9 +208,14 @@ import 'virtual_gateway_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appmesh.VirtualGateway("example", {
-///     name: "example-virtual-gateway",
-///     meshName: "example-service-mesh",
 ///     spec: {
+///         logging: {
+///             accessLog: {
+///                 file: {
+///                     path: "/var/log/access.log",
+///                 },
+///             },
+///         },
 ///         listeners: [{
 ///             portMapping: {
 ///                 port: 8080,
@@ -225,14 +230,9 @@ import 'virtual_gateway_state.dart';
 ///                 mode: "STRICT",
 ///             },
 ///         }],
-///         logging: {
-///             accessLog: {
-///                 file: {
-///                     path: "/var/log/access.log",
-///                 },
-///             },
-///         },
 ///     },
+///     name: "example-virtual-gateway",
+///     meshName: "example-service-mesh",
 /// });
 /// ```
 /// ```python
@@ -240,9 +240,14 @@ import 'virtual_gateway_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appmesh.VirtualGateway("example",
-///     name="example-virtual-gateway",
-///     mesh_name="example-service-mesh",
 ///     spec={
+///         "logging": {
+///             "access_log": {
+///                 "file": {
+///                     "path": "/var/log/access.log",
+///                 },
+///             },
+///         },
 ///         "listeners": [{
 ///             "port_mapping": {
 ///                 "port": 8080,
@@ -257,14 +262,9 @@ import 'virtual_gateway_state.dart';
 ///                 "mode": "STRICT",
 ///             },
 ///         }],
-///         "logging": {
-///             "access_log": {
-///                 "file": {
-///                     "path": "/var/log/access.log",
-///                 },
-///             },
-///         },
-///     })
+///     },
+///     name="example-virtual-gateway",
+///     mesh_name="example-service-mesh")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -276,10 +276,18 @@ import 'virtual_gateway_state.dart';
 /// {
 ///     var example = new Aws.AppMesh.VirtualGateway("example", new()
 ///     {
-///         Name = "example-virtual-gateway",
-///         MeshName = "example-service-mesh",
 ///         Spec = new Aws.AppMesh.Inputs.VirtualGatewaySpecArgs
 ///         {
+///             Logging = new Aws.AppMesh.Inputs.VirtualGatewaySpecLoggingArgs
+///             {
+///                 AccessLog = new Aws.AppMesh.Inputs.VirtualGatewaySpecLoggingAccessLogArgs
+///                 {
+///                     File = new Aws.AppMesh.Inputs.VirtualGatewaySpecLoggingAccessLogFileArgs
+///                     {
+///                         Path = "/var/log/access.log",
+///                     },
+///                 },
+///             },
 ///             Listeners = new[]
 ///             {
 ///                 new Aws.AppMesh.Inputs.VirtualGatewaySpecListenerArgs
@@ -302,17 +310,9 @@ import 'virtual_gateway_state.dart';
 ///                     },
 ///                 },
 ///             },
-///             Logging = new Aws.AppMesh.Inputs.VirtualGatewaySpecLoggingArgs
-///             {
-///                 AccessLog = new Aws.AppMesh.Inputs.VirtualGatewaySpecLoggingAccessLogArgs
-///                 {
-///                     File = new Aws.AppMesh.Inputs.VirtualGatewaySpecLoggingAccessLogFileArgs
-///                     {
-///                         Path = "/var/log/access.log",
-///                     },
-///                 },
-///             },
 ///         },
+///         Name = "example-virtual-gateway",
+///         MeshName = "example-service-mesh",
 ///     });
 ///
 /// });
@@ -328,9 +328,14 @@ import 'virtual_gateway_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appmesh.NewVirtualGateway(ctx, "example", &appmesh.VirtualGatewayArgs{
-/// 			Name:     pulumi.String("example-virtual-gateway"),
-/// 			MeshName: pulumi.String("example-service-mesh"),
 /// 			Spec: &appmesh.VirtualGatewaySpecArgs{
+/// 				Logging: &appmesh.VirtualGatewaySpecLoggingArgs{
+/// 					AccessLog: &appmesh.VirtualGatewaySpecLoggingAccessLogArgs{
+/// 						File: &appmesh.VirtualGatewaySpecLoggingAccessLogFileArgs{
+/// 							Path: pulumi.String("/var/log/access.log"),
+/// 						},
+/// 					},
+/// 				},
 /// 				Listeners: appmesh.VirtualGatewaySpecListenerArray{
 /// 					&appmesh.VirtualGatewaySpecListenerArgs{
 /// 						PortMapping: &appmesh.VirtualGatewaySpecListenerPortMappingArgs{
@@ -347,14 +352,9 @@ import 'virtual_gateway_state.dart';
 /// 						},
 /// 					},
 /// 				},
-/// 				Logging: &appmesh.VirtualGatewaySpecLoggingArgs{
-/// 					AccessLog: &appmesh.VirtualGatewaySpecLoggingAccessLogArgs{
-/// 						File: &appmesh.VirtualGatewaySpecLoggingAccessLogFileArgs{
-/// 							Path: pulumi.String("/var/log/access.log"),
-/// 						},
-/// 					},
-/// 				},
 /// 			},
+/// 			Name:     pulumi.String("example-virtual-gateway"),
+/// 			MeshName: pulumi.String("example-service-mesh"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -373,9 +373,14 @@ import 'virtual_gateway_state.dart';
 /// }
 ///
 /// resource "aws_appmesh_virtualgateway" "example" {
-///   name      = "example-virtual-gateway"
-///   mesh_name = "example-service-mesh"
 ///   spec = {
+///     logging = {
+///       access_log = {
+///         file = {
+///           path = "/var/log/access.log"
+///         }
+///       }
+///     }
 ///     listeners = [{
 ///       "portMapping" = {
 ///         "port"     = 8080
@@ -390,14 +395,9 @@ import 'virtual_gateway_state.dart';
 ///         "mode" = "STRICT"
 ///       }
 ///     }]
-///     logging = {
-///       access_log = {
-///         file = {
-///           path = "/var/log/access.log"
-///         }
-///       }
-///     }
 ///   }
+///   name      = "example-virtual-gateway"
+///   mesh_name = "example-service-mesh"
 /// }
 /// ```
 /// ```java
@@ -409,14 +409,14 @@ import 'virtual_gateway_state.dart';
 /// import com.pulumi.aws.appmesh.VirtualGateway;
 /// import com.pulumi.aws.appmesh.VirtualGatewayArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecLoggingArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecLoggingAccessLogArgs;
+/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecLoggingAccessLogFileArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerPortMappingArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerTlsArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerTlsCertificateArgs;
 /// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecListenerTlsCertificateAcmArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecLoggingArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecLoggingAccessLogArgs;
-/// import com.pulumi.aws.appmesh.inputs.VirtualGatewaySpecLoggingAccessLogFileArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -431,9 +431,14 @@ import 'virtual_gateway_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VirtualGateway("example", VirtualGatewayArgs.builder()
-///             .name("example-virtual-gateway")
-///             .meshName("example-service-mesh")
 ///             .spec(VirtualGatewaySpecArgs.builder()
+///                 .logging(VirtualGatewaySpecLoggingArgs.builder()
+///                     .accessLog(VirtualGatewaySpecLoggingAccessLogArgs.builder()
+///                         .file(VirtualGatewaySpecLoggingAccessLogFileArgs.builder()
+///                             .path("/var/log/access.log")
+///                             .build())
+///                         .build())
+///                     .build())
 ///                 .listeners(VirtualGatewaySpecListenerArgs.builder()
 ///                     .portMapping(VirtualGatewaySpecListenerPortMappingArgs.builder()
 ///                         .port(8080)
@@ -448,14 +453,9 @@ import 'virtual_gateway_state.dart';
 ///                         .mode("STRICT")
 ///                         .build())
 ///                     .build())
-///                 .logging(VirtualGatewaySpecLoggingArgs.builder()
-///                     .accessLog(VirtualGatewaySpecLoggingAccessLogArgs.builder()
-///                         .file(VirtualGatewaySpecLoggingAccessLogFileArgs.builder()
-///                             .path("/var/log/access.log")
-///                             .build())
-///                         .build())
-///                     .build())
 ///                 .build())
+///             .name("example-virtual-gateway")
+///             .meshName("example-service-mesh")
 ///             .build());
 ///
 ///     }
@@ -466,9 +466,11 @@ import 'virtual_gateway_state.dart';
 ///   example:
 ///     type: aws:appmesh:VirtualGateway
 ///     properties:
-///       name: example-virtual-gateway
-///       meshName: example-service-mesh
 ///       spec:
+///         logging:
+///           accessLog:
+///             file:
+///               path: /var/log/access.log
 ///         listeners:
 ///           - portMapping:
 ///               port: 8080
@@ -478,10 +480,8 @@ import 'virtual_gateway_state.dart';
 ///                 acm:
 ///                   certificateArn: ${exampleAwsAcmCertificate.arn}
 ///               mode: STRICT
-///         logging:
-///           accessLog:
-///             file:
-///               path: /var/log/access.log
+///       name: example-virtual-gateway
+///       meshName: example-service-mesh
 /// ```
 ///
 ///
@@ -528,7 +528,7 @@ class VirtualGateway extends pulumi.CustomResource {
           'aws:appmesh/virtualGateway:VirtualGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
@@ -539,8 +539,8 @@ class VirtualGateway extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<VirtualGatewaySpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualGatewaySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VirtualGateway] resource's state with the given [name] and [id].
@@ -548,11 +548,12 @@ class VirtualGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -575,7 +576,29 @@ class VirtualGateway extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceOwner = registerOutput<String>('resourceOwner');
     spec = registerOutput<VirtualGatewaySpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualGatewaySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualGateway] resource.
+  VirtualGateway.reference(String urn)
+    : super(
+        'aws:appmesh/virtualGateway:VirtualGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdDate = registerOutput<String>('createdDate');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    meshName = registerOutput<String>('meshName');
+    meshOwner = registerOutput<String>('meshOwner');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceOwner = registerOutput<String>('resourceOwner');
+    spec = registerOutput<VirtualGatewaySpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualGatewaySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

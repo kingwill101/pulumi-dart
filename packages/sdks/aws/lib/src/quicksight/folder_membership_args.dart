@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_quicksight_folder_membership_folder_membership_args_doc}
 class FolderMembershipArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Identifier for the folder.
   final pulumi.Input<String> folderId;
   /// ID of the asset (the dashboard, analysis, or dataset).
@@ -18,7 +18,7 @@ class FolderMembershipArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> memberType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [FolderMembershipArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.

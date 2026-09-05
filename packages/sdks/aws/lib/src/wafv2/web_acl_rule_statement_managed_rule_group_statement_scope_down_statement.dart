@@ -17,33 +17,33 @@ import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement {
   /// Logical AND statement that combines multiple statements. See And Statement above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement>? andStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAndStatement?>? andStatement;
   /// Match requests based on Autonomous System Number (ASN). See ASN Match Statement above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStatement>? asnMatchStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementAsnMatchStatement?>? asnMatchStatement;
   /// Match requests based on byte patterns. See Byte Match Statement above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement>? byteMatchStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatement?>? byteMatchStatement;
   /// Match requests by geographic location. See Geo Match Statement above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement>? geoMatchStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement?>? geoMatchStatement;
   /// Reference to an IP set. See IP Set Reference Statement above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatement>? ipSetReferenceStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatement?>? ipSetReferenceStatement;
   /// Match requests based on labels. See Label Match Statement above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement>? labelMatchStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement?>? labelMatchStatement;
   /// Logical NOT statement that negates a single statement. See Not Statement above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement>? notStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement?>? notStatement;
   /// Logical OR statement that combines multiple statements. See Or Statement above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatement>? orStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatement?>? orStatement;
   /// Match requests using regex patterns. See Regex Match Statement above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatement>? regexMatchStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatement?>? regexMatchStatement;
   /// Rule statement used to search web request components for matches with regular expressions from a RegexPatternSet.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatement>? regexPatternSetReferenceStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatement?>? regexPatternSetReferenceStatement;
   /// Match requests based on size constraints. See Size Constraint Statement above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement>? sizeConstraintStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement?>? sizeConstraintStatement;
   /// Match requests that appear to contain SQL injection attacks.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatement>? sqliMatchStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatement?>? sqliMatchStatement;
   /// Match requests that appear to contain cross-site scripting attacks.
   ///
   /// &gt; **NOTE:** Logical statements (`andStatement`, `notStatement`, `orStatement`) within a scope down statement wrap the leaf statement types listed above.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement>? xssMatchStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement?>? xssMatchStatement;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement].
   /// [andStatement] Logical AND statement that combines multiple statements. See And Statement above.

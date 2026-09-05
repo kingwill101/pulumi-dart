@@ -161,7 +161,7 @@ import 'log_stream_state.dart';
 /// $ pulumi import aws:cloudwatch/logStream:LogStream example example-group:example-stream
 /// ```
 class LogStream extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) specifying the log stream.
+  /// ARN specifying the log stream.
   late final pulumi.Output<String> arn;
   /// The name of the log group under which the log stream is to be created.
   late final pulumi.Output<String> logGroupName;
@@ -182,7 +182,7 @@ class LogStream extends pulumi.CustomResource {
           'aws:cloudwatch/logStream:LogStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     logGroupName = registerOutput<String>('logGroupName');
@@ -195,11 +195,12 @@ class LogStream extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogStreamState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogStream._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -213,6 +214,21 @@ class LogStream extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    logGroupName = registerOutput<String>('logGroupName');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LogStream] resource.
+  LogStream.reference(String urn)
+    : super(
+        'aws:cloudwatch/logStream:LogStream',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     logGroupName = registerOutput<String>('logGroupName');
     this.name = registerOutput<String>('name');

@@ -20,7 +20,7 @@ class GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration {
 
   factory GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration(
-      maxTimeToLiveInMinutes: pulumi.Input.fromValue(map['maxTimeToLiveInMinutes'] as int),
+      maxTimeToLiveInMinutes: pulumi.Input.fromValue((map['maxTimeToLiveInMinutes'] as num).toInt()),
     );
   }
 }

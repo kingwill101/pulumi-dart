@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute {
-  /// List of Amazon Resource Names (ARNs) of the load balancer listeners. Must contain exactly one listener ARN.
+  /// List of ARNs of the load balancer listeners. Must contain exactly one listener ARN.
   final pulumi.Input<List<String>> listenerArns;
 
   /// Creates a new [DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute].
-  /// [listenerArns] List of Amazon Resource Names (ARNs) of the load balancer listeners. Must contain exactly one listener ARN.
+  /// [listenerArns] List of ARNs of the load balancer listeners. Must contain exactly one listener ARN.
   const DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute({
     required this.listenerArns,
   });

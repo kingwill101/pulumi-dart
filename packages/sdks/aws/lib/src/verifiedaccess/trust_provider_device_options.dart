@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustProviderDeviceOptions {
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [TrustProviderDeviceOptions].
   /// [tenantId] Optional.

@@ -131,7 +131,7 @@ import 'mlflow_tracking_server_state.dart';
 /// $ pulumi import aws:sagemaker/mlflowTrackingServer:MlflowTrackingServer example example
 /// ```
 class MlflowTrackingServer extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this MLFlow Tracking Server.
+  /// ARN assigned by AWS to this MLFlow Tracking Server.
   late final pulumi.Output<String> arn;
   /// The S3 URI for a general purpose bucket to use as the MLflow Tracking Server artifact store.
   late final pulumi.Output<String> artifactStoreUri;
@@ -141,7 +141,7 @@ class MlflowTrackingServer extends pulumi.CustomResource {
   late final pulumi.Output<String> mlflowVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) for an IAM role in your account that the MLflow Tracking Server uses to access the artifact store in Amazon S3. The role should have AmazonS3FullAccess permissions. For more information on IAM permissions for tracking server creation, see [Set up IAM permissions for MLflow](https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-create-tracking-server-iam.html).
+  /// ARN for an IAM role in your account that the MLflow Tracking Server uses to access the artifact store in Amazon S3. The role should have AmazonS3FullAccess permissions. For more information on IAM permissions for tracking server creation, see [Set up IAM permissions for MLflow](https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-create-tracking-server-iam.html).
   late final pulumi.Output<String> roleArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -168,7 +168,7 @@ class MlflowTrackingServer extends pulumi.CustomResource {
           'aws:sagemaker/mlflowTrackingServer:MlflowTrackingServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     artifactStoreUri = registerOutput<String>('artifactStoreUri');
@@ -176,8 +176,8 @@ class MlflowTrackingServer extends pulumi.CustomResource {
     mlflowVersion = registerOutput<String>('mlflowVersion');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trackingServerName = registerOutput<String>('trackingServerName');
     trackingServerSize = registerOutput<String?>('trackingServerSize');
     trackingServerUrl = registerOutput<String>('trackingServerUrl');
@@ -189,11 +189,12 @@ class MlflowTrackingServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MlflowTrackingServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MlflowTrackingServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -213,8 +214,31 @@ class MlflowTrackingServer extends pulumi.CustomResource {
     mlflowVersion = registerOutput<String>('mlflowVersion');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trackingServerName = registerOutput<String>('trackingServerName');
+    trackingServerSize = registerOutput<String?>('trackingServerSize');
+    trackingServerUrl = registerOutput<String>('trackingServerUrl');
+    weeklyMaintenanceWindowStart = registerOutput<String>('weeklyMaintenanceWindowStart');
+  }
+
+  /// Creates a typed reference to an existing [MlflowTrackingServer] resource.
+  MlflowTrackingServer.reference(String urn)
+    : super(
+        'aws:sagemaker/mlflowTrackingServer:MlflowTrackingServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    artifactStoreUri = registerOutput<String>('artifactStoreUri');
+    automaticModelRegistration = registerOutput<bool?>('automaticModelRegistration');
+    mlflowVersion = registerOutput<String>('mlflowVersion');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trackingServerName = registerOutput<String>('trackingServerName');
     trackingServerSize = registerOutput<String?>('trackingServerSize');
     trackingServerUrl = registerOutput<String>('trackingServerUrl');

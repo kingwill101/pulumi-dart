@@ -6,15 +6,15 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inl
 
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaProperty {
   /// Description of the property.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Items definition for array properties. See `items` above.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItems>? items;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItems?>? items;
   /// Name of the property.
   final pulumi.Input<String> name;
   /// Set of nested property definitions for object properties.
-  final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyProperty>>? properties;
+  final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyProperty>?>? properties;
   /// Whether this property is required. Defaults to `false`.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   /// Data type of the property.
   final pulumi.Input<String> type;
 

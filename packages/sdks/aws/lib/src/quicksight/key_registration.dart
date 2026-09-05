@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_registration_args.dart';
+import 'key_registration_key_registration.dart';
 import 'key_registration_state.dart';
 
 /// Registers customer managed keys in a Amazon QuickSight account.
@@ -169,7 +170,7 @@ class KeyRegistration extends pulumi.CustomResource {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
   /// Registered keys. See key_registration.
-  late final pulumi.Output<List<Map<String, dynamic>>> keyRegistrations;
+  late final pulumi.Output<List<KeyRegistrationKeyRegistration>> keyRegistrations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -185,10 +186,10 @@ class KeyRegistration extends pulumi.CustomResource {
           'aws:quicksight/keyRegistration:KeyRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
-    keyRegistrations = registerOutput<List<Map<String, dynamic>>>('keyRegistrations');
+    keyRegistrations = registerOutput<List<KeyRegistrationKeyRegistration>>('keyRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRegistrationKeyRegistration>(guardedValue, (value) => KeyRegistrationKeyRegistration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 
@@ -197,11 +198,12 @@ class KeyRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -216,7 +218,21 @@ class KeyRegistration extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
-    keyRegistrations = registerOutput<List<Map<String, dynamic>>>('keyRegistrations');
+    keyRegistrations = registerOutput<List<KeyRegistrationKeyRegistration>>('keyRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRegistrationKeyRegistration>(guardedValue, (value) => KeyRegistrationKeyRegistration.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [KeyRegistration] resource.
+  KeyRegistration.reference(String urn)
+    : super(
+        'aws:quicksight/keyRegistration:KeyRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    awsAccountId = registerOutput<String>('awsAccountId');
+    keyRegistrations = registerOutput<List<KeyRegistrationKeyRegistration>>('keyRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRegistrationKeyRegistration>(guardedValue, (value) => KeyRegistrationKeyRegistration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 }

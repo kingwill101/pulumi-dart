@@ -15,7 +15,7 @@ class LoadBalancerListener {
   final pulumi.Input<String> lbProtocol;
   /// The ARN of an SSL certificate you have
   /// uploaded to AWS IAM. **Note ECDSA-specific restrictions below.  Only valid when `lbProtocol` is either HTTPS or SSL**
-  final pulumi.Input<String>? sslCertificateId;
+  final pulumi.Input<String?>? sslCertificateId;
 
   /// Creates a new [LoadBalancerListener].
   /// [instancePort] The port on the instance to route to
@@ -43,9 +43,9 @@ class LoadBalancerListener {
 
   factory LoadBalancerListener.fromMap(Map<String, dynamic> map) {
     return LoadBalancerListener(
-      instancePort: pulumi.Input.fromValue(map['instancePort'] as int),
+      instancePort: pulumi.Input.fromValue((map['instancePort'] as num).toInt()),
       instanceProtocol: pulumi.Input.fromValue(map['instanceProtocol'] as String),
-      lbPort: pulumi.Input.fromValue(map['lbPort'] as int),
+      lbPort: pulumi.Input.fromValue((map['lbPort'] as num).toInt()),
       lbProtocol: pulumi.Input.fromValue(map['lbProtocol'] as String),
       sslCertificateId: (() { final guardedValue = map['sslCertificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

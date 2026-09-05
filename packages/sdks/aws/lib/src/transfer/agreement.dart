@@ -188,7 +188,7 @@ class Agreement extends pulumi.CustomResource {
           'aws:transfer/agreement:Agreement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessRole = registerOutput<String>('accessRole');
     agreementId = registerOutput<String>('agreementId');
@@ -200,8 +200,8 @@ class Agreement extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serverId = registerOutput<String>('serverId');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Agreement] resource's state with the given [name] and [id].
@@ -209,11 +209,12 @@ class Agreement extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgreementState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Agreement._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,7 +238,30 @@ class Agreement extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serverId = registerOutput<String>('serverId');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Agreement] resource.
+  Agreement.reference(String urn)
+    : super(
+        'aws:transfer/agreement:Agreement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessRole = registerOutput<String>('accessRole');
+    agreementId = registerOutput<String>('agreementId');
+    arn = registerOutput<String>('arn');
+    baseDirectory = registerOutput<String>('baseDirectory');
+    description = registerOutput<String?>('description');
+    localProfileId = registerOutput<String>('localProfileId');
+    partnerProfileId = registerOutput<String>('partnerProfileId');
+    region = registerOutput<String>('region');
+    serverId = registerOutput<String>('serverId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

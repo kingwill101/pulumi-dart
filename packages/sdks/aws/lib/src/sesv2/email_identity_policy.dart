@@ -310,7 +310,7 @@ import 'email_identity_policy_state.dart';
 /// $ pulumi import aws:sesv2/emailIdentityPolicy:EmailIdentityPolicy example example_email_identity|example_policy_name
 /// ```
 class EmailIdentityPolicy extends pulumi.CustomResource {
-  /// The email identity.
+  /// Email identity.
   late final pulumi.Output<String> emailIdentity;
   /// The text of the policy in JSON format.
   late final pulumi.Output<String> policy;
@@ -331,7 +331,7 @@ class EmailIdentityPolicy extends pulumi.CustomResource {
           'aws:sesv2/emailIdentityPolicy:EmailIdentityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     emailIdentity = registerOutput<String>('emailIdentity');
     policy = registerOutput<String>('policy');
@@ -344,11 +344,12 @@ class EmailIdentityPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EmailIdentityPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EmailIdentityPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -362,6 +363,21 @@ class EmailIdentityPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    emailIdentity = registerOutput<String>('emailIdentity');
+    policy = registerOutput<String>('policy');
+    policyName = registerOutput<String>('policyName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [EmailIdentityPolicy] resource.
+  EmailIdentityPolicy.reference(String urn)
+    : super(
+        'aws:sesv2/emailIdentityPolicy:EmailIdentityPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     emailIdentity = registerOutput<String>('emailIdentity');
     policy = registerOutput<String>('policy');
     policyName = registerOutput<String>('policyName');

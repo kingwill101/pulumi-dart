@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering KxUser resources.
 class KxUserState {
-  /// Amazon Resource Name (ARN) identifier of the KX user.
-  final pulumi.Input<String>? arn;
+  /// ARN identifier of the KX user.
+  final pulumi.Input<String?>? arn;
   /// Unique identifier for the KX environment.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// IAM role ARN to be associated with the user.
-  final pulumi.Input<String>? iamRole;
+  final pulumi.Input<String?>? iamRole;
   /// Unique identifier for the user.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [KxUserState].
-  /// [arn] Amazon Resource Name (ARN) identifier of the KX user.
+  /// [arn] ARN identifier of the KX user.
   /// [environmentId] Unique identifier for the KX environment.
   /// [iamRole] IAM role ARN to be associated with the user.
   /// [name] Unique identifier for the user.

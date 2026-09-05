@@ -5,29 +5,29 @@ import 'custom_plugin_location.dart';
 
 /// Input properties used for looking up and filtering CustomPlugin resources.
 class CustomPluginState {
-  /// the Amazon Resource Name (ARN) of the custom plugin.
-  final pulumi.Input<String>? arn;
+  /// the ARN of the custom plugin.
+  final pulumi.Input<String?>? arn;
   /// The type of the plugin file. Allowed values are `ZIP` and `JAR`.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// A summary description of the custom plugin.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// an ID of the latest successfully created revision of the custom plugin.
-  final pulumi.Input<int>? latestRevision;
+  final pulumi.Input<int?>? latestRevision;
   /// Information about the location of a custom plugin. See `location` Block for details.
-  final pulumi.Input<CustomPluginLocation>? location;
+  final pulumi.Input<CustomPluginLocation?>? location;
   /// The name of the custom plugin..
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// the state of the custom plugin.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CustomPluginState].
-  /// [arn] the Amazon Resource Name (ARN) of the custom plugin.
+  /// [arn] the ARN of the custom plugin.
   /// [contentType] The type of the plugin file. Allowed values are `ZIP` and `JAR`.
   /// [description] A summary description of the custom plugin.
   /// [latestRevision] an ID of the latest successfully created revision of the custom plugin.
@@ -70,7 +70,7 @@ class CustomPluginState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomPluginLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

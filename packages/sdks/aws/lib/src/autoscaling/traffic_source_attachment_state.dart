@@ -6,11 +6,11 @@ import 'traffic_source_attachment_traffic_source.dart';
 /// Input properties used for looking up and filtering TrafficSourceAttachment resources.
 class TrafficSourceAttachmentState {
   /// The name of the Auto Scaling group.
-  final pulumi.Input<String>? autoscalingGroupName;
+  final pulumi.Input<String?>? autoscalingGroupName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The unique identifiers of a traffic sources.
-  final pulumi.Input<TrafficSourceAttachmentTrafficSource>? trafficSource;
+  final pulumi.Input<TrafficSourceAttachmentTrafficSource?>? trafficSource;
 
   /// Creates a new [TrafficSourceAttachmentState].
   /// [autoscalingGroupName] The name of the Auto Scaling group.

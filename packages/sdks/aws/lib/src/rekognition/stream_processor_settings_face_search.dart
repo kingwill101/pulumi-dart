@@ -6,7 +6,7 @@ class StreamProcessorSettingsFaceSearch {
   /// ID of a collection that contains faces that you want to search for.
   final pulumi.Input<String> collectionId;
   /// Minimum face match confidence score that must be met to return a result for a recognized face.
-  final pulumi.Input<double>? faceMatchThreshold;
+  final pulumi.Input<double?>? faceMatchThreshold;
 
   /// Creates a new [StreamProcessorSettingsFaceSearch].
   /// [collectionId] ID of a collection that contains faces that you want to search for.
@@ -26,7 +26,7 @@ class StreamProcessorSettingsFaceSearch {
   factory StreamProcessorSettingsFaceSearch.fromMap(Map<String, dynamic> map) {
     return StreamProcessorSettingsFaceSearch(
       collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
-      faceMatchThreshold: (() { final guardedValue = map['faceMatchThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      faceMatchThreshold: (() { final guardedValue = map['faceMatchThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

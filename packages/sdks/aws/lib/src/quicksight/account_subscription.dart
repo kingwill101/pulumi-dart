@@ -166,7 +166,7 @@ class AccountSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String?> emailAddress;
   /// First name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   late final pulumi.Output<String?> firstName;
-  /// The Amazon Resource Name (ARN) for the IAM Identity Center instance.
+  /// ARN for the IAM Identity Center instance.
   late final pulumi.Output<String?> iamIdentityCenterInstanceArn;
   /// Last name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   late final pulumi.Output<String?> lastName;
@@ -195,16 +195,16 @@ class AccountSubscription extends pulumi.CustomResource {
           'aws:quicksight/accountSubscription:AccountSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     accountSubscriptionStatus = registerOutput<String>('accountSubscriptionStatus');
     activeDirectoryName = registerOutput<String?>('activeDirectoryName');
-    adminGroups = registerOutput<List<String>?>('adminGroups');
-    adminProGroups = registerOutput<List<String>?>('adminProGroups');
+    adminGroups = registerOutput<List<String>?>('adminGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    adminProGroups = registerOutput<List<String>?>('adminProGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationMethod = registerOutput<String>('authenticationMethod');
-    authorGroups = registerOutput<List<String>?>('authorGroups');
-    authorProGroups = registerOutput<List<String>?>('authorProGroups');
+    authorGroups = registerOutput<List<String>?>('authorGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authorProGroups = registerOutput<List<String>?>('authorProGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     awsAccountId = registerOutput<String>('awsAccountId');
     contactNumber = registerOutput<String?>('contactNumber');
     directoryId = registerOutput<String?>('directoryId');
@@ -214,8 +214,8 @@ class AccountSubscription extends pulumi.CustomResource {
     iamIdentityCenterInstanceArn = registerOutput<String?>('iamIdentityCenterInstanceArn');
     lastName = registerOutput<String?>('lastName');
     notificationEmail = registerOutput<String>('notificationEmail');
-    readerGroups = registerOutput<List<String>?>('readerGroups');
-    readerProGroups = registerOutput<List<String>?>('readerProGroups');
+    readerGroups = registerOutput<List<String>?>('readerGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    readerProGroups = registerOutput<List<String>?>('readerProGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     realm = registerOutput<String?>('realm');
     region = registerOutput<String>('region');
   }
@@ -225,11 +225,12 @@ class AccountSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -246,11 +247,11 @@ class AccountSubscription extends pulumi.CustomResource {
     accountName = registerOutput<String>('accountName');
     accountSubscriptionStatus = registerOutput<String>('accountSubscriptionStatus');
     activeDirectoryName = registerOutput<String?>('activeDirectoryName');
-    adminGroups = registerOutput<List<String>?>('adminGroups');
-    adminProGroups = registerOutput<List<String>?>('adminProGroups');
+    adminGroups = registerOutput<List<String>?>('adminGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    adminProGroups = registerOutput<List<String>?>('adminProGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationMethod = registerOutput<String>('authenticationMethod');
-    authorGroups = registerOutput<List<String>?>('authorGroups');
-    authorProGroups = registerOutput<List<String>?>('authorProGroups');
+    authorGroups = registerOutput<List<String>?>('authorGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authorProGroups = registerOutput<List<String>?>('authorProGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     awsAccountId = registerOutput<String>('awsAccountId');
     contactNumber = registerOutput<String?>('contactNumber');
     directoryId = registerOutput<String?>('directoryId');
@@ -260,8 +261,40 @@ class AccountSubscription extends pulumi.CustomResource {
     iamIdentityCenterInstanceArn = registerOutput<String?>('iamIdentityCenterInstanceArn');
     lastName = registerOutput<String?>('lastName');
     notificationEmail = registerOutput<String>('notificationEmail');
-    readerGroups = registerOutput<List<String>?>('readerGroups');
-    readerProGroups = registerOutput<List<String>?>('readerProGroups');
+    readerGroups = registerOutput<List<String>?>('readerGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    readerProGroups = registerOutput<List<String>?>('readerProGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    realm = registerOutput<String?>('realm');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AccountSubscription] resource.
+  AccountSubscription.reference(String urn)
+    : super(
+        'aws:quicksight/accountSubscription:AccountSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    accountSubscriptionStatus = registerOutput<String>('accountSubscriptionStatus');
+    activeDirectoryName = registerOutput<String?>('activeDirectoryName');
+    adminGroups = registerOutput<List<String>?>('adminGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    adminProGroups = registerOutput<List<String>?>('adminProGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authenticationMethod = registerOutput<String>('authenticationMethod');
+    authorGroups = registerOutput<List<String>?>('authorGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authorProGroups = registerOutput<List<String>?>('authorProGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    awsAccountId = registerOutput<String>('awsAccountId');
+    contactNumber = registerOutput<String?>('contactNumber');
+    directoryId = registerOutput<String?>('directoryId');
+    edition = registerOutput<String>('edition');
+    emailAddress = registerOutput<String?>('emailAddress');
+    firstName = registerOutput<String?>('firstName');
+    iamIdentityCenterInstanceArn = registerOutput<String?>('iamIdentityCenterInstanceArn');
+    lastName = registerOutput<String?>('lastName');
+    notificationEmail = registerOutput<String>('notificationEmail');
+    readerGroups = registerOutput<List<String>?>('readerGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    readerProGroups = registerOutput<List<String>?>('readerProGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     realm = registerOutput<String?>('realm');
     region = registerOutput<String>('region');
   }

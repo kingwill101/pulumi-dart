@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationInputsSchemaRecordColumn {
   /// The Mapping reference to the data element.
-  final pulumi.Input<String>? mapping;
+  final pulumi.Input<String?>? mapping;
   /// Name of the column.
   final pulumi.Input<String> name;
   /// The SQL Type of the column.

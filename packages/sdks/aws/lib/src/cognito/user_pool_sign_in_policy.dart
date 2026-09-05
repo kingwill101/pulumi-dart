@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolSignInPolicy {
   /// The sign in methods your user pool supports as the first factor. This is a list of strings, allowed values are `PASSWORD`, `EMAIL_OTP`, `SMS_OTP`, and `WEB_AUTHN`.
-  final pulumi.Input<List<String>>? allowedFirstAuthFactors;
+  final pulumi.Input<List<String>?>? allowedFirstAuthFactors;
 
   /// Creates a new [UserPoolSignInPolicy].
   /// [allowedFirstAuthFactors] The sign in methods your user pool supports as the first factor. This is a list of strings, allowed values are `PASSWORD`, `EMAIL_OTP`, `SMS_OTP`, and `WEB_AUTHN`.

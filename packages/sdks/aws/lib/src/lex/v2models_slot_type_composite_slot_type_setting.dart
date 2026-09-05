@@ -6,7 +6,7 @@ import 'v2models_slot_type_composite_slot_type_setting_sub_slot.dart';
 class V2modelsSlotTypeCompositeSlotTypeSetting {
   /// Sub slots in the composite slot.
   /// See `subSlots` argument reference below.
-  final pulumi.Input<List<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>>? subSlots;
+  final pulumi.Input<List<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>?>? subSlots;
 
   /// Creates a new [V2modelsSlotTypeCompositeSlotTypeSetting].
   /// [subSlots] Sub slots in the composite slot.

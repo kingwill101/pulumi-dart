@@ -6,21 +6,21 @@ import 'group_external_id.dart';
 /// Input properties used for looking up and filtering Group resources.
 class GroupState {
   /// ARN of the Group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// A string containing the description of the group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A string containing the name of the group. This value is commonly displayed when the group is referenced.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// A list of external IDs that contains the identifiers issued to this resource by an external identity provider. See External IDs below.
-  final pulumi.Input<List<GroupExternalId>>? externalIds;
+  final pulumi.Input<List<GroupExternalId>?>? externalIds;
   /// The identifier of the newly created group in the identity store.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The globally unique identifier for the identity store.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? identityStoreId;
+  final pulumi.Input<String?>? identityStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GroupState].
   /// [arn] ARN of the Group.

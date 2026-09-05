@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudwatch_contributor_managed_insight_rule_contributor_managed_insight_rule_args_doc}
 class ContributorManagedInsightRuleArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of an Amazon Web Services resource that has managed Contributor Insights rules.
   final pulumi.Input<String> resourceArn;
-  final pulumi.Input<String>? state;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? state;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Template name for the managed Contributor Insights rule, as returned by ListManagedInsightRules.
   ///
   /// The following arguments are optional:

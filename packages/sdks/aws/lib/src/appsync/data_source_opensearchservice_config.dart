@@ -6,7 +6,7 @@ class DataSourceOpensearchserviceConfig {
   /// HTTP endpoint of the OpenSearch domain.
   final pulumi.Input<String> endpoint;
   /// AWS region of the OpenSearch domain. Defaults to current region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DataSourceOpensearchserviceConfig].
   /// [endpoint] HTTP endpoint of the OpenSearch domain.

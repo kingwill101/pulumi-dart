@@ -11,24 +11,24 @@ import 'get_listener_rule_action_redirect.dart';
 class GetListenerRuleAction {
   /// An action to authenticate using Amazon Cognito.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleActionAuthenticateCognito>>? authenticateCognitos;
+  final pulumi.Input<List<GetListenerRuleActionAuthenticateCognito>?>? authenticateCognitos;
   /// An action to authenticate using OIDC.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleActionAuthenticateOidc>>? authenticateOidcs;
+  final pulumi.Input<List<GetListenerRuleActionAuthenticateOidc>?>? authenticateOidcs;
   /// An action to return a fixed response.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleActionFixedResponse>>? fixedResponses;
+  final pulumi.Input<List<GetListenerRuleActionFixedResponse>?>? fixedResponses;
   /// An action to forward the request.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleActionForward>>? forwards;
+  final pulumi.Input<List<GetListenerRuleActionForward>?>? forwards;
   /// An action to validate using JWT.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleActionJwtValidation>>? jwtValidations;
+  final pulumi.Input<List<GetListenerRuleActionJwtValidation>?>? jwtValidations;
   /// The evaluation order of the action.
   final pulumi.Input<int> order;
   /// An action to redirect the request.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleActionRedirect>>? redirects;
+  final pulumi.Input<List<GetListenerRuleActionRedirect>?>? redirects;
   /// Type of transform.
   final pulumi.Input<String> type;
 
@@ -72,7 +72,7 @@ class GetListenerRuleAction {
       fixedResponses: (() { final guardedValue = map['fixedResponses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleActionFixedResponse>(guardedValue, (value) => GetListenerRuleActionFixedResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       forwards: (() { final guardedValue = map['forwards']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleActionForward>(guardedValue, (value) => GetListenerRuleActionForward.fromMap((value as Map).cast<String, dynamic>()))); })(),
       jwtValidations: (() { final guardedValue = map['jwtValidations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleActionJwtValidation>(guardedValue, (value) => GetListenerRuleActionJwtValidation.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
       redirects: (() { final guardedValue = map['redirects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleActionRedirect>(guardedValue, (value) => GetListenerRuleActionRedirect.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2transitgateway_route_table_association_route_table_association_args_doc}
 class RouteTableAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Boolean whether the Gateway Attachment should remove any current Route Table association before associating with the specified Route Table. Default value: `false`. This argument is intended for use with EC2 Transit Gateways shared into the current account, otherwise the `transitGatewayDefaultRouteTableAssociation` argument of the `aws.ec2transitgateway.VpcAttachment` resource should be used.
-  final pulumi.Input<bool>? replaceExistingAssociation;
+  final pulumi.Input<bool?>? replaceExistingAssociation;
   /// Identifier of EC2 Transit Gateway Attachment.
   final pulumi.Input<String> transitGatewayAttachmentId;
   /// Identifier of EC2 Transit Gateway Route Table.

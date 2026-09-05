@@ -6,9 +6,9 @@ class V2PolicyMultiAz {
   /// Multi-AZ disaster recovery approach. Valid values: `ACTIVE_ACTIVE`, `HOT_STANDBY`, `WARM_STANDBY`, `PILOT_LIGHT`, `BACKUP_AND_RESTORE`.
   final pulumi.Input<String> disasterRecoveryApproach;
   /// Recovery point objective in minutes.
-  final pulumi.Input<int>? rpoInMinutes;
+  final pulumi.Input<int?>? rpoInMinutes;
   /// Recovery time objective in minutes.
-  final pulumi.Input<int>? rtoInMinutes;
+  final pulumi.Input<int?>? rtoInMinutes;
 
   /// Creates a new [V2PolicyMultiAz].
   /// [disasterRecoveryApproach] Multi-AZ disaster recovery approach. Valid values: `ACTIVE_ACTIVE`, `HOT_STANDBY`, `WARM_STANDBY`, `PILOT_LIGHT`, `BACKUP_AND_RESTORE`.
@@ -31,8 +31,8 @@ class V2PolicyMultiAz {
   factory V2PolicyMultiAz.fromMap(Map<String, dynamic> map) {
     return V2PolicyMultiAz(
       disasterRecoveryApproach: pulumi.Input.fromValue(map['disasterRecoveryApproach'] as String),
-      rpoInMinutes: (() { final guardedValue = map['rpoInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      rtoInMinutes: (() { final guardedValue = map['rtoInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rpoInMinutes: (() { final guardedValue = map['rpoInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rtoInMinutes: (() { final guardedValue = map['rtoInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

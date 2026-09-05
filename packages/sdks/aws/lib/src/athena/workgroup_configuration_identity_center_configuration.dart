@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkgroupConfigurationIdentityCenterConfiguration {
   /// Specifies whether the workgroup is IAM Identity Center supported.
-  final pulumi.Input<bool>? enableIdentityCenter;
+  final pulumi.Input<bool?>? enableIdentityCenter;
   /// The IAM Identity Center instance ARN that the workgroup associates to.
-  final pulumi.Input<String>? identityCenterInstanceArn;
+  final pulumi.Input<String?>? identityCenterInstanceArn;
 
   /// Creates a new [WorkgroupConfigurationIdentityCenterConfiguration].
   /// [enableIdentityCenter] Specifies whether the workgroup is IAM Identity Center supported.

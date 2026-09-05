@@ -6,9 +6,9 @@ import 'data_cells_filter_table_data_row_filter.dart';
 
 class DataCellsFilterTableData {
   /// A list of column names and/or nested column attributes.
-  final pulumi.Input<List<String>>? columnNames;
+  final pulumi.Input<List<String>?>? columnNames;
   /// A wildcard with exclusions. See Column Wildcard below for details.
-  final pulumi.Input<DataCellsFilterTableDataColumnWildcard>? columnWildcard;
+  final pulumi.Input<DataCellsFilterTableDataColumnWildcard?>? columnWildcard;
   /// The name of the database.
   final pulumi.Input<String> databaseName;
   /// The name of the data cells filter.
@@ -20,7 +20,7 @@ class DataCellsFilterTableData {
   /// The name of the table.
   final pulumi.Input<String> tableName;
   /// ID of the data cells filter version.
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [DataCellsFilterTableData].
   /// [columnNames] A list of column names and/or nested column attributes.

@@ -11,19 +11,19 @@ class FilterArgs {
   /// Action to be applied to the findings that maatch the filter. Possible values are `NONE` and `SUPPRESS`
   final pulumi.Input<String> action;
   /// Description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Details on the filter criteria. Documented below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<FilterFilterCriteria>> filterCriterias;
   /// Name of the filter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Reason for creating the filter
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FilterArgs].
   /// [action] Action to be applied to the findings that maatch the filter. Possible values are `NONE` and `SUPPRESS`

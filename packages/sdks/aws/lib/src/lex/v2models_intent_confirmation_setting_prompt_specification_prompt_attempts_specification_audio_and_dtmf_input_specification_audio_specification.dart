@@ -25,8 +25,8 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
 
   factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification(
-      endTimeoutMs: pulumi.Input.fromValue(map['endTimeoutMs'] as int),
-      maxLengthMs: pulumi.Input.fromValue(map['maxLengthMs'] as int),
+      endTimeoutMs: pulumi.Input.fromValue((map['endTimeoutMs'] as num).toInt()),
+      maxLengthMs: pulumi.Input.fromValue((map['maxLengthMs'] as num).toInt()),
     );
   }
 }

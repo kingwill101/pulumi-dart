@@ -8,7 +8,7 @@ class TopicRuleCloudwatchMetric {
   /// The CloudWatch metric namespace name.
   final pulumi.Input<String> metricNamespace;
   /// An optional Unix timestamp (http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp).
-  final pulumi.Input<String>? metricTimestamp;
+  final pulumi.Input<String?>? metricTimestamp;
   /// The metric unit (supported units can be found here: http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit)
   final pulumi.Input<String> metricUnit;
   /// The CloudWatch metric value.

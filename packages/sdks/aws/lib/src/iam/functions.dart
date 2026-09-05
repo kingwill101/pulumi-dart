@@ -157,6 +157,17 @@ Future<GetAccessKeysResult> getAccessKeys(
   return GetAccessKeysResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessKeysResult> getAccessKeysOutput(
+  GetAccessKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getAccessKeys:getAccessKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessKeysResult.fromMap);
+}
+
 /// The IAM Account Alias data source allows access to the account alias
 /// for the effective account in which this provider is working.
 ///
@@ -275,6 +286,17 @@ Future<GetAccountAliasResult> getAccountAlias(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccountAliasResult.fromMap(result);
+}
+
+pulumi.Output<GetAccountAliasResult> getAccountAliasOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getAccountAlias:getAccountAlias',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetAccountAliasResult.fromMap);
 }
 
 /// This data source can be used to fetch information about a specific
@@ -397,6 +419,17 @@ Future<GetGroupResult> getGroup(
   return GetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getGroup:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
+}
+
 /// This data source can be used to fetch information about a specific
 /// IAM instance profile. By using this data source, you can reference IAM
 /// instance profile properties without having to hard code ARNs as input.
@@ -517,6 +550,17 @@ Future<GetInstanceProfileResult> getInstanceProfile(
   return GetInstanceProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceProfileResult> getInstanceProfileOutput(
+  GetInstanceProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getInstanceProfile:getInstanceProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceProfileResult.fromMap);
+}
+
 /// This data source can be used to fetch information about all
 /// IAM instance profiles under a role. By using this data source, you can reference IAM
 /// instance profile properties without having to hard code ARNs as input.
@@ -635,6 +679,17 @@ Future<GetInstanceProfilesResult> getInstanceProfiles(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceProfilesResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceProfilesResult> getInstanceProfilesOutput(
+  GetInstanceProfilesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getInstanceProfiles:getInstanceProfiles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceProfilesResult.fromMap);
 }
 
 /// This data source can be used to fetch information about a specific
@@ -858,6 +913,17 @@ Future<GetOpenIdConnectProviderResult> getOpenIdConnectProvider(
   return GetOpenIdConnectProviderResult.fromMap(result);
 }
 
+pulumi.Output<GetOpenIdConnectProviderResult> getOpenIdConnectProviderOutput(
+  GetOpenIdConnectProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getOpenIdConnectProvider:getOpenIdConnectProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOpenIdConnectProviderResult.fromMap);
+}
+
 /// Use this data source to retrieve information about an AWS IAM (Identity & Access Management) Outbound Web Identity Federation.
 ///
 /// ## Example Usage
@@ -961,6 +1027,17 @@ Future<GetOutboundWebIdentityFederationResult> getOutboundWebIdentityFederation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOutboundWebIdentityFederationResult.fromMap(result);
+}
+
+pulumi.Output<GetOutboundWebIdentityFederationResult> getOutboundWebIdentityFederationOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getOutboundWebIdentityFederation:getOutboundWebIdentityFederation',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetOutboundWebIdentityFederationResult.fromMap);
 }
 
 /// This data source can be used to fetch information about a specific
@@ -1187,6 +1264,17 @@ Future<GetPolicyResult> getPolicy(
   return GetPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyResult> getPolicyOutput(
+  GetPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getPolicy:getPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyResult.fromMap);
+}
+
 /// Generates an IAM policy document in JSON format for use with resources that expect policy documents such as `aws.iam.Policy`.
 ///
 /// Using this data source to generate policy documents is *optional*. It is also valid to use literal JSON strings in your configuration or to use the `file` interpolation function to read a raw JSON policy document from a file.
@@ -1211,8 +1299,6 @@ Future<GetPolicyResult> getPolicy(
 ///             resources: ["arn:aws:s3:::*"],
 ///         },
 ///         {
-///             actions: ["s3:ListBucket"],
-///             resources: [`arn:aws:s3:::${s3BucketName}`],
 ///             conditions: [{
 ///                 test: "StringLike",
 ///                 variable: "s3:prefix",
@@ -1222,6 +1308,8 @@ Future<GetPolicyResult> getPolicy(
 ///                     "home/&{aws:username}/",
 ///                 ],
 ///             }],
+///             actions: ["s3:ListBucket"],
+///             resources: [`arn:aws:s3:::${s3BucketName}`],
 ///         },
 ///         {
 ///             actions: ["s3:*"],
@@ -1252,8 +1340,6 @@ Future<GetPolicyResult> getPolicy(
 ///         "resources": ["arn:aws:s3:::*"],
 ///     },
 ///     {
-///         "actions": ["s3:ListBucket"],
-///         "resources": [f"arn:aws:s3:::{s3_bucket_name}"],
 ///         "conditions": [{
 ///             "test": "StringLike",
 ///             "variable": "s3:prefix",
@@ -1263,6 +1349,8 @@ Future<GetPolicyResult> getPolicy(
 ///                 "home/&{aws:username}/",
 ///             ],
 ///         }],
+///         "actions": ["s3:ListBucket"],
+///         "resources": [f"arn:aws:s3:::{s3_bucket_name}"],
 ///     },
 ///     {
 ///         "actions": ["s3:*"],
@@ -1304,14 +1392,6 @@ Future<GetPolicyResult> getPolicy(
 ///             },
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "s3:ListBucket",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     $"arn:aws:s3:::{s3BucketName}",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -1325,6 +1405,14 @@ Future<GetPolicyResult> getPolicy(
 ///                             "home/&{aws:username}/",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "s3:ListBucket",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"arn:aws:s3:::{s3BucketName}",
 ///                 },
 ///             },
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
@@ -1376,12 +1464,6 @@ Future<GetPolicyResult> getPolicy(
 /// 					},
 /// 				},
 /// 				{
-/// 					Actions: []string{
-/// 						"s3:ListBucket",
-/// 					},
-/// 					Resources: []string{
-/// 						fmt.Sprintf("arn:aws:s3:::%v", s3BucketName),
-/// 					},
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test:     "StringLike",
@@ -1392,6 +1474,12 @@ Future<GetPolicyResult> getPolicy(
 /// 								"home/&{aws:username}/",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"s3:ListBucket",
+/// 					},
+/// 					Resources: []string{
+/// 						fmt.Sprintf("arn:aws:s3:::%v", s3BucketName),
 /// 					},
 /// 				},
 /// 				{
@@ -1436,13 +1524,13 @@ Future<GetPolicyResult> getPolicy(
 ///     resources = ["arn:aws:s3:::*"]
 ///   }
 ///   statements {
-///     actions   = ["s3:ListBucket"]
-///     resources = ["arn:aws:s3:::${s3BucketName}"]
 ///     conditions {
 ///       test     = "StringLike"
 ///       variable = "s3:prefix"
 ///       values   = ["", "home/", "home/&{aws:username}/"]
 ///     }
+///     actions   = ["s3:ListBucket"]
+///     resources = ["arn:aws:s3:::${s3BucketName}"]
 ///   }
 ///   statements {
 ///     actions   = ["s3:*"]
@@ -1491,8 +1579,6 @@ Future<GetPolicyResult> getPolicy(
 ///                     .resources("arn:aws:s3:::*")
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .actions("s3:ListBucket")
-///                     .resources(String.format("arn:aws:s3:::%s", s3BucketName))
 ///                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringLike")
 ///                         .variable("s3:prefix")
@@ -1501,6 +1587,8 @@ Future<GetPolicyResult> getPolicy(
 ///                             "home/",
 ///                             "home/&{aws:username}/")
 ///                         .build())
+///                     .actions("s3:ListBucket")
+///                     .resources(String.format("arn:aws:s3:::%s", s3BucketName))
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .actions("s3:*")
@@ -1540,17 +1628,17 @@ Future<GetPolicyResult> getPolicy(
 ///               - s3:GetBucketLocation
 ///             resources:
 ///               - arn:aws:s3:::*
-///           - actions:
-///               - s3:ListBucket
-///             resources:
-///               - arn:aws:s3:::${s3BucketName}
-///             conditions:
+///           - conditions:
 ///               - test: StringLike
 ///                 variable: s3:prefix
 ///                 values:
 ///                   - ""
 ///                   - home/
 ///                   - home/&{aws:username}/
+///             actions:
+///               - s3:ListBucket
+///             resources:
+///               - arn:aws:s3:::${s3BucketName}
 ///           - actions:
 ///               - s3:*
 ///             resources:
@@ -1570,11 +1658,6 @@ Future<GetPolicyResult> getPolicy(
 ///
 /// const exampleMultipleConditionKeysAndValues = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: [
-///             "kms:Decrypt",
-///             "kms:GenerateDataKey",
-///         ],
-///         resources: ["*"],
 ///         conditions: [
 ///             {
 ///                 test: "ForAnyValue:StringEquals",
@@ -1595,6 +1678,11 @@ Future<GetPolicyResult> getPolicy(
 ///                 ],
 ///             },
 ///         ],
+///         actions: [
+///             "kms:Decrypt",
+///             "kms:GenerateDataKey",
+///         ],
+///         resources: ["*"],
 ///     }],
 /// });
 /// ```
@@ -1603,11 +1691,6 @@ Future<GetPolicyResult> getPolicy(
 /// import pulumi_aws as aws
 ///
 /// example_multiple_condition_keys_and_values = aws.iam.get_policy_document(statements=[{
-///     "actions": [
-///         "kms:Decrypt",
-///         "kms:GenerateDataKey",
-///     ],
-///     "resources": ["*"],
 ///     "conditions": [
 ///         {
 ///             "test": "ForAnyValue:StringEquals",
@@ -1628,6 +1711,11 @@ Future<GetPolicyResult> getPolicy(
 ///             ],
 ///         },
 ///     ],
+///     "actions": [
+///         "kms:Decrypt",
+///         "kms:GenerateDataKey",
+///     ],
+///     "resources": ["*"],
 /// }])
 /// ```
 /// ```csharp
@@ -1644,15 +1732,6 @@ Future<GetPolicyResult> getPolicy(
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "kms:Decrypt",
-///                     "kms:GenerateDataKey",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "*",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -1684,6 +1763,15 @@ Future<GetPolicyResult> getPolicy(
 ///                         },
 ///                     },
 ///                 },
+///                 Actions = new[]
+///                 {
+///                     "kms:Decrypt",
+///                     "kms:GenerateDataKey",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "*",
+///                 },
 ///             },
 ///         },
 ///     });
@@ -1703,13 +1791,6 @@ Future<GetPolicyResult> getPolicy(
 /// 		_, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"kms:Decrypt",
-/// 						"kms:GenerateDataKey",
-/// 					},
-/// 					Resources: []string{
-/// 						"*",
-/// 					},
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test:     "ForAnyValue:StringEquals",
@@ -1734,6 +1815,13 @@ Future<GetPolicyResult> getPolicy(
 /// 							},
 /// 						},
 /// 					},
+/// 					Actions: []string{
+/// 						"kms:Decrypt",
+/// 						"kms:GenerateDataKey",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
+/// 					},
 /// 				},
 /// 			},
 /// 		}, nil)
@@ -1755,8 +1843,6 @@ Future<GetPolicyResult> getPolicy(
 ///
 /// data "aws_iam_getpolicydocument" "exampleMultipleConditionKeysAndValues" {
 ///   statements {
-///     actions   = ["kms:Decrypt", "kms:GenerateDataKey"]
-///     resources = ["*"]
 ///     conditions {
 ///       test     = "ForAnyValue:StringEquals"
 ///       variable = "kms:EncryptionContext:service"
@@ -1772,6 +1858,8 @@ Future<GetPolicyResult> getPolicy(
 ///       variable = "kms:EncryptionContext:aws:rds:db-id"
 ///       values   = ["db-AAAAABBBBBCCCCCDDDDDEEEEE", "db-EEEEEDDDDDCCCCCBBBBBAAAAA"]
 ///     }
+///     actions   = ["kms:Decrypt", "kms:GenerateDataKey"]
+///     resources = ["*"]
 ///   }
 /// }
 /// ```
@@ -1800,10 +1888,6 @@ Future<GetPolicyResult> getPolicy(
 ///     public static void stack(Context ctx) {
 ///         final var exampleMultipleConditionKeysAndValues = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions(
-///                     "kms:Decrypt",
-///                     "kms:GenerateDataKey")
-///                 .resources("*")
 ///                 .conditions(
 ///                     GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("ForAnyValue:StringEquals")
@@ -1822,6 +1906,10 @@ Future<GetPolicyResult> getPolicy(
 ///                             "db-AAAAABBBBBCCCCCDDDDDEEEEE",
 ///                             "db-EEEEEDDDDDCCCCCBBBBBAAAAA")
 ///                         .build())
+///                 .actions(
+///                     "kms:Decrypt",
+///                     "kms:GenerateDataKey")
+///                 .resources("*")
 ///                 .build())
 ///             .build());
 ///
@@ -1835,12 +1923,7 @@ Future<GetPolicyResult> getPolicy(
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - kms:Decrypt
-///               - kms:GenerateDataKey
-///             resources:
-///               - '*'
-///             conditions:
+///           - conditions:
 ///               - test: ForAnyValue:StringEquals
 ///                 variable: kms:EncryptionContext:service
 ///                 values:
@@ -1854,6 +1937,11 @@ Future<GetPolicyResult> getPolicy(
 ///                 values:
 ///                   - db-AAAAABBBBBCCCCCDDDDDEEEEE
 ///                   - db-EEEEEDDDDDCCCCCBBBBBAAAAA
+///             actions:
+///               - kms:Decrypt
+///               - kms:GenerateDataKey
+///             resources:
+///               - '*'
 /// ```
 ///
 ///
@@ -1897,7 +1985,6 @@ Future<GetPolicyResult> getPolicy(
 ///
 /// const eventStreamBucketRoleAssumeRolePolicy = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [
 ///             {
 ///                 type: "Service",
@@ -1915,6 +2002,7 @@ Future<GetPolicyResult> getPolicy(
 ///                 ],
 ///             },
 ///         ],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// ```
@@ -1923,7 +2011,6 @@ Future<GetPolicyResult> getPolicy(
 /// import pulumi_aws as aws
 ///
 /// event_stream_bucket_role_assume_role_policy = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [
 ///         {
 ///             "type": "Service",
@@ -1941,6 +2028,7 @@ Future<GetPolicyResult> getPolicy(
 ///             ],
 ///         },
 ///     ],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// ```
 /// ```csharp
@@ -1957,10 +2045,6 @@ Future<GetPolicyResult> getPolicy(
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -1989,6 +2073,10 @@ Future<GetPolicyResult> getPolicy(
 ///                         },
 ///                     },
 ///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
+///                 },
 ///             },
 ///         },
 ///     });
@@ -2010,9 +2098,6 @@ Future<GetPolicyResult> getPolicy(
 /// 		_, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -2033,6 +2118,9 @@ Future<GetPolicyResult> getPolicy(
 /// 								"cognito-identity.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -2055,7 +2143,6 @@ Future<GetPolicyResult> getPolicy(
 ///
 /// data "aws_iam_getpolicydocument" "eventStreamBucketRoleAssumeRolePolicy" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["firehose.amazonaws.com"]
@@ -2068,6 +2155,7 @@ Future<GetPolicyResult> getPolicy(
 ///       type        = "Federated"
 ///       identifiers = ["arn:aws:iam::${accountId}:saml-provider/${providerName}", "cognito-identity.amazonaws.com"]
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// ```
@@ -2096,7 +2184,6 @@ Future<GetPolicyResult> getPolicy(
 ///     public static void stack(Context ctx) {
 ///         final var eventStreamBucketRoleAssumeRolePolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(
 ///                     GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("Service")
@@ -2112,6 +2199,7 @@ Future<GetPolicyResult> getPolicy(
 ///                             String.format("arn:aws:iam::%s:saml-provider/%s", accountId,providerName),
 ///                             "cognito-identity.amazonaws.com")
 ///                         .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -2125,9 +2213,7 @@ Future<GetPolicyResult> getPolicy(
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - firehose.amazonaws.com
@@ -2138,6 +2224,8 @@ Future<GetPolicyResult> getPolicy(
 ///                 identifiers:
 ///                   - arn:aws:iam::${accountId}:saml-provider/${providerName}
 ///                   - cognito-identity.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -2162,7 +2250,6 @@ Future<GetPolicyResult> getPolicy(
 ///     ],
 /// });
 /// const sourceDocumentExample = source.then(source => aws.iam.getPolicyDocument({
-///     sourcePolicyDocuments: [source.json],
 ///     statements: [{
 ///         sid: "SidToOverride",
 ///         actions: ["s3:*"],
@@ -2171,6 +2258,7 @@ Future<GetPolicyResult> getPolicy(
 ///             "arn:aws:s3:::somebucket/*",
 ///         ],
 ///     }],
+///     sourcePolicyDocuments: [source.json],
 /// }));
 /// ```
 /// ```python
@@ -2188,15 +2276,15 @@ Future<GetPolicyResult> getPolicy(
 ///         "resources": ["*"],
 ///     },
 /// ])
-/// source_document_example = aws.iam.get_policy_document(source_policy_documents=[source.json],
-///     statements=[{
+/// source_document_example = aws.iam.get_policy_document(statements=[{
 ///         "sid": "SidToOverride",
 ///         "actions": ["s3:*"],
 ///         "resources": [
 ///             "arn:aws:s3:::somebucket",
 ///             "arn:aws:s3:::somebucket/*",
 ///         ],
-///     }])
+///     }],
+///     source_policy_documents=[source.json])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2238,10 +2326,6 @@ Future<GetPolicyResult> getPolicy(
 ///
 ///     var sourceDocumentExample = Aws.Iam.GetPolicyDocument.Invoke(new()
 ///     {
-///         SourcePolicyDocuments = new[]
-///         {
-///             source.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
-///         },
 ///         Statements = new[]
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
@@ -2257,6 +2341,10 @@ Future<GetPolicyResult> getPolicy(
 ///                     "arn:aws:s3:::somebucket/*",
 ///                 },
 ///             },
+///         },
+///         SourcePolicyDocuments = new[]
+///         {
+///             source.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
 ///         },
 ///     });
 ///
@@ -2297,9 +2385,6 @@ Future<GetPolicyResult> getPolicy(
 /// 			return err
 /// 		}
 /// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// 			SourcePolicyDocuments: pulumi.StringArray{
-/// 				source.Json,
-/// 			},
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
 /// 					Sid: pulumi.StringRef("SidToOverride"),
@@ -2311,6 +2396,9 @@ Future<GetPolicyResult> getPolicy(
 /// 						"arn:aws:s3:::somebucket/*",
 /// 					},
 /// 				},
+/// 			},
+/// 			SourcePolicyDocuments: pulumi.StringArray{
+/// 				source.Json,
 /// 			},
 /// 		}, nil)
 /// 		if err != nil {
@@ -2341,12 +2429,12 @@ Future<GetPolicyResult> getPolicy(
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "sourceDocumentExample" {
-///   source_policy_documents = [data.aws_iam_getpolicydocument.source.json]
 ///   statements {
 ///     sid       = "SidToOverride"
 ///     actions   = ["s3:*"]
 ///     resources = ["arn:aws:s3:::somebucket", "arn:aws:s3:::somebucket/*"]
 ///   }
+///   source_policy_documents = [data.aws_iam_getpolicydocument.source.json]
 /// }
 /// ```
 /// ```java
@@ -2385,7 +2473,6 @@ Future<GetPolicyResult> getPolicy(
 ///             .build());
 ///
 ///         final var sourceDocumentExample = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-///             .sourcePolicyDocuments(source.json())
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .sid("SidToOverride")
 ///                 .actions("s3:*")
@@ -2393,6 +2480,7 @@ Future<GetPolicyResult> getPolicy(
 ///                     "arn:aws:s3:::somebucket",
 ///                     "arn:aws:s3:::somebucket/*")
 ///                 .build())
+///             .sourcePolicyDocuments(source.json())
 ///             .build());
 ///
 ///     }
@@ -2418,8 +2506,6 @@ Future<GetPolicyResult> getPolicy(
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
-///         sourcePolicyDocuments:
-///           - ${source.json}
 ///         statements:
 ///           - sid: SidToOverride
 ///             actions:
@@ -2427,6 +2513,8 @@ Future<GetPolicyResult> getPolicy(
 ///             resources:
 ///               - arn:aws:s3:::somebucket
 ///               - arn:aws:s3:::somebucket/*
+///         sourcePolicyDocuments:
+///           - ${source.json}
 /// ```
 ///
 ///
@@ -2470,7 +2558,6 @@ Future<GetPolicyResult> getPolicy(
 ///     }],
 /// });
 /// const overridePolicyDocumentExample = override.then(override => aws.iam.getPolicyDocument({
-///     overridePolicyDocuments: [override.json],
 ///     statements: [
 ///         {
 ///             actions: ["ec2:*"],
@@ -2485,6 +2572,7 @@ Future<GetPolicyResult> getPolicy(
 ///             ],
 ///         },
 ///     ],
+///     overridePolicyDocuments: [override.json],
 /// }));
 /// ```
 /// ```python
@@ -2496,8 +2584,7 @@ Future<GetPolicyResult> getPolicy(
 ///     "actions": ["s3:*"],
 ///     "resources": ["*"],
 /// }])
-/// override_policy_document_example = aws.iam.get_policy_document(override_policy_documents=[override.json],
-///     statements=[
+/// override_policy_document_example = aws.iam.get_policy_document(statements=[
 ///         {
 ///             "actions": ["ec2:*"],
 ///             "resources": ["*"],
@@ -2510,7 +2597,8 @@ Future<GetPolicyResult> getPolicy(
 ///                 "arn:aws:s3:::somebucket/*",
 ///             ],
 ///         },
-///     ])
+///     ],
+///     override_policy_documents=[override.json])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2541,10 +2629,6 @@ Future<GetPolicyResult> getPolicy(
 ///
 ///     var overridePolicyDocumentExample = Aws.Iam.GetPolicyDocument.Invoke(new()
 ///     {
-///         OverridePolicyDocuments = new[]
-///         {
-///             @override.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
-///         },
 ///         Statements = new[]
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
@@ -2571,6 +2655,10 @@ Future<GetPolicyResult> getPolicy(
 ///                     "arn:aws:s3:::somebucket/*",
 ///                 },
 ///             },
+///         },
+///         OverridePolicyDocuments = new[]
+///         {
+///             @override.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
 ///         },
 ///     });
 ///
@@ -2603,9 +2691,6 @@ Future<GetPolicyResult> getPolicy(
 /// 			return err
 /// 		}
 /// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// 			OverridePolicyDocuments: pulumi.StringArray{
-/// 				override.Json,
-/// 			},
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
 /// 					Actions: []string{
@@ -2625,6 +2710,9 @@ Future<GetPolicyResult> getPolicy(
 /// 						"arn:aws:s3:::somebucket/*",
 /// 					},
 /// 				},
+/// 			},
+/// 			OverridePolicyDocuments: pulumi.StringArray{
+/// 				override.Json,
 /// 			},
 /// 		}, nil)
 /// 		if err != nil {
@@ -2651,7 +2739,6 @@ Future<GetPolicyResult> getPolicy(
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "overridePolicyDocumentExample" {
-///   override_policy_documents = [data.aws_iam_getpolicydocument.override.json]
 ///   statements {
 ///     actions   = ["ec2:*"]
 ///     resources = ["*"]
@@ -2661,6 +2748,7 @@ Future<GetPolicyResult> getPolicy(
 ///     actions   = ["s3:*"]
 ///     resources = ["arn:aws:s3:::somebucket", "arn:aws:s3:::somebucket/*"]
 ///   }
+///   override_policy_documents = [data.aws_iam_getpolicydocument.override.json]
 /// }
 /// ```
 /// ```java
@@ -2694,7 +2782,6 @@ Future<GetPolicyResult> getPolicy(
 ///             .build());
 ///
 ///         final var overridePolicyDocumentExample = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-///             .overridePolicyDocuments(override.json())
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .actions("ec2:*")
@@ -2707,6 +2794,7 @@ Future<GetPolicyResult> getPolicy(
 ///                         "arn:aws:s3:::somebucket",
 ///                         "arn:aws:s3:::somebucket/*")
 ///                     .build())
+///             .overridePolicyDocuments(override.json())
 ///             .build());
 ///
 ///     }
@@ -2728,8 +2816,6 @@ Future<GetPolicyResult> getPolicy(
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
-///         overridePolicyDocuments:
-///           - ${override.json}
 ///         statements:
 ///           - actions:
 ///               - ec2:*
@@ -2741,6 +2827,8 @@ Future<GetPolicyResult> getPolicy(
 ///             resources:
 ///               - arn:aws:s3:::somebucket
 ///               - arn:aws:s3:::somebucket/*
+///         overridePolicyDocuments:
+///           - ${override.json}
 /// ```
 ///
 ///
@@ -3479,17 +3567,17 @@ Future<GetPolicyResult> getPolicy(
 ///     }],
 /// });
 /// const combined = Promise.all([policyOne, policyTwo, policyThree]).then(([policyOne, policyTwo, policyThree]) => aws.iam.getPolicyDocument({
-///     overridePolicyDocuments: [
-///         policyOne.json,
-///         policyTwo.json,
-///         policyThree.json,
-///     ],
 ///     statements: [{
 ///         sid: "OverridePlaceHolderTwo",
 ///         effect: "Deny",
 ///         actions: ["*"],
 ///         resources: ["*"],
 ///     }],
+///     overridePolicyDocuments: [
+///         policyOne.json,
+///         policyTwo.json,
+///         policyThree.json,
+///     ],
 /// }));
 /// ```
 /// ```python
@@ -3521,17 +3609,17 @@ Future<GetPolicyResult> getPolicy(
 ///     "actions": ["logs:*"],
 ///     "resources": ["*"],
 /// }])
-/// combined = aws.iam.get_policy_document(override_policy_documents=[
-///         policy_one.json,
-///         policy_two.json,
-///         policy_three.json,
-///     ],
-///     statements=[{
+/// combined = aws.iam.get_policy_document(statements=[{
 ///         "sid": "OverridePlaceHolderTwo",
 ///         "effect": "Deny",
 ///         "actions": ["*"],
 ///         "resources": ["*"],
-///     }])
+///     }],
+///     override_policy_documents=[
+///         policy_one.json,
+///         policy_two.json,
+///         policy_three.json,
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -3615,12 +3703,6 @@ Future<GetPolicyResult> getPolicy(
 ///
 ///     var combined = Aws.Iam.GetPolicyDocument.Invoke(new()
 ///     {
-///         OverridePolicyDocuments = new[]
-///         {
-///             policyOne.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
-///             policyTwo.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
-///             policyThree.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
-///         },
 ///         Statements = new[]
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
@@ -3636,6 +3718,12 @@ Future<GetPolicyResult> getPolicy(
 ///                     "*",
 ///                 },
 ///             },
+///         },
+///         OverridePolicyDocuments = new[]
+///         {
+///             policyOne.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
+///             policyTwo.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
+///             policyThree.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
 ///         },
 ///     });
 ///
@@ -3712,11 +3800,6 @@ Future<GetPolicyResult> getPolicy(
 /// 			return err
 /// 		}
 /// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-/// 			OverridePolicyDocuments: pulumi.StringArray{
-/// 				policyOne.Json,
-/// 				policyTwo.Json,
-/// 				policyThree.Json,
-/// 			},
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
 /// 					Sid:    pulumi.StringRef("OverridePlaceHolderTwo"),
@@ -3728,6 +3811,11 @@ Future<GetPolicyResult> getPolicy(
 /// 						"*",
 /// 					},
 /// 				},
+/// 			},
+/// 			OverridePolicyDocuments: pulumi.StringArray{
+/// 				policyOne.Json,
+/// 				policyTwo.Json,
+/// 				policyThree.Json,
 /// 			},
 /// 		}, nil)
 /// 		if err != nil {
@@ -3776,13 +3864,13 @@ Future<GetPolicyResult> getPolicy(
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "combined" {
-///   override_policy_documents = [data.aws_iam_getpolicydocument.policyOne.json, data.aws_iam_getpolicydocument.policyTwo.json, data.aws_iam_getpolicydocument.policyThree.json]
 ///   statements {
 ///     sid       = "OverridePlaceHolderTwo"
 ///     effect    = "Deny"
 ///     actions   = ["*"]
 ///     resources = ["*"]
 ///   }
+///   override_policy_documents = [data.aws_iam_getpolicydocument.policyOne.json, data.aws_iam_getpolicydocument.policyTwo.json, data.aws_iam_getpolicydocument.policyThree.json]
 /// }
 /// ```
 /// ```java
@@ -3841,16 +3929,16 @@ Future<GetPolicyResult> getPolicy(
 ///             .build());
 ///
 ///         final var combined = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-///             .overridePolicyDocuments(
-///                 policyOne.json(),
-///                 policyTwo.json(),
-///                 policyThree.json())
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
 ///                 .sid("OverridePlaceHolderTwo")
 ///                 .effect("Deny")
 ///                 .actions("*")
 ///                 .resources("*")
 ///                 .build())
+///             .overridePolicyDocuments(
+///                 policyOne.json(),
+///                 policyTwo.json(),
+///                 policyThree.json())
 ///             .build());
 ///
 ///     }
@@ -3900,10 +3988,6 @@ Future<GetPolicyResult> getPolicy(
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
-///         overridePolicyDocuments:
-///           - ${policyOne.json}
-///           - ${policyTwo.json}
-///           - ${policyThree.json}
 ///         statements:
 ///           - sid: OverridePlaceHolderTwo
 ///             effect: Deny
@@ -3911,6 +3995,10 @@ Future<GetPolicyResult> getPolicy(
 ///               - '*'
 ///             resources:
 ///               - '*'
+///         overridePolicyDocuments:
+///           - ${policyOne.json}
+///           - ${policyTwo.json}
+///           - ${policyThree.json}
 /// ```
 ///
 ///
@@ -3954,6 +4042,17 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyDocumentResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyDocumentResult> getPolicyDocumentOutput(
+  GetPolicyDocumentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getPolicyDocument:getPolicyDocument',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyDocumentResult.fromMap);
 }
 
 /// Runs a simulation of the IAM policies of a particular principal against a given hypothetical request.
@@ -4732,6 +4831,17 @@ Future<GetPrincipalPolicySimulationIamResult> getPrincipalPolicySimulation(
   return GetPrincipalPolicySimulationIamResult.fromMap(result);
 }
 
+pulumi.Output<GetPrincipalPolicySimulationIamResult> getPrincipalPolicySimulationOutput(
+  GetPrincipalPolicySimulationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getPrincipalPolicySimulation:getPrincipalPolicySimulation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrincipalPolicySimulationIamResult.fromMap);
+}
+
 /// This data source can be used to fetch information about a specific
 /// IAM role. By using this data source, you can reference IAM role
 /// properties without having to hard code ARNs as input.
@@ -4852,6 +4962,17 @@ Future<GetRoleResult> getRole(
   return GetRoleResult.fromMap(result);
 }
 
+pulumi.Output<GetRoleResult> getRoleOutput(
+  GetRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getRole:getRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoleResult.fromMap);
+}
+
 /// Use this data source to get the names of inline policies associated with an IAM role.
 ///
 /// ## Example Usage
@@ -4968,6 +5089,17 @@ Future<GetRolePoliciesResult> getRolePolicies(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRolePoliciesResult.fromMap(result);
+}
+
+pulumi.Output<GetRolePoliciesResult> getRolePoliciesOutput(
+  GetRolePoliciesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getRolePolicies:getRolePolicies',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRolePoliciesResult.fromMap);
 }
 
 /// Provides details about the managed policies attached to an AWS IAM Role.
@@ -5088,6 +5220,17 @@ Future<GetRolePolicyAttachmentsResult> getRolePolicyAttachments(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRolePolicyAttachmentsResult.fromMap(result);
+}
+
+pulumi.Output<GetRolePolicyAttachmentsResult> getRolePolicyAttachmentsOutput(
+  GetRolePolicyAttachmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getRolePolicyAttachments:getRolePolicyAttachments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRolePolicyAttachmentsResult.fromMap);
 }
 
 /// Use this data source to get the ARNs and Names of IAM Roles.
@@ -5623,6 +5766,17 @@ Future<GetRolesResult> getRoles(
   return GetRolesResult.fromMap(result);
 }
 
+pulumi.Output<GetRolesResult> getRolesOutput(
+  GetRolesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getRoles:getRoles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRolesResult.fromMap);
+}
+
 /// This data source can be used to fetch information about a specific
 /// IAM SAML provider. This will allow you to easily retrieve the metadata
 /// document of an existing SAML provider.
@@ -5743,6 +5897,17 @@ Future<GetSamlProviderResult> getSamlProvider(
   return GetSamlProviderResult.fromMap(result);
 }
 
+pulumi.Output<GetSamlProviderResult> getSamlProviderOutput(
+  GetSamlProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getSamlProvider:getSamlProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSamlProviderResult.fromMap);
+}
+
 /// Use this data source to lookup information about IAM Server Certificates.
 ///
 /// ## Example Usage
@@ -5757,7 +5922,6 @@ Future<GetSamlProviderResult> getSamlProvider(
 ///     latest: true,
 /// });
 /// const elb = new aws.elb.LoadBalancer("elb", {
-///     name: "my-domain-elb",
 ///     listeners: [{
 ///         instancePort: 8000,
 ///         instanceProtocol: "https",
@@ -5765,6 +5929,7 @@ Future<GetSamlProviderResult> getSamlProvider(
 ///         lbProtocol: "https",
 ///         sslCertificateId: my_domain.then(my_domain => my_domain.arn),
 ///     }],
+///     name: "my-domain-elb",
 /// });
 /// ```
 /// ```python
@@ -5774,14 +5939,14 @@ Future<GetSamlProviderResult> getSamlProvider(
 /// my_domain = aws.iam.get_server_certificate(name_prefix="my-domain.org",
 ///     latest=True)
 /// elb = aws.elb.LoadBalancer("elb",
-///     name="my-domain-elb",
 ///     listeners=[{
 ///         "instance_port": 8000,
 ///         "instance_protocol": "https",
 ///         "lb_port": 443,
 ///         "lb_protocol": "https",
 ///         "ssl_certificate_id": my_domain.arn,
-///     }])
+///     }],
+///     name="my-domain-elb")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -5799,7 +5964,6 @@ Future<GetSamlProviderResult> getSamlProvider(
 ///
 ///     var elb = new Aws.Elb.LoadBalancer("elb", new()
 ///     {
-///         Name = "my-domain-elb",
 ///         Listeners = new[]
 ///         {
 ///             new Aws.Elb.Inputs.LoadBalancerListenerArgs
@@ -5811,6 +5975,7 @@ Future<GetSamlProviderResult> getSamlProvider(
 ///                 SslCertificateId = my_domain.Apply(my_domain => my_domain.Apply(getServerCertificateResult => getServerCertificateResult.Arn)),
 ///             },
 ///         },
+///         Name = "my-domain-elb",
 ///     });
 ///
 /// });
@@ -5834,7 +5999,6 @@ Future<GetSamlProviderResult> getSamlProvider(
 /// 			return err
 /// 		}
 /// 		_, err = elb.NewLoadBalancer(ctx, "elb", &elb.LoadBalancerArgs{
-/// 			Name: pulumi.String("my-domain-elb"),
 /// 			Listeners: elb.LoadBalancerListenerArray{
 /// 				&elb.LoadBalancerListenerArgs{
 /// 					InstancePort:     pulumi.Int(8000),
@@ -5844,6 +6008,7 @@ Future<GetSamlProviderResult> getSamlProvider(
 /// 					SslCertificateId: pulumi.String(my_domain.Arn),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("my-domain-elb"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -5867,7 +6032,6 @@ Future<GetSamlProviderResult> getSamlProvider(
 /// }
 ///
 /// resource "aws_elb_loadbalancer" "elb" {
-///   name = "my-domain-elb"
 ///   listeners {
 ///     instance_port      = 8000
 ///     instance_protocol  = "https"
@@ -5875,6 +6039,7 @@ Future<GetSamlProviderResult> getSamlProvider(
 ///     lb_protocol        = "https"
 ///     ssl_certificate_id = data.aws_iam_getservercertificate.my-domain.arn
 ///   }
+///   name = "my-domain-elb"
 /// }
 /// ```
 /// ```java
@@ -5907,7 +6072,6 @@ Future<GetSamlProviderResult> getSamlProvider(
 ///             .build());
 ///
 ///         var elb = new LoadBalancer("elb", LoadBalancerArgs.builder()
-///             .name("my-domain-elb")
 ///             .listeners(LoadBalancerListenerArgs.builder()
 ///                 .instancePort(8000)
 ///                 .instanceProtocol("https")
@@ -5915,6 +6079,7 @@ Future<GetSamlProviderResult> getSamlProvider(
 ///                 .lbProtocol("https")
 ///                 .sslCertificateId(my_domain.arn())
 ///                 .build())
+///             .name("my-domain-elb")
 ///             .build());
 ///
 ///     }
@@ -5925,13 +6090,13 @@ Future<GetSamlProviderResult> getSamlProvider(
 ///   elb:
 ///     type: aws:elb:LoadBalancer
 ///     properties:
-///       name: my-domain-elb
 ///       listeners:
 ///         - instancePort: 8000
 ///           instanceProtocol: https
 ///           lbPort: 443
 ///           lbProtocol: https
 ///           sslCertificateId: ${["my-domain"].arn}
+///       name: my-domain-elb
 /// variables:
 ///   my-domain:
 ///     fn::invoke:
@@ -5953,6 +6118,17 @@ Future<GetServerCertificateResult> getServerCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetServerCertificateResult> getServerCertificateOutput(
+  GetServerCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getServerCertificate:getServerCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerCertificateResult.fromMap);
 }
 
 /// This data source provides information on the IAM source role of an STS assumed role. For non-role ARNs, this data source simply passes the ARN through in `issuerArn`.
@@ -6202,6 +6378,17 @@ Future<GetSessionContextResult> getSessionContext(
   return GetSessionContextResult.fromMap(result);
 }
 
+pulumi.Output<GetSessionContextResult> getSessionContextOutput(
+  GetSessionContextArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getSessionContext:getSessionContext',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSessionContextResult.fromMap);
+}
+
 /// This data source can be used to fetch information about a specific
 /// IAM user. By using this data source, you can reference IAM user
 /// properties without having to hard code ARNs or unique IDs as input.
@@ -6320,6 +6507,17 @@ Future<GetUserResult> getUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserResult.fromMap(result);
+}
+
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getUser:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
 }
 
 /// Use this data source to get information about a SSH public key associated with the specified IAM user.
@@ -6452,6 +6650,17 @@ Future<GetUserSshKeyResult> getUserSshKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserSshKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetUserSshKeyResult> getUserSshKeyOutput(
+  GetUserSshKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getUserSshKey:getUserSshKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserSshKeyResult.fromMap);
 }
 
 /// Use this data source to get the ARNs and Names of IAM Users.
@@ -6770,4 +6979,15 @@ Future<GetUsersResult> getUsers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUsersResult.fromMap(result);
+}
+
+pulumi.Output<GetUsersResult> getUsersOutput(
+  GetUsersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:iam/getUsers:getUsers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUsersResult.fromMap);
 }

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_configuration_args.dart';
+import 'workspace_configuration_limits_per_label_set.dart';
 import 'workspace_configuration_state.dart';
 import 'workspace_configuration_timeouts.dart';
 
@@ -16,26 +17,26 @@ import 'workspace_configuration_timeouts.dart';
 ///
 /// const example = new aws.amp.Workspace("example", {});
 /// const exampleWorkspaceConfiguration = new aws.amp.WorkspaceConfiguration("example", {
-///     workspaceId: example.id,
-///     retentionPeriodInDays: 60,
 ///     limitsPerLabelSets: [
 ///         {
-///             labelSet: {
-///                 env: "dev",
-///             },
 ///             limits: {
 ///                 maxSeries: 100000,
 ///             },
+///             labelSet: {
+///                 env: "dev",
+///             },
 ///         },
 ///         {
-///             labelSet: {
-///                 env: "prod",
-///             },
 ///             limits: {
 ///                 maxSeries: 400000,
 ///             },
+///             labelSet: {
+///                 env: "prod",
+///             },
 ///         },
 ///     ],
+///     workspaceId: example.id,
+///     retentionPeriodInDays: 60,
 /// });
 /// ```
 /// ```python
@@ -44,26 +45,26 @@ import 'workspace_configuration_timeouts.dart';
 ///
 /// example = aws.amp.Workspace("example")
 /// example_workspace_configuration = aws.amp.WorkspaceConfiguration("example",
-///     workspace_id=example.id,
-///     retention_period_in_days=60,
 ///     limits_per_label_sets=[
 ///         {
-///             "label_set": {
-///                 "env": "dev",
-///             },
 ///             "limits": {
 ///                 "max_series": 100000,
 ///             },
+///             "label_set": {
+///                 "env": "dev",
+///             },
 ///         },
 ///         {
-///             "label_set": {
-///                 "env": "prod",
-///             },
 ///             "limits": {
 ///                 "max_series": 400000,
 ///             },
+///             "label_set": {
+///                 "env": "prod",
+///             },
 ///         },
-///     ])
+///     ],
+///     workspace_id=example.id,
+///     retention_period_in_days=60)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -77,33 +78,33 @@ import 'workspace_configuration_timeouts.dart';
 ///
 ///     var exampleWorkspaceConfiguration = new Aws.Amp.WorkspaceConfiguration("example", new()
 ///     {
-///         WorkspaceId = example.Id,
-///         RetentionPeriodInDays = 60,
 ///         LimitsPerLabelSets = new[]
 ///         {
 ///             new Aws.Amp.Inputs.WorkspaceConfigurationLimitsPerLabelSetArgs
 ///             {
-///                 LabelSet =
-///                 {
-///                     { "env", "dev" },
-///                 },
 ///                 Limits = new Aws.Amp.Inputs.WorkspaceConfigurationLimitsPerLabelSetLimitsArgs
 ///                 {
 ///                     MaxSeries = 100000,
 ///                 },
+///                 LabelSet =
+///                 {
+///                     { "env", "dev" },
+///                 },
 ///             },
 ///             new Aws.Amp.Inputs.WorkspaceConfigurationLimitsPerLabelSetArgs
 ///             {
-///                 LabelSet =
-///                 {
-///                     { "env", "prod" },
-///                 },
 ///                 Limits = new Aws.Amp.Inputs.WorkspaceConfigurationLimitsPerLabelSetLimitsArgs
 ///                 {
 ///                     MaxSeries = 400000,
 ///                 },
+///                 LabelSet =
+///                 {
+///                     { "env", "prod" },
+///                 },
 ///             },
 ///         },
+///         WorkspaceId = example.Id,
+///         RetentionPeriodInDays = 60,
 ///     });
 ///
 /// });
@@ -123,26 +124,26 @@ import 'workspace_configuration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amp.NewWorkspaceConfiguration(ctx, "example", &amp.WorkspaceConfigurationArgs{
-/// 			WorkspaceId:           example.ID().ToIDOutput().ToStringOutput(),
-/// 			RetentionPeriodInDays: pulumi.Int(60),
 /// 			LimitsPerLabelSets: amp.WorkspaceConfigurationLimitsPerLabelSetArray{
 /// 				&amp.WorkspaceConfigurationLimitsPerLabelSetArgs{
-/// 					LabelSet: pulumi.StringMap{
-/// 						"env": pulumi.String("dev"),
-/// 					},
 /// 					Limits: &amp.WorkspaceConfigurationLimitsPerLabelSetLimitsArgs{
 /// 						MaxSeries: pulumi.Int(100000),
 /// 					},
+/// 					LabelSet: pulumi.StringMap{
+/// 						"env": pulumi.String("dev"),
+/// 					},
 /// 				},
 /// 				&amp.WorkspaceConfigurationLimitsPerLabelSetArgs{
-/// 					LabelSet: pulumi.StringMap{
-/// 						"env": pulumi.String("prod"),
-/// 					},
 /// 					Limits: &amp.WorkspaceConfigurationLimitsPerLabelSetLimitsArgs{
 /// 						MaxSeries: pulumi.Int(400000),
 /// 					},
+/// 					LabelSet: pulumi.StringMap{
+/// 						"env": pulumi.String("prod"),
+/// 					},
 /// 				},
 /// 			},
+/// 			WorkspaceId:           example.ID().ToIDOutput().ToStringOutput(),
+/// 			RetentionPeriodInDays: pulumi.Int(60),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -163,24 +164,24 @@ import 'workspace_configuration_timeouts.dart';
 /// resource "aws_amp_workspace" "example" {
 /// }
 /// resource "aws_amp_workspaceconfiguration" "example" {
-///   workspace_id             = aws_amp_workspace.example.id
-///   retention_period_in_days = 60
 ///   limits_per_label_sets {
-///     label_set = {
-///       "env" = "dev"
-///     }
 ///     limits = {
 ///       max_series = 100000
 ///     }
+///     label_set = {
+///       "env" = "dev"
+///     }
 ///   }
 ///   limits_per_label_sets {
-///     label_set = {
-///       "env" = "prod"
-///     }
 ///     limits = {
 ///       max_series = 400000
 ///     }
+///     label_set = {
+///       "env" = "prod"
+///     }
 ///   }
+///   workspace_id             = aws_amp_workspace.example.id
+///   retention_period_in_days = 60
 /// }
 /// ```
 /// ```java
@@ -210,21 +211,21 @@ import 'workspace_configuration_timeouts.dart';
 ///         var example = new Workspace("example");
 ///
 ///         var exampleWorkspaceConfiguration = new WorkspaceConfiguration("exampleWorkspaceConfiguration", WorkspaceConfigurationArgs.builder()
-///             .workspaceId(example.id())
-///             .retentionPeriodInDays(60)
 ///             .limitsPerLabelSets(
 ///                 WorkspaceConfigurationLimitsPerLabelSetArgs.builder()
-///                     .labelSet(Map.of("env", "dev"))
 ///                     .limits(WorkspaceConfigurationLimitsPerLabelSetLimitsArgs.builder()
 ///                         .maxSeries(100000)
 ///                         .build())
+///                     .labelSet(Map.of("env", "dev"))
 ///                     .build(),
 ///                 WorkspaceConfigurationLimitsPerLabelSetArgs.builder()
-///                     .labelSet(Map.of("env", "prod"))
 ///                     .limits(WorkspaceConfigurationLimitsPerLabelSetLimitsArgs.builder()
 ///                         .maxSeries(400000)
 ///                         .build())
+///                     .labelSet(Map.of("env", "prod"))
 ///                     .build())
+///             .workspaceId(example.id())
+///             .retentionPeriodInDays(60)
 ///             .build());
 ///
 ///     }
@@ -238,17 +239,17 @@ import 'workspace_configuration_timeouts.dart';
 ///     type: aws:amp:WorkspaceConfiguration
 ///     name: example
 ///     properties:
+///       limitsPerLabelSets:
+///         - limits:
+///             maxSeries: 100000
+///           labelSet:
+///             env: dev
+///         - limits:
+///             maxSeries: 400000
+///           labelSet:
+///             env: prod
 ///       workspaceId: ${example.id}
 ///       retentionPeriodInDays: 60
-///       limitsPerLabelSets:
-///         - labelSet:
-///             env: dev
-///           limits:
-///             maxSeries: 100000
-///         - labelSet:
-///             env: prod
-///           limits:
-///             maxSeries: 400000
 /// ```
 ///
 ///
@@ -265,13 +266,13 @@ import 'workspace_configuration_timeouts.dart';
 ///
 /// const example = new aws.amp.Workspace("example", {});
 /// const exampleWorkspaceConfiguration = new aws.amp.WorkspaceConfiguration("example", {
-///     workspaceId: example.id,
 ///     limitsPerLabelSets: [{
-///         labelSet: {},
 ///         limits: {
 ///             maxSeries: 50000,
 ///         },
+///         labelSet: {},
 ///     }],
+///     workspaceId: example.id,
 /// });
 /// ```
 /// ```python
@@ -280,13 +281,13 @@ import 'workspace_configuration_timeouts.dart';
 ///
 /// example = aws.amp.Workspace("example")
 /// example_workspace_configuration = aws.amp.WorkspaceConfiguration("example",
-///     workspace_id=example.id,
 ///     limits_per_label_sets=[{
-///         "label_set": {},
 ///         "limits": {
 ///             "max_series": 50000,
 ///         },
-///     }])
+///         "label_set": {},
+///     }],
+///     workspace_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -300,18 +301,18 @@ import 'workspace_configuration_timeouts.dart';
 ///
 ///     var exampleWorkspaceConfiguration = new Aws.Amp.WorkspaceConfiguration("example", new()
 ///     {
-///         WorkspaceId = example.Id,
 ///         LimitsPerLabelSets = new[]
 ///         {
 ///             new Aws.Amp.Inputs.WorkspaceConfigurationLimitsPerLabelSetArgs
 ///             {
-///                 LabelSet = null,
 ///                 Limits = new Aws.Amp.Inputs.WorkspaceConfigurationLimitsPerLabelSetLimitsArgs
 ///                 {
 ///                     MaxSeries = 50000,
 ///                 },
+///                 LabelSet = null,
 ///             },
 ///         },
+///         WorkspaceId = example.Id,
 ///     });
 ///
 /// });
@@ -331,15 +332,15 @@ import 'workspace_configuration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = amp.NewWorkspaceConfiguration(ctx, "example", &amp.WorkspaceConfigurationArgs{
-/// 			WorkspaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			LimitsPerLabelSets: amp.WorkspaceConfigurationLimitsPerLabelSetArray{
 /// 				&amp.WorkspaceConfigurationLimitsPerLabelSetArgs{
-/// 					LabelSet: pulumi.StringMap{},
 /// 					Limits: &amp.WorkspaceConfigurationLimitsPerLabelSetLimitsArgs{
 /// 						MaxSeries: pulumi.Int(50000),
 /// 					},
+/// 					LabelSet: pulumi.StringMap{},
 /// 				},
 /// 			},
+/// 			WorkspaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -360,13 +361,13 @@ import 'workspace_configuration_timeouts.dart';
 /// resource "aws_amp_workspace" "example" {
 /// }
 /// resource "aws_amp_workspaceconfiguration" "example" {
-///   workspace_id = aws_amp_workspace.example.id
 ///   limits_per_label_sets {
-///     label_set = {}
 ///     limits = {
 ///       max_series = 50000
 ///     }
+///     label_set = {}
 ///   }
+///   workspace_id = aws_amp_workspace.example.id
 /// }
 /// ```
 /// ```java
@@ -396,14 +397,14 @@ import 'workspace_configuration_timeouts.dart';
 ///         var example = new Workspace("example");
 ///
 ///         var exampleWorkspaceConfiguration = new WorkspaceConfiguration("exampleWorkspaceConfiguration", WorkspaceConfigurationArgs.builder()
-///             .workspaceId(example.id())
 ///             .limitsPerLabelSets(WorkspaceConfigurationLimitsPerLabelSetArgs.builder()
-///                 .labelSet(Map.ofEntries(
-///                 ))
 ///                 .limits(WorkspaceConfigurationLimitsPerLabelSetLimitsArgs.builder()
 ///                     .maxSeries(50000)
 ///                     .build())
+///                 .labelSet(Map.ofEntries(
+///                 ))
 ///                 .build())
+///             .workspaceId(example.id())
 ///             .build());
 ///
 ///     }
@@ -417,11 +418,11 @@ import 'workspace_configuration_timeouts.dart';
 ///     type: aws:amp:WorkspaceConfiguration
 ///     name: example
 ///     properties:
-///       workspaceId: ${example.id}
 ///       limitsPerLabelSets:
-///         - labelSet: {}
-///           limits:
+///         - limits:
 ///             maxSeries: 50000
+///           labelSet: {}
+///       workspaceId: ${example.id}
 /// ```
 ///
 ///
@@ -574,7 +575,7 @@ import 'workspace_configuration_timeouts.dart';
 /// ```
 class WorkspaceConfiguration extends pulumi.CustomResource {
   /// Configuration block for setting limits on metrics with specific label sets. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> limitsPerLabelSets;
+  late final pulumi.Output<List<WorkspaceConfigurationLimitsPerLabelSet>?> limitsPerLabelSets;
   /// Time window in seconds for accepting out-of-order samples. Must be between 0 and 600 seconds.
   late final pulumi.Output<int> outOfOrderTimeWindowInSeconds;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -601,9 +602,9 @@ class WorkspaceConfiguration extends pulumi.CustomResource {
           'aws:amp/workspaceConfiguration:WorkspaceConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    limitsPerLabelSets = registerOutput<List<Map<String, dynamic>>?>('limitsPerLabelSets');
+    limitsPerLabelSets = registerOutput<List<WorkspaceConfigurationLimitsPerLabelSet>?>('limitsPerLabelSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceConfigurationLimitsPerLabelSet>(guardedValue, (value) => WorkspaceConfigurationLimitsPerLabelSet.fromMap((value as Map).cast<String, dynamic>())); });
     outOfOrderTimeWindowInSeconds = registerOutput<int>('outOfOrderTimeWindowInSeconds');
     region = registerOutput<String>('region');
     retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
@@ -617,11 +618,12 @@ class WorkspaceConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -635,7 +637,25 @@ class WorkspaceConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    limitsPerLabelSets = registerOutput<List<Map<String, dynamic>>?>('limitsPerLabelSets');
+    limitsPerLabelSets = registerOutput<List<WorkspaceConfigurationLimitsPerLabelSet>?>('limitsPerLabelSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceConfigurationLimitsPerLabelSet>(guardedValue, (value) => WorkspaceConfigurationLimitsPerLabelSet.fromMap((value as Map).cast<String, dynamic>())); });
+    outOfOrderTimeWindowInSeconds = registerOutput<int>('outOfOrderTimeWindowInSeconds');
+    region = registerOutput<String>('region');
+    retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
+    ruleQueryOffsetInSeconds = registerOutput<int>('ruleQueryOffsetInSeconds');
+    timeouts = registerOutput<WorkspaceConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceConfiguration] resource.
+  WorkspaceConfiguration.reference(String urn)
+    : super(
+        'aws:amp/workspaceConfiguration:WorkspaceConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    limitsPerLabelSets = registerOutput<List<WorkspaceConfigurationLimitsPerLabelSet>?>('limitsPerLabelSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceConfigurationLimitsPerLabelSet>(guardedValue, (value) => WorkspaceConfigurationLimitsPerLabelSet.fromMap((value as Map).cast<String, dynamic>())); });
     outOfOrderTimeWindowInSeconds = registerOutput<int>('outOfOrderTimeWindowInSeconds');
     region = registerOutput<String>('region');
     retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');

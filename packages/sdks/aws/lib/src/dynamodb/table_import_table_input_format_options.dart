@@ -5,7 +5,7 @@ import 'table_import_table_input_format_options_csv.dart';
 
 class TableImportTableInputFormatOptions {
   /// This block contains the processing options for the CSV file being imported:
-  final pulumi.Input<TableImportTableInputFormatOptionsCsv>? csv;
+  final pulumi.Input<TableImportTableInputFormatOptionsCsv?>? csv;
 
   /// Creates a new [TableImportTableInputFormatOptions].
   /// [csv] This block contains the processing options for the CSV file being imported:

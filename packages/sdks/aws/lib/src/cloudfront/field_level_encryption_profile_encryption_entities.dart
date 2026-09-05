@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'field_level_encryption_profile_encryption_entities_item.dart';
 
 class FieldLevelEncryptionProfileEncryptionEntities {
-  final pulumi.Input<List<FieldLevelEncryptionProfileEncryptionEntitiesItem>>? items;
+  final pulumi.Input<List<FieldLevelEncryptionProfileEncryptionEntitiesItem>?>? items;
 
   /// Creates a new [FieldLevelEncryptionProfileEncryptionEntities].
   /// [items] Optional.

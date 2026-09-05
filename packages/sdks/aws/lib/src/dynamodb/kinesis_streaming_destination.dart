@@ -12,12 +12,12 @@ import 'kinesis_streaming_destination_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.dynamodb.Table("example", {
-///     name: "orders",
-///     hashKey: "id",
 ///     attributes: [{
 ///         name: "id",
 ///         type: "S",
 ///     }],
+///     name: "orders",
+///     hashKey: "id",
 /// });
 /// const exampleStream = new aws.kinesis.Stream("example", {
 ///     name: "order_item_changes",
@@ -34,12 +34,12 @@ import 'kinesis_streaming_destination_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.dynamodb.Table("example",
-///     name="orders",
-///     hash_key="id",
 ///     attributes=[{
 ///         "name": "id",
 ///         "type": "S",
-///     }])
+///     }],
+///     name="orders",
+///     hash_key="id")
 /// example_stream = aws.kinesis.Stream("example",
 ///     name="order_item_changes",
 ///     shard_count=1)
@@ -58,8 +58,6 @@ import 'kinesis_streaming_destination_state.dart';
 /// {
 ///     var example = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         Name = "orders",
-///         HashKey = "id",
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -68,6 +66,8 @@ import 'kinesis_streaming_destination_state.dart';
 ///                 Type = "S",
 ///             },
 ///         },
+///         Name = "orders",
+///         HashKey = "id",
 ///     });
 ///
 ///     var exampleStream = new Aws.Kinesis.Stream("example", new()
@@ -97,14 +97,14 @@ import 'kinesis_streaming_destination_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			Name:    pulumi.String("orders"),
-/// 			HashKey: pulumi.String("id"),
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("id"),
 /// 					Type: pulumi.String("S"),
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("orders"),
+/// 			HashKey: pulumi.String("id"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -138,12 +138,12 @@ import 'kinesis_streaming_destination_state.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   name     = "orders"
-///   hash_key = "id"
 ///   attributes {
 ///     name = "id"
 ///     type = "S"
 ///   }
+///   name     = "orders"
+///   hash_key = "id"
 /// }
 /// resource "aws_kinesis_stream" "example" {
 ///   name        = "order_item_changes"
@@ -182,12 +182,12 @@ import 'kinesis_streaming_destination_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Table("example", TableArgs.builder()
-///             .name("orders")
-///             .hashKey("id")
 ///             .attributes(TableAttributeArgs.builder()
 ///                 .name("id")
 ///                 .type("S")
 ///                 .build())
+///             .name("orders")
+///             .hashKey("id")
 ///             .build());
 ///
 ///         var exampleStream = new Stream("exampleStream", StreamArgs.builder()
@@ -209,11 +209,11 @@ import 'kinesis_streaming_destination_state.dart';
 ///   example:
 ///     type: aws:dynamodb:Table
 ///     properties:
-///       name: orders
-///       hashKey: id
 ///       attributes:
 ///         - name: id
 ///           type: S
+///       name: orders
+///       hashKey: id
 ///   exampleStream:
 ///     type: aws:kinesis:Stream
 ///     name: example
@@ -259,7 +259,7 @@ class KinesisStreamingDestination extends pulumi.CustomResource {
           'aws:dynamodb/kinesisStreamingDestination:KinesisStreamingDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     approximateCreationDateTimePrecision = registerOutput<String>('approximateCreationDateTimePrecision');
     region = registerOutput<String>('region');
@@ -272,11 +272,12 @@ class KinesisStreamingDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KinesisStreamingDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KinesisStreamingDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,6 +291,21 @@ class KinesisStreamingDestination extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    approximateCreationDateTimePrecision = registerOutput<String>('approximateCreationDateTimePrecision');
+    region = registerOutput<String>('region');
+    streamArn = registerOutput<String>('streamArn');
+    tableName = registerOutput<String>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [KinesisStreamingDestination] resource.
+  KinesisStreamingDestination.reference(String urn)
+    : super(
+        'aws:dynamodb/kinesisStreamingDestination:KinesisStreamingDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     approximateCreationDateTimePrecision = registerOutput<String>('approximateCreationDateTimePrecision');
     region = registerOutput<String>('region');
     streamArn = registerOutput<String>('streamArn');

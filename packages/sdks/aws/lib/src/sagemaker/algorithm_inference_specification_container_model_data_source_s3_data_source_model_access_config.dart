@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlgorithmInferenceSpecificationContainerModelDataSourceS3DataSourceModelAccessConfig {
   /// Whether to accept the model end-user license agreement.
-  final pulumi.Input<bool>? acceptEula;
+  final pulumi.Input<bool?>? acceptEula;
 
   /// Creates a new [AlgorithmInferenceSpecificationContainerModelDataSourceS3DataSourceModelAccessConfig].
   /// [acceptEula] Whether to accept the model end-user license agreement.

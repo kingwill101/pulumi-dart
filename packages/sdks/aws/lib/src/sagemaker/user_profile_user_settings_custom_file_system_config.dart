@@ -5,7 +5,7 @@ import 'user_profile_user_settings_custom_file_system_config_efs_file_system_con
 
 class UserProfileUserSettingsCustomFileSystemConfig {
   /// The default EBS storage settings for a private space. See EFS File System Config below.
-  final pulumi.Input<List<UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig>>? efsFileSystemConfigs;
+  final pulumi.Input<List<UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig>?>? efsFileSystemConfigs;
 
   /// Creates a new [UserProfileUserSettingsCustomFileSystemConfig].
   /// [efsFileSystemConfigs] The default EBS storage settings for a private space. See EFS File System Config below.

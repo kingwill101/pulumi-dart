@@ -7,11 +7,11 @@ import 'distribution_tenant_customizations_web_acl.dart';
 
 class DistributionTenantCustomizations {
   /// Certificate configuration for the tenant (maximum one).
-  final pulumi.Input<DistributionTenantCustomizationsCertificate>? certificate;
+  final pulumi.Input<DistributionTenantCustomizationsCertificate?>? certificate;
   /// Geographic restrictions configuration for the tenant (maximum one).
-  final pulumi.Input<DistributionTenantCustomizationsGeoRestriction>? geoRestriction;
+  final pulumi.Input<DistributionTenantCustomizationsGeoRestriction?>? geoRestriction;
   /// Web ACL configuration for the tenant (maximum one).
-  final pulumi.Input<DistributionTenantCustomizationsWebAcl>? webAcl;
+  final pulumi.Input<DistributionTenantCustomizationsWebAcl?>? webAcl;
 
   /// Creates a new [DistributionTenantCustomizations].
   /// [certificate] Certificate configuration for the tenant (maximum one).

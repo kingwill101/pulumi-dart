@@ -162,7 +162,7 @@ class V2Assertion extends pulumi.CustomResource {
           'aws:resiliencehub/v2Assertion:V2Assertion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     assertionId = registerOutput<String>('assertionId');
     region = registerOutput<String>('region');
@@ -175,11 +175,12 @@ class V2Assertion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2AssertionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2Assertion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -193,6 +194,21 @@ class V2Assertion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    assertionId = registerOutput<String>('assertionId');
+    region = registerOutput<String>('region');
+    serviceArn = registerOutput<String>('serviceArn');
+    text = registerOutput<String>('text');
+  }
+
+  /// Creates a typed reference to an existing [V2Assertion] resource.
+  V2Assertion.reference(String urn)
+    : super(
+        'aws:resiliencehub/v2Assertion:V2Assertion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     assertionId = registerOutput<String>('assertionId');
     region = registerOutput<String>('region');
     serviceArn = registerOutput<String>('serviceArn');

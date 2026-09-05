@@ -6,9 +6,9 @@ class PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig {
   /// ARN of the nested region switch plan.
   final pulumi.Input<String> arn;
   /// ARN of the cross-account role to assume.
-  final pulumi.Input<String>? crossAccountRole;
+  final pulumi.Input<String?>? crossAccountRole;
   /// External ID for cross-account role assumption.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig].
   /// [arn] ARN of the nested region switch plan.

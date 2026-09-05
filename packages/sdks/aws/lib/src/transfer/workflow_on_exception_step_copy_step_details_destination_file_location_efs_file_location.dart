@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationEfsFileLocation {
   /// ID of the file system, assigned by Amazon EFS.
-  final pulumi.Input<String>? fileSystemId;
+  final pulumi.Input<String?>? fileSystemId;
   /// Pathname for the folder being used by a workflow.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [WorkflowOnExceptionStepCopyStepDetailsDestinationFileLocationEfsFileLocation].
   /// [fileSystemId] ID of the file system, assigned by Amazon EFS.

@@ -212,7 +212,7 @@ class ReportDefinition extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> additionalArtifacts;
   /// A list of schema elements. Valid values are: `RESOURCES`, `SPLIT_COST_ALLOCATION_DATA`, `MANUAL_DISCOUNT_COMPATIBILITY`.
   late final pulumi.Output<List<String>> additionalSchemaElements;
-  /// The Amazon Resource Name (ARN) specifying the cur report.
+  /// ARN specifying the cur report.
   late final pulumi.Output<String> arn;
   /// Compression format for report. Valid values are: `GZIP`, `ZIP`, `Parquet`. If `Parquet` is used, then format must also be `Parquet`.
   late final pulumi.Output<String> compression;
@@ -249,10 +249,10 @@ class ReportDefinition extends pulumi.CustomResource {
           'aws:cur/reportDefinition:ReportDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalArtifacts = registerOutput<List<String>?>('additionalArtifacts');
-    additionalSchemaElements = registerOutput<List<String>>('additionalSchemaElements');
+    additionalArtifacts = registerOutput<List<String>?>('additionalArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    additionalSchemaElements = registerOutput<List<String>>('additionalSchemaElements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     compression = registerOutput<String>('compression');
     format = registerOutput<String>('format');
@@ -262,8 +262,8 @@ class ReportDefinition extends pulumi.CustomResource {
     s3Bucket = registerOutput<String>('s3Bucket');
     s3Prefix = registerOutput<String>('s3Prefix');
     s3Region = registerOutput<String>('s3Region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeUnit = registerOutput<String>('timeUnit');
   }
 
@@ -272,11 +272,12 @@ class ReportDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReportDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReportDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,8 +291,8 @@ class ReportDefinition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalArtifacts = registerOutput<List<String>?>('additionalArtifacts');
-    additionalSchemaElements = registerOutput<List<String>>('additionalSchemaElements');
+    additionalArtifacts = registerOutput<List<String>?>('additionalArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    additionalSchemaElements = registerOutput<List<String>>('additionalSchemaElements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     compression = registerOutput<String>('compression');
     format = registerOutput<String>('format');
@@ -301,8 +302,33 @@ class ReportDefinition extends pulumi.CustomResource {
     s3Bucket = registerOutput<String>('s3Bucket');
     s3Prefix = registerOutput<String>('s3Prefix');
     s3Region = registerOutput<String>('s3Region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeUnit = registerOutput<String>('timeUnit');
+  }
+
+  /// Creates a typed reference to an existing [ReportDefinition] resource.
+  ReportDefinition.reference(String urn)
+    : super(
+        'aws:cur/reportDefinition:ReportDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalArtifacts = registerOutput<List<String>?>('additionalArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    additionalSchemaElements = registerOutput<List<String>>('additionalSchemaElements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    compression = registerOutput<String>('compression');
+    format = registerOutput<String>('format');
+    refreshClosedReports = registerOutput<bool?>('refreshClosedReports');
+    reportName = registerOutput<String>('reportName');
+    reportVersioning = registerOutput<String?>('reportVersioning');
+    s3Bucket = registerOutput<String>('s3Bucket');
+    s3Prefix = registerOutput<String>('s3Prefix');
+    s3Region = registerOutput<String>('s3Region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeUnit = registerOutput<String>('timeUnit');
   }
 }

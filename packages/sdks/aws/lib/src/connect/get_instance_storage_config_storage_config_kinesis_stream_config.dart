@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceStorageConfigStorageConfigKinesisStreamConfig {
-  /// The Amazon Resource Name (ARN) of the data stream.
+  /// ARN of the data stream.
   final pulumi.Input<String> streamArn;
 
   /// Creates a new [GetInstanceStorageConfigStorageConfigKinesisStreamConfig].
-  /// [streamArn] The Amazon Resource Name (ARN) of the data stream.
+  /// [streamArn] ARN of the data stream.
   const GetInstanceStorageConfigStorageConfigKinesisStreamConfig({
     required this.streamArn,
   });

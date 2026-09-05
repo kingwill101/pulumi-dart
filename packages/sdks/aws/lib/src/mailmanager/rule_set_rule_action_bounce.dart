@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleSetRuleActionBounce {
   /// Policy applied when the action fails.
-  final pulumi.Input<String>? actionFailurePolicy;
+  final pulumi.Input<String?>? actionFailurePolicy;
   /// Diagnostic message included in the bounce.
   final pulumi.Input<String> diagnosticMessage;
   /// Human-readable bounce message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// ARN of the IAM role used to send the bounce.
   final pulumi.Input<String> roleArn;
   /// Sender address of the bounce.

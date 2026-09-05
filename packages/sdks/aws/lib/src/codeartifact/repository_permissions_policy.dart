@@ -22,11 +22,11 @@ import 'repository_permissions_policy_state.dart';
 /// });
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "*",
 ///             identifiers: ["*"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["codeartifact:ReadFromRepository"],
 ///         resources: [exampleRepository.arn],
 ///     }],
@@ -49,11 +49,11 @@ import 'repository_permissions_policy_state.dart';
 ///     repository="example",
 ///     domain=example_domain.domain)
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "*",
 ///         "identifiers": ["*"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["codeartifact:ReadFromRepository"],
 ///     "resources": [example_repository.arn],
 /// }])
@@ -93,7 +93,6 @@ import 'repository_permissions_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -105,6 +104,7 @@ import 'repository_permissions_policy_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "codeartifact:ReadFromRepository",
@@ -161,7 +161,6 @@ import 'repository_permissions_policy_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("*"),
@@ -170,6 +169,7 @@ import 'repository_permissions_policy_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("codeartifact:ReadFromRepository"),
 /// 					},
@@ -202,11 +202,11 @@ import 'repository_permissions_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "*"
 ///       identifiers = ["*"]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["codeartifact:ReadFromRepository"]
 ///     resources = [aws_codeartifact_repository.example.arn]
 ///   }
@@ -276,11 +276,11 @@ import 'repository_permissions_policy_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("*")
 ///                     .identifiers("*")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("codeartifact:ReadFromRepository")
 ///                 .resources(exampleRepository.arn())
 ///                 .build())
@@ -327,11 +327,11 @@ import 'repository_permissions_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: '*'
 ///                 identifiers:
 ///                   - '*'
+///             effect: Allow
 ///             actions:
 ///               - codeartifact:ReadFromRepository
 ///             resources:
@@ -345,7 +345,7 @@ import 'repository_permissions_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `resourceArn` (String) Amazon Resource Name (ARN) of the CodeArtifact repository.
+/// - `resourceArn` (String) ARN of the CodeArtifact repository.
 ///
 ///
 /// Using `pulumi import`, import CodeArtifact Repository Permissions Policies using the CodeArtifact Repository ARN. For example:
@@ -381,7 +381,7 @@ class RepositoryPermissionsPolicy extends pulumi.CustomResource {
           'aws:codeartifact/repositoryPermissionsPolicy:RepositoryPermissionsPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     domain = registerOutput<String>('domain');
     domainOwner = registerOutput<String>('domainOwner');
@@ -397,11 +397,12 @@ class RepositoryPermissionsPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryPermissionsPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RepositoryPermissionsPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -415,6 +416,24 @@ class RepositoryPermissionsPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    domain = registerOutput<String>('domain');
+    domainOwner = registerOutput<String>('domainOwner');
+    policyDocument = registerOutput<String>('policyDocument');
+    policyRevision = registerOutput<String>('policyRevision');
+    region = registerOutput<String>('region');
+    repository = registerOutput<String>('repository');
+    resourceArn = registerOutput<String>('resourceArn');
+  }
+
+  /// Creates a typed reference to an existing [RepositoryPermissionsPolicy] resource.
+  RepositoryPermissionsPolicy.reference(String urn)
+    : super(
+        'aws:codeartifact/repositoryPermissionsPolicy:RepositoryPermissionsPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domain = registerOutput<String>('domain');
     domainOwner = registerOutput<String>('domainOwner');
     policyDocument = registerOutput<String>('policyDocument');

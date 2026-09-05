@@ -142,3 +142,14 @@ Future<GetVirtualClusterResult> getVirtualCluster(
   );
   return GetVirtualClusterResult.fromMap(result);
 }
+
+pulumi.Output<GetVirtualClusterResult> getVirtualClusterOutput(
+  GetVirtualClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:emrcontainers/getVirtualCluster:getVirtualCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualClusterResult.fromMap);
+}

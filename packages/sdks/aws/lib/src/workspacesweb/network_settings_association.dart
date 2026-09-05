@@ -15,11 +15,11 @@ import 'network_settings_association_state.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const available = aws.getAvailabilityZones({
-///     state: "available",
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["opt-in-not-required"],
 ///     }],
+///     state: "available",
 /// });
 /// const example = new aws.ec2.Vpc("example", {
 ///     cidrBlock: "10.0.0.0/16",
@@ -75,11 +75,11 @@ import 'network_settings_association_state.dart';
 /// import pulumi_aws as aws
 /// import pulumi_std as std
 ///
-/// available = aws.get_availability_zones(state="available",
-///     filters=[{
+/// available = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["opt-in-not-required"],
-///     }])
+///     }],
+///     state="available")
 /// example = aws.ec2.Vpc("example",
 ///     cidr_block="10.0.0.0/16",
 ///     tags={
@@ -130,7 +130,6 @@ import 'network_settings_association_state.dart';
 /// {
 ///     var available = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         State = "available",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -142,6 +141,7 @@ import 'network_settings_association_state.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "available",
 ///     });
 ///
 ///     var example = new Aws.Ec2.Vpc("example", new()
@@ -231,7 +231,6 @@ import 'network_settings_association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// 			State: pulumi.StringRef("available"),
 /// 			Filters: []aws.GetAvailabilityZonesFilter{
 /// 				{
 /// 					Name: "opt-in-status",
@@ -240,6 +239,7 @@ import 'network_settings_association_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			State: pulumi.StringRef("available"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -334,11 +334,11 @@ import 'network_settings_association_state.dart';
 /// }
 ///
 /// data "aws_getavailabilityzones" "available" {
-///   state = "available"
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
+///   state = "available"
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
@@ -415,11 +415,11 @@ import 'network_settings_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .state("available")
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("opt-in-not-required")
 ///                 .build())
+///             .state("available")
 ///             .build());
 ///
 ///         var example = new Vpc("example", VpcArgs.builder()
@@ -494,7 +494,7 @@ class NetworkSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/networkSettingsAssociation:NetworkSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     networkSettingsArn = registerOutput<String>('networkSettingsArn');
     portalArn = registerOutput<String>('portalArn');
@@ -506,11 +506,12 @@ class NetworkSettingsAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkSettingsAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkSettingsAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -524,6 +525,20 @@ class NetworkSettingsAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    networkSettingsArn = registerOutput<String>('networkSettingsArn');
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [NetworkSettingsAssociation] resource.
+  NetworkSettingsAssociation.reference(String urn)
+    : super(
+        'aws:workspacesweb/networkSettingsAssociation:NetworkSettingsAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     networkSettingsArn = registerOutput<String>('networkSettingsArn');
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');

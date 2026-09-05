@@ -10,17 +10,17 @@ import 'budget_filter_expression_not_tags.dart';
 
 class BudgetFilterExpressionNot {
   /// (Optional) A list of filter expressions to combine with AND logic. Each `and` block is one operand and must itself contain exactly one root.
-  final pulumi.Input<List<BudgetFilterExpressionNotAnd>>? ands;
+  final pulumi.Input<List<BudgetFilterExpressionNotAnd>?>? ands;
   /// (Optional) A Cost Category Filter block.
-  final pulumi.Input<BudgetFilterExpressionNotCostCategories>? costCategories;
+  final pulumi.Input<BudgetFilterExpressionNotCostCategories?>? costCategories;
   /// (Optional) A Dimension Filter block.
-  final pulumi.Input<BudgetFilterExpressionNotDimensions>? dimensions;
+  final pulumi.Input<BudgetFilterExpressionNotDimensions?>? dimensions;
   /// (Optional) A single filter expression to negate. Must contain exactly one root.
-  final pulumi.Input<BudgetFilterExpressionNotNot>? not;
+  final pulumi.Input<BudgetFilterExpressionNotNot?>? not;
   /// (Optional) A list of filter expressions to combine with OR logic. Each `or` block is one operand and must itself contain exactly one root.
-  final pulumi.Input<List<BudgetFilterExpressionNotOr>>? ors;
+  final pulumi.Input<List<BudgetFilterExpressionNotOr>?>? ors;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<BudgetFilterExpressionNotTags>? tags;
+  final pulumi.Input<BudgetFilterExpressionNotTags?>? tags;
 
   /// Creates a new [BudgetFilterExpressionNot].
   /// [ands] (Optional) A list of filter expressions to combine with AND logic. Each `and` block is one operand and must itself contain exactly one root.

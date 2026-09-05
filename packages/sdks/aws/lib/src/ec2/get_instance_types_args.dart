@@ -9,9 +9,9 @@ import 'get_instance_types_filter.dart';
 /// {@macro pulumi_ec2_get_instance_types_get_instance_types_args_doc}
 class GetInstanceTypesArgs {
   /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypes.html) for supported filters. Detailed below.
-  final pulumi.Input<List<GetInstanceTypesFilter>>? filters;
+  final pulumi.Input<List<GetInstanceTypesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetInstanceTypesArgs].
   /// [filters] One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypes.html) for supported filters. Detailed below.

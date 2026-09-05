@@ -135,6 +135,17 @@ Future<GetExperienceResult> getExperience(
   return GetExperienceResult.fromMap(result);
 }
 
+pulumi.Output<GetExperienceResult> getExperienceOutput(
+  GetExperienceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kendra/getExperience:getExperience',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExperienceResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Kendra Faq.
 ///
 /// ## Example Usage
@@ -260,6 +271,17 @@ Future<GetFaqResult> getFaq(
   return GetFaqResult.fromMap(result);
 }
 
+pulumi.Output<GetFaqResult> getFaqOutput(
+  GetFaqArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kendra/getFaq:getFaq',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFaqResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Kendra Index.
 ///
 /// ## Example Usage
@@ -376,6 +398,17 @@ Future<GetIndexResult> getIndex(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIndexResult.fromMap(result);
+}
+
+pulumi.Output<GetIndexResult> getIndexOutput(
+  GetIndexArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kendra/getIndex:getIndex',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIndexResult.fromMap);
 }
 
 /// Provides details about a specific Amazon Kendra block list used for query suggestions for an index.
@@ -503,6 +536,17 @@ Future<GetQuerySuggestionsBlockListResult> getQuerySuggestionsBlockList(
   return GetQuerySuggestionsBlockListResult.fromMap(result);
 }
 
+pulumi.Output<GetQuerySuggestionsBlockListResult> getQuerySuggestionsBlockListOutput(
+  GetQuerySuggestionsBlockListArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kendra/getQuerySuggestionsBlockList:getQuerySuggestionsBlockList',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQuerySuggestionsBlockListResult.fromMap);
+}
+
 /// Provides details about a specific Amazon Kendra Thesaurus.
 ///
 /// ## Example Usage
@@ -626,4 +670,15 @@ Future<GetThesaurusResult> getThesaurus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetThesaurusResult.fromMap(result);
+}
+
+pulumi.Output<GetThesaurusResult> getThesaurusOutput(
+  GetThesaurusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kendra/getThesaurus:getThesaurus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetThesaurusResult.fromMap);
 }

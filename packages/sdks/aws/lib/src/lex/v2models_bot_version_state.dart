@@ -7,17 +7,17 @@ import 'v2models_bot_version_timeouts.dart';
 /// Input properties used for looking up and filtering V2modelsBotVersion resources.
 class V2modelsBotVersionState {
   /// Idientifier of the bot to create the version for.
-  final pulumi.Input<String>? botId;
+  final pulumi.Input<String?>? botId;
   /// Version number assigned to the version.
-  final pulumi.Input<String>? botVersion;
+  final pulumi.Input<String?>? botVersion;
   /// A description of the version. Use the description to help identify the version in lists.
   /// * `sourceBotVersion` - (Required) The version of a bot used for a bot locale. Valid values: `DRAFT`, a numeric version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the locales that Amazon Lex adds to this version. You can choose the draft version or any other previously published version for each locale. When you specify a source version, the locale data is copied from the source version to the new version.
-  final pulumi.Input<Map<String, V2modelsBotVersionLocaleSpecification>>? localeSpecification;
+  final pulumi.Input<Map<String, V2modelsBotVersionLocaleSpecification>?>? localeSpecification;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<V2modelsBotVersionTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<V2modelsBotVersionTimeouts?>? timeouts;
 
   /// Creates a new [V2modelsBotVersionState].
   /// [botId] Idientifier of the bot to create the version for.

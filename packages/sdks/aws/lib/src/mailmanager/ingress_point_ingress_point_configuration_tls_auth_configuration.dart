@@ -5,7 +5,7 @@ import 'ingress_point_ingress_point_configuration_tls_auth_configuration_trust_s
 
 class IngressPointIngressPointConfigurationTlsAuthConfiguration {
   /// Trust store used to validate client certificates. See `trustStore` Block for details.
-  final pulumi.Input<IngressPointIngressPointConfigurationTlsAuthConfigurationTrustStore>? trustStore;
+  final pulumi.Input<IngressPointIngressPointConfigurationTlsAuthConfigurationTrustStore?>? trustStore;
 
   /// Creates a new [IngressPointIngressPointConfigurationTlsAuthConfiguration].
   /// [trustStore] Trust store used to validate client certificates. See `trustStore` Block for details.

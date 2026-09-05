@@ -16,15 +16,15 @@ class VectorsIndexArgs {
   /// Distance metric to be used for similarity search. Valid values: `cosine`, `euclidean`.
   final pulumi.Input<String> distanceMetric;
   /// Block for encryption configuration for the vector index. See `encryptionConfiguration` Block below.
-  final pulumi.Input<List<VectorsIndexEncryptionConfiguration>>? encryptionConfigurations;
+  final pulumi.Input<List<VectorsIndexEncryptionConfiguration>?>? encryptionConfigurations;
   /// Name of the vector index.
   final pulumi.Input<String> indexName;
   /// Block for metadata configuration for the vector index. See `metadataConfiguration` Block below.
-  final pulumi.Input<VectorsIndexMetadataConfiguration>? metadataConfiguration;
+  final pulumi.Input<VectorsIndexMetadataConfiguration?>? metadataConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the vector bucket for the vector index.
   ///
   /// The following arguments are optional:
@@ -69,7 +69,7 @@ class VectorsIndexArgs {
   factory VectorsIndexArgs.fromMap(Map<String, dynamic> map) {
     return VectorsIndexArgs(
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
-      dimension: pulumi.Input.fromValue(map['dimension'] as int),
+      dimension: pulumi.Input.fromValue((map['dimension'] as num).toInt()),
       distanceMetric: pulumi.Input.fromValue(map['distanceMetric'] as String),
       encryptionConfigurations: (() { final guardedValue = map['encryptionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(guardedValue, (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       indexName: pulumi.Input.fromValue(map['indexName'] as String),

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// See https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
-enum CannedAcl {
+enum CannedAcl implements pulumi.PulumiEnum<String> {
   private("private"),
   publicRead("public-read"),
   publicReadWrite("public-read-write"),
@@ -10,6 +12,7 @@ enum CannedAcl {
   logDeliveryWrite("log-delivery-write");
 
   const CannedAcl(this.wireValue);
+  @override
   final String wireValue;
 
   static CannedAcl fromValue(String value) {

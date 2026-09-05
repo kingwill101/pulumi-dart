@@ -15,18 +15,18 @@ import 's3_access_point_attachment_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.fsx.S3AccessPointAttachment("example", {
-///     name: "example-attachment",
-///     type: "OPENZFS",
 ///     openzfsConfiguration: {
-///         volumeId: exampleAwsFsxOpenzfsVolume.id,
 ///         fileSystemIdentity: {
-///             type: "POSIX",
 ///             posixUser: {
 ///                 uid: 1001,
 ///                 gid: 1001,
 ///             },
+///             type: "POSIX",
 ///         },
+///         volumeId: exampleAwsFsxOpenzfsVolume.id,
 ///     },
+///     name: "example-attachment",
+///     type: "OPENZFS",
 /// });
 /// ```
 /// ```python
@@ -34,18 +34,18 @@ import 's3_access_point_attachment_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.fsx.S3AccessPointAttachment("example",
-///     name="example-attachment",
-///     type="OPENZFS",
 ///     openzfs_configuration={
-///         "volume_id": example_aws_fsx_openzfs_volume["id"],
 ///         "file_system_identity": {
-///             "type": "POSIX",
 ///             "posix_user": {
 ///                 "uid": 1001,
 ///                 "gid": 1001,
 ///             },
+///             "type": "POSIX",
 ///         },
-///     })
+///         "volume_id": example_aws_fsx_openzfs_volume["id"],
+///     },
+///     name="example-attachment",
+///     type="OPENZFS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -57,21 +57,21 @@ import 's3_access_point_attachment_timeouts.dart';
 /// {
 ///     var example = new Aws.Fsx.S3AccessPointAttachment("example", new()
 ///     {
-///         Name = "example-attachment",
-///         Type = "OPENZFS",
 ///         OpenzfsConfiguration = new Aws.Fsx.Inputs.S3AccessPointAttachmentOpenzfsConfigurationArgs
 ///         {
-///             VolumeId = exampleAwsFsxOpenzfsVolume.Id,
 ///             FileSystemIdentity = new Aws.Fsx.Inputs.S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityArgs
 ///             {
-///                 Type = "POSIX",
 ///                 PosixUser = new Aws.Fsx.Inputs.S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUserArgs
 ///                 {
 ///                     Uid = 1001,
 ///                     Gid = 1001,
 ///                 },
+///                 Type = "POSIX",
 ///             },
+///             VolumeId = exampleAwsFsxOpenzfsVolume.Id,
 ///         },
+///         Name = "example-attachment",
+///         Type = "OPENZFS",
 ///     });
 ///
 /// });
@@ -87,18 +87,18 @@ import 's3_access_point_attachment_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := fsx.NewS3AccessPointAttachment(ctx, "example", &fsx.S3AccessPointAttachmentArgs{
-/// 			Name: pulumi.String("example-attachment"),
-/// 			Type: pulumi.String("OPENZFS"),
 /// 			OpenzfsConfiguration: &fsx.S3AccessPointAttachmentOpenzfsConfigurationArgs{
-/// 				VolumeId: pulumi.Any(exampleAwsFsxOpenzfsVolume.Id),
 /// 				FileSystemIdentity: &fsx.S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityArgs{
-/// 					Type: pulumi.String("POSIX"),
 /// 					PosixUser: &fsx.S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUserArgs{
 /// 						Uid: pulumi.Int(1001),
 /// 						Gid: pulumi.Int(1001),
 /// 					},
+/// 					Type: pulumi.String("POSIX"),
 /// 				},
+/// 				VolumeId: pulumi.Any(exampleAwsFsxOpenzfsVolume.Id),
 /// 			},
+/// 			Name: pulumi.String("example-attachment"),
+/// 			Type: pulumi.String("OPENZFS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -117,18 +117,18 @@ import 's3_access_point_attachment_timeouts.dart';
 /// }
 ///
 /// resource "aws_fsx_s3accesspointattachment" "example" {
-///   name = "example-attachment"
-///   type = "OPENZFS"
 ///   openzfs_configuration = {
-///     volume_id = exampleAwsFsxOpenzfsVolume.id
 ///     file_system_identity = {
-///       type = "POSIX"
 ///       posix_user = {
 ///         uid = 1001
 ///         gid = 1001
 ///       }
+///       type = "POSIX"
 ///     }
+///     volume_id = exampleAwsFsxOpenzfsVolume.id
 ///   }
+///   name = "example-attachment"
+///   type = "OPENZFS"
 /// }
 /// ```
 /// ```java
@@ -156,18 +156,18 @@ import 's3_access_point_attachment_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new S3AccessPointAttachment("example", S3AccessPointAttachmentArgs.builder()
-///             .name("example-attachment")
-///             .type("OPENZFS")
 ///             .openzfsConfiguration(S3AccessPointAttachmentOpenzfsConfigurationArgs.builder()
-///                 .volumeId(exampleAwsFsxOpenzfsVolume.id())
 ///                 .fileSystemIdentity(S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityArgs.builder()
-///                     .type("POSIX")
 ///                     .posixUser(S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUserArgs.builder()
 ///                         .uid(1001)
 ///                         .gid(1001)
 ///                         .build())
+///                     .type("POSIX")
 ///                     .build())
+///                 .volumeId(exampleAwsFsxOpenzfsVolume.id())
 ///                 .build())
+///             .name("example-attachment")
+///             .type("OPENZFS")
 ///             .build());
 ///
 ///     }
@@ -178,15 +178,15 @@ import 's3_access_point_attachment_timeouts.dart';
 ///   example:
 ///     type: aws:fsx:S3AccessPointAttachment
 ///     properties:
-///       name: example-attachment
-///       type: OPENZFS
 ///       openzfsConfiguration:
-///         volumeId: ${exampleAwsFsxOpenzfsVolume.id}
 ///         fileSystemIdentity:
-///           type: POSIX
 ///           posixUser:
 ///             uid: 1001
 ///             gid: 1001
+///           type: POSIX
+///         volumeId: ${exampleAwsFsxOpenzfsVolume.id}
+///       name: example-attachment
+///       type: OPENZFS
 /// ```
 ///
 ///
@@ -228,7 +228,7 @@ class S3AccessPointAttachment extends pulumi.CustomResource {
           'aws:fsx/s3AccessPointAttachment:S3AccessPointAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     openzfsConfiguration = registerOutput<S3AccessPointAttachmentOpenzfsConfiguration>('openzfsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentOpenzfsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -245,11 +245,12 @@ class S3AccessPointAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     S3AccessPointAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return S3AccessPointAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -263,6 +264,25 @@ class S3AccessPointAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    openzfsConfiguration = registerOutput<S3AccessPointAttachmentOpenzfsConfiguration>('openzfsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentOpenzfsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    s3AccessPoint = registerOutput<S3AccessPointAttachmentS3AccessPoint?>('s3AccessPoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentS3AccessPoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    s3AccessPointAlias = registerOutput<String>('s3AccessPointAlias');
+    s3AccessPointArn = registerOutput<String>('s3AccessPointArn');
+    timeouts = registerOutput<S3AccessPointAttachmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [S3AccessPointAttachment] resource.
+  S3AccessPointAttachment.reference(String urn)
+    : super(
+        'aws:fsx/s3AccessPointAttachment:S3AccessPointAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     openzfsConfiguration = registerOutput<S3AccessPointAttachmentOpenzfsConfiguration>('openzfsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentOpenzfsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

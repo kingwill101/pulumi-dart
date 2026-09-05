@@ -3,7 +3,7 @@ import 'route_server_propagation_args.dart';
 import 'route_server_propagation_state.dart';
 import 'route_server_propagation_timeouts.dart';
 
-/// Provides a resource for managing propagation between VPC (Virtual Private Cloud) route server and a route table.
+/// Provides a resource for managing propagation between VPC route server and a route table.
 ///
 /// ## Example Usage
 ///
@@ -119,7 +119,7 @@ import 'route_server_propagation_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, to  to import VPC (Virtual Private Cloud) Route Server Propagation using the associated resource ID and route table ID separated by a comma (,). For example:
+/// Using `pulumi import`, to  to import VPC Route Server Propagation using the associated resource ID and route table ID separated by a comma (,). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpc/routeServerPropagation:RouteServerPropagation example rs-12345678,rtb-656c65616e6f72
@@ -147,7 +147,7 @@ class RouteServerPropagation extends pulumi.CustomResource {
           'aws:vpc/routeServerPropagation:RouteServerPropagation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');
@@ -160,11 +160,12 @@ class RouteServerPropagation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteServerPropagationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteServerPropagation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -178,6 +179,21 @@ class RouteServerPropagation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    routeServerId = registerOutput<String>('routeServerId');
+    routeTableId = registerOutput<String>('routeTableId');
+    timeouts = registerOutput<RouteServerPropagationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerPropagationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [RouteServerPropagation] resource.
+  RouteServerPropagation.reference(String urn)
+    : super(
+        'aws:vpc/routeServerPropagation:RouteServerPropagation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');
     routeTableId = registerOutput<String>('routeTableId');

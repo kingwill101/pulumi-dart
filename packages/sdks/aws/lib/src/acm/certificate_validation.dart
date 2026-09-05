@@ -145,6 +145,89 @@ import 'certificate_validation_state.dart';
 ///
 /// });
 /// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+/// 	"sort"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/acm"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lb"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/route53"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// exampleCertificate, err := acm.NewCertificate(ctx, "example", &acm.CertificateArgs{
+/// DomainName: pulumi.String("example.com"),
+/// ValidationMethod: pulumi.String("DNS"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// example, err := route53.LookupZone(ctx, &route53.LookupZoneArgs{
+/// Name: pulumi.StringRef("example.com"),
+/// PrivateZone: pulumi.BoolRef(false),
+/// }, nil);
+/// if err != nil {
+/// return err
+/// }
+/// forResult0 := map[string]map[string]interface{}{}
+/// for _, dvo := range domainValidationOptions {
+/// forResult0[dvo.DomainName] = map[string]interface{}{
+/// "name": dvo.ResourceRecordName,
+/// "record": dvo.ResourceRecordValue,
+/// "type": dvo.ResourceRecordType,
+/// }
+/// }
+/// var exampleRecord []*route53.Record
+/// for key0, val0 := range map[string]map[string]interface{}(exampleCertificate.DomainValidationOptions.ApplyT(func(domainValidationOptions []acm.CertificateDomainValidationOption) (map[string]map[string]interface{}, error) {
+/// return forResult0, nil
+/// }).(pulumi.MapOutput)) {
+/// __res, err := route53.NewRecord(ctx, fmt.Sprintf("example-%v", key0), &route53.RecordArgs{
+/// AllowOverwrite: pulumi.Bool(true),
+/// Name: pulumi.String(val0),
+/// Records: pulumi.StringArray{
+/// pulumi.String(val0),
+/// },
+/// Ttl: pulumi.Int(60),
+/// Type: route53.RecordType(val0),
+/// ZoneId: pulumi.String(example.ZoneId),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// exampleRecord = append(exampleRecord, __res)
+/// }
+/// var forResult1 []string
+/// forRange1 := exampleRecord
+/// forKeys1 := make([]string, 0, len(forRange1))
+/// for forKey1 := range forRange1 {
+/// forKeys1 = append(forKeys1, forKey1)
+/// }
+/// sort.Strings(forKeys1)
+/// for _, forKey1 := range forKeys1 {
+/// record := forRange1[forKey1]
+/// forResult1 = append(forResult1, record.Fqdn)
+/// }
+/// exampleCertificateValidation, err := acm.NewCertificateValidation(ctx, "example", &acm.CertificateValidationArgs{
+/// CertificateArn: exampleCertificate.Arn,
+/// ValidationRecordFqdns: exampleRecord.ApplyT(func(%!v(PANIC=Format method: fatal: An assertion has failed: tok: )).(pulumi.StringArrayOutput),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = lb.NewListener(ctx, "example", &lb.ListenerArgs{
+/// CertificateArn: exampleCertificateValidation.CertificateArn,
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
 /// ```hcl
 /// pulumi {
 ///   required_providers {
@@ -351,6 +434,101 @@ import 'certificate_validation_state.dart';
 ///
 /// });
 /// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+/// 	"sort"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/acm"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lb"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/route53"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// example, err := acm.NewCertificate(ctx, "example", &acm.CertificateArgs{
+/// DomainName: pulumi.String("example.com"),
+/// SubjectAlternativeNames: pulumi.StringArray{
+/// pulumi.String("www.example.com"),
+/// pulumi.String("example.org"),
+/// },
+/// ValidationMethod: pulumi.String("DNS"),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// exampleCom, err := route53.LookupZone(ctx, &route53.LookupZoneArgs{
+/// Name: pulumi.StringRef("example.com"),
+/// PrivateZone: pulumi.BoolRef(false),
+/// }, nil);
+/// if err != nil {
+/// return err
+/// }
+/// exampleOrg, err := route53.LookupZone(ctx, &route53.LookupZoneArgs{
+/// Name: pulumi.StringRef("example.org"),
+/// PrivateZone: pulumi.BoolRef(false),
+/// }, nil);
+/// if err != nil {
+/// return err
+/// }
+/// forResult0 := map[string]map[string]interface{}{}
+/// for _, dvo := range domainValidationOptions {
+/// forResult0[dvo.DomainName] = map[string]interface{}{
+/// "name": dvo.ResourceRecordName,
+/// "record": dvo.ResourceRecordValue,
+/// "type": dvo.ResourceRecordType,
+/// "zoneId": %!v(PANIC=Format method: fatal: A failure has occurred: unlowered conditional expression @ example.pp:23,16-87),
+/// }
+/// }
+/// var exampleRecord []*route53.Record
+/// for key0, val0 := range map[string]map[string]interface{}(example.DomainValidationOptions.ApplyT(func(domainValidationOptions []acm.CertificateDomainValidationOption) (map[string]map[string]interface{}, error) {
+/// return forResult0, nil
+/// }).(pulumi.MapOutput)) {
+/// __res, err := route53.NewRecord(ctx, fmt.Sprintf("example-%v", key0), &route53.RecordArgs{
+/// AllowOverwrite: pulumi.Bool(true),
+/// Name: pulumi.String(val0),
+/// Records: pulumi.StringArray{
+/// pulumi.String(val0),
+/// },
+/// Ttl: pulumi.Int(60),
+/// Type: route53.RecordType(val0),
+/// ZoneId: pulumi.String(val0),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// exampleRecord = append(exampleRecord, __res)
+/// }
+/// var forResult1 []string
+/// forRange1 := exampleRecord
+/// forKeys1 := make([]string, 0, len(forRange1))
+/// for forKey1 := range forRange1 {
+/// forKeys1 = append(forKeys1, forKey1)
+/// }
+/// sort.Strings(forKeys1)
+/// for _, forKey1 := range forKeys1 {
+/// record := forRange1[forKey1]
+/// forResult1 = append(forResult1, record.Fqdn)
+/// }
+/// exampleCertificateValidation, err := acm.NewCertificateValidation(ctx, "example", &acm.CertificateValidationArgs{
+/// CertificateArn: example.Arn,
+/// ValidationRecordFqdns: exampleRecord.ApplyT(func(%!v(PANIC=Format method: fatal: An assertion has failed: tok: )).(pulumi.StringArrayOutput),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// _, err = lb.NewListener(ctx, "example", &lb.ListenerArgs{
+/// CertificateArn: exampleCertificateValidation.CertificateArn,
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
 /// ```hcl
 /// pulumi {
 ///   required_providers {
@@ -555,11 +733,11 @@ class CertificateValidation extends pulumi.CustomResource {
           'aws:acm/certificateValidation:CertificateValidation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     certificateArn = registerOutput<String>('certificateArn');
     region = registerOutput<String>('region');
-    validationRecordFqdns = registerOutput<List<String>?>('validationRecordFqdns');
+    validationRecordFqdns = registerOutput<List<String>?>('validationRecordFqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [CertificateValidation] resource's state with the given [name] and [id].
@@ -567,11 +745,12 @@ class CertificateValidation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateValidationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateValidation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -587,6 +766,20 @@ class CertificateValidation extends pulumi.CustomResource {
         ) {
     certificateArn = registerOutput<String>('certificateArn');
     region = registerOutput<String>('region');
-    validationRecordFqdns = registerOutput<List<String>?>('validationRecordFqdns');
+    validationRecordFqdns = registerOutput<List<String>?>('validationRecordFqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CertificateValidation] resource.
+  CertificateValidation.reference(String urn)
+    : super(
+        'aws:acm/certificateValidation:CertificateValidation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateArn = registerOutput<String>('certificateArn');
+    region = registerOutput<String>('region');
+    validationRecordFqdns = registerOutput<List<String>?>('validationRecordFqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationConditionCondition {
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   /// A name for the flow.
   final pulumi.Input<String> name;
 

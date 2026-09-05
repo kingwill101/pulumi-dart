@@ -6,7 +6,7 @@ import 'web_acl_rule_statement_rate_based_statement_custom_key_cookie_text_trans
 class WebAclRuleStatementRateBasedStatementCustomKeyCookie {
   /// Name of the rule. Must be unique within the Web ACL.
   final pulumi.Input<String> name;
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>>? textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyCookie].
   /// [name] Name of the rule. Must be unique within the Web ACL.

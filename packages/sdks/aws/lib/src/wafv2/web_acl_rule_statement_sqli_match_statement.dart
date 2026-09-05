@@ -5,10 +5,10 @@ import 'web_acl_rule_statement_sqli_match_statement_field_to_match.dart';
 import 'web_acl_rule_statement_sqli_match_statement_text_transformation.dart';
 
 class WebAclRuleStatementSqliMatchStatement {
-  final pulumi.Input<WebAclRuleStatementSqliMatchStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<WebAclRuleStatementSqliMatchStatementFieldToMatch?>? fieldToMatch;
   /// Sensitivity level for detecting SQL injection attacks. Valid values: `HIGH`, `LOW`.
-  final pulumi.Input<String>? sensitivityLevel;
-  final pulumi.Input<List<WebAclRuleStatementSqliMatchStatementTextTransformation>>? textTransformations;
+  final pulumi.Input<String?>? sensitivityLevel;
+  final pulumi.Input<List<WebAclRuleStatementSqliMatchStatementTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementSqliMatchStatement].
   /// [fieldToMatch] Optional.

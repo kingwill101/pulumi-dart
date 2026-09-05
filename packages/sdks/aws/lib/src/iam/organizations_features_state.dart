@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OrganizationsFeatures resources.
 class OrganizationsFeaturesState {
   /// List of IAM features to enable. Valid values are `RootCredentialsManagement` and `RootSessions`.
-  final pulumi.Input<List<String>>? enabledFeatures;
+  final pulumi.Input<List<String>?>? enabledFeatures;
 
   /// Creates a new [OrganizationsFeaturesState].
   /// [enabledFeatures] List of IAM features to enable. Valid values are `RootCredentialsManagement` and `RootSessions`.

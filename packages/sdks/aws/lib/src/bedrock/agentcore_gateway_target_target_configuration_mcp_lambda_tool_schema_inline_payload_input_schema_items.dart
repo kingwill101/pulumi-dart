@@ -6,11 +6,11 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inl
 
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaItems {
   /// Description of the array items.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Nested items definition for arrays of arrays.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaItemsItems>? items;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaItemsItems?>? items;
   /// Set of property definitions for arrays of objects. See `property` below.
-  final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaItemsProperty>>? properties;
+  final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaItemsProperty>?>? properties;
   /// Data type of the array items.
   final pulumi.Input<String> type;
 

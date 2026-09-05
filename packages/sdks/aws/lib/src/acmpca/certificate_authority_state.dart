@@ -7,39 +7,39 @@ import 'certificate_authority_revocation_configuration.dart';
 /// Input properties used for looking up and filtering CertificateAuthority resources.
 class CertificateAuthorityState {
   /// ARN of the certificate authority.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Base64-encoded certificate authority (CA) certificate. Only available after the certificate authority certificate has been imported.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// Nested argument containing algorithms and certificate subject information. Defined below.
-  final pulumi.Input<CertificateAuthorityCertificateAuthorityConfiguration>? certificateAuthorityConfiguration;
+  final pulumi.Input<CertificateAuthorityCertificateAuthorityConfiguration?>? certificateAuthorityConfiguration;
   /// Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. Only available after the certificate authority certificate has been imported.
-  final pulumi.Input<String>? certificateChain;
+  final pulumi.Input<String?>? certificateChain;
   /// The base64 PEM-encoded certificate signing request (CSR) for your private CA certificate.
-  final pulumi.Input<String>? certificateSigningRequest;
+  final pulumi.Input<String?>? certificateSigningRequest;
   /// Whether the certificate authority is enabled or disabled. Defaults to `true`. Can only be disabled if the CA is in an `ACTIVE` state.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Cryptographic key management compliance standard used for handling CA keys. Defaults to `FIPS_140_2_LEVEL_3_OR_HIGHER`. Valid values: `FIPS_140_2_LEVEL_3_OR_HIGHER` and `FIPS_140_2_LEVEL_2_OR_HIGHER`. Supported standard for each region can be found in the [Storage and security compliance of AWS Private CA private keys Documentation](https://docs.aws.amazon.com/privateca/latest/userguide/data-protection.html#private-keys).
-  final pulumi.Input<String>? keyStorageSecurityStandard;
+  final pulumi.Input<String?>? keyStorageSecurityStandard;
   /// Date and time after which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
-  final pulumi.Input<String>? notAfter;
+  final pulumi.Input<String?>? notAfter;
   /// Date and time before which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
-  final pulumi.Input<String>? notBefore;
+  final pulumi.Input<String?>? notBefore;
   /// Number of days to make a CA restorable after it has been deleted, must be between 7 to 30 days, with default to 30 days.
-  final pulumi.Input<int>? permanentDeletionTimeInDays;
+  final pulumi.Input<int?>? permanentDeletionTimeInDays;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Nested argument containing revocation configuration. Defined below.
-  final pulumi.Input<CertificateAuthorityRevocationConfiguration>? revocationConfiguration;
+  final pulumi.Input<CertificateAuthorityRevocationConfiguration?>? revocationConfiguration;
   /// Serial number of the certificate authority. Only available after the certificate authority certificate has been imported.
-  final pulumi.Input<String>? serial;
+  final pulumi.Input<String?>? serial;
   /// Key-value map of user-defined tags that are attached to the certificate authority. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Type of the certificate authority. Defaults to `SUBORDINATE`. Valid values: `ROOT` and `SUBORDINATE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly. Short-lived certificate validity is limited to seven days. Defaults to `GENERAL_PURPOSE`. Valid values: `GENERAL_PURPOSE` and `SHORT_LIVED_CERTIFICATE`.
-  final pulumi.Input<String>? usageMode;
+  final pulumi.Input<String?>? usageMode;
 
   /// Creates a new [CertificateAuthorityState].
   /// [arn] ARN of the certificate authority.
@@ -112,7 +112,7 @@ class CertificateAuthorityState {
       keyStorageSecurityStandard: (() { final guardedValue = map['keyStorageSecurityStandard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notAfter: (() { final guardedValue = map['notAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notBefore: (() { final guardedValue = map['notBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      permanentDeletionTimeInDays: (() { final guardedValue = map['permanentDeletionTimeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      permanentDeletionTimeInDays: (() { final guardedValue = map['permanentDeletionTimeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       revocationConfiguration: (() { final guardedValue = map['revocationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateAuthorityRevocationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serial: (() { final guardedValue = map['serial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

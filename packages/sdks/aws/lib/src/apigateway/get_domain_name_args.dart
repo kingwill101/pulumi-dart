@@ -10,11 +10,11 @@ class GetDomainNameArgs {
   /// Fully-qualified domain name to look up. If no domain name is found, an error will be returned.
   final pulumi.Input<String> domainName;
   /// Identifier for the domain name resource. Supported only for private custom domain names.
-  final pulumi.Input<String>? domainNameId;
+  final pulumi.Input<String?>? domainNameId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of tags for the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetDomainNameArgs].
   /// [domainName] Fully-qualified domain name to look up. If no domain name is found, an error will be returned.

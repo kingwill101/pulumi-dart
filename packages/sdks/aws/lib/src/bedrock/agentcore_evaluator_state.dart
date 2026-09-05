@@ -7,34 +7,34 @@ import 'agentcore_evaluator_timeouts.dart';
 /// Input properties used for looking up and filtering AgentcoreEvaluator resources.
 class AgentcoreEvaluatorState {
   /// Timestamp when the evaluator was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Description of the evaluator. Length 1–200.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ARN of the evaluator.
-  final pulumi.Input<String>? evaluatorArn;
+  final pulumi.Input<String?>? evaluatorArn;
   /// Configuration that defines how the evaluator assesses agent performance. See `evaluatorConfig` below.
-  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfig>? evaluatorConfig;
+  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfig?>? evaluatorConfig;
   /// Unique identifier of the evaluator.
-  final pulumi.Input<String>? evaluatorId;
+  final pulumi.Input<String?>? evaluatorId;
   /// Name of the evaluator. Must match the pattern `^[a-zA-Z][a-zA-Z0-9_]{0,47}$`.
-  final pulumi.Input<String>? evaluatorName;
+  final pulumi.Input<String?>? evaluatorName;
   /// ARN of a customer-managed KMS key used to encrypt the evaluator's sensitive data. Only symmetric encryption keys are supported.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Evaluation level that determines the scope of evaluation. Valid values: `TOOL_CALL`, `TRACE`, `SESSION`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
   /// Whether the evaluator is locked because it is in use by an active online evaluation.
-  final pulumi.Input<bool>? lockedForModification;
+  final pulumi.Input<bool?>? lockedForModification;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current status of the evaluator.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AgentcoreEvaluatorTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AgentcoreEvaluatorTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreEvaluatorState].
   /// [createdAt] Timestamp when the evaluator was created.

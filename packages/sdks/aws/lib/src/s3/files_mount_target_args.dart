@@ -11,20 +11,20 @@ class FilesMountTargetArgs {
   /// File system ID. Changing this value forces replacement.
   final pulumi.Input<String> fileSystemId;
   /// IP address type.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// IPv4 address.
-  final pulumi.Input<String>? ipv4Address;
+  final pulumi.Input<String?>? ipv4Address;
   /// IPv6 address.
-  final pulumi.Input<String>? ipv6Address;
+  final pulumi.Input<String?>? ipv6Address;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Security group IDs.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// Subnet ID. Changing this value forces replacement.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> subnetId;
-  final pulumi.Input<FilesMountTargetTimeouts>? timeouts;
+  final pulumi.Input<FilesMountTargetTimeouts?>? timeouts;
 
   /// Creates a new [FilesMountTargetArgs].
   /// [fileSystemId] File system ID. Changing this value forces replacement.

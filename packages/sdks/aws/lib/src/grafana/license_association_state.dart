@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LicenseAssociation resources.
 class LicenseAssociationState {
   /// If `licenseType` is set to `ENTERPRISE_FREE_TRIAL`, this is the expiration date of the free trial.
-  final pulumi.Input<String>? freeTrialExpiration;
+  final pulumi.Input<String?>? freeTrialExpiration;
   /// A token from Grafana Labs that ties your AWS account with a Grafana Labs account.
-  final pulumi.Input<String>? grafanaToken;
+  final pulumi.Input<String?>? grafanaToken;
   /// If `licenseType` is set to `ENTERPRISE`, this is the expiration date of the enterprise license.
-  final pulumi.Input<String>? licenseExpiration;
+  final pulumi.Input<String?>? licenseExpiration;
   /// The type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The workspace id.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [LicenseAssociationState].
   /// [freeTrialExpiration] If `licenseType` is set to `ENTERPRISE_FREE_TRIAL`, this is the expiration date of the free trial.

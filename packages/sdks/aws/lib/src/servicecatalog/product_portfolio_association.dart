@@ -149,7 +149,7 @@ class ProductPortfolioAssociation extends pulumi.CustomResource {
           'aws:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     portfolioId = registerOutput<String>('portfolioId');
@@ -163,11 +163,12 @@ class ProductPortfolioAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProductPortfolioAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProductPortfolioAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -181,6 +182,22 @@ class ProductPortfolioAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    acceptLanguage = registerOutput<String?>('acceptLanguage');
+    portfolioId = registerOutput<String>('portfolioId');
+    productId = registerOutput<String>('productId');
+    region = registerOutput<String>('region');
+    sourcePortfolioId = registerOutput<String?>('sourcePortfolioId');
+  }
+
+  /// Creates a typed reference to an existing [ProductPortfolioAssociation] resource.
+  ProductPortfolioAssociation.reference(String urn)
+    : super(
+        'aws:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     portfolioId = registerOutput<String>('portfolioId');
     productId = registerOutput<String>('productId');

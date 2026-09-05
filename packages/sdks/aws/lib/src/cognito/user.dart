@@ -151,7 +151,6 @@ import 'user_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cognito.UserPool("example", {
-///     name: "mypool",
 ///     schemas: [
 ///         {
 ///             name: "example",
@@ -161,14 +160,15 @@ import 'user_state.dart';
 ///             developerOnlyAttribute: false,
 ///         },
 ///         {
+///             stringAttributeConstraints: {},
 ///             name: "foo",
 ///             attributeDataType: "String",
 ///             mutable: false,
 ///             required: false,
 ///             developerOnlyAttribute: false,
-///             stringAttributeConstraints: {},
 ///         },
 ///     ],
+///     name: "mypool",
 /// });
 /// const exampleUser = new aws.cognito.User("example", {
 ///     userPoolId: example.id,
@@ -186,7 +186,6 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cognito.UserPool("example",
-///     name="mypool",
 ///     schemas=[
 ///         {
 ///             "name": "example",
@@ -196,14 +195,15 @@ import 'user_state.dart';
 ///             "developer_only_attribute": False,
 ///         },
 ///         {
+///             "string_attribute_constraints": {},
 ///             "name": "foo",
 ///             "attribute_data_type": "String",
 ///             "mutable": False,
 ///             "required": False,
 ///             "developer_only_attribute": False,
-///             "string_attribute_constraints": {},
 ///         },
-///     ])
+///     ],
+///     name="mypool")
 /// example_user = aws.cognito.User("example",
 ///     user_pool_id=example.id,
 ///     username="example",
@@ -224,7 +224,6 @@ import 'user_state.dart';
 /// {
 ///     var example = new Aws.Cognito.UserPool("example", new()
 ///     {
-///         Name = "mypool",
 ///         Schemas = new[]
 ///         {
 ///             new Aws.Cognito.Inputs.UserPoolSchemaArgs
@@ -237,14 +236,15 @@ import 'user_state.dart';
 ///             },
 ///             new Aws.Cognito.Inputs.UserPoolSchemaArgs
 ///             {
+///                 StringAttributeConstraints = null,
 ///                 Name = "foo",
 ///                 AttributeDataType = "String",
 ///                 Mutable = false,
 ///                 Required = false,
 ///                 DeveloperOnlyAttribute = false,
-///                 StringAttributeConstraints = null,
 ///             },
 ///         },
+///         Name = "mypool",
 ///     });
 ///
 ///     var exampleUser = new Aws.Cognito.User("example", new()
@@ -273,7 +273,6 @@ import 'user_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := cognito.NewUserPool(ctx, "example", &cognito.UserPoolArgs{
-/// 			Name: pulumi.String("mypool"),
 /// 			Schemas: cognito.UserPoolSchemaArray{
 /// 				&cognito.UserPoolSchemaArgs{
 /// 					Name:                   pulumi.String("example"),
@@ -283,14 +282,15 @@ import 'user_state.dart';
 /// 					DeveloperOnlyAttribute: pulumi.Bool(false),
 /// 				},
 /// 				&cognito.UserPoolSchemaArgs{
+/// 					StringAttributeConstraints: &cognito.UserPoolSchemaStringAttributeConstraintsArgs{},
 /// 					Name:                       pulumi.String("foo"),
 /// 					AttributeDataType:          pulumi.String("String"),
 /// 					Mutable:                    pulumi.Bool(false),
 /// 					Required:                   pulumi.Bool(false),
 /// 					DeveloperOnlyAttribute:     pulumi.Bool(false),
-/// 					StringAttributeConstraints: &cognito.UserPoolSchemaStringAttributeConstraintsArgs{},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("mypool"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -322,7 +322,6 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_cognito_userpool" "example" {
-///   name = "mypool"
 ///   schemas {
 ///     name                     = "example"
 ///     attribute_data_type      = "Boolean"
@@ -331,13 +330,14 @@ import 'user_state.dart';
 ///     developer_only_attribute = false
 ///   }
 ///   schemas {
+///     string_attribute_constraints = {}
 ///     name                         = "foo"
 ///     attribute_data_type          = "String"
 ///     mutable                      = false
 ///     required                     = false
 ///     developer_only_attribute     = false
-///     string_attribute_constraints = {}
 ///   }
+///   name = "mypool"
 /// }
 /// resource "aws_cognito_user" "example" {
 ///   user_pool_id = aws_cognito_userpool.example.id
@@ -376,7 +376,6 @@ import 'user_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserPool("example", UserPoolArgs.builder()
-///             .name("mypool")
 ///             .schemas(
 ///                 UserPoolSchemaArgs.builder()
 ///                     .name("example")
@@ -386,14 +385,15 @@ import 'user_state.dart';
 ///                     .developerOnlyAttribute(false)
 ///                     .build(),
 ///                 UserPoolSchemaArgs.builder()
+///                     .stringAttributeConstraints(UserPoolSchemaStringAttributeConstraintsArgs.builder()
+///                         .build())
 ///                     .name("foo")
 ///                     .attributeDataType("String")
 ///                     .mutable(false)
 ///                     .required(false)
 ///                     .developerOnlyAttribute(false)
-///                     .stringAttributeConstraints(UserPoolSchemaStringAttributeConstraintsArgs.builder()
-///                         .build())
 ///                     .build())
+///             .name("mypool")
 ///             .build());
 ///
 ///         var exampleUser = new User("exampleUser", UserArgs.builder()
@@ -415,19 +415,19 @@ import 'user_state.dart';
 ///   example:
 ///     type: aws:cognito:UserPool
 ///     properties:
-///       name: mypool
 ///       schemas:
 ///         - name: example
 ///           attributeDataType: Boolean
 ///           mutable: false
 ///           required: false
 ///           developerOnlyAttribute: false
-///         - name: foo
+///         - stringAttributeConstraints: {}
+///           name: foo
 ///           attributeDataType: String
 ///           mutable: false
 ///           required: false
 ///           developerOnlyAttribute: false
-///           stringAttributeConstraints: {}
+///       name: mypool
 ///   exampleUser:
 ///     type: aws:cognito:User
 ///     name: example
@@ -499,26 +499,27 @@ class User extends pulumi.CustomResource {
           'aws:cognito/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['password', 'temporaryPassword'],
         ) {
-    attributes = registerOutput<Map<String, String>?>('attributes');
-    clientMetadata = registerOutput<Map<String, String>?>('clientMetadata');
+    attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    clientMetadata = registerOutput<Map<String, String>?>('clientMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     creationDate = registerOutput<String>('creationDate');
-    desiredDeliveryMediums = registerOutput<List<String>?>('desiredDeliveryMediums');
+    desiredDeliveryMediums = registerOutput<List<String>?>('desiredDeliveryMediums', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     forceAliasCreation = registerOutput<bool?>('forceAliasCreation');
     lastModifiedDate = registerOutput<String>('lastModifiedDate');
     messageAction = registerOutput<String?>('messageAction');
-    mfaSettingLists = registerOutput<List<String>>('mfaSettingLists');
-    password = registerOutput<String?>('password');
+    mfaSettingLists = registerOutput<List<String>>('mfaSettingLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
     preferredMfaSetting = registerOutput<String>('preferredMfaSetting');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     sub = registerOutput<String>('sub');
-    temporaryPassword = registerOutput<String?>('temporaryPassword');
+    temporaryPassword = registerOutput<String?>('temporaryPassword', isSecret: true);
     userPoolId = registerOutput<String>('userPoolId');
     username = registerOutput<String>('username');
-    validationData = registerOutput<Map<String, String>?>('validationData');
+    validationData = registerOutput<Map<String, String>?>('validationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
@@ -526,11 +527,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -544,23 +546,53 @@ class User extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attributes = registerOutput<Map<String, String>?>('attributes');
-    clientMetadata = registerOutput<Map<String, String>?>('clientMetadata');
+    attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    clientMetadata = registerOutput<Map<String, String>?>('clientMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     creationDate = registerOutput<String>('creationDate');
-    desiredDeliveryMediums = registerOutput<List<String>?>('desiredDeliveryMediums');
+    desiredDeliveryMediums = registerOutput<List<String>?>('desiredDeliveryMediums', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool?>('enabled');
     forceAliasCreation = registerOutput<bool?>('forceAliasCreation');
     lastModifiedDate = registerOutput<String>('lastModifiedDate');
     messageAction = registerOutput<String?>('messageAction');
-    mfaSettingLists = registerOutput<List<String>>('mfaSettingLists');
-    password = registerOutput<String?>('password');
+    mfaSettingLists = registerOutput<List<String>>('mfaSettingLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
     preferredMfaSetting = registerOutput<String>('preferredMfaSetting');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     sub = registerOutput<String>('sub');
-    temporaryPassword = registerOutput<String?>('temporaryPassword');
+    temporaryPassword = registerOutput<String?>('temporaryPassword', isSecret: true);
     userPoolId = registerOutput<String>('userPoolId');
     username = registerOutput<String>('username');
-    validationData = registerOutput<Map<String, String>?>('validationData');
+    validationData = registerOutput<Map<String, String>?>('validationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'aws:cognito/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'temporaryPassword'],
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    clientMetadata = registerOutput<Map<String, String>?>('clientMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    creationDate = registerOutput<String>('creationDate');
+    desiredDeliveryMediums = registerOutput<List<String>?>('desiredDeliveryMediums', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enabled = registerOutput<bool?>('enabled');
+    forceAliasCreation = registerOutput<bool?>('forceAliasCreation');
+    lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    messageAction = registerOutput<String?>('messageAction');
+    mfaSettingLists = registerOutput<List<String>>('mfaSettingLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
+    preferredMfaSetting = registerOutput<String>('preferredMfaSetting');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    sub = registerOutput<String>('sub');
+    temporaryPassword = registerOutput<String?>('temporaryPassword', isSecret: true);
+    userPoolId = registerOutput<String>('userPoolId');
+    username = registerOutput<String>('username');
+    validationData = registerOutput<Map<String, String>?>('validationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -8,22 +8,22 @@ import 'event_action_event.dart';
 class EventActionState {
   /// Describes the action to take.
   /// Described in `action` Configuration Block below.
-  final pulumi.Input<EventActionAction>? action;
-  /// Amazon Resource Name (ARN) of the event action.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<EventActionAction?>? action;
+  /// ARN of the event action.
+  final pulumi.Input<String?>? arn;
   /// Date and time when the resource was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Describes the event that triggers the `action`.
   /// Described in `event` Configuration Block below.
-  final pulumi.Input<EventActionEvent>? event;
+  final pulumi.Input<EventActionEvent?>? event;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Data and time when the resource was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [EventActionState].
   /// [action] Describes the action to take.
-  /// [arn] Amazon Resource Name (ARN) of the event action.
+  /// [arn] ARN of the event action.
   /// [createdAt] Date and time when the resource was created.
   /// [event] Describes the event that triggers the `action`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

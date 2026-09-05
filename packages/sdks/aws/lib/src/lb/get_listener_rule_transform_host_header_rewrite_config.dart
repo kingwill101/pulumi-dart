@@ -5,7 +5,7 @@ import 'get_listener_rule_transform_host_header_rewrite_config_rewrite.dart';
 
 class GetListenerRuleTransformHostHeaderRewriteConfig {
   /// Block for URL rewrite configuration. Detailed below.
-  final pulumi.Input<List<GetListenerRuleTransformHostHeaderRewriteConfigRewrite>>? rewrites;
+  final pulumi.Input<List<GetListenerRuleTransformHostHeaderRewriteConfigRewrite>?>? rewrites;
 
   /// Creates a new [GetListenerRuleTransformHostHeaderRewriteConfig].
   /// [rewrites] Block for URL rewrite configuration. Detailed below.

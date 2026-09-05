@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'organization_account.dart';
 import 'organization_args.dart';
+import 'organization_non_master_account.dart';
+import 'organization_root.dart';
 import 'organization_state.dart';
 
 /// Provides a resource to create an organization.
@@ -155,7 +158,7 @@ import 'organization_state.dart';
 /// ```
 class Organization extends pulumi.CustomResource {
   /// List of organization accounts including the master account. For a list excluding the master account, see the `nonMasterAccounts` attribute. All elements have these attributes:
-  late final pulumi.Output<List<Map<String, dynamic>>> accounts;
+  late final pulumi.Output<List<OrganizationAccount>> accounts;
   /// ARN of the root.
   late final pulumi.Output<String> arn;
   /// List of AWS service principal names for which you want to enable integration with your organization. This is typically in the form of a URL, such as service-abbreviation.amazonaws.com. Organization must have `featureSet` set to `ALL`. Some services do not support enablement via this endpoint, see [warning in aws docs](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnableAWSServiceAccess.html).
@@ -173,11 +176,11 @@ class Organization extends pulumi.CustomResource {
   /// Name of the master account.
   late final pulumi.Output<String> masterAccountName;
   /// List of organization accounts excluding the master account. For a list including the master account, see the `accounts` attribute. All elements have these attributes:
-  late final pulumi.Output<List<Map<String, dynamic>>> nonMasterAccounts;
+  late final pulumi.Output<List<OrganizationNonMasterAccount>> nonMasterAccounts;
   /// Return (as attributes) only the results of the [`DescribeOrganization`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html) API to avoid [API limits](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#throttling-limits). When configured to `true` only the `arn`, `featureSet`, `masterAccountArn`, `masterAccountEmail` and `masterAccountId` attributes will be returned. All others will be empty. Default: `false`.
   late final pulumi.Output<bool?> returnOrganizationOnly;
   /// List of organization roots. All elements have these attributes:
-  late final pulumi.Output<List<Map<String, dynamic>>> roots;
+  late final pulumi.Output<List<OrganizationRoot>> roots;
 
   /// Creates a new [Organization].
   /// [name] The Pulumi resource name.
@@ -191,20 +194,20 @@ class Organization extends pulumi.CustomResource {
           'aws:organizations/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    accounts = registerOutput<List<Map<String, dynamic>>>('accounts');
+    accounts = registerOutput<List<OrganizationAccount>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationAccount>(guardedValue, (value) => OrganizationAccount.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
-    awsServiceAccessPrincipals = registerOutput<List<String>?>('awsServiceAccessPrincipals');
-    enabledPolicyTypes = registerOutput<List<String>?>('enabledPolicyTypes');
+    awsServiceAccessPrincipals = registerOutput<List<String>?>('awsServiceAccessPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enabledPolicyTypes = registerOutput<List<String>?>('enabledPolicyTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     featureSet = registerOutput<String?>('featureSet');
     masterAccountArn = registerOutput<String>('masterAccountArn');
     masterAccountEmail = registerOutput<String>('masterAccountEmail');
     masterAccountId = registerOutput<String>('masterAccountId');
     masterAccountName = registerOutput<String>('masterAccountName');
-    nonMasterAccounts = registerOutput<List<Map<String, dynamic>>>('nonMasterAccounts');
+    nonMasterAccounts = registerOutput<List<OrganizationNonMasterAccount>>('nonMasterAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationNonMasterAccount>(guardedValue, (value) => OrganizationNonMasterAccount.fromMap((value as Map).cast<String, dynamic>())); });
     returnOrganizationOnly = registerOutput<bool?>('returnOrganizationOnly');
-    roots = registerOutput<List<Map<String, dynamic>>>('roots');
+    roots = registerOutput<List<OrganizationRoot>>('roots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationRoot>(guardedValue, (value) => OrganizationRoot.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Organization] resource's state with the given [name] and [id].
@@ -212,11 +215,12 @@ class Organization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Organization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -230,17 +234,40 @@ class Organization extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accounts = registerOutput<List<Map<String, dynamic>>>('accounts');
+    accounts = registerOutput<List<OrganizationAccount>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationAccount>(guardedValue, (value) => OrganizationAccount.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
-    awsServiceAccessPrincipals = registerOutput<List<String>?>('awsServiceAccessPrincipals');
-    enabledPolicyTypes = registerOutput<List<String>?>('enabledPolicyTypes');
+    awsServiceAccessPrincipals = registerOutput<List<String>?>('awsServiceAccessPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enabledPolicyTypes = registerOutput<List<String>?>('enabledPolicyTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     featureSet = registerOutput<String?>('featureSet');
     masterAccountArn = registerOutput<String>('masterAccountArn');
     masterAccountEmail = registerOutput<String>('masterAccountEmail');
     masterAccountId = registerOutput<String>('masterAccountId');
     masterAccountName = registerOutput<String>('masterAccountName');
-    nonMasterAccounts = registerOutput<List<Map<String, dynamic>>>('nonMasterAccounts');
+    nonMasterAccounts = registerOutput<List<OrganizationNonMasterAccount>>('nonMasterAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationNonMasterAccount>(guardedValue, (value) => OrganizationNonMasterAccount.fromMap((value as Map).cast<String, dynamic>())); });
     returnOrganizationOnly = registerOutput<bool?>('returnOrganizationOnly');
-    roots = registerOutput<List<Map<String, dynamic>>>('roots');
+    roots = registerOutput<List<OrganizationRoot>>('roots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationRoot>(guardedValue, (value) => OrganizationRoot.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Organization] resource.
+  Organization.reference(String urn)
+    : super(
+        'aws:organizations/organization:Organization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accounts = registerOutput<List<OrganizationAccount>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationAccount>(guardedValue, (value) => OrganizationAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    awsServiceAccessPrincipals = registerOutput<List<String>?>('awsServiceAccessPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enabledPolicyTypes = registerOutput<List<String>?>('enabledPolicyTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    featureSet = registerOutput<String?>('featureSet');
+    masterAccountArn = registerOutput<String>('masterAccountArn');
+    masterAccountEmail = registerOutput<String>('masterAccountEmail');
+    masterAccountId = registerOutput<String>('masterAccountId');
+    masterAccountName = registerOutput<String>('masterAccountName');
+    nonMasterAccounts = registerOutput<List<OrganizationNonMasterAccount>>('nonMasterAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationNonMasterAccount>(guardedValue, (value) => OrganizationNonMasterAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    returnOrganizationOnly = registerOutput<bool?>('returnOrganizationOnly');
+    roots = registerOutput<List<OrganizationRoot>>('roots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationRoot>(guardedValue, (value) => OrganizationRoot.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

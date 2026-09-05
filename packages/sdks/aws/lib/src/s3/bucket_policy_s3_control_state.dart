@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering BucketPolicy resources.
 class BucketPolicyS3ControlState {
-  /// Amazon Resource Name (ARN) of the bucket.
-  final pulumi.Input<String>? bucket;
+  /// ARN of the bucket.
+  final pulumi.Input<String?>? bucket;
   /// JSON string of the resource policy.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BucketPolicyS3ControlState].
-  /// [bucket] Amazon Resource Name (ARN) of the bucket.
+  /// [bucket] ARN of the bucket.
   /// [policy] JSON string of the resource policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const BucketPolicyS3ControlState({

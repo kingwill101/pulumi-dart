@@ -5,29 +5,29 @@ import 'framework_control_set.dart';
 
 /// Input properties used for looking up and filtering Framework resources.
 class FrameworkState {
-  /// Amazon Resource Name (ARN) of the framework.
+  /// ARN of the framework.
   /// * `control_sets[*].id` - Unique identifier for the framework control set.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Compliance type that the new custom framework supports, such as `CIS` or `HIPAA`.
-  final pulumi.Input<String>? complianceType;
+  final pulumi.Input<String?>? complianceType;
   /// Configuration block(s) for the control sets that are associated with the framework. See `controlSets` Block below for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<FrameworkControlSet>>? controlSets;
+  final pulumi.Input<List<FrameworkControlSet>?>? controlSets;
   /// Description of the framework.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Framework type, such as a custom framework or a standard framework.
-  final pulumi.Input<String>? frameworkType;
+  final pulumi.Input<String?>? frameworkType;
   /// Name of the framework.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the framework. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [FrameworkState].
-  /// [arn] Amazon Resource Name (ARN) of the framework.
+  /// [arn] ARN of the framework.
   /// [complianceType] Compliance type that the new custom framework supports, such as `CIS` or `HIPAA`.
   /// [controlSets] Configuration block(s) for the control sets that are associated with the framework. See `controlSets` Block below for details.
   /// [description] Description of the framework.

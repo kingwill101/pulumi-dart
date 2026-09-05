@@ -7,7 +7,7 @@ class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl {
   /// AWS region.
   final pulumi.Input<String> region;
   /// Routing controls. See `routingControl` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>>? routingControls;
+  final pulumi.Input<List<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>?>? routingControls;
 
   /// Creates a new [PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl].
   /// [region] AWS region.

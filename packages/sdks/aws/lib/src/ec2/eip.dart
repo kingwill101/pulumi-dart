@@ -942,7 +942,7 @@ class Eip extends pulumi.CustomResource {
           'aws:ec2/eip:Eip',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     address = registerOutput<String?>('address');
     allocationId = registerOutput<String>('allocationId');
@@ -964,8 +964,8 @@ class Eip extends pulumi.CustomResource {
     publicIp = registerOutput<String>('publicIp');
     publicIpv4Pool = registerOutput<String>('publicIpv4Pool');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Eip] resource's state with the given [name] and [id].
@@ -973,11 +973,12 @@ class Eip extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EipState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Eip._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1011,7 +1012,40 @@ class Eip extends pulumi.CustomResource {
     publicIp = registerOutput<String>('publicIp');
     publicIpv4Pool = registerOutput<String>('publicIpv4Pool');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Eip] resource.
+  Eip.reference(String urn)
+    : super(
+        'aws:ec2/eip:Eip',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    address = registerOutput<String?>('address');
+    allocationId = registerOutput<String>('allocationId');
+    arn = registerOutput<String>('arn');
+    associateWithPrivateIp = registerOutput<String?>('associateWithPrivateIp');
+    associationId = registerOutput<String>('associationId');
+    carrierIp = registerOutput<String>('carrierIp');
+    customerOwnedIp = registerOutput<String>('customerOwnedIp');
+    customerOwnedIpv4Pool = registerOutput<String?>('customerOwnedIpv4Pool');
+    domain = registerOutput<String>('domain');
+    instance = registerOutput<String>('instance');
+    ipamPoolId = registerOutput<String>('ipamPoolId');
+    networkBorderGroup = registerOutput<String>('networkBorderGroup');
+    networkInterface = registerOutput<String>('networkInterface');
+    privateDns = registerOutput<String>('privateDns');
+    privateIp = registerOutput<String>('privateIp');
+    ptrRecord = registerOutput<String>('ptrRecord');
+    publicDns = registerOutput<String>('publicDns');
+    publicIp = registerOutput<String>('publicIp');
+    publicIpv4Pool = registerOutput<String>('publicIpv4Pool');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -10,17 +10,17 @@ import 'group_resource_query.dart';
 /// {@macro pulumi_resourcegroups_group_group_args_doc}
 class GroupArgs {
   /// A configuration associates the resource group with an AWS service and specifies how the service can interact with the resources in the group. See below for details.
-  final pulumi.Input<List<GroupConfiguration>>? configurations;
+  final pulumi.Input<List<GroupConfiguration>?>? configurations;
   /// A description of the resource group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A `resourceQuery` block. Resource queries are documented below.
-  final pulumi.Input<GroupResourceQuery>? resourceQuery;
+  final pulumi.Input<GroupResourceQuery?>? resourceQuery;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GroupArgs].
   /// [configurations] A configuration associates the resource group with an AWS service and specifies how the service can interact with the resources in the group. See below for details.

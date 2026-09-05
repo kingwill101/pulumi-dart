@@ -6,17 +6,17 @@ import 'rule_group_activated_rule.dart';
 /// Input properties used for looking up and filtering RuleGroup resources.
 class RuleGroupState {
   /// A list of activated rules, see below
-  final pulumi.Input<List<RuleGroupActivatedRule>>? activatedRules;
+  final pulumi.Input<List<RuleGroupActivatedRule>?>? activatedRules;
   /// The ARN of the WAF rule group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// A friendly name for the metrics from the rule group
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RuleGroupState].
   /// [activatedRules] A list of activated rules, see below

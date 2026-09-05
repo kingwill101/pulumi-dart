@@ -258,20 +258,20 @@ class Cluster extends pulumi.CustomResource {
           'aws:neptune/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allowMajorVersionUpgrade = registerOutput<bool>('allowMajorVersionUpgrade');
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backupRetentionPeriod = registerOutput<int?>('backupRetentionPeriod');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     clusterIdentifierPrefix = registerOutput<String>('clusterIdentifierPrefix');
-    clusterMembers = registerOutput<List<String>>('clusterMembers');
+    clusterMembers = registerOutput<List<String>>('clusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterResourceId = registerOutput<String>('clusterResourceId');
     copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    enableCloudwatchLogsExports = registerOutput<List<String>?>('enableCloudwatchLogsExports');
+    enableCloudwatchLogsExports = registerOutput<List<String>?>('enableCloudwatchLogsExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String?>('engine');
     engineVersion = registerOutput<String>('engineVersion');
@@ -279,7 +279,7 @@ class Cluster extends pulumi.CustomResource {
     globalClusterIdentifier = registerOutput<String?>('globalClusterIdentifier');
     hostedZoneId = registerOutput<String>('hostedZoneId');
     iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
-    iamRoles = registerOutput<List<String>?>('iamRoles');
+    iamRoles = registerOutput<List<String>?>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     neptuneClusterParameterGroupName = registerOutput<String>('neptuneClusterParameterGroupName');
     neptuneInstanceParameterGroupName = registerOutput<String?>('neptuneInstanceParameterGroupName');
@@ -295,9 +295,9 @@ class Cluster extends pulumi.CustomResource {
     snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
     storageEncrypted = registerOutput<bool?>('storageEncrypted');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -305,11 +305,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -326,15 +327,15 @@ class Cluster extends pulumi.CustomResource {
     allowMajorVersionUpgrade = registerOutput<bool>('allowMajorVersionUpgrade');
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backupRetentionPeriod = registerOutput<int?>('backupRetentionPeriod');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     clusterIdentifierPrefix = registerOutput<String>('clusterIdentifierPrefix');
-    clusterMembers = registerOutput<List<String>>('clusterMembers');
+    clusterMembers = registerOutput<List<String>>('clusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterResourceId = registerOutput<String>('clusterResourceId');
     copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
     deletionProtection = registerOutput<bool?>('deletionProtection');
-    enableCloudwatchLogsExports = registerOutput<List<String>?>('enableCloudwatchLogsExports');
+    enableCloudwatchLogsExports = registerOutput<List<String>?>('enableCloudwatchLogsExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endpoint = registerOutput<String>('endpoint');
     engine = registerOutput<String?>('engine');
     engineVersion = registerOutput<String>('engineVersion');
@@ -342,7 +343,7 @@ class Cluster extends pulumi.CustomResource {
     globalClusterIdentifier = registerOutput<String?>('globalClusterIdentifier');
     hostedZoneId = registerOutput<String>('hostedZoneId');
     iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
-    iamRoles = registerOutput<List<String>?>('iamRoles');
+    iamRoles = registerOutput<List<String>?>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     neptuneClusterParameterGroupName = registerOutput<String>('neptuneClusterParameterGroupName');
     neptuneInstanceParameterGroupName = registerOutput<String?>('neptuneInstanceParameterGroupName');
@@ -358,8 +359,57 @@ class Cluster extends pulumi.CustomResource {
     snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
     storageEncrypted = registerOutput<bool?>('storageEncrypted');
     storageType = registerOutput<String>('storageType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:neptune/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowMajorVersionUpgrade = registerOutput<bool>('allowMajorVersionUpgrade');
+    applyImmediately = registerOutput<bool>('applyImmediately');
+    arn = registerOutput<String>('arn');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    backupRetentionPeriod = registerOutput<int?>('backupRetentionPeriod');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    clusterIdentifierPrefix = registerOutput<String>('clusterIdentifierPrefix');
+    clusterMembers = registerOutput<List<String>>('clusterMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clusterResourceId = registerOutput<String>('clusterResourceId');
+    copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    enableCloudwatchLogsExports = registerOutput<List<String>?>('enableCloudwatchLogsExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    endpoint = registerOutput<String>('endpoint');
+    engine = registerOutput<String?>('engine');
+    engineVersion = registerOutput<String>('engineVersion');
+    finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
+    globalClusterIdentifier = registerOutput<String?>('globalClusterIdentifier');
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    iamDatabaseAuthenticationEnabled = registerOutput<bool?>('iamDatabaseAuthenticationEnabled');
+    iamRoles = registerOutput<List<String>?>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    neptuneClusterParameterGroupName = registerOutput<String>('neptuneClusterParameterGroupName');
+    neptuneInstanceParameterGroupName = registerOutput<String?>('neptuneInstanceParameterGroupName');
+    neptuneSubnetGroupName = registerOutput<String>('neptuneSubnetGroupName');
+    port = registerOutput<int?>('port');
+    preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
+    readerEndpoint = registerOutput<String>('readerEndpoint');
+    region = registerOutput<String>('region');
+    replicationSourceIdentifier = registerOutput<String?>('replicationSourceIdentifier');
+    serverlessV2ScalingConfiguration = registerOutput<ClusterServerlessV2ScalingConfiguration?>('serverlessV2ScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServerlessV2ScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
+    storageEncrypted = registerOutput<bool?>('storageEncrypted');
+    storageType = registerOutput<String>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

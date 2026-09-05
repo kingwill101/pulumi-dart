@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_cors_configuration_args.dart';
+import 'bucket_cors_configuration_cors_rule.dart';
 import 'bucket_cors_configuration_state.dart';
 
 /// Provides an S3 bucket CORS configuration resource. For more information about CORS, go to [Enabling Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html) in the Amazon S3 User Guide.
@@ -17,7 +18,6 @@ import 'bucket_cors_configuration_state.dart';
 ///
 /// const example = new aws.s3.Bucket("example", {bucket: "mybucket"});
 /// const exampleBucketCorsConfiguration = new aws.s3.BucketCorsConfiguration("example", {
-///     bucket: example.id,
 ///     corsRules: [
 ///         {
 ///             allowedHeaders: ["*"],
@@ -34,6 +34,7 @@ import 'bucket_cors_configuration_state.dart';
 ///             allowedOrigins: ["*"],
 ///         },
 ///     ],
+///     bucket: example.id,
 /// });
 /// ```
 /// ```python
@@ -42,7 +43,6 @@ import 'bucket_cors_configuration_state.dart';
 ///
 /// example = aws.s3.Bucket("example", bucket="mybucket")
 /// example_bucket_cors_configuration = aws.s3.BucketCorsConfiguration("example",
-///     bucket=example.id,
 ///     cors_rules=[
 ///         {
 ///             "allowed_headers": ["*"],
@@ -58,7 +58,8 @@ import 'bucket_cors_configuration_state.dart';
 ///             "allowed_methods": ["GET"],
 ///             "allowed_origins": ["*"],
 ///         },
-///     ])
+///     ],
+///     bucket=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -75,7 +76,6 @@ import 'bucket_cors_configuration_state.dart';
 ///
 ///     var exampleBucketCorsConfiguration = new Aws.S3.BucketCorsConfiguration("example", new()
 ///     {
-///         Bucket = example.Id,
 ///         CorsRules = new[]
 ///         {
 ///             new Aws.S3.Inputs.BucketCorsConfigurationCorsRuleArgs
@@ -111,6 +111,7 @@ import 'bucket_cors_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Bucket = example.Id,
 ///     });
 ///
 /// });
@@ -132,7 +133,6 @@ import 'bucket_cors_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketCorsConfiguration(ctx, "example", &s3.BucketCorsConfigurationArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			CorsRules: s3.BucketCorsConfigurationCorsRuleArray{
 /// 				&s3.BucketCorsConfigurationCorsRuleArgs{
 /// 					AllowedHeaders: pulumi.StringArray{
@@ -159,6 +159,7 @@ import 'bucket_cors_configuration_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -180,7 +181,6 @@ import 'bucket_cors_configuration_state.dart';
 ///   bucket = "mybucket"
 /// }
 /// resource "aws_s3_bucketcorsconfiguration" "example" {
-///   bucket = aws_s3_bucket.example.id
 ///   cors_rules {
 ///     allowed_headers = ["*"]
 ///     allowed_methods = ["PUT", "POST"]
@@ -192,6 +192,7 @@ import 'bucket_cors_configuration_state.dart';
 ///     allowed_methods = ["GET"]
 ///     allowed_origins = ["*"]
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// ```
 /// ```java
@@ -223,7 +224,6 @@ import 'bucket_cors_configuration_state.dart';
 ///             .build());
 ///
 ///         var exampleBucketCorsConfiguration = new BucketCorsConfiguration("exampleBucketCorsConfiguration", BucketCorsConfigurationArgs.builder()
-///             .bucket(example.id())
 ///             .corsRules(
 ///                 BucketCorsConfigurationCorsRuleArgs.builder()
 ///                     .allowedHeaders("*")
@@ -238,6 +238,7 @@ import 'bucket_cors_configuration_state.dart';
 ///                     .allowedMethods("GET")
 ///                     .allowedOrigins("*")
 ///                     .build())
+///             .bucket(example.id())
 ///             .build());
 ///
 ///     }
@@ -253,7 +254,6 @@ import 'bucket_cors_configuration_state.dart';
 ///     type: aws:s3:BucketCorsConfiguration
 ///     name: example
 ///     properties:
-///       bucket: ${example.id}
 ///       corsRules:
 ///         - allowedHeaders:
 ///             - '*'
@@ -269,6 +269,7 @@ import 'bucket_cors_configuration_state.dart';
 ///             - GET
 ///           allowedOrigins:
 ///             - '*'
+///       bucket: ${example.id}
 /// ```
 ///
 ///
@@ -306,7 +307,7 @@ class BucketCorsConfiguration extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
   /// Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
-  late final pulumi.Output<List<Map<String, dynamic>>> corsRules;
+  late final pulumi.Output<List<BucketCorsConfigurationCorsRule>> corsRules;
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -324,10 +325,10 @@ class BucketCorsConfiguration extends pulumi.CustomResource {
           'aws:s3/bucketCorsConfiguration:BucketCorsConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
-    corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
+    corsRules = registerOutput<List<BucketCorsConfigurationCorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsConfigurationCorsRule>(guardedValue, (value) => BucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     region = registerOutput<String>('region');
   }
@@ -337,11 +338,12 @@ class BucketCorsConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketCorsConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketCorsConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -356,7 +358,22 @@ class BucketCorsConfiguration extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
-    corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
+    corsRules = registerOutput<List<BucketCorsConfigurationCorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsConfigurationCorsRule>(guardedValue, (value) => BucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [BucketCorsConfiguration] resource.
+  BucketCorsConfiguration.reference(String urn)
+    : super(
+        'aws:s3/bucketCorsConfiguration:BucketCorsConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    corsRules = registerOutput<List<BucketCorsConfigurationCorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsConfigurationCorsRule>(guardedValue, (value) => BucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     region = registerOutput<String>('region');
   }

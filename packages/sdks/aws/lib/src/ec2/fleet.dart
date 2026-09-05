@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_args.dart';
+import 'fleet_fleet_instance_set.dart';
+import 'fleet_launch_template_config.dart';
 import 'fleet_on_demand_options.dart';
 import 'fleet_spot_options.dart';
 import 'fleet_state.dart';
@@ -15,16 +17,16 @@ import 'fleet_target_capacity_specification.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ec2.Fleet("example", {
+///     targetCapacitySpecification: {
+///         defaultTargetCapacityType: "spot",
+///         totalTargetCapacity: 5,
+///     },
 ///     launchTemplateConfigs: [{
 ///         launchTemplateSpecification: {
 ///             launchTemplateId: exampleAwsLaunchTemplate.id,
 ///             version: exampleAwsLaunchTemplate.latestVersion,
 ///         },
 ///     }],
-///     targetCapacitySpecification: {
-///         defaultTargetCapacityType: "spot",
-///         totalTargetCapacity: 5,
-///     },
 /// });
 /// ```
 /// ```python
@@ -32,16 +34,16 @@ import 'fleet_target_capacity_specification.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ec2.Fleet("example",
+///     target_capacity_specification={
+///         "default_target_capacity_type": "spot",
+///         "total_target_capacity": 5,
+///     },
 ///     launch_template_configs=[{
 ///         "launch_template_specification": {
 ///             "launch_template_id": example_aws_launch_template["id"],
 ///             "version": example_aws_launch_template["latestVersion"],
 ///         },
-///     }],
-///     target_capacity_specification={
-///         "default_target_capacity_type": "spot",
-///         "total_target_capacity": 5,
-///     })
+///     }])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -53,6 +55,11 @@ import 'fleet_target_capacity_specification.dart';
 /// {
 ///     var example = new Aws.Ec2.Fleet("example", new()
 ///     {
+///         TargetCapacitySpecification = new Aws.Ec2.Inputs.FleetTargetCapacitySpecificationArgs
+///         {
+///             DefaultTargetCapacityType = "spot",
+///             TotalTargetCapacity = 5,
+///         },
 ///         LaunchTemplateConfigs = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.FleetLaunchTemplateConfigArgs
@@ -63,11 +70,6 @@ import 'fleet_target_capacity_specification.dart';
 ///                     Version = exampleAwsLaunchTemplate.LatestVersion,
 ///                 },
 ///             },
-///         },
-///         TargetCapacitySpecification = new Aws.Ec2.Inputs.FleetTargetCapacitySpecificationArgs
-///         {
-///             DefaultTargetCapacityType = "spot",
-///             TotalTargetCapacity = 5,
 ///         },
 ///     });
 ///
@@ -84,6 +86,10 @@ import 'fleet_target_capacity_specification.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewFleet(ctx, "example", &ec2.FleetArgs{
+/// 			TargetCapacitySpecification: &ec2.FleetTargetCapacitySpecificationArgs{
+/// 				DefaultTargetCapacityType: pulumi.String("spot"),
+/// 				TotalTargetCapacity:       pulumi.Int(5),
+/// 			},
 /// 			LaunchTemplateConfigs: ec2.FleetLaunchTemplateConfigArray{
 /// 				&ec2.FleetLaunchTemplateConfigArgs{
 /// 					LaunchTemplateSpecification: &ec2.FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs{
@@ -91,10 +97,6 @@ import 'fleet_target_capacity_specification.dart';
 /// 						Version:          pulumi.Any(exampleAwsLaunchTemplate.LatestVersion),
 /// 					},
 /// 				},
-/// 			},
-/// 			TargetCapacitySpecification: &ec2.FleetTargetCapacitySpecificationArgs{
-/// 				DefaultTargetCapacityType: pulumi.String("spot"),
-/// 				TotalTargetCapacity:       pulumi.Int(5),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -114,15 +116,15 @@ import 'fleet_target_capacity_specification.dart';
 /// }
 ///
 /// resource "aws_ec2_fleet" "example" {
+///   target_capacity_specification = {
+///     default_target_capacity_type = "spot"
+///     total_target_capacity        = 5
+///   }
 ///   launch_template_configs {
 ///     launch_template_specification = {
 ///       launch_template_id = exampleAwsLaunchTemplate.id
 ///       version            = exampleAwsLaunchTemplate.latestVersion
 ///     }
-///   }
-///   target_capacity_specification = {
-///     default_target_capacity_type = "spot"
-///     total_target_capacity        = 5
 ///   }
 /// }
 /// ```
@@ -134,9 +136,9 @@ import 'fleet_target_capacity_specification.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ec2.Fleet;
 /// import com.pulumi.aws.ec2.FleetArgs;
+/// import com.pulumi.aws.ec2.inputs.FleetTargetCapacitySpecificationArgs;
 /// import com.pulumi.aws.ec2.inputs.FleetLaunchTemplateConfigArgs;
 /// import com.pulumi.aws.ec2.inputs.FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs;
-/// import com.pulumi.aws.ec2.inputs.FleetTargetCapacitySpecificationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -151,15 +153,15 @@ import 'fleet_target_capacity_specification.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Fleet("example", FleetArgs.builder()
+///             .targetCapacitySpecification(FleetTargetCapacitySpecificationArgs.builder()
+///                 .defaultTargetCapacityType("spot")
+///                 .totalTargetCapacity(5)
+///                 .build())
 ///             .launchTemplateConfigs(FleetLaunchTemplateConfigArgs.builder()
 ///                 .launchTemplateSpecification(FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs.builder()
 ///                     .launchTemplateId(exampleAwsLaunchTemplate.id())
 ///                     .version(exampleAwsLaunchTemplate.latestVersion())
 ///                     .build())
-///                 .build())
-///             .targetCapacitySpecification(FleetTargetCapacitySpecificationArgs.builder()
-///                 .defaultTargetCapacityType("spot")
-///                 .totalTargetCapacity(5)
 ///                 .build())
 ///             .build());
 ///
@@ -171,13 +173,13 @@ import 'fleet_target_capacity_specification.dart';
 ///   example:
 ///     type: aws:ec2:Fleet
 ///     properties:
+///       targetCapacitySpecification:
+///         defaultTargetCapacityType: spot
+///         totalTargetCapacity: 5
 ///       launchTemplateConfigs:
 ///         - launchTemplateSpecification:
 ///             launchTemplateId: ${exampleAwsLaunchTemplate.id}
 ///             version: ${exampleAwsLaunchTemplate.latestVersion}
-///       targetCapacitySpecification:
-///         defaultTargetCapacityType: spot
-///         totalTargetCapacity: 5
 /// ```
 ///
 ///
@@ -196,7 +198,7 @@ class Fleet extends pulumi.CustomResource {
   /// Whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2. Valid values: `no-termination`, `termination`. Defaults to `termination`. Supported only for fleets of type `maintain`.
   late final pulumi.Output<String?> excessCapacityTerminationPolicy;
   /// Information about the instances that were launched by the fleet. Available only when `type` is set to `instant`.
-  late final pulumi.Output<List<Map<String, dynamic>>> fleetInstanceSets;
+  late final pulumi.Output<List<FleetFleetInstanceSet>> fleetInstanceSets;
   /// The state of the EC2 Fleet.
   late final pulumi.Output<String> fleetState;
   /// The number of units fulfilled by this request compared to the set target capacity.
@@ -204,7 +206,7 @@ class Fleet extends pulumi.CustomResource {
   /// The number of units fulfilled by this request compared to the set target On-Demand capacity.
   late final pulumi.Output<double> fulfilledOnDemandCapacity;
   /// Nested argument containing EC2 Launch Template configurations. Defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> launchTemplateConfigs;
+  late final pulumi.Output<List<FleetLaunchTemplateConfig>> launchTemplateConfigs;
   /// Nested argument containing On-Demand configurations. Defined below.
   late final pulumi.Output<FleetOnDemandOptions?> onDemandOptions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -242,22 +244,22 @@ class Fleet extends pulumi.CustomResource {
           'aws:ec2/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     context = registerOutput<String?>('context');
     excessCapacityTerminationPolicy = registerOutput<String?>('excessCapacityTerminationPolicy');
-    fleetInstanceSets = registerOutput<List<Map<String, dynamic>>>('fleetInstanceSets');
+    fleetInstanceSets = registerOutput<List<FleetFleetInstanceSet>>('fleetInstanceSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetFleetInstanceSet>(guardedValue, (value) => FleetFleetInstanceSet.fromMap((value as Map).cast<String, dynamic>())); });
     fleetState = registerOutput<String>('fleetState');
     fulfilledCapacity = registerOutput<double>('fulfilledCapacity');
     fulfilledOnDemandCapacity = registerOutput<double>('fulfilledOnDemandCapacity');
-    launchTemplateConfigs = registerOutput<List<Map<String, dynamic>>>('launchTemplateConfigs');
+    launchTemplateConfigs = registerOutput<List<FleetLaunchTemplateConfig>>('launchTemplateConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetLaunchTemplateConfig>(guardedValue, (value) => FleetLaunchTemplateConfig.fromMap((value as Map).cast<String, dynamic>())); });
     onDemandOptions = registerOutput<FleetOnDemandOptions?>('onDemandOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetOnDemandOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     replaceUnhealthyInstances = registerOutput<bool?>('replaceUnhealthyInstances');
     spotOptions = registerOutput<FleetSpotOptions?>('spotOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetSpotOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetCapacitySpecification = registerOutput<FleetTargetCapacitySpecification>('targetCapacitySpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetTargetCapacitySpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     terminateInstances = registerOutput<bool?>('terminateInstances');
     terminateInstancesWithExpiration = registerOutput<bool?>('terminateInstancesWithExpiration');
@@ -271,11 +273,12 @@ class Fleet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FleetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Fleet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -292,17 +295,48 @@ class Fleet extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     context = registerOutput<String?>('context');
     excessCapacityTerminationPolicy = registerOutput<String?>('excessCapacityTerminationPolicy');
-    fleetInstanceSets = registerOutput<List<Map<String, dynamic>>>('fleetInstanceSets');
+    fleetInstanceSets = registerOutput<List<FleetFleetInstanceSet>>('fleetInstanceSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetFleetInstanceSet>(guardedValue, (value) => FleetFleetInstanceSet.fromMap((value as Map).cast<String, dynamic>())); });
     fleetState = registerOutput<String>('fleetState');
     fulfilledCapacity = registerOutput<double>('fulfilledCapacity');
     fulfilledOnDemandCapacity = registerOutput<double>('fulfilledOnDemandCapacity');
-    launchTemplateConfigs = registerOutput<List<Map<String, dynamic>>>('launchTemplateConfigs');
+    launchTemplateConfigs = registerOutput<List<FleetLaunchTemplateConfig>>('launchTemplateConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetLaunchTemplateConfig>(guardedValue, (value) => FleetLaunchTemplateConfig.fromMap((value as Map).cast<String, dynamic>())); });
     onDemandOptions = registerOutput<FleetOnDemandOptions?>('onDemandOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetOnDemandOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     replaceUnhealthyInstances = registerOutput<bool?>('replaceUnhealthyInstances');
     spotOptions = registerOutput<FleetSpotOptions?>('spotOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetSpotOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetCapacitySpecification = registerOutput<FleetTargetCapacitySpecification>('targetCapacitySpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetTargetCapacitySpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    terminateInstances = registerOutput<bool?>('terminateInstances');
+    terminateInstancesWithExpiration = registerOutput<bool?>('terminateInstancesWithExpiration');
+    type = registerOutput<String?>('type');
+    validFrom = registerOutput<String?>('validFrom');
+    validUntil = registerOutput<String?>('validUntil');
+  }
+
+  /// Creates a typed reference to an existing [Fleet] resource.
+  Fleet.reference(String urn)
+    : super(
+        'aws:ec2/fleet:Fleet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    context = registerOutput<String?>('context');
+    excessCapacityTerminationPolicy = registerOutput<String?>('excessCapacityTerminationPolicy');
+    fleetInstanceSets = registerOutput<List<FleetFleetInstanceSet>>('fleetInstanceSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetFleetInstanceSet>(guardedValue, (value) => FleetFleetInstanceSet.fromMap((value as Map).cast<String, dynamic>())); });
+    fleetState = registerOutput<String>('fleetState');
+    fulfilledCapacity = registerOutput<double>('fulfilledCapacity');
+    fulfilledOnDemandCapacity = registerOutput<double>('fulfilledOnDemandCapacity');
+    launchTemplateConfigs = registerOutput<List<FleetLaunchTemplateConfig>>('launchTemplateConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetLaunchTemplateConfig>(guardedValue, (value) => FleetLaunchTemplateConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    onDemandOptions = registerOutput<FleetOnDemandOptions?>('onDemandOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetOnDemandOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    replaceUnhealthyInstances = registerOutput<bool?>('replaceUnhealthyInstances');
+    spotOptions = registerOutput<FleetSpotOptions?>('spotOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetSpotOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetCapacitySpecification = registerOutput<FleetTargetCapacitySpecification>('targetCapacitySpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetTargetCapacitySpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     terminateInstances = registerOutput<bool?>('terminateInstances');
     terminateInstancesWithExpiration = registerOutput<bool?>('terminateInstancesWithExpiration');

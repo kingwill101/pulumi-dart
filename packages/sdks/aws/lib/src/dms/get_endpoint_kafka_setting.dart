@@ -98,7 +98,7 @@ class GetEndpointKafkaSetting {
       includeTableAlterOperations: pulumi.Input.fromValue(map['includeTableAlterOperations'] as bool),
       includeTransactionDetails: pulumi.Input.fromValue(map['includeTransactionDetails'] as bool),
       messageFormat: pulumi.Input.fromValue(map['messageFormat'] as String),
-      messageMaxBytes: pulumi.Input.fromValue(map['messageMaxBytes'] as int),
+      messageMaxBytes: pulumi.Input.fromValue((map['messageMaxBytes'] as num).toInt()),
       noHexPrefix: pulumi.Input.fromValue(map['noHexPrefix'] as bool),
       partitionIncludeSchemaTable: pulumi.Input.fromValue(map['partitionIncludeSchemaTable'] as bool),
       saslMechanism: pulumi.Input.fromValue(map['saslMechanism'] as String),

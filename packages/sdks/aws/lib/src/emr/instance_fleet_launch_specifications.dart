@@ -6,9 +6,9 @@ import 'instance_fleet_launch_specifications_spot_specification.dart';
 
 class InstanceFleetLaunchSpecifications {
   /// Configuration block for on demand instances launch specifications
-  final pulumi.Input<List<InstanceFleetLaunchSpecificationsOnDemandSpecification>>? onDemandSpecifications;
+  final pulumi.Input<List<InstanceFleetLaunchSpecificationsOnDemandSpecification>?>? onDemandSpecifications;
   /// Configuration block for spot instances launch specifications
-  final pulumi.Input<List<InstanceFleetLaunchSpecificationsSpotSpecification>>? spotSpecifications;
+  final pulumi.Input<List<InstanceFleetLaunchSpecificationsSpotSpecification>?>? spotSpecifications;
 
   /// Creates a new [InstanceFleetLaunchSpecifications].
   /// [onDemandSpecifications] Configuration block for on demand instances launch specifications

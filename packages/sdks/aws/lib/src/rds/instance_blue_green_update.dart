@@ -12,7 +12,7 @@ class InstanceBlueGreenUpdate {
   /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
   /// [blue-green]:
   /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/blue-green-deployments.html
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [InstanceBlueGreenUpdate].
   /// [enabled] Enables low-downtime updates when `true`.

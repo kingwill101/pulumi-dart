@@ -12,9 +12,9 @@ class GetInstanceArgs {
   /// If multiple `filter` blocks are provided, they all must be true.
   /// For a full reference of filter names, see [describe-instances in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html).
   /// See `filter` Block below.
-  final pulumi.Input<List<GetInstanceFilter>>? filters;
+  final pulumi.Input<List<GetInstanceFilter>?>? filters;
   /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `passwordData` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
-  final pulumi.Input<bool>? getPasswordData;
+  final pulumi.Input<bool?>? getPasswordData;
   /// Retrieve Base64 encoded User Data contents into the `userDataBase64` attribute. A SHA-1 hash of the User Data contents will always be present in the `userData` attribute. Defaults to `false`.
   ///
   /// &gt; **NOTE:** At least one of `filter`, `instanceTags`, or `instanceId` must be specified.
@@ -22,16 +22,16 @@ class GetInstanceArgs {
   /// &gt; **NOTE:** If anything other than a single match is returned by the search,
   /// this call will fail. Ensure that your search is specific enough to return
   /// a single Instance ID only.
-  final pulumi.Input<bool>? getUserData;
+  final pulumi.Input<bool?>? getUserData;
   /// Specify the exact Instance ID with which to populate the data source.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Map of tags, each pair of which must
   /// exactly match a pair on the desired Instance.
-  final pulumi.Input<Map<String, String>>? instanceTags;
+  final pulumi.Input<Map<String, String>?>? instanceTags;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the Instance.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetInstanceArgs].
   /// [filters] One or more filters to apply to the search.

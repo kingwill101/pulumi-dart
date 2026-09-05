@@ -9,18 +9,18 @@ import 'namespace_timeouts.dart';
 /// {@macro pulumi_quicksight_namespace_namespace_args_doc}
 class NamespaceArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// User identity directory type. Defaults to `QUICKSIGHT`, the only current valid value.
-  final pulumi.Input<String>? identityStore;
+  final pulumi.Input<String?>? identityStore;
   /// Name of the namespace.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<NamespaceTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<NamespaceTimeouts?>? timeouts;
 
   /// Creates a new [NamespaceArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInCondition {
   /// Expression written based on the Cedar Policy Language used to match the principal attributes.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
 
   /// Creates a new [OptInCondition].
   /// [expression] Expression written based on the Cedar Policy Language used to match the principal attributes.

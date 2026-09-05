@@ -9,11 +9,11 @@ import 'size_constraint_set_size_constraint.dart';
 /// {@macro pulumi_wafregional_size_constraint_set_size_constraint_set_args_doc}
 class SizeConstraintSetArgs {
   /// The name or description of the Size Constraint Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies the parts of web requests that you want to inspect the size of.
-  final pulumi.Input<List<SizeConstraintSetSizeConstraint>>? sizeConstraints;
+  final pulumi.Input<List<SizeConstraintSetSizeConstraint>?>? sizeConstraints;
 
   /// Creates a new [SizeConstraintSetArgs].
   /// [name] The name or description of the Size Constraint Set.

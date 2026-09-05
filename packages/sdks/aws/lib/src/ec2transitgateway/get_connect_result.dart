@@ -7,61 +7,61 @@ import 'get_connect_filter.dart';
 class GetConnectResult {
   final List<GetConnectFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Tunnel protocol
-  final String protocol;
-  final String region;
+  final String? protocol;
+  final String? region;
   /// Key-value tags for the EC2 Transit Gateway Connect
-  final Map<String, String> tags;
-  final String transitGatewayConnectId;
+  final Map<String, String>? tags;
+  final String? transitGatewayConnectId;
   /// EC2 Transit Gateway identifier
-  final String transitGatewayId;
+  final String? transitGatewayId;
   /// The underlaying VPC attachment
-  final String transportAttachmentId;
+  final String? transportAttachmentId;
 
   /// Creates a new [GetConnectResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [protocol] Tunnel protocol
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Key-value tags for the EC2 Transit Gateway Connect
-  /// [transitGatewayConnectId] Required.
+  /// [transitGatewayConnectId] Optional.
   /// [transitGatewayId] EC2 Transit Gateway identifier
   /// [transportAttachmentId] The underlaying VPC attachment
   const GetConnectResult({
     this.filters,
-    required this.id,
-    required this.protocol,
-    required this.region,
-    required this.tags,
-    required this.transitGatewayConnectId,
-    required this.transitGatewayId,
-    required this.transportAttachmentId,
+    this.id,
+    this.protocol,
+    this.region,
+    this.tags,
+    this.transitGatewayConnectId,
+    this.transitGatewayId,
+    this.transportAttachmentId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConnectFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'protocol': protocol,
-      'region': region,
-      'tags': tags,
-      'transitGatewayConnectId': transitGatewayConnectId,
-      'transitGatewayId': transitGatewayId,
-      'transportAttachmentId': transportAttachmentId,
+      'id': ?id,
+      'protocol': ?protocol,
+      'region': ?region,
+      'tags': ?tags,
+      'transitGatewayConnectId': ?transitGatewayConnectId,
+      'transitGatewayId': ?transitGatewayId,
+      'transportAttachmentId': ?transportAttachmentId,
     };
   }
 
   factory GetConnectResult.fromMap(Map<String, dynamic> map) {
     return GetConnectResult(
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConnectFilter>(guardedValue, (value) => GetConnectFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      protocol: map['protocol'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      transitGatewayConnectId: map['transitGatewayConnectId'] as String,
-      transitGatewayId: map['transitGatewayId'] as String,
-      transportAttachmentId: map['transportAttachmentId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      transitGatewayConnectId: (() { final guardedValue = map['transitGatewayConnectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      transitGatewayId: (() { final guardedValue = map['transitGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      transportAttachmentId: (() { final guardedValue = map['transportAttachmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

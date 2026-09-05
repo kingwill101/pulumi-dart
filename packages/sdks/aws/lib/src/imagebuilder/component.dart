@@ -132,7 +132,7 @@ import 'component_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.imagebuilder.getComponents` resources using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.getComponents` resources using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/component:Component example arn:aws:imagebuilder:us-east-1:123456789012:component/example/1.0.0/1
@@ -140,7 +140,7 @@ import 'component_state.dart';
 ///
 /// Certain resource arguments, such as `uri`, cannot be read via the API and imported into the provider. The provider will display a difference for these arguments the first run after import if declared in the the provider configuration for an imported resource.
 class Component extends pulumi.CustomResource {
-  /// (Required) Amazon Resource Name (ARN) of the component.
+  /// (Required) ARN of the component.
   late final pulumi.Output<String> arn;
   /// Change description of the component.
   late final pulumi.Output<String?> changeDescription;
@@ -152,7 +152,7 @@ class Component extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Encryption status of the component.
   late final pulumi.Output<bool> encrypted;
-  /// Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the component.
+  /// ARN of the KMS Key used to encrypt the component.
   late final pulumi.Output<String?> kmsKeyId;
   /// Name of the component.
   late final pulumi.Output<String> name;
@@ -193,7 +193,7 @@ class Component extends pulumi.CustomResource {
           'aws:imagebuilder/component:Component',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     changeDescription = registerOutput<String?>('changeDescription');
@@ -207,9 +207,9 @@ class Component extends pulumi.CustomResource {
     platform = registerOutput<String>('platform');
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    supportedOsVersions = registerOutput<List<String>?>('supportedOsVersions');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    supportedOsVersions = registerOutput<List<String>?>('supportedOsVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uri = registerOutput<String?>('uri');
     version = registerOutput<String>('version');
@@ -220,11 +220,12 @@ class Component extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ComponentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Component._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -250,9 +251,38 @@ class Component extends pulumi.CustomResource {
     platform = registerOutput<String>('platform');
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    supportedOsVersions = registerOutput<List<String>?>('supportedOsVersions');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    supportedOsVersions = registerOutput<List<String>?>('supportedOsVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uri = registerOutput<String?>('uri');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Component] resource.
+  Component.reference(String urn)
+    : super(
+        'aws:imagebuilder/component:Component',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    changeDescription = registerOutput<String?>('changeDescription');
+    data = registerOutput<String>('data');
+    dateCreated = registerOutput<String>('dateCreated');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool>('encrypted');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    platform = registerOutput<String>('platform');
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    supportedOsVersions = registerOutput<List<String>?>('supportedOsVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uri = registerOutput<String?>('uri');
     version = registerOutput<String>('version');

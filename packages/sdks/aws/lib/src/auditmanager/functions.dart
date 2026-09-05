@@ -134,21 +134,21 @@ import 'get_framework_result.dart';
 ///     type: "Standard",
 /// });
 /// const exampleFramework = new aws.auditmanager.Framework("example", {
-///     name: "example",
 ///     controlSets: [
 ///         {
-///             name: "example",
 ///             controls: [{
 ///                 id: example.then(example => example.id),
 ///             }],
+///             name: "example",
 ///         },
 ///         {
-///             name: "example2",
 ///             controls: [{
 ///                 id: example2.then(example2 => example2.id),
 ///             }],
+///             name: "example2",
 ///         },
 ///     ],
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -160,21 +160,21 @@ import 'get_framework_result.dart';
 /// example2 = aws.auditmanager.get_control(name="2. Personnel",
 ///     type="Standard")
 /// example_framework = aws.auditmanager.Framework("example",
-///     name="example",
 ///     control_sets=[
 ///         {
-///             "name": "example",
 ///             "controls": [{
 ///                 "id": example.id,
 ///             }],
+///             "name": "example",
 ///         },
 ///         {
-///             "name": "example2",
 ///             "controls": [{
 ///                 "id": example2.id,
 ///             }],
+///             "name": "example2",
 ///         },
-///     ])
+///     ],
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -198,12 +198,10 @@ import 'get_framework_result.dart';
 ///
 ///     var exampleFramework = new Aws.Auditmanager.Framework("example", new()
 ///     {
-///         Name = "example",
 ///         ControlSets = new[]
 ///         {
 ///             new Aws.Auditmanager.Inputs.FrameworkControlSetArgs
 ///             {
-///                 Name = "example",
 ///                 Controls = new[]
 ///                 {
 ///                     new Aws.Auditmanager.Inputs.FrameworkControlSetControlArgs
@@ -211,10 +209,10 @@ import 'get_framework_result.dart';
 ///                         Id = example.Apply(getControlResult => getControlResult.Id),
 ///                     },
 ///                 },
+///                 Name = "example",
 ///             },
 ///             new Aws.Auditmanager.Inputs.FrameworkControlSetArgs
 ///             {
-///                 Name = "example2",
 ///                 Controls = new[]
 ///                 {
 ///                     new Aws.Auditmanager.Inputs.FrameworkControlSetControlArgs
@@ -222,8 +220,10 @@ import 'get_framework_result.dart';
 ///                         Id = example2.Apply(getControlResult => getControlResult.Id),
 ///                     },
 ///                 },
+///                 Name = "example2",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -253,25 +253,25 @@ import 'get_framework_result.dart';
 /// 			return err
 /// 		}
 /// 		_, err = auditmanager.NewFramework(ctx, "example", &auditmanager.FrameworkArgs{
-/// 			Name: pulumi.String("example"),
 /// 			ControlSets: auditmanager.FrameworkControlSetArray{
 /// 				&auditmanager.FrameworkControlSetArgs{
-/// 					Name: pulumi.String("example"),
 /// 					Controls: auditmanager.FrameworkControlSetControlArray{
 /// 						&auditmanager.FrameworkControlSetControlArgs{
 /// 							Id: pulumi.String(example.Id),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("example"),
 /// 				},
 /// 				&auditmanager.FrameworkControlSetArgs{
-/// 					Name: pulumi.String("example2"),
 /// 					Controls: auditmanager.FrameworkControlSetControlArray{
 /// 						&auditmanager.FrameworkControlSetControlArgs{
 /// 							Id: pulumi.String(example2.Id),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("example2"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -299,19 +299,19 @@ import 'get_framework_result.dart';
 /// }
 ///
 /// resource "aws_auditmanager_framework" "example" {
-///   name = "example"
 ///   control_sets {
-///     name = "example"
 ///     controls {
 ///       id = data.aws_auditmanager_getcontrol.example.id
 ///     }
+///     name = "example"
 ///   }
 ///   control_sets {
-///     name = "example2"
 ///     controls {
 ///       id = data.aws_auditmanager_getcontrol.example2.id
 ///     }
+///     name = "example2"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -350,20 +350,20 @@ import 'get_framework_result.dart';
 ///             .build());
 ///
 ///         var exampleFramework = new Framework("exampleFramework", FrameworkArgs.builder()
-///             .name("example")
 ///             .controlSets(
 ///                 FrameworkControlSetArgs.builder()
-///                     .name("example")
 ///                     .controls(FrameworkControlSetControlArgs.builder()
 ///                         .id(example.id())
 ///                         .build())
+///                     .name("example")
 ///                     .build(),
 ///                 FrameworkControlSetArgs.builder()
-///                     .name("example2")
 ///                     .controls(FrameworkControlSetControlArgs.builder()
 ///                         .id(example2.id())
 ///                         .build())
+///                     .name("example2")
 ///                     .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -375,14 +375,14 @@ import 'get_framework_result.dart';
 ///     type: aws:auditmanager:Framework
 ///     name: example
 ///     properties:
-///       name: example
 ///       controlSets:
-///         - name: example
-///           controls:
+///         - controls:
 ///             - id: ${example.id}
-///         - name: example2
-///           controls:
+///           name: example
+///         - controls:
 ///             - id: ${example2.id}
+///           name: example2
+///       name: example
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -410,6 +410,17 @@ Future<GetControlResult> getControl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetControlResult.fromMap(result);
+}
+
+pulumi.Output<GetControlResult> getControlOutput(
+  GetControlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:auditmanager/getControl:getControl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControlResult.fromMap);
 }
 
 /// Data source for managing an AWS Audit Manager Framework.
@@ -537,4 +548,15 @@ Future<GetFrameworkResult> getFramework(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFrameworkResult.fromMap(result);
+}
+
+pulumi.Output<GetFrameworkResult> getFrameworkOutput(
+  GetFrameworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:auditmanager/getFramework:getFramework',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrameworkResult.fromMap);
 }

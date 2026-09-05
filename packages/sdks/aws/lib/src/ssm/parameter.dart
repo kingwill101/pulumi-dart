@@ -386,7 +386,7 @@ class Parameter extends pulumi.CustomResource {
   late final pulumi.Output<String?> allowedPattern;
   /// ARN of the parameter.
   late final pulumi.Output<String> arn;
-  /// Data type of the parameter. Valid values: `text`, `aws:ssm:integration` and `aws:ec2:image` for AMI format, see the [Native parameter support for Amazon Machine Image IDs](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html).
+  /// Data type of the parameter. Valid values: `text`, `aws:ssm:integration` and `aws:ec2:image` for AMI format, see the [Native parameter support for AMI IDs](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html).
   late final pulumi.Output<String> dataType;
   /// Description of the parameter.
   late final pulumi.Output<String?> description;
@@ -436,7 +436,8 @@ class Parameter extends pulumi.CustomResource {
           'aws:ssm/parameter:Parameter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['value', 'valueWo'],
         ) {
     allowedPattern = registerOutput<String?>('allowedPattern');
     arn = registerOutput<String>('arn');
@@ -448,12 +449,12 @@ class Parameter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     overwrite = registerOutput<bool?>('overwrite');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     type = registerOutput<String>('type');
-    value = registerOutput<String>('value');
-    valueWo = registerOutput<String?>('valueWo');
+    value = registerOutput<String>('value', isSecret: true);
+    valueWo = registerOutput<String?>('valueWo', isSecret: true);
     valueWoVersion = registerOutput<int?>('valueWoVersion');
     version = registerOutput<int>('version');
   }
@@ -463,11 +464,12 @@ class Parameter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ParameterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Parameter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -491,12 +493,42 @@ class Parameter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     overwrite = registerOutput<bool?>('overwrite');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     type = registerOutput<String>('type');
-    value = registerOutput<String>('value');
-    valueWo = registerOutput<String?>('valueWo');
+    value = registerOutput<String>('value', isSecret: true);
+    valueWo = registerOutput<String?>('valueWo', isSecret: true);
+    valueWoVersion = registerOutput<int?>('valueWoVersion');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [Parameter] resource.
+  Parameter.reference(String urn)
+    : super(
+        'aws:ssm/parameter:Parameter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value', 'valueWo'],
+        isResourceReference: true,
+      ) {
+    allowedPattern = registerOutput<String?>('allowedPattern');
+    arn = registerOutput<String>('arn');
+    dataType = registerOutput<String>('dataType');
+    description = registerOutput<String?>('description');
+    hasValueWo = registerOutput<bool>('hasValueWo');
+    insecureValue = registerOutput<String>('insecureValue');
+    keyId = registerOutput<String>('keyId');
+    this.name = registerOutput<String>('name');
+    overwrite = registerOutput<bool?>('overwrite');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String>('tier');
+    type = registerOutput<String>('type');
+    value = registerOutput<String>('value', isSecret: true);
+    valueWo = registerOutput<String?>('valueWo', isSecret: true);
     valueWoVersion = registerOutput<int?>('valueWoVersion');
     version = registerOutput<int>('version');
   }

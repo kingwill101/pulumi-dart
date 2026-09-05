@@ -5,7 +5,7 @@ import 'classification_job_s3_job_definition_bucket_criteria_excludes_and.dart';
 
 class ClassificationJobS3JobDefinitionBucketCriteriaExcludes {
   /// An array of conditions, one for each condition that determines which objects to include or exclude from the job. (documented below)
-  final pulumi.Input<List<ClassificationJobS3JobDefinitionBucketCriteriaExcludesAnd>>? ands;
+  final pulumi.Input<List<ClassificationJobS3JobDefinitionBucketCriteriaExcludesAnd>?>? ands;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaExcludes].
   /// [ands] An array of conditions, one for each condition that determines which objects to include or exclude from the job. (documented below)

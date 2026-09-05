@@ -9,13 +9,13 @@ import 'get_vpc_attachment_filter.dart';
 /// {@macro pulumi_ec2transitgateway_get_vpc_attachment_get_vpc_attachment_args_doc}
 class GetVpcAttachmentArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final pulumi.Input<List<GetVpcAttachmentFilter>>? filters;
+  final pulumi.Input<List<GetVpcAttachmentFilter>?>? filters;
   /// Identifier of the EC2 Transit Gateway VPC Attachment.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the EC2 Transit Gateway VPC Attachment
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVpcAttachmentArgs].
   /// [filters] One or more configuration blocks containing name-values filters. Detailed below.

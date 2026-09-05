@@ -3,29 +3,29 @@
 
 /// Result data returned by getEntityPath.
 class GetEntityPathResult {
-  final String entityId;
+  final String? entityId;
   /// Entity path.
-  final String entityPath;
+  final String? entityPath;
 
   /// Creates a new [GetEntityPathResult].
-  /// [entityId] Required.
+  /// [entityId] Optional.
   /// [entityPath] Entity path.
   const GetEntityPathResult({
-    required this.entityId,
-    required this.entityPath,
+    this.entityId,
+    this.entityPath,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entityId': entityId,
-      'entityPath': entityPath,
+      'entityId': ?entityId,
+      'entityPath': ?entityPath,
     };
   }
 
   factory GetEntityPathResult.fromMap(Map<String, dynamic> map) {
     return GetEntityPathResult(
-      entityId: map['entityId'] as String,
-      entityPath: map['entityPath'] as String,
+      entityId: (() { final guardedValue = map['entityId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      entityPath: (() { final guardedValue = map['entityPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

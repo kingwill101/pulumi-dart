@@ -207,11 +207,12 @@ class WorkspaceServiceAccountToken extends pulumi.CustomResource {
           'aws:grafana/workspaceServiceAccountToken:WorkspaceServiceAccountToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['key'],
         ) {
     createdAt = registerOutput<String>('createdAt');
     expiresAt = registerOutput<String>('expiresAt');
-    key = registerOutput<String>('key');
+    key = registerOutput<String>('key', isSecret: true);
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     secondsToLive = registerOutput<int>('secondsToLive');
@@ -225,11 +226,12 @@ class WorkspaceServiceAccountToken extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceServiceAccountTokenState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceServiceAccountToken._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -245,7 +247,28 @@ class WorkspaceServiceAccountToken extends pulumi.CustomResource {
         ) {
     createdAt = registerOutput<String>('createdAt');
     expiresAt = registerOutput<String>('expiresAt');
-    key = registerOutput<String>('key');
+    key = registerOutput<String>('key', isSecret: true);
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    secondsToLive = registerOutput<int>('secondsToLive');
+    serviceAccountId = registerOutput<String>('serviceAccountId');
+    serviceAccountTokenId = registerOutput<String>('serviceAccountTokenId');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceServiceAccountToken] resource.
+  WorkspaceServiceAccountToken.reference(String urn)
+    : super(
+        'aws:grafana/workspaceServiceAccountToken:WorkspaceServiceAccountToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['key'],
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    expiresAt = registerOutput<String>('expiresAt');
+    key = registerOutput<String>('key', isSecret: true);
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     secondsToLive = registerOutput<int>('secondsToLive');

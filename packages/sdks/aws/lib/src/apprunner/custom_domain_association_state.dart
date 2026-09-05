@@ -6,19 +6,19 @@ import 'custom_domain_association_certificate_validation_record.dart';
 /// Input properties used for looking up and filtering CustomDomainAssociation resources.
 class CustomDomainAssociationState {
   /// Set of certificate CNAME records used for this domain name. See `certificateValidationRecords` Block below for more details.
-  final pulumi.Input<List<CustomDomainAssociationCertificateValidationRecord>>? certificateValidationRecords;
+  final pulumi.Input<List<CustomDomainAssociationCertificateValidationRecord>?>? certificateValidationRecords;
   /// App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name. Attribute only available if resource created (not imported) with this provider.
-  final pulumi.Input<String>? dnsTarget;
+  final pulumi.Input<String?>? dnsTarget;
   /// Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
-  final pulumi.Input<bool>? enableWwwSubdomain;
+  final pulumi.Input<bool?>? enableWwwSubdomain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the App Runner service.
-  final pulumi.Input<String>? serviceArn;
+  final pulumi.Input<String?>? serviceArn;
   /// Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [CustomDomainAssociationState].
   /// [certificateValidationRecords] Set of certificate CNAME records used for this domain name. See `certificateValidationRecords` Block below for more details.

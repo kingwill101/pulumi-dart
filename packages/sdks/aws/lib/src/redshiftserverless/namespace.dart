@@ -114,7 +114,7 @@ import 'namespace_state.dart';
 /// $ pulumi import aws:redshiftserverless/namespace:Namespace example example
 /// ```
 class Namespace extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of namespace's admin user credentials secret.
+  /// ARN of namespace's admin user credentials secret.
   late final pulumi.Output<String> adminPasswordSecretArn;
   /// ID of the KMS key used to encrypt the namespace's admin credentials secret.
   late final pulumi.Output<String> adminPasswordSecretKmsKeyId;
@@ -129,15 +129,15 @@ class Namespace extends pulumi.CustomResource {
   late final pulumi.Output<int?> adminUserPasswordWoVersion;
   /// The username of the administrator for the first database created in the namespace.
   late final pulumi.Output<String> adminUsername;
-  /// Amazon Resource Name (ARN) of the Redshift Serverless Namespace.
+  /// ARN of the Redshift Serverless Namespace.
   late final pulumi.Output<String> arn;
   /// The name of the first database created in the namespace.
   late final pulumi.Output<String> dbName;
-  /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
+  /// ARN of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
   late final pulumi.Output<String?> defaultIamRoleArn;
   /// A list of IAM roles to associate with the namespace.
   late final pulumi.Output<List<String>> iamRoles;
-  /// The ARN of the Amazon Web Services Key Management Service key used to encrypt your data.
+  /// ARN of the Amazon Web Services KMS key used to encrypt your data.
   late final pulumi.Output<String> kmsKeyId;
   /// The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
   late final pulumi.Output<List<String>?> logExports;
@@ -167,26 +167,27 @@ class Namespace extends pulumi.CustomResource {
           'aws:redshiftserverless/namespace:Namespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['adminUserPassword', 'adminUserPasswordWo', 'adminUsername'],
         ) {
     adminPasswordSecretArn = registerOutput<String>('adminPasswordSecretArn');
     adminPasswordSecretKmsKeyId = registerOutput<String>('adminPasswordSecretKmsKeyId');
-    adminUserPassword = registerOutput<String?>('adminUserPassword');
-    adminUserPasswordWo = registerOutput<String?>('adminUserPasswordWo');
+    adminUserPassword = registerOutput<String?>('adminUserPassword', isSecret: true);
+    adminUserPasswordWo = registerOutput<String?>('adminUserPasswordWo', isSecret: true);
     adminUserPasswordWoVersion = registerOutput<int?>('adminUserPasswordWoVersion');
-    adminUsername = registerOutput<String>('adminUsername');
+    adminUsername = registerOutput<String>('adminUsername', isSecret: true);
     arn = registerOutput<String>('arn');
     dbName = registerOutput<String>('dbName');
     defaultIamRoleArn = registerOutput<String?>('defaultIamRoleArn');
-    iamRoles = registerOutput<List<String>>('iamRoles');
+    iamRoles = registerOutput<List<String>>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    logExports = registerOutput<List<String>?>('logExports');
+    logExports = registerOutput<List<String>?>('logExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     manageAdminPassword = registerOutput<bool?>('manageAdminPassword');
     namespaceId = registerOutput<String>('namespaceId');
     namespaceName = registerOutput<String>('namespaceName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Namespace] resource's state with the given [name] and [id].
@@ -194,11 +195,12 @@ class Namespace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Namespace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -214,21 +216,51 @@ class Namespace extends pulumi.CustomResource {
         ) {
     adminPasswordSecretArn = registerOutput<String>('adminPasswordSecretArn');
     adminPasswordSecretKmsKeyId = registerOutput<String>('adminPasswordSecretKmsKeyId');
-    adminUserPassword = registerOutput<String?>('adminUserPassword');
-    adminUserPasswordWo = registerOutput<String?>('adminUserPasswordWo');
+    adminUserPassword = registerOutput<String?>('adminUserPassword', isSecret: true);
+    adminUserPasswordWo = registerOutput<String?>('adminUserPasswordWo', isSecret: true);
     adminUserPasswordWoVersion = registerOutput<int?>('adminUserPasswordWoVersion');
-    adminUsername = registerOutput<String>('adminUsername');
+    adminUsername = registerOutput<String>('adminUsername', isSecret: true);
     arn = registerOutput<String>('arn');
     dbName = registerOutput<String>('dbName');
     defaultIamRoleArn = registerOutput<String?>('defaultIamRoleArn');
-    iamRoles = registerOutput<List<String>>('iamRoles');
+    iamRoles = registerOutput<List<String>>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    logExports = registerOutput<List<String>?>('logExports');
+    logExports = registerOutput<List<String>?>('logExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     manageAdminPassword = registerOutput<bool?>('manageAdminPassword');
     namespaceId = registerOutput<String>('namespaceId');
     namespaceName = registerOutput<String>('namespaceName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Namespace] resource.
+  Namespace.reference(String urn)
+    : super(
+        'aws:redshiftserverless/namespace:Namespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['adminUserPassword', 'adminUserPasswordWo', 'adminUsername'],
+        isResourceReference: true,
+      ) {
+    adminPasswordSecretArn = registerOutput<String>('adminPasswordSecretArn');
+    adminPasswordSecretKmsKeyId = registerOutput<String>('adminPasswordSecretKmsKeyId');
+    adminUserPassword = registerOutput<String?>('adminUserPassword', isSecret: true);
+    adminUserPasswordWo = registerOutput<String?>('adminUserPasswordWo', isSecret: true);
+    adminUserPasswordWoVersion = registerOutput<int?>('adminUserPasswordWoVersion');
+    adminUsername = registerOutput<String>('adminUsername', isSecret: true);
+    arn = registerOutput<String>('arn');
+    dbName = registerOutput<String>('dbName');
+    defaultIamRoleArn = registerOutput<String?>('defaultIamRoleArn');
+    iamRoles = registerOutput<List<String>>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    logExports = registerOutput<List<String>?>('logExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    manageAdminPassword = registerOutput<bool?>('manageAdminPassword');
+    namespaceId = registerOutput<String>('namespaceId');
+    namespaceName = registerOutput<String>('namespaceName');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

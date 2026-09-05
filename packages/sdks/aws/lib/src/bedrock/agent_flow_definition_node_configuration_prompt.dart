@@ -6,9 +6,9 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration.dar
 
 class AgentFlowDefinitionNodeConfigurationPrompt {
   /// Configures a guardrail for prompt generation. See Guardrail Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration>? guardrailConfiguration;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration?>? guardrailConfiguration;
   /// Configures the prompt source, either inline or from Prompt management. See Source Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration>? sourceConfiguration;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration?>? sourceConfiguration;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPrompt].
   /// [guardrailConfiguration] Configures a guardrail for prompt generation. See Guardrail Configuration for more information.

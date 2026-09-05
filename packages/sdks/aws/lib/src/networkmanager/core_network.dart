@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'core_network_args.dart';
+import 'core_network_edge.dart';
+import 'core_network_segment.dart';
 import 'core_network_state.dart';
 
 /// Manages a Network Manager Core Network.
@@ -359,11 +361,11 @@ import 'core_network_state.dart';
 /// const exampleGlobalNetwork = new aws.networkmanager.GlobalNetwork("example", {});
 /// const base = aws.networkmanager.getCoreNetworkPolicyDocument({
 ///     coreNetworkConfigurations: [{
-///         asnRanges: ["65022-65534"],
 ///         edgeLocations: [{
 ///             location: "us-west-2",
 ///             asn: "65500",
 ///         }],
+///         asnRanges: ["65022-65534"],
 ///     }],
 ///     segments: [{
 ///         name: "segment",
@@ -381,20 +383,20 @@ import 'core_network_state.dart';
 /// });
 /// const example = aws.networkmanager.getCoreNetworkPolicyDocumentOutput({
 ///     coreNetworkConfigurations: [{
-///         asnRanges: ["65022-65534"],
 ///         edgeLocations: [{
 ///             location: "us-west-2",
 ///             asn: "65500",
 ///         }],
-///     }],
-///     segments: [{
-///         name: "segment",
+///         asnRanges: ["65022-65534"],
 ///     }],
 ///     segmentActions: [{
 ///         action: "create-route",
 ///         segment: "segment",
 ///         destinationCidrBlocks: ["0.0.0.0/0"],
 ///         destinations: [exampleVpcAttachment.id],
+///     }],
+///     segments: [{
+///         name: "segment",
 ///     }],
 /// });
 /// const exampleCoreNetworkPolicyAttachment = new aws.networkmanager.CoreNetworkPolicyAttachment("example", {
@@ -408,11 +410,11 @@ import 'core_network_state.dart';
 ///
 /// example_global_network = aws.networkmanager.GlobalNetwork("example")
 /// base = aws.networkmanager.get_core_network_policy_document(core_network_configurations=[{
-///         "asn_ranges": ["65022-65534"],
 ///         "edge_locations": [{
 ///             "location": "us-west-2",
 ///             "asn": "65500",
 ///         }],
+///         "asn_ranges": ["65022-65534"],
 ///     }],
 ///     segments=[{
 ///         "name": "segment",
@@ -426,20 +428,20 @@ import 'core_network_state.dart';
 ///     subnet_arns=[__item["arn"] for __item in example_aws_subnet],
 ///     vpc_arn=example_aws_vpc["arn"])
 /// example = aws.networkmanager.get_core_network_policy_document_output(core_network_configurations=[{
-///         "asn_ranges": ["65022-65534"],
 ///         "edge_locations": [{
 ///             "location": "us-west-2",
 ///             "asn": "65500",
 ///         }],
-///     }],
-///     segments=[{
-///         "name": "segment",
+///         "asn_ranges": ["65022-65534"],
 ///     }],
 ///     segment_actions=[{
 ///         "action": "create-route",
 ///         "segment": "segment",
 ///         "destination_cidr_blocks": ["0.0.0.0/0"],
 ///         "destinations": [example_vpc_attachment.id],
+///     }],
+///     segments=[{
+///         "name": "segment",
 ///     }])
 /// example_core_network_policy_attachment = aws.networkmanager.CoreNetworkPolicyAttachment("example",
 ///     core_network_id=example_core_network.id,
@@ -461,10 +463,6 @@ import 'core_network_state.dart';
 ///         {
 ///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationInputArgs
 ///             {
-///                 AsnRanges = new[]
-///                 {
-///                     "65022-65534",
-///                 },
 ///                 EdgeLocations = new[]
 ///                 {
 ///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationInputArgs
@@ -472,6 +470,10 @@ import 'core_network_state.dart';
 ///                         Location = "us-west-2",
 ///                         Asn = "65500",
 ///                     },
+///                 },
+///                 AsnRanges = new[]
+///                 {
+///                     "65022-65534",
 ///                 },
 ///             },
 ///         },
@@ -504,10 +506,6 @@ import 'core_network_state.dart';
 ///         {
 ///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationInputArgs
 ///             {
-///                 AsnRanges = new[]
-///                 {
-///                     "65022-65534",
-///                 },
 ///                 EdgeLocations = new[]
 ///                 {
 ///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationInputArgs
@@ -516,13 +514,10 @@ import 'core_network_state.dart';
 ///                         Asn = "65500",
 ///                     },
 ///                 },
-///             },
-///         },
-///         Segments = new[]
-///         {
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
-///             {
-///                 Name = "segment",
+///                 AsnRanges = new[]
+///                 {
+///                     "65022-65534",
+///                 },
 ///             },
 ///         },
 ///         SegmentActions = new[]
@@ -539,6 +534,13 @@ import 'core_network_state.dart';
 ///                 {
 ///                     exampleVpcAttachment.Id,
 ///                 },
+///             },
+///         },
+///         Segments = new[]
+///         {
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
+///             {
+///                 Name = "segment",
 ///             },
 ///         },
 ///     });
@@ -567,14 +569,14 @@ import 'core_network_state.dart';
 /// base, err := networkmanager.GetCoreNetworkPolicyDocument(ctx, &networkmanager.GetCoreNetworkPolicyDocumentArgs{
 /// CoreNetworkConfigurations: []networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfiguration{
 /// {
-/// AsnRanges: []string{
-/// "65022-65534",
-/// },
 /// EdgeLocations: []networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation{
 /// {
 /// Location: "us-west-2",
 /// Asn: pulumi.StringRef("65500"),
 /// },
+/// },
+/// AsnRanges: []string{
+/// "65022-65534",
 /// },
 /// },
 /// },
@@ -610,20 +612,15 @@ import 'core_network_state.dart';
 /// example := networkmanager.GetCoreNetworkPolicyDocumentOutput(ctx, networkmanager.GetCoreNetworkPolicyDocumentOutputArgs{
 /// CoreNetworkConfigurations: networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArray{
 /// &networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs{
-/// AsnRanges: pulumi.StringArray{
-/// pulumi.String("65022-65534"),
-/// },
 /// EdgeLocations: networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArray{
 /// &networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs{
 /// Location: pulumi.String("us-west-2"),
 /// Asn: pulumi.String("65500"),
 /// },
 /// },
+/// AsnRanges: pulumi.StringArray{
+/// pulumi.String("65022-65534"),
 /// },
-/// },
-/// Segments: networkmanager.GetCoreNetworkPolicyDocumentSegmentArray{
-/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
-/// Name: pulumi.String("segment"),
 /// },
 /// },
 /// SegmentActions: networkmanager.GetCoreNetworkPolicyDocumentSegmentActionArray{
@@ -636,6 +633,11 @@ import 'core_network_state.dart';
 /// Destinations: pulumi.StringArray{
 /// exampleVpcAttachment.ID().ToIDOutput().ToStringOutput(),
 /// },
+/// },
+/// },
+/// Segments: networkmanager.GetCoreNetworkPolicyDocumentSegmentArray{
+/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
+/// Name: pulumi.String("segment"),
 /// },
 /// },
 /// }, nil);
@@ -668,11 +670,11 @@ import 'core_network_state.dart';
 ///
 /// data "aws_networkmanager_getcorenetworkpolicydocument" "base" {
 ///   core_network_configurations {
-///     asn_ranges = ["65022-65534"]
 ///     edge_locations {
 ///       location = "us-west-2"
 ///       asn      = "65500"
 ///     }
+///     asn_ranges = ["65022-65534"]
 ///   }
 ///   segments {
 ///     name = "segment"
@@ -680,20 +682,20 @@ import 'core_network_state.dart';
 /// }
 /// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
 ///   core_network_configurations {
-///     asn_ranges = ["65022-65534"]
 ///     edge_locations {
 ///       location = "us-west-2"
 ///       asn      = "65500"
 ///     }
-///   }
-///   segments {
-///     name = "segment"
+///     asn_ranges = ["65022-65534"]
 ///   }
 ///   segment_actions {
 ///     action                  = "create-route"
 ///     segment                 = "segment"
 ///     destination_cidr_blocks = ["0.0.0.0/0"]
 ///     destinations            = [aws_networkmanager_vpcattachment.example.id]
+///   }
+///   segments {
+///     name = "segment"
 ///   }
 /// }
 ///
@@ -750,11 +752,11 @@ import 'core_network_state.dart';
 ///
 ///         final var base = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
 ///             .coreNetworkConfigurations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs.builder()
-///                 .asnRanges("65022-65534")
 ///                 .edgeLocations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs.builder()
 ///                     .location("us-west-2")
 ///                     .asn("65500")
 ///                     .build())
+///                 .asnRanges("65022-65534")
 ///                 .build())
 ///             .segments(GetCoreNetworkPolicyDocumentSegmentArgs.builder()
 ///                 .name("segment")
@@ -775,20 +777,20 @@ import 'core_network_state.dart';
 ///
 ///         final var example = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
 ///             .coreNetworkConfigurations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs.builder()
-///                 .asnRanges("65022-65534")
 ///                 .edgeLocations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs.builder()
 ///                     .location("us-west-2")
 ///                     .asn("65500")
 ///                     .build())
-///                 .build())
-///             .segments(GetCoreNetworkPolicyDocumentSegmentArgs.builder()
-///                 .name("segment")
+///                 .asnRanges("65022-65534")
 ///                 .build())
 ///             .segmentActions(GetCoreNetworkPolicyDocumentSegmentActionArgs.builder()
 ///                 .action("create-route")
 ///                 .segment("segment")
 ///                 .destinationCidrBlocks("0.0.0.0/0")
 ///                 .destinations(exampleVpcAttachment.id())
+///                 .build())
+///             .segments(GetCoreNetworkPolicyDocumentSegmentArgs.builder()
+///                 .name("segment")
 ///                 .build())
 ///             .build());
 ///
@@ -821,19 +823,19 @@ import 'core_network_state.dart';
 /// });
 /// const example = aws.networkmanager.getCoreNetworkPolicyDocumentOutput({
 ///     coreNetworkConfigurations: [{
-///         asnRanges: ["65022-65534"],
 ///         edgeLocations: [{
 ///             location: "us-west-2",
 ///         }],
-///     }],
-///     segments: [{
-///         name: "segment",
+///         asnRanges: ["65022-65534"],
 ///     }],
 ///     segmentActions: [{
 ///         action: "create-route",
 ///         segment: "segment",
 ///         destinationCidrBlocks: ["0.0.0.0/0"],
 ///         destinations: [exampleVpcAttachment.id],
+///     }],
+///     segments: [{
+///         name: "segment",
 ///     }],
 /// });
 /// const exampleCoreNetworkPolicyAttachment = new aws.networkmanager.CoreNetworkPolicyAttachment("example", {
@@ -854,19 +856,19 @@ import 'core_network_state.dart';
 ///     subnet_arns=[__item["arn"] for __item in example_aws_subnet],
 ///     vpc_arn=example_aws_vpc["arn"])
 /// example = aws.networkmanager.get_core_network_policy_document_output(core_network_configurations=[{
-///         "asn_ranges": ["65022-65534"],
 ///         "edge_locations": [{
 ///             "location": "us-west-2",
 ///         }],
-///     }],
-///     segments=[{
-///         "name": "segment",
+///         "asn_ranges": ["65022-65534"],
 ///     }],
 ///     segment_actions=[{
 ///         "action": "create-route",
 ///         "segment": "segment",
 ///         "destination_cidr_blocks": ["0.0.0.0/0"],
 ///         "destinations": [example_vpc_attachment.id],
+///     }],
+///     segments=[{
+///         "name": "segment",
 ///     }])
 /// example_core_network_policy_attachment = aws.networkmanager.CoreNetworkPolicyAttachment("example",
 ///     core_network_id=example_core_network.id,
@@ -901,10 +903,6 @@ import 'core_network_state.dart';
 ///         {
 ///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationInputArgs
 ///             {
-///                 AsnRanges = new[]
-///                 {
-///                     "65022-65534",
-///                 },
 ///                 EdgeLocations = new[]
 ///                 {
 ///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationInputArgs
@@ -912,13 +910,10 @@ import 'core_network_state.dart';
 ///                         Location = "us-west-2",
 ///                     },
 ///                 },
-///             },
-///         },
-///         Segments = new[]
-///         {
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
-///             {
-///                 Name = "segment",
+///                 AsnRanges = new[]
+///                 {
+///                     "65022-65534",
+///                 },
 ///             },
 ///         },
 ///         SegmentActions = new[]
@@ -935,6 +930,13 @@ import 'core_network_state.dart';
 ///                 {
 ///                     exampleVpcAttachment.Id,
 ///                 },
+///             },
+///         },
+///         Segments = new[]
+///         {
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
+///             {
+///                 Name = "segment",
 ///             },
 ///         },
 ///     });
@@ -982,19 +984,14 @@ import 'core_network_state.dart';
 /// example := networkmanager.GetCoreNetworkPolicyDocumentOutput(ctx, networkmanager.GetCoreNetworkPolicyDocumentOutputArgs{
 /// CoreNetworkConfigurations: networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArray{
 /// &networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs{
-/// AsnRanges: pulumi.StringArray{
-/// pulumi.String("65022-65534"),
-/// },
 /// EdgeLocations: networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArray{
 /// &networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs{
 /// Location: pulumi.String("us-west-2"),
 /// },
 /// },
+/// AsnRanges: pulumi.StringArray{
+/// pulumi.String("65022-65534"),
 /// },
-/// },
-/// Segments: networkmanager.GetCoreNetworkPolicyDocumentSegmentArray{
-/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
-/// Name: pulumi.String("segment"),
 /// },
 /// },
 /// SegmentActions: networkmanager.GetCoreNetworkPolicyDocumentSegmentActionArray{
@@ -1007,6 +1004,11 @@ import 'core_network_state.dart';
 /// Destinations: pulumi.StringArray{
 /// exampleVpcAttachment.ID().ToIDOutput().ToStringOutput(),
 /// },
+/// },
+/// },
+/// Segments: networkmanager.GetCoreNetworkPolicyDocumentSegmentArray{
+/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
+/// Name: pulumi.String("segment"),
 /// },
 /// },
 /// }, nil);
@@ -1039,19 +1041,19 @@ import 'core_network_state.dart';
 ///
 /// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
 ///   core_network_configurations {
-///     asn_ranges = ["65022-65534"]
 ///     edge_locations {
 ///       location = "us-west-2"
 ///     }
-///   }
-///   segments {
-///     name = "segment"
+///     asn_ranges = ["65022-65534"]
 ///   }
 ///   segment_actions {
 ///     action                  = "create-route"
 ///     segment                 = "segment"
 ///     destination_cidr_blocks = ["0.0.0.0/0"]
 ///     destinations            = [aws_networkmanager_vpcattachment.example.id]
+///   }
+///   segments {
+///     name = "segment"
 ///   }
 /// }
 ///
@@ -1086,8 +1088,8 @@ import 'core_network_state.dart';
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs;
-/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentActionArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachment;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachmentArgs;
 /// import java.util.ArrayList;
@@ -1118,19 +1120,19 @@ import 'core_network_state.dart';
 ///
 ///         final var example = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
 ///             .coreNetworkConfigurations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs.builder()
-///                 .asnRanges("65022-65534")
 ///                 .edgeLocations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs.builder()
 ///                     .location("us-west-2")
 ///                     .build())
-///                 .build())
-///             .segments(GetCoreNetworkPolicyDocumentSegmentArgs.builder()
-///                 .name("segment")
+///                 .asnRanges("65022-65534")
 ///                 .build())
 ///             .segmentActions(GetCoreNetworkPolicyDocumentSegmentActionArgs.builder()
 ///                 .action("create-route")
 ///                 .segment("segment")
 ///                 .destinationCidrBlocks("0.0.0.0/0")
 ///                 .destinations(exampleVpcAttachment.id())
+///                 .build())
+///             .segments(GetCoreNetworkPolicyDocumentSegmentArgs.builder()
+///                 .name("segment")
 ///                 .build())
 ///             .build());
 ///
@@ -1161,7 +1163,6 @@ import 'core_network_state.dart';
 /// const exampleGlobalNetwork = new aws.networkmanager.GlobalNetwork("example", {});
 /// const base = aws.networkmanager.getCoreNetworkPolicyDocument({
 ///     coreNetworkConfigurations: [{
-///         asnRanges: ["65022-65534"],
 ///         edgeLocations: [
 ///             {
 ///                 location: "us-west-2",
@@ -1172,6 +1173,7 @@ import 'core_network_state.dart';
 ///                 asn: "65501",
 ///             },
 ///         ],
+///         asnRanges: ["65022-65534"],
 ///     }],
 ///     segments: [{
 ///         name: "segment",
@@ -1194,7 +1196,6 @@ import 'core_network_state.dart';
 /// });
 /// const example = aws.networkmanager.getCoreNetworkPolicyDocumentOutput({
 ///     coreNetworkConfigurations: [{
-///         asnRanges: ["65022-65534"],
 ///         edgeLocations: [
 ///             {
 ///                 location: "us-west-2",
@@ -1205,15 +1206,8 @@ import 'core_network_state.dart';
 ///                 asn: "65501",
 ///             },
 ///         ],
+///         asnRanges: ["65022-65534"],
 ///     }],
-///     segments: [
-///         {
-///             name: "segment",
-///         },
-///         {
-///             name: "segment2",
-///         },
-///     ],
 ///     segmentActions: [
 ///         {
 ///             action: "create-route",
@@ -1228,6 +1222,14 @@ import 'core_network_state.dart';
 ///             destinations: [exampleUsEast1.id],
 ///         },
 ///     ],
+///     segments: [
+///         {
+///             name: "segment",
+///         },
+///         {
+///             name: "segment2",
+///         },
+///     ],
 /// });
 /// const exampleCoreNetworkPolicyAttachment = new aws.networkmanager.CoreNetworkPolicyAttachment("example", {
 ///     coreNetworkId: exampleCoreNetwork.id,
@@ -1240,7 +1242,6 @@ import 'core_network_state.dart';
 ///
 /// example_global_network = aws.networkmanager.GlobalNetwork("example")
 /// base = aws.networkmanager.get_core_network_policy_document(core_network_configurations=[{
-///         "asn_ranges": ["65022-65534"],
 ///         "edge_locations": [
 ///             {
 ///                 "location": "us-west-2",
@@ -1251,6 +1252,7 @@ import 'core_network_state.dart';
 ///                 "asn": "65501",
 ///             },
 ///         ],
+///         "asn_ranges": ["65022-65534"],
 ///     }],
 ///     segments=[{
 ///         "name": "segment",
@@ -1268,7 +1270,6 @@ import 'core_network_state.dart';
 ///     subnet_arns=[__item["arn"] for __item in example_us_east1_aws_subnet],
 ///     vpc_arn=example_us_east1_aws_vpc["arn"])
 /// example = aws.networkmanager.get_core_network_policy_document_output(core_network_configurations=[{
-///         "asn_ranges": ["65022-65534"],
 ///         "edge_locations": [
 ///             {
 ///                 "location": "us-west-2",
@@ -1279,15 +1280,8 @@ import 'core_network_state.dart';
 ///                 "asn": "65501",
 ///             },
 ///         ],
+///         "asn_ranges": ["65022-65534"],
 ///     }],
-///     segments=[
-///         {
-///             "name": "segment",
-///         },
-///         {
-///             "name": "segment2",
-///         },
-///     ],
 ///     segment_actions=[
 ///         {
 ///             "action": "create-route",
@@ -1300,6 +1294,14 @@ import 'core_network_state.dart';
 ///             "segment": "segment",
 ///             "destination_cidr_blocks": ["10.1.0.0/16"],
 ///             "destinations": [example_us_east1.id],
+///         },
+///     ],
+///     segments=[
+///         {
+///             "name": "segment",
+///         },
+///         {
+///             "name": "segment2",
 ///         },
 ///     ])
 /// example_core_network_policy_attachment = aws.networkmanager.CoreNetworkPolicyAttachment("example",
@@ -1322,10 +1324,6 @@ import 'core_network_state.dart';
 ///         {
 ///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationInputArgs
 ///             {
-///                 AsnRanges = new[]
-///                 {
-///                     "65022-65534",
-///                 },
 ///                 EdgeLocations = new[]
 ///                 {
 ///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationInputArgs
@@ -1338,6 +1336,10 @@ import 'core_network_state.dart';
 ///                         Location = "us-east-1",
 ///                         Asn = "65501",
 ///                     },
+///                 },
+///                 AsnRanges = new[]
+///                 {
+///                     "65022-65534",
 ///                 },
 ///             },
 ///         },
@@ -1377,10 +1379,6 @@ import 'core_network_state.dart';
 ///         {
 ///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationInputArgs
 ///             {
-///                 AsnRanges = new[]
-///                 {
-///                     "65022-65534",
-///                 },
 ///                 EdgeLocations = new[]
 ///                 {
 ///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationInputArgs
@@ -1394,17 +1392,10 @@ import 'core_network_state.dart';
 ///                         Asn = "65501",
 ///                     },
 ///                 },
-///             },
-///         },
-///         Segments = new[]
-///         {
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
-///             {
-///                 Name = "segment",
-///             },
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
-///             {
-///                 Name = "segment2",
+///                 AsnRanges = new[]
+///                 {
+///                     "65022-65534",
+///                 },
 ///             },
 ///         },
 ///         SegmentActions = new[]
@@ -1436,6 +1427,17 @@ import 'core_network_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Segments = new[]
+///         {
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
+///             {
+///                 Name = "segment",
+///             },
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
+///             {
+///                 Name = "segment2",
+///             },
+///         },
 ///     });
 ///
 ///     var exampleCoreNetworkPolicyAttachment = new Aws.NetworkManager.CoreNetworkPolicyAttachment("example", new()
@@ -1462,9 +1464,6 @@ import 'core_network_state.dart';
 /// base, err := networkmanager.GetCoreNetworkPolicyDocument(ctx, &networkmanager.GetCoreNetworkPolicyDocumentArgs{
 /// CoreNetworkConfigurations: []networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfiguration{
 /// {
-/// AsnRanges: []string{
-/// "65022-65534",
-/// },
 /// EdgeLocations: []networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation{
 /// {
 /// Location: "us-west-2",
@@ -1474,6 +1473,9 @@ import 'core_network_state.dart';
 /// Location: "us-east-1",
 /// Asn: pulumi.StringRef("65501"),
 /// },
+/// },
+/// AsnRanges: []string{
+/// "65022-65534",
 /// },
 /// },
 /// },
@@ -1521,9 +1523,6 @@ import 'core_network_state.dart';
 /// example := networkmanager.GetCoreNetworkPolicyDocumentOutput(ctx, networkmanager.GetCoreNetworkPolicyDocumentOutputArgs{
 /// CoreNetworkConfigurations: networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArray{
 /// &networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs{
-/// AsnRanges: pulumi.StringArray{
-/// pulumi.String("65022-65534"),
-/// },
 /// EdgeLocations: networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArray{
 /// &networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs{
 /// Location: pulumi.String("us-west-2"),
@@ -1534,14 +1533,9 @@ import 'core_network_state.dart';
 /// Asn: pulumi.String("65501"),
 /// },
 /// },
+/// AsnRanges: pulumi.StringArray{
+/// pulumi.String("65022-65534"),
 /// },
-/// },
-/// Segments: networkmanager.GetCoreNetworkPolicyDocumentSegmentArray{
-/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
-/// Name: pulumi.String("segment"),
-/// },
-/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
-/// Name: pulumi.String("segment2"),
 /// },
 /// },
 /// SegmentActions: networkmanager.GetCoreNetworkPolicyDocumentSegmentActionArray{
@@ -1564,6 +1558,14 @@ import 'core_network_state.dart';
 /// Destinations: pulumi.StringArray{
 /// exampleUsEast1.ID().ToIDOutput().ToStringOutput(),
 /// },
+/// },
+/// },
+/// Segments: networkmanager.GetCoreNetworkPolicyDocumentSegmentArray{
+/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
+/// Name: pulumi.String("segment"),
+/// },
+/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
+/// Name: pulumi.String("segment2"),
 /// },
 /// },
 /// }, nil);
@@ -1596,7 +1598,6 @@ import 'core_network_state.dart';
 ///
 /// data "aws_networkmanager_getcorenetworkpolicydocument" "base" {
 ///   core_network_configurations {
-///     asn_ranges = ["65022-65534"]
 ///     edge_locations {
 ///       location = "us-west-2"
 ///       asn      = "65500"
@@ -1605,6 +1606,7 @@ import 'core_network_state.dart';
 ///       location = "us-east-1"
 ///       asn      = "65501"
 ///     }
+///     asn_ranges = ["65022-65534"]
 ///   }
 ///   segments {
 ///     name = "segment"
@@ -1612,7 +1614,6 @@ import 'core_network_state.dart';
 /// }
 /// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
 ///   core_network_configurations {
-///     asn_ranges = ["65022-65534"]
 ///     edge_locations {
 ///       location = "us-west-2"
 ///       asn      = "65500"
@@ -1621,12 +1622,7 @@ import 'core_network_state.dart';
 ///       location = "us-east-1"
 ///       asn      = "65501"
 ///     }
-///   }
-///   segments {
-///     name = "segment"
-///   }
-///   segments {
-///     name = "segment2"
+///     asn_ranges = ["65022-65534"]
 ///   }
 ///   segment_actions {
 ///     action                  = "create-route"
@@ -1639,6 +1635,12 @@ import 'core_network_state.dart';
 ///     segment                 = "segment"
 ///     destination_cidr_blocks = ["10.1.0.0/16"]
 ///     destinations            = [aws_networkmanager_vpcattachment.example_us_east_1.id]
+///   }
+///   segments {
+///     name = "segment"
+///   }
+///   segments {
+///     name = "segment2"
 ///   }
 /// }
 ///
@@ -1700,7 +1702,6 @@ import 'core_network_state.dart';
 ///
 ///         final var base = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
 ///             .coreNetworkConfigurations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs.builder()
-///                 .asnRanges("65022-65534")
 ///                 .edgeLocations(
 ///                     GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs.builder()
 ///                         .location("us-west-2")
@@ -1710,6 +1711,7 @@ import 'core_network_state.dart';
 ///                         .location("us-east-1")
 ///                         .asn("65501")
 ///                         .build())
+///                 .asnRanges("65022-65534")
 ///                 .build())
 ///             .segments(GetCoreNetworkPolicyDocumentSegmentArgs.builder()
 ///                 .name("segment")
@@ -1736,7 +1738,6 @@ import 'core_network_state.dart';
 ///
 ///         final var example = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
 ///             .coreNetworkConfigurations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs.builder()
-///                 .asnRanges("65022-65534")
 ///                 .edgeLocations(
 ///                     GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs.builder()
 ///                         .location("us-west-2")
@@ -1746,14 +1747,8 @@ import 'core_network_state.dart';
 ///                         .location("us-east-1")
 ///                         .asn("65501")
 ///                         .build())
+///                 .asnRanges("65022-65534")
 ///                 .build())
-///             .segments(
-///                 GetCoreNetworkPolicyDocumentSegmentArgs.builder()
-///                     .name("segment")
-///                     .build(),
-///                 GetCoreNetworkPolicyDocumentSegmentArgs.builder()
-///                     .name("segment2")
-///                     .build())
 ///             .segmentActions(
 ///                 GetCoreNetworkPolicyDocumentSegmentActionArgs.builder()
 ///                     .action("create-route")
@@ -1766,6 +1761,13 @@ import 'core_network_state.dart';
 ///                     .segment("segment")
 ///                     .destinationCidrBlocks("10.1.0.0/16")
 ///                     .destinations(exampleUsEast1.id())
+///                     .build())
+///             .segments(
+///                 GetCoreNetworkPolicyDocumentSegmentArgs.builder()
+///                     .name("segment")
+///                     .build(),
+///                 GetCoreNetworkPolicyDocumentSegmentArgs.builder()
+///                     .name("segment2")
 ///                     .build())
 ///             .build());
 ///
@@ -1807,7 +1809,6 @@ import 'core_network_state.dart';
 /// });
 /// const example = aws.networkmanager.getCoreNetworkPolicyDocumentOutput({
 ///     coreNetworkConfigurations: [{
-///         asnRanges: ["65022-65534"],
 ///         edgeLocations: [
 ///             {
 ///                 location: "us-west-2",
@@ -1816,15 +1817,8 @@ import 'core_network_state.dart';
 ///                 location: "us-east-1",
 ///             },
 ///         ],
+///         asnRanges: ["65022-65534"],
 ///     }],
-///     segments: [
-///         {
-///             name: "segment",
-///         },
-///         {
-///             name: "segment2",
-///         },
-///     ],
 ///     segmentActions: [
 ///         {
 ///             action: "create-route",
@@ -1837,6 +1831,14 @@ import 'core_network_state.dart';
 ///             segment: "segment",
 ///             destinationCidrBlocks: ["10.1.0.0/16"],
 ///             destinations: [exampleUsEast1.id],
+///         },
+///     ],
+///     segments: [
+///         {
+///             name: "segment",
+///         },
+///         {
+///             name: "segment2",
 ///         },
 ///     ],
 /// });
@@ -1866,7 +1868,6 @@ import 'core_network_state.dart';
 ///     subnet_arns=[__item["arn"] for __item in example_us_east1_aws_subnet],
 ///     vpc_arn=example_us_east1_aws_vpc["arn"])
 /// example = aws.networkmanager.get_core_network_policy_document_output(core_network_configurations=[{
-///         "asn_ranges": ["65022-65534"],
 ///         "edge_locations": [
 ///             {
 ///                 "location": "us-west-2",
@@ -1875,15 +1876,8 @@ import 'core_network_state.dart';
 ///                 "location": "us-east-1",
 ///             },
 ///         ],
+///         "asn_ranges": ["65022-65534"],
 ///     }],
-///     segments=[
-///         {
-///             "name": "segment",
-///         },
-///         {
-///             "name": "segment2",
-///         },
-///     ],
 ///     segment_actions=[
 ///         {
 ///             "action": "create-route",
@@ -1896,6 +1890,14 @@ import 'core_network_state.dart';
 ///             "segment": "segment",
 ///             "destination_cidr_blocks": ["10.1.0.0/16"],
 ///             "destinations": [example_us_east1.id],
+///         },
+///     ],
+///     segments=[
+///         {
+///             "name": "segment",
+///         },
+///         {
+///             "name": "segment2",
 ///         },
 ///     ])
 /// example_core_network_policy_attachment = aws.networkmanager.CoreNetworkPolicyAttachment("example",
@@ -1943,10 +1945,6 @@ import 'core_network_state.dart';
 ///         {
 ///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationInputArgs
 ///             {
-///                 AsnRanges = new[]
-///                 {
-///                     "65022-65534",
-///                 },
 ///                 EdgeLocations = new[]
 ///                 {
 ///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationInputArgs
@@ -1958,17 +1956,10 @@ import 'core_network_state.dart';
 ///                         Location = "us-east-1",
 ///                     },
 ///                 },
-///             },
-///         },
-///         Segments = new[]
-///         {
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
-///             {
-///                 Name = "segment",
-///             },
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
-///             {
-///                 Name = "segment2",
+///                 AsnRanges = new[]
+///                 {
+///                     "65022-65534",
+///                 },
 ///             },
 ///         },
 ///         SegmentActions = new[]
@@ -1998,6 +1989,17 @@ import 'core_network_state.dart';
 ///                 {
 ///                     exampleUsEast1.Id,
 ///                 },
+///             },
+///         },
+///         Segments = new[]
+///         {
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
+///             {
+///                 Name = "segment",
+///             },
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
+///             {
+///                 Name = "segment2",
 ///             },
 ///         },
 ///     });
@@ -2061,9 +2063,6 @@ import 'core_network_state.dart';
 /// example := networkmanager.GetCoreNetworkPolicyDocumentOutput(ctx, networkmanager.GetCoreNetworkPolicyDocumentOutputArgs{
 /// CoreNetworkConfigurations: networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArray{
 /// &networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs{
-/// AsnRanges: pulumi.StringArray{
-/// pulumi.String("65022-65534"),
-/// },
 /// EdgeLocations: networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArray{
 /// &networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs{
 /// Location: pulumi.String("us-west-2"),
@@ -2072,14 +2071,9 @@ import 'core_network_state.dart';
 /// Location: pulumi.String("us-east-1"),
 /// },
 /// },
+/// AsnRanges: pulumi.StringArray{
+/// pulumi.String("65022-65534"),
 /// },
-/// },
-/// Segments: networkmanager.GetCoreNetworkPolicyDocumentSegmentArray{
-/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
-/// Name: pulumi.String("segment"),
-/// },
-/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
-/// Name: pulumi.String("segment2"),
 /// },
 /// },
 /// SegmentActions: networkmanager.GetCoreNetworkPolicyDocumentSegmentActionArray{
@@ -2102,6 +2096,14 @@ import 'core_network_state.dart';
 /// Destinations: pulumi.StringArray{
 /// exampleUsEast1.ID().ToIDOutput().ToStringOutput(),
 /// },
+/// },
+/// },
+/// Segments: networkmanager.GetCoreNetworkPolicyDocumentSegmentArray{
+/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
+/// Name: pulumi.String("segment"),
+/// },
+/// &networkmanager.GetCoreNetworkPolicyDocumentSegmentArgs{
+/// Name: pulumi.String("segment2"),
 /// },
 /// },
 /// }, nil);
@@ -2134,19 +2136,13 @@ import 'core_network_state.dart';
 ///
 /// data "aws_networkmanager_getcorenetworkpolicydocument" "example" {
 ///   core_network_configurations {
-///     asn_ranges = ["65022-65534"]
 ///     edge_locations {
 ///       location = "us-west-2"
 ///     }
 ///     edge_locations {
 ///       location = "us-east-1"
 ///     }
-///   }
-///   segments {
-///     name = "segment"
-///   }
-///   segments {
-///     name = "segment2"
+///     asn_ranges = ["65022-65534"]
 ///   }
 ///   segment_actions {
 ///     action                  = "create-route"
@@ -2159,6 +2155,12 @@ import 'core_network_state.dart';
 ///     segment                 = "segment"
 ///     destination_cidr_blocks = ["10.1.0.0/16"]
 ///     destinations            = [aws_networkmanager_vpcattachment.example_us_east_1.id]
+///   }
+///   segments {
+///     name = "segment"
+///   }
+///   segments {
+///     name = "segment2"
 ///   }
 /// }
 ///
@@ -2199,8 +2201,8 @@ import 'core_network_state.dart';
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs;
-/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentActionArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachment;
 /// import com.pulumi.aws.networkmanager.CoreNetworkPolicyAttachmentArgs;
 /// import java.util.ArrayList;
@@ -2240,7 +2242,6 @@ import 'core_network_state.dart';
 ///
 ///         final var example = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
 ///             .coreNetworkConfigurations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs.builder()
-///                 .asnRanges("65022-65534")
 ///                 .edgeLocations(
 ///                     GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs.builder()
 ///                         .location("us-west-2")
@@ -2248,14 +2249,8 @@ import 'core_network_state.dart';
 ///                     GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs.builder()
 ///                         .location("us-east-1")
 ///                         .build())
+///                 .asnRanges("65022-65534")
 ///                 .build())
-///             .segments(
-///                 GetCoreNetworkPolicyDocumentSegmentArgs.builder()
-///                     .name("segment")
-///                     .build(),
-///                 GetCoreNetworkPolicyDocumentSegmentArgs.builder()
-///                     .name("segment2")
-///                     .build())
 ///             .segmentActions(
 ///                 GetCoreNetworkPolicyDocumentSegmentActionArgs.builder()
 ///                     .action("create-route")
@@ -2268,6 +2263,13 @@ import 'core_network_state.dart';
 ///                     .segment("segment")
 ///                     .destinationCidrBlocks("10.1.0.0/16")
 ///                     .destinations(exampleUsEast1.id())
+///                     .build())
+///             .segments(
+///                 GetCoreNetworkPolicyDocumentSegmentArgs.builder()
+///                     .name("segment")
+///                     .build(),
+///                 GetCoreNetworkPolicyDocumentSegmentArgs.builder()
+///                     .name("segment2")
 ///                     .build())
 ///             .build());
 ///
@@ -2331,13 +2333,13 @@ class CoreNetwork extends pulumi.CustomResource {
   /// Description of the Core Network.
   late final pulumi.Output<String?> description;
   /// One or more blocks detailing the edges within a core network. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> edges;
+  late final pulumi.Output<List<CoreNetworkEdge>> edges;
   /// ID of the global network that a core network will be a part of.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> globalNetworkId;
   /// One or more blocks detailing the segments within a core network. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> segments;
+  late final pulumi.Output<List<CoreNetworkSegment>> segments;
   /// Current state of a core network.
   late final pulumi.Output<String> state;
   /// Key-value tags for the Core Network. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -2357,20 +2359,20 @@ class CoreNetwork extends pulumi.CustomResource {
           'aws:networkmanager/coreNetwork:CoreNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     basePolicyDocument = registerOutput<String?>('basePolicyDocument');
-    basePolicyRegions = registerOutput<List<String>?>('basePolicyRegions');
+    basePolicyRegions = registerOutput<List<String>?>('basePolicyRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createBasePolicy = registerOutput<bool?>('createBasePolicy');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    edges = registerOutput<List<Map<String, dynamic>>>('edges');
+    edges = registerOutput<List<CoreNetworkEdge>>('edges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CoreNetworkEdge>(guardedValue, (value) => CoreNetworkEdge.fromMap((value as Map).cast<String, dynamic>())); });
     globalNetworkId = registerOutput<String>('globalNetworkId');
-    segments = registerOutput<List<Map<String, dynamic>>>('segments');
+    segments = registerOutput<List<CoreNetworkSegment>>('segments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CoreNetworkSegment>(guardedValue, (value) => CoreNetworkSegment.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CoreNetwork] resource's state with the given [name] and [id].
@@ -2378,11 +2380,12 @@ class CoreNetwork extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CoreNetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CoreNetwork._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2398,15 +2401,38 @@ class CoreNetwork extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     basePolicyDocument = registerOutput<String?>('basePolicyDocument');
-    basePolicyRegions = registerOutput<List<String>?>('basePolicyRegions');
+    basePolicyRegions = registerOutput<List<String>?>('basePolicyRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createBasePolicy = registerOutput<bool?>('createBasePolicy');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    edges = registerOutput<List<Map<String, dynamic>>>('edges');
+    edges = registerOutput<List<CoreNetworkEdge>>('edges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CoreNetworkEdge>(guardedValue, (value) => CoreNetworkEdge.fromMap((value as Map).cast<String, dynamic>())); });
     globalNetworkId = registerOutput<String>('globalNetworkId');
-    segments = registerOutput<List<Map<String, dynamic>>>('segments');
+    segments = registerOutput<List<CoreNetworkSegment>>('segments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CoreNetworkSegment>(guardedValue, (value) => CoreNetworkSegment.fromMap((value as Map).cast<String, dynamic>())); });
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CoreNetwork] resource.
+  CoreNetwork.reference(String urn)
+    : super(
+        'aws:networkmanager/coreNetwork:CoreNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    basePolicyDocument = registerOutput<String?>('basePolicyDocument');
+    basePolicyRegions = registerOutput<List<String>?>('basePolicyRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createBasePolicy = registerOutput<bool?>('createBasePolicy');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    edges = registerOutput<List<CoreNetworkEdge>>('edges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CoreNetworkEdge>(guardedValue, (value) => CoreNetworkEdge.fromMap((value as Map).cast<String, dynamic>())); });
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    segments = registerOutput<List<CoreNetworkSegment>>('segments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CoreNetworkSegment>(guardedValue, (value) => CoreNetworkSegment.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

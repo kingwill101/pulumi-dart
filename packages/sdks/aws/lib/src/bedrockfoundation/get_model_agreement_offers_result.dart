@@ -5,39 +5,39 @@ import 'get_model_agreement_offers_offer.dart';
 
 /// Result data returned by getModelAgreementOffers.
 class GetModelAgreementOffersResult {
-  final String modelId;
+  final String? modelId;
   final String? offerType;
   /// List of the offers associated with the specified model. See `offers`.
-  final List<GetModelAgreementOffersOffer> offers;
-  final String region;
+  final List<GetModelAgreementOffersOffer>? offers;
+  final String? region;
 
   /// Creates a new [GetModelAgreementOffersResult].
-  /// [modelId] Required.
+  /// [modelId] Optional.
   /// [offerType] Optional.
   /// [offers] List of the offers associated with the specified model. See `offers`.
-  /// [region] Required.
+  /// [region] Optional.
   const GetModelAgreementOffersResult({
-    required this.modelId,
+    this.modelId,
     this.offerType,
-    required this.offers,
-    required this.region,
+    this.offers,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'modelId': modelId,
+      'modelId': ?modelId,
       'offerType': ?offerType,
-      'offers': pulumi.Input.encodeList<GetModelAgreementOffersOffer, Map<String, dynamic>>(offers, (value) => value.toMap()),
-      'region': region,
+      'offers': ?(() { final guardedValue = offers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetModelAgreementOffersOffer, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
     };
   }
 
   factory GetModelAgreementOffersResult.fromMap(Map<String, dynamic> map) {
     return GetModelAgreementOffersResult(
-      modelId: map['modelId'] as String,
+      modelId: (() { final guardedValue = map['modelId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       offerType: (() { final guardedValue = map['offerType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      offers: pulumi.Input.decodeList<GetModelAgreementOffersOffer>(map['offers']!, (value) => GetModelAgreementOffersOffer.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
+      offers: (() { final guardedValue = map['offers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetModelAgreementOffersOffer>(guardedValue, (value) => GetModelAgreementOffersOffer.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -6,7 +6,7 @@ class TableLocalSecondaryIndex {
   /// Name of the index
   final pulumi.Input<String> name;
   /// Only required with `INCLUDE` as a projection type; a list of attributes to project into the index. These do not need to be defined as attributes on the table.
-  final pulumi.Input<List<String>>? nonKeyAttributes;
+  final pulumi.Input<List<String>?>? nonKeyAttributes;
   /// One of `ALL`, `INCLUDE` or `KEYS_ONLY` where `ALL` projects every attribute into the index, `KEYS_ONLY` projects  into the index only the table and index hashKey and sortKey attributes ,  `INCLUDE` projects into the index all of the attributes that are defined in `nonKeyAttributes` in addition to the attributes that that`KEYS_ONLY` project.
   final pulumi.Input<String> projectionType;
   /// Name of the range key.

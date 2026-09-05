@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ses_domain_identity_domain_identity_args_doc}
 class DomainIdentityArgs {
-  /// The domain name to assign to SES
+  /// Domain name to assign to SES.
   final pulumi.Input<String> domain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DomainIdentityArgs].
-  /// [domain] The domain name to assign to SES
+  /// [domain] Domain name to assign to SES.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const DomainIdentityArgs({
     required this.domain,

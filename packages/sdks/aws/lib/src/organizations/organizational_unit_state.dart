@@ -6,17 +6,17 @@ import 'organizational_unit_account.dart';
 /// Input properties used for looking up and filtering OrganizationalUnit resources.
 class OrganizationalUnitState {
   /// List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
-  final pulumi.Input<List<OrganizationalUnitAccount>>? accounts;
+  final pulumi.Input<List<OrganizationalUnitAccount>?>? accounts;
   /// ARN of the organizational unit
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The name for the organizational unit
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the parent organizational unit, which may be the root
-  final pulumi.Input<String>? parentId;
+  final pulumi.Input<String?>? parentId;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [OrganizationalUnitState].
   /// [accounts] List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:

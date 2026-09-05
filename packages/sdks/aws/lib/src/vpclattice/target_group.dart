@@ -15,13 +15,13 @@ import 'target_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.vpclattice.TargetGroup("example", {
-///     name: "example",
-///     type: "INSTANCE",
 ///     config: {
 ///         vpcIdentifier: exampleAwsVpc.id,
 ///         port: 443,
 ///         protocol: "HTTPS",
 ///     },
+///     name: "example",
+///     type: "INSTANCE",
 /// });
 /// ```
 /// ```python
@@ -29,13 +29,13 @@ import 'target_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.vpclattice.TargetGroup("example",
-///     name="example",
-///     type="INSTANCE",
 ///     config={
 ///         "vpc_identifier": example_aws_vpc["id"],
 ///         "port": 443,
 ///         "protocol": "HTTPS",
-///     })
+///     },
+///     name="example",
+///     type="INSTANCE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,14 +47,14 @@ import 'target_group_state.dart';
 /// {
 ///     var example = new Aws.VpcLattice.TargetGroup("example", new()
 ///     {
-///         Name = "example",
-///         Type = "INSTANCE",
 ///         Config = new Aws.VpcLattice.Inputs.TargetGroupConfigArgs
 ///         {
 ///             VpcIdentifier = exampleAwsVpc.Id,
 ///             Port = 443,
 ///             Protocol = "HTTPS",
 ///         },
+///         Name = "example",
+///         Type = "INSTANCE",
 ///     });
 ///
 /// });
@@ -70,13 +70,13 @@ import 'target_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vpclattice.NewTargetGroup(ctx, "example", &vpclattice.TargetGroupArgs{
-/// 			Name: pulumi.String("example"),
-/// 			Type: pulumi.String("INSTANCE"),
 /// 			Config: &vpclattice.TargetGroupConfigArgs{
 /// 				VpcIdentifier: pulumi.Any(exampleAwsVpc.Id),
 /// 				Port:          pulumi.Int(443),
 /// 				Protocol:      pulumi.String("HTTPS"),
 /// 			},
+/// 			Name: pulumi.String("example"),
+/// 			Type: pulumi.String("INSTANCE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -95,13 +95,13 @@ import 'target_group_state.dart';
 /// }
 ///
 /// resource "aws_vpclattice_targetgroup" "example" {
-///   name = "example"
-///   type = "INSTANCE"
 ///   config = {
 ///     vpc_identifier = exampleAwsVpc.id
 ///     port           = 443
 ///     protocol       = "HTTPS"
 ///   }
+///   name = "example"
+///   type = "INSTANCE"
 /// }
 /// ```
 /// ```java
@@ -127,13 +127,13 @@ import 'target_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TargetGroup("example", TargetGroupArgs.builder()
-///             .name("example")
-///             .type("INSTANCE")
 ///             .config(TargetGroupConfigArgs.builder()
 ///                 .vpcIdentifier(exampleAwsVpc.id())
 ///                 .port(443)
 ///                 .protocol("HTTPS")
 ///                 .build())
+///             .name("example")
+///             .type("INSTANCE")
 ///             .build());
 ///
 ///     }
@@ -144,12 +144,12 @@ import 'target_group_state.dart';
 ///   example:
 ///     type: aws:vpclattice:TargetGroup
 ///     properties:
-///       name: example
-///       type: INSTANCE
 ///       config:
 ///         vpcIdentifier: ${exampleAwsVpc.id}
 ///         port: 443
 ///         protocol: HTTPS
+///       name: example
+///       type: INSTANCE
 /// ```
 ///
 ///
@@ -161,29 +161,29 @@ import 'target_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.vpclattice.TargetGroup("example", {
-///     name: "example",
-///     type: "IP",
 ///     config: {
-///         vpcIdentifier: exampleAwsVpc.id,
-///         ipAddressType: "IPV4",
-///         port: 443,
-///         protocol: "HTTPS",
-///         protocolVersion: "HTTP1",
 ///         healthCheck: {
+///             matcher: {
+///                 value: "200-299",
+///             },
 ///             enabled: true,
 ///             healthCheckIntervalSeconds: 20,
 ///             healthCheckTimeoutSeconds: 10,
 ///             healthyThresholdCount: 7,
 ///             unhealthyThresholdCount: 3,
-///             matcher: {
-///                 value: "200-299",
-///             },
 ///             path: "/instance",
 ///             port: 80,
 ///             protocol: "HTTP",
 ///             protocolVersion: "HTTP1",
 ///         },
+///         vpcIdentifier: exampleAwsVpc.id,
+///         ipAddressType: "IPV4",
+///         port: 443,
+///         protocol: "HTTPS",
+///         protocolVersion: "HTTP1",
 ///     },
+///     name: "example",
+///     type: "IP",
 /// });
 /// ```
 /// ```python
@@ -191,29 +191,29 @@ import 'target_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.vpclattice.TargetGroup("example",
-///     name="example",
-///     type="IP",
 ///     config={
-///         "vpc_identifier": example_aws_vpc["id"],
-///         "ip_address_type": "IPV4",
-///         "port": 443,
-///         "protocol": "HTTPS",
-///         "protocol_version": "HTTP1",
 ///         "health_check": {
+///             "matcher": {
+///                 "value": "200-299",
+///             },
 ///             "enabled": True,
 ///             "health_check_interval_seconds": 20,
 ///             "health_check_timeout_seconds": 10,
 ///             "healthy_threshold_count": 7,
 ///             "unhealthy_threshold_count": 3,
-///             "matcher": {
-///                 "value": "200-299",
-///             },
 ///             "path": "/instance",
 ///             "port": 80,
 ///             "protocol": "HTTP",
 ///             "protocol_version": "HTTP1",
 ///         },
-///     })
+///         "vpc_identifier": example_aws_vpc["id"],
+///         "ip_address_type": "IPV4",
+///         "port": 443,
+///         "protocol": "HTTPS",
+///         "protocol_version": "HTTP1",
+///     },
+///     name="example",
+///     type="IP")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -225,32 +225,32 @@ import 'target_group_state.dart';
 /// {
 ///     var example = new Aws.VpcLattice.TargetGroup("example", new()
 ///     {
-///         Name = "example",
-///         Type = "IP",
 ///         Config = new Aws.VpcLattice.Inputs.TargetGroupConfigArgs
 ///         {
-///             VpcIdentifier = exampleAwsVpc.Id,
-///             IpAddressType = "IPV4",
-///             Port = 443,
-///             Protocol = "HTTPS",
-///             ProtocolVersion = "HTTP1",
 ///             HealthCheck = new Aws.VpcLattice.Inputs.TargetGroupConfigHealthCheckArgs
 ///             {
+///                 Matcher = new Aws.VpcLattice.Inputs.TargetGroupConfigHealthCheckMatcherArgs
+///                 {
+///                     Value = "200-299",
+///                 },
 ///                 Enabled = true,
 ///                 HealthCheckIntervalSeconds = 20,
 ///                 HealthCheckTimeoutSeconds = 10,
 ///                 HealthyThresholdCount = 7,
 ///                 UnhealthyThresholdCount = 3,
-///                 Matcher = new Aws.VpcLattice.Inputs.TargetGroupConfigHealthCheckMatcherArgs
-///                 {
-///                     Value = "200-299",
-///                 },
 ///                 Path = "/instance",
 ///                 Port = 80,
 ///                 Protocol = "HTTP",
 ///                 ProtocolVersion = "HTTP1",
 ///             },
+///             VpcIdentifier = exampleAwsVpc.Id,
+///             IpAddressType = "IPV4",
+///             Port = 443,
+///             Protocol = "HTTPS",
+///             ProtocolVersion = "HTTP1",
 ///         },
+///         Name = "example",
+///         Type = "IP",
 ///     });
 ///
 /// });
@@ -266,29 +266,29 @@ import 'target_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vpclattice.NewTargetGroup(ctx, "example", &vpclattice.TargetGroupArgs{
-/// 			Name: pulumi.String("example"),
-/// 			Type: pulumi.String("IP"),
 /// 			Config: &vpclattice.TargetGroupConfigArgs{
-/// 				VpcIdentifier:   pulumi.Any(exampleAwsVpc.Id),
-/// 				IpAddressType:   pulumi.String("IPV4"),
-/// 				Port:            pulumi.Int(443),
-/// 				Protocol:        pulumi.String("HTTPS"),
-/// 				ProtocolVersion: pulumi.String("HTTP1"),
 /// 				HealthCheck: &vpclattice.TargetGroupConfigHealthCheckArgs{
+/// 					Matcher: &vpclattice.TargetGroupConfigHealthCheckMatcherArgs{
+/// 						Value: pulumi.String("200-299"),
+/// 					},
 /// 					Enabled:                    pulumi.Bool(true),
 /// 					HealthCheckIntervalSeconds: pulumi.Int(20),
 /// 					HealthCheckTimeoutSeconds:  pulumi.Int(10),
 /// 					HealthyThresholdCount:      pulumi.Int(7),
 /// 					UnhealthyThresholdCount:    pulumi.Int(3),
-/// 					Matcher: &vpclattice.TargetGroupConfigHealthCheckMatcherArgs{
-/// 						Value: pulumi.String("200-299"),
-/// 					},
-/// 					Path:            pulumi.String("/instance"),
-/// 					Port:            pulumi.Int(80),
-/// 					Protocol:        pulumi.String("HTTP"),
-/// 					ProtocolVersion: pulumi.String("HTTP1"),
+/// 					Path:                       pulumi.String("/instance"),
+/// 					Port:                       pulumi.Int(80),
+/// 					Protocol:                   pulumi.String("HTTP"),
+/// 					ProtocolVersion:            pulumi.String("HTTP1"),
 /// 				},
+/// 				VpcIdentifier:   pulumi.Any(exampleAwsVpc.Id),
+/// 				IpAddressType:   pulumi.String("IPV4"),
+/// 				Port:            pulumi.Int(443),
+/// 				Protocol:        pulumi.String("HTTPS"),
+/// 				ProtocolVersion: pulumi.String("HTTP1"),
 /// 			},
+/// 			Name: pulumi.String("example"),
+/// 			Type: pulumi.String("IP"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -307,29 +307,29 @@ import 'target_group_state.dart';
 /// }
 ///
 /// resource "aws_vpclattice_targetgroup" "example" {
-///   name = "example"
-///   type = "IP"
 ///   config = {
-///     vpc_identifier   = exampleAwsVpc.id
-///     ip_address_type  = "IPV4"
-///     port             = 443
-///     protocol         = "HTTPS"
-///     protocol_version = "HTTP1"
 ///     health_check = {
+///       matcher = {
+///         value = "200-299"
+///       }
 ///       enabled                       = true
 ///       health_check_interval_seconds = 20
 ///       health_check_timeout_seconds  = 10
 ///       healthy_threshold_count       = 7
 ///       unhealthy_threshold_count     = 3
-///       matcher = {
-///         value = "200-299"
-///       }
-///       path             = "/instance"
-///       port             = 80
-///       protocol         = "HTTP"
-///       protocol_version = "HTTP1"
+///       path                          = "/instance"
+///       port                          = 80
+///       protocol                      = "HTTP"
+///       protocol_version              = "HTTP1"
 ///     }
+///     vpc_identifier   = exampleAwsVpc.id
+///     ip_address_type  = "IPV4"
+///     port             = 443
+///     protocol         = "HTTPS"
+///     protocol_version = "HTTP1"
 ///   }
+///   name = "example"
+///   type = "IP"
 /// }
 /// ```
 /// ```java
@@ -357,29 +357,29 @@ import 'target_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TargetGroup("example", TargetGroupArgs.builder()
-///             .name("example")
-///             .type("IP")
 ///             .config(TargetGroupConfigArgs.builder()
-///                 .vpcIdentifier(exampleAwsVpc.id())
-///                 .ipAddressType("IPV4")
-///                 .port(443)
-///                 .protocol("HTTPS")
-///                 .protocolVersion("HTTP1")
 ///                 .healthCheck(TargetGroupConfigHealthCheckArgs.builder()
+///                     .matcher(TargetGroupConfigHealthCheckMatcherArgs.builder()
+///                         .value("200-299")
+///                         .build())
 ///                     .enabled(true)
 ///                     .healthCheckIntervalSeconds(20)
 ///                     .healthCheckTimeoutSeconds(10)
 ///                     .healthyThresholdCount(7)
 ///                     .unhealthyThresholdCount(3)
-///                     .matcher(TargetGroupConfigHealthCheckMatcherArgs.builder()
-///                         .value("200-299")
-///                         .build())
 ///                     .path("/instance")
 ///                     .port(80)
 ///                     .protocol("HTTP")
 ///                     .protocolVersion("HTTP1")
 ///                     .build())
+///                 .vpcIdentifier(exampleAwsVpc.id())
+///                 .ipAddressType("IPV4")
+///                 .port(443)
+///                 .protocol("HTTPS")
+///                 .protocolVersion("HTTP1")
 ///                 .build())
+///             .name("example")
+///             .type("IP")
 ///             .build());
 ///
 ///     }
@@ -390,26 +390,26 @@ import 'target_group_state.dart';
 ///   example:
 ///     type: aws:vpclattice:TargetGroup
 ///     properties:
-///       name: example
-///       type: IP
 ///       config:
-///         vpcIdentifier: ${exampleAwsVpc.id}
-///         ipAddressType: IPV4
-///         port: 443
-///         protocol: HTTPS
-///         protocolVersion: HTTP1
 ///         healthCheck:
+///           matcher:
+///             value: 200-299
 ///           enabled: true
 ///           healthCheckIntervalSeconds: 20
 ///           healthCheckTimeoutSeconds: 10
 ///           healthyThresholdCount: 7
 ///           unhealthyThresholdCount: 3
-///           matcher:
-///             value: 200-299
 ///           path: /instance
 ///           port: 80
 ///           protocol: HTTP
 ///           protocolVersion: HTTP1
+///         vpcIdentifier: ${exampleAwsVpc.id}
+///         ipAddressType: IPV4
+///         port: 443
+///         protocol: HTTPS
+///         protocolVersion: HTTP1
+///       name: example
+///       type: IP
 /// ```
 ///
 ///
@@ -423,14 +423,14 @@ import 'target_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.vpclattice.TargetGroup("example", {
-///     name: "example",
-///     type: "ALB",
 ///     config: {
 ///         vpcIdentifier: exampleAwsVpc.id,
 ///         port: 443,
 ///         protocol: "HTTPS",
 ///         protocolVersion: "HTTP1",
 ///     },
+///     name: "example",
+///     type: "ALB",
 /// });
 /// ```
 /// ```python
@@ -438,14 +438,14 @@ import 'target_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.vpclattice.TargetGroup("example",
-///     name="example",
-///     type="ALB",
 ///     config={
 ///         "vpc_identifier": example_aws_vpc["id"],
 ///         "port": 443,
 ///         "protocol": "HTTPS",
 ///         "protocol_version": "HTTP1",
-///     })
+///     },
+///     name="example",
+///     type="ALB")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -457,8 +457,6 @@ import 'target_group_state.dart';
 /// {
 ///     var example = new Aws.VpcLattice.TargetGroup("example", new()
 ///     {
-///         Name = "example",
-///         Type = "ALB",
 ///         Config = new Aws.VpcLattice.Inputs.TargetGroupConfigArgs
 ///         {
 ///             VpcIdentifier = exampleAwsVpc.Id,
@@ -466,6 +464,8 @@ import 'target_group_state.dart';
 ///             Protocol = "HTTPS",
 ///             ProtocolVersion = "HTTP1",
 ///         },
+///         Name = "example",
+///         Type = "ALB",
 ///     });
 ///
 /// });
@@ -481,14 +481,14 @@ import 'target_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vpclattice.NewTargetGroup(ctx, "example", &vpclattice.TargetGroupArgs{
-/// 			Name: pulumi.String("example"),
-/// 			Type: pulumi.String("ALB"),
 /// 			Config: &vpclattice.TargetGroupConfigArgs{
 /// 				VpcIdentifier:   pulumi.Any(exampleAwsVpc.Id),
 /// 				Port:            pulumi.Int(443),
 /// 				Protocol:        pulumi.String("HTTPS"),
 /// 				ProtocolVersion: pulumi.String("HTTP1"),
 /// 			},
+/// 			Name: pulumi.String("example"),
+/// 			Type: pulumi.String("ALB"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -507,14 +507,14 @@ import 'target_group_state.dart';
 /// }
 ///
 /// resource "aws_vpclattice_targetgroup" "example" {
-///   name = "example"
-///   type = "ALB"
 ///   config = {
 ///     vpc_identifier   = exampleAwsVpc.id
 ///     port             = 443
 ///     protocol         = "HTTPS"
 ///     protocol_version = "HTTP1"
 ///   }
+///   name = "example"
+///   type = "ALB"
 /// }
 /// ```
 /// ```java
@@ -540,14 +540,14 @@ import 'target_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TargetGroup("example", TargetGroupArgs.builder()
-///             .name("example")
-///             .type("ALB")
 ///             .config(TargetGroupConfigArgs.builder()
 ///                 .vpcIdentifier(exampleAwsVpc.id())
 ///                 .port(443)
 ///                 .protocol("HTTPS")
 ///                 .protocolVersion("HTTP1")
 ///                 .build())
+///             .name("example")
+///             .type("ALB")
 ///             .build());
 ///
 ///     }
@@ -558,13 +558,13 @@ import 'target_group_state.dart';
 ///   example:
 ///     type: aws:vpclattice:TargetGroup
 ///     properties:
-///       name: example
-///       type: ALB
 ///       config:
 ///         vpcIdentifier: ${exampleAwsVpc.id}
 ///         port: 443
 ///         protocol: HTTPS
 ///         protocolVersion: HTTP1
+///       name: example
+///       type: ALB
 /// ```
 ///
 ///
@@ -719,15 +719,15 @@ class TargetGroup extends pulumi.CustomResource {
           'aws:vpclattice/targetGroup:TargetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     config = registerOutput<TargetGroupConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -736,11 +736,12 @@ class TargetGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TargetGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -759,8 +760,27 @@ class TargetGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [TargetGroup] resource.
+  TargetGroup.reference(String urn)
+    : super(
+        'aws:vpclattice/targetGroup:TargetGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    config = registerOutput<TargetGroupConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

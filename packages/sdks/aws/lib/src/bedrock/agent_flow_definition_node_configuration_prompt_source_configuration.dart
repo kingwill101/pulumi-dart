@@ -6,9 +6,9 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_res
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration {
   /// Contains configurations for a prompt that is defined inline. See Prompt Inline Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline>? inline;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline?>? inline;
   /// Contains configurations for a prompt from Prompt management. See Prompt Resource Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource>? resource;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource?>? resource;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration].
   /// [inline] Contains configurations for a prompt that is defined inline. See Prompt Inline Configuration for more information.

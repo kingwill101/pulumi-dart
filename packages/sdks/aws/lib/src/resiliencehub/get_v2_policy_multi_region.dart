@@ -31,8 +31,8 @@ class GetV2PolicyMultiRegion {
   factory GetV2PolicyMultiRegion.fromMap(Map<String, dynamic> map) {
     return GetV2PolicyMultiRegion(
       disasterRecoveryApproach: pulumi.Input.fromValue(map['disasterRecoveryApproach'] as String),
-      rpoInMinutes: pulumi.Input.fromValue(map['rpoInMinutes'] as int),
-      rtoInMinutes: pulumi.Input.fromValue(map['rtoInMinutes'] as int),
+      rpoInMinutes: pulumi.Input.fromValue((map['rpoInMinutes'] as num).toInt()),
+      rtoInMinutes: pulumi.Input.fromValue((map['rtoInMinutes'] as num).toInt()),
     );
   }
 }

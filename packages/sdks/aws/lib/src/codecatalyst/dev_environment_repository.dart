@@ -6,7 +6,7 @@ class DevEnvironmentRepository {
   /// The name of the branch in a source repository.
   ///
   /// persistent storage (` persistentStorage`) supports the following:
-  final pulumi.Input<String>? branchName;
+  final pulumi.Input<String?>? branchName;
   /// The name of the source repository.
   final pulumi.Input<String> repositoryName;
 

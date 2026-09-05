@@ -170,7 +170,7 @@ class TrustProvider extends pulumi.CustomResource {
           'aws:verifiedaccess/trustProvider:TrustProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     deviceOptions = registerOutput<TrustProviderDeviceOptions?>('deviceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustProviderDeviceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -180,8 +180,8 @@ class TrustProvider extends pulumi.CustomResource {
     policyReferenceName = registerOutput<String>('policyReferenceName');
     region = registerOutput<String>('region');
     sseSpecification = registerOutput<TrustProviderSseSpecification>('sseSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustProviderSseSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustProviderType = registerOutput<String>('trustProviderType');
     userTrustProviderType = registerOutput<String?>('userTrustProviderType');
   }
@@ -191,11 +191,12 @@ class TrustProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrustProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrustProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -217,8 +218,31 @@ class TrustProvider extends pulumi.CustomResource {
     policyReferenceName = registerOutput<String>('policyReferenceName');
     region = registerOutput<String>('region');
     sseSpecification = registerOutput<TrustProviderSseSpecification>('sseSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustProviderSseSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustProviderType = registerOutput<String>('trustProviderType');
+    userTrustProviderType = registerOutput<String?>('userTrustProviderType');
+  }
+
+  /// Creates a typed reference to an existing [TrustProvider] resource.
+  TrustProvider.reference(String urn)
+    : super(
+        'aws:verifiedaccess/trustProvider:TrustProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    deviceOptions = registerOutput<TrustProviderDeviceOptions?>('deviceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustProviderDeviceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deviceTrustProviderType = registerOutput<String?>('deviceTrustProviderType');
+    nativeApplicationOidcOptions = registerOutput<TrustProviderNativeApplicationOidcOptions?>('nativeApplicationOidcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustProviderNativeApplicationOidcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oidcOptions = registerOutput<TrustProviderOidcOptions?>('oidcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustProviderOidcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policyReferenceName = registerOutput<String>('policyReferenceName');
+    region = registerOutput<String>('region');
+    sseSpecification = registerOutput<TrustProviderSseSpecification>('sseSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustProviderSseSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustProviderType = registerOutput<String>('trustProviderType');
     userTrustProviderType = registerOutput<String?>('userTrustProviderType');
   }

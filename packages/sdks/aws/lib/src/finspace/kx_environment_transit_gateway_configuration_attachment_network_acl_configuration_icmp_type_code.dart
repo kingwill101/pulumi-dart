@@ -25,8 +25,8 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationI
 
   factory KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCode.fromMap(Map<String, dynamic> map) {
     return KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCode(
-      code: pulumi.Input.fromValue(map['code'] as int),
-      type: pulumi.Input.fromValue(map['type'] as int),
+      code: pulumi.Input.fromValue((map['code'] as num).toInt()),
+      type: pulumi.Input.fromValue((map['type'] as num).toInt()),
     );
   }
 }

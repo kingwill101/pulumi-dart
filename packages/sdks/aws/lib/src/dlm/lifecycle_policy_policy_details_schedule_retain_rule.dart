@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LifecyclePolicyPolicyDetailsScheduleRetainRule {
-  final pulumi.Input<int>? count;
-  final pulumi.Input<int>? interval;
-  final pulumi.Input<String>? intervalUnit;
+  final pulumi.Input<int?>? count;
+  final pulumi.Input<int?>? interval;
+  final pulumi.Input<String?>? intervalUnit;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleRetainRule].
   /// [count] Optional.
@@ -27,8 +27,8 @@ class LifecyclePolicyPolicyDetailsScheduleRetainRule {
 
   factory LifecyclePolicyPolicyDetailsScheduleRetainRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleRetainRule(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       intervalUnit: (() { final guardedValue = map['intervalUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

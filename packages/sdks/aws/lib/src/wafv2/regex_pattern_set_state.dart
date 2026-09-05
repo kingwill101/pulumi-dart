@@ -5,28 +5,28 @@ import 'regex_pattern_set_regular_expression.dart';
 
 /// Input properties used for looking up and filtering RegexPatternSet resources.
 class RegexPatternSetState {
-  /// The Amazon Resource Name (ARN) that identifies the cluster.
-  final pulumi.Input<String>? arn;
+  /// ARN that identifies the cluster.
+  final pulumi.Input<String?>? arn;
   /// A friendly description of the regular expression pattern set.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? lockToken;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? lockToken;
   /// A friendly name of the regular expression pattern set. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// One or more blocks of regular expression patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`. See Regular Expression below for details.
-  final pulumi.Input<List<RegexPatternSetRegularExpression>>? regularExpressions;
+  final pulumi.Input<List<RegexPatternSetRegularExpression>?>? regularExpressions;
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// An array of key:value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RegexPatternSetState].
-  /// [arn] The Amazon Resource Name (ARN) that identifies the cluster.
+  /// [arn] ARN that identifies the cluster.
   /// [description] A friendly description of the regular expression pattern set.
   /// [lockToken] Optional.
   /// [name] A friendly name of the regular expression pattern set. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.

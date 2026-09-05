@@ -18,36 +18,36 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// {@macro pulumi_cloudfront_multitenant_distribution_multitenant_distribution_args_doc}
 class MultitenantDistributionArgs {
   /// List of key groups that CloudFront can use to validate signed URLs or signed cookies. See Active Trusted Key Groups below.
-  final pulumi.Input<List<MultitenantDistributionActiveTrustedKeyGroup>>? activeTrustedKeyGroups;
+  final pulumi.Input<List<MultitenantDistributionActiveTrustedKeyGroup>?>? activeTrustedKeyGroups;
   /// Ordered list of cache behaviors resource for this distribution. See Cache Behavior below.
-  final pulumi.Input<List<MultitenantDistributionCacheBehavior>>? cacheBehaviors;
+  final pulumi.Input<List<MultitenantDistributionCacheBehavior>?>? cacheBehaviors;
   /// Any comments you want to include about the distribution.
   final pulumi.Input<String> comment;
   /// One or more custom error response elements. See Custom Error Response below.
-  final pulumi.Input<List<MultitenantDistributionCustomErrorResponse>>? customErrorResponses;
+  final pulumi.Input<List<MultitenantDistributionCustomErrorResponse>?>? customErrorResponses;
   /// Default cache behavior for this distribution. See Default Cache Behavior below.
   final pulumi.Input<MultitenantDistributionDefaultCacheBehavior> defaultCacheBehavior;
   /// Object that you want CloudFront to return when an end user requests the root URL.
-  final pulumi.Input<String>? defaultRootObject;
+  final pulumi.Input<String?>? defaultRootObject;
   /// Whether the distribution is enabled to accept end user requests for content.
   final pulumi.Input<bool> enabled;
   /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3`, and `http3`. Default: `http2`.
-  final pulumi.Input<String>? httpVersion;
+  final pulumi.Input<String?>? httpVersion;
   /// One or more originGroup for this distribution (multiples allowed). See Origin Group below.
-  final pulumi.Input<List<MultitenantDistributionOriginGroup>>? originGroups;
+  final pulumi.Input<List<MultitenantDistributionOriginGroup>?>? originGroups;
   /// One or more origins for this distribution (multiples allowed). See Origin below.
-  final pulumi.Input<List<MultitenantDistributionOrigin>>? origins;
+  final pulumi.Input<List<MultitenantDistributionOrigin>?>? origins;
   /// Restriction configuration for this distribution. See Restrictions below.
-  final pulumi.Input<MultitenantDistributionRestrictions>? restrictions;
+  final pulumi.Input<MultitenantDistributionRestrictions?>? restrictions;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Tenant configuration that contains parameter definitions for multi-tenant distributions. See Tenant Config below.
   final pulumi.Input<MultitenantDistributionTenantConfig> tenantConfig;
-  final pulumi.Input<MultitenantDistributionTimeouts>? timeouts;
+  final pulumi.Input<MultitenantDistributionTimeouts?>? timeouts;
   /// SSL configuration for this distribution. See Viewer Certificate below.
   final pulumi.Input<MultitenantDistributionViewerCertificate> viewerCertificate;
   /// Unique identifier that specifies the AWS WAF v2 web ACL to associate with this distribution.
-  final pulumi.Input<String>? webAclId;
+  final pulumi.Input<String?>? webAclId;
 
   /// Creates a new [MultitenantDistributionArgs].
   /// [activeTrustedKeyGroups] List of key groups that CloudFront can use to validate signed URLs or signed cookies. See Active Trusted Key Groups below.

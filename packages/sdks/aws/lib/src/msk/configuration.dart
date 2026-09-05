@@ -146,7 +146,7 @@ import 'configuration_state.dart';
 /// $ pulumi import aws:msk/configuration:Configuration example arn:aws:kafka:us-west-2:123456789012:configuration/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3
 /// ```
 class Configuration extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the configuration.
+  /// ARN of the configuration.
   late final pulumi.Output<String> arn;
   /// Description of the configuration.
   late final pulumi.Output<String?> description;
@@ -173,11 +173,11 @@ class Configuration extends pulumi.CustomResource {
           'aws:msk/configuration:Configuration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    kafkaVersions = registerOutput<List<String>?>('kafkaVersions');
+    kafkaVersions = registerOutput<List<String>?>('kafkaVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     latestRevision = registerOutput<int>('latestRevision');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -189,11 +189,12 @@ class Configuration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Configuration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -209,7 +210,25 @@ class Configuration extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    kafkaVersions = registerOutput<List<String>?>('kafkaVersions');
+    kafkaVersions = registerOutput<List<String>?>('kafkaVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    latestRevision = registerOutput<int>('latestRevision');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    serverProperties = registerOutput<String>('serverProperties');
+  }
+
+  /// Creates a typed reference to an existing [Configuration] resource.
+  Configuration.reference(String urn)
+    : super(
+        'aws:msk/configuration:Configuration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    kafkaVersions = registerOutput<List<String>?>('kafkaVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     latestRevision = registerOutput<int>('latestRevision');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

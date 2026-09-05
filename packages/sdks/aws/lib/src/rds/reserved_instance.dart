@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reserved_instance_args.dart';
+import 'reserved_instance_recurring_charge.dart';
 import 'reserved_instance_state.dart';
 
 /// Manages an RDS DB Reserved Instance.
@@ -217,7 +218,7 @@ class ReservedInstance extends pulumi.CustomResource {
   /// Description of the reserved DB instance.
   late final pulumi.Output<String> productDescription;
   /// Recurring price charged to run this reserved DB instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> recurringCharges;
+  late final pulumi.Output<List<ReservedInstanceRecurringCharge>> recurringCharges;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Customer-specified identifier to track this reservation.
@@ -245,7 +246,7 @@ class ReservedInstance extends pulumi.CustomResource {
           'aws:rds/reservedInstance:ReservedInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     currencyCode = registerOutput<String>('currencyCode');
@@ -258,13 +259,13 @@ class ReservedInstance extends pulumi.CustomResource {
     offeringId = registerOutput<String>('offeringId');
     offeringType = registerOutput<String>('offeringType');
     productDescription = registerOutput<String>('productDescription');
-    recurringCharges = registerOutput<List<Map<String, dynamic>>>('recurringCharges');
+    recurringCharges = registerOutput<List<ReservedInstanceRecurringCharge>>('recurringCharges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservedInstanceRecurringCharge>(guardedValue, (value) => ReservedInstanceRecurringCharge.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     reservationId = registerOutput<String?>('reservationId');
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     usagePrice = registerOutput<double>('usagePrice');
   }
 
@@ -273,11 +274,12 @@ class ReservedInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReservedInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReservedInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -302,13 +304,43 @@ class ReservedInstance extends pulumi.CustomResource {
     offeringId = registerOutput<String>('offeringId');
     offeringType = registerOutput<String>('offeringType');
     productDescription = registerOutput<String>('productDescription');
-    recurringCharges = registerOutput<List<Map<String, dynamic>>>('recurringCharges');
+    recurringCharges = registerOutput<List<ReservedInstanceRecurringCharge>>('recurringCharges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservedInstanceRecurringCharge>(guardedValue, (value) => ReservedInstanceRecurringCharge.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     reservationId = registerOutput<String?>('reservationId');
     startTime = registerOutput<String>('startTime');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    usagePrice = registerOutput<double>('usagePrice');
+  }
+
+  /// Creates a typed reference to an existing [ReservedInstance] resource.
+  ReservedInstance.reference(String urn)
+    : super(
+        'aws:rds/reservedInstance:ReservedInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    currencyCode = registerOutput<String>('currencyCode');
+    dbInstanceClass = registerOutput<String>('dbInstanceClass');
+    duration = registerOutput<int>('duration');
+    fixedPrice = registerOutput<double>('fixedPrice');
+    instanceCount = registerOutput<int?>('instanceCount');
+    leaseId = registerOutput<String>('leaseId');
+    multiAz = registerOutput<bool>('multiAz');
+    offeringId = registerOutput<String>('offeringId');
+    offeringType = registerOutput<String>('offeringType');
+    productDescription = registerOutput<String>('productDescription');
+    recurringCharges = registerOutput<List<ReservedInstanceRecurringCharge>>('recurringCharges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservedInstanceRecurringCharge>(guardedValue, (value) => ReservedInstanceRecurringCharge.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    reservationId = registerOutput<String?>('reservationId');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     usagePrice = registerOutput<double>('usagePrice');
   }
 }

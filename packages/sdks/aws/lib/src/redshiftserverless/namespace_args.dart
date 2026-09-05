@@ -8,37 +8,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_redshiftserverless_namespace_namespace_args_doc}
 class NamespaceArgs {
   /// ID of the KMS key used to encrypt the namespace's admin credentials secret.
-  final pulumi.Input<String>? adminPasswordSecretKmsKeyId;
+  final pulumi.Input<String?>? adminPasswordSecretKmsKeyId;
   /// The password of the administrator for the first database created in the namespace.
   /// Conflicts with `manageAdminPassword` and `adminUserPasswordWo`.
-  final pulumi.Input<String>? adminUserPassword;
+  final pulumi.Input<String?>? adminUserPassword;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// The password of the administrator for the first database created in the namespace.
   /// Conflicts with `manageAdminPassword` and `adminUserPassword`.
-  final pulumi.Input<String>? adminUserPasswordWo;
+  final pulumi.Input<String?>? adminUserPasswordWo;
   /// Used together with `adminUserPasswordWo` to trigger an update. Increment this value when an update to the `adminUserPasswordWo` is required
-  final pulumi.Input<int>? adminUserPasswordWoVersion;
+  final pulumi.Input<int?>? adminUserPasswordWoVersion;
   /// The username of the administrator for the first database created in the namespace.
-  final pulumi.Input<String>? adminUsername;
+  final pulumi.Input<String?>? adminUsername;
   /// The name of the first database created in the namespace.
-  final pulumi.Input<String>? dbName;
-  /// The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
-  final pulumi.Input<String>? defaultIamRoleArn;
+  final pulumi.Input<String?>? dbName;
+  /// ARN of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
+  final pulumi.Input<String?>? defaultIamRoleArn;
   /// A list of IAM roles to associate with the namespace.
-  final pulumi.Input<List<String>>? iamRoles;
-  /// The ARN of the Amazon Web Services Key Management Service key used to encrypt your data.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<List<String>?>? iamRoles;
+  /// ARN of the Amazon Web Services KMS key used to encrypt your data.
+  final pulumi.Input<String?>? kmsKeyId;
   /// The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
-  final pulumi.Input<List<String>>? logExports;
+  final pulumi.Input<List<String>?>? logExports;
   /// Whether to use AWS SecretManager to manage namespace's admin credentials.
   /// Conflicts with `adminUserPassword` and `adminUserPasswordWo`.
-  final pulumi.Input<bool>? manageAdminPassword;
+  final pulumi.Input<bool?>? manageAdminPassword;
   /// The name of the namespace.
   final pulumi.Input<String> namespaceName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NamespaceArgs].
   /// [adminPasswordSecretKmsKeyId] ID of the KMS key used to encrypt the namespace's admin credentials secret.
@@ -47,9 +47,9 @@ class NamespaceArgs {
   /// [adminUserPasswordWoVersion] Used together with `adminUserPasswordWo` to trigger an update. Increment this value when an update to the `adminUserPasswordWo` is required
   /// [adminUsername] The username of the administrator for the first database created in the namespace.
   /// [dbName] The name of the first database created in the namespace.
-  /// [defaultIamRoleArn] The Amazon Resource Name (ARN) of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
+  /// [defaultIamRoleArn] ARN of the IAM role to set as a default in the namespace. When specifying `defaultIamRoleArn`, it also must be part of `iamRoles`.
   /// [iamRoles] A list of IAM roles to associate with the namespace.
-  /// [kmsKeyId] The ARN of the Amazon Web Services Key Management Service key used to encrypt your data.
+  /// [kmsKeyId] ARN of the Amazon Web Services KMS key used to encrypt your data.
   /// [logExports] The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
   /// [manageAdminPassword] Whether to use AWS SecretManager to manage namespace's admin credentials.
   /// [namespaceName] The name of the namespace.
@@ -96,7 +96,7 @@ class NamespaceArgs {
       adminPasswordSecretKmsKeyId: (() { final guardedValue = map['adminPasswordSecretKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       adminUserPassword: (() { final guardedValue = map['adminUserPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       adminUserPasswordWo: (() { final guardedValue = map['adminUserPasswordWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      adminUserPasswordWoVersion: (() { final guardedValue = map['adminUserPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      adminUserPasswordWoVersion: (() { final guardedValue = map['adminUserPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       adminUsername: (() { final guardedValue = map['adminUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbName: (() { final guardedValue = map['dbName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultIamRoleArn: (() { final guardedValue = map['defaultIamRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

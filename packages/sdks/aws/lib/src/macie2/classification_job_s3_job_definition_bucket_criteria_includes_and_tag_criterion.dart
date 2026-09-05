@@ -5,9 +5,9 @@ import 'classification_job_s3_job_definition_bucket_criteria_includes_and_tag_cr
 
 class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion {
   /// The operator to use in the condition. Valid combination and values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)
-  final pulumi.Input<String>? comparator;
+  final pulumi.Input<String?>? comparator;
   /// The  tag key and value pairs to use in the condition. One or more blocks are allowed. (documented below)
-  final pulumi.Input<List<ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagValue>>? tagValues;
+  final pulumi.Input<List<ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagValue>?>? tagValues;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion].
   /// [comparator] The operator to use in the condition. Valid combination and values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)

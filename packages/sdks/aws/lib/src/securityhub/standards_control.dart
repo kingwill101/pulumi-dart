@@ -253,7 +253,7 @@ class StandardsControl extends pulumi.CustomResource {
           'aws:securityhub/standardsControl:StandardsControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     controlId = registerOutput<String>('controlId');
     controlStatus = registerOutput<String>('controlStatus');
@@ -261,7 +261,7 @@ class StandardsControl extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     disabledReason = registerOutput<String>('disabledReason');
     region = registerOutput<String>('region');
-    relatedRequirements = registerOutput<List<String>>('relatedRequirements');
+    relatedRequirements = registerOutput<List<String>>('relatedRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     remediationUrl = registerOutput<String>('remediationUrl');
     severityRating = registerOutput<String>('severityRating');
     standardsControlArn = registerOutput<String>('standardsControlArn');
@@ -273,11 +273,12 @@ class StandardsControl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StandardsControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StandardsControl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,7 +298,29 @@ class StandardsControl extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     disabledReason = registerOutput<String>('disabledReason');
     region = registerOutput<String>('region');
-    relatedRequirements = registerOutput<List<String>>('relatedRequirements');
+    relatedRequirements = registerOutput<List<String>>('relatedRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    remediationUrl = registerOutput<String>('remediationUrl');
+    severityRating = registerOutput<String>('severityRating');
+    standardsControlArn = registerOutput<String>('standardsControlArn');
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [StandardsControl] resource.
+  StandardsControl.reference(String urn)
+    : super(
+        'aws:securityhub/standardsControl:StandardsControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    controlId = registerOutput<String>('controlId');
+    controlStatus = registerOutput<String>('controlStatus');
+    controlStatusUpdatedAt = registerOutput<String>('controlStatusUpdatedAt');
+    description = registerOutput<String>('description');
+    disabledReason = registerOutput<String>('disabledReason');
+    region = registerOutput<String>('region');
+    relatedRequirements = registerOutput<List<String>>('relatedRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     remediationUrl = registerOutput<String>('remediationUrl');
     severityRating = registerOutput<String>('severityRating');
     standardsControlArn = registerOutput<String>('standardsControlArn');

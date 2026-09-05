@@ -11,10 +11,10 @@ class FastSnapshotRestoreArgs {
   /// Availability zone in which to enable fast snapshot restores.
   final pulumi.Input<String> availabilityZone;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the snapshot.
   final pulumi.Input<String> snapshotId;
-  final pulumi.Input<FastSnapshotRestoreTimeouts>? timeouts;
+  final pulumi.Input<FastSnapshotRestoreTimeouts?>? timeouts;
 
   /// Creates a new [FastSnapshotRestoreArgs].
   /// [availabilityZone] Availability zone in which to enable fast snapshot restores.

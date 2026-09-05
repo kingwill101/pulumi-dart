@@ -25,8 +25,8 @@ class GetClusterVersionsClusterVersionControlPlaneScalingTierControlPlaneCompone
 
   factory GetClusterVersionsClusterVersionControlPlaneScalingTierControlPlaneComponentConfigOverrideKubeApiServerConfigServiceNodePortRangeDefaultValue.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsClusterVersionControlPlaneScalingTierControlPlaneComponentConfigOverrideKubeApiServerConfigServiceNodePortRangeDefaultValue(
-      maxPort: pulumi.Input.fromValue(map['maxPort'] as int),
-      minPort: pulumi.Input.fromValue(map['minPort'] as int),
+      maxPort: pulumi.Input.fromValue((map['maxPort'] as num).toInt()),
+      minPort: pulumi.Input.fromValue((map['minPort'] as num).toInt()),
     );
   }
 }

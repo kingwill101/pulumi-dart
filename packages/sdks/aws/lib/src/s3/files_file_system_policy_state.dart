@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FilesFileSystemPolicy resources.
 class FilesFileSystemPolicyState {
   /// File system ID. Changing this value forces replacement.
-  final pulumi.Input<String>? fileSystemId;
+  final pulumi.Input<String?>? fileSystemId;
   /// JSON policy document.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [FilesFileSystemPolicyState].
   /// [fileSystemId] File system ID. Changing this value forces replacement.

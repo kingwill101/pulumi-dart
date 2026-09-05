@@ -3,7 +3,7 @@ import 'default_credit_specification_args.dart';
 import 'default_credit_specification_state.dart';
 import 'default_credit_specification_timeouts.dart';
 
-/// Resource for managing an AWS EC2 (Elastic Compute Cloud) Default Credit Specification.
+/// Resource for managing an AWS EC2 Default Credit Specification.
 ///
 /// ## Example Usage
 ///
@@ -119,7 +119,7 @@ import 'default_credit_specification_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EC2 (Elastic Compute Cloud) Default Credit Specification using the `instanceFamily`. For example:
+/// Using `pulumi import`, import EC2 Default Credit Specification using the `instanceFamily`. For example:
 ///
 /// ```console
 /// % pulumi import aws_ec2_default_credit_specification.example t2
@@ -146,7 +146,7 @@ class DefaultCreditSpecification extends pulumi.CustomResource {
           'aws:ec2/defaultCreditSpecification:DefaultCreditSpecification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cpuCredits = registerOutput<String>('cpuCredits');
     instanceFamily = registerOutput<String>('instanceFamily');
@@ -159,11 +159,12 @@ class DefaultCreditSpecification extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultCreditSpecificationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultCreditSpecification._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -177,6 +178,21 @@ class DefaultCreditSpecification extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cpuCredits = registerOutput<String>('cpuCredits');
+    instanceFamily = registerOutput<String>('instanceFamily');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<DefaultCreditSpecificationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefaultCreditSpecificationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DefaultCreditSpecification] resource.
+  DefaultCreditSpecification.reference(String urn)
+    : super(
+        'aws:ec2/defaultCreditSpecification:DefaultCreditSpecification',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cpuCredits = registerOutput<String>('cpuCredits');
     instanceFamily = registerOutput<String>('instanceFamily');
     region = registerOutput<String>('region');

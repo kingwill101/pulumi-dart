@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolUsernameConfiguration {
   /// Whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
-  final pulumi.Input<bool>? caseSensitive;
+  final pulumi.Input<bool?>? caseSensitive;
 
   /// Creates a new [UserPoolUsernameConfiguration].
   /// [caseSensitive] Whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.

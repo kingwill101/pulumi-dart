@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InventoryFilter {
   /// Prefix that an object must have to be included in the inventory results.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [InventoryFilter].
   /// [prefix] Prefix that an object must have to be included in the inventory results.

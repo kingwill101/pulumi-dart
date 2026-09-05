@@ -12,9 +12,9 @@ class ConnectorAs2Config {
   /// Determines, for outbound requests, if a partner response for transfers is synchronous or asynchronous. The valid values are SYNC and NONE.
   final pulumi.Input<String> mdnResponse;
   /// Signing algorithm for the MDN response. The valid values are SHA256 | SHA384 | SHA512 | SHA1 | NONE | DEFAULT.
-  final pulumi.Input<String>? mdnSigningAlgorithm;
+  final pulumi.Input<String?>? mdnSigningAlgorithm;
   /// Subject HTTP header attribute used in AS2 messages that are being sent with the connector.
-  final pulumi.Input<String>? messageSubject;
+  final pulumi.Input<String?>? messageSubject;
   /// Unique identifier for the AS2 partner profile.
   final pulumi.Input<String> partnerProfileId;
   /// Algorithm that is used to sign AS2 messages sent with the connector. The valid values are SHA256 | SHA384 | SHA512 | SHA1 | NONE .

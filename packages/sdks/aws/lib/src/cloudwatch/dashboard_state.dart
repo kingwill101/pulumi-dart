@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Dashboard resources.
 class DashboardState {
-  /// The Amazon Resource Name (ARN) of the dashboard.
-  final pulumi.Input<String>? dashboardArn;
+  /// ARN of the dashboard.
+  final pulumi.Input<String?>? dashboardArn;
   /// The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
-  final pulumi.Input<String>? dashboardBody;
+  final pulumi.Input<String?>? dashboardBody;
   /// The name of the dashboard.
-  final pulumi.Input<String>? dashboardName;
+  final pulumi.Input<String?>? dashboardName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [DashboardState].
-  /// [dashboardArn] The Amazon Resource Name (ARN) of the dashboard.
+  /// [dashboardArn] ARN of the dashboard.
   /// [dashboardBody] The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
   /// [dashboardName] The name of the dashboard.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

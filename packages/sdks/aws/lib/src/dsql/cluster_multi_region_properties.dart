@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterMultiRegionProperties {
   /// List of DSQL Cluster ARNs peered to this cluster.
-  final pulumi.Input<List<String>>? clusters;
+  final pulumi.Input<List<String>?>? clusters;
   /// Witness region for the multi-region clusters. Setting this makes this cluster a multi-region cluster. Changing it recreates the resource.
-  final pulumi.Input<String>? witnessRegion;
+  final pulumi.Input<String?>? witnessRegion;
 
   /// Creates a new [ClusterMultiRegionProperties].
   /// [clusters] List of DSQL Cluster ARNs peered to this cluster.

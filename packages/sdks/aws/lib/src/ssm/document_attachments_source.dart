@@ -6,7 +6,7 @@ class DocumentAttachmentsSource {
   /// The key of a key-value pair that identifies the location of an attachment to the document. Valid values: `SourceUrl`, `S3FileUrl`, `AttachmentReference`.
   final pulumi.Input<String> key;
   /// The name of the document attachment file.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of a key-value pair that identifies the location of an attachment to the document. The argument format is a list of a single string that depends on the type of key you specify - see the [API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_AttachmentsSource.html) for details.
   final pulumi.Input<List<String>> values;
 

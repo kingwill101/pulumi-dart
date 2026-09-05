@@ -6,7 +6,7 @@ class DataSetLogicalTableMapDataTransformCastColumnTypeOperation {
   /// Column name.
   final pulumi.Input<String> columnName;
   /// When casting a column from string to datetime type, you can supply a string in a format supported by Amazon QuickSight to denote the source data format.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// New column data type. Valid values are `STRING`, `INTEGER`, `DECIMAL`, `DATETIME`.
   final pulumi.Input<String> newColumnType;
 

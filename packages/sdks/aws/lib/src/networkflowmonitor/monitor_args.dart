@@ -15,23 +15,23 @@ class MonitorArgs {
   /// The name of the monitor. Cannot be changed after creation.
   final pulumi.Input<String> monitorName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The remote resources to monitor. A remote resource is the other endpoint specified for the network flow of a workload, with a local resource.
-  final pulumi.Input<List<MonitorRemoteResource>>? remoteResources;
-  /// The Amazon Resource Name (ARN) of the scope for the monitor. Cannot be changed after creation.
+  final pulumi.Input<List<MonitorRemoteResource>?>? remoteResources;
+  /// ARN of the scope for the monitor. Cannot be changed after creation.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> scopeArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<MonitorTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<MonitorTimeouts?>? timeouts;
 
   /// Creates a new [MonitorArgs].
   /// [localResources] The local resources to monitor. A local resource in a workload is the location of the hosts where the Network Flow Monitor agent is installed.
   /// [monitorName] The name of the monitor. Cannot be changed after creation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [remoteResources] The remote resources to monitor. A remote resource is the other endpoint specified for the network flow of a workload, with a local resource.
-  /// [scopeArn] The Amazon Resource Name (ARN) of the scope for the monitor. Cannot be changed after creation.
+  /// [scopeArn] ARN of the scope for the monitor. Cannot be changed after creation.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const MonitorArgs({

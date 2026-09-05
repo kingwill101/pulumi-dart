@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distribution_args.dart';
+import 'distribution_cache_behavior.dart';
 import 'distribution_cache_behavior_settings.dart';
 import 'distribution_default_cache_behavior.dart';
+import 'distribution_location.dart';
 import 'distribution_origin.dart';
 import 'distribution_state.dart';
 
@@ -21,8 +23,6 @@ import 'distribution_state.dart';
 ///     bundleId: "small_1_0",
 /// });
 /// const exampleDistribution = new aws.lightsail.Distribution("example", {
-///     name: "example-distribution",
-///     bundleId: "small_1_0",
 ///     origin: {
 ///         name: example.name,
 ///         regionName: example.region,
@@ -31,11 +31,6 @@ import 'distribution_state.dart';
 ///         behavior: "cache",
 ///     },
 ///     cacheBehaviorSettings: {
-///         allowedHttpMethods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-///         cachedHttpMethods: "GET,HEAD",
-///         defaultTtl: 86400,
-///         maximumTtl: 31536000,
-///         minimumTtl: 0,
 ///         forwardedCookies: {
 ///             option: "none",
 ///         },
@@ -45,7 +40,14 @@ import 'distribution_state.dart';
 ///         forwardedQueryStrings: {
 ///             option: false,
 ///         },
+///         allowedHttpMethods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+///         cachedHttpMethods: "GET,HEAD",
+///         defaultTtl: 86400,
+///         maximumTtl: 31536000,
+///         minimumTtl: 0,
 ///     },
+///     name: "example-distribution",
+///     bundleId: "small_1_0",
 /// });
 /// ```
 /// ```python
@@ -56,8 +58,6 @@ import 'distribution_state.dart';
 ///     name="example-bucket",
 ///     bundle_id="small_1_0")
 /// example_distribution = aws.lightsail.Distribution("example",
-///     name="example-distribution",
-///     bundle_id="small_1_0",
 ///     origin={
 ///         "name": example.name,
 ///         "region_name": example.region,
@@ -66,11 +66,6 @@ import 'distribution_state.dart';
 ///         "behavior": "cache",
 ///     },
 ///     cache_behavior_settings={
-///         "allowed_http_methods": "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-///         "cached_http_methods": "GET,HEAD",
-///         "default_ttl": 86400,
-///         "maximum_ttl": 31536000,
-///         "minimum_ttl": 0,
 ///         "forwarded_cookies": {
 ///             "option": "none",
 ///         },
@@ -80,7 +75,14 @@ import 'distribution_state.dart';
 ///         "forwarded_query_strings": {
 ///             "option": False,
 ///         },
-///     })
+///         "allowed_http_methods": "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+///         "cached_http_methods": "GET,HEAD",
+///         "default_ttl": 86400,
+///         "maximum_ttl": 31536000,
+///         "minimum_ttl": 0,
+///     },
+///     name="example-distribution",
+///     bundle_id="small_1_0")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -98,8 +100,6 @@ import 'distribution_state.dart';
 ///
 ///     var exampleDistribution = new Aws.LightSail.Distribution("example", new()
 ///     {
-///         Name = "example-distribution",
-///         BundleId = "small_1_0",
 ///         Origin = new Aws.LightSail.Inputs.DistributionOriginArgs
 ///         {
 ///             Name = example.Name,
@@ -111,11 +111,6 @@ import 'distribution_state.dart';
 ///         },
 ///         CacheBehaviorSettings = new Aws.LightSail.Inputs.DistributionCacheBehaviorSettingsArgs
 ///         {
-///             AllowedHttpMethods = "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-///             CachedHttpMethods = "GET,HEAD",
-///             DefaultTtl = 86400,
-///             MaximumTtl = 31536000,
-///             MinimumTtl = 0,
 ///             ForwardedCookies = new Aws.LightSail.Inputs.DistributionCacheBehaviorSettingsForwardedCookiesArgs
 ///             {
 ///                 Option = "none",
@@ -128,7 +123,14 @@ import 'distribution_state.dart';
 ///             {
 ///                 Option = false,
 ///             },
+///             AllowedHttpMethods = "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+///             CachedHttpMethods = "GET,HEAD",
+///             DefaultTtl = 86400,
+///             MaximumTtl = 31536000,
+///             MinimumTtl = 0,
 ///         },
+///         Name = "example-distribution",
+///         BundleId = "small_1_0",
 ///     });
 ///
 /// });
@@ -151,8 +153,6 @@ import 'distribution_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lightsail.NewDistribution(ctx, "example", &lightsail.DistributionArgs{
-/// 			Name:     pulumi.String("example-distribution"),
-/// 			BundleId: pulumi.String("small_1_0"),
 /// 			Origin: &lightsail.DistributionOriginArgs{
 /// 				Name:       example.Name,
 /// 				RegionName: example.Region,
@@ -161,11 +161,6 @@ import 'distribution_state.dart';
 /// 				Behavior: pulumi.String("cache"),
 /// 			},
 /// 			CacheBehaviorSettings: &lightsail.DistributionCacheBehaviorSettingsArgs{
-/// 				AllowedHttpMethods: pulumi.String("GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE"),
-/// 				CachedHttpMethods:  pulumi.String("GET,HEAD"),
-/// 				DefaultTtl:         pulumi.Int(86400),
-/// 				MaximumTtl:         pulumi.Int(31536000),
-/// 				MinimumTtl:         pulumi.Int(0),
 /// 				ForwardedCookies: &lightsail.DistributionCacheBehaviorSettingsForwardedCookiesArgs{
 /// 					Option: pulumi.String("none"),
 /// 				},
@@ -175,7 +170,14 @@ import 'distribution_state.dart';
 /// 				ForwardedQueryStrings: &lightsail.DistributionCacheBehaviorSettingsForwardedQueryStringsArgs{
 /// 					Option: pulumi.Bool(false),
 /// 				},
+/// 				AllowedHttpMethods: pulumi.String("GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE"),
+/// 				CachedHttpMethods:  pulumi.String("GET,HEAD"),
+/// 				DefaultTtl:         pulumi.Int(86400),
+/// 				MaximumTtl:         pulumi.Int(31536000),
+/// 				MinimumTtl:         pulumi.Int(0),
 /// 			},
+/// 			Name:     pulumi.String("example-distribution"),
+/// 			BundleId: pulumi.String("small_1_0"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -198,8 +200,6 @@ import 'distribution_state.dart';
 ///   bundle_id = "small_1_0"
 /// }
 /// resource "aws_lightsail_distribution" "example" {
-///   name      = "example-distribution"
-///   bundle_id = "small_1_0"
 ///   origin = {
 ///     name        = aws_lightsail_bucket.example.name
 ///     region_name = aws_lightsail_bucket.example.region
@@ -208,11 +208,6 @@ import 'distribution_state.dart';
 ///     behavior = "cache"
 ///   }
 ///   cache_behavior_settings = {
-///     allowed_http_methods = "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE"
-///     cached_http_methods  = "GET,HEAD"
-///     default_ttl          = 86400
-///     maximum_ttl          = 31536000
-///     minimum_ttl          = 0
 ///     forwarded_cookies = {
 ///       option = "none"
 ///     }
@@ -222,7 +217,14 @@ import 'distribution_state.dart';
 ///     forwarded_query_strings = {
 ///       option = false
 ///     }
+///     allowed_http_methods = "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE"
+///     cached_http_methods  = "GET,HEAD"
+///     default_ttl          = 86400
+///     maximum_ttl          = 31536000
+///     minimum_ttl          = 0
 ///   }
+///   name      = "example-distribution"
+///   bundle_id = "small_1_0"
 /// }
 /// ```
 /// ```java
@@ -260,8 +262,6 @@ import 'distribution_state.dart';
 ///             .build());
 ///
 ///         var exampleDistribution = new Distribution("exampleDistribution", DistributionArgs.builder()
-///             .name("example-distribution")
-///             .bundleId("small_1_0")
 ///             .origin(DistributionOriginArgs.builder()
 ///                 .name(example.name())
 ///                 .regionName(example.region())
@@ -270,11 +270,6 @@ import 'distribution_state.dart';
 ///                 .behavior("cache")
 ///                 .build())
 ///             .cacheBehaviorSettings(DistributionCacheBehaviorSettingsArgs.builder()
-///                 .allowedHttpMethods("GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE")
-///                 .cachedHttpMethods("GET,HEAD")
-///                 .defaultTtl(86400)
-///                 .maximumTtl(31536000)
-///                 .minimumTtl(0)
 ///                 .forwardedCookies(DistributionCacheBehaviorSettingsForwardedCookiesArgs.builder()
 ///                     .option("none")
 ///                     .build())
@@ -284,7 +279,14 @@ import 'distribution_state.dart';
 ///                 .forwardedQueryStrings(DistributionCacheBehaviorSettingsForwardedQueryStringsArgs.builder()
 ///                     .option(false)
 ///                     .build())
+///                 .allowedHttpMethods("GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE")
+///                 .cachedHttpMethods("GET,HEAD")
+///                 .defaultTtl(86400)
+///                 .maximumTtl(31536000)
+///                 .minimumTtl(0)
 ///                 .build())
+///             .name("example-distribution")
+///             .bundleId("small_1_0")
 ///             .build());
 ///
 ///     }
@@ -301,25 +303,25 @@ import 'distribution_state.dart';
 ///     type: aws:lightsail:Distribution
 ///     name: example
 ///     properties:
-///       name: example-distribution
-///       bundleId: small_1_0
 ///       origin:
 ///         name: ${example.name}
 ///         regionName: ${example.region}
 ///       defaultCacheBehavior:
 ///         behavior: cache
 ///       cacheBehaviorSettings:
-///         allowedHttpMethods: GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE
-///         cachedHttpMethods: GET,HEAD
-///         defaultTtl: 86400
-///         maximumTtl: 3.1536e+07
-///         minimumTtl: 0
 ///         forwardedCookies:
 ///           option: none
 ///         forwardedHeaders:
 ///           option: default
 ///         forwardedQueryStrings:
 ///           option: false
+///         allowedHttpMethods: GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE
+///         cachedHttpMethods: GET,HEAD
+///         defaultTtl: 86400
+///         maximumTtl: 3.1536e+07
+///         minimumTtl: 0
+///       name: example-distribution
+///       bundleId: small_1_0
 /// ```
 ///
 ///
@@ -331,11 +333,11 @@ import 'distribution_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const available = aws.getAvailabilityZones({
-///     state: "available",
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["opt-in-not-required"],
 ///     }],
+///     state: "available",
 /// });
 /// const exampleStaticIp = new aws.lightsail.StaticIp("example", {name: "example-static-ip"});
 /// const exampleInstance = new aws.lightsail.Instance("example", {
@@ -349,8 +351,6 @@ import 'distribution_state.dart';
 ///     instanceName: exampleInstance.name,
 /// });
 /// const exampleDistribution = new aws.lightsail.Distribution("example", {
-///     name: "example-distribution",
-///     bundleId: "small_1_0",
 ///     origin: {
 ///         name: exampleInstance.name,
 ///         regionName: available.then(available => available.id),
@@ -358,6 +358,8 @@ import 'distribution_state.dart';
 ///     defaultCacheBehavior: {
 ///         behavior: "cache",
 ///     },
+///     name: "example-distribution",
+///     bundleId: "small_1_0",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -366,11 +368,11 @@ import 'distribution_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// available = aws.get_availability_zones(state="available",
-///     filters=[{
+/// available = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["opt-in-not-required"],
-///     }])
+///     }],
+///     state="available")
 /// example_static_ip = aws.lightsail.StaticIp("example", name="example-static-ip")
 /// example_instance = aws.lightsail.Instance("example",
 ///     name="example-instance",
@@ -381,8 +383,6 @@ import 'distribution_state.dart';
 ///     static_ip_name=example_static_ip.name,
 ///     instance_name=example_instance.name)
 /// example_distribution = aws.lightsail.Distribution("example",
-///     name="example-distribution",
-///     bundle_id="small_1_0",
 ///     origin={
 ///         "name": example_instance.name,
 ///         "region_name": available.id,
@@ -390,6 +390,8 @@ import 'distribution_state.dart';
 ///     default_cache_behavior={
 ///         "behavior": "cache",
 ///     },
+///     name="example-distribution",
+///     bundle_id="small_1_0",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -402,7 +404,6 @@ import 'distribution_state.dart';
 /// {
 ///     var available = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         State = "available",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -414,6 +415,7 @@ import 'distribution_state.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "available",
 ///     });
 ///
 ///     var exampleStaticIp = new Aws.LightSail.StaticIp("example", new()
@@ -437,8 +439,6 @@ import 'distribution_state.dart';
 ///
 ///     var exampleDistribution = new Aws.LightSail.Distribution("example", new()
 ///     {
-///         Name = "example-distribution",
-///         BundleId = "small_1_0",
 ///         Origin = new Aws.LightSail.Inputs.DistributionOriginArgs
 ///         {
 ///             Name = exampleInstance.Name,
@@ -448,6 +448,8 @@ import 'distribution_state.dart';
 ///         {
 ///             Behavior = "cache",
 ///         },
+///         Name = "example-distribution",
+///         BundleId = "small_1_0",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -470,7 +472,6 @@ import 'distribution_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// 			State: pulumi.StringRef("available"),
 /// 			Filters: []aws.GetAvailabilityZonesFilter{
 /// 				{
 /// 					Name: "opt-in-status",
@@ -479,6 +480,7 @@ import 'distribution_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			State: pulumi.StringRef("available"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -506,8 +508,6 @@ import 'distribution_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lightsail.NewDistribution(ctx, "example", &lightsail.DistributionArgs{
-/// 			Name:     pulumi.String("example-distribution"),
-/// 			BundleId: pulumi.String("small_1_0"),
 /// 			Origin: &lightsail.DistributionOriginArgs{
 /// 				Name:       exampleInstance.Name,
 /// 				RegionName: pulumi.String(available.Id),
@@ -515,6 +515,8 @@ import 'distribution_state.dart';
 /// 			DefaultCacheBehavior: &lightsail.DistributionDefaultCacheBehaviorArgs{
 /// 				Behavior: pulumi.String("cache"),
 /// 			},
+/// 			Name:     pulumi.String("example-distribution"),
+/// 			BundleId: pulumi.String("small_1_0"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -535,11 +537,11 @@ import 'distribution_state.dart';
 /// }
 ///
 /// data "aws_getavailabilityzones" "available" {
-///   state = "available"
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
+///   state = "available"
 /// }
 ///
 /// resource "aws_lightsail_staticipattachment" "example" {
@@ -557,8 +559,6 @@ import 'distribution_state.dart';
 /// }
 /// resource "aws_lightsail_distribution" "example" {
 ///   depends_on = [aws_lightsail_staticipattachment.example]
-///   name       = "example-distribution"
-///   bundle_id  = "small_1_0"
 ///   origin = {
 ///     name        = aws_lightsail_instance.example.name
 ///     region_name = data.aws_getavailabilityzones.available.id
@@ -566,6 +566,8 @@ import 'distribution_state.dart';
 ///   default_cache_behavior = {
 ///     behavior = "cache"
 ///   }
+///   name      = "example-distribution"
+///   bundle_id = "small_1_0"
 /// }
 /// ```
 /// ```java
@@ -602,11 +604,11 @@ import 'distribution_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .state("available")
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("opt-in-not-required")
 ///                 .build())
+///             .state("available")
 ///             .build());
 ///
 ///         var exampleStaticIp = new StaticIp("exampleStaticIp", StaticIpArgs.builder()
@@ -626,8 +628,6 @@ import 'distribution_state.dart';
 ///             .build());
 ///
 ///         var exampleDistribution = new Distribution("exampleDistribution", DistributionArgs.builder()
-///             .name("example-distribution")
-///             .bundleId("small_1_0")
 ///             .origin(DistributionOriginArgs.builder()
 ///                 .name(exampleInstance.name())
 ///                 .regionName(available.id())
@@ -635,6 +635,8 @@ import 'distribution_state.dart';
 ///             .defaultCacheBehavior(DistributionDefaultCacheBehaviorArgs.builder()
 ///                 .behavior("cache")
 ///                 .build())
+///             .name("example-distribution")
+///             .bundleId("small_1_0")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -666,13 +668,13 @@ import 'distribution_state.dart';
 ///     type: aws:lightsail:Distribution
 ///     name: example
 ///     properties:
-///       name: example-distribution
-///       bundleId: small_1_0
 ///       origin:
 ///         name: ${exampleInstance.name}
 ///         regionName: ${available.id}
 ///       defaultCacheBehavior:
 ///         behavior: cache
+///       name: example-distribution
+///       bundleId: small_1_0
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -681,11 +683,11 @@ import 'distribution_state.dart';
 ///     fn::invoke:
 ///       function: aws:getAvailabilityZones
 ///       arguments:
-///         state: available
 ///         filters:
 ///           - name: opt-in-status
 ///             values:
 ///               - opt-in-not-required
+///         state: available
 /// ```
 ///
 ///
@@ -697,11 +699,11 @@ import 'distribution_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const available = aws.getAvailabilityZones({
-///     state: "available",
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["opt-in-not-required"],
 ///     }],
+///     state: "available",
 /// });
 /// const example = new aws.lightsail.Lb("example", {
 ///     name: "example-load-balancer",
@@ -722,8 +724,6 @@ import 'distribution_state.dart';
 ///     instanceName: exampleInstance.name,
 /// });
 /// const exampleDistribution = new aws.lightsail.Distribution("example", {
-///     name: "example-distribution",
-///     bundleId: "small_1_0",
 ///     origin: {
 ///         name: example.name,
 ///         regionName: available.then(available => available.id),
@@ -731,6 +731,8 @@ import 'distribution_state.dart';
 ///     defaultCacheBehavior: {
 ///         behavior: "cache",
 ///     },
+///     name: "example-distribution",
+///     bundleId: "small_1_0",
 /// }, {
 ///     dependsOn: [exampleLbAttachment],
 /// });
@@ -739,11 +741,11 @@ import 'distribution_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// available = aws.get_availability_zones(state="available",
-///     filters=[{
+/// available = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["opt-in-not-required"],
-///     }])
+///     }],
+///     state="available")
 /// example = aws.lightsail.Lb("example",
 ///     name="example-load-balancer",
 ///     health_check_path="/",
@@ -760,8 +762,6 @@ import 'distribution_state.dart';
 ///     lb_name=example.name,
 ///     instance_name=example_instance.name)
 /// example_distribution = aws.lightsail.Distribution("example",
-///     name="example-distribution",
-///     bundle_id="small_1_0",
 ///     origin={
 ///         "name": example.name,
 ///         "region_name": available.id,
@@ -769,6 +769,8 @@ import 'distribution_state.dart';
 ///     default_cache_behavior={
 ///         "behavior": "cache",
 ///     },
+///     name="example-distribution",
+///     bundle_id="small_1_0",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_lb_attachment]))
 /// ```
 /// ```csharp
@@ -781,7 +783,6 @@ import 'distribution_state.dart';
 /// {
 ///     var available = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         State = "available",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -793,6 +794,7 @@ import 'distribution_state.dart';
 ///                 },
 ///             },
 ///         },
+///         State = "available",
 ///     });
 ///
 ///     var example = new Aws.LightSail.Lb("example", new()
@@ -822,8 +824,6 @@ import 'distribution_state.dart';
 ///
 ///     var exampleDistribution = new Aws.LightSail.Distribution("example", new()
 ///     {
-///         Name = "example-distribution",
-///         BundleId = "small_1_0",
 ///         Origin = new Aws.LightSail.Inputs.DistributionOriginArgs
 ///         {
 ///             Name = example.Name,
@@ -833,6 +833,8 @@ import 'distribution_state.dart';
 ///         {
 ///             Behavior = "cache",
 ///         },
+///         Name = "example-distribution",
+///         BundleId = "small_1_0",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -855,7 +857,6 @@ import 'distribution_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// 			State: pulumi.StringRef("available"),
 /// 			Filters: []aws.GetAvailabilityZonesFilter{
 /// 				{
 /// 					Name: "opt-in-status",
@@ -864,6 +865,7 @@ import 'distribution_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			State: pulumi.StringRef("available"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -896,8 +898,6 @@ import 'distribution_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lightsail.NewDistribution(ctx, "example", &lightsail.DistributionArgs{
-/// 			Name:     pulumi.String("example-distribution"),
-/// 			BundleId: pulumi.String("small_1_0"),
 /// 			Origin: &lightsail.DistributionOriginArgs{
 /// 				Name:       example.Name,
 /// 				RegionName: pulumi.String(available.Id),
@@ -905,6 +905,8 @@ import 'distribution_state.dart';
 /// 			DefaultCacheBehavior: &lightsail.DistributionDefaultCacheBehaviorArgs{
 /// 				Behavior: pulumi.String("cache"),
 /// 			},
+/// 			Name:     pulumi.String("example-distribution"),
+/// 			BundleId: pulumi.String("small_1_0"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleLbAttachment,
 /// 		}))
@@ -925,11 +927,11 @@ import 'distribution_state.dart';
 /// }
 ///
 /// data "aws_getavailabilityzones" "available" {
-///   state = "available"
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
+///   state = "available"
 /// }
 ///
 /// resource "aws_lightsail_lb" "example" {
@@ -952,8 +954,6 @@ import 'distribution_state.dart';
 /// }
 /// resource "aws_lightsail_distribution" "example" {
 ///   depends_on = [aws_lightsail_lbattachment.example]
-///   name       = "example-distribution"
-///   bundle_id  = "small_1_0"
 ///   origin = {
 ///     name        = aws_lightsail_lb.example.name
 ///     region_name = data.aws_getavailabilityzones.available.id
@@ -961,6 +961,8 @@ import 'distribution_state.dart';
 ///   default_cache_behavior = {
 ///     behavior = "cache"
 ///   }
+///   name      = "example-distribution"
+///   bundle_id = "small_1_0"
 /// }
 /// ```
 /// ```java
@@ -997,11 +999,11 @@ import 'distribution_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .state("available")
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("opt-in-not-required")
 ///                 .build())
+///             .state("available")
 ///             .build());
 ///
 ///         var example = new Lb("example", LbArgs.builder()
@@ -1024,8 +1026,6 @@ import 'distribution_state.dart';
 ///             .build());
 ///
 ///         var exampleDistribution = new Distribution("exampleDistribution", DistributionArgs.builder()
-///             .name("example-distribution")
-///             .bundleId("small_1_0")
 ///             .origin(DistributionOriginArgs.builder()
 ///                 .name(example.name())
 ///                 .regionName(available.id())
@@ -1033,6 +1033,8 @@ import 'distribution_state.dart';
 ///             .defaultCacheBehavior(DistributionDefaultCacheBehaviorArgs.builder()
 ///                 .behavior("cache")
 ///                 .build())
+///             .name("example-distribution")
+///             .bundleId("small_1_0")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleLbAttachment)
 ///                 .build());
@@ -1068,13 +1070,13 @@ import 'distribution_state.dart';
 ///     type: aws:lightsail:Distribution
 ///     name: example
 ///     properties:
-///       name: example-distribution
-///       bundleId: small_1_0
 ///       origin:
 ///         name: ${example.name}
 ///         regionName: ${available.id}
 ///       defaultCacheBehavior:
 ///         behavior: cache
+///       name: example-distribution
+///       bundleId: small_1_0
 ///     options:
 ///       dependsOn:
 ///         - ${exampleLbAttachment}
@@ -1083,11 +1085,11 @@ import 'distribution_state.dart';
 ///     fn::invoke:
 ///       function: aws:getAvailabilityZones
 ///       arguments:
-///         state: available
 ///         filters:
 ///           - name: opt-in-status
 ///             values:
 ///               - opt-in-not-required
+///         state: available
 /// ```
 ///
 ///
@@ -1108,7 +1110,7 @@ class Distribution extends pulumi.CustomResource {
   /// Cache behavior settings of the distribution. See below.
   late final pulumi.Output<DistributionCacheBehaviorSettings?> cacheBehaviorSettings;
   /// Per-path cache behavior of the distribution. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cacheBehaviors;
+  late final pulumi.Output<List<DistributionCacheBehavior>?> cacheBehaviors;
   /// Name of the SSL/TLS certificate attached to the distribution.
   late final pulumi.Output<String?> certificateName;
   /// Timestamp when the distribution was created.
@@ -1122,7 +1124,7 @@ class Distribution extends pulumi.CustomResource {
   /// Whether the distribution is enabled. Default: `true`.
   late final pulumi.Output<bool?> isEnabled;
   /// Location of the distribution, such as the AWS Region and Availability Zone. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> locations;
+  late final pulumi.Output<List<DistributionLocation>> locations;
   /// Name of the distribution.
   late final pulumi.Output<String> name;
   /// Origin resource of the distribution, such as a Lightsail instance, bucket, or load balancer. See below.
@@ -1157,20 +1159,20 @@ class Distribution extends pulumi.CustomResource {
           'aws:lightsail/distribution:Distribution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    alternativeDomainNames = registerOutput<List<String>>('alternativeDomainNames');
+    alternativeDomainNames = registerOutput<List<String>>('alternativeDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     bundleId = registerOutput<String>('bundleId');
     cacheBehaviorSettings = registerOutput<DistributionCacheBehaviorSettings?>('cacheBehaviorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionCacheBehaviorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>('cacheBehaviors');
+    cacheBehaviors = registerOutput<List<DistributionCacheBehavior>?>('cacheBehaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionCacheBehavior>(guardedValue, (value) => DistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>())); });
     certificateName = registerOutput<String?>('certificateName');
     createdAt = registerOutput<String>('createdAt');
     defaultCacheBehavior = registerOutput<DistributionDefaultCacheBehavior>('defaultCacheBehavior', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionDefaultCacheBehavior.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainName = registerOutput<String>('domainName');
     ipAddressType = registerOutput<String?>('ipAddressType');
     isEnabled = registerOutput<bool?>('isEnabled');
-    locations = registerOutput<List<Map<String, dynamic>>>('locations');
+    locations = registerOutput<List<DistributionLocation>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionLocation>(guardedValue, (value) => DistributionLocation.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     origin = registerOutput<DistributionOrigin>('origin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originPublicDns = registerOutput<String>('originPublicDns');
@@ -1178,8 +1180,8 @@ class Distribution extends pulumi.CustomResource {
     resourceType = registerOutput<String>('resourceType');
     status = registerOutput<String>('status');
     supportCode = registerOutput<String>('supportCode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Distribution] resource's state with the given [name] and [id].
@@ -1187,11 +1189,12 @@ class Distribution extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DistributionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Distribution._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1205,18 +1208,18 @@ class Distribution extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    alternativeDomainNames = registerOutput<List<String>>('alternativeDomainNames');
+    alternativeDomainNames = registerOutput<List<String>>('alternativeDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     bundleId = registerOutput<String>('bundleId');
     cacheBehaviorSettings = registerOutput<DistributionCacheBehaviorSettings?>('cacheBehaviorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionCacheBehaviorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>('cacheBehaviors');
+    cacheBehaviors = registerOutput<List<DistributionCacheBehavior>?>('cacheBehaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionCacheBehavior>(guardedValue, (value) => DistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>())); });
     certificateName = registerOutput<String?>('certificateName');
     createdAt = registerOutput<String>('createdAt');
     defaultCacheBehavior = registerOutput<DistributionDefaultCacheBehavior>('defaultCacheBehavior', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionDefaultCacheBehavior.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainName = registerOutput<String>('domainName');
     ipAddressType = registerOutput<String?>('ipAddressType');
     isEnabled = registerOutput<bool?>('isEnabled');
-    locations = registerOutput<List<Map<String, dynamic>>>('locations');
+    locations = registerOutput<List<DistributionLocation>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionLocation>(guardedValue, (value) => DistributionLocation.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     origin = registerOutput<DistributionOrigin>('origin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originPublicDns = registerOutput<String>('originPublicDns');
@@ -1224,7 +1227,39 @@ class Distribution extends pulumi.CustomResource {
     resourceType = registerOutput<String>('resourceType');
     status = registerOutput<String>('status');
     supportCode = registerOutput<String>('supportCode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Distribution] resource.
+  Distribution.reference(String urn)
+    : super(
+        'aws:lightsail/distribution:Distribution',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alternativeDomainNames = registerOutput<List<String>>('alternativeDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    bundleId = registerOutput<String>('bundleId');
+    cacheBehaviorSettings = registerOutput<DistributionCacheBehaviorSettings?>('cacheBehaviorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionCacheBehaviorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cacheBehaviors = registerOutput<List<DistributionCacheBehavior>?>('cacheBehaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionCacheBehavior>(guardedValue, (value) => DistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>())); });
+    certificateName = registerOutput<String?>('certificateName');
+    createdAt = registerOutput<String>('createdAt');
+    defaultCacheBehavior = registerOutput<DistributionDefaultCacheBehavior>('defaultCacheBehavior', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionDefaultCacheBehavior.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainName = registerOutput<String>('domainName');
+    ipAddressType = registerOutput<String?>('ipAddressType');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    locations = registerOutput<List<DistributionLocation>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributionLocation>(guardedValue, (value) => DistributionLocation.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    origin = registerOutput<DistributionOrigin>('origin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DistributionOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    originPublicDns = registerOutput<String>('originPublicDns');
+    region = registerOutput<String>('region');
+    resourceType = registerOutput<String>('resourceType');
+    status = registerOutput<String>('status');
+    supportCode = registerOutput<String>('supportCode');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

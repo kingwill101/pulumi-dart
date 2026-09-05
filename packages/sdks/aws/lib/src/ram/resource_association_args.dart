@@ -8,16 +8,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ram_resource_association_resource_association_args_doc}
 class ResourceAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
+  final pulumi.Input<String?>? region;
+  /// ARN of the resource to associate with the RAM Resource Share.
   final pulumi.Input<String> resourceArn;
-  /// Amazon Resource Name (ARN) of the RAM Resource Share.
+  /// ARN of the RAM Resource Share.
   final pulumi.Input<String> resourceShareArn;
 
   /// Creates a new [ResourceAssociationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceArn] Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
-  /// [resourceShareArn] Amazon Resource Name (ARN) of the RAM Resource Share.
+  /// [resourceArn] ARN of the resource to associate with the RAM Resource Share.
+  /// [resourceShareArn] ARN of the RAM Resource Share.
   const ResourceAssociationArgs({
     this.region,
     required this.resourceArn,

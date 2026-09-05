@@ -9,17 +9,17 @@ import 'service_action_definition.dart';
 /// {@macro pulumi_servicecatalog_service_action_service_action_args_doc}
 class ServiceActionArgs {
   /// Language code. Valid values are `en` (English), `jp` (Japanese), and `zh` (Chinese). Default is `en`.
-  final pulumi.Input<String>? acceptLanguage;
+  final pulumi.Input<String?>? acceptLanguage;
   /// Self-service action definition configuration block. Detailed below.
   final pulumi.Input<ServiceActionDefinition> definition;
   /// Self-service action description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Self-service action name.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ServiceActionArgs].
   /// [acceptLanguage] Language code. Valid values are `en` (English), `jp` (Japanese), and `zh` (Chinese). Default is `en`.

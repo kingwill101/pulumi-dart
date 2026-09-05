@@ -18,10 +18,10 @@ import 'replication_configuration_state.dart';
 ///
 /// const example = new aws.efs.FileSystem("example", {});
 /// const exampleReplicationConfiguration = new aws.efs.ReplicationConfiguration("example", {
-///     sourceFileSystemId: example.id,
 ///     destination: {
 ///         region: "us-west-2",
 ///     },
+///     sourceFileSystemId: example.id,
 /// });
 /// ```
 /// ```python
@@ -30,10 +30,10 @@ import 'replication_configuration_state.dart';
 ///
 /// example = aws.efs.FileSystem("example")
 /// example_replication_configuration = aws.efs.ReplicationConfiguration("example",
-///     source_file_system_id=example.id,
 ///     destination={
 ///         "region": "us-west-2",
-///     })
+///     },
+///     source_file_system_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,11 +47,11 @@ import 'replication_configuration_state.dart';
 ///
 ///     var exampleReplicationConfiguration = new Aws.Efs.ReplicationConfiguration("example", new()
 ///     {
-///         SourceFileSystemId = example.Id,
 ///         Destination = new Aws.Efs.Inputs.ReplicationConfigurationDestinationArgs
 ///         {
 ///             Region = "us-west-2",
 ///         },
+///         SourceFileSystemId = example.Id,
 ///     });
 ///
 /// });
@@ -71,10 +71,10 @@ import 'replication_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = efs.NewReplicationConfiguration(ctx, "example", &efs.ReplicationConfigurationArgs{
-/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Destination: &efs.ReplicationConfigurationDestinationArgs{
 /// 				Region: pulumi.String("us-west-2"),
 /// 			},
+/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -95,10 +95,10 @@ import 'replication_configuration_state.dart';
 /// resource "aws_efs_filesystem" "example" {
 /// }
 /// resource "aws_efs_replicationconfiguration" "example" {
-///   source_file_system_id = aws_efs_filesystem.example.id
 ///   destination = {
 ///     region = "us-west-2"
 ///   }
+///   source_file_system_id = aws_efs_filesystem.example.id
 /// }
 /// ```
 /// ```java
@@ -127,10 +127,10 @@ import 'replication_configuration_state.dart';
 ///         var example = new FileSystem("example");
 ///
 ///         var exampleReplicationConfiguration = new ReplicationConfiguration("exampleReplicationConfiguration", ReplicationConfigurationArgs.builder()
-///             .sourceFileSystemId(example.id())
 ///             .destination(ReplicationConfigurationDestinationArgs.builder()
 ///                 .region("us-west-2")
 ///                 .build())
+///             .sourceFileSystemId(example.id())
 ///             .build());
 ///
 ///     }
@@ -144,9 +144,9 @@ import 'replication_configuration_state.dart';
 ///     type: aws:efs:ReplicationConfiguration
 ///     name: example
 ///     properties:
-///       sourceFileSystemId: ${example.id}
 ///       destination:
 ///         region: us-west-2
+///       sourceFileSystemId: ${example.id}
 /// ```
 ///
 ///
@@ -159,11 +159,11 @@ import 'replication_configuration_state.dart';
 ///
 /// const example = new aws.efs.FileSystem("example", {});
 /// const exampleReplicationConfiguration = new aws.efs.ReplicationConfiguration("example", {
-///     sourceFileSystemId: example.id,
 ///     destination: {
 ///         availabilityZoneName: "us-west-2b",
 ///         kmsKeyId: "1234abcd-12ab-34cd-56ef-1234567890ab",
 ///     },
+///     sourceFileSystemId: example.id,
 /// });
 /// ```
 /// ```python
@@ -172,11 +172,11 @@ import 'replication_configuration_state.dart';
 ///
 /// example = aws.efs.FileSystem("example")
 /// example_replication_configuration = aws.efs.ReplicationConfiguration("example",
-///     source_file_system_id=example.id,
 ///     destination={
 ///         "availability_zone_name": "us-west-2b",
 ///         "kms_key_id": "1234abcd-12ab-34cd-56ef-1234567890ab",
-///     })
+///     },
+///     source_file_system_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -190,12 +190,12 @@ import 'replication_configuration_state.dart';
 ///
 ///     var exampleReplicationConfiguration = new Aws.Efs.ReplicationConfiguration("example", new()
 ///     {
-///         SourceFileSystemId = example.Id,
 ///         Destination = new Aws.Efs.Inputs.ReplicationConfigurationDestinationArgs
 ///         {
 ///             AvailabilityZoneName = "us-west-2b",
 ///             KmsKeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
 ///         },
+///         SourceFileSystemId = example.Id,
 ///     });
 ///
 /// });
@@ -215,11 +215,11 @@ import 'replication_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = efs.NewReplicationConfiguration(ctx, "example", &efs.ReplicationConfigurationArgs{
-/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Destination: &efs.ReplicationConfigurationDestinationArgs{
 /// 				AvailabilityZoneName: pulumi.String("us-west-2b"),
 /// 				KmsKeyId:             pulumi.String("1234abcd-12ab-34cd-56ef-1234567890ab"),
 /// 			},
+/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -240,11 +240,11 @@ import 'replication_configuration_state.dart';
 /// resource "aws_efs_filesystem" "example" {
 /// }
 /// resource "aws_efs_replicationconfiguration" "example" {
-///   source_file_system_id = aws_efs_filesystem.example.id
 ///   destination = {
 ///     availability_zone_name = "us-west-2b"
 ///     kms_key_id             = "1234abcd-12ab-34cd-56ef-1234567890ab"
 ///   }
+///   source_file_system_id = aws_efs_filesystem.example.id
 /// }
 /// ```
 /// ```java
@@ -273,11 +273,11 @@ import 'replication_configuration_state.dart';
 ///         var example = new FileSystem("example");
 ///
 ///         var exampleReplicationConfiguration = new ReplicationConfiguration("exampleReplicationConfiguration", ReplicationConfigurationArgs.builder()
-///             .sourceFileSystemId(example.id())
 ///             .destination(ReplicationConfigurationDestinationArgs.builder()
 ///                 .availabilityZoneName("us-west-2b")
 ///                 .kmsKeyId("1234abcd-12ab-34cd-56ef-1234567890ab")
 ///                 .build())
+///             .sourceFileSystemId(example.id())
 ///             .build());
 ///
 ///     }
@@ -291,10 +291,10 @@ import 'replication_configuration_state.dart';
 ///     type: aws:efs:ReplicationConfiguration
 ///     name: example
 ///     properties:
-///       sourceFileSystemId: ${example.id}
 ///       destination:
 ///         availabilityZoneName: us-west-2b
 ///         kmsKeyId: 1234abcd-12ab-34cd-56ef-1234567890ab
+///       sourceFileSystemId: ${example.id}
 /// ```
 ///
 ///
@@ -307,11 +307,11 @@ import 'replication_configuration_state.dart';
 ///
 /// const example = new aws.efs.FileSystem("example", {});
 /// const exampleReplicationConfiguration = new aws.efs.ReplicationConfiguration("example", {
-///     sourceFileSystemId: example.id,
 ///     destination: {
 ///         fileSystemId: "fs-1234567890",
 ///         region: "us-west-2",
 ///     },
+///     sourceFileSystemId: example.id,
 /// });
 /// ```
 /// ```python
@@ -320,11 +320,11 @@ import 'replication_configuration_state.dart';
 ///
 /// example = aws.efs.FileSystem("example")
 /// example_replication_configuration = aws.efs.ReplicationConfiguration("example",
-///     source_file_system_id=example.id,
 ///     destination={
 ///         "file_system_id": "fs-1234567890",
 ///         "region": "us-west-2",
-///     })
+///     },
+///     source_file_system_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -338,12 +338,12 @@ import 'replication_configuration_state.dart';
 ///
 ///     var exampleReplicationConfiguration = new Aws.Efs.ReplicationConfiguration("example", new()
 ///     {
-///         SourceFileSystemId = example.Id,
 ///         Destination = new Aws.Efs.Inputs.ReplicationConfigurationDestinationArgs
 ///         {
 ///             FileSystemId = "fs-1234567890",
 ///             Region = "us-west-2",
 ///         },
+///         SourceFileSystemId = example.Id,
 ///     });
 ///
 /// });
@@ -363,11 +363,11 @@ import 'replication_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = efs.NewReplicationConfiguration(ctx, "example", &efs.ReplicationConfigurationArgs{
-/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Destination: &efs.ReplicationConfigurationDestinationArgs{
 /// 				FileSystemId: pulumi.String("fs-1234567890"),
 /// 				Region:       pulumi.String("us-west-2"),
 /// 			},
+/// 			SourceFileSystemId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -388,11 +388,11 @@ import 'replication_configuration_state.dart';
 /// resource "aws_efs_filesystem" "example" {
 /// }
 /// resource "aws_efs_replicationconfiguration" "example" {
-///   source_file_system_id = aws_efs_filesystem.example.id
 ///   destination = {
 ///     file_system_id = "fs-1234567890"
 ///     region         = "us-west-2"
 ///   }
+///   source_file_system_id = aws_efs_filesystem.example.id
 /// }
 /// ```
 /// ```java
@@ -421,11 +421,11 @@ import 'replication_configuration_state.dart';
 ///         var example = new FileSystem("example");
 ///
 ///         var exampleReplicationConfiguration = new ReplicationConfiguration("exampleReplicationConfiguration", ReplicationConfigurationArgs.builder()
-///             .sourceFileSystemId(example.id())
 ///             .destination(ReplicationConfigurationDestinationArgs.builder()
 ///                 .fileSystemId("fs-1234567890")
 ///                 .region("us-west-2")
 ///                 .build())
+///             .sourceFileSystemId(example.id())
 ///             .build());
 ///
 ///     }
@@ -439,10 +439,10 @@ import 'replication_configuration_state.dart';
 ///     type: aws:efs:ReplicationConfiguration
 ///     name: example
 ///     properties:
-///       sourceFileSystemId: ${example.id}
 ///       destination:
 ///         fileSystemId: fs-1234567890
 ///         region: us-west-2
+///       sourceFileSystemId: ${example.id}
 /// ```
 ///
 ///
@@ -460,11 +460,11 @@ class ReplicationConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> creationTime;
   /// A destination configuration block (documented below).
   late final pulumi.Output<ReplicationConfigurationDestination> destination;
-  /// The Amazon Resource Name (ARN) of the original source Amazon EFS file system in the replication configuration.
+  /// ARN of the original source Amazon EFS file system in the replication configuration.
   late final pulumi.Output<String> originalSourceFileSystemArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the current source file system in the replication configuration.
+  /// ARN of the current source file system in the replication configuration.
   late final pulumi.Output<String> sourceFileSystemArn;
   /// The ID of the file system that is to be replicated.
   late final pulumi.Output<String> sourceFileSystemId;
@@ -483,7 +483,7 @@ class ReplicationConfiguration extends pulumi.CustomResource {
           'aws:efs/replicationConfiguration:ReplicationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     destination = registerOutput<ReplicationConfigurationDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -499,11 +499,12 @@ class ReplicationConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -517,6 +518,24 @@ class ReplicationConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    creationTime = registerOutput<String>('creationTime');
+    destination = registerOutput<ReplicationConfigurationDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    originalSourceFileSystemArn = registerOutput<String>('originalSourceFileSystemArn');
+    region = registerOutput<String>('region');
+    sourceFileSystemArn = registerOutput<String>('sourceFileSystemArn');
+    sourceFileSystemId = registerOutput<String>('sourceFileSystemId');
+    sourceFileSystemRegion = registerOutput<String>('sourceFileSystemRegion');
+  }
+
+  /// Creates a typed reference to an existing [ReplicationConfiguration] resource.
+  ReplicationConfiguration.reference(String urn)
+    : super(
+        'aws:efs/replicationConfiguration:ReplicationConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTime = registerOutput<String>('creationTime');
     destination = registerOutput<ReplicationConfigurationDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originalSourceFileSystemArn = registerOutput<String>('originalSourceFileSystemArn');

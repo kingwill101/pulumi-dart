@@ -1,14 +1,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_alarms.dart';
 import 'service_args.dart';
+import 'service_capacity_provider_strategy.dart';
 import 'service_deployment_circuit_breaker.dart';
 import 'service_deployment_configuration.dart';
 import 'service_deployment_controller.dart';
+import 'service_load_balancer.dart';
 import 'service_network_configuration.dart';
+import 'service_ordered_placement_strategy.dart';
+import 'service_placement_constraint.dart';
 import 'service_service_connect_configuration.dart';
 import 'service_service_registries.dart';
 import 'service_state.dart';
 import 'service_volume_configuration.dart';
+import 'service_vpc_lattice_configuration.dart';
 
 /// &gt; **Note:** To prevent a race condition during service deletion, make sure to set `dependsOn` to the related `aws.iam.RolePolicy`; otherwise, the policy may be destroyed too soon and the ECS service will then get stuck in the `DRAINING` state.
 ///
@@ -24,24 +29,24 @@ import 'service_volume_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const mongo = new aws.ecs.Service("mongo", {
-///     name: "mongodb",
-///     cluster: fooAwsEcsCluster.id,
-///     taskDefinition: mongoAwsEcsTaskDefinition.arn,
-///     desiredCount: 3,
-///     iamRole: fooAwsIamRole.arn,
-///     orderedPlacementStrategies: [{
-///         type: "binpack",
-///         field: "cpu",
-///     }],
 ///     loadBalancers: [{
 ///         targetGroupArn: fooAwsLbTargetGroup.arn,
 ///         containerName: "mongo",
 ///         containerPort: 8080,
 ///     }],
+///     orderedPlacementStrategies: [{
+///         type: "binpack",
+///         field: "cpu",
+///     }],
 ///     placementConstraints: [{
 ///         type: "memberOf",
 ///         expression: "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
 ///     }],
+///     name: "mongodb",
+///     cluster: fooAwsEcsCluster.id,
+///     taskDefinition: mongoAwsEcsTaskDefinition.arn,
+///     desiredCount: 3,
+///     iamRole: fooAwsIamRole.arn,
 /// }, {
 ///     dependsOn: [foo],
 /// });
@@ -51,24 +56,24 @@ import 'service_volume_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// mongo = aws.ecs.Service("mongo",
-///     name="mongodb",
-///     cluster=foo_aws_ecs_cluster["id"],
-///     task_definition=mongo_aws_ecs_task_definition["arn"],
-///     desired_count=3,
-///     iam_role=foo_aws_iam_role["arn"],
-///     ordered_placement_strategies=[{
-///         "type": "binpack",
-///         "field": "cpu",
-///     }],
 ///     load_balancers=[{
 ///         "target_group_arn": foo_aws_lb_target_group["arn"],
 ///         "container_name": "mongo",
 ///         "container_port": 8080,
 ///     }],
+///     ordered_placement_strategies=[{
+///         "type": "binpack",
+///         "field": "cpu",
+///     }],
 ///     placement_constraints=[{
 ///         "type": "memberOf",
 ///         "expression": "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
 ///     }],
+///     name="mongodb",
+///     cluster=foo_aws_ecs_cluster["id"],
+///     task_definition=mongo_aws_ecs_task_definition["arn"],
+///     desired_count=3,
+///     iam_role=foo_aws_iam_role["arn"],
 ///     opts = pulumi.ResourceOptions(depends_on=[foo]))
 /// ```
 /// ```csharp
@@ -81,19 +86,6 @@ import 'service_volume_configuration.dart';
 /// {
 ///     var mongo = new Aws.Ecs.Service("mongo", new()
 ///     {
-///         Name = "mongodb",
-///         Cluster = fooAwsEcsCluster.Id,
-///         TaskDefinition = mongoAwsEcsTaskDefinition.Arn,
-///         DesiredCount = 3,
-///         IamRole = fooAwsIamRole.Arn,
-///         OrderedPlacementStrategies = new[]
-///         {
-///             new Aws.Ecs.Inputs.ServiceOrderedPlacementStrategyArgs
-///             {
-///                 Type = "binpack",
-///                 Field = "cpu",
-///             },
-///         },
 ///         LoadBalancers = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.ServiceLoadBalancerArgs
@@ -101,6 +93,14 @@ import 'service_volume_configuration.dart';
 ///                 TargetGroupArn = fooAwsLbTargetGroup.Arn,
 ///                 ContainerName = "mongo",
 ///                 ContainerPort = 8080,
+///             },
+///         },
+///         OrderedPlacementStrategies = new[]
+///         {
+///             new Aws.Ecs.Inputs.ServiceOrderedPlacementStrategyArgs
+///             {
+///                 Type = "binpack",
+///                 Field = "cpu",
 ///             },
 ///         },
 ///         PlacementConstraints = new[]
@@ -111,6 +111,11 @@ import 'service_volume_configuration.dart';
 ///                 Expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
 ///             },
 ///         },
+///         Name = "mongodb",
+///         Cluster = fooAwsEcsCluster.Id,
+///         TaskDefinition = mongoAwsEcsTaskDefinition.Arn,
+///         DesiredCount = 3,
+///         IamRole = fooAwsIamRole.Arn,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -132,22 +137,17 @@ import 'service_volume_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewService(ctx, "mongo", &ecs.ServiceArgs{
-/// 			Name:           pulumi.String("mongodb"),
-/// 			Cluster:        pulumi.Any(fooAwsEcsCluster.Id),
-/// 			TaskDefinition: pulumi.Any(mongoAwsEcsTaskDefinition.Arn),
-/// 			DesiredCount:   pulumi.Int(3),
-/// 			IamRole:        pulumi.Any(fooAwsIamRole.Arn),
-/// 			OrderedPlacementStrategies: ecs.ServiceOrderedPlacementStrategyArray{
-/// 				&ecs.ServiceOrderedPlacementStrategyArgs{
-/// 					Type:  pulumi.String("binpack"),
-/// 					Field: pulumi.String("cpu"),
-/// 				},
-/// 			},
 /// 			LoadBalancers: ecs.ServiceLoadBalancerArray{
 /// 				&ecs.ServiceLoadBalancerArgs{
 /// 					TargetGroupArn: pulumi.Any(fooAwsLbTargetGroup.Arn),
 /// 					ContainerName:  pulumi.String("mongo"),
 /// 					ContainerPort:  pulumi.Int(8080),
+/// 				},
+/// 			},
+/// 			OrderedPlacementStrategies: ecs.ServiceOrderedPlacementStrategyArray{
+/// 				&ecs.ServiceOrderedPlacementStrategyArgs{
+/// 					Type:  pulumi.String("binpack"),
+/// 					Field: pulumi.String("cpu"),
 /// 				},
 /// 			},
 /// 			PlacementConstraints: ecs.ServicePlacementConstraintArray{
@@ -156,6 +156,11 @@ import 'service_volume_configuration.dart';
 /// 					Expression: pulumi.String("attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"),
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("mongodb"),
+/// 			Cluster:        pulumi.Any(fooAwsEcsCluster.Id),
+/// 			TaskDefinition: pulumi.Any(mongoAwsEcsTaskDefinition.Arn),
+/// 			DesiredCount:   pulumi.Int(3),
+/// 			IamRole:        pulumi.Any(fooAwsIamRole.Arn),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			foo,
 /// 		}))
@@ -176,25 +181,25 @@ import 'service_volume_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "mongo" {
-///   depends_on      = [foo]
-///   name            = "mongodb"
-///   cluster         = fooAwsEcsCluster.id
-///   task_definition = mongoAwsEcsTaskDefinition.arn
-///   desired_count   = 3
-///   iam_role        = fooAwsIamRole.arn
-///   ordered_placement_strategies {
-///     type  = "binpack"
-///     field = "cpu"
-///   }
+///   depends_on = [foo]
 ///   load_balancers {
 ///     target_group_arn = fooAwsLbTargetGroup.arn
 ///     container_name   = "mongo"
 ///     container_port   = 8080
 ///   }
+///   ordered_placement_strategies {
+///     type  = "binpack"
+///     field = "cpu"
+///   }
 ///   placement_constraints {
 ///     type       = "memberOf"
 ///     expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
 ///   }
+///   name            = "mongodb"
+///   cluster         = fooAwsEcsCluster.id
+///   task_definition = mongoAwsEcsTaskDefinition.arn
+///   desired_count   = 3
+///   iam_role        = fooAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -205,8 +210,8 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.Service;
 /// import com.pulumi.aws.ecs.ServiceArgs;
-/// import com.pulumi.aws.ecs.inputs.ServiceOrderedPlacementStrategyArgs;
 /// import com.pulumi.aws.ecs.inputs.ServiceLoadBalancerArgs;
+/// import com.pulumi.aws.ecs.inputs.ServiceOrderedPlacementStrategyArgs;
 /// import com.pulumi.aws.ecs.inputs.ServicePlacementConstraintArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
@@ -223,24 +228,24 @@ import 'service_volume_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var mongo = new Service("mongo", ServiceArgs.builder()
-///             .name("mongodb")
-///             .cluster(fooAwsEcsCluster.id())
-///             .taskDefinition(mongoAwsEcsTaskDefinition.arn())
-///             .desiredCount(3)
-///             .iamRole(fooAwsIamRole.arn())
-///             .orderedPlacementStrategies(ServiceOrderedPlacementStrategyArgs.builder()
-///                 .type("binpack")
-///                 .field("cpu")
-///                 .build())
 ///             .loadBalancers(ServiceLoadBalancerArgs.builder()
 ///                 .targetGroupArn(fooAwsLbTargetGroup.arn())
 ///                 .containerName("mongo")
 ///                 .containerPort(8080)
 ///                 .build())
+///             .orderedPlacementStrategies(ServiceOrderedPlacementStrategyArgs.builder()
+///                 .type("binpack")
+///                 .field("cpu")
+///                 .build())
 ///             .placementConstraints(ServicePlacementConstraintArgs.builder()
 ///                 .type("memberOf")
 ///                 .expression("attribute:ecs.availability-zone in [us-west-2a, us-west-2b]")
 ///                 .build())
+///             .name("mongodb")
+///             .cluster(fooAwsEcsCluster.id())
+///             .taskDefinition(mongoAwsEcsTaskDefinition.arn())
+///             .desiredCount(3)
+///             .iamRole(fooAwsIamRole.arn())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(foo)
 ///                 .build());
@@ -253,21 +258,21 @@ import 'service_volume_configuration.dart';
 ///   mongo:
 ///     type: aws:ecs:Service
 ///     properties:
+///       loadBalancers:
+///         - targetGroupArn: ${fooAwsLbTargetGroup.arn}
+///           containerName: mongo
+///           containerPort: 8080
+///       orderedPlacementStrategies:
+///         - type: binpack
+///           field: cpu
+///       placementConstraints:
+///         - type: memberOf
+///           expression: attribute:ecs.availability-zone in [us-west-2a, us-west-2b]
 ///       name: mongodb
 ///       cluster: ${fooAwsEcsCluster.id}
 ///       taskDefinition: ${mongoAwsEcsTaskDefinition.arn}
 ///       desiredCount: 3
 ///       iamRole: ${fooAwsIamRole.arn}
-///       orderedPlacementStrategies:
-///         - type: binpack
-///           field: cpu
-///       loadBalancers:
-///         - targetGroupArn: ${fooAwsLbTargetGroup.arn}
-///           containerName: mongo
-///           containerPort: 8080
-///       placementConstraints:
-///         - type: memberOf
-///           expression: attribute:ecs.availability-zone in [us-west-2a, us-west-2b]
 ///     options:
 ///       dependsOn:
 ///         - ${foo}
@@ -283,13 +288,16 @@ import 'service_volume_configuration.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.ecs.Service("example", {desiredCount: 2});
+/// const example = new aws.ecs.Service("example", {desiredCount: 2}, {
+///     ignoreChanges: ["desiredCount"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.ecs.Service("example", desired_count=2)
+/// example = aws.ecs.Service("example", desired_count=2,
+/// opts = pulumi.ResourceOptions(ignore_changes=["desiredCount"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -302,6 +310,12 @@ import 'service_volume_configuration.dart';
 ///     var example = new Aws.Ecs.Service("example", new()
 ///     {
 ///         DesiredCount = 2,
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "desiredCount",
+///         },
 ///     });
 ///
 /// });
@@ -318,7 +332,9 @@ import 'service_volume_configuration.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewService(ctx, "example", &ecs.ServiceArgs{
 /// 			DesiredCount: pulumi.Int(2),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"desiredCount",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -336,6 +352,9 @@ import 'service_volume_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
+///   lifecycle {
+///     ignore_changes = [desiredCount]
+///   }
 ///   desired_count = 2
 /// }
 /// ```
@@ -347,6 +366,7 @@ import 'service_volume_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ecs.Service;
 /// import com.pulumi.aws.ecs.ServiceArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -362,7 +382,9 @@ import 'service_volume_configuration.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Service("example", ServiceArgs.builder()
 ///             .desiredCount(2)
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("desiredCount")
+///                 .build());
 ///
 ///     }
 /// }
@@ -373,6 +395,9 @@ import 'service_volume_configuration.dart';
 ///     type: aws:ecs:Service
 ///     properties:
 ///       desiredCount: 2 # Optional: Allow external changes without this provider plan difference
+///     options:
+///       ignoreChanges:
+///         - desiredCount
 /// ```
 ///
 ///
@@ -508,13 +533,13 @@ import 'service_volume_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.Service("example", {
-///     name: "example",
-///     cluster: exampleAwsEcsCluster.id,
 ///     alarms: {
 ///         enable: true,
 ///         rollback: true,
 ///         alarmNames: [exampleAwsCloudwatchMetricAlarm.alarmName],
 ///     },
+///     name: "example",
+///     cluster: exampleAwsEcsCluster.id,
 /// });
 /// ```
 /// ```python
@@ -522,13 +547,13 @@ import 'service_volume_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.Service("example",
-///     name="example",
-///     cluster=example_aws_ecs_cluster["id"],
 ///     alarms={
 ///         "enable": True,
 ///         "rollback": True,
 ///         "alarm_names": [example_aws_cloudwatch_metric_alarm["alarmName"]],
-///     })
+///     },
+///     name="example",
+///     cluster=example_aws_ecs_cluster["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -540,8 +565,6 @@ import 'service_volume_configuration.dart';
 /// {
 ///     var example = new Aws.Ecs.Service("example", new()
 ///     {
-///         Name = "example",
-///         Cluster = exampleAwsEcsCluster.Id,
 ///         Alarms = new Aws.Ecs.Inputs.ServiceAlarmsArgs
 ///         {
 ///             Enable = true,
@@ -551,6 +574,8 @@ import 'service_volume_configuration.dart';
 ///                 exampleAwsCloudwatchMetricAlarm.AlarmName,
 ///             },
 ///         },
+///         Name = "example",
+///         Cluster = exampleAwsEcsCluster.Id,
 ///     });
 ///
 /// });
@@ -566,8 +591,6 @@ import 'service_volume_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewService(ctx, "example", &ecs.ServiceArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Cluster: pulumi.Any(exampleAwsEcsCluster.Id),
 /// 			Alarms: &ecs.ServiceAlarmsArgs{
 /// 				Enable:   pulumi.Bool(true),
 /// 				Rollback: pulumi.Bool(true),
@@ -575,6 +598,8 @@ import 'service_volume_configuration.dart';
 /// 					exampleAwsCloudwatchMetricAlarm.AlarmName,
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Cluster: pulumi.Any(exampleAwsEcsCluster.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -593,13 +618,13 @@ import 'service_volume_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   name    = "example"
-///   cluster = exampleAwsEcsCluster.id
 ///   alarms = {
 ///     enable      = true
 ///     rollback    = true
 ///     alarm_names = [exampleAwsCloudwatchMetricAlarm.alarmName]
 ///   }
+///   name    = "example"
+///   cluster = exampleAwsEcsCluster.id
 /// }
 /// ```
 /// ```java
@@ -625,13 +650,13 @@ import 'service_volume_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Service("example", ServiceArgs.builder()
-///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
 ///             .alarms(ServiceAlarmsArgs.builder()
 ///                 .enable(true)
 ///                 .rollback(true)
 ///                 .alarmNames(exampleAwsCloudwatchMetricAlarm.alarmName())
 ///                 .build())
+///             .name("example")
+///             .cluster(exampleAwsEcsCluster.id())
 ///             .build());
 ///
 ///     }
@@ -642,13 +667,13 @@ import 'service_volume_configuration.dart';
 ///   example:
 ///     type: aws:ecs:Service
 ///     properties:
-///       name: example
-///       cluster: ${exampleAwsEcsCluster.id}
 ///       alarms:
 ///         enable: true
 ///         rollback: true
 ///         alarmNames:
 ///           - ${exampleAwsCloudwatchMetricAlarm.alarmName}
+///       name: example
+///       cluster: ${exampleAwsEcsCluster.id}
 /// ```
 ///
 ///
@@ -660,11 +685,11 @@ import 'service_volume_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.Service("example", {
-///     name: "example",
-///     cluster: exampleAwsEcsCluster.id,
 ///     deploymentController: {
 ///         type: "EXTERNAL",
 ///     },
+///     name: "example",
+///     cluster: exampleAwsEcsCluster.id,
 /// });
 /// ```
 /// ```python
@@ -672,11 +697,11 @@ import 'service_volume_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.Service("example",
-///     name="example",
-///     cluster=example_aws_ecs_cluster["id"],
 ///     deployment_controller={
 ///         "type": "EXTERNAL",
-///     })
+///     },
+///     name="example",
+///     cluster=example_aws_ecs_cluster["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -688,12 +713,12 @@ import 'service_volume_configuration.dart';
 /// {
 ///     var example = new Aws.Ecs.Service("example", new()
 ///     {
-///         Name = "example",
-///         Cluster = exampleAwsEcsCluster.Id,
 ///         DeploymentController = new Aws.Ecs.Inputs.ServiceDeploymentControllerArgs
 ///         {
 ///             Type = "EXTERNAL",
 ///         },
+///         Name = "example",
+///         Cluster = exampleAwsEcsCluster.Id,
 ///     });
 ///
 /// });
@@ -709,11 +734,11 @@ import 'service_volume_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewService(ctx, "example", &ecs.ServiceArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Cluster: pulumi.Any(exampleAwsEcsCluster.Id),
 /// 			DeploymentController: &ecs.ServiceDeploymentControllerArgs{
 /// 				Type: pulumi.String("EXTERNAL"),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Cluster: pulumi.Any(exampleAwsEcsCluster.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -732,11 +757,11 @@ import 'service_volume_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   name    = "example"
-///   cluster = exampleAwsEcsCluster.id
 ///   deployment_controller = {
 ///     type = "EXTERNAL"
 ///   }
+///   name    = "example"
+///   cluster = exampleAwsEcsCluster.id
 /// }
 /// ```
 /// ```java
@@ -762,11 +787,11 @@ import 'service_volume_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Service("example", ServiceArgs.builder()
-///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
 ///             .deploymentController(ServiceDeploymentControllerArgs.builder()
 ///                 .type("EXTERNAL")
 ///                 .build())
+///             .name("example")
+///             .cluster(exampleAwsEcsCluster.id())
 ///             .build());
 ///
 ///     }
@@ -777,10 +802,10 @@ import 'service_volume_configuration.dart';
 ///   example:
 ///     type: aws:ecs:Service
 ///     properties:
-///       name: example
-///       cluster: ${exampleAwsEcsCluster.id}
 ///       deploymentController:
 ///         type: EXTERNAL
+///       name: example
+///       cluster: ${exampleAwsEcsCluster.id}
 /// ```
 ///
 ///
@@ -792,11 +817,11 @@ import 'service_volume_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.Service("example", {
-///     name: "example",
-///     cluster: exampleAwsEcsCluster.id,
 ///     deploymentConfiguration: {
 ///         strategy: "BLUE_GREEN",
 ///     },
+///     name: "example",
+///     cluster: exampleAwsEcsCluster.id,
 ///     sigintRollback: true,
 ///     waitForSteadyState: true,
 /// });
@@ -806,11 +831,11 @@ import 'service_volume_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.Service("example",
-///     name="example",
-///     cluster=example_aws_ecs_cluster["id"],
 ///     deployment_configuration={
 ///         "strategy": "BLUE_GREEN",
 ///     },
+///     name="example",
+///     cluster=example_aws_ecs_cluster["id"],
 ///     sigint_rollback=True,
 ///     wait_for_steady_state=True)
 /// ```
@@ -824,12 +849,12 @@ import 'service_volume_configuration.dart';
 /// {
 ///     var example = new Aws.Ecs.Service("example", new()
 ///     {
-///         Name = "example",
-///         Cluster = exampleAwsEcsCluster.Id,
 ///         DeploymentConfiguration = new Aws.Ecs.Inputs.ServiceDeploymentConfigurationArgs
 ///         {
 ///             Strategy = "BLUE_GREEN",
 ///         },
+///         Name = "example",
+///         Cluster = exampleAwsEcsCluster.Id,
 ///         SigintRollback = true,
 ///         WaitForSteadyState = true,
 ///     });
@@ -847,11 +872,11 @@ import 'service_volume_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewService(ctx, "example", &ecs.ServiceArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Cluster: pulumi.Any(exampleAwsEcsCluster.Id),
 /// 			DeploymentConfiguration: &ecs.ServiceDeploymentConfigurationArgs{
 /// 				Strategy: pulumi.String("BLUE_GREEN"),
 /// 			},
+/// 			Name:               pulumi.String("example"),
+/// 			Cluster:            pulumi.Any(exampleAwsEcsCluster.Id),
 /// 			SigintRollback:     pulumi.Bool(true),
 /// 			WaitForSteadyState: pulumi.Bool(true),
 /// 		})
@@ -872,11 +897,11 @@ import 'service_volume_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   name    = "example"
-///   cluster = exampleAwsEcsCluster.id
 ///   deployment_configuration = {
 ///     strategy = "BLUE_GREEN"
 ///   }
+///   name                  = "example"
+///   cluster               = exampleAwsEcsCluster.id
 ///   sigint_rollback       = true
 ///   wait_for_steady_state = true
 /// }
@@ -904,11 +929,11 @@ import 'service_volume_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Service("example", ServiceArgs.builder()
-///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
 ///             .deploymentConfiguration(ServiceDeploymentConfigurationArgs.builder()
 ///                 .strategy("BLUE_GREEN")
 ///                 .build())
+///             .name("example")
+///             .cluster(exampleAwsEcsCluster.id())
 ///             .sigintRollback(true)
 ///             .waitForSteadyState(true)
 ///             .build());
@@ -921,10 +946,10 @@ import 'service_volume_configuration.dart';
 ///   example:
 ///     type: aws:ecs:Service
 ///     properties:
-///       name: example
-///       cluster: ${exampleAwsEcsCluster.id}
 ///       deploymentConfiguration:
 ///         strategy: BLUE_GREEN
+///       name: example
+///       cluster: ${exampleAwsEcsCluster.id}
 ///       sigintRollback: true
 ///       waitForSteadyState: true
 /// ```
@@ -938,16 +963,16 @@ import 'service_volume_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.Service("example", {
-///     name: "example",
-///     cluster: exampleAwsEcsCluster.id,
 ///     deploymentConfiguration: {
-///         strategy: "LINEAR",
-///         bakeTimeInMinutes: "10",
 ///         linearConfiguration: {
 ///             stepPercent: 25,
 ///             stepBakeTimeInMinutes: "5",
 ///         },
+///         strategy: "LINEAR",
+///         bakeTimeInMinutes: "10",
 ///     },
+///     name: "example",
+///     cluster: exampleAwsEcsCluster.id,
 /// });
 /// ```
 /// ```python
@@ -955,16 +980,16 @@ import 'service_volume_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.Service("example",
-///     name="example",
-///     cluster=example_aws_ecs_cluster["id"],
 ///     deployment_configuration={
-///         "strategy": "LINEAR",
-///         "bake_time_in_minutes": "10",
 ///         "linear_configuration": {
 ///             "step_percent": float(25),
 ///             "step_bake_time_in_minutes": "5",
 ///         },
-///     })
+///         "strategy": "LINEAR",
+///         "bake_time_in_minutes": "10",
+///     },
+///     name="example",
+///     cluster=example_aws_ecs_cluster["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -976,18 +1001,18 @@ import 'service_volume_configuration.dart';
 /// {
 ///     var example = new Aws.Ecs.Service("example", new()
 ///     {
-///         Name = "example",
-///         Cluster = exampleAwsEcsCluster.Id,
 ///         DeploymentConfiguration = new Aws.Ecs.Inputs.ServiceDeploymentConfigurationArgs
 ///         {
-///             Strategy = "LINEAR",
-///             BakeTimeInMinutes = "10",
 ///             LinearConfiguration = new Aws.Ecs.Inputs.ServiceDeploymentConfigurationLinearConfigurationArgs
 ///             {
 ///                 StepPercent = 25,
 ///                 StepBakeTimeInMinutes = "5",
 ///             },
+///             Strategy = "LINEAR",
+///             BakeTimeInMinutes = "10",
 ///         },
+///         Name = "example",
+///         Cluster = exampleAwsEcsCluster.Id,
 ///     });
 ///
 /// });
@@ -1003,16 +1028,16 @@ import 'service_volume_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewService(ctx, "example", &ecs.ServiceArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Cluster: pulumi.Any(exampleAwsEcsCluster.Id),
 /// 			DeploymentConfiguration: &ecs.ServiceDeploymentConfigurationArgs{
-/// 				Strategy:          pulumi.String("LINEAR"),
-/// 				BakeTimeInMinutes: pulumi.String("10"),
 /// 				LinearConfiguration: &ecs.ServiceDeploymentConfigurationLinearConfigurationArgs{
 /// 					StepPercent:           pulumi.Float64(25),
 /// 					StepBakeTimeInMinutes: pulumi.String("5"),
 /// 				},
+/// 				Strategy:          pulumi.String("LINEAR"),
+/// 				BakeTimeInMinutes: pulumi.String("10"),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Cluster: pulumi.Any(exampleAwsEcsCluster.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1031,16 +1056,16 @@ import 'service_volume_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   name    = "example"
-///   cluster = exampleAwsEcsCluster.id
 ///   deployment_configuration = {
-///     strategy             = "LINEAR"
-///     bake_time_in_minutes = 10
 ///     linear_configuration = {
 ///       step_percent              = 25
 ///       step_bake_time_in_minutes = 5
 ///     }
+///     strategy             = "LINEAR"
+///     bake_time_in_minutes = 10
 ///   }
+///   name    = "example"
+///   cluster = exampleAwsEcsCluster.id
 /// }
 /// ```
 /// ```java
@@ -1067,16 +1092,16 @@ import 'service_volume_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Service("example", ServiceArgs.builder()
-///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
 ///             .deploymentConfiguration(ServiceDeploymentConfigurationArgs.builder()
-///                 .strategy("LINEAR")
-///                 .bakeTimeInMinutes("10")
 ///                 .linearConfiguration(ServiceDeploymentConfigurationLinearConfigurationArgs.builder()
 ///                     .stepPercent(25.0)
 ///                     .stepBakeTimeInMinutes("5")
 ///                     .build())
+///                 .strategy("LINEAR")
+///                 .bakeTimeInMinutes("10")
 ///                 .build())
+///             .name("example")
+///             .cluster(exampleAwsEcsCluster.id())
 ///             .build());
 ///
 ///     }
@@ -1087,14 +1112,14 @@ import 'service_volume_configuration.dart';
 ///   example:
 ///     type: aws:ecs:Service
 ///     properties:
-///       name: example
-///       cluster: ${exampleAwsEcsCluster.id}
 ///       deploymentConfiguration:
-///         strategy: LINEAR
-///         bakeTimeInMinutes: 10
 ///         linearConfiguration:
 ///           stepPercent: 25
 ///           stepBakeTimeInMinutes: 5
+///         strategy: LINEAR
+///         bakeTimeInMinutes: 10
+///       name: example
+///       cluster: ${exampleAwsEcsCluster.id}
 /// ```
 ///
 ///
@@ -1106,16 +1131,16 @@ import 'service_volume_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.Service("example", {
-///     name: "example",
-///     cluster: exampleAwsEcsCluster.id,
 ///     deploymentConfiguration: {
-///         strategy: "CANARY",
-///         bakeTimeInMinutes: "15",
 ///         canaryConfiguration: {
 ///             canaryPercent: 10,
 ///             canaryBakeTimeInMinutes: "5",
 ///         },
+///         strategy: "CANARY",
+///         bakeTimeInMinutes: "15",
 ///     },
+///     name: "example",
+///     cluster: exampleAwsEcsCluster.id,
 /// });
 /// ```
 /// ```python
@@ -1123,16 +1148,16 @@ import 'service_volume_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.Service("example",
-///     name="example",
-///     cluster=example_aws_ecs_cluster["id"],
 ///     deployment_configuration={
-///         "strategy": "CANARY",
-///         "bake_time_in_minutes": "15",
 ///         "canary_configuration": {
 ///             "canary_percent": float(10),
 ///             "canary_bake_time_in_minutes": "5",
 ///         },
-///     })
+///         "strategy": "CANARY",
+///         "bake_time_in_minutes": "15",
+///     },
+///     name="example",
+///     cluster=example_aws_ecs_cluster["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1144,18 +1169,18 @@ import 'service_volume_configuration.dart';
 /// {
 ///     var example = new Aws.Ecs.Service("example", new()
 ///     {
-///         Name = "example",
-///         Cluster = exampleAwsEcsCluster.Id,
 ///         DeploymentConfiguration = new Aws.Ecs.Inputs.ServiceDeploymentConfigurationArgs
 ///         {
-///             Strategy = "CANARY",
-///             BakeTimeInMinutes = "15",
 ///             CanaryConfiguration = new Aws.Ecs.Inputs.ServiceDeploymentConfigurationCanaryConfigurationArgs
 ///             {
 ///                 CanaryPercent = 10,
 ///                 CanaryBakeTimeInMinutes = "5",
 ///             },
+///             Strategy = "CANARY",
+///             BakeTimeInMinutes = "15",
 ///         },
+///         Name = "example",
+///         Cluster = exampleAwsEcsCluster.Id,
 ///     });
 ///
 /// });
@@ -1171,16 +1196,16 @@ import 'service_volume_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewService(ctx, "example", &ecs.ServiceArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Cluster: pulumi.Any(exampleAwsEcsCluster.Id),
 /// 			DeploymentConfiguration: &ecs.ServiceDeploymentConfigurationArgs{
-/// 				Strategy:          pulumi.String("CANARY"),
-/// 				BakeTimeInMinutes: pulumi.String("15"),
 /// 				CanaryConfiguration: &ecs.ServiceDeploymentConfigurationCanaryConfigurationArgs{
 /// 					CanaryPercent:           pulumi.Float64(10),
 /// 					CanaryBakeTimeInMinutes: pulumi.String("5"),
 /// 				},
+/// 				Strategy:          pulumi.String("CANARY"),
+/// 				BakeTimeInMinutes: pulumi.String("15"),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Cluster: pulumi.Any(exampleAwsEcsCluster.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1199,16 +1224,16 @@ import 'service_volume_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   name    = "example"
-///   cluster = exampleAwsEcsCluster.id
 ///   deployment_configuration = {
-///     strategy             = "CANARY"
-///     bake_time_in_minutes = 15
 ///     canary_configuration = {
 ///       canary_percent              = 10
 ///       canary_bake_time_in_minutes = 5
 ///     }
+///     strategy             = "CANARY"
+///     bake_time_in_minutes = 15
 ///   }
+///   name    = "example"
+///   cluster = exampleAwsEcsCluster.id
 /// }
 /// ```
 /// ```java
@@ -1235,16 +1260,16 @@ import 'service_volume_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Service("example", ServiceArgs.builder()
-///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
 ///             .deploymentConfiguration(ServiceDeploymentConfigurationArgs.builder()
-///                 .strategy("CANARY")
-///                 .bakeTimeInMinutes("15")
 ///                 .canaryConfiguration(ServiceDeploymentConfigurationCanaryConfigurationArgs.builder()
 ///                     .canaryPercent(10.0)
 ///                     .canaryBakeTimeInMinutes("5")
 ///                     .build())
+///                 .strategy("CANARY")
+///                 .bakeTimeInMinutes("15")
 ///                 .build())
+///             .name("example")
+///             .cluster(exampleAwsEcsCluster.id())
 ///             .build());
 ///
 ///     }
@@ -1255,14 +1280,14 @@ import 'service_volume_configuration.dart';
 ///   example:
 ///     type: aws:ecs:Service
 ///     properties:
-///       name: example
-///       cluster: ${exampleAwsEcsCluster.id}
 ///       deploymentConfiguration:
-///         strategy: CANARY
-///         bakeTimeInMinutes: 15
 ///         canaryConfiguration:
 ///           canaryPercent: 10
 ///           canaryBakeTimeInMinutes: 5
+///         strategy: CANARY
+///         bakeTimeInMinutes: 15
+///       name: example
+///       cluster: ${exampleAwsEcsCluster.id}
 /// ```
 ///
 ///
@@ -1400,13 +1425,7 @@ import 'service_volume_configuration.dart';
 /// const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {name: "/ecs/example/service-connect"});
 /// const current = aws.getRegion({});
 /// const example = new aws.ecs.Service("example", {
-///     name: "example",
-///     cluster: exampleAwsEcsCluster.id,
-///     taskDefinition: exampleAwsEcsTaskDefinition.arn,
-///     desiredCount: 1,
 ///     serviceConnectConfiguration: {
-///         enabled: true,
-///         namespace: exampleAwsServiceDiscoveryHttpNamespace.arn,
 ///         logConfiguration: {
 ///             logDriver: "awslogs",
 ///             options: {
@@ -1420,14 +1439,20 @@ import 'service_volume_configuration.dart';
 ///             includeQueryParameters: "ENABLED",
 ///         },
 ///         services: [{
-///             portName: "http",
-///             discoveryName: "example",
 ///             clientAlias: {
 ///                 dnsName: "example",
 ///                 port: 8080,
 ///             },
+///             portName: "http",
+///             discoveryName: "example",
 ///         }],
+///         enabled: true,
+///         namespace: exampleAwsServiceDiscoveryHttpNamespace.arn,
 ///     },
+///     name: "example",
+///     cluster: exampleAwsEcsCluster.id,
+///     taskDefinition: exampleAwsEcsTaskDefinition.arn,
+///     desiredCount: 1,
 /// });
 /// ```
 /// ```python
@@ -1437,13 +1462,7 @@ import 'service_volume_configuration.dart';
 /// example_log_group = aws.cloudwatch.LogGroup("example", name="/ecs/example/service-connect")
 /// current = aws.get_region()
 /// example = aws.ecs.Service("example",
-///     name="example",
-///     cluster=example_aws_ecs_cluster["id"],
-///     task_definition=example_aws_ecs_task_definition["arn"],
-///     desired_count=1,
 ///     service_connect_configuration={
-///         "enabled": True,
-///         "namespace": example_aws_service_discovery_http_namespace["arn"],
 ///         "log_configuration": {
 ///             "log_driver": "awslogs",
 ///             "options": {
@@ -1457,14 +1476,20 @@ import 'service_volume_configuration.dart';
 ///             "include_query_parameters": "ENABLED",
 ///         },
 ///         "services": [{
-///             "port_name": "http",
-///             "discovery_name": "example",
 ///             "client_alias": {
 ///                 "dnsName": "example",
 ///                 "port": 8080,
 ///             },
+///             "port_name": "http",
+///             "discovery_name": "example",
 ///         }],
-///     })
+///         "enabled": True,
+///         "namespace": example_aws_service_discovery_http_namespace["arn"],
+///     },
+///     name="example",
+///     cluster=example_aws_ecs_cluster["id"],
+///     task_definition=example_aws_ecs_task_definition["arn"],
+///     desired_count=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1483,14 +1508,8 @@ import 'service_volume_configuration.dart';
 ///
 ///     var example = new Aws.Ecs.Service("example", new()
 ///     {
-///         Name = "example",
-///         Cluster = exampleAwsEcsCluster.Id,
-///         TaskDefinition = exampleAwsEcsTaskDefinition.Arn,
-///         DesiredCount = 1,
 ///         ServiceConnectConfiguration = new Aws.Ecs.Inputs.ServiceServiceConnectConfigurationArgs
 ///         {
-///             Enabled = true,
-///             Namespace = exampleAwsServiceDiscoveryHttpNamespace.Arn,
 ///             LogConfiguration = new Aws.Ecs.Inputs.ServiceServiceConnectConfigurationLogConfigurationArgs
 ///             {
 ///                 LogDriver = "awslogs",
@@ -1510,16 +1529,22 @@ import 'service_volume_configuration.dart';
 ///             {
 ///                 new Aws.Ecs.Inputs.ServiceServiceConnectConfigurationServiceArgs
 ///                 {
-///                     PortName = "http",
-///                     DiscoveryName = "example",
 ///                     ClientAlias =
 ///                     {
 ///                         { "dnsName", "example" },
 ///                         { "port", 8080 },
 ///                     },
+///                     PortName = "http",
+///                     DiscoveryName = "example",
 ///                 },
 ///             },
+///             Enabled = true,
+///             Namespace = exampleAwsServiceDiscoveryHttpNamespace.Arn,
 ///         },
+///         Name = "example",
+///         Cluster = exampleAwsEcsCluster.Id,
+///         TaskDefinition = exampleAwsEcsTaskDefinition.Arn,
+///         DesiredCount = 1,
 ///     });
 ///
 /// });
@@ -1547,13 +1572,7 @@ import 'service_volume_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ecs.NewService(ctx, "example", &ecs.ServiceArgs{
-/// 			Name:           pulumi.String("example"),
-/// 			Cluster:        pulumi.Any(exampleAwsEcsCluster.Id),
-/// 			TaskDefinition: pulumi.Any(exampleAwsEcsTaskDefinition.Arn),
-/// 			DesiredCount:   pulumi.Int(1),
 /// 			ServiceConnectConfiguration: &ecs.ServiceServiceConnectConfigurationArgs{
-/// 				Enabled:   pulumi.Bool(true),
-/// 				Namespace: pulumi.Any(exampleAwsServiceDiscoveryHttpNamespace.Arn),
 /// 				LogConfiguration: &ecs.ServiceServiceConnectConfigurationLogConfigurationArgs{
 /// 					LogDriver: pulumi.String("awslogs"),
 /// 					Options: pulumi.StringMap{
@@ -1568,15 +1587,21 @@ import 'service_volume_configuration.dart';
 /// 				},
 /// 				Services: ecs.ServiceServiceConnectConfigurationServiceArray{
 /// 					&ecs.ServiceServiceConnectConfigurationServiceArgs{
-/// 						PortName:      pulumi.String("http"),
-/// 						DiscoveryName: pulumi.String("example"),
 /// 						ClientAlias: ecs.ServiceServiceConnectConfigurationServiceClientAliasArray{
 /// 							DnsName: "example",
 /// 							Port:    8080,
 /// 						},
+/// 						PortName:      pulumi.String("http"),
+/// 						DiscoveryName: pulumi.String("example"),
 /// 					},
 /// 				},
+/// 				Enabled:   pulumi.Bool(true),
+/// 				Namespace: pulumi.Any(exampleAwsServiceDiscoveryHttpNamespace.Arn),
 /// 			},
+/// 			Name:           pulumi.String("example"),
+/// 			Cluster:        pulumi.Any(exampleAwsEcsCluster.Id),
+/// 			TaskDefinition: pulumi.Any(exampleAwsEcsTaskDefinition.Arn),
+/// 			DesiredCount:   pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1598,13 +1623,7 @@ import 'service_volume_configuration.dart';
 /// }
 ///
 /// resource "aws_ecs_service" "example" {
-///   name            = "example"
-///   cluster         = exampleAwsEcsCluster.id
-///   task_definition = exampleAwsEcsTaskDefinition.arn
-///   desired_count   = 1
 ///   service_connect_configuration = {
-///     enabled   = true
-///     namespace = exampleAwsServiceDiscoveryHttpNamespace.arn
 ///     log_configuration = {
 ///       log_driver = "awslogs"
 ///       options = {
@@ -1618,14 +1637,20 @@ import 'service_volume_configuration.dart';
 ///       include_query_parameters = "ENABLED"
 ///     }
 ///     services = [{
-///       "portName"      = "http"
-///       "discoveryName" = "example"
 ///       "clientAlias" = {
 ///         "dnsName" = "example"
 ///         "port"    = 8080
 ///       }
+///       "portName"      = "http"
+///       "discoveryName" = "example"
 ///     }]
+///     enabled   = true
+///     namespace = exampleAwsServiceDiscoveryHttpNamespace.arn
 ///   }
+///   name            = "example"
+///   cluster         = exampleAwsEcsCluster.id
+///   task_definition = exampleAwsEcsTaskDefinition.arn
+///   desired_count   = 1
 /// }
 /// resource "aws_cloudwatch_loggroup" "example" {
 ///   name = "/ecs/example/service-connect"
@@ -1668,13 +1693,7 @@ import 'service_volume_configuration.dart';
 ///             .build());
 ///
 ///         var example = new Service("example", ServiceArgs.builder()
-///             .name("example")
-///             .cluster(exampleAwsEcsCluster.id())
-///             .taskDefinition(exampleAwsEcsTaskDefinition.arn())
-///             .desiredCount(1)
 ///             .serviceConnectConfiguration(ServiceServiceConnectConfigurationArgs.builder()
-///                 .enabled(true)
-///                 .namespace(exampleAwsServiceDiscoveryHttpNamespace.arn())
 ///                 .logConfiguration(ServiceServiceConnectConfigurationLogConfigurationArgs.builder()
 ///                     .logDriver("awslogs")
 ///                     .options(Map.ofEntries(
@@ -1688,14 +1707,20 @@ import 'service_volume_configuration.dart';
 ///                     .includeQueryParameters("ENABLED")
 ///                     .build())
 ///                 .services(ServiceServiceConnectConfigurationServiceArgs.builder()
-///                     .portName("http")
-///                     .discoveryName("example")
 ///                     .clientAlias(com.pulumi.aws.ecs.inputs.ServiceServiceConnectConfigurationServiceClientAliasArgs.builder()
 ///                         .dnsName("example")
 ///                         .port(8080)
 ///                         .build())
+///                     .portName("http")
+///                     .discoveryName("example")
 ///                     .build())
+///                 .enabled(true)
+///                 .namespace(exampleAwsServiceDiscoveryHttpNamespace.arn())
 ///                 .build())
+///             .name("example")
+///             .cluster(exampleAwsEcsCluster.id())
+///             .taskDefinition(exampleAwsEcsTaskDefinition.arn())
+///             .desiredCount(1)
 ///             .build());
 ///
 ///     }
@@ -1706,13 +1731,7 @@ import 'service_volume_configuration.dart';
 ///   example:
 ///     type: aws:ecs:Service
 ///     properties:
-///       name: example
-///       cluster: ${exampleAwsEcsCluster.id}
-///       taskDefinition: ${exampleAwsEcsTaskDefinition.arn}
-///       desiredCount: 1
 ///       serviceConnectConfiguration:
-///         enabled: true
-///         namespace: ${exampleAwsServiceDiscoveryHttpNamespace.arn}
 ///         logConfiguration:
 ///           logDriver: awslogs
 ///           options:
@@ -1723,11 +1742,17 @@ import 'service_volume_configuration.dart';
 ///           format: TEXT
 ///           includeQueryParameters: ENABLED
 ///         services:
-///           - portName: http
-///             discoveryName: example
-///             clientAlias:
+///           - clientAlias:
 ///               dnsName: example
 ///               port: 8080
+///             portName: http
+///             discoveryName: example
+///         enabled: true
+///         namespace: ${exampleAwsServiceDiscoveryHttpNamespace.arn}
+///       name: example
+///       cluster: ${exampleAwsEcsCluster.id}
+///       taskDefinition: ${exampleAwsEcsTaskDefinition.arn}
+///       desiredCount: 1
 ///   exampleLogGroup:
 ///     type: aws:cloudwatch:LogGroup
 ///     name: example
@@ -1769,7 +1794,7 @@ class Service extends pulumi.CustomResource {
   /// ECS automatically redistributes tasks within a service across Availability Zones (AZs) to mitigate the risk of impaired application availability due to underlying infrastructure failures and task lifecycle activities. The valid values are `ENABLED` and `DISABLED`. When creating a new service, if no value is specified, it defaults to `ENABLED` if the service is compatible with AvailabilityZoneRebalancing. When updating an existing service, if no value is specified it defaults to the existing service's AvailabilityZoneRebalancing value. If the service never had an AvailabilityZoneRebalancing value set, Amazon ECS treats this as `DISABLED`.
   late final pulumi.Output<String> availabilityZoneRebalancing;
   /// Capacity provider strategies to use for the service. Can be one or more. Updating this argument requires `forceNewDeployment = true`. See below. Conflicts with `launchType`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> capacityProviderStrategies;
+  late final pulumi.Output<List<ServiceCapacityProviderStrategy>?> capacityProviderStrategies;
   /// ARN of an ECS cluster.
   late final pulumi.Output<String> cluster;
   /// Configuration block for deployment circuit breaker. See below.
@@ -1800,7 +1825,7 @@ class Service extends pulumi.CustomResource {
   /// Launch type on which to run your service. The valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`. Conflicts with `capacityProviderStrategy`.
   late final pulumi.Output<String> launchType;
   /// Configuration block for load balancers. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancers;
+  late final pulumi.Output<List<ServiceLoadBalancer>?> loadBalancers;
   /// Name of the service (up to 255 letters, numbers, hyphens, and underscores)
   ///
   /// The following arguments are optional:
@@ -1808,9 +1833,9 @@ class Service extends pulumi.CustomResource {
   /// Network configuration for the service. This parameter is required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and it is not supported for other network modes. See below.
   late final pulumi.Output<ServiceNetworkConfiguration?> networkConfiguration;
   /// Service level strategy rules that are taken into consideration during task placement. List from top to bottom in order of precedence. Updates to this configuration will take effect next task deployment unless `forceNewDeployment` is enabled. The maximum number of `orderedPlacementStrategy` blocks is `5`. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> orderedPlacementStrategies;
+  late final pulumi.Output<List<ServiceOrderedPlacementStrategy>?> orderedPlacementStrategies;
   /// Rules that are taken into consideration during task placement. Updates to this configuration will take effect next task deployment unless `forceNewDeployment` is enabled. Maximum number of `placementConstraints` is `10`. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> placementConstraints;
+  late final pulumi.Output<List<ServicePlacementConstraint>?> placementConstraints;
   /// Platform version on which to run your service. Only applicable for `launchType` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
   late final pulumi.Output<String> platformVersion;
   /// Whether to propagate the tags from the task definition or the service to the tasks. The valid values are `SERVICE` and `TASK_DEFINITION`.
@@ -1836,7 +1861,7 @@ class Service extends pulumi.CustomResource {
   /// Configuration for a volume specified in the task definition as a volume that is configured at launch time. Currently, the only supported volume type is an Amazon EBS volume. See below.
   late final pulumi.Output<ServiceVolumeConfiguration?> volumeConfiguration;
   /// VPC Lattice configuration for your service that allows Lattice to connect, secure, and monitor your service across multiple accounts and VPCs. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> vpcLatticeConfigurations;
+  late final pulumi.Output<List<ServiceVpcLatticeConfiguration>?> vpcLatticeConfigurations;
   /// If `true`, this provider will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
   late final pulumi.Output<bool?> waitForSteadyState;
 
@@ -1852,12 +1877,12 @@ class Service extends pulumi.CustomResource {
           'aws:ecs/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     alarms = registerOutput<ServiceAlarms?>('alarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAlarms.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     availabilityZoneRebalancing = registerOutput<String>('availabilityZoneRebalancing');
-    capacityProviderStrategies = registerOutput<List<Map<String, dynamic>>?>('capacityProviderStrategies');
+    capacityProviderStrategies = registerOutput<List<ServiceCapacityProviderStrategy>?>('capacityProviderStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceCapacityProviderStrategy>(guardedValue, (value) => ServiceCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); });
     cluster = registerOutput<String>('cluster');
     deploymentCircuitBreaker = registerOutput<ServiceDeploymentCircuitBreaker?>('deploymentCircuitBreaker', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDeploymentCircuitBreaker.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentConfiguration = registerOutput<ServiceDeploymentConfiguration>('deploymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDeploymentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1872,11 +1897,11 @@ class Service extends pulumi.CustomResource {
     healthCheckGracePeriodSeconds = registerOutput<int?>('healthCheckGracePeriodSeconds');
     iamRole = registerOutput<String>('iamRole');
     launchType = registerOutput<String>('launchType');
-    loadBalancers = registerOutput<List<Map<String, dynamic>>?>('loadBalancers');
+    loadBalancers = registerOutput<List<ServiceLoadBalancer>?>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceLoadBalancer>(guardedValue, (value) => ServiceLoadBalancer.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<ServiceNetworkConfiguration?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    orderedPlacementStrategies = registerOutput<List<Map<String, dynamic>>?>('orderedPlacementStrategies');
-    placementConstraints = registerOutput<List<Map<String, dynamic>>?>('placementConstraints');
+    orderedPlacementStrategies = registerOutput<List<ServiceOrderedPlacementStrategy>?>('orderedPlacementStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceOrderedPlacementStrategy>(guardedValue, (value) => ServiceOrderedPlacementStrategy.fromMap((value as Map).cast<String, dynamic>())); });
+    placementConstraints = registerOutput<List<ServicePlacementConstraint>?>('placementConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePlacementConstraint>(guardedValue, (value) => ServicePlacementConstraint.fromMap((value as Map).cast<String, dynamic>())); });
     platformVersion = registerOutput<String>('platformVersion');
     propagateTags = registerOutput<String?>('propagateTags');
     region = registerOutput<String>('region');
@@ -1884,12 +1909,12 @@ class Service extends pulumi.CustomResource {
     serviceConnectConfiguration = registerOutput<ServiceServiceConnectConfiguration?>('serviceConnectConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceServiceConnectConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceRegistries = registerOutput<ServiceServiceRegistries?>('serviceRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceServiceRegistries.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sigintRollback = registerOutput<bool?>('sigintRollback');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskDefinition = registerOutput<String?>('taskDefinition');
-    triggers = registerOutput<Map<String, String>>('triggers');
+    triggers = registerOutput<Map<String, String>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     volumeConfiguration = registerOutput<ServiceVolumeConfiguration?>('volumeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceVolumeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    vpcLatticeConfigurations = registerOutput<List<Map<String, dynamic>>?>('vpcLatticeConfigurations');
+    vpcLatticeConfigurations = registerOutput<List<ServiceVpcLatticeConfiguration>?>('vpcLatticeConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceVpcLatticeConfiguration>(guardedValue, (value) => ServiceVpcLatticeConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     waitForSteadyState = registerOutput<bool?>('waitForSteadyState');
   }
 
@@ -1898,11 +1923,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1919,7 +1945,7 @@ class Service extends pulumi.CustomResource {
     alarms = registerOutput<ServiceAlarms?>('alarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAlarms.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     availabilityZoneRebalancing = registerOutput<String>('availabilityZoneRebalancing');
-    capacityProviderStrategies = registerOutput<List<Map<String, dynamic>>?>('capacityProviderStrategies');
+    capacityProviderStrategies = registerOutput<List<ServiceCapacityProviderStrategy>?>('capacityProviderStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceCapacityProviderStrategy>(guardedValue, (value) => ServiceCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); });
     cluster = registerOutput<String>('cluster');
     deploymentCircuitBreaker = registerOutput<ServiceDeploymentCircuitBreaker?>('deploymentCircuitBreaker', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDeploymentCircuitBreaker.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentConfiguration = registerOutput<ServiceDeploymentConfiguration>('deploymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDeploymentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1934,11 +1960,11 @@ class Service extends pulumi.CustomResource {
     healthCheckGracePeriodSeconds = registerOutput<int?>('healthCheckGracePeriodSeconds');
     iamRole = registerOutput<String>('iamRole');
     launchType = registerOutput<String>('launchType');
-    loadBalancers = registerOutput<List<Map<String, dynamic>>?>('loadBalancers');
+    loadBalancers = registerOutput<List<ServiceLoadBalancer>?>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceLoadBalancer>(guardedValue, (value) => ServiceLoadBalancer.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<ServiceNetworkConfiguration?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    orderedPlacementStrategies = registerOutput<List<Map<String, dynamic>>?>('orderedPlacementStrategies');
-    placementConstraints = registerOutput<List<Map<String, dynamic>>?>('placementConstraints');
+    orderedPlacementStrategies = registerOutput<List<ServiceOrderedPlacementStrategy>?>('orderedPlacementStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceOrderedPlacementStrategy>(guardedValue, (value) => ServiceOrderedPlacementStrategy.fromMap((value as Map).cast<String, dynamic>())); });
+    placementConstraints = registerOutput<List<ServicePlacementConstraint>?>('placementConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePlacementConstraint>(guardedValue, (value) => ServicePlacementConstraint.fromMap((value as Map).cast<String, dynamic>())); });
     platformVersion = registerOutput<String>('platformVersion');
     propagateTags = registerOutput<String?>('propagateTags');
     region = registerOutput<String>('region');
@@ -1946,12 +1972,60 @@ class Service extends pulumi.CustomResource {
     serviceConnectConfiguration = registerOutput<ServiceServiceConnectConfiguration?>('serviceConnectConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceServiceConnectConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceRegistries = registerOutput<ServiceServiceRegistries?>('serviceRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceServiceRegistries.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sigintRollback = registerOutput<bool?>('sigintRollback');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskDefinition = registerOutput<String?>('taskDefinition');
-    triggers = registerOutput<Map<String, String>>('triggers');
+    triggers = registerOutput<Map<String, String>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     volumeConfiguration = registerOutput<ServiceVolumeConfiguration?>('volumeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceVolumeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    vpcLatticeConfigurations = registerOutput<List<Map<String, dynamic>>?>('vpcLatticeConfigurations');
+    vpcLatticeConfigurations = registerOutput<List<ServiceVpcLatticeConfiguration>?>('vpcLatticeConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceVpcLatticeConfiguration>(guardedValue, (value) => ServiceVpcLatticeConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    waitForSteadyState = registerOutput<bool?>('waitForSteadyState');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'aws:ecs/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alarms = registerOutput<ServiceAlarms?>('alarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAlarms.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    availabilityZoneRebalancing = registerOutput<String>('availabilityZoneRebalancing');
+    capacityProviderStrategies = registerOutput<List<ServiceCapacityProviderStrategy>?>('capacityProviderStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceCapacityProviderStrategy>(guardedValue, (value) => ServiceCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); });
+    cluster = registerOutput<String>('cluster');
+    deploymentCircuitBreaker = registerOutput<ServiceDeploymentCircuitBreaker?>('deploymentCircuitBreaker', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDeploymentCircuitBreaker.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deploymentConfiguration = registerOutput<ServiceDeploymentConfiguration>('deploymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDeploymentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deploymentController = registerOutput<ServiceDeploymentController?>('deploymentController', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceDeploymentController.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deploymentMaximumPercent = registerOutput<int?>('deploymentMaximumPercent');
+    deploymentMinimumHealthyPercent = registerOutput<int?>('deploymentMinimumHealthyPercent');
+    desiredCount = registerOutput<int?>('desiredCount');
+    enableEcsManagedTags = registerOutput<bool?>('enableEcsManagedTags');
+    enableExecuteCommand = registerOutput<bool?>('enableExecuteCommand');
+    forceDelete = registerOutput<bool?>('forceDelete');
+    forceNewDeployment = registerOutput<bool?>('forceNewDeployment');
+    healthCheckGracePeriodSeconds = registerOutput<int?>('healthCheckGracePeriodSeconds');
+    iamRole = registerOutput<String>('iamRole');
+    launchType = registerOutput<String>('launchType');
+    loadBalancers = registerOutput<List<ServiceLoadBalancer>?>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceLoadBalancer>(guardedValue, (value) => ServiceLoadBalancer.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    networkConfiguration = registerOutput<ServiceNetworkConfiguration?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orderedPlacementStrategies = registerOutput<List<ServiceOrderedPlacementStrategy>?>('orderedPlacementStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceOrderedPlacementStrategy>(guardedValue, (value) => ServiceOrderedPlacementStrategy.fromMap((value as Map).cast<String, dynamic>())); });
+    placementConstraints = registerOutput<List<ServicePlacementConstraint>?>('placementConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePlacementConstraint>(guardedValue, (value) => ServicePlacementConstraint.fromMap((value as Map).cast<String, dynamic>())); });
+    platformVersion = registerOutput<String>('platformVersion');
+    propagateTags = registerOutput<String?>('propagateTags');
+    region = registerOutput<String>('region');
+    schedulingStrategy = registerOutput<String?>('schedulingStrategy');
+    serviceConnectConfiguration = registerOutput<ServiceServiceConnectConfiguration?>('serviceConnectConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceServiceConnectConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceRegistries = registerOutput<ServiceServiceRegistries?>('serviceRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceServiceRegistries.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sigintRollback = registerOutput<bool?>('sigintRollback');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taskDefinition = registerOutput<String?>('taskDefinition');
+    triggers = registerOutput<Map<String, String>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    volumeConfiguration = registerOutput<ServiceVolumeConfiguration?>('volumeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceVolumeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcLatticeConfigurations = registerOutput<List<ServiceVpcLatticeConfiguration>?>('vpcLatticeConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceVpcLatticeConfiguration>(guardedValue, (value) => ServiceVpcLatticeConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     waitForSteadyState = registerOutput<bool?>('waitForSteadyState');
   }
 }

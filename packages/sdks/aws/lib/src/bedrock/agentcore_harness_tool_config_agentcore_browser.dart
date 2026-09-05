@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreHarnessToolConfigAgentcoreBrowser {
   /// ARN of the AgentCore browser resource.
-  final pulumi.Input<String>? browserArn;
+  final pulumi.Input<String?>? browserArn;
 
   /// Creates a new [AgentcoreHarnessToolConfigAgentcoreBrowser].
   /// [browserArn] ARN of the AgentCore browser resource.

@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'launch_args.dart';
+import 'launch_execution.dart';
+import 'launch_group.dart';
+import 'launch_metric_monitor.dart';
 import 'launch_scheduled_splits_config.dart';
 import 'launch_state.dart';
 
@@ -17,13 +20,6 @@ import 'launch_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Launch("example", {
-///     name: "example",
-///     project: exampleAwsEvidentlyProject.name,
-///     groups: [{
-///         feature: exampleAwsEvidentlyFeature.name,
-///         name: "Variation1",
-///         variation: "Variation1",
-///     }],
 ///     scheduledSplitsConfig: {
 ///         steps: [{
 ///             groupWeights: {
@@ -32,6 +28,13 @@ import 'launch_state.dart';
 ///             startTime: "2024-01-07 01:43:59+00:00",
 ///         }],
 ///     },
+///     groups: [{
+///         feature: exampleAwsEvidentlyFeature.name,
+///         name: "Variation1",
+///         variation: "Variation1",
+///     }],
+///     name: "example",
+///     project: exampleAwsEvidentlyProject.name,
 /// });
 /// ```
 /// ```python
@@ -39,13 +42,6 @@ import 'launch_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Launch("example",
-///     name="example",
-///     project=example_aws_evidently_project["name"],
-///     groups=[{
-///         "feature": example_aws_evidently_feature["name"],
-///         "name": "Variation1",
-///         "variation": "Variation1",
-///     }],
 ///     scheduled_splits_config={
 ///         "steps": [{
 ///             "group_weights": {
@@ -53,7 +49,14 @@ import 'launch_state.dart';
 ///             },
 ///             "start_time": "2024-01-07 01:43:59+00:00",
 ///         }],
-///     })
+///     },
+///     groups=[{
+///         "feature": example_aws_evidently_feature["name"],
+///         "name": "Variation1",
+///         "variation": "Variation1",
+///     }],
+///     name="example",
+///     project=example_aws_evidently_project["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -65,17 +68,6 @@ import 'launch_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Launch("example", new()
 ///     {
-///         Name = "example",
-///         Project = exampleAwsEvidentlyProject.Name,
-///         Groups = new[]
-///         {
-///             new Aws.Evidently.Inputs.LaunchGroupArgs
-///             {
-///                 Feature = exampleAwsEvidentlyFeature.Name,
-///                 Name = "Variation1",
-///                 Variation = "Variation1",
-///             },
-///         },
 ///         ScheduledSplitsConfig = new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigArgs
 ///         {
 ///             Steps = new[]
@@ -90,6 +82,17 @@ import 'launch_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Groups = new[]
+///         {
+///             new Aws.Evidently.Inputs.LaunchGroupArgs
+///             {
+///                 Feature = exampleAwsEvidentlyFeature.Name,
+///                 Name = "Variation1",
+///                 Variation = "Variation1",
+///             },
+///         },
+///         Name = "example",
+///         Project = exampleAwsEvidentlyProject.Name,
 ///     });
 ///
 /// });
@@ -105,15 +108,6 @@ import 'launch_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewLaunch(ctx, "example", &evidently.LaunchArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
-/// 			Groups: evidently.LaunchGroupArray{
-/// 				&evidently.LaunchGroupArgs{
-/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
-/// 					Name:      pulumi.String("Variation1"),
-/// 					Variation: pulumi.String("Variation1"),
-/// 				},
-/// 			},
 /// 			ScheduledSplitsConfig: &evidently.LaunchScheduledSplitsConfigArgs{
 /// 				Steps: evidently.LaunchScheduledSplitsConfigStepArray{
 /// 					&evidently.LaunchScheduledSplitsConfigStepArgs{
@@ -124,6 +118,15 @@ import 'launch_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Groups: evidently.LaunchGroupArray{
+/// 				&evidently.LaunchGroupArgs{
+/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
+/// 					Name:      pulumi.String("Variation1"),
+/// 					Variation: pulumi.String("Variation1"),
+/// 				},
+/// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -142,13 +145,6 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   name    = "example"
-///   project = exampleAwsEvidentlyProject.name
-///   groups {
-///     feature   = exampleAwsEvidentlyFeature.name
-///     name      = "Variation1"
-///     variation = "Variation1"
-///   }
 ///   scheduled_splits_config = {
 ///     steps = [{
 ///       "groupWeights" = {
@@ -157,6 +153,13 @@ import 'launch_state.dart';
 ///       "startTime" = "2024-01-07 01:43:59+00:00"
 ///     }]
 ///   }
+///   groups {
+///     feature   = exampleAwsEvidentlyFeature.name
+///     name      = "Variation1"
+///     variation = "Variation1"
+///   }
+///   name    = "example"
+///   project = exampleAwsEvidentlyProject.name
 /// }
 /// ```
 /// ```java
@@ -167,9 +170,9 @@ import 'launch_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.evidently.Launch;
 /// import com.pulumi.aws.evidently.LaunchArgs;
-/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigStepArgs;
+/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -184,19 +187,19 @@ import 'launch_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Launch("example", LaunchArgs.builder()
-///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
-///             .groups(LaunchGroupArgs.builder()
-///                 .feature(exampleAwsEvidentlyFeature.name())
-///                 .name("Variation1")
-///                 .variation("Variation1")
-///                 .build())
 ///             .scheduledSplitsConfig(LaunchScheduledSplitsConfigArgs.builder()
 ///                 .steps(LaunchScheduledSplitsConfigStepArgs.builder()
 ///                     .groupWeights(Map.of("Variation1", 0))
 ///                     .startTime("2024-01-07 01:43:59+00:00")
 ///                     .build())
 ///                 .build())
+///             .groups(LaunchGroupArgs.builder()
+///                 .feature(exampleAwsEvidentlyFeature.name())
+///                 .name("Variation1")
+///                 .variation("Variation1")
+///                 .build())
+///             .name("example")
+///             .project(exampleAwsEvidentlyProject.name())
 ///             .build());
 ///
 ///     }
@@ -207,17 +210,17 @@ import 'launch_state.dart';
 ///   example:
 ///     type: aws:evidently:Launch
 ///     properties:
-///       name: example
-///       project: ${exampleAwsEvidentlyProject.name}
-///       groups:
-///         - feature: ${exampleAwsEvidentlyFeature.name}
-///           name: Variation1
-///           variation: Variation1
 ///       scheduledSplitsConfig:
 ///         steps:
 ///           - groupWeights:
 ///               Variation1: 0
 ///             startTime: 2024-01-07 01:43:59+00:00
+///       groups:
+///         - feature: ${exampleAwsEvidentlyFeature.name}
+///           name: Variation1
+///           variation: Variation1
+///       name: example
+///       project: ${exampleAwsEvidentlyProject.name}
 /// ```
 ///
 ///
@@ -229,14 +232,6 @@ import 'launch_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Launch("example", {
-///     name: "example",
-///     project: exampleAwsEvidentlyProject.name,
-///     description: "example description",
-///     groups: [{
-///         feature: exampleAwsEvidentlyFeature.name,
-///         name: "Variation1",
-///         variation: "Variation1",
-///     }],
 ///     scheduledSplitsConfig: {
 ///         steps: [{
 ///             groupWeights: {
@@ -245,6 +240,14 @@ import 'launch_state.dart';
 ///             startTime: "2024-01-07 01:43:59+00:00",
 ///         }],
 ///     },
+///     groups: [{
+///         feature: exampleAwsEvidentlyFeature.name,
+///         name: "Variation1",
+///         variation: "Variation1",
+///     }],
+///     name: "example",
+///     project: exampleAwsEvidentlyProject.name,
+///     description: "example description",
 /// });
 /// ```
 /// ```python
@@ -252,14 +255,6 @@ import 'launch_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Launch("example",
-///     name="example",
-///     project=example_aws_evidently_project["name"],
-///     description="example description",
-///     groups=[{
-///         "feature": example_aws_evidently_feature["name"],
-///         "name": "Variation1",
-///         "variation": "Variation1",
-///     }],
 ///     scheduled_splits_config={
 ///         "steps": [{
 ///             "group_weights": {
@@ -267,7 +262,15 @@ import 'launch_state.dart';
 ///             },
 ///             "start_time": "2024-01-07 01:43:59+00:00",
 ///         }],
-///     })
+///     },
+///     groups=[{
+///         "feature": example_aws_evidently_feature["name"],
+///         "name": "Variation1",
+///         "variation": "Variation1",
+///     }],
+///     name="example",
+///     project=example_aws_evidently_project["name"],
+///     description="example description")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -279,18 +282,6 @@ import 'launch_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Launch("example", new()
 ///     {
-///         Name = "example",
-///         Project = exampleAwsEvidentlyProject.Name,
-///         Description = "example description",
-///         Groups = new[]
-///         {
-///             new Aws.Evidently.Inputs.LaunchGroupArgs
-///             {
-///                 Feature = exampleAwsEvidentlyFeature.Name,
-///                 Name = "Variation1",
-///                 Variation = "Variation1",
-///             },
-///         },
 ///         ScheduledSplitsConfig = new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigArgs
 ///         {
 ///             Steps = new[]
@@ -305,6 +296,18 @@ import 'launch_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Groups = new[]
+///         {
+///             new Aws.Evidently.Inputs.LaunchGroupArgs
+///             {
+///                 Feature = exampleAwsEvidentlyFeature.Name,
+///                 Name = "Variation1",
+///                 Variation = "Variation1",
+///             },
+///         },
+///         Name = "example",
+///         Project = exampleAwsEvidentlyProject.Name,
+///         Description = "example description",
 ///     });
 ///
 /// });
@@ -320,16 +323,6 @@ import 'launch_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewLaunch(ctx, "example", &evidently.LaunchArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Project:     pulumi.Any(exampleAwsEvidentlyProject.Name),
-/// 			Description: pulumi.String("example description"),
-/// 			Groups: evidently.LaunchGroupArray{
-/// 				&evidently.LaunchGroupArgs{
-/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
-/// 					Name:      pulumi.String("Variation1"),
-/// 					Variation: pulumi.String("Variation1"),
-/// 				},
-/// 			},
 /// 			ScheduledSplitsConfig: &evidently.LaunchScheduledSplitsConfigArgs{
 /// 				Steps: evidently.LaunchScheduledSplitsConfigStepArray{
 /// 					&evidently.LaunchScheduledSplitsConfigStepArgs{
@@ -340,6 +333,16 @@ import 'launch_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Groups: evidently.LaunchGroupArray{
+/// 				&evidently.LaunchGroupArgs{
+/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
+/// 					Name:      pulumi.String("Variation1"),
+/// 					Variation: pulumi.String("Variation1"),
+/// 				},
+/// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			Project:     pulumi.Any(exampleAwsEvidentlyProject.Name),
+/// 			Description: pulumi.String("example description"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -358,14 +361,6 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   name        = "example"
-///   project     = exampleAwsEvidentlyProject.name
-///   description = "example description"
-///   groups {
-///     feature   = exampleAwsEvidentlyFeature.name
-///     name      = "Variation1"
-///     variation = "Variation1"
-///   }
 ///   scheduled_splits_config = {
 ///     steps = [{
 ///       "groupWeights" = {
@@ -374,6 +369,14 @@ import 'launch_state.dart';
 ///       "startTime" = "2024-01-07 01:43:59+00:00"
 ///     }]
 ///   }
+///   groups {
+///     feature   = exampleAwsEvidentlyFeature.name
+///     name      = "Variation1"
+///     variation = "Variation1"
+///   }
+///   name        = "example"
+///   project     = exampleAwsEvidentlyProject.name
+///   description = "example description"
 /// }
 /// ```
 /// ```java
@@ -384,9 +387,9 @@ import 'launch_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.evidently.Launch;
 /// import com.pulumi.aws.evidently.LaunchArgs;
-/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigStepArgs;
+/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -401,20 +404,20 @@ import 'launch_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Launch("example", LaunchArgs.builder()
-///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
-///             .description("example description")
-///             .groups(LaunchGroupArgs.builder()
-///                 .feature(exampleAwsEvidentlyFeature.name())
-///                 .name("Variation1")
-///                 .variation("Variation1")
-///                 .build())
 ///             .scheduledSplitsConfig(LaunchScheduledSplitsConfigArgs.builder()
 ///                 .steps(LaunchScheduledSplitsConfigStepArgs.builder()
 ///                     .groupWeights(Map.of("Variation1", 0))
 ///                     .startTime("2024-01-07 01:43:59+00:00")
 ///                     .build())
 ///                 .build())
+///             .groups(LaunchGroupArgs.builder()
+///                 .feature(exampleAwsEvidentlyFeature.name())
+///                 .name("Variation1")
+///                 .variation("Variation1")
+///                 .build())
+///             .name("example")
+///             .project(exampleAwsEvidentlyProject.name())
+///             .description("example description")
 ///             .build());
 ///
 ///     }
@@ -425,18 +428,18 @@ import 'launch_state.dart';
 ///   example:
 ///     type: aws:evidently:Launch
 ///     properties:
-///       name: example
-///       project: ${exampleAwsEvidentlyProject.name}
-///       description: example description
-///       groups:
-///         - feature: ${exampleAwsEvidentlyFeature.name}
-///           name: Variation1
-///           variation: Variation1
 ///       scheduledSplitsConfig:
 ///         steps:
 ///           - groupWeights:
 ///               Variation1: 0
 ///             startTime: 2024-01-07 01:43:59+00:00
+///       groups:
+///         - feature: ${exampleAwsEvidentlyFeature.name}
+///           name: Variation1
+///           variation: Variation1
+///       name: example
+///       project: ${exampleAwsEvidentlyProject.name}
+///       description: example description
 /// ```
 ///
 ///
@@ -448,8 +451,15 @@ import 'launch_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Launch("example", {
-///     name: "example",
-///     project: exampleAwsEvidentlyProject.name,
+///     scheduledSplitsConfig: {
+///         steps: [{
+///             groupWeights: {
+///                 Variation1: 0,
+///                 Variation2: 0,
+///             },
+///             startTime: "2024-01-07 01:43:59+00:00",
+///         }],
+///     },
 ///     groups: [
 ///         {
 ///             feature: exampleAwsEvidentlyFeature.name,
@@ -464,15 +474,8 @@ import 'launch_state.dart';
 ///             description: "second-group",
 ///         },
 ///     ],
-///     scheduledSplitsConfig: {
-///         steps: [{
-///             groupWeights: {
-///                 Variation1: 0,
-///                 Variation2: 0,
-///             },
-///             startTime: "2024-01-07 01:43:59+00:00",
-///         }],
-///     },
+///     name: "example",
+///     project: exampleAwsEvidentlyProject.name,
 /// });
 /// ```
 /// ```python
@@ -480,8 +483,15 @@ import 'launch_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Launch("example",
-///     name="example",
-///     project=example_aws_evidently_project["name"],
+///     scheduled_splits_config={
+///         "steps": [{
+///             "group_weights": {
+///                 "Variation1": 0,
+///                 "Variation2": 0,
+///             },
+///             "start_time": "2024-01-07 01:43:59+00:00",
+///         }],
+///     },
 ///     groups=[
 ///         {
 ///             "feature": example_aws_evidently_feature["name"],
@@ -496,15 +506,8 @@ import 'launch_state.dart';
 ///             "description": "second-group",
 ///         },
 ///     ],
-///     scheduled_splits_config={
-///         "steps": [{
-///             "group_weights": {
-///                 "Variation1": 0,
-///                 "Variation2": 0,
-///             },
-///             "start_time": "2024-01-07 01:43:59+00:00",
-///         }],
-///     })
+///     name="example",
+///     project=example_aws_evidently_project["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -516,8 +519,21 @@ import 'launch_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Launch("example", new()
 ///     {
-///         Name = "example",
-///         Project = exampleAwsEvidentlyProject.Name,
+///         ScheduledSplitsConfig = new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigArgs
+///         {
+///             Steps = new[]
+///             {
+///                 new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigStepArgs
+///                 {
+///                     GroupWeights =
+///                     {
+///                         { "Variation1", 0 },
+///                         { "Variation2", 0 },
+///                     },
+///                     StartTime = "2024-01-07 01:43:59+00:00",
+///                 },
+///             },
+///         },
 ///         Groups = new[]
 ///         {
 ///             new Aws.Evidently.Inputs.LaunchGroupArgs
@@ -535,21 +551,8 @@ import 'launch_state.dart';
 ///                 Description = "second-group",
 ///             },
 ///         },
-///         ScheduledSplitsConfig = new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigArgs
-///         {
-///             Steps = new[]
-///             {
-///                 new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigStepArgs
-///                 {
-///                     GroupWeights =
-///                     {
-///                         { "Variation1", 0 },
-///                         { "Variation2", 0 },
-///                     },
-///                     StartTime = "2024-01-07 01:43:59+00:00",
-///                 },
-///             },
-///         },
+///         Name = "example",
+///         Project = exampleAwsEvidentlyProject.Name,
 ///     });
 ///
 /// });
@@ -565,8 +568,17 @@ import 'launch_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewLaunch(ctx, "example", &evidently.LaunchArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
+/// 			ScheduledSplitsConfig: &evidently.LaunchScheduledSplitsConfigArgs{
+/// 				Steps: evidently.LaunchScheduledSplitsConfigStepArray{
+/// 					&evidently.LaunchScheduledSplitsConfigStepArgs{
+/// 						GroupWeights: pulumi.IntMap{
+/// 							"Variation1": pulumi.Int(0),
+/// 							"Variation2": pulumi.Int(0),
+/// 						},
+/// 						StartTime: pulumi.String("2024-01-07 01:43:59+00:00"),
+/// 					},
+/// 				},
+/// 			},
 /// 			Groups: evidently.LaunchGroupArray{
 /// 				&evidently.LaunchGroupArgs{
 /// 					Feature:     pulumi.Any(exampleAwsEvidentlyFeature.Name),
@@ -581,17 +593,8 @@ import 'launch_state.dart';
 /// 					Description: pulumi.String("second-group"),
 /// 				},
 /// 			},
-/// 			ScheduledSplitsConfig: &evidently.LaunchScheduledSplitsConfigArgs{
-/// 				Steps: evidently.LaunchScheduledSplitsConfigStepArray{
-/// 					&evidently.LaunchScheduledSplitsConfigStepArgs{
-/// 						GroupWeights: pulumi.IntMap{
-/// 							"Variation1": pulumi.Int(0),
-/// 							"Variation2": pulumi.Int(0),
-/// 						},
-/// 						StartTime: pulumi.String("2024-01-07 01:43:59+00:00"),
-/// 					},
-/// 				},
-/// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -610,8 +613,15 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   name    = "example"
-///   project = exampleAwsEvidentlyProject.name
+///   scheduled_splits_config = {
+///     steps = [{
+///       "groupWeights" = {
+///         "Variation1" = 0
+///         "Variation2" = 0
+///       }
+///       "startTime" = "2024-01-07 01:43:59+00:00"
+///     }]
+///   }
 ///   groups {
 ///     feature     = exampleAwsEvidentlyFeature.name
 ///     name        = "Variation1"
@@ -624,15 +634,8 @@ import 'launch_state.dart';
 ///     variation   = "Variation2"
 ///     description = "second-group"
 ///   }
-///   scheduled_splits_config = {
-///     steps = [{
-///       "groupWeights" = {
-///         "Variation1" = 0
-///         "Variation2" = 0
-///       }
-///       "startTime" = "2024-01-07 01:43:59+00:00"
-///     }]
-///   }
+///   name    = "example"
+///   project = exampleAwsEvidentlyProject.name
 /// }
 /// ```
 /// ```java
@@ -643,9 +646,9 @@ import 'launch_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.evidently.Launch;
 /// import com.pulumi.aws.evidently.LaunchArgs;
-/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigStepArgs;
+/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -660,8 +663,15 @@ import 'launch_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Launch("example", LaunchArgs.builder()
-///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .scheduledSplitsConfig(LaunchScheduledSplitsConfigArgs.builder()
+///                 .steps(LaunchScheduledSplitsConfigStepArgs.builder()
+///                     .groupWeights(Map.ofEntries(
+///                         Map.entry("Variation1", 0),
+///                         Map.entry("Variation2", 0)
+///                     ))
+///                     .startTime("2024-01-07 01:43:59+00:00")
+///                     .build())
+///                 .build())
 ///             .groups(
 ///                 LaunchGroupArgs.builder()
 ///                     .feature(exampleAwsEvidentlyFeature.name())
@@ -675,15 +685,8 @@ import 'launch_state.dart';
 ///                     .variation("Variation2")
 ///                     .description("second-group")
 ///                     .build())
-///             .scheduledSplitsConfig(LaunchScheduledSplitsConfigArgs.builder()
-///                 .steps(LaunchScheduledSplitsConfigStepArgs.builder()
-///                     .groupWeights(Map.ofEntries(
-///                         Map.entry("Variation1", 0),
-///                         Map.entry("Variation2", 0)
-///                     ))
-///                     .startTime("2024-01-07 01:43:59+00:00")
-///                     .build())
-///                 .build())
+///             .name("example")
+///             .project(exampleAwsEvidentlyProject.name())
 ///             .build());
 ///
 ///     }
@@ -694,8 +697,12 @@ import 'launch_state.dart';
 ///   example:
 ///     type: aws:evidently:Launch
 ///     properties:
-///       name: example
-///       project: ${exampleAwsEvidentlyProject.name}
+///       scheduledSplitsConfig:
+///         steps:
+///           - groupWeights:
+///               Variation1: 0
+///               Variation2: 0
+///             startTime: 2024-01-07 01:43:59+00:00
 ///       groups:
 ///         - feature: ${exampleAwsEvidentlyFeature.name}
 ///           name: Variation1
@@ -705,12 +712,8 @@ import 'launch_state.dart';
 ///           name: Variation2
 ///           variation: Variation2
 ///           description: second-group
-///       scheduledSplitsConfig:
-///         steps:
-///           - groupWeights:
-///               Variation1: 0
-///               Variation2: 0
-///             startTime: 2024-01-07 01:43:59+00:00
+///       name: example
+///       project: ${exampleAwsEvidentlyProject.name}
 /// ```
 ///
 ///
@@ -722,8 +725,14 @@ import 'launch_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Launch("example", {
-///     name: "example",
-///     project: exampleAwsEvidentlyProject.name,
+///     scheduledSplitsConfig: {
+///         steps: [{
+///             groupWeights: {
+///                 Variation1: 0,
+///             },
+///             startTime: "2024-01-07 01:43:59+00:00",
+///         }],
+///     },
 ///     groups: [{
 ///         feature: exampleAwsEvidentlyFeature.name,
 ///         name: "Variation1",
@@ -749,14 +758,8 @@ import 'launch_state.dart';
 ///             },
 ///         },
 ///     ],
-///     scheduledSplitsConfig: {
-///         steps: [{
-///             groupWeights: {
-///                 Variation1: 0,
-///             },
-///             startTime: "2024-01-07 01:43:59+00:00",
-///         }],
-///     },
+///     name: "example",
+///     project: exampleAwsEvidentlyProject.name,
 /// });
 /// ```
 /// ```python
@@ -764,8 +767,14 @@ import 'launch_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Launch("example",
-///     name="example",
-///     project=example_aws_evidently_project["name"],
+///     scheduled_splits_config={
+///         "steps": [{
+///             "group_weights": {
+///                 "Variation1": 0,
+///             },
+///             "start_time": "2024-01-07 01:43:59+00:00",
+///         }],
+///     },
 ///     groups=[{
 ///         "feature": example_aws_evidently_feature["name"],
 ///         "name": "Variation1",
@@ -791,14 +800,8 @@ import 'launch_state.dart';
 ///             },
 ///         },
 ///     ],
-///     scheduled_splits_config={
-///         "steps": [{
-///             "group_weights": {
-///                 "Variation1": 0,
-///             },
-///             "start_time": "2024-01-07 01:43:59+00:00",
-///         }],
-///     })
+///     name="example",
+///     project=example_aws_evidently_project["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -810,8 +813,20 @@ import 'launch_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Launch("example", new()
 ///     {
-///         Name = "example",
-///         Project = exampleAwsEvidentlyProject.Name,
+///         ScheduledSplitsConfig = new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigArgs
+///         {
+///             Steps = new[]
+///             {
+///                 new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigStepArgs
+///                 {
+///                     GroupWeights =
+///                     {
+///                         { "Variation1", 0 },
+///                     },
+///                     StartTime = "2024-01-07 01:43:59+00:00",
+///                 },
+///             },
+///         },
 ///         Groups = new[]
 ///         {
 ///             new Aws.Evidently.Inputs.LaunchGroupArgs
@@ -846,20 +861,8 @@ import 'launch_state.dart';
 ///                 },
 ///             },
 ///         },
-///         ScheduledSplitsConfig = new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigArgs
-///         {
-///             Steps = new[]
-///             {
-///                 new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigStepArgs
-///                 {
-///                     GroupWeights =
-///                     {
-///                         { "Variation1", 0 },
-///                     },
-///                     StartTime = "2024-01-07 01:43:59+00:00",
-///                 },
-///             },
-///         },
+///         Name = "example",
+///         Project = exampleAwsEvidentlyProject.Name,
 ///     });
 ///
 /// });
@@ -875,8 +878,16 @@ import 'launch_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewLaunch(ctx, "example", &evidently.LaunchArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
+/// 			ScheduledSplitsConfig: &evidently.LaunchScheduledSplitsConfigArgs{
+/// 				Steps: evidently.LaunchScheduledSplitsConfigStepArray{
+/// 					&evidently.LaunchScheduledSplitsConfigStepArgs{
+/// 						GroupWeights: pulumi.IntMap{
+/// 							"Variation1": pulumi.Int(0),
+/// 						},
+/// 						StartTime: pulumi.String("2024-01-07 01:43:59+00:00"),
+/// 					},
+/// 				},
+/// 			},
 /// 			Groups: evidently.LaunchGroupArray{
 /// 				&evidently.LaunchGroupArgs{
 /// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
@@ -904,16 +915,8 @@ import 'launch_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			ScheduledSplitsConfig: &evidently.LaunchScheduledSplitsConfigArgs{
-/// 				Steps: evidently.LaunchScheduledSplitsConfigStepArray{
-/// 					&evidently.LaunchScheduledSplitsConfigStepArgs{
-/// 						GroupWeights: pulumi.IntMap{
-/// 							"Variation1": pulumi.Int(0),
-/// 						},
-/// 						StartTime: pulumi.String("2024-01-07 01:43:59+00:00"),
-/// 					},
-/// 				},
-/// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -932,8 +935,14 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   name    = "example"
-///   project = exampleAwsEvidentlyProject.name
+///   scheduled_splits_config = {
+///     steps = [{
+///       "groupWeights" = {
+///         "Variation1" = 0
+///       }
+///       "startTime" = "2024-01-07 01:43:59+00:00"
+///     }]
+///   }
 ///   groups {
 ///     feature   = exampleAwsEvidentlyFeature.name
 ///     name      = "Variation1"
@@ -957,14 +966,8 @@ import 'launch_state.dart';
 ///       value_key     = "value_key2"
 ///     }
 ///   }
-///   scheduled_splits_config = {
-///     steps = [{
-///       "groupWeights" = {
-///         "Variation1" = 0
-///       }
-///       "startTime" = "2024-01-07 01:43:59+00:00"
-///     }]
-///   }
+///   name    = "example"
+///   project = exampleAwsEvidentlyProject.name
 /// }
 /// ```
 /// ```java
@@ -975,11 +978,11 @@ import 'launch_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.evidently.Launch;
 /// import com.pulumi.aws.evidently.LaunchArgs;
+/// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigArgs;
+/// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigStepArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchMetricMonitorArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchMetricMonitorMetricDefinitionArgs;
-/// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigArgs;
-/// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigStepArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -994,8 +997,12 @@ import 'launch_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Launch("example", LaunchArgs.builder()
-///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
+///             .scheduledSplitsConfig(LaunchScheduledSplitsConfigArgs.builder()
+///                 .steps(LaunchScheduledSplitsConfigStepArgs.builder()
+///                     .groupWeights(Map.of("Variation1", 0))
+///                     .startTime("2024-01-07 01:43:59+00:00")
+///                     .build())
+///                 .build())
 ///             .groups(LaunchGroupArgs.builder()
 ///                 .feature(exampleAwsEvidentlyFeature.name())
 ///                 .name("Variation1")
@@ -1020,12 +1027,8 @@ import 'launch_state.dart';
 ///                         .valueKey("value_key2")
 ///                         .build())
 ///                     .build())
-///             .scheduledSplitsConfig(LaunchScheduledSplitsConfigArgs.builder()
-///                 .steps(LaunchScheduledSplitsConfigStepArgs.builder()
-///                     .groupWeights(Map.of("Variation1", 0))
-///                     .startTime("2024-01-07 01:43:59+00:00")
-///                     .build())
-///                 .build())
+///             .name("example")
+///             .project(exampleAwsEvidentlyProject.name())
 ///             .build());
 ///
 ///     }
@@ -1036,8 +1039,11 @@ import 'launch_state.dart';
 ///   example:
 ///     type: aws:evidently:Launch
 ///     properties:
-///       name: example
-///       project: ${exampleAwsEvidentlyProject.name}
+///       scheduledSplitsConfig:
+///         steps:
+///           - groupWeights:
+///               Variation1: 0
+///             startTime: 2024-01-07 01:43:59+00:00
 ///       groups:
 ///         - feature: ${exampleAwsEvidentlyFeature.name}
 ///           name: Variation1
@@ -1055,11 +1061,8 @@ import 'launch_state.dart';
 ///             name: name2
 ///             unitLabel: unit_label2
 ///             valueKey: value_key2
-///       scheduledSplitsConfig:
-///         steps:
-///           - groupWeights:
-///               Variation1: 0
-///             startTime: 2024-01-07 01:43:59+00:00
+///       name: example
+///       project: ${exampleAwsEvidentlyProject.name}
 /// ```
 ///
 ///
@@ -1071,14 +1074,6 @@ import 'launch_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Launch("example", {
-///     name: "example",
-///     project: exampleAwsEvidentlyProject.name,
-///     randomizationSalt: "example randomization salt",
-///     groups: [{
-///         feature: exampleAwsEvidentlyFeature.name,
-///         name: "Variation1",
-///         variation: "Variation1",
-///     }],
 ///     scheduledSplitsConfig: {
 ///         steps: [{
 ///             groupWeights: {
@@ -1087,6 +1082,14 @@ import 'launch_state.dart';
 ///             startTime: "2024-01-07 01:43:59+00:00",
 ///         }],
 ///     },
+///     groups: [{
+///         feature: exampleAwsEvidentlyFeature.name,
+///         name: "Variation1",
+///         variation: "Variation1",
+///     }],
+///     name: "example",
+///     project: exampleAwsEvidentlyProject.name,
+///     randomizationSalt: "example randomization salt",
 /// });
 /// ```
 /// ```python
@@ -1094,14 +1097,6 @@ import 'launch_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Launch("example",
-///     name="example",
-///     project=example_aws_evidently_project["name"],
-///     randomization_salt="example randomization salt",
-///     groups=[{
-///         "feature": example_aws_evidently_feature["name"],
-///         "name": "Variation1",
-///         "variation": "Variation1",
-///     }],
 ///     scheduled_splits_config={
 ///         "steps": [{
 ///             "group_weights": {
@@ -1109,7 +1104,15 @@ import 'launch_state.dart';
 ///             },
 ///             "start_time": "2024-01-07 01:43:59+00:00",
 ///         }],
-///     })
+///     },
+///     groups=[{
+///         "feature": example_aws_evidently_feature["name"],
+///         "name": "Variation1",
+///         "variation": "Variation1",
+///     }],
+///     name="example",
+///     project=example_aws_evidently_project["name"],
+///     randomization_salt="example randomization salt")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1121,18 +1124,6 @@ import 'launch_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Launch("example", new()
 ///     {
-///         Name = "example",
-///         Project = exampleAwsEvidentlyProject.Name,
-///         RandomizationSalt = "example randomization salt",
-///         Groups = new[]
-///         {
-///             new Aws.Evidently.Inputs.LaunchGroupArgs
-///             {
-///                 Feature = exampleAwsEvidentlyFeature.Name,
-///                 Name = "Variation1",
-///                 Variation = "Variation1",
-///             },
-///         },
 ///         ScheduledSplitsConfig = new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigArgs
 ///         {
 ///             Steps = new[]
@@ -1147,6 +1138,18 @@ import 'launch_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Groups = new[]
+///         {
+///             new Aws.Evidently.Inputs.LaunchGroupArgs
+///             {
+///                 Feature = exampleAwsEvidentlyFeature.Name,
+///                 Name = "Variation1",
+///                 Variation = "Variation1",
+///             },
+///         },
+///         Name = "example",
+///         Project = exampleAwsEvidentlyProject.Name,
+///         RandomizationSalt = "example randomization salt",
 ///     });
 ///
 /// });
@@ -1162,16 +1165,6 @@ import 'launch_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewLaunch(ctx, "example", &evidently.LaunchArgs{
-/// 			Name:              pulumi.String("example"),
-/// 			Project:           pulumi.Any(exampleAwsEvidentlyProject.Name),
-/// 			RandomizationSalt: pulumi.String("example randomization salt"),
-/// 			Groups: evidently.LaunchGroupArray{
-/// 				&evidently.LaunchGroupArgs{
-/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
-/// 					Name:      pulumi.String("Variation1"),
-/// 					Variation: pulumi.String("Variation1"),
-/// 				},
-/// 			},
 /// 			ScheduledSplitsConfig: &evidently.LaunchScheduledSplitsConfigArgs{
 /// 				Steps: evidently.LaunchScheduledSplitsConfigStepArray{
 /// 					&evidently.LaunchScheduledSplitsConfigStepArgs{
@@ -1182,6 +1175,16 @@ import 'launch_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Groups: evidently.LaunchGroupArray{
+/// 				&evidently.LaunchGroupArgs{
+/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
+/// 					Name:      pulumi.String("Variation1"),
+/// 					Variation: pulumi.String("Variation1"),
+/// 				},
+/// 			},
+/// 			Name:              pulumi.String("example"),
+/// 			Project:           pulumi.Any(exampleAwsEvidentlyProject.Name),
+/// 			RandomizationSalt: pulumi.String("example randomization salt"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1200,14 +1203,6 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   name               = "example"
-///   project            = exampleAwsEvidentlyProject.name
-///   randomization_salt = "example randomization salt"
-///   groups {
-///     feature   = exampleAwsEvidentlyFeature.name
-///     name      = "Variation1"
-///     variation = "Variation1"
-///   }
 ///   scheduled_splits_config = {
 ///     steps = [{
 ///       "groupWeights" = {
@@ -1216,6 +1211,14 @@ import 'launch_state.dart';
 ///       "startTime" = "2024-01-07 01:43:59+00:00"
 ///     }]
 ///   }
+///   groups {
+///     feature   = exampleAwsEvidentlyFeature.name
+///     name      = "Variation1"
+///     variation = "Variation1"
+///   }
+///   name               = "example"
+///   project            = exampleAwsEvidentlyProject.name
+///   randomization_salt = "example randomization salt"
 /// }
 /// ```
 /// ```java
@@ -1226,9 +1229,9 @@ import 'launch_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.evidently.Launch;
 /// import com.pulumi.aws.evidently.LaunchArgs;
-/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigStepArgs;
+/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1243,20 +1246,20 @@ import 'launch_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Launch("example", LaunchArgs.builder()
-///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
-///             .randomizationSalt("example randomization salt")
-///             .groups(LaunchGroupArgs.builder()
-///                 .feature(exampleAwsEvidentlyFeature.name())
-///                 .name("Variation1")
-///                 .variation("Variation1")
-///                 .build())
 ///             .scheduledSplitsConfig(LaunchScheduledSplitsConfigArgs.builder()
 ///                 .steps(LaunchScheduledSplitsConfigStepArgs.builder()
 ///                     .groupWeights(Map.of("Variation1", 0))
 ///                     .startTime("2024-01-07 01:43:59+00:00")
 ///                     .build())
 ///                 .build())
+///             .groups(LaunchGroupArgs.builder()
+///                 .feature(exampleAwsEvidentlyFeature.name())
+///                 .name("Variation1")
+///                 .variation("Variation1")
+///                 .build())
+///             .name("example")
+///             .project(exampleAwsEvidentlyProject.name())
+///             .randomizationSalt("example randomization salt")
 ///             .build());
 ///
 ///     }
@@ -1267,18 +1270,18 @@ import 'launch_state.dart';
 ///   example:
 ///     type: aws:evidently:Launch
 ///     properties:
-///       name: example
-///       project: ${exampleAwsEvidentlyProject.name}
-///       randomizationSalt: example randomization salt
-///       groups:
-///         - feature: ${exampleAwsEvidentlyFeature.name}
-///           name: Variation1
-///           variation: Variation1
 ///       scheduledSplitsConfig:
 ///         steps:
 ///           - groupWeights:
 ///               Variation1: 0
 ///             startTime: 2024-01-07 01:43:59+00:00
+///       groups:
+///         - feature: ${exampleAwsEvidentlyFeature.name}
+///           name: Variation1
+///           variation: Variation1
+///       name: example
+///       project: ${exampleAwsEvidentlyProject.name}
+///       randomizationSalt: example randomization salt
 /// ```
 ///
 ///
@@ -1290,20 +1293,6 @@ import 'launch_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Launch("example", {
-///     name: "example",
-///     project: exampleAwsEvidentlyProject.name,
-///     groups: [
-///         {
-///             feature: exampleAwsEvidentlyFeature.name,
-///             name: "Variation1",
-///             variation: "Variation1",
-///         },
-///         {
-///             feature: exampleAwsEvidentlyFeature.name,
-///             name: "Variation2",
-///             variation: "Variation2",
-///         },
-///     ],
 ///     scheduledSplitsConfig: {
 ///         steps: [
 ///             {
@@ -1322,6 +1311,20 @@ import 'launch_state.dart';
 ///             },
 ///         ],
 ///     },
+///     groups: [
+///         {
+///             feature: exampleAwsEvidentlyFeature.name,
+///             name: "Variation1",
+///             variation: "Variation1",
+///         },
+///         {
+///             feature: exampleAwsEvidentlyFeature.name,
+///             name: "Variation2",
+///             variation: "Variation2",
+///         },
+///     ],
+///     name: "example",
+///     project: exampleAwsEvidentlyProject.name,
 /// });
 /// ```
 /// ```python
@@ -1329,20 +1332,6 @@ import 'launch_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Launch("example",
-///     name="example",
-///     project=example_aws_evidently_project["name"],
-///     groups=[
-///         {
-///             "feature": example_aws_evidently_feature["name"],
-///             "name": "Variation1",
-///             "variation": "Variation1",
-///         },
-///         {
-///             "feature": example_aws_evidently_feature["name"],
-///             "name": "Variation2",
-///             "variation": "Variation2",
-///         },
-///     ],
 ///     scheduled_splits_config={
 ///         "steps": [
 ///             {
@@ -1360,7 +1349,21 @@ import 'launch_state.dart';
 ///                 "start_time": "2024-01-08 01:43:59+00:00",
 ///             },
 ///         ],
-///     })
+///     },
+///     groups=[
+///         {
+///             "feature": example_aws_evidently_feature["name"],
+///             "name": "Variation1",
+///             "variation": "Variation1",
+///         },
+///         {
+///             "feature": example_aws_evidently_feature["name"],
+///             "name": "Variation2",
+///             "variation": "Variation2",
+///         },
+///     ],
+///     name="example",
+///     project=example_aws_evidently_project["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1372,23 +1375,6 @@ import 'launch_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Launch("example", new()
 ///     {
-///         Name = "example",
-///         Project = exampleAwsEvidentlyProject.Name,
-///         Groups = new[]
-///         {
-///             new Aws.Evidently.Inputs.LaunchGroupArgs
-///             {
-///                 Feature = exampleAwsEvidentlyFeature.Name,
-///                 Name = "Variation1",
-///                 Variation = "Variation1",
-///             },
-///             new Aws.Evidently.Inputs.LaunchGroupArgs
-///             {
-///                 Feature = exampleAwsEvidentlyFeature.Name,
-///                 Name = "Variation2",
-///                 Variation = "Variation2",
-///             },
-///         },
 ///         ScheduledSplitsConfig = new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigArgs
 ///         {
 ///             Steps = new[]
@@ -1413,6 +1399,23 @@ import 'launch_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Groups = new[]
+///         {
+///             new Aws.Evidently.Inputs.LaunchGroupArgs
+///             {
+///                 Feature = exampleAwsEvidentlyFeature.Name,
+///                 Name = "Variation1",
+///                 Variation = "Variation1",
+///             },
+///             new Aws.Evidently.Inputs.LaunchGroupArgs
+///             {
+///                 Feature = exampleAwsEvidentlyFeature.Name,
+///                 Name = "Variation2",
+///                 Variation = "Variation2",
+///             },
+///         },
+///         Name = "example",
+///         Project = exampleAwsEvidentlyProject.Name,
 ///     });
 ///
 /// });
@@ -1428,20 +1431,6 @@ import 'launch_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewLaunch(ctx, "example", &evidently.LaunchArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
-/// 			Groups: evidently.LaunchGroupArray{
-/// 				&evidently.LaunchGroupArgs{
-/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
-/// 					Name:      pulumi.String("Variation1"),
-/// 					Variation: pulumi.String("Variation1"),
-/// 				},
-/// 				&evidently.LaunchGroupArgs{
-/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
-/// 					Name:      pulumi.String("Variation2"),
-/// 					Variation: pulumi.String("Variation2"),
-/// 				},
-/// 			},
 /// 			ScheduledSplitsConfig: &evidently.LaunchScheduledSplitsConfigArgs{
 /// 				Steps: evidently.LaunchScheduledSplitsConfigStepArray{
 /// 					&evidently.LaunchScheduledSplitsConfigStepArgs{
@@ -1460,6 +1449,20 @@ import 'launch_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Groups: evidently.LaunchGroupArray{
+/// 				&evidently.LaunchGroupArgs{
+/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
+/// 					Name:      pulumi.String("Variation1"),
+/// 					Variation: pulumi.String("Variation1"),
+/// 				},
+/// 				&evidently.LaunchGroupArgs{
+/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
+/// 					Name:      pulumi.String("Variation2"),
+/// 					Variation: pulumi.String("Variation2"),
+/// 				},
+/// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1478,18 +1481,6 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   name    = "example"
-///   project = exampleAwsEvidentlyProject.name
-///   groups {
-///     feature   = exampleAwsEvidentlyFeature.name
-///     name      = "Variation1"
-///     variation = "Variation1"
-///   }
-///   groups {
-///     feature   = exampleAwsEvidentlyFeature.name
-///     name      = "Variation2"
-///     variation = "Variation2"
-///   }
 ///   scheduled_splits_config = {
 ///     steps = [{
 ///       "groupWeights" = {
@@ -1505,6 +1496,18 @@ import 'launch_state.dart';
 ///       "startTime" = "2024-01-08 01:43:59+00:00"
 ///     }]
 ///   }
+///   groups {
+///     feature   = exampleAwsEvidentlyFeature.name
+///     name      = "Variation1"
+///     variation = "Variation1"
+///   }
+///   groups {
+///     feature   = exampleAwsEvidentlyFeature.name
+///     name      = "Variation2"
+///     variation = "Variation2"
+///   }
+///   name    = "example"
+///   project = exampleAwsEvidentlyProject.name
 /// }
 /// ```
 /// ```java
@@ -1515,9 +1518,9 @@ import 'launch_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.evidently.Launch;
 /// import com.pulumi.aws.evidently.LaunchArgs;
-/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigStepArgs;
+/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1532,19 +1535,6 @@ import 'launch_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Launch("example", LaunchArgs.builder()
-///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
-///             .groups(
-///                 LaunchGroupArgs.builder()
-///                     .feature(exampleAwsEvidentlyFeature.name())
-///                     .name("Variation1")
-///                     .variation("Variation1")
-///                     .build(),
-///                 LaunchGroupArgs.builder()
-///                     .feature(exampleAwsEvidentlyFeature.name())
-///                     .name("Variation2")
-///                     .variation("Variation2")
-///                     .build())
 ///             .scheduledSplitsConfig(LaunchScheduledSplitsConfigArgs.builder()
 ///                 .steps(
 ///                     LaunchScheduledSplitsConfigStepArgs.builder()
@@ -1562,6 +1552,19 @@ import 'launch_state.dart';
 ///                         .startTime("2024-01-08 01:43:59+00:00")
 ///                         .build())
 ///                 .build())
+///             .groups(
+///                 LaunchGroupArgs.builder()
+///                     .feature(exampleAwsEvidentlyFeature.name())
+///                     .name("Variation1")
+///                     .variation("Variation1")
+///                     .build(),
+///                 LaunchGroupArgs.builder()
+///                     .feature(exampleAwsEvidentlyFeature.name())
+///                     .name("Variation2")
+///                     .variation("Variation2")
+///                     .build())
+///             .name("example")
+///             .project(exampleAwsEvidentlyProject.name())
 ///             .build());
 ///
 ///     }
@@ -1572,15 +1575,6 @@ import 'launch_state.dart';
 ///   example:
 ///     type: aws:evidently:Launch
 ///     properties:
-///       name: example
-///       project: ${exampleAwsEvidentlyProject.name}
-///       groups:
-///         - feature: ${exampleAwsEvidentlyFeature.name}
-///           name: Variation1
-///           variation: Variation1
-///         - feature: ${exampleAwsEvidentlyFeature.name}
-///           name: Variation2
-///           variation: Variation2
 ///       scheduledSplitsConfig:
 ///         steps:
 ///           - groupWeights:
@@ -1591,6 +1585,15 @@ import 'launch_state.dart';
 ///               Variation1: 20
 ///               Variation2: 25
 ///             startTime: 2024-01-08 01:43:59+00:00
+///       groups:
+///         - feature: ${exampleAwsEvidentlyFeature.name}
+///           name: Variation1
+///           variation: Variation1
+///         - feature: ${exampleAwsEvidentlyFeature.name}
+///           name: Variation2
+///           variation: Variation2
+///       name: example
+///       project: ${exampleAwsEvidentlyProject.name}
 /// ```
 ///
 ///
@@ -1602,26 +1605,8 @@ import 'launch_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.evidently.Launch("example", {
-///     name: "example",
-///     project: exampleAwsEvidentlyProject.name,
-///     groups: [
-///         {
-///             feature: exampleAwsEvidentlyFeature.name,
-///             name: "Variation1",
-///             variation: "Variation1",
-///         },
-///         {
-///             feature: exampleAwsEvidentlyFeature.name,
-///             name: "Variation2",
-///             variation: "Variation2",
-///         },
-///     ],
 ///     scheduledSplitsConfig: {
 ///         steps: [{
-///             groupWeights: {
-///                 Variation1: 0,
-///                 Variation2: 0,
-///             },
 ///             segmentOverrides: [
 ///                 {
 ///                     evaluationOrder: 1,
@@ -1639,9 +1624,27 @@ import 'launch_state.dart';
 ///                     },
 ///                 },
 ///             ],
+///             groupWeights: {
+///                 Variation1: 0,
+///                 Variation2: 0,
+///             },
 ///             startTime: "2024-01-08 01:43:59+00:00",
 ///         }],
 ///     },
+///     groups: [
+///         {
+///             feature: exampleAwsEvidentlyFeature.name,
+///             name: "Variation1",
+///             variation: "Variation1",
+///         },
+///         {
+///             feature: exampleAwsEvidentlyFeature.name,
+///             name: "Variation2",
+///             variation: "Variation2",
+///         },
+///     ],
+///     name: "example",
+///     project: exampleAwsEvidentlyProject.name,
 /// });
 /// ```
 /// ```python
@@ -1649,26 +1652,8 @@ import 'launch_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.evidently.Launch("example",
-///     name="example",
-///     project=example_aws_evidently_project["name"],
-///     groups=[
-///         {
-///             "feature": example_aws_evidently_feature["name"],
-///             "name": "Variation1",
-///             "variation": "Variation1",
-///         },
-///         {
-///             "feature": example_aws_evidently_feature["name"],
-///             "name": "Variation2",
-///             "variation": "Variation2",
-///         },
-///     ],
 ///     scheduled_splits_config={
 ///         "steps": [{
-///             "group_weights": {
-///                 "Variation1": 0,
-///                 "Variation2": 0,
-///             },
 ///             "segment_overrides": [
 ///                 {
 ///                     "evaluation_order": 1,
@@ -1686,9 +1671,27 @@ import 'launch_state.dart';
 ///                     },
 ///                 },
 ///             ],
+///             "group_weights": {
+///                 "Variation1": 0,
+///                 "Variation2": 0,
+///             },
 ///             "start_time": "2024-01-08 01:43:59+00:00",
 ///         }],
-///     })
+///     },
+///     groups=[
+///         {
+///             "feature": example_aws_evidently_feature["name"],
+///             "name": "Variation1",
+///             "variation": "Variation1",
+///         },
+///         {
+///             "feature": example_aws_evidently_feature["name"],
+///             "name": "Variation2",
+///             "variation": "Variation2",
+///         },
+///     ],
+///     name="example",
+///     project=example_aws_evidently_project["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1700,34 +1703,12 @@ import 'launch_state.dart';
 /// {
 ///     var example = new Aws.Evidently.Launch("example", new()
 ///     {
-///         Name = "example",
-///         Project = exampleAwsEvidentlyProject.Name,
-///         Groups = new[]
-///         {
-///             new Aws.Evidently.Inputs.LaunchGroupArgs
-///             {
-///                 Feature = exampleAwsEvidentlyFeature.Name,
-///                 Name = "Variation1",
-///                 Variation = "Variation1",
-///             },
-///             new Aws.Evidently.Inputs.LaunchGroupArgs
-///             {
-///                 Feature = exampleAwsEvidentlyFeature.Name,
-///                 Name = "Variation2",
-///                 Variation = "Variation2",
-///             },
-///         },
 ///         ScheduledSplitsConfig = new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigArgs
 ///         {
 ///             Steps = new[]
 ///             {
 ///                 new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigStepArgs
 ///                 {
-///                     GroupWeights =
-///                     {
-///                         { "Variation1", 0 },
-///                         { "Variation2", 0 },
-///                     },
 ///                     SegmentOverrides = new[]
 ///                     {
 ///                         new Aws.Evidently.Inputs.LaunchScheduledSplitsConfigStepSegmentOverrideArgs
@@ -1750,10 +1731,32 @@ import 'launch_state.dart';
 ///                             },
 ///                         },
 ///                     },
+///                     GroupWeights =
+///                     {
+///                         { "Variation1", 0 },
+///                         { "Variation2", 0 },
+///                     },
 ///                     StartTime = "2024-01-08 01:43:59+00:00",
 ///                 },
 ///             },
 ///         },
+///         Groups = new[]
+///         {
+///             new Aws.Evidently.Inputs.LaunchGroupArgs
+///             {
+///                 Feature = exampleAwsEvidentlyFeature.Name,
+///                 Name = "Variation1",
+///                 Variation = "Variation1",
+///             },
+///             new Aws.Evidently.Inputs.LaunchGroupArgs
+///             {
+///                 Feature = exampleAwsEvidentlyFeature.Name,
+///                 Name = "Variation2",
+///                 Variation = "Variation2",
+///             },
+///         },
+///         Name = "example",
+///         Project = exampleAwsEvidentlyProject.Name,
 ///     });
 ///
 /// });
@@ -1769,27 +1772,9 @@ import 'launch_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := evidently.NewLaunch(ctx, "example", &evidently.LaunchArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
-/// 			Groups: evidently.LaunchGroupArray{
-/// 				&evidently.LaunchGroupArgs{
-/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
-/// 					Name:      pulumi.String("Variation1"),
-/// 					Variation: pulumi.String("Variation1"),
-/// 				},
-/// 				&evidently.LaunchGroupArgs{
-/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
-/// 					Name:      pulumi.String("Variation2"),
-/// 					Variation: pulumi.String("Variation2"),
-/// 				},
-/// 			},
 /// 			ScheduledSplitsConfig: &evidently.LaunchScheduledSplitsConfigArgs{
 /// 				Steps: evidently.LaunchScheduledSplitsConfigStepArray{
 /// 					&evidently.LaunchScheduledSplitsConfigStepArgs{
-/// 						GroupWeights: pulumi.IntMap{
-/// 							"Variation1": pulumi.Int(0),
-/// 							"Variation2": pulumi.Int(0),
-/// 						},
 /// 						SegmentOverrides: evidently.LaunchScheduledSplitsConfigStepSegmentOverrideArray{
 /// 							&evidently.LaunchScheduledSplitsConfigStepSegmentOverrideArgs{
 /// 								EvaluationOrder: pulumi.Int(1),
@@ -1807,10 +1792,28 @@ import 'launch_state.dart';
 /// 								},
 /// 							},
 /// 						},
+/// 						GroupWeights: pulumi.IntMap{
+/// 							"Variation1": pulumi.Int(0),
+/// 							"Variation2": pulumi.Int(0),
+/// 						},
 /// 						StartTime: pulumi.String("2024-01-08 01:43:59+00:00"),
 /// 					},
 /// 				},
 /// 			},
+/// 			Groups: evidently.LaunchGroupArray{
+/// 				&evidently.LaunchGroupArgs{
+/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
+/// 					Name:      pulumi.String("Variation1"),
+/// 					Variation: pulumi.String("Variation1"),
+/// 				},
+/// 				&evidently.LaunchGroupArgs{
+/// 					Feature:   pulumi.Any(exampleAwsEvidentlyFeature.Name),
+/// 					Name:      pulumi.String("Variation2"),
+/// 					Variation: pulumi.String("Variation2"),
+/// 				},
+/// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Project: pulumi.Any(exampleAwsEvidentlyProject.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1829,24 +1832,8 @@ import 'launch_state.dart';
 /// }
 ///
 /// resource "aws_evidently_launch" "example" {
-///   name    = "example"
-///   project = exampleAwsEvidentlyProject.name
-///   groups {
-///     feature   = exampleAwsEvidentlyFeature.name
-///     name      = "Variation1"
-///     variation = "Variation1"
-///   }
-///   groups {
-///     feature   = exampleAwsEvidentlyFeature.name
-///     name      = "Variation2"
-///     variation = "Variation2"
-///   }
 ///   scheduled_splits_config = {
 ///     steps = [{
-///       "groupWeights" = {
-///         "Variation1" = 0
-///         "Variation2" = 0
-///       }
 ///       "segmentOverrides" = [{
 ///         "evaluationOrder" = 1
 ///         "segment"         = exampleAwsEvidentlySegment.name
@@ -1861,9 +1848,25 @@ import 'launch_state.dart';
 ///           "Variation2" = 30000
 ///         }
 ///       }]
+///       "groupWeights" = {
+///         "Variation1" = 0
+///         "Variation2" = 0
+///       }
 ///       "startTime" = "2024-01-08 01:43:59+00:00"
 ///     }]
 ///   }
+///   groups {
+///     feature   = exampleAwsEvidentlyFeature.name
+///     name      = "Variation1"
+///     variation = "Variation1"
+///   }
+///   groups {
+///     feature   = exampleAwsEvidentlyFeature.name
+///     name      = "Variation2"
+///     variation = "Variation2"
+///   }
+///   name    = "example"
+///   project = exampleAwsEvidentlyProject.name
 /// }
 /// ```
 /// ```java
@@ -1874,10 +1877,10 @@ import 'launch_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.evidently.Launch;
 /// import com.pulumi.aws.evidently.LaunchArgs;
-/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigStepArgs;
 /// import com.pulumi.aws.evidently.inputs.LaunchScheduledSplitsConfigStepSegmentOverrideArgs;
+/// import com.pulumi.aws.evidently.inputs.LaunchGroupArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1892,25 +1895,8 @@ import 'launch_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Launch("example", LaunchArgs.builder()
-///             .name("example")
-///             .project(exampleAwsEvidentlyProject.name())
-///             .groups(
-///                 LaunchGroupArgs.builder()
-///                     .feature(exampleAwsEvidentlyFeature.name())
-///                     .name("Variation1")
-///                     .variation("Variation1")
-///                     .build(),
-///                 LaunchGroupArgs.builder()
-///                     .feature(exampleAwsEvidentlyFeature.name())
-///                     .name("Variation2")
-///                     .variation("Variation2")
-///                     .build())
 ///             .scheduledSplitsConfig(LaunchScheduledSplitsConfigArgs.builder()
 ///                 .steps(LaunchScheduledSplitsConfigStepArgs.builder()
-///                     .groupWeights(Map.ofEntries(
-///                         Map.entry("Variation1", 0),
-///                         Map.entry("Variation2", 0)
-///                     ))
 ///                     .segmentOverrides(
 ///                         LaunchScheduledSplitsConfigStepSegmentOverrideArgs.builder()
 ///                             .evaluationOrder(1)
@@ -1925,9 +1911,26 @@ import 'launch_state.dart';
 ///                                 Map.entry("Variation2", 30000)
 ///                             ))
 ///                             .build())
+///                     .groupWeights(Map.ofEntries(
+///                         Map.entry("Variation1", 0),
+///                         Map.entry("Variation2", 0)
+///                     ))
 ///                     .startTime("2024-01-08 01:43:59+00:00")
 ///                     .build())
 ///                 .build())
+///             .groups(
+///                 LaunchGroupArgs.builder()
+///                     .feature(exampleAwsEvidentlyFeature.name())
+///                     .name("Variation1")
+///                     .variation("Variation1")
+///                     .build(),
+///                 LaunchGroupArgs.builder()
+///                     .feature(exampleAwsEvidentlyFeature.name())
+///                     .name("Variation2")
+///                     .variation("Variation2")
+///                     .build())
+///             .name("example")
+///             .project(exampleAwsEvidentlyProject.name())
 ///             .build());
 ///
 ///     }
@@ -1938,21 +1941,9 @@ import 'launch_state.dart';
 ///   example:
 ///     type: aws:evidently:Launch
 ///     properties:
-///       name: example
-///       project: ${exampleAwsEvidentlyProject.name}
-///       groups:
-///         - feature: ${exampleAwsEvidentlyFeature.name}
-///           name: Variation1
-///           variation: Variation1
-///         - feature: ${exampleAwsEvidentlyFeature.name}
-///           name: Variation2
-///           variation: Variation2
 ///       scheduledSplitsConfig:
 ///         steps:
-///           - groupWeights:
-///               Variation1: 0
-///               Variation2: 0
-///             segmentOverrides:
+///           - segmentOverrides:
 ///               - evaluationOrder: 1
 ///                 segment: ${exampleAwsEvidentlySegment.name}
 ///                 weights:
@@ -1962,7 +1953,19 @@ import 'launch_state.dart';
 ///                 weights:
 ///                   Variation1: 40000
 ///                   Variation2: 30000
+///             groupWeights:
+///               Variation1: 0
+///               Variation2: 0
 ///             startTime: 2024-01-08 01:43:59+00:00
+///       groups:
+///         - feature: ${exampleAwsEvidentlyFeature.name}
+///           name: Variation1
+///           variation: Variation1
+///         - feature: ${exampleAwsEvidentlyFeature.name}
+///           name: Variation2
+///           variation: Variation2
+///       name: example
+///       project: ${exampleAwsEvidentlyProject.name}
 /// ```
 ///
 ///
@@ -1992,13 +1995,13 @@ class Launch extends pulumi.CustomResource {
   /// Specifies the description of the launch.
   late final pulumi.Output<String?> description;
   /// A block that contains information about the start and end times of the launch. Detailed below
-  late final pulumi.Output<List<Map<String, dynamic>>> executions;
+  late final pulumi.Output<List<LaunchExecution>> executions;
   /// One or up to five blocks that contain the feature and variations that are to be used for the launch. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> groups;
+  late final pulumi.Output<List<LaunchGroup>> groups;
   /// The date and time that the launch was most recently updated.
   late final pulumi.Output<String> lastUpdatedTime;
   /// One or up to three blocks that define the metrics that will be used to monitor the launch performance. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> metricMonitors;
+  late final pulumi.Output<List<LaunchMetricMonitor>?> metricMonitors;
   /// The name for the new launch. Minimum length of `1`. Maximum length of `127`.
   late final pulumi.Output<String> name;
   /// The name or ARN of the project that is to contain the new launch.
@@ -2032,15 +2035,15 @@ class Launch extends pulumi.CustomResource {
           'aws:evidently/launch:Launch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
     description = registerOutput<String?>('description');
-    executions = registerOutput<List<Map<String, dynamic>>>('executions');
-    groups = registerOutput<List<Map<String, dynamic>>>('groups');
+    executions = registerOutput<List<LaunchExecution>>('executions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchExecution>(guardedValue, (value) => LaunchExecution.fromMap((value as Map).cast<String, dynamic>())); });
+    groups = registerOutput<List<LaunchGroup>>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchGroup>(guardedValue, (value) => LaunchGroup.fromMap((value as Map).cast<String, dynamic>())); });
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
-    metricMonitors = registerOutput<List<Map<String, dynamic>>?>('metricMonitors');
+    metricMonitors = registerOutput<List<LaunchMetricMonitor>?>('metricMonitors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchMetricMonitor>(guardedValue, (value) => LaunchMetricMonitor.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     randomizationSalt = registerOutput<String?>('randomizationSalt');
@@ -2048,8 +2051,8 @@ class Launch extends pulumi.CustomResource {
     scheduledSplitsConfig = registerOutput<LaunchScheduledSplitsConfig?>('scheduledSplitsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchScheduledSplitsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -2058,11 +2061,12 @@ class Launch extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LaunchState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Launch._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2079,10 +2083,10 @@ class Launch extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
     description = registerOutput<String?>('description');
-    executions = registerOutput<List<Map<String, dynamic>>>('executions');
-    groups = registerOutput<List<Map<String, dynamic>>>('groups');
+    executions = registerOutput<List<LaunchExecution>>('executions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchExecution>(guardedValue, (value) => LaunchExecution.fromMap((value as Map).cast<String, dynamic>())); });
+    groups = registerOutput<List<LaunchGroup>>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchGroup>(guardedValue, (value) => LaunchGroup.fromMap((value as Map).cast<String, dynamic>())); });
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
-    metricMonitors = registerOutput<List<Map<String, dynamic>>?>('metricMonitors');
+    metricMonitors = registerOutput<List<LaunchMetricMonitor>?>('metricMonitors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchMetricMonitor>(guardedValue, (value) => LaunchMetricMonitor.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     randomizationSalt = registerOutput<String?>('randomizationSalt');
@@ -2090,8 +2094,36 @@ class Launch extends pulumi.CustomResource {
     scheduledSplitsConfig = registerOutput<LaunchScheduledSplitsConfig?>('scheduledSplitsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchScheduledSplitsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Launch] resource.
+  Launch.reference(String urn)
+    : super(
+        'aws:evidently/launch:Launch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    description = registerOutput<String?>('description');
+    executions = registerOutput<List<LaunchExecution>>('executions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchExecution>(guardedValue, (value) => LaunchExecution.fromMap((value as Map).cast<String, dynamic>())); });
+    groups = registerOutput<List<LaunchGroup>>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchGroup>(guardedValue, (value) => LaunchGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    metricMonitors = registerOutput<List<LaunchMetricMonitor>?>('metricMonitors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchMetricMonitor>(guardedValue, (value) => LaunchMetricMonitor.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    randomizationSalt = registerOutput<String?>('randomizationSalt');
+    region = registerOutput<String>('region');
+    scheduledSplitsConfig = registerOutput<LaunchScheduledSplitsConfig?>('scheduledSplitsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LaunchScheduledSplitsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

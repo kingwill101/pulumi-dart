@@ -9,14 +9,14 @@ import 'sdkvoice_voice_profile_domain_server_side_encryption_configuration.dart'
 /// {@macro pulumi_chime_sdkvoice_voice_profile_domain_sdkvoice_voice_profile_domain_args_doc}
 class SdkvoiceVoiceProfileDomainArgs {
   /// Description of Voice Profile Domain.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of Voice Profile Domain.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration for server side encryption.
   final pulumi.Input<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration> serverSideEncryptionConfiguration;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SdkvoiceVoiceProfileDomainArgs].
   /// [description] Description of Voice Profile Domain.

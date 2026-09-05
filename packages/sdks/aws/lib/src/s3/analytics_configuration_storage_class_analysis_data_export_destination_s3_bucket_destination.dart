@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination {
   /// Account ID that owns the destination bucket.
-  final pulumi.Input<String>? bucketAccountId;
+  final pulumi.Input<String?>? bucketAccountId;
   /// ARN of the destination bucket.
   final pulumi.Input<String> bucketArn;
   /// Output format of exported analytics data. Allowed values: `CSV`. Default value: `CSV`.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// Prefix to append to exported analytics data.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination].
   /// [bucketAccountId] Account ID that owns the destination bucket.

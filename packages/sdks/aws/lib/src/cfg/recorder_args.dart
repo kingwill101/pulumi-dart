@@ -10,14 +10,14 @@ import 'recorder_recording_mode.dart';
 /// {@macro pulumi_cfg_recorder_recorder_args_doc}
 class RecorderArgs {
   /// The name of the configuration recorder. Defaults to `default`. Changing it recreates the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Recording group - see below.
-  final pulumi.Input<RecorderRecordingGroup>? recordingGroup;
+  final pulumi.Input<RecorderRecordingGroup?>? recordingGroup;
   /// Recording mode - see below.
-  final pulumi.Input<RecorderRecordingMode>? recordingMode;
+  final pulumi.Input<RecorderRecordingMode?>? recordingMode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
+  final pulumi.Input<String?>? region;
+  /// ARN of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [RecorderArgs].
@@ -25,7 +25,7 @@ class RecorderArgs {
   /// [recordingGroup] Recording group - see below.
   /// [recordingMode] Recording mode - see below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] Amazon Resource Name (ARN) of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
+  /// [roleArn] ARN of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
   const RecorderArgs({
     this.name,
     this.recordingGroup,

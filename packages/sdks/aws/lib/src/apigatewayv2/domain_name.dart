@@ -20,12 +20,12 @@ import 'domain_name_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.apigatewayv2.DomainName("example", {
-///     domainName: "ws-api.example.com",
 ///     domainNameConfiguration: {
 ///         certificateArn: exampleAwsAcmCertificate.arn,
 ///         endpointType: "REGIONAL",
 ///         securityPolicy: "TLS_1_2",
 ///     },
+///     domainName: "ws-api.example.com",
 /// });
 /// ```
 /// ```python
@@ -33,12 +33,12 @@ import 'domain_name_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.apigatewayv2.DomainName("example",
-///     domain_name="ws-api.example.com",
 ///     domain_name_configuration={
 ///         "certificate_arn": example_aws_acm_certificate["arn"],
 ///         "endpoint_type": "REGIONAL",
 ///         "security_policy": "TLS_1_2",
-///     })
+///     },
+///     domain_name="ws-api.example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,13 +50,13 @@ import 'domain_name_state.dart';
 /// {
 ///     var example = new Aws.ApiGatewayV2.DomainName("example", new()
 ///     {
-///         Domain = "ws-api.example.com",
 ///         DomainNameConfiguration = new Aws.ApiGatewayV2.Inputs.DomainNameDomainNameConfigurationArgs
 ///         {
 ///             CertificateArn = exampleAwsAcmCertificate.Arn,
 ///             EndpointType = "REGIONAL",
 ///             SecurityPolicy = "TLS_1_2",
 ///         },
+///         Domain = "ws-api.example.com",
 ///     });
 ///
 /// });
@@ -72,12 +72,12 @@ import 'domain_name_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apigatewayv2.NewDomainName(ctx, "example", &apigatewayv2.DomainNameArgs{
-/// 			DomainName: pulumi.String("ws-api.example.com"),
 /// 			DomainNameConfiguration: &apigatewayv2.DomainNameDomainNameConfigurationArgs{
 /// 				CertificateArn: pulumi.Any(exampleAwsAcmCertificate.Arn),
 /// 				EndpointType:   pulumi.String("REGIONAL"),
 /// 				SecurityPolicy: pulumi.String("TLS_1_2"),
 /// 			},
+/// 			DomainName: pulumi.String("ws-api.example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -96,12 +96,12 @@ import 'domain_name_state.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_domainname" "example" {
-///   domain_name = "ws-api.example.com"
 ///   domain_name_configuration = {
 ///     certificate_arn = exampleAwsAcmCertificate.arn
 ///     endpoint_type   = "REGIONAL"
 ///     security_policy = "TLS_1_2"
 ///   }
+///   domain_name = "ws-api.example.com"
 /// }
 /// ```
 /// ```java
@@ -127,12 +127,12 @@ import 'domain_name_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DomainName("example", DomainNameArgs.builder()
-///             .domainName("ws-api.example.com")
 ///             .domainNameConfiguration(DomainNameDomainNameConfigurationArgs.builder()
 ///                 .certificateArn(exampleAwsAcmCertificate.arn())
 ///                 .endpointType("REGIONAL")
 ///                 .securityPolicy("TLS_1_2")
 ///                 .build())
+///             .domainName("ws-api.example.com")
 ///             .build());
 ///
 ///     }
@@ -143,11 +143,11 @@ import 'domain_name_state.dart';
 ///   example:
 ///     type: aws:apigatewayv2:DomainName
 ///     properties:
-///       domainName: ws-api.example.com
 ///       domainNameConfiguration:
 ///         certificateArn: ${exampleAwsAcmCertificate.arn}
 ///         endpointType: REGIONAL
 ///         securityPolicy: TLS_1_2
+///       domainName: ws-api.example.com
 /// ```
 ///
 ///
@@ -159,22 +159,22 @@ import 'domain_name_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.apigatewayv2.DomainName("example", {
-///     domainName: "http-api.example.com",
 ///     domainNameConfiguration: {
 ///         certificateArn: exampleAwsAcmCertificate.arn,
 ///         endpointType: "REGIONAL",
 ///         securityPolicy: "TLS_1_2",
 ///     },
+///     domainName: "http-api.example.com",
 /// });
 /// const exampleRecord = new aws.route53.Record("example", {
-///     name: example.domainName,
-///     type: aws.route53.RecordType.A,
-///     zoneId: exampleAwsRoute53Zone.zoneId,
 ///     aliases: [{
 ///         name: example.domainNameConfiguration.targetDomainName,
 ///         zoneId: example.domainNameConfiguration.hostedZoneId,
 ///         evaluateTargetHealth: false,
 ///     }],
+///     name: example.domainName,
+///     type: aws.route53.RecordType.A,
+///     zoneId: exampleAwsRoute53Zone.zoneId,
 /// });
 /// ```
 /// ```python
@@ -182,21 +182,21 @@ import 'domain_name_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.apigatewayv2.DomainName("example",
-///     domain_name="http-api.example.com",
 ///     domain_name_configuration={
 ///         "certificate_arn": example_aws_acm_certificate["arn"],
 ///         "endpoint_type": "REGIONAL",
 ///         "security_policy": "TLS_1_2",
-///     })
+///     },
+///     domain_name="http-api.example.com")
 /// example_record = aws.route53.Record("example",
-///     name=example.domain_name,
-///     type=aws.route53.RecordType.A,
-///     zone_id=example_aws_route53_zone["zoneId"],
 ///     aliases=[{
 ///         "name": example.domain_name_configuration.target_domain_name,
 ///         "zone_id": example.domain_name_configuration.hosted_zone_id,
 ///         "evaluate_target_health": False,
-///     }])
+///     }],
+///     name=example.domain_name,
+///     type=aws.route53.RecordType.A,
+///     zone_id=example_aws_route53_zone["zoneId"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -208,20 +208,17 @@ import 'domain_name_state.dart';
 /// {
 ///     var example = new Aws.ApiGatewayV2.DomainName("example", new()
 ///     {
-///         Domain = "http-api.example.com",
 ///         DomainNameConfiguration = new Aws.ApiGatewayV2.Inputs.DomainNameDomainNameConfigurationArgs
 ///         {
 ///             CertificateArn = exampleAwsAcmCertificate.Arn,
 ///             EndpointType = "REGIONAL",
 ///             SecurityPolicy = "TLS_1_2",
 ///         },
+///         Domain = "http-api.example.com",
 ///     });
 ///
 ///     var exampleRecord = new Aws.Route53.Record("example", new()
 ///     {
-///         Name = example.Domain,
-///         Type = Aws.Route53.RecordType.A,
-///         ZoneId = exampleAwsRoute53Zone.ZoneId,
 ///         Aliases = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordAliasArgs
@@ -231,6 +228,9 @@ import 'domain_name_state.dart';
 ///                 EvaluateTargetHealth = false,
 ///             },
 ///         },
+///         Name = example.Domain,
+///         Type = Aws.Route53.RecordType.A,
+///         ZoneId = exampleAwsRoute53Zone.ZoneId,
 ///     });
 ///
 /// });
@@ -247,20 +247,17 @@ import 'domain_name_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := apigatewayv2.NewDomainName(ctx, "example", &apigatewayv2.DomainNameArgs{
-/// 			DomainName: pulumi.String("http-api.example.com"),
 /// 			DomainNameConfiguration: &apigatewayv2.DomainNameDomainNameConfigurationArgs{
 /// 				CertificateArn: pulumi.Any(exampleAwsAcmCertificate.Arn),
 /// 				EndpointType:   pulumi.String("REGIONAL"),
 /// 				SecurityPolicy: pulumi.String("TLS_1_2"),
 /// 			},
+/// 			DomainName: pulumi.String("http-api.example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewRecord(ctx, "example", &route53.RecordArgs{
-/// 			Name:   example.DomainName,
-/// 			Type:   pulumi.String(route53.RecordTypeA),
-/// 			ZoneId: pulumi.Any(exampleAwsRoute53Zone.ZoneId),
 /// 			Aliases: route53.RecordAliasArray{
 /// 				&route53.RecordAliasArgs{
 /// 					Name:                 example.DomainNameConfiguration.TargetDomainName(),
@@ -268,6 +265,9 @@ import 'domain_name_state.dart';
 /// 					EvaluateTargetHealth: pulumi.Bool(false),
 /// 				},
 /// 			},
+/// 			Name:   example.DomainName,
+/// 			Type:   pulumi.String(route53.RecordTypeA),
+/// 			ZoneId: pulumi.Any(exampleAwsRoute53Zone.ZoneId),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -286,22 +286,22 @@ import 'domain_name_state.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_domainname" "example" {
-///   domain_name = "http-api.example.com"
 ///   domain_name_configuration = {
 ///     certificate_arn = exampleAwsAcmCertificate.arn
 ///     endpoint_type   = "REGIONAL"
 ///     security_policy = "TLS_1_2"
 ///   }
+///   domain_name = "http-api.example.com"
 /// }
 /// resource "aws_route53_record" "example" {
-///   name    = aws_apigatewayv2_domainname.example.domain_name
-///   type    = "A"
-///   zone_id = exampleAwsRoute53Zone.zoneId
 ///   aliases {
 ///     name                   = aws_apigatewayv2_domainname.example.domain_name_configuration.target_domain_name
 ///     zone_id                = aws_apigatewayv2_domainname.example.domain_name_configuration.hosted_zone_id
 ///     evaluate_target_health = false
 ///   }
+///   name    = aws_apigatewayv2_domainname.example.domain_name
+///   type    = "A"
+///   zone_id = exampleAwsRoute53Zone.zoneId
 /// }
 /// ```
 /// ```java
@@ -330,23 +330,23 @@ import 'domain_name_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DomainName("example", DomainNameArgs.builder()
-///             .domainName("http-api.example.com")
 ///             .domainNameConfiguration(DomainNameDomainNameConfigurationArgs.builder()
 ///                 .certificateArn(exampleAwsAcmCertificate.arn())
 ///                 .endpointType("REGIONAL")
 ///                 .securityPolicy("TLS_1_2")
 ///                 .build())
+///             .domainName("http-api.example.com")
 ///             .build());
 ///
 ///         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
-///             .name(example.domainName())
-///             .type("A")
-///             .zoneId(exampleAwsRoute53Zone.zoneId())
 ///             .aliases(RecordAliasArgs.builder()
 ///                 .name(example.domainNameConfiguration().applyValue(_domainNameConfiguration -> _domainNameConfiguration.targetDomainName()))
 ///                 .zoneId(example.domainNameConfiguration().applyValue(_domainNameConfiguration -> _domainNameConfiguration.hostedZoneId()))
 ///                 .evaluateTargetHealth(false)
 ///                 .build())
+///             .name(example.domainName())
+///             .type("A")
+///             .zoneId(exampleAwsRoute53Zone.zoneId())
 ///             .build());
 ///
 ///     }
@@ -357,22 +357,22 @@ import 'domain_name_state.dart';
 ///   example:
 ///     type: aws:apigatewayv2:DomainName
 ///     properties:
-///       domainName: http-api.example.com
 ///       domainNameConfiguration:
 ///         certificateArn: ${exampleAwsAcmCertificate.arn}
 ///         endpointType: REGIONAL
 ///         securityPolicy: TLS_1_2
+///       domainName: http-api.example.com
 ///   exampleRecord:
 ///     type: aws:route53:Record
 ///     name: example
 ///     properties:
-///       name: ${example.domainName}
-///       type: A
-///       zoneId: ${exampleAwsRoute53Zone.zoneId}
 ///       aliases:
 ///         - name: ${example.domainNameConfiguration.targetDomainName}
 ///           zoneId: ${example.domainNameConfiguration.hostedZoneId}
 ///           evaluateTargetHealth: false
+///       name: ${example.domainName}
+///       type: A
+///       zoneId: ${exampleAwsRoute53Zone.zoneId}
 /// ```
 ///
 ///
@@ -415,7 +415,7 @@ class DomainName extends pulumi.CustomResource {
           'aws:apigatewayv2/domainName:DomainName',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiMappingSelectionExpression = registerOutput<String>('apiMappingSelectionExpression');
     arn = registerOutput<String>('arn');
@@ -424,8 +424,8 @@ class DomainName extends pulumi.CustomResource {
     mutualTlsAuthentication = registerOutput<DomainNameMutualTlsAuthentication?>('mutualTlsAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNameMutualTlsAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     routingMode = registerOutput<String>('routingMode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DomainName] resource's state with the given [name] and [id].
@@ -433,11 +433,12 @@ class DomainName extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainNameState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainName._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -458,7 +459,27 @@ class DomainName extends pulumi.CustomResource {
     mutualTlsAuthentication = registerOutput<DomainNameMutualTlsAuthentication?>('mutualTlsAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNameMutualTlsAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     routingMode = registerOutput<String>('routingMode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DomainName] resource.
+  DomainName.reference(String urn)
+    : super(
+        'aws:apigatewayv2/domainName:DomainName',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiMappingSelectionExpression = registerOutput<String>('apiMappingSelectionExpression');
+    arn = registerOutput<String>('arn');
+    domainName = registerOutput<String>('domainName');
+    domainNameConfiguration = registerOutput<DomainNameDomainNameConfiguration>('domainNameConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNameDomainNameConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mutualTlsAuthentication = registerOutput<DomainNameMutualTlsAuthentication?>('mutualTlsAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainNameMutualTlsAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    routingMode = registerOutput<String>('routingMode');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

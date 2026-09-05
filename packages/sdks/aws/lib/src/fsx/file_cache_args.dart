@@ -10,34 +10,34 @@ import 'file_cache_lustre_configuration.dart';
 /// {@macro pulumi_fsx_file_cache_file_cache_args_doc}
 class FileCacheArgs {
   /// Whether to copy tags for the cache to data repository associations. Defaults to `false`.
-  final pulumi.Input<bool>? copyTagsToDataRepositoryAssociations;
+  final pulumi.Input<bool?>? copyTagsToDataRepositoryAssociations;
   /// Configurations for up to 8 data repository associations (DRAs) to create during cache creation. All configurations must be of the same data repository type, either all S3 or all NFS. Maximum of 8. See `dataRepositoryAssociation` Block below.
-  final pulumi.Input<List<FileCacheDataRepositoryAssociation>>? dataRepositoryAssociations;
+  final pulumi.Input<List<FileCacheDataRepositoryAssociation>?>? dataRepositoryAssociations;
   /// Type of cache to create. The only supported value is `LUSTRE`.
   final pulumi.Input<String> fileCacheType;
   /// Version for the type of cache to create. The only supported value is `2.12`.
   final pulumi.Input<String> fileCacheTypeVersion;
-  /// ID of the AWS Key Management Service (KMS) key to use for encrypting data on the cache. Defaults to the Amazon FSx-managed KMS key for your account.
-  final pulumi.Input<String>? kmsKeyId;
+  /// ID of the KMS key to use for encrypting data on the cache. Defaults to the Amazon FSx-managed KMS key for your account.
+  final pulumi.Input<String?>? kmsKeyId;
   /// Configuration for the Lustre cache. Required when `fileCacheType` is `LUSTRE`. See `lustreConfiguration` Block below.
-  final pulumi.Input<List<FileCacheLustreConfiguration>>? lustreConfigurations;
+  final pulumi.Input<List<FileCacheLustreConfiguration>?>? lustreConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// IDs of the security groups to apply to all network interfaces created for cache access.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// Storage capacity of the cache in gibibytes (GiB). Valid values are `1200` GiB, `2400` GiB, and increments of `2400` GiB.
   final pulumi.Input<int> storageCapacity;
   /// Subnet IDs that the cache is accessible from. You can specify only one subnet ID.
   final pulumi.Input<List<String>> subnetIds;
   /// Map of tags to assign to the file cache. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FileCacheArgs].
   /// [copyTagsToDataRepositoryAssociations] Whether to copy tags for the cache to data repository associations. Defaults to `false`.
   /// [dataRepositoryAssociations] Configurations for up to 8 data repository associations (DRAs) to create during cache creation. All configurations must be of the same data repository type, either all S3 or all NFS. Maximum of 8. See `dataRepositoryAssociation` Block below.
   /// [fileCacheType] Type of cache to create. The only supported value is `LUSTRE`.
   /// [fileCacheTypeVersion] Version for the type of cache to create. The only supported value is `2.12`.
-  /// [kmsKeyId] ID of the AWS Key Management Service (KMS) key to use for encrypting data on the cache. Defaults to the Amazon FSx-managed KMS key for your account.
+  /// [kmsKeyId] ID of the KMS key to use for encrypting data on the cache. Defaults to the Amazon FSx-managed KMS key for your account.
   /// [lustreConfigurations] Configuration for the Lustre cache. Required when `fileCacheType` is `LUSTRE`. See `lustreConfiguration` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroupIds] IDs of the security groups to apply to all network interfaces created for cache access.
@@ -84,7 +84,7 @@ class FileCacheArgs {
       lustreConfigurations: (() { final guardedValue = map['lustreConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FileCacheLustreConfiguration>(guardedValue, (value) => FileCacheLustreConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      storageCapacity: pulumi.Input.fromValue(map['storageCapacity'] as int),
+      storageCapacity: pulumi.Input.fromValue((map['storageCapacity'] as num).toInt()),
       subnetIds: pulumi.Input.fromValue((map['subnetIds'] as List).cast<String>()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

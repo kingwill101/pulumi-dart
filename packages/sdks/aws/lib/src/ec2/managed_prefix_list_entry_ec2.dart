@@ -219,7 +219,7 @@ class ManagedPrefixListEntryEc2 extends pulumi.CustomResource {
           'aws:ec2/managedPrefixListEntry:ManagedPrefixListEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     description = registerOutput<String?>('description');
@@ -232,11 +232,12 @@ class ManagedPrefixListEntryEc2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedPrefixListEntryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedPrefixListEntryEc2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -250,6 +251,21 @@ class ManagedPrefixListEntryEc2 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cidr = registerOutput<String>('cidr');
+    description = registerOutput<String?>('description');
+    prefixListId = registerOutput<String>('prefixListId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ManagedPrefixListEntryEc2] resource.
+  ManagedPrefixListEntryEc2.reference(String urn)
+    : super(
+        'aws:ec2/managedPrefixListEntry:ManagedPrefixListEntry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cidr = registerOutput<String>('cidr');
     description = registerOutput<String?>('description');
     prefixListId = registerOutput<String>('prefixListId');

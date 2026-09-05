@@ -114,7 +114,7 @@ import 'model_package_group_state.dart';
 /// $ pulumi import aws:sagemaker/modelPackageGroup:ModelPackageGroup test_model_package_group my-code-repo
 /// ```
 class ModelPackageGroup extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Model Package Group.
+  /// ARN assigned by AWS to this Model Package Group.
   late final pulumi.Output<String> arn;
   /// A description for the model group.
   late final pulumi.Output<String?> modelPackageGroupDescription;
@@ -139,14 +139,14 @@ class ModelPackageGroup extends pulumi.CustomResource {
           'aws:sagemaker/modelPackageGroup:ModelPackageGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     modelPackageGroupDescription = registerOutput<String?>('modelPackageGroupDescription');
     modelPackageGroupName = registerOutput<String>('modelPackageGroupName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ModelPackageGroup] resource's state with the given [name] and [id].
@@ -154,11 +154,12 @@ class ModelPackageGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ModelPackageGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ModelPackageGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -176,7 +177,24 @@ class ModelPackageGroup extends pulumi.CustomResource {
     modelPackageGroupDescription = registerOutput<String?>('modelPackageGroupDescription');
     modelPackageGroupName = registerOutput<String>('modelPackageGroupName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ModelPackageGroup] resource.
+  ModelPackageGroup.reference(String urn)
+    : super(
+        'aws:sagemaker/modelPackageGroup:ModelPackageGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    modelPackageGroupDescription = registerOutput<String?>('modelPackageGroupDescription');
+    modelPackageGroupName = registerOutput<String>('modelPackageGroupName');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

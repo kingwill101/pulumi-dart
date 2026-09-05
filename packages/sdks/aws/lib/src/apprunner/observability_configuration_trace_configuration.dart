@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ObservabilityConfigurationTraceConfiguration {
   /// Implementation provider chosen for tracing App Runner services. Valid values: `AWSXRAY`.
-  final pulumi.Input<String>? vendor;
+  final pulumi.Input<String?>? vendor;
 
   /// Creates a new [ObservabilityConfigurationTraceConfiguration].
   /// [vendor] Implementation provider chosen for tracing App Runner services. Valid values: `AWSXRAY`.

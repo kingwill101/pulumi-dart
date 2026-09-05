@@ -6,9 +6,9 @@ class AgentDataSourceDataSourceConfigurationS3Configuration {
   /// ARN of the bucket that contains the data source.
   final pulumi.Input<String> bucketArn;
   /// Bucket account owner ID for the S3 bucket.
-  final pulumi.Input<String>? bucketOwnerAccountId;
+  final pulumi.Input<String?>? bucketOwnerAccountId;
   /// List of S3 prefixes that define the object containing the data sources. For more information, see [Organizing objects using prefixes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html).
-  final pulumi.Input<List<String>>? inclusionPrefixes;
+  final pulumi.Input<List<String>?>? inclusionPrefixes;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationS3Configuration].
   /// [bucketArn] ARN of the bucket that contains the data source.

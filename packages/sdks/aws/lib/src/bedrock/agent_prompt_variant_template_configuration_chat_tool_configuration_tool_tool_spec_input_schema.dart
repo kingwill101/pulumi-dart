@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema {
   /// A JSON object defining the input schema for the tool.
-  final pulumi.Input<String>? json;
+  final pulumi.Input<String?>? json;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema].
   /// [json] A JSON object defining the input schema for the tool.

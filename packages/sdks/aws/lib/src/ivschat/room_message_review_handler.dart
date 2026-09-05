@@ -6,9 +6,9 @@ class RoomMessageReviewHandler {
   /// The fallback behavior (whether the message
   /// is allowed or denied) if the handler does not return a valid response,
   /// encounters an error, or times out. Valid values: `ALLOW`, `DENY`.
-  final pulumi.Input<String>? fallbackResult;
+  final pulumi.Input<String?>? fallbackResult;
   /// ARN of the lambda message review handler function.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [RoomMessageReviewHandler].
   /// [fallbackResult] The fallback behavior (whether the message

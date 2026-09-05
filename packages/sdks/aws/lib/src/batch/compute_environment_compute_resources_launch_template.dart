@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ComputeEnvironmentComputeResourcesLaunchTemplate {
   /// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
-  final pulumi.Input<String>? launchTemplateId;
+  final pulumi.Input<String?>? launchTemplateId;
   /// Name of the launch template.
-  final pulumi.Input<String>? launchTemplateName;
+  final pulumi.Input<String?>? launchTemplateName;
   /// The version number of the launch template. Default: The default version of the launch template.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ComputeEnvironmentComputeResourcesLaunchTemplate].
   /// [launchTemplateId] ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.

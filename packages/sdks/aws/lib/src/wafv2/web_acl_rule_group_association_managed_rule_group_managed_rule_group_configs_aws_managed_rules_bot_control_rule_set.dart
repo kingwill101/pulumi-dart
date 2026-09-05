@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesBotControlRuleSet {
   /// Applies only to the targeted inspection level. Determines whether to use machine learning (ML) to analyze your web traffic for bot-related activity. Defaults to `false`.
-  final pulumi.Input<bool>? enableMachineLearning;
+  final pulumi.Input<bool?>? enableMachineLearning;
   /// Inspection level to use for the Bot Control rule group.
   final pulumi.Input<String> inspectionLevel;
 

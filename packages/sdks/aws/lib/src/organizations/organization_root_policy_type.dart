@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationRootPolicyType {
   /// Status of the policy type as it relates to the associated root.
-  final pulumi.Input<String>? status;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [OrganizationRootPolicyType].
   /// [status] Status of the policy type as it relates to the associated root.

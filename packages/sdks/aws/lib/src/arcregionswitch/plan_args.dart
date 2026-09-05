@@ -13,34 +13,34 @@ import 'plan_workflow.dart';
 /// {@macro pulumi_arcregionswitch_plan_plan_args_doc}
 class PlanArgs {
   /// CloudWatch alarms associated with the plan. See `associatedAlarms` Block for details.
-  final pulumi.Input<List<PlanAssociatedAlarm>>? associatedAlarms;
+  final pulumi.Input<List<PlanAssociatedAlarm>?>? associatedAlarms;
   /// Description of the plan.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ARN of the IAM role that ARC Region Switch will assume to execute the plan.
   final pulumi.Input<String> executionRole;
   /// Name of the plan. Must be unique within the account.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Primary region for the plan.
-  final pulumi.Input<String>? primaryRegion;
+  final pulumi.Input<String?>? primaryRegion;
   /// Recovery approach for the plan. Valid values: `activeActive`, `activePassive`.
   final pulumi.Input<String> recoveryApproach;
   /// Recovery time objective in minutes.
-  final pulumi.Input<int>? recoveryTimeObjectiveMinutes;
+  final pulumi.Input<int?>? recoveryTimeObjectiveMinutes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of AWS regions involved in the plan. Must contain at least 2 regions.
   final pulumi.Input<List<String>> regions;
   /// Configuration for automated execution reports. See `reportConfiguration` Block for details.
-  final pulumi.Input<List<PlanReportConfiguration>>? reportConfigurations;
+  final pulumi.Input<List<PlanReportConfiguration>?>? reportConfigurations;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<PlanTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<PlanTimeouts?>? timeouts;
   /// Triggers that can initiate the plan execution. See `triggers` Block for details.
-  final pulumi.Input<List<PlanTrigger>>? triggers;
+  final pulumi.Input<List<PlanTrigger>?>? triggers;
   /// Workflows that define the steps to execute. See `workflow` Block for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<PlanWorkflow>>? workflows;
+  final pulumi.Input<List<PlanWorkflow>?>? workflows;
 
   /// Creates a new [PlanArgs].
   /// [associatedAlarms] CloudWatch alarms associated with the plan. See `associatedAlarms` Block for details.
@@ -101,7 +101,7 @@ class PlanArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryRegion: (() { final guardedValue = map['primaryRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryApproach: pulumi.Input.fromValue(map['recoveryApproach'] as String),
-      recoveryTimeObjectiveMinutes: (() { final guardedValue = map['recoveryTimeObjectiveMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryTimeObjectiveMinutes: (() { final guardedValue = map['recoveryTimeObjectiveMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regions: pulumi.Input.fromValue((map['regions'] as List).cast<String>()),
       reportConfigurations: (() { final guardedValue = map['reportConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanReportConfiguration>(guardedValue, (value) => PlanReportConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),

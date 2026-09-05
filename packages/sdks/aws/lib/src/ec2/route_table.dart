@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_table_args.dart';
+import 'route_table_route.dart';
 import 'route_table_state.dart';
 
 /// Provides a resource to create a VPC routing table.
@@ -27,7 +28,6 @@ import 'route_table_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ec2.RouteTable("example", {
-///     vpcId: exampleAwsVpc.id,
 ///     routes: [
 ///         {
 ///             cidrBlock: "10.0.1.0/24",
@@ -38,6 +38,7 @@ import 'route_table_state.dart';
 ///             egressOnlyGatewayId: exampleAwsEgressOnlyInternetGateway.id,
 ///         },
 ///     ],
+///     vpcId: exampleAwsVpc.id,
 ///     tags: {
 ///         Name: "example",
 ///     },
@@ -48,7 +49,6 @@ import 'route_table_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ec2.RouteTable("example",
-///     vpc_id=example_aws_vpc["id"],
 ///     routes=[
 ///         {
 ///             "cidr_block": "10.0.1.0/24",
@@ -59,6 +59,7 @@ import 'route_table_state.dart';
 ///             "egress_only_gateway_id": example_aws_egress_only_internet_gateway["id"],
 ///         },
 ///     ],
+///     vpc_id=example_aws_vpc["id"],
 ///     tags={
 ///         "Name": "example",
 ///     })
@@ -73,7 +74,6 @@ import 'route_table_state.dart';
 /// {
 ///     var example = new Aws.Ec2.RouteTable("example", new()
 ///     {
-///         VpcId = exampleAwsVpc.Id,
 ///         Routes = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.RouteTableRouteArgs
@@ -87,6 +87,7 @@ import 'route_table_state.dart';
 ///                 EgressOnlyGatewayId = exampleAwsEgressOnlyInternetGateway.Id,
 ///             },
 ///         },
+///         VpcId = exampleAwsVpc.Id,
 ///         Tags =
 ///         {
 ///             { "Name", "example" },
@@ -106,7 +107,6 @@ import 'route_table_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewRouteTable(ctx, "example", &ec2.RouteTableArgs{
-/// 			VpcId: pulumi.Any(exampleAwsVpc.Id),
 /// 			Routes: ec2.RouteTableRouteArray{
 /// 				&ec2.RouteTableRouteArgs{
 /// 					CidrBlock: pulumi.String("10.0.1.0/24"),
@@ -117,6 +117,7 @@ import 'route_table_state.dart';
 /// 					EgressOnlyGatewayId: pulumi.Any(exampleAwsEgressOnlyInternetGateway.Id),
 /// 				},
 /// 			},
+/// 			VpcId: pulumi.Any(exampleAwsVpc.Id),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example"),
 /// 			},
@@ -138,7 +139,6 @@ import 'route_table_state.dart';
 /// }
 ///
 /// resource "aws_ec2_routetable" "example" {
-///   vpc_id = exampleAwsVpc.id
 ///   routes {
 ///     cidr_block = "10.0.1.0/24"
 ///     gateway_id = exampleAwsInternetGateway.id
@@ -147,6 +147,7 @@ import 'route_table_state.dart';
 ///     ipv6_cidr_block        = "::/0"
 ///     egress_only_gateway_id = exampleAwsEgressOnlyInternetGateway.id
 ///   }
+///   vpc_id = exampleAwsVpc.id
 ///   tags = {
 ///     "Name" = "example"
 ///   }
@@ -175,7 +176,6 @@ import 'route_table_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RouteTable("example", RouteTableArgs.builder()
-///             .vpcId(exampleAwsVpc.id())
 ///             .routes(
 ///                 RouteTableRouteArgs.builder()
 ///                     .cidrBlock("10.0.1.0/24")
@@ -185,6 +185,7 @@ import 'route_table_state.dart';
 ///                     .ipv6CidrBlock("::/0")
 ///                     .egressOnlyGatewayId(exampleAwsEgressOnlyInternetGateway.id())
 ///                     .build())
+///             .vpcId(exampleAwsVpc.id())
 ///             .tags(Map.of("Name", "example"))
 ///             .build());
 ///
@@ -196,12 +197,12 @@ import 'route_table_state.dart';
 ///   example:
 ///     type: aws:ec2:RouteTable
 ///     properties:
-///       vpcId: ${exampleAwsVpc.id}
 ///       routes:
 ///         - cidrBlock: 10.0.1.0/24
 ///           gatewayId: ${exampleAwsInternetGateway.id}
 ///         - ipv6CidrBlock: ::/0
 ///           egressOnlyGatewayId: ${exampleAwsEgressOnlyInternetGateway.id}
+///       vpcId: ${exampleAwsVpc.id}
 ///       tags:
 ///         Name: example
 /// ```
@@ -348,11 +349,11 @@ import 'route_table_state.dart';
 ///
 /// const test = new aws.ec2.Vpc("test", {cidrBlock: "10.1.0.0/16"});
 /// const testRouteTable = new aws.ec2.RouteTable("test", {
-///     vpcId: test.id,
 ///     routes: [{
 ///         cidrBlock: "10.1.0.0/16",
 ///         gatewayId: "local",
 ///     }],
+///     vpcId: test.id,
 /// });
 /// ```
 /// ```python
@@ -361,11 +362,11 @@ import 'route_table_state.dart';
 ///
 /// test = aws.ec2.Vpc("test", cidr_block="10.1.0.0/16")
 /// test_route_table = aws.ec2.RouteTable("test",
-///     vpc_id=test.id,
 ///     routes=[{
 ///         "cidr_block": "10.1.0.0/16",
 ///         "gateway_id": "local",
-///     }])
+///     }],
+///     vpc_id=test.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -382,7 +383,6 @@ import 'route_table_state.dart';
 ///
 ///     var testRouteTable = new Aws.Ec2.RouteTable("test", new()
 ///     {
-///         VpcId = test.Id,
 ///         Routes = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.RouteTableRouteArgs
@@ -391,6 +391,7 @@ import 'route_table_state.dart';
 ///                 GatewayId = "local",
 ///             },
 ///         },
+///         VpcId = test.Id,
 ///     });
 ///
 /// });
@@ -412,13 +413,13 @@ import 'route_table_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewRouteTable(ctx, "test", &ec2.RouteTableArgs{
-/// 			VpcId: test.ID().ToIDOutput().ToStringOutput(),
 /// 			Routes: ec2.RouteTableRouteArray{
 /// 				&ec2.RouteTableRouteArgs{
 /// 					CidrBlock: pulumi.String("10.1.0.0/16"),
 /// 					GatewayId: pulumi.String("local"),
 /// 				},
 /// 			},
+/// 			VpcId: test.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -440,11 +441,11 @@ import 'route_table_state.dart';
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_routetable" "test" {
-///   vpc_id = aws_ec2_vpc.test.id
 ///   routes {
 ///     cidr_block = "10.1.0.0/16"
 ///     gateway_id = "local"
 ///   }
+///   vpc_id = aws_ec2_vpc.test.id
 /// }
 /// ```
 /// ```java
@@ -476,11 +477,11 @@ import 'route_table_state.dart';
 ///             .build());
 ///
 ///         var testRouteTable = new RouteTable("testRouteTable", RouteTableArgs.builder()
-///             .vpcId(test.id())
 ///             .routes(RouteTableRouteArgs.builder()
 ///                 .cidrBlock("10.1.0.0/16")
 ///                 .gatewayId("local")
 ///                 .build())
+///             .vpcId(test.id())
 ///             .build());
 ///
 ///     }
@@ -496,10 +497,10 @@ import 'route_table_state.dart';
 ///     type: aws:ec2:RouteTable
 ///     name: test
 ///     properties:
-///       vpcId: ${test.id}
 ///       routes:
 ///         - cidrBlock: 10.1.0.0/16
 ///           gatewayId: local
+///       vpcId: ${test.id}
 /// ```
 ///
 ///
@@ -517,11 +518,11 @@ import 'route_table_state.dart';
 /// });
 /// const testNetworkInterface = new aws.ec2.NetworkInterface("test", {subnetId: testSubnet.id});
 /// const testRouteTable = new aws.ec2.RouteTable("test", {
-///     vpcId: test.id,
 ///     routes: [{
 ///         cidrBlock: test.cidrBlock,
 ///         networkInterfaceId: testNetworkInterface.id,
 ///     }],
+///     vpcId: test.id,
 /// });
 /// ```
 /// ```python
@@ -534,11 +535,11 @@ import 'route_table_state.dart';
 ///     vpc_id=test.id)
 /// test_network_interface = aws.ec2.NetworkInterface("test", subnet_id=test_subnet.id)
 /// test_route_table = aws.ec2.RouteTable("test",
-///     vpc_id=test.id,
 ///     routes=[{
 ///         "cidr_block": test.cidr_block,
 ///         "network_interface_id": test_network_interface.id,
-///     }])
+///     }],
+///     vpc_id=test.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -566,7 +567,6 @@ import 'route_table_state.dart';
 ///
 ///     var testRouteTable = new Aws.Ec2.RouteTable("test", new()
 ///     {
-///         VpcId = test.Id,
 ///         Routes = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.RouteTableRouteArgs
@@ -575,6 +575,7 @@ import 'route_table_state.dart';
 ///                 NetworkInterfaceId = testNetworkInterface.Id,
 ///             },
 ///         },
+///         VpcId = test.Id,
 ///     });
 ///
 /// });
@@ -609,13 +610,13 @@ import 'route_table_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewRouteTable(ctx, "test", &ec2.RouteTableArgs{
-/// 			VpcId: test.ID().ToIDOutput().ToStringOutput(),
 /// 			Routes: ec2.RouteTableRouteArray{
 /// 				&ec2.RouteTableRouteArgs{
 /// 					CidrBlock:          test.CidrBlock,
 /// 					NetworkInterfaceId: testNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
+/// 			VpcId: test.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -637,11 +638,11 @@ import 'route_table_state.dart';
 ///   cidr_block = "10.1.0.0/16"
 /// }
 /// resource "aws_ec2_routetable" "test" {
-///   vpc_id = aws_ec2_vpc.test.id
 ///   routes {
 ///     cidr_block           = aws_ec2_vpc.test.cidr_block
 ///     network_interface_id = aws_ec2_networkinterface.test.id
 ///   }
+///   vpc_id = aws_ec2_vpc.test.id
 /// }
 /// resource "aws_ec2_subnet" "test" {
 ///   cidr_block = "10.1.1.0/24"
@@ -693,11 +694,11 @@ import 'route_table_state.dart';
 ///             .build());
 ///
 ///         var testRouteTable = new RouteTable("testRouteTable", RouteTableArgs.builder()
-///             .vpcId(test.id())
 ///             .routes(RouteTableRouteArgs.builder()
 ///                 .cidrBlock(test.cidrBlock())
 ///                 .networkInterfaceId(testNetworkInterface.id())
 ///                 .build())
+///             .vpcId(test.id())
 ///             .build());
 ///
 ///     }
@@ -713,10 +714,10 @@ import 'route_table_state.dart';
 ///     type: aws:ec2:RouteTable
 ///     name: test
 ///     properties:
-///       vpcId: ${test.id}
 ///       routes:
 ///         - cidrBlock: ${test.cidrBlock}
 ///           networkInterfaceId: ${testNetworkInterface.id}
+///       vpcId: ${test.id}
 ///   testSubnet:
 ///     type: aws:ec2:Subnet
 ///     name: test
@@ -765,7 +766,7 @@ class RouteTable extends pulumi.CustomResource {
   /// This means that omitting this argument is interpreted as ignoring any existing routes. To remove all managed routes an empty list should be specified. See the example above.
   ///
   /// &gt; **NOTE on Route Tables and Routes:** This provider currently provides both a standalone Route resource (`aws.ec2.Route`) and a Route Table resource with routes defined in-line (`aws.ec2.RouteTable`). At this time you cannot use a `aws.ec2.RouteTable` inline `route` blocks in conjunction with any `aws.ec2.Route` resources. Doing so will cause a conflict of rule settings and will overwrite rules.
-  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+  late final pulumi.Output<List<RouteTableRoute>> routes;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -785,15 +786,15 @@ class RouteTable extends pulumi.CustomResource {
           'aws:ec2/routeTable:RouteTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ownerId = registerOutput<String>('ownerId');
-    propagatingVgws = registerOutput<List<String>>('propagatingVgws');
+    propagatingVgws = registerOutput<List<String>>('propagatingVgws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    routes = registerOutput<List<RouteTableRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteTableRoute>(guardedValue, (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -802,11 +803,12 @@ class RouteTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -822,11 +824,30 @@ class RouteTable extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     ownerId = registerOutput<String>('ownerId');
-    propagatingVgws = registerOutput<List<String>>('propagatingVgws');
+    propagatingVgws = registerOutput<List<String>>('propagatingVgws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    routes = registerOutput<List<RouteTableRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteTableRoute>(guardedValue, (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [RouteTable] resource.
+  RouteTable.reference(String urn)
+    : super(
+        'aws:ec2/routeTable:RouteTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    ownerId = registerOutput<String>('ownerId');
+    propagatingVgws = registerOutput<List<String>>('propagatingVgws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    routes = registerOutput<List<RouteTableRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteTableRoute>(guardedValue, (value) => RouteTableRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

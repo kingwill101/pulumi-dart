@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobInputDataConfigShuffleConfig {
   /// Seed value used to shuffle the training data.
-  final pulumi.Input<int>? seed;
+  final pulumi.Input<int?>? seed;
 
   /// Creates a new [TrainingJobInputDataConfigShuffleConfig].
   /// [seed] Seed value used to shuffle the training data.
@@ -20,7 +20,7 @@ class TrainingJobInputDataConfigShuffleConfig {
 
   factory TrainingJobInputDataConfigShuffleConfig.fromMap(Map<String, dynamic> map) {
     return TrainingJobInputDataConfigShuffleConfig(
-      seed: (() { final guardedValue = map['seed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      seed: (() { final guardedValue = map['seed']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

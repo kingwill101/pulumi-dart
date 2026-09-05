@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_parameter_group_args.dart';
+import 'cluster_parameter_group_parameter.dart';
 import 'cluster_parameter_group_state.dart';
 
 /// Manages a Neptune Cluster Parameter Group
@@ -12,13 +13,13 @@ import 'cluster_parameter_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.neptune.ClusterParameterGroup("example", {
-///     family: "neptune1",
-///     name: "example",
-///     description: "neptune cluster parameter group",
 ///     parameters: [{
 ///         name: "neptune_enable_audit_log",
 ///         value: "1",
 ///     }],
+///     family: "neptune1",
+///     name: "example",
+///     description: "neptune cluster parameter group",
 /// });
 /// ```
 /// ```python
@@ -26,13 +27,13 @@ import 'cluster_parameter_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.neptune.ClusterParameterGroup("example",
-///     family="neptune1",
-///     name="example",
-///     description="neptune cluster parameter group",
 ///     parameters=[{
 ///         "name": "neptune_enable_audit_log",
 ///         "value": "1",
-///     }])
+///     }],
+///     family="neptune1",
+///     name="example",
+///     description="neptune cluster parameter group")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,9 +45,6 @@ import 'cluster_parameter_group_state.dart';
 /// {
 ///     var example = new Aws.Neptune.ClusterParameterGroup("example", new()
 ///     {
-///         Family = "neptune1",
-///         Name = "example",
-///         Description = "neptune cluster parameter group",
 ///         Parameters = new[]
 ///         {
 ///             new Aws.Neptune.Inputs.ClusterParameterGroupParameterArgs
@@ -55,6 +53,9 @@ import 'cluster_parameter_group_state.dart';
 ///                 Value = "1",
 ///             },
 ///         },
+///         Family = "neptune1",
+///         Name = "example",
+///         Description = "neptune cluster parameter group",
 ///     });
 ///
 /// });
@@ -70,15 +71,15 @@ import 'cluster_parameter_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := neptune.NewClusterParameterGroup(ctx, "example", &neptune.ClusterParameterGroupArgs{
-/// 			Family:      pulumi.String("neptune1"),
-/// 			Name:        pulumi.String("example"),
-/// 			Description: pulumi.String("neptune cluster parameter group"),
 /// 			Parameters: neptune.ClusterParameterGroupParameterArray{
 /// 				&neptune.ClusterParameterGroupParameterArgs{
 /// 					Name:  pulumi.String("neptune_enable_audit_log"),
 /// 					Value: pulumi.String("1"),
 /// 				},
 /// 			},
+/// 			Family:      pulumi.String("neptune1"),
+/// 			Name:        pulumi.String("example"),
+/// 			Description: pulumi.String("neptune cluster parameter group"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -97,13 +98,13 @@ import 'cluster_parameter_group_state.dart';
 /// }
 ///
 /// resource "aws_neptune_clusterparametergroup" "example" {
-///   family      = "neptune1"
-///   name        = "example"
-///   description = "neptune cluster parameter group"
 ///   parameters {
 ///     name  = "neptune_enable_audit_log"
 ///     value = 1
 ///   }
+///   family      = "neptune1"
+///   name        = "example"
+///   description = "neptune cluster parameter group"
 /// }
 /// ```
 /// ```java
@@ -129,13 +130,13 @@ import 'cluster_parameter_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ClusterParameterGroup("example", ClusterParameterGroupArgs.builder()
-///             .family("neptune1")
-///             .name("example")
-///             .description("neptune cluster parameter group")
 ///             .parameters(ClusterParameterGroupParameterArgs.builder()
 ///                 .name("neptune_enable_audit_log")
 ///                 .value("1")
 ///                 .build())
+///             .family("neptune1")
+///             .name("example")
+///             .description("neptune cluster parameter group")
 ///             .build());
 ///
 ///     }
@@ -146,12 +147,12 @@ import 'cluster_parameter_group_state.dart';
 ///   example:
 ///     type: aws:neptune:ClusterParameterGroup
 ///     properties:
-///       family: neptune1
-///       name: example
-///       description: neptune cluster parameter group
 ///       parameters:
 ///         - name: neptune_enable_audit_log
 ///           value: 1
+///       family: neptune1
+///       name: example
+///       description: neptune cluster parameter group
 /// ```
 ///
 ///
@@ -174,7 +175,7 @@ class ClusterParameterGroup extends pulumi.CustomResource {
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
   /// A list of neptune parameters to apply.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<ClusterParameterGroupParameter>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -194,17 +195,17 @@ class ClusterParameterGroup extends pulumi.CustomResource {
           'aws:neptune/clusterParameterGroup:ClusterParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ClusterParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterParameterGroupParameter>(guardedValue, (value) => ClusterParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ClusterParameterGroup] resource's state with the given [name] and [id].
@@ -212,11 +213,12 @@ class ClusterParameterGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterParameterGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterParameterGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,9 +237,29 @@ class ClusterParameterGroup extends pulumi.CustomResource {
     family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ClusterParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterParameterGroupParameter>(guardedValue, (value) => ClusterParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ClusterParameterGroup] resource.
+  ClusterParameterGroup.reference(String urn)
+    : super(
+        'aws:neptune/clusterParameterGroup:ClusterParameterGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    family = registerOutput<String>('family');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    parameters = registerOutput<List<ClusterParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterParameterGroupParameter>(guardedValue, (value) => ClusterParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

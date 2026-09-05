@@ -5,34 +5,34 @@ import 'fsx_open_zfs_file_system_protocol.dart';
 
 /// Input properties used for looking up and filtering FsxOpenZfsFileSystem resources.
 class FsxOpenZfsFileSystemState {
-  /// Amazon Resource Name (ARN) of the DataSync Location.
-  final pulumi.Input<String>? arn;
+  /// ARN of the DataSync Location.
+  final pulumi.Input<String?>? arn;
   /// The time that the FSx for openzfs location was created.
-  final pulumi.Input<String>? creationTime;
-  /// The Amazon Resource Name (ARN) for the FSx for OpenZfs file system.
-  final pulumi.Input<String>? fsxFilesystemArn;
+  final pulumi.Input<String?>? creationTime;
+  /// ARN for the FSx for OpenZfs file system.
+  final pulumi.Input<String?>? fsxFilesystemArn;
   /// The type of protocol that DataSync uses to access your file system. See below.
-  final pulumi.Input<FsxOpenZfsFileSystemProtocol>? protocol;
+  final pulumi.Input<FsxOpenZfsFileSystemProtocol?>? protocol;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for openzfs file system.
-  final pulumi.Input<List<String>>? securityGroupArns;
+  final pulumi.Input<String?>? region;
+  /// ARNs of the security groups that are to use to configure the FSx for openzfs file system.
+  final pulumi.Input<List<String>?>? securityGroupArns;
   /// Subdirectory to perform actions as source or destination. Must start with `/fsx`.
-  final pulumi.Input<String>? subdirectory;
+  final pulumi.Input<String?>? subdirectory;
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The URL of the FSx for openzfs location that was described.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [FsxOpenZfsFileSystemState].
-  /// [arn] Amazon Resource Name (ARN) of the DataSync Location.
+  /// [arn] ARN of the DataSync Location.
   /// [creationTime] The time that the FSx for openzfs location was created.
-  /// [fsxFilesystemArn] The Amazon Resource Name (ARN) for the FSx for OpenZfs file system.
+  /// [fsxFilesystemArn] ARN for the FSx for OpenZfs file system.
   /// [protocol] The type of protocol that DataSync uses to access your file system. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityGroupArns] The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for openzfs file system.
+  /// [securityGroupArns] ARNs of the security groups that are to use to configure the FSx for openzfs file system.
   /// [subdirectory] Subdirectory to perform actions as source or destination. Must start with `/fsx`.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.

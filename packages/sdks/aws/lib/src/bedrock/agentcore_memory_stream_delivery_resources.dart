@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_memory_stream_delivery_resources_resource.dart';
 
 class AgentcoreMemoryStreamDeliveryResources {
-  /// List of stream delivery resource configurations. See `resource` below.
-  final pulumi.Input<AgentcoreMemoryStreamDeliveryResourcesResource>? resource;
+  /// List of stream delivery resource configurations. See `resource` Block below.
+  final pulumi.Input<AgentcoreMemoryStreamDeliveryResourcesResource?>? resource;
 
   /// Creates a new [AgentcoreMemoryStreamDeliveryResources].
-  /// [resource] List of stream delivery resource configurations. See `resource` below.
+  /// [resource] List of stream delivery resource configurations. See `resource` Block below.
   const AgentcoreMemoryStreamDeliveryResources({
     this.resource,
   });

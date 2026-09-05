@@ -7,26 +7,26 @@ import 'model_card_timeouts.dart';
 /// Input properties used for looking up and filtering ModelCard resources.
 class ModelCardState {
   /// Content of the model card in [model card JSON schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema).
-  final pulumi.Input<String>? content;
-  /// The Amazon Resource Name (ARN) of the model card.
-  final pulumi.Input<String>? modelCardArn;
+  final pulumi.Input<String?>? content;
+  /// ARN of the model card.
+  final pulumi.Input<String?>? modelCardArn;
   /// Name of the model card.
-  final pulumi.Input<String>? modelCardName;
+  final pulumi.Input<String?>? modelCardName;
   /// Approval status of the model card. Valid values: `Draft`, `PendingReview`, `Approved`, `Archived`.
-  final pulumi.Input<String>? modelCardStatus;
+  final pulumi.Input<String?>? modelCardStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
-  final pulumi.Input<ModelCardSecurityConfig>? securityConfig;
+  final pulumi.Input<ModelCardSecurityConfig?>? securityConfig;
   /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ModelCardTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ModelCardTimeouts?>? timeouts;
 
   /// Creates a new [ModelCardState].
   /// [content] Content of the model card in [model card JSON schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema).
-  /// [modelCardArn] The Amazon Resource Name (ARN) of the model card.
+  /// [modelCardArn] ARN of the model card.
   /// [modelCardName] Name of the model card.
   /// [modelCardStatus] Approval status of the model card. Valid values: `Draft`, `PendingReview`, `Approved`, `Archived`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

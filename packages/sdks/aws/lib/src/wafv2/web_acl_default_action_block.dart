@@ -5,7 +5,7 @@ import 'web_acl_default_action_block_custom_response.dart';
 
 class WebAclDefaultActionBlock {
   /// Defines a custom response for the web request. See `customResponse` below for details.
-  final pulumi.Input<WebAclDefaultActionBlockCustomResponse>? customResponse;
+  final pulumi.Input<WebAclDefaultActionBlockCustomResponse?>? customResponse;
 
   /// Creates a new [WebAclDefaultActionBlock].
   /// [customResponse] Defines a custom response for the web request. See `customResponse` below for details.

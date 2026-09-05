@@ -152,7 +152,7 @@ class TransitGatewayConnectPeerAssociation extends pulumi.CustomResource {
           'aws:networkmanager/transitGatewayConnectPeerAssociation:TransitGatewayConnectPeerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     deviceId = registerOutput<String>('deviceId');
     globalNetworkId = registerOutput<String>('globalNetworkId');
@@ -165,11 +165,12 @@ class TransitGatewayConnectPeerAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TransitGatewayConnectPeerAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TransitGatewayConnectPeerAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -183,6 +184,21 @@ class TransitGatewayConnectPeerAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deviceId = registerOutput<String>('deviceId');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    linkId = registerOutput<String?>('linkId');
+    transitGatewayConnectPeerArn = registerOutput<String>('transitGatewayConnectPeerArn');
+  }
+
+  /// Creates a typed reference to an existing [TransitGatewayConnectPeerAssociation] resource.
+  TransitGatewayConnectPeerAssociation.reference(String urn)
+    : super(
+        'aws:networkmanager/transitGatewayConnectPeerAssociation:TransitGatewayConnectPeerAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deviceId = registerOutput<String>('deviceId');
     globalNetworkId = registerOutput<String>('globalNetworkId');
     linkId = registerOutput<String?>('linkId');

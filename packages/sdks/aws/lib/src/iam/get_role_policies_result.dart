@@ -4,28 +4,28 @@
 /// Result data returned by getRolePolicies.
 class GetRolePoliciesResult {
   /// Set of inline policy names associated with the role.
-  final List<String> policyNames;
-  final String roleName;
+  final List<String>? policyNames;
+  final String? roleName;
 
   /// Creates a new [GetRolePoliciesResult].
   /// [policyNames] Set of inline policy names associated with the role.
-  /// [roleName] Required.
+  /// [roleName] Optional.
   const GetRolePoliciesResult({
-    required this.policyNames,
-    required this.roleName,
+    this.policyNames,
+    this.roleName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policyNames': policyNames,
-      'roleName': roleName,
+      'policyNames': ?policyNames,
+      'roleName': ?roleName,
     };
   }
 
   factory GetRolePoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetRolePoliciesResult(
-      policyNames: (map['policyNames'] as List).cast<String>(),
-      roleName: map['roleName'] as String,
+      policyNames: (() { final guardedValue = map['policyNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

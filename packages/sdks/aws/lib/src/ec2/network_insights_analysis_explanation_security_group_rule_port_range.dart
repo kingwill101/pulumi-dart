@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange {
-  final pulumi.Input<int>? from;
-  final pulumi.Input<int>? to;
+  final pulumi.Input<int?>? from;
+  final pulumi.Input<int?>? to;
 
   /// Creates a new [NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange].
   /// [from] Optional.
@@ -23,8 +23,8 @@ class NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange {
 
   factory NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationSecurityGroupRulePortRange(
-      from: (() { final guardedValue = map['from']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      to: (() { final guardedValue = map['to']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      from: (() { final guardedValue = map['from']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      to: (() { final guardedValue = map['to']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

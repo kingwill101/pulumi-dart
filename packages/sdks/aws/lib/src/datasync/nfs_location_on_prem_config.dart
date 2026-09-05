@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NfsLocationOnPremConfig {
-  /// List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+  /// List of ARNs of the DataSync Agents used to connect to the NFS server.
   final pulumi.Input<List<String>> agentArns;
 
   /// Creates a new [NfsLocationOnPremConfig].
-  /// [agentArns] List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+  /// [agentArns] List of ARNs of the DataSync Agents used to connect to the NFS server.
   const NfsLocationOnPremConfig({
     required this.agentArns,
   });

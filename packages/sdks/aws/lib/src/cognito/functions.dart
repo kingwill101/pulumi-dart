@@ -136,6 +136,17 @@ Future<GetIdentityPoolResult> getIdentityPool(
   return GetIdentityPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetIdentityPoolResult> getIdentityPoolOutput(
+  GetIdentityPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cognito/getIdentityPool:getIdentityPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIdentityPoolResult.fromMap);
+}
+
 /// Data source for managing an AWS Cognito IDP (Identity Provider) User Group.
 ///
 /// ## Example Usage
@@ -263,6 +274,17 @@ Future<GetUserGroupResult> getUserGroup(
   return GetUserGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetUserGroupResult> getUserGroupOutput(
+  GetUserGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cognito/getUserGroup:getUserGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserGroupResult.fromMap);
+}
+
 /// Data source for managing AWS Cognito IDP (Identity Provider) User Groups.
 ///
 /// ## Example Usage
@@ -383,6 +405,17 @@ Future<GetUserGroupsResult> getUserGroups(
   return GetUserGroupsResult.fromMap(result);
 }
 
+pulumi.Output<GetUserGroupsResult> getUserGroupsOutput(
+  GetUserGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cognito/getUserGroups:getUserGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserGroupsResult.fromMap);
+}
+
 /// Data source for managing an AWS Cognito User Pool.
 ///
 /// ## Example Usage
@@ -501,6 +534,17 @@ Future<GetUserPoolResult> getUserPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetUserPoolResult> getUserPoolOutput(
+  GetUserPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cognito/getUserPool:getUserPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserPoolResult.fromMap);
 }
 
 /// Provides a Cognito User Pool Client resource.
@@ -628,6 +672,17 @@ Future<GetUserPoolClientResult> getUserPoolClient(
   return GetUserPoolClientResult.fromMap(result);
 }
 
+pulumi.Output<GetUserPoolClientResult> getUserPoolClientOutput(
+  GetUserPoolClientArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cognito/getUserPoolClient:getUserPoolClient',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserPoolClientResult.fromMap);
+}
+
 /// Use this data source to get a list of Cognito user pools clients for a Cognito IdP user pool.
 ///
 /// ## Example Usage
@@ -746,6 +801,17 @@ Future<GetUserPoolClientsResult> getUserPoolClients(
   return GetUserPoolClientsResult.fromMap(result);
 }
 
+pulumi.Output<GetUserPoolClientsResult> getUserPoolClientsOutput(
+  GetUserPoolClientsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cognito/getUserPoolClients:getUserPoolClients',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserPoolClientsResult.fromMap);
+}
+
 /// Use this data source to get the signing certificate for a Cognito IdP user pool.
 ///
 /// ## Example Usage
@@ -862,6 +928,17 @@ Future<GetUserPoolSigningCertificateResult> getUserPoolSigningCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserPoolSigningCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetUserPoolSigningCertificateResult> getUserPoolSigningCertificateOutput(
+  GetUserPoolSigningCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cognito/getUserPoolSigningCertificate:getUserPoolSigningCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserPoolSigningCertificateResult.fromMap);
 }
 
 /// Use this data source to get a list of cognito user pools.
@@ -1069,4 +1146,15 @@ Future<GetUserPoolsResult> getUserPools(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserPoolsResult.fromMap(result);
+}
+
+pulumi.Output<GetUserPoolsResult> getUserPoolsOutput(
+  GetUserPoolsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cognito/getUserPools:getUserPools',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserPoolsResult.fromMap);
 }

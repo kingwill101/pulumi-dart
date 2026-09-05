@@ -7,7 +7,7 @@ class ContactsRotationRecurrenceMonthlySetting {
   /// (Required) The day of the month when monthly recurring on-call rotations begin.
   final pulumi.Input<int> dayOfMonth;
   /// (Required) The hand off time. See Hand Off Time for more details.
-  final pulumi.Input<ContactsRotationRecurrenceMonthlySettingHandOffTime>? handOffTime;
+  final pulumi.Input<ContactsRotationRecurrenceMonthlySettingHandOffTime?>? handOffTime;
 
   /// Creates a new [ContactsRotationRecurrenceMonthlySetting].
   /// [dayOfMonth] (Required) The day of the month when monthly recurring on-call rotations begin.
@@ -26,7 +26,7 @@ class ContactsRotationRecurrenceMonthlySetting {
 
   factory ContactsRotationRecurrenceMonthlySetting.fromMap(Map<String, dynamic> map) {
     return ContactsRotationRecurrenceMonthlySetting(
-      dayOfMonth: pulumi.Input.fromValue(map['dayOfMonth'] as int),
+      dayOfMonth: pulumi.Input.fromValue((map['dayOfMonth'] as num).toInt()),
       handOffTime: (() { final guardedValue = map['handOffTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContactsRotationRecurrenceMonthlySettingHandOffTime.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

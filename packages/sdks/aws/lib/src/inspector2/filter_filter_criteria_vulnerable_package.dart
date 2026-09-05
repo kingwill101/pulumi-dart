@@ -12,21 +12,21 @@ import 'filter_filter_criteria_vulnerable_package_version.dart';
 
 class FilterFilterCriteriaVulnerablePackage {
   /// (Optional) The architecture of the package. Documented below.
-  final pulumi.Input<FilterFilterCriteriaVulnerablePackageArchitecture>? architecture;
+  final pulumi.Input<FilterFilterCriteriaVulnerablePackageArchitecture?>? architecture;
   /// (Optional) The epoch of the package. Documented below.
-  final pulumi.Input<List<FilterFilterCriteriaVulnerablePackageEpoch>>? epoches;
+  final pulumi.Input<List<FilterFilterCriteriaVulnerablePackageEpoch>?>? epoches;
   /// (Optional) The name of the package. Documented below.
-  final pulumi.Input<FilterFilterCriteriaVulnerablePackageFilePath>? filePath;
+  final pulumi.Input<FilterFilterCriteriaVulnerablePackageFilePath?>? filePath;
   /// Name of the filter.
-  final pulumi.Input<FilterFilterCriteriaVulnerablePackageName>? name;
+  final pulumi.Input<FilterFilterCriteriaVulnerablePackageName?>? name;
   /// (Optional) The release of the package. Documented below.
-  final pulumi.Input<FilterFilterCriteriaVulnerablePackageRelease>? release;
+  final pulumi.Input<FilterFilterCriteriaVulnerablePackageRelease?>? release;
   /// (Optional) The ARN of the package's source lambda layer. Documented below.
-  final pulumi.Input<FilterFilterCriteriaVulnerablePackageSourceLambdaLayerArn>? sourceLambdaLayerArn;
+  final pulumi.Input<FilterFilterCriteriaVulnerablePackageSourceLambdaLayerArn?>? sourceLambdaLayerArn;
   /// (Optional) The source layer hash of the package. Documented below.
-  final pulumi.Input<FilterFilterCriteriaVulnerablePackageSourceLayerHash>? sourceLayerHash;
+  final pulumi.Input<FilterFilterCriteriaVulnerablePackageSourceLayerHash?>? sourceLayerHash;
   /// (Optional) The version of the package. Documented below.
-  final pulumi.Input<FilterFilterCriteriaVulnerablePackageVersion>? version;
+  final pulumi.Input<FilterFilterCriteriaVulnerablePackageVersion?>? version;
 
   /// Creates a new [FilterFilterCriteriaVulnerablePackage].
   /// [architecture] (Optional) The architecture of the package. Documented below.

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_args.dart';
 import 'trigger_state.dart';
+import 'trigger_trigger.dart';
 
 /// Provides a CodeCommit Trigger Resource.
 ///
@@ -15,12 +16,12 @@ import 'trigger_state.dart';
 ///
 /// const test = new aws.codecommit.Repository("test", {repositoryName: "test"});
 /// const testTrigger = new aws.codecommit.Trigger("test", {
-///     repositoryName: test.repositoryName,
 ///     triggers: [{
 ///         name: "all",
 ///         events: ["all"],
 ///         destinationArn: testAwsSnsTopic.arn,
 ///     }],
+///     repositoryName: test.repositoryName,
 /// });
 /// ```
 /// ```python
@@ -29,12 +30,12 @@ import 'trigger_state.dart';
 ///
 /// test = aws.codecommit.Repository("test", repository_name="test")
 /// test_trigger = aws.codecommit.Trigger("test",
-///     repository_name=test.repository_name,
 ///     triggers=[{
 ///         "name": "all",
 ///         "events": ["all"],
 ///         "destination_arn": test_aws_sns_topic["arn"],
-///     }])
+///     }],
+///     repository_name=test.repository_name)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -51,7 +52,6 @@ import 'trigger_state.dart';
 ///
 ///     var testTrigger = new Aws.CodeCommit.Trigger("test", new()
 ///     {
-///         RepositoryName = test.RepositoryName,
 ///         Triggers = new[]
 ///         {
 ///             new Aws.CodeCommit.Inputs.TriggerTriggerArgs
@@ -64,6 +64,7 @@ import 'trigger_state.dart';
 ///                 DestinationArn = testAwsSnsTopic.Arn,
 ///             },
 ///         },
+///         RepositoryName = test.RepositoryName,
 ///     });
 ///
 /// });
@@ -85,7 +86,6 @@ import 'trigger_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codecommit.NewTrigger(ctx, "test", &codecommit.TriggerArgs{
-/// 			RepositoryName: test.RepositoryName,
 /// 			Triggers: codecommit.TriggerTriggerArray{
 /// 				&codecommit.TriggerTriggerArgs{
 /// 					Name: pulumi.String("all"),
@@ -95,6 +95,7 @@ import 'trigger_state.dart';
 /// 					DestinationArn: pulumi.Any(testAwsSnsTopic.Arn),
 /// 				},
 /// 			},
+/// 			RepositoryName: test.RepositoryName,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -116,12 +117,12 @@ import 'trigger_state.dart';
 ///   repository_name = "test"
 /// }
 /// resource "aws_codecommit_trigger" "test" {
-///   repository_name = aws_codecommit_repository.test.repository_name
 ///   triggers {
 ///     name            = "all"
 ///     events          = ["all"]
 ///     destination_arn = testAwsSnsTopic.arn
 ///   }
+///   repository_name = aws_codecommit_repository.test.repository_name
 /// }
 /// ```
 /// ```java
@@ -153,12 +154,12 @@ import 'trigger_state.dart';
 ///             .build());
 ///
 ///         var testTrigger = new Trigger("testTrigger", TriggerArgs.builder()
-///             .repositoryName(test.repositoryName())
 ///             .triggers(TriggerTriggerArgs.builder()
 ///                 .name("all")
 ///                 .events("all")
 ///                 .destinationArn(testAwsSnsTopic.arn())
 ///                 .build())
+///             .repositoryName(test.repositoryName())
 ///             .build());
 ///
 ///     }
@@ -174,12 +175,12 @@ import 'trigger_state.dart';
 ///     type: aws:codecommit:Trigger
 ///     name: test
 ///     properties:
-///       repositoryName: ${test.repositoryName}
 ///       triggers:
 ///         - name: all
 ///           events:
 ///             - all
 ///           destinationArn: ${testAwsSnsTopic.arn}
+///       repositoryName: ${test.repositoryName}
 /// ```
 class Trigger extends pulumi.CustomResource {
   /// System-generated unique identifier.
@@ -189,7 +190,7 @@ class Trigger extends pulumi.CustomResource {
   /// The name for the repository. This needs to be less than 100 characters.
   late final pulumi.Output<String> repositoryName;
   /// The name of the trigger.
-  late final pulumi.Output<List<Map<String, dynamic>>> triggers;
+  late final pulumi.Output<List<TriggerTrigger>> triggers;
 
   /// Creates a new [Trigger].
   /// [name] The Pulumi resource name.
@@ -203,12 +204,12 @@ class Trigger extends pulumi.CustomResource {
           'aws:codecommit/trigger:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     configurationId = registerOutput<String>('configurationId');
     region = registerOutput<String>('region');
     repositoryName = registerOutput<String>('repositoryName');
-    triggers = registerOutput<List<Map<String, dynamic>>>('triggers');
+    triggers = registerOutput<List<TriggerTrigger>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerTrigger>(guardedValue, (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Trigger] resource's state with the given [name] and [id].
@@ -216,11 +217,12 @@ class Trigger extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TriggerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Trigger._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,6 +239,21 @@ class Trigger extends pulumi.CustomResource {
     configurationId = registerOutput<String>('configurationId');
     region = registerOutput<String>('region');
     repositoryName = registerOutput<String>('repositoryName');
-    triggers = registerOutput<List<Map<String, dynamic>>>('triggers');
+    triggers = registerOutput<List<TriggerTrigger>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerTrigger>(guardedValue, (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Trigger] resource.
+  Trigger.reference(String urn)
+    : super(
+        'aws:codecommit/trigger:Trigger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configurationId = registerOutput<String>('configurationId');
+    region = registerOutput<String>('region');
+    repositoryName = registerOutput<String>('repositoryName');
+    triggers = registerOutput<List<TriggerTrigger>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerTrigger>(guardedValue, (value) => TriggerTrigger.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

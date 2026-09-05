@@ -6,9 +6,9 @@ import 'location_fsx_ontap_file_system_protocol_smb.dart';
 
 class LocationFsxOntapFileSystemProtocol {
   /// Network File System (NFS) protocol that DataSync uses to access your FSx ONTAP file system. See NFS below.
-  final pulumi.Input<LocationFsxOntapFileSystemProtocolNfs>? nfs;
+  final pulumi.Input<LocationFsxOntapFileSystemProtocolNfs?>? nfs;
   /// Server Message Block (SMB) protocol that DataSync uses to access your FSx ONTAP file system. See [SMB] (#smb) below.
-  final pulumi.Input<LocationFsxOntapFileSystemProtocolSmb>? smb;
+  final pulumi.Input<LocationFsxOntapFileSystemProtocolSmb?>? smb;
 
   /// Creates a new [LocationFsxOntapFileSystemProtocol].
   /// [nfs] Network File System (NFS) protocol that DataSync uses to access your FSx ONTAP file system. See NFS below.

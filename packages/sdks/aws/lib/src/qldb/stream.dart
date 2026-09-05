@@ -13,14 +13,14 @@ import 'stream_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.qldb.Stream("example", {
-///     ledgerName: "existing-ledger-name",
-///     streamName: "sample-ledger-stream",
-///     roleArn: "sample-role-arn",
-///     inclusiveStartTime: "2021-01-01T00:00:00Z",
 ///     kinesisConfiguration: {
 ///         aggregationEnabled: false,
 ///         streamArn: "arn:aws:kinesis:us-east-1:xxxxxxxxxxxx:stream/example-kinesis-stream",
 ///     },
+///     ledgerName: "existing-ledger-name",
+///     streamName: "sample-ledger-stream",
+///     roleArn: "sample-role-arn",
+///     inclusiveStartTime: "2021-01-01T00:00:00Z",
 ///     tags: {
 ///         example: "tag",
 ///     },
@@ -31,14 +31,14 @@ import 'stream_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.qldb.Stream("example",
-///     ledger_name="existing-ledger-name",
-///     stream_name="sample-ledger-stream",
-///     role_arn="sample-role-arn",
-///     inclusive_start_time="2021-01-01T00:00:00Z",
 ///     kinesis_configuration={
 ///         "aggregation_enabled": False,
 ///         "stream_arn": "arn:aws:kinesis:us-east-1:xxxxxxxxxxxx:stream/example-kinesis-stream",
 ///     },
+///     ledger_name="existing-ledger-name",
+///     stream_name="sample-ledger-stream",
+///     role_arn="sample-role-arn",
+///     inclusive_start_time="2021-01-01T00:00:00Z",
 ///     tags={
 ///         "example": "tag",
 ///     })
@@ -53,15 +53,15 @@ import 'stream_state.dart';
 /// {
 ///     var example = new Aws.Qldb.Stream("example", new()
 ///     {
-///         LedgerName = "existing-ledger-name",
-///         StreamName = "sample-ledger-stream",
-///         RoleArn = "sample-role-arn",
-///         InclusiveStartTime = "2021-01-01T00:00:00Z",
 ///         KinesisConfiguration = new Aws.Qldb.Inputs.StreamKinesisConfigurationArgs
 ///         {
 ///             AggregationEnabled = false,
 ///             StreamArn = "arn:aws:kinesis:us-east-1:xxxxxxxxxxxx:stream/example-kinesis-stream",
 ///         },
+///         LedgerName = "existing-ledger-name",
+///         StreamName = "sample-ledger-stream",
+///         RoleArn = "sample-role-arn",
+///         InclusiveStartTime = "2021-01-01T00:00:00Z",
 ///         Tags =
 ///         {
 ///             { "example", "tag" },
@@ -81,14 +81,14 @@ import 'stream_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := qldb.NewStream(ctx, "example", &qldb.StreamArgs{
-/// 			LedgerName:         pulumi.String("existing-ledger-name"),
-/// 			StreamName:         pulumi.String("sample-ledger-stream"),
-/// 			RoleArn:            pulumi.String("sample-role-arn"),
-/// 			InclusiveStartTime: pulumi.String("2021-01-01T00:00:00Z"),
 /// 			KinesisConfiguration: &qldb.StreamKinesisConfigurationArgs{
 /// 				AggregationEnabled: pulumi.Bool(false),
 /// 				StreamArn:          pulumi.String("arn:aws:kinesis:us-east-1:xxxxxxxxxxxx:stream/example-kinesis-stream"),
 /// 			},
+/// 			LedgerName:         pulumi.String("existing-ledger-name"),
+/// 			StreamName:         pulumi.String("sample-ledger-stream"),
+/// 			RoleArn:            pulumi.String("sample-role-arn"),
+/// 			InclusiveStartTime: pulumi.String("2021-01-01T00:00:00Z"),
 /// 			Tags: pulumi.StringMap{
 /// 				"example": pulumi.String("tag"),
 /// 			},
@@ -110,14 +110,14 @@ import 'stream_state.dart';
 /// }
 ///
 /// resource "aws_qldb_stream" "example" {
-///   ledger_name          = "existing-ledger-name"
-///   stream_name          = "sample-ledger-stream"
-///   role_arn             = "sample-role-arn"
-///   inclusive_start_time = "2021-01-01T00:00:00Z"
 ///   kinesis_configuration = {
 ///     aggregation_enabled = false
 ///     stream_arn          = "arn:aws:kinesis:us-east-1:xxxxxxxxxxxx:stream/example-kinesis-stream"
 ///   }
+///   ledger_name          = "existing-ledger-name"
+///   stream_name          = "sample-ledger-stream"
+///   role_arn             = "sample-role-arn"
+///   inclusive_start_time = "2021-01-01T00:00:00Z"
 ///   tags = {
 ///     "example" = "tag"
 ///   }
@@ -146,14 +146,14 @@ import 'stream_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Stream("example", StreamArgs.builder()
-///             .ledgerName("existing-ledger-name")
-///             .streamName("sample-ledger-stream")
-///             .roleArn("sample-role-arn")
-///             .inclusiveStartTime("2021-01-01T00:00:00Z")
 ///             .kinesisConfiguration(StreamKinesisConfigurationArgs.builder()
 ///                 .aggregationEnabled(false)
 ///                 .streamArn("arn:aws:kinesis:us-east-1:xxxxxxxxxxxx:stream/example-kinesis-stream")
 ///                 .build())
+///             .ledgerName("existing-ledger-name")
+///             .streamName("sample-ledger-stream")
+///             .roleArn("sample-role-arn")
+///             .inclusiveStartTime("2021-01-01T00:00:00Z")
 ///             .tags(Map.of("example", "tag"))
 ///             .build());
 ///
@@ -165,13 +165,13 @@ import 'stream_state.dart';
 ///   example:
 ///     type: aws:qldb:Stream
 ///     properties:
+///       kinesisConfiguration:
+///         aggregationEnabled: false
+///         streamArn: arn:aws:kinesis:us-east-1:xxxxxxxxxxxx:stream/example-kinesis-stream
 ///       ledgerName: existing-ledger-name
 ///       streamName: sample-ledger-stream
 ///       roleArn: sample-role-arn
 ///       inclusiveStartTime: 2021-01-01T00:00:00Z
-///       kinesisConfiguration:
-///         aggregationEnabled: false
-///         streamArn: arn:aws:kinesis:us-east-1:xxxxxxxxxxxx:stream/example-kinesis-stream
 ///       tags:
 ///         example: tag
 /// ```
@@ -188,7 +188,7 @@ class Stream extends pulumi.CustomResource {
   late final pulumi.Output<String> ledgerName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the IAM role that grants QLDB permissions for a journal stream to write data records to a Kinesis Data Streams resource.
+  /// ARN of the IAM role that grants QLDB permissions for a journal stream to write data records to a Kinesis Data Streams resource.
   late final pulumi.Output<String> roleArn;
   /// The name that you want to assign to the QLDB journal stream. User-defined names can help identify and indicate the purpose of a stream.  Your stream name must be unique among other active streams for a given ledger. Stream names have the same naming constraints as ledger names, as defined in the [Amazon QLDB Developer Guide](https://docs.aws.amazon.com/qldb/latest/developerguide/limits.html#limits.naming).
   late final pulumi.Output<String> streamName;
@@ -209,7 +209,7 @@ class Stream extends pulumi.CustomResource {
           'aws:qldb/stream:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     exclusiveEndTime = registerOutput<String?>('exclusiveEndTime');
@@ -219,8 +219,8 @@ class Stream extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     streamName = registerOutput<String>('streamName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Stream] resource's state with the given [name] and [id].
@@ -228,11 +228,12 @@ class Stream extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StreamState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Stream._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -254,7 +255,28 @@ class Stream extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     streamName = registerOutput<String>('streamName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Stream] resource.
+  Stream.reference(String urn)
+    : super(
+        'aws:qldb/stream:Stream',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    exclusiveEndTime = registerOutput<String?>('exclusiveEndTime');
+    inclusiveStartTime = registerOutput<String>('inclusiveStartTime');
+    kinesisConfiguration = registerOutput<StreamKinesisConfiguration>('kinesisConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamKinesisConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ledgerName = registerOutput<String>('ledgerName');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    streamName = registerOutput<String>('streamName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

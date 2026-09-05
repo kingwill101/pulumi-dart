@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IpGroupRule {
   /// The description of the IP group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The IP address range, in CIDR notation, e.g., `10.0.0.0/16`
   final pulumi.Input<String> source;
 

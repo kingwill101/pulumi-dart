@@ -15,10 +15,10 @@ import 'project_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.Project("example", {
-///     projectName: "example",
 ///     serviceCatalogProvisioningDetails: {
 ///         productId: exampleAwsServicecatalogProduct.id,
 ///     },
+///     projectName: "example",
 /// });
 /// ```
 /// ```python
@@ -26,10 +26,10 @@ import 'project_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.Project("example",
-///     project_name="example",
 ///     service_catalog_provisioning_details={
 ///         "product_id": example_aws_servicecatalog_product["id"],
-///     })
+///     },
+///     project_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -41,11 +41,11 @@ import 'project_state.dart';
 /// {
 ///     var example = new Aws.Sagemaker.Project("example", new()
 ///     {
-///         ProjectName = "example",
 ///         ServiceCatalogProvisioningDetails = new Aws.Sagemaker.Inputs.ProjectServiceCatalogProvisioningDetailsArgs
 ///         {
 ///             ProductId = exampleAwsServicecatalogProduct.Id,
 ///         },
+///         ProjectName = "example",
 ///     });
 ///
 /// });
@@ -61,10 +61,10 @@ import 'project_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewProject(ctx, "example", &sagemaker.ProjectArgs{
-/// 			ProjectName: pulumi.String("example"),
 /// 			ServiceCatalogProvisioningDetails: &sagemaker.ProjectServiceCatalogProvisioningDetailsArgs{
 /// 				ProductId: pulumi.Any(exampleAwsServicecatalogProduct.Id),
 /// 			},
+/// 			ProjectName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -83,10 +83,10 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_project" "example" {
-///   project_name = "example"
 ///   service_catalog_provisioning_details = {
 ///     product_id = exampleAwsServicecatalogProduct.id
 ///   }
+///   project_name = "example"
 /// }
 /// ```
 /// ```java
@@ -112,10 +112,10 @@ import 'project_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Project("example", ProjectArgs.builder()
-///             .projectName("example")
 ///             .serviceCatalogProvisioningDetails(ProjectServiceCatalogProvisioningDetailsArgs.builder()
 ///                 .productId(exampleAwsServicecatalogProduct.id())
 ///                 .build())
+///             .projectName("example")
 ///             .build());
 ///
 ///     }
@@ -126,9 +126,9 @@ import 'project_state.dart';
 ///   example:
 ///     type: aws:sagemaker:Project
 ///     properties:
-///       projectName: example
 ///       serviceCatalogProvisioningDetails:
 ///         productId: ${exampleAwsServicecatalogProduct.id}
+///       projectName: example
 /// ```
 ///
 ///
@@ -140,7 +140,7 @@ import 'project_state.dart';
 /// $ pulumi import aws:sagemaker/project:Project example example
 /// ```
 class Project extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Project.
+  /// ARN assigned by AWS to this Project.
   late final pulumi.Output<String> arn;
   /// A description for the project.
   late final pulumi.Output<String?> projectDescription;
@@ -169,7 +169,7 @@ class Project extends pulumi.CustomResource {
           'aws:sagemaker/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     projectDescription = registerOutput<String?>('projectDescription');
@@ -177,8 +177,8 @@ class Project extends pulumi.CustomResource {
     projectName = registerOutput<String>('projectName');
     region = registerOutput<String>('region');
     serviceCatalogProvisioningDetails = registerOutput<ProjectServiceCatalogProvisioningDetails>('serviceCatalogProvisioningDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectServiceCatalogProvisioningDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -186,11 +186,12 @@ class Project extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Project._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -210,7 +211,26 @@ class Project extends pulumi.CustomResource {
     projectName = registerOutput<String>('projectName');
     region = registerOutput<String>('region');
     serviceCatalogProvisioningDetails = registerOutput<ProjectServiceCatalogProvisioningDetails>('serviceCatalogProvisioningDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectServiceCatalogProvisioningDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'aws:sagemaker/project:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    projectDescription = registerOutput<String?>('projectDescription');
+    projectId = registerOutput<String>('projectId');
+    projectName = registerOutput<String>('projectName');
+    region = registerOutput<String>('region');
+    serviceCatalogProvisioningDetails = registerOutput<ProjectServiceCatalogProvisioningDetails>('serviceCatalogProvisioningDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectServiceCatalogProvisioningDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

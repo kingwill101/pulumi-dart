@@ -1,6 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'multitenant_distribution_active_trusted_key_group.dart';
 import 'multitenant_distribution_args.dart';
+import 'multitenant_distribution_cache_behavior.dart';
+import 'multitenant_distribution_custom_error_response.dart';
 import 'multitenant_distribution_default_cache_behavior.dart';
+import 'multitenant_distribution_origin.dart';
+import 'multitenant_distribution_origin_group.dart';
 import 'multitenant_distribution_restrictions.dart';
 import 'multitenant_distribution_state.dart';
 import 'multitenant_distribution_tenant_config.dart';
@@ -48,22 +53,7 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.MultitenantDistribution("example", {
-///     comment: "Multi-tenant distribution for my application",
-///     enabled: true,
-///     origins: [{
-///         domainName: "example.com",
-///         id: "example-origin",
-///         customOriginConfigs: [{
-///             httpPort: 80,
-///             httpsPort: 443,
-///             originProtocolPolicy: "https-only",
-///             originSslProtocols: ["TLSv1.2"],
-///         }],
-///     }],
 ///     defaultCacheBehavior: {
-///         targetOriginId: "example-origin",
-///         viewerProtocolPolicy: "redirect-to-https",
-///         cachePolicyId: exampleAwsCloudfrontCachePolicy.id,
 ///         allowedMethods: {
 ///             items: [
 ///                 "DELETE",
@@ -79,6 +69,9 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///                 "HEAD",
 ///             ],
 ///         },
+///         targetOriginId: "example-origin",
+///         viewerProtocolPolicy: "redirect-to-https",
+///         cachePolicyId: exampleAwsCloudfrontCachePolicy.id,
 ///     },
 ///     restrictions: {
 ///         geoRestriction: {
@@ -91,15 +84,27 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///     },
 ///     tenantConfig: {
 ///         parameterDefinitions: [{
-///             name: "origin_domain",
 ///             definitions: [{
 ///                 stringSchemas: [{
 ///                     required: true,
 ///                     comment: "Origin domain parameter for tenants",
 ///                 }],
 ///             }],
+///             name: "origin_domain",
 ///         }],
 ///     },
+///     origins: [{
+///         customOriginConfigs: [{
+///             httpPort: 80,
+///             httpsPort: 443,
+///             originProtocolPolicy: "https-only",
+///             originSslProtocols: ["TLSv1.2"],
+///         }],
+///         domainName: "example.com",
+///         id: "example-origin",
+///     }],
+///     comment: "Multi-tenant distribution for my application",
+///     enabled: true,
 ///     tags: {
 ///         Environment: "production",
 ///     },
@@ -110,22 +115,7 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.MultitenantDistribution("example",
-///     comment="Multi-tenant distribution for my application",
-///     enabled=True,
-///     origins=[{
-///         "domain_name": "example.com",
-///         "id": "example-origin",
-///         "custom_origin_configs": [{
-///             "http_port": 80,
-///             "https_port": 443,
-///             "origin_protocol_policy": "https-only",
-///             "origin_ssl_protocols": ["TLSv1.2"],
-///         }],
-///     }],
 ///     default_cache_behavior={
-///         "target_origin_id": "example-origin",
-///         "viewer_protocol_policy": "redirect-to-https",
-///         "cache_policy_id": example_aws_cloudfront_cache_policy["id"],
 ///         "allowed_methods": {
 ///             "items": [
 ///                 "DELETE",
@@ -141,6 +131,9 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///                 "HEAD",
 ///             ],
 ///         },
+///         "target_origin_id": "example-origin",
+///         "viewer_protocol_policy": "redirect-to-https",
+///         "cache_policy_id": example_aws_cloudfront_cache_policy["id"],
 ///     },
 ///     restrictions={
 ///         "geo_restriction": {
@@ -153,15 +146,27 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///     },
 ///     tenant_config={
 ///         "parameter_definitions": [{
-///             "name": "origin_domain",
 ///             "definitions": [{
 ///                 "string_schemas": [{
 ///                     "required": True,
 ///                     "comment": "Origin domain parameter for tenants",
 ///                 }],
 ///             }],
+///             "name": "origin_domain",
 ///         }],
 ///     },
+///     origins=[{
+///         "custom_origin_configs": [{
+///             "http_port": 80,
+///             "https_port": 443,
+///             "origin_protocol_policy": "https-only",
+///             "origin_ssl_protocols": ["TLSv1.2"],
+///         }],
+///         "domain_name": "example.com",
+///         "id": "example-origin",
+///     }],
+///     comment="Multi-tenant distribution for my application",
+///     enabled=True,
 ///     tags={
 ///         "Environment": "production",
 ///     })
@@ -176,34 +181,8 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// {
 ///     var example = new Aws.CloudFront.MultitenantDistribution("example", new()
 ///     {
-///         Comment = "Multi-tenant distribution for my application",
-///         Enabled = true,
-///         Origins = new[]
-///         {
-///             new Aws.CloudFront.Inputs.MultitenantDistributionOriginArgs
-///             {
-///                 DomainName = "example.com",
-///                 Id = "example-origin",
-///                 CustomOriginConfigs = new[]
-///                 {
-///                     new Aws.CloudFront.Inputs.MultitenantDistributionOriginCustomOriginConfigArgs
-///                     {
-///                         HttpPort = 80,
-///                         HttpsPort = 443,
-///                         OriginProtocolPolicy = "https-only",
-///                         OriginSslProtocols = new[]
-///                         {
-///                             "TLSv1.2",
-///                         },
-///                     },
-///                 },
-///             },
-///         },
 ///         DefaultCacheBehavior = new Aws.CloudFront.Inputs.MultitenantDistributionDefaultCacheBehaviorArgs
 ///         {
-///             TargetOriginId = "example-origin",
-///             ViewerProtocolPolicy = "redirect-to-https",
-///             CachePolicyId = exampleAwsCloudfrontCachePolicy.Id,
 ///             AllowedMethods = new Aws.CloudFront.Inputs.MultitenantDistributionDefaultCacheBehaviorAllowedMethodsArgs
 ///             {
 ///                 Items = new[]
@@ -222,6 +201,9 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///                     "HEAD",
 ///                 },
 ///             },
+///             TargetOriginId = "example-origin",
+///             ViewerProtocolPolicy = "redirect-to-https",
+///             CachePolicyId = exampleAwsCloudfrontCachePolicy.Id,
 ///         },
 ///         Restrictions = new Aws.CloudFront.Inputs.MultitenantDistributionRestrictionsArgs
 ///         {
@@ -241,7 +223,6 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///             {
 ///                 new Aws.CloudFront.Inputs.MultitenantDistributionTenantConfigParameterDefinitionArgs
 ///                 {
-///                     Name = "origin_domain",
 ///                     Definitions = new[]
 ///                     {
 ///                         new Aws.CloudFront.Inputs.MultitenantDistributionTenantConfigParameterDefinitionDefinitionArgs
@@ -256,9 +237,33 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///                             },
 ///                         },
 ///                     },
+///                     Name = "origin_domain",
 ///                 },
 ///             },
 ///         },
+///         Origins = new[]
+///         {
+///             new Aws.CloudFront.Inputs.MultitenantDistributionOriginArgs
+///             {
+///                 CustomOriginConfigs = new[]
+///                 {
+///                     new Aws.CloudFront.Inputs.MultitenantDistributionOriginCustomOriginConfigArgs
+///                     {
+///                         HttpPort = 80,
+///                         HttpsPort = 443,
+///                         OriginProtocolPolicy = "https-only",
+///                         OriginSslProtocols = new[]
+///                         {
+///                             "TLSv1.2",
+///                         },
+///                     },
+///                 },
+///                 DomainName = "example.com",
+///                 Id = "example-origin",
+///             },
+///         },
+///         Comment = "Multi-tenant distribution for my application",
+///         Enabled = true,
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -278,28 +283,7 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewMultitenantDistribution(ctx, "example", &cloudfront.MultitenantDistributionArgs{
-/// 			Comment: pulumi.String("Multi-tenant distribution for my application"),
-/// 			Enabled: pulumi.Bool(true),
-/// 			Origins: cloudfront.MultitenantDistributionOriginArray{
-/// 				&cloudfront.MultitenantDistributionOriginArgs{
-/// 					DomainName: pulumi.String("example.com"),
-/// 					Id:         pulumi.String("example-origin"),
-/// 					CustomOriginConfigs: cloudfront.MultitenantDistributionOriginCustomOriginConfigArray{
-/// 						&cloudfront.MultitenantDistributionOriginCustomOriginConfigArgs{
-/// 							HttpPort:             pulumi.Int(80),
-/// 							HttpsPort:            pulumi.Int(443),
-/// 							OriginProtocolPolicy: pulumi.String("https-only"),
-/// 							OriginSslProtocols: pulumi.StringArray{
-/// 								pulumi.String("TLSv1.2"),
-/// 							},
-/// 						},
-/// 					},
-/// 				},
-/// 			},
 /// 			DefaultCacheBehavior: &cloudfront.MultitenantDistributionDefaultCacheBehaviorArgs{
-/// 				TargetOriginId:       pulumi.String("example-origin"),
-/// 				ViewerProtocolPolicy: pulumi.String("redirect-to-https"),
-/// 				CachePolicyId:        pulumi.Any(exampleAwsCloudfrontCachePolicy.Id),
 /// 				AllowedMethods: &cloudfront.MultitenantDistributionDefaultCacheBehaviorAllowedMethodsArgs{
 /// 					Items: pulumi.StringArray{
 /// 						pulumi.String("DELETE"),
@@ -315,6 +299,9 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// 						pulumi.String("HEAD"),
 /// 					},
 /// 				},
+/// 				TargetOriginId:       pulumi.String("example-origin"),
+/// 				ViewerProtocolPolicy: pulumi.String("redirect-to-https"),
+/// 				CachePolicyId:        pulumi.Any(exampleAwsCloudfrontCachePolicy.Id),
 /// 			},
 /// 			Restrictions: &cloudfront.MultitenantDistributionRestrictionsArgs{
 /// 				GeoRestriction: &cloudfront.MultitenantDistributionRestrictionsGeoRestrictionArgs{
@@ -328,7 +315,6 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// 			TenantConfig: &cloudfront.MultitenantDistributionTenantConfigArgs{
 /// 				ParameterDefinitions: cloudfront.MultitenantDistributionTenantConfigParameterDefinitionArray{
 /// 					&cloudfront.MultitenantDistributionTenantConfigParameterDefinitionArgs{
-/// 						Name: pulumi.String("origin_domain"),
 /// 						Definitions: cloudfront.MultitenantDistributionTenantConfigParameterDefinitionDefinitionArray{
 /// 							&cloudfront.MultitenantDistributionTenantConfigParameterDefinitionDefinitionArgs{
 /// 								StringSchemas: cloudfront.MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchemaArray{
@@ -339,9 +325,28 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// 								},
 /// 							},
 /// 						},
+/// 						Name: pulumi.String("origin_domain"),
 /// 					},
 /// 				},
 /// 			},
+/// 			Origins: cloudfront.MultitenantDistributionOriginArray{
+/// 				&cloudfront.MultitenantDistributionOriginArgs{
+/// 					CustomOriginConfigs: cloudfront.MultitenantDistributionOriginCustomOriginConfigArray{
+/// 						&cloudfront.MultitenantDistributionOriginCustomOriginConfigArgs{
+/// 							HttpPort:             pulumi.Int(80),
+/// 							HttpsPort:            pulumi.Int(443),
+/// 							OriginProtocolPolicy: pulumi.String("https-only"),
+/// 							OriginSslProtocols: pulumi.StringArray{
+/// 								pulumi.String("TLSv1.2"),
+/// 							},
+/// 						},
+/// 					},
+/// 					DomainName: pulumi.String("example.com"),
+/// 					Id:         pulumi.String("example-origin"),
+/// 				},
+/// 			},
+/// 			Comment: pulumi.String("Multi-tenant distribution for my application"),
+/// 			Enabled: pulumi.Bool(true),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 			},
@@ -363,26 +368,14 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// }
 ///
 /// resource "aws_cloudfront_multitenantdistribution" "example" {
-///   comment = "Multi-tenant distribution for my application"
-///   enabled = true
-///   origins {
-///     domain_name = "example.com"
-///     id          = "example-origin"
-///     custom_origin_configs {
-///       http_port              = 80
-///       https_port             = 443
-///       origin_protocol_policy = "https-only"
-///       origin_ssl_protocols   = ["TLSv1.2"]
-///     }
-///   }
 ///   default_cache_behavior = {
-///     target_origin_id       = "example-origin"
-///     viewer_protocol_policy = "redirect-to-https"
-///     cache_policy_id        = exampleAwsCloudfrontCachePolicy.id
 ///     allowed_methods = {
 ///       items          = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
 ///       cached_methods = ["GET", "HEAD"]
 ///     }
+///     target_origin_id       = "example-origin"
+///     viewer_protocol_policy = "redirect-to-https"
+///     cache_policy_id        = exampleAwsCloudfrontCachePolicy.id
 ///   }
 ///   restrictions = {
 ///     geo_restriction = {
@@ -395,15 +388,27 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///   }
 ///   tenant_config = {
 ///     parameter_definitions = [{
-///       "name" = "origin_domain"
 ///       "definitions" = [{
 ///         "stringSchemas" = [{
 ///           "required" = true
 ///           "comment"  = "Origin domain parameter for tenants"
 ///         }]
 ///       }]
+///       "name" = "origin_domain"
 ///     }]
 ///   }
+///   origins {
+///     custom_origin_configs {
+///       http_port              = 80
+///       https_port             = 443
+///       origin_protocol_policy = "https-only"
+///       origin_ssl_protocols   = ["TLSv1.2"]
+///     }
+///     domain_name = "example.com"
+///     id          = "example-origin"
+///   }
+///   comment = "Multi-tenant distribution for my application"
+///   enabled = true
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -417,8 +422,6 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudfront.MultitenantDistribution;
 /// import com.pulumi.aws.cloudfront.MultitenantDistributionArgs;
-/// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionOriginArgs;
-/// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionOriginCustomOriginConfigArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionDefaultCacheBehaviorArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionDefaultCacheBehaviorAllowedMethodsArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionRestrictionsArgs;
@@ -428,6 +431,8 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionTenantConfigParameterDefinitionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionTenantConfigParameterDefinitionDefinitionArgs;
 /// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchemaArgs;
+/// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionOriginArgs;
+/// import com.pulumi.aws.cloudfront.inputs.MultitenantDistributionOriginCustomOriginConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -442,22 +447,7 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MultitenantDistribution("example", MultitenantDistributionArgs.builder()
-///             .comment("Multi-tenant distribution for my application")
-///             .enabled(true)
-///             .origins(MultitenantDistributionOriginArgs.builder()
-///                 .domainName("example.com")
-///                 .id("example-origin")
-///                 .customOriginConfigs(MultitenantDistributionOriginCustomOriginConfigArgs.builder()
-///                     .httpPort(80)
-///                     .httpsPort(443)
-///                     .originProtocolPolicy("https-only")
-///                     .originSslProtocols("TLSv1.2")
-///                     .build())
-///                 .build())
 ///             .defaultCacheBehavior(MultitenantDistributionDefaultCacheBehaviorArgs.builder()
-///                 .targetOriginId("example-origin")
-///                 .viewerProtocolPolicy("redirect-to-https")
-///                 .cachePolicyId(exampleAwsCloudfrontCachePolicy.id())
 ///                 .allowedMethods(MultitenantDistributionDefaultCacheBehaviorAllowedMethodsArgs.builder()
 ///                     .items(
 ///                         "DELETE",
@@ -471,6 +461,9 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///                         "GET",
 ///                         "HEAD")
 ///                     .build())
+///                 .targetOriginId("example-origin")
+///                 .viewerProtocolPolicy("redirect-to-https")
+///                 .cachePolicyId(exampleAwsCloudfrontCachePolicy.id())
 ///                 .build())
 ///             .restrictions(MultitenantDistributionRestrictionsArgs.builder()
 ///                 .geoRestriction(MultitenantDistributionRestrictionsGeoRestrictionArgs.builder()
@@ -483,15 +476,27 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///                 .build())
 ///             .tenantConfig(MultitenantDistributionTenantConfigArgs.builder()
 ///                 .parameterDefinitions(MultitenantDistributionTenantConfigParameterDefinitionArgs.builder()
-///                     .name("origin_domain")
 ///                     .definitions(MultitenantDistributionTenantConfigParameterDefinitionDefinitionArgs.builder()
 ///                         .stringSchemas(MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchemaArgs.builder()
 ///                             .required(true)
 ///                             .comment("Origin domain parameter for tenants")
 ///                             .build())
 ///                         .build())
+///                     .name("origin_domain")
 ///                     .build())
 ///                 .build())
+///             .origins(MultitenantDistributionOriginArgs.builder()
+///                 .customOriginConfigs(MultitenantDistributionOriginCustomOriginConfigArgs.builder()
+///                     .httpPort(80)
+///                     .httpsPort(443)
+///                     .originProtocolPolicy("https-only")
+///                     .originSslProtocols("TLSv1.2")
+///                     .build())
+///                 .domainName("example.com")
+///                 .id("example-origin")
+///                 .build())
+///             .comment("Multi-tenant distribution for my application")
+///             .enabled(true)
 ///             .tags(Map.of("Environment", "production"))
 ///             .build());
 ///
@@ -503,21 +508,7 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///   example:
 ///     type: aws:cloudfront:MultitenantDistribution
 ///     properties:
-///       comment: Multi-tenant distribution for my application
-///       enabled: true
-///       origins:
-///         - domainName: example.com
-///           id: example-origin
-///           customOriginConfigs:
-///             - httpPort: 80
-///               httpsPort: 443
-///               originProtocolPolicy: https-only
-///               originSslProtocols:
-///                 - TLSv1.2
 ///       defaultCacheBehavior:
-///         targetOriginId: example-origin
-///         viewerProtocolPolicy: redirect-to-https
-///         cachePolicyId: ${exampleAwsCloudfrontCachePolicy.id}
 ///         allowedMethods:
 ///           items:
 ///             - DELETE
@@ -530,6 +521,9 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///           cachedMethods:
 ///             - GET
 ///             - HEAD
+///         targetOriginId: example-origin
+///         viewerProtocolPolicy: redirect-to-https
+///         cachePolicyId: ${exampleAwsCloudfrontCachePolicy.id}
 ///       restrictions:
 ///         geoRestriction:
 ///           restrictionType: none
@@ -538,11 +532,22 @@ import 'multitenant_distribution_viewer_certificate.dart';
 ///         sslSupportMethod: sni-only
 ///       tenantConfig:
 ///         parameterDefinitions:
-///           - name: origin_domain
-///             definitions:
+///           - definitions:
 ///               - stringSchemas:
 ///                   - required: true
 ///                     comment: Origin domain parameter for tenants
+///             name: origin_domain
+///       origins:
+///         - customOriginConfigs:
+///             - httpPort: 80
+///               httpsPort: 443
+///               originProtocolPolicy: https-only
+///               originSslProtocols:
+///                 - TLSv1.2
+///           domainName: example.com
+///           id: example-origin
+///       comment: Multi-tenant distribution for my application
+///       enabled: true
 ///       tags:
 ///         Environment: production
 /// ```
@@ -557,11 +562,11 @@ import 'multitenant_distribution_viewer_certificate.dart';
 /// ```
 class MultitenantDistribution extends pulumi.CustomResource {
   /// List of key groups that CloudFront can use to validate signed URLs or signed cookies. See Active Trusted Key Groups below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> activeTrustedKeyGroups;
+  late final pulumi.Output<List<MultitenantDistributionActiveTrustedKeyGroup>?> activeTrustedKeyGroups;
   /// ARN for the distribution.
   late final pulumi.Output<String> arn;
   /// Ordered list of cache behaviors resource for this distribution. See Cache Behavior below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cacheBehaviors;
+  late final pulumi.Output<List<MultitenantDistributionCacheBehavior>?> cacheBehaviors;
   /// Internal value used by CloudFront to allow future updates to the distribution configuration.
   late final pulumi.Output<String> callerReference;
   /// Any comments you want to include about the distribution.
@@ -569,7 +574,7 @@ class MultitenantDistribution extends pulumi.CustomResource {
   /// Connection mode for the distribution. Always set to `tenant-only` for multi-tenant distributions.
   late final pulumi.Output<String> connectionMode;
   /// One or more custom error response elements. See Custom Error Response below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customErrorResponses;
+  late final pulumi.Output<List<MultitenantDistributionCustomErrorResponse>?> customErrorResponses;
   /// Default cache behavior for this distribution. See Default Cache Behavior below.
   late final pulumi.Output<MultitenantDistributionDefaultCacheBehavior> defaultCacheBehavior;
   /// Object that you want CloudFront to return when an end user requests the root URL.
@@ -587,9 +592,9 @@ class MultitenantDistribution extends pulumi.CustomResource {
   /// Date and time the distribution was last modified.
   late final pulumi.Output<String> lastModifiedTime;
   /// One or more originGroup for this distribution (multiples allowed). See Origin Group below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> originGroups;
+  late final pulumi.Output<List<MultitenantDistributionOriginGroup>?> originGroups;
   /// One or more origins for this distribution (multiples allowed). See Origin below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> origins;
+  late final pulumi.Output<List<MultitenantDistributionOrigin>?> origins;
   /// Restriction configuration for this distribution. See Restrictions below.
   late final pulumi.Output<MultitenantDistributionRestrictions?> restrictions;
   /// Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
@@ -618,15 +623,15 @@ class MultitenantDistribution extends pulumi.CustomResource {
           'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    activeTrustedKeyGroups = registerOutput<List<Map<String, dynamic>>?>('activeTrustedKeyGroups');
+    activeTrustedKeyGroups = registerOutput<List<MultitenantDistributionActiveTrustedKeyGroup>?>('activeTrustedKeyGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionActiveTrustedKeyGroup>(guardedValue, (value) => MultitenantDistributionActiveTrustedKeyGroup.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
-    cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>('cacheBehaviors');
+    cacheBehaviors = registerOutput<List<MultitenantDistributionCacheBehavior>?>('cacheBehaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionCacheBehavior>(guardedValue, (value) => MultitenantDistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>())); });
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String>('comment');
     connectionMode = registerOutput<String>('connectionMode');
-    customErrorResponses = registerOutput<List<Map<String, dynamic>>?>('customErrorResponses');
+    customErrorResponses = registerOutput<List<MultitenantDistributionCustomErrorResponse>?>('customErrorResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionCustomErrorResponse>(guardedValue, (value) => MultitenantDistributionCustomErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
     defaultCacheBehavior = registerOutput<MultitenantDistributionDefaultCacheBehavior>('defaultCacheBehavior', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionDefaultCacheBehavior.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultRootObject = registerOutput<String?>('defaultRootObject');
     domainName = registerOutput<String>('domainName');
@@ -635,12 +640,12 @@ class MultitenantDistribution extends pulumi.CustomResource {
     httpVersion = registerOutput<String>('httpVersion');
     inProgressInvalidationBatches = registerOutput<int>('inProgressInvalidationBatches');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    originGroups = registerOutput<List<Map<String, dynamic>>?>('originGroups');
-    origins = registerOutput<List<Map<String, dynamic>>?>('origins');
+    originGroups = registerOutput<List<MultitenantDistributionOriginGroup>?>('originGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionOriginGroup>(guardedValue, (value) => MultitenantDistributionOriginGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    origins = registerOutput<List<MultitenantDistributionOrigin>?>('origins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionOrigin>(guardedValue, (value) => MultitenantDistributionOrigin.fromMap((value as Map).cast<String, dynamic>())); });
     restrictions = registerOutput<MultitenantDistributionRestrictions?>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantConfig = registerOutput<MultitenantDistributionTenantConfig>('tenantConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionTenantConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     viewerCertificate = registerOutput<MultitenantDistributionViewerCertificate>('viewerCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionViewerCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -652,11 +657,12 @@ class MultitenantDistribution extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MultitenantDistributionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MultitenantDistribution._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -670,13 +676,13 @@ class MultitenantDistribution extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    activeTrustedKeyGroups = registerOutput<List<Map<String, dynamic>>?>('activeTrustedKeyGroups');
+    activeTrustedKeyGroups = registerOutput<List<MultitenantDistributionActiveTrustedKeyGroup>?>('activeTrustedKeyGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionActiveTrustedKeyGroup>(guardedValue, (value) => MultitenantDistributionActiveTrustedKeyGroup.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
-    cacheBehaviors = registerOutput<List<Map<String, dynamic>>?>('cacheBehaviors');
+    cacheBehaviors = registerOutput<List<MultitenantDistributionCacheBehavior>?>('cacheBehaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionCacheBehavior>(guardedValue, (value) => MultitenantDistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>())); });
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String>('comment');
     connectionMode = registerOutput<String>('connectionMode');
-    customErrorResponses = registerOutput<List<Map<String, dynamic>>?>('customErrorResponses');
+    customErrorResponses = registerOutput<List<MultitenantDistributionCustomErrorResponse>?>('customErrorResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionCustomErrorResponse>(guardedValue, (value) => MultitenantDistributionCustomErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
     defaultCacheBehavior = registerOutput<MultitenantDistributionDefaultCacheBehavior>('defaultCacheBehavior', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionDefaultCacheBehavior.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultRootObject = registerOutput<String?>('defaultRootObject');
     domainName = registerOutput<String>('domainName');
@@ -685,12 +691,48 @@ class MultitenantDistribution extends pulumi.CustomResource {
     httpVersion = registerOutput<String>('httpVersion');
     inProgressInvalidationBatches = registerOutput<int>('inProgressInvalidationBatches');
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
-    originGroups = registerOutput<List<Map<String, dynamic>>?>('originGroups');
-    origins = registerOutput<List<Map<String, dynamic>>?>('origins');
+    originGroups = registerOutput<List<MultitenantDistributionOriginGroup>?>('originGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionOriginGroup>(guardedValue, (value) => MultitenantDistributionOriginGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    origins = registerOutput<List<MultitenantDistributionOrigin>?>('origins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionOrigin>(guardedValue, (value) => MultitenantDistributionOrigin.fromMap((value as Map).cast<String, dynamic>())); });
     restrictions = registerOutput<MultitenantDistributionRestrictions?>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantConfig = registerOutput<MultitenantDistributionTenantConfig>('tenantConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionTenantConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    viewerCertificate = registerOutput<MultitenantDistributionViewerCertificate>('viewerCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionViewerCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webAclId = registerOutput<String?>('webAclId');
+  }
+
+  /// Creates a typed reference to an existing [MultitenantDistribution] resource.
+  MultitenantDistribution.reference(String urn)
+    : super(
+        'aws:cloudfront/multitenantDistribution:MultitenantDistribution',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeTrustedKeyGroups = registerOutput<List<MultitenantDistributionActiveTrustedKeyGroup>?>('activeTrustedKeyGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionActiveTrustedKeyGroup>(guardedValue, (value) => MultitenantDistributionActiveTrustedKeyGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    cacheBehaviors = registerOutput<List<MultitenantDistributionCacheBehavior>?>('cacheBehaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionCacheBehavior>(guardedValue, (value) => MultitenantDistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>())); });
+    callerReference = registerOutput<String>('callerReference');
+    comment = registerOutput<String>('comment');
+    connectionMode = registerOutput<String>('connectionMode');
+    customErrorResponses = registerOutput<List<MultitenantDistributionCustomErrorResponse>?>('customErrorResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionCustomErrorResponse>(guardedValue, (value) => MultitenantDistributionCustomErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultCacheBehavior = registerOutput<MultitenantDistributionDefaultCacheBehavior>('defaultCacheBehavior', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionDefaultCacheBehavior.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultRootObject = registerOutput<String?>('defaultRootObject');
+    domainName = registerOutput<String>('domainName');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String>('etag');
+    httpVersion = registerOutput<String>('httpVersion');
+    inProgressInvalidationBatches = registerOutput<int>('inProgressInvalidationBatches');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    originGroups = registerOutput<List<MultitenantDistributionOriginGroup>?>('originGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionOriginGroup>(guardedValue, (value) => MultitenantDistributionOriginGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    origins = registerOutput<List<MultitenantDistributionOrigin>?>('origins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultitenantDistributionOrigin>(guardedValue, (value) => MultitenantDistributionOrigin.fromMap((value as Map).cast<String, dynamic>())); });
+    restrictions = registerOutput<MultitenantDistributionRestrictions?>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantConfig = registerOutput<MultitenantDistributionTenantConfig>('tenantConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionTenantConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<MultitenantDistributionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     viewerCertificate = registerOutput<MultitenantDistributionViewerCertificate>('viewerCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultitenantDistributionViewerCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });

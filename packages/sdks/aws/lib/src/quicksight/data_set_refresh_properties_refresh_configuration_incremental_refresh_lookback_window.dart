@@ -31,7 +31,7 @@ class DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWind
   factory DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow.fromMap(Map<String, dynamic> map) {
     return DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow(
       columnName: pulumi.Input.fromValue(map['columnName'] as String),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
       sizeUnit: pulumi.Input.fromValue(map['sizeUnit'] as String),
     );
   }

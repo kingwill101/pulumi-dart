@@ -223,7 +223,7 @@ class ThingPrincipalAttachment extends pulumi.CustomResource {
           'aws:iot/thingPrincipalAttachment:ThingPrincipalAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');
@@ -236,11 +236,12 @@ class ThingPrincipalAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ThingPrincipalAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ThingPrincipalAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -254,6 +255,21 @@ class ThingPrincipalAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    thing = registerOutput<String>('thing');
+    thingPrincipalType = registerOutput<String>('thingPrincipalType');
+  }
+
+  /// Creates a typed reference to an existing [ThingPrincipalAttachment] resource.
+  ThingPrincipalAttachment.reference(String urn)
+    : super(
+        'aws:iot/thingPrincipalAttachment:ThingPrincipalAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     principal = registerOutput<String>('principal');
     region = registerOutput<String>('region');
     thing = registerOutput<String>('thing');

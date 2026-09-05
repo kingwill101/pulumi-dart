@@ -6,34 +6,34 @@ import 'get_compute_environment_update_policy.dart';
 /// Result data returned by getComputeEnvironment.
 class GetComputeEnvironmentResult {
   /// ARN of the compute environment.
-  final String arn;
+  final String? arn;
   /// ARN of the underlying Amazon ECS cluster used by the compute environment.
-  final String ecsClusterArn;
+  final String? ecsClusterArn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String region;
+  final String? id;
+  final String? name;
+  final String? region;
   /// ARN of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
-  final String serviceRole;
+  final String? serviceRole;
   /// State of the compute environment (for example, `ENABLED` or `DISABLED`). If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues.
-  final String state;
+  final String? state;
   /// Current status of the compute environment (for example, `CREATING` or `VALID`).
-  final String status;
+  final String? status;
   /// Short, human-readable string to provide additional details about the current status of the compute environment.
-  final String statusReason;
+  final String? statusReason;
   /// Key-value map of resource tags
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
-  final String type;
+  final String? type;
   /// Specifies the infrastructure update policy for the compute environment.
-  final List<GetComputeEnvironmentUpdatePolicy> updatePolicies;
+  final List<GetComputeEnvironmentUpdatePolicy>? updatePolicies;
 
   /// Creates a new [GetComputeEnvironmentResult].
   /// [arn] ARN of the compute environment.
   /// [ecsClusterArn] ARN of the underlying Amazon ECS cluster used by the compute environment.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [region] Required.
+  /// [name] Optional.
+  /// [region] Optional.
   /// [serviceRole] ARN of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
   /// [state] State of the compute environment (for example, `ENABLED` or `DISABLED`). If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues.
   /// [status] Current status of the compute environment (for example, `CREATING` or `VALID`).
@@ -42,51 +42,51 @@ class GetComputeEnvironmentResult {
   /// [type] Type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
   /// [updatePolicies] Specifies the infrastructure update policy for the compute environment.
   const GetComputeEnvironmentResult({
-    required this.arn,
-    required this.ecsClusterArn,
-    required this.id,
-    required this.name,
-    required this.region,
-    required this.serviceRole,
-    required this.state,
-    required this.status,
-    required this.statusReason,
-    required this.tags,
-    required this.type,
-    required this.updatePolicies,
+    this.arn,
+    this.ecsClusterArn,
+    this.id,
+    this.name,
+    this.region,
+    this.serviceRole,
+    this.state,
+    this.status,
+    this.statusReason,
+    this.tags,
+    this.type,
+    this.updatePolicies,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'ecsClusterArn': ecsClusterArn,
-      'id': id,
-      'name': name,
-      'region': region,
-      'serviceRole': serviceRole,
-      'state': state,
-      'status': status,
-      'statusReason': statusReason,
-      'tags': tags,
-      'type': type,
-      'updatePolicies': pulumi.Input.encodeList<GetComputeEnvironmentUpdatePolicy, Map<String, dynamic>>(updatePolicies, (value) => value.toMap()),
+      'arn': ?arn,
+      'ecsClusterArn': ?ecsClusterArn,
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+      'serviceRole': ?serviceRole,
+      'state': ?state,
+      'status': ?status,
+      'statusReason': ?statusReason,
+      'tags': ?tags,
+      'type': ?type,
+      'updatePolicies': ?(() { final guardedValue = updatePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetComputeEnvironmentUpdatePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetComputeEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetComputeEnvironmentResult(
-      arn: map['arn'] as String,
-      ecsClusterArn: map['ecsClusterArn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      serviceRole: map['serviceRole'] as String,
-      state: map['state'] as String,
-      status: map['status'] as String,
-      statusReason: map['statusReason'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      updatePolicies: pulumi.Input.decodeList<GetComputeEnvironmentUpdatePolicy>(map['updatePolicies']!, (value) => GetComputeEnvironmentUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ecsClusterArn: (() { final guardedValue = map['ecsClusterArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceRole: (() { final guardedValue = map['serviceRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusReason: (() { final guardedValue = map['statusReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updatePolicies: (() { final guardedValue = map['updatePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetComputeEnvironmentUpdatePolicy>(guardedValue, (value) => GetComputeEnvironmentUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

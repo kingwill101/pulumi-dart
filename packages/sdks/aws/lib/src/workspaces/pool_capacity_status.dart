@@ -35,10 +35,10 @@ class PoolCapacityStatus {
 
   factory PoolCapacityStatus.fromMap(Map<String, dynamic> map) {
     return PoolCapacityStatus(
-      activeUserSessions: pulumi.Input.fromValue(map['activeUserSessions'] as int),
-      actualUserSessions: pulumi.Input.fromValue(map['actualUserSessions'] as int),
-      availableUserSessions: pulumi.Input.fromValue(map['availableUserSessions'] as int),
-      desiredUserSessions: pulumi.Input.fromValue(map['desiredUserSessions'] as int),
+      activeUserSessions: pulumi.Input.fromValue((map['activeUserSessions'] as num).toInt()),
+      actualUserSessions: pulumi.Input.fromValue((map['actualUserSessions'] as num).toInt()),
+      availableUserSessions: pulumi.Input.fromValue((map['availableUserSessions'] as num).toInt()),
+      desiredUserSessions: pulumi.Input.fromValue((map['desiredUserSessions'] as num).toInt()),
     );
   }
 }

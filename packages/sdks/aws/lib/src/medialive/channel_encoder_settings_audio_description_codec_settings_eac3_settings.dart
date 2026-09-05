@@ -4,33 +4,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings {
   /// Sets the attenuation control.
-  final pulumi.Input<String>? attenuationControl;
+  final pulumi.Input<String?>? attenuationControl;
   /// Average bitrate in bits/second.
-  final pulumi.Input<double>? bitrate;
+  final pulumi.Input<double?>? bitrate;
   /// Specifies the bitstream mode (bsmod) for the emitted AC-3 stream.
-  final pulumi.Input<String>? bitstreamMode;
+  final pulumi.Input<String?>? bitstreamMode;
   /// Dolby Digital Plus coding mode.
-  final pulumi.Input<String>? codingMode;
-  final pulumi.Input<String>? dcFilter;
-  final pulumi.Input<int>? dialnorm;
+  final pulumi.Input<String?>? codingMode;
+  final pulumi.Input<String?>? dcFilter;
+  final pulumi.Input<int?>? dialnorm;
   /// Sets the Dolby dynamic range compression profile.
-  final pulumi.Input<String>? drcLine;
+  final pulumi.Input<String?>? drcLine;
   /// Sets the profile for heavy Dolby dynamic range compression.
-  final pulumi.Input<String>? drcRf;
-  final pulumi.Input<String>? lfeControl;
+  final pulumi.Input<String?>? drcRf;
+  final pulumi.Input<String?>? lfeControl;
   /// When set to enabled, applies a 120Hz lowpass filter to the LFE channel prior to encoding.
-  final pulumi.Input<String>? lfeFilter;
-  final pulumi.Input<double>? loRoCenterMixLevel;
-  final pulumi.Input<double>? loRoSurroundMixLevel;
-  final pulumi.Input<double>? ltRtCenterMixLevel;
-  final pulumi.Input<double>? ltRtSurroundMixLevel;
+  final pulumi.Input<String?>? lfeFilter;
+  final pulumi.Input<double?>? loRoCenterMixLevel;
+  final pulumi.Input<double?>? loRoSurroundMixLevel;
+  final pulumi.Input<double?>? ltRtCenterMixLevel;
+  final pulumi.Input<double?>? ltRtSurroundMixLevel;
   /// Metadata control.
-  final pulumi.Input<String>? metadataControl;
-  final pulumi.Input<String>? passthroughControl;
-  final pulumi.Input<String>? phaseControl;
-  final pulumi.Input<String>? stereoDownmix;
-  final pulumi.Input<String>? surroundExMode;
-  final pulumi.Input<String>? surroundMode;
+  final pulumi.Input<String?>? metadataControl;
+  final pulumi.Input<String?>? passthroughControl;
+  final pulumi.Input<String?>? phaseControl;
+  final pulumi.Input<String?>? stereoDownmix;
+  final pulumi.Input<String?>? surroundExMode;
+  final pulumi.Input<String?>? surroundMode;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings].
   /// [attenuationControl] Sets the attenuation control.
@@ -104,19 +104,19 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings {
   factory ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings(
       attenuationControl: (() { final guardedValue = map['attenuationControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bitrate: (() { final guardedValue = map['bitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bitrate: (() { final guardedValue = map['bitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       bitstreamMode: (() { final guardedValue = map['bitstreamMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       codingMode: (() { final guardedValue = map['codingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dcFilter: (() { final guardedValue = map['dcFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dialnorm: (() { final guardedValue = map['dialnorm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dialnorm: (() { final guardedValue = map['dialnorm']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       drcLine: (() { final guardedValue = map['drcLine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       drcRf: (() { final guardedValue = map['drcRf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lfeControl: (() { final guardedValue = map['lfeControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lfeFilter: (() { final guardedValue = map['lfeFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      loRoCenterMixLevel: (() { final guardedValue = map['loRoCenterMixLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      loRoSurroundMixLevel: (() { final guardedValue = map['loRoSurroundMixLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      ltRtCenterMixLevel: (() { final guardedValue = map['ltRtCenterMixLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      ltRtSurroundMixLevel: (() { final guardedValue = map['ltRtSurroundMixLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      loRoCenterMixLevel: (() { final guardedValue = map['loRoCenterMixLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      loRoSurroundMixLevel: (() { final guardedValue = map['loRoSurroundMixLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      ltRtCenterMixLevel: (() { final guardedValue = map['ltRtCenterMixLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      ltRtSurroundMixLevel: (() { final guardedValue = map['ltRtSurroundMixLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       metadataControl: (() { final guardedValue = map['metadataControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passthroughControl: (() { final guardedValue = map['passthroughControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       phaseControl: (() { final guardedValue = map['phaseControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

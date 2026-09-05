@@ -1,10 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_gateway_args.dart';
 import 'agentcore_gateway_authorizer_configuration.dart';
+import 'agentcore_gateway_interceptor_configuration.dart';
 import 'agentcore_gateway_policy_engine_configuration.dart';
 import 'agentcore_gateway_protocol_configuration.dart';
 import 'agentcore_gateway_state.dart';
 import 'agentcore_gateway_timeouts.dart';
+import 'agentcore_gateway_workload_identity_detail.dart';
 
 /// Manages an AWS Bedrock AgentCore Gateway. With Gateway, developers can convert APIs, Lambda functions, and existing services into Model Context Protocol (MCP)-compatible tools.
 ///
@@ -19,12 +21,12 @@ import 'agentcore_gateway_timeouts.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["bedrock-agentcore.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const example = new aws.iam.Role("example", {
@@ -32,9 +34,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///     assumeRolePolicy: assumeRole.then(assumeRole => assumeRole.json),
 /// });
 /// const exampleAgentcoreGateway = new aws.bedrock.AgentcoreGateway("example", {
-///     name: "example-gateway",
-///     roleArn: example.arn,
-///     authorizerType: "CUSTOM_JWT",
 ///     authorizerConfiguration: {
 ///         customJwtAuthorizer: {
 ///             discoveryUrl: "https://accounts.google.com/.well-known/openid-configuration",
@@ -44,6 +43,9 @@ import 'agentcore_gateway_timeouts.dart';
 ///             ],
 ///         },
 ///     },
+///     name: "example-gateway",
+///     roleArn: example.arn,
+///     authorizerType: "CUSTOM_JWT",
 ///     protocolType: "MCP",
 /// });
 /// ```
@@ -52,20 +54,17 @@ import 'agentcore_gateway_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["bedrock-agentcore.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example = aws.iam.Role("example",
 ///     name="bedrock-agentcore-gateway-role",
 ///     assume_role_policy=assume_role.json)
 /// example_agentcore_gateway = aws.bedrock.AgentcoreGateway("example",
-///     name="example-gateway",
-///     role_arn=example.arn,
-///     authorizer_type="CUSTOM_JWT",
 ///     authorizer_configuration={
 ///         "custom_jwt_authorizer": {
 ///             "discovery_url": "https://accounts.google.com/.well-known/openid-configuration",
@@ -75,6 +74,9 @@ import 'agentcore_gateway_timeouts.dart';
 ///             ],
 ///         },
 ///     },
+///     name="example-gateway",
+///     role_arn=example.arn,
+///     authorizer_type="CUSTOM_JWT",
 ///     protocol_type="MCP")
 /// ```
 /// ```csharp
@@ -91,11 +93,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -106,6 +103,11 @@ import 'agentcore_gateway_timeouts.dart';
 ///                             "bedrock-agentcore.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -119,9 +121,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///
 ///     var exampleAgentcoreGateway = new Aws.Bedrock.AgentcoreGateway("example", new()
 ///     {
-///         Name = "example-gateway",
-///         RoleArn = example.Arn,
-///         AuthorizerType = "CUSTOM_JWT",
 ///         AuthorizerConfiguration = new Aws.Bedrock.Inputs.AgentcoreGatewayAuthorizerConfigurationArgs
 ///         {
 ///             CustomJwtAuthorizer = new Aws.Bedrock.Inputs.AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerArgs
@@ -134,6 +133,9 @@ import 'agentcore_gateway_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-gateway",
+///         RoleArn = example.Arn,
+///         AuthorizerType = "CUSTOM_JWT",
 ///         ProtocolType = "MCP",
 ///     });
 ///
@@ -153,10 +155,6 @@ import 'agentcore_gateway_timeouts.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -164,6 +162,10 @@ import 'agentcore_gateway_timeouts.dart';
 /// 								"bedrock-agentcore.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -179,9 +181,6 @@ import 'agentcore_gateway_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentcoreGateway(ctx, "example", &bedrock.AgentcoreGatewayArgs{
-/// 			Name:           pulumi.String("example-gateway"),
-/// 			RoleArn:        example.Arn,
-/// 			AuthorizerType: pulumi.String("CUSTOM_JWT"),
 /// 			AuthorizerConfiguration: &bedrock.AgentcoreGatewayAuthorizerConfigurationArgs{
 /// 				CustomJwtAuthorizer: &bedrock.AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerArgs{
 /// 					DiscoveryUrl: pulumi.String("https://accounts.google.com/.well-known/openid-configuration"),
@@ -191,7 +190,10 @@ import 'agentcore_gateway_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			ProtocolType: pulumi.String("MCP"),
+/// 			Name:           pulumi.String("example-gateway"),
+/// 			RoleArn:        example.Arn,
+/// 			AuthorizerType: pulumi.String("CUSTOM_JWT"),
+/// 			ProtocolType:   pulumi.String("MCP"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -211,12 +213,12 @@ import 'agentcore_gateway_timeouts.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect  = "Allow"
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -225,16 +227,16 @@ import 'agentcore_gateway_timeouts.dart';
 ///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
 /// }
 /// resource "aws_bedrock_agentcoregateway" "example" {
-///   name            = "example-gateway"
-///   role_arn        = aws_iam_role.example.arn
-///   authorizer_type = "CUSTOM_JWT"
 ///   authorizer_configuration = {
 ///     custom_jwt_authorizer = {
 ///       discovery_url     = "https://accounts.google.com/.well-known/openid-configuration"
 ///       allowed_audiences = ["test1", "test2"]
 ///     }
 ///   }
-///   protocol_type = "MCP"
+///   name            = "example-gateway"
+///   role_arn        = aws_iam_role.example.arn
+///   authorizer_type = "CUSTOM_JWT"
+///   protocol_type   = "MCP"
 /// }
 /// ```
 /// ```java
@@ -268,12 +270,12 @@ import 'agentcore_gateway_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("bedrock-agentcore.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -283,9 +285,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleAgentcoreGateway = new AgentcoreGateway("exampleAgentcoreGateway", AgentcoreGatewayArgs.builder()
-///             .name("example-gateway")
-///             .roleArn(example.arn())
-///             .authorizerType("CUSTOM_JWT")
 ///             .authorizerConfiguration(AgentcoreGatewayAuthorizerConfigurationArgs.builder()
 ///                 .customJwtAuthorizer(AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerArgs.builder()
 ///                     .discoveryUrl("https://accounts.google.com/.well-known/openid-configuration")
@@ -294,6 +293,9 @@ import 'agentcore_gateway_timeouts.dart';
 ///                         "test2")
 ///                     .build())
 ///                 .build())
+///             .name("example-gateway")
+///             .roleArn(example.arn())
+///             .authorizerType("CUSTOM_JWT")
 ///             .protocolType("MCP")
 ///             .build());
 ///
@@ -311,15 +313,15 @@ import 'agentcore_gateway_timeouts.dart';
 ///     type: aws:bedrock:AgentcoreGateway
 ///     name: example
 ///     properties:
-///       name: example-gateway
-///       roleArn: ${example.arn}
-///       authorizerType: CUSTOM_JWT
 ///       authorizerConfiguration:
 ///         customJwtAuthorizer:
 ///           discoveryUrl: https://accounts.google.com/.well-known/openid-configuration
 ///           allowedAudiences:
 ///             - test1
 ///             - test2
+///       name: example-gateway
+///       roleArn: ${example.arn}
+///       authorizerType: CUSTOM_JWT
 ///       protocolType: MCP
 /// variables:
 ///   assumeRole:
@@ -327,13 +329,13 @@ import 'agentcore_gateway_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - bedrock-agentcore.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -345,10 +347,6 @@ import 'agentcore_gateway_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreGateway("example", {
-///     name: "mcp-gateway",
-///     description: "Gateway for MCP communication",
-///     roleArn: exampleAwsIamRole.arn,
-///     authorizerType: "CUSTOM_JWT",
 ///     authorizerConfiguration: {
 ///         customJwtAuthorizer: {
 ///             discoveryUrl: "https://auth.example.com/.well-known/openid-configuration",
@@ -366,7 +364,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///             ],
 ///         },
 ///     },
-///     protocolType: "MCP",
 ///     protocolConfiguration: {
 ///         mcp: {
 ///             instructions: "Gateway for handling MCP requests",
@@ -377,6 +374,11 @@ import 'agentcore_gateway_timeouts.dart';
 ///             ],
 ///         },
 ///     },
+///     name: "mcp-gateway",
+///     description: "Gateway for MCP communication",
+///     roleArn: exampleAwsIamRole.arn,
+///     authorizerType: "CUSTOM_JWT",
+///     protocolType: "MCP",
 /// });
 /// ```
 /// ```python
@@ -384,10 +386,6 @@ import 'agentcore_gateway_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreGateway("example",
-///     name="mcp-gateway",
-///     description="Gateway for MCP communication",
-///     role_arn=example_aws_iam_role["arn"],
-///     authorizer_type="CUSTOM_JWT",
 ///     authorizer_configuration={
 ///         "custom_jwt_authorizer": {
 ///             "discovery_url": "https://auth.example.com/.well-known/openid-configuration",
@@ -405,7 +403,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///             ],
 ///         },
 ///     },
-///     protocol_type="MCP",
 ///     protocol_configuration={
 ///         "mcp": {
 ///             "instructions": "Gateway for handling MCP requests",
@@ -415,7 +412,12 @@ import 'agentcore_gateway_timeouts.dart';
 ///                 "2025-06-18",
 ///             ],
 ///         },
-///     })
+///     },
+///     name="mcp-gateway",
+///     description="Gateway for MCP communication",
+///     role_arn=example_aws_iam_role["arn"],
+///     authorizer_type="CUSTOM_JWT",
+///     protocol_type="MCP")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -427,10 +429,6 @@ import 'agentcore_gateway_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreGateway("example", new()
 ///     {
-///         Name = "mcp-gateway",
-///         Description = "Gateway for MCP communication",
-///         RoleArn = exampleAwsIamRole.Arn,
-///         AuthorizerType = "CUSTOM_JWT",
 ///         AuthorizerConfiguration = new Aws.Bedrock.Inputs.AgentcoreGatewayAuthorizerConfigurationArgs
 ///         {
 ///             CustomJwtAuthorizer = new Aws.Bedrock.Inputs.AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerArgs
@@ -453,7 +451,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///                 },
 ///             },
 ///         },
-///         ProtocolType = "MCP",
 ///         ProtocolConfiguration = new Aws.Bedrock.Inputs.AgentcoreGatewayProtocolConfigurationArgs
 ///         {
 ///             Mcp = new Aws.Bedrock.Inputs.AgentcoreGatewayProtocolConfigurationMcpArgs
@@ -467,6 +464,11 @@ import 'agentcore_gateway_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "mcp-gateway",
+///         Description = "Gateway for MCP communication",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         AuthorizerType = "CUSTOM_JWT",
+///         ProtocolType = "MCP",
 ///     });
 ///
 /// });
@@ -482,10 +484,6 @@ import 'agentcore_gateway_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreGateway(ctx, "example", &bedrock.AgentcoreGatewayArgs{
-/// 			Name:           pulumi.String("mcp-gateway"),
-/// 			Description:    pulumi.String("Gateway for MCP communication"),
-/// 			RoleArn:        pulumi.Any(exampleAwsIamRole.Arn),
-/// 			AuthorizerType: pulumi.String("CUSTOM_JWT"),
 /// 			AuthorizerConfiguration: &bedrock.AgentcoreGatewayAuthorizerConfigurationArgs{
 /// 				CustomJwtAuthorizer: &bedrock.AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerArgs{
 /// 					DiscoveryUrl: pulumi.String("https://auth.example.com/.well-known/openid-configuration"),
@@ -503,7 +501,6 @@ import 'agentcore_gateway_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			ProtocolType: pulumi.String("MCP"),
 /// 			ProtocolConfiguration: &bedrock.AgentcoreGatewayProtocolConfigurationArgs{
 /// 				Mcp: &bedrock.AgentcoreGatewayProtocolConfigurationMcpArgs{
 /// 					Instructions: pulumi.String("Gateway for handling MCP requests"),
@@ -514,6 +511,11 @@ import 'agentcore_gateway_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("mcp-gateway"),
+/// 			Description:    pulumi.String("Gateway for MCP communication"),
+/// 			RoleArn:        pulumi.Any(exampleAwsIamRole.Arn),
+/// 			AuthorizerType: pulumi.String("CUSTOM_JWT"),
+/// 			ProtocolType:   pulumi.String("MCP"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -532,10 +534,6 @@ import 'agentcore_gateway_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoregateway" "example" {
-///   name            = "mcp-gateway"
-///   description     = "Gateway for MCP communication"
-///   role_arn        = exampleAwsIamRole.arn
-///   authorizer_type = "CUSTOM_JWT"
 ///   authorizer_configuration = {
 ///     custom_jwt_authorizer = {
 ///       discovery_url     = "https://auth.example.com/.well-known/openid-configuration"
@@ -544,7 +542,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///       allowed_scopes    = ["openid", "email"]
 ///     }
 ///   }
-///   protocol_type = "MCP"
 ///   protocol_configuration = {
 ///     mcp = {
 ///       instructions       = "Gateway for handling MCP requests"
@@ -552,6 +549,11 @@ import 'agentcore_gateway_timeouts.dart';
 ///       supported_versions = ["2025-03-26", "2025-06-18"]
 ///     }
 ///   }
+///   name            = "mcp-gateway"
+///   description     = "Gateway for MCP communication"
+///   role_arn        = exampleAwsIamRole.arn
+///   authorizer_type = "CUSTOM_JWT"
+///   protocol_type   = "MCP"
 /// }
 /// ```
 /// ```java
@@ -580,10 +582,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreGateway("example", AgentcoreGatewayArgs.builder()
-///             .name("mcp-gateway")
-///             .description("Gateway for MCP communication")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .authorizerType("CUSTOM_JWT")
 ///             .authorizerConfiguration(AgentcoreGatewayAuthorizerConfigurationArgs.builder()
 ///                 .customJwtAuthorizer(AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizerArgs.builder()
 ///                     .discoveryUrl("https://auth.example.com/.well-known/openid-configuration")
@@ -598,7 +596,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///                         "email")
 ///                     .build())
 ///                 .build())
-///             .protocolType("MCP")
 ///             .protocolConfiguration(AgentcoreGatewayProtocolConfigurationArgs.builder()
 ///                 .mcp(AgentcoreGatewayProtocolConfigurationMcpArgs.builder()
 ///                     .instructions("Gateway for handling MCP requests")
@@ -608,6 +605,11 @@ import 'agentcore_gateway_timeouts.dart';
 ///                         "2025-06-18")
 ///                     .build())
 ///                 .build())
+///             .name("mcp-gateway")
+///             .description("Gateway for MCP communication")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .authorizerType("CUSTOM_JWT")
+///             .protocolType("MCP")
 ///             .build());
 ///
 ///     }
@@ -618,10 +620,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreGateway
 ///     properties:
-///       name: mcp-gateway
-///       description: Gateway for MCP communication
-///       roleArn: ${exampleAwsIamRole.arn}
-///       authorizerType: CUSTOM_JWT
 ///       authorizerConfiguration:
 ///         customJwtAuthorizer:
 ///           discoveryUrl: https://auth.example.com/.well-known/openid-configuration
@@ -634,7 +632,6 @@ import 'agentcore_gateway_timeouts.dart';
 ///           allowedScopes:
 ///             - openid
 ///             - email
-///       protocolType: MCP
 ///       protocolConfiguration:
 ///         mcp:
 ///           instructions: Gateway for handling MCP requests
@@ -642,6 +639,11 @@ import 'agentcore_gateway_timeouts.dart';
 ///           supportedVersions:
 ///             - 2025-03-26
 ///             - 2025-06-18
+///       name: mcp-gateway
+///       description: Gateway for MCP communication
+///       roleArn: ${exampleAwsIamRole.arn}
+///       authorizerType: CUSTOM_JWT
+///       protocolType: MCP
 /// ```
 ///
 ///
@@ -660,15 +662,7 @@ import 'agentcore_gateway_timeouts.dart';
 ///     runtime: aws.lambda.Runtime.Python3d12,
 /// });
 /// const example = new aws.bedrock.AgentcoreGateway("example", {
-///     name: "gateway-with-interceptor",
-///     roleArn: exampleAwsIamRole.arn,
-///     authorizerType: "AWS_IAM",
-///     protocolType: "MCP",
 ///     interceptorConfigurations: [{
-///         interceptionPoints: [
-///             "REQUEST",
-///             "RESPONSE",
-///         ],
 ///         interceptor: {
 ///             lambda: {
 ///                 arn: interceptor.arn,
@@ -677,7 +671,15 @@ import 'agentcore_gateway_timeouts.dart';
 ///         inputConfiguration: {
 ///             passRequestHeaders: true,
 ///         },
+///         interceptionPoints: [
+///             "REQUEST",
+///             "RESPONSE",
+///         ],
 ///     }],
+///     name: "gateway-with-interceptor",
+///     roleArn: exampleAwsIamRole.arn,
+///     authorizerType: "AWS_IAM",
+///     protocolType: "MCP",
 /// });
 /// ```
 /// ```python
@@ -691,15 +693,7 @@ import 'agentcore_gateway_timeouts.dart';
 ///     handler="index.handler",
 ///     runtime=aws.lambda_.Runtime.PYTHON3D12)
 /// example = aws.bedrock.AgentcoreGateway("example",
-///     name="gateway-with-interceptor",
-///     role_arn=example_aws_iam_role["arn"],
-///     authorizer_type="AWS_IAM",
-///     protocol_type="MCP",
 ///     interceptor_configurations=[{
-///         "interception_points": [
-///             "REQUEST",
-///             "RESPONSE",
-///         ],
 ///         "interceptor": {
 ///             "lambda_": {
 ///                 "arn": interceptor.arn,
@@ -708,7 +702,15 @@ import 'agentcore_gateway_timeouts.dart';
 ///         "input_configuration": {
 ///             "pass_request_headers": True,
 ///         },
-///     }])
+///         "interception_points": [
+///             "REQUEST",
+///             "RESPONSE",
+///         ],
+///     }],
+///     name="gateway-with-interceptor",
+///     role_arn=example_aws_iam_role["arn"],
+///     authorizer_type="AWS_IAM",
+///     protocol_type="MCP")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -729,19 +731,10 @@ import 'agentcore_gateway_timeouts.dart';
 ///
 ///     var example = new Aws.Bedrock.AgentcoreGateway("example", new()
 ///     {
-///         Name = "gateway-with-interceptor",
-///         RoleArn = exampleAwsIamRole.Arn,
-///         AuthorizerType = "AWS_IAM",
-///         ProtocolType = "MCP",
 ///         InterceptorConfigurations = new[]
 ///         {
 ///             new Aws.Bedrock.Inputs.AgentcoreGatewayInterceptorConfigurationArgs
 ///             {
-///                 InterceptionPoints = new[]
-///                 {
-///                     "REQUEST",
-///                     "RESPONSE",
-///                 },
 ///                 Interceptor = new Aws.Bedrock.Inputs.AgentcoreGatewayInterceptorConfigurationInterceptorArgs
 ///                 {
 ///                     Lambda = new Aws.Bedrock.Inputs.AgentcoreGatewayInterceptorConfigurationInterceptorLambdaArgs
@@ -753,8 +746,17 @@ import 'agentcore_gateway_timeouts.dart';
 ///                 {
 ///                     PassRequestHeaders = true,
 ///                 },
+///                 InterceptionPoints = new[]
+///                 {
+///                     "REQUEST",
+///                     "RESPONSE",
+///                 },
 ///             },
 ///         },
+///         Name = "gateway-with-interceptor",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         AuthorizerType = "AWS_IAM",
+///         ProtocolType = "MCP",
 ///     });
 ///
 /// });
@@ -781,16 +783,8 @@ import 'agentcore_gateway_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentcoreGateway(ctx, "example", &bedrock.AgentcoreGatewayArgs{
-/// 			Name:           pulumi.String("gateway-with-interceptor"),
-/// 			RoleArn:        pulumi.Any(exampleAwsIamRole.Arn),
-/// 			AuthorizerType: pulumi.String("AWS_IAM"),
-/// 			ProtocolType:   pulumi.String("MCP"),
 /// 			InterceptorConfigurations: bedrock.AgentcoreGatewayInterceptorConfigurationArray{
 /// 				&bedrock.AgentcoreGatewayInterceptorConfigurationArgs{
-/// 					InterceptionPoints: pulumi.StringArray{
-/// 						pulumi.String("REQUEST"),
-/// 						pulumi.String("RESPONSE"),
-/// 					},
 /// 					Interceptor: &bedrock.AgentcoreGatewayInterceptorConfigurationInterceptorArgs{
 /// 						Lambda: &bedrock.AgentcoreGatewayInterceptorConfigurationInterceptorLambdaArgs{
 /// 							Arn: interceptor.Arn,
@@ -799,8 +793,16 @@ import 'agentcore_gateway_timeouts.dart';
 /// 					InputConfiguration: &bedrock.AgentcoreGatewayInterceptorConfigurationInputConfigurationArgs{
 /// 						PassRequestHeaders: pulumi.Bool(true),
 /// 					},
+/// 					InterceptionPoints: pulumi.StringArray{
+/// 						pulumi.String("REQUEST"),
+/// 						pulumi.String("RESPONSE"),
+/// 					},
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("gateway-with-interceptor"),
+/// 			RoleArn:        pulumi.Any(exampleAwsIamRole.Arn),
+/// 			AuthorizerType: pulumi.String("AWS_IAM"),
+/// 			ProtocolType:   pulumi.String("MCP"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -826,12 +828,7 @@ import 'agentcore_gateway_timeouts.dart';
 ///   runtime = "python3.12"
 /// }
 /// resource "aws_bedrock_agentcoregateway" "example" {
-///   name            = "gateway-with-interceptor"
-///   role_arn        = exampleAwsIamRole.arn
-///   authorizer_type = "AWS_IAM"
-///   protocol_type   = "MCP"
 ///   interceptor_configurations {
-///     interception_points = ["REQUEST", "RESPONSE"]
 ///     interceptor = {
 ///       lambda = {
 ///         arn = aws_lambda_function.interceptor.arn
@@ -840,7 +837,12 @@ import 'agentcore_gateway_timeouts.dart';
 ///     input_configuration = {
 ///       pass_request_headers = true
 ///     }
+///     interception_points = ["REQUEST", "RESPONSE"]
 ///   }
+///   name            = "gateway-with-interceptor"
+///   role_arn        = exampleAwsIamRole.arn
+///   authorizer_type = "AWS_IAM"
+///   protocol_type   = "MCP"
 /// }
 /// ```
 /// ```java
@@ -880,14 +882,7 @@ import 'agentcore_gateway_timeouts.dart';
 ///             .build());
 ///
 ///         var example = new AgentcoreGateway("example", AgentcoreGatewayArgs.builder()
-///             .name("gateway-with-interceptor")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .authorizerType("AWS_IAM")
-///             .protocolType("MCP")
 ///             .interceptorConfigurations(AgentcoreGatewayInterceptorConfigurationArgs.builder()
-///                 .interceptionPoints(
-///                     "REQUEST",
-///                     "RESPONSE")
 ///                 .interceptor(AgentcoreGatewayInterceptorConfigurationInterceptorArgs.builder()
 ///                     .lambda(AgentcoreGatewayInterceptorConfigurationInterceptorLambdaArgs.builder()
 ///                         .arn(interceptor.arn())
@@ -896,7 +891,14 @@ import 'agentcore_gateway_timeouts.dart';
 ///                 .inputConfiguration(AgentcoreGatewayInterceptorConfigurationInputConfigurationArgs.builder()
 ///                     .passRequestHeaders(true)
 ///                     .build())
+///                 .interceptionPoints(
+///                     "REQUEST",
+///                     "RESPONSE")
 ///                 .build())
+///             .name("gateway-with-interceptor")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .authorizerType("AWS_IAM")
+///             .protocolType("MCP")
 ///             .build());
 ///
 ///     }
@@ -916,19 +918,19 @@ import 'agentcore_gateway_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreGateway
 ///     properties:
-///       name: gateway-with-interceptor
-///       roleArn: ${exampleAwsIamRole.arn}
-///       authorizerType: AWS_IAM
-///       protocolType: MCP
 ///       interceptorConfigurations:
-///         - interceptionPoints:
-///             - REQUEST
-///             - RESPONSE
-///           interceptor:
+///         - interceptor:
 ///             lambda:
 ///               arn: ${interceptor.arn}
 ///           inputConfiguration:
 ///             passRequestHeaders: true
+///           interceptionPoints:
+///             - REQUEST
+///             - RESPONSE
+///       name: gateway-with-interceptor
+///       roleArn: ${exampleAwsIamRole.arn}
+///       authorizerType: AWS_IAM
+///       protocolType: MCP
 /// ```
 ///
 ///
@@ -955,7 +957,7 @@ class AgentcoreGateway extends pulumi.CustomResource {
   /// URL endpoint for the gateway.
   late final pulumi.Output<String> gatewayUrl;
   /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptorConfiguration` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> interceptorConfigurations;
+  late final pulumi.Output<List<AgentcoreGatewayInterceptorConfiguration>?> interceptorConfigurations;
   /// ARN of the KMS key used to encrypt the gateway data.
   late final pulumi.Output<String?> kmsKeyArn;
   /// Name of the gateway.
@@ -978,7 +980,7 @@ class AgentcoreGateway extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreGatewayTimeouts?> timeouts;
   /// Workload identity details for the gateway. See `workloadIdentityDetails` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityDetails;
+  late final pulumi.Output<List<AgentcoreGatewayWorkloadIdentityDetail>> workloadIdentityDetails;
 
   /// Creates a new [AgentcoreGateway].
   /// [name] The Pulumi resource name.
@@ -992,7 +994,7 @@ class AgentcoreGateway extends pulumi.CustomResource {
           'aws:bedrock/agentcoreGateway:AgentcoreGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     authorizerConfiguration = registerOutput<AgentcoreGatewayAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizerType = registerOutput<String>('authorizerType');
@@ -1001,7 +1003,7 @@ class AgentcoreGateway extends pulumi.CustomResource {
     gatewayArn = registerOutput<String>('gatewayArn');
     gatewayId = registerOutput<String>('gatewayId');
     gatewayUrl = registerOutput<String>('gatewayUrl');
-    interceptorConfigurations = registerOutput<List<Map<String, dynamic>>?>('interceptorConfigurations');
+    interceptorConfigurations = registerOutput<List<AgentcoreGatewayInterceptorConfiguration>?>('interceptorConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayInterceptorConfiguration>(guardedValue, (value) => AgentcoreGatewayInterceptorConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     policyEngineConfiguration = registerOutput<AgentcoreGatewayPolicyEngineConfiguration?>('policyEngineConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayPolicyEngineConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1009,10 +1011,10 @@ class AgentcoreGateway extends pulumi.CustomResource {
     protocolType = registerOutput<String>('protocolType');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreGatewayTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>('workloadIdentityDetails');
+    workloadIdentityDetails = registerOutput<List<AgentcoreGatewayWorkloadIdentityDetail>>('workloadIdentityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayWorkloadIdentityDetail>(guardedValue, (value) => AgentcoreGatewayWorkloadIdentityDetail.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AgentcoreGateway] resource's state with the given [name] and [id].
@@ -1020,11 +1022,12 @@ class AgentcoreGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1045,7 +1048,7 @@ class AgentcoreGateway extends pulumi.CustomResource {
     gatewayArn = registerOutput<String>('gatewayArn');
     gatewayId = registerOutput<String>('gatewayId');
     gatewayUrl = registerOutput<String>('gatewayUrl');
-    interceptorConfigurations = registerOutput<List<Map<String, dynamic>>?>('interceptorConfigurations');
+    interceptorConfigurations = registerOutput<List<AgentcoreGatewayInterceptorConfiguration>?>('interceptorConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayInterceptorConfiguration>(guardedValue, (value) => AgentcoreGatewayInterceptorConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     policyEngineConfiguration = registerOutput<AgentcoreGatewayPolicyEngineConfiguration?>('policyEngineConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayPolicyEngineConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1053,9 +1056,39 @@ class AgentcoreGateway extends pulumi.CustomResource {
     protocolType = registerOutput<String>('protocolType');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreGatewayTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    workloadIdentityDetails = registerOutput<List<Map<String, dynamic>>>('workloadIdentityDetails');
+    workloadIdentityDetails = registerOutput<List<AgentcoreGatewayWorkloadIdentityDetail>>('workloadIdentityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayWorkloadIdentityDetail>(guardedValue, (value) => AgentcoreGatewayWorkloadIdentityDetail.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreGateway] resource.
+  AgentcoreGateway.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreGateway:AgentcoreGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizerConfiguration = registerOutput<AgentcoreGatewayAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authorizerType = registerOutput<String>('authorizerType');
+    description = registerOutput<String?>('description');
+    exceptionLevel = registerOutput<String?>('exceptionLevel');
+    gatewayArn = registerOutput<String>('gatewayArn');
+    gatewayId = registerOutput<String>('gatewayId');
+    gatewayUrl = registerOutput<String>('gatewayUrl');
+    interceptorConfigurations = registerOutput<List<AgentcoreGatewayInterceptorConfiguration>?>('interceptorConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayInterceptorConfiguration>(guardedValue, (value) => AgentcoreGatewayInterceptorConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    policyEngineConfiguration = registerOutput<AgentcoreGatewayPolicyEngineConfiguration?>('policyEngineConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayPolicyEngineConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protocolConfiguration = registerOutput<AgentcoreGatewayProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protocolType = registerOutput<String>('protocolType');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreGatewayTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadIdentityDetails = registerOutput<List<AgentcoreGatewayWorkloadIdentityDetail>>('workloadIdentityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayWorkloadIdentityDetail>(guardedValue, (value) => AgentcoreGatewayWorkloadIdentityDetail.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

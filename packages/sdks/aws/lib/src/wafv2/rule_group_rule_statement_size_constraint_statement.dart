@@ -9,9 +9,9 @@ class RuleGroupRuleStatementSizeConstraintStatement {
   /// The operator to use to compare the request part to the size setting. Valid values include: `EQ`, `NE`, `LE`, `LT`, `GE`, or `GT`.
   final pulumi.Input<String> comparisonOperator;
   /// The part of a web request that you want AWS WAF to inspect. See Field to Match below for details.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatch>? fieldToMatch;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatementFieldToMatch?>? fieldToMatch;
   /// Text transformations to apply to the raw query string before AWS WAF parses the string into individual query arguments, and before any `textTransformation` is applied. Supported only when `fieldToMatch` specifies `singleQueryArgument` or `allQueryArguments`. Maximum of 10. See Pre-Parse Text Transformation below for details.
-  final pulumi.Input<List<RuleGroupRuleStatementSizeConstraintStatementPreParseTextTransformation>>? preParseTextTransformations;
+  final pulumi.Input<List<RuleGroupRuleStatementSizeConstraintStatementPreParseTextTransformation>?>? preParseTextTransformations;
   /// The size, in bytes, to compare to the request part, after any transformations. Valid values are integers between 0 and 21474836480, inclusive.
   final pulumi.Input<int> size;
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection.
@@ -48,7 +48,7 @@ class RuleGroupRuleStatementSizeConstraintStatement {
       comparisonOperator: pulumi.Input.fromValue(map['comparisonOperator'] as String),
       fieldToMatch: (() { final guardedValue = map['fieldToMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleStatementSizeConstraintStatementFieldToMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       preParseTextTransformations: (() { final guardedValue = map['preParseTextTransformations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuleGroupRuleStatementSizeConstraintStatementPreParseTextTransformation>(guardedValue, (value) => RuleGroupRuleStatementSizeConstraintStatementPreParseTextTransformation.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
       textTransformations: pulumi.Input.fromValue(pulumi.Input.decodeList<RuleGroupRuleStatementSizeConstraintStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

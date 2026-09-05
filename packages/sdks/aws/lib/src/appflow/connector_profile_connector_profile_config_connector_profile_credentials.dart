@@ -22,41 +22,41 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentials {
   /// Connector-specific credentials required when using Amplitude. See `connector_profile_config.connector_profile_credentials.amplitude` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude>? amplitude;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsAmplitude?>? amplitude;
   /// Connector-specific profile credentials required when using the custom connector. See `connector_profile_config.connector_profile_credentials.custom_connector` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector>? customConnector;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector?>? customConnector;
   /// Connector-specific credentials required when using Datadog. See `connector_profile_config.connector_profile_credentials.datadog` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog>? datadog;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog?>? datadog;
   /// Connector-specific credentials required when using Dynatrace. See `connector_profile_config.connector_profile_credentials.dynatrace` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace>? dynatrace;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace?>? dynatrace;
   /// Connector-specific credentials required when using Google Analytics. See `connector_profile_config.connector_profile_credentials.google_analytics` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics>? googleAnalytics;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics?>? googleAnalytics;
   /// Connector-specific credentials required when using Amazon Honeycode. See `connector_profile_config.connector_profile_credentials.honeycode` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode>? honeycode;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode?>? honeycode;
   /// Connector-specific credentials required when using Infor Nexus. See `connector_profile_config.connector_profile_credentials.infor_nexus` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus>? inforNexus;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus?>? inforNexus;
   /// Connector-specific credentials required when using Marketo. See `connector_profile_config.connector_profile_credentials.marketo` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo>? marketo;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketo?>? marketo;
   /// Connector-specific credentials required when using Amazon Redshift. See `connector_profile_config.connector_profile_credentials.redshift` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift>? redshift;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift?>? redshift;
   /// Connector-specific credentials required when using Salesforce. See `connector_profile_config.connector_profile_credentials.salesforce` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce>? salesforce;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce?>? salesforce;
   /// Connector-specific credentials required when using SAPOData. See `connector_profile_config.connector_profile_credentials.sapo_data` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData>? sapoData;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData?>? sapoData;
   /// Connector-specific credentials required when using ServiceNow. See `connector_profile_config.connector_profile_credentials.service_now` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNow>? serviceNow;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNow?>? serviceNow;
   /// Connector-specific credentials required when using Singular. See `connector_profile_config.connector_profile_credentials.singular` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular>? singular;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSingular?>? singular;
   /// Connector-specific credentials required when using Slack. See `connector_profile_config.connector_profile_credentials.slack` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack>? slack;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSlack?>? slack;
   /// Connector-specific credentials required when using Snowflake. See `connector_profile_config.connector_profile_credentials.snowflake` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake>? snowflake;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake?>? snowflake;
   /// Connector-specific credentials required when using Trend Micro. See `connector_profile_config.connector_profile_credentials.trendmicro` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro>? trendmicro;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro?>? trendmicro;
   /// Connector-specific credentials required when using Veeva. See `connector_profile_config.connector_profile_credentials.veeva` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva>? veeva;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsVeeva?>? veeva;
   /// Connector-specific credentials required when using Zendesk. See `connector_profile_config.connector_profile_credentials.zendesk` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk>? zendesk;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk?>? zendesk;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentials].
   /// [amplitude] Connector-specific credentials required when using Amplitude. See `connector_profile_config.connector_profile_credentials.amplitude` Block for details.

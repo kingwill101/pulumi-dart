@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_args.dart';
+import 'rule_exclude_resource_tag.dart';
 import 'rule_lock_configuration.dart';
+import 'rule_resource_tag.dart';
 import 'rule_retention_period.dart';
 import 'rule_state.dart';
 
@@ -16,16 +18,16 @@ import 'rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.rbin.Rule("example", {
-///     description: "Example tag-level retention rule",
-///     resourceType: "EBS_SNAPSHOT",
-///     resourceTags: [{
-///         resourceTagKey: "tag_key",
-///         resourceTagValue: "tag_value",
-///     }],
 ///     retentionPeriod: {
 ///         retentionPeriodValue: 10,
 ///         retentionPeriodUnit: "DAYS",
 ///     },
+///     resourceTags: [{
+///         resourceTagKey: "tag_key",
+///         resourceTagValue: "tag_value",
+///     }],
+///     description: "Example tag-level retention rule",
+///     resourceType: "EBS_SNAPSHOT",
 ///     tags: {
 ///         test_tag_key: "test_tag_value",
 ///     },
@@ -36,16 +38,16 @@ import 'rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.rbin.Rule("example",
-///     description="Example tag-level retention rule",
-///     resource_type="EBS_SNAPSHOT",
-///     resource_tags=[{
-///         "resource_tag_key": "tag_key",
-///         "resource_tag_value": "tag_value",
-///     }],
 ///     retention_period={
 ///         "retention_period_value": 10,
 ///         "retention_period_unit": "DAYS",
 ///     },
+///     resource_tags=[{
+///         "resource_tag_key": "tag_key",
+///         "resource_tag_value": "tag_value",
+///     }],
+///     description="Example tag-level retention rule",
+///     resource_type="EBS_SNAPSHOT",
 ///     tags={
 ///         "test_tag_key": "test_tag_value",
 ///     })
@@ -60,8 +62,11 @@ import 'rule_state.dart';
 /// {
 ///     var example = new Aws.Rbin.Rule("example", new()
 ///     {
-///         Description = "Example tag-level retention rule",
-///         ResourceType = "EBS_SNAPSHOT",
+///         RetentionPeriod = new Aws.Rbin.Inputs.RuleRetentionPeriodArgs
+///         {
+///             RetentionPeriodValue = 10,
+///             RetentionPeriodUnit = "DAYS",
+///         },
 ///         ResourceTags = new[]
 ///         {
 ///             new Aws.Rbin.Inputs.RuleResourceTagArgs
@@ -70,11 +75,8 @@ import 'rule_state.dart';
 ///                 ResourceTagValue = "tag_value",
 ///             },
 ///         },
-///         RetentionPeriod = new Aws.Rbin.Inputs.RuleRetentionPeriodArgs
-///         {
-///             RetentionPeriodValue = 10,
-///             RetentionPeriodUnit = "DAYS",
-///         },
+///         Description = "Example tag-level retention rule",
+///         ResourceType = "EBS_SNAPSHOT",
 ///         Tags =
 ///         {
 ///             { "test_tag_key", "test_tag_value" },
@@ -94,18 +96,18 @@ import 'rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rbin.NewRule(ctx, "example", &rbin.RuleArgs{
-/// 			Description:  pulumi.String("Example tag-level retention rule"),
-/// 			ResourceType: pulumi.String("EBS_SNAPSHOT"),
+/// 			RetentionPeriod: &rbin.RuleRetentionPeriodArgs{
+/// 				RetentionPeriodValue: pulumi.Int(10),
+/// 				RetentionPeriodUnit:  pulumi.String("DAYS"),
+/// 			},
 /// 			ResourceTags: rbin.RuleResourceTagArray{
 /// 				&rbin.RuleResourceTagArgs{
 /// 					ResourceTagKey:   pulumi.String("tag_key"),
 /// 					ResourceTagValue: pulumi.String("tag_value"),
 /// 				},
 /// 			},
-/// 			RetentionPeriod: &rbin.RuleRetentionPeriodArgs{
-/// 				RetentionPeriodValue: pulumi.Int(10),
-/// 				RetentionPeriodUnit:  pulumi.String("DAYS"),
-/// 			},
+/// 			Description:  pulumi.String("Example tag-level retention rule"),
+/// 			ResourceType: pulumi.String("EBS_SNAPSHOT"),
 /// 			Tags: pulumi.StringMap{
 /// 				"test_tag_key": pulumi.String("test_tag_value"),
 /// 			},
@@ -127,16 +129,16 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "aws_rbin_rule" "example" {
-///   description   = "Example tag-level retention rule"
-///   resource_type = "EBS_SNAPSHOT"
-///   resource_tags {
-///     resource_tag_key   = "tag_key"
-///     resource_tag_value = "tag_value"
-///   }
 ///   retention_period = {
 ///     retention_period_value = 10
 ///     retention_period_unit  = "DAYS"
 ///   }
+///   resource_tags {
+///     resource_tag_key   = "tag_key"
+///     resource_tag_value = "tag_value"
+///   }
+///   description   = "Example tag-level retention rule"
+///   resource_type = "EBS_SNAPSHOT"
 ///   tags = {
 ///     "test_tag_key" = "test_tag_value"
 ///   }
@@ -150,8 +152,8 @@ import 'rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rbin.Rule;
 /// import com.pulumi.aws.rbin.RuleArgs;
-/// import com.pulumi.aws.rbin.inputs.RuleResourceTagArgs;
 /// import com.pulumi.aws.rbin.inputs.RuleRetentionPeriodArgs;
+/// import com.pulumi.aws.rbin.inputs.RuleResourceTagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -166,16 +168,16 @@ import 'rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Rule("example", RuleArgs.builder()
-///             .description("Example tag-level retention rule")
-///             .resourceType("EBS_SNAPSHOT")
-///             .resourceTags(RuleResourceTagArgs.builder()
-///                 .resourceTagKey("tag_key")
-///                 .resourceTagValue("tag_value")
-///                 .build())
 ///             .retentionPeriod(RuleRetentionPeriodArgs.builder()
 ///                 .retentionPeriodValue(10)
 ///                 .retentionPeriodUnit("DAYS")
 ///                 .build())
+///             .resourceTags(RuleResourceTagArgs.builder()
+///                 .resourceTagKey("tag_key")
+///                 .resourceTagValue("tag_value")
+///                 .build())
+///             .description("Example tag-level retention rule")
+///             .resourceType("EBS_SNAPSHOT")
 ///             .tags(Map.of("test_tag_key", "test_tag_value"))
 ///             .build());
 ///
@@ -187,14 +189,14 @@ import 'rule_state.dart';
 ///   example:
 ///     type: aws:rbin:Rule
 ///     properties:
-///       description: Example tag-level retention rule
-///       resourceType: EBS_SNAPSHOT
-///       resourceTags:
-///         - resourceTagKey: tag_key
-///           resourceTagValue: tag_value
 ///       retentionPeriod:
 ///         retentionPeriodValue: 10
 ///         retentionPeriodUnit: DAYS
+///       resourceTags:
+///         - resourceTagKey: tag_key
+///           resourceTagValue: tag_value
+///       description: Example tag-level retention rule
+///       resourceType: EBS_SNAPSHOT
 ///       tags:
 ///         test_tag_key: test_tag_value
 /// ```
@@ -208,16 +210,16 @@ import 'rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.rbin.Rule("example", {
-///     description: "Example region-level retention rule with exclusion tags",
-///     resourceType: "EC2_IMAGE",
-///     excludeResourceTags: [{
-///         resourceTagKey: "tag_key",
-///         resourceTagValue: "tag_value",
-///     }],
 ///     retentionPeriod: {
 ///         retentionPeriodValue: 10,
 ///         retentionPeriodUnit: "DAYS",
 ///     },
+///     excludeResourceTags: [{
+///         resourceTagKey: "tag_key",
+///         resourceTagValue: "tag_value",
+///     }],
+///     description: "Example region-level retention rule with exclusion tags",
+///     resourceType: "EC2_IMAGE",
 ///     tags: {
 ///         test_tag_key: "test_tag_value",
 ///     },
@@ -228,16 +230,16 @@ import 'rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.rbin.Rule("example",
-///     description="Example region-level retention rule with exclusion tags",
-///     resource_type="EC2_IMAGE",
-///     exclude_resource_tags=[{
-///         "resource_tag_key": "tag_key",
-///         "resource_tag_value": "tag_value",
-///     }],
 ///     retention_period={
 ///         "retention_period_value": 10,
 ///         "retention_period_unit": "DAYS",
 ///     },
+///     exclude_resource_tags=[{
+///         "resource_tag_key": "tag_key",
+///         "resource_tag_value": "tag_value",
+///     }],
+///     description="Example region-level retention rule with exclusion tags",
+///     resource_type="EC2_IMAGE",
 ///     tags={
 ///         "test_tag_key": "test_tag_value",
 ///     })
@@ -252,8 +254,11 @@ import 'rule_state.dart';
 /// {
 ///     var example = new Aws.Rbin.Rule("example", new()
 ///     {
-///         Description = "Example region-level retention rule with exclusion tags",
-///         ResourceType = "EC2_IMAGE",
+///         RetentionPeriod = new Aws.Rbin.Inputs.RuleRetentionPeriodArgs
+///         {
+///             RetentionPeriodValue = 10,
+///             RetentionPeriodUnit = "DAYS",
+///         },
 ///         ExcludeResourceTags = new[]
 ///         {
 ///             new Aws.Rbin.Inputs.RuleExcludeResourceTagArgs
@@ -262,11 +267,8 @@ import 'rule_state.dart';
 ///                 ResourceTagValue = "tag_value",
 ///             },
 ///         },
-///         RetentionPeriod = new Aws.Rbin.Inputs.RuleRetentionPeriodArgs
-///         {
-///             RetentionPeriodValue = 10,
-///             RetentionPeriodUnit = "DAYS",
-///         },
+///         Description = "Example region-level retention rule with exclusion tags",
+///         ResourceType = "EC2_IMAGE",
 ///         Tags =
 ///         {
 ///             { "test_tag_key", "test_tag_value" },
@@ -286,18 +288,18 @@ import 'rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rbin.NewRule(ctx, "example", &rbin.RuleArgs{
-/// 			Description:  pulumi.String("Example region-level retention rule with exclusion tags"),
-/// 			ResourceType: pulumi.String("EC2_IMAGE"),
+/// 			RetentionPeriod: &rbin.RuleRetentionPeriodArgs{
+/// 				RetentionPeriodValue: pulumi.Int(10),
+/// 				RetentionPeriodUnit:  pulumi.String("DAYS"),
+/// 			},
 /// 			ExcludeResourceTags: rbin.RuleExcludeResourceTagArray{
 /// 				&rbin.RuleExcludeResourceTagArgs{
 /// 					ResourceTagKey:   pulumi.String("tag_key"),
 /// 					ResourceTagValue: pulumi.String("tag_value"),
 /// 				},
 /// 			},
-/// 			RetentionPeriod: &rbin.RuleRetentionPeriodArgs{
-/// 				RetentionPeriodValue: pulumi.Int(10),
-/// 				RetentionPeriodUnit:  pulumi.String("DAYS"),
-/// 			},
+/// 			Description:  pulumi.String("Example region-level retention rule with exclusion tags"),
+/// 			ResourceType: pulumi.String("EC2_IMAGE"),
 /// 			Tags: pulumi.StringMap{
 /// 				"test_tag_key": pulumi.String("test_tag_value"),
 /// 			},
@@ -319,16 +321,16 @@ import 'rule_state.dart';
 /// }
 ///
 /// resource "aws_rbin_rule" "example" {
-///   description   = "Example region-level retention rule with exclusion tags"
-///   resource_type = "EC2_IMAGE"
-///   exclude_resource_tags {
-///     resource_tag_key   = "tag_key"
-///     resource_tag_value = "tag_value"
-///   }
 ///   retention_period = {
 ///     retention_period_value = 10
 ///     retention_period_unit  = "DAYS"
 ///   }
+///   exclude_resource_tags {
+///     resource_tag_key   = "tag_key"
+///     resource_tag_value = "tag_value"
+///   }
+///   description   = "Example region-level retention rule with exclusion tags"
+///   resource_type = "EC2_IMAGE"
 ///   tags = {
 ///     "test_tag_key" = "test_tag_value"
 ///   }
@@ -342,8 +344,8 @@ import 'rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rbin.Rule;
 /// import com.pulumi.aws.rbin.RuleArgs;
-/// import com.pulumi.aws.rbin.inputs.RuleExcludeResourceTagArgs;
 /// import com.pulumi.aws.rbin.inputs.RuleRetentionPeriodArgs;
+/// import com.pulumi.aws.rbin.inputs.RuleExcludeResourceTagArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -358,16 +360,16 @@ import 'rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Rule("example", RuleArgs.builder()
-///             .description("Example region-level retention rule with exclusion tags")
-///             .resourceType("EC2_IMAGE")
-///             .excludeResourceTags(RuleExcludeResourceTagArgs.builder()
-///                 .resourceTagKey("tag_key")
-///                 .resourceTagValue("tag_value")
-///                 .build())
 ///             .retentionPeriod(RuleRetentionPeriodArgs.builder()
 ///                 .retentionPeriodValue(10)
 ///                 .retentionPeriodUnit("DAYS")
 ///                 .build())
+///             .excludeResourceTags(RuleExcludeResourceTagArgs.builder()
+///                 .resourceTagKey("tag_key")
+///                 .resourceTagValue("tag_value")
+///                 .build())
+///             .description("Example region-level retention rule with exclusion tags")
+///             .resourceType("EC2_IMAGE")
 ///             .tags(Map.of("test_tag_key", "test_tag_value"))
 ///             .build());
 ///
@@ -379,14 +381,14 @@ import 'rule_state.dart';
 ///   example:
 ///     type: aws:rbin:Rule
 ///     properties:
-///       description: Example region-level retention rule with exclusion tags
-///       resourceType: EC2_IMAGE
-///       excludeResourceTags:
-///         - resourceTagKey: tag_key
-///           resourceTagValue: tag_value
 ///       retentionPeriod:
 ///         retentionPeriodValue: 10
 ///         retentionPeriodUnit: DAYS
+///       excludeResourceTags:
+///         - resourceTagKey: tag_key
+///           resourceTagValue: tag_value
+///       description: Example region-level retention rule with exclusion tags
+///       resourceType: EC2_IMAGE
 ///       tags:
 ///         test_tag_key: test_tag_value
 /// ```
@@ -404,7 +406,7 @@ class Rule extends pulumi.CustomResource {
   /// Retention rule description.
   late final pulumi.Output<String> description;
   /// Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `excludeResourceTags` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> excludeResourceTags;
+  late final pulumi.Output<List<RuleExcludeResourceTag>?> excludeResourceTags;
   /// Information about the retention rule lock configuration. See `lockConfiguration` below.
   late final pulumi.Output<RuleLockConfiguration?> lockConfiguration;
   /// (Timestamp) Date and time at which the unlock delay is set to expire. Only returned for retention rules that have been unlocked and that are still within the unlock delay period.
@@ -414,7 +416,7 @@ class Rule extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resourceTags` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceTags;
+  late final pulumi.Output<List<RuleResourceTag>?> resourceTags;
   /// Resource type to be retained by the retention rule. Valid values are `EBS_SNAPSHOT` and `EC2_IMAGE`.
   late final pulumi.Output<String> resourceType;
   /// Information about the retention period for which the retention rule is to retain resources. See `retentionPeriod` below.
@@ -438,21 +440,21 @@ class Rule extends pulumi.CustomResource {
           'aws:rbin/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
-    excludeResourceTags = registerOutput<List<Map<String, dynamic>>?>('excludeResourceTags');
+    excludeResourceTags = registerOutput<List<RuleExcludeResourceTag>?>('excludeResourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleExcludeResourceTag>(guardedValue, (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>())); });
     lockConfiguration = registerOutput<RuleLockConfiguration?>('lockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleLockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lockEndTime = registerOutput<String>('lockEndTime');
     lockState = registerOutput<String>('lockState');
     region = registerOutput<String>('region');
-    resourceTags = registerOutput<List<Map<String, dynamic>>?>('resourceTags');
+    resourceTags = registerOutput<List<RuleResourceTag>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleResourceTag>(guardedValue, (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>())); });
     resourceType = registerOutput<String>('resourceType');
     retentionPeriod = registerOutput<RuleRetentionPeriod>('retentionPeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleRetentionPeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Rule] resource's state with the given [name] and [id].
@@ -460,11 +462,12 @@ class Rule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Rule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -480,16 +483,40 @@ class Rule extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
-    excludeResourceTags = registerOutput<List<Map<String, dynamic>>?>('excludeResourceTags');
+    excludeResourceTags = registerOutput<List<RuleExcludeResourceTag>?>('excludeResourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleExcludeResourceTag>(guardedValue, (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>())); });
     lockConfiguration = registerOutput<RuleLockConfiguration?>('lockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleLockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lockEndTime = registerOutput<String>('lockEndTime');
     lockState = registerOutput<String>('lockState');
     region = registerOutput<String>('region');
-    resourceTags = registerOutput<List<Map<String, dynamic>>?>('resourceTags');
+    resourceTags = registerOutput<List<RuleResourceTag>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleResourceTag>(guardedValue, (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>())); });
     resourceType = registerOutput<String>('resourceType');
     retentionPeriod = registerOutput<RuleRetentionPeriod>('retentionPeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleRetentionPeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Rule] resource.
+  Rule.reference(String urn)
+    : super(
+        'aws:rbin/rule:Rule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    excludeResourceTags = registerOutput<List<RuleExcludeResourceTag>?>('excludeResourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleExcludeResourceTag>(guardedValue, (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>())); });
+    lockConfiguration = registerOutput<RuleLockConfiguration?>('lockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleLockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lockEndTime = registerOutput<String>('lockEndTime');
+    lockState = registerOutput<String>('lockState');
+    region = registerOutput<String>('region');
+    resourceTags = registerOutput<List<RuleResourceTag>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleResourceTag>(guardedValue, (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceType = registerOutput<String>('resourceType');
+    retentionPeriod = registerOutput<RuleRetentionPeriod>('retentionPeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleRetentionPeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -6,9 +6,9 @@ import 'link_link_configuration_metric_configuration.dart';
 
 class LinkLinkConfiguration {
   /// Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See `logGroupConfiguration` Block for details.
-  final pulumi.Input<LinkLinkConfigurationLogGroupConfiguration>? logGroupConfiguration;
+  final pulumi.Input<LinkLinkConfigurationLogGroupConfiguration?>? logGroupConfiguration;
   /// Configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. See `metricConfiguration` Block for details.
-  final pulumi.Input<LinkLinkConfigurationMetricConfiguration>? metricConfiguration;
+  final pulumi.Input<LinkLinkConfigurationMetricConfiguration?>? metricConfiguration;
 
   /// Creates a new [LinkLinkConfiguration].
   /// [logGroupConfiguration] Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See `logGroupConfiguration` Block for details.

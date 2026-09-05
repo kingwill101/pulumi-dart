@@ -32,7 +32,7 @@ class DataSourceParametersAuroraPostgresql {
     return DataSourceParametersAuroraPostgresql(
       database: pulumi.Input.fromValue(map['database'] as String),
       host: pulumi.Input.fromValue(map['host'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'group_mixed_instances_policy_launch_template.dart';
 
 class GroupMixedInstancesPolicy {
   /// Nested argument containing settings on how to mix on-demand and Spot instances in the Auto Scaling group. Defined below.
-  final pulumi.Input<GroupMixedInstancesPolicyInstancesDistribution>? instancesDistribution;
+  final pulumi.Input<GroupMixedInstancesPolicyInstancesDistribution?>? instancesDistribution;
   /// Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
   final pulumi.Input<GroupMixedInstancesPolicyLaunchTemplate> launchTemplate;
 

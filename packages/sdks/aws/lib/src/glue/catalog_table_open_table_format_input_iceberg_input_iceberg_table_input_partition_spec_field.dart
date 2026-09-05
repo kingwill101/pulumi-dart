@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecField {
   /// Unique identifier assigned to this partition field within the Iceberg table's partition specification.
-  final pulumi.Input<int>? fieldId;
+  final pulumi.Input<int?>? fieldId;
   /// Name of the table. For Hive compatibility, this must be entirely lowercase.
   ///
   /// The following arguments are optional:
@@ -35,9 +35,9 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec
 
   factory CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecField.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecField(
-      fieldId: (() { final guardedValue = map['fieldId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fieldId: (() { final guardedValue = map['fieldId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      sourceId: pulumi.Input.fromValue(map['sourceId'] as int),
+      sourceId: pulumi.Input.fromValue((map['sourceId'] as num).toInt()),
       transform: pulumi.Input.fromValue(map['transform'] as String),
     );
   }

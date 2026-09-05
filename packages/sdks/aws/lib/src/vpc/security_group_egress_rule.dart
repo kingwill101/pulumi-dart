@@ -161,7 +161,7 @@ import 'security_group_egress_rule_state.dart';
 /// $ pulumi import aws:vpc/securityGroupEgressRule:SecurityGroupEgressRule example sgr-02108b27edd666983
 /// ```
 class SecurityGroupEgressRule extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the security group rule.
+  /// ARN of the security group rule.
   late final pulumi.Output<String> arn;
   /// The destination IPv4 CIDR range.
   late final pulumi.Output<String?> cidrIpv4;
@@ -204,7 +204,7 @@ class SecurityGroupEgressRule extends pulumi.CustomResource {
           'aws:vpc/securityGroupEgressRule:SecurityGroupEgressRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cidrIpv4 = registerOutput<String?>('cidrIpv4');
@@ -217,8 +217,8 @@ class SecurityGroupEgressRule extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     toPort = registerOutput<int?>('toPort');
   }
 
@@ -227,11 +227,12 @@ class SecurityGroupEgressRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityGroupEgressRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityGroupEgressRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -256,8 +257,33 @@ class SecurityGroupEgressRule extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');
     securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    toPort = registerOutput<int?>('toPort');
+  }
+
+  /// Creates a typed reference to an existing [SecurityGroupEgressRule] resource.
+  SecurityGroupEgressRule.reference(String urn)
+    : super(
+        'aws:vpc/securityGroupEgressRule:SecurityGroupEgressRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cidrIpv4 = registerOutput<String?>('cidrIpv4');
+    cidrIpv6 = registerOutput<String?>('cidrIpv6');
+    description = registerOutput<String?>('description');
+    fromPort = registerOutput<int?>('fromPort');
+    ipProtocol = registerOutput<String>('ipProtocol');
+    prefixListId = registerOutput<String?>('prefixListId');
+    referencedSecurityGroupId = registerOutput<String?>('referencedSecurityGroupId');
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    securityGroupRuleId = registerOutput<String>('securityGroupRuleId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     toPort = registerOutput<int?>('toPort');
   }
 }

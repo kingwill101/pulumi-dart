@@ -5,7 +5,7 @@ import 'virtual_service_spec_provider.dart';
 
 class VirtualServiceSpec {
   /// App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router. See `provider` Block for details.
-  final pulumi.Input<VirtualServiceSpecProvider>? provider;
+  final pulumi.Input<VirtualServiceSpecProvider?>? provider;
 
   /// Creates a new [VirtualServiceSpec].
   /// [provider] App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router. See `provider` Block for details.

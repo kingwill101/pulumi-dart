@@ -6,9 +6,9 @@ import 'user_settings_cookie_synchronization_configuration_blocklist.dart';
 
 class UserSettingsCookieSynchronizationConfiguration {
   /// List of cookie specifications that are allowed to be synchronized to the remote browser.
-  final pulumi.Input<List<UserSettingsCookieSynchronizationConfigurationAllowlist>>? allowlists;
+  final pulumi.Input<List<UserSettingsCookieSynchronizationConfigurationAllowlist>?>? allowlists;
   /// List of cookie specifications that are blocked from being synchronized to the remote browser.
-  final pulumi.Input<List<UserSettingsCookieSynchronizationConfigurationBlocklist>>? blocklists;
+  final pulumi.Input<List<UserSettingsCookieSynchronizationConfigurationBlocklist>?>? blocklists;
 
   /// Creates a new [UserSettingsCookieSynchronizationConfiguration].
   /// [allowlists] List of cookie specifications that are allowed to be synchronized to the remote browser.

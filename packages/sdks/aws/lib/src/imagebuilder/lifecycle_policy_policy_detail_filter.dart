@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LifecyclePolicyPolicyDetailFilter {
   /// For age-based filters, this is the number of resources to keep on hand after the lifecycle DELETE action is applied. Impacted resources are only deleted if you have more than this number of resources. If you have fewer resources than this number, the impacted resource is not deleted.
-  final pulumi.Input<int>? retainAtLeast;
+  final pulumi.Input<int?>? retainAtLeast;
   /// Filter resources based on either age or count. Valid values: `AGE` or `COUNT`.
   final pulumi.Input<String> type;
   /// Defines the unit of time that the lifecycle policy uses to determine impacted resources. This is required for age-based rules. Valid values: `DAYS`, `WEEKS`, `MONTHS` or `YEARS`.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
   /// The number of units for the time period or for the count. For example, a value of 6 might refer to six months or six AMIs.
   ///
   /// The following arguments are optional:
@@ -37,10 +37,10 @@ class LifecyclePolicyPolicyDetailFilter {
 
   factory LifecyclePolicyPolicyDetailFilter.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailFilter(
-      retainAtLeast: (() { final guardedValue = map['retainAtLeast']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retainAtLeast: (() { final guardedValue = map['retainAtLeast']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      value: pulumi.Input.fromValue(map['value'] as int),
+      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
     );
   }
 }

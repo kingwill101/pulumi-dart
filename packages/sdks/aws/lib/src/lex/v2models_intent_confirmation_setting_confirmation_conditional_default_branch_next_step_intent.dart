@@ -5,9 +5,9 @@ import 'v2models_intent_confirmation_setting_confirmation_conditional_default_br
 
 class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntent {
   /// Name of the intent.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration block for all of the slot value overrides for the intent. The name of the slot maps to the value of the slot. Slots that are not included in the map aren't overridden. See `slot`.
-  final pulumi.Input<List<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlot>>? slots;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntentSlot>?>? slots;
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStepIntent].
   /// [name] Name of the intent.

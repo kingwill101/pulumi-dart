@@ -8,29 +8,29 @@ import 'configuration_set_event_destination_event_destination_pinpoint_destinati
 import 'configuration_set_event_destination_event_destination_sns_destination.dart';
 
 class ConfigurationSetEventDestinationEventDestination {
-  /// An object that defines an Amazon CloudWatch destination for email events. See `cloudWatchDestination` Block for details.
-  final pulumi.Input<ConfigurationSetEventDestinationEventDestinationCloudWatchDestination>? cloudWatchDestination;
+  /// Object that defines an Amazon CloudWatch destination for email events. See `cloudWatchDestination` Block for details.
+  final pulumi.Input<ConfigurationSetEventDestinationEventDestinationCloudWatchDestination?>? cloudWatchDestination;
   /// When the event destination is enabled, the specified event types are sent to the destinations. Default: `false`.
-  final pulumi.Input<bool>? enabled;
-  /// An object that defines an Amazon EventBridge destination for email events. You can use Amazon EventBridge to send notifications when certain email events occur. See `eventBridgeDestination` Block for details.
-  final pulumi.Input<ConfigurationSetEventDestinationEventDestinationEventBridgeDestination>? eventBridgeDestination;
-  /// An object that defines an Amazon Kinesis Data Firehose destination for email events. See `kinesisFirehoseDestination` Block for details.
-  final pulumi.Input<ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination>? kinesisFirehoseDestination;
+  final pulumi.Input<bool?>? enabled;
+  /// Object that defines an Amazon EventBridge destination for email events. You can use Amazon EventBridge to send notifications when certain email events occur. See `eventBridgeDestination` Block for details.
+  final pulumi.Input<ConfigurationSetEventDestinationEventDestinationEventBridgeDestination?>? eventBridgeDestination;
+  /// Object that defines an Amazon Kinesis Data Firehose destination for email events. See `kinesisFirehoseDestination` Block for details.
+  final pulumi.Input<ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination?>? kinesisFirehoseDestination;
   /// An array that specifies which events the Amazon SES API v2 should send to the destinations. Valid values: `SEND`, `REJECT`, `BOUNCE`, `COMPLAINT`, `DELIVERY`, `OPEN`, `CLICK`, `RENDERING_FAILURE`, `DELIVERY_DELAY`, `SUBSCRIPTION`.
   final pulumi.Input<List<String>> matchingEventTypes;
-  /// An object that defines an AWS End User Messaging project destination for email events. See `pinpointDestination` Block for details.
-  final pulumi.Input<ConfigurationSetEventDestinationEventDestinationPinpointDestination>? pinpointDestination;
-  /// An object that defines an Amazon SNS destination for email events. See `snsDestination` Block for details.
-  final pulumi.Input<ConfigurationSetEventDestinationEventDestinationSnsDestination>? snsDestination;
+  /// Object that defines an AWS End User Messaging project destination for email events. See `pinpointDestination` Block for details.
+  final pulumi.Input<ConfigurationSetEventDestinationEventDestinationPinpointDestination?>? pinpointDestination;
+  /// Object that defines an Amazon SNS destination for email events. See `snsDestination` Block for details.
+  final pulumi.Input<ConfigurationSetEventDestinationEventDestinationSnsDestination?>? snsDestination;
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestination].
-  /// [cloudWatchDestination] An object that defines an Amazon CloudWatch destination for email events. See `cloudWatchDestination` Block for details.
+  /// [cloudWatchDestination] Object that defines an Amazon CloudWatch destination for email events. See `cloudWatchDestination` Block for details.
   /// [enabled] When the event destination is enabled, the specified event types are sent to the destinations. Default: `false`.
-  /// [eventBridgeDestination] An object that defines an Amazon EventBridge destination for email events. You can use Amazon EventBridge to send notifications when certain email events occur. See `eventBridgeDestination` Block for details.
-  /// [kinesisFirehoseDestination] An object that defines an Amazon Kinesis Data Firehose destination for email events. See `kinesisFirehoseDestination` Block for details.
+  /// [eventBridgeDestination] Object that defines an Amazon EventBridge destination for email events. You can use Amazon EventBridge to send notifications when certain email events occur. See `eventBridgeDestination` Block for details.
+  /// [kinesisFirehoseDestination] Object that defines an Amazon Kinesis Data Firehose destination for email events. See `kinesisFirehoseDestination` Block for details.
   /// [matchingEventTypes] An array that specifies which events the Amazon SES API v2 should send to the destinations. Valid values: `SEND`, `REJECT`, `BOUNCE`, `COMPLAINT`, `DELIVERY`, `OPEN`, `CLICK`, `RENDERING_FAILURE`, `DELIVERY_DELAY`, `SUBSCRIPTION`.
-  /// [pinpointDestination] An object that defines an AWS End User Messaging project destination for email events. See `pinpointDestination` Block for details.
-  /// [snsDestination] An object that defines an Amazon SNS destination for email events. See `snsDestination` Block for details.
+  /// [pinpointDestination] Object that defines an AWS End User Messaging project destination for email events. See `pinpointDestination` Block for details.
+  /// [snsDestination] Object that defines an Amazon SNS destination for email events. See `snsDestination` Block for details.
   const ConfigurationSetEventDestinationEventDestination({
     this.cloudWatchDestination,
     this.enabled,

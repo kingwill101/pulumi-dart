@@ -10,20 +10,20 @@ import 'sdkvoice_sip_media_application_endpoints.dart';
 class SdkvoiceSipMediaApplicationArgs {
   /// The AWS Region in which the AWS Chime SDK Voice Sip Media Application is created.
   final pulumi.Input<String> awsRegion;
-  /// List of endpoints (Lambda Amazon Resource Names) specified for the SIP media application. Currently, only one endpoint is supported. See `endpoints`.
+  /// List of endpoints (Lambda ARNs) specified for the SIP media application. Currently, only one endpoint is supported. See `endpoints`.
   final pulumi.Input<SdkvoiceSipMediaApplicationEndpoints> endpoints;
   /// The name of the AWS Chime SDK Voice Sip Media Application.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SdkvoiceSipMediaApplicationArgs].
   /// [awsRegion] The AWS Region in which the AWS Chime SDK Voice Sip Media Application is created.
-  /// [endpoints] List of endpoints (Lambda Amazon Resource Names) specified for the SIP media application. Currently, only one endpoint is supported. See `endpoints`.
+  /// [endpoints] List of endpoints (Lambda ARNs) specified for the SIP media application. Currently, only one endpoint is supported. See `endpoints`.
   /// [name] The name of the AWS Chime SDK Voice Sip Media Application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

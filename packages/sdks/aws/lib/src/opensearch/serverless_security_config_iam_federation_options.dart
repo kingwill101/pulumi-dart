@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessSecurityConfigIamFederationOptions {
   /// Group attribute for this IAM federation integration. At least one of `groupAttribute` or `userAttribute` must be specified.
-  final pulumi.Input<String>? groupAttribute;
+  final pulumi.Input<String?>? groupAttribute;
   /// User attribute for this IAM federation integration. At least one of `groupAttribute` or `userAttribute` must be specified.
-  final pulumi.Input<String>? userAttribute;
+  final pulumi.Input<String?>? userAttribute;
 
   /// Creates a new [ServerlessSecurityConfigIamFederationOptions].
   /// [groupAttribute] Group attribute for this IAM federation integration. At least one of `groupAttribute` or `userAttribute` must be specified.

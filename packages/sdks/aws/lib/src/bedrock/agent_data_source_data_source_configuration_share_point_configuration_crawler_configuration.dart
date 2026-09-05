@@ -5,7 +5,7 @@ import 'agent_data_source_data_source_configuration_share_point_configuration_cr
 
 class AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfiguration {
   /// The Salesforce standard object configuration. See `filterConfiguration` block for details.
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfiguration>? filterConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfigurationFilterConfiguration?>? filterConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfiguration].
   /// [filterConfiguration] The Salesforce standard object configuration. See `filterConfiguration` block for details.

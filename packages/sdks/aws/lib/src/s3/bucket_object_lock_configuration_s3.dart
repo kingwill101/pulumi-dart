@@ -20,19 +20,19 @@ import 'bucket_object_lock_configuration_state.dart';
 ///
 /// const example = new aws.s3.Bucket("example", {bucket: "mybucket"});
 /// const exampleBucketVersioning = new aws.s3.BucketVersioning("example", {
-///     bucket: example.id,
 ///     versioningConfiguration: {
 ///         status: "Enabled",
 ///     },
+///     bucket: example.id,
 /// });
 /// const exampleBucketObjectLockConfiguration = new aws.s3.BucketObjectLockConfiguration("example", {
-///     bucket: example.id,
 ///     rule: {
 ///         defaultRetention: {
 ///             mode: "COMPLIANCE",
 ///             days: 5,
 ///         },
 ///     },
+///     bucket: example.id,
 /// });
 /// ```
 /// ```python
@@ -41,18 +41,18 @@ import 'bucket_object_lock_configuration_state.dart';
 ///
 /// example = aws.s3.Bucket("example", bucket="mybucket")
 /// example_bucket_versioning = aws.s3.BucketVersioning("example",
-///     bucket=example.id,
 ///     versioning_configuration={
 ///         "status": "Enabled",
-///     })
+///     },
+///     bucket=example.id)
 /// example_bucket_object_lock_configuration = aws.s3.BucketObjectLockConfiguration("example",
-///     bucket=example.id,
 ///     rule={
 ///         "default_retention": {
 ///             "mode": "COMPLIANCE",
 ///             "days": 5,
 ///         },
-///     })
+///     },
+///     bucket=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -69,16 +69,15 @@ import 'bucket_object_lock_configuration_state.dart';
 ///
 ///     var exampleBucketVersioning = new Aws.S3.BucketVersioning("example", new()
 ///     {
-///         Bucket = example.Id,
 ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
 ///         {
 ///             Status = "Enabled",
 ///         },
+///         Bucket = example.Id,
 ///     });
 ///
 ///     var exampleBucketObjectLockConfiguration = new Aws.S3.BucketObjectLockConfiguration("example", new()
 ///     {
-///         Bucket = example.Id,
 ///         Rule = new Aws.S3.Inputs.BucketObjectLockConfigurationRuleArgs
 ///         {
 ///             DefaultRetention = new Aws.S3.Inputs.BucketObjectLockConfigurationRuleDefaultRetentionArgs
@@ -87,6 +86,7 @@ import 'bucket_object_lock_configuration_state.dart';
 ///                 Days = 5,
 ///             },
 ///         },
+///         Bucket = example.Id,
 ///     });
 ///
 /// });
@@ -108,22 +108,22 @@ import 'bucket_object_lock_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketVersioning(ctx, "example", &s3.BucketVersioningArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketObjectLockConfiguration(ctx, "example", &s3.BucketObjectLockConfigurationArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rule: &s3.BucketObjectLockConfigurationRuleArgs{
 /// 				DefaultRetention: &s3.BucketObjectLockConfigurationRuleDefaultRetentionArgs{
 /// 					Mode: pulumi.String("COMPLIANCE"),
 /// 					Days: pulumi.Int(5),
 /// 				},
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -145,19 +145,19 @@ import 'bucket_object_lock_configuration_state.dart';
 ///   bucket = "mybucket"
 /// }
 /// resource "aws_s3_bucketversioning" "example" {
-///   bucket = aws_s3_bucket.example.id
 ///   versioning_configuration = {
 ///     status = "Enabled"
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// resource "aws_s3_bucketobjectlockconfiguration" "example" {
-///   bucket = aws_s3_bucket.example.id
 ///   rule = {
 ///     default_retention = {
 ///       mode = "COMPLIANCE"
 ///       days = 5
 ///     }
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// ```
 /// ```java
@@ -193,20 +193,20 @@ import 'bucket_object_lock_configuration_state.dart';
 ///             .build());
 ///
 ///         var exampleBucketVersioning = new BucketVersioning("exampleBucketVersioning", BucketVersioningArgs.builder()
-///             .bucket(example.id())
 ///             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
 ///                 .status("Enabled")
 ///                 .build())
+///             .bucket(example.id())
 ///             .build());
 ///
 ///         var exampleBucketObjectLockConfiguration = new BucketObjectLockConfiguration("exampleBucketObjectLockConfiguration", BucketObjectLockConfigurationArgs.builder()
-///             .bucket(example.id())
 ///             .rule(BucketObjectLockConfigurationRuleArgs.builder()
 ///                 .defaultRetention(BucketObjectLockConfigurationRuleDefaultRetentionArgs.builder()
 ///                     .mode("COMPLIANCE")
 ///                     .days(5)
 ///                     .build())
 ///                 .build())
+///             .bucket(example.id())
 ///             .build());
 ///
 ///     }
@@ -222,18 +222,18 @@ import 'bucket_object_lock_configuration_state.dart';
 ///     type: aws:s3:BucketVersioning
 ///     name: example
 ///     properties:
-///       bucket: ${example.id}
 ///       versioningConfiguration:
 ///         status: Enabled
+///       bucket: ${example.id}
 ///   exampleBucketObjectLockConfiguration:
 ///     type: aws:s3:BucketObjectLockConfiguration
 ///     name: example
 ///     properties:
-///       bucket: ${example.id}
 ///       rule:
 ///         defaultRetention:
 ///           mode: COMPLIANCE
 ///           days: 5
+///       bucket: ${example.id}
 /// ```
 ///
 ///
@@ -279,14 +279,15 @@ class BucketObjectLockConfigurationS3 extends pulumi.CustomResource {
           'aws:s3/bucketObjectLockConfiguration:BucketObjectLockConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['token'],
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     objectLockEnabled = registerOutput<String?>('objectLockEnabled');
     region = registerOutput<String>('region');
     rule = registerOutput<BucketObjectLockConfigurationRule?>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectLockConfigurationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    token = registerOutput<String?>('token');
+    token = registerOutput<String?>('token', isSecret: true);
   }
 
   /// Gets an existing [BucketObjectLockConfigurationS3] resource's state with the given [name] and [id].
@@ -294,11 +295,12 @@ class BucketObjectLockConfigurationS3 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketObjectLockConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketObjectLockConfigurationS3._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -317,6 +319,24 @@ class BucketObjectLockConfigurationS3 extends pulumi.CustomResource {
     objectLockEnabled = registerOutput<String?>('objectLockEnabled');
     region = registerOutput<String>('region');
     rule = registerOutput<BucketObjectLockConfigurationRule?>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectLockConfigurationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    token = registerOutput<String?>('token');
+    token = registerOutput<String?>('token', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [BucketObjectLockConfigurationS3] resource.
+  BucketObjectLockConfigurationS3.reference(String urn)
+    : super(
+        'aws:s3/bucketObjectLockConfiguration:BucketObjectLockConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['token'],
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    objectLockEnabled = registerOutput<String?>('objectLockEnabled');
+    region = registerOutput<String>('region');
+    rule = registerOutput<BucketObjectLockConfigurationRule?>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectLockConfigurationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    token = registerOutput<String?>('token', isSecret: true);
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LabelingJobOutputConfig {
   /// ID of the key used to encrypt the output data.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// S3 location to write output data.
   final pulumi.Input<String> s3OutputPath;
   /// SNS output topic ARN.
-  final pulumi.Input<String>? snsTopicArn;
+  final pulumi.Input<String?>? snsTopicArn;
 
   /// Creates a new [LabelingJobOutputConfig].
   /// [kmsKeyId] ID of the key used to encrypt the output data.

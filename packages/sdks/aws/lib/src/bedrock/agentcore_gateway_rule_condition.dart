@@ -6,9 +6,9 @@ import 'agentcore_gateway_rule_condition_match_principals.dart';
 
 class AgentcoreGatewayRuleCondition {
   /// Match when the request path matches any of the supplied glob patterns (e.g. `/api/*`).
-  final pulumi.Input<AgentcoreGatewayRuleConditionMatchPaths>? matchPaths;
+  final pulumi.Input<AgentcoreGatewayRuleConditionMatchPaths?>? matchPaths;
   /// Match when the caller's IAM identity matches any of the supplied principal entries.
-  final pulumi.Input<AgentcoreGatewayRuleConditionMatchPrincipals>? matchPrincipals;
+  final pulumi.Input<AgentcoreGatewayRuleConditionMatchPrincipals?>? matchPrincipals;
 
   /// Creates a new [AgentcoreGatewayRuleCondition].
   /// [matchPaths] Match when the request path matches any of the supplied glob patterns (e.g. `/api/*`).

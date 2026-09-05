@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationNetworkConfiguration {
   /// The array of security group Ids for customer VPC connectivity.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// The array of subnet Ids for customer VPC connectivity.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
 
   /// Creates a new [ApplicationNetworkConfiguration].
   /// [securityGroupIds] The array of security group Ids for customer VPC connectivity.

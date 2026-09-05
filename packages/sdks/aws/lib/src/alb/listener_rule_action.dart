@@ -10,29 +10,29 @@ import 'listener_rule_action_redirect.dart';
 
 class ListenerRuleAction {
   /// Information for creating an authenticate action using Cognito. Required if `type` is `authenticate-cognito`.
-  final pulumi.Input<ListenerRuleActionAuthenticateCognito>? authenticateCognito;
+  final pulumi.Input<ListenerRuleActionAuthenticateCognito?>? authenticateCognito;
   /// Information for creating an authenticate action using OIDC. Required if `type` is `authenticate-oidc`.
-  final pulumi.Input<ListenerRuleActionAuthenticateOidc>? authenticateOidc;
+  final pulumi.Input<ListenerRuleActionAuthenticateOidc?>? authenticateOidc;
   /// Information for creating an action that returns a custom HTTP response. Required if `type` is `fixed-response`.
-  final pulumi.Input<ListenerRuleActionFixedResponse>? fixedResponse;
+  final pulumi.Input<ListenerRuleActionFixedResponse?>? fixedResponse;
   /// Configuration block for creating an action that distributes requests among one or more target groups.
   /// Specify only if `type` is `forward`.
   /// Cannot be specified with `targetGroupArn`.
-  final pulumi.Input<ListenerRuleActionForward>? forward;
+  final pulumi.Input<ListenerRuleActionForward?>? forward;
   /// Information for creating a JWT validation action. Required if `type` is `jwt-validation`.
-  final pulumi.Input<ListenerRuleActionJwtValidation>? jwtValidation;
+  final pulumi.Input<ListenerRuleActionJwtValidation?>? jwtValidation;
   /// Order for the action.
   /// The action with the lowest value for order is performed first.
   /// Valid values are between `1` and `50000`.
   /// Defaults to the position in the list of actions.
-  final pulumi.Input<int>? order;
+  final pulumi.Input<int?>? order;
   /// Information for creating a redirect action. Required if `type` is `redirect`.
-  final pulumi.Input<ListenerRuleActionRedirect>? redirect;
+  final pulumi.Input<ListenerRuleActionRedirect?>? redirect;
   /// ARN of the Target Group to which to route traffic.
   /// Specify only if `type` is `forward` and you want to route to a single target group.
   /// To route to one or more target groups, use a `forward` block instead.
   /// Cannot be specified with `forward`.
-  final pulumi.Input<String>? targetGroupArn;
+  final pulumi.Input<String?>? targetGroupArn;
   /// The type of routing action. Valid values are `forward`, `redirect`, `fixed-response`, `authenticate-cognito`, `authenticate-oidc` and `jwt-validation`.
   final pulumi.Input<String> type;
 
@@ -79,7 +79,7 @@ class ListenerRuleAction {
       fixedResponse: (() { final guardedValue = map['fixedResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListenerRuleActionFixedResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       forward: (() { final guardedValue = map['forward']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListenerRuleActionForward.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       jwtValidation: (() { final guardedValue = map['jwtValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListenerRuleActionJwtValidation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       redirect: (() { final guardedValue = map['redirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListenerRuleActionRedirect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       targetGroupArn: (() { final guardedValue = map['targetGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

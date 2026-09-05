@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_database_args.dart';
+import 'catalog_database_create_table_default_permission.dart';
 import 'catalog_database_federated_database.dart';
 import 'catalog_database_state.dart';
 import 'catalog_database_target_database.dart';
@@ -114,13 +115,13 @@ import 'catalog_database_target_database.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.CatalogDatabase("example", {
-///     name: "MyCatalogDatabase",
 ///     createTableDefaultPermissions: [{
-///         permissions: ["SELECT"],
 ///         principal: {
 ///             dataLakePrincipalIdentifier: "IAM_ALLOWED_PRINCIPALS",
 ///         },
+///         permissions: ["SELECT"],
 ///     }],
+///     name: "MyCatalogDatabase",
 /// });
 /// ```
 /// ```python
@@ -128,13 +129,13 @@ import 'catalog_database_target_database.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.CatalogDatabase("example",
-///     name="MyCatalogDatabase",
 ///     create_table_default_permissions=[{
-///         "permissions": ["SELECT"],
 ///         "principal": {
 ///             "data_lake_principal_identifier": "IAM_ALLOWED_PRINCIPALS",
 ///         },
-///     }])
+///         "permissions": ["SELECT"],
+///     }],
+///     name="MyCatalogDatabase")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -146,21 +147,21 @@ import 'catalog_database_target_database.dart';
 /// {
 ///     var example = new Aws.Glue.CatalogDatabase("example", new()
 ///     {
-///         Name = "MyCatalogDatabase",
 ///         CreateTableDefaultPermissions = new[]
 ///         {
 ///             new Aws.Glue.Inputs.CatalogDatabaseCreateTableDefaultPermissionArgs
 ///             {
-///                 Permissions = new[]
-///                 {
-///                     "SELECT",
-///                 },
 ///                 Principal = new Aws.Glue.Inputs.CatalogDatabaseCreateTableDefaultPermissionPrincipalArgs
 ///                 {
 ///                     DataLakePrincipalIdentifier = "IAM_ALLOWED_PRINCIPALS",
 ///                 },
+///                 Permissions = new[]
+///                 {
+///                     "SELECT",
+///                 },
 ///             },
 ///         },
+///         Name = "MyCatalogDatabase",
 ///     });
 ///
 /// });
@@ -176,17 +177,17 @@ import 'catalog_database_target_database.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewCatalogDatabase(ctx, "example", &glue.CatalogDatabaseArgs{
-/// 			Name: pulumi.String("MyCatalogDatabase"),
 /// 			CreateTableDefaultPermissions: glue.CatalogDatabaseCreateTableDefaultPermissionArray{
 /// 				&glue.CatalogDatabaseCreateTableDefaultPermissionArgs{
-/// 					Permissions: pulumi.StringArray{
-/// 						pulumi.String("SELECT"),
-/// 					},
 /// 					Principal: &glue.CatalogDatabaseCreateTableDefaultPermissionPrincipalArgs{
 /// 						DataLakePrincipalIdentifier: pulumi.String("IAM_ALLOWED_PRINCIPALS"),
 /// 					},
+/// 					Permissions: pulumi.StringArray{
+/// 						pulumi.String("SELECT"),
+/// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("MyCatalogDatabase"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -205,13 +206,13 @@ import 'catalog_database_target_database.dart';
 /// }
 ///
 /// resource "aws_glue_catalogdatabase" "example" {
-///   name = "MyCatalogDatabase"
 ///   create_table_default_permissions {
-///     permissions = ["SELECT"]
 ///     principal = {
 ///       data_lake_principal_identifier = "IAM_ALLOWED_PRINCIPALS"
 ///     }
+///     permissions = ["SELECT"]
 ///   }
+///   name = "MyCatalogDatabase"
 /// }
 /// ```
 /// ```java
@@ -238,13 +239,13 @@ import 'catalog_database_target_database.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CatalogDatabase("example", CatalogDatabaseArgs.builder()
-///             .name("MyCatalogDatabase")
 ///             .createTableDefaultPermissions(CatalogDatabaseCreateTableDefaultPermissionArgs.builder()
-///                 .permissions("SELECT")
 ///                 .principal(CatalogDatabaseCreateTableDefaultPermissionPrincipalArgs.builder()
 ///                     .dataLakePrincipalIdentifier("IAM_ALLOWED_PRINCIPALS")
 ///                     .build())
+///                 .permissions("SELECT")
 ///                 .build())
+///             .name("MyCatalogDatabase")
 ///             .build());
 ///
 ///     }
@@ -255,12 +256,12 @@ import 'catalog_database_target_database.dart';
 ///   example:
 ///     type: aws:glue:CatalogDatabase
 ///     properties:
-///       name: MyCatalogDatabase
 ///       createTableDefaultPermissions:
-///         - permissions:
-///             - SELECT
-///           principal:
+///         - principal:
 ///             dataLakePrincipalIdentifier: IAM_ALLOWED_PRINCIPALS
+///           permissions:
+///             - SELECT
+///       name: MyCatalogDatabase
 /// ```
 ///
 ///
@@ -277,7 +278,7 @@ class CatalogDatabase extends pulumi.CustomResource {
   /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
   late final pulumi.Output<String> catalogId;
   /// Creates a set of default permissions on the table for principals. See `createTableDefaultPermission` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> createTableDefaultPermissions;
+  late final pulumi.Output<List<CatalogDatabaseCreateTableDefaultPermission>> createTableDefaultPermissions;
   /// Description of the database.
   late final pulumi.Output<String?> description;
   /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federatedDatabase` below.
@@ -309,19 +310,19 @@ class CatalogDatabase extends pulumi.CustomResource {
           'aws:glue/catalogDatabase:CatalogDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String>('catalogId');
-    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createTableDefaultPermissions');
+    createTableDefaultPermissions = registerOutput<List<CatalogDatabaseCreateTableDefaultPermission>>('createTableDefaultPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CatalogDatabaseCreateTableDefaultPermission>(guardedValue, (value) => CatalogDatabaseCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     federatedDatabase = registerOutput<CatalogDatabaseFederatedDatabase?>('federatedDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogDatabaseFederatedDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     locationUri = registerOutput<String>('locationUri');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetDatabase = registerOutput<CatalogDatabaseTargetDatabase?>('targetDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogDatabaseTargetDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -330,11 +331,12 @@ class CatalogDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CatalogDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CatalogDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -350,15 +352,38 @@ class CatalogDatabase extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String>('catalogId');
-    createTableDefaultPermissions = registerOutput<List<Map<String, dynamic>>>('createTableDefaultPermissions');
+    createTableDefaultPermissions = registerOutput<List<CatalogDatabaseCreateTableDefaultPermission>>('createTableDefaultPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CatalogDatabaseCreateTableDefaultPermission>(guardedValue, (value) => CatalogDatabaseCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     federatedDatabase = registerOutput<CatalogDatabaseFederatedDatabase?>('federatedDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogDatabaseFederatedDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     locationUri = registerOutput<String>('locationUri');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetDatabase = registerOutput<CatalogDatabaseTargetDatabase?>('targetDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogDatabaseTargetDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CatalogDatabase] resource.
+  CatalogDatabase.reference(String urn)
+    : super(
+        'aws:glue/catalogDatabase:CatalogDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    catalogId = registerOutput<String>('catalogId');
+    createTableDefaultPermissions = registerOutput<List<CatalogDatabaseCreateTableDefaultPermission>>('createTableDefaultPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CatalogDatabaseCreateTableDefaultPermission>(guardedValue, (value) => CatalogDatabaseCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    federatedDatabase = registerOutput<CatalogDatabaseFederatedDatabase?>('federatedDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogDatabaseFederatedDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    locationUri = registerOutput<String>('locationUri');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetDatabase = registerOutput<CatalogDatabaseTargetDatabase?>('targetDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogDatabaseTargetDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

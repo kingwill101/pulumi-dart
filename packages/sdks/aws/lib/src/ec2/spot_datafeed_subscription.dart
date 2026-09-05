@@ -172,7 +172,7 @@ class SpotDatafeedSubscription extends pulumi.CustomResource {
           'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     prefix = registerOutput<String?>('prefix');
@@ -184,11 +184,12 @@ class SpotDatafeedSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpotDatafeedSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpotDatafeedSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -202,6 +203,20 @@ class SpotDatafeedSubscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    prefix = registerOutput<String?>('prefix');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [SpotDatafeedSubscription] resource.
+  SpotDatafeedSubscription.reference(String urn)
+    : super(
+        'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     prefix = registerOutput<String?>('prefix');
     region = registerOutput<String>('region');

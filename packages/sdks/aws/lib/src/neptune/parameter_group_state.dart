@@ -5,27 +5,27 @@ import 'parameter_group_parameter.dart';
 
 /// Input properties used for looking up and filtering ParameterGroup resources.
 class ParameterGroupState {
-  /// The Neptune parameter group Amazon Resource Name (ARN).
-  final pulumi.Input<String>? arn;
+  /// Neptune parameter group ARN.
+  final pulumi.Input<String?>? arn;
   /// The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The family of the Neptune parameter group.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The name of the Neptune parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// A list of Neptune parameters to apply.
-  final pulumi.Input<List<ParameterGroupParameter>>? parameters;
+  final pulumi.Input<List<ParameterGroupParameter>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ParameterGroupState].
-  /// [arn] The Neptune parameter group Amazon Resource Name (ARN).
+  /// [arn] Neptune parameter group ARN.
   /// [description] The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
   /// [family] The family of the Neptune parameter group.
   /// [name] The name of the Neptune parameter.

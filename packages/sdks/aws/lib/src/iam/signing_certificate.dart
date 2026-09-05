@@ -301,7 +301,7 @@ class SigningCertificate extends pulumi.CustomResource {
           'aws:iam/signingCertificate:SigningCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     certificateBody = registerOutput<String>('certificateBody');
     certificateId = registerOutput<String>('certificateId');
@@ -314,11 +314,12 @@ class SigningCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SigningCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SigningCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -332,6 +333,21 @@ class SigningCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateBody = registerOutput<String>('certificateBody');
+    certificateId = registerOutput<String>('certificateId');
+    status = registerOutput<String?>('status');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [SigningCertificate] resource.
+  SigningCertificate.reference(String urn)
+    : super(
+        'aws:iam/signingCertificate:SigningCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateBody = registerOutput<String>('certificateBody');
     certificateId = registerOutput<String>('certificateId');
     status = registerOutput<String?>('status');

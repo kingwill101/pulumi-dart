@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationalUnitAccount {
   /// ARN of the organizational unit
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Email of the account
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Identifier of the organization unit
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name for the organizational unit
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [OrganizationalUnitAccount].
   /// [arn] ARN of the organizational unit

@@ -17,7 +17,6 @@ import 'named_query_state.dart';
 ///     description: "Athena KMS Key",
 /// });
 /// const testWorkgroup = new aws.athena.Workgroup("test", {
-///     name: "example",
 ///     configuration: {
 ///         resultConfiguration: {
 ///             encryptionConfiguration: {
@@ -26,6 +25,7 @@ import 'named_query_state.dart';
 ///             },
 ///         },
 ///     },
+///     name: "example",
 /// });
 /// const hogeDatabase = new aws.athena.Database("hoge", {
 ///     name: "users",
@@ -47,7 +47,6 @@ import 'named_query_state.dart';
 ///     deletion_window_in_days=7,
 ///     description="Athena KMS Key")
 /// test_workgroup = aws.athena.Workgroup("test",
-///     name="example",
 ///     configuration={
 ///         "result_configuration": {
 ///             "encryption_configuration": {
@@ -55,7 +54,8 @@ import 'named_query_state.dart';
 ///                 "kms_key_arn": test.arn,
 ///             },
 ///         },
-///     })
+///     },
+///     name="example")
 /// hoge_database = aws.athena.Database("hoge",
 ///     name="users",
 ///     bucket=hoge.id)
@@ -86,7 +86,6 @@ import 'named_query_state.dart';
 ///
 ///     var testWorkgroup = new Aws.Athena.Workgroup("test", new()
 ///     {
-///         Name = "example",
 ///         Configuration = new Aws.Athena.Inputs.WorkgroupConfigurationArgs
 ///         {
 ///             ResultConfiguration = new Aws.Athena.Inputs.WorkgroupConfigurationResultConfigurationArgs
@@ -98,6 +97,7 @@ import 'named_query_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 ///     var hogeDatabase = new Aws.Athena.Database("hoge", new()
@@ -144,7 +144,6 @@ import 'named_query_state.dart';
 /// 			return err
 /// 		}
 /// 		testWorkgroup, err := athena.NewWorkgroup(ctx, "test", &athena.WorkgroupArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Configuration: &athena.WorkgroupConfigurationArgs{
 /// 				ResultConfiguration: &athena.WorkgroupConfigurationResultConfigurationArgs{
 /// 					EncryptionConfiguration: &athena.WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs{
@@ -153,6 +152,7 @@ import 'named_query_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -196,7 +196,6 @@ import 'named_query_state.dart';
 ///   description             = "Athena KMS Key"
 /// }
 /// resource "aws_athena_workgroup" "test" {
-///   name = "example"
 ///   configuration = {
 ///     result_configuration = {
 ///       encryption_configuration = {
@@ -205,6 +204,7 @@ import 'named_query_state.dart';
 ///       }
 ///     }
 ///   }
+///   name = "example"
 /// }
 /// resource "aws_athena_database" "hoge" {
 ///   name   = "users"
@@ -259,7 +259,6 @@ import 'named_query_state.dart';
 ///             .build());
 ///
 ///         var testWorkgroup = new Workgroup("testWorkgroup", WorkgroupArgs.builder()
-///             .name("example")
 ///             .configuration(WorkgroupConfigurationArgs.builder()
 ///                 .resultConfiguration(WorkgroupConfigurationResultConfigurationArgs.builder()
 ///                     .encryptionConfiguration(WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs.builder()
@@ -268,6 +267,7 @@ import 'named_query_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///         var hogeDatabase = new Database("hogeDatabase", DatabaseArgs.builder()
@@ -300,12 +300,12 @@ import 'named_query_state.dart';
 ///     type: aws:athena:Workgroup
 ///     name: test
 ///     properties:
-///       name: example
 ///       configuration:
 ///         resultConfiguration:
 ///           encryptionConfiguration:
 ///             encryptionOption: SSE_KMS
 ///             kmsKeyArn: ${test.arn}
+///       name: example
 ///   hogeDatabase:
 ///     type: aws:athena:Database
 ///     name: hoge
@@ -355,7 +355,7 @@ class NamedQuery extends pulumi.CustomResource {
           'aws:athena/namedQuery:NamedQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     database = registerOutput<String>('database');
     description = registerOutput<String?>('description');
@@ -370,11 +370,12 @@ class NamedQuery extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamedQueryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NamedQuery._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -388,6 +389,23 @@ class NamedQuery extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    database = registerOutput<String>('database');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    query = registerOutput<String>('query');
+    region = registerOutput<String>('region');
+    workgroup = registerOutput<String?>('workgroup');
+  }
+
+  /// Creates a typed reference to an existing [NamedQuery] resource.
+  NamedQuery.reference(String urn)
+    : super(
+        'aws:athena/namedQuery:NamedQuery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     database = registerOutput<String>('database');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

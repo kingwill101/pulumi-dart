@@ -6,13 +6,13 @@ import 'authorize_vpc_endpoint_access_authorized_principal.dart';
 /// Input properties used for looking up and filtering AuthorizeVpcEndpointAccess resources.
 class AuthorizeVpcEndpointAccessState {
   /// AWS account ID to grant access to.
-  final pulumi.Input<String>? account;
+  final pulumi.Input<String?>? account;
   /// Information about the Amazon Web Services account or service that was provided access to the domain. See `authorizedPrincipal` Block for further details.
-  final pulumi.Input<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>? authorizedPrincipals;
+  final pulumi.Input<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>?>? authorizedPrincipals;
   /// Name of OpenSearch Service domain to provide access to.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AuthorizeVpcEndpointAccessState].
   /// [account] AWS account ID to grant access to.

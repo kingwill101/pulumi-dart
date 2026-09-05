@@ -6,19 +6,19 @@ class IdentityProviderConfigOidc {
   /// Client ID for the OpenID Connect identity provider.
   final pulumi.Input<String> clientId;
   /// The JWT claim that the provider will use to return groups.
-  final pulumi.Input<String>? groupsClaim;
+  final pulumi.Input<String?>? groupsClaim;
   /// A prefix that is prepended to group claims e.g., `oidc:`.
-  final pulumi.Input<String>? groupsPrefix;
+  final pulumi.Input<String?>? groupsPrefix;
   /// The name of the identity provider config.
   final pulumi.Input<String> identityProviderConfigName;
   /// Issuer URL for the OpenID Connect identity provider.
   final pulumi.Input<String> issuerUrl;
   /// The key value pairs that describe required claims in the identity token.
-  final pulumi.Input<Map<String, String>>? requiredClaims;
+  final pulumi.Input<Map<String, String>?>? requiredClaims;
   /// The JWT claim that the provider will use as the username.
-  final pulumi.Input<String>? usernameClaim;
+  final pulumi.Input<String?>? usernameClaim;
   /// A prefix that is prepended to username claims.
-  final pulumi.Input<String>? usernamePrefix;
+  final pulumi.Input<String?>? usernamePrefix;
 
   /// Creates a new [IdentityProviderConfigOidc].
   /// [clientId] Client ID for the OpenID Connect identity provider.

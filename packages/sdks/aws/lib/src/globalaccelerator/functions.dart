@@ -171,6 +171,17 @@ Future<GetAcceleratorResult> getAccelerator(
   return GetAcceleratorResult.fromMap(result);
 }
 
+pulumi.Output<GetAcceleratorResult> getAcceleratorOutput(
+  GetAcceleratorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:globalaccelerator/getAccelerator:getAccelerator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAcceleratorResult.fromMap);
+}
+
 /// Provides information about a Global Accelerator custom routing accelerator.
 ///
 /// ## Example Usage
@@ -336,4 +347,15 @@ Future<GetCustomRoutingAcceleratorResult> getCustomRoutingAccelerator(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomRoutingAcceleratorResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomRoutingAcceleratorResult> getCustomRoutingAcceleratorOutput(
+  GetCustomRoutingAcceleratorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:globalaccelerator/getCustomRoutingAccelerator:getCustomRoutingAccelerator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomRoutingAcceleratorResult.fromMap);
 }

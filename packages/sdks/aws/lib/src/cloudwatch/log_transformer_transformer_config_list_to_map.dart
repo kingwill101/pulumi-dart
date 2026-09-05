@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigListToMap {
   /// Specifies whether the list will be flattened into single items. Defaults to `false`.
-  final pulumi.Input<bool>? flatten;
+  final pulumi.Input<bool?>? flatten;
   /// Required if `flatten` is set to true. Specifies the element to keep. Allowed values are `first` and `last`.
-  final pulumi.Input<String>? flattenedElement;
+  final pulumi.Input<String?>? flattenedElement;
   /// Specifies the key of the field to be extracted as keys in the generated map.
   final pulumi.Input<String> key;
   /// Specifies the key in the log event that has a list of objects that will be converted to a map.
   final pulumi.Input<String> source;
   /// Specifies the key of the field that will hold the generated map.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
   /// Specifies the values that will be extracted from the source objects and put into the values of the generated map. If omitted, original objects in the source list will be put into the values of the generated map.
-  final pulumi.Input<String>? valueKey;
+  final pulumi.Input<String?>? valueKey;
 
   /// Creates a new [LogTransformerTransformerConfigListToMap].
   /// [flatten] Specifies whether the list will be flattened into single items. Defaults to `false`.

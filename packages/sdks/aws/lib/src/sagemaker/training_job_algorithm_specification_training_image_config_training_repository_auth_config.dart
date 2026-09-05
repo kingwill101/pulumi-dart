@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobAlgorithmSpecificationTrainingImageConfigTrainingRepositoryAuthConfig {
   /// ARN of the Lambda function that provides credentials to authenticate to the private Docker registry.
-  final pulumi.Input<String>? trainingRepositoryCredentialsProviderArn;
+  final pulumi.Input<String?>? trainingRepositoryCredentialsProviderArn;
 
   /// Creates a new [TrainingJobAlgorithmSpecificationTrainingImageConfigTrainingRepositoryAuthConfig].
   /// [trainingRepositoryCredentialsProviderArn] ARN of the Lambda function that provides credentials to authenticate to the private Docker registry.

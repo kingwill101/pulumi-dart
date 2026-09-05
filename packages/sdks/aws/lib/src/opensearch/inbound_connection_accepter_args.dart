@@ -10,7 +10,7 @@ class InboundConnectionAccepterArgs {
   /// Specifies the ID of the connection to accept.
   final pulumi.Input<String> connectionId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [InboundConnectionAccepterArgs].
   /// [connectionId] Specifies the ID of the connection to accept.

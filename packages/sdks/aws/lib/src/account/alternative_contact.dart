@@ -179,7 +179,7 @@ class AlternativeContact extends pulumi.CustomResource {
           'aws:account/alternativeContact:AlternativeContact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     alternateContactType = registerOutput<String>('alternateContactType');
@@ -194,11 +194,12 @@ class AlternativeContact extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlternativeContactState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlternativeContact._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -212,6 +213,23 @@ class AlternativeContact extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String?>('accountId');
+    alternateContactType = registerOutput<String>('alternateContactType');
+    emailAddress = registerOutput<String>('emailAddress');
+    this.name = registerOutput<String>('name');
+    phoneNumber = registerOutput<String>('phoneNumber');
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [AlternativeContact] resource.
+  AlternativeContact.reference(String urn)
+    : super(
+        'aws:account/alternativeContact:AlternativeContact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String?>('accountId');
     alternateContactType = registerOutput<String>('alternateContactType');
     emailAddress = registerOutput<String>('emailAddress');

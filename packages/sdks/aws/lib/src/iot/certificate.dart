@@ -418,16 +418,17 @@ class Certificate extends pulumi.CustomResource {
           'aws:iot/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['caPem', 'certificatePem', 'privateKey', 'publicKey'],
         ) {
     active = registerOutput<bool>('active');
     arn = registerOutput<String>('arn');
     caCertificateId = registerOutput<String>('caCertificateId');
-    caPem = registerOutput<String?>('caPem');
-    certificatePem = registerOutput<String>('certificatePem');
+    caPem = registerOutput<String?>('caPem', isSecret: true);
+    certificatePem = registerOutput<String>('certificatePem', isSecret: true);
     csr = registerOutput<String?>('csr');
-    privateKey = registerOutput<String>('privateKey');
-    publicKey = registerOutput<String>('publicKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
+    publicKey = registerOutput<String>('publicKey', isSecret: true);
     region = registerOutput<String>('region');
   }
 
@@ -436,11 +437,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -457,11 +459,32 @@ class Certificate extends pulumi.CustomResource {
     active = registerOutput<bool>('active');
     arn = registerOutput<String>('arn');
     caCertificateId = registerOutput<String>('caCertificateId');
-    caPem = registerOutput<String?>('caPem');
-    certificatePem = registerOutput<String>('certificatePem');
+    caPem = registerOutput<String?>('caPem', isSecret: true);
+    certificatePem = registerOutput<String>('certificatePem', isSecret: true);
     csr = registerOutput<String?>('csr');
-    privateKey = registerOutput<String>('privateKey');
-    publicKey = registerOutput<String>('publicKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
+    publicKey = registerOutput<String>('publicKey', isSecret: true);
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'aws:iot/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['caPem', 'certificatePem', 'privateKey', 'publicKey'],
+        isResourceReference: true,
+      ) {
+    active = registerOutput<bool>('active');
+    arn = registerOutput<String>('arn');
+    caCertificateId = registerOutput<String>('caCertificateId');
+    caPem = registerOutput<String?>('caPem', isSecret: true);
+    certificatePem = registerOutput<String>('certificatePem', isSecret: true);
+    csr = registerOutput<String?>('csr');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
+    publicKey = registerOutput<String>('publicKey', isSecret: true);
     region = registerOutput<String>('region');
   }
 }

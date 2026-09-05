@@ -166,7 +166,7 @@ import 'access_entry_state.dart';
 /// $ pulumi import aws:eks/accessEntry:AccessEntry example example-cluster:arn:aws:iam::123456789012:role/example
 /// ```
 class AccessEntry extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Access Entry.
+  /// ARN of the Access Entry.
   late final pulumi.Output<String> accessEntryArn;
   /// Name of the EKS Cluster.
   late final pulumi.Output<String> clusterName;
@@ -203,17 +203,17 @@ class AccessEntry extends pulumi.CustomResource {
           'aws:eks/accessEntry:AccessEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessEntryArn = registerOutput<String>('accessEntryArn');
     clusterName = registerOutput<String>('clusterName');
     createdAt = registerOutput<String>('createdAt');
-    kubernetesGroups = registerOutput<List<String>>('kubernetesGroups');
+    kubernetesGroups = registerOutput<List<String>>('kubernetesGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     modifiedAt = registerOutput<String>('modifiedAt');
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     userName = registerOutput<String>('userName');
   }
@@ -223,11 +223,12 @@ class AccessEntry extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessEntryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessEntry._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -244,12 +245,34 @@ class AccessEntry extends pulumi.CustomResource {
     accessEntryArn = registerOutput<String>('accessEntryArn');
     clusterName = registerOutput<String>('clusterName');
     createdAt = registerOutput<String>('createdAt');
-    kubernetesGroups = registerOutput<List<String>>('kubernetesGroups');
+    kubernetesGroups = registerOutput<List<String>>('kubernetesGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     modifiedAt = registerOutput<String>('modifiedAt');
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [AccessEntry] resource.
+  AccessEntry.reference(String urn)
+    : super(
+        'aws:eks/accessEntry:AccessEntry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessEntryArn = registerOutput<String>('accessEntryArn');
+    clusterName = registerOutput<String>('clusterName');
+    createdAt = registerOutput<String>('createdAt');
+    kubernetesGroups = registerOutput<List<String>>('kubernetesGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    modifiedAt = registerOutput<String>('modifiedAt');
+    principalArn = registerOutput<String>('principalArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     userName = registerOutput<String>('userName');
   }

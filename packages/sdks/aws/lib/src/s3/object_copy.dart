@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_copy_args.dart';
+import 'object_copy_grant.dart';
 import 'object_copy_override_provider.dart';
 import 'object_copy_state.dart';
 
@@ -13,14 +14,14 @@ import 'object_copy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.s3.ObjectCopy("test", {
-///     bucket: "destination_bucket",
-///     key: "destination_key",
-///     source: "source_bucket/source_key",
 ///     grants: [{
 ///         uri: "http://acs.amazonaws.com/groups/global/AllUsers",
 ///         type: "Group",
 ///         permissions: ["READ"],
 ///     }],
+///     bucket: "destination_bucket",
+///     key: "destination_key",
+///     source: "source_bucket/source_key",
 /// });
 /// ```
 /// ```python
@@ -28,14 +29,14 @@ import 'object_copy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.s3.ObjectCopy("test",
-///     bucket="destination_bucket",
-///     key="destination_key",
-///     source="source_bucket/source_key",
 ///     grants=[{
 ///         "uri": "http://acs.amazonaws.com/groups/global/AllUsers",
 ///         "type": "Group",
 ///         "permissions": ["READ"],
-///     }])
+///     }],
+///     bucket="destination_bucket",
+///     key="destination_key",
+///     source="source_bucket/source_key")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,9 +48,6 @@ import 'object_copy_state.dart';
 /// {
 ///     var test = new Aws.S3.ObjectCopy("test", new()
 ///     {
-///         Bucket = "destination_bucket",
-///         Key = "destination_key",
-///         Source = "source_bucket/source_key",
 ///         Grants = new[]
 ///         {
 ///             new Aws.S3.Inputs.ObjectCopyGrantArgs
@@ -62,6 +60,9 @@ import 'object_copy_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Bucket = "destination_bucket",
+///         Key = "destination_key",
+///         Source = "source_bucket/source_key",
 ///     });
 ///
 /// });
@@ -77,9 +78,6 @@ import 'object_copy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewObjectCopy(ctx, "test", &s3.ObjectCopyArgs{
-/// 			Bucket: pulumi.String("destination_bucket"),
-/// 			Key:    pulumi.String("destination_key"),
-/// 			Source: pulumi.String("source_bucket/source_key"),
 /// 			Grants: s3.ObjectCopyGrantArray{
 /// 				&s3.ObjectCopyGrantArgs{
 /// 					Uri:  pulumi.String("http://acs.amazonaws.com/groups/global/AllUsers"),
@@ -89,6 +87,9 @@ import 'object_copy_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Bucket: pulumi.String("destination_bucket"),
+/// 			Key:    pulumi.String("destination_key"),
+/// 			Source: pulumi.String("source_bucket/source_key"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -107,14 +108,14 @@ import 'object_copy_state.dart';
 /// }
 ///
 /// resource "aws_s3_objectcopy" "test" {
-///   bucket = "destination_bucket"
-///   key    = "destination_key"
-///   source = "source_bucket/source_key"
 ///   grants {
 ///     uri         = "http://acs.amazonaws.com/groups/global/AllUsers"
 ///     type        = "Group"
 ///     permissions = ["READ"]
 ///   }
+///   bucket = "destination_bucket"
+///   key    = "destination_key"
+///   source = "source_bucket/source_key"
 /// }
 /// ```
 /// ```java
@@ -140,14 +141,14 @@ import 'object_copy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new ObjectCopy("test", ObjectCopyArgs.builder()
-///             .bucket("destination_bucket")
-///             .key("destination_key")
-///             .source("source_bucket/source_key")
 ///             .grants(ObjectCopyGrantArgs.builder()
 ///                 .uri("http://acs.amazonaws.com/groups/global/AllUsers")
 ///                 .type("Group")
 ///                 .permissions("READ")
 ///                 .build())
+///             .bucket("destination_bucket")
+///             .key("destination_key")
+///             .source("source_bucket/source_key")
 ///             .build());
 ///
 ///     }
@@ -158,14 +159,14 @@ import 'object_copy_state.dart';
 ///   test:
 ///     type: aws:s3:ObjectCopy
 ///     properties:
-///       bucket: destination_bucket
-///       key: destination_key
-///       source: source_bucket/source_key
 ///       grants:
 ///         - uri: http://acs.amazonaws.com/groups/global/AllUsers
 ///           type: Group
 ///           permissions:
 ///             - READ
+///       bucket: destination_bucket
+///       key: destination_key
+///       source: source_bucket/source_key
 /// ```
 ///
 ///
@@ -180,14 +181,14 @@ import 'object_copy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.s3.ObjectCopy("test", {
-///     bucket: "destination_bucket",
-///     key: "destination_key",
-///     source: "source_bucket/source_key",
 ///     overrideProvider: {
 ///         defaultTags: {
 ///             tags: {},
 ///         },
 ///     },
+///     bucket: "destination_bucket",
+///     key: "destination_key",
+///     source: "source_bucket/source_key",
 /// });
 /// ```
 /// ```python
@@ -195,14 +196,14 @@ import 'object_copy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.s3.ObjectCopy("test",
-///     bucket="destination_bucket",
-///     key="destination_key",
-///     source="source_bucket/source_key",
 ///     override_provider={
 ///         "default_tags": {
 ///             "tags": {},
 ///         },
-///     })
+///     },
+///     bucket="destination_bucket",
+///     key="destination_key",
+///     source="source_bucket/source_key")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -214,9 +215,6 @@ import 'object_copy_state.dart';
 /// {
 ///     var test = new Aws.S3.ObjectCopy("test", new()
 ///     {
-///         Bucket = "destination_bucket",
-///         Key = "destination_key",
-///         Source = "source_bucket/source_key",
 ///         OverrideProvider = new Aws.S3.Inputs.ObjectCopyOverrideProviderArgs
 ///         {
 ///             DefaultTags = new Aws.S3.Inputs.ObjectCopyOverrideProviderDefaultTagsArgs
@@ -224,6 +222,9 @@ import 'object_copy_state.dart';
 ///                 Tags = null,
 ///             },
 ///         },
+///         Bucket = "destination_bucket",
+///         Key = "destination_key",
+///         Source = "source_bucket/source_key",
 ///     });
 ///
 /// });
@@ -239,14 +240,14 @@ import 'object_copy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewObjectCopy(ctx, "test", &s3.ObjectCopyArgs{
-/// 			Bucket: pulumi.String("destination_bucket"),
-/// 			Key:    pulumi.String("destination_key"),
-/// 			Source: pulumi.String("source_bucket/source_key"),
 /// 			OverrideProvider: &s3.ObjectCopyOverrideProviderArgs{
 /// 				DefaultTags: &s3.ObjectCopyOverrideProviderDefaultTagsArgs{
 /// 					Tags: pulumi.StringMap{},
 /// 				},
 /// 			},
+/// 			Bucket: pulumi.String("destination_bucket"),
+/// 			Key:    pulumi.String("destination_key"),
+/// 			Source: pulumi.String("source_bucket/source_key"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -265,14 +266,14 @@ import 'object_copy_state.dart';
 /// }
 ///
 /// resource "aws_s3_objectcopy" "test" {
-///   bucket = "destination_bucket"
-///   key    = "destination_key"
-///   source = "source_bucket/source_key"
 ///   override_provider = {
 ///     default_tags = {
 ///       tags = {}
 ///     }
 ///   }
+///   bucket = "destination_bucket"
+///   key    = "destination_key"
+///   source = "source_bucket/source_key"
 /// }
 /// ```
 /// ```java
@@ -299,15 +300,15 @@ import 'object_copy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new ObjectCopy("test", ObjectCopyArgs.builder()
-///             .bucket("destination_bucket")
-///             .key("destination_key")
-///             .source("source_bucket/source_key")
 ///             .overrideProvider(ObjectCopyOverrideProviderArgs.builder()
 ///                 .defaultTags(ObjectCopyOverrideProviderDefaultTagsArgs.builder()
 ///                     .tags(Map.ofEntries(
 ///                     ))
 ///                     .build())
 ///                 .build())
+///             .bucket("destination_bucket")
+///             .key("destination_key")
+///             .source("source_bucket/source_key")
 ///             .build());
 ///
 ///     }
@@ -318,12 +319,12 @@ import 'object_copy_state.dart';
 ///   test:
 ///     type: aws:s3:ObjectCopy
 ///     properties:
-///       bucket: destination_bucket
-///       key: destination_key
-///       source: source_bucket/source_key
 ///       overrideProvider:
 ///         defaultTags:
 ///           tags: {}
+///       bucket: destination_bucket
+///       key: destination_key
+///       source: source_bucket/source_key
 /// ```
 class ObjectCopy extends pulumi.CustomResource {
   /// [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Valid values are `private`, `public-read`, `public-read-write`, `authenticated-read`, `aws-exec-read`, `bucket-owner-read`, and `bucket-owner-full-control`. Conflicts with `grant`.
@@ -383,7 +384,7 @@ class ObjectCopy extends pulumi.CustomResource {
   /// Allow the object to be deleted by removing any legal hold on any object version. Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
   late final pulumi.Output<bool?> forceDestroy;
   /// Configuration block for header grants. Documented below. Conflicts with `acl`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> grants;
+  late final pulumi.Output<List<ObjectCopyGrant>?> grants;
   /// Name of the object once it is in the bucket.
   late final pulumi.Output<String> key;
   /// AWS KMS Encryption Context to use for object encryption. The value is a base64-encoded UTF-8 string holding JSON with the encryption context key-value pairs.
@@ -448,7 +449,8 @@ class ObjectCopy extends pulumi.CustomResource {
           'aws:s3/objectCopy:ObjectCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['customerKey', 'kmsEncryptionContext', 'kmsKeyId', 'sourceCustomerKey'],
         ) {
     acl = registerOutput<String>('acl');
     arn = registerOutput<String>('arn');
@@ -470,7 +472,7 @@ class ObjectCopy extends pulumi.CustomResource {
     copyIfNoneMatch = registerOutput<String?>('copyIfNoneMatch');
     copyIfUnmodifiedSince = registerOutput<String?>('copyIfUnmodifiedSince');
     customerAlgorithm = registerOutput<String>('customerAlgorithm');
-    customerKey = registerOutput<String?>('customerKey');
+    customerKey = registerOutput<String?>('customerKey', isSecret: true);
     customerKeyMd5 = registerOutput<String>('customerKeyMd5');
     etag = registerOutput<String>('etag');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
@@ -478,12 +480,12 @@ class ObjectCopy extends pulumi.CustomResource {
     expiration = registerOutput<String>('expiration');
     expires = registerOutput<String?>('expires');
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    grants = registerOutput<List<Map<String, dynamic>>?>('grants');
+    grants = registerOutput<List<ObjectCopyGrant>?>('grants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectCopyGrant>(guardedValue, (value) => ObjectCopyGrant.fromMap((value as Map).cast<String, dynamic>())); });
     key = registerOutput<String>('key');
-    kmsEncryptionContext = registerOutput<String>('kmsEncryptionContext');
-    kmsKeyId = registerOutput<String>('kmsKeyId');
+    kmsEncryptionContext = registerOutput<String>('kmsEncryptionContext', isSecret: true);
+    kmsKeyId = registerOutput<String>('kmsKeyId', isSecret: true);
     lastModified = registerOutput<String>('lastModified');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     metadataDirective = registerOutput<String?>('metadataDirective');
     objectLockLegalHoldStatus = registerOutput<String>('objectLockLegalHoldStatus');
     objectLockMode = registerOutput<String>('objectLockMode');
@@ -495,13 +497,13 @@ class ObjectCopy extends pulumi.CustomResource {
     serverSideEncryption = registerOutput<String>('serverSideEncryption');
     source = registerOutput<String>('source');
     sourceCustomerAlgorithm = registerOutput<String?>('sourceCustomerAlgorithm');
-    sourceCustomerKey = registerOutput<String?>('sourceCustomerKey');
+    sourceCustomerKey = registerOutput<String?>('sourceCustomerKey', isSecret: true);
     sourceCustomerKeyMd5 = registerOutput<String?>('sourceCustomerKeyMd5');
     sourceVersionId = registerOutput<String>('sourceVersionId');
     storageClass = registerOutput<String>('storageClass');
     taggingDirective = registerOutput<String?>('taggingDirective');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionId = registerOutput<String>('versionId');
     websiteRedirect = registerOutput<String>('websiteRedirect');
   }
@@ -511,11 +513,12 @@ class ObjectCopy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ObjectCopyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ObjectCopy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -549,7 +552,7 @@ class ObjectCopy extends pulumi.CustomResource {
     copyIfNoneMatch = registerOutput<String?>('copyIfNoneMatch');
     copyIfUnmodifiedSince = registerOutput<String?>('copyIfUnmodifiedSince');
     customerAlgorithm = registerOutput<String>('customerAlgorithm');
-    customerKey = registerOutput<String?>('customerKey');
+    customerKey = registerOutput<String?>('customerKey', isSecret: true);
     customerKeyMd5 = registerOutput<String>('customerKeyMd5');
     etag = registerOutput<String>('etag');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
@@ -557,12 +560,12 @@ class ObjectCopy extends pulumi.CustomResource {
     expiration = registerOutput<String>('expiration');
     expires = registerOutput<String?>('expires');
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    grants = registerOutput<List<Map<String, dynamic>>?>('grants');
+    grants = registerOutput<List<ObjectCopyGrant>?>('grants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectCopyGrant>(guardedValue, (value) => ObjectCopyGrant.fromMap((value as Map).cast<String, dynamic>())); });
     key = registerOutput<String>('key');
-    kmsEncryptionContext = registerOutput<String>('kmsEncryptionContext');
-    kmsKeyId = registerOutput<String>('kmsKeyId');
+    kmsEncryptionContext = registerOutput<String>('kmsEncryptionContext', isSecret: true);
+    kmsKeyId = registerOutput<String>('kmsKeyId', isSecret: true);
     lastModified = registerOutput<String>('lastModified');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     metadataDirective = registerOutput<String?>('metadataDirective');
     objectLockLegalHoldStatus = registerOutput<String>('objectLockLegalHoldStatus');
     objectLockMode = registerOutput<String>('objectLockMode');
@@ -574,13 +577,79 @@ class ObjectCopy extends pulumi.CustomResource {
     serverSideEncryption = registerOutput<String>('serverSideEncryption');
     source = registerOutput<String>('source');
     sourceCustomerAlgorithm = registerOutput<String?>('sourceCustomerAlgorithm');
-    sourceCustomerKey = registerOutput<String?>('sourceCustomerKey');
+    sourceCustomerKey = registerOutput<String?>('sourceCustomerKey', isSecret: true);
     sourceCustomerKeyMd5 = registerOutput<String?>('sourceCustomerKeyMd5');
     sourceVersionId = registerOutput<String>('sourceVersionId');
     storageClass = registerOutput<String>('storageClass');
     taggingDirective = registerOutput<String?>('taggingDirective');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    versionId = registerOutput<String>('versionId');
+    websiteRedirect = registerOutput<String>('websiteRedirect');
+  }
+
+  /// Creates a typed reference to an existing [ObjectCopy] resource.
+  ObjectCopy.reference(String urn)
+    : super(
+        'aws:s3/objectCopy:ObjectCopy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['customerKey', 'kmsEncryptionContext', 'kmsKeyId', 'sourceCustomerKey'],
+        isResourceReference: true,
+      ) {
+    acl = registerOutput<String>('acl');
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String>('bucket');
+    bucketKeyEnabled = registerOutput<bool>('bucketKeyEnabled');
+    cacheControl = registerOutput<String>('cacheControl');
+    checksumAlgorithm = registerOutput<String?>('checksumAlgorithm');
+    checksumCrc32 = registerOutput<String>('checksumCrc32');
+    checksumCrc32c = registerOutput<String>('checksumCrc32c');
+    checksumCrc64nvme = registerOutput<String>('checksumCrc64nvme');
+    checksumSha1 = registerOutput<String>('checksumSha1');
+    checksumSha256 = registerOutput<String>('checksumSha256');
+    contentDisposition = registerOutput<String>('contentDisposition');
+    contentEncoding = registerOutput<String>('contentEncoding');
+    contentLanguage = registerOutput<String>('contentLanguage');
+    contentType = registerOutput<String>('contentType');
+    copyIfMatch = registerOutput<String?>('copyIfMatch');
+    copyIfModifiedSince = registerOutput<String?>('copyIfModifiedSince');
+    copyIfNoneMatch = registerOutput<String?>('copyIfNoneMatch');
+    copyIfUnmodifiedSince = registerOutput<String?>('copyIfUnmodifiedSince');
+    customerAlgorithm = registerOutput<String>('customerAlgorithm');
+    customerKey = registerOutput<String?>('customerKey', isSecret: true);
+    customerKeyMd5 = registerOutput<String>('customerKeyMd5');
+    etag = registerOutput<String>('etag');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    expectedSourceBucketOwner = registerOutput<String?>('expectedSourceBucketOwner');
+    expiration = registerOutput<String>('expiration');
+    expires = registerOutput<String?>('expires');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    grants = registerOutput<List<ObjectCopyGrant>?>('grants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectCopyGrant>(guardedValue, (value) => ObjectCopyGrant.fromMap((value as Map).cast<String, dynamic>())); });
+    key = registerOutput<String>('key');
+    kmsEncryptionContext = registerOutput<String>('kmsEncryptionContext', isSecret: true);
+    kmsKeyId = registerOutput<String>('kmsKeyId', isSecret: true);
+    lastModified = registerOutput<String>('lastModified');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metadataDirective = registerOutput<String?>('metadataDirective');
+    objectLockLegalHoldStatus = registerOutput<String>('objectLockLegalHoldStatus');
+    objectLockMode = registerOutput<String>('objectLockMode');
+    objectLockRetainUntilDate = registerOutput<String>('objectLockRetainUntilDate');
+    overrideProvider = registerOutput<ObjectCopyOverrideProvider?>('overrideProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectCopyOverrideProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    requestCharged = registerOutput<bool>('requestCharged');
+    requestPayer = registerOutput<String?>('requestPayer');
+    serverSideEncryption = registerOutput<String>('serverSideEncryption');
+    source = registerOutput<String>('source');
+    sourceCustomerAlgorithm = registerOutput<String?>('sourceCustomerAlgorithm');
+    sourceCustomerKey = registerOutput<String?>('sourceCustomerKey', isSecret: true);
+    sourceCustomerKeyMd5 = registerOutput<String?>('sourceCustomerKeyMd5');
+    sourceVersionId = registerOutput<String>('sourceVersionId');
+    storageClass = registerOutput<String>('storageClass');
+    taggingDirective = registerOutput<String?>('taggingDirective');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionId = registerOutput<String>('versionId');
     websiteRedirect = registerOutput<String>('websiteRedirect');
   }

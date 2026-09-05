@@ -3,12 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustAnchorNotificationSetting {
-  final pulumi.Input<String>? channel;
-  final pulumi.Input<String>? configuredBy;
+  final pulumi.Input<String?>? channel;
+  final pulumi.Input<String?>? configuredBy;
   /// Whether or not the Trust Anchor should be enabled.
-  final pulumi.Input<bool>? enabled;
-  final pulumi.Input<String>? event;
-  final pulumi.Input<int>? threshold;
+  final pulumi.Input<bool?>? enabled;
+  final pulumi.Input<String?>? event;
+  final pulumi.Input<int?>? threshold;
 
   /// Creates a new [TrustAnchorNotificationSetting].
   /// [channel] Optional.
@@ -40,7 +40,7 @@ class TrustAnchorNotificationSetting {
       configuredBy: (() { final guardedValue = map['configuredBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       event: (() { final guardedValue = map['event']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

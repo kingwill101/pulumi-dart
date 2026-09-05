@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SshKey resources.
 class SshKeyState {
   /// Public key portion of an SSH key pair.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Server ID of the Transfer Server (e.g., `s-12345678`)
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
   /// ID of the SSH public key.
-  final pulumi.Input<String>? sshKeyId;
+  final pulumi.Input<String?>? sshKeyId;
   /// Name of the user account that is assigned to one or more servers.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [SshKeyState].
   /// [body] Public key portion of an SSH key pair.

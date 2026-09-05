@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventEndpointRoutingConfigFailoverConfigPrimary {
   /// The ARN of the health check used by the endpoint to determine whether failover is triggered.
-  final pulumi.Input<String>? healthCheck;
+  final pulumi.Input<String?>? healthCheck;
 
   /// Creates a new [EventEndpointRoutingConfigFailoverConfigPrimary].
   /// [healthCheck] The ARN of the health check used by the endpoint to determine whether failover is triggered.

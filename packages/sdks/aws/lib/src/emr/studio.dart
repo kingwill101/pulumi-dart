@@ -208,7 +208,7 @@ class Studio extends pulumi.CustomResource {
   late final pulumi.Output<String> url;
   /// The IAM user role that users and groups assume when logged in to an Amazon EMR Studio. Only specify a User Role when you use Amazon Web Services SSO authentication. The permissions attached to the User Role can be scoped down for each user or group using session policies.
   late final pulumi.Output<String?> userRole;
-  /// The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate with the Studio.
+  /// ID of the VPC to associate with the Studio.
   late final pulumi.Output<String> vpcId;
   /// The ID of the Amazon EMR Studio Workspace security group. The Workspace security group allows outbound network traffic to resources in the Engine security group, and it must be in the same VPC specified by `vpcId`.
   ///
@@ -227,7 +227,7 @@ class Studio extends pulumi.CustomResource {
           'aws:emr/studio:Studio',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authMode = registerOutput<String>('authMode');
@@ -240,9 +240,9 @@ class Studio extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     serviceRole = registerOutput<String>('serviceRole');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
     userRole = registerOutput<String?>('userRole');
     vpcId = registerOutput<String>('vpcId');
@@ -254,11 +254,12 @@ class Studio extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StudioState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Studio._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,9 +284,38 @@ class Studio extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     serviceRole = registerOutput<String>('serviceRole');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    url = registerOutput<String>('url');
+    userRole = registerOutput<String?>('userRole');
+    vpcId = registerOutput<String>('vpcId');
+    workspaceSecurityGroupId = registerOutput<String>('workspaceSecurityGroupId');
+  }
+
+  /// Creates a typed reference to an existing [Studio] resource.
+  Studio.reference(String urn)
+    : super(
+        'aws:emr/studio:Studio',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    authMode = registerOutput<String>('authMode');
+    defaultS3Location = registerOutput<String>('defaultS3Location');
+    description = registerOutput<String?>('description');
+    encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');
+    engineSecurityGroupId = registerOutput<String>('engineSecurityGroupId');
+    idpAuthUrl = registerOutput<String?>('idpAuthUrl');
+    idpRelayStateParameterName = registerOutput<String?>('idpRelayStateParameterName');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    serviceRole = registerOutput<String>('serviceRole');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String>('url');
     userRole = registerOutput<String?>('userRole');
     vpcId = registerOutput<String>('vpcId');

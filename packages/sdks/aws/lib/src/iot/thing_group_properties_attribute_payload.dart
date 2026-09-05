@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThingGroupPropertiesAttributePayload {
   /// Key-value map.
-  final pulumi.Input<Map<String, String>>? attributes;
+  final pulumi.Input<Map<String, String>?>? attributes;
 
   /// Creates a new [ThingGroupPropertiesAttributePayload].
   /// [attributes] Key-value map.

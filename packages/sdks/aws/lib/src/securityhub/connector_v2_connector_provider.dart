@@ -6,9 +6,9 @@ import 'connector_v2_connector_provider_service_now.dart';
 
 class ConnectorV2ConnectorProvider {
   /// Details about a Jira Cloud integration. See `jiraCloud` below.
-  final pulumi.Input<ConnectorV2ConnectorProviderJiraCloud>? jiraCloud;
+  final pulumi.Input<ConnectorV2ConnectorProviderJiraCloud?>? jiraCloud;
   /// Details about a ServiceNow ITSM integration. See `serviceNow` below.
-  final pulumi.Input<ConnectorV2ConnectorProviderServiceNow>? serviceNow;
+  final pulumi.Input<ConnectorV2ConnectorProviderServiceNow?>? serviceNow;
 
   /// Creates a new [ConnectorV2ConnectorProvider].
   /// [jiraCloud] Details about a Jira Cloud integration. See `jiraCloud` below.

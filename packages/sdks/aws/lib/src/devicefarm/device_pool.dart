@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_pool_args.dart';
+import 'device_pool_rule.dart';
 import 'device_pool_state.dart';
 
 /// Provides a resource to manage AWS Device Farm Device Pools.
@@ -12,13 +13,13 @@ import 'device_pool_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.devicefarm.DevicePool("example", {
-///     name: "example",
-///     projectArn: exampleAwsDevicefarmProject.arn,
 ///     rules: [{
 ///         attribute: "OS_VERSION",
 ///         operator: "EQUALS",
 ///         value: "\"AVAILABLE\"",
 ///     }],
+///     name: "example",
+///     projectArn: exampleAwsDevicefarmProject.arn,
 /// });
 /// ```
 /// ```python
@@ -26,13 +27,13 @@ import 'device_pool_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.devicefarm.DevicePool("example",
-///     name="example",
-///     project_arn=example_aws_devicefarm_project["arn"],
 ///     rules=[{
 ///         "attribute": "OS_VERSION",
 ///         "operator": "EQUALS",
 ///         "value": "\"AVAILABLE\"",
-///     }])
+///     }],
+///     name="example",
+///     project_arn=example_aws_devicefarm_project["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,8 +45,6 @@ import 'device_pool_state.dart';
 /// {
 ///     var example = new Aws.DeviceFarm.DevicePool("example", new()
 ///     {
-///         Name = "example",
-///         ProjectArn = exampleAwsDevicefarmProject.Arn,
 ///         Rules = new[]
 ///         {
 ///             new Aws.DeviceFarm.Inputs.DevicePoolRuleArgs
@@ -55,6 +54,8 @@ import 'device_pool_state.dart';
 ///                 Value = "\"AVAILABLE\"",
 ///             },
 ///         },
+///         Name = "example",
+///         ProjectArn = exampleAwsDevicefarmProject.Arn,
 ///     });
 ///
 /// });
@@ -70,8 +71,6 @@ import 'device_pool_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := devicefarm.NewDevicePool(ctx, "example", &devicefarm.DevicePoolArgs{
-/// 			Name:       pulumi.String("example"),
-/// 			ProjectArn: pulumi.Any(exampleAwsDevicefarmProject.Arn),
 /// 			Rules: devicefarm.DevicePoolRuleArray{
 /// 				&devicefarm.DevicePoolRuleArgs{
 /// 					Attribute: pulumi.String("OS_VERSION"),
@@ -79,6 +78,8 @@ import 'device_pool_state.dart';
 /// 					Value:     pulumi.String("\"AVAILABLE\""),
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("example"),
+/// 			ProjectArn: pulumi.Any(exampleAwsDevicefarmProject.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -97,13 +98,13 @@ import 'device_pool_state.dart';
 /// }
 ///
 /// resource "aws_devicefarm_devicepool" "example" {
-///   name        = "example"
-///   project_arn = exampleAwsDevicefarmProject.arn
 ///   rules {
 ///     attribute = "OS_VERSION"
 ///     operator  = "EQUALS"
 ///     value     = "\"AVAILABLE\""
 ///   }
+///   name        = "example"
+///   project_arn = exampleAwsDevicefarmProject.arn
 /// }
 /// ```
 /// ```java
@@ -129,13 +130,13 @@ import 'device_pool_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DevicePool("example", DevicePoolArgs.builder()
-///             .name("example")
-///             .projectArn(exampleAwsDevicefarmProject.arn())
 ///             .rules(DevicePoolRuleArgs.builder()
 ///                 .attribute("OS_VERSION")
 ///                 .operator("EQUALS")
 ///                 .value("\"AVAILABLE\"")
 ///                 .build())
+///             .name("example")
+///             .projectArn(exampleAwsDevicefarmProject.arn())
 ///             .build());
 ///
 ///     }
@@ -146,12 +147,12 @@ import 'device_pool_state.dart';
 ///   example:
 ///     type: aws:devicefarm:DevicePool
 ///     properties:
-///       name: example
-///       projectArn: ${exampleAwsDevicefarmProject.arn}
 ///       rules:
 ///         - attribute: OS_VERSION
 ///           operator: EQUALS
 ///           value: '"AVAILABLE"'
+///       name: example
+///       projectArn: ${exampleAwsDevicefarmProject.arn}
 /// ```
 ///
 ///
@@ -161,7 +162,7 @@ import 'device_pool_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Device Farm device pool.
+/// - `arn` (String) ARN of the Device Farm device pool.
 ///
 ///
 /// Using `pulumi import`, import DeviceFarm Device Pools using their ARN. For example:
@@ -170,7 +171,7 @@ import 'device_pool_state.dart';
 /// $ pulumi import aws:devicefarm/devicePool:DevicePool example arn:aws:devicefarm:us-west-2:123456789012:devicepool:4fa784c7-ccb4-4dbf-ba4f-02198320daa1/4fa784c7-ccb4-4dbf-ba4f-02198320daa1
 /// ```
 class DevicePool extends pulumi.CustomResource {
-  /// The Amazon Resource Name of this Device Pool
+  /// ARN of this Device Pool
   late final pulumi.Output<String> arn;
   /// The device pool's description.
   late final pulumi.Output<String?> description;
@@ -183,7 +184,7 @@ class DevicePool extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The device pool's rules. See Rule.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<DevicePoolRule>> rules;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -202,7 +203,7 @@ class DevicePool extends pulumi.CustomResource {
           'aws:devicefarm/devicePool:DevicePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -210,9 +211,9 @@ class DevicePool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     projectArn = registerOutput<String>('projectArn');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<DevicePoolRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DevicePoolRule>(guardedValue, (value) => DevicePoolRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -221,11 +222,12 @@ class DevicePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DevicePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DevicePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -245,9 +247,30 @@ class DevicePool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     projectArn = registerOutput<String>('projectArn');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<DevicePoolRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DevicePoolRule>(guardedValue, (value) => DevicePoolRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DevicePool] resource.
+  DevicePool.reference(String urn)
+    : super(
+        'aws:devicefarm/devicePool:DevicePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    maxDevices = registerOutput<int?>('maxDevices');
+    this.name = registerOutput<String>('name');
+    projectArn = registerOutput<String>('projectArn');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<DevicePoolRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DevicePoolRule>(guardedValue, (value) => DevicePoolRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

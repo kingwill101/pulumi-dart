@@ -36,9 +36,6 @@ import 'function_event_invoke_config_state.dart';
 /// });
 /// // Complete event invoke configuration
 /// const example = new aws.lambda.FunctionEventInvokeConfig("example", {
-///     functionName: exampleAwsLambdaFunction.functionName,
-///     maximumEventAgeInSeconds: 300,
-///     maximumRetryAttempts: 1,
 ///     destinationConfig: {
 ///         onFailure: {
 ///             destination: dlq.arn,
@@ -47,6 +44,9 @@ import 'function_event_invoke_config_state.dart';
 ///             destination: success.arn,
 ///         },
 ///     },
+///     functionName: exampleAwsLambdaFunction.functionName,
+///     maximumEventAgeInSeconds: 300,
+///     maximumRetryAttempts: 1,
 /// });
 /// ```
 /// ```python
@@ -69,9 +69,6 @@ import 'function_event_invoke_config_state.dart';
 ///     })
 /// # Complete event invoke configuration
 /// example = aws.lambda_.FunctionEventInvokeConfig("example",
-///     function_name=example_aws_lambda_function["functionName"],
-///     maximum_event_age_in_seconds=300,
-///     maximum_retry_attempts=1,
 ///     destination_config={
 ///         "on_failure": {
 ///             "destination": dlq.arn,
@@ -79,7 +76,10 @@ import 'function_event_invoke_config_state.dart';
 ///         "on_success": {
 ///             "destination": success.arn,
 ///         },
-///     })
+///     },
+///     function_name=example_aws_lambda_function["functionName"],
+///     maximum_event_age_in_seconds=300,
+///     maximum_retry_attempts=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -114,9 +114,6 @@ import 'function_event_invoke_config_state.dart';
 ///     // Complete event invoke configuration
 ///     var example = new Aws.Lambda.FunctionEventInvokeConfig("example", new()
 ///     {
-///         FunctionName = exampleAwsLambdaFunction.FunctionName,
-///         MaximumEventAgeInSeconds = 300,
-///         MaximumRetryAttempts = 1,
 ///         DestinationConfig = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigArgs
 ///         {
 ///             OnFailure = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs
@@ -128,6 +125,9 @@ import 'function_event_invoke_config_state.dart';
 ///                 Destination = success.Arn,
 ///             },
 ///         },
+///         FunctionName = exampleAwsLambdaFunction.FunctionName,
+///         MaximumEventAgeInSeconds = 300,
+///         MaximumRetryAttempts = 1,
 ///     });
 ///
 /// });
@@ -168,9 +168,6 @@ import 'function_event_invoke_config_state.dart';
 /// 		}
 /// 		// Complete event invoke configuration
 /// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
-/// 			FunctionName:             pulumi.Any(exampleAwsLambdaFunction.FunctionName),
-/// 			MaximumEventAgeInSeconds: pulumi.Int(300),
-/// 			MaximumRetryAttempts:     pulumi.Int(1),
 /// 			DestinationConfig: &lambda.FunctionEventInvokeConfigDestinationConfigArgs{
 /// 				OnFailure: &lambda.FunctionEventInvokeConfigDestinationConfigOnFailureArgs{
 /// 					Destination: dlq.Arn,
@@ -179,6 +176,9 @@ import 'function_event_invoke_config_state.dart';
 /// 					Destination: success.Arn,
 /// 				},
 /// 			},
+/// 			FunctionName:             pulumi.Any(exampleAwsLambdaFunction.FunctionName),
+/// 			MaximumEventAgeInSeconds: pulumi.Int(300),
+/// 			MaximumRetryAttempts:     pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -214,9 +214,6 @@ import 'function_event_invoke_config_state.dart';
 /// }
 /// # Complete event invoke configuration
 /// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   function_name                = exampleAwsLambdaFunction.functionName
-///   maximum_event_age_in_seconds = 300 # 5 minutes
-///   maximum_retry_attempts       = 1 # Retry once on failure
 ///   destination_config = {
 ///     on_failure = {
 ///       destination = aws_sqs_queue.dlq.arn
@@ -225,6 +222,9 @@ import 'function_event_invoke_config_state.dart';
 ///       destination = aws_sns_topic.success.arn
 ///     }
 ///   }
+///   function_name                = exampleAwsLambdaFunction.functionName
+///   maximum_event_age_in_seconds = 300 # 5 minutes
+///   maximum_retry_attempts       = 1 # Retry once on failure
 /// }
 /// ```
 /// ```java
@@ -275,9 +275,6 @@ import 'function_event_invoke_config_state.dart';
 ///
 ///         // Complete event invoke configuration
 ///         var example = new FunctionEventInvokeConfig("example", FunctionEventInvokeConfigArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
-///             .maximumEventAgeInSeconds(300)
-///             .maximumRetryAttempts(1)
 ///             .destinationConfig(FunctionEventInvokeConfigDestinationConfigArgs.builder()
 ///                 .onFailure(FunctionEventInvokeConfigDestinationConfigOnFailureArgs.builder()
 ///                     .destination(dlq.arn())
@@ -286,6 +283,9 @@ import 'function_event_invoke_config_state.dart';
 ///                     .destination(success.arn())
 ///                     .build())
 ///                 .build())
+///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .maximumEventAgeInSeconds(300)
+///             .maximumRetryAttempts(1)
 ///             .build());
 ///
 ///     }
@@ -313,14 +313,14 @@ import 'function_event_invoke_config_state.dart';
 ///   example:
 ///     type: aws:lambda:FunctionEventInvokeConfig
 ///     properties:
-///       functionName: ${exampleAwsLambdaFunction.functionName}
-///       maximumEventAgeInSeconds: 300 # 5 minutes
-///       maximumRetryAttempts: 1 # Retry once on failure
 ///       destinationConfig:
 ///         onFailure:
 ///           destination: ${dlq.arn}
 ///         onSuccess:
 ///           destination: ${success.arn}
+///       functionName: ${exampleAwsLambdaFunction.functionName}
+///       maximumEventAgeInSeconds: 300 # 5 minutes
+///       maximumRetryAttempts: 1 # Retry once on failure
 /// ```
 ///
 ///
@@ -455,15 +455,15 @@ import 'function_event_invoke_config_state.dart';
 ///     functionVersion: exampleAwsLambdaFunction.version,
 /// });
 /// const exampleFunctionEventInvokeConfig = new aws.lambda.FunctionEventInvokeConfig("example", {
-///     functionName: exampleAwsLambdaFunction.functionName,
-///     qualifier: example.name,
-///     maximumEventAgeInSeconds: 1800,
-///     maximumRetryAttempts: 2,
 ///     destinationConfig: {
 ///         onFailure: {
 ///             destination: productionDlq.arn,
 ///         },
 ///     },
+///     functionName: exampleAwsLambdaFunction.functionName,
+///     qualifier: example.name,
+///     maximumEventAgeInSeconds: 1800,
+///     maximumRetryAttempts: 2,
 /// });
 /// ```
 /// ```python
@@ -476,15 +476,15 @@ import 'function_event_invoke_config_state.dart';
 ///     function_name=example_aws_lambda_function["functionName"],
 ///     function_version=example_aws_lambda_function["version"])
 /// example_function_event_invoke_config = aws.lambda_.FunctionEventInvokeConfig("example",
-///     function_name=example_aws_lambda_function["functionName"],
-///     qualifier=example.name,
-///     maximum_event_age_in_seconds=1800,
-///     maximum_retry_attempts=2,
 ///     destination_config={
 ///         "on_failure": {
 ///             "destination": production_dlq["arn"],
 ///         },
-///     })
+///     },
+///     function_name=example_aws_lambda_function["functionName"],
+///     qualifier=example.name,
+///     maximum_event_age_in_seconds=1800,
+///     maximum_retry_attempts=2)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -504,10 +504,6 @@ import 'function_event_invoke_config_state.dart';
 ///
 ///     var exampleFunctionEventInvokeConfig = new Aws.Lambda.FunctionEventInvokeConfig("example", new()
 ///     {
-///         FunctionName = exampleAwsLambdaFunction.FunctionName,
-///         Qualifier = example.Name,
-///         MaximumEventAgeInSeconds = 1800,
-///         MaximumRetryAttempts = 2,
 ///         DestinationConfig = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigArgs
 ///         {
 ///             OnFailure = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs
@@ -515,6 +511,10 @@ import 'function_event_invoke_config_state.dart';
 ///                 Destination = productionDlq.Arn,
 ///             },
 ///         },
+///         FunctionName = exampleAwsLambdaFunction.FunctionName,
+///         Qualifier = example.Name,
+///         MaximumEventAgeInSeconds = 1800,
+///         MaximumRetryAttempts = 2,
 ///     });
 ///
 /// });
@@ -539,15 +539,15 @@ import 'function_event_invoke_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
-/// 			FunctionName:             pulumi.Any(exampleAwsLambdaFunction.FunctionName),
-/// 			Qualifier:                example.Name,
-/// 			MaximumEventAgeInSeconds: pulumi.Int(1800),
-/// 			MaximumRetryAttempts:     pulumi.Int(2),
 /// 			DestinationConfig: &lambda.FunctionEventInvokeConfigDestinationConfigArgs{
 /// 				OnFailure: &lambda.FunctionEventInvokeConfigDestinationConfigOnFailureArgs{
 /// 					Destination: pulumi.Any(productionDlq.Arn),
 /// 				},
 /// 			},
+/// 			FunctionName:             pulumi.Any(exampleAwsLambdaFunction.FunctionName),
+/// 			Qualifier:                example.Name,
+/// 			MaximumEventAgeInSeconds: pulumi.Int(1800),
+/// 			MaximumRetryAttempts:     pulumi.Int(2),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -572,15 +572,15 @@ import 'function_event_invoke_config_state.dart';
 ///   function_version = exampleAwsLambdaFunction.version
 /// }
 /// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   function_name                = exampleAwsLambdaFunction.functionName
-///   qualifier                    = aws_lambda_alias.example.name
-///   maximum_event_age_in_seconds = 1800 # 30 minutes for production
-///   maximum_retry_attempts       = 2 # Default retry behavior
 ///   destination_config = {
 ///     on_failure = {
 ///       destination = productionDlq.arn
 ///     }
 ///   }
+///   function_name                = exampleAwsLambdaFunction.functionName
+///   qualifier                    = aws_lambda_alias.example.name
+///   maximum_event_age_in_seconds = 1800 # 30 minutes for production
+///   maximum_retry_attempts       = 2 # Default retry behavior
 /// }
 /// ```
 /// ```java
@@ -616,15 +616,15 @@ import 'function_event_invoke_config_state.dart';
 ///             .build());
 ///
 ///         var exampleFunctionEventInvokeConfig = new FunctionEventInvokeConfig("exampleFunctionEventInvokeConfig", FunctionEventInvokeConfigArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
-///             .qualifier(example.name())
-///             .maximumEventAgeInSeconds(1800)
-///             .maximumRetryAttempts(2)
 ///             .destinationConfig(FunctionEventInvokeConfigDestinationConfigArgs.builder()
 ///                 .onFailure(FunctionEventInvokeConfigDestinationConfigOnFailureArgs.builder()
 ///                     .destination(productionDlq.arn())
 ///                     .build())
 ///                 .build())
+///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .qualifier(example.name())
+///             .maximumEventAgeInSeconds(1800)
+///             .maximumRetryAttempts(2)
 ///             .build());
 ///
 ///     }
@@ -643,13 +643,13 @@ import 'function_event_invoke_config_state.dart';
 ///     type: aws:lambda:FunctionEventInvokeConfig
 ///     name: example
 ///     properties:
+///       destinationConfig:
+///         onFailure:
+///           destination: ${productionDlq.arn}
 ///       functionName: ${exampleAwsLambdaFunction.functionName}
 ///       qualifier: ${example.name}
 ///       maximumEventAgeInSeconds: 1800 # 30 minutes for production
 ///       maximumRetryAttempts: 2 # Default retry behavior
-///       destinationConfig:
-///         onFailure:
-///           destination: ${productionDlq.arn}
 /// ```
 ///
 ///
@@ -661,10 +661,6 @@ import 'function_event_invoke_config_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.FunctionEventInvokeConfig("example", {
-///     functionName: exampleAwsLambdaFunction.functionName,
-///     qualifier: exampleAwsLambdaFunction.version,
-///     maximumEventAgeInSeconds: 21600,
-///     maximumRetryAttempts: 2,
 ///     destinationConfig: {
 ///         onFailure: {
 ///             destination: versionDlq.arn,
@@ -673,6 +669,10 @@ import 'function_event_invoke_config_state.dart';
 ///             destination: versionSuccess.arn,
 ///         },
 ///     },
+///     functionName: exampleAwsLambdaFunction.functionName,
+///     qualifier: exampleAwsLambdaFunction.version,
+///     maximumEventAgeInSeconds: 21600,
+///     maximumRetryAttempts: 2,
 /// });
 /// ```
 /// ```python
@@ -680,10 +680,6 @@ import 'function_event_invoke_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.FunctionEventInvokeConfig("example",
-///     function_name=example_aws_lambda_function["functionName"],
-///     qualifier=example_aws_lambda_function["version"],
-///     maximum_event_age_in_seconds=21600,
-///     maximum_retry_attempts=2,
 ///     destination_config={
 ///         "on_failure": {
 ///             "destination": version_dlq["arn"],
@@ -691,7 +687,11 @@ import 'function_event_invoke_config_state.dart';
 ///         "on_success": {
 ///             "destination": version_success["arn"],
 ///         },
-///     })
+///     },
+///     function_name=example_aws_lambda_function["functionName"],
+///     qualifier=example_aws_lambda_function["version"],
+///     maximum_event_age_in_seconds=21600,
+///     maximum_retry_attempts=2)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -703,10 +703,6 @@ import 'function_event_invoke_config_state.dart';
 /// {
 ///     var example = new Aws.Lambda.FunctionEventInvokeConfig("example", new()
 ///     {
-///         FunctionName = exampleAwsLambdaFunction.FunctionName,
-///         Qualifier = exampleAwsLambdaFunction.Version,
-///         MaximumEventAgeInSeconds = 21600,
-///         MaximumRetryAttempts = 2,
 ///         DestinationConfig = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigArgs
 ///         {
 ///             OnFailure = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs
@@ -718,6 +714,10 @@ import 'function_event_invoke_config_state.dart';
 ///                 Destination = versionSuccess.Arn,
 ///             },
 ///         },
+///         FunctionName = exampleAwsLambdaFunction.FunctionName,
+///         Qualifier = exampleAwsLambdaFunction.Version,
+///         MaximumEventAgeInSeconds = 21600,
+///         MaximumRetryAttempts = 2,
 ///     });
 ///
 /// });
@@ -733,10 +733,6 @@ import 'function_event_invoke_config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
-/// 			FunctionName:             pulumi.Any(exampleAwsLambdaFunction.FunctionName),
-/// 			Qualifier:                pulumi.Any(exampleAwsLambdaFunction.Version),
-/// 			MaximumEventAgeInSeconds: pulumi.Int(21600),
-/// 			MaximumRetryAttempts:     pulumi.Int(2),
 /// 			DestinationConfig: &lambda.FunctionEventInvokeConfigDestinationConfigArgs{
 /// 				OnFailure: &lambda.FunctionEventInvokeConfigDestinationConfigOnFailureArgs{
 /// 					Destination: pulumi.Any(versionDlq.Arn),
@@ -745,6 +741,10 @@ import 'function_event_invoke_config_state.dart';
 /// 					Destination: pulumi.Any(versionSuccess.Arn),
 /// 				},
 /// 			},
+/// 			FunctionName:             pulumi.Any(exampleAwsLambdaFunction.FunctionName),
+/// 			Qualifier:                pulumi.Any(exampleAwsLambdaFunction.Version),
+/// 			MaximumEventAgeInSeconds: pulumi.Int(21600),
+/// 			MaximumRetryAttempts:     pulumi.Int(2),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -763,10 +763,6 @@ import 'function_event_invoke_config_state.dart';
 /// }
 ///
 /// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   function_name                = exampleAwsLambdaFunction.functionName
-///   qualifier                    = exampleAwsLambdaFunction.version
-///   maximum_event_age_in_seconds = 21600 # 6 hours maximum
-///   maximum_retry_attempts       = 2
 ///   destination_config = {
 ///     on_failure = {
 ///       destination = versionDlq.arn
@@ -775,6 +771,10 @@ import 'function_event_invoke_config_state.dart';
 ///       destination = versionSuccess.arn
 ///     }
 ///   }
+///   function_name                = exampleAwsLambdaFunction.functionName
+///   qualifier                    = exampleAwsLambdaFunction.version
+///   maximum_event_age_in_seconds = 21600 # 6 hours maximum
+///   maximum_retry_attempts       = 2
 /// }
 /// ```
 /// ```java
@@ -802,10 +802,6 @@ import 'function_event_invoke_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FunctionEventInvokeConfig("example", FunctionEventInvokeConfigArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
-///             .qualifier(exampleAwsLambdaFunction.version())
-///             .maximumEventAgeInSeconds(21600)
-///             .maximumRetryAttempts(2)
 ///             .destinationConfig(FunctionEventInvokeConfigDestinationConfigArgs.builder()
 ///                 .onFailure(FunctionEventInvokeConfigDestinationConfigOnFailureArgs.builder()
 ///                     .destination(versionDlq.arn())
@@ -814,6 +810,10 @@ import 'function_event_invoke_config_state.dart';
 ///                     .destination(versionSuccess.arn())
 ///                     .build())
 ///                 .build())
+///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .qualifier(exampleAwsLambdaFunction.version())
+///             .maximumEventAgeInSeconds(21600)
+///             .maximumRetryAttempts(2)
 ///             .build());
 ///
 ///     }
@@ -824,15 +824,15 @@ import 'function_event_invoke_config_state.dart';
 ///   example:
 ///     type: aws:lambda:FunctionEventInvokeConfig
 ///     properties:
-///       functionName: ${exampleAwsLambdaFunction.functionName}
-///       qualifier: ${exampleAwsLambdaFunction.version}
-///       maximumEventAgeInSeconds: 21600 # 6 hours maximum
-///       maximumRetryAttempts: 2
 ///       destinationConfig:
 ///         onFailure:
 ///           destination: ${versionDlq.arn}
 ///         onSuccess:
 ///           destination: ${versionSuccess.arn}
+///       functionName: ${exampleAwsLambdaFunction.functionName}
+///       qualifier: ${exampleAwsLambdaFunction.version}
+///       maximumEventAgeInSeconds: 21600 # 6 hours maximum
+///       maximumRetryAttempts: 2
 /// ```
 ///
 ///
@@ -844,15 +844,15 @@ import 'function_event_invoke_config_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.FunctionEventInvokeConfig("example", {
-///     functionName: exampleAwsLambdaFunction.functionName,
-///     qualifier: "$LATEST",
-///     maximumEventAgeInSeconds: 120,
-///     maximumRetryAttempts: 0,
 ///     destinationConfig: {
 ///         onFailure: {
 ///             destination: devDlq.arn,
 ///         },
 ///     },
+///     functionName: exampleAwsLambdaFunction.functionName,
+///     qualifier: "$LATEST",
+///     maximumEventAgeInSeconds: 120,
+///     maximumRetryAttempts: 0,
 /// });
 /// ```
 /// ```python
@@ -860,15 +860,15 @@ import 'function_event_invoke_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.FunctionEventInvokeConfig("example",
-///     function_name=example_aws_lambda_function["functionName"],
-///     qualifier="$LATEST",
-///     maximum_event_age_in_seconds=120,
-///     maximum_retry_attempts=0,
 ///     destination_config={
 ///         "on_failure": {
 ///             "destination": dev_dlq["arn"],
 ///         },
-///     })
+///     },
+///     function_name=example_aws_lambda_function["functionName"],
+///     qualifier="$LATEST",
+///     maximum_event_age_in_seconds=120,
+///     maximum_retry_attempts=0)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -880,10 +880,6 @@ import 'function_event_invoke_config_state.dart';
 /// {
 ///     var example = new Aws.Lambda.FunctionEventInvokeConfig("example", new()
 ///     {
-///         FunctionName = exampleAwsLambdaFunction.FunctionName,
-///         Qualifier = "$LATEST",
-///         MaximumEventAgeInSeconds = 120,
-///         MaximumRetryAttempts = 0,
 ///         DestinationConfig = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigArgs
 ///         {
 ///             OnFailure = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs
@@ -891,6 +887,10 @@ import 'function_event_invoke_config_state.dart';
 ///                 Destination = devDlq.Arn,
 ///             },
 ///         },
+///         FunctionName = exampleAwsLambdaFunction.FunctionName,
+///         Qualifier = "$LATEST",
+///         MaximumEventAgeInSeconds = 120,
+///         MaximumRetryAttempts = 0,
 ///     });
 ///
 /// });
@@ -906,15 +906,15 @@ import 'function_event_invoke_config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
-/// 			FunctionName:             pulumi.Any(exampleAwsLambdaFunction.FunctionName),
-/// 			Qualifier:                pulumi.String("$LATEST"),
-/// 			MaximumEventAgeInSeconds: pulumi.Int(120),
-/// 			MaximumRetryAttempts:     pulumi.Int(0),
 /// 			DestinationConfig: &lambda.FunctionEventInvokeConfigDestinationConfigArgs{
 /// 				OnFailure: &lambda.FunctionEventInvokeConfigDestinationConfigOnFailureArgs{
 /// 					Destination: pulumi.Any(devDlq.Arn),
 /// 				},
 /// 			},
+/// 			FunctionName:             pulumi.Any(exampleAwsLambdaFunction.FunctionName),
+/// 			Qualifier:                pulumi.String("$LATEST"),
+/// 			MaximumEventAgeInSeconds: pulumi.Int(120),
+/// 			MaximumRetryAttempts:     pulumi.Int(0),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -933,15 +933,15 @@ import 'function_event_invoke_config_state.dart';
 /// }
 ///
 /// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   function_name                = exampleAwsLambdaFunction.functionName
-///   qualifier                    = "$LATEST"
-///   maximum_event_age_in_seconds = 120 # 2 minutes
-///   maximum_retry_attempts       = 0 # No retries in development
 ///   destination_config = {
 ///     on_failure = {
 ///       destination = devDlq.arn
 ///     }
 ///   }
+///   function_name                = exampleAwsLambdaFunction.functionName
+///   qualifier                    = "$LATEST"
+///   maximum_event_age_in_seconds = 120 # 2 minutes
+///   maximum_retry_attempts       = 0 # No retries in development
 /// }
 /// ```
 /// ```java
@@ -968,15 +968,15 @@ import 'function_event_invoke_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FunctionEventInvokeConfig("example", FunctionEventInvokeConfigArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
-///             .qualifier("$LATEST")
-///             .maximumEventAgeInSeconds(120)
-///             .maximumRetryAttempts(0)
 ///             .destinationConfig(FunctionEventInvokeConfigDestinationConfigArgs.builder()
 ///                 .onFailure(FunctionEventInvokeConfigDestinationConfigOnFailureArgs.builder()
 ///                     .destination(devDlq.arn())
 ///                     .build())
 ///                 .build())
+///             .functionName(exampleAwsLambdaFunction.functionName())
+///             .qualifier("$LATEST")
+///             .maximumEventAgeInSeconds(120)
+///             .maximumRetryAttempts(0)
 ///             .build());
 ///
 ///     }
@@ -987,13 +987,13 @@ import 'function_event_invoke_config_state.dart';
 ///   example:
 ///     type: aws:lambda:FunctionEventInvokeConfig
 ///     properties:
+///       destinationConfig:
+///         onFailure:
+///           destination: ${devDlq.arn}
 ///       functionName: ${exampleAwsLambdaFunction.functionName}
 ///       qualifier: $LATEST
 ///       maximumEventAgeInSeconds: 120 # 2 minutes
 ///       maximumRetryAttempts: 0 # No retries in development
-///       destinationConfig:
-///         onFailure:
-///           destination: ${devDlq.arn}
 /// ```
 ///
 ///
@@ -1009,7 +1009,6 @@ import 'function_event_invoke_config_state.dart';
 /// // EventBridge custom bus for failed events
 /// const lambdaFailures = new aws.cloudwatch.EventBus("lambda_failures", {name: "lambda-failure-events"});
 /// const example = new aws.lambda.FunctionEventInvokeConfig("example", {
-///     functionName: exampleAwsLambdaFunction.functionName,
 ///     destinationConfig: {
 ///         onFailure: {
 ///             destination: lambdaFailures.arn,
@@ -1018,6 +1017,7 @@ import 'function_event_invoke_config_state.dart';
 ///             destination: lambdaSuccessArchive.arn,
 ///         },
 ///     },
+///     functionName: exampleAwsLambdaFunction.functionName,
 /// });
 /// ```
 /// ```python
@@ -1029,7 +1029,6 @@ import 'function_event_invoke_config_state.dart';
 /// # EventBridge custom bus for failed events
 /// lambda_failures = aws.cloudwatch.EventBus("lambda_failures", name="lambda-failure-events")
 /// example = aws.lambda_.FunctionEventInvokeConfig("example",
-///     function_name=example_aws_lambda_function["functionName"],
 ///     destination_config={
 ///         "on_failure": {
 ///             "destination": lambda_failures.arn,
@@ -1037,7 +1036,8 @@ import 'function_event_invoke_config_state.dart';
 ///         "on_success": {
 ///             "destination": lambda_success_archive.arn,
 ///         },
-///     })
+///     },
+///     function_name=example_aws_lambda_function["functionName"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1061,7 +1061,6 @@ import 'function_event_invoke_config_state.dart';
 ///
 ///     var example = new Aws.Lambda.FunctionEventInvokeConfig("example", new()
 ///     {
-///         FunctionName = exampleAwsLambdaFunction.FunctionName,
 ///         DestinationConfig = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigArgs
 ///         {
 ///             OnFailure = new Aws.Lambda.Inputs.FunctionEventInvokeConfigDestinationConfigOnFailureArgs
@@ -1073,6 +1072,7 @@ import 'function_event_invoke_config_state.dart';
 ///                 Destination = lambdaSuccessArchive.Arn,
 ///             },
 ///         },
+///         FunctionName = exampleAwsLambdaFunction.FunctionName,
 ///     });
 ///
 /// });
@@ -1104,7 +1104,6 @@ import 'function_event_invoke_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
-/// 			FunctionName: pulumi.Any(exampleAwsLambdaFunction.FunctionName),
 /// 			DestinationConfig: &lambda.FunctionEventInvokeConfigDestinationConfigArgs{
 /// 				OnFailure: &lambda.FunctionEventInvokeConfigDestinationConfigOnFailureArgs{
 /// 					Destination: lambdaFailures.Arn,
@@ -1113,6 +1112,7 @@ import 'function_event_invoke_config_state.dart';
 /// 					Destination: lambdaSuccessArchive.Arn,
 /// 				},
 /// 			},
+/// 			FunctionName: pulumi.Any(exampleAwsLambdaFunction.FunctionName),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1139,7 +1139,6 @@ import 'function_event_invoke_config_state.dart';
 ///   name = "lambda-failure-events"
 /// }
 /// resource "aws_lambda_functioneventinvokeconfig" "example" {
-///   function_name = exampleAwsLambdaFunction.functionName
 ///   destination_config = {
 ///     on_failure = {
 ///       destination = aws_cloudwatch_eventbus.lambda_failures.arn
@@ -1148,6 +1147,7 @@ import 'function_event_invoke_config_state.dart';
 ///       destination = aws_s3_bucket.lambda_success_archive.arn
 ///     }
 ///   }
+///   function_name = exampleAwsLambdaFunction.functionName
 /// }
 /// ```
 /// ```java
@@ -1189,7 +1189,6 @@ import 'function_event_invoke_config_state.dart';
 ///             .build());
 ///
 ///         var example = new FunctionEventInvokeConfig("example", FunctionEventInvokeConfigArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.functionName())
 ///             .destinationConfig(FunctionEventInvokeConfigDestinationConfigArgs.builder()
 ///                 .onFailure(FunctionEventInvokeConfigDestinationConfigOnFailureArgs.builder()
 ///                     .destination(lambdaFailures.arn())
@@ -1198,6 +1197,7 @@ import 'function_event_invoke_config_state.dart';
 ///                     .destination(lambdaSuccessArchive.arn())
 ///                     .build())
 ///                 .build())
+///             .functionName(exampleAwsLambdaFunction.functionName())
 ///             .build());
 ///
 ///     }
@@ -1220,12 +1220,12 @@ import 'function_event_invoke_config_state.dart';
 ///   example:
 ///     type: aws:lambda:FunctionEventInvokeConfig
 ///     properties:
-///       functionName: ${exampleAwsLambdaFunction.functionName}
 ///       destinationConfig:
 ///         onFailure:
 ///           destination: ${lambdaFailures.arn}
 ///         onSuccess:
 ///           destination: ${lambdaSuccessArchive.arn}
+///       functionName: ${exampleAwsLambdaFunction.functionName}
 /// ```
 ///
 ///
@@ -1293,7 +1293,7 @@ class FunctionEventInvokeConfig extends pulumi.CustomResource {
           'aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     destinationConfig = registerOutput<FunctionEventInvokeConfigDestinationConfig?>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventInvokeConfigDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionName = registerOutput<String>('functionName');
@@ -1308,11 +1308,12 @@ class FunctionEventInvokeConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionEventInvokeConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionEventInvokeConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1326,6 +1327,23 @@ class FunctionEventInvokeConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    destinationConfig = registerOutput<FunctionEventInvokeConfigDestinationConfig?>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventInvokeConfigDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    functionName = registerOutput<String>('functionName');
+    maximumEventAgeInSeconds = registerOutput<int?>('maximumEventAgeInSeconds');
+    maximumRetryAttempts = registerOutput<int?>('maximumRetryAttempts');
+    qualifier = registerOutput<String?>('qualifier');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [FunctionEventInvokeConfig] resource.
+  FunctionEventInvokeConfig.reference(String urn)
+    : super(
+        'aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     destinationConfig = registerOutput<FunctionEventInvokeConfigDestinationConfig?>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventInvokeConfigDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionName = registerOutput<String>('functionName');
     maximumEventAgeInSeconds = registerOutput<int?>('maximumEventAgeInSeconds');

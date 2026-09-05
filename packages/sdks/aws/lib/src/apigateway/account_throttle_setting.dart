@@ -25,8 +25,8 @@ class AccountThrottleSetting {
 
   factory AccountThrottleSetting.fromMap(Map<String, dynamic> map) {
     return AccountThrottleSetting(
-      burstLimit: pulumi.Input.fromValue(map['burstLimit'] as int),
-      rateLimit: pulumi.Input.fromValue(map['rateLimit'] as double),
+      burstLimit: pulumi.Input.fromValue((map['burstLimit'] as num).toInt()),
+      rateLimit: pulumi.Input.fromValue((map['rateLimit'] as num).toDouble()),
     );
   }
 }

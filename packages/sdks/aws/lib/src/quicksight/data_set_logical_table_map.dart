@@ -8,7 +8,7 @@ class DataSetLogicalTableMap {
   /// A display name for the logical table.
   final pulumi.Input<String> alias;
   /// Transform operations that act on this logical table. For this structure to be valid, only one of the attributes can be non-null. See data_transforms.
-  final pulumi.Input<List<DataSetLogicalTableMapDataTransform>>? dataTransforms;
+  final pulumi.Input<List<DataSetLogicalTableMapDataTransform>?>? dataTransforms;
   /// Key of the logical table map.
   final pulumi.Input<String> logicalTableMapId;
   /// Source of this logical table. See source.

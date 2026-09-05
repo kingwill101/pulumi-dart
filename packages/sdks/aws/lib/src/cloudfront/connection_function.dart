@@ -15,12 +15,12 @@ import 'connection_function_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.ConnectionFunction("example", {
-///     name: "example-connection-function",
-///     connectionFunctionCode: "function handler(event) { return event.request; }",
 ///     connectionFunctionConfig: {
 ///         runtime: "cloudfront-js-2.0",
 ///         comment: "Example connection function",
 ///     },
+///     name: "example-connection-function",
+///     connectionFunctionCode: "function handler(event) { return event.request; }",
 /// });
 /// ```
 /// ```python
@@ -28,12 +28,12 @@ import 'connection_function_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.ConnectionFunction("example",
-///     name="example-connection-function",
-///     connection_function_code="function handler(event) { return event.request; }",
 ///     connection_function_config={
 ///         "runtime": "cloudfront-js-2.0",
 ///         "comment": "Example connection function",
-///     })
+///     },
+///     name="example-connection-function",
+///     connection_function_code="function handler(event) { return event.request; }")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,13 +45,13 @@ import 'connection_function_state.dart';
 /// {
 ///     var example = new Aws.CloudFront.ConnectionFunction("example", new()
 ///     {
-///         Name = "example-connection-function",
-///         ConnectionFunctionCode = "function handler(event) { return event.request; }",
 ///         ConnectionFunctionConfig = new Aws.CloudFront.Inputs.ConnectionFunctionConnectionFunctionConfigArgs
 ///         {
 ///             Runtime = "cloudfront-js-2.0",
 ///             Comment = "Example connection function",
 ///         },
+///         Name = "example-connection-function",
+///         ConnectionFunctionCode = "function handler(event) { return event.request; }",
 ///     });
 ///
 /// });
@@ -67,12 +67,12 @@ import 'connection_function_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewConnectionFunction(ctx, "example", &cloudfront.ConnectionFunctionArgs{
-/// 			Name:                   pulumi.String("example-connection-function"),
-/// 			ConnectionFunctionCode: pulumi.String("function handler(event) { return event.request; }"),
 /// 			ConnectionFunctionConfig: &cloudfront.ConnectionFunctionConnectionFunctionConfigArgs{
 /// 				Runtime: pulumi.String("cloudfront-js-2.0"),
 /// 				Comment: pulumi.String("Example connection function"),
 /// 			},
+/// 			Name:                   pulumi.String("example-connection-function"),
+/// 			ConnectionFunctionCode: pulumi.String("function handler(event) { return event.request; }"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -91,12 +91,12 @@ import 'connection_function_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_connectionfunction" "example" {
-///   name                     = "example-connection-function"
-///   connection_function_code = "function handler(event) { return event.request; }"
 ///   connection_function_config = {
 ///     runtime = "cloudfront-js-2.0"
 ///     comment = "Example connection function"
 ///   }
+///   name                     = "example-connection-function"
+///   connection_function_code = "function handler(event) { return event.request; }"
 /// }
 /// ```
 /// ```java
@@ -122,12 +122,12 @@ import 'connection_function_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ConnectionFunction("example", ConnectionFunctionArgs.builder()
-///             .name("example-connection-function")
-///             .connectionFunctionCode("function handler(event) { return event.request; }")
 ///             .connectionFunctionConfig(ConnectionFunctionConnectionFunctionConfigArgs.builder()
 ///                 .runtime("cloudfront-js-2.0")
 ///                 .comment("Example connection function")
 ///                 .build())
+///             .name("example-connection-function")
+///             .connectionFunctionCode("function handler(event) { return event.request; }")
 ///             .build());
 ///
 ///     }
@@ -138,11 +138,11 @@ import 'connection_function_state.dart';
 ///   example:
 ///     type: aws:cloudfront:ConnectionFunction
 ///     properties:
-///       name: example-connection-function
-///       connectionFunctionCode: function handler(event) { return event.request; }
 ///       connectionFunctionConfig:
 ///         runtime: cloudfront-js-2.0
 ///         comment: Example connection function
+///       name: example-connection-function
+///       connectionFunctionCode: function handler(event) { return event.request; }
 /// ```
 ///
 ///
@@ -154,12 +154,12 @@ import 'connection_function_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.ConnectionFunction("example", {
-///     name: "example-connection-function",
-///     connectionFunctionCode: "function handler(event) { return event.request; }",
 ///     connectionFunctionConfig: {
 ///         runtime: "cloudfront-js-2.0",
 ///         comment: "Example connection function",
 ///     },
+///     name: "example-connection-function",
+///     connectionFunctionCode: "function handler(event) { return event.request; }",
 ///     publish: true,
 /// });
 /// ```
@@ -168,12 +168,12 @@ import 'connection_function_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.ConnectionFunction("example",
-///     name="example-connection-function",
-///     connection_function_code="function handler(event) { return event.request; }",
 ///     connection_function_config={
 ///         "runtime": "cloudfront-js-2.0",
 ///         "comment": "Example connection function",
 ///     },
+///     name="example-connection-function",
+///     connection_function_code="function handler(event) { return event.request; }",
 ///     publish=True)
 /// ```
 /// ```csharp
@@ -186,13 +186,13 @@ import 'connection_function_state.dart';
 /// {
 ///     var example = new Aws.CloudFront.ConnectionFunction("example", new()
 ///     {
-///         Name = "example-connection-function",
-///         ConnectionFunctionCode = "function handler(event) { return event.request; }",
 ///         ConnectionFunctionConfig = new Aws.CloudFront.Inputs.ConnectionFunctionConnectionFunctionConfigArgs
 ///         {
 ///             Runtime = "cloudfront-js-2.0",
 ///             Comment = "Example connection function",
 ///         },
+///         Name = "example-connection-function",
+///         ConnectionFunctionCode = "function handler(event) { return event.request; }",
 ///         Publish = true,
 ///     });
 ///
@@ -209,13 +209,13 @@ import 'connection_function_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewConnectionFunction(ctx, "example", &cloudfront.ConnectionFunctionArgs{
-/// 			Name:                   pulumi.String("example-connection-function"),
-/// 			ConnectionFunctionCode: pulumi.String("function handler(event) { return event.request; }"),
 /// 			ConnectionFunctionConfig: &cloudfront.ConnectionFunctionConnectionFunctionConfigArgs{
 /// 				Runtime: pulumi.String("cloudfront-js-2.0"),
 /// 				Comment: pulumi.String("Example connection function"),
 /// 			},
-/// 			Publish: pulumi.Bool(true),
+/// 			Name:                   pulumi.String("example-connection-function"),
+/// 			ConnectionFunctionCode: pulumi.String("function handler(event) { return event.request; }"),
+/// 			Publish:                pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -234,13 +234,13 @@ import 'connection_function_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_connectionfunction" "example" {
-///   name                     = "example-connection-function"
-///   connection_function_code = "function handler(event) { return event.request; }"
 ///   connection_function_config = {
 ///     runtime = "cloudfront-js-2.0"
 ///     comment = "Example connection function"
 ///   }
-///   publish = true
+///   name                     = "example-connection-function"
+///   connection_function_code = "function handler(event) { return event.request; }"
+///   publish                  = true
 /// }
 /// ```
 /// ```java
@@ -266,12 +266,12 @@ import 'connection_function_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ConnectionFunction("example", ConnectionFunctionArgs.builder()
-///             .name("example-connection-function")
-///             .connectionFunctionCode("function handler(event) { return event.request; }")
 ///             .connectionFunctionConfig(ConnectionFunctionConnectionFunctionConfigArgs.builder()
 ///                 .runtime("cloudfront-js-2.0")
 ///                 .comment("Example connection function")
 ///                 .build())
+///             .name("example-connection-function")
+///             .connectionFunctionCode("function handler(event) { return event.request; }")
 ///             .publish(true)
 ///             .build());
 ///
@@ -283,11 +283,11 @@ import 'connection_function_state.dart';
 ///   example:
 ///     type: aws:cloudfront:ConnectionFunction
 ///     properties:
-///       name: example-connection-function
-///       connectionFunctionCode: function handler(event) { return event.request; }
 ///       connectionFunctionConfig:
 ///         runtime: cloudfront-js-2.0
 ///         comment: Example connection function
+///       name: example-connection-function
+///       connectionFunctionCode: function handler(event) { return event.request; }
 ///       publish: true
 /// ```
 ///
@@ -304,15 +304,15 @@ import 'connection_function_state.dart';
 ///     comment: "Example key value store",
 /// });
 /// const exampleConnectionFunction = new aws.cloudfront.ConnectionFunction("example", {
-///     name: "example-connection-function",
-///     connectionFunctionCode: "function handler(event) { return event.request; }",
 ///     connectionFunctionConfig: {
-///         runtime: "cloudfront-js-2.0",
-///         comment: "Example connection function",
 ///         keyValueStoreAssociation: {
 ///             keyValueStoreArn: example.arn,
 ///         },
+///         runtime: "cloudfront-js-2.0",
+///         comment: "Example connection function",
 ///     },
+///     name: "example-connection-function",
+///     connectionFunctionCode: "function handler(event) { return event.request; }",
 /// });
 /// ```
 /// ```python
@@ -323,15 +323,15 @@ import 'connection_function_state.dart';
 ///     name="example-kvs",
 ///     comment="Example key value store")
 /// example_connection_function = aws.cloudfront.ConnectionFunction("example",
-///     name="example-connection-function",
-///     connection_function_code="function handler(event) { return event.request; }",
 ///     connection_function_config={
-///         "runtime": "cloudfront-js-2.0",
-///         "comment": "Example connection function",
 ///         "key_value_store_association": {
 ///             "key_value_store_arn": example.arn,
 ///         },
-///     })
+///         "runtime": "cloudfront-js-2.0",
+///         "comment": "Example connection function",
+///     },
+///     name="example-connection-function",
+///     connection_function_code="function handler(event) { return event.request; }")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -349,17 +349,17 @@ import 'connection_function_state.dart';
 ///
 ///     var exampleConnectionFunction = new Aws.CloudFront.ConnectionFunction("example", new()
 ///     {
-///         Name = "example-connection-function",
-///         ConnectionFunctionCode = "function handler(event) { return event.request; }",
 ///         ConnectionFunctionConfig = new Aws.CloudFront.Inputs.ConnectionFunctionConnectionFunctionConfigArgs
 ///         {
-///             Runtime = "cloudfront-js-2.0",
-///             Comment = "Example connection function",
 ///             KeyValueStoreAssociation = new Aws.CloudFront.Inputs.ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociationArgs
 ///             {
 ///                 KeyValueStoreArn = example.Arn,
 ///             },
+///             Runtime = "cloudfront-js-2.0",
+///             Comment = "Example connection function",
 ///         },
+///         Name = "example-connection-function",
+///         ConnectionFunctionCode = "function handler(event) { return event.request; }",
 ///     });
 ///
 /// });
@@ -382,15 +382,15 @@ import 'connection_function_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudfront.NewConnectionFunction(ctx, "example", &cloudfront.ConnectionFunctionArgs{
-/// 			Name:                   pulumi.String("example-connection-function"),
-/// 			ConnectionFunctionCode: pulumi.String("function handler(event) { return event.request; }"),
 /// 			ConnectionFunctionConfig: &cloudfront.ConnectionFunctionConnectionFunctionConfigArgs{
-/// 				Runtime: pulumi.String("cloudfront-js-2.0"),
-/// 				Comment: pulumi.String("Example connection function"),
 /// 				KeyValueStoreAssociation: &cloudfront.ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociationArgs{
 /// 					KeyValueStoreArn: example.Arn,
 /// 				},
+/// 				Runtime: pulumi.String("cloudfront-js-2.0"),
+/// 				Comment: pulumi.String("Example connection function"),
 /// 			},
+/// 			Name:                   pulumi.String("example-connection-function"),
+/// 			ConnectionFunctionCode: pulumi.String("function handler(event) { return event.request; }"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -413,15 +413,15 @@ import 'connection_function_state.dart';
 ///   comment = "Example key value store"
 /// }
 /// resource "aws_cloudfront_connectionfunction" "example" {
-///   name                     = "example-connection-function"
-///   connection_function_code = "function handler(event) { return event.request; }"
 ///   connection_function_config = {
-///     runtime = "cloudfront-js-2.0"
-///     comment = "Example connection function"
 ///     key_value_store_association = {
 ///       key_value_store_arn = aws_cloudfront_keyvaluestore.example.arn
 ///     }
+///     runtime = "cloudfront-js-2.0"
+///     comment = "Example connection function"
 ///   }
+///   name                     = "example-connection-function"
+///   connection_function_code = "function handler(event) { return event.request; }"
 /// }
 /// ```
 /// ```java
@@ -455,15 +455,15 @@ import 'connection_function_state.dart';
 ///             .build());
 ///
 ///         var exampleConnectionFunction = new ConnectionFunction("exampleConnectionFunction", ConnectionFunctionArgs.builder()
-///             .name("example-connection-function")
-///             .connectionFunctionCode("function handler(event) { return event.request; }")
 ///             .connectionFunctionConfig(ConnectionFunctionConnectionFunctionConfigArgs.builder()
-///                 .runtime("cloudfront-js-2.0")
-///                 .comment("Example connection function")
 ///                 .keyValueStoreAssociation(ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociationArgs.builder()
 ///                     .keyValueStoreArn(example.arn())
 ///                     .build())
+///                 .runtime("cloudfront-js-2.0")
+///                 .comment("Example connection function")
 ///                 .build())
+///             .name("example-connection-function")
+///             .connectionFunctionCode("function handler(event) { return event.request; }")
 ///             .build());
 ///
 ///     }
@@ -480,13 +480,13 @@ import 'connection_function_state.dart';
 ///     type: aws:cloudfront:ConnectionFunction
 ///     name: example
 ///     properties:
-///       name: example-connection-function
-///       connectionFunctionCode: function handler(event) { return event.request; }
 ///       connectionFunctionConfig:
-///         runtime: cloudfront-js-2.0
-///         comment: Example connection function
 ///         keyValueStoreAssociation:
 ///           keyValueStoreArn: ${example.arn}
+///         runtime: cloudfront-js-2.0
+///         comment: Example connection function
+///       name: example-connection-function
+///       connectionFunctionCode: function handler(event) { return event.request; }
 /// ```
 ///
 ///
@@ -498,12 +498,12 @@ import 'connection_function_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.ConnectionFunction("example", {
-///     name: "example-connection-function",
-///     connectionFunctionCode: "function handler(event) { return event.request; }",
 ///     connectionFunctionConfig: {
 ///         runtime: "cloudfront-js-2.0",
 ///         comment: "Example connection function",
 ///     },
+///     name: "example-connection-function",
+///     connectionFunctionCode: "function handler(event) { return event.request; }",
 ///     tags: {
 ///         Environment: "production",
 ///         Team: "web",
@@ -515,12 +515,12 @@ import 'connection_function_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.ConnectionFunction("example",
-///     name="example-connection-function",
-///     connection_function_code="function handler(event) { return event.request; }",
 ///     connection_function_config={
 ///         "runtime": "cloudfront-js-2.0",
 ///         "comment": "Example connection function",
 ///     },
+///     name="example-connection-function",
+///     connection_function_code="function handler(event) { return event.request; }",
 ///     tags={
 ///         "Environment": "production",
 ///         "Team": "web",
@@ -536,13 +536,13 @@ import 'connection_function_state.dart';
 /// {
 ///     var example = new Aws.CloudFront.ConnectionFunction("example", new()
 ///     {
-///         Name = "example-connection-function",
-///         ConnectionFunctionCode = "function handler(event) { return event.request; }",
 ///         ConnectionFunctionConfig = new Aws.CloudFront.Inputs.ConnectionFunctionConnectionFunctionConfigArgs
 ///         {
 ///             Runtime = "cloudfront-js-2.0",
 ///             Comment = "Example connection function",
 ///         },
+///         Name = "example-connection-function",
+///         ConnectionFunctionCode = "function handler(event) { return event.request; }",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -563,12 +563,12 @@ import 'connection_function_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewConnectionFunction(ctx, "example", &cloudfront.ConnectionFunctionArgs{
-/// 			Name:                   pulumi.String("example-connection-function"),
-/// 			ConnectionFunctionCode: pulumi.String("function handler(event) { return event.request; }"),
 /// 			ConnectionFunctionConfig: &cloudfront.ConnectionFunctionConnectionFunctionConfigArgs{
 /// 				Runtime: pulumi.String("cloudfront-js-2.0"),
 /// 				Comment: pulumi.String("Example connection function"),
 /// 			},
+/// 			Name:                   pulumi.String("example-connection-function"),
+/// 			ConnectionFunctionCode: pulumi.String("function handler(event) { return event.request; }"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 				"Team":        pulumi.String("web"),
@@ -591,12 +591,12 @@ import 'connection_function_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_connectionfunction" "example" {
-///   name                     = "example-connection-function"
-///   connection_function_code = "function handler(event) { return event.request; }"
 ///   connection_function_config = {
 ///     runtime = "cloudfront-js-2.0"
 ///     comment = "Example connection function"
 ///   }
+///   name                     = "example-connection-function"
+///   connection_function_code = "function handler(event) { return event.request; }"
 ///   tags = {
 ///     "Environment" = "production"
 ///     "Team"        = "web"
@@ -626,12 +626,12 @@ import 'connection_function_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ConnectionFunction("example", ConnectionFunctionArgs.builder()
-///             .name("example-connection-function")
-///             .connectionFunctionCode("function handler(event) { return event.request; }")
 ///             .connectionFunctionConfig(ConnectionFunctionConnectionFunctionConfigArgs.builder()
 ///                 .runtime("cloudfront-js-2.0")
 ///                 .comment("Example connection function")
 ///                 .build())
+///             .name("example-connection-function")
+///             .connectionFunctionCode("function handler(event) { return event.request; }")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
 ///                 Map.entry("Team", "web")
@@ -646,11 +646,11 @@ import 'connection_function_state.dart';
 ///   example:
 ///     type: aws:cloudfront:ConnectionFunction
 ///     properties:
-///       name: example-connection-function
-///       connectionFunctionCode: function handler(event) { return event.request; }
 ///       connectionFunctionConfig:
 ///         runtime: cloudfront-js-2.0
 ///         comment: Example connection function
+///       name: example-connection-function
+///       connectionFunctionCode: function handler(event) { return event.request; }
 ///       tags:
 ///         Environment: production
 ///         Team: web
@@ -700,7 +700,7 @@ class ConnectionFunction extends pulumi.CustomResource {
           'aws:cloudfront/connectionFunction:ConnectionFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     connectionFunctionArn = registerOutput<String>('connectionFunctionArn');
     connectionFunctionCode = registerOutput<String>('connectionFunctionCode');
@@ -710,8 +710,8 @@ class ConnectionFunction extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publish = registerOutput<bool>('publish');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ConnectionFunction] resource's state with the given [name] and [id].
@@ -719,11 +719,12 @@ class ConnectionFunction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionFunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectionFunction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -745,7 +746,28 @@ class ConnectionFunction extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publish = registerOutput<bool>('publish');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ConnectionFunction] resource.
+  ConnectionFunction.reference(String urn)
+    : super(
+        'aws:cloudfront/connectionFunction:ConnectionFunction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectionFunctionArn = registerOutput<String>('connectionFunctionArn');
+    connectionFunctionCode = registerOutput<String>('connectionFunctionCode');
+    connectionFunctionConfig = registerOutput<ConnectionFunctionConnectionFunctionConfig>('connectionFunctionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionFunctionConnectionFunctionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    liveStageEtag = registerOutput<String>('liveStageEtag');
+    this.name = registerOutput<String>('name');
+    publish = registerOutput<bool>('publish');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

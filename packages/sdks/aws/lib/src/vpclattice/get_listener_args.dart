@@ -7,19 +7,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_vpclattice_get_listener_get_listener_args_doc}
 class GetListenerArgs {
-  /// ID or Amazon Resource Name (ARN) of the listener
+  /// ID or ARN of the listener
   final pulumi.Input<String> listenerIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// ID or Amazon Resource Name (ARN) of the service network
+  final pulumi.Input<String?>? region;
+  /// ID or ARN of the service network
   final pulumi.Input<String> serviceIdentifier;
   /// List of tags associated with the listener.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetListenerArgs].
-  /// [listenerIdentifier] ID or Amazon Resource Name (ARN) of the listener
+  /// [listenerIdentifier] ID or ARN of the listener
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceIdentifier] ID or Amazon Resource Name (ARN) of the service network
+  /// [serviceIdentifier] ID or ARN of the service network
   /// [tags] List of tags associated with the listener.
   const GetListenerArgs({
     required this.listenerIdentifier,

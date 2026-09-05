@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppCustomRule {
   /// Condition for a URL rewrite or redirect rule, such as a country code.
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// Source pattern for a URL rewrite or redirect rule.
   final pulumi.Input<String> source;
   /// Status code for a URL rewrite or redirect rule. Valid values: `200`, `301`, `302`, `404`, `404-200`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Target pattern for a URL rewrite or redirect rule.
   final pulumi.Input<String> target;
 

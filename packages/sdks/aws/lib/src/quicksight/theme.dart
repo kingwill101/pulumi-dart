@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'theme_args.dart';
 import 'theme_configuration.dart';
+import 'theme_permission.dart';
 import 'theme_state.dart';
 
 /// Resource for managing a QuickSight Theme.
@@ -15,9 +16,6 @@ import 'theme_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.quicksight.Theme("example", {
-///     themeId: "example",
-///     name: "example",
-///     baseThemeId: "MIDNIGHT",
 ///     configuration: {
 ///         dataColorPalette: {
 ///             colors: [
@@ -39,6 +37,9 @@ import 'theme_state.dart';
 ///             ],
 ///         },
 ///     },
+///     themeId: "example",
+///     name: "example",
+///     baseThemeId: "MIDNIGHT",
 /// });
 /// ```
 /// ```python
@@ -46,9 +47,6 @@ import 'theme_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.quicksight.Theme("example",
-///     theme_id="example",
-///     name="example",
-///     base_theme_id="MIDNIGHT",
 ///     configuration={
 ///         "data_color_palette": {
 ///             "colors": [
@@ -69,7 +67,10 @@ import 'theme_state.dart';
 ///                 "#111111",
 ///             ],
 ///         },
-///     })
+///     },
+///     theme_id="example",
+///     name="example",
+///     base_theme_id="MIDNIGHT")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -81,9 +82,6 @@ import 'theme_state.dart';
 /// {
 ///     var example = new Aws.Quicksight.Theme("example", new()
 ///     {
-///         ThemeId = "example",
-///         Name = "example",
-///         BaseThemeId = "MIDNIGHT",
 ///         Configuration = new Aws.Quicksight.Inputs.ThemeConfigurationArgs
 ///         {
 ///             DataColorPalette = new Aws.Quicksight.Inputs.ThemeConfigurationDataColorPaletteArgs
@@ -109,6 +107,9 @@ import 'theme_state.dart';
 ///                 },
 ///             },
 ///         },
+///         ThemeId = "example",
+///         Name = "example",
+///         BaseThemeId = "MIDNIGHT",
 ///     });
 ///
 /// });
@@ -124,9 +125,6 @@ import 'theme_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := quicksight.NewTheme(ctx, "example", &quicksight.ThemeArgs{
-/// 			ThemeId:     pulumi.String("example"),
-/// 			Name:        pulumi.String("example"),
-/// 			BaseThemeId: pulumi.String("MIDNIGHT"),
 /// 			Configuration: &quicksight.ThemeConfigurationArgs{
 /// 				DataColorPalette: &quicksight.ThemeConfigurationDataColorPaletteArgs{
 /// 					Colors: pulumi.StringArray{
@@ -148,6 +146,9 @@ import 'theme_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			ThemeId:     pulumi.String("example"),
+/// 			Name:        pulumi.String("example"),
+/// 			BaseThemeId: pulumi.String("MIDNIGHT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -166,9 +167,6 @@ import 'theme_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_theme" "example" {
-///   theme_id      = "example"
-///   name          = "example"
-///   base_theme_id = "MIDNIGHT"
 ///   configuration = {
 ///     data_color_palette = {
 ///       colors            = ["#FFFFFF", "#111111", "#222222", "#333333", "#444444", "#555555", "#666666", "#777777", "#888888", "#999999"]
@@ -176,6 +174,9 @@ import 'theme_state.dart';
 ///       min_max_gradients = ["#FFFFFF", "#111111"]
 ///     }
 ///   }
+///   theme_id      = "example"
+///   name          = "example"
+///   base_theme_id = "MIDNIGHT"
 /// }
 /// ```
 /// ```java
@@ -202,9 +203,6 @@ import 'theme_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Theme("example", ThemeArgs.builder()
-///             .themeId("example")
-///             .name("example")
-///             .baseThemeId("MIDNIGHT")
 ///             .configuration(ThemeConfigurationArgs.builder()
 ///                 .dataColorPalette(ThemeConfigurationDataColorPaletteArgs.builder()
 ///                     .colors(
@@ -224,6 +222,9 @@ import 'theme_state.dart';
 ///                         "#111111")
 ///                     .build())
 ///                 .build())
+///             .themeId("example")
+///             .name("example")
+///             .baseThemeId("MIDNIGHT")
 ///             .build());
 ///
 ///     }
@@ -234,9 +235,6 @@ import 'theme_state.dart';
 ///   example:
 ///     type: aws:quicksight:Theme
 ///     properties:
-///       themeId: example
-///       name: example
-///       baseThemeId: MIDNIGHT
 ///       configuration:
 ///         dataColorPalette:
 ///           colors:
@@ -254,6 +252,9 @@ import 'theme_state.dart';
 ///           minMaxGradients:
 ///             - '#FFFFFF'
 ///             - '#111111'
+///       themeId: example
+///       name: example
+///       baseThemeId: MIDNIGHT
 /// ```
 ///
 ///
@@ -280,7 +281,7 @@ class Theme extends pulumi.CustomResource {
   /// Display name of the theme.
   late final pulumi.Output<String> name;
   /// A set of resource permissions on the theme. Maximum of 64 items. See permissions.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+  late final pulumi.Output<List<ThemePermission>?> permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The theme creation status.
@@ -310,7 +311,7 @@ class Theme extends pulumi.CustomResource {
           'aws:quicksight/theme:Theme',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
@@ -319,11 +320,11 @@ class Theme extends pulumi.CustomResource {
     createdTime = registerOutput<String>('createdTime');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<ThemePermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThemePermission>(guardedValue, (value) => ThemePermission.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     themeId = registerOutput<String>('themeId');
     versionDescription = registerOutput<String?>('versionDescription');
     versionNumber = registerOutput<int>('versionNumber');
@@ -334,11 +335,12 @@ class Theme extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ThemeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Theme._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -359,11 +361,37 @@ class Theme extends pulumi.CustomResource {
     createdTime = registerOutput<String>('createdTime');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     this.name = registerOutput<String>('name');
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<ThemePermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThemePermission>(guardedValue, (value) => ThemePermission.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    themeId = registerOutput<String>('themeId');
+    versionDescription = registerOutput<String?>('versionDescription');
+    versionNumber = registerOutput<int>('versionNumber');
+  }
+
+  /// Creates a typed reference to an existing [Theme] resource.
+  Theme.reference(String urn)
+    : super(
+        'aws:quicksight/theme:Theme',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    baseThemeId = registerOutput<String>('baseThemeId');
+    configuration = registerOutput<ThemeConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThemeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdTime = registerOutput<String>('createdTime');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    this.name = registerOutput<String>('name');
+    permissions = registerOutput<List<ThemePermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThemePermission>(guardedValue, (value) => ThemePermission.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     themeId = registerOutput<String>('themeId');
     versionDescription = registerOutput<String?>('versionDescription');
     versionNumber = registerOutput<int>('versionNumber');

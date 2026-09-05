@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'index_args.dart';
 import 'index_capacity_units.dart';
+import 'index_document_metadata_configuration_update.dart';
+import 'index_index_statistic.dart';
 import 'index_server_side_encryption_configuration.dart';
 import 'index_state.dart';
 import 'index_user_group_resolution_configuration.dart';
@@ -161,13 +163,13 @@ import 'index_user_token_configurations.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Index("example", {
-///     name: "example",
-///     edition: "DEVELOPER_EDITION",
-///     roleArn: _this.arn,
 ///     capacityUnits: {
 ///         queryCapacityUnits: 2,
 ///         storageCapacityUnits: 2,
 ///     },
+///     name: "example",
+///     edition: "DEVELOPER_EDITION",
+///     roleArn: _this.arn,
 /// });
 /// ```
 /// ```python
@@ -175,13 +177,13 @@ import 'index_user_token_configurations.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Index("example",
-///     name="example",
-///     edition="DEVELOPER_EDITION",
-///     role_arn=this["arn"],
 ///     capacity_units={
 ///         "query_capacity_units": 2,
 ///         "storage_capacity_units": 2,
-///     })
+///     },
+///     name="example",
+///     edition="DEVELOPER_EDITION",
+///     role_arn=this["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -193,14 +195,14 @@ import 'index_user_token_configurations.dart';
 /// {
 ///     var example = new Aws.Kendra.Index("example", new()
 ///     {
-///         Name = "example",
-///         Edition = "DEVELOPER_EDITION",
-///         RoleArn = @this.Arn,
 ///         CapacityUnits = new Aws.Kendra.Inputs.IndexCapacityUnitsArgs
 ///         {
 ///             QueryCapacityUnits = 2,
 ///             StorageCapacityUnits = 2,
 ///         },
+///         Name = "example",
+///         Edition = "DEVELOPER_EDITION",
+///         RoleArn = @this.Arn,
 ///     });
 ///
 /// });
@@ -216,13 +218,13 @@ import 'index_user_token_configurations.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewIndex(ctx, "example", &kendra.IndexArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			Edition: pulumi.String("DEVELOPER_EDITION"),
-/// 			RoleArn: pulumi.Any(this.Arn),
 /// 			CapacityUnits: &kendra.IndexCapacityUnitsArgs{
 /// 				QueryCapacityUnits:   pulumi.Int(2),
 /// 				StorageCapacityUnits: pulumi.Int(2),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			Edition: pulumi.String("DEVELOPER_EDITION"),
+/// 			RoleArn: pulumi.Any(this.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -241,13 +243,13 @@ import 'index_user_token_configurations.dart';
 /// }
 ///
 /// resource "aws_kendra_index" "example" {
-///   name     = "example"
-///   edition  = "DEVELOPER_EDITION"
-///   role_arn = this.arn
 ///   capacity_units = {
 ///     query_capacity_units   = 2
 ///     storage_capacity_units = 2
 ///   }
+///   name     = "example"
+///   edition  = "DEVELOPER_EDITION"
+///   role_arn = this.arn
 /// }
 /// ```
 /// ```java
@@ -273,13 +275,13 @@ import 'index_user_token_configurations.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Index("example", IndexArgs.builder()
-///             .name("example")
-///             .edition("DEVELOPER_EDITION")
-///             .roleArn(this_.arn())
 ///             .capacityUnits(IndexCapacityUnitsArgs.builder()
 ///                 .queryCapacityUnits(2)
 ///                 .storageCapacityUnits(2)
 ///                 .build())
+///             .name("example")
+///             .edition("DEVELOPER_EDITION")
+///             .roleArn(this_.arn())
 ///             .build());
 ///
 ///     }
@@ -290,12 +292,12 @@ import 'index_user_token_configurations.dart';
 ///   example:
 ///     type: aws:kendra:Index
 ///     properties:
-///       name: example
-///       edition: DEVELOPER_EDITION
-///       roleArn: ${this.arn}
 ///       capacityUnits:
 ///         queryCapacityUnits: 2
 ///         storageCapacityUnits: 2
+///       name: example
+///       edition: DEVELOPER_EDITION
+///       roleArn: ${this.arn}
 /// ```
 ///
 ///
@@ -307,11 +309,11 @@ import 'index_user_token_configurations.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Index("example", {
-///     name: "example",
-///     roleArn: thisAwsIamRole.arn,
 ///     serverSideEncryptionConfiguration: {
 ///         kmsKeyId: _this.arn,
 ///     },
+///     name: "example",
+///     roleArn: thisAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -319,11 +321,11 @@ import 'index_user_token_configurations.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Index("example",
-///     name="example",
-///     role_arn=this_aws_iam_role["arn"],
 ///     server_side_encryption_configuration={
 ///         "kms_key_id": this["arn"],
-///     })
+///     },
+///     name="example",
+///     role_arn=this_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -335,12 +337,12 @@ import 'index_user_token_configurations.dart';
 /// {
 ///     var example = new Aws.Kendra.Index("example", new()
 ///     {
-///         Name = "example",
-///         RoleArn = thisAwsIamRole.Arn,
 ///         ServerSideEncryptionConfiguration = new Aws.Kendra.Inputs.IndexServerSideEncryptionConfigurationArgs
 ///         {
 ///             KmsKeyId = @this.Arn,
 ///         },
+///         Name = "example",
+///         RoleArn = thisAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -356,11 +358,11 @@ import 'index_user_token_configurations.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewIndex(ctx, "example", &kendra.IndexArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(thisAwsIamRole.Arn),
 /// 			ServerSideEncryptionConfiguration: &kendra.IndexServerSideEncryptionConfigurationArgs{
 /// 				KmsKeyId: pulumi.Any(this.Arn),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(thisAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -379,11 +381,11 @@ import 'index_user_token_configurations.dart';
 /// }
 ///
 /// resource "aws_kendra_index" "example" {
-///   name     = "example"
-///   role_arn = thisAwsIamRole.arn
 ///   server_side_encryption_configuration = {
 ///     kms_key_id = this.arn
 ///   }
+///   name     = "example"
+///   role_arn = thisAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -409,11 +411,11 @@ import 'index_user_token_configurations.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Index("example", IndexArgs.builder()
-///             .name("example")
-///             .roleArn(thisAwsIamRole.arn())
 ///             .serverSideEncryptionConfiguration(IndexServerSideEncryptionConfigurationArgs.builder()
 ///                 .kmsKeyId(this_.arn())
 ///                 .build())
+///             .name("example")
+///             .roleArn(thisAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -424,10 +426,10 @@ import 'index_user_token_configurations.dart';
 ///   example:
 ///     type: aws:kendra:Index
 ///     properties:
-///       name: example
-///       roleArn: ${thisAwsIamRole.arn}
 ///       serverSideEncryptionConfiguration:
 ///         kmsKeyId: ${this.arn}
+///       name: example
+///       roleArn: ${thisAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -439,11 +441,11 @@ import 'index_user_token_configurations.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Index("example", {
-///     name: "example",
-///     roleArn: _this.arn,
 ///     userGroupResolutionConfiguration: {
 ///         userGroupResolutionMode: "AWS_SSO",
 ///     },
+///     name: "example",
+///     roleArn: _this.arn,
 /// });
 /// ```
 /// ```python
@@ -451,11 +453,11 @@ import 'index_user_token_configurations.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Index("example",
-///     name="example",
-///     role_arn=this["arn"],
 ///     user_group_resolution_configuration={
 ///         "user_group_resolution_mode": "AWS_SSO",
-///     })
+///     },
+///     name="example",
+///     role_arn=this["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -467,12 +469,12 @@ import 'index_user_token_configurations.dart';
 /// {
 ///     var example = new Aws.Kendra.Index("example", new()
 ///     {
-///         Name = "example",
-///         RoleArn = @this.Arn,
 ///         UserGroupResolutionConfiguration = new Aws.Kendra.Inputs.IndexUserGroupResolutionConfigurationArgs
 ///         {
 ///             UserGroupResolutionMode = "AWS_SSO",
 ///         },
+///         Name = "example",
+///         RoleArn = @this.Arn,
 ///     });
 ///
 /// });
@@ -488,11 +490,11 @@ import 'index_user_token_configurations.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewIndex(ctx, "example", &kendra.IndexArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(this.Arn),
 /// 			UserGroupResolutionConfiguration: &kendra.IndexUserGroupResolutionConfigurationArgs{
 /// 				UserGroupResolutionMode: pulumi.String("AWS_SSO"),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(this.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -511,11 +513,11 @@ import 'index_user_token_configurations.dart';
 /// }
 ///
 /// resource "aws_kendra_index" "example" {
-///   name     = "example"
-///   role_arn = this.arn
 ///   user_group_resolution_configuration = {
 ///     user_group_resolution_mode = "AWS_SSO"
 ///   }
+///   name     = "example"
+///   role_arn = this.arn
 /// }
 /// ```
 /// ```java
@@ -541,11 +543,11 @@ import 'index_user_token_configurations.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Index("example", IndexArgs.builder()
-///             .name("example")
-///             .roleArn(this_.arn())
 ///             .userGroupResolutionConfiguration(IndexUserGroupResolutionConfigurationArgs.builder()
 ///                 .userGroupResolutionMode("AWS_SSO")
 ///                 .build())
+///             .name("example")
+///             .roleArn(this_.arn())
 ///             .build());
 ///
 ///     }
@@ -556,10 +558,10 @@ import 'index_user_token_configurations.dart';
 ///   example:
 ///     type: aws:kendra:Index
 ///     properties:
-///       name: example
-///       roleArn: ${this.arn}
 ///       userGroupResolutionConfiguration:
 ///         userGroupResolutionMode: AWS_SSO
+///       name: example
+///       roleArn: ${this.arn}
 /// ```
 ///
 ///
@@ -575,12 +577,8 @@ import 'index_user_token_configurations.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Index("example", {
-///     name: "example",
-///     roleArn: _this.arn,
 ///     documentMetadataConfigurationUpdates: [
 ///         {
-///             name: "_authors",
-///             type: "STRING_LIST_VALUE",
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -590,10 +588,10 @@ import 'index_user_token_configurations.dart';
 ///             relevance: {
 ///                 importance: 1,
 ///             },
+///             name: "_authors",
+///             type: "STRING_LIST_VALUE",
 ///         },
 ///         {
-///             name: "_category",
-///             type: "STRING_VALUE",
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -604,10 +602,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
+///             name: "_category",
+///             type: "STRING_VALUE",
 ///         },
 ///         {
-///             name: "_created_at",
-///             type: "DATE_VALUE",
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -620,10 +618,10 @@ import 'index_user_token_configurations.dart';
 ///                 duration: "25920000s",
 ///                 rankOrder: "ASCENDING",
 ///             },
+///             name: "_created_at",
+///             type: "DATE_VALUE",
 ///         },
 ///         {
-///             name: "_data_source_id",
-///             type: "STRING_VALUE",
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -634,10 +632,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
+///             name: "_data_source_id",
+///             type: "STRING_VALUE",
 ///         },
 ///         {
-///             name: "_document_title",
-///             type: "STRING_VALUE",
 ///             search: {
 ///                 displayable: true,
 ///                 facetable: false,
@@ -648,10 +646,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 2,
 ///                 valuesImportanceMap: {},
 ///             },
+///             name: "_document_title",
+///             type: "STRING_VALUE",
 ///         },
 ///         {
-///             name: "_excerpt_page_number",
-///             type: "LONG_VALUE",
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -662,10 +660,24 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 2,
 ///                 rankOrder: "ASCENDING",
 ///             },
+///             name: "_excerpt_page_number",
+///             type: "LONG_VALUE",
 ///         },
 ///         {
+///             search: {
+///                 displayable: false,
+///                 facetable: false,
+///                 searchable: false,
+///                 sortable: true,
+///             },
+///             relevance: {
+///                 importance: 1,
+///                 valuesImportanceMap: {},
+///             },
 ///             name: "_faq_id",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -676,10 +688,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_file_type",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -690,24 +702,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_language_code",
 ///             type: "STRING_VALUE",
-///             search: {
-///                 displayable: false,
-///                 facetable: false,
-///                 searchable: false,
-///                 sortable: true,
-///             },
-///             relevance: {
-///                 importance: 1,
-///                 valuesImportanceMap: {},
-///             },
 ///         },
 ///         {
-///             name: "_last_updated_at",
-///             type: "DATE_VALUE",
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -720,10 +718,10 @@ import 'index_user_token_configurations.dart';
 ///                 duration: "25920000s",
 ///                 rankOrder: "ASCENDING",
 ///             },
+///             name: "_last_updated_at",
+///             type: "DATE_VALUE",
 ///         },
 ///         {
-///             name: "_source_uri",
-///             type: "STRING_VALUE",
 ///             search: {
 ///                 displayable: true,
 ///                 facetable: false,
@@ -734,10 +732,24 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
+///             name: "_source_uri",
+///             type: "STRING_VALUE",
 ///         },
 ///         {
+///             search: {
+///                 displayable: false,
+///                 facetable: false,
+///                 searchable: false,
+///                 sortable: true,
+///             },
+///             relevance: {
+///                 importance: 1,
+///                 valuesImportanceMap: {},
+///             },
 ///             name: "_tenant_id",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -748,24 +760,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_version",
 ///             type: "STRING_VALUE",
-///             search: {
-///                 displayable: false,
-///                 facetable: false,
-///                 searchable: false,
-///                 sortable: true,
-///             },
-///             relevance: {
-///                 importance: 1,
-///                 valuesImportanceMap: {},
-///             },
 ///         },
 ///         {
-///             name: "_view_count",
-///             type: "LONG_VALUE",
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -776,8 +774,12 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 rankOrder: "ASCENDING",
 ///             },
+///             name: "_view_count",
+///             type: "LONG_VALUE",
 ///         },
 ///     ],
+///     name: "example",
+///     roleArn: _this.arn,
 /// });
 /// ```
 /// ```python
@@ -785,12 +787,8 @@ import 'index_user_token_configurations.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Index("example",
-///     name="example",
-///     role_arn=this["arn"],
 ///     document_metadata_configuration_updates=[
 ///         {
-///             "name": "_authors",
-///             "type": "STRING_LIST_VALUE",
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -800,10 +798,10 @@ import 'index_user_token_configurations.dart';
 ///             "relevance": {
 ///                 "importance": 1,
 ///             },
+///             "name": "_authors",
+///             "type": "STRING_LIST_VALUE",
 ///         },
 ///         {
-///             "name": "_category",
-///             "type": "STRING_VALUE",
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -814,10 +812,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
+///             "name": "_category",
+///             "type": "STRING_VALUE",
 ///         },
 ///         {
-///             "name": "_created_at",
-///             "type": "DATE_VALUE",
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -830,10 +828,10 @@ import 'index_user_token_configurations.dart';
 ///                 "duration": "25920000s",
 ///                 "rank_order": "ASCENDING",
 ///             },
+///             "name": "_created_at",
+///             "type": "DATE_VALUE",
 ///         },
 ///         {
-///             "name": "_data_source_id",
-///             "type": "STRING_VALUE",
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -844,10 +842,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
+///             "name": "_data_source_id",
+///             "type": "STRING_VALUE",
 ///         },
 ///         {
-///             "name": "_document_title",
-///             "type": "STRING_VALUE",
 ///             "search": {
 ///                 "displayable": True,
 ///                 "facetable": False,
@@ -858,10 +856,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 2,
 ///                 "values_importance_map": {},
 ///             },
+///             "name": "_document_title",
+///             "type": "STRING_VALUE",
 ///         },
 ///         {
-///             "name": "_excerpt_page_number",
-///             "type": "LONG_VALUE",
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -872,10 +870,24 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 2,
 ///                 "rank_order": "ASCENDING",
 ///             },
+///             "name": "_excerpt_page_number",
+///             "type": "LONG_VALUE",
 ///         },
 ///         {
+///             "search": {
+///                 "displayable": False,
+///                 "facetable": False,
+///                 "searchable": False,
+///                 "sortable": True,
+///             },
+///             "relevance": {
+///                 "importance": 1,
+///                 "values_importance_map": {},
+///             },
 ///             "name": "_faq_id",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -886,10 +898,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_file_type",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -900,24 +912,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_language_code",
 ///             "type": "STRING_VALUE",
-///             "search": {
-///                 "displayable": False,
-///                 "facetable": False,
-///                 "searchable": False,
-///                 "sortable": True,
-///             },
-///             "relevance": {
-///                 "importance": 1,
-///                 "values_importance_map": {},
-///             },
 ///         },
 ///         {
-///             "name": "_last_updated_at",
-///             "type": "DATE_VALUE",
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -930,10 +928,10 @@ import 'index_user_token_configurations.dart';
 ///                 "duration": "25920000s",
 ///                 "rank_order": "ASCENDING",
 ///             },
+///             "name": "_last_updated_at",
+///             "type": "DATE_VALUE",
 ///         },
 ///         {
-///             "name": "_source_uri",
-///             "type": "STRING_VALUE",
 ///             "search": {
 ///                 "displayable": True,
 ///                 "facetable": False,
@@ -944,10 +942,24 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
+///             "name": "_source_uri",
+///             "type": "STRING_VALUE",
 ///         },
 ///         {
+///             "search": {
+///                 "displayable": False,
+///                 "facetable": False,
+///                 "searchable": False,
+///                 "sortable": True,
+///             },
+///             "relevance": {
+///                 "importance": 1,
+///                 "values_importance_map": {},
+///             },
 ///             "name": "_tenant_id",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -958,24 +970,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_version",
 ///             "type": "STRING_VALUE",
-///             "search": {
-///                 "displayable": False,
-///                 "facetable": False,
-///                 "searchable": False,
-///                 "sortable": True,
-///             },
-///             "relevance": {
-///                 "importance": 1,
-///                 "values_importance_map": {},
-///             },
 ///         },
 ///         {
-///             "name": "_view_count",
-///             "type": "LONG_VALUE",
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -986,8 +984,12 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "rank_order": "ASCENDING",
 ///             },
+///             "name": "_view_count",
+///             "type": "LONG_VALUE",
 ///         },
-///     ])
+///     ],
+///     name="example",
+///     role_arn=this["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -999,14 +1001,10 @@ import 'index_user_token_configurations.dart';
 /// {
 ///     var example = new Aws.Kendra.Index("example", new()
 ///     {
-///         Name = "example",
-///         RoleArn = @this.Arn,
 ///         DocumentMetadataConfigurationUpdates = new[]
 ///         {
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "_authors",
-///                 Type = "STRING_LIST_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -1018,11 +1016,11 @@ import 'index_user_token_configurations.dart';
 ///                 {
 ///                     Importance = 1,
 ///                 },
+///                 Name = "_authors",
+///                 Type = "STRING_LIST_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "_category",
-///                 Type = "STRING_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -1035,11 +1033,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
+///                 Name = "_category",
+///                 Type = "STRING_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "_created_at",
-///                 Type = "DATE_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -1054,11 +1052,11 @@ import 'index_user_token_configurations.dart';
 ///                     Duration = "25920000s",
 ///                     RankOrder = "ASCENDING",
 ///                 },
+///                 Name = "_created_at",
+///                 Type = "DATE_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "_data_source_id",
-///                 Type = "STRING_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -1071,11 +1069,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
+///                 Name = "_data_source_id",
+///                 Type = "STRING_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "_document_title",
-///                 Type = "STRING_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = true,
@@ -1088,11 +1086,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 2,
 ///                     ValuesImportanceMap = null,
 ///                 },
+///                 Name = "_document_title",
+///                 Type = "STRING_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "_excerpt_page_number",
-///                 Type = "LONG_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -1105,11 +1103,28 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 2,
 ///                     RankOrder = "ASCENDING",
 ///                 },
+///                 Name = "_excerpt_page_number",
+///                 Type = "LONG_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
+///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
+///                 {
+///                     Displayable = false,
+///                     Facetable = false,
+///                     Searchable = false,
+///                     Sortable = true,
+///                 },
+///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
+///                 {
+///                     Importance = 1,
+///                     ValuesImportanceMap = null,
+///                 },
 ///                 Name = "_faq_id",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -1122,11 +1137,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_file_type",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -1139,28 +1154,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_language_code",
 ///                 Type = "STRING_VALUE",
-///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
-///                 {
-///                     Displayable = false,
-///                     Facetable = false,
-///                     Searchable = false,
-///                     Sortable = true,
-///                 },
-///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
-///                 {
-///                     Importance = 1,
-///                     ValuesImportanceMap = null,
-///                 },
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "_last_updated_at",
-///                 Type = "DATE_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -1175,11 +1173,11 @@ import 'index_user_token_configurations.dart';
 ///                     Duration = "25920000s",
 ///                     RankOrder = "ASCENDING",
 ///                 },
+///                 Name = "_last_updated_at",
+///                 Type = "DATE_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "_source_uri",
-///                 Type = "STRING_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = true,
@@ -1192,11 +1190,28 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
+///                 Name = "_source_uri",
+///                 Type = "STRING_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
+///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
+///                 {
+///                     Displayable = false,
+///                     Facetable = false,
+///                     Searchable = false,
+///                     Sortable = true,
+///                 },
+///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
+///                 {
+///                     Importance = 1,
+///                     ValuesImportanceMap = null,
+///                 },
 ///                 Name = "_tenant_id",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -1209,28 +1224,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_version",
 ///                 Type = "STRING_VALUE",
-///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
-///                 {
-///                     Displayable = false,
-///                     Facetable = false,
-///                     Searchable = false,
-///                     Sortable = true,
-///                 },
-///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
-///                 {
-///                     Importance = 1,
-///                     ValuesImportanceMap = null,
-///                 },
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "_view_count",
-///                 Type = "LONG_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -1243,8 +1241,12 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     RankOrder = "ASCENDING",
 ///                 },
+///                 Name = "_view_count",
+///                 Type = "LONG_VALUE",
 ///             },
 ///         },
+///         Name = "example",
+///         RoleArn = @this.Arn,
 ///     });
 ///
 /// });
@@ -1260,12 +1262,8 @@ import 'index_user_token_configurations.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewIndex(ctx, "example", &kendra.IndexArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(this.Arn),
 /// 			DocumentMetadataConfigurationUpdates: kendra.IndexDocumentMetadataConfigurationUpdateArray{
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_authors"),
-/// 					Type: pulumi.String("STRING_LIST_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1275,10 +1273,10 @@ import 'index_user_token_configurations.dart';
 /// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
 /// 						Importance: pulumi.Int(1),
 /// 					},
+/// 					Name: pulumi.String("_authors"),
+/// 					Type: pulumi.String("STRING_LIST_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_category"),
-/// 					Type: pulumi.String("STRING_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1289,10 +1287,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
+/// 					Name: pulumi.String("_category"),
+/// 					Type: pulumi.String("STRING_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_created_at"),
-/// 					Type: pulumi.String("DATE_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1305,10 +1303,10 @@ import 'index_user_token_configurations.dart';
 /// 						Duration:   pulumi.String("25920000s"),
 /// 						RankOrder:  pulumi.String("ASCENDING"),
 /// 					},
+/// 					Name: pulumi.String("_created_at"),
+/// 					Type: pulumi.String("DATE_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_data_source_id"),
-/// 					Type: pulumi.String("STRING_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1319,10 +1317,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
+/// 					Name: pulumi.String("_data_source_id"),
+/// 					Type: pulumi.String("STRING_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_document_title"),
-/// 					Type: pulumi.String("STRING_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(true),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1333,10 +1331,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(2),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
+/// 					Name: pulumi.String("_document_title"),
+/// 					Type: pulumi.String("STRING_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_excerpt_page_number"),
-/// 					Type: pulumi.String("LONG_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1347,10 +1345,24 @@ import 'index_user_token_configurations.dart';
 /// 						Importance: pulumi.Int(2),
 /// 						RankOrder:  pulumi.String("ASCENDING"),
 /// 					},
+/// 					Name: pulumi.String("_excerpt_page_number"),
+/// 					Type: pulumi.String("LONG_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
+/// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
+/// 						Displayable: pulumi.Bool(false),
+/// 						Facetable:   pulumi.Bool(false),
+/// 						Searchable:  pulumi.Bool(false),
+/// 						Sortable:    pulumi.Bool(true),
+/// 					},
+/// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
+/// 						Importance:          pulumi.Int(1),
+/// 						ValuesImportanceMap: pulumi.IntMap{},
+/// 					},
 /// 					Name: pulumi.String("_faq_id"),
 /// 					Type: pulumi.String("STRING_VALUE"),
+/// 				},
+/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1361,10 +1373,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
-/// 				},
-/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Name: pulumi.String("_file_type"),
 /// 					Type: pulumi.String("STRING_VALUE"),
+/// 				},
+/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1375,24 +1387,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
-/// 				},
-/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Name: pulumi.String("_language_code"),
 /// 					Type: pulumi.String("STRING_VALUE"),
-/// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
-/// 						Displayable: pulumi.Bool(false),
-/// 						Facetable:   pulumi.Bool(false),
-/// 						Searchable:  pulumi.Bool(false),
-/// 						Sortable:    pulumi.Bool(true),
-/// 					},
-/// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
-/// 						Importance:          pulumi.Int(1),
-/// 						ValuesImportanceMap: pulumi.IntMap{},
-/// 					},
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_last_updated_at"),
-/// 					Type: pulumi.String("DATE_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1405,10 +1403,10 @@ import 'index_user_token_configurations.dart';
 /// 						Duration:   pulumi.String("25920000s"),
 /// 						RankOrder:  pulumi.String("ASCENDING"),
 /// 					},
+/// 					Name: pulumi.String("_last_updated_at"),
+/// 					Type: pulumi.String("DATE_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_source_uri"),
-/// 					Type: pulumi.String("STRING_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(true),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1419,10 +1417,24 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
+/// 					Name: pulumi.String("_source_uri"),
+/// 					Type: pulumi.String("STRING_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
+/// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
+/// 						Displayable: pulumi.Bool(false),
+/// 						Facetable:   pulumi.Bool(false),
+/// 						Searchable:  pulumi.Bool(false),
+/// 						Sortable:    pulumi.Bool(true),
+/// 					},
+/// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
+/// 						Importance:          pulumi.Int(1),
+/// 						ValuesImportanceMap: pulumi.IntMap{},
+/// 					},
 /// 					Name: pulumi.String("_tenant_id"),
 /// 					Type: pulumi.String("STRING_VALUE"),
+/// 				},
+/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1433,24 +1445,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
-/// 				},
-/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Name: pulumi.String("_version"),
 /// 					Type: pulumi.String("STRING_VALUE"),
-/// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
-/// 						Displayable: pulumi.Bool(false),
-/// 						Facetable:   pulumi.Bool(false),
-/// 						Searchable:  pulumi.Bool(false),
-/// 						Sortable:    pulumi.Bool(true),
-/// 					},
-/// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
-/// 						Importance:          pulumi.Int(1),
-/// 						ValuesImportanceMap: pulumi.IntMap{},
-/// 					},
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_view_count"),
-/// 					Type: pulumi.String("LONG_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -1461,8 +1459,12 @@ import 'index_user_token_configurations.dart';
 /// 						Importance: pulumi.Int(1),
 /// 						RankOrder:  pulumi.String("ASCENDING"),
 /// 					},
+/// 					Name: pulumi.String("_view_count"),
+/// 					Type: pulumi.String("LONG_VALUE"),
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(this.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1481,11 +1483,7 @@ import 'index_user_token_configurations.dart';
 /// }
 ///
 /// resource "aws_kendra_index" "example" {
-///   name     = "example"
-///   role_arn = this.arn
 ///   document_metadata_configuration_updates {
-///     name = "_authors"
-///     type = "STRING_LIST_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -1495,10 +1493,10 @@ import 'index_user_token_configurations.dart';
 ///     relevance = {
 ///       importance = 1
 ///     }
+///     name = "_authors"
+///     type = "STRING_LIST_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_category"
-///     type = "STRING_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -1509,10 +1507,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
+///     name = "_category"
+///     type = "STRING_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_created_at"
-///     type = "DATE_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -1525,10 +1523,10 @@ import 'index_user_token_configurations.dart';
 ///       duration   = "25920000s"
 ///       rank_order = "ASCENDING"
 ///     }
+///     name = "_created_at"
+///     type = "DATE_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_data_source_id"
-///     type = "STRING_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -1539,10 +1537,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
+///     name = "_data_source_id"
+///     type = "STRING_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_document_title"
-///     type = "STRING_VALUE"
 ///     search = {
 ///       displayable = true
 ///       facetable   = false
@@ -1553,10 +1551,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 2
 ///       values_importance_map = {}
 ///     }
+///     name = "_document_title"
+///     type = "STRING_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_excerpt_page_number"
-///     type = "LONG_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -1567,10 +1565,24 @@ import 'index_user_token_configurations.dart';
 ///       importance = 2
 ///       rank_order = "ASCENDING"
 ///     }
+///     name = "_excerpt_page_number"
+///     type = "LONG_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
+///     search = {
+///       displayable = false
+///       facetable   = false
+///       searchable  = false
+///       sortable    = true
+///     }
+///     relevance = {
+///       importance            = 1
+///       values_importance_map = {}
+///     }
 ///     name = "_faq_id"
 ///     type = "STRING_VALUE"
+///   }
+///   document_metadata_configuration_updates {
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -1581,10 +1593,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
-///   }
-///   document_metadata_configuration_updates {
 ///     name = "_file_type"
 ///     type = "STRING_VALUE"
+///   }
+///   document_metadata_configuration_updates {
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -1595,24 +1607,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
-///   }
-///   document_metadata_configuration_updates {
 ///     name = "_language_code"
 ///     type = "STRING_VALUE"
-///     search = {
-///       displayable = false
-///       facetable   = false
-///       searchable  = false
-///       sortable    = true
-///     }
-///     relevance = {
-///       importance            = 1
-///       values_importance_map = {}
-///     }
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_last_updated_at"
-///     type = "DATE_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -1625,10 +1623,10 @@ import 'index_user_token_configurations.dart';
 ///       duration   = "25920000s"
 ///       rank_order = "ASCENDING"
 ///     }
+///     name = "_last_updated_at"
+///     type = "DATE_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_source_uri"
-///     type = "STRING_VALUE"
 ///     search = {
 ///       displayable = true
 ///       facetable   = false
@@ -1639,10 +1637,24 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
+///     name = "_source_uri"
+///     type = "STRING_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
+///     search = {
+///       displayable = false
+///       facetable   = false
+///       searchable  = false
+///       sortable    = true
+///     }
+///     relevance = {
+///       importance            = 1
+///       values_importance_map = {}
+///     }
 ///     name = "_tenant_id"
 ///     type = "STRING_VALUE"
+///   }
+///   document_metadata_configuration_updates {
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -1653,24 +1665,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
-///   }
-///   document_metadata_configuration_updates {
 ///     name = "_version"
 ///     type = "STRING_VALUE"
-///     search = {
-///       displayable = false
-///       facetable   = false
-///       searchable  = false
-///       sortable    = true
-///     }
-///     relevance = {
-///       importance            = 1
-///       values_importance_map = {}
-///     }
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_view_count"
-///     type = "LONG_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -1681,7 +1679,11 @@ import 'index_user_token_configurations.dart';
 ///       importance = 1
 ///       rank_order = "ASCENDING"
 ///     }
+///     name = "_view_count"
+///     type = "LONG_VALUE"
 ///   }
+///   name     = "example"
+///   role_arn = this.arn
 /// }
 /// ```
 /// ```java
@@ -1709,12 +1711,8 @@ import 'index_user_token_configurations.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Index("example", IndexArgs.builder()
-///             .name("example")
-///             .roleArn(this_.arn())
 ///             .documentMetadataConfigurationUpdates(
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("_authors")
-///                     .type("STRING_LIST_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -1724,10 +1722,10 @@ import 'index_user_token_configurations.dart';
 ///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
 ///                         .importance(1)
 ///                         .build())
+///                     .name("_authors")
+///                     .type("STRING_LIST_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("_category")
-///                     .type("STRING_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -1739,10 +1737,10 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
+///                     .name("_category")
+///                     .type("STRING_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("_created_at")
-///                     .type("DATE_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -1755,10 +1753,10 @@ import 'index_user_token_configurations.dart';
 ///                         .duration("25920000s")
 ///                         .rankOrder("ASCENDING")
 ///                         .build())
+///                     .name("_created_at")
+///                     .type("DATE_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("_data_source_id")
-///                     .type("STRING_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -1770,10 +1768,10 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
+///                     .name("_data_source_id")
+///                     .type("STRING_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("_document_title")
-///                     .type("STRING_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(true)
 ///                         .facetable(false)
@@ -1785,10 +1783,10 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
+///                     .name("_document_title")
+///                     .type("STRING_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("_excerpt_page_number")
-///                     .type("LONG_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -1799,10 +1797,25 @@ import 'index_user_token_configurations.dart';
 ///                         .importance(2)
 ///                         .rankOrder("ASCENDING")
 ///                         .build())
+///                     .name("_excerpt_page_number")
+///                     .type("LONG_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
+///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
+///                         .displayable(false)
+///                         .facetable(false)
+///                         .searchable(false)
+///                         .sortable(true)
+///                         .build())
+///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
+///                         .importance(1)
+///                         .valuesImportanceMap(Map.ofEntries(
+///                         ))
+///                         .build())
 ///                     .name("_faq_id")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -1814,10 +1827,10 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_file_type")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -1829,25 +1842,10 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_language_code")
 ///                     .type("STRING_VALUE")
-///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
-///                         .displayable(false)
-///                         .facetable(false)
-///                         .searchable(false)
-///                         .sortable(true)
-///                         .build())
-///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
-///                         .importance(1)
-///                         .valuesImportanceMap(Map.ofEntries(
-///                         ))
-///                         .build())
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("_last_updated_at")
-///                     .type("DATE_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -1860,10 +1858,10 @@ import 'index_user_token_configurations.dart';
 ///                         .duration("25920000s")
 ///                         .rankOrder("ASCENDING")
 ///                         .build())
+///                     .name("_last_updated_at")
+///                     .type("DATE_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("_source_uri")
-///                     .type("STRING_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(true)
 ///                         .facetable(false)
@@ -1875,10 +1873,25 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
+///                     .name("_source_uri")
+///                     .type("STRING_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
+///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
+///                         .displayable(false)
+///                         .facetable(false)
+///                         .searchable(false)
+///                         .sortable(true)
+///                         .build())
+///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
+///                         .importance(1)
+///                         .valuesImportanceMap(Map.ofEntries(
+///                         ))
+///                         .build())
 ///                     .name("_tenant_id")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -1890,25 +1903,10 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_version")
 ///                     .type("STRING_VALUE")
-///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
-///                         .displayable(false)
-///                         .facetable(false)
-///                         .searchable(false)
-///                         .sortable(true)
-///                         .build())
-///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
-///                         .importance(1)
-///                         .valuesImportanceMap(Map.ofEntries(
-///                         ))
-///                         .build())
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("_view_count")
-///                     .type("LONG_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -1919,7 +1917,11 @@ import 'index_user_token_configurations.dart';
 ///                         .importance(1)
 ///                         .rankOrder("ASCENDING")
 ///                         .build())
+///                     .name("_view_count")
+///                     .type("LONG_VALUE")
 ///                     .build())
+///             .name("example")
+///             .roleArn(this_.arn())
 ///             .build());
 ///
 ///     }
@@ -1930,21 +1932,17 @@ import 'index_user_token_configurations.dart';
 ///   example:
 ///     type: aws:kendra:Index
 ///     properties:
-///       name: example
-///       roleArn: ${this.arn}
 ///       documentMetadataConfigurationUpdates:
-///         - name: _authors
-///           type: STRING_LIST_VALUE
-///           search:
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
 ///             sortable: false
 ///           relevance:
 ///             importance: 1
-///         - name: _category
-///           type: STRING_VALUE
-///           search:
+///           name: _authors
+///           type: STRING_LIST_VALUE
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -1952,9 +1950,9 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 1
 ///             valuesImportanceMap: {}
-///         - name: _created_at
-///           type: DATE_VALUE
-///           search:
+///           name: _category
+///           type: STRING_VALUE
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -1964,9 +1962,9 @@ import 'index_user_token_configurations.dart';
 ///             importance: 1
 ///             duration: 25920000s
 ///             rankOrder: ASCENDING
-///         - name: _data_source_id
-///           type: STRING_VALUE
-///           search:
+///           name: _created_at
+///           type: DATE_VALUE
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -1974,9 +1972,9 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 1
 ///             valuesImportanceMap: {}
-///         - name: _document_title
+///           name: _data_source_id
 ///           type: STRING_VALUE
-///           search:
+///         - search:
 ///             displayable: true
 ///             facetable: false
 ///             searchable: true
@@ -1984,9 +1982,9 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 2
 ///             valuesImportanceMap: {}
-///         - name: _excerpt_page_number
-///           type: LONG_VALUE
-///           search:
+///           name: _document_title
+///           type: STRING_VALUE
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -1994,9 +1992,9 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 2
 ///             rankOrder: ASCENDING
-///         - name: _faq_id
-///           type: STRING_VALUE
-///           search:
+///           name: _excerpt_page_number
+///           type: LONG_VALUE
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -2004,9 +2002,9 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 1
 ///             valuesImportanceMap: {}
-///         - name: _file_type
+///           name: _faq_id
 ///           type: STRING_VALUE
-///           search:
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -2014,9 +2012,9 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 1
 ///             valuesImportanceMap: {}
-///         - name: _language_code
+///           name: _file_type
 ///           type: STRING_VALUE
-///           search:
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -2024,9 +2022,9 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 1
 ///             valuesImportanceMap: {}
-///         - name: _last_updated_at
-///           type: DATE_VALUE
-///           search:
+///           name: _language_code
+///           type: STRING_VALUE
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -2036,9 +2034,9 @@ import 'index_user_token_configurations.dart';
 ///             importance: 1
 ///             duration: 25920000s
 ///             rankOrder: ASCENDING
-///         - name: _source_uri
-///           type: STRING_VALUE
-///           search:
+///           name: _last_updated_at
+///           type: DATE_VALUE
+///         - search:
 ///             displayable: true
 ///             facetable: false
 ///             searchable: false
@@ -2046,9 +2044,9 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 1
 ///             valuesImportanceMap: {}
-///         - name: _tenant_id
+///           name: _source_uri
 ///           type: STRING_VALUE
-///           search:
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -2056,9 +2054,9 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 1
 ///             valuesImportanceMap: {}
-///         - name: _version
+///           name: _tenant_id
 ///           type: STRING_VALUE
-///           search:
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -2066,9 +2064,9 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 1
 ///             valuesImportanceMap: {}
-///         - name: _view_count
-///           type: LONG_VALUE
-///           search:
+///           name: _version
+///           type: STRING_VALUE
+///         - search:
 ///             displayable: false
 ///             facetable: false
 ///             searchable: false
@@ -2076,6 +2074,10 @@ import 'index_user_token_configurations.dart';
 ///           relevance:
 ///             importance: 1
 ///             rankOrder: ASCENDING
+///           name: _view_count
+///           type: LONG_VALUE
+///       name: example
+///       roleArn: ${this.arn}
 /// ```
 ///
 ///
@@ -2089,25 +2091,35 @@ import 'index_user_token_configurations.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Index("example", {
-///     name: "example",
-///     roleArn: _this.arn,
 ///     documentMetadataConfigurationUpdates: [
 ///         {
+///             search: {
+///                 displayable: false,
+///                 facetable: false,
+///                 searchable: false,
+///                 sortable: false,
+///             },
+///             relevance: {
+///                 importance: 1,
+///             },
 ///             name: "_authors",
 ///             type: "STRING_LIST_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
 ///                 searchable: false,
-///                 sortable: false,
+///                 sortable: true,
 ///             },
 ///             relevance: {
 ///                 importance: 1,
+///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_category",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -2115,13 +2127,15 @@ import 'index_user_token_configurations.dart';
 ///                 sortable: true,
 ///             },
 ///             relevance: {
+///                 freshness: false,
 ///                 importance: 1,
-///                 valuesImportanceMap: {},
+///                 duration: "25920000s",
+///                 rankOrder: "ASCENDING",
 ///             },
-///         },
-///         {
 ///             name: "_created_at",
 ///             type: "DATE_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -2129,57 +2143,55 @@ import 'index_user_token_configurations.dart';
 ///                 sortable: true,
 ///             },
 ///             relevance: {
-///                 freshness: false,
 ///                 importance: 1,
-///                 duration: "25920000s",
-///                 rankOrder: "ASCENDING",
+///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_data_source_id",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
-///                 displayable: false,
+///                 displayable: true,
 ///                 facetable: false,
-///                 searchable: false,
+///                 searchable: true,
 ///                 sortable: true,
 ///             },
 ///             relevance: {
-///                 importance: 1,
+///                 importance: 2,
 ///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_document_title",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
-///                 displayable: true,
+///                 displayable: false,
 ///                 facetable: false,
-///                 searchable: true,
-///                 sortable: true,
+///                 searchable: false,
+///                 sortable: false,
 ///             },
 ///             relevance: {
 ///                 importance: 2,
-///                 valuesImportanceMap: {},
+///                 rankOrder: "ASCENDING",
 ///             },
-///         },
-///         {
 ///             name: "_excerpt_page_number",
 ///             type: "LONG_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
 ///                 searchable: false,
-///                 sortable: false,
+///                 sortable: true,
 ///             },
 ///             relevance: {
-///                 importance: 2,
-///                 rankOrder: "ASCENDING",
+///                 importance: 1,
+///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_faq_id",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -2190,10 +2202,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_file_type",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -2204,10 +2216,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_language_code",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -2215,43 +2227,43 @@ import 'index_user_token_configurations.dart';
 ///                 sortable: true,
 ///             },
 ///             relevance: {
+///                 freshness: false,
 ///                 importance: 1,
-///                 valuesImportanceMap: {},
+///                 duration: "25920000s",
+///                 rankOrder: "ASCENDING",
 ///             },
-///         },
-///         {
 ///             name: "_last_updated_at",
 ///             type: "DATE_VALUE",
-///             search: {
-///                 displayable: false,
-///                 facetable: false,
-///                 searchable: false,
-///                 sortable: true,
-///             },
-///             relevance: {
-///                 freshness: false,
-///                 importance: 1,
-///                 duration: "25920000s",
-///                 rankOrder: "ASCENDING",
-///             },
 ///         },
 ///         {
+///             search: {
+///                 displayable: true,
+///                 facetable: false,
+///                 searchable: false,
+///                 sortable: false,
+///             },
+///             relevance: {
+///                 importance: 1,
+///                 valuesImportanceMap: {},
+///             },
 ///             name: "_source_uri",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
-///                 displayable: true,
+///                 displayable: false,
 ///                 facetable: false,
 ///                 searchable: false,
-///                 sortable: false,
+///                 sortable: true,
 ///             },
 ///             relevance: {
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_tenant_id",
 ///             type: "STRING_VALUE",
+///         },
+///         {
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -2262,24 +2274,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
-///         },
-///         {
 ///             name: "_version",
 ///             type: "STRING_VALUE",
-///             search: {
-///                 displayable: false,
-///                 facetable: false,
-///                 searchable: false,
-///                 sortable: true,
-///             },
-///             relevance: {
-///                 importance: 1,
-///                 valuesImportanceMap: {},
-///             },
 ///         },
 ///         {
-///             name: "_view_count",
-///             type: "LONG_VALUE",
 ///             search: {
 ///                 displayable: false,
 ///                 facetable: false,
@@ -2290,10 +2288,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 rankOrder: "ASCENDING",
 ///             },
+///             name: "_view_count",
+///             type: "LONG_VALUE",
 ///         },
 ///         {
-///             name: "example-string-value",
-///             type: "STRING_VALUE",
 ///             search: {
 ///                 displayable: true,
 ///                 facetable: true,
@@ -2304,10 +2302,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 valuesImportanceMap: {},
 ///             },
+///             name: "example-string-value",
+///             type: "STRING_VALUE",
 ///         },
 ///         {
-///             name: "example-long-value",
-///             type: "LONG_VALUE",
 ///             search: {
 ///                 displayable: true,
 ///                 facetable: true,
@@ -2318,10 +2316,10 @@ import 'index_user_token_configurations.dart';
 ///                 importance: 1,
 ///                 rankOrder: "ASCENDING",
 ///             },
+///             name: "example-long-value",
+///             type: "LONG_VALUE",
 ///         },
 ///         {
-///             name: "example-string-list-value",
-///             type: "STRING_LIST_VALUE",
 ///             search: {
 ///                 displayable: true,
 ///                 facetable: true,
@@ -2331,10 +2329,10 @@ import 'index_user_token_configurations.dart';
 ///             relevance: {
 ///                 importance: 1,
 ///             },
+///             name: "example-string-list-value",
+///             type: "STRING_LIST_VALUE",
 ///         },
 ///         {
-///             name: "example-date-value",
-///             type: "DATE_VALUE",
 ///             search: {
 ///                 displayable: true,
 ///                 facetable: true,
@@ -2347,8 +2345,12 @@ import 'index_user_token_configurations.dart';
 ///                 duration: "25920000s",
 ///                 rankOrder: "ASCENDING",
 ///             },
+///             name: "example-date-value",
+///             type: "DATE_VALUE",
 ///         },
 ///     ],
+///     name: "example",
+///     roleArn: _this.arn,
 /// });
 /// ```
 /// ```python
@@ -2356,25 +2358,35 @@ import 'index_user_token_configurations.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Index("example",
-///     name="example",
-///     role_arn=this["arn"],
 ///     document_metadata_configuration_updates=[
 ///         {
+///             "search": {
+///                 "displayable": False,
+///                 "facetable": False,
+///                 "searchable": False,
+///                 "sortable": False,
+///             },
+///             "relevance": {
+///                 "importance": 1,
+///             },
 ///             "name": "_authors",
 ///             "type": "STRING_LIST_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
 ///                 "searchable": False,
-///                 "sortable": False,
+///                 "sortable": True,
 ///             },
 ///             "relevance": {
 ///                 "importance": 1,
+///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_category",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -2382,13 +2394,15 @@ import 'index_user_token_configurations.dart';
 ///                 "sortable": True,
 ///             },
 ///             "relevance": {
+///                 "freshness": False,
 ///                 "importance": 1,
-///                 "values_importance_map": {},
+///                 "duration": "25920000s",
+///                 "rank_order": "ASCENDING",
 ///             },
-///         },
-///         {
 ///             "name": "_created_at",
 ///             "type": "DATE_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -2396,57 +2410,55 @@ import 'index_user_token_configurations.dart';
 ///                 "sortable": True,
 ///             },
 ///             "relevance": {
-///                 "freshness": False,
 ///                 "importance": 1,
-///                 "duration": "25920000s",
-///                 "rank_order": "ASCENDING",
+///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_data_source_id",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
-///                 "displayable": False,
+///                 "displayable": True,
 ///                 "facetable": False,
-///                 "searchable": False,
+///                 "searchable": True,
 ///                 "sortable": True,
 ///             },
 ///             "relevance": {
-///                 "importance": 1,
+///                 "importance": 2,
 ///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_document_title",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
-///                 "displayable": True,
+///                 "displayable": False,
 ///                 "facetable": False,
-///                 "searchable": True,
-///                 "sortable": True,
+///                 "searchable": False,
+///                 "sortable": False,
 ///             },
 ///             "relevance": {
 ///                 "importance": 2,
-///                 "values_importance_map": {},
+///                 "rank_order": "ASCENDING",
 ///             },
-///         },
-///         {
 ///             "name": "_excerpt_page_number",
 ///             "type": "LONG_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
 ///                 "searchable": False,
-///                 "sortable": False,
+///                 "sortable": True,
 ///             },
 ///             "relevance": {
-///                 "importance": 2,
-///                 "rank_order": "ASCENDING",
+///                 "importance": 1,
+///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_faq_id",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -2457,10 +2469,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_file_type",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -2471,10 +2483,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_language_code",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -2482,43 +2494,43 @@ import 'index_user_token_configurations.dart';
 ///                 "sortable": True,
 ///             },
 ///             "relevance": {
+///                 "freshness": False,
 ///                 "importance": 1,
-///                 "values_importance_map": {},
+///                 "duration": "25920000s",
+///                 "rank_order": "ASCENDING",
 ///             },
-///         },
-///         {
 ///             "name": "_last_updated_at",
 ///             "type": "DATE_VALUE",
-///             "search": {
-///                 "displayable": False,
-///                 "facetable": False,
-///                 "searchable": False,
-///                 "sortable": True,
-///             },
-///             "relevance": {
-///                 "freshness": False,
-///                 "importance": 1,
-///                 "duration": "25920000s",
-///                 "rank_order": "ASCENDING",
-///             },
 ///         },
 ///         {
+///             "search": {
+///                 "displayable": True,
+///                 "facetable": False,
+///                 "searchable": False,
+///                 "sortable": False,
+///             },
+///             "relevance": {
+///                 "importance": 1,
+///                 "values_importance_map": {},
+///             },
 ///             "name": "_source_uri",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
-///                 "displayable": True,
+///                 "displayable": False,
 ///                 "facetable": False,
 ///                 "searchable": False,
-///                 "sortable": False,
+///                 "sortable": True,
 ///             },
 ///             "relevance": {
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_tenant_id",
 ///             "type": "STRING_VALUE",
+///         },
+///         {
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -2529,24 +2541,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
-///         },
-///         {
 ///             "name": "_version",
 ///             "type": "STRING_VALUE",
-///             "search": {
-///                 "displayable": False,
-///                 "facetable": False,
-///                 "searchable": False,
-///                 "sortable": True,
-///             },
-///             "relevance": {
-///                 "importance": 1,
-///                 "values_importance_map": {},
-///             },
 ///         },
 ///         {
-///             "name": "_view_count",
-///             "type": "LONG_VALUE",
 ///             "search": {
 ///                 "displayable": False,
 ///                 "facetable": False,
@@ -2557,10 +2555,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "rank_order": "ASCENDING",
 ///             },
+///             "name": "_view_count",
+///             "type": "LONG_VALUE",
 ///         },
 ///         {
-///             "name": "example-string-value",
-///             "type": "STRING_VALUE",
 ///             "search": {
 ///                 "displayable": True,
 ///                 "facetable": True,
@@ -2571,10 +2569,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "values_importance_map": {},
 ///             },
+///             "name": "example-string-value",
+///             "type": "STRING_VALUE",
 ///         },
 ///         {
-///             "name": "example-long-value",
-///             "type": "LONG_VALUE",
 ///             "search": {
 ///                 "displayable": True,
 ///                 "facetable": True,
@@ -2585,10 +2583,10 @@ import 'index_user_token_configurations.dart';
 ///                 "importance": 1,
 ///                 "rank_order": "ASCENDING",
 ///             },
+///             "name": "example-long-value",
+///             "type": "LONG_VALUE",
 ///         },
 ///         {
-///             "name": "example-string-list-value",
-///             "type": "STRING_LIST_VALUE",
 ///             "search": {
 ///                 "displayable": True,
 ///                 "facetable": True,
@@ -2598,10 +2596,10 @@ import 'index_user_token_configurations.dart';
 ///             "relevance": {
 ///                 "importance": 1,
 ///             },
+///             "name": "example-string-list-value",
+///             "type": "STRING_LIST_VALUE",
 ///         },
 ///         {
-///             "name": "example-date-value",
-///             "type": "DATE_VALUE",
 ///             "search": {
 ///                 "displayable": True,
 ///                 "facetable": True,
@@ -2614,8 +2612,12 @@ import 'index_user_token_configurations.dart';
 ///                 "duration": "25920000s",
 ///                 "rank_order": "ASCENDING",
 ///             },
+///             "name": "example-date-value",
+///             "type": "DATE_VALUE",
 ///         },
-///     ])
+///     ],
+///     name="example",
+///     role_arn=this["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2627,30 +2629,43 @@ import 'index_user_token_configurations.dart';
 /// {
 ///     var example = new Aws.Kendra.Index("example", new()
 ///     {
-///         Name = "example",
-///         RoleArn = @this.Arn,
 ///         DocumentMetadataConfigurationUpdates = new[]
 ///         {
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
+///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
+///                 {
+///                     Displayable = false,
+///                     Facetable = false,
+///                     Searchable = false,
+///                     Sortable = false,
+///                 },
+///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
+///                 {
+///                     Importance = 1,
+///                 },
 ///                 Name = "_authors",
 ///                 Type = "STRING_LIST_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
 ///                     Facetable = false,
 ///                     Searchable = false,
-///                     Sortable = false,
+///                     Sortable = true,
 ///                 },
 ///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
 ///                 {
 ///                     Importance = 1,
+///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_category",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -2660,14 +2675,16 @@ import 'index_user_token_configurations.dart';
 ///                 },
 ///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
 ///                 {
+///                     Freshness = false,
 ///                     Importance = 1,
-///                     ValuesImportanceMap = null,
+///                     Duration = "25920000s",
+///                     RankOrder = "ASCENDING",
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_created_at",
 ///                 Type = "DATE_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -2677,67 +2694,65 @@ import 'index_user_token_configurations.dart';
 ///                 },
 ///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
 ///                 {
-///                     Freshness = false,
 ///                     Importance = 1,
-///                     Duration = "25920000s",
-///                     RankOrder = "ASCENDING",
+///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_data_source_id",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
-///                     Displayable = false,
+///                     Displayable = true,
 ///                     Facetable = false,
-///                     Searchable = false,
+///                     Searchable = true,
 ///                     Sortable = true,
 ///                 },
 ///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
 ///                 {
-///                     Importance = 1,
+///                     Importance = 2,
 ///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_document_title",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
-///                     Displayable = true,
+///                     Displayable = false,
 ///                     Facetable = false,
-///                     Searchable = true,
-///                     Sortable = true,
+///                     Searchable = false,
+///                     Sortable = false,
 ///                 },
 ///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
 ///                 {
 ///                     Importance = 2,
-///                     ValuesImportanceMap = null,
+///                     RankOrder = "ASCENDING",
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_excerpt_page_number",
 ///                 Type = "LONG_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
 ///                     Facetable = false,
 ///                     Searchable = false,
-///                     Sortable = false,
+///                     Sortable = true,
 ///                 },
 ///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
 ///                 {
-///                     Importance = 2,
-///                     RankOrder = "ASCENDING",
+///                     Importance = 1,
+///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_faq_id",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -2750,11 +2765,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_file_type",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -2767,11 +2782,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_language_code",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -2781,50 +2796,50 @@ import 'index_user_token_configurations.dart';
 ///                 },
 ///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
 ///                 {
+///                     Freshness = false,
 ///                     Importance = 1,
-///                     ValuesImportanceMap = null,
+///                     Duration = "25920000s",
+///                     RankOrder = "ASCENDING",
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_last_updated_at",
 ///                 Type = "DATE_VALUE",
-///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
-///                 {
-///                     Displayable = false,
-///                     Facetable = false,
-///                     Searchable = false,
-///                     Sortable = true,
-///                 },
-///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
-///                 {
-///                     Freshness = false,
-///                     Importance = 1,
-///                     Duration = "25920000s",
-///                     RankOrder = "ASCENDING",
-///                 },
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
+///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
+///                 {
+///                     Displayable = true,
+///                     Facetable = false,
+///                     Searchable = false,
+///                     Sortable = false,
+///                 },
+///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
+///                 {
+///                     Importance = 1,
+///                     ValuesImportanceMap = null,
+///                 },
 ///                 Name = "_source_uri",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
-///                     Displayable = true,
+///                     Displayable = false,
 ///                     Facetable = false,
 ///                     Searchable = false,
-///                     Sortable = false,
+///                     Sortable = true,
 ///                 },
 ///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
 ///                 {
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_tenant_id",
 ///                 Type = "STRING_VALUE",
+///             },
+///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
+///             {
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -2837,28 +2852,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
-///             },
-///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
-///             {
 ///                 Name = "_version",
 ///                 Type = "STRING_VALUE",
-///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
-///                 {
-///                     Displayable = false,
-///                     Facetable = false,
-///                     Searchable = false,
-///                     Sortable = true,
-///                 },
-///                 Relevance = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateRelevanceArgs
-///                 {
-///                     Importance = 1,
-///                     ValuesImportanceMap = null,
-///                 },
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "_view_count",
-///                 Type = "LONG_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = false,
@@ -2871,11 +2869,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     RankOrder = "ASCENDING",
 ///                 },
+///                 Name = "_view_count",
+///                 Type = "LONG_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "example-string-value",
-///                 Type = "STRING_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = true,
@@ -2888,11 +2886,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     ValuesImportanceMap = null,
 ///                 },
+///                 Name = "example-string-value",
+///                 Type = "STRING_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "example-long-value",
-///                 Type = "LONG_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = true,
@@ -2905,11 +2903,11 @@ import 'index_user_token_configurations.dart';
 ///                     Importance = 1,
 ///                     RankOrder = "ASCENDING",
 ///                 },
+///                 Name = "example-long-value",
+///                 Type = "LONG_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "example-string-list-value",
-///                 Type = "STRING_LIST_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = true,
@@ -2921,11 +2919,11 @@ import 'index_user_token_configurations.dart';
 ///                 {
 ///                     Importance = 1,
 ///                 },
+///                 Name = "example-string-list-value",
+///                 Type = "STRING_LIST_VALUE",
 ///             },
 ///             new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateArgs
 ///             {
-///                 Name = "example-date-value",
-///                 Type = "DATE_VALUE",
 ///                 Search = new Aws.Kendra.Inputs.IndexDocumentMetadataConfigurationUpdateSearchArgs
 ///                 {
 ///                     Displayable = true,
@@ -2940,8 +2938,12 @@ import 'index_user_token_configurations.dart';
 ///                     Duration = "25920000s",
 ///                     RankOrder = "ASCENDING",
 ///                 },
+///                 Name = "example-date-value",
+///                 Type = "DATE_VALUE",
 ///             },
 ///         },
+///         Name = "example",
+///         RoleArn = @this.Arn,
 ///     });
 ///
 /// });
@@ -2957,12 +2959,8 @@ import 'index_user_token_configurations.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewIndex(ctx, "example", &kendra.IndexArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(this.Arn),
 /// 			DocumentMetadataConfigurationUpdates: kendra.IndexDocumentMetadataConfigurationUpdateArray{
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_authors"),
-/// 					Type: pulumi.String("STRING_LIST_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -2972,10 +2970,10 @@ import 'index_user_token_configurations.dart';
 /// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
 /// 						Importance: pulumi.Int(1),
 /// 					},
+/// 					Name: pulumi.String("_authors"),
+/// 					Type: pulumi.String("STRING_LIST_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_category"),
-/// 					Type: pulumi.String("STRING_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -2986,10 +2984,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
+/// 					Name: pulumi.String("_category"),
+/// 					Type: pulumi.String("STRING_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_created_at"),
-/// 					Type: pulumi.String("DATE_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -3002,10 +3000,10 @@ import 'index_user_token_configurations.dart';
 /// 						Duration:   pulumi.String("25920000s"),
 /// 						RankOrder:  pulumi.String("ASCENDING"),
 /// 					},
+/// 					Name: pulumi.String("_created_at"),
+/// 					Type: pulumi.String("DATE_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_data_source_id"),
-/// 					Type: pulumi.String("STRING_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -3016,10 +3014,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
+/// 					Name: pulumi.String("_data_source_id"),
+/// 					Type: pulumi.String("STRING_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_document_title"),
-/// 					Type: pulumi.String("STRING_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(true),
 /// 						Facetable:   pulumi.Bool(false),
@@ -3030,10 +3028,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(2),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
+/// 					Name: pulumi.String("_document_title"),
+/// 					Type: pulumi.String("STRING_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_excerpt_page_number"),
-/// 					Type: pulumi.String("LONG_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -3044,10 +3042,24 @@ import 'index_user_token_configurations.dart';
 /// 						Importance: pulumi.Int(2),
 /// 						RankOrder:  pulumi.String("ASCENDING"),
 /// 					},
+/// 					Name: pulumi.String("_excerpt_page_number"),
+/// 					Type: pulumi.String("LONG_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
+/// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
+/// 						Displayable: pulumi.Bool(false),
+/// 						Facetable:   pulumi.Bool(false),
+/// 						Searchable:  pulumi.Bool(false),
+/// 						Sortable:    pulumi.Bool(true),
+/// 					},
+/// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
+/// 						Importance:          pulumi.Int(1),
+/// 						ValuesImportanceMap: pulumi.IntMap{},
+/// 					},
 /// 					Name: pulumi.String("_faq_id"),
 /// 					Type: pulumi.String("STRING_VALUE"),
+/// 				},
+/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -3058,10 +3070,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
-/// 				},
-/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Name: pulumi.String("_file_type"),
 /// 					Type: pulumi.String("STRING_VALUE"),
+/// 				},
+/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -3072,10 +3084,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
-/// 				},
-/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Name: pulumi.String("_language_code"),
 /// 					Type: pulumi.String("STRING_VALUE"),
+/// 				},
+/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -3083,43 +3095,43 @@ import 'index_user_token_configurations.dart';
 /// 						Sortable:    pulumi.Bool(true),
 /// 					},
 /// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
-/// 						Importance:          pulumi.Int(1),
-/// 						ValuesImportanceMap: pulumi.IntMap{},
+/// 						Freshness:  pulumi.Bool(false),
+/// 						Importance: pulumi.Int(1),
+/// 						Duration:   pulumi.String("25920000s"),
+/// 						RankOrder:  pulumi.String("ASCENDING"),
 /// 					},
-/// 				},
-/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Name: pulumi.String("_last_updated_at"),
 /// 					Type: pulumi.String("DATE_VALUE"),
-/// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
-/// 						Displayable: pulumi.Bool(false),
-/// 						Facetable:   pulumi.Bool(false),
-/// 						Searchable:  pulumi.Bool(false),
-/// 						Sortable:    pulumi.Bool(true),
-/// 					},
-/// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
-/// 						Freshness:  pulumi.Bool(false),
-/// 						Importance: pulumi.Int(1),
-/// 						Duration:   pulumi.String("25920000s"),
-/// 						RankOrder:  pulumi.String("ASCENDING"),
-/// 					},
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
+/// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
+/// 						Displayable: pulumi.Bool(true),
+/// 						Facetable:   pulumi.Bool(false),
+/// 						Searchable:  pulumi.Bool(false),
+/// 						Sortable:    pulumi.Bool(false),
+/// 					},
+/// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
+/// 						Importance:          pulumi.Int(1),
+/// 						ValuesImportanceMap: pulumi.IntMap{},
+/// 					},
 /// 					Name: pulumi.String("_source_uri"),
 /// 					Type: pulumi.String("STRING_VALUE"),
+/// 				},
+/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
-/// 						Displayable: pulumi.Bool(true),
+/// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
 /// 						Searchable:  pulumi.Bool(false),
-/// 						Sortable:    pulumi.Bool(false),
+/// 						Sortable:    pulumi.Bool(true),
 /// 					},
 /// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
-/// 				},
-/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Name: pulumi.String("_tenant_id"),
 /// 					Type: pulumi.String("STRING_VALUE"),
+/// 				},
+/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -3130,24 +3142,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
-/// 				},
-/// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
 /// 					Name: pulumi.String("_version"),
 /// 					Type: pulumi.String("STRING_VALUE"),
-/// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
-/// 						Displayable: pulumi.Bool(false),
-/// 						Facetable:   pulumi.Bool(false),
-/// 						Searchable:  pulumi.Bool(false),
-/// 						Sortable:    pulumi.Bool(true),
-/// 					},
-/// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
-/// 						Importance:          pulumi.Int(1),
-/// 						ValuesImportanceMap: pulumi.IntMap{},
-/// 					},
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("_view_count"),
-/// 					Type: pulumi.String("LONG_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(false),
 /// 						Facetable:   pulumi.Bool(false),
@@ -3158,10 +3156,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance: pulumi.Int(1),
 /// 						RankOrder:  pulumi.String("ASCENDING"),
 /// 					},
+/// 					Name: pulumi.String("_view_count"),
+/// 					Type: pulumi.String("LONG_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("example-string-value"),
-/// 					Type: pulumi.String("STRING_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(true),
 /// 						Facetable:   pulumi.Bool(true),
@@ -3172,10 +3170,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance:          pulumi.Int(1),
 /// 						ValuesImportanceMap: pulumi.IntMap{},
 /// 					},
+/// 					Name: pulumi.String("example-string-value"),
+/// 					Type: pulumi.String("STRING_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("example-long-value"),
-/// 					Type: pulumi.String("LONG_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(true),
 /// 						Facetable:   pulumi.Bool(true),
@@ -3186,10 +3184,10 @@ import 'index_user_token_configurations.dart';
 /// 						Importance: pulumi.Int(1),
 /// 						RankOrder:  pulumi.String("ASCENDING"),
 /// 					},
+/// 					Name: pulumi.String("example-long-value"),
+/// 					Type: pulumi.String("LONG_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("example-string-list-value"),
-/// 					Type: pulumi.String("STRING_LIST_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(true),
 /// 						Facetable:   pulumi.Bool(true),
@@ -3199,10 +3197,10 @@ import 'index_user_token_configurations.dart';
 /// 					Relevance: &kendra.IndexDocumentMetadataConfigurationUpdateRelevanceArgs{
 /// 						Importance: pulumi.Int(1),
 /// 					},
+/// 					Name: pulumi.String("example-string-list-value"),
+/// 					Type: pulumi.String("STRING_LIST_VALUE"),
 /// 				},
 /// 				&kendra.IndexDocumentMetadataConfigurationUpdateArgs{
-/// 					Name: pulumi.String("example-date-value"),
-/// 					Type: pulumi.String("DATE_VALUE"),
 /// 					Search: &kendra.IndexDocumentMetadataConfigurationUpdateSearchArgs{
 /// 						Displayable: pulumi.Bool(true),
 /// 						Facetable:   pulumi.Bool(true),
@@ -3215,8 +3213,12 @@ import 'index_user_token_configurations.dart';
 /// 						Duration:   pulumi.String("25920000s"),
 /// 						RankOrder:  pulumi.String("ASCENDING"),
 /// 					},
+/// 					Name: pulumi.String("example-date-value"),
+/// 					Type: pulumi.String("DATE_VALUE"),
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(this.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3235,11 +3237,7 @@ import 'index_user_token_configurations.dart';
 /// }
 ///
 /// resource "aws_kendra_index" "example" {
-///   name     = "example"
-///   role_arn = this.arn
 ///   document_metadata_configuration_updates {
-///     name = "_authors"
-///     type = "STRING_LIST_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -3249,10 +3247,10 @@ import 'index_user_token_configurations.dart';
 ///     relevance = {
 ///       importance = 1
 ///     }
+///     name = "_authors"
+///     type = "STRING_LIST_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_category"
-///     type = "STRING_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -3263,10 +3261,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
+///     name = "_category"
+///     type = "STRING_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_created_at"
-///     type = "DATE_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -3279,10 +3277,10 @@ import 'index_user_token_configurations.dart';
 ///       duration   = "25920000s"
 ///       rank_order = "ASCENDING"
 ///     }
+///     name = "_created_at"
+///     type = "DATE_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_data_source_id"
-///     type = "STRING_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -3293,10 +3291,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
+///     name = "_data_source_id"
+///     type = "STRING_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_document_title"
-///     type = "STRING_VALUE"
 ///     search = {
 ///       displayable = true
 ///       facetable   = false
@@ -3307,10 +3305,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 2
 ///       values_importance_map = {}
 ///     }
+///     name = "_document_title"
+///     type = "STRING_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_excerpt_page_number"
-///     type = "LONG_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -3321,10 +3319,24 @@ import 'index_user_token_configurations.dart';
 ///       importance = 2
 ///       rank_order = "ASCENDING"
 ///     }
+///     name = "_excerpt_page_number"
+///     type = "LONG_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
+///     search = {
+///       displayable = false
+///       facetable   = false
+///       searchable  = false
+///       sortable    = true
+///     }
+///     relevance = {
+///       importance            = 1
+///       values_importance_map = {}
+///     }
 ///     name = "_faq_id"
 ///     type = "STRING_VALUE"
+///   }
+///   document_metadata_configuration_updates {
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -3335,10 +3347,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
-///   }
-///   document_metadata_configuration_updates {
 ///     name = "_file_type"
 ///     type = "STRING_VALUE"
+///   }
+///   document_metadata_configuration_updates {
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -3349,10 +3361,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
-///   }
-///   document_metadata_configuration_updates {
 ///     name = "_language_code"
 ///     type = "STRING_VALUE"
+///   }
+///   document_metadata_configuration_updates {
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -3360,43 +3372,43 @@ import 'index_user_token_configurations.dart';
 ///       sortable    = true
 ///     }
 ///     relevance = {
-///       importance            = 1
-///       values_importance_map = {}
+///       freshness  = false
+///       importance = 1
+///       duration   = "25920000s"
+///       rank_order = "ASCENDING"
 ///     }
-///   }
-///   document_metadata_configuration_updates {
 ///     name = "_last_updated_at"
 ///     type = "DATE_VALUE"
-///     search = {
-///       displayable = false
-///       facetable   = false
-///       searchable  = false
-///       sortable    = true
-///     }
-///     relevance = {
-///       freshness  = false
-///       importance = 1
-///       duration   = "25920000s"
-///       rank_order = "ASCENDING"
-///     }
 ///   }
 ///   document_metadata_configuration_updates {
+///     search = {
+///       displayable = true
+///       facetable   = false
+///       searchable  = false
+///       sortable    = false
+///     }
+///     relevance = {
+///       importance            = 1
+///       values_importance_map = {}
+///     }
 ///     name = "_source_uri"
 ///     type = "STRING_VALUE"
+///   }
+///   document_metadata_configuration_updates {
 ///     search = {
-///       displayable = true
+///       displayable = false
 ///       facetable   = false
 ///       searchable  = false
-///       sortable    = false
+///       sortable    = true
 ///     }
 ///     relevance = {
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
-///   }
-///   document_metadata_configuration_updates {
 ///     name = "_tenant_id"
 ///     type = "STRING_VALUE"
+///   }
+///   document_metadata_configuration_updates {
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -3407,24 +3419,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
-///   }
-///   document_metadata_configuration_updates {
 ///     name = "_version"
 ///     type = "STRING_VALUE"
-///     search = {
-///       displayable = false
-///       facetable   = false
-///       searchable  = false
-///       sortable    = true
-///     }
-///     relevance = {
-///       importance            = 1
-///       values_importance_map = {}
-///     }
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "_view_count"
-///     type = "LONG_VALUE"
 ///     search = {
 ///       displayable = false
 ///       facetable   = false
@@ -3435,10 +3433,10 @@ import 'index_user_token_configurations.dart';
 ///       importance = 1
 ///       rank_order = "ASCENDING"
 ///     }
+///     name = "_view_count"
+///     type = "LONG_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "example-string-value"
-///     type = "STRING_VALUE"
 ///     search = {
 ///       displayable = true
 ///       facetable   = true
@@ -3449,10 +3447,10 @@ import 'index_user_token_configurations.dart';
 ///       importance            = 1
 ///       values_importance_map = {}
 ///     }
+///     name = "example-string-value"
+///     type = "STRING_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "example-long-value"
-///     type = "LONG_VALUE"
 ///     search = {
 ///       displayable = true
 ///       facetable   = true
@@ -3463,10 +3461,10 @@ import 'index_user_token_configurations.dart';
 ///       importance = 1
 ///       rank_order = "ASCENDING"
 ///     }
+///     name = "example-long-value"
+///     type = "LONG_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "example-string-list-value"
-///     type = "STRING_LIST_VALUE"
 ///     search = {
 ///       displayable = true
 ///       facetable   = true
@@ -3476,10 +3474,10 @@ import 'index_user_token_configurations.dart';
 ///     relevance = {
 ///       importance = 1
 ///     }
+///     name = "example-string-list-value"
+///     type = "STRING_LIST_VALUE"
 ///   }
 ///   document_metadata_configuration_updates {
-///     name = "example-date-value"
-///     type = "DATE_VALUE"
 ///     search = {
 ///       displayable = true
 ///       facetable   = true
@@ -3492,7 +3490,11 @@ import 'index_user_token_configurations.dart';
 ///       duration   = "25920000s"
 ///       rank_order = "ASCENDING"
 ///     }
+///     name = "example-date-value"
+///     type = "DATE_VALUE"
 ///   }
+///   name     = "example"
+///   role_arn = this.arn
 /// }
 /// ```
 /// ```java
@@ -3520,25 +3522,36 @@ import 'index_user_token_configurations.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Index("example", IndexArgs.builder()
-///             .name("example")
-///             .roleArn(this_.arn())
 ///             .documentMetadataConfigurationUpdates(
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
+///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
+///                         .displayable(false)
+///                         .facetable(false)
+///                         .searchable(false)
+///                         .sortable(false)
+///                         .build())
+///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
+///                         .importance(1)
+///                         .build())
 ///                     .name("_authors")
 ///                     .type("STRING_LIST_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
 ///                         .searchable(false)
-///                         .sortable(false)
+///                         .sortable(true)
 ///                         .build())
 ///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
 ///                         .importance(1)
+///                         .valuesImportanceMap(Map.ofEntries(
+///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_category")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -3546,14 +3559,15 @@ import 'index_user_token_configurations.dart';
 ///                         .sortable(true)
 ///                         .build())
 ///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
+///                         .freshness(false)
 ///                         .importance(1)
-///                         .valuesImportanceMap(Map.ofEntries(
-///                         ))
+///                         .duration("25920000s")
+///                         .rankOrder("ASCENDING")
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_created_at")
 ///                     .type("DATE_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -3561,59 +3575,58 @@ import 'index_user_token_configurations.dart';
 ///                         .sortable(true)
 ///                         .build())
 ///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
-///                         .freshness(false)
 ///                         .importance(1)
-///                         .duration("25920000s")
-///                         .rankOrder("ASCENDING")
+///                         .valuesImportanceMap(Map.ofEntries(
+///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_data_source_id")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
-///                         .displayable(false)
+///                         .displayable(true)
 ///                         .facetable(false)
-///                         .searchable(false)
+///                         .searchable(true)
 ///                         .sortable(true)
 ///                         .build())
 ///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
-///                         .importance(1)
+///                         .importance(2)
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_document_title")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
-///                         .displayable(true)
+///                         .displayable(false)
 ///                         .facetable(false)
-///                         .searchable(true)
-///                         .sortable(true)
+///                         .searchable(false)
+///                         .sortable(false)
 ///                         .build())
 ///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
 ///                         .importance(2)
-///                         .valuesImportanceMap(Map.ofEntries(
-///                         ))
+///                         .rankOrder("ASCENDING")
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_excerpt_page_number")
 ///                     .type("LONG_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
 ///                         .searchable(false)
-///                         .sortable(false)
+///                         .sortable(true)
 ///                         .build())
 ///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
-///                         .importance(2)
-///                         .rankOrder("ASCENDING")
+///                         .importance(1)
+///                         .valuesImportanceMap(Map.ofEntries(
+///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_faq_id")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -3625,10 +3638,10 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_file_type")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -3640,10 +3653,10 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_language_code")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -3651,45 +3664,45 @@ import 'index_user_token_configurations.dart';
 ///                         .sortable(true)
 ///                         .build())
 ///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
+///                         .freshness(false)
 ///                         .importance(1)
-///                         .valuesImportanceMap(Map.ofEntries(
-///                         ))
+///                         .duration("25920000s")
+///                         .rankOrder("ASCENDING")
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_last_updated_at")
 ///                     .type("DATE_VALUE")
-///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
-///                         .displayable(false)
-///                         .facetable(false)
-///                         .searchable(false)
-///                         .sortable(true)
-///                         .build())
-///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
-///                         .freshness(false)
-///                         .importance(1)
-///                         .duration("25920000s")
-///                         .rankOrder("ASCENDING")
-///                         .build())
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
+///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
+///                         .displayable(true)
+///                         .facetable(false)
+///                         .searchable(false)
+///                         .sortable(false)
+///                         .build())
+///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
+///                         .importance(1)
+///                         .valuesImportanceMap(Map.ofEntries(
+///                         ))
+///                         .build())
 ///                     .name("_source_uri")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
-///                         .displayable(true)
+///                         .displayable(false)
 ///                         .facetable(false)
 ///                         .searchable(false)
-///                         .sortable(false)
+///                         .sortable(true)
 ///                         .build())
 ///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
 ///                         .importance(1)
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_tenant_id")
 ///                     .type("STRING_VALUE")
+///                     .build(),
+///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -3701,25 +3714,10 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
-///                     .build(),
-///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
 ///                     .name("_version")
 ///                     .type("STRING_VALUE")
-///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
-///                         .displayable(false)
-///                         .facetable(false)
-///                         .searchable(false)
-///                         .sortable(true)
-///                         .build())
-///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
-///                         .importance(1)
-///                         .valuesImportanceMap(Map.ofEntries(
-///                         ))
-///                         .build())
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("_view_count")
-///                     .type("LONG_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(false)
 ///                         .facetable(false)
@@ -3730,10 +3728,10 @@ import 'index_user_token_configurations.dart';
 ///                         .importance(1)
 ///                         .rankOrder("ASCENDING")
 ///                         .build())
+///                     .name("_view_count")
+///                     .type("LONG_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("example-string-value")
-///                     .type("STRING_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(true)
 ///                         .facetable(true)
@@ -3745,10 +3743,10 @@ import 'index_user_token_configurations.dart';
 ///                         .valuesImportanceMap(Map.ofEntries(
 ///                         ))
 ///                         .build())
+///                     .name("example-string-value")
+///                     .type("STRING_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("example-long-value")
-///                     .type("LONG_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(true)
 ///                         .facetable(true)
@@ -3759,10 +3757,10 @@ import 'index_user_token_configurations.dart';
 ///                         .importance(1)
 ///                         .rankOrder("ASCENDING")
 ///                         .build())
+///                     .name("example-long-value")
+///                     .type("LONG_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("example-string-list-value")
-///                     .type("STRING_LIST_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(true)
 ///                         .facetable(true)
@@ -3772,10 +3770,10 @@ import 'index_user_token_configurations.dart';
 ///                     .relevance(IndexDocumentMetadataConfigurationUpdateRelevanceArgs.builder()
 ///                         .importance(1)
 ///                         .build())
+///                     .name("example-string-list-value")
+///                     .type("STRING_LIST_VALUE")
 ///                     .build(),
 ///                 IndexDocumentMetadataConfigurationUpdateArgs.builder()
-///                     .name("example-date-value")
-///                     .type("DATE_VALUE")
 ///                     .search(IndexDocumentMetadataConfigurationUpdateSearchArgs.builder()
 ///                         .displayable(true)
 ///                         .facetable(true)
@@ -3788,7 +3786,11 @@ import 'index_user_token_configurations.dart';
 ///                         .duration("25920000s")
 ///                         .rankOrder("ASCENDING")
 ///                         .build())
+///                     .name("example-date-value")
+///                     .type("DATE_VALUE")
 ///                     .build())
+///             .name("example")
+///             .roleArn(this_.arn())
 ///             .build());
 ///
 ///     }
@@ -3799,193 +3801,193 @@ import 'index_user_token_configurations.dart';
 ///   example:
 ///     type: aws:kendra:Index
 ///     properties:
+///       documentMetadataConfigurationUpdates:
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: false
+///           relevance:
+///             importance: 1
+///           name: _authors
+///           type: STRING_LIST_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             importance: 1
+///             valuesImportanceMap: {}
+///           name: _category
+///           type: STRING_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             freshness: false
+///             importance: 1
+///             duration: 25920000s
+///             rankOrder: ASCENDING
+///           name: _created_at
+///           type: DATE_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             importance: 1
+///             valuesImportanceMap: {}
+///           name: _data_source_id
+///           type: STRING_VALUE
+///         - search:
+///             displayable: true
+///             facetable: false
+///             searchable: true
+///             sortable: true
+///           relevance:
+///             importance: 2
+///             valuesImportanceMap: {}
+///           name: _document_title
+///           type: STRING_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: false
+///           relevance:
+///             importance: 2
+///             rankOrder: ASCENDING
+///           name: _excerpt_page_number
+///           type: LONG_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             importance: 1
+///             valuesImportanceMap: {}
+///           name: _faq_id
+///           type: STRING_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             importance: 1
+///             valuesImportanceMap: {}
+///           name: _file_type
+///           type: STRING_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             importance: 1
+///             valuesImportanceMap: {}
+///           name: _language_code
+///           type: STRING_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             freshness: false
+///             importance: 1
+///             duration: 25920000s
+///             rankOrder: ASCENDING
+///           name: _last_updated_at
+///           type: DATE_VALUE
+///         - search:
+///             displayable: true
+///             facetable: false
+///             searchable: false
+///             sortable: false
+///           relevance:
+///             importance: 1
+///             valuesImportanceMap: {}
+///           name: _source_uri
+///           type: STRING_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             importance: 1
+///             valuesImportanceMap: {}
+///           name: _tenant_id
+///           type: STRING_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             importance: 1
+///             valuesImportanceMap: {}
+///           name: _version
+///           type: STRING_VALUE
+///         - search:
+///             displayable: false
+///             facetable: false
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             importance: 1
+///             rankOrder: ASCENDING
+///           name: _view_count
+///           type: LONG_VALUE
+///         - search:
+///             displayable: true
+///             facetable: true
+///             searchable: true
+///             sortable: true
+///           relevance:
+///             importance: 1
+///             valuesImportanceMap: {}
+///           name: example-string-value
+///           type: STRING_VALUE
+///         - search:
+///             displayable: true
+///             facetable: true
+///             searchable: false
+///             sortable: true
+///           relevance:
+///             importance: 1
+///             rankOrder: ASCENDING
+///           name: example-long-value
+///           type: LONG_VALUE
+///         - search:
+///             displayable: true
+///             facetable: true
+///             searchable: true
+///             sortable: false
+///           relevance:
+///             importance: 1
+///           name: example-string-list-value
+///           type: STRING_LIST_VALUE
+///         - search:
+///             displayable: true
+///             facetable: true
+///             searchable: false
+///             sortable: false
+///           relevance:
+///             freshness: false
+///             importance: 1
+///             duration: 25920000s
+///             rankOrder: ASCENDING
+///           name: example-date-value
+///           type: DATE_VALUE
 ///       name: example
 ///       roleArn: ${this.arn}
-///       documentMetadataConfigurationUpdates:
-///         - name: _authors
-///           type: STRING_LIST_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: false
-///           relevance:
-///             importance: 1
-///         - name: _category
-///           type: STRING_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             importance: 1
-///             valuesImportanceMap: {}
-///         - name: _created_at
-///           type: DATE_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             freshness: false
-///             importance: 1
-///             duration: 25920000s
-///             rankOrder: ASCENDING
-///         - name: _data_source_id
-///           type: STRING_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             importance: 1
-///             valuesImportanceMap: {}
-///         - name: _document_title
-///           type: STRING_VALUE
-///           search:
-///             displayable: true
-///             facetable: false
-///             searchable: true
-///             sortable: true
-///           relevance:
-///             importance: 2
-///             valuesImportanceMap: {}
-///         - name: _excerpt_page_number
-///           type: LONG_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: false
-///           relevance:
-///             importance: 2
-///             rankOrder: ASCENDING
-///         - name: _faq_id
-///           type: STRING_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             importance: 1
-///             valuesImportanceMap: {}
-///         - name: _file_type
-///           type: STRING_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             importance: 1
-///             valuesImportanceMap: {}
-///         - name: _language_code
-///           type: STRING_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             importance: 1
-///             valuesImportanceMap: {}
-///         - name: _last_updated_at
-///           type: DATE_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             freshness: false
-///             importance: 1
-///             duration: 25920000s
-///             rankOrder: ASCENDING
-///         - name: _source_uri
-///           type: STRING_VALUE
-///           search:
-///             displayable: true
-///             facetable: false
-///             searchable: false
-///             sortable: false
-///           relevance:
-///             importance: 1
-///             valuesImportanceMap: {}
-///         - name: _tenant_id
-///           type: STRING_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             importance: 1
-///             valuesImportanceMap: {}
-///         - name: _version
-///           type: STRING_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             importance: 1
-///             valuesImportanceMap: {}
-///         - name: _view_count
-///           type: LONG_VALUE
-///           search:
-///             displayable: false
-///             facetable: false
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             importance: 1
-///             rankOrder: ASCENDING
-///         - name: example-string-value
-///           type: STRING_VALUE
-///           search:
-///             displayable: true
-///             facetable: true
-///             searchable: true
-///             sortable: true
-///           relevance:
-///             importance: 1
-///             valuesImportanceMap: {}
-///         - name: example-long-value
-///           type: LONG_VALUE
-///           search:
-///             displayable: true
-///             facetable: true
-///             searchable: false
-///             sortable: true
-///           relevance:
-///             importance: 1
-///             rankOrder: ASCENDING
-///         - name: example-string-list-value
-///           type: STRING_LIST_VALUE
-///           search:
-///             displayable: true
-///             facetable: true
-///             searchable: true
-///             sortable: false
-///           relevance:
-///             importance: 1
-///         - name: example-date-value
-///           type: DATE_VALUE
-///           search:
-///             displayable: true
-///             facetable: true
-///             searchable: false
-///             sortable: false
-///           relevance:
-///             freshness: false
-///             importance: 1
-///             duration: 25920000s
-///             rankOrder: ASCENDING
 /// ```
 ///
 ///
@@ -3997,14 +3999,14 @@ import 'index_user_token_configurations.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.Index("example", {
-///     name: "example",
-///     roleArn: _this.arn,
 ///     userTokenConfigurations: {
 ///         jsonTokenTypeConfiguration: {
 ///             groupAttributeField: "groups",
 ///             userNameAttributeField: "username",
 ///         },
 ///     },
+///     name: "example",
+///     roleArn: _this.arn,
 /// });
 /// ```
 /// ```python
@@ -4012,14 +4014,14 @@ import 'index_user_token_configurations.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.Index("example",
-///     name="example",
-///     role_arn=this["arn"],
 ///     user_token_configurations={
 ///         "json_token_type_configuration": {
 ///             "group_attribute_field": "groups",
 ///             "user_name_attribute_field": "username",
 ///         },
-///     })
+///     },
+///     name="example",
+///     role_arn=this["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -4031,8 +4033,6 @@ import 'index_user_token_configurations.dart';
 /// {
 ///     var example = new Aws.Kendra.Index("example", new()
 ///     {
-///         Name = "example",
-///         RoleArn = @this.Arn,
 ///         UserTokenConfigurations = new Aws.Kendra.Inputs.IndexUserTokenConfigurationsArgs
 ///         {
 ///             JsonTokenTypeConfiguration = new Aws.Kendra.Inputs.IndexUserTokenConfigurationsJsonTokenTypeConfigurationArgs
@@ -4041,6 +4041,8 @@ import 'index_user_token_configurations.dart';
 ///                 UserNameAttributeField = "username",
 ///             },
 ///         },
+///         Name = "example",
+///         RoleArn = @this.Arn,
 ///     });
 ///
 /// });
@@ -4056,14 +4058,14 @@ import 'index_user_token_configurations.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewIndex(ctx, "example", &kendra.IndexArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(this.Arn),
 /// 			UserTokenConfigurations: &kendra.IndexUserTokenConfigurationsArgs{
 /// 				JsonTokenTypeConfiguration: &kendra.IndexUserTokenConfigurationsJsonTokenTypeConfigurationArgs{
 /// 					GroupAttributeField:    pulumi.String("groups"),
 /// 					UserNameAttributeField: pulumi.String("username"),
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(this.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4082,14 +4084,14 @@ import 'index_user_token_configurations.dart';
 /// }
 ///
 /// resource "aws_kendra_index" "example" {
-///   name     = "example"
-///   role_arn = this.arn
 ///   user_token_configurations = {
 ///     json_token_type_configuration = {
 ///       group_attribute_field     = "groups"
 ///       user_name_attribute_field = "username"
 ///     }
 ///   }
+///   name     = "example"
+///   role_arn = this.arn
 /// }
 /// ```
 /// ```java
@@ -4116,14 +4118,14 @@ import 'index_user_token_configurations.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Index("example", IndexArgs.builder()
-///             .name("example")
-///             .roleArn(this_.arn())
 ///             .userTokenConfigurations(IndexUserTokenConfigurationsArgs.builder()
 ///                 .jsonTokenTypeConfiguration(IndexUserTokenConfigurationsJsonTokenTypeConfigurationArgs.builder()
 ///                     .groupAttributeField("groups")
 ///                     .userNameAttributeField("username")
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .roleArn(this_.arn())
 ///             .build());
 ///
 ///     }
@@ -4134,12 +4136,12 @@ import 'index_user_token_configurations.dart';
 ///   example:
 ///     type: aws:kendra:Index
 ///     properties:
-///       name: example
-///       roleArn: ${this.arn}
 ///       userTokenConfigurations:
 ///         jsonTokenTypeConfiguration:
 ///           groupAttributeField: groups
 ///           userNameAttributeField: username
+///       name: example
+///       roleArn: ${this.arn}
 /// ```
 ///
 ///
@@ -4151,7 +4153,7 @@ import 'index_user_token_configurations.dart';
 /// $ pulumi import aws:kendra/index:Index example 12345678-1234-5678-9123-123456789123
 /// ```
 class Index extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Index.
+  /// ARN of the Index.
   late final pulumi.Output<String> arn;
   /// A block that sets the number of additional document storage and query capacity units that should be used by the index. Detailed below.
   late final pulumi.Output<IndexCapacityUnits> capacityUnits;
@@ -4160,13 +4162,13 @@ class Index extends pulumi.CustomResource {
   /// The description of the Index.
   late final pulumi.Output<String?> description;
   /// One or more blocks that specify the configuration settings for any metadata applied to the documents in the index. Minimum number of 0 items. Maximum number of 500 items. If specified, you must define all elements, including those that are provided by default. These index fields are documented at [Amazon Kendra Index documentation](https://docs.aws.amazon.com/kendra/latest/dg/hiw-index.html). For an example resource that defines these default index fields, refer to the default example above. For an example resource that appends additional index fields, refer to the append example above. All arguments for each block must be specified. Note that blocks cannot be removed since index fields cannot be deleted. This argument is detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> documentMetadataConfigurationUpdates;
+  late final pulumi.Output<List<IndexDocumentMetadataConfigurationUpdate>> documentMetadataConfigurationUpdates;
   /// The Amazon Kendra edition to use for the index. Choose `DEVELOPER_EDITION` for indexes intended for development, testing, or proof of concept. Use `ENTERPRISE_EDITION` for your production databases. Use `GEN_AI_ENTERPRISE_EDITION` for creating generative AI applications. Once you set the edition for an index, it can't be changed. Defaults to `ENTERPRISE_EDITION`.
   late final pulumi.Output<String?> edition;
   /// When the Status field value is `FAILED`, this contains a message that explains why.
   late final pulumi.Output<String> errorMessage;
   /// A block that provides information about the number of FAQ questions and answers and the number of text documents indexed. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> indexStatistics;
+  late final pulumi.Output<List<IndexIndexStatistic>> indexStatistics;
   /// Specifies the name of the Index.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -4203,23 +4205,23 @@ class Index extends pulumi.CustomResource {
           'aws:kendra/index:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacityUnits = registerOutput<IndexCapacityUnits>('capacityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexCapacityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    documentMetadataConfigurationUpdates = registerOutput<List<Map<String, dynamic>>>('documentMetadataConfigurationUpdates');
+    documentMetadataConfigurationUpdates = registerOutput<List<IndexDocumentMetadataConfigurationUpdate>>('documentMetadataConfigurationUpdates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexDocumentMetadataConfigurationUpdate>(guardedValue, (value) => IndexDocumentMetadataConfigurationUpdate.fromMap((value as Map).cast<String, dynamic>())); });
     edition = registerOutput<String?>('edition');
     errorMessage = registerOutput<String>('errorMessage');
-    indexStatistics = registerOutput<List<Map<String, dynamic>>>('indexStatistics');
+    indexStatistics = registerOutput<List<IndexIndexStatistic>>('indexStatistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexIndexStatistic>(guardedValue, (value) => IndexIndexStatistic.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     serverSideEncryptionConfiguration = registerOutput<IndexServerSideEncryptionConfiguration?>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updatedAt = registerOutput<String>('updatedAt');
     userContextPolicy = registerOutput<String?>('userContextPolicy');
     userGroupResolutionConfiguration = registerOutput<IndexUserGroupResolutionConfiguration?>('userGroupResolutionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexUserGroupResolutionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -4231,11 +4233,12 @@ class Index extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IndexState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Index._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -4253,17 +4256,47 @@ class Index extends pulumi.CustomResource {
     capacityUnits = registerOutput<IndexCapacityUnits>('capacityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexCapacityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    documentMetadataConfigurationUpdates = registerOutput<List<Map<String, dynamic>>>('documentMetadataConfigurationUpdates');
+    documentMetadataConfigurationUpdates = registerOutput<List<IndexDocumentMetadataConfigurationUpdate>>('documentMetadataConfigurationUpdates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexDocumentMetadataConfigurationUpdate>(guardedValue, (value) => IndexDocumentMetadataConfigurationUpdate.fromMap((value as Map).cast<String, dynamic>())); });
     edition = registerOutput<String?>('edition');
     errorMessage = registerOutput<String>('errorMessage');
-    indexStatistics = registerOutput<List<Map<String, dynamic>>>('indexStatistics');
+    indexStatistics = registerOutput<List<IndexIndexStatistic>>('indexStatistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexIndexStatistic>(guardedValue, (value) => IndexIndexStatistic.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     serverSideEncryptionConfiguration = registerOutput<IndexServerSideEncryptionConfiguration?>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updatedAt = registerOutput<String>('updatedAt');
+    userContextPolicy = registerOutput<String?>('userContextPolicy');
+    userGroupResolutionConfiguration = registerOutput<IndexUserGroupResolutionConfiguration?>('userGroupResolutionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexUserGroupResolutionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userTokenConfigurations = registerOutput<IndexUserTokenConfigurations?>('userTokenConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexUserTokenConfigurations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Index] resource.
+  Index.reference(String urn)
+    : super(
+        'aws:kendra/index:Index',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    capacityUnits = registerOutput<IndexCapacityUnits>('capacityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexCapacityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    documentMetadataConfigurationUpdates = registerOutput<List<IndexDocumentMetadataConfigurationUpdate>>('documentMetadataConfigurationUpdates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexDocumentMetadataConfigurationUpdate>(guardedValue, (value) => IndexDocumentMetadataConfigurationUpdate.fromMap((value as Map).cast<String, dynamic>())); });
+    edition = registerOutput<String?>('edition');
+    errorMessage = registerOutput<String>('errorMessage');
+    indexStatistics = registerOutput<List<IndexIndexStatistic>>('indexStatistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexIndexStatistic>(guardedValue, (value) => IndexIndexStatistic.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    serverSideEncryptionConfiguration = registerOutput<IndexServerSideEncryptionConfiguration?>('serverSideEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexServerSideEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updatedAt = registerOutput<String>('updatedAt');
     userContextPolicy = registerOutput<String?>('userContextPolicy');
     userGroupResolutionConfiguration = registerOutput<IndexUserGroupResolutionConfiguration?>('userGroupResolutionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexUserGroupResolutionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

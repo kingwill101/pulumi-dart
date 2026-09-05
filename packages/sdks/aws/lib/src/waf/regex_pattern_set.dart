@@ -139,7 +139,7 @@ import 'regex_pattern_set_state.dart';
 /// $ pulumi import aws:waf/regexPatternSet:RegexPatternSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
 class RegexPatternSet extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN)
+  /// ARN
   late final pulumi.Output<String> arn;
   /// The name or description of the Regex Pattern Set.
   late final pulumi.Output<String> name;
@@ -158,11 +158,11 @@ class RegexPatternSet extends pulumi.CustomResource {
           'aws:waf/regexPatternSet:RegexPatternSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings');
+    regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [RegexPatternSet] resource's state with the given [name] and [id].
@@ -170,11 +170,12 @@ class RegexPatternSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegexPatternSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegexPatternSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -190,6 +191,20 @@ class RegexPatternSet extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings');
+    regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RegexPatternSet] resource.
+  RegexPatternSet.reference(String urn)
+    : super(
+        'aws:waf/regexPatternSet:RegexPatternSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -8,25 +8,25 @@ import 'inventory_schedule.dart';
 /// Input properties used for looking up and filtering Inventory resources.
 class InventoryState {
   /// Name of the source bucket that inventory lists the objects for. Both general purpose and directory buckets are supported.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Where to publish the inventory results. See `destination` Block below.
-  final pulumi.Input<InventoryDestination>? destination;
+  final pulumi.Input<InventoryDestination?>? destination;
   /// Whether to enable the inventory.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Inventory filter. The inventory only includes objects that meet the filter's criteria. See `filter` Block below.
-  final pulumi.Input<InventoryFilter>? filter;
+  final pulumi.Input<InventoryFilter?>? filter;
   /// Object versions to include in the inventory list. Valid values: `All`, `Current`.
-  final pulumi.Input<String>? includedObjectVersions;
+  final pulumi.Input<String?>? includedObjectVersions;
   /// Unique identifier of the inventory configuration for the bucket.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of optional fields that are included in the inventory results. Please refer to the S3 [documentation](https://docs.aws.amazon.com/AmazonS3/latest/API/API_InventoryConfiguration.html#AmazonS3-Type-InventoryConfiguration-OptionalFields) for more details.
-  final pulumi.Input<List<String>>? optionalFields;
+  final pulumi.Input<List<String>?>? optionalFields;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Schedule for generating inventory results. See `schedule` Block below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<InventorySchedule>? schedule;
+  final pulumi.Input<InventorySchedule?>? schedule;
 
   /// Creates a new [InventoryState].
   /// [bucket] Name of the source bucket that inventory lists the objects for. Both general purpose and directory buckets are supported.

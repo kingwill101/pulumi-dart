@@ -12,25 +12,25 @@ import 'v2_policy_multi_region.dart';
 /// {@macro pulumi_resiliencehub_v2_policy_v2_policy_args_doc}
 class V2PolicyArgs {
   /// Availability SLO configuration. See `availabilitySlo` Block below.
-  final pulumi.Input<V2PolicyAvailabilitySlo>? availabilitySlo;
+  final pulumi.Input<V2PolicyAvailabilitySlo?>? availabilitySlo;
   /// Data recovery configuration. See `dataRecovery` Block below.
-  final pulumi.Input<V2PolicyDataRecovery>? dataRecovery;
+  final pulumi.Input<V2PolicyDataRecovery?>? dataRecovery;
   /// Description of the policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// KMS key ARN.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Multi-AZ disaster recovery configuration. See `multiAz` Block below.
-  final pulumi.Input<V2PolicyMultiAz>? multiAz;
+  final pulumi.Input<V2PolicyMultiAz?>? multiAz;
   /// Multi-region disaster recovery configuration. See `multiRegion` Block below.
-  final pulumi.Input<V2PolicyMultiRegion>? multiRegion;
+  final pulumi.Input<V2PolicyMultiRegion?>? multiRegion;
   /// Name of the policy. Changing this value requires creating a new resource.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [V2PolicyArgs].
   /// [availabilitySlo] Availability SLO configuration. See `availabilitySlo` Block below.

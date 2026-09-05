@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'control_tower_control_args.dart';
+import 'control_tower_control_parameter.dart';
 import 'control_tower_control_state.dart';
 
 /// Allows the application of pre-defined controls to organizational units. For more information on usage, please see the
@@ -18,12 +19,12 @@ import 'control_tower_control_state.dart';
 ///     parentId: example.roots?.[0]?.id,
 /// }));
 /// const exampleControlTowerControl = new aws.controltower.ControlTowerControl("example", {
-///     controlIdentifier: current.then(current => `arn:aws:controltower:${current.region}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK`),
-///     targetIdentifier: exampleGetOrganizationalUnits.then(exampleGetOrganizationalUnits => .filter(x => x.name == "Infrastructure").map(x => (x.arn))[0]),
 ///     parameters: [{
 ///         key: "AllowedRegions",
 ///         value: JSON.stringify(["us-east-1"]),
 ///     }],
+///     controlIdentifier: current.then(current => `arn:aws:controltower:${current.region}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK`),
+///     targetIdentifier: exampleGetOrganizationalUnits.then(exampleGetOrganizationalUnits => .filter(x => x.name == "Infrastructure").map(x => (x.arn))[0]),
 /// });
 /// ```
 /// ```python
@@ -35,12 +36,12 @@ import 'control_tower_control_state.dart';
 /// example = aws.organizations.get_organization()
 /// example_get_organizational_units = aws.organizations.get_organizational_units(parent_id=example.roots[0].id)
 /// example_control_tower_control = aws.controltower.ControlTowerControl("example",
-///     control_identifier=f"arn:aws:controltower:{current.region}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK",
-///     target_identifier=[x.arn for x in example_get_organizational_units.children if x.name == "Infrastructure"][0],
 ///     parameters=[{
 ///         "key": "AllowedRegions",
 ///         "value": json.dumps(["us-east-1"]),
-///     }])
+///     }],
+///     control_identifier=f"arn:aws:controltower:{current.region}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK",
+///     target_identifier=[x.arn for x in example_get_organizational_units.children if x.name == "Infrastructure"][0])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -62,11 +63,6 @@ import 'control_tower_control_state.dart';
 ///
 ///     var exampleControlTowerControl = new Aws.ControlTower.ControlTowerControl("example", new()
 ///     {
-///         ControlIdentifier = $"arn:aws:controltower:{current.Apply(getRegionResult => getRegionResult.Region)}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK",
-///         TargetIdentifier = .Where(x => x.Name == "Infrastructure").Select(x =>
-///         {
-///             return x.Arn;
-///         }).ToList()[0],
 ///         Parameters = new[]
 ///         {
 ///             new Aws.ControlTower.Inputs.ControlTowerControlParameterArgs
@@ -78,6 +74,11 @@ import 'control_tower_control_state.dart';
 ///                 }),
 ///             },
 ///         },
+///         ControlIdentifier = $"arn:aws:controltower:{current.Apply(getRegionResult => getRegionResult.Region)}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK",
+///         TargetIdentifier = .Where(x => x.Name == "Infrastructure").Select(x =>
+///         {
+///             return x.Arn;
+///         }).ToList()[0],
 ///     });
 ///
 /// });
@@ -100,12 +101,12 @@ import 'control_tower_control_state.dart';
 /// }
 ///
 /// resource "aws_controltower_controltowercontrol" "example" {
-///   control_identifier ="arn:aws:controltower:${data.aws_getregion.current.region}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK"
-///   target_identifier  = [for x in data.aws_organizations_getorganizationalunits.exampleGetOrganizationalUnits.children : x.arn if x.name == "Infrastructure"][0]
 ///   parameters {
 ///     key   = "AllowedRegions"
 ///     value = jsonencode(["us-east-1"])
 ///   }
+///   control_identifier ="arn:aws:controltower:${data.aws_getregion.current.region}::control/AWS-GR_EC2_VOLUME_INUSE_CHECK"
+///   target_identifier  = [for x in data.aws_organizations_getorganizationalunits.exampleGetOrganizationalUnits.children : x.arn if x.name == "Infrastructure"][0]
 /// }
 /// ```
 ///
@@ -123,7 +124,7 @@ class ControlTowerControl extends pulumi.CustomResource {
   /// The ARN of the control. Only Strongly recommended and Elective controls are permitted, with the exception of the Region deny guardrail.
   late final pulumi.Output<String> controlIdentifier;
   /// Parameter values which are specified to configure the control when you enable it. See Parameters for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<ControlTowerControlParameter>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The ARN of the organizational unit.
@@ -143,11 +144,11 @@ class ControlTowerControl extends pulumi.CustomResource {
           'aws:controltower/controlTowerControl:ControlTowerControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     controlIdentifier = registerOutput<String>('controlIdentifier');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ControlTowerControlParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlTowerControlParameter>(guardedValue, (value) => ControlTowerControlParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     targetIdentifier = registerOutput<String>('targetIdentifier');
   }
@@ -157,11 +158,12 @@ class ControlTowerControl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ControlTowerControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ControlTowerControl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -177,7 +179,23 @@ class ControlTowerControl extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     controlIdentifier = registerOutput<String>('controlIdentifier');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ControlTowerControlParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlTowerControlParameter>(guardedValue, (value) => ControlTowerControlParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    targetIdentifier = registerOutput<String>('targetIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [ControlTowerControl] resource.
+  ControlTowerControl.reference(String urn)
+    : super(
+        'aws:controltower/controlTowerControl:ControlTowerControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    controlIdentifier = registerOutput<String>('controlIdentifier');
+    parameters = registerOutput<List<ControlTowerControlParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlTowerControlParameter>(guardedValue, (value) => ControlTowerControlParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     targetIdentifier = registerOutput<String>('targetIdentifier');
   }

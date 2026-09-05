@@ -10,7 +10,7 @@ class GetGlobalNetworkArgs {
   /// ID of the specific global network to retrieve.
   final pulumi.Input<String> globalNetworkId;
   /// Map of resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetGlobalNetworkArgs].
   /// [globalNetworkId] ID of the specific global network to retrieve.

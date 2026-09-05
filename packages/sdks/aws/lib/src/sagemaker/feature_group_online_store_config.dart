@@ -6,13 +6,13 @@ import 'feature_group_online_store_config_ttl_duration.dart';
 
 class FeatureGroupOnlineStoreConfig {
   /// Set to `true` to disable the automatic creation of an AWS Glue table when configuring an OfflineStore.
-  final pulumi.Input<bool>? enableOnlineStore;
+  final pulumi.Input<bool?>? enableOnlineStore;
   /// Security config for at-rest encryption of your OnlineStore. See Security Config Below.
-  final pulumi.Input<FeatureGroupOnlineStoreConfigSecurityConfig>? securityConfig;
+  final pulumi.Input<FeatureGroupOnlineStoreConfigSecurityConfig?>? securityConfig;
   /// Option for different tiers of low latency storage for real-time data retrieval. Valid values are `Standard`, or `InMemory`.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
   /// Time to live duration, where the record is hard deleted after the expiration time is reached; ExpiresAt = EventTime + TtlDuration.. See TTl Duration Below.
-  final pulumi.Input<FeatureGroupOnlineStoreConfigTtlDuration>? ttlDuration;
+  final pulumi.Input<FeatureGroupOnlineStoreConfigTtlDuration?>? ttlDuration;
 
   /// Creates a new [FeatureGroupOnlineStoreConfig].
   /// [enableOnlineStore] Set to `true` to disable the automatic creation of an AWS Glue table when configuring an OfflineStore.

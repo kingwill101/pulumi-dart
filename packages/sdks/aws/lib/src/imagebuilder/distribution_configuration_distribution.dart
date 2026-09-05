@@ -9,29 +9,29 @@ import 'distribution_configuration_distribution_s3_export_configuration.dart';
 import 'distribution_configuration_distribution_ssm_parameter_configuration.dart';
 
 class DistributionConfigurationDistribution {
-  /// Configuration block with Amazon Machine Image (AMI) distribution settings. Detailed below.
-  final pulumi.Input<DistributionConfigurationDistributionAmiDistributionConfiguration>? amiDistributionConfiguration;
+  /// Configuration block with AMI distribution settings. Detailed below.
+  final pulumi.Input<DistributionConfigurationDistributionAmiDistributionConfiguration?>? amiDistributionConfiguration;
   /// Configuration block with container distribution settings. Detailed below.
-  final pulumi.Input<DistributionConfigurationDistributionContainerDistributionConfiguration>? containerDistributionConfiguration;
+  final pulumi.Input<DistributionConfigurationDistributionContainerDistributionConfiguration?>? containerDistributionConfiguration;
   /// Set of Windows faster-launching configurations to use for AMI distribution. Detailed below.
-  final pulumi.Input<List<DistributionConfigurationDistributionFastLaunchConfiguration>>? fastLaunchConfigurations;
+  final pulumi.Input<List<DistributionConfigurationDistributionFastLaunchConfiguration>?>? fastLaunchConfigurations;
   /// Set of launch template configuration settings that apply to image distribution. Detailed below.
-  final pulumi.Input<List<DistributionConfigurationDistributionLaunchTemplateConfiguration>>? launchTemplateConfigurations;
-  /// Set of Amazon Resource Names (ARNs) of License Manager License Configurations.
-  final pulumi.Input<List<String>>? licenseConfigurationArns;
+  final pulumi.Input<List<DistributionConfigurationDistributionLaunchTemplateConfiguration>?>? launchTemplateConfigurations;
+  /// Set of ARNs of License Manager License Configurations.
+  final pulumi.Input<List<String>?>? licenseConfigurationArns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String> region;
   /// Configuration block with S3 export settings. Detailed below.
-  final pulumi.Input<DistributionConfigurationDistributionS3ExportConfiguration>? s3ExportConfiguration;
+  final pulumi.Input<DistributionConfigurationDistributionS3ExportConfiguration?>? s3ExportConfiguration;
   /// Configuration block with SSM parameter configuration to use as AMI id output. Detailed below.
-  final pulumi.Input<List<DistributionConfigurationDistributionSsmParameterConfiguration>>? ssmParameterConfigurations;
+  final pulumi.Input<List<DistributionConfigurationDistributionSsmParameterConfiguration>?>? ssmParameterConfigurations;
 
   /// Creates a new [DistributionConfigurationDistribution].
-  /// [amiDistributionConfiguration] Configuration block with Amazon Machine Image (AMI) distribution settings. Detailed below.
+  /// [amiDistributionConfiguration] Configuration block with AMI distribution settings. Detailed below.
   /// [containerDistributionConfiguration] Configuration block with container distribution settings. Detailed below.
   /// [fastLaunchConfigurations] Set of Windows faster-launching configurations to use for AMI distribution. Detailed below.
   /// [launchTemplateConfigurations] Set of launch template configuration settings that apply to image distribution. Detailed below.
-  /// [licenseConfigurationArns] Set of Amazon Resource Names (ARNs) of License Manager License Configurations.
+  /// [licenseConfigurationArns] Set of ARNs of License Manager License Configurations.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3ExportConfiguration] Configuration block with S3 export settings. Detailed below.
   /// [ssmParameterConfigurations] Configuration block with SSM parameter configuration to use as AMI id output. Detailed below.

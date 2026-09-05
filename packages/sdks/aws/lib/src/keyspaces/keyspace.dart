@@ -140,14 +140,14 @@ class Keyspace extends pulumi.CustomResource {
           'aws:keyspaces/keyspace:Keyspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     replicationSpecification = registerOutput<KeyspaceReplicationSpecification>('replicationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyspaceReplicationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Keyspace] resource's state with the given [name] and [id].
@@ -155,11 +155,12 @@ class Keyspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Keyspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -177,7 +178,24 @@ class Keyspace extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     replicationSpecification = registerOutput<KeyspaceReplicationSpecification>('replicationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyspaceReplicationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Keyspace] resource.
+  Keyspace.reference(String urn)
+    : super(
+        'aws:keyspaces/keyspace:Keyspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    replicationSpecification = registerOutput<KeyspaceReplicationSpecification>('replicationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyspaceReplicationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

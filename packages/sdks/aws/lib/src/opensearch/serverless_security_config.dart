@@ -52,7 +52,7 @@ class ServerlessSecurityConfig extends pulumi.CustomResource {
           'aws:opensearch/serverlessSecurityConfig:ServerlessSecurityConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     configVersion = registerOutput<String>('configVersion');
     description = registerOutput<String?>('description');
@@ -69,11 +69,12 @@ class ServerlessSecurityConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerlessSecurityConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerlessSecurityConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -87,6 +88,25 @@ class ServerlessSecurityConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    configVersion = registerOutput<String>('configVersion');
+    description = registerOutput<String?>('description');
+    iamFederationOptions = registerOutput<ServerlessSecurityConfigIamFederationOptions?>('iamFederationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessSecurityConfigIamFederationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    iamIdentityCenterOptions = registerOutput<ServerlessSecurityConfigIamIdentityCenterOptions?>('iamIdentityCenterOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessSecurityConfigIamIdentityCenterOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    samlOptions = registerOutput<ServerlessSecurityConfigSamlOptions?>('samlOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessSecurityConfigSamlOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServerlessSecurityConfig] resource.
+  ServerlessSecurityConfig.reference(String urn)
+    : super(
+        'aws:opensearch/serverlessSecurityConfig:ServerlessSecurityConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configVersion = registerOutput<String>('configVersion');
     description = registerOutput<String?>('description');
     iamFederationOptions = registerOutput<ServerlessSecurityConfigIamFederationOptions?>('iamFederationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessSecurityConfigIamFederationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

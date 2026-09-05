@@ -227,11 +227,11 @@ class KeyGroup extends pulumi.CustomResource {
           'aws:cloudfront/keyGroup:KeyGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     comment = registerOutput<String?>('comment');
     etag = registerOutput<String>('etag');
-    items = registerOutput<List<String>>('items');
+    items = registerOutput<List<String>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
   }
 
@@ -240,11 +240,12 @@ class KeyGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -260,7 +261,22 @@ class KeyGroup extends pulumi.CustomResource {
         ) {
     comment = registerOutput<String?>('comment');
     etag = registerOutput<String>('etag');
-    items = registerOutput<List<String>>('items');
+    items = registerOutput<List<String>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [KeyGroup] resource.
+  KeyGroup.reference(String urn)
+    : super(
+        'aws:cloudfront/keyGroup:KeyGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    comment = registerOutput<String?>('comment');
+    etag = registerOutput<String>('etag');
+    items = registerOutput<List<String>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
   }
 }

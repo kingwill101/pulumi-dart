@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagValue {
   /// The tag key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The tag value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaExcludesAndTagCriterionTagValue].
   /// [key] The tag key.

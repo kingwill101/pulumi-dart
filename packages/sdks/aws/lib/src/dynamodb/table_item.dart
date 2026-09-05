@@ -15,14 +15,14 @@ import 'table_item_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleTable = new aws.dynamodb.Table("example", {
-///     name: "example-name",
-///     readCapacity: 10,
-///     writeCapacity: 10,
-///     hashKey: "exampleHashKey",
 ///     attributes: [{
 ///         name: "exampleHashKey",
 ///         type: "S",
 ///     }],
+///     name: "example-name",
+///     readCapacity: 10,
+///     writeCapacity: 10,
+///     hashKey: "exampleHashKey",
 /// });
 /// const example = new aws.dynamodb.TableItem("example", {
 ///     tableName: exampleTable.name,
@@ -42,14 +42,14 @@ import 'table_item_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_table = aws.dynamodb.Table("example",
-///     name="example-name",
-///     read_capacity=10,
-///     write_capacity=10,
-///     hash_key="exampleHashKey",
 ///     attributes=[{
 ///         "name": "exampleHashKey",
 ///         "type": "S",
-///     }])
+///     }],
+///     name="example-name",
+///     read_capacity=10,
+///     write_capacity=10,
+///     hash_key="exampleHashKey")
 /// example = aws.dynamodb.TableItem("example",
 ///     table_name=example_table.name,
 ///     hash_key=example_table.hash_key,
@@ -72,10 +72,6 @@ import 'table_item_state.dart';
 /// {
 ///     var exampleTable = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         Name = "example-name",
-///         ReadCapacity = 10,
-///         WriteCapacity = 10,
-///         HashKey = "exampleHashKey",
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -84,6 +80,10 @@ import 'table_item_state.dart';
 ///                 Type = "S",
 ///             },
 ///         },
+///         Name = "example-name",
+///         ReadCapacity = 10,
+///         WriteCapacity = 10,
+///         HashKey = "exampleHashKey",
 ///     });
 ///
 ///     var example = new Aws.DynamoDB.TableItem("example", new()
@@ -113,16 +113,16 @@ import 'table_item_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleTable, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			Name:          pulumi.String("example-name"),
-/// 			ReadCapacity:  pulumi.Int(10),
-/// 			WriteCapacity: pulumi.Int(10),
-/// 			HashKey:       pulumi.String("exampleHashKey"),
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("exampleHashKey"),
 /// 					Type: pulumi.String("S"),
 /// 				},
 /// 			},
+/// 			Name:          pulumi.String("example-name"),
+/// 			ReadCapacity:  pulumi.Int(10),
+/// 			WriteCapacity: pulumi.Int(10),
+/// 			HashKey:       pulumi.String("exampleHashKey"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -161,14 +161,14 @@ import 'table_item_state.dart';
 ///   item       = "{\n  \\\"exampleHashKey\\\": {\\\"S\\\": \\\"something\\\"},\n  \\\"one\\\": {\\\"N\\\": \\\"11111\\\"},\n  \\\"two\\\": {\\\"N\\\": \\\"22222\\\"},\n  \\\"three\\\": {\\\"N\\\": \\\"33333\\\"},\n  \\\"four\\\": {\\\"N\\\": \\\"44444\\\"}\n}\n"
 /// }
 /// resource "aws_dynamodb_table" "example" {
-///   name           = "example-name"
-///   read_capacity  = 10
-///   write_capacity = 10
-///   hash_key       = "exampleHashKey"
 ///   attributes {
 ///     name = "exampleHashKey"
 ///     type = "S"
 ///   }
+///   name           = "example-name"
+///   read_capacity  = 10
+///   write_capacity = 10
+///   hash_key       = "exampleHashKey"
 /// }
 /// ```
 /// ```java
@@ -196,14 +196,14 @@ import 'table_item_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleTable = new Table("exampleTable", TableArgs.builder()
-///             .name("example-name")
-///             .readCapacity(10)
-///             .writeCapacity(10)
-///             .hashKey("exampleHashKey")
 ///             .attributes(TableAttributeArgs.builder()
 ///                 .name("exampleHashKey")
 ///                 .type("S")
 ///                 .build())
+///             .name("example-name")
+///             .readCapacity(10)
+///             .writeCapacity(10)
+///             .hashKey("exampleHashKey")
 ///             .build());
 ///
 ///         var example = new TableItem("example", TableItemArgs.builder()
@@ -242,13 +242,13 @@ import 'table_item_state.dart';
 ///     type: aws:dynamodb:Table
 ///     name: example
 ///     properties:
+///       attributes:
+///         - name: exampleHashKey
+///           type: S
 ///       name: example-name
 ///       readCapacity: 10
 ///       writeCapacity: 10
 ///       hashKey: exampleHashKey
-///       attributes:
-///         - name: exampleHashKey
-///           type: S
 /// ```
 ///
 ///
@@ -312,7 +312,7 @@ class TableItem extends pulumi.CustomResource {
           'aws:dynamodb/tableItem:TableItem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     hashKey = registerOutput<String>('hashKey');
     hashKeyValue = registerOutput<String>('hashKeyValue');
@@ -328,11 +328,12 @@ class TableItem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableItemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TableItem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,6 +347,24 @@ class TableItem extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    hashKey = registerOutput<String>('hashKey');
+    hashKeyValue = registerOutput<String>('hashKeyValue');
+    item = registerOutput<String>('item');
+    rangeKey = registerOutput<String?>('rangeKey');
+    rangeKeyValue = registerOutput<String>('rangeKeyValue');
+    region = registerOutput<String>('region');
+    tableName = registerOutput<String>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [TableItem] resource.
+  TableItem.reference(String urn)
+    : super(
+        'aws:dynamodb/tableItem:TableItem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     hashKey = registerOutput<String>('hashKey');
     hashKeyValue = registerOutput<String>('hashKeyValue');
     item = registerOutput<String>('item');

@@ -5,7 +5,7 @@ import 'web_acl_rule_action_captcha_custom_request_handling_insert_header.dart';
 
 class WebAclRuleActionCaptchaCustomRequestHandling {
   /// Custom headers to insert into the request. See Insert Header below.
-  final pulumi.Input<List<WebAclRuleActionCaptchaCustomRequestHandlingInsertHeader>>? insertHeaders;
+  final pulumi.Input<List<WebAclRuleActionCaptchaCustomRequestHandlingInsertHeader>?>? insertHeaders;
 
   /// Creates a new [WebAclRuleActionCaptchaCustomRequestHandling].
   /// [insertHeaders] Custom headers to insert into the request. See Insert Header below.

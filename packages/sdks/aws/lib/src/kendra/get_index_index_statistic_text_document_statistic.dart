@@ -25,8 +25,8 @@ class GetIndexIndexStatisticTextDocumentStatistic {
 
   factory GetIndexIndexStatisticTextDocumentStatistic.fromMap(Map<String, dynamic> map) {
     return GetIndexIndexStatisticTextDocumentStatistic(
-      indexedTextBytes: pulumi.Input.fromValue(map['indexedTextBytes'] as int),
-      indexedTextDocumentsCount: pulumi.Input.fromValue(map['indexedTextDocumentsCount'] as int),
+      indexedTextBytes: pulumi.Input.fromValue((map['indexedTextBytes'] as num).toInt()),
+      indexedTextDocumentsCount: pulumi.Input.fromValue((map['indexedTextDocumentsCount'] as num).toInt()),
     );
   }
 }

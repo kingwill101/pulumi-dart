@@ -130,6 +130,17 @@ Future<GetOntapFileSystemResult> getOntapFileSystem(
   return GetOntapFileSystemResult.fromMap(result);
 }
 
+pulumi.Output<GetOntapFileSystemResult> getOntapFileSystemOutput(
+  GetOntapFileSystemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:fsx/getOntapFileSystem:getOntapFileSystem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOntapFileSystemResult.fromMap);
+}
+
 /// Retrieve information on FSx ONTAP Storage Virtual Machine (SVM).
 ///
 /// The arguments of this data source act as filters for querying the available ONTAP Storage Virtual Machines in the current region. The given filters must match exactly one Storage Virtual Machine whose data will be exported as attributes.
@@ -388,6 +399,17 @@ Future<GetOntapStorageVirtualMachineResult> getOntapStorageVirtualMachine(
   return GetOntapStorageVirtualMachineResult.fromMap(result);
 }
 
+pulumi.Output<GetOntapStorageVirtualMachineResult> getOntapStorageVirtualMachineOutput(
+  GetOntapStorageVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:fsx/getOntapStorageVirtualMachine:getOntapStorageVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOntapStorageVirtualMachineResult.fromMap);
+}
+
 /// This resource can be useful for getting back a set of FSx ONTAP Storage Virtual Machine (SVM) IDs.
 ///
 /// ## Example Usage
@@ -541,6 +563,17 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
   return GetOntapStorageVirtualMachinesResult.fromMap(result);
 }
 
+pulumi.Output<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachinesOutput(
+  GetOntapStorageVirtualMachinesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:fsx/getOntapStorageVirtualMachines:getOntapStorageVirtualMachines',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOntapStorageVirtualMachinesResult.fromMap);
+}
+
 /// Use this data source to get information about an Amazon FSx for OpenZFS Snapshot for use when provisioning new Volumes.
 ///
 /// ## Example Usage
@@ -553,22 +586,22 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.fsx.getOpenZfsSnapshot({
-///     mostRecent: true,
 ///     filters: [{
 ///         name: "volume-id",
 ///         values: ["fsvol-073a32b6098a73feb"],
 ///     }],
+///     mostRecent: true,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.fsx.get_open_zfs_snapshot(most_recent=True,
-///     filters=[{
+/// example = aws.fsx.get_open_zfs_snapshot(filters=[{
 ///         "name": "volume-id",
 ///         "values": ["fsvol-073a32b6098a73feb"],
-///     }])
+///     }],
+///     most_recent=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -580,7 +613,6 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
 /// {
 ///     var example = Aws.Fsx.GetOpenZfsSnapshot.Invoke(new()
 ///     {
-///         MostRecent = true,
 ///         Filters = new[]
 ///         {
 ///             new Aws.Fsx.Inputs.GetOpenZfsSnapshotFilterInputArgs
@@ -592,6 +624,7 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
 ///                 },
 ///             },
 ///         },
+///         MostRecent = true,
 ///     });
 ///
 /// });
@@ -607,7 +640,6 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := fsx.LookupOpenZfsSnapshot(ctx, &fsx.LookupOpenZfsSnapshotArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
 /// 			Filters: []fsx.GetOpenZfsSnapshotFilter{
 /// 				{
 /// 					Name: "volume-id",
@@ -616,6 +648,7 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
 /// 					},
 /// 				},
 /// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -634,11 +667,11 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
 /// }
 ///
 /// data "aws_fsx_getopenzfssnapshot" "example" {
-///   most_recent = true
 ///   filters {
 ///     name   = "volume-id"
 ///     values = ["fsvol-073a32b6098a73feb"]
 ///   }
+///   most_recent = true
 /// }
 /// ```
 /// ```java
@@ -664,11 +697,11 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = FsxFunctions.getOpenZfsSnapshot(GetOpenZfsSnapshotArgs.builder()
-///             .mostRecent(true)
 ///             .filters(GetOpenZfsSnapshotFilterArgs.builder()
 ///                 .name("volume-id")
 ///                 .values("fsvol-073a32b6098a73feb")
 ///                 .build())
+///             .mostRecent(true)
 ///             .build());
 ///
 ///     }
@@ -680,11 +713,11 @@ Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
 ///     fn::invoke:
 ///       function: aws:fsx:getOpenZfsSnapshot
 ///       arguments:
-///         mostRecent: true
 ///         filters:
 ///           - name: volume-id
 ///             values:
 ///               - fsvol-073a32b6098a73feb
+///         mostRecent: true
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_fsx_get_open_zfs_snapshot_get_open_zfs_snapshot_args_doc}
 /// [options] Invoke options controlling this call.
@@ -699,6 +732,17 @@ Future<GetOpenZfsSnapshotResult> getOpenZfsSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOpenZfsSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetOpenZfsSnapshotResult> getOpenZfsSnapshotOutput(
+  GetOpenZfsSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:fsx/getOpenZfsSnapshot:getOpenZfsSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOpenZfsSnapshotResult.fromMap);
 }
 
 /// Retrieve information on FSx Windows File System.
@@ -819,4 +863,15 @@ Future<GetWindowsFileSystemResult> getWindowsFileSystem(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWindowsFileSystemResult.fromMap(result);
+}
+
+pulumi.Output<GetWindowsFileSystemResult> getWindowsFileSystemOutput(
+  GetWindowsFileSystemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:fsx/getWindowsFileSystem:getWindowsFileSystem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWindowsFileSystemResult.fromMap);
 }

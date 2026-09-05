@@ -125,7 +125,7 @@ class SmsPreferences extends pulumi.CustomResource {
           'aws:sns/smsPreferences:SmsPreferences',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     defaultSenderId = registerOutput<String?>('defaultSenderId');
     defaultSmsType = registerOutput<String?>('defaultSmsType');
@@ -141,11 +141,12 @@ class SmsPreferences extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SmsPreferencesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SmsPreferences._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -159,6 +160,24 @@ class SmsPreferences extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    defaultSenderId = registerOutput<String?>('defaultSenderId');
+    defaultSmsType = registerOutput<String?>('defaultSmsType');
+    deliveryStatusIamRoleArn = registerOutput<String?>('deliveryStatusIamRoleArn');
+    deliveryStatusSuccessSamplingRate = registerOutput<String?>('deliveryStatusSuccessSamplingRate');
+    monthlySpendLimit = registerOutput<int>('monthlySpendLimit');
+    region = registerOutput<String>('region');
+    usageReportS3Bucket = registerOutput<String?>('usageReportS3Bucket');
+  }
+
+  /// Creates a typed reference to an existing [SmsPreferences] resource.
+  SmsPreferences.reference(String urn)
+    : super(
+        'aws:sns/smsPreferences:SmsPreferences',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     defaultSenderId = registerOutput<String?>('defaultSenderId');
     defaultSmsType = registerOutput<String?>('defaultSmsType');
     deliveryStatusIamRoleArn = registerOutput<String?>('deliveryStatusIamRoleArn');

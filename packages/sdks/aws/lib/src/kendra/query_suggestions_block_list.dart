@@ -15,13 +15,13 @@ import 'query_suggestions_block_list_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kendra.QuerySuggestionsBlockList("example", {
-///     indexId: exampleAwsKendraIndex.id,
-///     name: "Example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     sourceS3Path: {
 ///         bucket: exampleAwsS3Bucket.id,
 ///         key: "example/suggestions.txt",
 ///     },
+///     indexId: exampleAwsKendraIndex.id,
+///     name: "Example",
+///     roleArn: exampleAwsIamRole.arn,
 ///     tags: {
 ///         Name: "Example Kendra Index",
 ///     },
@@ -32,13 +32,13 @@ import 'query_suggestions_block_list_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kendra.QuerySuggestionsBlockList("example",
-///     index_id=example_aws_kendra_index["id"],
-///     name="Example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     source_s3_path={
 ///         "bucket": example_aws_s3_bucket["id"],
 ///         "key": "example/suggestions.txt",
 ///     },
+///     index_id=example_aws_kendra_index["id"],
+///     name="Example",
+///     role_arn=example_aws_iam_role["arn"],
 ///     tags={
 ///         "Name": "Example Kendra Index",
 ///     })
@@ -53,14 +53,14 @@ import 'query_suggestions_block_list_state.dart';
 /// {
 ///     var example = new Aws.Kendra.QuerySuggestionsBlockList("example", new()
 ///     {
-///         IndexId = exampleAwsKendraIndex.Id,
-///         Name = "Example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         SourceS3Path = new Aws.Kendra.Inputs.QuerySuggestionsBlockListSourceS3PathArgs
 ///         {
 ///             Bucket = exampleAwsS3Bucket.Id,
 ///             Key = "example/suggestions.txt",
 ///         },
+///         IndexId = exampleAwsKendraIndex.Id,
+///         Name = "Example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///         Tags =
 ///         {
 ///             { "Name", "Example Kendra Index" },
@@ -80,13 +80,13 @@ import 'query_suggestions_block_list_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := kendra.NewQuerySuggestionsBlockList(ctx, "example", &kendra.QuerySuggestionsBlockListArgs{
-/// 			IndexId: pulumi.Any(exampleAwsKendraIndex.Id),
-/// 			Name:    pulumi.String("Example"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			SourceS3Path: &kendra.QuerySuggestionsBlockListSourceS3PathArgs{
 /// 				Bucket: pulumi.Any(exampleAwsS3Bucket.Id),
 /// 				Key:    pulumi.String("example/suggestions.txt"),
 /// 			},
+/// 			IndexId: pulumi.Any(exampleAwsKendraIndex.Id),
+/// 			Name:    pulumi.String("Example"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Kendra Index"),
 /// 			},
@@ -108,13 +108,13 @@ import 'query_suggestions_block_list_state.dart';
 /// }
 ///
 /// resource "aws_kendra_querysuggestionsblocklist" "example" {
-///   index_id = exampleAwsKendraIndex.id
-///   name     = "Example"
-///   role_arn = exampleAwsIamRole.arn
 ///   source_s3_path = {
 ///     bucket = exampleAwsS3Bucket.id
 ///     key    = "example/suggestions.txt"
 ///   }
+///   index_id = exampleAwsKendraIndex.id
+///   name     = "Example"
+///   role_arn = exampleAwsIamRole.arn
 ///   tags = {
 ///     "Name" = "Example Kendra Index"
 ///   }
@@ -143,13 +143,13 @@ import 'query_suggestions_block_list_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new QuerySuggestionsBlockList("example", QuerySuggestionsBlockListArgs.builder()
-///             .indexId(exampleAwsKendraIndex.id())
-///             .name("Example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .sourceS3Path(QuerySuggestionsBlockListSourceS3PathArgs.builder()
 ///                 .bucket(exampleAwsS3Bucket.id())
 ///                 .key("example/suggestions.txt")
 ///                 .build())
+///             .indexId(exampleAwsKendraIndex.id())
+///             .name("Example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .tags(Map.of("Name", "Example Kendra Index"))
 ///             .build());
 ///
@@ -161,12 +161,12 @@ import 'query_suggestions_block_list_state.dart';
 ///   example:
 ///     type: aws:kendra:QuerySuggestionsBlockList
 ///     properties:
-///       indexId: ${exampleAwsKendraIndex.id}
-///       name: Example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       sourceS3Path:
 ///         bucket: ${exampleAwsS3Bucket.id}
 ///         key: example/suggestions.txt
+///       indexId: ${exampleAwsKendraIndex.id}
+///       name: Example
+///       roleArn: ${exampleAwsIamRole.arn}
 ///       tags:
 ///         Name: Example Kendra Index
 /// ```
@@ -212,7 +212,7 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
           'aws:kendra/querySuggestionsBlockList:QuerySuggestionsBlockList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -223,8 +223,8 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     sourceS3Path = registerOutput<QuerySuggestionsBlockListSourceS3Path>('sourceS3Path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuerySuggestionsBlockListSourceS3Path.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [QuerySuggestionsBlockList] resource's state with the given [name] and [id].
@@ -232,11 +232,12 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QuerySuggestionsBlockListState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QuerySuggestionsBlockList._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -259,7 +260,29 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     sourceS3Path = registerOutput<QuerySuggestionsBlockListSourceS3Path>('sourceS3Path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuerySuggestionsBlockListSourceS3Path.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [QuerySuggestionsBlockList] resource.
+  QuerySuggestionsBlockList.reference(String urn)
+    : super(
+        'aws:kendra/querySuggestionsBlockList:QuerySuggestionsBlockList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    indexId = registerOutput<String>('indexId');
+    this.name = registerOutput<String>('name');
+    querySuggestionsBlockListId = registerOutput<String>('querySuggestionsBlockListId');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    sourceS3Path = registerOutput<QuerySuggestionsBlockListSourceS3Path>('sourceS3Path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuerySuggestionsBlockListSourceS3Path.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

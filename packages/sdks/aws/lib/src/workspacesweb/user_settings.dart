@@ -147,11 +147,6 @@ import 'user_settings_toolbar_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.workspacesweb.UserSettings("example", {
-///     copyAllowed: "Enabled",
-///     downloadAllowed: "Enabled",
-///     pasteAllowed: "Enabled",
-///     printAllowed: "Enabled",
-///     uploadAllowed: "Enabled",
 ///     toolbarConfiguration: {
 ///         toolbarType: "Docked",
 ///         visualMode: "Dark",
@@ -160,6 +155,11 @@ import 'user_settings_toolbar_configuration.dart';
 ///             "Microphone",
 ///         ],
 ///     },
+///     copyAllowed: "Enabled",
+///     downloadAllowed: "Enabled",
+///     pasteAllowed: "Enabled",
+///     printAllowed: "Enabled",
+///     uploadAllowed: "Enabled",
 /// });
 /// ```
 /// ```python
@@ -167,11 +167,6 @@ import 'user_settings_toolbar_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.workspacesweb.UserSettings("example",
-///     copy_allowed="Enabled",
-///     download_allowed="Enabled",
-///     paste_allowed="Enabled",
-///     print_allowed="Enabled",
-///     upload_allowed="Enabled",
 ///     toolbar_configuration={
 ///         "toolbar_type": "Docked",
 ///         "visual_mode": "Dark",
@@ -179,7 +174,12 @@ import 'user_settings_toolbar_configuration.dart';
 ///             "Webcam",
 ///             "Microphone",
 ///         ],
-///     })
+///     },
+///     copy_allowed="Enabled",
+///     download_allowed="Enabled",
+///     paste_allowed="Enabled",
+///     print_allowed="Enabled",
+///     upload_allowed="Enabled")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -191,11 +191,6 @@ import 'user_settings_toolbar_configuration.dart';
 /// {
 ///     var example = new Aws.WorkSpacesWeb.UserSettings("example", new()
 ///     {
-///         CopyAllowed = "Enabled",
-///         DownloadAllowed = "Enabled",
-///         PasteAllowed = "Enabled",
-///         PrintAllowed = "Enabled",
-///         UploadAllowed = "Enabled",
 ///         ToolbarConfiguration = new Aws.WorkSpacesWeb.Inputs.UserSettingsToolbarConfigurationArgs
 ///         {
 ///             ToolbarType = "Docked",
@@ -206,6 +201,11 @@ import 'user_settings_toolbar_configuration.dart';
 ///                 "Microphone",
 ///             },
 ///         },
+///         CopyAllowed = "Enabled",
+///         DownloadAllowed = "Enabled",
+///         PasteAllowed = "Enabled",
+///         PrintAllowed = "Enabled",
+///         UploadAllowed = "Enabled",
 ///     });
 ///
 /// });
@@ -221,11 +221,6 @@ import 'user_settings_toolbar_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workspacesweb.NewUserSettings(ctx, "example", &workspacesweb.UserSettingsArgs{
-/// 			CopyAllowed:     pulumi.String("Enabled"),
-/// 			DownloadAllowed: pulumi.String("Enabled"),
-/// 			PasteAllowed:    pulumi.String("Enabled"),
-/// 			PrintAllowed:    pulumi.String("Enabled"),
-/// 			UploadAllowed:   pulumi.String("Enabled"),
 /// 			ToolbarConfiguration: &workspacesweb.UserSettingsToolbarConfigurationArgs{
 /// 				ToolbarType: pulumi.String("Docked"),
 /// 				VisualMode:  pulumi.String("Dark"),
@@ -234,6 +229,11 @@ import 'user_settings_toolbar_configuration.dart';
 /// 					pulumi.String("Microphone"),
 /// 				},
 /// 			},
+/// 			CopyAllowed:     pulumi.String("Enabled"),
+/// 			DownloadAllowed: pulumi.String("Enabled"),
+/// 			PasteAllowed:    pulumi.String("Enabled"),
+/// 			PrintAllowed:    pulumi.String("Enabled"),
+/// 			UploadAllowed:   pulumi.String("Enabled"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -252,16 +252,16 @@ import 'user_settings_toolbar_configuration.dart';
 /// }
 ///
 /// resource "aws_workspacesweb_usersettings" "example" {
-///   copy_allowed     = "Enabled"
-///   download_allowed = "Enabled"
-///   paste_allowed    = "Enabled"
-///   print_allowed    = "Enabled"
-///   upload_allowed   = "Enabled"
 ///   toolbar_configuration = {
 ///     toolbar_type         = "Docked"
 ///     visual_mode          = "Dark"
 ///     hidden_toolbar_items = ["Webcam", "Microphone"]
 ///   }
+///   copy_allowed     = "Enabled"
+///   download_allowed = "Enabled"
+///   paste_allowed    = "Enabled"
+///   print_allowed    = "Enabled"
+///   upload_allowed   = "Enabled"
 /// }
 /// ```
 /// ```java
@@ -287,11 +287,6 @@ import 'user_settings_toolbar_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserSettings("example", UserSettingsArgs.builder()
-///             .copyAllowed("Enabled")
-///             .downloadAllowed("Enabled")
-///             .pasteAllowed("Enabled")
-///             .printAllowed("Enabled")
-///             .uploadAllowed("Enabled")
 ///             .toolbarConfiguration(UserSettingsToolbarConfigurationArgs.builder()
 ///                 .toolbarType("Docked")
 ///                 .visualMode("Dark")
@@ -299,6 +294,11 @@ import 'user_settings_toolbar_configuration.dart';
 ///                     "Webcam",
 ///                     "Microphone")
 ///                 .build())
+///             .copyAllowed("Enabled")
+///             .downloadAllowed("Enabled")
+///             .pasteAllowed("Enabled")
+///             .printAllowed("Enabled")
+///             .uploadAllowed("Enabled")
 ///             .build());
 ///
 ///     }
@@ -309,17 +309,17 @@ import 'user_settings_toolbar_configuration.dart';
 ///   example:
 ///     type: aws:workspacesweb:UserSettings
 ///     properties:
-///       copyAllowed: Enabled
-///       downloadAllowed: Enabled
-///       pasteAllowed: Enabled
-///       printAllowed: Enabled
-///       uploadAllowed: Enabled
 ///       toolbarConfiguration:
 ///         toolbarType: Docked
 ///         visualMode: Dark
 ///         hiddenToolbarItems:
 ///           - Webcam
 ///           - Microphone
+///       copyAllowed: Enabled
+///       downloadAllowed: Enabled
+///       pasteAllowed: Enabled
+///       printAllowed: Enabled
+///       uploadAllowed: Enabled
 /// ```
 ///
 ///
@@ -335,18 +335,6 @@ import 'user_settings_toolbar_configuration.dart';
 ///     deletionWindowInDays: 7,
 /// });
 /// const exampleUserSettings = new aws.workspacesweb.UserSettings("example", {
-///     copyAllowed: "Enabled",
-///     downloadAllowed: "Enabled",
-///     pasteAllowed: "Enabled",
-///     printAllowed: "Enabled",
-///     uploadAllowed: "Enabled",
-///     deepLinkAllowed: "Enabled",
-///     disconnectTimeoutInMinutes: 30,
-///     idleDisconnectTimeoutInMinutes: 15,
-///     customerManagedKey: example.arn,
-///     additionalEncryptionContext: {
-///         Environment: "Production",
-///     },
 ///     toolbarConfiguration: {
 ///         toolbarType: "Docked",
 ///         visualMode: "Dark",
@@ -365,6 +353,18 @@ import 'user_settings_toolbar_configuration.dart';
 ///             domain: "blocked.com",
 ///         }],
 ///     },
+///     copyAllowed: "Enabled",
+///     downloadAllowed: "Enabled",
+///     pasteAllowed: "Enabled",
+///     printAllowed: "Enabled",
+///     uploadAllowed: "Enabled",
+///     deepLinkAllowed: "Enabled",
+///     disconnectTimeoutInMinutes: 30,
+///     idleDisconnectTimeoutInMinutes: 15,
+///     customerManagedKey: example.arn,
+///     additionalEncryptionContext: {
+///         Environment: "Production",
+///     },
 ///     tags: {
 ///         Name: "example-user-settings",
 ///     },
@@ -378,18 +378,6 @@ import 'user_settings_toolbar_configuration.dart';
 ///     description="KMS key for WorkSpaces Web User Settings",
 ///     deletion_window_in_days=7)
 /// example_user_settings = aws.workspacesweb.UserSettings("example",
-///     copy_allowed="Enabled",
-///     download_allowed="Enabled",
-///     paste_allowed="Enabled",
-///     print_allowed="Enabled",
-///     upload_allowed="Enabled",
-///     deep_link_allowed="Enabled",
-///     disconnect_timeout_in_minutes=30,
-///     idle_disconnect_timeout_in_minutes=15,
-///     customer_managed_key=example.arn,
-///     additional_encryption_context={
-///         "Environment": "Production",
-///     },
 ///     toolbar_configuration={
 ///         "toolbar_type": "Docked",
 ///         "visual_mode": "Dark",
@@ -407,6 +395,18 @@ import 'user_settings_toolbar_configuration.dart';
 ///         "blocklists": [{
 ///             "domain": "blocked.com",
 ///         }],
+///     },
+///     copy_allowed="Enabled",
+///     download_allowed="Enabled",
+///     paste_allowed="Enabled",
+///     print_allowed="Enabled",
+///     upload_allowed="Enabled",
+///     deep_link_allowed="Enabled",
+///     disconnect_timeout_in_minutes=30,
+///     idle_disconnect_timeout_in_minutes=15,
+///     customer_managed_key=example.arn,
+///     additional_encryption_context={
+///         "Environment": "Production",
 ///     },
 ///     tags={
 ///         "Name": "example-user-settings",
@@ -428,19 +428,6 @@ import 'user_settings_toolbar_configuration.dart';
 ///
 ///     var exampleUserSettings = new Aws.WorkSpacesWeb.UserSettings("example", new()
 ///     {
-///         CopyAllowed = "Enabled",
-///         DownloadAllowed = "Enabled",
-///         PasteAllowed = "Enabled",
-///         PrintAllowed = "Enabled",
-///         UploadAllowed = "Enabled",
-///         DeepLinkAllowed = "Enabled",
-///         DisconnectTimeoutInMinutes = 30,
-///         IdleDisconnectTimeoutInMinutes = 15,
-///         CustomerManagedKey = example.Arn,
-///         AdditionalEncryptionContext =
-///         {
-///             { "Environment", "Production" },
-///         },
 ///         ToolbarConfiguration = new Aws.WorkSpacesWeb.Inputs.UserSettingsToolbarConfigurationArgs
 ///         {
 ///             ToolbarType = "Docked",
@@ -470,6 +457,19 @@ import 'user_settings_toolbar_configuration.dart';
 ///                 },
 ///             },
 ///         },
+///         CopyAllowed = "Enabled",
+///         DownloadAllowed = "Enabled",
+///         PasteAllowed = "Enabled",
+///         PrintAllowed = "Enabled",
+///         UploadAllowed = "Enabled",
+///         DeepLinkAllowed = "Enabled",
+///         DisconnectTimeoutInMinutes = 30,
+///         IdleDisconnectTimeoutInMinutes = 15,
+///         CustomerManagedKey = example.Arn,
+///         AdditionalEncryptionContext =
+///         {
+///             { "Environment", "Production" },
+///         },
 ///         Tags =
 ///         {
 ///             { "Name", "example-user-settings" },
@@ -497,18 +497,6 @@ import 'user_settings_toolbar_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = workspacesweb.NewUserSettings(ctx, "example", &workspacesweb.UserSettingsArgs{
-/// 			CopyAllowed:                    pulumi.String("Enabled"),
-/// 			DownloadAllowed:                pulumi.String("Enabled"),
-/// 			PasteAllowed:                   pulumi.String("Enabled"),
-/// 			PrintAllowed:                   pulumi.String("Enabled"),
-/// 			UploadAllowed:                  pulumi.String("Enabled"),
-/// 			DeepLinkAllowed:                pulumi.String("Enabled"),
-/// 			DisconnectTimeoutInMinutes:     pulumi.Int(30),
-/// 			IdleDisconnectTimeoutInMinutes: pulumi.Int(15),
-/// 			CustomerManagedKey:             example.Arn,
-/// 			AdditionalEncryptionContext: pulumi.StringMap{
-/// 				"Environment": pulumi.String("Production"),
-/// 			},
 /// 			ToolbarConfiguration: &workspacesweb.UserSettingsToolbarConfigurationArgs{
 /// 				ToolbarType: pulumi.String("Docked"),
 /// 				VisualMode:  pulumi.String("Dark"),
@@ -530,6 +518,18 @@ import 'user_settings_toolbar_configuration.dart';
 /// 						Domain: pulumi.String("blocked.com"),
 /// 					},
 /// 				},
+/// 			},
+/// 			CopyAllowed:                    pulumi.String("Enabled"),
+/// 			DownloadAllowed:                pulumi.String("Enabled"),
+/// 			PasteAllowed:                   pulumi.String("Enabled"),
+/// 			PrintAllowed:                   pulumi.String("Enabled"),
+/// 			UploadAllowed:                  pulumi.String("Enabled"),
+/// 			DeepLinkAllowed:                pulumi.String("Enabled"),
+/// 			DisconnectTimeoutInMinutes:     pulumi.Int(30),
+/// 			IdleDisconnectTimeoutInMinutes: pulumi.Int(15),
+/// 			CustomerManagedKey:             example.Arn,
+/// 			AdditionalEncryptionContext: pulumi.StringMap{
+/// 				"Environment": pulumi.String("Production"),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-user-settings"),
@@ -556,18 +556,6 @@ import 'user_settings_toolbar_configuration.dart';
 ///   deletion_window_in_days = 7
 /// }
 /// resource "aws_workspacesweb_usersettings" "example" {
-///   copy_allowed                       = "Enabled"
-///   download_allowed                   = "Enabled"
-///   paste_allowed                      = "Enabled"
-///   print_allowed                      = "Enabled"
-///   upload_allowed                     = "Enabled"
-///   deep_link_allowed                  = "Enabled"
-///   disconnect_timeout_in_minutes      = 30
-///   idle_disconnect_timeout_in_minutes = 15
-///   customer_managed_key               = aws_kms_key.example.arn
-///   additional_encryption_context = {
-///     "Environment" = "Production"
-///   }
 ///   toolbar_configuration = {
 ///     toolbar_type           = "Docked"
 ///     visual_mode            = "Dark"
@@ -582,6 +570,18 @@ import 'user_settings_toolbar_configuration.dart';
 ///     blocklists = [{
 ///       "domain" = "blocked.com"
 ///     }]
+///   }
+///   copy_allowed                       = "Enabled"
+///   download_allowed                   = "Enabled"
+///   paste_allowed                      = "Enabled"
+///   print_allowed                      = "Enabled"
+///   upload_allowed                     = "Enabled"
+///   deep_link_allowed                  = "Enabled"
+///   disconnect_timeout_in_minutes      = 30
+///   idle_disconnect_timeout_in_minutes = 15
+///   customer_managed_key               = aws_kms_key.example.arn
+///   additional_encryption_context = {
+///     "Environment" = "Production"
 ///   }
 ///   tags = {
 ///     "Name" = "example-user-settings"
@@ -621,16 +621,6 @@ import 'user_settings_toolbar_configuration.dart';
 ///             .build());
 ///
 ///         var exampleUserSettings = new UserSettings("exampleUserSettings", UserSettingsArgs.builder()
-///             .copyAllowed("Enabled")
-///             .downloadAllowed("Enabled")
-///             .pasteAllowed("Enabled")
-///             .printAllowed("Enabled")
-///             .uploadAllowed("Enabled")
-///             .deepLinkAllowed("Enabled")
-///             .disconnectTimeoutInMinutes(30)
-///             .idleDisconnectTimeoutInMinutes(15)
-///             .customerManagedKey(example.arn())
-///             .additionalEncryptionContext(Map.of("Environment", "Production"))
 ///             .toolbarConfiguration(UserSettingsToolbarConfigurationArgs.builder()
 ///                 .toolbarType("Docked")
 ///                 .visualMode("Dark")
@@ -648,6 +638,16 @@ import 'user_settings_toolbar_configuration.dart';
 ///                     .domain("blocked.com")
 ///                     .build())
 ///                 .build())
+///             .copyAllowed("Enabled")
+///             .downloadAllowed("Enabled")
+///             .pasteAllowed("Enabled")
+///             .printAllowed("Enabled")
+///             .uploadAllowed("Enabled")
+///             .deepLinkAllowed("Enabled")
+///             .disconnectTimeoutInMinutes(30)
+///             .idleDisconnectTimeoutInMinutes(15)
+///             .customerManagedKey(example.arn())
+///             .additionalEncryptionContext(Map.of("Environment", "Production"))
 ///             .tags(Map.of("Name", "example-user-settings"))
 ///             .build());
 ///
@@ -665,17 +665,6 @@ import 'user_settings_toolbar_configuration.dart';
 ///     type: aws:workspacesweb:UserSettings
 ///     name: example
 ///     properties:
-///       copyAllowed: Enabled
-///       downloadAllowed: Enabled
-///       pasteAllowed: Enabled
-///       printAllowed: Enabled
-///       uploadAllowed: Enabled
-///       deepLinkAllowed: Enabled
-///       disconnectTimeoutInMinutes: 30
-///       idleDisconnectTimeoutInMinutes: 15
-///       customerManagedKey: ${example.arn}
-///       additionalEncryptionContext:
-///         Environment: Production
 ///       toolbarConfiguration:
 ///         toolbarType: Docked
 ///         visualMode: Dark
@@ -689,6 +678,17 @@ import 'user_settings_toolbar_configuration.dart';
 ///             path: /path
 ///         blocklists:
 ///           - domain: blocked.com
+///       copyAllowed: Enabled
+///       downloadAllowed: Enabled
+///       pasteAllowed: Enabled
+///       printAllowed: Enabled
+///       uploadAllowed: Enabled
+///       deepLinkAllowed: Enabled
+///       disconnectTimeoutInMinutes: 30
+///       idleDisconnectTimeoutInMinutes: 15
+///       customerManagedKey: ${example.arn}
+///       additionalEncryptionContext:
+///         Environment: Production
 ///       tags:
 ///         Name: example-user-settings
 /// ```
@@ -751,10 +751,10 @@ class UserSettings extends pulumi.CustomResource {
           'aws:workspacesweb/userSettings:UserSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cookieSynchronizationConfiguration = registerOutput<UserSettingsCookieSynchronizationConfiguration?>('cookieSynchronizationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserSettingsCookieSynchronizationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     copyAllowed = registerOutput<String>('copyAllowed');
     customerManagedKey = registerOutput<String?>('customerManagedKey');
@@ -765,8 +765,8 @@ class UserSettings extends pulumi.CustomResource {
     pasteAllowed = registerOutput<String>('pasteAllowed');
     printAllowed = registerOutput<String>('printAllowed');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     toolbarConfiguration = registerOutput<UserSettingsToolbarConfiguration?>('toolbarConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserSettingsToolbarConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uploadAllowed = registerOutput<String>('uploadAllowed');
     userSettingsArn = registerOutput<String>('userSettingsArn');
@@ -777,11 +777,12 @@ class UserSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -795,8 +796,8 @@ class UserSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cookieSynchronizationConfiguration = registerOutput<UserSettingsCookieSynchronizationConfiguration?>('cookieSynchronizationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserSettingsCookieSynchronizationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     copyAllowed = registerOutput<String>('copyAllowed');
     customerManagedKey = registerOutput<String?>('customerManagedKey');
@@ -807,8 +808,36 @@ class UserSettings extends pulumi.CustomResource {
     pasteAllowed = registerOutput<String>('pasteAllowed');
     printAllowed = registerOutput<String>('printAllowed');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    toolbarConfiguration = registerOutput<UserSettingsToolbarConfiguration?>('toolbarConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserSettingsToolbarConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uploadAllowed = registerOutput<String>('uploadAllowed');
+    userSettingsArn = registerOutput<String>('userSettingsArn');
+  }
+
+  /// Creates a typed reference to an existing [UserSettings] resource.
+  UserSettings.reference(String urn)
+    : super(
+        'aws:workspacesweb/userSettings:UserSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cookieSynchronizationConfiguration = registerOutput<UserSettingsCookieSynchronizationConfiguration?>('cookieSynchronizationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserSettingsCookieSynchronizationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    copyAllowed = registerOutput<String>('copyAllowed');
+    customerManagedKey = registerOutput<String?>('customerManagedKey');
+    deepLinkAllowed = registerOutput<String>('deepLinkAllowed');
+    disconnectTimeoutInMinutes = registerOutput<int?>('disconnectTimeoutInMinutes');
+    downloadAllowed = registerOutput<String>('downloadAllowed');
+    idleDisconnectTimeoutInMinutes = registerOutput<int?>('idleDisconnectTimeoutInMinutes');
+    pasteAllowed = registerOutput<String>('pasteAllowed');
+    printAllowed = registerOutput<String>('printAllowed');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     toolbarConfiguration = registerOutput<UserSettingsToolbarConfiguration?>('toolbarConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserSettingsToolbarConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uploadAllowed = registerOutput<String>('uploadAllowed');
     userSettingsArn = registerOutput<String>('userSettingsArn');

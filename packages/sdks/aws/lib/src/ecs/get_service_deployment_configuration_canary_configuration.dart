@@ -26,7 +26,7 @@ class GetServiceDeploymentConfigurationCanaryConfiguration {
   factory GetServiceDeploymentConfigurationCanaryConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfigurationCanaryConfiguration(
       canaryBakeTimeInMinutes: pulumi.Input.fromValue(map['canaryBakeTimeInMinutes'] as String),
-      canaryPercent: pulumi.Input.fromValue(map['canaryPercent'] as double),
+      canaryPercent: pulumi.Input.fromValue((map['canaryPercent'] as num).toDouble()),
     );
   }
 }

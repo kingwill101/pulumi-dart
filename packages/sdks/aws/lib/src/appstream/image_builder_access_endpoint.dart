@@ -6,7 +6,7 @@ class ImageBuilderAccessEndpoint {
   /// Type of interface endpoint. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/appstream2/latest/APIReference/API_AccessEndpoint.html).
   final pulumi.Input<String> endpointType;
   /// Identifier (ID) of the interface VPC endpoint.
-  final pulumi.Input<String>? vpceId;
+  final pulumi.Input<String?>? vpceId;
 
   /// Creates a new [ImageBuilderAccessEndpoint].
   /// [endpointType] Type of interface endpoint. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/appstream2/latest/APIReference/API_AccessEndpoint.html).

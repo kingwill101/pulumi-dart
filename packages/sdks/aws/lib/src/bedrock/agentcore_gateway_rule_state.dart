@@ -9,26 +9,26 @@ import 'agentcore_gateway_rule_timeouts.dart';
 /// Input properties used for looking up and filtering AgentcoreGatewayRule resources.
 class AgentcoreGatewayRuleState {
   /// One or two `action` blocks defining what happens when the rule's conditions match. See Action below.
-  final pulumi.Input<List<AgentcoreGatewayRuleAction>>? actions;
+  final pulumi.Input<List<AgentcoreGatewayRuleAction>?>? actions;
   /// Up to two `condition` blocks that must all be satisfied for the rule's actions to apply. See Condition below.
-  final pulumi.Input<List<AgentcoreGatewayRuleCondition>>? conditions;
+  final pulumi.Input<List<AgentcoreGatewayRuleCondition>?>? conditions;
   /// Description of the rule. Between 1 and 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ARN of the gateway that owns the rule.
-  final pulumi.Input<String>? gatewayArn;
+  final pulumi.Input<String?>? gatewayArn;
   /// Identifier of the gateway to attach the rule to.
-  final pulumi.Input<String>? gatewayIdentifier;
+  final pulumi.Input<String?>? gatewayIdentifier;
   /// Priority of the rule, between 1 and 1000000. Rules are evaluated in ascending order of priority.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the rule.
-  final pulumi.Input<String>? ruleId;
+  final pulumi.Input<String?>? ruleId;
   /// Present when the rule is system-managed. See `system` Block below.
-  final pulumi.Input<List<AgentcoreGatewayRuleSystem>>? systems;
-  final pulumi.Input<AgentcoreGatewayRuleTimeouts>? timeouts;
+  final pulumi.Input<List<AgentcoreGatewayRuleSystem>?>? systems;
+  final pulumi.Input<AgentcoreGatewayRuleTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreGatewayRuleState].
   /// [actions] One or two `action` blocks defining what happens when the rule's conditions match. See Action below.
@@ -76,7 +76,7 @@ class AgentcoreGatewayRuleState {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gatewayArn: (() { final guardedValue = map['gatewayArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gatewayIdentifier: (() { final guardedValue = map['gatewayIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       systems: (() { final guardedValue = map['systems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreGatewayRuleSystem>(guardedValue, (value) => AgentcoreGatewayRuleSystem.fromMap((value as Map).cast<String, dynamic>()))); })(),

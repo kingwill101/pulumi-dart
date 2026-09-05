@@ -18,18 +18,18 @@ import 'rest_api_policy_state.dart';
 /// const testRestApi = new aws.apigateway.RestApi("test", {name: "example-rest-api"});
 /// const test = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
-///         principals: [{
-///             type: "AWS",
-///             identifiers: ["*"],
-///         }],
-///         actions: ["execute-api:Invoke"],
-///         resources: [pulumi.interpolate`${testRestApi.executionArn}/*`],
 ///         conditions: [{
 ///             test: "IpAddress",
 ///             variable: "aws:SourceIp",
 ///             values: ["123.123.123.123/32"],
 ///         }],
+///         principals: [{
+///             type: "AWS",
+///             identifiers: ["*"],
+///         }],
+///         effect: "Allow",
+///         actions: ["execute-api:Invoke"],
+///         resources: [pulumi.interpolate`${testRestApi.executionArn}/*`],
 ///     }],
 /// });
 /// const testRestApiPolicy = new aws.apigateway.RestApiPolicy("test", {
@@ -43,18 +43,18 @@ import 'rest_api_policy_state.dart';
 ///
 /// test_rest_api = aws.apigateway.RestApi("test", name="example-rest-api")
 /// test = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "AWS",
-///         "identifiers": ["*"],
-///     }],
-///     "actions": ["execute-api:Invoke"],
-///     "resources": [test_rest_api.execution_arn.apply(lambda execution_arn: f"{execution_arn}/*")],
 ///     "conditions": [{
 ///         "test": "IpAddress",
 ///         "variable": "aws:SourceIp",
 ///         "values": ["123.123.123.123/32"],
 ///     }],
+///     "principals": [{
+///         "type": "AWS",
+///         "identifiers": ["*"],
+///     }],
+///     "effect": "Allow",
+///     "actions": ["execute-api:Invoke"],
+///     "resources": [test_rest_api.execution_arn.apply(lambda execution_arn: f"{execution_arn}/*")],
 /// }])
 /// test_rest_api_policy = aws.apigateway.RestApiPolicy("test",
 ///     rest_api_id=test_rest_api.id,
@@ -79,26 +79,6 @@ import 'rest_api_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "AWS",
-///                         Identifiers = new[]
-///                         {
-///                             "*",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "execute-api:Invoke",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     $"{testRestApi.ExecutionArn}/*",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -110,6 +90,26 @@ import 'rest_api_policy_state.dart';
 ///                             "123.123.123.123/32",
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "AWS",
+///                         Identifiers = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "execute-api:Invoke",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"{testRestApi.ExecutionArn}/*",
 ///                 },
 ///             },
 ///         },
@@ -145,23 +145,6 @@ import 'rest_api_policy_state.dart';
 /// 		test := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("AWS"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("*"),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("execute-api:Invoke"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						testRestApi.ExecutionArn.ApplyT(func(executionArn string) (string, error) {
-/// 							return fmt.Sprintf("%v/*", executionArn), nil
-/// 						}).(pulumi.StringOutput),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("IpAddress"),
@@ -170,6 +153,23 @@ import 'rest_api_policy_state.dart';
 /// 								pulumi.String("123.123.123.123/32"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("execute-api:Invoke"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						testRestApi.ExecutionArn.ApplyT(func(executionArn string) (string, error) {
+/// 							return fmt.Sprintf("%v/*", executionArn), nil
+/// 						}).(pulumi.StringOutput),
 /// 					},
 /// 				},
 /// 			},
@@ -196,18 +196,18 @@ import 'rest_api_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "test" {
 ///   statements {
-///     effect = "Allow"
-///     principals {
-///       type        = "AWS"
-///       identifiers = ["*"]
-///     }
-///     actions   = ["execute-api:Invoke"]
-///     resources = ["${aws_apigateway_restapi.test.execution_arn}/*"]
 ///     conditions {
 ///       test     = "IpAddress"
 ///       variable = "aws:SourceIp"
 ///       values   = ["123.123.123.123/32"]
 ///     }
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["*"]
+///     }
+///     effect    = "Allow"
+///     actions   = ["execute-api:Invoke"]
+///     resources = ["${aws_apigateway_restapi.test.execution_arn}/*"]
 ///   }
 /// }
 ///
@@ -230,8 +230,8 @@ import 'rest_api_policy_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.apigateway.RestApiPolicy;
 /// import com.pulumi.aws.apigateway.RestApiPolicyArgs;
 /// import java.util.ArrayList;
@@ -253,18 +253,18 @@ import 'rest_api_policy_state.dart';
 ///
 ///         final var test = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("AWS")
-///                     .identifiers("*")
-///                     .build())
-///                 .actions("execute-api:Invoke")
-///                 .resources(testRestApi.executionArn().applyValue(_executionArn -> String.format("%s/*", _executionArn)))
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("IpAddress")
 ///                     .variable("aws:SourceIp")
 ///                     .values("123.123.123.123/32")
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("AWS")
+///                     .identifiers("*")
+///                     .build())
+///                 .effect("Allow")
+///                 .actions("execute-api:Invoke")
+///                 .resources(testRestApi.executionArn().applyValue(_executionArn -> String.format("%s/*", _executionArn)))
 ///                 .build())
 ///             .build());
 ///
@@ -295,20 +295,20 @@ import 'rest_api_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
-///               - type: AWS
-///                 identifiers:
-///                   - '*'
-///             actions:
-///               - execute-api:Invoke
-///             resources:
-///               - ${testRestApi.executionArn}/*
-///             conditions:
+///           - conditions:
 ///               - test: IpAddress
 ///                 variable: aws:SourceIp
 ///                 values:
 ///                   - 123.123.123.123/32
+///             principals:
+///               - type: AWS
+///                 identifiers:
+///                   - '*'
+///             effect: Allow
+///             actions:
+///               - execute-api:Invoke
+///             resources:
+///               - ${testRestApi.executionArn}/*
 /// ```
 ///
 ///
@@ -339,7 +339,7 @@ class RestApiPolicy extends pulumi.CustomResource {
           'aws:apigateway/restApiPolicy:RestApiPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -351,11 +351,12 @@ class RestApiPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RestApiPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RestApiPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -369,6 +370,20 @@ class RestApiPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    restApiId = registerOutput<String>('restApiId');
+  }
+
+  /// Creates a typed reference to an existing [RestApiPolicy] resource.
+  RestApiPolicy.reference(String urn)
+    : super(
+        'aws:apigateway/restApiPolicy:RestApiPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');

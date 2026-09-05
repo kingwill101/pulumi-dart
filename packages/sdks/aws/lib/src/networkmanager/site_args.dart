@@ -9,15 +9,15 @@ import 'site_location.dart';
 /// {@macro pulumi_networkmanager_site_site_args_doc}
 class SiteArgs {
   /// Description of the Site.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ID of the Global Network to create the site in.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> globalNetworkId;
   /// Site location. See below.
-  final pulumi.Input<SiteLocation>? location;
+  final pulumi.Input<SiteLocation?>? location;
   /// Key-value tags for the Site. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SiteArgs].
   /// [description] Description of the Site.

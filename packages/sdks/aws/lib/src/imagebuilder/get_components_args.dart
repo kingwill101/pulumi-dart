@@ -9,11 +9,11 @@ import 'get_components_filter.dart';
 /// {@macro pulumi_imagebuilder_get_components_get_components_args_doc}
 class GetComponentsArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetComponentsFilter>>? filters;
+  final pulumi.Input<List<GetComponentsFilter>?>? filters;
   /// Owner of the image recipes. Valid values are `Self`, `Shared`, `Amazon` and `ThirdParty`. Defaults to `Self`.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetComponentsArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

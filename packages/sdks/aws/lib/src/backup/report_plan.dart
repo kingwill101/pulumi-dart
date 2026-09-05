@@ -14,8 +14,6 @@ import 'report_plan_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.backup.ReportPlan("example", {
-///     name: "example_name",
-///     description: "example description",
 ///     reportDeliveryChannel: {
 ///         formats: [
 ///             "CSV",
@@ -26,6 +24,8 @@ import 'report_plan_state.dart';
 ///     reportSetting: {
 ///         reportTemplate: "RESTORE_JOB_REPORT",
 ///     },
+///     name: "example_name",
+///     description: "example description",
 ///     tags: {
 ///         Name: "Example Report Plan",
 ///     },
@@ -36,8 +36,6 @@ import 'report_plan_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.backup.ReportPlan("example",
-///     name="example_name",
-///     description="example description",
 ///     report_delivery_channel={
 ///         "formats": [
 ///             "CSV",
@@ -48,6 +46,8 @@ import 'report_plan_state.dart';
 ///     report_setting={
 ///         "report_template": "RESTORE_JOB_REPORT",
 ///     },
+///     name="example_name",
+///     description="example description",
 ///     tags={
 ///         "Name": "Example Report Plan",
 ///     })
@@ -62,8 +62,6 @@ import 'report_plan_state.dart';
 /// {
 ///     var example = new Aws.Backup.ReportPlan("example", new()
 ///     {
-///         Name = "example_name",
-///         Description = "example description",
 ///         ReportDeliveryChannel = new Aws.Backup.Inputs.ReportPlanReportDeliveryChannelArgs
 ///         {
 ///             Formats = new[]
@@ -77,6 +75,8 @@ import 'report_plan_state.dart';
 ///         {
 ///             ReportTemplate = "RESTORE_JOB_REPORT",
 ///         },
+///         Name = "example_name",
+///         Description = "example description",
 ///         Tags =
 ///         {
 ///             { "Name", "Example Report Plan" },
@@ -96,8 +96,6 @@ import 'report_plan_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := backup.NewReportPlan(ctx, "example", &backup.ReportPlanArgs{
-/// 			Name:        pulumi.String("example_name"),
-/// 			Description: pulumi.String("example description"),
 /// 			ReportDeliveryChannel: &backup.ReportPlanReportDeliveryChannelArgs{
 /// 				Formats: pulumi.StringArray{
 /// 					pulumi.String("CSV"),
@@ -108,6 +106,8 @@ import 'report_plan_state.dart';
 /// 			ReportSetting: &backup.ReportPlanReportSettingArgs{
 /// 				ReportTemplate: pulumi.String("RESTORE_JOB_REPORT"),
 /// 			},
+/// 			Name:        pulumi.String("example_name"),
+/// 			Description: pulumi.String("example description"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Report Plan"),
 /// 			},
@@ -129,8 +129,6 @@ import 'report_plan_state.dart';
 /// }
 ///
 /// resource "aws_backup_reportplan" "example" {
-///   name        = "example_name"
-///   description = "example description"
 ///   report_delivery_channel = {
 ///     formats        = ["CSV", "JSON"]
 ///     s3_bucket_name = "example-bucket-name"
@@ -138,6 +136,8 @@ import 'report_plan_state.dart';
 ///   report_setting = {
 ///     report_template = "RESTORE_JOB_REPORT"
 ///   }
+///   name        = "example_name"
+///   description = "example description"
 ///   tags = {
 ///     "Name" = "Example Report Plan"
 ///   }
@@ -167,8 +167,6 @@ import 'report_plan_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ReportPlan("example", ReportPlanArgs.builder()
-///             .name("example_name")
-///             .description("example description")
 ///             .reportDeliveryChannel(ReportPlanReportDeliveryChannelArgs.builder()
 ///                 .formats(
 ///                     "CSV",
@@ -178,6 +176,8 @@ import 'report_plan_state.dart';
 ///             .reportSetting(ReportPlanReportSettingArgs.builder()
 ///                 .reportTemplate("RESTORE_JOB_REPORT")
 ///                 .build())
+///             .name("example_name")
+///             .description("example description")
 ///             .tags(Map.of("Name", "Example Report Plan"))
 ///             .build());
 ///
@@ -189,8 +189,6 @@ import 'report_plan_state.dart';
 ///   example:
 ///     type: aws:backup:ReportPlan
 ///     properties:
-///       name: example_name
-///       description: example description
 ///       reportDeliveryChannel:
 ///         formats:
 ///           - CSV
@@ -198,6 +196,8 @@ import 'report_plan_state.dart';
 ///         s3BucketName: example-bucket-name
 ///       reportSetting:
 ///         reportTemplate: RESTORE_JOB_REPORT
+///       name: example_name
+///       description: example description
 ///       tags:
 ///         Name: Example Report Plan
 /// ```
@@ -244,7 +244,7 @@ class ReportPlan extends pulumi.CustomResource {
           'aws:backup/reportPlan:ReportPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
@@ -254,8 +254,8 @@ class ReportPlan extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reportDeliveryChannel = registerOutput<ReportPlanReportDeliveryChannel>('reportDeliveryChannel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportPlanReportDeliveryChannel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reportSetting = registerOutput<ReportPlanReportSetting>('reportSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportPlanReportSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ReportPlan] resource's state with the given [name] and [id].
@@ -263,11 +263,12 @@ class ReportPlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReportPlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReportPlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -289,7 +290,28 @@ class ReportPlan extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     reportDeliveryChannel = registerOutput<ReportPlanReportDeliveryChannel>('reportDeliveryChannel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportPlanReportDeliveryChannel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reportSetting = registerOutput<ReportPlanReportSetting>('reportSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportPlanReportSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ReportPlan] resource.
+  ReportPlan.reference(String urn)
+    : super(
+        'aws:backup/reportPlan:ReportPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationTime = registerOutput<String>('creationTime');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    reportDeliveryChannel = registerOutput<ReportPlanReportDeliveryChannel>('reportDeliveryChannel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportPlanReportDeliveryChannel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reportSetting = registerOutput<ReportPlanReportSetting>('reportSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportPlanReportSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

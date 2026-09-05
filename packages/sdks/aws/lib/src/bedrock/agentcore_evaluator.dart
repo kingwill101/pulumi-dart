@@ -16,12 +16,8 @@ import 'agentcore_evaluator_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreEvaluator("example", {
-///     evaluatorName: "helpfulness_evaluator",
-///     description: "Rates assistant helpfulness from 1 to 5",
-///     level: "TRACE",
 ///     evaluatorConfig: {
 ///         llmAsAJudge: {
-///             instructions: "Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5.",
 ///             ratingScale: {
 ///                 numericals: [
 ///                     {
@@ -38,16 +34,20 @@ import 'agentcore_evaluator_timeouts.dart';
 ///             },
 ///             modelConfig: {
 ///                 bedrockEvaluatorModelConfig: {
-///                     modelId: "us.amazon.nova-2-lite-v1:0",
 ///                     inferenceConfig: {
 ///                         maxTokens: 1024,
 ///                         temperature: 0,
 ///                         topP: 1,
 ///                     },
+///                     modelId: "us.amazon.nova-2-lite-v1:0",
 ///                 },
 ///             },
+///             instructions: "Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5.",
 ///         },
 ///     },
+///     evaluatorName: "helpfulness_evaluator",
+///     description: "Rates assistant helpfulness from 1 to 5",
+///     level: "TRACE",
 /// });
 /// ```
 /// ```python
@@ -55,12 +55,8 @@ import 'agentcore_evaluator_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreEvaluator("example",
-///     evaluator_name="helpfulness_evaluator",
-///     description="Rates assistant helpfulness from 1 to 5",
-///     level="TRACE",
 ///     evaluator_config={
 ///         "llm_as_a_judge": {
-///             "instructions": "Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5.",
 ///             "rating_scale": {
 ///                 "numericals": [
 ///                     {
@@ -77,16 +73,20 @@ import 'agentcore_evaluator_timeouts.dart';
 ///             },
 ///             "model_config": {
 ///                 "bedrock_evaluator_model_config": {
-///                     "model_id": "us.amazon.nova-2-lite-v1:0",
 ///                     "inference_config": {
 ///                         "max_tokens": 1024,
 ///                         "temperature": float(0),
 ///                         "top_p": float(1),
 ///                     },
+///                     "model_id": "us.amazon.nova-2-lite-v1:0",
 ///                 },
 ///             },
+///             "instructions": "Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5.",
 ///         },
-///     })
+///     },
+///     evaluator_name="helpfulness_evaluator",
+///     description="Rates assistant helpfulness from 1 to 5",
+///     level="TRACE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -98,14 +98,10 @@ import 'agentcore_evaluator_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreEvaluator("example", new()
 ///     {
-///         EvaluatorName = "helpfulness_evaluator",
-///         Description = "Rates assistant helpfulness from 1 to 5",
-///         Level = "TRACE",
 ///         EvaluatorConfig = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigArgs
 ///         {
 ///             LlmAsAJudge = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeArgs
 ///             {
-///                 Instructions = "Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5.",
 ///                 RatingScale = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleArgs
 ///                 {
 ///                     Numericals = new[]
@@ -128,17 +124,21 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                 {
 ///                     BedrockEvaluatorModelConfig = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigArgs
 ///                     {
-///                         ModelId = "us.amazon.nova-2-lite-v1:0",
 ///                         InferenceConfig = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigInferenceConfigArgs
 ///                         {
 ///                             MaxTokens = 1024,
 ///                             Temperature = 0,
 ///                             TopP = 1,
 ///                         },
+///                         ModelId = "us.amazon.nova-2-lite-v1:0",
 ///                     },
 ///                 },
+///                 Instructions = "Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5.",
 ///             },
 ///         },
+///         EvaluatorName = "helpfulness_evaluator",
+///         Description = "Rates assistant helpfulness from 1 to 5",
+///         Level = "TRACE",
 ///     });
 ///
 /// });
@@ -154,12 +154,8 @@ import 'agentcore_evaluator_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreEvaluator(ctx, "example", &bedrock.AgentcoreEvaluatorArgs{
-/// 			EvaluatorName: pulumi.String("helpfulness_evaluator"),
-/// 			Description:   pulumi.String("Rates assistant helpfulness from 1 to 5"),
-/// 			Level:         pulumi.String("TRACE"),
 /// 			EvaluatorConfig: &bedrock.AgentcoreEvaluatorEvaluatorConfigArgs{
 /// 				LlmAsAJudge: &bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeArgs{
-/// 					Instructions: pulumi.String("Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5."),
 /// 					RatingScale: &bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleArgs{
 /// 						Numericals: bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleNumericalArray{
 /// 							&bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleNumericalArgs{
@@ -176,16 +172,20 @@ import 'agentcore_evaluator_timeouts.dart';
 /// 					},
 /// 					ModelConfig: &bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigArgs{
 /// 						BedrockEvaluatorModelConfig: &bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigArgs{
-/// 							ModelId: pulumi.String("us.amazon.nova-2-lite-v1:0"),
 /// 							InferenceConfig: &bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigInferenceConfigArgs{
 /// 								MaxTokens:   pulumi.Int(1024),
 /// 								Temperature: pulumi.Float64(0),
 /// 								TopP:        pulumi.Float64(1),
 /// 							},
+/// 							ModelId: pulumi.String("us.amazon.nova-2-lite-v1:0"),
 /// 						},
 /// 					},
+/// 					Instructions: pulumi.String("Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5."),
 /// 				},
 /// 			},
+/// 			EvaluatorName: pulumi.String("helpfulness_evaluator"),
+/// 			Description:   pulumi.String("Rates assistant helpfulness from 1 to 5"),
+/// 			Level:         pulumi.String("TRACE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -204,12 +204,8 @@ import 'agentcore_evaluator_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreevaluator" "example" {
-///   evaluator_name = "helpfulness_evaluator"
-///   description    = "Rates assistant helpfulness from 1 to 5"
-///   level          = "TRACE"
 ///   evaluator_config = {
 ///     llm_as_a_judge = {
-///       instructions = "Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5."
 ///       rating_scale = {
 ///         numericals = [{
 ///           "definition" = "Not helpful at all."
@@ -223,16 +219,20 @@ import 'agentcore_evaluator_timeouts.dart';
 ///       }
 ///       model_config = {
 ///         bedrock_evaluator_model_config = {
-///           model_id = "us.amazon.nova-2-lite-v1:0"
 ///           inference_config = {
 ///             max_tokens  = 1024
 ///             temperature = 0
 ///             top_p       = 1
 ///           }
+///           model_id = "us.amazon.nova-2-lite-v1:0"
 ///         }
 ///       }
+///       instructions = "Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5."
 ///     }
 ///   }
+///   evaluator_name = "helpfulness_evaluator"
+///   description    = "Rates assistant helpfulness from 1 to 5"
+///   level          = "TRACE"
 /// }
 /// ```
 /// ```java
@@ -264,12 +264,8 @@ import 'agentcore_evaluator_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreEvaluator("example", AgentcoreEvaluatorArgs.builder()
-///             .evaluatorName("helpfulness_evaluator")
-///             .description("Rates assistant helpfulness from 1 to 5")
-///             .level("TRACE")
 ///             .evaluatorConfig(AgentcoreEvaluatorEvaluatorConfigArgs.builder()
 ///                 .llmAsAJudge(AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeArgs.builder()
-///                     .instructions("Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5.")
 ///                     .ratingScale(AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleArgs.builder()
 ///                         .numericals(
 ///                             AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleNumericalArgs.builder()
@@ -285,16 +281,20 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                         .build())
 ///                     .modelConfig(AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigArgs.builder()
 ///                         .bedrockEvaluatorModelConfig(AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigArgs.builder()
-///                             .modelId("us.amazon.nova-2-lite-v1:0")
 ///                             .inferenceConfig(AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfigInferenceConfigArgs.builder()
 ///                                 .maxTokens(1024)
 ///                                 .temperature(0.0)
 ///                                 .topP(1.0)
 ///                                 .build())
+///                             .modelId("us.amazon.nova-2-lite-v1:0")
 ///                             .build())
 ///                         .build())
+///                     .instructions("Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5.")
 ///                     .build())
 ///                 .build())
+///             .evaluatorName("helpfulness_evaluator")
+///             .description("Rates assistant helpfulness from 1 to 5")
+///             .level("TRACE")
 ///             .build());
 ///
 ///     }
@@ -305,12 +305,8 @@ import 'agentcore_evaluator_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreEvaluator
 ///     properties:
-///       evaluatorName: helpfulness_evaluator
-///       description: Rates assistant helpfulness from 1 to 5
-///       level: TRACE
 ///       evaluatorConfig:
 ///         llmAsAJudge:
-///           instructions: Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5.
 ///           ratingScale:
 ///             numericals:
 ///               - definition: Not helpful at all.
@@ -321,11 +317,15 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                 label: '5'
 ///           modelConfig:
 ///             bedrockEvaluatorModelConfig:
-///               modelId: us.amazon.nova-2-lite-v1:0
 ///               inferenceConfig:
 ///                 maxTokens: 1024
 ///                 temperature: 0
 ///                 topP: 1
+///               modelId: us.amazon.nova-2-lite-v1:0
+///           instructions: Given the {context} and the {assistant_turn}, compare against {expected_response} and rate from 1 to 5.
+///       evaluatorName: helpfulness_evaluator
+///       description: Rates assistant helpfulness from 1 to 5
+///       level: TRACE
 /// ```
 ///
 ///
@@ -337,11 +337,8 @@ import 'agentcore_evaluator_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreEvaluator("example", {
-///     evaluatorName: "tone_evaluator",
-///     level: "SESSION",
 ///     evaluatorConfig: {
 ///         llmAsAJudge: {
-///             instructions: "Classify the tone of the {assistant_turn} given the {context}.",
 ///             ratingScale: {
 ///                 categoricals: [
 ///                     {
@@ -363,8 +360,11 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                     modelId: "us.amazon.nova-2-lite-v1:0",
 ///                 },
 ///             },
+///             instructions: "Classify the tone of the {assistant_turn} given the {context}.",
 ///         },
 ///     },
+///     evaluatorName: "tone_evaluator",
+///     level: "SESSION",
 /// });
 /// ```
 /// ```python
@@ -372,11 +372,8 @@ import 'agentcore_evaluator_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreEvaluator("example",
-///     evaluator_name="tone_evaluator",
-///     level="SESSION",
 ///     evaluator_config={
 ///         "llm_as_a_judge": {
-///             "instructions": "Classify the tone of the {assistant_turn} given the {context}.",
 ///             "rating_scale": {
 ///                 "categoricals": [
 ///                     {
@@ -398,8 +395,11 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                     "model_id": "us.amazon.nova-2-lite-v1:0",
 ///                 },
 ///             },
+///             "instructions": "Classify the tone of the {assistant_turn} given the {context}.",
 ///         },
-///     })
+///     },
+///     evaluator_name="tone_evaluator",
+///     level="SESSION")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -411,13 +411,10 @@ import 'agentcore_evaluator_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreEvaluator("example", new()
 ///     {
-///         EvaluatorName = "tone_evaluator",
-///         Level = "SESSION",
 ///         EvaluatorConfig = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigArgs
 ///         {
 ///             LlmAsAJudge = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeArgs
 ///             {
-///                 Instructions = "Classify the tone of the {assistant_turn} given the {context}.",
 ///                 RatingScale = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleArgs
 ///                 {
 ///                     Categoricals = new[]
@@ -446,8 +443,11 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                         ModelId = "us.amazon.nova-2-lite-v1:0",
 ///                     },
 ///                 },
+///                 Instructions = "Classify the tone of the {assistant_turn} given the {context}.",
 ///             },
 ///         },
+///         EvaluatorName = "tone_evaluator",
+///         Level = "SESSION",
 ///     });
 ///
 /// });
@@ -463,11 +463,8 @@ import 'agentcore_evaluator_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreEvaluator(ctx, "example", &bedrock.AgentcoreEvaluatorArgs{
-/// 			EvaluatorName: pulumi.String("tone_evaluator"),
-/// 			Level:         pulumi.String("SESSION"),
 /// 			EvaluatorConfig: &bedrock.AgentcoreEvaluatorEvaluatorConfigArgs{
 /// 				LlmAsAJudge: &bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeArgs{
-/// 					Instructions: pulumi.String("Classify the tone of the {assistant_turn} given the {context}."),
 /// 					RatingScale: &bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleArgs{
 /// 						Categoricals: bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleCategoricalArray{
 /// 							&bedrock.AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleCategoricalArgs{
@@ -489,8 +486,11 @@ import 'agentcore_evaluator_timeouts.dart';
 /// 							ModelId: pulumi.String("us.amazon.nova-2-lite-v1:0"),
 /// 						},
 /// 					},
+/// 					Instructions: pulumi.String("Classify the tone of the {assistant_turn} given the {context}."),
 /// 				},
 /// 			},
+/// 			EvaluatorName: pulumi.String("tone_evaluator"),
+/// 			Level:         pulumi.String("SESSION"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -509,11 +509,8 @@ import 'agentcore_evaluator_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreevaluator" "example" {
-///   evaluator_name = "tone_evaluator"
-///   level          = "SESSION"
 ///   evaluator_config = {
 ///     llm_as_a_judge = {
-///       instructions = "Classify the tone of the {assistant_turn} given the {context}."
 ///       rating_scale = {
 ///         categoricals = [{
 ///           "definition" = "Friendly, helpful tone."
@@ -531,8 +528,11 @@ import 'agentcore_evaluator_timeouts.dart';
 ///           model_id = "us.amazon.nova-2-lite-v1:0"
 ///         }
 ///       }
+///       instructions = "Classify the tone of the {assistant_turn} given the {context}."
 ///     }
 ///   }
+///   evaluator_name = "tone_evaluator"
+///   level          = "SESSION"
 /// }
 /// ```
 /// ```java
@@ -563,11 +563,8 @@ import 'agentcore_evaluator_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreEvaluator("example", AgentcoreEvaluatorArgs.builder()
-///             .evaluatorName("tone_evaluator")
-///             .level("SESSION")
 ///             .evaluatorConfig(AgentcoreEvaluatorEvaluatorConfigArgs.builder()
 ///                 .llmAsAJudge(AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeArgs.builder()
-///                     .instructions("Classify the tone of the {assistant_turn} given the {context}.")
 ///                     .ratingScale(AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleArgs.builder()
 ///                         .categoricals(
 ///                             AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleCategoricalArgs.builder()
@@ -588,8 +585,11 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                             .modelId("us.amazon.nova-2-lite-v1:0")
 ///                             .build())
 ///                         .build())
+///                     .instructions("Classify the tone of the {assistant_turn} given the {context}.")
 ///                     .build())
 ///                 .build())
+///             .evaluatorName("tone_evaluator")
+///             .level("SESSION")
 ///             .build());
 ///
 ///     }
@@ -600,11 +600,8 @@ import 'agentcore_evaluator_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreEvaluator
 ///     properties:
-///       evaluatorName: tone_evaluator
-///       level: SESSION
 ///       evaluatorConfig:
 ///         llmAsAJudge:
-///           instructions: Classify the tone of the {assistant_turn} given the {context}.
 ///           ratingScale:
 ///             categoricals:
 ///               - definition: Friendly, helpful tone.
@@ -616,6 +613,9 @@ import 'agentcore_evaluator_timeouts.dart';
 ///           modelConfig:
 ///             bedrockEvaluatorModelConfig:
 ///               modelId: us.amazon.nova-2-lite-v1:0
+///           instructions: Classify the tone of the {assistant_turn} given the {context}.
+///       evaluatorName: tone_evaluator
+///       level: SESSION
 /// ```
 ///
 ///
@@ -627,8 +627,6 @@ import 'agentcore_evaluator_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreEvaluator("example", {
-///     evaluatorName: "lambda_evaluator",
-///     level: "TOOL_CALL",
 ///     evaluatorConfig: {
 ///         codeBased: {
 ///             lambdaConfig: {
@@ -637,6 +635,8 @@ import 'agentcore_evaluator_timeouts.dart';
 ///             },
 ///         },
 ///     },
+///     evaluatorName: "lambda_evaluator",
+///     level: "TOOL_CALL",
 /// });
 /// ```
 /// ```python
@@ -644,8 +644,6 @@ import 'agentcore_evaluator_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreEvaluator("example",
-///     evaluator_name="lambda_evaluator",
-///     level="TOOL_CALL",
 ///     evaluator_config={
 ///         "code_based": {
 ///             "lambda_config": {
@@ -653,7 +651,9 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                 "lambda_timeout_in_seconds": 60,
 ///             },
 ///         },
-///     })
+///     },
+///     evaluator_name="lambda_evaluator",
+///     level="TOOL_CALL")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -665,8 +665,6 @@ import 'agentcore_evaluator_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreEvaluator("example", new()
 ///     {
-///         EvaluatorName = "lambda_evaluator",
-///         Level = "TOOL_CALL",
 ///         EvaluatorConfig = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigArgs
 ///         {
 ///             CodeBased = new Aws.Bedrock.Inputs.AgentcoreEvaluatorEvaluatorConfigCodeBasedArgs
@@ -678,6 +676,8 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         EvaluatorName = "lambda_evaluator",
+///         Level = "TOOL_CALL",
 ///     });
 ///
 /// });
@@ -693,8 +693,6 @@ import 'agentcore_evaluator_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreEvaluator(ctx, "example", &bedrock.AgentcoreEvaluatorArgs{
-/// 			EvaluatorName: pulumi.String("lambda_evaluator"),
-/// 			Level:         pulumi.String("TOOL_CALL"),
 /// 			EvaluatorConfig: &bedrock.AgentcoreEvaluatorEvaluatorConfigArgs{
 /// 				CodeBased: &bedrock.AgentcoreEvaluatorEvaluatorConfigCodeBasedArgs{
 /// 					LambdaConfig: &bedrock.AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfigArgs{
@@ -703,6 +701,8 @@ import 'agentcore_evaluator_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			EvaluatorName: pulumi.String("lambda_evaluator"),
+/// 			Level:         pulumi.String("TOOL_CALL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -721,8 +721,6 @@ import 'agentcore_evaluator_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreevaluator" "example" {
-///   evaluator_name = "lambda_evaluator"
-///   level          = "TOOL_CALL"
 ///   evaluator_config = {
 ///     code_based = {
 ///       lambda_config = {
@@ -731,6 +729,8 @@ import 'agentcore_evaluator_timeouts.dart';
 ///       }
 ///     }
 ///   }
+///   evaluator_name = "lambda_evaluator"
+///   level          = "TOOL_CALL"
 /// }
 /// ```
 /// ```java
@@ -758,8 +758,6 @@ import 'agentcore_evaluator_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreEvaluator("example", AgentcoreEvaluatorArgs.builder()
-///             .evaluatorName("lambda_evaluator")
-///             .level("TOOL_CALL")
 ///             .evaluatorConfig(AgentcoreEvaluatorEvaluatorConfigArgs.builder()
 ///                 .codeBased(AgentcoreEvaluatorEvaluatorConfigCodeBasedArgs.builder()
 ///                     .lambdaConfig(AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfigArgs.builder()
@@ -768,6 +766,8 @@ import 'agentcore_evaluator_timeouts.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .evaluatorName("lambda_evaluator")
+///             .level("TOOL_CALL")
 ///             .build());
 ///
 ///     }
@@ -778,13 +778,13 @@ import 'agentcore_evaluator_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreEvaluator
 ///     properties:
-///       evaluatorName: lambda_evaluator
-///       level: TOOL_CALL
 ///       evaluatorConfig:
 ///         codeBased:
 ///           lambdaConfig:
 ///             lambdaArn: ${exampleAwsLambdaFunction.arn}
 ///             lambdaTimeoutInSeconds: 60
+///       evaluatorName: lambda_evaluator
+///       level: TOOL_CALL
 /// ```
 ///
 ///
@@ -850,7 +850,7 @@ class AgentcoreEvaluator extends pulumi.CustomResource {
           'aws:bedrock/agentcoreEvaluator:AgentcoreEvaluator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
@@ -863,8 +863,8 @@ class AgentcoreEvaluator extends pulumi.CustomResource {
     lockedForModification = registerOutput<bool>('lockedForModification');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreEvaluatorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreEvaluatorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -873,11 +873,12 @@ class AgentcoreEvaluator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreEvaluatorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreEvaluator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -902,8 +903,33 @@ class AgentcoreEvaluator extends pulumi.CustomResource {
     lockedForModification = registerOutput<bool>('lockedForModification');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreEvaluatorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreEvaluatorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreEvaluator] resource.
+  AgentcoreEvaluator.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreEvaluator:AgentcoreEvaluator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    evaluatorArn = registerOutput<String>('evaluatorArn');
+    evaluatorConfig = registerOutput<AgentcoreEvaluatorEvaluatorConfig>('evaluatorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreEvaluatorEvaluatorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    evaluatorId = registerOutput<String>('evaluatorId');
+    evaluatorName = registerOutput<String>('evaluatorName');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    level = registerOutput<String>('level');
+    lockedForModification = registerOutput<bool>('lockedForModification');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreEvaluatorTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreEvaluatorTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

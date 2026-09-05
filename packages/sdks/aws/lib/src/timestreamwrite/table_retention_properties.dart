@@ -25,8 +25,8 @@ class TableRetentionProperties {
 
   factory TableRetentionProperties.fromMap(Map<String, dynamic> map) {
     return TableRetentionProperties(
-      magneticStoreRetentionPeriodInDays: pulumi.Input.fromValue(map['magneticStoreRetentionPeriodInDays'] as int),
-      memoryStoreRetentionPeriodInHours: pulumi.Input.fromValue(map['memoryStoreRetentionPeriodInHours'] as int),
+      magneticStoreRetentionPeriodInDays: pulumi.Input.fromValue((map['magneticStoreRetentionPeriodInDays'] as num).toInt()),
+      memoryStoreRetentionPeriodInHours: pulumi.Input.fromValue((map['memoryStoreRetentionPeriodInHours'] as num).toInt()),
     );
   }
 }

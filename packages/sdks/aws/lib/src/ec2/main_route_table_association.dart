@@ -138,7 +138,7 @@ class MainRouteTableAssociation extends pulumi.CustomResource {
           'aws:ec2/mainRouteTableAssociation:MainRouteTableAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     originalRouteTableId = registerOutput<String>('originalRouteTableId');
     region = registerOutput<String>('region');
@@ -151,11 +151,12 @@ class MainRouteTableAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MainRouteTableAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MainRouteTableAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -169,6 +170,21 @@ class MainRouteTableAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    originalRouteTableId = registerOutput<String>('originalRouteTableId');
+    region = registerOutput<String>('region');
+    routeTableId = registerOutput<String>('routeTableId');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [MainRouteTableAssociation] resource.
+  MainRouteTableAssociation.reference(String urn)
+    : super(
+        'aws:ec2/mainRouteTableAssociation:MainRouteTableAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     originalRouteTableId = registerOutput<String>('originalRouteTableId');
     region = registerOutput<String>('region');
     routeTableId = registerOutput<String>('routeTableId');

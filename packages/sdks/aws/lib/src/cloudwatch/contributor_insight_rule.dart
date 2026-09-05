@@ -170,15 +170,15 @@ class ContributorInsightRule extends pulumi.CustomResource {
           'aws:cloudwatch/contributorInsightRule:ContributorInsightRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     ruleDefinition = registerOutput<String>('ruleDefinition');
     ruleName = registerOutput<String>('ruleName');
     ruleState = registerOutput<String>('ruleState');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ContributorInsightRule] resource's state with the given [name] and [id].
@@ -186,11 +186,12 @@ class ContributorInsightRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContributorInsightRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContributorInsightRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -209,7 +210,25 @@ class ContributorInsightRule extends pulumi.CustomResource {
     ruleDefinition = registerOutput<String>('ruleDefinition');
     ruleName = registerOutput<String>('ruleName');
     ruleState = registerOutput<String>('ruleState');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ContributorInsightRule] resource.
+  ContributorInsightRule.reference(String urn)
+    : super(
+        'aws:cloudwatch/contributorInsightRule:ContributorInsightRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    ruleDefinition = registerOutput<String>('ruleDefinition');
+    ruleName = registerOutput<String>('ruleName');
+    ruleState = registerOutput<String>('ruleState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -14,9 +14,9 @@ class GetScriptArgs {
   /// List of the nodes in the DAG. Defined below.
   final pulumi.Input<List<GetScriptDagNode>> dagNodes;
   /// Programming language of the resulting code from the DAG. Defaults to `PYTHON`. Valid values are `PYTHON` and `SCALA`.
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetScriptArgs].
   /// [dagEdges] List of the edges in the DAG. Defined below.

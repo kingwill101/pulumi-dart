@@ -224,3 +224,14 @@ Future<GetProtectionResult> getProtection(
   );
   return GetProtectionResult.fromMap(result);
 }
+
+pulumi.Output<GetProtectionResult> getProtectionOutput(
+  GetProtectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:shield/getProtection:getProtection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProtectionResult.fromMap);
+}

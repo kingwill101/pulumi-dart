@@ -26,73 +26,73 @@ import 'training_job_vpc_config.dart';
 /// Input properties used for looking up and filtering TrainingJob resources.
 class TrainingJobState {
   /// Algorithm-related parameters of the training job. See `algorithmSpecification` below. Conflicts with `serverlessJobConfig`.
-  final pulumi.Input<TrainingJobAlgorithmSpecification>? algorithmSpecification;
+  final pulumi.Input<TrainingJobAlgorithmSpecification?>? algorithmSpecification;
   /// ARN of the Training Job.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Location of checkpoints during training. See `checkpointConfig` below. Conflicts with `serverlessJobConfig`.
-  final pulumi.Input<TrainingJobCheckpointConfig>? checkpointConfig;
+  final pulumi.Input<TrainingJobCheckpointConfig?>? checkpointConfig;
   /// Configuration for debugging rules. See `debugHookConfig` below. Conflicts with `serverlessJobConfig`.
-  final pulumi.Input<TrainingJobDebugHookConfig>? debugHookConfig;
+  final pulumi.Input<TrainingJobDebugHookConfig?>? debugHookConfig;
   /// List of debug rule configurations. Maximum of 20. See `debugRuleConfigurations` below.
-  final pulumi.Input<List<TrainingJobDebugRuleConfiguration>>? debugRuleConfigurations;
+  final pulumi.Input<List<TrainingJobDebugRuleConfiguration>?>? debugRuleConfigurations;
   /// Whether to delete model packages in the configured model package group when the training job is destroyed. Default is `false`.
-  final pulumi.Input<bool>? deleteModelPackagesOnDestroy;
+  final pulumi.Input<bool?>? deleteModelPackagesOnDestroy;
   /// Whether to delete detached VPC ENIs SageMaker may leave behind when the training job is destroyed. Default is `false`.
-  final pulumi.Input<bool>? deleteVpcEnisOnDestroy;
+  final pulumi.Input<bool?>? deleteVpcEnisOnDestroy;
   /// Whether to encrypt inter-container traffic. When enabled, communications between containers are encrypted.
-  final pulumi.Input<bool>? enableInterContainerTrafficEncryption;
+  final pulumi.Input<bool?>? enableInterContainerTrafficEncryption;
   /// Whether to use managed spot training. Optimizes the cost of training by using Amazon EC2 Spot Instances. Conflicts with `serverlessJobConfig`.
-  final pulumi.Input<bool>? enableManagedSpotTraining;
+  final pulumi.Input<bool?>? enableManagedSpotTraining;
   /// Whether to isolate the training container from the network. No inbound or outbound network calls can be made.
-  final pulumi.Input<bool>? enableNetworkIsolation;
+  final pulumi.Input<bool?>? enableNetworkIsolation;
   /// Map of environment variables to set in the training container. Maximum of 100 entries.  Conflicts with `serverlessJobConfig`.
-  final pulumi.Input<Map<String, String>>? environment;
+  final pulumi.Input<Map<String, String>?>? environment;
   /// Associates a SageMaker AI Experiment or Trial to the training job. See `experimentConfig` below. Conflicts with `serverlessJobConfig`.
-  final pulumi.Input<TrainingJobExperimentConfig>? experimentConfig;
+  final pulumi.Input<TrainingJobExperimentConfig?>? experimentConfig;
   /// Map of hyperparameters for the training algorithm. Maximum of 100 entries.
-  final pulumi.Input<Map<String, String>>? hyperParameters;
+  final pulumi.Input<Map<String, String>?>? hyperParameters;
   /// Infrastructure health check configuration. See `infraCheckConfig` below.
-  final pulumi.Input<TrainingJobInfraCheckConfig>? infraCheckConfig;
+  final pulumi.Input<TrainingJobInfraCheckConfig?>? infraCheckConfig;
   /// List of input data channel configurations for the training job. Maximum of 20. See `inputDataConfig` below.
-  final pulumi.Input<List<TrainingJobInputDataConfig>>? inputDataConfigs;
+  final pulumi.Input<List<TrainingJobInputDataConfig>?>? inputDataConfigs;
   /// MLflow integration configuration. See `mlflowConfig` below.
-  final pulumi.Input<TrainingJobMlflowConfig>? mlflowConfig;
+  final pulumi.Input<TrainingJobMlflowConfig?>? mlflowConfig;
   /// Model package configuration. Requires `serverlessJobConfig`. See `modelPackageConfig` below.
-  final pulumi.Input<TrainingJobModelPackageConfig>? modelPackageConfig;
+  final pulumi.Input<TrainingJobModelPackageConfig?>? modelPackageConfig;
   /// Location of the output data from the training job. See `outputDataConfig` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<TrainingJobOutputDataConfig>? outputDataConfig;
+  final pulumi.Input<TrainingJobOutputDataConfig?>? outputDataConfig;
   /// Configuration for the profiler. See `profilerConfig` below. Conflicts with `serverlessJobConfig`.
-  final pulumi.Input<TrainingJobProfilerConfig>? profilerConfig;
+  final pulumi.Input<TrainingJobProfilerConfig?>? profilerConfig;
   /// List of profiler rule configurations. Maximum of 20. See `profilerRuleConfigurations` below. Conflicts with `serverlessJobConfig`.
-  final pulumi.Input<List<TrainingJobProfilerRuleConfiguration>>? profilerRuleConfigurations;
+  final pulumi.Input<List<TrainingJobProfilerRuleConfiguration>?>? profilerRuleConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration for remote debugging. See `remoteDebugConfig` below.
-  final pulumi.Input<TrainingJobRemoteDebugConfig>? remoteDebugConfig;
+  final pulumi.Input<TrainingJobRemoteDebugConfig?>? remoteDebugConfig;
   /// Resources for the training job, including compute instances and storage volumes. See `resourceConfig` below.
-  final pulumi.Input<TrainingJobResourceConfig>? resourceConfig;
+  final pulumi.Input<TrainingJobResourceConfig?>? resourceConfig;
   /// Number of times to retry the job if it fails. See `retryStrategy` below. Conflicts with `serverlessJobConfig`.
-  final pulumi.Input<TrainingJobRetryStrategy>? retryStrategy;
+  final pulumi.Input<TrainingJobRetryStrategy?>? retryStrategy;
   /// ARN of the IAM role that SageMaker AI assumes to perform tasks on your behalf during training.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// Configuration for serverless training jobs using foundation models. Conflicts with `algorithmSpecification`, `enableManagedSpotTraining`, `environment`, `retryStrategy`, `checkpointConfig`, `debugHookConfig`, `experimentConfig`, `profilerConfig`, `profilerRuleConfigurations`, and `tensorBoardOutputConfig`. See `serverlessJobConfig` below.
-  final pulumi.Input<TrainingJobServerlessJobConfig>? serverlessJobConfig;
+  final pulumi.Input<TrainingJobServerlessJobConfig?>? serverlessJobConfig;
   /// Configuration for session tag chaining. See `sessionChainingConfig` below.
-  final pulumi.Input<TrainingJobSessionChainingConfig>? sessionChainingConfig;
-  final pulumi.Input<TrainingJobStoppingCondition>? stoppingCondition;
+  final pulumi.Input<TrainingJobSessionChainingConfig?>? sessionChainingConfig;
+  final pulumi.Input<TrainingJobStoppingCondition?>? stoppingCondition;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Configuration for TensorBoard output. See `tensorBoardOutputConfig` below. Conflicts with `serverlessJobConfig`.
-  final pulumi.Input<TrainingJobTensorBoardOutputConfig>? tensorBoardOutputConfig;
-  final pulumi.Input<TrainingJobTimeouts>? timeouts;
+  final pulumi.Input<TrainingJobTensorBoardOutputConfig?>? tensorBoardOutputConfig;
+  final pulumi.Input<TrainingJobTimeouts?>? timeouts;
   /// Name of the training job. Must be between 1 and 63 characters, start with a letter or number, and contain only letters, numbers, and hyphens.
-  final pulumi.Input<String>? trainingJobName;
+  final pulumi.Input<String?>? trainingJobName;
   /// VPC configuration for the training job. See `vpcConfig` below.
-  final pulumi.Input<TrainingJobVpcConfig>? vpcConfig;
+  final pulumi.Input<TrainingJobVpcConfig?>? vpcConfig;
 
   /// Creates a new [TrainingJobState].
   /// [algorithmSpecification] Algorithm-related parameters of the training job. See `algorithmSpecification` below. Conflicts with `serverlessJobConfig`.

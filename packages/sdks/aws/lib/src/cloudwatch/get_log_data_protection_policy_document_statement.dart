@@ -9,7 +9,7 @@ class GetLogDataProtectionPolicyDocumentStatement {
   /// Configures the data protection operation applied by this statement.
   final pulumi.Input<GetLogDataProtectionPolicyDocumentStatementOperation> operation;
   /// Name of this statement.
-  final pulumi.Input<String>? sid;
+  final pulumi.Input<String?>? sid;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatement].
   /// [dataIdentifiers] Set of at least 1 sensitive data identifiers that you want to mask. Read more in [Types of data that you can protect](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/protect-sensitive-log-data-types.html).

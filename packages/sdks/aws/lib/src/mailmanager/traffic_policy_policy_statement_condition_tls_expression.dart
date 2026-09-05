@@ -5,7 +5,7 @@ import 'traffic_policy_policy_statement_condition_tls_expression_evaluate.dart';
 
 class TrafficPolicyPolicyStatementConditionTlsExpression {
   /// Operand evaluated by the expression. See `policy_statement.condition.tls_expression.evaluate` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionTlsExpressionEvaluate>? evaluate;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionTlsExpressionEvaluate?>? evaluate;
   /// TLS policy operator used for the comparison.
   final pulumi.Input<String> operator;
   /// TLS policy used for the comparison.

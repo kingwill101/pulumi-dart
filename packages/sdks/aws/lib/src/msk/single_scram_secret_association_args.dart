@@ -7,15 +7,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_msk_single_scram_secret_association_single_scram_secret_association_args_doc}
 class SingleScramSecretAssociationArgs {
-  /// Amazon Resource Name (ARN) of the MSK cluster.
+  /// ARN of the MSK cluster.
   final pulumi.Input<String> clusterArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// AWS Secrets Manager secret ARN.
   final pulumi.Input<String> secretArn;
 
   /// Creates a new [SingleScramSecretAssociationArgs].
-  /// [clusterArn] Amazon Resource Name (ARN) of the MSK cluster.
+  /// [clusterArn] ARN of the MSK cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArn] AWS Secrets Manager secret ARN.
   const SingleScramSecretAssociationArgs({

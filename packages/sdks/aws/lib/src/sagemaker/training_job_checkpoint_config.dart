@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobCheckpointConfig {
   /// Local path where checkpoints are written.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
   /// S3 URI where checkpoints are stored.
   final pulumi.Input<String> s3Uri;
 

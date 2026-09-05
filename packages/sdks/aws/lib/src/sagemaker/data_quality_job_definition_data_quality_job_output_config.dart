@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_quality_job_definition_data_quality_job_output_config_monitoring_outputs.dart';
 
 class DataQualityJobDefinitionDataQualityJobOutputConfig {
-  /// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
-  final pulumi.Input<String>? kmsKeyId;
+  /// KMS key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
+  final pulumi.Input<String?>? kmsKeyId;
   /// Monitoring outputs for monitoring jobs. This is where the output of the periodic monitoring jobs is uploaded. Fields are documented below.
   final pulumi.Input<DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs> monitoringOutputs;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobOutputConfig].
-  /// [kmsKeyId] The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
+  /// [kmsKeyId] KMS key that Amazon SageMaker AI uses to encrypt the model artifacts at rest using Amazon S3 server-side encryption.
   /// [monitoringOutputs] Monitoring outputs for monitoring jobs. This is where the output of the periodic monitoring jobs is uploaded. Fields are documented below.
   const DataQualityJobDefinitionDataQualityJobOutputConfig({
     this.kmsKeyId,

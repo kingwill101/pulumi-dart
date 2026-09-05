@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDistributionTenantCustomizationCertificate {
-  /// ARN (Amazon Resource Name) for the distribution tenant.
+  /// ARN for the distribution tenant.
   final pulumi.Input<String> arn;
 
   /// Creates a new [GetDistributionTenantCustomizationCertificate].
-  /// [arn] ARN (Amazon Resource Name) for the distribution tenant.
+  /// [arn] ARN for the distribution tenant.
   const GetDistributionTenantCustomizationCertificate({
     required this.arn,
   });

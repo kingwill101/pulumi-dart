@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
+import 'domain_record.dart';
 import 'domain_state.dart';
 
 /// Manages a mail domain registered to an AWS WorkMail organization.
@@ -150,7 +151,7 @@ class Domain extends pulumi.CustomResource {
   /// Domain ownership verification status. Values: `PENDING`, `VERIFIED`, `FAILED`.
   late final pulumi.Output<String> ownershipVerificationStatus;
   /// List of DNS records required for domain verification. See `records` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> records;
+  late final pulumi.Output<List<DomainRecord>> records;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -166,7 +167,7 @@ class Domain extends pulumi.CustomResource {
           'aws:workmail/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dkimVerificationStatus = registerOutput<String>('dkimVerificationStatus');
     domainName = registerOutput<String>('domainName');
@@ -174,7 +175,7 @@ class Domain extends pulumi.CustomResource {
     isTestDomain = registerOutput<bool>('isTestDomain');
     organizationId = registerOutput<String>('organizationId');
     ownershipVerificationStatus = registerOutput<String>('ownershipVerificationStatus');
-    records = registerOutput<List<Map<String, dynamic>>>('records');
+    records = registerOutput<List<DomainRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainRecord>(guardedValue, (value) => DomainRecord.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 
@@ -183,11 +184,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -207,7 +209,26 @@ class Domain extends pulumi.CustomResource {
     isTestDomain = registerOutput<bool>('isTestDomain');
     organizationId = registerOutput<String>('organizationId');
     ownershipVerificationStatus = registerOutput<String>('ownershipVerificationStatus');
-    records = registerOutput<List<Map<String, dynamic>>>('records');
+    records = registerOutput<List<DomainRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainRecord>(guardedValue, (value) => DomainRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'aws:workmail/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dkimVerificationStatus = registerOutput<String>('dkimVerificationStatus');
+    domainName = registerOutput<String>('domainName');
+    isDefault = registerOutput<bool>('isDefault');
+    isTestDomain = registerOutput<bool>('isTestDomain');
+    organizationId = registerOutput<String>('organizationId');
+    ownershipVerificationStatus = registerOutput<String>('ownershipVerificationStatus');
+    records = registerOutput<List<DomainRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DomainRecord>(guardedValue, (value) => DomainRecord.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 }

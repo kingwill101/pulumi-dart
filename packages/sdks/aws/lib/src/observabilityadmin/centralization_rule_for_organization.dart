@@ -22,21 +22,21 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// const current = aws.getCallerIdentity({});
 /// const currentGetOrganization = aws.organizations.getOrganization({});
 /// const example = new aws.observabilityadmin.CentralizationRuleForOrganization("example", {
-///     ruleName: "example-centralization-rule",
 ///     rule: {
 ///         destination: {
 ///             region: "eu-west-1",
 ///             account: current.then(current => current.accountId),
 ///         },
 ///         source: {
-///             regions: ["ap-southeast-1"],
-///             scope: currentGetOrganization.then(currentGetOrganization => `OrganizationId = '${currentGetOrganization.id}'`),
 ///             sourceLogsConfiguration: {
 ///                 encryptedLogGroupStrategy: "SKIP",
 ///                 logGroupSelectionCriteria: "*",
 ///             },
+///             regions: ["ap-southeast-1"],
+///             scope: currentGetOrganization.then(currentGetOrganization => `OrganizationId = '${currentGetOrganization.id}'`),
 ///         },
 ///     },
+///     ruleName: "example-centralization-rule",
 ///     tags: {
 ///         Name: "example-centralization-rule",
 ///         Environment: "production",
@@ -50,21 +50,21 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// current = aws.get_caller_identity()
 /// current_get_organization = aws.organizations.get_organization()
 /// example = aws.observabilityadmin.CentralizationRuleForOrganization("example",
-///     rule_name="example-centralization-rule",
 ///     rule={
 ///         "destination": {
 ///             "region": "eu-west-1",
 ///             "account": current.account_id,
 ///         },
 ///         "source": {
-///             "regions": ["ap-southeast-1"],
-///             "scope": f"OrganizationId = '{current_get_organization.id}'",
 ///             "source_logs_configuration": {
 ///                 "encrypted_log_group_strategy": "SKIP",
 ///                 "log_group_selection_criteria": "*",
 ///             },
+///             "regions": ["ap-southeast-1"],
+///             "scope": f"OrganizationId = '{current_get_organization.id}'",
 ///         },
 ///     },
+///     rule_name="example-centralization-rule",
 ///     tags={
 ///         "Name": "example-centralization-rule",
 ///         "Environment": "production",
@@ -84,7 +84,6 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///
 ///     var example = new Aws.Observabilityadmin.CentralizationRuleForOrganization("example", new()
 ///     {
-///         RuleName = "example-centralization-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleArgs
 ///         {
 ///             Destination = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationArgs
@@ -94,18 +93,19 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///             },
 ///             Source = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceArgs
 ///             {
-///                 Regions = new[]
-///                 {
-///                     "ap-southeast-1",
-///                 },
-///                 Scope = $"OrganizationId = '{currentGetOrganization.Apply(getOrganizationResult => getOrganizationResult.Id)}'",
 ///                 SourceLogsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs
 ///                 {
 ///                     EncryptedLogGroupStrategy = "SKIP",
 ///                     LogGroupSelectionCriteria = "*",
 ///                 },
+///                 Regions = new[]
+///                 {
+///                     "ap-southeast-1",
+///                 },
+///                 Scope = $"OrganizationId = '{currentGetOrganization.Apply(getOrganizationResult => getOrganizationResult.Id)}'",
 ///             },
 ///         },
+///         RuleName = "example-centralization-rule",
 ///         Tags =
 ///         {
 ///             { "Name", "example-centralization-rule" },
@@ -136,23 +136,23 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewCentralizationRuleForOrganization(ctx, "example", &observabilityadmin.CentralizationRuleForOrganizationArgs{
-/// 			RuleName: pulumi.String("example-centralization-rule"),
 /// 			Rule: &observabilityadmin.CentralizationRuleForOrganizationRuleArgs{
 /// 				Destination: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationArgs{
 /// 					Region:  pulumi.String("eu-west-1"),
 /// 					Account: pulumi.String(current.AccountId),
 /// 				},
 /// 				Source: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceArgs{
-/// 					Regions: pulumi.StringArray{
-/// 						pulumi.String("ap-southeast-1"),
-/// 					},
-/// 					Scope: pulumi.Sprintf("OrganizationId = '%v'", currentGetOrganization.Id),
 /// 					SourceLogsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs{
 /// 						EncryptedLogGroupStrategy: pulumi.String("SKIP"),
 /// 						LogGroupSelectionCriteria: pulumi.String("*"),
 /// 					},
+/// 					Regions: pulumi.StringArray{
+/// 						pulumi.String("ap-southeast-1"),
+/// 					},
+/// 					Scope: pulumi.Sprintf("OrganizationId = '%v'", currentGetOrganization.Id),
 /// 				},
 /// 			},
+/// 			RuleName: pulumi.String("example-centralization-rule"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name":        pulumi.String("example-centralization-rule"),
 /// 				"Environment": pulumi.String("production"),
@@ -180,21 +180,21 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// }
 ///
 /// resource "aws_observabilityadmin_centralizationrulefororganization" "example" {
-///   rule_name = "example-centralization-rule"
 ///   rule = {
 ///     destination = {
 ///       region  = "eu-west-1"
 ///       account = data.aws_getcalleridentity.current.account_id
 ///     }
 ///     source = {
-///       regions = ["ap-southeast-1"]
-///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
 ///       source_logs_configuration = {
 ///         encrypted_log_group_strategy = "SKIP"
 ///         log_group_selection_criteria = "*"
 ///       }
+///       regions = ["ap-southeast-1"]
+///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
 ///     }
 ///   }
+///   rule_name = "example-centralization-rule"
 ///   tags = {
 ///     "Name"        = "example-centralization-rule"
 ///     "Environment" = "production"
@@ -237,21 +237,21 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///             .build());
 ///
 ///         var example = new CentralizationRuleForOrganization("example", CentralizationRuleForOrganizationArgs.builder()
-///             .ruleName("example-centralization-rule")
 ///             .rule(CentralizationRuleForOrganizationRuleArgs.builder()
 ///                 .destination(CentralizationRuleForOrganizationRuleDestinationArgs.builder()
 ///                     .region("eu-west-1")
 ///                     .account(current.accountId())
 ///                     .build())
 ///                 .source(CentralizationRuleForOrganizationRuleSourceArgs.builder()
-///                     .regions("ap-southeast-1")
-///                     .scope(String.format("OrganizationId = '%s'", currentGetOrganization.id()))
 ///                     .sourceLogsConfiguration(CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs.builder()
 ///                         .encryptedLogGroupStrategy("SKIP")
 ///                         .logGroupSelectionCriteria("*")
 ///                         .build())
+///                     .regions("ap-southeast-1")
+///                     .scope(String.format("OrganizationId = '%s'", currentGetOrganization.id()))
 ///                     .build())
 ///                 .build())
+///             .ruleName("example-centralization-rule")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "example-centralization-rule"),
 ///                 Map.entry("Environment", "production")
@@ -266,18 +266,18 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///   example:
 ///     type: aws:observabilityadmin:CentralizationRuleForOrganization
 ///     properties:
-///       ruleName: example-centralization-rule
 ///       rule:
 ///         destination:
 ///           region: eu-west-1
 ///           account: ${current.accountId}
 ///         source:
-///           regions:
-///             - ap-southeast-1
-///           scope: OrganizationId = '${currentGetOrganization.id}'
 ///           sourceLogsConfiguration:
 ///             encryptedLogGroupStrategy: SKIP
 ///             logGroupSelectionCriteria: '*'
+///           regions:
+///             - ap-southeast-1
+///           scope: OrganizationId = '${currentGetOrganization.id}'
+///       ruleName: example-centralization-rule
 ///       tags:
 ///         Name: example-centralization-rule
 ///         Environment: production
@@ -303,11 +303,8 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// const current = aws.getCallerIdentity({});
 /// const currentGetOrganization = aws.organizations.getOrganization({});
 /// const advanced = new aws.observabilityadmin.CentralizationRuleForOrganization("advanced", {
-///     ruleName: "advanced-centralization-rule",
 ///     rule: {
 ///         destination: {
-///             region: "eu-west-1",
-///             account: current.then(current => current.accountId),
 ///             destinationLogsConfiguration: {
 ///                 logsEncryptionConfiguration: {
 ///                     encryptionStrategy: "AWS_OWNED",
@@ -319,19 +316,22 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///                     logGroupNamePattern: "/centralized-logs/${source.accountId}/${source.region}/${source.logGroup}",
 ///                 },
 ///             },
+///             region: "eu-west-1",
+///             account: current.then(current => current.accountId),
 ///         },
 ///         source: {
+///             sourceLogsConfiguration: {
+///                 encryptedLogGroupStrategy: "ALLOW",
+///                 logGroupSelectionCriteria: "*",
+///             },
 ///             regions: [
 ///                 "ap-southeast-1",
 ///                 "us-east-1",
 ///             ],
 ///             scope: currentGetOrganization.then(currentGetOrganization => `OrganizationId = '${currentGetOrganization.id}'`),
-///             sourceLogsConfiguration: {
-///                 encryptedLogGroupStrategy: "ALLOW",
-///                 logGroupSelectionCriteria: "*",
-///             },
 ///         },
 ///     },
+///     ruleName: "advanced-centralization-rule",
 ///     tags: {
 ///         Name: "advanced-centralization-rule",
 ///         Environment: "production",
@@ -346,11 +346,8 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// current = aws.get_caller_identity()
 /// current_get_organization = aws.organizations.get_organization()
 /// advanced = aws.observabilityadmin.CentralizationRuleForOrganization("advanced",
-///     rule_name="advanced-centralization-rule",
 ///     rule={
 ///         "destination": {
-///             "region": "eu-west-1",
-///             "account": current.account_id,
 ///             "destination_logs_configuration": {
 ///                 "logs_encryption_configuration": {
 ///                     "encryption_strategy": "AWS_OWNED",
@@ -362,19 +359,22 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///                     "log_group_name_pattern": "/centralized-logs/${source.accountId}/${source.region}/${source.logGroup}",
 ///                 },
 ///             },
+///             "region": "eu-west-1",
+///             "account": current.account_id,
 ///         },
 ///         "source": {
+///             "source_logs_configuration": {
+///                 "encrypted_log_group_strategy": "ALLOW",
+///                 "log_group_selection_criteria": "*",
+///             },
 ///             "regions": [
 ///                 "ap-southeast-1",
 ///                 "us-east-1",
 ///             ],
 ///             "scope": f"OrganizationId = '{current_get_organization.id}'",
-///             "source_logs_configuration": {
-///                 "encrypted_log_group_strategy": "ALLOW",
-///                 "log_group_selection_criteria": "*",
-///             },
 ///         },
 ///     },
+///     rule_name="advanced-centralization-rule",
 ///     tags={
 ///         "Name": "advanced-centralization-rule",
 ///         "Environment": "production",
@@ -395,13 +395,10 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///
 ///     var advanced = new Aws.Observabilityadmin.CentralizationRuleForOrganization("advanced", new()
 ///     {
-///         RuleName = "advanced-centralization-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleArgs
 ///         {
 ///             Destination = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationArgs
 ///             {
-///                 Region = "eu-west-1",
-///                 Account = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
 ///                 DestinationLogsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationArgs
 ///                 {
 ///                     LogsEncryptionConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfigurationArgs
@@ -417,22 +414,25 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///                         LogGroupNamePattern = "/centralized-logs/${source.accountId}/${source.region}/${source.logGroup}",
 ///                     },
 ///                 },
+///                 Region = "eu-west-1",
+///                 Account = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
 ///             },
 ///             Source = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceArgs
 ///             {
+///                 SourceLogsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs
+///                 {
+///                     EncryptedLogGroupStrategy = "ALLOW",
+///                     LogGroupSelectionCriteria = "*",
+///                 },
 ///                 Regions = new[]
 ///                 {
 ///                     "ap-southeast-1",
 ///                     "us-east-1",
 ///                 },
 ///                 Scope = $"OrganizationId = '{currentGetOrganization.Apply(getOrganizationResult => getOrganizationResult.Id)}'",
-///                 SourceLogsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs
-///                 {
-///                     EncryptedLogGroupStrategy = "ALLOW",
-///                     LogGroupSelectionCriteria = "*",
-///                 },
 ///             },
 ///         },
+///         RuleName = "advanced-centralization-rule",
 ///         Tags =
 ///         {
 ///             { "Name", "advanced-centralization-rule" },
@@ -464,11 +464,8 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewCentralizationRuleForOrganization(ctx, "advanced", &observabilityadmin.CentralizationRuleForOrganizationArgs{
-/// 			RuleName: pulumi.String("advanced-centralization-rule"),
 /// 			Rule: &observabilityadmin.CentralizationRuleForOrganizationRuleArgs{
 /// 				Destination: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationArgs{
-/// 					Region:  pulumi.String("eu-west-1"),
-/// 					Account: pulumi.String(current.AccountId),
 /// 					DestinationLogsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationArgs{
 /// 						LogsEncryptionConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfigurationArgs{
 /// 							EncryptionStrategy: pulumi.String("AWS_OWNED"),
@@ -480,19 +477,22 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// 							LogGroupNamePattern: pulumi.String("/centralized-logs/${source.accountId}/${source.region}/${source.logGroup}"),
 /// 						},
 /// 					},
+/// 					Region:  pulumi.String("eu-west-1"),
+/// 					Account: pulumi.String(current.AccountId),
 /// 				},
 /// 				Source: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceArgs{
+/// 					SourceLogsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs{
+/// 						EncryptedLogGroupStrategy: pulumi.String("ALLOW"),
+/// 						LogGroupSelectionCriteria: pulumi.String("*"),
+/// 					},
 /// 					Regions: pulumi.StringArray{
 /// 						pulumi.String("ap-southeast-1"),
 /// 						pulumi.String("us-east-1"),
 /// 					},
 /// 					Scope: pulumi.Sprintf("OrganizationId = '%v'", currentGetOrganization.Id),
-/// 					SourceLogsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs{
-/// 						EncryptedLogGroupStrategy: pulumi.String("ALLOW"),
-/// 						LogGroupSelectionCriteria: pulumi.String("*"),
-/// 					},
 /// 				},
 /// 			},
+/// 			RuleName: pulumi.String("advanced-centralization-rule"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name":        pulumi.String("advanced-centralization-rule"),
 /// 				"Environment": pulumi.String("production"),
@@ -521,11 +521,8 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// }
 ///
 /// resource "aws_observabilityadmin_centralizationrulefororganization" "advanced" {
-///   rule_name = "advanced-centralization-rule"
 ///   rule = {
 ///     destination = {
-///       region  = "eu-west-1"
-///       account = data.aws_getcalleridentity.current.account_id
 ///       destination_logs_configuration = {
 ///         logs_encryption_configuration = {
 ///           encryption_strategy = "AWS_OWNED"
@@ -537,16 +534,19 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///           log_group_name_pattern = "/centralized-logs/$${source.accountId}/$${source.region}/$${source.logGroup}"
 ///         }
 ///       }
+///       region  = "eu-west-1"
+///       account = data.aws_getcalleridentity.current.account_id
 ///     }
 ///     source = {
-///       regions = ["ap-southeast-1", "us-east-1"]
-///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
 ///       source_logs_configuration = {
 ///         encrypted_log_group_strategy = "ALLOW"
 ///         log_group_selection_criteria = "*"
 ///       }
+///       regions = ["ap-southeast-1", "us-east-1"]
+///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
 ///     }
 ///   }
+///   rule_name = "advanced-centralization-rule"
 ///   tags = {
 ///     "Name"        = "advanced-centralization-rule"
 ///     "Environment" = "production"
@@ -594,11 +594,8 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///             .build());
 ///
 ///         var advanced = new CentralizationRuleForOrganization("advanced", CentralizationRuleForOrganizationArgs.builder()
-///             .ruleName("advanced-centralization-rule")
 ///             .rule(CentralizationRuleForOrganizationRuleArgs.builder()
 ///                 .destination(CentralizationRuleForOrganizationRuleDestinationArgs.builder()
-///                     .region("eu-west-1")
-///                     .account(current.accountId())
 ///                     .destinationLogsConfiguration(CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationArgs.builder()
 ///                         .logsEncryptionConfiguration(CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfigurationArgs.builder()
 ///                             .encryptionStrategy("AWS_OWNED")
@@ -610,18 +607,21 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///                             .logGroupNamePattern("/centralized-logs/${source.accountId}/${source.region}/${source.logGroup}")
 ///                             .build())
 ///                         .build())
+///                     .region("eu-west-1")
+///                     .account(current.accountId())
 ///                     .build())
 ///                 .source(CentralizationRuleForOrganizationRuleSourceArgs.builder()
-///                     .regions(
-///                         "ap-southeast-1",
-///                         "us-east-1")
-///                     .scope(String.format("OrganizationId = '%s'", currentGetOrganization.id()))
 ///                     .sourceLogsConfiguration(CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs.builder()
 ///                         .encryptedLogGroupStrategy("ALLOW")
 ///                         .logGroupSelectionCriteria("*")
 ///                         .build())
+///                     .regions(
+///                         "ap-southeast-1",
+///                         "us-east-1")
+///                     .scope(String.format("OrganizationId = '%s'", currentGetOrganization.id()))
 ///                     .build())
 ///                 .build())
+///             .ruleName("advanced-centralization-rule")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "advanced-centralization-rule"),
 ///                 Map.entry("Environment", "production"),
@@ -637,11 +637,8 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///   advanced:
 ///     type: aws:observabilityadmin:CentralizationRuleForOrganization
 ///     properties:
-///       ruleName: advanced-centralization-rule
 ///       rule:
 ///         destination:
-///           region: eu-west-1
-///           account: ${current.accountId}
 ///           destinationLogsConfiguration:
 ///             logsEncryptionConfiguration:
 ///               encryptionStrategy: AWS_OWNED
@@ -649,14 +646,17 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///               region: us-west-1
 ///             logGroupNameConfiguration:
 ///               logGroupNamePattern: /centralized-logs/$${source.accountId}/$${source.region}/$${source.logGroup}
+///           region: eu-west-1
+///           account: ${current.accountId}
 ///         source:
+///           sourceLogsConfiguration:
+///             encryptedLogGroupStrategy: ALLOW
+///             logGroupSelectionCriteria: '*'
 ///           regions:
 ///             - ap-southeast-1
 ///             - us-east-1
 ///           scope: OrganizationId = '${currentGetOrganization.id}'
-///           sourceLogsConfiguration:
-///             encryptedLogGroupStrategy: ALLOW
-///             logGroupSelectionCriteria: '*'
+///       ruleName: advanced-centralization-rule
 ///       tags:
 ///         Name: advanced-centralization-rule
 ///         Environment: production
@@ -683,24 +683,24 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// const current = aws.getCallerIdentity({});
 /// const currentGetOrganization = aws.organizations.getOrganization({});
 /// const filtered = new aws.observabilityadmin.CentralizationRuleForOrganization("filtered", {
-///     ruleName: "filtered-centralization-rule",
 ///     rule: {
 ///         destination: {
 ///             region: "eu-west-1",
 ///             account: current.then(current => current.accountId),
 ///         },
 ///         source: {
+///             sourceLogsConfiguration: {
+///                 encryptedLogGroupStrategy: "ALLOW",
+///                 logGroupSelectionCriteria: "LogGroupName LIKE '/aws/lambda%'",
+///             },
 ///             regions: [
 ///                 "ap-southeast-1",
 ///                 "us-east-1",
 ///             ],
 ///             scope: currentGetOrganization.then(currentGetOrganization => `OrganizationId = '${currentGetOrganization.id}'`),
-///             sourceLogsConfiguration: {
-///                 encryptedLogGroupStrategy: "ALLOW",
-///                 logGroupSelectionCriteria: "LogGroupName LIKE '/aws/lambda%'",
-///             },
 ///         },
 ///     },
+///     ruleName: "filtered-centralization-rule",
 ///     tags: {
 ///         Name: "filtered-centralization-rule",
 ///         Filter: "lambda-logs",
@@ -714,24 +714,24 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// current = aws.get_caller_identity()
 /// current_get_organization = aws.organizations.get_organization()
 /// filtered = aws.observabilityadmin.CentralizationRuleForOrganization("filtered",
-///     rule_name="filtered-centralization-rule",
 ///     rule={
 ///         "destination": {
 ///             "region": "eu-west-1",
 ///             "account": current.account_id,
 ///         },
 ///         "source": {
+///             "source_logs_configuration": {
+///                 "encrypted_log_group_strategy": "ALLOW",
+///                 "log_group_selection_criteria": "LogGroupName LIKE '/aws/lambda%'",
+///             },
 ///             "regions": [
 ///                 "ap-southeast-1",
 ///                 "us-east-1",
 ///             ],
 ///             "scope": f"OrganizationId = '{current_get_organization.id}'",
-///             "source_logs_configuration": {
-///                 "encrypted_log_group_strategy": "ALLOW",
-///                 "log_group_selection_criteria": "LogGroupName LIKE '/aws/lambda%'",
-///             },
 ///         },
 ///     },
+///     rule_name="filtered-centralization-rule",
 ///     tags={
 ///         "Name": "filtered-centralization-rule",
 ///         "Filter": "lambda-logs",
@@ -751,7 +751,6 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///
 ///     var filtered = new Aws.Observabilityadmin.CentralizationRuleForOrganization("filtered", new()
 ///     {
-///         RuleName = "filtered-centralization-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleArgs
 ///         {
 ///             Destination = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationArgs
@@ -761,19 +760,20 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///             },
 ///             Source = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceArgs
 ///             {
+///                 SourceLogsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs
+///                 {
+///                     EncryptedLogGroupStrategy = "ALLOW",
+///                     LogGroupSelectionCriteria = "LogGroupName LIKE '/aws/lambda%'",
+///                 },
 ///                 Regions = new[]
 ///                 {
 ///                     "ap-southeast-1",
 ///                     "us-east-1",
 ///                 },
 ///                 Scope = $"OrganizationId = '{currentGetOrganization.Apply(getOrganizationResult => getOrganizationResult.Id)}'",
-///                 SourceLogsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs
-///                 {
-///                     EncryptedLogGroupStrategy = "ALLOW",
-///                     LogGroupSelectionCriteria = "LogGroupName LIKE '/aws/lambda%'",
-///                 },
 ///             },
 ///         },
+///         RuleName = "filtered-centralization-rule",
 ///         Tags =
 ///         {
 ///             { "Name", "filtered-centralization-rule" },
@@ -804,24 +804,24 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewCentralizationRuleForOrganization(ctx, "filtered", &observabilityadmin.CentralizationRuleForOrganizationArgs{
-/// 			RuleName: pulumi.String("filtered-centralization-rule"),
 /// 			Rule: &observabilityadmin.CentralizationRuleForOrganizationRuleArgs{
 /// 				Destination: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationArgs{
 /// 					Region:  pulumi.String("eu-west-1"),
 /// 					Account: pulumi.String(current.AccountId),
 /// 				},
 /// 				Source: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceArgs{
+/// 					SourceLogsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs{
+/// 						EncryptedLogGroupStrategy: pulumi.String("ALLOW"),
+/// 						LogGroupSelectionCriteria: pulumi.String("LogGroupName LIKE '/aws/lambda%'"),
+/// 					},
 /// 					Regions: pulumi.StringArray{
 /// 						pulumi.String("ap-southeast-1"),
 /// 						pulumi.String("us-east-1"),
 /// 					},
 /// 					Scope: pulumi.Sprintf("OrganizationId = '%v'", currentGetOrganization.Id),
-/// 					SourceLogsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs{
-/// 						EncryptedLogGroupStrategy: pulumi.String("ALLOW"),
-/// 						LogGroupSelectionCriteria: pulumi.String("LogGroupName LIKE '/aws/lambda%'"),
-/// 					},
 /// 				},
 /// 			},
+/// 			RuleName: pulumi.String("filtered-centralization-rule"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name":   pulumi.String("filtered-centralization-rule"),
 /// 				"Filter": pulumi.String("lambda-logs"),
@@ -849,21 +849,21 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// }
 ///
 /// resource "aws_observabilityadmin_centralizationrulefororganization" "filtered" {
-///   rule_name = "filtered-centralization-rule"
 ///   rule = {
 ///     destination = {
 ///       region  = "eu-west-1"
 ///       account = data.aws_getcalleridentity.current.account_id
 ///     }
 ///     source = {
-///       regions = ["ap-southeast-1", "us-east-1"]
-///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
 ///       source_logs_configuration = {
 ///         encrypted_log_group_strategy = "ALLOW"
 ///         log_group_selection_criteria = "LogGroupName LIKE '/aws/lambda%'"
 ///       }
+///       regions = ["ap-southeast-1", "us-east-1"]
+///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
 ///     }
 ///   }
+///   rule_name = "filtered-centralization-rule"
 ///   tags = {
 ///     "Name"   = "filtered-centralization-rule"
 ///     "Filter" = "lambda-logs"
@@ -906,23 +906,23 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///             .build());
 ///
 ///         var filtered = new CentralizationRuleForOrganization("filtered", CentralizationRuleForOrganizationArgs.builder()
-///             .ruleName("filtered-centralization-rule")
 ///             .rule(CentralizationRuleForOrganizationRuleArgs.builder()
 ///                 .destination(CentralizationRuleForOrganizationRuleDestinationArgs.builder()
 ///                     .region("eu-west-1")
 ///                     .account(current.accountId())
 ///                     .build())
 ///                 .source(CentralizationRuleForOrganizationRuleSourceArgs.builder()
-///                     .regions(
-///                         "ap-southeast-1",
-///                         "us-east-1")
-///                     .scope(String.format("OrganizationId = '%s'", currentGetOrganization.id()))
 ///                     .sourceLogsConfiguration(CentralizationRuleForOrganizationRuleSourceSourceLogsConfigurationArgs.builder()
 ///                         .encryptedLogGroupStrategy("ALLOW")
 ///                         .logGroupSelectionCriteria("LogGroupName LIKE '/aws/lambda%'")
 ///                         .build())
+///                     .regions(
+///                         "ap-southeast-1",
+///                         "us-east-1")
+///                     .scope(String.format("OrganizationId = '%s'", currentGetOrganization.id()))
 ///                     .build())
 ///                 .build())
+///             .ruleName("filtered-centralization-rule")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "filtered-centralization-rule"),
 ///                 Map.entry("Filter", "lambda-logs")
@@ -937,19 +937,19 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///   filtered:
 ///     type: aws:observabilityadmin:CentralizationRuleForOrganization
 ///     properties:
-///       ruleName: filtered-centralization-rule
 ///       rule:
 ///         destination:
 ///           region: eu-west-1
 ///           account: ${current.accountId}
 ///         source:
+///           sourceLogsConfiguration:
+///             encryptedLogGroupStrategy: ALLOW
+///             logGroupSelectionCriteria: LogGroupName LIKE '/aws/lambda%'
 ///           regions:
 ///             - ap-southeast-1
 ///             - us-east-1
 ///           scope: OrganizationId = '${currentGetOrganization.id}'
-///           sourceLogsConfiguration:
-///             encryptedLogGroupStrategy: ALLOW
-///             logGroupSelectionCriteria: LogGroupName LIKE '/aws/lambda%'
+///       ruleName: filtered-centralization-rule
 ///       tags:
 ///         Name: filtered-centralization-rule
 ///         Filter: lambda-logs
@@ -975,28 +975,28 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// const current = aws.getCallerIdentity({});
 /// const currentGetOrganization = aws.organizations.getOrganization({});
 /// const metrics = new aws.observabilityadmin.CentralizationRuleForOrganization("metrics", {
-///     ruleName: "metrics-centralization-rule",
 ///     rule: {
 ///         destination: {
-///             region: "eu-west-1",
-///             account: current.then(current => current.accountId),
 ///             destinationMetricsConfiguration: {
 ///                 backupConfiguration: {
 ///                     region: "us-west-1",
 ///                 },
 ///             },
+///             region: "eu-west-1",
+///             account: current.then(current => current.accountId),
 ///         },
 ///         source: {
+///             sourceMetricsConfiguration: {
+///                 metricsSelectionCriteria: "*",
+///             },
 ///             regions: [
 ///                 "ap-southeast-1",
 ///                 "us-east-1",
 ///             ],
 ///             scope: currentGetOrganization.then(currentGetOrganization => `OrganizationId = '${currentGetOrganization.id}'`),
-///             sourceMetricsConfiguration: {
-///                 metricsSelectionCriteria: "*",
-///             },
 ///         },
 ///     },
+///     ruleName: "metrics-centralization-rule",
 /// });
 /// ```
 /// ```python
@@ -1006,28 +1006,28 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// current = aws.get_caller_identity()
 /// current_get_organization = aws.organizations.get_organization()
 /// metrics = aws.observabilityadmin.CentralizationRuleForOrganization("metrics",
-///     rule_name="metrics-centralization-rule",
 ///     rule={
 ///         "destination": {
-///             "region": "eu-west-1",
-///             "account": current.account_id,
 ///             "destination_metrics_configuration": {
 ///                 "backup_configuration": {
 ///                     "region": "us-west-1",
 ///                 },
 ///             },
+///             "region": "eu-west-1",
+///             "account": current.account_id,
 ///         },
 ///         "source": {
+///             "source_metrics_configuration": {
+///                 "metrics_selection_criteria": "*",
+///             },
 ///             "regions": [
 ///                 "ap-southeast-1",
 ///                 "us-east-1",
 ///             ],
 ///             "scope": f"OrganizationId = '{current_get_organization.id}'",
-///             "source_metrics_configuration": {
-///                 "metrics_selection_criteria": "*",
-///             },
 ///         },
-///     })
+///     },
+///     rule_name="metrics-centralization-rule")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1043,13 +1043,10 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///
 ///     var metrics = new Aws.Observabilityadmin.CentralizationRuleForOrganization("metrics", new()
 ///     {
-///         RuleName = "metrics-centralization-rule",
 ///         Rule = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleArgs
 ///         {
 ///             Destination = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationArgs
 ///             {
-///                 Region = "eu-west-1",
-///                 Account = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
 ///                 DestinationMetricsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationArgs
 ///                 {
 ///                     BackupConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationBackupConfigurationArgs
@@ -1057,21 +1054,24 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///                         Region = "us-west-1",
 ///                     },
 ///                 },
+///                 Region = "eu-west-1",
+///                 Account = current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId),
 ///             },
 ///             Source = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceArgs
 ///             {
+///                 SourceMetricsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceSourceMetricsConfigurationArgs
+///                 {
+///                     MetricsSelectionCriteria = "*",
+///                 },
 ///                 Regions = new[]
 ///                 {
 ///                     "ap-southeast-1",
 ///                     "us-east-1",
 ///                 },
 ///                 Scope = $"OrganizationId = '{currentGetOrganization.Apply(getOrganizationResult => getOrganizationResult.Id)}'",
-///                 SourceMetricsConfiguration = new Aws.Observabilityadmin.Inputs.CentralizationRuleForOrganizationRuleSourceSourceMetricsConfigurationArgs
-///                 {
-///                     MetricsSelectionCriteria = "*",
-///                 },
 ///             },
 ///         },
+///         RuleName = "metrics-centralization-rule",
 ///     });
 ///
 /// });
@@ -1097,28 +1097,28 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewCentralizationRuleForOrganization(ctx, "metrics", &observabilityadmin.CentralizationRuleForOrganizationArgs{
-/// 			RuleName: pulumi.String("metrics-centralization-rule"),
 /// 			Rule: &observabilityadmin.CentralizationRuleForOrganizationRuleArgs{
 /// 				Destination: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationArgs{
-/// 					Region:  pulumi.String("eu-west-1"),
-/// 					Account: pulumi.String(current.AccountId),
 /// 					DestinationMetricsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationArgs{
 /// 						BackupConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationBackupConfigurationArgs{
 /// 							Region: pulumi.String("us-west-1"),
 /// 						},
 /// 					},
+/// 					Region:  pulumi.String("eu-west-1"),
+/// 					Account: pulumi.String(current.AccountId),
 /// 				},
 /// 				Source: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceArgs{
+/// 					SourceMetricsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceSourceMetricsConfigurationArgs{
+/// 						MetricsSelectionCriteria: pulumi.String("*"),
+/// 					},
 /// 					Regions: pulumi.StringArray{
 /// 						pulumi.String("ap-southeast-1"),
 /// 						pulumi.String("us-east-1"),
 /// 					},
 /// 					Scope: pulumi.Sprintf("OrganizationId = '%v'", currentGetOrganization.Id),
-/// 					SourceMetricsConfiguration: &observabilityadmin.CentralizationRuleForOrganizationRuleSourceSourceMetricsConfigurationArgs{
-/// 						MetricsSelectionCriteria: pulumi.String("*"),
-/// 					},
 /// 				},
 /// 			},
+/// 			RuleName: pulumi.String("metrics-centralization-rule"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1142,25 +1142,25 @@ import 'centralization_rule_for_organization_timeouts.dart';
 /// }
 ///
 /// resource "aws_observabilityadmin_centralizationrulefororganization" "metrics" {
-///   rule_name = "metrics-centralization-rule"
 ///   rule = {
 ///     destination = {
-///       region  = "eu-west-1"
-///       account = data.aws_getcalleridentity.current.account_id
 ///       destination_metrics_configuration = {
 ///         backup_configuration = {
 ///           region = "us-west-1"
 ///         }
 ///       }
+///       region  = "eu-west-1"
+///       account = data.aws_getcalleridentity.current.account_id
 ///     }
 ///     source = {
-///       regions = ["ap-southeast-1", "us-east-1"]
-///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
 ///       source_metrics_configuration = {
 ///         metrics_selection_criteria = "*"
 ///       }
+///       regions = ["ap-southeast-1", "us-east-1"]
+///       scope   ="OrganizationId = '${data.aws_organizations_getorganization.currentGetOrganization.id}'"
 ///     }
 ///   }
+///   rule_name = "metrics-centralization-rule"
 /// }
 /// ```
 /// ```java
@@ -1201,27 +1201,27 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///             .build());
 ///
 ///         var metrics = new CentralizationRuleForOrganization("metrics", CentralizationRuleForOrganizationArgs.builder()
-///             .ruleName("metrics-centralization-rule")
 ///             .rule(CentralizationRuleForOrganizationRuleArgs.builder()
 ///                 .destination(CentralizationRuleForOrganizationRuleDestinationArgs.builder()
-///                     .region("eu-west-1")
-///                     .account(current.accountId())
 ///                     .destinationMetricsConfiguration(CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationArgs.builder()
 ///                         .backupConfiguration(CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationBackupConfigurationArgs.builder()
 ///                             .region("us-west-1")
 ///                             .build())
 ///                         .build())
+///                     .region("eu-west-1")
+///                     .account(current.accountId())
 ///                     .build())
 ///                 .source(CentralizationRuleForOrganizationRuleSourceArgs.builder()
+///                     .sourceMetricsConfiguration(CentralizationRuleForOrganizationRuleSourceSourceMetricsConfigurationArgs.builder()
+///                         .metricsSelectionCriteria("*")
+///                         .build())
 ///                     .regions(
 ///                         "ap-southeast-1",
 ///                         "us-east-1")
 ///                     .scope(String.format("OrganizationId = '%s'", currentGetOrganization.id()))
-///                     .sourceMetricsConfiguration(CentralizationRuleForOrganizationRuleSourceSourceMetricsConfigurationArgs.builder()
-///                         .metricsSelectionCriteria("*")
-///                         .build())
 ///                     .build())
 ///                 .build())
+///             .ruleName("metrics-centralization-rule")
 ///             .build());
 ///
 ///     }
@@ -1232,21 +1232,21 @@ import 'centralization_rule_for_organization_timeouts.dart';
 ///   metrics:
 ///     type: aws:observabilityadmin:CentralizationRuleForOrganization
 ///     properties:
-///       ruleName: metrics-centralization-rule
 ///       rule:
 ///         destination:
-///           region: eu-west-1
-///           account: ${current.accountId}
 ///           destinationMetricsConfiguration:
 ///             backupConfiguration:
 ///               region: us-west-1
+///           region: eu-west-1
+///           account: ${current.accountId}
 ///         source:
+///           sourceMetricsConfiguration:
+///             metricsSelectionCriteria: '*'
 ///           regions:
 ///             - ap-southeast-1
 ///             - us-east-1
 ///           scope: OrganizationId = '${currentGetOrganization.id}'
-///           sourceMetricsConfiguration:
-///             metricsSelectionCriteria: '*'
+///       ruleName: metrics-centralization-rule
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -1277,6 +1277,10 @@ class CentralizationRuleForOrganization extends pulumi.CustomResource {
   late final pulumi.Output<String> ruleArn;
   /// Name of the centralization rule. Must be unique within the organization.
   late final pulumi.Output<String> ruleName;
+  /// Reason tag propagation is unhealthy, when applicable (for example, `RoleNotAssumable` or `RoleLacksPermissions`).
+  late final pulumi.Output<String> tagPropagationFailureReason;
+  /// Health status of tag propagation for the rule (for example, `Healthy` or `Unhealthy`). Independent of the overall rule health.
+  late final pulumi.Output<String> tagPropagationStatus;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -1295,14 +1299,16 @@ class CentralizationRuleForOrganization extends pulumi.CustomResource {
           'aws:observabilityadmin/centralizationRuleForOrganization:CentralizationRuleForOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     rule = registerOutput<CentralizationRuleForOrganizationRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CentralizationRuleForOrganizationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleArn = registerOutput<String>('ruleArn');
     ruleName = registerOutput<String>('ruleName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tagPropagationFailureReason = registerOutput<String>('tagPropagationFailureReason');
+    tagPropagationStatus = registerOutput<String>('tagPropagationStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<CentralizationRuleForOrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CentralizationRuleForOrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1311,11 +1317,12 @@ class CentralizationRuleForOrganization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CentralizationRuleForOrganizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CentralizationRuleForOrganization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1333,8 +1340,30 @@ class CentralizationRuleForOrganization extends pulumi.CustomResource {
     rule = registerOutput<CentralizationRuleForOrganizationRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CentralizationRuleForOrganizationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ruleArn = registerOutput<String>('ruleArn');
     ruleName = registerOutput<String>('ruleName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tagPropagationFailureReason = registerOutput<String>('tagPropagationFailureReason');
+    tagPropagationStatus = registerOutput<String>('tagPropagationStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<CentralizationRuleForOrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CentralizationRuleForOrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CentralizationRuleForOrganization] resource.
+  CentralizationRuleForOrganization.reference(String urn)
+    : super(
+        'aws:observabilityadmin/centralizationRuleForOrganization:CentralizationRuleForOrganization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    rule = registerOutput<CentralizationRuleForOrganizationRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CentralizationRuleForOrganizationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ruleArn = registerOutput<String>('ruleArn');
+    ruleName = registerOutput<String>('ruleName');
+    tagPropagationFailureReason = registerOutput<String>('tagPropagationFailureReason');
+    tagPropagationStatus = registerOutput<String>('tagPropagationStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<CentralizationRuleForOrganizationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CentralizationRuleForOrganizationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExtensionActionPointAction {
   /// Information about the action.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Action name.
   final pulumi.Input<String> name;
-  /// Amazon Resource Name (ARN) for an Identity and Access Management assume role.
-  final pulumi.Input<String>? roleArn;
-  /// Extension URI associated to the action point in the extension definition. The URI can be an Amazon Resource Name (ARN) for one of the following: an Lambda function, an Amazon Simple Queue Service queue, an Amazon Simple Notification Service topic, or the Amazon EventBridge default event bus.
+  /// ARN for an Identity and Access Management assume role.
+  final pulumi.Input<String?>? roleArn;
+  /// Extension URI associated to the action point in the extension definition. The URI can be an ARN for one of the following: an Lambda function, an Amazon Simple Queue Service queue, an Amazon Simple Notification Service topic, or the Amazon EventBridge default event bus.
   final pulumi.Input<String> uri;
 
   /// Creates a new [ExtensionActionPointAction].
   /// [description] Information about the action.
   /// [name] Action name.
-  /// [roleArn] Amazon Resource Name (ARN) for an Identity and Access Management assume role.
-  /// [uri] Extension URI associated to the action point in the extension definition. The URI can be an Amazon Resource Name (ARN) for one of the following: an Lambda function, an Amazon Simple Queue Service queue, an Amazon Simple Notification Service topic, or the Amazon EventBridge default event bus.
+  /// [roleArn] ARN for an Identity and Access Management assume role.
+  /// [uri] Extension URI associated to the action point in the extension definition. The URI can be an ARN for one of the following: an Lambda function, an Amazon Simple Queue Service queue, an Amazon Simple Notification Service topic, or the Amazon EventBridge default event bus.
   const ExtensionActionPointAction({
     this.description,
     required this.name,

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegationSetArgs {
   /// This is a reference name used in Caller Reference
   /// (helpful for identifying single delegation set amongst others)
-  final pulumi.Input<String>? referenceName;
+  final pulumi.Input<String?>? referenceName;
 
   /// Creates a new [DelegationSetArgs].
   /// [referenceName] This is a reference name used in Caller Reference

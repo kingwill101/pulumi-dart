@@ -9,23 +9,23 @@ import 'custom_action_type_settings.dart';
 /// Input properties used for looking up and filtering CustomActionType resources.
 class CustomActionTypeState {
   /// The action ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The category of the custom action. Valid values: `Source`, `Build`, `Deploy`, `Test`, `Invoke`, `Approval`
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// The configuration properties for the custom action. Max 10 items.
-  final pulumi.Input<List<CustomActionTypeConfigurationProperty>>? configurationProperties;
-  final pulumi.Input<CustomActionTypeInputArtifactDetails>? inputArtifactDetails;
-  final pulumi.Input<CustomActionTypeOutputArtifactDetails>? outputArtifactDetails;
+  final pulumi.Input<List<CustomActionTypeConfigurationProperty>?>? configurationProperties;
+  final pulumi.Input<CustomActionTypeInputArtifactDetails?>? inputArtifactDetails;
+  final pulumi.Input<CustomActionTypeOutputArtifactDetails?>? outputArtifactDetails;
   /// The creator of the action being called.
-  final pulumi.Input<String>? owner;
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? owner;
+  final pulumi.Input<String?>? providerName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<CustomActionTypeSettings>? settings;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<CustomActionTypeSettings?>? settings;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<String>? version;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [CustomActionTypeState].
   /// [arn] The action ARN.

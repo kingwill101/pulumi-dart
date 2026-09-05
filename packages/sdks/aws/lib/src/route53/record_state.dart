@@ -13,41 +13,41 @@ import 'record_weighted_routing_policy.dart';
 class RecordState {
   /// An alias block. Conflicts with `ttl` & `records`.
   /// Documented below.
-  final pulumi.Input<List<RecordAlias>>? aliases;
+  final pulumi.Input<List<RecordAlias>?>? aliases;
   /// Allow creation of this record to overwrite an existing record, if any. This does not affect the ability to update the record using this provider and does not prevent other resources within this provider or manual Route 53 changes outside this provider from overwriting this record. `false` by default. This configuration is not recommended for most environments.
   ///
   /// Exactly one of `records` or `alias` must be specified: this determines whether it's an alias record.
-  final pulumi.Input<bool>? allowOverwrite;
+  final pulumi.Input<bool?>? allowOverwrite;
   /// A block indicating a routing policy based on the IP network ranges of requestors. Conflicts with any other routing policy. Documented below.
-  final pulumi.Input<RecordCidrRoutingPolicy>? cidrRoutingPolicy;
+  final pulumi.Input<RecordCidrRoutingPolicy?>? cidrRoutingPolicy;
   /// A block indicating the routing behavior when associated health check fails. Conflicts with any other routing policy. Documented below.
-  final pulumi.Input<List<RecordFailoverRoutingPolicy>>? failoverRoutingPolicies;
+  final pulumi.Input<List<RecordFailoverRoutingPolicy>?>? failoverRoutingPolicies;
   /// [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) built using the zone domain and `name`. Does not include trailing `.`.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// A block indicating a routing policy based on the geolocation of the requestor. Conflicts with any other routing policy. Documented below.
-  final pulumi.Input<List<RecordGeolocationRoutingPolicy>>? geolocationRoutingPolicies;
+  final pulumi.Input<List<RecordGeolocationRoutingPolicy>?>? geolocationRoutingPolicies;
   /// A block indicating a routing policy based on the geoproximity of the requestor. Conflicts with any other routing policy. Documented below.
-  final pulumi.Input<RecordGeoproximityRoutingPolicy>? geoproximityRoutingPolicy;
+  final pulumi.Input<RecordGeoproximityRoutingPolicy?>? geoproximityRoutingPolicy;
   /// The health check the record should be associated with.
-  final pulumi.Input<String>? healthCheckId;
+  final pulumi.Input<String?>? healthCheckId;
   /// A block indicating a routing policy based on the latency between the requestor and an AWS region. Conflicts with any other routing policy. Documented below.
-  final pulumi.Input<List<RecordLatencyRoutingPolicy>>? latencyRoutingPolicies;
+  final pulumi.Input<List<RecordLatencyRoutingPolicy>?>? latencyRoutingPolicies;
   /// Set to `true` to indicate a multivalue answer routing policy. Conflicts with any other routing policy.
-  final pulumi.Input<bool>? multivalueAnswerRoutingPolicy;
+  final pulumi.Input<bool?>? multivalueAnswerRoutingPolicy;
   /// The name of the record.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A string list of records. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g., `"first255characters\"\"morecharacters"`).
-  final pulumi.Input<List<String>>? records;
+  final pulumi.Input<List<String>?>? records;
   /// Unique identifier to differentiate records with routing policies from one another. Required if using `cidrRoutingPolicy`, `failoverRoutingPolicy`, `geolocationRoutingPolicy`,`geoproximityRoutingPolicy`, `latencyRoutingPolicy`, `multivalueAnswerRoutingPolicy`, or `weightedRoutingPolicy`.
-  final pulumi.Input<String>? setIdentifier;
+  final pulumi.Input<String?>? setIdentifier;
   /// The TTL of the record.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
   /// The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `DS`, `HTTPS`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// A block indicating a weighted routing policy. Conflicts with any other routing policy. Documented below.
-  final pulumi.Input<List<RecordWeightedRoutingPolicy>>? weightedRoutingPolicies;
+  final pulumi.Input<List<RecordWeightedRoutingPolicy>?>? weightedRoutingPolicies;
   /// The ID of the hosted zone to contain this record.
-  final pulumi.Input<String>? zoneId;
+  final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [RecordState].
   /// [aliases] An alias block. Conflicts with `ttl` & `records`.
@@ -124,8 +124,8 @@ class RecordState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       records: (() { final guardedValue = map['records']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       setIdentifier: (() { final guardedValue = map['setIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       weightedRoutingPolicies: (() { final guardedValue = map['weightedRoutingPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RecordWeightedRoutingPolicy>(guardedValue, (value) => RecordWeightedRoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

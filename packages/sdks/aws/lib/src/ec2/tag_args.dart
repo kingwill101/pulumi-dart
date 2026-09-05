@@ -10,7 +10,7 @@ class TagArgs {
   /// The tag name.
   final pulumi.Input<String> key;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the EC2 resource to manage the tag for.
   final pulumi.Input<String> resourceId;
   /// The value of the tag.

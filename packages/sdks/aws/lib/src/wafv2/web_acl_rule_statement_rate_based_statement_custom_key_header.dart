@@ -6,7 +6,7 @@ import 'web_acl_rule_statement_rate_based_statement_custom_key_header_text_trans
 class WebAclRuleStatementRateBasedStatementCustomKeyHeader {
   /// Name of the rule. Must be unique within the Web ACL.
   final pulumi.Input<String> name;
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>>? textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyHeader].
   /// [name] Name of the rule. Must be unique within the Web ACL.

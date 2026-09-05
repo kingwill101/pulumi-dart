@@ -7,15 +7,15 @@ class HostVpcConfiguration {
   final pulumi.Input<List<String>> securityGroupIds;
   /// The ID of the subnet or subnets associated with the Amazon VPC connected to the infrastructure where your provider type is installed.
   final pulumi.Input<List<String>> subnetIds;
-  /// The value of the Transport Layer Security (TLS) certificate associated with the infrastructure where your provider type is installed.
-  final pulumi.Input<String>? tlsCertificate;
+  /// Value of the TLS certificate associated with the infrastructure where your provider type is installed.
+  final pulumi.Input<String?>? tlsCertificate;
   /// The ID of the Amazon VPC connected to the infrastructure where your provider type is installed.
   final pulumi.Input<String> vpcId;
 
   /// Creates a new [HostVpcConfiguration].
   /// [securityGroupIds] ID of the security group or security groups associated with the Amazon VPC connected to the infrastructure where your provider type is installed.
   /// [subnetIds] The ID of the subnet or subnets associated with the Amazon VPC connected to the infrastructure where your provider type is installed.
-  /// [tlsCertificate] The value of the Transport Layer Security (TLS) certificate associated with the infrastructure where your provider type is installed.
+  /// [tlsCertificate] Value of the TLS certificate associated with the infrastructure where your provider type is installed.
   /// [vpcId] The ID of the Amazon VPC connected to the infrastructure where your provider type is installed.
   const HostVpcConfiguration({
     required this.securityGroupIds,

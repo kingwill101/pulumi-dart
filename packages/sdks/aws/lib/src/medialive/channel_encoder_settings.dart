@@ -13,23 +13,23 @@ import 'channel_encoder_settings_video_description.dart';
 
 class ChannelEncoderSettings {
   /// Audio descriptions for the channel. See Audio Descriptions for more details.
-  final pulumi.Input<List<ChannelEncoderSettingsAudioDescription>>? audioDescriptions;
+  final pulumi.Input<List<ChannelEncoderSettingsAudioDescription>?>? audioDescriptions;
   /// Settings for ad avail blanking. See Avail Blanking for more details.
-  final pulumi.Input<ChannelEncoderSettingsAvailBlanking>? availBlanking;
+  final pulumi.Input<ChannelEncoderSettingsAvailBlanking?>? availBlanking;
   /// Caption Descriptions. See Caption Descriptions for more details.
-  final pulumi.Input<List<ChannelEncoderSettingsCaptionDescription>>? captionDescriptions;
+  final pulumi.Input<List<ChannelEncoderSettingsCaptionDescription>?>? captionDescriptions;
   /// Configuration settings that apply to the event as a whole. See Global Configuration for more details.
-  final pulumi.Input<ChannelEncoderSettingsGlobalConfiguration>? globalConfiguration;
+  final pulumi.Input<ChannelEncoderSettingsGlobalConfiguration?>? globalConfiguration;
   /// Settings for motion graphics. See Motion Graphics Configuration for more details.
-  final pulumi.Input<ChannelEncoderSettingsMotionGraphicsConfiguration>? motionGraphicsConfiguration;
+  final pulumi.Input<ChannelEncoderSettingsMotionGraphicsConfiguration?>? motionGraphicsConfiguration;
   /// Nielsen configuration settings. See Nielsen Configuration for more details.
-  final pulumi.Input<ChannelEncoderSettingsNielsenConfiguration>? nielsenConfiguration;
+  final pulumi.Input<ChannelEncoderSettingsNielsenConfiguration?>? nielsenConfiguration;
   /// Output groups for the channel. See Output Groups for more details.
   final pulumi.Input<List<ChannelEncoderSettingsOutputGroup>> outputGroups;
   /// Contains settings used to acquire and adjust timecode information from inputs. See Timecode Config for more details.
   final pulumi.Input<ChannelEncoderSettingsTimecodeConfig> timecodeConfig;
   /// Video Descriptions. See Video Descriptions for more details.
-  final pulumi.Input<List<ChannelEncoderSettingsVideoDescription>>? videoDescriptions;
+  final pulumi.Input<List<ChannelEncoderSettingsVideoDescription>?>? videoDescriptions;
 
   /// Creates a new [ChannelEncoderSettings].
   /// [audioDescriptions] Audio descriptions for the channel. See Audio Descriptions for more details.

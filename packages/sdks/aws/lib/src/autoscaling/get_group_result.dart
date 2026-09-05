@@ -11,68 +11,68 @@ import 'get_group_warm_pool.dart';
 /// Result data returned by getGroup.
 class GetGroupResult {
   /// ARN of the Auto Scaling group.
-  final String arn;
+  final String? arn;
   /// One or more Availability Zones for the group.
-  final List<String> availabilityZones;
+  final List<String>? availabilityZones;
   /// Amount of time, in seconds, after a scaling activity completes before another scaling activity can start.
-  final int defaultCooldown;
+  final int? defaultCooldown;
   /// Desired size of the group.
-  final int desiredCapacity;
+  final int? desiredCapacity;
   /// Unit of measurement for the value returned for `desiredCapacity`.
-  final String desiredCapacityType;
+  final String? desiredCapacityType;
   /// List of metrics enabled for collection.
-  final List<String> enabledMetrics;
+  final List<String>? enabledMetrics;
   /// Amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
-  final int healthCheckGracePeriod;
+  final int? healthCheckGracePeriod;
   /// Service to use for the health checks. The valid values are EC2 and ELB.
-  final String healthCheckType;
+  final String? healthCheckType;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Instance maintenance policy for the group.
-  final List<GetGroupInstanceMaintenancePolicy> instanceMaintenancePolicies;
+  final List<GetGroupInstanceMaintenancePolicy>? instanceMaintenancePolicies;
   /// Name of the associated launch configuration.
-  final String launchConfiguration;
+  final String? launchConfiguration;
   /// List of launch templates along with the overrides.
-  final List<GetGroupLaunchTemplate> launchTemplates;
+  final List<GetGroupLaunchTemplate>? launchTemplates;
   /// One or more load balancers associated with the group.
-  final List<String> loadBalancers;
+  final List<String>? loadBalancers;
   /// Maximum amount of time, in seconds, that an instance can be in service.
-  final int maxInstanceLifetime;
+  final int? maxInstanceLifetime;
   /// Maximum size of the group.
-  final int maxSize;
+  final int? maxSize;
   /// Minimum number of instances to maintain in the warm pool.
-  final int minSize;
+  final int? minSize;
   /// List of mixed instances policy objects for the group.
-  final List<GetGroupMixedInstancesPolicy> mixedInstancesPolicies;
+  final List<GetGroupMixedInstancesPolicy>? mixedInstancesPolicies;
   /// Name of the Auto Scaling Group.
-  final String name;
+  final String? name;
   /// Whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling in.
-  final bool newInstancesProtectedFromScaleIn;
-  /// Name of the placement group into which to launch your instances, if any. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the Amazon Elastic Compute Cloud User Guide.
-  final String placementGroup;
+  final bool? newInstancesProtectedFromScaleIn;
+  /// Name of the placement group into which to launch your instances, if any. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the EC2 User Guide.
+  final String? placementGroup;
   /// Predicted capacity of the group.
-  final int predictedCapacity;
-  final String region;
+  final int? predictedCapacity;
+  final String? region;
   /// ARN of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf.
-  final String serviceLinkedRoleArn;
+  final String? serviceLinkedRoleArn;
   /// Current state of the group when DeleteAutoScalingGroup is in progress.
-  final String status;
+  final String? status;
   /// List of processes suspended processes for the Auto Scaling Group.
-  final List<String> suspendedProcesses;
+  final List<String>? suspendedProcesses;
   /// List of tags for the group.
-  final List<GetGroupTag> tags;
+  final List<GetGroupTag>? tags;
   /// ARNs of the target groups for your load balancer.
-  final List<String> targetGroupArns;
+  final List<String>? targetGroupArns;
   /// Termination policies for the group.
-  final List<String> terminationPolicies;
+  final List<String>? terminationPolicies;
   /// Traffic sources.
-  final List<GetGroupTrafficSource> trafficSources;
+  final List<GetGroupTrafficSource>? trafficSources;
   /// VPC ID for the group.
-  final String vpcZoneIdentifier;
+  final String? vpcZoneIdentifier;
   /// Current size of the warm pool.
-  final int warmPoolSize;
+  final int? warmPoolSize;
   /// List of warm pool configuration objects.
-  final List<GetGroupWarmPool> warmPools;
+  final List<GetGroupWarmPool>? warmPools;
 
   /// Creates a new [GetGroupResult].
   /// [arn] ARN of the Auto Scaling group.
@@ -94,9 +94,9 @@ class GetGroupResult {
   /// [mixedInstancesPolicies] List of mixed instances policy objects for the group.
   /// [name] Name of the Auto Scaling Group.
   /// [newInstancesProtectedFromScaleIn] Whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling in.
-  /// [placementGroup] Name of the placement group into which to launch your instances, if any. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the Amazon Elastic Compute Cloud User Guide.
+  /// [placementGroup] Name of the placement group into which to launch your instances, if any. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the EC2 User Guide.
   /// [predictedCapacity] Predicted capacity of the group.
-  /// [region] Required.
+  /// [region] Optional.
   /// [serviceLinkedRoleArn] ARN of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf.
   /// [status] Current state of the group when DeleteAutoScalingGroup is in progress.
   /// [suspendedProcesses] List of processes suspended processes for the Auto Scaling Group.
@@ -108,111 +108,111 @@ class GetGroupResult {
   /// [warmPoolSize] Current size of the warm pool.
   /// [warmPools] List of warm pool configuration objects.
   const GetGroupResult({
-    required this.arn,
-    required this.availabilityZones,
-    required this.defaultCooldown,
-    required this.desiredCapacity,
-    required this.desiredCapacityType,
-    required this.enabledMetrics,
-    required this.healthCheckGracePeriod,
-    required this.healthCheckType,
-    required this.id,
-    required this.instanceMaintenancePolicies,
-    required this.launchConfiguration,
-    required this.launchTemplates,
-    required this.loadBalancers,
-    required this.maxInstanceLifetime,
-    required this.maxSize,
-    required this.minSize,
-    required this.mixedInstancesPolicies,
-    required this.name,
-    required this.newInstancesProtectedFromScaleIn,
-    required this.placementGroup,
-    required this.predictedCapacity,
-    required this.region,
-    required this.serviceLinkedRoleArn,
-    required this.status,
-    required this.suspendedProcesses,
-    required this.tags,
-    required this.targetGroupArns,
-    required this.terminationPolicies,
-    required this.trafficSources,
-    required this.vpcZoneIdentifier,
-    required this.warmPoolSize,
-    required this.warmPools,
+    this.arn,
+    this.availabilityZones,
+    this.defaultCooldown,
+    this.desiredCapacity,
+    this.desiredCapacityType,
+    this.enabledMetrics,
+    this.healthCheckGracePeriod,
+    this.healthCheckType,
+    this.id,
+    this.instanceMaintenancePolicies,
+    this.launchConfiguration,
+    this.launchTemplates,
+    this.loadBalancers,
+    this.maxInstanceLifetime,
+    this.maxSize,
+    this.minSize,
+    this.mixedInstancesPolicies,
+    this.name,
+    this.newInstancesProtectedFromScaleIn,
+    this.placementGroup,
+    this.predictedCapacity,
+    this.region,
+    this.serviceLinkedRoleArn,
+    this.status,
+    this.suspendedProcesses,
+    this.tags,
+    this.targetGroupArns,
+    this.terminationPolicies,
+    this.trafficSources,
+    this.vpcZoneIdentifier,
+    this.warmPoolSize,
+    this.warmPools,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'availabilityZones': availabilityZones,
-      'defaultCooldown': defaultCooldown,
-      'desiredCapacity': desiredCapacity,
-      'desiredCapacityType': desiredCapacityType,
-      'enabledMetrics': enabledMetrics,
-      'healthCheckGracePeriod': healthCheckGracePeriod,
-      'healthCheckType': healthCheckType,
-      'id': id,
-      'instanceMaintenancePolicies': pulumi.Input.encodeList<GetGroupInstanceMaintenancePolicy, Map<String, dynamic>>(instanceMaintenancePolicies, (value) => value.toMap()),
-      'launchConfiguration': launchConfiguration,
-      'launchTemplates': pulumi.Input.encodeList<GetGroupLaunchTemplate, Map<String, dynamic>>(launchTemplates, (value) => value.toMap()),
-      'loadBalancers': loadBalancers,
-      'maxInstanceLifetime': maxInstanceLifetime,
-      'maxSize': maxSize,
-      'minSize': minSize,
-      'mixedInstancesPolicies': pulumi.Input.encodeList<GetGroupMixedInstancesPolicy, Map<String, dynamic>>(mixedInstancesPolicies, (value) => value.toMap()),
-      'name': name,
-      'newInstancesProtectedFromScaleIn': newInstancesProtectedFromScaleIn,
-      'placementGroup': placementGroup,
-      'predictedCapacity': predictedCapacity,
-      'region': region,
-      'serviceLinkedRoleArn': serviceLinkedRoleArn,
-      'status': status,
-      'suspendedProcesses': suspendedProcesses,
-      'tags': pulumi.Input.encodeList<GetGroupTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
-      'targetGroupArns': targetGroupArns,
-      'terminationPolicies': terminationPolicies,
-      'trafficSources': pulumi.Input.encodeList<GetGroupTrafficSource, Map<String, dynamic>>(trafficSources, (value) => value.toMap()),
-      'vpcZoneIdentifier': vpcZoneIdentifier,
-      'warmPoolSize': warmPoolSize,
-      'warmPools': pulumi.Input.encodeList<GetGroupWarmPool, Map<String, dynamic>>(warmPools, (value) => value.toMap()),
+      'arn': ?arn,
+      'availabilityZones': ?availabilityZones,
+      'defaultCooldown': ?defaultCooldown,
+      'desiredCapacity': ?desiredCapacity,
+      'desiredCapacityType': ?desiredCapacityType,
+      'enabledMetrics': ?enabledMetrics,
+      'healthCheckGracePeriod': ?healthCheckGracePeriod,
+      'healthCheckType': ?healthCheckType,
+      'id': ?id,
+      'instanceMaintenancePolicies': ?(() { final guardedValue = instanceMaintenancePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGroupInstanceMaintenancePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'launchConfiguration': ?launchConfiguration,
+      'launchTemplates': ?(() { final guardedValue = launchTemplates; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGroupLaunchTemplate, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'loadBalancers': ?loadBalancers,
+      'maxInstanceLifetime': ?maxInstanceLifetime,
+      'maxSize': ?maxSize,
+      'minSize': ?minSize,
+      'mixedInstancesPolicies': ?(() { final guardedValue = mixedInstancesPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGroupMixedInstancesPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'newInstancesProtectedFromScaleIn': ?newInstancesProtectedFromScaleIn,
+      'placementGroup': ?placementGroup,
+      'predictedCapacity': ?predictedCapacity,
+      'region': ?region,
+      'serviceLinkedRoleArn': ?serviceLinkedRoleArn,
+      'status': ?status,
+      'suspendedProcesses': ?suspendedProcesses,
+      'tags': ?(() { final guardedValue = tags; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGroupTag, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'targetGroupArns': ?targetGroupArns,
+      'terminationPolicies': ?terminationPolicies,
+      'trafficSources': ?(() { final guardedValue = trafficSources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGroupTrafficSource, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'vpcZoneIdentifier': ?vpcZoneIdentifier,
+      'warmPoolSize': ?warmPoolSize,
+      'warmPools': ?(() { final guardedValue = warmPools; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGroupWarmPool, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetGroupResult(
-      arn: map['arn'] as String,
-      availabilityZones: (map['availabilityZones'] as List).cast<String>(),
-      defaultCooldown: map['defaultCooldown'] as int,
-      desiredCapacity: map['desiredCapacity'] as int,
-      desiredCapacityType: map['desiredCapacityType'] as String,
-      enabledMetrics: (map['enabledMetrics'] as List).cast<String>(),
-      healthCheckGracePeriod: map['healthCheckGracePeriod'] as int,
-      healthCheckType: map['healthCheckType'] as String,
-      id: map['id'] as String,
-      instanceMaintenancePolicies: pulumi.Input.decodeList<GetGroupInstanceMaintenancePolicy>(map['instanceMaintenancePolicies']!, (value) => GetGroupInstanceMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      launchConfiguration: map['launchConfiguration'] as String,
-      launchTemplates: pulumi.Input.decodeList<GetGroupLaunchTemplate>(map['launchTemplates']!, (value) => GetGroupLaunchTemplate.fromMap((value as Map).cast<String, dynamic>())),
-      loadBalancers: (map['loadBalancers'] as List).cast<String>(),
-      maxInstanceLifetime: map['maxInstanceLifetime'] as int,
-      maxSize: map['maxSize'] as int,
-      minSize: map['minSize'] as int,
-      mixedInstancesPolicies: pulumi.Input.decodeList<GetGroupMixedInstancesPolicy>(map['mixedInstancesPolicies']!, (value) => GetGroupMixedInstancesPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      newInstancesProtectedFromScaleIn: map['newInstancesProtectedFromScaleIn'] as bool,
-      placementGroup: map['placementGroup'] as String,
-      predictedCapacity: map['predictedCapacity'] as int,
-      region: map['region'] as String,
-      serviceLinkedRoleArn: map['serviceLinkedRoleArn'] as String,
-      status: map['status'] as String,
-      suspendedProcesses: (map['suspendedProcesses'] as List).cast<String>(),
-      tags: pulumi.Input.decodeList<GetGroupTag>(map['tags']!, (value) => GetGroupTag.fromMap((value as Map).cast<String, dynamic>())),
-      targetGroupArns: (map['targetGroupArns'] as List).cast<String>(),
-      terminationPolicies: (map['terminationPolicies'] as List).cast<String>(),
-      trafficSources: pulumi.Input.decodeList<GetGroupTrafficSource>(map['trafficSources']!, (value) => GetGroupTrafficSource.fromMap((value as Map).cast<String, dynamic>())),
-      vpcZoneIdentifier: map['vpcZoneIdentifier'] as String,
-      warmPoolSize: map['warmPoolSize'] as int,
-      warmPools: pulumi.Input.decodeList<GetGroupWarmPool>(map['warmPools']!, (value) => GetGroupWarmPool.fromMap((value as Map).cast<String, dynamic>())),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      defaultCooldown: (() { final guardedValue = map['defaultCooldown']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      desiredCapacity: (() { final guardedValue = map['desiredCapacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      desiredCapacityType: (() { final guardedValue = map['desiredCapacityType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enabledMetrics: (() { final guardedValue = map['enabledMetrics']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      healthCheckGracePeriod: (() { final guardedValue = map['healthCheckGracePeriod']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      healthCheckType: (() { final guardedValue = map['healthCheckType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceMaintenancePolicies: (() { final guardedValue = map['instanceMaintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupInstanceMaintenancePolicy>(guardedValue, (value) => GetGroupInstanceMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      launchConfiguration: (() { final guardedValue = map['launchConfiguration']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      launchTemplates: (() { final guardedValue = map['launchTemplates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupLaunchTemplate>(guardedValue, (value) => GetGroupLaunchTemplate.fromMap((value as Map).cast<String, dynamic>())); })(),
+      loadBalancers: (() { final guardedValue = map['loadBalancers']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      maxInstanceLifetime: (() { final guardedValue = map['maxInstanceLifetime']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      mixedInstancesPolicies: (() { final guardedValue = map['mixedInstancesPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupMixedInstancesPolicy>(guardedValue, (value) => GetGroupMixedInstancesPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      newInstancesProtectedFromScaleIn: (() { final guardedValue = map['newInstancesProtectedFromScaleIn']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      placementGroup: (() { final guardedValue = map['placementGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      predictedCapacity: (() { final guardedValue = map['predictedCapacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceLinkedRoleArn: (() { final guardedValue = map['serviceLinkedRoleArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      suspendedProcesses: (() { final guardedValue = map['suspendedProcesses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupTag>(guardedValue, (value) => GetGroupTag.fromMap((value as Map).cast<String, dynamic>())); })(),
+      targetGroupArns: (() { final guardedValue = map['targetGroupArns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      terminationPolicies: (() { final guardedValue = map['terminationPolicies']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      trafficSources: (() { final guardedValue = map['trafficSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupTrafficSource>(guardedValue, (value) => GetGroupTrafficSource.fromMap((value as Map).cast<String, dynamic>())); })(),
+      vpcZoneIdentifier: (() { final guardedValue = map['vpcZoneIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      warmPoolSize: (() { final guardedValue = map['warmPoolSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      warmPools: (() { final guardedValue = map['warmPools']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupWarmPool>(guardedValue, (value) => GetGroupWarmPool.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_shield_protection_protection_args_doc}
 class ProtectionArgs {
   /// A friendly name for the Protection you are creating.
-  final pulumi.Input<String>? name;
-  /// The ARN (Amazon Resource Name) of the resource to be protected.
+  final pulumi.Input<String?>? name;
+  /// ARN of the resource to be protected.
   final pulumi.Input<String> resourceArn;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ProtectionArgs].
   /// [name] A friendly name for the Protection you are creating.
-  /// [resourceArn] The ARN (Amazon Resource Name) of the resource to be protected.
+  /// [resourceArn] ARN of the resource to be protected.
   /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ProtectionArgs({
     this.name,

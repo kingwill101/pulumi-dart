@@ -3,12 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountSettingsMinimumThroughputBillingCommitment {
-  final pulumi.Input<String>? earliestAllowedEndAt;
-  final pulumi.Input<String>? endedAt;
-  final pulumi.Input<String>? startedAt;
+  final pulumi.Input<String?>? earliestAllowedEndAt;
+  final pulumi.Input<String?>? endedAt;
+  final pulumi.Input<String?>? startedAt;
   /// Desired status of the minimum throughput billing commitment. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> status;
-  final pulumi.Input<String>? statusActual;
+  final pulumi.Input<String?>? statusActual;
 
   /// Creates a new [AccountSettingsMinimumThroughputBillingCommitment].
   /// [earliestAllowedEndAt] Optional.

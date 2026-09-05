@@ -11,25 +11,25 @@ import 'table_metadata.dart';
 /// {@macro pulumi_s3_tables_table_table_args_doc}
 class TableArgs {
   /// Single table bucket encryption configuration object. See `encryptionConfiguration` below.
-  final pulumi.Input<TableEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<TableEncryptionConfiguration?>? encryptionConfiguration;
   /// Format of the table. Must be `ICEBERG`.
   final pulumi.Input<String> format;
   /// Single table bucket maintenance configuration object. See `maintenanceConfiguration` below.
-  final pulumi.Input<TableMaintenanceConfiguration>? maintenanceConfiguration;
+  final pulumi.Input<TableMaintenanceConfiguration?>? maintenanceConfiguration;
   /// Details about the table metadata. This configuration specifies the metadata format and schema for the table. Currently only supports Iceberg format. See `metadata` below.
-  final pulumi.Input<TableMetadata>? metadata;
+  final pulumi.Input<TableMetadata?>? metadata;
   /// Name of the table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number. A full list of table naming rules can be found in the [S3 Tables documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-naming.html#naming-rules-table).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of the namespace for this table. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   final pulumi.Input<String> namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN referencing the Table Bucket that contains this Namespace.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> tableBucketArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [TableArgs].
   /// [encryptionConfiguration] Single table bucket encryption configuration object. See `encryptionConfiguration` below.

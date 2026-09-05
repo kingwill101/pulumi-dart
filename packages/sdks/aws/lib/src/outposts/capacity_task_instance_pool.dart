@@ -25,7 +25,7 @@ class CapacityTaskInstancePool {
 
   factory CapacityTaskInstancePool.fromMap(Map<String, dynamic> map) {
     return CapacityTaskInstancePool(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }

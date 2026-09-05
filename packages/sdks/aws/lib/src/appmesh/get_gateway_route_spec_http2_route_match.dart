@@ -46,7 +46,7 @@ class GetGatewayRouteSpecHttp2RouteMatch {
       headers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchHeader>(map['headers']!, (value) => GetGatewayRouteSpecHttp2RouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))),
       hostnames: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchHostname>(map['hostnames']!, (value) => GetGatewayRouteSpecHttp2RouteMatchHostname.fromMap((value as Map).cast<String, dynamic>()))),
       paths: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchPath>(map['paths']!, (value) => GetGatewayRouteSpecHttp2RouteMatchPath.fromMap((value as Map).cast<String, dynamic>()))),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
       queryParameters: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGatewayRouteSpecHttp2RouteMatchQueryParameter>(map['queryParameters']!, (value) => GetGatewayRouteSpecHttp2RouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))),
     );

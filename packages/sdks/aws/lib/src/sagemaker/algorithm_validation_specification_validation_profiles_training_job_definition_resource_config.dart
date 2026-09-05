@@ -6,21 +6,21 @@ import 'algorithm_validation_specification_validation_profiles_training_job_defi
 
 class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfig {
   /// Number of training instances.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// Instance group definitions for the training job. See Instance Groups.
-  final pulumi.Input<List<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstanceGroup>>? instanceGroups;
+  final pulumi.Input<List<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstanceGroup>?>? instanceGroups;
   /// Placement configuration for the training job. See Instance Placement Config.
-  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstancePlacementConfig>? instancePlacementConfig;
+  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstancePlacementConfig?>? instancePlacementConfig;
   /// Training instance type.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// Warm pool keep-alive period in seconds.
-  final pulumi.Input<int>? keepAlivePeriodInSeconds;
+  final pulumi.Input<int?>? keepAlivePeriodInSeconds;
   /// ARN of the SageMaker AI training plan.
-  final pulumi.Input<String>? trainingPlanArn;
+  final pulumi.Input<String?>? trainingPlanArn;
   /// KMS key ID used to encrypt the training volume.
-  final pulumi.Input<String>? volumeKmsKeyId;
+  final pulumi.Input<String?>? volumeKmsKeyId;
   /// Size of the training volume in GiB.
-  final pulumi.Input<int>? volumeSizeInGb;
+  final pulumi.Input<int?>? volumeSizeInGb;
 
   /// Creates a new [AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfig].
   /// [instanceCount] Number of training instances.
@@ -57,14 +57,14 @@ class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionRes
 
   factory AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfig.fromMap(Map<String, dynamic> map) {
     return AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfig(
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       instanceGroups: (() { final guardedValue = map['instanceGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstanceGroup>(guardedValue, (value) => AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstanceGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       instancePlacementConfig: (() { final guardedValue = map['instancePlacementConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstancePlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keepAlivePeriodInSeconds: (() { final guardedValue = map['keepAlivePeriodInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      keepAlivePeriodInSeconds: (() { final guardedValue = map['keepAlivePeriodInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       trainingPlanArn: (() { final guardedValue = map['trainingPlanArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeKmsKeyId: (() { final guardedValue = map['volumeKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

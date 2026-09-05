@@ -6,9 +6,9 @@ class PlanAssociatedAlarm {
   /// Type of alarm. Valid values: `applicationHealth`, `trigger`.
   final pulumi.Input<String> alarmType;
   /// ARN of the cross-account role to assume.
-  final pulumi.Input<String>? crossAccountRole;
+  final pulumi.Input<String?>? crossAccountRole;
   /// External ID for cross-account role assumption.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// Name of the alarm.
   final pulumi.Input<String> mapBlockKey;
   /// Resource identifier (ARN) of the CloudWatch alarm.

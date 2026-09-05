@@ -12,9 +12,9 @@ import 'identity_notification_topic_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.ses.IdentityNotificationTopic("test", {
-///     topicArn: exampleAwsSnsTopic.arn,
+///     topicArn: example.arn,
 ///     notificationType: "Bounce",
-///     identity: example.domain,
+///     identity: exampleAwsSesDomainIdentity.domain,
 ///     includeOriginalHeaders: true,
 /// });
 /// ```
@@ -23,9 +23,9 @@ import 'identity_notification_topic_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.ses.IdentityNotificationTopic("test",
-///     topic_arn=example_aws_sns_topic["arn"],
+///     topic_arn=example["arn"],
 ///     notification_type="Bounce",
-///     identity=example["domain"],
+///     identity=example_aws_ses_domain_identity["domain"],
 ///     include_original_headers=True)
 /// ```
 /// ```csharp
@@ -38,9 +38,9 @@ import 'identity_notification_topic_state.dart';
 /// {
 ///     var test = new Aws.Ses.IdentityNotificationTopic("test", new()
 ///     {
-///         TopicArn = exampleAwsSnsTopic.Arn,
+///         TopicArn = example.Arn,
 ///         NotificationType = "Bounce",
-///         Identity = example.Domain,
+///         Identity = exampleAwsSesDomainIdentity.Domain,
 ///         IncludeOriginalHeaders = true,
 ///     });
 ///
@@ -57,9 +57,9 @@ import 'identity_notification_topic_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ses.NewIdentityNotificationTopic(ctx, "test", &ses.IdentityNotificationTopicArgs{
-/// 			TopicArn:               pulumi.Any(exampleAwsSnsTopic.Arn),
+/// 			TopicArn:               pulumi.Any(example.Arn),
 /// 			NotificationType:       pulumi.String("Bounce"),
-/// 			Identity:               pulumi.Any(example.Domain),
+/// 			Identity:               pulumi.Any(exampleAwsSesDomainIdentity.Domain),
 /// 			IncludeOriginalHeaders: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -79,9 +79,9 @@ import 'identity_notification_topic_state.dart';
 /// }
 ///
 /// resource "aws_ses_identitynotificationtopic" "test" {
-///   topic_arn                = exampleAwsSnsTopic.arn
+///   topic_arn                = example.arn
 ///   notification_type        = "Bounce"
-///   identity                 = example.domain
+///   identity                 = exampleAwsSesDomainIdentity.domain
 ///   include_original_headers = true
 /// }
 /// ```
@@ -107,9 +107,9 @@ import 'identity_notification_topic_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new IdentityNotificationTopic("test", IdentityNotificationTopicArgs.builder()
-///             .topicArn(exampleAwsSnsTopic.arn())
+///             .topicArn(example.arn())
 ///             .notificationType("Bounce")
-///             .identity(example.domain())
+///             .identity(exampleAwsSesDomainIdentity.domain())
 ///             .includeOriginalHeaders(true)
 ///             .build());
 ///
@@ -121,9 +121,9 @@ import 'identity_notification_topic_state.dart';
 ///   test:
 ///     type: aws:ses:IdentityNotificationTopic
 ///     properties:
-///       topicArn: ${exampleAwsSnsTopic.arn}
+///       topicArn: ${example.arn}
 ///       notificationType: Bounce
-///       identity: ${example.domain}
+///       identity: ${exampleAwsSesDomainIdentity.domain}
 ///       includeOriginalHeaders: true
 /// ```
 ///
@@ -136,15 +136,15 @@ import 'identity_notification_topic_state.dart';
 /// $ pulumi import aws:ses/identityNotificationTopic:IdentityNotificationTopic test 'example.com|Bounce'
 /// ```
 class IdentityNotificationTopic extends pulumi.CustomResource {
-  /// The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
+  /// Identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its ARN.
   late final pulumi.Output<String> identity;
   /// Whether SES should include original email headers in SNS notifications of this type. `false` by default.
   late final pulumi.Output<bool?> includeOriginalHeaders;
-  /// The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: `Bounce`, `Complaint` or `Delivery`.
+  /// Type of notifications that will be published to the specified Amazon SNS topic. Valid Values: `Bounce`, `Complaint` or `Delivery`.
   late final pulumi.Output<String> notificationType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to `""` (an empty string) to disable publishing.
+  /// ARN of the Amazon SNS topic. Can be set to `""` (an empty string) to disable publishing.
   late final pulumi.Output<String?> topicArn;
 
   /// Creates a new [IdentityNotificationTopic].
@@ -159,7 +159,7 @@ class IdentityNotificationTopic extends pulumi.CustomResource {
           'aws:ses/identityNotificationTopic:IdentityNotificationTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     identity = registerOutput<String>('identity');
     includeOriginalHeaders = registerOutput<bool?>('includeOriginalHeaders');
@@ -173,11 +173,12 @@ class IdentityNotificationTopic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityNotificationTopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityNotificationTopic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -191,6 +192,22 @@ class IdentityNotificationTopic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    identity = registerOutput<String>('identity');
+    includeOriginalHeaders = registerOutput<bool?>('includeOriginalHeaders');
+    notificationType = registerOutput<String>('notificationType');
+    region = registerOutput<String>('region');
+    topicArn = registerOutput<String?>('topicArn');
+  }
+
+  /// Creates a typed reference to an existing [IdentityNotificationTopic] resource.
+  IdentityNotificationTopic.reference(String urn)
+    : super(
+        'aws:ses/identityNotificationTopic:IdentityNotificationTopic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     identity = registerOutput<String>('identity');
     includeOriginalHeaders = registerOutput<bool?>('includeOriginalHeaders');
     notificationType = registerOutput<String>('notificationType');

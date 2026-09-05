@@ -9,24 +9,24 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// Input properties used for looking up and filtering WebAclRuleGroupAssociation resources.
 class WebAclRuleGroupAssociationState {
   /// Managed Rule Group configuration. One of `ruleGroupReference` or `managedRuleGroup` is required. Conflicts with `ruleGroupReference`. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroup>? managedRuleGroup;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroup?>? managedRuleGroup;
   /// Override action for the rule group. Valid values are `none` and `count`. Defaults to `none`. When set to `count`, the actions defined in the rule group rules are overridden to count matches instead of blocking or allowing requests.
-  final pulumi.Input<String>? overrideAction;
+  final pulumi.Input<String?>? overrideAction;
   /// Priority of the rule within the Web ACL. Rules are evaluated in order of priority, with lower numbers evaluated first.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Custom Rule Group reference configuration. One of `ruleGroupReference` or `managedRuleGroup` is required. Conflicts with `managedRuleGroup`. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReference>? ruleGroupReference;
+  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReference?>? ruleGroupReference;
   /// Name of the rule to create in the Web ACL that references the rule group. Must be between 1 and 128 characters.
-  final pulumi.Input<String>? ruleName;
-  final pulumi.Input<WebAclRuleGroupAssociationTimeouts>? timeouts;
+  final pulumi.Input<String?>? ruleName;
+  final pulumi.Input<WebAclRuleGroupAssociationTimeouts?>? timeouts;
   /// Defines and enables Amazon CloudWatch metrics and web request sample collection. See below.
-  final pulumi.Input<WebAclRuleGroupAssociationVisibilityConfig>? visibilityConfig;
+  final pulumi.Input<WebAclRuleGroupAssociationVisibilityConfig?>? visibilityConfig;
   /// ARN of the Web ACL to associate the Rule Group with.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? webAclArn;
+  final pulumi.Input<String?>? webAclArn;
 
   /// Creates a new [WebAclRuleGroupAssociationState].
   /// [managedRuleGroup] Managed Rule Group configuration. One of `ruleGroupReference` or `managedRuleGroup` is required. Conflicts with `ruleGroupReference`. See below.
@@ -68,7 +68,7 @@ class WebAclRuleGroupAssociationState {
     return WebAclRuleGroupAssociationState(
       managedRuleGroup: (() { final guardedValue = map['managedRuleGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleGroupAssociationManagedRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       overrideAction: (() { final guardedValue = map['overrideAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleGroupReference: (() { final guardedValue = map['ruleGroupReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleGroupAssociationRuleGroupReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

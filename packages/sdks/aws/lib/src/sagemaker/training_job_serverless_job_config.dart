@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobServerlessJobConfig {
   /// Whether to accept the model EULA.
-  final pulumi.Input<bool>? acceptEula;
+  final pulumi.Input<bool?>? acceptEula;
   /// ARN of the base foundation model from the SageMaker AI Public Hub.
   final pulumi.Input<String> baseModelArn;
   /// Customization technique to apply. Valid values: `FINE_TUNING`, `DOMAIN_ADAPTION`.
-  final pulumi.Input<String>? customizationTechnique;
+  final pulumi.Input<String?>? customizationTechnique;
   /// Evaluation type. Valid values: `AUTOMATIC`, `HUMAN`, `NONE`.
-  final pulumi.Input<String>? evaluationType;
+  final pulumi.Input<String?>? evaluationType;
   /// ARN of the evaluator.
-  final pulumi.Input<String>? evaluatorArn;
+  final pulumi.Input<String?>? evaluatorArn;
   /// Serverless job type. Valid values: `FINE_TUNING`, `EVALUATION`, `DISTILLATION`.
   final pulumi.Input<String> jobType;
   /// Parameter-Efficient Fine-Tuning (PEFT) method. Valid values: `LORA`.
-  final pulumi.Input<String>? peft;
+  final pulumi.Input<String?>? peft;
 
   /// Creates a new [TrainingJobServerlessJobConfig].
   /// [acceptEula] Whether to accept the model EULA.

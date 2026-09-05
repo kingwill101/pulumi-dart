@@ -6,11 +6,11 @@ import 'get_policy_document_statement.dart';
 /// Result data returned by getPolicyDocument.
 class GetPolicyDocumentResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Standard JSON policy document rendered based on the arguments above.
-  final String json;
+  final String? json;
   /// Minified JSON policy document rendered based on the arguments above.
-  final String minifiedJson;
+  final String? minifiedJson;
   final String? overrideJson;
   final List<String>? overridePolicyDocuments;
   final String? policyId;
@@ -31,9 +31,9 @@ class GetPolicyDocumentResult {
   /// [statements] Optional.
   /// [version] Optional.
   const GetPolicyDocumentResult({
-    required this.id,
-    required this.json,
-    required this.minifiedJson,
+    this.id,
+    this.json,
+    this.minifiedJson,
     this.overrideJson,
     this.overridePolicyDocuments,
     this.policyId,
@@ -45,9 +45,9 @@ class GetPolicyDocumentResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'json': json,
-      'minifiedJson': minifiedJson,
+      'id': ?id,
+      'json': ?json,
+      'minifiedJson': ?minifiedJson,
       'overrideJson': ?overrideJson,
       'overridePolicyDocuments': ?overridePolicyDocuments,
       'policyId': ?policyId,
@@ -60,9 +60,9 @@ class GetPolicyDocumentResult {
 
   factory GetPolicyDocumentResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyDocumentResult(
-      id: map['id'] as String,
-      json: map['json'] as String,
-      minifiedJson: map['minifiedJson'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      minifiedJson: (() { final guardedValue = map['minifiedJson']; if (guardedValue == null) return null; return guardedValue as String; })(),
       overrideJson: (() { final guardedValue = map['overrideJson']; if (guardedValue == null) return null; return guardedValue as String; })(),
       overridePolicyDocuments: (() { final guardedValue = map['overridePolicyDocuments']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return guardedValue as String; })(),

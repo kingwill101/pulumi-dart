@@ -9,13 +9,13 @@ import 'target_group_config.dart';
 /// {@macro pulumi_vpclattice_target_group_target_group_args_doc}
 class TargetGroupArgs {
   /// Target group configuration. See `config` Block below.
-  final pulumi.Input<TargetGroupConfig>? config;
+  final pulumi.Input<TargetGroupConfig?>? config;
   /// Name of the target group. The name must be unique within the account. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Type of target group. Valid values are `IP`, `LAMBDA`, `INSTANCE`, or `ALB`.
   ///
   /// The following arguments are optional:

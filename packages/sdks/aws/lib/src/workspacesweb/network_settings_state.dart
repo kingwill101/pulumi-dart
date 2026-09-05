@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkSettings resources.
 class NetworkSettingsState {
   /// List of web portal ARNs associated with the network settings.
-  final pulumi.Input<List<String>>? associatedPortalArns;
+  final pulumi.Input<List<String>?>? associatedPortalArns;
   /// ARN of the network settings resource.
-  final pulumi.Input<String>? networkSettingsArn;
+  final pulumi.Input<String?>? networkSettingsArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// One or more security groups used to control access from streaming instances to your VPC.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// The subnets in which network interfaces are created to connect streaming instances to your VPC. At least two subnet ids must be specified.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The VPC that streaming instances will connect to.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [NetworkSettingsState].
   /// [associatedPortalArns] List of web portal ARNs associated with the network settings.

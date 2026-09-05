@@ -7,26 +7,26 @@ import 'asset_type_timeouts.dart';
 /// Input properties used for looking up and filtering AssetType resources.
 class AssetTypeState {
   /// The timestamp when the custom asset type was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The user who created the custom asset type.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// The description of the custom asset type.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The unique identifier of the Amazon DataZone domain where the custom asset type is being created.
-  final pulumi.Input<String>? domainIdentifier;
+  final pulumi.Input<String?>? domainIdentifier;
   /// The metadata forms that are to be attached to the custom asset type.
-  final pulumi.Input<List<AssetTypeFormsInput>>? formsInputs;
+  final pulumi.Input<List<AssetTypeFormsInput>?>? formsInputs;
   /// The name of the custom asset type.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The unique identifier of the Amazon DataZone project that owns the custom asset type.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? owningProjectIdentifier;
+  final pulumi.Input<String?>? owningProjectIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The revision of the asset type.
-  final pulumi.Input<String>? revision;
-  final pulumi.Input<AssetTypeTimeouts>? timeouts;
+  final pulumi.Input<String?>? revision;
+  final pulumi.Input<AssetTypeTimeouts?>? timeouts;
 
   /// Creates a new [AssetTypeState].
   /// [createdAt] The timestamp when the custom asset type was created.

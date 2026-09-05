@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ProtectionHealthCheckAssociation resources.
 class ProtectionHealthCheckAssociationState {
-  /// The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
-  final pulumi.Input<String>? healthCheckArn;
+  /// ARN of the Route53 Health Check resource which will be associated to the protected resource.
+  final pulumi.Input<String?>? healthCheckArn;
   /// The ID of the protected resource.
-  final pulumi.Input<String>? shieldProtectionId;
+  final pulumi.Input<String?>? shieldProtectionId;
 
   /// Creates a new [ProtectionHealthCheckAssociationState].
-  /// [healthCheckArn] The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
+  /// [healthCheckArn] ARN of the Route53 Health Check resource which will be associated to the protected resource.
   /// [shieldProtectionId] The ID of the protected resource.
   const ProtectionHealthCheckAssociationState({
     this.healthCheckArn,

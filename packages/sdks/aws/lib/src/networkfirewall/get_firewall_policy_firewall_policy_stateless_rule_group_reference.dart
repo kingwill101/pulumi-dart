@@ -23,7 +23,7 @@ class GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference {
 
   factory GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference(
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
     );
   }

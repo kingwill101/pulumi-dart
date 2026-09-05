@@ -181,16 +181,16 @@ class VpcAttachmentAccepter extends pulumi.CustomResource {
           'aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applianceModeSupport = registerOutput<String>('applianceModeSupport');
     dnsSupport = registerOutput<String>('dnsSupport');
     ipv6Support = registerOutput<String>('ipv6Support');
     region = registerOutput<String>('region');
     securityGroupReferencingSupport = registerOutput<String>('securityGroupReferencingSupport');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>('transitGatewayDefaultRouteTableAssociation');
     transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>('transitGatewayDefaultRouteTablePropagation');
@@ -204,11 +204,12 @@ class VpcAttachmentAccepter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcAttachmentAccepterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcAttachmentAccepter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -227,9 +228,34 @@ class VpcAttachmentAccepter extends pulumi.CustomResource {
     ipv6Support = registerOutput<String>('ipv6Support');
     region = registerOutput<String>('region');
     securityGroupReferencingSupport = registerOutput<String>('securityGroupReferencingSupport');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+    transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>('transitGatewayDefaultRouteTableAssociation');
+    transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>('transitGatewayDefaultRouteTablePropagation');
+    transitGatewayId = registerOutput<String>('transitGatewayId');
+    vpcId = registerOutput<String>('vpcId');
+    vpcOwnerId = registerOutput<String>('vpcOwnerId');
+  }
+
+  /// Creates a typed reference to an existing [VpcAttachmentAccepter] resource.
+  VpcAttachmentAccepter.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applianceModeSupport = registerOutput<String>('applianceModeSupport');
+    dnsSupport = registerOutput<String>('dnsSupport');
+    ipv6Support = registerOutput<String>('ipv6Support');
+    region = registerOutput<String>('region');
+    securityGroupReferencingSupport = registerOutput<String>('securityGroupReferencingSupport');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
     transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>('transitGatewayDefaultRouteTableAssociation');
     transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>('transitGatewayDefaultRouteTablePropagation');

@@ -5,9 +5,9 @@ import 'hyper_parameter_tuning_job_training_job_definition_resource_config_insta
 
 class HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfig {
   /// Whether to run multiple jobs on shared infrastructure.
-  final pulumi.Input<bool>? enableMultipleJobs;
+  final pulumi.Input<bool?>? enableMultipleJobs;
   /// Placement details. See `placementSpecifications`.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfigPlacementSpecification>>? placementSpecifications;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfigPlacementSpecification>?>? placementSpecifications;
 
   /// Creates a new [HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfig].
   /// [enableMultipleJobs] Whether to run multiple jobs on shared infrastructure.

@@ -7,13 +7,13 @@ import 'notification_channel_sns.dart';
 /// Input properties used for looking up and filtering NotificationChannel resources.
 class NotificationChannelState {
   /// Filter configurations for the Amazon SNS notification topic. See the `filters` argument reference below.
-  final pulumi.Input<NotificationChannelFilters>? filters;
+  final pulumi.Input<NotificationChannelFilters?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// SNS noficiation channel configurations. See the `sns` argument reference below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<NotificationChannelSns>? sns;
+  final pulumi.Input<NotificationChannelSns?>? sns;
 
   /// Creates a new [NotificationChannelState].
   /// [filters] Filter configurations for the Amazon SNS notification topic. See the `filters` argument reference below.

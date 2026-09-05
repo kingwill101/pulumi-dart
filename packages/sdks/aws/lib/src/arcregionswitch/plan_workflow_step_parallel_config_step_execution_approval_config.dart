@@ -6,7 +6,7 @@ class PlanWorkflowStepParallelConfigStepExecutionApprovalConfig {
   /// ARN of the IAM role for approval.
   final pulumi.Input<String> approvalRole;
   /// Timeout in minutes for the approval.
-  final pulumi.Input<int>? timeoutMinutes;
+  final pulumi.Input<int?>? timeoutMinutes;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepExecutionApprovalConfig].
   /// [approvalRole] ARN of the IAM role for approval.
@@ -26,7 +26,7 @@ class PlanWorkflowStepParallelConfigStepExecutionApprovalConfig {
   factory PlanWorkflowStepParallelConfigStepExecutionApprovalConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepExecutionApprovalConfig(
       approvalRole: pulumi.Input.fromValue(map['approvalRole'] as String),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

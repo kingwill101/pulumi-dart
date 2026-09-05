@@ -5,7 +5,7 @@ import 'user_profile_user_settings_code_editor_app_settings_app_lifecycle_manage
 
 class UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.
-  final pulumi.Input<UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
+  final pulumi.Input<UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings?>? idleSettings;
 
   /// Creates a new [UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.

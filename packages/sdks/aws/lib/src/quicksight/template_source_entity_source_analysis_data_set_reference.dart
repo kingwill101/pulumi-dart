@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TemplateSourceEntitySourceAnalysisDataSetReference {
-  /// Dataset Amazon Resource Name (ARN).
+  /// Dataset ARN.
   final pulumi.Input<String> dataSetArn;
   /// Dataset placeholder.
   final pulumi.Input<String> dataSetPlaceholder;
 
   /// Creates a new [TemplateSourceEntitySourceAnalysisDataSetReference].
-  /// [dataSetArn] Dataset Amazon Resource Name (ARN).
+  /// [dataSetArn] Dataset ARN.
   /// [dataSetPlaceholder] Dataset placeholder.
   const TemplateSourceEntitySourceAnalysisDataSetReference({
     required this.dataSetArn,

@@ -16,11 +16,11 @@ import 'realtime_log_config_state.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["cloudfront.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -46,19 +46,19 @@ import 'realtime_log_config_state.dart';
 ///     policy: example.then(example => example.json),
 /// });
 /// const exampleRealtimeLogConfig = new aws.cloudfront.RealtimeLogConfig("example", {
+///     endpoint: {
+///         kinesisStreamConfig: {
+///             roleArn: exampleRole.arn,
+///             streamArn: exampleAwsKinesisStream.arn,
+///         },
+///         streamType: "Kinesis",
+///     },
 ///     name: "example",
 ///     samplingRate: 75,
 ///     fields: [
 ///         "timestamp",
 ///         "c-ip",
 ///     ],
-///     endpoint: {
-///         streamType: "Kinesis",
-///         kinesisStreamConfig: {
-///             roleArn: exampleRole.arn,
-///             streamArn: exampleAwsKinesisStream.arn,
-///         },
-///     },
 /// }, {
 ///     dependsOn: [exampleRolePolicy],
 /// });
@@ -68,11 +68,11 @@ import 'realtime_log_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["cloudfront.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
@@ -93,19 +93,19 @@ import 'realtime_log_config_state.dart';
 ///     role=example_role.id,
 ///     policy=example.json)
 /// example_realtime_log_config = aws.cloudfront.RealtimeLogConfig("example",
+///     endpoint={
+///         "kinesis_stream_config": {
+///             "role_arn": example_role.arn,
+///             "stream_arn": example_aws_kinesis_stream["arn"],
+///         },
+///         "stream_type": "Kinesis",
+///     },
 ///     name="example",
 ///     sampling_rate=75,
 ///     fields=[
 ///         "timestamp",
 ///         "c-ip",
 ///     ],
-///     endpoint={
-///         "stream_type": "Kinesis",
-///         "kinesis_stream_config": {
-///             "role_arn": example_role.arn,
-///             "stream_arn": example_aws_kinesis_stream["arn"],
-///         },
-///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[example_role_policy]))
 /// ```
 /// ```csharp
@@ -122,7 +122,6 @@ import 'realtime_log_config_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -134,6 +133,7 @@ import 'realtime_log_config_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -179,21 +179,21 @@ import 'realtime_log_config_state.dart';
 ///
 ///     var exampleRealtimeLogConfig = new Aws.CloudFront.RealtimeLogConfig("example", new()
 ///     {
+///         Endpoint = new Aws.CloudFront.Inputs.RealtimeLogConfigEndpointArgs
+///         {
+///             KinesisStreamConfig = new Aws.CloudFront.Inputs.RealtimeLogConfigEndpointKinesisStreamConfigArgs
+///             {
+///                 RoleArn = exampleRole.Arn,
+///                 StreamArn = exampleAwsKinesisStream.Arn,
+///             },
+///             StreamType = "Kinesis",
+///         },
 ///         Name = "example",
 ///         SamplingRate = 75,
 ///         Fields = new[]
 ///         {
 ///             "timestamp",
 ///             "c-ip",
-///         },
-///         Endpoint = new Aws.CloudFront.Inputs.RealtimeLogConfigEndpointArgs
-///         {
-///             StreamType = "Kinesis",
-///             KinesisStreamConfig = new Aws.CloudFront.Inputs.RealtimeLogConfigEndpointKinesisStreamConfigArgs
-///             {
-///                 RoleArn = exampleRole.Arn,
-///                 StreamArn = exampleAwsKinesisStream.Arn,
-///             },
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -219,7 +219,6 @@ import 'realtime_log_config_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -228,6 +227,7 @@ import 'realtime_log_config_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -272,18 +272,18 @@ import 'realtime_log_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudfront.NewRealtimeLogConfig(ctx, "example", &cloudfront.RealtimeLogConfigArgs{
+/// 			Endpoint: &cloudfront.RealtimeLogConfigEndpointArgs{
+/// 				KinesisStreamConfig: &cloudfront.RealtimeLogConfigEndpointKinesisStreamConfigArgs{
+/// 					RoleArn:   exampleRole.Arn,
+/// 					StreamArn: pulumi.Any(exampleAwsKinesisStream.Arn),
+/// 				},
+/// 				StreamType: pulumi.String("Kinesis"),
+/// 			},
 /// 			Name:         pulumi.String("example"),
 /// 			SamplingRate: pulumi.Int(75),
 /// 			Fields: pulumi.StringArray{
 /// 				pulumi.String("timestamp"),
 /// 				pulumi.String("c-ip"),
-/// 			},
-/// 			Endpoint: &cloudfront.RealtimeLogConfigEndpointArgs{
-/// 				StreamType: pulumi.String("Kinesis"),
-/// 				KinesisStreamConfig: &cloudfront.RealtimeLogConfigEndpointKinesisStreamConfigArgs{
-/// 					RoleArn:   exampleRole.Arn,
-/// 					StreamArn: pulumi.Any(exampleAwsKinesisStream.Arn),
-/// 				},
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleRolePolicy,
@@ -306,11 +306,11 @@ import 'realtime_log_config_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["cloudfront.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -332,17 +332,17 @@ import 'realtime_log_config_state.dart';
 ///   policy = data.aws_iam_getpolicydocument.example.json
 /// }
 /// resource "aws_cloudfront_realtimelogconfig" "example" {
-///   depends_on    = [aws_iam_rolepolicy.example]
-///   name          = "example"
-///   sampling_rate = 75
-///   fields        = ["timestamp", "c-ip"]
+///   depends_on = [aws_iam_rolepolicy.example]
 ///   endpoint = {
-///     stream_type = "Kinesis"
 ///     kinesis_stream_config = {
 ///       role_arn   = aws_iam_role.example.arn
 ///       stream_arn = exampleAwsKinesisStream.arn
 ///     }
+///     stream_type = "Kinesis"
 ///   }
+///   name          = "example"
+///   sampling_rate = 75
+///   fields        = ["timestamp", "c-ip"]
 /// }
 /// ```
 /// ```java
@@ -379,11 +379,11 @@ import 'realtime_log_config_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("cloudfront.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -412,18 +412,18 @@ import 'realtime_log_config_state.dart';
 ///             .build());
 ///
 ///         var exampleRealtimeLogConfig = new RealtimeLogConfig("exampleRealtimeLogConfig", RealtimeLogConfigArgs.builder()
+///             .endpoint(RealtimeLogConfigEndpointArgs.builder()
+///                 .kinesisStreamConfig(RealtimeLogConfigEndpointKinesisStreamConfigArgs.builder()
+///                     .roleArn(exampleRole.arn())
+///                     .streamArn(exampleAwsKinesisStream.arn())
+///                     .build())
+///                 .streamType("Kinesis")
+///                 .build())
 ///             .name("example")
 ///             .samplingRate(75)
 ///             .fields(
 ///                 "timestamp",
 ///                 "c-ip")
-///             .endpoint(RealtimeLogConfigEndpointArgs.builder()
-///                 .streamType("Kinesis")
-///                 .kinesisStreamConfig(RealtimeLogConfigEndpointKinesisStreamConfigArgs.builder()
-///                     .roleArn(exampleRole.arn())
-///                     .streamArn(exampleAwsKinesisStream.arn())
-///                     .build())
-///                 .build())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleRolePolicy)
 ///                 .build());
@@ -450,16 +450,16 @@ import 'realtime_log_config_state.dart';
 ///     type: aws:cloudfront:RealtimeLogConfig
 ///     name: example
 ///     properties:
+///       endpoint:
+///         kinesisStreamConfig:
+///           roleArn: ${exampleRole.arn}
+///           streamArn: ${exampleAwsKinesisStream.arn}
+///         streamType: Kinesis
 ///       name: example
 ///       samplingRate: 75
 ///       fields:
 ///         - timestamp
 ///         - c-ip
-///       endpoint:
-///         streamType: Kinesis
-///         kinesisStreamConfig:
-///           roleArn: ${exampleRole.arn}
-///           streamArn: ${exampleAwsKinesisStream.arn}
 ///     options:
 ///       dependsOn:
 ///         - ${exampleRolePolicy}
@@ -469,11 +469,11 @@ import 'realtime_log_config_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - cloudfront.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   example:
@@ -515,6 +515,13 @@ import 'realtime_log_config_state.dart';
 /// `,
 /// });
 /// const exampleRealtimeLogConfig = new aws.cloudfront.RealtimeLogConfig("example", {
+///     endpoint: {
+///         kinesisStreamConfig: {
+///             roleArn: exampleAwsIamRole.arn,
+///             streamArn: exampleAwsKinesisStream.arn,
+///         },
+///         streamType: "Kinesis",
+///     },
 ///     name: "example",
 ///     samplingRate: 100,
 ///     fields: [
@@ -524,13 +531,6 @@ import 'realtime_log_config_state.dart';
 ///         "viewer-request-log-data",
 ///         "viewer-response-log-data",
 ///     ],
-///     endpoint: {
-///         streamType: "Kinesis",
-///         kinesisStreamConfig: {
-///             roleArn: exampleAwsIamRole.arn,
-///             streamArn: exampleAwsKinesisStream.arn,
-///         },
-///     },
 /// }, {
 ///     dependsOn: [exampleAwsIamRolePolicy],
 /// });
@@ -552,6 +552,13 @@ import 'realtime_log_config_state.dart';
 /// }
 /// """)
 /// example_realtime_log_config = aws.cloudfront.RealtimeLogConfig("example",
+///     endpoint={
+///         "kinesis_stream_config": {
+///             "role_arn": example_aws_iam_role["arn"],
+///             "stream_arn": example_aws_kinesis_stream["arn"],
+///         },
+///         "stream_type": "Kinesis",
+///     },
 ///     name="example",
 ///     sampling_rate=100,
 ///     fields=[
@@ -561,13 +568,6 @@ import 'realtime_log_config_state.dart';
 ///         "viewer-request-log-data",
 ///         "viewer-response-log-data",
 ///     ],
-///     endpoint={
-///         "stream_type": "Kinesis",
-///         "kinesis_stream_config": {
-///             "role_arn": example_aws_iam_role["arn"],
-///             "stream_arn": example_aws_kinesis_stream["arn"],
-///         },
-///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aws_iam_role_policy]))
 /// ```
 /// ```csharp
@@ -595,6 +595,15 @@ import 'realtime_log_config_state.dart';
 ///
 ///     var exampleRealtimeLogConfig = new Aws.CloudFront.RealtimeLogConfig("example", new()
 ///     {
+///         Endpoint = new Aws.CloudFront.Inputs.RealtimeLogConfigEndpointArgs
+///         {
+///             KinesisStreamConfig = new Aws.CloudFront.Inputs.RealtimeLogConfigEndpointKinesisStreamConfigArgs
+///             {
+///                 RoleArn = exampleAwsIamRole.Arn,
+///                 StreamArn = exampleAwsKinesisStream.Arn,
+///             },
+///             StreamType = "Kinesis",
+///         },
 ///         Name = "example",
 ///         SamplingRate = 100,
 ///         Fields = new[]
@@ -604,15 +613,6 @@ import 'realtime_log_config_state.dart';
 ///             "sc-status",
 ///             "viewer-request-log-data",
 ///             "viewer-response-log-data",
-///         },
-///         Endpoint = new Aws.CloudFront.Inputs.RealtimeLogConfigEndpointArgs
-///         {
-///             StreamType = "Kinesis",
-///             KinesisStreamConfig = new Aws.CloudFront.Inputs.RealtimeLogConfigEndpointKinesisStreamConfigArgs
-///             {
-///                 RoleArn = exampleAwsIamRole.Arn,
-///                 StreamArn = exampleAwsKinesisStream.Arn,
-///             },
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -651,6 +651,13 @@ import 'realtime_log_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudfront.NewRealtimeLogConfig(ctx, "example", &cloudfront.RealtimeLogConfigArgs{
+/// 			Endpoint: &cloudfront.RealtimeLogConfigEndpointArgs{
+/// 				KinesisStreamConfig: &cloudfront.RealtimeLogConfigEndpointKinesisStreamConfigArgs{
+/// 					RoleArn:   pulumi.Any(exampleAwsIamRole.Arn),
+/// 					StreamArn: pulumi.Any(exampleAwsKinesisStream.Arn),
+/// 				},
+/// 				StreamType: pulumi.String("Kinesis"),
+/// 			},
 /// 			Name:         pulumi.String("example"),
 /// 			SamplingRate: pulumi.Int(100),
 /// 			Fields: pulumi.StringArray{
@@ -659,13 +666,6 @@ import 'realtime_log_config_state.dart';
 /// 				pulumi.String("sc-status"),
 /// 				pulumi.String("viewer-request-log-data"),
 /// 				pulumi.String("viewer-response-log-data"),
-/// 			},
-/// 			Endpoint: &cloudfront.RealtimeLogConfigEndpointArgs{
-/// 				StreamType: pulumi.String("Kinesis"),
-/// 				KinesisStreamConfig: &cloudfront.RealtimeLogConfigEndpointKinesisStreamConfigArgs{
-/// 					RoleArn:   pulumi.Any(exampleAwsIamRole.Arn),
-/// 					StreamArn: pulumi.Any(exampleAwsKinesisStream.Arn),
-/// 				},
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAwsIamRolePolicy,
@@ -693,17 +693,17 @@ import 'realtime_log_config_state.dart';
 ///   code    = "import cf from 'cloudfront';\n\nfunction handler(event) {\n  var variant = event.request.uri.indexOf(\\\"/beta\\\") === 0 ? \\\"b\\\" : \\\"a\\\";\n  cf.logCustomData(\\\"variant=\\\" + variant);\n  return event.request;\n}\n"
 /// }
 /// resource "aws_cloudfront_realtimelogconfig" "example" {
-///   depends_on    = [exampleAwsIamRolePolicy]
-///   name          = "example"
-///   sampling_rate = 100
-///   fields        = ["timestamp", "c-ip", "sc-status", "viewer-request-log-data", "viewer-response-log-data"]
+///   depends_on = [exampleAwsIamRolePolicy]
 ///   endpoint = {
-///     stream_type = "Kinesis"
 ///     kinesis_stream_config = {
 ///       role_arn   = exampleAwsIamRole.arn
 ///       stream_arn = exampleAwsKinesisStream.arn
 ///     }
+///     stream_type = "Kinesis"
 ///   }
+///   name          = "example"
+///   sampling_rate = 100
+///   fields        = ["timestamp", "c-ip", "sc-status", "viewer-request-log-data", "viewer-response-log-data"]
 /// }
 /// ```
 /// ```java
@@ -748,6 +748,13 @@ import 'realtime_log_config_state.dart';
 ///             .build());
 ///
 ///         var exampleRealtimeLogConfig = new RealtimeLogConfig("exampleRealtimeLogConfig", RealtimeLogConfigArgs.builder()
+///             .endpoint(RealtimeLogConfigEndpointArgs.builder()
+///                 .kinesisStreamConfig(RealtimeLogConfigEndpointKinesisStreamConfigArgs.builder()
+///                     .roleArn(exampleAwsIamRole.arn())
+///                     .streamArn(exampleAwsKinesisStream.arn())
+///                     .build())
+///                 .streamType("Kinesis")
+///                 .build())
 ///             .name("example")
 ///             .samplingRate(100)
 ///             .fields(
@@ -756,13 +763,6 @@ import 'realtime_log_config_state.dart';
 ///                 "sc-status",
 ///                 "viewer-request-log-data",
 ///                 "viewer-response-log-data")
-///             .endpoint(RealtimeLogConfigEndpointArgs.builder()
-///                 .streamType("Kinesis")
-///                 .kinesisStreamConfig(RealtimeLogConfigEndpointKinesisStreamConfigArgs.builder()
-///                     .roleArn(exampleAwsIamRole.arn())
-///                     .streamArn(exampleAwsKinesisStream.arn())
-///                     .build())
-///                 .build())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsIamRolePolicy)
 ///                 .build());
@@ -790,6 +790,11 @@ import 'realtime_log_config_state.dart';
 ///     type: aws:cloudfront:RealtimeLogConfig
 ///     name: example
 ///     properties:
+///       endpoint:
+///         kinesisStreamConfig:
+///           roleArn: ${exampleAwsIamRole.arn}
+///           streamArn: ${exampleAwsKinesisStream.arn}
+///         streamType: Kinesis
 ///       name: example
 ///       samplingRate: 100
 ///       fields:
@@ -798,11 +803,6 @@ import 'realtime_log_config_state.dart';
 ///         - sc-status
 ///         - viewer-request-log-data
 ///         - viewer-response-log-data
-///       endpoint:
-///         streamType: Kinesis
-///         kinesisStreamConfig:
-///           roleArn: ${exampleAwsIamRole.arn}
-///           streamArn: ${exampleAwsKinesisStream.arn}
 ///     options:
 ///       dependsOn:
 ///         - ${exampleAwsIamRolePolicy}
@@ -817,7 +817,7 @@ import 'realtime_log_config_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CloudFront real-time log configuration.
+/// - `arn` (String) ARN of the CloudFront real-time log configuration.
 ///
 ///
 /// Using `pulumi import`, import CloudFront real-time log configurations using the ARN. For example:
@@ -826,7 +826,7 @@ import 'realtime_log_config_state.dart';
 /// $ pulumi import aws:cloudfront/realtimeLogConfig:RealtimeLogConfig example arn:aws:cloudfront::111122223333:realtime-log-config/ExampleNameForRealtimeLogConfig
 /// ```
 class RealtimeLogConfig extends pulumi.CustomResource {
-  /// The ARN (Amazon Resource Name) of the CloudFront real-time log configuration.
+  /// ARN of the CloudFront real-time log configuration.
   late final pulumi.Output<String> arn;
   /// The Amazon Kinesis data streams where real-time log data is sent.
   late final pulumi.Output<RealtimeLogConfigEndpoint> endpoint;
@@ -849,11 +849,11 @@ class RealtimeLogConfig extends pulumi.CustomResource {
           'aws:cloudfront/realtimeLogConfig:RealtimeLogConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     endpoint = registerOutput<RealtimeLogConfigEndpoint>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RealtimeLogConfigEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    fields = registerOutput<List<String>>('fields');
+    fields = registerOutput<List<String>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     samplingRate = registerOutput<int>('samplingRate');
   }
@@ -863,11 +863,12 @@ class RealtimeLogConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RealtimeLogConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RealtimeLogConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -883,7 +884,23 @@ class RealtimeLogConfig extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     endpoint = registerOutput<RealtimeLogConfigEndpoint>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RealtimeLogConfigEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    fields = registerOutput<List<String>>('fields');
+    fields = registerOutput<List<String>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    samplingRate = registerOutput<int>('samplingRate');
+  }
+
+  /// Creates a typed reference to an existing [RealtimeLogConfig] resource.
+  RealtimeLogConfig.reference(String urn)
+    : super(
+        'aws:cloudfront/realtimeLogConfig:RealtimeLogConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    endpoint = registerOutput<RealtimeLogConfigEndpoint>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RealtimeLogConfigEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fields = registerOutput<List<String>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     samplingRate = registerOutput<int>('samplingRate');
   }

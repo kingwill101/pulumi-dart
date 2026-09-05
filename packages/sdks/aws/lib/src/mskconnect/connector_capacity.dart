@@ -6,9 +6,9 @@ import 'connector_capacity_provisioned_capacity.dart';
 
 class ConnectorCapacity {
   /// Information about the auto scaling parameters for the connector. See `autoscaling` Block for details.
-  final pulumi.Input<ConnectorCapacityAutoscaling>? autoscaling;
+  final pulumi.Input<ConnectorCapacityAutoscaling?>? autoscaling;
   /// Details about a fixed capacity allocated to a connector. See `provisionedCapacity` Block for details.
-  final pulumi.Input<ConnectorCapacityProvisionedCapacity>? provisionedCapacity;
+  final pulumi.Input<ConnectorCapacityProvisionedCapacity?>? provisionedCapacity;
 
   /// Creates a new [ConnectorCapacity].
   /// [autoscaling] Information about the auto scaling parameters for the connector. See `autoscaling` Block for details.

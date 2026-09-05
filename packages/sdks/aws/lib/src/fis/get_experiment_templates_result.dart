@@ -4,32 +4,32 @@
 /// Result data returned by getExperimentTemplates.
 class GetExperimentTemplatesResult {
   /// List of all the experiment template ids found.
-  final List<String> ids;
-  final String region;
+  final List<String>? ids;
+  final String? region;
   final Map<String, String>? tags;
 
   /// Creates a new [GetExperimentTemplatesResult].
   /// [ids] List of all the experiment template ids found.
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Optional.
   const GetExperimentTemplatesResult({
-    required this.ids,
-    required this.region,
+    this.ids,
+    this.region,
     this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ids': ids,
-      'region': region,
+      'ids': ?ids,
+      'region': ?region,
       'tags': ?tags,
     };
   }
 
   factory GetExperimentTemplatesResult.fromMap(Map<String, dynamic> map) {
     return GetExperimentTemplatesResult(
-      ids: (map['ids'] as List).cast<String>(),
-      region: map['region'] as String,
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }

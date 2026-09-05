@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Application resources.
 class ApplicationState {
   /// The application ID.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The ARN of the CodeDeploy application.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The compute platform can either be `ECS`, `Lambda`, or `Server`. Default is `Server`.
-  final pulumi.Input<String>? computePlatform;
+  final pulumi.Input<String?>? computePlatform;
   /// The name for a connection to a GitHub account.
-  final pulumi.Input<String>? githubAccountName;
+  final pulumi.Input<String?>? githubAccountName;
   /// Whether the user has authenticated with GitHub for the specified application.
-  final pulumi.Input<bool>? linkedToGithub;
+  final pulumi.Input<bool?>? linkedToGithub;
   /// The name of the application.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ApplicationState].
   /// [applicationId] The application ID.

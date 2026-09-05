@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'snapshot_args.dart';
+import 'snapshot_cluster_configuration.dart';
 import 'snapshot_state.dart';
 
 /// Provides a MemoryDB Snapshot.
@@ -127,7 +128,7 @@ class Snapshot extends pulumi.CustomResource {
   /// The ARN of the snapshot.
   late final pulumi.Output<String> arn;
   /// The configuration of the cluster from which the snapshot was taken.
-  late final pulumi.Output<List<Map<String, dynamic>>> clusterConfigurations;
+  late final pulumi.Output<List<SnapshotClusterConfiguration>> clusterConfigurations;
   /// Name of the MemoryDB cluster to take a snapshot of.
   late final pulumi.Output<String> clusterName;
   /// ARN of the KMS key used to encrypt the snapshot at rest.
@@ -157,18 +158,18 @@ class Snapshot extends pulumi.CustomResource {
           'aws:memorydb/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    clusterConfigurations = registerOutput<List<Map<String, dynamic>>>('clusterConfigurations');
+    clusterConfigurations = registerOutput<List<SnapshotClusterConfiguration>>('clusterConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SnapshotClusterConfiguration>(guardedValue, (value) => SnapshotClusterConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     clusterName = registerOutput<String>('clusterName');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
     source = registerOutput<String>('source');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Snapshot] resource's state with the given [name] and [id].
@@ -176,11 +177,12 @@ class Snapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Snapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -195,14 +197,35 @@ class Snapshot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    clusterConfigurations = registerOutput<List<Map<String, dynamic>>>('clusterConfigurations');
+    clusterConfigurations = registerOutput<List<SnapshotClusterConfiguration>>('clusterConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SnapshotClusterConfiguration>(guardedValue, (value) => SnapshotClusterConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     clusterName = registerOutput<String>('clusterName');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
     source = registerOutput<String>('source');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Snapshot] resource.
+  Snapshot.reference(String urn)
+    : super(
+        'aws:memorydb/snapshot:Snapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    clusterConfigurations = registerOutput<List<SnapshotClusterConfiguration>>('clusterConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SnapshotClusterConfiguration>(guardedValue, (value) => SnapshotClusterConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterName = registerOutput<String>('clusterName');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    source = registerOutput<String>('source');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

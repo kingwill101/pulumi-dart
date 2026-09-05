@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketWebsiteConfigurationRoutingRuleRedirect {
   /// Host name to use in the redirect request.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// HTTP redirect code to use on the response.
-  final pulumi.Input<String>? httpRedirectCode;
+  final pulumi.Input<String?>? httpRedirectCode;
   /// Protocol to use when redirecting requests. The default is the protocol that is used in the original request. Valid values: `http`, `https`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix `docs/` (objects in the `docs/` folder) to `documents/`, you can set a `condition` block with `keyPrefixEquals` set to `docs/` and in the `redirect` set `replaceKeyPrefixWith` to `/documents`.
-  final pulumi.Input<String>? replaceKeyPrefixWith;
+  final pulumi.Input<String?>? replaceKeyPrefixWith;
   /// Specific object key to use in the redirect request. For example, redirect request to `error.html`.
-  final pulumi.Input<String>? replaceKeyWith;
+  final pulumi.Input<String?>? replaceKeyWith;
 
   /// Creates a new [BucketWebsiteConfigurationRoutingRuleRedirect].
   /// [hostName] Host name to use in the redirect request.

@@ -157,9 +157,9 @@ class GlobalSettings extends pulumi.CustomResource {
           'aws:backup/globalSettings:GlobalSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    globalSettings = registerOutput<Map<String, String>>('globalSettings');
+    globalSettings = registerOutput<Map<String, String>>('globalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [GlobalSettings] resource's state with the given [name] and [id].
@@ -167,11 +167,12 @@ class GlobalSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -185,6 +186,18 @@ class GlobalSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    globalSettings = registerOutput<Map<String, String>>('globalSettings');
+    globalSettings = registerOutput<Map<String, String>>('globalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [GlobalSettings] resource.
+  GlobalSettings.reference(String urn)
+    : super(
+        'aws:backup/globalSettings:GlobalSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    globalSettings = registerOutput<Map<String, String>>('globalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

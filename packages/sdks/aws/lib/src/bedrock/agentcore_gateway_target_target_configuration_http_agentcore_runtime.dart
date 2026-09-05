@@ -6,7 +6,7 @@ class AgentcoreGatewayTargetTargetConfigurationHttpAgentcoreRuntime {
   /// ARN of the AgentCore Runtime agent that the gateway routes requests to.
   final pulumi.Input<String> arn;
   /// Runtime qualifier identifying a specific endpoint version. Defaults to `DEFAULT` when not set.
-  final pulumi.Input<String>? qualifier;
+  final pulumi.Input<String?>? qualifier;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationHttpAgentcoreRuntime].
   /// [arn] ARN of the AgentCore Runtime agent that the gateway routes requests to.

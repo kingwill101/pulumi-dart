@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudfront_get_origin_access_identities_get_origin_access_identities_args_doc}
 class GetOriginAccessIdentitiesArgs {
   /// Filter origin access identities by comment.
-  final pulumi.Input<List<String>>? comments;
+  final pulumi.Input<List<String>?>? comments;
 
   /// Creates a new [GetOriginAccessIdentitiesArgs].
   /// [comments] Filter origin access identities by comment.

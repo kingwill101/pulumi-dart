@@ -6,7 +6,7 @@ class DistributionDefaultCacheBehaviorLambdaFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
   final pulumi.Input<String> eventType;
   /// When set to true it exposes the request body to the lambda function. Defaults to false. Valid values: `true`, `false`.
-  final pulumi.Input<bool>? includeBody;
+  final pulumi.Input<bool?>? includeBody;
   /// ARN of the Lambda function.
   final pulumi.Input<String> lambdaArn;
 

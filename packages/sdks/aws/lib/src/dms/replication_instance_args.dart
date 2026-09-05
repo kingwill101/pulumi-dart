@@ -9,43 +9,43 @@ import 'replication_instance_kerberos_authentication_settings.dart';
 /// {@macro pulumi_dms_replication_instance_replication_instance_args_doc}
 class ReplicationInstanceArgs {
   /// The amount of storage (in gigabytes) to be initially allocated for the replication instance.
-  final pulumi.Input<int>? allocatedStorage;
+  final pulumi.Input<int?>? allocatedStorage;
   /// Indicates that major version upgrades are allowed.
-  final pulumi.Input<bool>? allowMajorVersionUpgrade;
+  final pulumi.Input<bool?>? allowMajorVersionUpgrade;
   /// Indicates whether the changes should be applied immediately or during the next maintenance window. Only used when updating an existing resource.
-  final pulumi.Input<bool>? applyImmediately;
+  final pulumi.Input<bool?>? applyImmediately;
   /// Indicates that minor engine upgrades will be applied automatically to the replication instance during the maintenance window.
-  final pulumi.Input<bool>? autoMinorVersionUpgrade;
+  final pulumi.Input<bool?>? autoMinorVersionUpgrade;
   /// The EC2 Availability Zone that the replication instance will be created in.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// A list of custom DNS name servers supported for the replication instance to access your on-premise source or target database. This list overrides the default name servers supported by the replication instance. You can specify a comma-separated list of internet addresses for up to four on-premise DNS name servers.
-  final pulumi.Input<String>? dnsNameServers;
+  final pulumi.Input<String?>? dnsNameServers;
   /// The engine version number of the replication instance.
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// Configuration block for settings required for Kerberos authentication. See below.
-  final pulumi.Input<ReplicationInstanceKerberosAuthenticationSettings>? kerberosAuthenticationSettings;
-  /// The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<ReplicationInstanceKerberosAuthenticationSettings?>? kerberosAuthenticationSettings;
+  /// ARN for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Specifies if the replication instance is a multi-az deployment. You cannot set the `availabilityZone` parameter if the `multiAz` parameter is set to `true`.
-  final pulumi.Input<bool>? multiAz;
+  final pulumi.Input<bool?>? multiAz;
   /// The type of IP address protocol used by a replication instance. Valid values: `IPV4`, `DUAL`.
-  final pulumi.Input<String>? networkType;
+  final pulumi.Input<String?>? networkType;
   /// The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
-  final pulumi.Input<String>? preferredMaintenanceWindow;
+  final pulumi.Input<String?>? preferredMaintenanceWindow;
   /// Specifies the accessibility options for the replication instance. A value of true represents an instance with a public IP address. A value of false represents an instance with a private IP address.
-  final pulumi.Input<bool>? publiclyAccessible;
+  final pulumi.Input<bool?>? publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The compute and memory capacity of the replication instance as specified by the replication instance class. See [AWS DMS User Guide](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.Types.html) for available instance sizes and advice on which one to choose.
   final pulumi.Input<String> replicationInstanceClass;
   /// The replication instance identifier. This parameter is stored as a lowercase string.
   final pulumi.Input<String> replicationInstanceId;
   /// A subnet group to associate with the replication instance.
-  final pulumi.Input<String>? replicationSubnetGroupId;
+  final pulumi.Input<String?>? replicationSubnetGroupId;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of VPC security group IDs to be used with the replication instance. The VPC security groups must work with the VPC containing the replication instance.
-  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
+  final pulumi.Input<List<String>?>? vpcSecurityGroupIds;
 
   /// Creates a new [ReplicationInstanceArgs].
   /// [allocatedStorage] The amount of storage (in gigabytes) to be initially allocated for the replication instance.
@@ -56,7 +56,7 @@ class ReplicationInstanceArgs {
   /// [dnsNameServers] A list of custom DNS name servers supported for the replication instance to access your on-premise source or target database. This list overrides the default name servers supported by the replication instance. You can specify a comma-separated list of internet addresses for up to four on-premise DNS name servers.
   /// [engineVersion] The engine version number of the replication instance.
   /// [kerberosAuthenticationSettings] Configuration block for settings required for Kerberos authentication. See below.
-  /// [kmsKeyArn] The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
+  /// [kmsKeyArn] ARN for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
   /// [multiAz] Specifies if the replication instance is a multi-az deployment. You cannot set the `availabilityZone` parameter if the `multiAz` parameter is set to `true`.
   /// [networkType] The type of IP address protocol used by a replication instance. Valid values: `IPV4`, `DUAL`.
   /// [preferredMaintenanceWindow] The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
@@ -115,7 +115,7 @@ class ReplicationInstanceArgs {
 
   factory ReplicationInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationInstanceArgs(
-      allocatedStorage: (() { final guardedValue = map['allocatedStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      allocatedStorage: (() { final guardedValue = map['allocatedStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       allowMajorVersionUpgrade: (() { final guardedValue = map['allowMajorVersionUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       applyImmediately: (() { final guardedValue = map['applyImmediately']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       autoMinorVersionUpgrade: (() { final guardedValue = map['autoMinorVersionUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

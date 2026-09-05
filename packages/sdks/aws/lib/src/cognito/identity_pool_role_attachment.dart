@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_pool_role_attachment_args.dart';
+import 'identity_pool_role_attachment_role_mapping.dart';
 import 'identity_pool_role_attachment_state.dart';
 
 /// Provides an AWS Cognito Identity Pool Roles Attachment.
@@ -17,7 +18,7 @@ class IdentityPoolRoleAttachment extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A List of Role Mapping.
-  late final pulumi.Output<List<Map<String, dynamic>>?> roleMappings;
+  late final pulumi.Output<List<IdentityPoolRoleAttachmentRoleMapping>?> roleMappings;
   /// The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
   late final pulumi.Output<Map<String, String>> roles;
 
@@ -33,12 +34,12 @@ class IdentityPoolRoleAttachment extends pulumi.CustomResource {
           'aws:cognito/identityPoolRoleAttachment:IdentityPoolRoleAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     identityPoolId = registerOutput<String>('identityPoolId');
     region = registerOutput<String>('region');
-    roleMappings = registerOutput<List<Map<String, dynamic>>?>('roleMappings');
-    roles = registerOutput<Map<String, String>>('roles');
+    roleMappings = registerOutput<List<IdentityPoolRoleAttachmentRoleMapping>?>('roleMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(guardedValue, (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    roles = registerOutput<Map<String, String>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IdentityPoolRoleAttachment] resource's state with the given [name] and [id].
@@ -46,11 +47,12 @@ class IdentityPoolRoleAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityPoolRoleAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityPoolRoleAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -66,7 +68,22 @@ class IdentityPoolRoleAttachment extends pulumi.CustomResource {
         ) {
     identityPoolId = registerOutput<String>('identityPoolId');
     region = registerOutput<String>('region');
-    roleMappings = registerOutput<List<Map<String, dynamic>>?>('roleMappings');
-    roles = registerOutput<Map<String, String>>('roles');
+    roleMappings = registerOutput<List<IdentityPoolRoleAttachmentRoleMapping>?>('roleMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(guardedValue, (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    roles = registerOutput<Map<String, String>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IdentityPoolRoleAttachment] resource.
+  IdentityPoolRoleAttachment.reference(String urn)
+    : super(
+        'aws:cognito/identityPoolRoleAttachment:IdentityPoolRoleAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    identityPoolId = registerOutput<String>('identityPoolId');
+    region = registerOutput<String>('region');
+    roleMappings = registerOutput<List<IdentityPoolRoleAttachmentRoleMapping>?>('roleMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(guardedValue, (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    roles = registerOutput<Map<String, String>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

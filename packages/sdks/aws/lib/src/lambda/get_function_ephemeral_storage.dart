@@ -20,7 +20,7 @@ class GetFunctionEphemeralStorage {
 
   factory GetFunctionEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return GetFunctionEphemeralStorage(
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
     );
   }
 }

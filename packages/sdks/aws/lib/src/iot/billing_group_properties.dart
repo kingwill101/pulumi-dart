@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BillingGroupProperties {
   /// A description of the Billing Group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [BillingGroupProperties].
   /// [description] A description of the Billing Group.

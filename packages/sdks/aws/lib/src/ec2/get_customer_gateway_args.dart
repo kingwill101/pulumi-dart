@@ -9,13 +9,13 @@ import 'get_customer_gateway_filter.dart';
 /// {@macro pulumi_ec2_get_customer_gateway_get_customer_gateway_args_doc}
 class GetCustomerGatewayArgs {
   /// One or more [name-value pairs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCustomerGateways.html) to filter by.
-  final pulumi.Input<List<GetCustomerGatewayFilter>>? filters;
+  final pulumi.Input<List<GetCustomerGatewayFilter>?>? filters;
   /// ID of the gateway.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of key-value pairs assigned to the gateway.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetCustomerGatewayArgs].
   /// [filters] One or more [name-value pairs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCustomerGateways.html) to filter by.

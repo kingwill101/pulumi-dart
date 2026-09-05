@@ -9,7 +9,7 @@ class ByteMatchSetByteMatchTuple {
   /// Within the portion of a web request that you want to search.
   final pulumi.Input<String> positionalConstraint;
   /// The value that you want AWS WAF to search for. The maximum length of the value is 50 bytes.
-  final pulumi.Input<String>? targetString;
+  final pulumi.Input<String?>? targetString;
   /// The formatting way for web request.
   ///
   /// FieldToMatch(field_to_match) support following:

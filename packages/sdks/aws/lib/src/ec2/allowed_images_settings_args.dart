@@ -9,9 +9,9 @@ import 'allowed_images_settings_image_criterion.dart';
 /// {@macro pulumi_ec2_allowed_images_settings_allowed_images_settings_args_doc}
 class AllowedImagesSettingsArgs {
   /// List of image criteria. Maximum of 10 criterion blocks allowed. See `imageCriterion` below.
-  final pulumi.Input<List<AllowedImagesSettingsImageCriterion>>? imageCriterions;
+  final pulumi.Input<List<AllowedImagesSettingsImageCriterion>?>? imageCriterions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// State of the allowed images settings. Valid values are `enabled` or `audit-mode`.
   final pulumi.Input<String> state;
 

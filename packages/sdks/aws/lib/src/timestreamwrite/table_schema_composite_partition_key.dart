@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableSchemaCompositePartitionKey {
   /// The level of enforcement for the specification of a dimension key in ingested records. Valid values: `REQUIRED`, `OPTIONAL`.
-  final pulumi.Input<String>? enforcementInRecord;
+  final pulumi.Input<String?>? enforcementInRecord;
   /// The name of the attribute used for a dimension key.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the partition key. Valid values: `DIMENSION`, `MEASURE`.
   final pulumi.Input<String> type;
 

@@ -219,13 +219,13 @@ import 'bucket_policy_s3_control_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import S3 Control Bucket Policies using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import S3 Control Bucket Policies using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/bucketPolicy:BucketPolicy example arn:aws:s3-outposts:us-east-1:123456789012:outpost/op-12345678/bucket/example
 /// ```
 class BucketPolicyS3Control extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the bucket.
+  /// ARN of the bucket.
   late final pulumi.Output<String> bucket;
   /// JSON string of the resource policy.
   late final pulumi.Output<String> policy;
@@ -244,7 +244,7 @@ class BucketPolicyS3Control extends pulumi.CustomResource {
           'aws:s3control/bucketPolicy:BucketPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');
@@ -256,11 +256,12 @@ class BucketPolicyS3Control extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketPolicyS3ControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketPolicyS3Control._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -274,6 +275,20 @@ class BucketPolicyS3Control extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [BucketPolicyS3Control] resource.
+  BucketPolicyS3Control.reference(String urn)
+    : super(
+        'aws:s3control/bucketPolicy:BucketPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

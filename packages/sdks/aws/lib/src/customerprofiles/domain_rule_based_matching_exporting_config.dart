@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_rule_based_matching_exporting_config_s3_exporting.dart';
 
 class DomainRuleBasedMatchingExportingConfig {
-  final pulumi.Input<DomainRuleBasedMatchingExportingConfigS3Exporting>? s3Exporting;
+  final pulumi.Input<DomainRuleBasedMatchingExportingConfigS3Exporting?>? s3Exporting;
 
   /// Creates a new [DomainRuleBasedMatchingExportingConfig].
   /// [s3Exporting] Optional.

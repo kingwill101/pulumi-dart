@@ -17,7 +17,6 @@ import 'connector_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.transfer.Connector("example", {
-///     accessRole: test.arn,
 ///     as2Config: {
 ///         compression: "DISABLED",
 ///         encryptionAlgorithm: "AWS128_CBC",
@@ -28,6 +27,7 @@ import 'connector_state.dart';
 ///         partnerProfileId: partner.profileId,
 ///         signingAlgorithm: "NONE",
 ///     },
+///     accessRole: test.arn,
 ///     url: "http://www.test.com",
 /// });
 /// ```
@@ -36,7 +36,6 @@ import 'connector_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.transfer.Connector("example",
-///     access_role=test["arn"],
 ///     as2_config={
 ///         "compression": "DISABLED",
 ///         "encryption_algorithm": "AWS128_CBC",
@@ -47,6 +46,7 @@ import 'connector_state.dart';
 ///         "partner_profile_id": partner["profileId"],
 ///         "signing_algorithm": "NONE",
 ///     },
+///     access_role=test["arn"],
 ///     url="http://www.test.com")
 /// ```
 /// ```csharp
@@ -59,7 +59,6 @@ import 'connector_state.dart';
 /// {
 ///     var example = new Aws.Transfer.Connector("example", new()
 ///     {
-///         AccessRole = test.Arn,
 ///         As2Config = new Aws.Transfer.Inputs.ConnectorAs2ConfigArgs
 ///         {
 ///             Compression = "DISABLED",
@@ -71,6 +70,7 @@ import 'connector_state.dart';
 ///             PartnerProfileId = partner.ProfileId,
 ///             SigningAlgorithm = "NONE",
 ///         },
+///         AccessRole = test.Arn,
 ///         Url = "http://www.test.com",
 ///     });
 ///
@@ -87,7 +87,6 @@ import 'connector_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := transfer.NewConnector(ctx, "example", &transfer.ConnectorArgs{
-/// 			AccessRole: pulumi.Any(test.Arn),
 /// 			As2Config: &transfer.ConnectorAs2ConfigArgs{
 /// 				Compression:         pulumi.String("DISABLED"),
 /// 				EncryptionAlgorithm: pulumi.String("AWS128_CBC"),
@@ -98,7 +97,8 @@ import 'connector_state.dart';
 /// 				PartnerProfileId:    pulumi.Any(partner.ProfileId),
 /// 				SigningAlgorithm:    pulumi.String("NONE"),
 /// 			},
-/// 			Url: pulumi.String("http://www.test.com"),
+/// 			AccessRole: pulumi.Any(test.Arn),
+/// 			Url:        pulumi.String("http://www.test.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -117,7 +117,6 @@ import 'connector_state.dart';
 /// }
 ///
 /// resource "aws_transfer_connector" "example" {
-///   access_role = test.arn
 ///   as2_config = {
 ///     compression           = "DISABLED"
 ///     encryption_algorithm  = "AWS128_CBC"
@@ -128,7 +127,8 @@ import 'connector_state.dart';
 ///     partner_profile_id    = partner.profileId
 ///     signing_algorithm     = "NONE"
 ///   }
-///   url = "http://www.test.com"
+///   access_role = test.arn
+///   url         = "http://www.test.com"
 /// }
 /// ```
 /// ```java
@@ -154,7 +154,6 @@ import 'connector_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Connector("example", ConnectorArgs.builder()
-///             .accessRole(test.arn())
 ///             .as2Config(ConnectorAs2ConfigArgs.builder()
 ///                 .compression("DISABLED")
 ///                 .encryptionAlgorithm("AWS128_CBC")
@@ -165,6 +164,7 @@ import 'connector_state.dart';
 ///                 .partnerProfileId(partner.profileId())
 ///                 .signingAlgorithm("NONE")
 ///                 .build())
+///             .accessRole(test.arn())
 ///             .url("http://www.test.com")
 ///             .build());
 ///
@@ -176,7 +176,6 @@ import 'connector_state.dart';
 ///   example:
 ///     type: aws:transfer:Connector
 ///     properties:
-///       accessRole: ${test.arn}
 ///       as2Config:
 ///         compression: DISABLED
 ///         encryptionAlgorithm: AWS128_CBC
@@ -186,6 +185,7 @@ import 'connector_state.dart';
 ///         mdnSigningAlgorithm: NONE
 ///         partnerProfileId: ${partner.profileId}
 ///         signingAlgorithm: NONE
+///       accessRole: ${test.arn}
 ///       url: http://www.test.com
 /// ```
 ///
@@ -198,11 +198,11 @@ import 'connector_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.transfer.Connector("example", {
-///     accessRole: test.arn,
 ///     sftpConfig: {
 ///         trustedHostKeys: ["ssh-rsa AAAAB3NYourKeysHere"],
 ///         userSecretId: exampleAwsSecretsmanagerSecret.id,
 ///     },
+///     accessRole: test.arn,
 ///     url: "sftp://test.com",
 /// });
 /// ```
@@ -211,11 +211,11 @@ import 'connector_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.transfer.Connector("example",
-///     access_role=test["arn"],
 ///     sftp_config={
 ///         "trusted_host_keys": ["ssh-rsa AAAAB3NYourKeysHere"],
 ///         "user_secret_id": example_aws_secretsmanager_secret["id"],
 ///     },
+///     access_role=test["arn"],
 ///     url="sftp://test.com")
 /// ```
 /// ```csharp
@@ -228,7 +228,6 @@ import 'connector_state.dart';
 /// {
 ///     var example = new Aws.Transfer.Connector("example", new()
 ///     {
-///         AccessRole = test.Arn,
 ///         SftpConfig = new Aws.Transfer.Inputs.ConnectorSftpConfigArgs
 ///         {
 ///             TrustedHostKeys = new[]
@@ -237,6 +236,7 @@ import 'connector_state.dart';
 ///             },
 ///             UserSecretId = exampleAwsSecretsmanagerSecret.Id,
 ///         },
+///         AccessRole = test.Arn,
 ///         Url = "sftp://test.com",
 ///     });
 ///
@@ -253,14 +253,14 @@ import 'connector_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := transfer.NewConnector(ctx, "example", &transfer.ConnectorArgs{
-/// 			AccessRole: pulumi.Any(test.Arn),
 /// 			SftpConfig: &transfer.ConnectorSftpConfigArgs{
 /// 				TrustedHostKeys: pulumi.StringArray{
 /// 					pulumi.String("ssh-rsa AAAAB3NYourKeysHere"),
 /// 				},
 /// 				UserSecretId: pulumi.Any(exampleAwsSecretsmanagerSecret.Id),
 /// 			},
-/// 			Url: pulumi.String("sftp://test.com"),
+/// 			AccessRole: pulumi.Any(test.Arn),
+/// 			Url:        pulumi.String("sftp://test.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -279,12 +279,12 @@ import 'connector_state.dart';
 /// }
 ///
 /// resource "aws_transfer_connector" "example" {
-///   access_role = test.arn
 ///   sftp_config = {
 ///     trusted_host_keys = ["ssh-rsa AAAAB3NYourKeysHere"]
 ///     user_secret_id    = exampleAwsSecretsmanagerSecret.id
 ///   }
-///   url = "sftp://test.com"
+///   access_role = test.arn
+///   url         = "sftp://test.com"
 /// }
 /// ```
 /// ```java
@@ -310,11 +310,11 @@ import 'connector_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Connector("example", ConnectorArgs.builder()
-///             .accessRole(test.arn())
 ///             .sftpConfig(ConnectorSftpConfigArgs.builder()
 ///                 .trustedHostKeys("ssh-rsa AAAAB3NYourKeysHere")
 ///                 .userSecretId(exampleAwsSecretsmanagerSecret.id())
 ///                 .build())
+///             .accessRole(test.arn())
 ///             .url("sftp://test.com")
 ///             .build());
 ///
@@ -326,11 +326,11 @@ import 'connector_state.dart';
 ///   example:
 ///     type: aws:transfer:Connector
 ///     properties:
-///       accessRole: ${test.arn}
 ///       sftpConfig:
 ///         trustedHostKeys:
 ///           - ssh-rsa AAAAB3NYourKeysHere
 ///         userSecretId: ${exampleAwsSecretsmanagerSecret.id}
+///       accessRole: ${test.arn}
 ///       url: sftp://test.com
 /// ```
 ///
@@ -343,7 +343,6 @@ import 'connector_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.transfer.Connector("example", {
-///     accessRole: test.arn,
 ///     sftpConfig: {
 ///         trustedHostKeys: ["ssh-rsa AAAAB3NYourKeysHere"],
 ///         userSecretId: exampleAwsSecretsmanagerSecret.id,
@@ -354,6 +353,7 @@ import 'connector_state.dart';
 ///             portNumber: 22,
 ///         },
 ///     },
+///     accessRole: test.arn,
 /// });
 /// ```
 /// ```python
@@ -361,7 +361,6 @@ import 'connector_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.transfer.Connector("example",
-///     access_role=test["arn"],
 ///     sftp_config={
 ///         "trusted_host_keys": ["ssh-rsa AAAAB3NYourKeysHere"],
 ///         "user_secret_id": example_aws_secretsmanager_secret["id"],
@@ -371,7 +370,8 @@ import 'connector_state.dart';
 ///             "resource_configuration_arn": "arn:aws:vpc-lattice:us-east-1:123456789012:resourceconfiguration/rcfg-12345678901234567",
 ///             "port_number": 22,
 ///         },
-///     })
+///     },
+///     access_role=test["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -383,7 +383,6 @@ import 'connector_state.dart';
 /// {
 ///     var example = new Aws.Transfer.Connector("example", new()
 ///     {
-///         AccessRole = test.Arn,
 ///         SftpConfig = new Aws.Transfer.Inputs.ConnectorSftpConfigArgs
 ///         {
 ///             TrustedHostKeys = new[]
@@ -400,6 +399,7 @@ import 'connector_state.dart';
 ///                 PortNumber = 22,
 ///             },
 ///         },
+///         AccessRole = test.Arn,
 ///     });
 ///
 /// });
@@ -415,7 +415,6 @@ import 'connector_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := transfer.NewConnector(ctx, "example", &transfer.ConnectorArgs{
-/// 			AccessRole: pulumi.Any(test.Arn),
 /// 			SftpConfig: &transfer.ConnectorSftpConfigArgs{
 /// 				TrustedHostKeys: pulumi.StringArray{
 /// 					pulumi.String("ssh-rsa AAAAB3NYourKeysHere"),
@@ -428,6 +427,7 @@ import 'connector_state.dart';
 /// 					PortNumber:               pulumi.Int(22),
 /// 				},
 /// 			},
+/// 			AccessRole: pulumi.Any(test.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -446,7 +446,6 @@ import 'connector_state.dart';
 /// }
 ///
 /// resource "aws_transfer_connector" "example" {
-///   access_role = test.arn
 ///   sftp_config = {
 ///     trusted_host_keys = ["ssh-rsa AAAAB3NYourKeysHere"]
 ///     user_secret_id    = exampleAwsSecretsmanagerSecret.id
@@ -457,6 +456,7 @@ import 'connector_state.dart';
 ///       port_number                = 22
 ///     }
 ///   }
+///   access_role = test.arn
 /// }
 /// ```
 /// ```java
@@ -484,7 +484,6 @@ import 'connector_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Connector("example", ConnectorArgs.builder()
-///             .accessRole(test.arn())
 ///             .sftpConfig(ConnectorSftpConfigArgs.builder()
 ///                 .trustedHostKeys("ssh-rsa AAAAB3NYourKeysHere")
 ///                 .userSecretId(exampleAwsSecretsmanagerSecret.id())
@@ -495,6 +494,7 @@ import 'connector_state.dart';
 ///                     .portNumber(22)
 ///                     .build())
 ///                 .build())
+///             .accessRole(test.arn())
 ///             .build());
 ///
 ///     }
@@ -505,7 +505,6 @@ import 'connector_state.dart';
 ///   example:
 ///     type: aws:transfer:Connector
 ///     properties:
-///       accessRole: ${test.arn}
 ///       sftpConfig:
 ///         trustedHostKeys:
 ///           - ssh-rsa AAAAB3NYourKeysHere
@@ -514,6 +513,7 @@ import 'connector_state.dart';
 ///         vpcLattice:
 ///           resourceConfigurationArn: arn:aws:vpc-lattice:us-east-1:123456789012:resourceconfiguration/rcfg-12345678901234567
 ///           portNumber: 22
+///       accessRole: ${test.arn}
 /// ```
 ///
 ///
@@ -561,7 +561,7 @@ class Connector extends pulumi.CustomResource {
           'aws:transfer/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessRole = registerOutput<String>('accessRole');
     arn = registerOutput<String>('arn');
@@ -572,8 +572,8 @@ class Connector extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityPolicyName = registerOutput<String>('securityPolicyName');
     sftpConfig = registerOutput<ConnectorSftpConfig?>('sftpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorSftpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String?>('url');
   }
 
@@ -582,11 +582,12 @@ class Connector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -609,8 +610,31 @@ class Connector extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityPolicyName = registerOutput<String>('securityPolicyName');
     sftpConfig = registerOutput<ConnectorSftpConfig?>('sftpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorSftpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    url = registerOutput<String?>('url');
+  }
+
+  /// Creates a typed reference to an existing [Connector] resource.
+  Connector.reference(String urn)
+    : super(
+        'aws:transfer/connector:Connector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessRole = registerOutput<String>('accessRole');
+    arn = registerOutput<String>('arn');
+    as2Config = registerOutput<ConnectorAs2Config?>('as2Config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorAs2Config.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorId = registerOutput<String>('connectorId');
+    egressConfig = registerOutput<ConnectorEgressConfig?>('egressConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorEgressConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loggingRole = registerOutput<String?>('loggingRole');
+    region = registerOutput<String>('region');
+    securityPolicyName = registerOutput<String>('securityPolicyName');
+    sftpConfig = registerOutput<ConnectorSftpConfig?>('sftpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorSftpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     url = registerOutput<String?>('url');
   }
 }

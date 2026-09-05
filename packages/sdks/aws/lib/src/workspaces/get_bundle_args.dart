@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_workspaces_get_bundle_get_bundle_args_doc}
 class GetBundleArgs {
   /// ID of the bundle.
-  final pulumi.Input<String>? bundleId;
+  final pulumi.Input<String?>? bundleId;
   /// Name of the bundle. You cannot combine this parameter with `bundleId`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundleId`.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetBundleArgs].
   /// [bundleId] ID of the bundle.

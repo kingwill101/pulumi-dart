@@ -170,7 +170,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:xray/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bypassPolicyLockoutCheck = registerOutput<bool?>('bypassPolicyLockoutCheck');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
@@ -185,11 +185,12 @@ class ResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -203,6 +204,23 @@ class ResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bypassPolicyLockoutCheck = registerOutput<bool?>('bypassPolicyLockoutCheck');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    policyDocument = registerOutput<String>('policyDocument');
+    policyName = registerOutput<String>('policyName');
+    policyRevisionId = registerOutput<String>('policyRevisionId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicy] resource.
+  ResourcePolicy.reference(String urn)
+    : super(
+        'aws:xray/resourcePolicy:ResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bypassPolicyLockoutCheck = registerOutput<bool?>('bypassPolicyLockoutCheck');
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     policyDocument = registerOutput<String>('policyDocument');

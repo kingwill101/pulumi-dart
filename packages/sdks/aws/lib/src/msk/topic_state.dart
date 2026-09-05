@@ -6,28 +6,28 @@ import 'topic_timeouts.dart';
 /// Input properties used for looking up and filtering Topic resources.
 class TopicState {
   /// ARN of the Topic.
-  final pulumi.Input<String>? arn;
-  /// Amazon Resource Name (ARN) that uniquely identifies MSK Cluster.
-  final pulumi.Input<String>? clusterArn;
+  final pulumi.Input<String?>? arn;
+  /// ARN that uniquely identifies MSK Cluster.
+  final pulumi.Input<String?>? clusterArn;
   /// Explicit configured Kafka configuration in JSON format for Topic.
-  final pulumi.Input<String>? configs;
+  final pulumi.Input<String?>? configs;
   /// Aggregated Kafka configuration in JSON format for Topic, both explicit set values from `configs` and implicit set values (AWS default configuration, historically set values or manual configuration from outside Terraform).
-  final pulumi.Input<String>? configsActual;
+  final pulumi.Input<String?>? configsActual;
   /// Name of Topic.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Number of partitions for Topic.
-  final pulumi.Input<int>? partitionCount;
+  final pulumi.Input<int?>? partitionCount;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Replication factor for Topic.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<int>? replicationFactor;
-  final pulumi.Input<TopicTimeouts>? timeouts;
+  final pulumi.Input<int?>? replicationFactor;
+  final pulumi.Input<TopicTimeouts?>? timeouts;
 
   /// Creates a new [TopicState].
   /// [arn] ARN of the Topic.
-  /// [clusterArn] Amazon Resource Name (ARN) that uniquely identifies MSK Cluster.
+  /// [clusterArn] ARN that uniquely identifies MSK Cluster.
   /// [configs] Explicit configured Kafka configuration in JSON format for Topic.
   /// [configsActual] Aggregated Kafka configuration in JSON format for Topic, both explicit set values from `configs` and implicit set values (AWS default configuration, historically set values or manual configuration from outside Terraform).
   /// [name] Name of Topic.
@@ -68,9 +68,9 @@ class TopicState {
       configs: (() { final guardedValue = map['configs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       configsActual: (() { final guardedValue = map['configsActual']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partitionCount: (() { final guardedValue = map['partitionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      partitionCount: (() { final guardedValue = map['partitionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicationFactor: (() { final guardedValue = map['replicationFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicationFactor: (() { final guardedValue = map['replicationFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

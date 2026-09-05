@@ -15,7 +15,7 @@ class CatalogTableOptimizerArgs {
   /// The name of the database in the catalog in which the table resides.
   final pulumi.Input<String> databaseName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the table.
   final pulumi.Input<String> tableName;
   /// The type of table optimizer. Valid values are `compaction`, `retention`, and `orphanFileDeletion`.

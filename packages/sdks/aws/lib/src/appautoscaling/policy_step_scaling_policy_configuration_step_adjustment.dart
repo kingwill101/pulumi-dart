@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyStepScalingPolicyConfigurationStepAdjustment {
   /// Lower bound for the difference between the alarm threshold and the CloudWatch metric. Without a value, AWS treats this bound as negative infinity.
-  final pulumi.Input<String>? metricIntervalLowerBound;
+  final pulumi.Input<String?>? metricIntervalLowerBound;
   /// Upper bound for the difference between the alarm threshold and the CloudWatch metric. Without a value, AWS treats this bound as infinity. The upper bound must be greater than the lower bound.
-  final pulumi.Input<String>? metricIntervalUpperBound;
+  final pulumi.Input<String?>? metricIntervalUpperBound;
   /// Number of members by which to scale, when the adjustment bounds are breached. A positive value scales up. A negative value scales down.
   final pulumi.Input<int> scalingAdjustment;
 
@@ -32,7 +32,7 @@ class PolicyStepScalingPolicyConfigurationStepAdjustment {
     return PolicyStepScalingPolicyConfigurationStepAdjustment(
       metricIntervalLowerBound: (() { final guardedValue = map['metricIntervalLowerBound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricIntervalUpperBound: (() { final guardedValue = map['metricIntervalUpperBound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scalingAdjustment: pulumi.Input.fromValue(map['scalingAdjustment'] as int),
+      scalingAdjustment: pulumi.Input.fromValue((map['scalingAdjustment'] as num).toInt()),
     );
   }
 }

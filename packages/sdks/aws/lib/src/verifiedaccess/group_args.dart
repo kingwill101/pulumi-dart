@@ -9,15 +9,15 @@ import 'group_sse_configuration.dart';
 /// {@macro pulumi_verifiedaccess_group_group_args_doc}
 class GroupArgs {
   /// Description of the verified access group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The policy document that is associated with this resource.
-  final pulumi.Input<String>? policyDocument;
+  final pulumi.Input<String?>? policyDocument;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block to use KMS keys for server-side encryption.
-  final pulumi.Input<GroupSseConfiguration>? sseConfiguration;
+  final pulumi.Input<GroupSseConfiguration?>? sseConfiguration;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The id of the verified access instance this group is associated with.
   ///
   /// The following arguments are optional:

@@ -9,28 +9,28 @@ import 'domain_default_space_settings_jupyter_lab_app_settings_emr_settings.dart
 
 class DomainDefaultSpaceSettingsJupyterLabAppSettings {
   /// Indicates whether idle shutdown is activated for JupyterLab applications. see `appLifecycleManagement` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement>? appLifecycleManagement;
+  final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement?>? appLifecycleManagement;
   /// The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
-  final pulumi.Input<String>? builtInLifecycleConfigArn;
+  final pulumi.Input<String?>? builtInLifecycleConfigArn;
   /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see `codeRepository` Block below.
-  final pulumi.Input<List<DomainDefaultSpaceSettingsJupyterLabAppSettingsCodeRepository>>? codeRepositories;
+  final pulumi.Input<List<DomainDefaultSpaceSettingsJupyterLabAppSettingsCodeRepository>?>? codeRepositories;
   /// A list of custom SageMaker AI images that are configured to run as a JupyterLab app. see `customImage` Block below.
-  final pulumi.Input<List<DomainDefaultSpaceSettingsJupyterLabAppSettingsCustomImage>>? customImages;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettingsDefaultResourceSpec>? defaultResourceSpec;
+  final pulumi.Input<List<DomainDefaultSpaceSettingsJupyterLabAppSettingsCustomImage>?>? customImages;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
+  final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettingsDefaultResourceSpec?>? defaultResourceSpec;
   /// The configuration parameters that specify the IAM roles assumed by the execution role of SageMaker AI (assumable roles) and the cluster instances or job execution environments (execution roles or runtime roles) to manage and access resources required for running Amazon EMR clusters or Amazon EMR Serverless applications. see `emrSettings` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettingsEmrSettings>? emrSettings;
-  /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  final pulumi.Input<List<String>>? lifecycleConfigArns;
+  final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettingsEmrSettings?>? emrSettings;
+  /// ARN of the Lifecycle Configurations.
+  final pulumi.Input<List<String>?>? lifecycleConfigArns;
 
   /// Creates a new [DomainDefaultSpaceSettingsJupyterLabAppSettings].
   /// [appLifecycleManagement] Indicates whether idle shutdown is activated for JupyterLab applications. see `appLifecycleManagement` Block below.
   /// [builtInLifecycleConfigArn] The lifecycle configuration that runs before the default lifecycle configuration. It can override changes made in the default lifecycle configuration.
   /// [codeRepositories] A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see `codeRepository` Block below.
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a JupyterLab app. see `customImage` Block below.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
   /// [emrSettings] The configuration parameters that specify the IAM roles assumed by the execution role of SageMaker AI (assumable roles) and the cluster instances or job execution environments (execution roles or runtime roles) to manage and access resources required for running Amazon EMR clusters or Amazon EMR Serverless applications. see `emrSettings` Block below.
-  /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
+  /// [lifecycleConfigArns] ARN of the Lifecycle Configurations.
   const DomainDefaultSpaceSettingsJupyterLabAppSettings({
     this.appLifecycleManagement,
     this.builtInLifecycleConfigArn,

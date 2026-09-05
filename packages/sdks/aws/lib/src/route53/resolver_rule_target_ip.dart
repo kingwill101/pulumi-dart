@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResolverRuleTargetIp {
   /// One IPv4 address that you want to forward DNS queries to.
-  final pulumi.Input<String>? ip;
+  final pulumi.Input<String?>? ip;
   /// One IPv6 address that you want to forward DNS queries to.
-  final pulumi.Input<String>? ipv6;
+  final pulumi.Input<String?>? ipv6;
   /// Port at `ip` that you want to forward DNS queries to. Default value is `53`.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Protocol for the resolver endpoint. Valid values can be found in the [AWS documentation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_TargetAddress.html). Default value is `Do53`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [ResolverRuleTargetIp].
   /// [ip] One IPv4 address that you want to forward DNS queries to.
@@ -37,7 +37,7 @@ class ResolverRuleTargetIp {
     return ResolverRuleTargetIp(
       ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6: (() { final guardedValue = map['ipv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

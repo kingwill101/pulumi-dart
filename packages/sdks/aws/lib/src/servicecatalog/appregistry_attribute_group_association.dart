@@ -247,7 +247,7 @@ class AppregistryAttributeGroupAssociation extends pulumi.CustomResource {
           'aws:servicecatalog/appregistryAttributeGroupAssociation:AppregistryAttributeGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     attributeGroupId = registerOutput<String>('attributeGroupId');
@@ -259,11 +259,12 @@ class AppregistryAttributeGroupAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppregistryAttributeGroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppregistryAttributeGroupAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -277,6 +278,20 @@ class AppregistryAttributeGroupAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    attributeGroupId = registerOutput<String>('attributeGroupId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AppregistryAttributeGroupAssociation] resource.
+  AppregistryAttributeGroupAssociation.reference(String urn)
+    : super(
+        'aws:servicecatalog/appregistryAttributeGroupAssociation:AppregistryAttributeGroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     attributeGroupId = registerOutput<String>('attributeGroupId');
     region = registerOutput<String>('region');

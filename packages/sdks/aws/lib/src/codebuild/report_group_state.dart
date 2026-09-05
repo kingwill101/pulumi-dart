@@ -6,23 +6,23 @@ import 'report_group_export_config.dart';
 /// Input properties used for looking up and filtering ReportGroup resources.
 class ReportGroupState {
   /// The ARN of Report Group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The date and time this Report Group was created.
-  final pulumi.Input<String>? created;
+  final pulumi.Input<String?>? created;
   /// If `true`, deletes any reports that belong to a report group before deleting the report group. If `false`, you must delete any reports in the report group before deleting it. Default value is `false`.
-  final pulumi.Input<bool>? deleteReports;
+  final pulumi.Input<bool?>? deleteReports;
   /// Information about the destination where the raw data of this Report Group is exported. see Export Config documented below.
-  final pulumi.Input<ReportGroupExportConfig>? exportConfig;
+  final pulumi.Input<ReportGroupExportConfig?>? exportConfig;
   /// The name of a Report Group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The type of the Report Group. Valid value are `TEST` and `CODE_COVERAGE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ReportGroupState].
   /// [arn] The ARN of Report Group.

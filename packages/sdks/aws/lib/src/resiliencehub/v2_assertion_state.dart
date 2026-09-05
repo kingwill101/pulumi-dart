@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering V2Assertion resources.
 class V2AssertionState {
   /// Unique identifier of the assertion.
-  final pulumi.Input<String>? assertionId;
+  final pulumi.Input<String?>? assertionId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the service this assertion belongs to. Changing this value requires creating a new resource.
-  final pulumi.Input<String>? serviceArn;
+  final pulumi.Input<String?>? serviceArn;
   /// Text of the resilience assertion.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [V2AssertionState].
   /// [assertionId] Unique identifier of the assertion.

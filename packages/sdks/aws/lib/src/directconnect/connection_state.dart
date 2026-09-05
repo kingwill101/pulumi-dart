@@ -5,47 +5,47 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Connection resources.
 class ConnectionState {
   /// The ARN of the connection.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The Direct Connect endpoint on which the physical connection terminates.
-  final pulumi.Input<String>? awsDevice;
+  final pulumi.Input<String?>? awsDevice;
   /// The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps, 100Gbps, and 400Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps, and 25Gbps. Case sensitive. Refer to the AWS Direct Connection supported bandwidths for [Dedicated Connections](https://docs.aws.amazon.com/directconnect/latest/UserGuide/dedicated_connection.html) and [Hosted Connections](https://docs.aws.amazon.com/directconnect/latest/UserGuide/hosted_connection.html).
-  final pulumi.Input<String>? bandwidth;
+  final pulumi.Input<String?>? bandwidth;
   /// The connection MAC Security (MACsec) encryption mode. MAC Security (MACsec) is only available on dedicated connections. Valid values are `noEncrypt`, `shouldEncrypt`, and `mustEncrypt`.
-  final pulumi.Input<String>? encryptionMode;
+  final pulumi.Input<String?>? encryptionMode;
   /// Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
-  final pulumi.Input<String>? hasLogicalRedundancy;
+  final pulumi.Input<String?>? hasLogicalRedundancy;
   /// Boolean value representing if jumbo frames have been enabled for this connection.
-  final pulumi.Input<bool>? jumboFrameCapable;
+  final pulumi.Input<bool?>? jumboFrameCapable;
   /// The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Boolean value indicating whether the connection supports MAC Security (MACsec).
-  final pulumi.Input<bool>? macsecCapable;
+  final pulumi.Input<bool?>? macsecCapable;
   /// The name of the connection.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the AWS account that owns the connection.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// The name of the AWS Direct Connect service provider associated with the connection.
-  final pulumi.Input<String>? partnerName;
+  final pulumi.Input<String?>? partnerName;
   /// The MAC Security (MACsec) port link status of the connection.
-  final pulumi.Input<String>? portEncryptionStatus;
+  final pulumi.Input<String?>? portEncryptionStatus;
   /// The name of the service provider associated with the connection.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Boolean value indicating whether you want the connection to support MAC Security (MACsec). MAC Security (MACsec) is only available on dedicated connections. See [MACsec prerequisites](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites) for more information about MAC Security (MACsec) prerequisites. Default value: `false`.
   ///
   /// &gt; **NOTE:** Changing the value of `requestMacsec` will cause the resource to be destroyed and re-created.
-  final pulumi.Input<bool>? requestMacsec;
+  final pulumi.Input<bool?>? requestMacsec;
   /// Set to true if you do not wish the connection to be deleted at destroy time, and instead just removed from the state.
-  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<bool?>? skipDestroy;
   /// State of the connection. See [CreateConnection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_CreateConnection.html#API_CreateConnection_ResponseSyntax) for list of possible state values.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The VLAN ID.
-  final pulumi.Input<int>? vlanId;
+  final pulumi.Input<int?>? vlanId;
 
   /// Creates a new [ConnectionState].
   /// [arn] The ARN of the connection.
@@ -137,7 +137,7 @@ class ConnectionState {
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

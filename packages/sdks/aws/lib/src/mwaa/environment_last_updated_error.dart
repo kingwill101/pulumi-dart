@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentLastUpdatedError {
-  final pulumi.Input<String>? errorCode;
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorCode;
+  final pulumi.Input<String?>? errorMessage;
 
   /// Creates a new [EnvironmentLastUpdatedError].
   /// [errorCode] Optional.

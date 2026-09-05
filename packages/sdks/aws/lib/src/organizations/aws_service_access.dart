@@ -146,7 +146,7 @@ class AwsServiceAccess extends pulumi.CustomResource {
           'aws:organizations/awsServiceAccess:AwsServiceAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dateEnabled = registerOutput<String>('dateEnabled');
     servicePrincipal = registerOutput<String>('servicePrincipal');
@@ -157,11 +157,12 @@ class AwsServiceAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AwsServiceAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AwsServiceAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -175,6 +176,19 @@ class AwsServiceAccess extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dateEnabled = registerOutput<String>('dateEnabled');
+    servicePrincipal = registerOutput<String>('servicePrincipal');
+  }
+
+  /// Creates a typed reference to an existing [AwsServiceAccess] resource.
+  AwsServiceAccess.reference(String urn)
+    : super(
+        'aws:organizations/awsServiceAccess:AwsServiceAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dateEnabled = registerOutput<String>('dateEnabled');
     servicePrincipal = registerOutput<String>('servicePrincipal');
   }

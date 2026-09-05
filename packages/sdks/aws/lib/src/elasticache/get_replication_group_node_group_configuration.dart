@@ -54,7 +54,7 @@ class GetReplicationGroupNodeGroupConfiguration {
       primaryAvailabilityZone: pulumi.Input.fromValue(map['primaryAvailabilityZone'] as String),
       primaryOutpostArn: pulumi.Input.fromValue(map['primaryOutpostArn'] as String),
       replicaAvailabilityZones: pulumi.Input.fromValue((map['replicaAvailabilityZones'] as List).cast<String>()),
-      replicaCount: pulumi.Input.fromValue(map['replicaCount'] as int),
+      replicaCount: pulumi.Input.fromValue((map['replicaCount'] as num).toInt()),
       replicaOutpostArns: pulumi.Input.fromValue((map['replicaOutpostArns'] as List).cast<String>()),
       slots: pulumi.Input.fromValue(map['slots'] as String),
     );

@@ -20,7 +20,7 @@ class ListenerDefaultActionFixedResponse {
 
   factory ListenerDefaultActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionFixedResponse(
-      statusCode: pulumi.Input.fromValue(map['statusCode'] as int),
+      statusCode: pulumi.Input.fromValue((map['statusCode'] as num).toInt()),
     );
   }
 }

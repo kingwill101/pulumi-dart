@@ -10,9 +10,9 @@ class GetSubnetGroupArgs {
   /// Name of the cluster subnet group for which information is requested.
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags associated to the Subnet Group
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetSubnetGroupArgs].
   /// [name] Name of the cluster subnet group for which information is requested.

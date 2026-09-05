@@ -19,7 +19,7 @@ class GetVirtualNodeSpecListener {
   final pulumi.Input<List<GetVirtualNodeSpecListenerPortMapping>> portMappings;
   /// Timeouts for different protocols. See `spec.listener.timeout` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTimeout>> timeouts;
-  /// Transport Layer Security (TLS) properties for the listener. See `spec.listener.tls` Block for details.
+  /// TLS properties for the listener. See `spec.listener.tls` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecListenerTl>> tls;
 
   /// Creates a new [GetVirtualNodeSpecListener].
@@ -28,7 +28,7 @@ class GetVirtualNodeSpecListener {
   /// [outlierDetections] Outlier detection information for the listener. See `spec.listener.outlier_detection` Block for details.
   /// [portMappings] Port mapping information for the listener. See `spec.listener.port_mapping` Block for details.
   /// [timeouts] Timeouts for different protocols. See `spec.listener.timeout` Block for details.
-  /// [tls] Transport Layer Security (TLS) properties for the listener. See `spec.listener.tls` Block for details.
+  /// [tls] TLS properties for the listener. See `spec.listener.tls` Block for details.
   const GetVirtualNodeSpecListener({
     required this.connectionPools,
     required this.healthChecks,

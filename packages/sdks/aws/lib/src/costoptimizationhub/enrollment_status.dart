@@ -222,7 +222,7 @@ class EnrollmentStatus extends pulumi.CustomResource {
           'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
     status = registerOutput<String>('status');
@@ -233,11 +233,12 @@ class EnrollmentStatus extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnrollmentStatusState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnrollmentStatus._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -251,6 +252,19 @@ class EnrollmentStatus extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [EnrollmentStatus] resource.
+  EnrollmentStatus.reference(String urn)
+    : super(
+        'aws:costoptimizationhub/enrollmentStatus:EnrollmentStatus',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
     status = registerOutput<String>('status');
   }

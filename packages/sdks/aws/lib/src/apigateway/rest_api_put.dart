@@ -376,15 +376,15 @@ class RestApiPut extends pulumi.CustomResource {
           'aws:apigateway/restApiPut:RestApiPut',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     body = registerOutput<String>('body');
     failOnWarnings = registerOutput<bool>('failOnWarnings');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');
     timeouts = registerOutput<RestApiPutTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestApiPutTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RestApiPut] resource's state with the given [name] and [id].
@@ -392,11 +392,12 @@ class RestApiPut extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RestApiPutState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RestApiPut._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -412,10 +413,28 @@ class RestApiPut extends pulumi.CustomResource {
         ) {
     body = registerOutput<String>('body');
     failOnWarnings = registerOutput<bool>('failOnWarnings');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
     restApiId = registerOutput<String>('restApiId');
     timeouts = registerOutput<RestApiPutTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestApiPutTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    triggers = registerOutput<Map<String, String>?>('triggers');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RestApiPut] resource.
+  RestApiPut.reference(String urn)
+    : super(
+        'aws:apigateway/restApiPut:RestApiPut',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    body = registerOutput<String>('body');
+    failOnWarnings = registerOutput<bool>('failOnWarnings');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    region = registerOutput<String>('region');
+    restApiId = registerOutput<String>('restApiId');
+    timeouts = registerOutput<RestApiPutTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestApiPutTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

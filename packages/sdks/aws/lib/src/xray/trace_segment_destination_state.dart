@@ -6,10 +6,10 @@ import 'trace_segment_destination_timeouts.dart';
 /// Input properties used for looking up and filtering TraceSegmentDestination resources.
 class TraceSegmentDestinationState {
   /// Destination of trace segments. Valid values: `XRay`, `CloudWatchLogs`.
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<TraceSegmentDestinationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<TraceSegmentDestinationTimeouts?>? timeouts;
 
   /// Creates a new [TraceSegmentDestinationState].
   /// [destination] Destination of trace segments. Valid values: `XRay`, `CloudWatchLogs`.

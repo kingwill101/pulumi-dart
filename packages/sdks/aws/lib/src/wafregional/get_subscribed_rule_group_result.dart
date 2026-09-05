@@ -4,38 +4,38 @@
 /// Result data returned by getSubscribedRuleGroup.
 class GetSubscribedRuleGroupResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? metricName;
   final String? name;
-  final String region;
+  final String? region;
 
   /// Creates a new [GetSubscribedRuleGroupResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [metricName] Optional.
   /// [name] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   const GetSubscribedRuleGroupResult({
-    required this.id,
+    this.id,
     this.metricName,
     this.name,
-    required this.region,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'metricName': ?metricName,
       'name': ?name,
-      'region': region,
+      'region': ?region,
     };
   }
 
   factory GetSubscribedRuleGroupResult.fromMap(Map<String, dynamic> map) {
     return GetSubscribedRuleGroupResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

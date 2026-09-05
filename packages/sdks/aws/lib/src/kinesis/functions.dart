@@ -126,6 +126,17 @@ Future<GetFirehoseDeliveryStreamResult> getFirehoseDeliveryStream(
   return GetFirehoseDeliveryStreamResult.fromMap(result);
 }
 
+pulumi.Output<GetFirehoseDeliveryStreamResult> getFirehoseDeliveryStreamOutput(
+  GetFirehoseDeliveryStreamArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kinesis/getFirehoseDeliveryStream:getFirehoseDeliveryStream',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirehoseDeliveryStreamResult.fromMap);
+}
+
 /// Use this data source to get information about a Kinesis Stream for use in other
 /// resources.
 ///
@@ -245,6 +256,17 @@ Future<GetStreamResult> getStream(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStreamResult.fromMap(result);
+}
+
+pulumi.Output<GetStreamResult> getStreamOutput(
+  GetStreamArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kinesis/getStream:getStream',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStreamResult.fromMap);
 }
 
 /// Provides details about a Kinesis Stream Consumer.
@@ -372,4 +394,15 @@ Future<GetStreamConsumerResult> getStreamConsumer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStreamConsumerResult.fromMap(result);
+}
+
+pulumi.Output<GetStreamConsumerResult> getStreamConsumerOutput(
+  GetStreamConsumerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:kinesis/getStreamConsumer:getStreamConsumer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStreamConsumerResult.fromMap);
 }

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_recipe_args.dart';
+import 'image_recipe_block_device_mapping.dart';
+import 'image_recipe_component.dart';
 import 'image_recipe_state.dart';
 import 'image_recipe_systems_manager_agent.dart';
 
@@ -14,15 +16,14 @@ import 'image_recipe_systems_manager_agent.dart';
 ///
 /// const example = new aws.imagebuilder.ImageRecipe("example", {
 ///     blockDeviceMappings: [{
-///         deviceName: "/dev/xvdb",
 ///         ebs: {
 ///             deleteOnTermination: "true",
 ///             volumeSize: 100,
 ///             volumeType: "gp2",
 ///         },
+///         deviceName: "/dev/xvdb",
 ///     }],
 ///     components: [{
-///         componentArn: exampleAwsImagebuilderComponent.arn,
 ///         parameters: [
 ///             {
 ///                 name: "Parameter1",
@@ -33,6 +34,7 @@ import 'image_recipe_systems_manager_agent.dart';
 ///                 value: "Value2",
 ///             },
 ///         ],
+///         componentArn: exampleAwsImagebuilderComponent.arn,
 ///     }],
 ///     name: "example",
 ///     parentImage: `arn:${current.partition}:imagebuilder:${currentAwsRegion.region}:aws:image/amazon-linux-2-x86/x.x.x`,
@@ -45,15 +47,14 @@ import 'image_recipe_systems_manager_agent.dart';
 ///
 /// example = aws.imagebuilder.ImageRecipe("example",
 ///     block_device_mappings=[{
-///         "device_name": "/dev/xvdb",
 ///         "ebs": {
 ///             "delete_on_termination": "true",
 ///             "volume_size": 100,
 ///             "volume_type": "gp2",
 ///         },
+///         "device_name": "/dev/xvdb",
 ///     }],
 ///     components=[{
-///         "component_arn": example_aws_imagebuilder_component["arn"],
 ///         "parameters": [
 ///             {
 ///                 "name": "Parameter1",
@@ -64,6 +65,7 @@ import 'image_recipe_systems_manager_agent.dart';
 ///                 "value": "Value2",
 ///             },
 ///         ],
+///         "component_arn": example_aws_imagebuilder_component["arn"],
 ///     }],
 ///     name="example",
 ///     parent_image=f"arn:{current['partition']}:imagebuilder:{current_aws_region['region']}:aws:image/amazon-linux-2-x86/x.x.x",
@@ -83,20 +85,19 @@ import 'image_recipe_systems_manager_agent.dart';
 ///         {
 ///             new Aws.ImageBuilder.Inputs.ImageRecipeBlockDeviceMappingArgs
 ///             {
-///                 DeviceName = "/dev/xvdb",
 ///                 Ebs = new Aws.ImageBuilder.Inputs.ImageRecipeBlockDeviceMappingEbsArgs
 ///                 {
 ///                     DeleteOnTermination = "true",
 ///                     VolumeSize = 100,
 ///                     VolumeType = "gp2",
 ///                 },
+///                 DeviceName = "/dev/xvdb",
 ///             },
 ///         },
 ///         Components = new[]
 ///         {
 ///             new Aws.ImageBuilder.Inputs.ImageRecipeComponentArgs
 ///             {
-///                 ComponentArn = exampleAwsImagebuilderComponent.Arn,
 ///                 Parameters = new[]
 ///                 {
 ///                     new Aws.ImageBuilder.Inputs.ImageRecipeComponentParameterArgs
@@ -110,6 +111,7 @@ import 'image_recipe_systems_manager_agent.dart';
 ///                         Value = "Value2",
 ///                     },
 ///                 },
+///                 ComponentArn = exampleAwsImagebuilderComponent.Arn,
 ///             },
 ///         },
 ///         Name = "example",
@@ -132,17 +134,16 @@ import 'image_recipe_systems_manager_agent.dart';
 /// 		_, err := imagebuilder.NewImageRecipe(ctx, "example", &imagebuilder.ImageRecipeArgs{
 /// 			BlockDeviceMappings: imagebuilder.ImageRecipeBlockDeviceMappingArray{
 /// 				&imagebuilder.ImageRecipeBlockDeviceMappingArgs{
-/// 					DeviceName: pulumi.String("/dev/xvdb"),
 /// 					Ebs: &imagebuilder.ImageRecipeBlockDeviceMappingEbsArgs{
 /// 						DeleteOnTermination: pulumi.String("true"),
 /// 						VolumeSize:          pulumi.Int(100),
 /// 						VolumeType:          pulumi.String("gp2"),
 /// 					},
+/// 					DeviceName: pulumi.String("/dev/xvdb"),
 /// 				},
 /// 			},
 /// 			Components: imagebuilder.ImageRecipeComponentArray{
 /// 				&imagebuilder.ImageRecipeComponentArgs{
-/// 					ComponentArn: pulumi.Any(exampleAwsImagebuilderComponent.Arn),
 /// 					Parameters: imagebuilder.ImageRecipeComponentParameterArray{
 /// 						&imagebuilder.ImageRecipeComponentParameterArgs{
 /// 							Name:  pulumi.String("Parameter1"),
@@ -153,6 +154,7 @@ import 'image_recipe_systems_manager_agent.dart';
 /// 							Value: pulumi.String("Value2"),
 /// 						},
 /// 					},
+/// 					ComponentArn: pulumi.Any(exampleAwsImagebuilderComponent.Arn),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("example"),
@@ -177,15 +179,14 @@ import 'image_recipe_systems_manager_agent.dart';
 ///
 /// resource "aws_imagebuilder_imagerecipe" "example" {
 ///   block_device_mappings {
-///     device_name = "/dev/xvdb"
 ///     ebs = {
 ///       delete_on_termination = true
 ///       volume_size           = 100
 ///       volume_type           = "gp2"
 ///     }
+///     device_name = "/dev/xvdb"
 ///   }
 ///   components {
-///     component_arn = exampleAwsImagebuilderComponent.arn
 ///     parameters {
 ///       name  = "Parameter1"
 ///       value = "Value1"
@@ -194,6 +195,7 @@ import 'image_recipe_systems_manager_agent.dart';
 ///       name  = "Parameter2"
 ///       value = "Value2"
 ///     }
+///     component_arn = exampleAwsImagebuilderComponent.arn
 ///   }
 ///   name         = "example"
 ///   parent_image ="arn:${current.partition}:imagebuilder:${currentAwsRegion.region}:aws:image/amazon-linux-2-x86/x.x.x"
@@ -227,15 +229,14 @@ import 'image_recipe_systems_manager_agent.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ImageRecipe("example", ImageRecipeArgs.builder()
 ///             .blockDeviceMappings(ImageRecipeBlockDeviceMappingArgs.builder()
-///                 .deviceName("/dev/xvdb")
 ///                 .ebs(ImageRecipeBlockDeviceMappingEbsArgs.builder()
 ///                     .deleteOnTermination("true")
 ///                     .volumeSize(100)
 ///                     .volumeType("gp2")
 ///                     .build())
+///                 .deviceName("/dev/xvdb")
 ///                 .build())
 ///             .components(ImageRecipeComponentArgs.builder()
-///                 .componentArn(exampleAwsImagebuilderComponent.arn())
 ///                 .parameters(
 ///                     ImageRecipeComponentParameterArgs.builder()
 ///                         .name("Parameter1")
@@ -245,6 +246,7 @@ import 'image_recipe_systems_manager_agent.dart';
 ///                         .name("Parameter2")
 ///                         .value("Value2")
 ///                         .build())
+///                 .componentArn(exampleAwsImagebuilderComponent.arn())
 ///                 .build())
 ///             .name("example")
 ///             .parentImage(String.format("arn:%s:imagebuilder:%s:aws:image/amazon-linux-2-x86/x.x.x", current.partition(),currentAwsRegion.region()))
@@ -260,18 +262,18 @@ import 'image_recipe_systems_manager_agent.dart';
 ///     type: aws:imagebuilder:ImageRecipe
 ///     properties:
 ///       blockDeviceMappings:
-///         - deviceName: /dev/xvdb
-///           ebs:
+///         - ebs:
 ///             deleteOnTermination: true
 ///             volumeSize: 100
 ///             volumeType: gp2
+///           deviceName: /dev/xvdb
 ///       components:
-///         - componentArn: ${exampleAwsImagebuilderComponent.arn}
-///           parameters:
+///         - parameters:
 ///             - name: Parameter1
 ///               value: Value1
 ///             - name: Parameter2
 ///               value: Value2
+///           componentArn: ${exampleAwsImagebuilderComponent.arn}
 ///       name: example
 ///       parentImage: arn:${current.partition}:imagebuilder:${currentAwsRegion.region}:aws:image/amazon-linux-2-x86/x.x.x
 ///       version: 1.0.0
@@ -284,10 +286,10 @@ import 'image_recipe_systems_manager_agent.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Image Builder image recipe.
+/// - `arn` (String) ARN of the Image Builder image recipe.
 ///
 ///
-/// Using `pulumi import`, import `aws.imagebuilder.ImageRecipe` resources using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.ImageRecipe` resources using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/imageRecipe:ImageRecipe example arn:aws:imagebuilder:us-east-1:123456789012:image-recipe/example/1.0.0
@@ -295,12 +297,12 @@ import 'image_recipe_systems_manager_agent.dart';
 class ImageRecipe extends pulumi.CustomResource {
   /// Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution. Maximum of 50 tags.
   late final pulumi.Output<Map<String, String>?> amiTags;
-  /// Amazon Resource Name (ARN) of the image recipe.
+  /// ARN of the image recipe.
   late final pulumi.Output<String> arn;
   /// Configuration block(s) with block device mappings for the image recipe. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> blockDeviceMappings;
+  late final pulumi.Output<List<ImageRecipeBlockDeviceMapping>?> blockDeviceMappings;
   /// Ordered configuration block(s) with components for the image recipe. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> components;
+  late final pulumi.Output<List<ImageRecipeComponent>> components;
   /// Date the image recipe was created.
   late final pulumi.Output<String> dateCreated;
   /// Description of the image recipe.
@@ -342,12 +344,12 @@ class ImageRecipe extends pulumi.CustomResource {
           'aws:imagebuilder/imageRecipe:ImageRecipe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    amiTags = registerOutput<Map<String, String>?>('amiTags');
+    amiTags = registerOutput<Map<String, String>?>('amiTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');
-    blockDeviceMappings = registerOutput<List<Map<String, dynamic>>?>('blockDeviceMappings');
-    components = registerOutput<List<Map<String, dynamic>>>('components');
+    blockDeviceMappings = registerOutput<List<ImageRecipeBlockDeviceMapping>?>('blockDeviceMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRecipeBlockDeviceMapping>(guardedValue, (value) => ImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    components = registerOutput<List<ImageRecipeComponent>>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRecipeComponent>(guardedValue, (value) => ImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>())); });
     dateCreated = registerOutput<String>('dateCreated');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -356,8 +358,8 @@ class ImageRecipe extends pulumi.CustomResource {
     platform = registerOutput<String>('platform');
     region = registerOutput<String>('region');
     systemsManagerAgent = registerOutput<ImageRecipeSystemsManagerAgent>('systemsManagerAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageRecipeSystemsManagerAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userDataBase64 = registerOutput<String>('userDataBase64');
     version = registerOutput<String>('version');
     workingDirectory = registerOutput<String?>('workingDirectory');
@@ -368,11 +370,12 @@ class ImageRecipe extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ImageRecipeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ImageRecipe._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -386,10 +389,10 @@ class ImageRecipe extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    amiTags = registerOutput<Map<String, String>?>('amiTags');
+    amiTags = registerOutput<Map<String, String>?>('amiTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');
-    blockDeviceMappings = registerOutput<List<Map<String, dynamic>>?>('blockDeviceMappings');
-    components = registerOutput<List<Map<String, dynamic>>>('components');
+    blockDeviceMappings = registerOutput<List<ImageRecipeBlockDeviceMapping>?>('blockDeviceMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRecipeBlockDeviceMapping>(guardedValue, (value) => ImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    components = registerOutput<List<ImageRecipeComponent>>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRecipeComponent>(guardedValue, (value) => ImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>())); });
     dateCreated = registerOutput<String>('dateCreated');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -398,8 +401,36 @@ class ImageRecipe extends pulumi.CustomResource {
     platform = registerOutput<String>('platform');
     region = registerOutput<String>('region');
     systemsManagerAgent = registerOutput<ImageRecipeSystemsManagerAgent>('systemsManagerAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageRecipeSystemsManagerAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userDataBase64 = registerOutput<String>('userDataBase64');
+    version = registerOutput<String>('version');
+    workingDirectory = registerOutput<String?>('workingDirectory');
+  }
+
+  /// Creates a typed reference to an existing [ImageRecipe] resource.
+  ImageRecipe.reference(String urn)
+    : super(
+        'aws:imagebuilder/imageRecipe:ImageRecipe',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    amiTags = registerOutput<Map<String, String>?>('amiTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    arn = registerOutput<String>('arn');
+    blockDeviceMappings = registerOutput<List<ImageRecipeBlockDeviceMapping>?>('blockDeviceMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRecipeBlockDeviceMapping>(guardedValue, (value) => ImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    components = registerOutput<List<ImageRecipeComponent>>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRecipeComponent>(guardedValue, (value) => ImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>())); });
+    dateCreated = registerOutput<String>('dateCreated');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    parentImage = registerOutput<String>('parentImage');
+    platform = registerOutput<String>('platform');
+    region = registerOutput<String>('region');
+    systemsManagerAgent = registerOutput<ImageRecipeSystemsManagerAgent>('systemsManagerAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageRecipeSystemsManagerAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userDataBase64 = registerOutput<String>('userDataBase64');
     version = registerOutput<String>('version');
     workingDirectory = registerOutput<String?>('workingDirectory');

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering MulticastGroupSource resources.
 class MulticastGroupSourceState {
   /// The IP address assigned to the transit gateway multicast group.
-  final pulumi.Input<String>? groupIpAddress;
+  final pulumi.Input<String?>? groupIpAddress;
   /// The group members' network interface ID to register with the transit gateway multicast group.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the transit gateway multicast domain.
-  final pulumi.Input<String>? transitGatewayMulticastDomainId;
+  final pulumi.Input<String?>? transitGatewayMulticastDomainId;
 
   /// Creates a new [MulticastGroupSourceState].
   /// [groupIpAddress] The IP address assigned to the transit gateway multicast group.

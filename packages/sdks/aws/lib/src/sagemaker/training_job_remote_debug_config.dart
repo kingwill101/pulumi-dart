@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobRemoteDebugConfig {
   /// Whether to enable remote debugging for the training job.
-  final pulumi.Input<bool>? enableRemoteDebug;
+  final pulumi.Input<bool?>? enableRemoteDebug;
 
   /// Creates a new [TrainingJobRemoteDebugConfig].
   /// [enableRemoteDebug] Whether to enable remote debugging for the training job.

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'files_synchronization_configuration_args.dart';
+import 'files_synchronization_configuration_expiration_data_rule.dart';
+import 'files_synchronization_configuration_import_data_rule.dart';
 import 'files_synchronization_configuration_state.dart';
 
 /// Manages an S3 Files Synchronization configuration.
@@ -12,15 +14,15 @@ import 'files_synchronization_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3.FilesSynchronizationConfiguration("example", {
-///     fileSystemId: exampleAwsS3filesFileSystem.id,
+///     expirationDataRules: [{
+///         daysAfterLastAccess: 30,
+///     }],
 ///     importDataRules: [{
 ///         prefix: "",
 ///         sizeLessThan: 52673613135872,
 ///         trigger: "ON_FILE_ACCESS",
 ///     }],
-///     expirationDataRules: [{
-///         daysAfterLastAccess: 30,
-///     }],
+///     fileSystemId: exampleAwsS3filesFileSystem.id,
 /// });
 /// ```
 /// ```python
@@ -28,15 +30,15 @@ import 'files_synchronization_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3.FilesSynchronizationConfiguration("example",
-///     file_system_id=example_aws_s3files_file_system["id"],
+///     expiration_data_rules=[{
+///         "days_after_last_access": 30,
+///     }],
 ///     import_data_rules=[{
 ///         "prefix": "",
 ///         "size_less_than": int(52673613135872),
 ///         "trigger": "ON_FILE_ACCESS",
 ///     }],
-///     expiration_data_rules=[{
-///         "days_after_last_access": 30,
-///     }])
+///     file_system_id=example_aws_s3files_file_system["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,7 +50,13 @@ import 'files_synchronization_configuration_state.dart';
 /// {
 ///     var example = new Aws.S3.FilesSynchronizationConfiguration("example", new()
 ///     {
-///         FileSystemId = exampleAwsS3filesFileSystem.Id,
+///         ExpirationDataRules = new[]
+///         {
+///             new Aws.S3.Inputs.FilesSynchronizationConfigurationExpirationDataRuleArgs
+///             {
+///                 DaysAfterLastAccess = 30,
+///             },
+///         },
 ///         ImportDataRules = new[]
 ///         {
 ///             new Aws.S3.Inputs.FilesSynchronizationConfigurationImportDataRuleArgs
@@ -58,13 +66,7 @@ import 'files_synchronization_configuration_state.dart';
 ///                 Trigger = "ON_FILE_ACCESS",
 ///             },
 ///         },
-///         ExpirationDataRules = new[]
-///         {
-///             new Aws.S3.Inputs.FilesSynchronizationConfigurationExpirationDataRuleArgs
-///             {
-///                 DaysAfterLastAccess = 30,
-///             },
-///         },
+///         FileSystemId = exampleAwsS3filesFileSystem.Id,
 ///     });
 ///
 /// });
@@ -80,7 +82,11 @@ import 'files_synchronization_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3.NewFilesSynchronizationConfiguration(ctx, "example", &s3.FilesSynchronizationConfigurationArgs{
-/// 			FileSystemId: pulumi.Any(exampleAwsS3filesFileSystem.Id),
+/// 			ExpirationDataRules: s3.FilesSynchronizationConfigurationExpirationDataRuleArray{
+/// 				&s3.FilesSynchronizationConfigurationExpirationDataRuleArgs{
+/// 					DaysAfterLastAccess: pulumi.Int(30),
+/// 				},
+/// 			},
 /// 			ImportDataRules: s3.FilesSynchronizationConfigurationImportDataRuleArray{
 /// 				&s3.FilesSynchronizationConfigurationImportDataRuleArgs{
 /// 					Prefix:       pulumi.String(""),
@@ -88,11 +94,7 @@ import 'files_synchronization_configuration_state.dart';
 /// 					Trigger:      pulumi.String("ON_FILE_ACCESS"),
 /// 				},
 /// 			},
-/// 			ExpirationDataRules: s3.FilesSynchronizationConfigurationExpirationDataRuleArray{
-/// 				&s3.FilesSynchronizationConfigurationExpirationDataRuleArgs{
-/// 					DaysAfterLastAccess: pulumi.Int(30),
-/// 				},
-/// 			},
+/// 			FileSystemId: pulumi.Any(exampleAwsS3filesFileSystem.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -111,15 +113,15 @@ import 'files_synchronization_configuration_state.dart';
 /// }
 ///
 /// resource "aws_s3_filessynchronizationconfiguration" "example" {
-///   file_system_id = exampleAwsS3filesFileSystem.id
+///   expiration_data_rules {
+///     days_after_last_access = 30
+///   }
 ///   import_data_rules {
 ///     prefix         = ""
 ///     size_less_than = 52673613135872
 ///     trigger        = "ON_FILE_ACCESS"
 ///   }
-///   expiration_data_rules {
-///     days_after_last_access = 30
-///   }
+///   file_system_id = exampleAwsS3filesFileSystem.id
 /// }
 /// ```
 /// ```java
@@ -130,8 +132,8 @@ import 'files_synchronization_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.s3.FilesSynchronizationConfiguration;
 /// import com.pulumi.aws.s3.FilesSynchronizationConfigurationArgs;
-/// import com.pulumi.aws.s3.inputs.FilesSynchronizationConfigurationImportDataRuleArgs;
 /// import com.pulumi.aws.s3.inputs.FilesSynchronizationConfigurationExpirationDataRuleArgs;
+/// import com.pulumi.aws.s3.inputs.FilesSynchronizationConfigurationImportDataRuleArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -146,15 +148,15 @@ import 'files_synchronization_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FilesSynchronizationConfiguration("example", FilesSynchronizationConfigurationArgs.builder()
-///             .fileSystemId(exampleAwsS3filesFileSystem.id())
+///             .expirationDataRules(FilesSynchronizationConfigurationExpirationDataRuleArgs.builder()
+///                 .daysAfterLastAccess(30)
+///                 .build())
 ///             .importDataRules(FilesSynchronizationConfigurationImportDataRuleArgs.builder()
 ///                 .prefix("")
 ///                 .sizeLessThan(52673613135872)
 ///                 .trigger("ON_FILE_ACCESS")
 ///                 .build())
-///             .expirationDataRules(FilesSynchronizationConfigurationExpirationDataRuleArgs.builder()
-///                 .daysAfterLastAccess(30)
-///                 .build())
+///             .fileSystemId(exampleAwsS3filesFileSystem.id())
 ///             .build());
 ///
 ///     }
@@ -165,13 +167,13 @@ import 'files_synchronization_configuration_state.dart';
 ///   example:
 ///     type: aws:s3:FilesSynchronizationConfiguration
 ///     properties:
-///       fileSystemId: ${exampleAwsS3filesFileSystem.id}
+///       expirationDataRules:
+///         - daysAfterLastAccess: 30
 ///       importDataRules:
 ///         - prefix: ""
 ///           sizeLessThan: 5.2673613135872e+13
 ///           trigger: ON_FILE_ACCESS
-///       expirationDataRules:
-///         - daysAfterLastAccess: 30
+///       fileSystemId: ${exampleAwsS3filesFileSystem.id}
 /// ```
 ///
 ///
@@ -196,13 +198,13 @@ import 'files_synchronization_configuration_state.dart';
 /// ```
 class FilesSynchronizationConfiguration extends pulumi.CustomResource {
   /// Expiration data rule configuration. See `expirationDataRule` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> expirationDataRules;
+  late final pulumi.Output<List<FilesSynchronizationConfigurationExpirationDataRule>?> expirationDataRules;
   /// File system ID. Changing this value forces replacement.
   late final pulumi.Output<String> fileSystemId;
   /// One or more import data rules. See `importDataRule` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>?> importDataRules;
+  late final pulumi.Output<List<FilesSynchronizationConfigurationImportDataRule>?> importDataRules;
   /// Latest synchronization configuration version number.
   late final pulumi.Output<int> latestVersionNumber;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -220,11 +222,11 @@ class FilesSynchronizationConfiguration extends pulumi.CustomResource {
           'aws:s3/filesSynchronizationConfiguration:FilesSynchronizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    expirationDataRules = registerOutput<List<Map<String, dynamic>>?>('expirationDataRules');
+    expirationDataRules = registerOutput<List<FilesSynchronizationConfigurationExpirationDataRule>?>('expirationDataRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesSynchronizationConfigurationExpirationDataRule>(guardedValue, (value) => FilesSynchronizationConfigurationExpirationDataRule.fromMap((value as Map).cast<String, dynamic>())); });
     fileSystemId = registerOutput<String>('fileSystemId');
-    importDataRules = registerOutput<List<Map<String, dynamic>>?>('importDataRules');
+    importDataRules = registerOutput<List<FilesSynchronizationConfigurationImportDataRule>?>('importDataRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesSynchronizationConfigurationImportDataRule>(guardedValue, (value) => FilesSynchronizationConfigurationImportDataRule.fromMap((value as Map).cast<String, dynamic>())); });
     latestVersionNumber = registerOutput<int>('latestVersionNumber');
     region = registerOutput<String>('region');
   }
@@ -234,11 +236,12 @@ class FilesSynchronizationConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FilesSynchronizationConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FilesSynchronizationConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,9 +255,25 @@ class FilesSynchronizationConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    expirationDataRules = registerOutput<List<Map<String, dynamic>>?>('expirationDataRules');
+    expirationDataRules = registerOutput<List<FilesSynchronizationConfigurationExpirationDataRule>?>('expirationDataRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesSynchronizationConfigurationExpirationDataRule>(guardedValue, (value) => FilesSynchronizationConfigurationExpirationDataRule.fromMap((value as Map).cast<String, dynamic>())); });
     fileSystemId = registerOutput<String>('fileSystemId');
-    importDataRules = registerOutput<List<Map<String, dynamic>>?>('importDataRules');
+    importDataRules = registerOutput<List<FilesSynchronizationConfigurationImportDataRule>?>('importDataRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesSynchronizationConfigurationImportDataRule>(guardedValue, (value) => FilesSynchronizationConfigurationImportDataRule.fromMap((value as Map).cast<String, dynamic>())); });
+    latestVersionNumber = registerOutput<int>('latestVersionNumber');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [FilesSynchronizationConfiguration] resource.
+  FilesSynchronizationConfiguration.reference(String urn)
+    : super(
+        'aws:s3/filesSynchronizationConfiguration:FilesSynchronizationConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    expirationDataRules = registerOutput<List<FilesSynchronizationConfigurationExpirationDataRule>?>('expirationDataRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesSynchronizationConfigurationExpirationDataRule>(guardedValue, (value) => FilesSynchronizationConfigurationExpirationDataRule.fromMap((value as Map).cast<String, dynamic>())); });
+    fileSystemId = registerOutput<String>('fileSystemId');
+    importDataRules = registerOutput<List<FilesSynchronizationConfigurationImportDataRule>?>('importDataRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesSynchronizationConfigurationImportDataRule>(guardedValue, (value) => FilesSynchronizationConfigurationImportDataRule.fromMap((value as Map).cast<String, dynamic>())); });
     latestVersionNumber = registerOutput<int>('latestVersionNumber');
     region = registerOutput<String>('region');
   }

@@ -6,8 +6,8 @@ import 'notification_hub_timeouts.dart';
 /// Input properties used for looking up and filtering NotificationHub resources.
 class NotificationHubState {
   /// Notification Hub region.
-  final pulumi.Input<String>? notificationHubRegion;
-  final pulumi.Input<NotificationHubTimeouts>? timeouts;
+  final pulumi.Input<String?>? notificationHubRegion;
+  final pulumi.Input<NotificationHubTimeouts?>? timeouts;
 
   /// Creates a new [NotificationHubState].
   /// [notificationHubRegion] Notification Hub region.

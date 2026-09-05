@@ -4,51 +4,51 @@
 /// Result data returned by getStreamKey.
 class GetStreamKeyResult {
   /// ARN of the Stream Key.
-  final String arn;
-  final String channelArn;
+  final String? arn;
+  final String? channelArn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
   /// Map of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Stream Key value.
-  final String value;
+  final String? value;
 
   /// Creates a new [GetStreamKeyResult].
   /// [arn] ARN of the Stream Key.
-  /// [channelArn] Required.
+  /// [channelArn] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Map of tags assigned to the resource.
   /// [value] Stream Key value.
   const GetStreamKeyResult({
-    required this.arn,
-    required this.channelArn,
-    required this.id,
-    required this.region,
-    required this.tags,
-    required this.value,
+    this.arn,
+    this.channelArn,
+    this.id,
+    this.region,
+    this.tags,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'channelArn': channelArn,
-      'id': id,
-      'region': region,
-      'tags': tags,
-      'value': value,
+      'arn': ?arn,
+      'channelArn': ?channelArn,
+      'id': ?id,
+      'region': ?region,
+      'tags': ?tags,
+      'value': ?value,
     };
   }
 
   factory GetStreamKeyResult.fromMap(Map<String, dynamic> map) {
     return GetStreamKeyResult(
-      arn: map['arn'] as String,
-      channelArn: map['channelArn'] as String,
-      id: map['id'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      value: map['value'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      channelArn: (() { final guardedValue = map['channelArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

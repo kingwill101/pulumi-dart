@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ClientCertificate resources.
 class ClientCertificateState {
   /// ARN
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Date when the client certificate was created.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// Description of the client certificate.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Date when the client certificate will expire.
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// PEM-encoded public key of the client certificate.
-  final pulumi.Input<String>? pemEncodedCertificate;
+  final pulumi.Input<String?>? pemEncodedCertificate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ClientCertificateState].
   /// [arn] ARN

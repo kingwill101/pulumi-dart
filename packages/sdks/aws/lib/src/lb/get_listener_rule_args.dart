@@ -12,23 +12,23 @@ import 'get_listener_rule_transform.dart';
 class GetListenerRuleArgs {
   /// List of actions associated with the rule, sorted by `order`.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleAction>>? actions;
+  final pulumi.Input<List<GetListenerRuleAction>?>? actions;
   /// ARN of the Listener Rule.
   /// Either `arn` or `listenerArn` must be set.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Set of conditions associated with the rule.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleCondition>>? conditions;
+  final pulumi.Input<List<GetListenerRuleCondition>?>? conditions;
   /// ARN of the associated Listener.
   /// Either `arn` or `listenerArn` must be set.
-  final pulumi.Input<String>? listenerArn;
+  final pulumi.Input<String?>? listenerArn;
   /// Priority of the Listener Rule within the Listener.
   /// Must be set if `listenerArn` is set, otherwise must not be set.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Block for transform to apply to requests that match this rule. Detailed below.
-  final pulumi.Input<List<GetListenerRuleTransform>>? transforms;
+  final pulumi.Input<List<GetListenerRuleTransform>?>? transforms;
 
   /// Creates a new [GetListenerRuleArgs].
   /// [actions] List of actions associated with the rule, sorted by `order`.
@@ -66,7 +66,7 @@ class GetListenerRuleArgs {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleCondition>(guardedValue, (value) => GetListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       listenerArn: (() { final guardedValue = map['listenerArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transforms: (() { final guardedValue = map['transforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleTransform>(guardedValue, (value) => GetListenerRuleTransform.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

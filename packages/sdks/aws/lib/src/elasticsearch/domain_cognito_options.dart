@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainCognitoOptions {
   /// Whether Amazon Cognito authentication with Kibana is enabled or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// ID of the Cognito Identity Pool to use.
   final pulumi.Input<String> identityPoolId;
   /// ARN of the IAM role that has the AmazonESCognitoAccess policy attached.

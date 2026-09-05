@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_elasticache_get_service_update_actions_get_service_update_actions_args_doc}
 class GetServiceUpdateActionsArgs {
   /// ID of Cache Cluster to list updates for. If neither `cacheClusterId` nor `replicationGroupId` are specified, all service update actions will be listed.
-  final pulumi.Input<String>? cacheClusterId;
+  final pulumi.Input<String?>? cacheClusterId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of Replication Group to list updates for. If neither `replicationGroupId` nor `cacheClusterId` are specified, all service update actions will be listed.
-  final pulumi.Input<String>? replicationGroupId;
+  final pulumi.Input<String?>? replicationGroupId;
   /// Service update statuses to include in list. Valid values are `available`, `cancelled`, and `expired`. If no value is specified, service updates in all statuses will be listed.
-  final pulumi.Input<List<String>>? serviceUpdateStatuses;
+  final pulumi.Input<List<String>?>? serviceUpdateStatuses;
 
   /// Creates a new [GetServiceUpdateActionsArgs].
   /// [cacheClusterId] ID of Cache Cluster to list updates for. If neither `cacheClusterId` nor `replicationGroupId` are specified, all service update actions will be listed.

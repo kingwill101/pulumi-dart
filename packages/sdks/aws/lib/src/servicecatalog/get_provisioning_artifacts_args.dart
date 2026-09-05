@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicecatalog_get_provisioning_artifacts_get_provisioning_artifacts_args_doc}
 class GetProvisioningArtifactsArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  final pulumi.Input<String>? acceptLanguage;
+  final pulumi.Input<String?>? acceptLanguage;
   /// Product identifier.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> productId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetProvisioningArtifactsArgs].
   /// [acceptLanguage] Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.

@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeyKeyAttributeKeyModesOfUse {
   /// Whether an AWS Payment Cryptography key can be used to decrypt data.
-  final pulumi.Input<bool>? decrypt;
+  final pulumi.Input<bool?>? decrypt;
   /// Whether an AWS Payment Cryptography key can be used to derive new keys.
-  final pulumi.Input<bool>? deriveKey;
+  final pulumi.Input<bool?>? deriveKey;
   /// Whether an AWS Payment Cryptography key can be used to encrypt data.
-  final pulumi.Input<bool>? encrypt;
+  final pulumi.Input<bool?>? encrypt;
   /// Whether an AWS Payment Cryptography key can be used to generate and verify other card and PIN verification keys.
-  final pulumi.Input<bool>? generate;
+  final pulumi.Input<bool?>? generate;
   /// Whether an AWS Payment Cryptography key has no special restrictions other than the restrictions implied by KeyUsage.
-  final pulumi.Input<bool>? noRestrictions;
+  final pulumi.Input<bool?>? noRestrictions;
   /// Whether an AWS Payment Cryptography key can be used for signing.
-  final pulumi.Input<bool>? sign;
+  final pulumi.Input<bool?>? sign;
   /// Whether an AWS Payment Cryptography key can be used to unwrap other keys.
-  final pulumi.Input<bool>? unwrap;
+  final pulumi.Input<bool?>? unwrap;
   /// Whether an AWS Payment Cryptography key can be used to verify signatures.
-  final pulumi.Input<bool>? verify;
+  final pulumi.Input<bool?>? verify;
   /// Whether an AWS Payment Cryptography key can be used to wrap other keys.
-  final pulumi.Input<bool>? wrap;
+  final pulumi.Input<bool?>? wrap;
 
   /// Creates a new [KeyKeyAttributeKeyModesOfUse].
   /// [decrypt] Whether an AWS Payment Cryptography key can be used to decrypt data.

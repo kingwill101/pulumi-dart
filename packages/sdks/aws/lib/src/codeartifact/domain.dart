@@ -110,7 +110,7 @@ import 'domain_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeArtifact domain.
+/// - `arn` (String) ARN of the CodeArtifact domain.
 ///
 ///
 /// Using `pulumi import`, import CodeArtifact Domain using the CodeArtifact Domain arn. For example:
@@ -127,7 +127,7 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String> createdTime;
   /// The name of the domain to create. All domain names in an AWS Region that are in the same AWS account must be unique. The domain name is used as the prefix in DNS hostnames. Do not use sensitive information in a domain name because it is publicly discoverable.
   late final pulumi.Output<String> domain;
-  /// The encryption key for the domain. This is used to encrypt content stored in a domain. The KMS Key Amazon Resource Name (ARN). The default aws/codeartifact AWS KMS master key is used if this element is absent.
+  /// Encryption key for the domain. This is used to encrypt content stored in a domain. The KMS Key ARN. The default aws/codeartifact AWS KMS master key is used if this element is absent.
   late final pulumi.Output<String> encryptionKey;
   /// The AWS account ID that owns the domain.
   late final pulumi.Output<String> owner;
@@ -154,7 +154,7 @@ class Domain extends pulumi.CustomResource {
           'aws:codeartifact/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assetSizeBytes = registerOutput<String>('assetSizeBytes');
@@ -165,8 +165,8 @@ class Domain extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     repositoryCount = registerOutput<int>('repositoryCount');
     s3BucketArn = registerOutput<String>('s3BucketArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -174,11 +174,12 @@ class Domain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Domain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,7 +202,29 @@ class Domain extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     repositoryCount = registerOutput<int>('repositoryCount');
     s3BucketArn = registerOutput<String>('s3BucketArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'aws:codeartifact/domain:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    assetSizeBytes = registerOutput<String>('assetSizeBytes');
+    createdTime = registerOutput<String>('createdTime');
+    domain = registerOutput<String>('domain');
+    encryptionKey = registerOutput<String>('encryptionKey');
+    owner = registerOutput<String>('owner');
+    region = registerOutput<String>('region');
+    repositoryCount = registerOutput<int>('repositoryCount');
+    s3BucketArn = registerOutput<String>('s3BucketArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -7,7 +7,7 @@ class WebAclRuleGroupAssociationRuleGroupReference {
   /// ARN of the Rule Group to associate with the Web ACL.
   final pulumi.Input<String> arn;
   /// Override actions for specific rules within the rule group. See below.
-  final pulumi.Input<List<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverride>>? ruleActionOverrides;
+  final pulumi.Input<List<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverride>?>? ruleActionOverrides;
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReference].
   /// [arn] ARN of the Rule Group to associate with the Web ACL.

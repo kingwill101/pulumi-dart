@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationAggregatorOrganizationAggregationSource {
   /// If true, aggregate existing AWS Config regions and future regions.
-  final pulumi.Input<bool>? allRegions;
+  final pulumi.Input<bool?>? allRegions;
   /// List of source regions being aggregated.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// ARN of the IAM role used to retrieve AWS Organization details associated with the aggregator account.
   ///
   /// Either `regions` or `allRegions` (as true) must be specified.

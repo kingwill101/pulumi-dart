@@ -286,7 +286,7 @@ class PeeringAttachment extends pulumi.CustomResource {
           'aws:ec2transitgateway/peeringAttachment:PeeringAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.options = registerOutput<PeeringAttachmentOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringAttachmentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -295,8 +295,8 @@ class PeeringAttachment extends pulumi.CustomResource {
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 
@@ -305,11 +305,12 @@ class PeeringAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PeeringAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PeeringAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -330,8 +331,29 @@ class PeeringAttachment extends pulumi.CustomResource {
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayId = registerOutput<String>('transitGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [PeeringAttachment] resource.
+  PeeringAttachment.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/peeringAttachment:PeeringAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.options = registerOutput<PeeringAttachmentOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringAttachmentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    peerAccountId = registerOutput<String>('peerAccountId');
+    peerRegion = registerOutput<String>('peerRegion');
+    peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 }

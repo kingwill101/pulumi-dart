@@ -6,56 +6,56 @@ import 'get_network_oci_dns_forwarding_config.dart';
 
 /// Result data returned by getNetwork.
 class GetNetworkResult {
-  /// Amazon Resource Name (ARN) of the odb network resource.
-  final String arn;
+  /// ARN of the odb network resource.
+  final String? arn;
   /// Availability zone where the ODB network is located.
-  final String availabilityZone;
+  final String? availabilityZone;
   /// AZ ID of the AZ where the ODB network is located.
-  final String availabilityZoneId;
+  final String? availabilityZoneId;
   /// CIDR range of the backup subnet for the ODB network.
-  final String backupSubnetCidr;
+  final String? backupSubnetCidr;
   /// CIDR notation for the network resource.
-  final String clientSubnetCidr;
+  final String? clientSubnetCidr;
   /// Date and time when the ODB network was created.
-  final String createdAt;
+  final String? createdAt;
   /// Name of the custom domain that the network is located.
-  final String customDomainName;
+  final String? customDomainName;
   /// Default DNS prefix for the network resource.
-  final String defaultDnsPrefix;
+  final String? defaultDnsPrefix;
   /// Display name for the network resource.
-  final String displayName;
+  final String? displayName;
   /// List of EC2 placement group IDs associated with the ODB network.
-  final List<String> ec2PlacementGroupIds;
+  final List<String>? ec2PlacementGroupIds;
   /// Unique identifier of the odb network resource.
-  final String id;
+  final String? id;
   /// Managed services configuration for the ODB network.
-  final List<GetNetworkManagedService> managedServices;
+  final List<GetNetworkManagedService>? managedServices;
   /// DNS resolver endpoint in OCI for forwarding DNS queries for the ociPrivateZone domain.
-  final List<GetNetworkOciDnsForwardingConfig> ociDnsForwardingConfigs;
+  final List<GetNetworkOciDnsForwardingConfig>? ociDnsForwardingConfigs;
   /// Unique identifier of the OCI network anchor for the ODB network.
-  final String ociNetworkAnchorId;
+  final String? ociNetworkAnchorId;
   /// URL of the OCI network anchor for the ODB network.
-  final String ociNetworkAnchorUrl;
+  final String? ociNetworkAnchorUrl;
   /// Name of the OCI resource anchor for the ODB network.
-  final String ociResourceAnchorName;
+  final String? ociResourceAnchorName;
   /// Unique identifier Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
-  final String ociVcnId;
+  final String? ociVcnId;
   /// URL of the OCI VCN for the ODB network.
-  final String ociVcnUrl;
+  final String? ociVcnUrl;
   /// List of CIDR ranges from the peered VPC that are allowed access to the ODB network. Please refer odb network peering documentation.
-  final List<String> peeredCidrs;
+  final List<String>? peeredCidrs;
   /// Amount of progress made on the current operation on the ODB network, expressed as a percentage.
-  final double percentProgress;
-  final String region;
+  final double? percentProgress;
+  final String? region;
   /// Status of the network resource.
-  final String status;
+  final String? status;
   /// Additional information about the current status of the ODB network.
-  final String statusReason;
+  final String? statusReason;
   /// Map of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetNetworkResult].
-  /// [arn] Amazon Resource Name (ARN) of the odb network resource.
+  /// [arn] ARN of the odb network resource.
   /// [availabilityZone] Availability zone where the ODB network is located.
   /// [availabilityZoneId] AZ ID of the AZ where the ODB network is located.
   /// [backupSubnetCidr] CIDR range of the backup subnet for the ODB network.
@@ -75,92 +75,92 @@ class GetNetworkResult {
   /// [ociVcnUrl] URL of the OCI VCN for the ODB network.
   /// [peeredCidrs] List of CIDR ranges from the peered VPC that are allowed access to the ODB network. Please refer odb network peering documentation.
   /// [percentProgress] Amount of progress made on the current operation on the ODB network, expressed as a percentage.
-  /// [region] Required.
+  /// [region] Optional.
   /// [status] Status of the network resource.
   /// [statusReason] Additional information about the current status of the ODB network.
   /// [tags] Map of tags assigned to the resource.
   const GetNetworkResult({
-    required this.arn,
-    required this.availabilityZone,
-    required this.availabilityZoneId,
-    required this.backupSubnetCidr,
-    required this.clientSubnetCidr,
-    required this.createdAt,
-    required this.customDomainName,
-    required this.defaultDnsPrefix,
-    required this.displayName,
-    required this.ec2PlacementGroupIds,
-    required this.id,
-    required this.managedServices,
-    required this.ociDnsForwardingConfigs,
-    required this.ociNetworkAnchorId,
-    required this.ociNetworkAnchorUrl,
-    required this.ociResourceAnchorName,
-    required this.ociVcnId,
-    required this.ociVcnUrl,
-    required this.peeredCidrs,
-    required this.percentProgress,
-    required this.region,
-    required this.status,
-    required this.statusReason,
-    required this.tags,
+    this.arn,
+    this.availabilityZone,
+    this.availabilityZoneId,
+    this.backupSubnetCidr,
+    this.clientSubnetCidr,
+    this.createdAt,
+    this.customDomainName,
+    this.defaultDnsPrefix,
+    this.displayName,
+    this.ec2PlacementGroupIds,
+    this.id,
+    this.managedServices,
+    this.ociDnsForwardingConfigs,
+    this.ociNetworkAnchorId,
+    this.ociNetworkAnchorUrl,
+    this.ociResourceAnchorName,
+    this.ociVcnId,
+    this.ociVcnUrl,
+    this.peeredCidrs,
+    this.percentProgress,
+    this.region,
+    this.status,
+    this.statusReason,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'availabilityZone': availabilityZone,
-      'availabilityZoneId': availabilityZoneId,
-      'backupSubnetCidr': backupSubnetCidr,
-      'clientSubnetCidr': clientSubnetCidr,
-      'createdAt': createdAt,
-      'customDomainName': customDomainName,
-      'defaultDnsPrefix': defaultDnsPrefix,
-      'displayName': displayName,
-      'ec2PlacementGroupIds': ec2PlacementGroupIds,
-      'id': id,
-      'managedServices': pulumi.Input.encodeList<GetNetworkManagedService, Map<String, dynamic>>(managedServices, (value) => value.toMap()),
-      'ociDnsForwardingConfigs': pulumi.Input.encodeList<GetNetworkOciDnsForwardingConfig, Map<String, dynamic>>(ociDnsForwardingConfigs, (value) => value.toMap()),
-      'ociNetworkAnchorId': ociNetworkAnchorId,
-      'ociNetworkAnchorUrl': ociNetworkAnchorUrl,
-      'ociResourceAnchorName': ociResourceAnchorName,
-      'ociVcnId': ociVcnId,
-      'ociVcnUrl': ociVcnUrl,
-      'peeredCidrs': peeredCidrs,
-      'percentProgress': percentProgress,
-      'region': region,
-      'status': status,
-      'statusReason': statusReason,
-      'tags': tags,
+      'arn': ?arn,
+      'availabilityZone': ?availabilityZone,
+      'availabilityZoneId': ?availabilityZoneId,
+      'backupSubnetCidr': ?backupSubnetCidr,
+      'clientSubnetCidr': ?clientSubnetCidr,
+      'createdAt': ?createdAt,
+      'customDomainName': ?customDomainName,
+      'defaultDnsPrefix': ?defaultDnsPrefix,
+      'displayName': ?displayName,
+      'ec2PlacementGroupIds': ?ec2PlacementGroupIds,
+      'id': ?id,
+      'managedServices': ?(() { final guardedValue = managedServices; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkManagedService, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'ociDnsForwardingConfigs': ?(() { final guardedValue = ociDnsForwardingConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkOciDnsForwardingConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'ociNetworkAnchorId': ?ociNetworkAnchorId,
+      'ociNetworkAnchorUrl': ?ociNetworkAnchorUrl,
+      'ociResourceAnchorName': ?ociResourceAnchorName,
+      'ociVcnId': ?ociVcnId,
+      'ociVcnUrl': ?ociVcnUrl,
+      'peeredCidrs': ?peeredCidrs,
+      'percentProgress': ?percentProgress,
+      'region': ?region,
+      'status': ?status,
+      'statusReason': ?statusReason,
+      'tags': ?tags,
     };
   }
 
   factory GetNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkResult(
-      arn: map['arn'] as String,
-      availabilityZone: map['availabilityZone'] as String,
-      availabilityZoneId: map['availabilityZoneId'] as String,
-      backupSubnetCidr: map['backupSubnetCidr'] as String,
-      clientSubnetCidr: map['clientSubnetCidr'] as String,
-      createdAt: map['createdAt'] as String,
-      customDomainName: map['customDomainName'] as String,
-      defaultDnsPrefix: map['defaultDnsPrefix'] as String,
-      displayName: map['displayName'] as String,
-      ec2PlacementGroupIds: (map['ec2PlacementGroupIds'] as List).cast<String>(),
-      id: map['id'] as String,
-      managedServices: pulumi.Input.decodeList<GetNetworkManagedService>(map['managedServices']!, (value) => GetNetworkManagedService.fromMap((value as Map).cast<String, dynamic>())),
-      ociDnsForwardingConfigs: pulumi.Input.decodeList<GetNetworkOciDnsForwardingConfig>(map['ociDnsForwardingConfigs']!, (value) => GetNetworkOciDnsForwardingConfig.fromMap((value as Map).cast<String, dynamic>())),
-      ociNetworkAnchorId: map['ociNetworkAnchorId'] as String,
-      ociNetworkAnchorUrl: map['ociNetworkAnchorUrl'] as String,
-      ociResourceAnchorName: map['ociResourceAnchorName'] as String,
-      ociVcnId: map['ociVcnId'] as String,
-      ociVcnUrl: map['ociVcnUrl'] as String,
-      peeredCidrs: (map['peeredCidrs'] as List).cast<String>(),
-      percentProgress: map['percentProgress'] as double,
-      region: map['region'] as String,
-      status: map['status'] as String,
-      statusReason: map['statusReason'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      availabilityZoneId: (() { final guardedValue = map['availabilityZoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      backupSubnetCidr: (() { final guardedValue = map['backupSubnetCidr']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clientSubnetCidr: (() { final guardedValue = map['clientSubnetCidr']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customDomainName: (() { final guardedValue = map['customDomainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultDnsPrefix: (() { final guardedValue = map['defaultDnsPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ec2PlacementGroupIds: (() { final guardedValue = map['ec2PlacementGroupIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managedServices: (() { final guardedValue = map['managedServices']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkManagedService>(guardedValue, (value) => GetNetworkManagedService.fromMap((value as Map).cast<String, dynamic>())); })(),
+      ociDnsForwardingConfigs: (() { final guardedValue = map['ociDnsForwardingConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkOciDnsForwardingConfig>(guardedValue, (value) => GetNetworkOciDnsForwardingConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      ociNetworkAnchorId: (() { final guardedValue = map['ociNetworkAnchorId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ociNetworkAnchorUrl: (() { final guardedValue = map['ociNetworkAnchorUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ociResourceAnchorName: (() { final guardedValue = map['ociResourceAnchorName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ociVcnId: (() { final guardedValue = map['ociVcnId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ociVcnUrl: (() { final guardedValue = map['ociVcnUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peeredCidrs: (() { final guardedValue = map['peeredCidrs']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      percentProgress: (() { final guardedValue = map['percentProgress']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusReason: (() { final guardedValue = map['statusReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

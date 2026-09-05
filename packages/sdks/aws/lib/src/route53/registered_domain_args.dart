@@ -13,33 +13,33 @@ import 'registered_domain_tech_contact.dart';
 /// {@macro pulumi_route53_domains_registered_domain_registered_domain_args_doc}
 class RegisteredDomainArgs {
   /// Details about the domain administrative contact. See Contact Blocks for more details.
-  final pulumi.Input<RegisteredDomainAdminContact>? adminContact;
+  final pulumi.Input<RegisteredDomainAdminContact?>? adminContact;
   /// Whether domain administrative contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? adminPrivacy;
+  final pulumi.Input<bool?>? adminPrivacy;
   /// Whether the domain registration is set to renew automatically. Default: `true`.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// Details about the domain billing contact. See Contact Blocks for more details.
-  final pulumi.Input<RegisteredDomainBillingContact>? billingContact;
+  final pulumi.Input<RegisteredDomainBillingContact?>? billingContact;
   /// Whether domain billing contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? billingPrivacy;
+  final pulumi.Input<bool?>? billingPrivacy;
   /// The name of the registered domain.
   final pulumi.Input<String> domainName;
   /// The list of nameservers for the domain. See `nameServer` Blocks for more details.
-  final pulumi.Input<List<RegisteredDomainNameServer>>? nameServers;
+  final pulumi.Input<List<RegisteredDomainNameServer>?>? nameServers;
   /// Details about the domain registrant. See Contact Blocks for more details.
-  final pulumi.Input<RegisteredDomainRegistrantContact>? registrantContact;
+  final pulumi.Input<RegisteredDomainRegistrantContact?>? registrantContact;
   /// Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? registrantPrivacy;
+  final pulumi.Input<bool?>? registrantPrivacy;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Details about the domain technical contact. See Contact Blocks for more details.
-  final pulumi.Input<RegisteredDomainTechContact>? techContact;
+  final pulumi.Input<RegisteredDomainTechContact?>? techContact;
   /// Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? techPrivacy;
+  final pulumi.Input<bool?>? techPrivacy;
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
   /// &gt; **NOTE:** You must specify the same privacy setting for `adminPrivacy`, `registrantPrivacy` and `techPrivacy`.
-  final pulumi.Input<bool>? transferLock;
+  final pulumi.Input<bool?>? transferLock;
 
   /// Creates a new [RegisteredDomainArgs].
   /// [adminContact] Details about the domain administrative contact. See Contact Blocks for more details.

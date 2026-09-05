@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryAssociationRepositoryBitbucket {
-  /// The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
+  /// ARN of an AWS CodeStar Connections connection.
   final pulumi.Input<String> connectionArn;
   /// The name of the third party source repository.
   final pulumi.Input<String> name;
@@ -11,7 +11,7 @@ class RepositoryAssociationRepositoryBitbucket {
   final pulumi.Input<String> owner;
 
   /// Creates a new [RepositoryAssociationRepositoryBitbucket].
-  /// [connectionArn] The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
+  /// [connectionArn] ARN of an AWS CodeStar Connections connection.
   /// [name] The name of the third party source repository.
   /// [owner] The username for the account that owns the repository.
   const RepositoryAssociationRepositoryBitbucket({

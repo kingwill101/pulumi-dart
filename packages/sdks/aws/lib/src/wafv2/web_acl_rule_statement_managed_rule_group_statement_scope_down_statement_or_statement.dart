@@ -5,7 +5,7 @@ import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatement {
   /// List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.
-  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement>>? statements;
+  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement>?>? statements;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementOrStatement].
   /// [statements] List of statements to combine. At least one statement is required. Each nested statement supports the same statement types listed above.

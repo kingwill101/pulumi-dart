@@ -5,7 +5,7 @@ import 'pipe_target_parameters_sagemaker_pipeline_parameters_pipeline_parameter.
 
 class PipeTargetParametersSagemakerPipelineParameters {
   /// List of Parameter names and values for SageMaker AI Model Building Pipeline execution. Detailed below.
-  final pulumi.Input<List<PipeTargetParametersSagemakerPipelineParametersPipelineParameter>>? pipelineParameters;
+  final pulumi.Input<List<PipeTargetParametersSagemakerPipelineParametersPipelineParameter>?>? pipelineParameters;
 
   /// Creates a new [PipeTargetParametersSagemakerPipelineParameters].
   /// [pipelineParameters] List of Parameter names and values for SageMaker AI Model Building Pipeline execution. Detailed below.

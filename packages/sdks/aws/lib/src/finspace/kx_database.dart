@@ -206,7 +206,7 @@ import 'kx_database_state.dart';
 /// $ pulumi import aws:finspace/kxDatabase:KxDatabase example n3ceo7wqxoxcti5tujqwzs,my-tf-kx-database
 /// ```
 class KxDatabase extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) identifier of the KX database.
+  /// ARN identifier of the KX database.
   late final pulumi.Output<String> arn;
   /// Timestamp at which the databse is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   late final pulumi.Output<String> createdTimestamp;
@@ -239,7 +239,7 @@ class KxDatabase extends pulumi.CustomResource {
           'aws:finspace/kxDatabase:KxDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTimestamp = registerOutput<String>('createdTimestamp');
@@ -248,8 +248,8 @@ class KxDatabase extends pulumi.CustomResource {
     lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [KxDatabase] resource's state with the given [name] and [id].
@@ -257,11 +257,12 @@ class KxDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KxDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KxDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,7 +283,27 @@ class KxDatabase extends pulumi.CustomResource {
     lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [KxDatabase] resource.
+  KxDatabase.reference(String urn)
+    : super(
+        'aws:finspace/kxDatabase:KxDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    description = registerOutput<String?>('description');
+    environmentId = registerOutput<String>('environmentId');
+    lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

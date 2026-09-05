@@ -6,7 +6,7 @@ class ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs {
   /// Whether log delivery to Amazon CloudWatch Logs is enabled.
   final pulumi.Input<bool> enabled;
   /// The name of the CloudWatch log group that is the destination for log delivery.
-  final pulumi.Input<String>? logGroup;
+  final pulumi.Input<String?>? logGroup;
 
   /// Creates a new [ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs].
   /// [enabled] Whether log delivery to Amazon CloudWatch Logs is enabled.

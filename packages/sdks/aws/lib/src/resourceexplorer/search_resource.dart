@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'search_resource_property.dart';
 
 class SearchResource {
-  /// Amazon resource name of resource.
+  /// ARN of resource.
   final pulumi.Input<String> arn;
   /// The date and time that the information about this resource property was last updated.
   final pulumi.Input<String> lastReportedAt;
@@ -20,7 +20,7 @@ class SearchResource {
   final pulumi.Input<String> service;
 
   /// Creates a new [SearchResource].
-  /// [arn] Amazon resource name of resource.
+  /// [arn] ARN of resource.
   /// [lastReportedAt] The date and time that the information about this resource property was last updated.
   /// [owningAccountId] Amazon Web Services account that owns the resource.
   /// [properties] Structure with additional type-specific details about the resource.  See `properties` below.

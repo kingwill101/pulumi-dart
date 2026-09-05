@@ -6,9 +6,9 @@ class DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest
   /// The encryption-at-rest mode for encrypting Data Catalog data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-KMS-WITH-SERVICE-ROLE`.
   final pulumi.Input<String> catalogEncryptionMode;
   /// The ARN of the AWS IAM role used for accessing encrypted Data Catalog data.
-  final pulumi.Input<String>? catalogEncryptionServiceRole;
+  final pulumi.Input<String?>? catalogEncryptionServiceRole;
   /// The ARN of the AWS KMS key to use for encryption at rest.
-  final pulumi.Input<String>? sseAwsKmsKeyId;
+  final pulumi.Input<String?>? sseAwsKmsKeyId;
 
   /// Creates a new [DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest].
   /// [catalogEncryptionMode] The encryption-at-rest mode for encrypting Data Catalog data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-KMS-WITH-SERVICE-ROLE`.

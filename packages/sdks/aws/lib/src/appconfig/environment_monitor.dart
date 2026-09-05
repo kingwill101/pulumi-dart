@@ -6,7 +6,7 @@ class EnvironmentMonitor {
   /// ARN of the Amazon CloudWatch alarm.
   final pulumi.Input<String> alarmArn;
   /// ARN of an IAM role for AWS AppConfig to monitor `alarmArn`.
-  final pulumi.Input<String>? alarmRoleArn;
+  final pulumi.Input<String?>? alarmRoleArn;
 
   /// Creates a new [EnvironmentMonitor].
   /// [alarmArn] ARN of the Amazon CloudWatch alarm.

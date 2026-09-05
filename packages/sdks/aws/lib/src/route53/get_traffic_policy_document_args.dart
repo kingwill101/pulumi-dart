@@ -10,17 +10,17 @@ import 'get_traffic_policy_document_rule.dart';
 /// {@macro pulumi_route53_get_traffic_policy_document_get_traffic_policy_document_args_doc}
 class GetTrafficPolicyDocumentArgs {
   /// Configuration block for the definitions of the endpoints that you want to use in this traffic policy. See below
-  final pulumi.Input<List<GetTrafficPolicyDocumentEndpoint>>? endpoints;
+  final pulumi.Input<List<GetTrafficPolicyDocumentEndpoint>?>? endpoints;
   /// DNS type of all of the resource record sets that Amazon Route 53 will create based on this traffic policy.
-  final pulumi.Input<String>? recordType;
+  final pulumi.Input<String?>? recordType;
   /// Configuration block for definitions of the rules that you want to use in this traffic policy. See below
-  final pulumi.Input<List<GetTrafficPolicyDocumentRule>>? rules;
+  final pulumi.Input<List<GetTrafficPolicyDocumentRule>?>? rules;
   /// An endpoint to be as the starting point for the traffic policy.
-  final pulumi.Input<String>? startEndpoint;
+  final pulumi.Input<String?>? startEndpoint;
   /// A rule to be as the starting point for the traffic policy.
-  final pulumi.Input<String>? startRule;
+  final pulumi.Input<String?>? startRule;
   /// Version of the traffic policy format.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GetTrafficPolicyDocumentArgs].
   /// [endpoints] Configuration block for the definitions of the endpoints that you want to use in this traffic policy. See below

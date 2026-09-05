@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayRouteSpecGrpcRouteMatch {
   /// Port number to match from the request.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Fully qualified domain name for the service to match from the request.
   final pulumi.Input<String> serviceName;
 
@@ -25,7 +25,7 @@ class GatewayRouteSpecGrpcRouteMatch {
 
   factory GatewayRouteSpecGrpcRouteMatch.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecGrpcRouteMatch(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomActionTypeSettings {
   /// The URL returned to the AWS CodePipeline console that provides a deep link to the resources of the external system.
-  final pulumi.Input<String>? entityUrlTemplate;
+  final pulumi.Input<String?>? entityUrlTemplate;
   /// The URL returned to the AWS CodePipeline console that contains a link to the top-level landing page for the external system.
-  final pulumi.Input<String>? executionUrlTemplate;
+  final pulumi.Input<String?>? executionUrlTemplate;
   /// The URL returned to the AWS CodePipeline console that contains a link to the page where customers can update or change the configuration of the external action.
-  final pulumi.Input<String>? revisionUrlTemplate;
+  final pulumi.Input<String?>? revisionUrlTemplate;
   /// The URL of a sign-up page where users can sign up for an external service and perform initial configuration of the action provided by that service.
-  final pulumi.Input<String>? thirdPartyConfigurationUrl;
+  final pulumi.Input<String?>? thirdPartyConfigurationUrl;
 
   /// Creates a new [CustomActionTypeSettings].
   /// [entityUrlTemplate] The URL returned to the AWS CodePipeline console that provides a deep link to the resources of the external system.

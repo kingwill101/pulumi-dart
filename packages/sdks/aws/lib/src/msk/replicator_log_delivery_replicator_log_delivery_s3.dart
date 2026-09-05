@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatorLogDeliveryReplicatorLogDeliveryS3 {
   /// Name of the S3 bucket. Required if `enabled` is `true`. If `enabled` is `false`, this value must not be set.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Boolean whether to enable log delivery to S3.
   final pulumi.Input<bool> enabled;
   /// Prefix to use when storing replicator logs in S3. If `enabled` is `false`, this value must not be set.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [ReplicatorLogDeliveryReplicatorLogDeliveryS3].
   /// [bucket] Name of the S3 bucket. Required if `enabled` is `true`. If `enabled` is `false`, this value must not be set.

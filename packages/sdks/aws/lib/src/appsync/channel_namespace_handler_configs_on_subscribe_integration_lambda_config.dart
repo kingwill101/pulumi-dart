@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig {
   /// Invocation type for a Lambda data source. Valid values: `REQUEST_RESPONSE`, `EVENT`.
-  final pulumi.Input<String>? invokeType;
+  final pulumi.Input<String?>? invokeType;
 
   /// Creates a new [ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig].
   /// [invokeType] Invocation type for a Lambda data source. Valid values: `REQUEST_RESPONSE`, `EVENT`.

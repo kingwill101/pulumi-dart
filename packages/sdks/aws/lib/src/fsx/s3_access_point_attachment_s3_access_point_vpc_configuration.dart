@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class S3AccessPointAttachmentS3AccessPointVpcConfiguration {
   /// VPC ID.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [S3AccessPointAttachmentS3AccessPointVpcConfiguration].
   /// [vpcId] VPC ID.

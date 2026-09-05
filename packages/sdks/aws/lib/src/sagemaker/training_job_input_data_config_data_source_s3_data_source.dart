@@ -6,15 +6,15 @@ import 'training_job_input_data_config_data_source_s3_data_source_model_access_c
 
 class TrainingJobInputDataConfigDataSourceS3DataSource {
   /// List of attribute names to include in the training dataset. Maximum of 16.
-  final pulumi.Input<List<String>>? attributeNames;
+  final pulumi.Input<List<String>?>? attributeNames;
   /// SageMaker AI Hub access configuration. See `hubAccessConfig` below.
-  final pulumi.Input<TrainingJobInputDataConfigDataSourceS3DataSourceHubAccessConfig>? hubAccessConfig;
+  final pulumi.Input<TrainingJobInputDataConfigDataSourceS3DataSourceHubAccessConfig?>? hubAccessConfig;
   /// List of instance group names for the training data distribution. Maximum of 5.
-  final pulumi.Input<List<String>>? instanceGroupNames;
+  final pulumi.Input<List<String>?>? instanceGroupNames;
   /// Model access configuration. See `modelAccessConfig` below.
-  final pulumi.Input<TrainingJobInputDataConfigDataSourceS3DataSourceModelAccessConfig>? modelAccessConfig;
+  final pulumi.Input<TrainingJobInputDataConfigDataSourceS3DataSourceModelAccessConfig?>? modelAccessConfig;
   /// Distribution type for S3 data. Valid values: `FullyReplicated`, `ShardedByS3Key`.
-  final pulumi.Input<String>? s3DataDistributionType;
+  final pulumi.Input<String?>? s3DataDistributionType;
   /// S3 data type. Valid values: `ManifestFile`, `S3Prefix`, `AugmentedManifestFile`.
   final pulumi.Input<String> s3DataType;
   /// S3 URI of the data.

@@ -6,17 +6,17 @@ import 'keyspace_replication_specification.dart';
 /// Input properties used for looking up and filtering Keyspace resources.
 class KeyspaceState {
   /// The ARN of the keyspace.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The name of the keyspace to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The replication specification of the keyspace.
-  final pulumi.Input<KeyspaceReplicationSpecification>? replicationSpecification;
+  final pulumi.Input<KeyspaceReplicationSpecification?>? replicationSpecification;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [KeyspaceState].
   /// [arn] The ARN of the keyspace.

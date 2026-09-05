@@ -129,6 +129,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:acmpca/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Get information on a AWS Certificate Manager Private Certificate Authority (ACM PCA Certificate Authority).
 ///
 /// ## Example Usage
@@ -245,4 +256,15 @@ Future<GetCertificateAuthorityResult> getCertificateAuthority(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateAuthorityResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificateAuthorityResult> getCertificateAuthorityOutput(
+  GetCertificateAuthorityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:acmpca/getCertificateAuthority:getCertificateAuthority',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateAuthorityResult.fromMap);
 }

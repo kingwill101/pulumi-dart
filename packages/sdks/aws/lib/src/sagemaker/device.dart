@@ -15,10 +15,10 @@ import 'device_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.Device("example", {
-///     deviceFleetName: exampleAwsSagemakerDeviceFleet.deviceFleetName,
 ///     device: {
 ///         deviceName: "example",
 ///     },
+///     deviceFleetName: exampleAwsSagemakerDeviceFleet.deviceFleetName,
 /// });
 /// ```
 /// ```python
@@ -26,10 +26,10 @@ import 'device_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.Device("example",
-///     device_fleet_name=example_aws_sagemaker_device_fleet["deviceFleetName"],
 ///     device={
 ///         "device_name": "example",
-///     })
+///     },
+///     device_fleet_name=example_aws_sagemaker_device_fleet["deviceFleetName"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -41,11 +41,11 @@ import 'device_state.dart';
 /// {
 ///     var example = new Aws.Sagemaker.Device("example", new()
 ///     {
-///         DeviceFleetName = exampleAwsSagemakerDeviceFleet.DeviceFleetName,
 ///         DeviceDetails = new Aws.Sagemaker.Inputs.DeviceDeviceArgs
 ///         {
 ///             DeviceName = "example",
 ///         },
+///         DeviceFleetName = exampleAwsSagemakerDeviceFleet.DeviceFleetName,
 ///     });
 ///
 /// });
@@ -61,10 +61,10 @@ import 'device_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewDevice(ctx, "example", &sagemaker.DeviceArgs{
-/// 			DeviceFleetName: pulumi.Any(exampleAwsSagemakerDeviceFleet.DeviceFleetName),
 /// 			Device: &sagemaker.DeviceDeviceArgs{
 /// 				DeviceName: pulumi.String("example"),
 /// 			},
+/// 			DeviceFleetName: pulumi.Any(exampleAwsSagemakerDeviceFleet.DeviceFleetName),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -83,10 +83,10 @@ import 'device_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_device" "example" {
-///   device_fleet_name = exampleAwsSagemakerDeviceFleet.deviceFleetName
 ///   device = {
 ///     device_name = "example"
 ///   }
+///   device_fleet_name = exampleAwsSagemakerDeviceFleet.deviceFleetName
 /// }
 /// ```
 /// ```java
@@ -112,10 +112,10 @@ import 'device_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Device("example", DeviceArgs.builder()
-///             .deviceFleetName(exampleAwsSagemakerDeviceFleet.deviceFleetName())
 ///             .device(DeviceDeviceArgs.builder()
 ///                 .deviceName("example")
 ///                 .build())
+///             .deviceFleetName(exampleAwsSagemakerDeviceFleet.deviceFleetName())
 ///             .build());
 ///
 ///     }
@@ -126,9 +126,9 @@ import 'device_state.dart';
 ///   example:
 ///     type: aws:sagemaker:Device
 ///     properties:
-///       deviceFleetName: ${exampleAwsSagemakerDeviceFleet.deviceFleetName}
 ///       device:
 ///         deviceName: example
+///       deviceFleetName: ${exampleAwsSagemakerDeviceFleet.deviceFleetName}
 /// ```
 ///
 ///
@@ -141,7 +141,7 @@ import 'device_state.dart';
 /// ```
 class Device extends pulumi.CustomResource {
   late final pulumi.Output<String> agentVersion;
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Device.
+  /// ARN assigned by AWS to this Device.
   late final pulumi.Output<String> arn;
   /// The device to register with SageMaker AI Edge Manager. See Device details below.
   late final pulumi.Output<DeviceDevice> device;
@@ -162,7 +162,7 @@ class Device extends pulumi.CustomResource {
           'aws:sagemaker/device:Device',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     agentVersion = registerOutput<String>('agentVersion');
     arn = registerOutput<String>('arn');
@@ -176,11 +176,12 @@ class Device extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeviceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Device._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -194,6 +195,22 @@ class Device extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    agentVersion = registerOutput<String>('agentVersion');
+    arn = registerOutput<String>('arn');
+    device = registerOutput<DeviceDevice>('device', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deviceFleetName = registerOutput<String>('deviceFleetName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Device] resource.
+  Device.reference(String urn)
+    : super(
+        'aws:sagemaker/device:Device',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     agentVersion = registerOutput<String>('agentVersion');
     arn = registerOutput<String>('arn');
     device = registerOutput<DeviceDevice>('device', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });

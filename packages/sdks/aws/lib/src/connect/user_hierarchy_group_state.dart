@@ -5,30 +5,30 @@ import 'user_hierarchy_group_hierarchy_path.dart';
 
 /// Input properties used for looking up and filtering UserHierarchyGroup resources.
 class UserHierarchyGroupState {
-  /// The Amazon Resource Name (ARN) of the hierarchy group.
-  final pulumi.Input<String>? arn;
+  /// The ARN of the hierarchy group.
+  final pulumi.Input<String?>? arn;
   /// The identifier for the hierarchy group.
-  final pulumi.Input<String>? hierarchyGroupId;
+  final pulumi.Input<String?>? hierarchyGroupId;
   /// A block that contains information about the levels in the hierarchy group. The `hierarchyPath` block is documented below.
-  final pulumi.Input<List<UserHierarchyGroupHierarchyPath>>? hierarchyPaths;
+  final pulumi.Input<List<UserHierarchyGroupHierarchyPath>?>? hierarchyPaths;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// The identifier of the level in the hierarchy group.
-  final pulumi.Input<String>? levelId;
+  final pulumi.Input<String?>? levelId;
   /// The name of the user hierarchy group. Must not be more than 100 characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The identifier for the parent hierarchy group. The user hierarchy is created at level one if the parent group ID is null.
-  final pulumi.Input<String>? parentGroupId;
+  final pulumi.Input<String?>? parentGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to apply to the hierarchy group. If configured with a provider
   /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [UserHierarchyGroupState].
-  /// [arn] The Amazon Resource Name (ARN) of the hierarchy group.
+  /// [arn] The ARN of the hierarchy group.
   /// [hierarchyGroupId] The identifier for the hierarchy group.
   /// [hierarchyPaths] A block that contains information about the levels in the hierarchy group. The `hierarchyPath` block is documented below.
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.

@@ -5,7 +5,7 @@ import 'analyzer_configuration_internal_access_analysis_rule_inclusion.dart';
 
 class AnalyzerConfigurationInternalAccessAnalysisRule {
   /// List of rules for the internal access analyzer containing criteria to include in analysis. Only resources that meet the rule criteria will generate findings. See `inclusion` Block for details.
-  final pulumi.Input<List<AnalyzerConfigurationInternalAccessAnalysisRuleInclusion>>? inclusions;
+  final pulumi.Input<List<AnalyzerConfigurationInternalAccessAnalysisRuleInclusion>?>? inclusions;
 
   /// Creates a new [AnalyzerConfigurationInternalAccessAnalysisRule].
   /// [inclusions] List of rules for the internal access analyzer containing criteria to include in analysis. Only resources that meet the rule criteria will generate findings. See `inclusion` Block for details.

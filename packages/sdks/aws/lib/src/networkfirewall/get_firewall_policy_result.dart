@@ -7,17 +7,17 @@ import 'get_firewall_policy_firewall_policy.dart';
 class GetFirewallPolicyResult {
   final String? arn;
   /// Description of the firewall policy.
-  final String description;
+  final String? description;
   /// The policy for the specified firewall policy.
-  final List<GetFirewallPolicyFirewallPolicy> firewallPolicies;
+  final List<GetFirewallPolicyFirewallPolicy>? firewallPolicies;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? name;
-  final String region;
+  final String? region;
   /// Key-value tags for the firewall policy.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Token used for optimistic locking.
-  final String updateToken;
+  final String? updateToken;
 
   /// Creates a new [GetFirewallPolicyResult].
   /// [arn] Optional.
@@ -25,43 +25,43 @@ class GetFirewallPolicyResult {
   /// [firewallPolicies] The policy for the specified firewall policy.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Key-value tags for the firewall policy.
   /// [updateToken] Token used for optimistic locking.
   const GetFirewallPolicyResult({
     this.arn,
-    required this.description,
-    required this.firewallPolicies,
-    required this.id,
+    this.description,
+    this.firewallPolicies,
+    this.id,
     this.name,
-    required this.region,
-    required this.tags,
-    required this.updateToken,
+    this.region,
+    this.tags,
+    this.updateToken,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'description': description,
-      'firewallPolicies': pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicy, Map<String, dynamic>>(firewallPolicies, (value) => value.toMap()),
-      'id': id,
+      'description': ?description,
+      'firewallPolicies': ?(() { final guardedValue = firewallPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFirewallPolicyFirewallPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
       'name': ?name,
-      'region': region,
-      'tags': tags,
-      'updateToken': updateToken,
+      'region': ?region,
+      'tags': ?tags,
+      'updateToken': ?updateToken,
     };
   }
 
   factory GetFirewallPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyResult(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      description: map['description'] as String,
-      firewallPolicies: pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicy>(map['firewallPolicies']!, (value) => GetFirewallPolicyFirewallPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      firewallPolicies: (() { final guardedValue = map['firewallPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicy>(guardedValue, (value) => GetFirewallPolicyFirewallPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      updateToken: map['updateToken'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      updateToken: (() { final guardedValue = map['updateToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

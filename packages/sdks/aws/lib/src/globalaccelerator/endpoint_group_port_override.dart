@@ -25,8 +25,8 @@ class EndpointGroupPortOverride {
 
   factory EndpointGroupPortOverride.fromMap(Map<String, dynamic> map) {
     return EndpointGroupPortOverride(
-      endpointPort: pulumi.Input.fromValue(map['endpointPort'] as int),
-      listenerPort: pulumi.Input.fromValue(map['listenerPort'] as int),
+      endpointPort: pulumi.Input.fromValue((map['endpointPort'] as num).toInt()),
+      listenerPort: pulumi.Input.fromValue((map['listenerPort'] as num).toInt()),
     );
   }
 }

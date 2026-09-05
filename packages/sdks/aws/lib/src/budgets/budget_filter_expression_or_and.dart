@@ -7,11 +7,11 @@ import 'budget_filter_expression_or_and_tags.dart';
 
 class BudgetFilterExpressionOrAnd {
   /// (Optional) A Cost Category Filter block.
-  final pulumi.Input<BudgetFilterExpressionOrAndCostCategories>? costCategories;
+  final pulumi.Input<BudgetFilterExpressionOrAndCostCategories?>? costCategories;
   /// (Optional) A Dimension Filter block.
-  final pulumi.Input<BudgetFilterExpressionOrAndDimensions>? dimensions;
+  final pulumi.Input<BudgetFilterExpressionOrAndDimensions?>? dimensions;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<BudgetFilterExpressionOrAndTags>? tags;
+  final pulumi.Input<BudgetFilterExpressionOrAndTags?>? tags;
 
   /// Creates a new [BudgetFilterExpressionOrAnd].
   /// [costCategories] (Optional) A Cost Category Filter block.

@@ -8,43 +8,43 @@ import 'policy_security_service_policy_data.dart';
 /// Input properties used for looking up and filtering Policy resources.
 class PolicyState {
   /// ARN of the policy.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// If true, the request will also perform a clean-up process. Defaults to `true`. More information can be found here [AWS Firewall Manager delete policy](https://docs.aws.amazon.com/fms/2018-01-01/APIReference/API_DeletePolicy.html)
-  final pulumi.Input<bool>? deleteAllPolicyResources;
+  final pulumi.Input<bool?>? deleteAllPolicyResources;
   /// If true, Firewall Manager will automatically remove protections from resources that leave the policy scope. Defaults to `false`. More information can be found here [AWS Firewall Manager policy contents](https://docs.aws.amazon.com/fms/2018-01-01/APIReference/API_Policy.html)
-  final pulumi.Input<bool>? deleteUnusedFmManagedResources;
+  final pulumi.Input<bool?>? deleteUnusedFmManagedResources;
   /// Description of the AWS Network Firewall firewall policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Map of lists of accounts and OUs to exclude from the policy. See the `excludeMap` block.
-  final pulumi.Input<PolicyExcludeMap>? excludeMap;
+  final pulumi.Input<PolicyExcludeMap?>? excludeMap;
   /// Whether resources with the tags specified in `resourceTags` are excluded from protection. If `true`, tagged resources are not protected by this policy. If `false` and `resourceTags` are populated, resources that contain those tags are protected by this policy.
-  final pulumi.Input<bool>? excludeResourceTags;
+  final pulumi.Input<bool?>? excludeResourceTags;
   /// Map of lists of accounts and OUs to include in the policy. See the `includeMap` block.
-  final pulumi.Input<PolicyIncludeMap>? includeMap;
+  final pulumi.Input<PolicyIncludeMap?>? includeMap;
   /// Friendly name of the AWS Firewall Manager Policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Unique identifier for each update to the policy.
-  final pulumi.Input<String>? policyUpdateToken;
+  final pulumi.Input<String?>? policyUpdateToken;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether the policy is automatically applied to resources that already exist in the account.
-  final pulumi.Input<bool>? remediationEnabled;
+  final pulumi.Input<bool?>? remediationEnabled;
   /// Set of resource set IDs associated with the policy.
-  final pulumi.Input<List<String>>? resourceSetIds;
+  final pulumi.Input<List<String>?>? resourceSetIds;
   /// Controls how multiple resource tags are combined: with AND, so that a resource must have all tags to be included or excluded, or OR, so that a resource must have at least one tag. The valid values are `AND` and `OR`.
-  final pulumi.Input<String>? resourceTagLogicalOperator;
+  final pulumi.Input<String?>? resourceTagLogicalOperator;
   /// Map of resource tags that, if present, filter protections on resources based on `excludeResourceTags`.
-  final pulumi.Input<Map<String, String>>? resourceTags;
+  final pulumi.Input<Map<String, String>?>? resourceTags;
   /// Resource type to protect. Conflicts with `resourceTypeList`. See the [FMS API Reference](https://docs.aws.amazon.com/fms/2018-01-01/APIReference/API_Policy.html#fms-Type-Policy-ResourceType) for more information about supported values.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// List of resource types to protect. Conflicts with `resourceType`. See the [FMS API Reference](https://docs.aws.amazon.com/fms/2018-01-01/APIReference/API_Policy.html#fms-Type-Policy-ResourceType) for more information about supported values. Lists with only one element are not supported, instead use `resourceType`.
-  final pulumi.Input<List<String>>? resourceTypeLists;
+  final pulumi.Input<List<String>?>? resourceTypeLists;
   /// Objects to include in Security Service Policy Data. See the `securityServicePolicyData` block.
-  final pulumi.Input<PolicySecurityServicePolicyData>? securityServicePolicyData;
+  final pulumi.Input<PolicySecurityServicePolicyData?>? securityServicePolicyData;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [PolicyState].
   /// [arn] ARN of the policy.

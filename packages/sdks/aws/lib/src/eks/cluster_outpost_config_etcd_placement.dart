@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterOutpostConfigEtcdPlacement {
   /// Placement group spread level for etcd instances. Valid values: `host`, `rack`.
-  final pulumi.Input<String>? spreadLevel;
+  final pulumi.Input<String?>? spreadLevel;
 
   /// Creates a new [ClusterOutpostConfigEtcdPlacement].
   /// [spreadLevel] Placement group spread level for etcd instances. Valid values: `host`, `rack`.

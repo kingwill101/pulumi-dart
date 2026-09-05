@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentConfigTrafficRoutingConfigTimeBasedLinear {
   /// The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
-  final pulumi.Input<int>? interval;
+  final pulumi.Input<int?>? interval;
   /// The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
-  final pulumi.Input<int>? percentage;
+  final pulumi.Input<int?>? percentage;
 
   /// Creates a new [DeploymentConfigTrafficRoutingConfigTimeBasedLinear].
   /// [interval] The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
@@ -25,8 +25,8 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedLinear {
 
   factory DeploymentConfigTrafficRoutingConfigTimeBasedLinear.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigTrafficRoutingConfigTimeBasedLinear(
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

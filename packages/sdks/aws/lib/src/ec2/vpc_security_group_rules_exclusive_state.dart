@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VpcSecurityGroupRulesExclusive resources.
 class VpcSecurityGroupRulesExclusiveState {
   /// Egress rule IDs.
-  final pulumi.Input<List<String>>? egressRuleIds;
+  final pulumi.Input<List<String>?>? egressRuleIds;
   /// Ingress rule IDs.
-  final pulumi.Input<List<String>>? ingressRuleIds;
+  final pulumi.Input<List<String>?>? ingressRuleIds;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the security group.
-  final pulumi.Input<String>? securityGroupId;
+  final pulumi.Input<String?>? securityGroupId;
 
   /// Creates a new [VpcSecurityGroupRulesExclusiveState].
   /// [egressRuleIds] Egress rule IDs.

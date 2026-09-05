@@ -430,7 +430,7 @@ class CustomerGatewayAssociation extends pulumi.CustomResource {
           'aws:networkmanager/customerGatewayAssociation:CustomerGatewayAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     customerGatewayArn = registerOutput<String>('customerGatewayArn');
     deviceId = registerOutput<String>('deviceId');
@@ -443,11 +443,12 @@ class CustomerGatewayAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomerGatewayAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomerGatewayAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -461,6 +462,21 @@ class CustomerGatewayAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    customerGatewayArn = registerOutput<String>('customerGatewayArn');
+    deviceId = registerOutput<String>('deviceId');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    linkId = registerOutput<String?>('linkId');
+  }
+
+  /// Creates a typed reference to an existing [CustomerGatewayAssociation] resource.
+  CustomerGatewayAssociation.reference(String urn)
+    : super(
+        'aws:networkmanager/customerGatewayAssociation:CustomerGatewayAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     customerGatewayArn = registerOutput<String>('customerGatewayArn');
     deviceId = registerOutput<String>('deviceId');
     globalNetworkId = registerOutput<String>('globalNetworkId');

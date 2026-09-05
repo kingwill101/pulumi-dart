@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DaemonTaskDefinitionContainerDefinitionMountPoint {
   /// Path on the container to mount the host volume at.
-  final pulumi.Input<String>? containerPath;
+  final pulumi.Input<String?>? containerPath;
   /// If this value is true, the container has read-only access to the volume.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Name of the volume to mount.
-  final pulumi.Input<String>? sourceVolume;
+  final pulumi.Input<String?>? sourceVolume;
 
   /// Creates a new [DaemonTaskDefinitionContainerDefinitionMountPoint].
   /// [containerPath] Path on the container to mount the host volume at.

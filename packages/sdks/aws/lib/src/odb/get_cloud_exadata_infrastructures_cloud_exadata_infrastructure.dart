@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
-  /// Amazon Resource Name (ARN) for the Exadata infrastructure.
+  /// ARN for the Exadata infrastructure.
   final pulumi.Input<String> arn;
   /// Display name of the Exadata infrastructure.
   final pulumi.Input<String> displayName;
@@ -17,7 +17,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
   final pulumi.Input<String> ocid;
 
   /// Creates a new [GetCloudExadataInfrastructuresCloudExadataInfrastructure].
-  /// [arn] Amazon Resource Name (ARN) for the Exadata infrastructure.
+  /// [arn] ARN for the Exadata infrastructure.
   /// [displayName] Display name of the Exadata infrastructure.
   /// [id] Unique identifier of the Exadata infrastructure.
   /// [ociResourceAnchorName] Name of the OCI resource anchor for the Exadata infrastructure.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ConditionalForwarder resources.
 class ConditionalForwarderState {
   /// ID of directory.
-  final pulumi.Input<String>? directoryId;
+  final pulumi.Input<String?>? directoryId;
   /// A list of forwarder IP addresses.
-  final pulumi.Input<List<String>>? dnsIps;
+  final pulumi.Input<List<String>?>? dnsIps;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The fully qualified domain name of the remote domain for which forwarders will be used.
-  final pulumi.Input<String>? remoteDomainName;
+  final pulumi.Input<String?>? remoteDomainName;
 
   /// Creates a new [ConditionalForwarderState].
   /// [directoryId] ID of directory.

@@ -20,7 +20,7 @@ class WebAppWebAppUnit {
 
   factory WebAppWebAppUnit.fromMap(Map<String, dynamic> map) {
     return WebAppWebAppUnit(
-      provisioned: pulumi.Input.fromValue(map['provisioned'] as int),
+      provisioned: pulumi.Input.fromValue((map['provisioned'] as num).toInt()),
     );
   }
 }

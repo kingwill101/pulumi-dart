@@ -10,7 +10,7 @@ class NotificationConfigurationArgs {
   /// Aggregation preference of the NotificationConfiguration. Valid values: `LONG` (
   /// aggregate notifications for 12 hours), `SHORT` (aggregate notifications for 5 minutes), `NONE` (don't aggregate
   /// notifications). Default: `NONE`.
-  final pulumi.Input<String>? aggregationDuration;
+  final pulumi.Input<String?>? aggregationDuration;
   /// Description of the NotificationConfiguration. Length constraints: Minimum length of 0,
   /// maximum length of 256.
   final pulumi.Input<String> description;
@@ -18,11 +18,11 @@ class NotificationConfigurationArgs {
   /// constraints: Minimum length of 1, maximum length of 64. Pattern: `[A-Za-z0-9_\-]+`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Map of tags to assign to the resource. A tag is a string-to-string map of key-value pairs. If
   /// configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those
   /// defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NotificationConfigurationArgs].
   /// [aggregationDuration] Aggregation preference of the NotificationConfiguration. Valid values: `LONG` (

@@ -5,7 +5,7 @@ import 'rule_set_rule_condition_ip_expression_evaluate.dart';
 
 class RuleSetRuleConditionIpExpression {
   /// Left-hand operand of the expression.
-  final pulumi.Input<RuleSetRuleConditionIpExpressionEvaluate>? evaluate;
+  final pulumi.Input<RuleSetRuleConditionIpExpressionEvaluate?>? evaluate;
   /// CIDR matching operator. Valid values are `CIDR_MATCHES` and `NOT_CIDR_MATCHES`.
   final pulumi.Input<String> operator;
   /// List of IP CIDR ranges against which the sender IP address is evaluated. Between 1 and 10 values are supported.

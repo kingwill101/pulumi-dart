@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AliasRoutingConfig {
   /// Map that defines the proportion of events that should be sent to different versions of a Lambda function.
-  final pulumi.Input<Map<String, double>>? additionalVersionWeights;
+  final pulumi.Input<Map<String, double>?>? additionalVersionWeights;
 
   /// Creates a new [AliasRoutingConfig].
   /// [additionalVersionWeights] Map that defines the proportion of events that should be sent to different versions of a Lambda function.

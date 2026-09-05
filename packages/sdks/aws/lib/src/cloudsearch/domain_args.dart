@@ -11,17 +11,17 @@ import 'domain_scaling_parameters.dart';
 /// {@macro pulumi_cloudsearch_domain_domain_args_doc}
 class DomainArgs {
   /// Domain endpoint options. Documented below.
-  final pulumi.Input<DomainEndpointOptions>? endpointOptions;
+  final pulumi.Input<DomainEndpointOptions?>? endpointOptions;
   /// The index fields for documents added to the domain. Documented below.
-  final pulumi.Input<List<DomainIndexField>>? indexFields;
+  final pulumi.Input<List<DomainIndexField>?>? indexFields;
   /// Whether or not to maintain extra instances for the domain in a second Availability Zone to ensure high availability.
-  final pulumi.Input<bool>? multiAz;
+  final pulumi.Input<bool?>? multiAz;
   /// The name of the CloudSearch domain.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Domain scaling parameters. Documented below.
-  final pulumi.Input<DomainScalingParameters>? scalingParameters;
+  final pulumi.Input<DomainScalingParameters?>? scalingParameters;
 
   /// Creates a new [DomainArgs].
   /// [endpointOptions] Domain endpoint options. Documented below.

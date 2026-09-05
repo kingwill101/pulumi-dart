@@ -164,7 +164,7 @@ import 'event_api_destination_state.dart';
 /// $ pulumi import aws:cloudwatch/eventApiDestination:EventApiDestination example example-destination
 /// ```
 class EventApiDestination extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the event API Destination.
+  /// ARN of the event API Destination.
   late final pulumi.Output<String> arn;
   /// ARN of the EventBridge Connection to use for the API Destination.
   late final pulumi.Output<String> connectionArn;
@@ -193,7 +193,7 @@ class EventApiDestination extends pulumi.CustomResource {
           'aws:cloudwatch/eventApiDestination:EventApiDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionArn = registerOutput<String>('connectionArn');
@@ -210,11 +210,12 @@ class EventApiDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventApiDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventApiDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -228,6 +229,25 @@ class EventApiDestination extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    connectionArn = registerOutput<String>('connectionArn');
+    description = registerOutput<String?>('description');
+    httpMethod = registerOutput<String>('httpMethod');
+    invocationEndpoint = registerOutput<String>('invocationEndpoint');
+    invocationRateLimitPerSecond = registerOutput<int?>('invocationRateLimitPerSecond');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [EventApiDestination] resource.
+  EventApiDestination.reference(String urn)
+    : super(
+        'aws:cloudwatch/eventApiDestination:EventApiDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     connectionArn = registerOutput<String>('connectionArn');
     description = registerOutput<String?>('description');

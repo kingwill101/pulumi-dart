@@ -7,7 +7,7 @@ class AgentcoreBrowserNetworkConfiguration {
   /// Network mode for the browser. Valid values: `PUBLIC`, `VPC`.
   final pulumi.Input<String> networkMode;
   /// VPC configuration when `networkMode` is `VPC`. See `vpcConfig` below.
-  final pulumi.Input<AgentcoreBrowserNetworkConfigurationVpcConfig>? vpcConfig;
+  final pulumi.Input<AgentcoreBrowserNetworkConfigurationVpcConfig?>? vpcConfig;
 
   /// Creates a new [AgentcoreBrowserNetworkConfiguration].
   /// [networkMode] Network mode for the browser. Valid values: `PUBLIC`, `VPC`.

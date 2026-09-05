@@ -18,6 +18,9 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const avmcWithMinimumParameters = new aws.odb.CloudAutonomousVmCluster("avmc_with_minimum_parameters", {
+///     maintenanceWindow: {
+///         preference: "NO_PREFERENCE",
+///     },
 ///     cloudExadataInfrastructureId: "<aws_odb_cloud_exadata_infrastructure_id>",
 ///     odbNetworkId: "<aws_odb_network_id>",
 ///     displayName: "my_autonomous_vm_cluster",
@@ -29,27 +32,8 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///     dbServers: ["<my_db_server_id>"],
 ///     scanListenerPortTls: 8561,
 ///     scanListenerPortNonTls: 1024,
-///     maintenanceWindow: {
-///         preference: "NO_PREFERENCE",
-///     },
 /// });
 /// const avmcWithAllParams = new aws.odb.CloudAutonomousVmCluster("avmc_with_all_params", {
-///     description: "my first avmc",
-///     timeZone: "UTC",
-///     cloudExadataInfrastructureId: "<aws_odb_cloud_exadata_infrastructure_id>",
-///     odbNetworkId: "<aws_odb_network_id>",
-///     displayName: "my_autonomous_vm_cluster",
-///     autonomousDataStorageSizeInTbs: 5,
-///     memoryPerOracleComputeUnitInGbs: 2,
-///     totalContainerDatabases: 1,
-///     cpuCoreCountPerNode: 40,
-///     licenseModel: "LICENSE_INCLUDED",
-///     dbServers: [
-///         "<my_db_server_1>",
-///         "<my_db_server_2>",
-///     ],
-///     scanListenerPortTls: 8561,
-///     scanListenerPortNonTls: 1024,
 ///     maintenanceWindow: {
 ///         daysOfWeeks: [
 ///             {
@@ -84,6 +68,22 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///             4,
 ///         ],
 ///     },
+///     description: "my first avmc",
+///     timeZone: "UTC",
+///     cloudExadataInfrastructureId: "<aws_odb_cloud_exadata_infrastructure_id>",
+///     odbNetworkId: "<aws_odb_network_id>",
+///     displayName: "my_autonomous_vm_cluster",
+///     autonomousDataStorageSizeInTbs: 5,
+///     memoryPerOracleComputeUnitInGbs: 2,
+///     totalContainerDatabases: 1,
+///     cpuCoreCountPerNode: 40,
+///     licenseModel: "LICENSE_INCLUDED",
+///     dbServers: [
+///         "<my_db_server_1>",
+///         "<my_db_server_2>",
+///     ],
+///     scanListenerPortTls: 8561,
+///     scanListenerPortNonTls: 1024,
 ///     tags: {
 ///         env: "dev",
 ///     },
@@ -94,6 +94,9 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// avmc_with_minimum_parameters = aws.odb.CloudAutonomousVmCluster("avmc_with_minimum_parameters",
+///     maintenance_window={
+///         "preference": "NO_PREFERENCE",
+///     },
 ///     cloud_exadata_infrastructure_id="<aws_odb_cloud_exadata_infrastructure_id>",
 ///     odb_network_id="<aws_odb_network_id>",
 ///     display_name="my_autonomous_vm_cluster",
@@ -104,27 +107,8 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///     license_model="LICENSE_INCLUDED",
 ///     db_servers=["<my_db_server_id>"],
 ///     scan_listener_port_tls=8561,
-///     scan_listener_port_non_tls=1024,
-///     maintenance_window={
-///         "preference": "NO_PREFERENCE",
-///     })
+///     scan_listener_port_non_tls=1024)
 /// avmc_with_all_params = aws.odb.CloudAutonomousVmCluster("avmc_with_all_params",
-///     description="my first avmc",
-///     time_zone="UTC",
-///     cloud_exadata_infrastructure_id="<aws_odb_cloud_exadata_infrastructure_id>",
-///     odb_network_id="<aws_odb_network_id>",
-///     display_name="my_autonomous_vm_cluster",
-///     autonomous_data_storage_size_in_tbs=float(5),
-///     memory_per_oracle_compute_unit_in_gbs=2,
-///     total_container_databases=1,
-///     cpu_core_count_per_node=40,
-///     license_model="LICENSE_INCLUDED",
-///     db_servers=[
-///         "<my_db_server_1>",
-///         "<my_db_server_2>",
-///     ],
-///     scan_listener_port_tls=8561,
-///     scan_listener_port_non_tls=1024,
 ///     maintenance_window={
 ///         "days_of_weeks": [
 ///             {
@@ -159,6 +143,22 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///             4,
 ///         ],
 ///     },
+///     description="my first avmc",
+///     time_zone="UTC",
+///     cloud_exadata_infrastructure_id="<aws_odb_cloud_exadata_infrastructure_id>",
+///     odb_network_id="<aws_odb_network_id>",
+///     display_name="my_autonomous_vm_cluster",
+///     autonomous_data_storage_size_in_tbs=float(5),
+///     memory_per_oracle_compute_unit_in_gbs=2,
+///     total_container_databases=1,
+///     cpu_core_count_per_node=40,
+///     license_model="LICENSE_INCLUDED",
+///     db_servers=[
+///         "<my_db_server_1>",
+///         "<my_db_server_2>",
+///     ],
+///     scan_listener_port_tls=8561,
+///     scan_listener_port_non_tls=1024,
 ///     tags={
 ///         "env": "dev",
 ///     })
@@ -173,6 +173,10 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 /// {
 ///     var avmcWithMinimumParameters = new Aws.Odb.CloudAutonomousVmCluster("avmc_with_minimum_parameters", new()
 ///     {
+///         MaintenanceWindow = new Aws.Odb.Inputs.CloudAutonomousVmClusterMaintenanceWindowArgs
+///         {
+///             Preference = "NO_PREFERENCE",
+///         },
 ///         CloudExadataInfrastructureId = "<aws_odb_cloud_exadata_infrastructure_id>",
 ///         OdbNetworkId = "<aws_odb_network_id>",
 ///         DisplayName = "my_autonomous_vm_cluster",
@@ -187,31 +191,10 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///         },
 ///         ScanListenerPortTls = 8561,
 ///         ScanListenerPortNonTls = 1024,
-///         MaintenanceWindow = new Aws.Odb.Inputs.CloudAutonomousVmClusterMaintenanceWindowArgs
-///         {
-///             Preference = "NO_PREFERENCE",
-///         },
 ///     });
 ///
 ///     var avmcWithAllParams = new Aws.Odb.CloudAutonomousVmCluster("avmc_with_all_params", new()
 ///     {
-///         Description = "my first avmc",
-///         TimeZone = "UTC",
-///         CloudExadataInfrastructureId = "<aws_odb_cloud_exadata_infrastructure_id>",
-///         OdbNetworkId = "<aws_odb_network_id>",
-///         DisplayName = "my_autonomous_vm_cluster",
-///         AutonomousDataStorageSizeInTbs = 5,
-///         MemoryPerOracleComputeUnitInGbs = 2,
-///         TotalContainerDatabases = 1,
-///         CpuCoreCountPerNode = 40,
-///         LicenseModel = "LICENSE_INCLUDED",
-///         DbServers = new[]
-///         {
-///             "<my_db_server_1>",
-///             "<my_db_server_2>",
-///         },
-///         ScanListenerPortTls = 8561,
-///         ScanListenerPortNonTls = 1024,
 ///         MaintenanceWindow = new Aws.Odb.Inputs.CloudAutonomousVmClusterMaintenanceWindowArgs
 ///         {
 ///             DaysOfWeeks = new[]
@@ -257,6 +240,23 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///                 4,
 ///             },
 ///         },
+///         Description = "my first avmc",
+///         TimeZone = "UTC",
+///         CloudExadataInfrastructureId = "<aws_odb_cloud_exadata_infrastructure_id>",
+///         OdbNetworkId = "<aws_odb_network_id>",
+///         DisplayName = "my_autonomous_vm_cluster",
+///         AutonomousDataStorageSizeInTbs = 5,
+///         MemoryPerOracleComputeUnitInGbs = 2,
+///         TotalContainerDatabases = 1,
+///         CpuCoreCountPerNode = 40,
+///         LicenseModel = "LICENSE_INCLUDED",
+///         DbServers = new[]
+///         {
+///             "<my_db_server_1>",
+///             "<my_db_server_2>",
+///         },
+///         ScanListenerPortTls = 8561,
+///         ScanListenerPortNonTls = 1024,
 ///         Tags =
 ///         {
 ///             { "env", "dev" },
@@ -276,6 +276,9 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := odb.NewCloudAutonomousVmCluster(ctx, "avmc_with_minimum_parameters", &odb.CloudAutonomousVmClusterArgs{
+/// 			MaintenanceWindow: &odb.CloudAutonomousVmClusterMaintenanceWindowArgs{
+/// 				Preference: pulumi.String("NO_PREFERENCE"),
+/// 			},
 /// 			CloudExadataInfrastructureId:    pulumi.String("<aws_odb_cloud_exadata_infrastructure_id>"),
 /// 			OdbNetworkId:                    pulumi.String("<aws_odb_network_id>"),
 /// 			DisplayName:                     pulumi.String("my_autonomous_vm_cluster"),
@@ -289,30 +292,11 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 /// 			},
 /// 			ScanListenerPortTls:    pulumi.Int(8561),
 /// 			ScanListenerPortNonTls: pulumi.Int(1024),
-/// 			MaintenanceWindow: &odb.CloudAutonomousVmClusterMaintenanceWindowArgs{
-/// 				Preference: pulumi.String("NO_PREFERENCE"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = odb.NewCloudAutonomousVmCluster(ctx, "avmc_with_all_params", &odb.CloudAutonomousVmClusterArgs{
-/// 			Description:                     pulumi.String("my first avmc"),
-/// 			TimeZone:                        pulumi.String("UTC"),
-/// 			CloudExadataInfrastructureId:    pulumi.String("<aws_odb_cloud_exadata_infrastructure_id>"),
-/// 			OdbNetworkId:                    pulumi.String("<aws_odb_network_id>"),
-/// 			DisplayName:                     pulumi.String("my_autonomous_vm_cluster"),
-/// 			AutonomousDataStorageSizeInTbs:  pulumi.Float64(5),
-/// 			MemoryPerOracleComputeUnitInGbs: pulumi.Int(2),
-/// 			TotalContainerDatabases:         pulumi.Int(1),
-/// 			CpuCoreCountPerNode:             pulumi.Int(40),
-/// 			LicenseModel:                    pulumi.String("LICENSE_INCLUDED"),
-/// 			DbServers: pulumi.StringArray{
-/// 				pulumi.String("<my_db_server_1>"),
-/// 				pulumi.String("<my_db_server_2>"),
-/// 			},
-/// 			ScanListenerPortTls:    pulumi.Int(8561),
-/// 			ScanListenerPortNonTls: pulumi.Int(1024),
 /// 			MaintenanceWindow: &odb.CloudAutonomousVmClusterMaintenanceWindowArgs{
 /// 				DaysOfWeeks: odb.CloudAutonomousVmClusterMaintenanceWindowDaysOfWeekArray{
 /// 					&odb.CloudAutonomousVmClusterMaintenanceWindowDaysOfWeekArgs{
@@ -347,6 +331,22 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 /// 					pulumi.Int(4),
 /// 				},
 /// 			},
+/// 			Description:                     pulumi.String("my first avmc"),
+/// 			TimeZone:                        pulumi.String("UTC"),
+/// 			CloudExadataInfrastructureId:    pulumi.String("<aws_odb_cloud_exadata_infrastructure_id>"),
+/// 			OdbNetworkId:                    pulumi.String("<aws_odb_network_id>"),
+/// 			DisplayName:                     pulumi.String("my_autonomous_vm_cluster"),
+/// 			AutonomousDataStorageSizeInTbs:  pulumi.Float64(5),
+/// 			MemoryPerOracleComputeUnitInGbs: pulumi.Int(2),
+/// 			TotalContainerDatabases:         pulumi.Int(1),
+/// 			CpuCoreCountPerNode:             pulumi.Int(40),
+/// 			LicenseModel:                    pulumi.String("LICENSE_INCLUDED"),
+/// 			DbServers: pulumi.StringArray{
+/// 				pulumi.String("<my_db_server_1>"),
+/// 				pulumi.String("<my_db_server_2>"),
+/// 			},
+/// 			ScanListenerPortTls:    pulumi.Int(8561),
+/// 			ScanListenerPortNonTls: pulumi.Int(1024),
 /// 			Tags: pulumi.StringMap{
 /// 				"env": pulumi.String("dev"),
 /// 			},
@@ -368,6 +368,9 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 /// }
 ///
 /// resource "aws_odb_cloudautonomousvmcluster" "avmc_with_minimum_parameters" {
+///   maintenance_window = {
+///     preference = "NO_PREFERENCE"
+///   }
 ///   cloud_exadata_infrastructure_id       = "<aws_odb_cloud_exadata_infrastructure_id>"
 ///   odb_network_id                        = "<aws_odb_network_id>"
 ///   display_name                          = "my_autonomous_vm_cluster"
@@ -379,24 +382,8 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///   db_servers                            = ["<my_db_server_id>"]
 ///   scan_listener_port_tls                = 8561
 ///   scan_listener_port_non_tls            = 1024
-///   maintenance_window = {
-///     preference = "NO_PREFERENCE"
-///   }
 /// }
 /// resource "aws_odb_cloudautonomousvmcluster" "avmc_with_all_params" {
-///   description                           = "my first avmc"
-///   time_zone                             = "UTC"
-///   cloud_exadata_infrastructure_id       = "<aws_odb_cloud_exadata_infrastructure_id>"
-///   odb_network_id                        = "<aws_odb_network_id>"
-///   display_name                          = "my_autonomous_vm_cluster"
-///   autonomous_data_storage_size_in_tbs   = 5
-///   memory_per_oracle_compute_unit_in_gbs = 2
-///   total_container_databases             = 1
-///   cpu_core_count_per_node               = 40
-///   license_model                         = "LICENSE_INCLUDED"
-///   db_servers                            = ["<my_db_server_1>", "<my_db_server_2>"]
-///   scan_listener_port_tls                = 8561
-///   scan_listener_port_non_tls            = 1024
 ///   maintenance_window = {
 ///     days_of_weeks = [{
 ///       "name" = "MONDAY"
@@ -417,6 +404,19 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///     preference      = "CUSTOM_PREFERENCE"
 ///     weeks_of_months = [2, 4]
 ///   }
+///   description                           = "my first avmc"
+///   time_zone                             = "UTC"
+///   cloud_exadata_infrastructure_id       = "<aws_odb_cloud_exadata_infrastructure_id>"
+///   odb_network_id                        = "<aws_odb_network_id>"
+///   display_name                          = "my_autonomous_vm_cluster"
+///   autonomous_data_storage_size_in_tbs   = 5
+///   memory_per_oracle_compute_unit_in_gbs = 2
+///   total_container_databases             = 1
+///   cpu_core_count_per_node               = 40
+///   license_model                         = "LICENSE_INCLUDED"
+///   db_servers                            = ["<my_db_server_1>", "<my_db_server_2>"]
+///   scan_listener_port_tls                = 8561
+///   scan_listener_port_non_tls            = 1024
 ///   tags = {
 ///     "env" = "dev"
 ///   }
@@ -447,6 +447,9 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var avmcWithMinimumParameters = new CloudAutonomousVmCluster("avmcWithMinimumParameters", CloudAutonomousVmClusterArgs.builder()
+///             .maintenanceWindow(CloudAutonomousVmClusterMaintenanceWindowArgs.builder()
+///                 .preference("NO_PREFERENCE")
+///                 .build())
 ///             .cloudExadataInfrastructureId("<aws_odb_cloud_exadata_infrastructure_id>")
 ///             .odbNetworkId("<aws_odb_network_id>")
 ///             .displayName("my_autonomous_vm_cluster")
@@ -458,27 +461,9 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///             .dbServers("<my_db_server_id>")
 ///             .scanListenerPortTls(8561)
 ///             .scanListenerPortNonTls(1024)
-///             .maintenanceWindow(CloudAutonomousVmClusterMaintenanceWindowArgs.builder()
-///                 .preference("NO_PREFERENCE")
-///                 .build())
 ///             .build());
 ///
 ///         var avmcWithAllParams = new CloudAutonomousVmCluster("avmcWithAllParams", CloudAutonomousVmClusterArgs.builder()
-///             .description("my first avmc")
-///             .timeZone("UTC")
-///             .cloudExadataInfrastructureId("<aws_odb_cloud_exadata_infrastructure_id>")
-///             .odbNetworkId("<aws_odb_network_id>")
-///             .displayName("my_autonomous_vm_cluster")
-///             .autonomousDataStorageSizeInTbs(5.0)
-///             .memoryPerOracleComputeUnitInGbs(2)
-///             .totalContainerDatabases(1)
-///             .cpuCoreCountPerNode(40)
-///             .licenseModel("LICENSE_INCLUDED")
-///             .dbServers(
-///                 "<my_db_server_1>",
-///                 "<my_db_server_2>")
-///             .scanListenerPortTls(8561)
-///             .scanListenerPortNonTls(1024)
 ///             .maintenanceWindow(CloudAutonomousVmClusterMaintenanceWindowArgs.builder()
 ///                 .daysOfWeeks(
 ///                     CloudAutonomousVmClusterMaintenanceWindowDaysOfWeekArgs.builder()
@@ -509,6 +494,21 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///                     2,
 ///                     4)
 ///                 .build())
+///             .description("my first avmc")
+///             .timeZone("UTC")
+///             .cloudExadataInfrastructureId("<aws_odb_cloud_exadata_infrastructure_id>")
+///             .odbNetworkId("<aws_odb_network_id>")
+///             .displayName("my_autonomous_vm_cluster")
+///             .autonomousDataStorageSizeInTbs(5.0)
+///             .memoryPerOracleComputeUnitInGbs(2)
+///             .totalContainerDatabases(1)
+///             .cpuCoreCountPerNode(40)
+///             .licenseModel("LICENSE_INCLUDED")
+///             .dbServers(
+///                 "<my_db_server_1>",
+///                 "<my_db_server_2>")
+///             .scanListenerPortTls(8561)
+///             .scanListenerPortNonTls(1024)
 ///             .tags(Map.of("env", "dev"))
 ///             .build());
 ///
@@ -521,6 +521,8 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///     type: aws:odb:CloudAutonomousVmCluster
 ///     name: avmc_with_minimum_parameters
 ///     properties:
+///       maintenanceWindow:
+///         preference: NO_PREFERENCE
 ///       cloudExadataInfrastructureId: <aws_odb_cloud_exadata_infrastructure_id>
 ///       odbNetworkId: <aws_odb_network_id>
 ///       displayName: my_autonomous_vm_cluster
@@ -533,27 +535,10 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///         - <my_db_server_id>
 ///       scanListenerPortTls: 8561
 ///       scanListenerPortNonTls: 1024
-///       maintenanceWindow:
-///         preference: NO_PREFERENCE
 ///   avmcWithAllParams:
 ///     type: aws:odb:CloudAutonomousVmCluster
 ///     name: avmc_with_all_params
 ///     properties:
-///       description: my first avmc
-///       timeZone: UTC
-///       cloudExadataInfrastructureId: <aws_odb_cloud_exadata_infrastructure_id>
-///       odbNetworkId: <aws_odb_network_id>
-///       displayName: my_autonomous_vm_cluster
-///       autonomousDataStorageSizeInTbs: 5
-///       memoryPerOracleComputeUnitInGbs: 2
-///       totalContainerDatabases: 1
-///       cpuCoreCountPerNode: 40
-///       licenseModel: LICENSE_INCLUDED
-///       dbServers:
-///         - <my_db_server_1>
-///         - <my_db_server_2>
-///       scanListenerPortTls: 8561
-///       scanListenerPortNonTls: 1024
 ///       maintenanceWindow:
 ///         daysOfWeeks:
 ///           - name: MONDAY
@@ -571,6 +556,21 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 ///         weeksOfMonths:
 ///           - 2
 ///           - 4
+///       description: my first avmc
+///       timeZone: UTC
+///       cloudExadataInfrastructureId: <aws_odb_cloud_exadata_infrastructure_id>
+///       odbNetworkId: <aws_odb_network_id>
+///       displayName: my_autonomous_vm_cluster
+///       autonomousDataStorageSizeInTbs: 5
+///       memoryPerOracleComputeUnitInGbs: 2
+///       totalContainerDatabases: 1
+///       cpuCoreCountPerNode: 40
+///       licenseModel: LICENSE_INCLUDED
+///       dbServers:
+///         - <my_db_server_1>
+///         - <my_db_server_2>
+///       scanListenerPortTls: 8561
+///       scanListenerPortNonTls: 1024
 ///       tags:
 ///         env: dev
 /// ```
@@ -584,7 +584,7 @@ import 'cloud_autonomous_vm_cluster_timeouts.dart';
 /// $ pulumi import aws:odb/cloudAutonomousVmCluster:CloudAutonomousVmCluster example example
 /// ```
 class CloudAutonomousVmCluster extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) for the Exadata infrastructure.
+  /// ARN for the Exadata infrastructure.
   late final pulumi.Output<String> arn;
   /// Progress of the current operation on the Autonomous VM cluster, as a percentage.
   late final pulumi.Output<double> autonomousDataStoragePercentage;
@@ -706,7 +706,7 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
           'aws:odb/cloudAutonomousVmCluster:CloudAutonomousVmCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autonomousDataStoragePercentage = registerOutput<double>('autonomousDataStoragePercentage');
@@ -723,7 +723,7 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     dataStorageSizeInGbs = registerOutput<double>('dataStorageSizeInGbs');
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
-    dbServers = registerOutput<List<String>>('dbServers');
+    dbServers = registerOutput<List<String>>('dbServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     domain = registerOutput<String>('domain');
@@ -755,8 +755,8 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
     shape = registerOutput<String>('shape');
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeDatabaseSslCertificateExpires = registerOutput<String>('timeDatabaseSslCertificateExpires');
     timeOrdsCertificateExpires = registerOutput<String>('timeOrdsCertificateExpires');
     timeZone = registerOutput<String>('timeZone');
@@ -769,11 +769,12 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CloudAutonomousVmClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CloudAutonomousVmCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -802,7 +803,7 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     dataStorageSizeInGbs = registerOutput<double>('dataStorageSizeInGbs');
     dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
-    dbServers = registerOutput<List<String>>('dbServers');
+    dbServers = registerOutput<List<String>>('dbServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     domain = registerOutput<String>('domain');
@@ -834,8 +835,73 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
     shape = registerOutput<String>('shape');
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeDatabaseSslCertificateExpires = registerOutput<String>('timeDatabaseSslCertificateExpires');
+    timeOrdsCertificateExpires = registerOutput<String>('timeOrdsCertificateExpires');
+    timeZone = registerOutput<String>('timeZone');
+    timeouts = registerOutput<CloudAutonomousVmClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudAutonomousVmClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    totalContainerDatabases = registerOutput<int>('totalContainerDatabases');
+  }
+
+  /// Creates a typed reference to an existing [CloudAutonomousVmCluster] resource.
+  CloudAutonomousVmCluster.reference(String urn)
+    : super(
+        'aws:odb/cloudAutonomousVmCluster:CloudAutonomousVmCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autonomousDataStoragePercentage = registerOutput<double>('autonomousDataStoragePercentage');
+    autonomousDataStorageSizeInTbs = registerOutput<double>('autonomousDataStorageSizeInTbs');
+    availableAutonomousDataStorageSizeInTbs = registerOutput<double>('availableAutonomousDataStorageSizeInTbs');
+    availableContainerDatabases = registerOutput<int>('availableContainerDatabases');
+    availableCpus = registerOutput<double>('availableCpus');
+    cloudExadataInfrastructureArn = registerOutput<String>('cloudExadataInfrastructureArn');
+    cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');
+    computeModel = registerOutput<String>('computeModel');
+    cpuCoreCount = registerOutput<int>('cpuCoreCount');
+    cpuCoreCountPerNode = registerOutput<int>('cpuCoreCountPerNode');
+    cpuPercentage = registerOutput<double>('cpuPercentage');
+    createdAt = registerOutput<String>('createdAt');
+    dataStorageSizeInGbs = registerOutput<double>('dataStorageSizeInGbs');
+    dataStorageSizeInTbs = registerOutput<double>('dataStorageSizeInTbs');
+    dbServers = registerOutput<List<String>>('dbServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    domain = registerOutput<String>('domain');
+    exadataStorageInTbsLowestScaledValue = registerOutput<double>('exadataStorageInTbsLowestScaledValue');
+    hostname = registerOutput<String>('hostname');
+    isMtlsEnabledVmCluster = registerOutput<bool>('isMtlsEnabledVmCluster');
+    licenseModel = registerOutput<String>('licenseModel');
+    maintenanceWindow = registerOutput<CloudAutonomousVmClusterMaintenanceWindow>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudAutonomousVmClusterMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxAcdsLowestScaledValue = registerOutput<int>('maxAcdsLowestScaledValue');
+    memoryPerOracleComputeUnitInGbs = registerOutput<int>('memoryPerOracleComputeUnitInGbs');
+    memorySizeInGbs = registerOutput<int>('memorySizeInGbs');
+    nodeCount = registerOutput<int>('nodeCount');
+    nonProvisionableAutonomousContainerDatabases = registerOutput<int>('nonProvisionableAutonomousContainerDatabases');
+    ociResourceAnchorName = registerOutput<String>('ociResourceAnchorName');
+    ociUrl = registerOutput<String>('ociUrl');
+    ocid = registerOutput<String>('ocid');
+    odbNetworkArn = registerOutput<String>('odbNetworkArn');
+    odbNetworkId = registerOutput<String>('odbNetworkId');
+    odbNodeStorageSizeInGbs = registerOutput<int>('odbNodeStorageSizeInGbs');
+    percentProgress = registerOutput<double>('percentProgress');
+    provisionableAutonomousContainerDatabases = registerOutput<int>('provisionableAutonomousContainerDatabases');
+    provisionedAutonomousContainerDatabases = registerOutput<int>('provisionedAutonomousContainerDatabases');
+    provisionedCpus = registerOutput<double>('provisionedCpus');
+    reclaimableCpus = registerOutput<double>('reclaimableCpus');
+    region = registerOutput<String>('region');
+    reservedCpus = registerOutput<double>('reservedCpus');
+    scanListenerPortNonTls = registerOutput<int>('scanListenerPortNonTls');
+    scanListenerPortTls = registerOutput<int>('scanListenerPortTls');
+    shape = registerOutput<String>('shape');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeDatabaseSslCertificateExpires = registerOutput<String>('timeDatabaseSslCertificateExpires');
     timeOrdsCertificateExpires = registerOutput<String>('timeOrdsCertificateExpires');
     timeZone = registerOutput<String>('timeZone');

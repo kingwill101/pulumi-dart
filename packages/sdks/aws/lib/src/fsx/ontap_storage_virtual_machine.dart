@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ontap_storage_virtual_machine_active_directory_configuration.dart';
 import 'ontap_storage_virtual_machine_args.dart';
+import 'ontap_storage_virtual_machine_endpoint.dart';
 import 'ontap_storage_virtual_machine_state.dart';
 
 /// Manages a FSx Storage Virtual Machine.
@@ -128,10 +129,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.fsx.OntapStorageVirtualMachine("test", {
-///     fileSystemId: testAwsFsxOntapFileSystem.id,
-///     name: "mysvm",
 ///     activeDirectoryConfiguration: {
-///         netbiosName: "mysvm",
 ///         selfManagedActiveDirectoryConfiguration: {
 ///             dnsIps: [
 ///                 "10.0.0.111",
@@ -141,7 +139,10 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///             password: "avoid-plaintext-passwords",
 ///             username: "Admin",
 ///         },
+///         netbiosName: "mysvm",
 ///     },
+///     fileSystemId: testAwsFsxOntapFileSystem.id,
+///     name: "mysvm",
 /// });
 /// ```
 /// ```python
@@ -149,10 +150,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.fsx.OntapStorageVirtualMachine("test",
-///     file_system_id=test_aws_fsx_ontap_file_system["id"],
-///     name="mysvm",
 ///     active_directory_configuration={
-///         "netbios_name": "mysvm",
 ///         "self_managed_active_directory_configuration": {
 ///             "dns_ips": [
 ///                 "10.0.0.111",
@@ -162,7 +160,10 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///             "password": "avoid-plaintext-passwords",
 ///             "username": "Admin",
 ///         },
-///     })
+///         "netbios_name": "mysvm",
+///     },
+///     file_system_id=test_aws_fsx_ontap_file_system["id"],
+///     name="mysvm")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -174,11 +175,8 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// {
 ///     var test = new Aws.Fsx.OntapStorageVirtualMachine("test", new()
 ///     {
-///         FileSystemId = testAwsFsxOntapFileSystem.Id,
-///         Name = "mysvm",
 ///         ActiveDirectoryConfiguration = new Aws.Fsx.Inputs.OntapStorageVirtualMachineActiveDirectoryConfigurationArgs
 ///         {
-///             NetbiosName = "mysvm",
 ///             SelfManagedActiveDirectoryConfiguration = new Aws.Fsx.Inputs.OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationArgs
 ///             {
 ///                 DnsIps = new[]
@@ -190,7 +188,10 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///                 Password = "avoid-plaintext-passwords",
 ///                 Username = "Admin",
 ///             },
+///             NetbiosName = "mysvm",
 ///         },
+///         FileSystemId = testAwsFsxOntapFileSystem.Id,
+///         Name = "mysvm",
 ///     });
 ///
 /// });
@@ -206,10 +207,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := fsx.NewOntapStorageVirtualMachine(ctx, "test", &fsx.OntapStorageVirtualMachineArgs{
-/// 			FileSystemId: pulumi.Any(testAwsFsxOntapFileSystem.Id),
-/// 			Name:         pulumi.String("mysvm"),
 /// 			ActiveDirectoryConfiguration: &fsx.OntapStorageVirtualMachineActiveDirectoryConfigurationArgs{
-/// 				NetbiosName: pulumi.String("mysvm"),
 /// 				SelfManagedActiveDirectoryConfiguration: &fsx.OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationArgs{
 /// 					DnsIps: pulumi.StringArray{
 /// 						pulumi.String("10.0.0.111"),
@@ -219,7 +217,10 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// 					Password:   pulumi.String("avoid-plaintext-passwords"),
 /// 					Username:   pulumi.String("Admin"),
 /// 				},
+/// 				NetbiosName: pulumi.String("mysvm"),
 /// 			},
+/// 			FileSystemId: pulumi.Any(testAwsFsxOntapFileSystem.Id),
+/// 			Name:         pulumi.String("mysvm"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -238,17 +239,17 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// }
 ///
 /// resource "aws_fsx_ontapstoragevirtualmachine" "test" {
-///   file_system_id = testAwsFsxOntapFileSystem.id
-///   name           = "mysvm"
 ///   active_directory_configuration = {
-///     netbios_name = "mysvm"
 ///     self_managed_active_directory_configuration = {
 ///       dns_ips     = ["10.0.0.111", "10.0.0.222"]
 ///       domain_name = "corp.example.com"
 ///       password    = "avoid-plaintext-passwords"
 ///       username    = "Admin"
 ///     }
+///     netbios_name = "mysvm"
 ///   }
+///   file_system_id = testAwsFsxOntapFileSystem.id
+///   name           = "mysvm"
 /// }
 /// ```
 /// ```java
@@ -275,10 +276,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new OntapStorageVirtualMachine("test", OntapStorageVirtualMachineArgs.builder()
-///             .fileSystemId(testAwsFsxOntapFileSystem.id())
-///             .name("mysvm")
 ///             .activeDirectoryConfiguration(OntapStorageVirtualMachineActiveDirectoryConfigurationArgs.builder()
-///                 .netbiosName("mysvm")
 ///                 .selfManagedActiveDirectoryConfiguration(OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfigurationArgs.builder()
 ///                     .dnsIps(
 ///                         "10.0.0.111",
@@ -287,7 +285,10 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///                     .password("avoid-plaintext-passwords")
 ///                     .username("Admin")
 ///                     .build())
+///                 .netbiosName("mysvm")
 ///                 .build())
+///             .fileSystemId(testAwsFsxOntapFileSystem.id())
+///             .name("mysvm")
 ///             .build());
 ///
 ///     }
@@ -298,10 +299,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///   test:
 ///     type: aws:fsx:OntapStorageVirtualMachine
 ///     properties:
-///       fileSystemId: ${testAwsFsxOntapFileSystem.id}
-///       name: mysvm
 ///       activeDirectoryConfiguration:
-///         netbiosName: mysvm
 ///         selfManagedActiveDirectoryConfiguration:
 ///           dnsIps:
 ///             - 10.0.0.111
@@ -309,6 +307,9 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///           domainName: corp.example.com
 ///           password: avoid-plaintext-passwords
 ///           username: Admin
+///         netbiosName: mysvm
+///       fileSystemId: ${testAwsFsxOntapFileSystem.id}
+///       name: mysvm
 /// ```
 ///
 ///
@@ -327,13 +328,16 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.fsx.OntapStorageVirtualMachine("example", {svmAdminPassword: "avoid-plaintext-passwords"});
+/// const example = new aws.fsx.OntapStorageVirtualMachine("example", {svmAdminPassword: "avoid-plaintext-passwords"}, {
+///     ignoreChanges: ["svmAdminPassword"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.fsx.OntapStorageVirtualMachine("example", svm_admin_password="avoid-plaintext-passwords")
+/// example = aws.fsx.OntapStorageVirtualMachine("example", svm_admin_password="avoid-plaintext-passwords",
+/// opts = pulumi.ResourceOptions(ignore_changes=["svmAdminPassword"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -346,6 +350,12 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///     var example = new Aws.Fsx.OntapStorageVirtualMachine("example", new()
 ///     {
 ///         SvmAdminPassword = "avoid-plaintext-passwords",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "svmAdminPassword",
+///         },
 ///     });
 ///
 /// });
@@ -362,7 +372,9 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := fsx.NewOntapStorageVirtualMachine(ctx, "example", &fsx.OntapStorageVirtualMachineArgs{
 /// 			SvmAdminPassword: pulumi.String("avoid-plaintext-passwords"),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"svmAdminPassword",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -380,6 +392,9 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// }
 ///
 /// resource "aws_fsx_ontapstoragevirtualmachine" "example" {
+///   lifecycle {
+///     ignore_changes = [svmAdminPassword]
+///   }
 ///   svm_admin_password = "avoid-plaintext-passwords"
 /// }
 /// ```
@@ -391,6 +406,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.OntapStorageVirtualMachine;
 /// import com.pulumi.aws.fsx.OntapStorageVirtualMachineArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -406,7 +422,9 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new OntapStorageVirtualMachine("example", OntapStorageVirtualMachineArgs.builder()
 ///             .svmAdminPassword("avoid-plaintext-passwords")
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("svmAdminPassword")
+///                 .build());
 ///
 ///     }
 /// }
@@ -417,14 +435,17 @@ import 'ontap_storage_virtual_machine_state.dart';
 ///     type: aws:fsx:OntapStorageVirtualMachine
 ///     properties:
 ///       svmAdminPassword: avoid-plaintext-passwords
+///     options:
+///       ignoreChanges:
+///         - svmAdminPassword
 /// ```
 class OntapStorageVirtualMachine extends pulumi.CustomResource {
   /// Configuration block that Amazon FSx uses to join the FSx ONTAP Storage Virtual Machine(SVM) to your Microsoft Active Directory (AD) directory. Detailed below.
   late final pulumi.Output<OntapStorageVirtualMachineActiveDirectoryConfiguration?> activeDirectoryConfiguration;
-  /// Amazon Resource Name of the storage virtual machine.
+  /// ARN of the storage virtual machine.
   late final pulumi.Output<String> arn;
   /// Endpoints that are used to access data or to manage the storage virtual machine using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See `endpoints` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<OntapStorageVirtualMachineEndpoint>> endpoints;
   /// ID of the Amazon FSx ONTAP File System that this SVM will be created on.
   late final pulumi.Output<String> fileSystemId;
   /// Name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
@@ -456,19 +477,20 @@ class OntapStorageVirtualMachine extends pulumi.CustomResource {
           'aws:fsx/ontapStorageVirtualMachine:OntapStorageVirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['svmAdminPassword'],
         ) {
     activeDirectoryConfiguration = registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>('activeDirectoryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<OntapStorageVirtualMachineEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OntapStorageVirtualMachineEndpoint>(guardedValue, (value) => OntapStorageVirtualMachineEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     fileSystemId = registerOutput<String>('fileSystemId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     rootVolumeSecurityStyle = registerOutput<String?>('rootVolumeSecurityStyle');
     subtype = registerOutput<String>('subtype');
-    svmAdminPassword = registerOutput<String?>('svmAdminPassword');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    svmAdminPassword = registerOutput<String?>('svmAdminPassword', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uuid = registerOutput<String>('uuid');
   }
 
@@ -477,11 +499,12 @@ class OntapStorageVirtualMachine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OntapStorageVirtualMachineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OntapStorageVirtualMachine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -497,15 +520,39 @@ class OntapStorageVirtualMachine extends pulumi.CustomResource {
         ) {
     activeDirectoryConfiguration = registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>('activeDirectoryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<OntapStorageVirtualMachineEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OntapStorageVirtualMachineEndpoint>(guardedValue, (value) => OntapStorageVirtualMachineEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     fileSystemId = registerOutput<String>('fileSystemId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     rootVolumeSecurityStyle = registerOutput<String?>('rootVolumeSecurityStyle');
     subtype = registerOutput<String>('subtype');
-    svmAdminPassword = registerOutput<String?>('svmAdminPassword');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    svmAdminPassword = registerOutput<String?>('svmAdminPassword', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [OntapStorageVirtualMachine] resource.
+  OntapStorageVirtualMachine.reference(String urn)
+    : super(
+        'aws:fsx/ontapStorageVirtualMachine:OntapStorageVirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['svmAdminPassword'],
+        isResourceReference: true,
+      ) {
+    activeDirectoryConfiguration = registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>('activeDirectoryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    endpoints = registerOutput<List<OntapStorageVirtualMachineEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OntapStorageVirtualMachineEndpoint>(guardedValue, (value) => OntapStorageVirtualMachineEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    fileSystemId = registerOutput<String>('fileSystemId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    rootVolumeSecurityStyle = registerOutput<String?>('rootVolumeSecurityStyle');
+    subtype = registerOutput<String>('subtype');
+    svmAdminPassword = registerOutput<String?>('svmAdminPassword', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uuid = registerOutput<String>('uuid');
   }
 }

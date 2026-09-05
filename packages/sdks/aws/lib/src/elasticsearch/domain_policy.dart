@@ -271,7 +271,7 @@ class DomainPolicy extends pulumi.CustomResource {
           'aws:elasticsearch/domainPolicy:DomainPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     domainName = registerOutput<String>('domainName');
@@ -283,11 +283,12 @@ class DomainPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -301,6 +302,20 @@ class DomainPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicies = registerOutput<String>('accessPolicies');
+    domainName = registerOutput<String>('domainName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DomainPolicy] resource.
+  DomainPolicy.reference(String urn)
+    : super(
+        'aws:elasticsearch/domainPolicy:DomainPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');

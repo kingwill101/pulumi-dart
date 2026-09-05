@@ -5,7 +5,7 @@ import 'idc_application_service_integration_lake_formation_lake_formation_query.
 
 class IdcApplicationServiceIntegrationLakeFormation {
   /// Lake formation scope.
-  final pulumi.Input<IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery>? lakeFormationQuery;
+  final pulumi.Input<IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery?>? lakeFormationQuery;
 
   /// Creates a new [IdcApplicationServiceIntegrationLakeFormation].
   /// [lakeFormationQuery] Lake formation scope.

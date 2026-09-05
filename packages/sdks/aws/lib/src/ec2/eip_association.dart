@@ -249,7 +249,7 @@ class EipAssociation extends pulumi.CustomResource {
           'aws:ec2/eipAssociation:EipAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allocationId = registerOutput<String>('allocationId');
     allowReassociation = registerOutput<bool?>('allowReassociation');
@@ -265,11 +265,12 @@ class EipAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EipAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EipAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,6 +284,24 @@ class EipAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allocationId = registerOutput<String>('allocationId');
+    allowReassociation = registerOutput<bool?>('allowReassociation');
+    instanceId = registerOutput<String>('instanceId');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    privateIpAddress = registerOutput<String>('privateIpAddress');
+    publicIp = registerOutput<String>('publicIp');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [EipAssociation] resource.
+  EipAssociation.reference(String urn)
+    : super(
+        'aws:ec2/eipAssociation:EipAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allocationId = registerOutput<String>('allocationId');
     allowReassociation = registerOutput<bool?>('allowReassociation');
     instanceId = registerOutput<String>('instanceId');

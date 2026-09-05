@@ -32,7 +32,7 @@ class DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationB
     return DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication(
       credentials: pulumi.Input.fromValue(map['credentials'] as String),
       host: pulumi.Input.fromValue(map['host'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

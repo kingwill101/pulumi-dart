@@ -10,48 +10,48 @@ import 'environment_setting.dart';
 class EnvironmentArgs {
   /// Name of the application that contains the version
   /// to be deployed
-  final pulumi.Input<String> application;
+  final pulumi.Input<dynamic> application;
   /// Prefix to use for the fully qualified DNS name of
   /// the Environment.
-  final pulumi.Input<String>? cnamePrefix;
+  final pulumi.Input<String?>? cnamePrefix;
   /// Short description of the Environment
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A unique name for this Environment. This name is used
   /// in the application URL
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of the Elastic Beanstalk [Platform](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-beanstalk-environment.html#cfn-beanstalk-environment-platformarn)
   /// to use in deployment
-  final pulumi.Input<String>? platformArn;
+  final pulumi.Input<String?>? platformArn;
   /// The time between polling the AWS API to
   /// check if changes have been applied. Use this to adjust the rate of API calls
   /// for any `create` or `update` action. Minimum `10s`, maximum `180s`. Omit this to
   /// use the default behavior, which is an exponential backoff
-  final pulumi.Input<String>? pollInterval;
+  final pulumi.Input<String?>? pollInterval;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Option settings to configure the new Environment. These
   /// override specific values that are set as defaults. The format is detailed
   /// below in Option Settings
-  final pulumi.Input<List<EnvironmentSetting>>? settings;
+  final pulumi.Input<List<EnvironmentSetting>?>? settings;
   /// A solution stack to base your environment
   /// off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
-  final pulumi.Input<String>? solutionStackName;
+  final pulumi.Input<String?>? solutionStackName;
   /// A set of tags to apply to the Environment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the Elastic Beanstalk Configuration
   /// template to use in deployment
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
   /// Elastic Beanstalk Environment tier. Valid values are `Worker`
   /// or `WebServer`. If tier is left blank `WebServer` will be used.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
   /// The name of the Elastic Beanstalk Application Version
   /// to use in deployment.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<dynamic>? version;
   /// The maximum
   /// [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
   /// wait for an Elastic Beanstalk Environment to be in a ready state before timing
   /// out.
-  final pulumi.Input<String>? waitForReadyTimeout;
+  final pulumi.Input<String?>? waitForReadyTimeout;
 
   /// Creates a new [EnvironmentArgs].
   /// [application] Name of the application that contains the version
@@ -106,7 +106,7 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      application: pulumi.Input.fromValue(map['application'] as String),
+      application: pulumi.Input.fromValue(map['application']),
       cnamePrefix: (() { final guardedValue = map['cnamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -118,7 +118,7 @@ class EnvironmentArgs {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       waitForReadyTimeout: (() { final guardedValue = map['waitForReadyTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

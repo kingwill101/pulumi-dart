@@ -16,7 +16,7 @@ class PartnerArgs {
   /// The name of the partner that is authorized to send data.
   final pulumi.Input<String> partnerName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [PartnerArgs].
   /// [accountId] The Amazon Web Services account ID that owns the cluster.

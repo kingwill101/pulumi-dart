@@ -1,9 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_args.dart';
+import 'table_attribute.dart';
+import 'table_global_secondary_index.dart';
 import 'table_global_table_witness.dart';
 import 'table_import_table.dart';
+import 'table_local_secondary_index.dart';
 import 'table_on_demand_throughput.dart';
 import 'table_point_in_time_recovery.dart';
+import 'table_replica.dart';
 import 'table_server_side_encryption.dart';
 import 'table_state.dart';
 import 'table_ttl.dart';
@@ -31,12 +35,10 @@ import 'table_warm_throughput.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const basic_dynamodb_table = new aws.dynamodb.Table("basic-dynamodb-table", {
-///     name: "GameScores",
-///     billingMode: "PROVISIONED",
-///     readCapacity: 20,
-///     writeCapacity: 20,
-///     hashKey: "UserId",
-///     rangeKey: "GameTitle",
+///     ttl: {
+///         attributeName: "TimeToExist",
+///         enabled: true,
+///     },
 ///     attributes: [
 ///         {
 ///             name: "UserId",
@@ -51,10 +53,6 @@ import 'table_warm_throughput.dart';
 ///             type: "N",
 ///         },
 ///     ],
-///     ttl: {
-///         attributeName: "TimeToExist",
-///         enabled: true,
-///     },
 ///     globalSecondaryIndexes: [{
 ///         name: "GameTitleIndex",
 ///         hashKey: "GameTitle",
@@ -64,6 +62,12 @@ import 'table_warm_throughput.dart';
 ///         projectionType: "INCLUDE",
 ///         nonKeyAttributes: ["UserId"],
 ///     }],
+///     name: "GameScores",
+///     billingMode: "PROVISIONED",
+///     readCapacity: 20,
+///     writeCapacity: 20,
+///     hashKey: "UserId",
+///     rangeKey: "GameTitle",
 ///     tags: {
 ///         Name: "dynamodb-table-1",
 ///         Environment: "production",
@@ -75,12 +79,10 @@ import 'table_warm_throughput.dart';
 /// import pulumi_aws as aws
 ///
 /// basic_dynamodb_table = aws.dynamodb.Table("basic-dynamodb-table",
-///     name="GameScores",
-///     billing_mode="PROVISIONED",
-///     read_capacity=20,
-///     write_capacity=20,
-///     hash_key="UserId",
-///     range_key="GameTitle",
+///     ttl={
+///         "attribute_name": "TimeToExist",
+///         "enabled": True,
+///     },
 ///     attributes=[
 ///         {
 ///             "name": "UserId",
@@ -95,10 +97,6 @@ import 'table_warm_throughput.dart';
 ///             "type": "N",
 ///         },
 ///     ],
-///     ttl={
-///         "attribute_name": "TimeToExist",
-///         "enabled": True,
-///     },
 ///     global_secondary_indexes=[{
 ///         "name": "GameTitleIndex",
 ///         "hash_key": "GameTitle",
@@ -108,6 +106,12 @@ import 'table_warm_throughput.dart';
 ///         "projection_type": "INCLUDE",
 ///         "non_key_attributes": ["UserId"],
 ///     }],
+///     name="GameScores",
+///     billing_mode="PROVISIONED",
+///     read_capacity=20,
+///     write_capacity=20,
+///     hash_key="UserId",
+///     range_key="GameTitle",
 ///     tags={
 ///         "Name": "dynamodb-table-1",
 ///         "Environment": "production",
@@ -123,12 +127,11 @@ import 'table_warm_throughput.dart';
 /// {
 ///     var basic_dynamodb_table = new Aws.DynamoDB.Table("basic-dynamodb-table", new()
 ///     {
-///         Name = "GameScores",
-///         BillingMode = "PROVISIONED",
-///         ReadCapacity = 20,
-///         WriteCapacity = 20,
-///         HashKey = "UserId",
-///         RangeKey = "GameTitle",
+///         Ttl = new Aws.DynamoDB.Inputs.TableTtlArgs
+///         {
+///             AttributeName = "TimeToExist",
+///             Enabled = true,
+///         },
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -147,11 +150,6 @@ import 'table_warm_throughput.dart';
 ///                 Type = "N",
 ///             },
 ///         },
-///         Ttl = new Aws.DynamoDB.Inputs.TableTtlArgs
-///         {
-///             AttributeName = "TimeToExist",
-///             Enabled = true,
-///         },
 ///         GlobalSecondaryIndexes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableGlobalSecondaryIndexArgs
@@ -168,6 +166,12 @@ import 'table_warm_throughput.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "GameScores",
+///         BillingMode = "PROVISIONED",
+///         ReadCapacity = 20,
+///         WriteCapacity = 20,
+///         HashKey = "UserId",
+///         RangeKey = "GameTitle",
 ///         Tags =
 ///         {
 ///             { "Name", "dynamodb-table-1" },
@@ -188,12 +192,10 @@ import 'table_warm_throughput.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dynamodb.NewTable(ctx, "basic-dynamodb-table", &dynamodb.TableArgs{
-/// 			Name:          pulumi.String("GameScores"),
-/// 			BillingMode:   pulumi.String("PROVISIONED"),
-/// 			ReadCapacity:  pulumi.Int(20),
-/// 			WriteCapacity: pulumi.Int(20),
-/// 			HashKey:       pulumi.String("UserId"),
-/// 			RangeKey:      pulumi.String("GameTitle"),
+/// 			Ttl: &dynamodb.TableTtlArgs{
+/// 				AttributeName: pulumi.String("TimeToExist"),
+/// 				Enabled:       pulumi.Bool(true),
+/// 			},
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("UserId"),
@@ -208,10 +210,6 @@ import 'table_warm_throughput.dart';
 /// 					Type: pulumi.String("N"),
 /// 				},
 /// 			},
-/// 			Ttl: &dynamodb.TableTtlArgs{
-/// 				AttributeName: pulumi.String("TimeToExist"),
-/// 				Enabled:       pulumi.Bool(true),
-/// 			},
 /// 			GlobalSecondaryIndexes: dynamodb.TableGlobalSecondaryIndexArray{
 /// 				&dynamodb.TableGlobalSecondaryIndexArgs{
 /// 					Name:           pulumi.String("GameTitleIndex"),
@@ -225,6 +223,12 @@ import 'table_warm_throughput.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:          pulumi.String("GameScores"),
+/// 			BillingMode:   pulumi.String("PROVISIONED"),
+/// 			ReadCapacity:  pulumi.Int(20),
+/// 			WriteCapacity: pulumi.Int(20),
+/// 			HashKey:       pulumi.String("UserId"),
+/// 			RangeKey:      pulumi.String("GameTitle"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name":        pulumi.String("dynamodb-table-1"),
 /// 				"Environment": pulumi.String("production"),
@@ -247,12 +251,10 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "basic-dynamodb-table" {
-///   name           = "GameScores"
-///   billing_mode   = "PROVISIONED"
-///   read_capacity  = 20
-///   write_capacity = 20
-///   hash_key       = "UserId"
-///   range_key      = "GameTitle"
+///   ttl = {
+///     attribute_name = "TimeToExist"
+///     enabled        = true
+///   }
 ///   attributes {
 ///     name = "UserId"
 ///     type = "S"
@@ -265,10 +267,6 @@ import 'table_warm_throughput.dart';
 ///     name = "TopScore"
 ///     type = "N"
 ///   }
-///   ttl = {
-///     attribute_name = "TimeToExist"
-///     enabled        = true
-///   }
 ///   global_secondary_indexes {
 ///     name               = "GameTitleIndex"
 ///     hash_key           = "GameTitle"
@@ -278,6 +276,12 @@ import 'table_warm_throughput.dart';
 ///     projection_type    = "INCLUDE"
 ///     non_key_attributes = ["UserId"]
 ///   }
+///   name           = "GameScores"
+///   billing_mode   = "PROVISIONED"
+///   read_capacity  = 20
+///   write_capacity = 20
+///   hash_key       = "UserId"
+///   range_key      = "GameTitle"
 ///   tags = {
 ///     "Name"        = "dynamodb-table-1"
 ///     "Environment" = "production"
@@ -292,8 +296,8 @@ import 'table_warm_throughput.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dynamodb.Table;
 /// import com.pulumi.aws.dynamodb.TableArgs;
-/// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableTtlArgs;
+/// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableGlobalSecondaryIndexArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -309,12 +313,10 @@ import 'table_warm_throughput.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var basic_dynamodb_table = new Table("basic-dynamodb-table", TableArgs.builder()
-///             .name("GameScores")
-///             .billingMode("PROVISIONED")
-///             .readCapacity(20)
-///             .writeCapacity(20)
-///             .hashKey("UserId")
-///             .rangeKey("GameTitle")
+///             .ttl(TableTtlArgs.builder()
+///                 .attributeName("TimeToExist")
+///                 .enabled(true)
+///                 .build())
 ///             .attributes(
 ///                 TableAttributeArgs.builder()
 ///                     .name("UserId")
@@ -328,10 +330,6 @@ import 'table_warm_throughput.dart';
 ///                     .name("TopScore")
 ///                     .type("N")
 ///                     .build())
-///             .ttl(TableTtlArgs.builder()
-///                 .attributeName("TimeToExist")
-///                 .enabled(true)
-///                 .build())
 ///             .globalSecondaryIndexes(TableGlobalSecondaryIndexArgs.builder()
 ///                 .name("GameTitleIndex")
 ///                 .hashKey("GameTitle")
@@ -341,6 +339,12 @@ import 'table_warm_throughput.dart';
 ///                 .projectionType("INCLUDE")
 ///                 .nonKeyAttributes("UserId")
 ///                 .build())
+///             .name("GameScores")
+///             .billingMode("PROVISIONED")
+///             .readCapacity(20)
+///             .writeCapacity(20)
+///             .hashKey("UserId")
+///             .rangeKey("GameTitle")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "dynamodb-table-1"),
 ///                 Map.entry("Environment", "production")
@@ -355,12 +359,9 @@ import 'table_warm_throughput.dart';
 ///   basic-dynamodb-table:
 ///     type: aws:dynamodb:Table
 ///     properties:
-///       name: GameScores
-///       billingMode: PROVISIONED
-///       readCapacity: 20
-///       writeCapacity: 20
-///       hashKey: UserId
-///       rangeKey: GameTitle
+///       ttl:
+///         attributeName: TimeToExist
+///         enabled: true
 ///       attributes:
 ///         - name: UserId
 ///           type: S
@@ -368,9 +369,6 @@ import 'table_warm_throughput.dart';
 ///           type: S
 ///         - name: TopScore
 ///           type: N
-///       ttl:
-///         attributeName: TimeToExist
-///         enabled: true
 ///       globalSecondaryIndexes:
 ///         - name: GameTitleIndex
 ///           hashKey: GameTitle
@@ -380,6 +378,12 @@ import 'table_warm_throughput.dart';
 ///           projectionType: INCLUDE
 ///           nonKeyAttributes:
 ///             - UserId
+///       name: GameScores
+///       billingMode: PROVISIONED
+///       readCapacity: 20
+///       writeCapacity: 20
+///       hashKey: UserId
+///       rangeKey: GameTitle
 ///       tags:
 ///         Name: dynamodb-table-1
 ///         Environment: production
@@ -398,11 +402,10 @@ import 'table_warm_throughput.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const basic_dynamodb_table = new aws.dynamodb.Table("basic-dynamodb-table", {
-///     name: "TournamentMatches",
-///     billingMode: "PROVISIONED",
-///     readCapacity: 20,
-///     writeCapacity: 20,
-///     hashKey: "matchId",
+///     ttl: {
+///         attributeName: "TimeToExist",
+///         enabled: true,
+///     },
 ///     attributes: [
 ///         {
 ///             name: "matchId",
@@ -433,13 +436,8 @@ import 'table_warm_throughput.dart';
 ///             type: "S",
 ///         },
 ///     ],
-///     ttl: {
-///         attributeName: "TimeToExist",
-///         enabled: true,
-///     },
 ///     globalSecondaryIndexes: [
 ///         {
-///             name: "TournamentRegionIndex",
 ///             keySchemas: [
 ///                 {
 ///                     attributeName: "tournamentId",
@@ -462,12 +460,12 @@ import 'table_warm_throughput.dart';
 ///                     keyType: "RANGE",
 ///                 },
 ///             ],
+///             name: "TournamentRegionIndex",
 ///             writeCapacity: 10,
 ///             readCapacity: 10,
 ///             projectionType: "ALL",
 ///         },
 ///         {
-///             name: "PlayerMatchHistoryIndex",
 ///             keySchemas: [
 ///                 {
 ///                     attributeName: "playerId",
@@ -482,11 +480,17 @@ import 'table_warm_throughput.dart';
 ///                     keyType: "RANGE",
 ///                 },
 ///             ],
+///             name: "PlayerMatchHistoryIndex",
 ///             writeCapacity: 10,
 ///             readCapacity: 10,
 ///             projectionType: "ALL",
 ///         },
 ///     ],
+///     name: "TournamentMatches",
+///     billingMode: "PROVISIONED",
+///     readCapacity: 20,
+///     writeCapacity: 20,
+///     hashKey: "matchId",
 ///     tags: {
 ///         Name: "dynamodb-table-1",
 ///         Environment: "production",
@@ -498,11 +502,10 @@ import 'table_warm_throughput.dart';
 /// import pulumi_aws as aws
 ///
 /// basic_dynamodb_table = aws.dynamodb.Table("basic-dynamodb-table",
-///     name="TournamentMatches",
-///     billing_mode="PROVISIONED",
-///     read_capacity=20,
-///     write_capacity=20,
-///     hash_key="matchId",
+///     ttl={
+///         "attribute_name": "TimeToExist",
+///         "enabled": True,
+///     },
 ///     attributes=[
 ///         {
 ///             "name": "matchId",
@@ -533,13 +536,8 @@ import 'table_warm_throughput.dart';
 ///             "type": "S",
 ///         },
 ///     ],
-///     ttl={
-///         "attribute_name": "TimeToExist",
-///         "enabled": True,
-///     },
 ///     global_secondary_indexes=[
 ///         {
-///             "name": "TournamentRegionIndex",
 ///             "key_schemas": [
 ///                 {
 ///                     "attribute_name": "tournamentId",
@@ -562,12 +560,12 @@ import 'table_warm_throughput.dart';
 ///                     "key_type": "RANGE",
 ///                 },
 ///             ],
+///             "name": "TournamentRegionIndex",
 ///             "write_capacity": 10,
 ///             "read_capacity": 10,
 ///             "projection_type": "ALL",
 ///         },
 ///         {
-///             "name": "PlayerMatchHistoryIndex",
 ///             "key_schemas": [
 ///                 {
 ///                     "attribute_name": "playerId",
@@ -582,11 +580,17 @@ import 'table_warm_throughput.dart';
 ///                     "key_type": "RANGE",
 ///                 },
 ///             ],
+///             "name": "PlayerMatchHistoryIndex",
 ///             "write_capacity": 10,
 ///             "read_capacity": 10,
 ///             "projection_type": "ALL",
 ///         },
 ///     ],
+///     name="TournamentMatches",
+///     billing_mode="PROVISIONED",
+///     read_capacity=20,
+///     write_capacity=20,
+///     hash_key="matchId",
 ///     tags={
 ///         "Name": "dynamodb-table-1",
 ///         "Environment": "production",
@@ -602,11 +606,11 @@ import 'table_warm_throughput.dart';
 /// {
 ///     var basic_dynamodb_table = new Aws.DynamoDB.Table("basic-dynamodb-table", new()
 ///     {
-///         Name = "TournamentMatches",
-///         BillingMode = "PROVISIONED",
-///         ReadCapacity = 20,
-///         WriteCapacity = 20,
-///         HashKey = "matchId",
+///         Ttl = new Aws.DynamoDB.Inputs.TableTtlArgs
+///         {
+///             AttributeName = "TimeToExist",
+///             Enabled = true,
+///         },
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -645,16 +649,10 @@ import 'table_warm_throughput.dart';
 ///                 Type = "S",
 ///             },
 ///         },
-///         Ttl = new Aws.DynamoDB.Inputs.TableTtlArgs
-///         {
-///             AttributeName = "TimeToExist",
-///             Enabled = true,
-///         },
 ///         GlobalSecondaryIndexes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableGlobalSecondaryIndexArgs
 ///             {
-///                 Name = "TournamentRegionIndex",
 ///                 KeySchemas = new[]
 ///                 {
 ///                     new Aws.DynamoDB.Inputs.TableGlobalSecondaryIndexKeySchemaArgs
@@ -683,13 +681,13 @@ import 'table_warm_throughput.dart';
 ///                         KeyType = "RANGE",
 ///                     },
 ///                 },
+///                 Name = "TournamentRegionIndex",
 ///                 WriteCapacity = 10,
 ///                 ReadCapacity = 10,
 ///                 ProjectionType = "ALL",
 ///             },
 ///             new Aws.DynamoDB.Inputs.TableGlobalSecondaryIndexArgs
 ///             {
-///                 Name = "PlayerMatchHistoryIndex",
 ///                 KeySchemas = new[]
 ///                 {
 ///                     new Aws.DynamoDB.Inputs.TableGlobalSecondaryIndexKeySchemaArgs
@@ -708,11 +706,17 @@ import 'table_warm_throughput.dart';
 ///                         KeyType = "RANGE",
 ///                     },
 ///                 },
+///                 Name = "PlayerMatchHistoryIndex",
 ///                 WriteCapacity = 10,
 ///                 ReadCapacity = 10,
 ///                 ProjectionType = "ALL",
 ///             },
 ///         },
+///         Name = "TournamentMatches",
+///         BillingMode = "PROVISIONED",
+///         ReadCapacity = 20,
+///         WriteCapacity = 20,
+///         HashKey = "matchId",
 ///         Tags =
 ///         {
 ///             { "Name", "dynamodb-table-1" },
@@ -733,11 +737,10 @@ import 'table_warm_throughput.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dynamodb.NewTable(ctx, "basic-dynamodb-table", &dynamodb.TableArgs{
-/// 			Name:          pulumi.String("TournamentMatches"),
-/// 			BillingMode:   pulumi.String("PROVISIONED"),
-/// 			ReadCapacity:  pulumi.Int(20),
-/// 			WriteCapacity: pulumi.Int(20),
-/// 			HashKey:       pulumi.String("matchId"),
+/// 			Ttl: &dynamodb.TableTtlArgs{
+/// 				AttributeName: pulumi.String("TimeToExist"),
+/// 				Enabled:       pulumi.Bool(true),
+/// 			},
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("matchId"),
@@ -768,13 +771,8 @@ import 'table_warm_throughput.dart';
 /// 					Type: pulumi.String("S"),
 /// 				},
 /// 			},
-/// 			Ttl: &dynamodb.TableTtlArgs{
-/// 				AttributeName: pulumi.String("TimeToExist"),
-/// 				Enabled:       pulumi.Bool(true),
-/// 			},
 /// 			GlobalSecondaryIndexes: dynamodb.TableGlobalSecondaryIndexArray{
 /// 				&dynamodb.TableGlobalSecondaryIndexArgs{
-/// 					Name: pulumi.String("TournamentRegionIndex"),
 /// 					KeySchemas: dynamodb.TableGlobalSecondaryIndexKeySchemaArray{
 /// 						&dynamodb.TableGlobalSecondaryIndexKeySchemaArgs{
 /// 							AttributeName: pulumi.String("tournamentId"),
@@ -797,12 +795,12 @@ import 'table_warm_throughput.dart';
 /// 							KeyType:       pulumi.String("RANGE"),
 /// 						},
 /// 					},
+/// 					Name:           pulumi.String("TournamentRegionIndex"),
 /// 					WriteCapacity:  pulumi.Int(10),
 /// 					ReadCapacity:   pulumi.Int(10),
 /// 					ProjectionType: pulumi.String("ALL"),
 /// 				},
 /// 				&dynamodb.TableGlobalSecondaryIndexArgs{
-/// 					Name: pulumi.String("PlayerMatchHistoryIndex"),
 /// 					KeySchemas: dynamodb.TableGlobalSecondaryIndexKeySchemaArray{
 /// 						&dynamodb.TableGlobalSecondaryIndexKeySchemaArgs{
 /// 							AttributeName: pulumi.String("playerId"),
@@ -817,11 +815,17 @@ import 'table_warm_throughput.dart';
 /// 							KeyType:       pulumi.String("RANGE"),
 /// 						},
 /// 					},
+/// 					Name:           pulumi.String("PlayerMatchHistoryIndex"),
 /// 					WriteCapacity:  pulumi.Int(10),
 /// 					ReadCapacity:   pulumi.Int(10),
 /// 					ProjectionType: pulumi.String("ALL"),
 /// 				},
 /// 			},
+/// 			Name:          pulumi.String("TournamentMatches"),
+/// 			BillingMode:   pulumi.String("PROVISIONED"),
+/// 			ReadCapacity:  pulumi.Int(20),
+/// 			WriteCapacity: pulumi.Int(20),
+/// 			HashKey:       pulumi.String("matchId"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name":        pulumi.String("dynamodb-table-1"),
 /// 				"Environment": pulumi.String("production"),
@@ -844,11 +848,10 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "basic-dynamodb-table" {
-///   name           = "TournamentMatches"
-///   billing_mode   = "PROVISIONED"
-///   read_capacity  = 20
-///   write_capacity = 20
-///   hash_key       = "matchId"
+///   ttl = {
+///     attribute_name = "TimeToExist"
+///     enabled        = true
+///   }
 ///   attributes {
 ///     name = "matchId"
 ///     type = "S"
@@ -877,12 +880,7 @@ import 'table_warm_throughput.dart';
 ///     name = "matchDate"
 ///     type = "S"
 ///   }
-///   ttl = {
-///     attribute_name = "TimeToExist"
-///     enabled        = true
-///   }
 ///   global_secondary_indexes {
-///     name = "TournamentRegionIndex"
 ///     key_schemas {
 ///       attribute_name = "tournamentId"
 ///       key_type       = "HASH"
@@ -903,12 +901,12 @@ import 'table_warm_throughput.dart';
 ///       attribute_name = "matchId"
 ///       key_type       = "RANGE"
 ///     }
+///     name            = "TournamentRegionIndex"
 ///     write_capacity  = 10
 ///     read_capacity   = 10
 ///     projection_type = "ALL"
 ///   }
 ///   global_secondary_indexes {
-///     name = "PlayerMatchHistoryIndex"
 ///     key_schemas {
 ///       attribute_name = "playerId"
 ///       key_type       = "HASH"
@@ -921,10 +919,16 @@ import 'table_warm_throughput.dart';
 ///       attribute_name = "round"
 ///       key_type       = "RANGE"
 ///     }
+///     name            = "PlayerMatchHistoryIndex"
 ///     write_capacity  = 10
 ///     read_capacity   = 10
 ///     projection_type = "ALL"
 ///   }
+///   name           = "TournamentMatches"
+///   billing_mode   = "PROVISIONED"
+///   read_capacity  = 20
+///   write_capacity = 20
+///   hash_key       = "matchId"
 ///   tags = {
 ///     "Name"        = "dynamodb-table-1"
 ///     "Environment" = "production"
@@ -939,8 +943,8 @@ import 'table_warm_throughput.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dynamodb.Table;
 /// import com.pulumi.aws.dynamodb.TableArgs;
-/// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableTtlArgs;
+/// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableGlobalSecondaryIndexArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableGlobalSecondaryIndexKeySchemaArgs;
 /// import java.util.ArrayList;
@@ -957,11 +961,10 @@ import 'table_warm_throughput.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var basic_dynamodb_table = new Table("basic-dynamodb-table", TableArgs.builder()
-///             .name("TournamentMatches")
-///             .billingMode("PROVISIONED")
-///             .readCapacity(20)
-///             .writeCapacity(20)
-///             .hashKey("matchId")
+///             .ttl(TableTtlArgs.builder()
+///                 .attributeName("TimeToExist")
+///                 .enabled(true)
+///                 .build())
 ///             .attributes(
 ///                 TableAttributeArgs.builder()
 ///                     .name("matchId")
@@ -991,13 +994,8 @@ import 'table_warm_throughput.dart';
 ///                     .name("matchDate")
 ///                     .type("S")
 ///                     .build())
-///             .ttl(TableTtlArgs.builder()
-///                 .attributeName("TimeToExist")
-///                 .enabled(true)
-///                 .build())
 ///             .globalSecondaryIndexes(
 ///                 TableGlobalSecondaryIndexArgs.builder()
-///                     .name("TournamentRegionIndex")
 ///                     .keySchemas(
 ///                         TableGlobalSecondaryIndexKeySchemaArgs.builder()
 ///                             .attributeName("tournamentId")
@@ -1019,12 +1017,12 @@ import 'table_warm_throughput.dart';
 ///                             .attributeName("matchId")
 ///                             .keyType("RANGE")
 ///                             .build())
+///                     .name("TournamentRegionIndex")
 ///                     .writeCapacity(10)
 ///                     .readCapacity(10)
 ///                     .projectionType("ALL")
 ///                     .build(),
 ///                 TableGlobalSecondaryIndexArgs.builder()
-///                     .name("PlayerMatchHistoryIndex")
 ///                     .keySchemas(
 ///                         TableGlobalSecondaryIndexKeySchemaArgs.builder()
 ///                             .attributeName("playerId")
@@ -1038,10 +1036,16 @@ import 'table_warm_throughput.dart';
 ///                             .attributeName("round")
 ///                             .keyType("RANGE")
 ///                             .build())
+///                     .name("PlayerMatchHistoryIndex")
 ///                     .writeCapacity(10)
 ///                     .readCapacity(10)
 ///                     .projectionType("ALL")
 ///                     .build())
+///             .name("TournamentMatches")
+///             .billingMode("PROVISIONED")
+///             .readCapacity(20)
+///             .writeCapacity(20)
+///             .hashKey("matchId")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "dynamodb-table-1"),
 ///                 Map.entry("Environment", "production")
@@ -1056,11 +1060,9 @@ import 'table_warm_throughput.dart';
 ///   basic-dynamodb-table:
 ///     type: aws:dynamodb:Table
 ///     properties:
-///       name: TournamentMatches
-///       billingMode: PROVISIONED
-///       readCapacity: 20
-///       writeCapacity: 20
-///       hashKey: matchId
+///       ttl:
+///         attributeName: TimeToExist
+///         enabled: true
 ///       attributes:
 ///         - name: matchId
 ///           type: S
@@ -1076,12 +1078,8 @@ import 'table_warm_throughput.dart';
 ///           type: N
 ///         - name: matchDate
 ///           type: S
-///       ttl:
-///         attributeName: TimeToExist
-///         enabled: true
 ///       globalSecondaryIndexes:
-///         - name: TournamentRegionIndex
-///           keySchemas:
+///         - keySchemas:
 ///             - attributeName: tournamentId
 ///               keyType: HASH
 ///             - attributeName: region
@@ -1092,20 +1090,26 @@ import 'table_warm_throughput.dart';
 ///               keyType: RANGE
 ///             - attributeName: matchId
 ///               keyType: RANGE
+///           name: TournamentRegionIndex
 ///           writeCapacity: 10
 ///           readCapacity: 10
 ///           projectionType: ALL
-///         - name: PlayerMatchHistoryIndex
-///           keySchemas:
+///         - keySchemas:
 ///             - attributeName: playerId
 ///               keyType: HASH
 ///             - attributeName: matchDate
 ///               keyType: RANGE
 ///             - attributeName: round
 ///               keyType: RANGE
+///           name: PlayerMatchHistoryIndex
 ///           writeCapacity: 10
 ///           readCapacity: 10
 ///           projectionType: ALL
+///       name: TournamentMatches
+///       billingMode: PROVISIONED
+///       readCapacity: 20
+///       writeCapacity: 20
+///       hashKey: matchId
 ///       tags:
 ///         Name: dynamodb-table-1
 ///         Environment: production
@@ -1124,11 +1128,6 @@ import 'table_warm_throughput.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.dynamodb.Table("example", {
-///     name: "example",
-///     hashKey: "TestTableHashKey",
-///     billingMode: "PAY_PER_REQUEST",
-///     streamEnabled: true,
-///     streamViewType: "NEW_AND_OLD_IMAGES",
 ///     attributes: [{
 ///         name: "TestTableHashKey",
 ///         type: "S",
@@ -1141,6 +1140,11 @@ import 'table_warm_throughput.dart';
 ///             regionName: "us-west-2",
 ///         },
 ///     ],
+///     name: "example",
+///     hashKey: "TestTableHashKey",
+///     billingMode: "PAY_PER_REQUEST",
+///     streamEnabled: true,
+///     streamViewType: "NEW_AND_OLD_IMAGES",
 /// });
 /// ```
 /// ```python
@@ -1148,11 +1152,6 @@ import 'table_warm_throughput.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.dynamodb.Table("example",
-///     name="example",
-///     hash_key="TestTableHashKey",
-///     billing_mode="PAY_PER_REQUEST",
-///     stream_enabled=True,
-///     stream_view_type="NEW_AND_OLD_IMAGES",
 ///     attributes=[{
 ///         "name": "TestTableHashKey",
 ///         "type": "S",
@@ -1164,7 +1163,12 @@ import 'table_warm_throughput.dart';
 ///         {
 ///             "region_name": "us-west-2",
 ///         },
-///     ])
+///     ],
+///     name="example",
+///     hash_key="TestTableHashKey",
+///     billing_mode="PAY_PER_REQUEST",
+///     stream_enabled=True,
+///     stream_view_type="NEW_AND_OLD_IMAGES")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1176,11 +1180,6 @@ import 'table_warm_throughput.dart';
 /// {
 ///     var example = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         Name = "example",
-///         HashKey = "TestTableHashKey",
-///         BillingMode = "PAY_PER_REQUEST",
-///         StreamEnabled = true,
-///         StreamViewType = "NEW_AND_OLD_IMAGES",
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -1200,6 +1199,11 @@ import 'table_warm_throughput.dart';
 ///                 RegionName = "us-west-2",
 ///             },
 ///         },
+///         Name = "example",
+///         HashKey = "TestTableHashKey",
+///         BillingMode = "PAY_PER_REQUEST",
+///         StreamEnabled = true,
+///         StreamViewType = "NEW_AND_OLD_IMAGES",
 ///     });
 ///
 /// });
@@ -1215,11 +1219,6 @@ import 'table_warm_throughput.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			Name:           pulumi.String("example"),
-/// 			HashKey:        pulumi.String("TestTableHashKey"),
-/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
-/// 			StreamEnabled:  pulumi.Bool(true),
-/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("TestTableHashKey"),
@@ -1234,6 +1233,11 @@ import 'table_warm_throughput.dart';
 /// 					RegionName: pulumi.String("us-west-2"),
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("example"),
+/// 			HashKey:        pulumi.String("TestTableHashKey"),
+/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
+/// 			StreamEnabled:  pulumi.Bool(true),
+/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1252,11 +1256,6 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   name             = "example"
-///   hash_key         = "TestTableHashKey"
-///   billing_mode     = "PAY_PER_REQUEST"
-///   stream_enabled   = true
-///   stream_view_type = "NEW_AND_OLD_IMAGES"
 ///   attributes {
 ///     name = "TestTableHashKey"
 ///     type = "S"
@@ -1267,6 +1266,11 @@ import 'table_warm_throughput.dart';
 ///   replicas {
 ///     region_name = "us-west-2"
 ///   }
+///   name             = "example"
+///   hash_key         = "TestTableHashKey"
+///   billing_mode     = "PAY_PER_REQUEST"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
 /// }
 /// ```
 /// ```java
@@ -1293,11 +1297,6 @@ import 'table_warm_throughput.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Table("example", TableArgs.builder()
-///             .name("example")
-///             .hashKey("TestTableHashKey")
-///             .billingMode("PAY_PER_REQUEST")
-///             .streamEnabled(true)
-///             .streamViewType("NEW_AND_OLD_IMAGES")
 ///             .attributes(TableAttributeArgs.builder()
 ///                 .name("TestTableHashKey")
 ///                 .type("S")
@@ -1309,6 +1308,11 @@ import 'table_warm_throughput.dart';
 ///                 TableReplicaArgs.builder()
 ///                     .regionName("us-west-2")
 ///                     .build())
+///             .name("example")
+///             .hashKey("TestTableHashKey")
+///             .billingMode("PAY_PER_REQUEST")
+///             .streamEnabled(true)
+///             .streamViewType("NEW_AND_OLD_IMAGES")
 ///             .build());
 ///
 ///     }
@@ -1319,17 +1323,17 @@ import 'table_warm_throughput.dart';
 ///   example:
 ///     type: aws:dynamodb:Table
 ///     properties:
-///       name: example
-///       hashKey: TestTableHashKey
-///       billingMode: PAY_PER_REQUEST
-///       streamEnabled: true
-///       streamViewType: NEW_AND_OLD_IMAGES
 ///       attributes:
 ///         - name: TestTableHashKey
 ///           type: S
 ///       replicas:
 ///         - regionName: us-east-2
 ///         - regionName: us-west-2
+///       name: example
+///       hashKey: TestTableHashKey
+///       billingMode: PAY_PER_REQUEST
+///       streamEnabled: true
+///       streamViewType: NEW_AND_OLD_IMAGES
 /// ```
 ///
 ///
@@ -1351,11 +1355,6 @@ import 'table_warm_throughput.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.dynamodb.Table("example", {
-///     name: "example",
-///     hashKey: "TestTableHashKey",
-///     billingMode: "PAY_PER_REQUEST",
-///     streamEnabled: true,
-///     streamViewType: "NEW_AND_OLD_IMAGES",
 ///     attributes: [{
 ///         name: "TestTableHashKey",
 ///         type: "S",
@@ -1370,6 +1369,11 @@ import 'table_warm_throughput.dart';
 ///             consistencyMode: "STRONG",
 ///         },
 ///     ],
+///     name: "example",
+///     hashKey: "TestTableHashKey",
+///     billingMode: "PAY_PER_REQUEST",
+///     streamEnabled: true,
+///     streamViewType: "NEW_AND_OLD_IMAGES",
 /// });
 /// ```
 /// ```python
@@ -1377,11 +1381,6 @@ import 'table_warm_throughput.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.dynamodb.Table("example",
-///     name="example",
-///     hash_key="TestTableHashKey",
-///     billing_mode="PAY_PER_REQUEST",
-///     stream_enabled=True,
-///     stream_view_type="NEW_AND_OLD_IMAGES",
 ///     attributes=[{
 ///         "name": "TestTableHashKey",
 ///         "type": "S",
@@ -1395,7 +1394,12 @@ import 'table_warm_throughput.dart';
 ///             "region_name": "us-west-2",
 ///             "consistency_mode": "STRONG",
 ///         },
-///     ])
+///     ],
+///     name="example",
+///     hash_key="TestTableHashKey",
+///     billing_mode="PAY_PER_REQUEST",
+///     stream_enabled=True,
+///     stream_view_type="NEW_AND_OLD_IMAGES")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1407,11 +1411,6 @@ import 'table_warm_throughput.dart';
 /// {
 ///     var example = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         Name = "example",
-///         HashKey = "TestTableHashKey",
-///         BillingMode = "PAY_PER_REQUEST",
-///         StreamEnabled = true,
-///         StreamViewType = "NEW_AND_OLD_IMAGES",
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -1433,6 +1432,11 @@ import 'table_warm_throughput.dart';
 ///                 ConsistencyMode = "STRONG",
 ///             },
 ///         },
+///         Name = "example",
+///         HashKey = "TestTableHashKey",
+///         BillingMode = "PAY_PER_REQUEST",
+///         StreamEnabled = true,
+///         StreamViewType = "NEW_AND_OLD_IMAGES",
 ///     });
 ///
 /// });
@@ -1448,11 +1452,6 @@ import 'table_warm_throughput.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			Name:           pulumi.String("example"),
-/// 			HashKey:        pulumi.String("TestTableHashKey"),
-/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
-/// 			StreamEnabled:  pulumi.Bool(true),
-/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("TestTableHashKey"),
@@ -1469,6 +1468,11 @@ import 'table_warm_throughput.dart';
 /// 					ConsistencyMode: pulumi.String("STRONG"),
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("example"),
+/// 			HashKey:        pulumi.String("TestTableHashKey"),
+/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
+/// 			StreamEnabled:  pulumi.Bool(true),
+/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1487,11 +1491,6 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   name             = "example"
-///   hash_key         = "TestTableHashKey"
-///   billing_mode     = "PAY_PER_REQUEST"
-///   stream_enabled   = true
-///   stream_view_type = "NEW_AND_OLD_IMAGES"
 ///   attributes {
 ///     name = "TestTableHashKey"
 ///     type = "S"
@@ -1504,6 +1503,11 @@ import 'table_warm_throughput.dart';
 ///     region_name      = "us-west-2"
 ///     consistency_mode = "STRONG"
 ///   }
+///   name             = "example"
+///   hash_key         = "TestTableHashKey"
+///   billing_mode     = "PAY_PER_REQUEST"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
 /// }
 /// ```
 /// ```java
@@ -1530,11 +1534,6 @@ import 'table_warm_throughput.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Table("example", TableArgs.builder()
-///             .name("example")
-///             .hashKey("TestTableHashKey")
-///             .billingMode("PAY_PER_REQUEST")
-///             .streamEnabled(true)
-///             .streamViewType("NEW_AND_OLD_IMAGES")
 ///             .attributes(TableAttributeArgs.builder()
 ///                 .name("TestTableHashKey")
 ///                 .type("S")
@@ -1548,6 +1547,11 @@ import 'table_warm_throughput.dart';
 ///                     .regionName("us-west-2")
 ///                     .consistencyMode("STRONG")
 ///                     .build())
+///             .name("example")
+///             .hashKey("TestTableHashKey")
+///             .billingMode("PAY_PER_REQUEST")
+///             .streamEnabled(true)
+///             .streamViewType("NEW_AND_OLD_IMAGES")
 ///             .build());
 ///
 ///     }
@@ -1558,11 +1562,6 @@ import 'table_warm_throughput.dart';
 ///   example:
 ///     type: aws:dynamodb:Table
 ///     properties:
-///       name: example
-///       hashKey: TestTableHashKey
-///       billingMode: PAY_PER_REQUEST
-///       streamEnabled: true
-///       streamViewType: NEW_AND_OLD_IMAGES
 ///       attributes:
 ///         - name: TestTableHashKey
 ///           type: S
@@ -1571,6 +1570,11 @@ import 'table_warm_throughput.dart';
 ///           consistencyMode: STRONG
 ///         - regionName: us-west-2
 ///           consistencyMode: STRONG
+///       name: example
+///       hashKey: TestTableHashKey
+///       billingMode: PAY_PER_REQUEST
+///       streamEnabled: true
+///       streamViewType: NEW_AND_OLD_IMAGES
 /// ```
 ///
 ///
@@ -1582,11 +1586,9 @@ import 'table_warm_throughput.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.dynamodb.Table("example", {
-///     name: "example",
-///     hashKey: "TestTableHashKey",
-///     billingMode: "PAY_PER_REQUEST",
-///     streamEnabled: true,
-///     streamViewType: "NEW_AND_OLD_IMAGES",
+///     globalTableWitness: {
+///         regionName: "us-west-2",
+///     },
 ///     attributes: [{
 ///         name: "TestTableHashKey",
 ///         type: "S",
@@ -1595,9 +1597,11 @@ import 'table_warm_throughput.dart';
 ///         regionName: "us-east-2",
 ///         consistencyMode: "STRONG",
 ///     }],
-///     globalTableWitness: {
-///         regionName: "us-west-2",
-///     },
+///     name: "example",
+///     hashKey: "TestTableHashKey",
+///     billingMode: "PAY_PER_REQUEST",
+///     streamEnabled: true,
+///     streamViewType: "NEW_AND_OLD_IMAGES",
 /// });
 /// ```
 /// ```python
@@ -1605,11 +1609,9 @@ import 'table_warm_throughput.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.dynamodb.Table("example",
-///     name="example",
-///     hash_key="TestTableHashKey",
-///     billing_mode="PAY_PER_REQUEST",
-///     stream_enabled=True,
-///     stream_view_type="NEW_AND_OLD_IMAGES",
+///     global_table_witness={
+///         "region_name": "us-west-2",
+///     },
 ///     attributes=[{
 ///         "name": "TestTableHashKey",
 ///         "type": "S",
@@ -1618,9 +1620,11 @@ import 'table_warm_throughput.dart';
 ///         "region_name": "us-east-2",
 ///         "consistency_mode": "STRONG",
 ///     }],
-///     global_table_witness={
-///         "region_name": "us-west-2",
-///     })
+///     name="example",
+///     hash_key="TestTableHashKey",
+///     billing_mode="PAY_PER_REQUEST",
+///     stream_enabled=True,
+///     stream_view_type="NEW_AND_OLD_IMAGES")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1632,11 +1636,10 @@ import 'table_warm_throughput.dart';
 /// {
 ///     var example = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         Name = "example",
-///         HashKey = "TestTableHashKey",
-///         BillingMode = "PAY_PER_REQUEST",
-///         StreamEnabled = true,
-///         StreamViewType = "NEW_AND_OLD_IMAGES",
+///         GlobalTableWitness = new Aws.DynamoDB.Inputs.TableGlobalTableWitnessArgs
+///         {
+///             RegionName = "us-west-2",
+///         },
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -1653,10 +1656,11 @@ import 'table_warm_throughput.dart';
 ///                 ConsistencyMode = "STRONG",
 ///             },
 ///         },
-///         GlobalTableWitness = new Aws.DynamoDB.Inputs.TableGlobalTableWitnessArgs
-///         {
-///             RegionName = "us-west-2",
-///         },
+///         Name = "example",
+///         HashKey = "TestTableHashKey",
+///         BillingMode = "PAY_PER_REQUEST",
+///         StreamEnabled = true,
+///         StreamViewType = "NEW_AND_OLD_IMAGES",
 ///     });
 ///
 /// });
@@ -1672,11 +1676,9 @@ import 'table_warm_throughput.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			Name:           pulumi.String("example"),
-/// 			HashKey:        pulumi.String("TestTableHashKey"),
-/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
-/// 			StreamEnabled:  pulumi.Bool(true),
-/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
+/// 			GlobalTableWitness: &dynamodb.TableGlobalTableWitnessArgs{
+/// 				RegionName: pulumi.String("us-west-2"),
+/// 			},
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("TestTableHashKey"),
@@ -1689,9 +1691,11 @@ import 'table_warm_throughput.dart';
 /// 					ConsistencyMode: pulumi.String("STRONG"),
 /// 				},
 /// 			},
-/// 			GlobalTableWitness: &dynamodb.TableGlobalTableWitnessArgs{
-/// 				RegionName: pulumi.String("us-west-2"),
-/// 			},
+/// 			Name:           pulumi.String("example"),
+/// 			HashKey:        pulumi.String("TestTableHashKey"),
+/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
+/// 			StreamEnabled:  pulumi.Bool(true),
+/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1710,11 +1714,9 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   name             = "example"
-///   hash_key         = "TestTableHashKey"
-///   billing_mode     = "PAY_PER_REQUEST"
-///   stream_enabled   = true
-///   stream_view_type = "NEW_AND_OLD_IMAGES"
+///   global_table_witness = {
+///     region_name = "us-west-2"
+///   }
 ///   attributes {
 ///     name = "TestTableHashKey"
 ///     type = "S"
@@ -1723,9 +1725,11 @@ import 'table_warm_throughput.dart';
 ///     region_name      = "us-east-2"
 ///     consistency_mode = "STRONG"
 ///   }
-///   global_table_witness = {
-///     region_name = "us-west-2"
-///   }
+///   name             = "example"
+///   hash_key         = "TestTableHashKey"
+///   billing_mode     = "PAY_PER_REQUEST"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
 /// }
 /// ```
 /// ```java
@@ -1736,9 +1740,9 @@ import 'table_warm_throughput.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.dynamodb.Table;
 /// import com.pulumi.aws.dynamodb.TableArgs;
+/// import com.pulumi.aws.dynamodb.inputs.TableGlobalTableWitnessArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.dynamodb.inputs.TableReplicaArgs;
-/// import com.pulumi.aws.dynamodb.inputs.TableGlobalTableWitnessArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1753,11 +1757,9 @@ import 'table_warm_throughput.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Table("example", TableArgs.builder()
-///             .name("example")
-///             .hashKey("TestTableHashKey")
-///             .billingMode("PAY_PER_REQUEST")
-///             .streamEnabled(true)
-///             .streamViewType("NEW_AND_OLD_IMAGES")
+///             .globalTableWitness(TableGlobalTableWitnessArgs.builder()
+///                 .regionName("us-west-2")
+///                 .build())
 ///             .attributes(TableAttributeArgs.builder()
 ///                 .name("TestTableHashKey")
 ///                 .type("S")
@@ -1766,9 +1768,11 @@ import 'table_warm_throughput.dart';
 ///                 .regionName("us-east-2")
 ///                 .consistencyMode("STRONG")
 ///                 .build())
-///             .globalTableWitness(TableGlobalTableWitnessArgs.builder()
-///                 .regionName("us-west-2")
-///                 .build())
+///             .name("example")
+///             .hashKey("TestTableHashKey")
+///             .billingMode("PAY_PER_REQUEST")
+///             .streamEnabled(true)
+///             .streamViewType("NEW_AND_OLD_IMAGES")
 ///             .build());
 ///
 ///     }
@@ -1779,19 +1783,19 @@ import 'table_warm_throughput.dart';
 ///   example:
 ///     type: aws:dynamodb:Table
 ///     properties:
-///       name: example
-///       hashKey: TestTableHashKey
-///       billingMode: PAY_PER_REQUEST
-///       streamEnabled: true
-///       streamViewType: NEW_AND_OLD_IMAGES
+///       globalTableWitness:
+///         regionName: us-west-2
 ///       attributes:
 ///         - name: TestTableHashKey
 ///           type: S
 ///       replicas:
 ///         - regionName: us-east-2
 ///           consistencyMode: STRONG
-///       globalTableWitness:
-///         regionName: us-west-2
+///       name: example
+///       hashKey: TestTableHashKey
+///       billingMode: PAY_PER_REQUEST
+///       streamEnabled: true
+///       streamViewType: NEW_AND_OLD_IMAGES
 /// ```
 ///
 ///
@@ -1809,11 +1813,6 @@ import 'table_warm_throughput.dart';
 /// const alternate = aws.getRegion({});
 /// const third = aws.getRegion({});
 /// const example = new aws.dynamodb.Table("example", {
-///     billingMode: "PAY_PER_REQUEST",
-///     hashKey: "TestTableHashKey",
-///     name: "example-13281",
-///     streamEnabled: true,
-///     streamViewType: "NEW_AND_OLD_IMAGES",
 ///     attributes: [{
 ///         name: "TestTableHashKey",
 ///         type: "S",
@@ -1827,6 +1826,11 @@ import 'table_warm_throughput.dart';
 ///             propagateTags: true,
 ///         },
 ///     ],
+///     billingMode: "PAY_PER_REQUEST",
+///     hashKey: "TestTableHashKey",
+///     name: "example-13281",
+///     streamEnabled: true,
+///     streamViewType: "NEW_AND_OLD_IMAGES",
 ///     tags: {
 ///         Architect: "Eleanor",
 ///         Zone: "SW",
@@ -1851,11 +1855,6 @@ import 'table_warm_throughput.dart';
 /// alternate = aws.get_region()
 /// third = aws.get_region()
 /// example = aws.dynamodb.Table("example",
-///     billing_mode="PAY_PER_REQUEST",
-///     hash_key="TestTableHashKey",
-///     name="example-13281",
-///     stream_enabled=True,
-///     stream_view_type="NEW_AND_OLD_IMAGES",
 ///     attributes=[{
 ///         "name": "TestTableHashKey",
 ///         "type": "S",
@@ -1869,6 +1868,11 @@ import 'table_warm_throughput.dart';
 ///             "propagate_tags": True,
 ///         },
 ///     ],
+///     billing_mode="PAY_PER_REQUEST",
+///     hash_key="TestTableHashKey",
+///     name="example-13281",
+///     stream_enabled=True,
+///     stream_view_type="NEW_AND_OLD_IMAGES",
 ///     tags={
 ///         "Architect": "Eleanor",
 ///         "Zone": "SW",
@@ -1897,11 +1901,6 @@ import 'table_warm_throughput.dart';
 ///
 ///     var example = new Aws.DynamoDB.Table("example", new()
 ///     {
-///         BillingMode = "PAY_PER_REQUEST",
-///         HashKey = "TestTableHashKey",
-///         Name = "example-13281",
-///         StreamEnabled = true,
-///         StreamViewType = "NEW_AND_OLD_IMAGES",
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -1922,6 +1921,11 @@ import 'table_warm_throughput.dart';
 ///                 PropagateTags = true,
 ///             },
 ///         },
+///         BillingMode = "PAY_PER_REQUEST",
+///         HashKey = "TestTableHashKey",
+///         Name = "example-13281",
+///         StreamEnabled = true,
+///         StreamViewType = "NEW_AND_OLD_IMAGES",
 ///         Tags =
 ///         {
 ///             { "Architect", "Eleanor" },
@@ -1968,11 +1972,6 @@ import 'table_warm_throughput.dart';
 /// 			return err
 /// 		}
 /// 		example, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
-/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
-/// 			HashKey:        pulumi.String("TestTableHashKey"),
-/// 			Name:           pulumi.String("example-13281"),
-/// 			StreamEnabled:  pulumi.Bool(true),
-/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("TestTableHashKey"),
@@ -1988,6 +1987,11 @@ import 'table_warm_throughput.dart';
 /// 					PropagateTags: pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			BillingMode:    pulumi.String("PAY_PER_REQUEST"),
+/// 			HashKey:        pulumi.String("TestTableHashKey"),
+/// 			Name:           pulumi.String("example-13281"),
+/// 			StreamEnabled:  pulumi.Bool(true),
+/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Architect": pulumi.String("Eleanor"),
 /// 				"Zone":      pulumi.String("SW"),
@@ -2032,11 +2036,6 @@ import 'table_warm_throughput.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "example" {
-///   billing_mode     = "PAY_PER_REQUEST"
-///   hash_key         = "TestTableHashKey"
-///   name             = "example-13281"
-///   stream_enabled   = true
-///   stream_view_type = "NEW_AND_OLD_IMAGES"
 ///   attributes {
 ///     name = "TestTableHashKey"
 ///     type = "S"
@@ -2048,6 +2047,11 @@ import 'table_warm_throughput.dart';
 ///     region_name    = data.aws_getregion.third.region
 ///     propagate_tags = true
 ///   }
+///   billing_mode     = "PAY_PER_REQUEST"
+///   hash_key         = "TestTableHashKey"
+///   name             = "example-13281"
+///   stream_enabled   = true
+///   stream_view_type = "NEW_AND_OLD_IMAGES"
 ///   tags = {
 ///     "Architect" = "Eleanor"
 ///     "Zone"      = "SW"
@@ -2098,11 +2102,6 @@ import 'table_warm_throughput.dart';
 ///             .build());
 ///
 ///         var example = new Table("example", TableArgs.builder()
-///             .billingMode("PAY_PER_REQUEST")
-///             .hashKey("TestTableHashKey")
-///             .name("example-13281")
-///             .streamEnabled(true)
-///             .streamViewType("NEW_AND_OLD_IMAGES")
 ///             .attributes(TableAttributeArgs.builder()
 ///                 .name("TestTableHashKey")
 ///                 .type("S")
@@ -2115,6 +2114,11 @@ import 'table_warm_throughput.dart';
 ///                     .regionName(third.region())
 ///                     .propagateTags(true)
 ///                     .build())
+///             .billingMode("PAY_PER_REQUEST")
+///             .hashKey("TestTableHashKey")
+///             .name("example-13281")
+///             .streamEnabled(true)
+///             .streamViewType("NEW_AND_OLD_IMAGES")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Architect", "Eleanor"),
 ///                 Map.entry("Zone", "SW")
@@ -2139,11 +2143,6 @@ import 'table_warm_throughput.dart';
 ///   example:
 ///     type: aws:dynamodb:Table
 ///     properties:
-///       billingMode: PAY_PER_REQUEST
-///       hashKey: TestTableHashKey
-///       name: example-13281
-///       streamEnabled: true
-///       streamViewType: NEW_AND_OLD_IMAGES
 ///       attributes:
 ///         - name: TestTableHashKey
 ///           type: S
@@ -2151,6 +2150,11 @@ import 'table_warm_throughput.dart';
 ///         - regionName: ${alternate.region}
 ///         - regionName: ${third.region}
 ///           propagateTags: true
+///       billingMode: PAY_PER_REQUEST
+///       hashKey: TestTableHashKey
+///       name: example-13281
+///       streamEnabled: true
+///       streamViewType: NEW_AND_OLD_IMAGES
 ///       tags:
 ///         Architect: Eleanor
 ///         Zone: SW
@@ -2210,13 +2214,13 @@ class Table extends pulumi.CustomResource {
   /// * `replica.*.stream_label` - Timestamp, in ISO 8601 format, for the replica stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `streamEnabled = true`.
   late final pulumi.Output<String> arn;
   /// Set of nested attribute definitions. Only required for `hashKey` and `rangeKey` attributes. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> attributes;
+  late final pulumi.Output<List<TableAttribute>> attributes;
   /// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
   late final pulumi.Output<String?> billingMode;
   /// Enables deletion protection for table. Defaults to `false`.
   late final pulumi.Output<bool?> deletionProtectionEnabled;
   /// Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> globalSecondaryIndexes;
+  late final pulumi.Output<List<TableGlobalSecondaryIndex>> globalSecondaryIndexes;
   /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistencyMode` set to `STRONG`. Other combinations will fail to provision. See below.
   late final pulumi.Output<TableGlobalTableWitness> globalTableWitness;
   /// Attribute to use as the hash (partition) key. Must also be defined as an `attribute`. See below.
@@ -2224,7 +2228,7 @@ class Table extends pulumi.CustomResource {
   /// Import Amazon S3 data into a new table. See below.
   late final pulumi.Output<TableImportTable?> importTable;
   /// Describe an LSI on the table; these can only be allocated _at creation_ so you cannot change this definition after you have created the resource. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> localSecondaryIndexes;
+  late final pulumi.Output<List<TableLocalSecondaryIndex>?> localSecondaryIndexes;
   /// Unique within a region name of the table.
   ///
   /// The following arguments are optional:
@@ -2240,7 +2244,7 @@ class Table extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> replicas;
+  late final pulumi.Output<List<TableReplica>?> replicas;
   /// ARN of backup to restore.
   late final pulumi.Output<String?> restoreBackupArn;
   /// Time of the point-in-time recovery point to restore.
@@ -2290,24 +2294,24 @@ class Table extends pulumi.CustomResource {
           'aws:dynamodb/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    attributes = registerOutput<List<TableAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableAttribute>(guardedValue, (value) => TableAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     billingMode = registerOutput<String?>('billingMode');
     deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
-    globalSecondaryIndexes = registerOutput<List<Map<String, dynamic>>>('globalSecondaryIndexes');
+    globalSecondaryIndexes = registerOutput<List<TableGlobalSecondaryIndex>>('globalSecondaryIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableGlobalSecondaryIndex>(guardedValue, (value) => TableGlobalSecondaryIndex.fromMap((value as Map).cast<String, dynamic>())); });
     globalTableWitness = registerOutput<TableGlobalTableWitness>('globalTableWitness', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableGlobalTableWitness.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hashKey = registerOutput<String>('hashKey');
     importTable = registerOutput<TableImportTable?>('importTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableImportTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    localSecondaryIndexes = registerOutput<List<Map<String, dynamic>>?>('localSecondaryIndexes');
+    localSecondaryIndexes = registerOutput<List<TableLocalSecondaryIndex>?>('localSecondaryIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableLocalSecondaryIndex>(guardedValue, (value) => TableLocalSecondaryIndex.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     onDemandThroughput = registerOutput<TableOnDemandThroughput?>('onDemandThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TablePointInTimeRecovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rangeKey = registerOutput<String?>('rangeKey');
     readCapacity = registerOutput<int>('readCapacity');
     region = registerOutput<String>('region');
-    replicas = registerOutput<List<Map<String, dynamic>>?>('replicas');
+    replicas = registerOutput<List<TableReplica>?>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableReplica>(guardedValue, (value) => TableReplica.fromMap((value as Map).cast<String, dynamic>())); });
     restoreBackupArn = registerOutput<String?>('restoreBackupArn');
     restoreDateTime = registerOutput<String?>('restoreDateTime');
     restoreSourceName = registerOutput<String?>('restoreSourceName');
@@ -2319,8 +2323,8 @@ class Table extends pulumi.CustomResource {
     streamLabel = registerOutput<String>('streamLabel');
     streamViewType = registerOutput<String>('streamViewType');
     tableClass = registerOutput<String?>('tableClass');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<TableTtl>('ttl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     warmThroughput = registerOutput<TableWarmThroughput>('warmThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableWarmThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     writeCapacity = registerOutput<int>('writeCapacity');
@@ -2331,11 +2335,12 @@ class Table extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Table._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2350,21 +2355,21 @@ class Table extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    attributes = registerOutput<List<TableAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableAttribute>(guardedValue, (value) => TableAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     billingMode = registerOutput<String?>('billingMode');
     deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
-    globalSecondaryIndexes = registerOutput<List<Map<String, dynamic>>>('globalSecondaryIndexes');
+    globalSecondaryIndexes = registerOutput<List<TableGlobalSecondaryIndex>>('globalSecondaryIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableGlobalSecondaryIndex>(guardedValue, (value) => TableGlobalSecondaryIndex.fromMap((value as Map).cast<String, dynamic>())); });
     globalTableWitness = registerOutput<TableGlobalTableWitness>('globalTableWitness', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableGlobalTableWitness.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hashKey = registerOutput<String>('hashKey');
     importTable = registerOutput<TableImportTable?>('importTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableImportTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    localSecondaryIndexes = registerOutput<List<Map<String, dynamic>>?>('localSecondaryIndexes');
+    localSecondaryIndexes = registerOutput<List<TableLocalSecondaryIndex>?>('localSecondaryIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableLocalSecondaryIndex>(guardedValue, (value) => TableLocalSecondaryIndex.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     onDemandThroughput = registerOutput<TableOnDemandThroughput?>('onDemandThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TablePointInTimeRecovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rangeKey = registerOutput<String?>('rangeKey');
     readCapacity = registerOutput<int>('readCapacity');
     region = registerOutput<String>('region');
-    replicas = registerOutput<List<Map<String, dynamic>>?>('replicas');
+    replicas = registerOutput<List<TableReplica>?>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableReplica>(guardedValue, (value) => TableReplica.fromMap((value as Map).cast<String, dynamic>())); });
     restoreBackupArn = registerOutput<String?>('restoreBackupArn');
     restoreDateTime = registerOutput<String?>('restoreDateTime');
     restoreSourceName = registerOutput<String?>('restoreSourceName');
@@ -2376,8 +2381,51 @@ class Table extends pulumi.CustomResource {
     streamLabel = registerOutput<String>('streamLabel');
     streamViewType = registerOutput<String>('streamViewType');
     tableClass = registerOutput<String?>('tableClass');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ttl = registerOutput<TableTtl>('ttl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    warmThroughput = registerOutput<TableWarmThroughput>('warmThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableWarmThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    writeCapacity = registerOutput<int>('writeCapacity');
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'aws:dynamodb/table:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attributes = registerOutput<List<TableAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableAttribute>(guardedValue, (value) => TableAttribute.fromMap((value as Map).cast<String, dynamic>())); });
+    billingMode = registerOutput<String?>('billingMode');
+    deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
+    globalSecondaryIndexes = registerOutput<List<TableGlobalSecondaryIndex>>('globalSecondaryIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableGlobalSecondaryIndex>(guardedValue, (value) => TableGlobalSecondaryIndex.fromMap((value as Map).cast<String, dynamic>())); });
+    globalTableWitness = registerOutput<TableGlobalTableWitness>('globalTableWitness', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableGlobalTableWitness.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hashKey = registerOutput<String>('hashKey');
+    importTable = registerOutput<TableImportTable?>('importTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableImportTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localSecondaryIndexes = registerOutput<List<TableLocalSecondaryIndex>?>('localSecondaryIndexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableLocalSecondaryIndex>(guardedValue, (value) => TableLocalSecondaryIndex.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    onDemandThroughput = registerOutput<TableOnDemandThroughput?>('onDemandThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TablePointInTimeRecovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rangeKey = registerOutput<String?>('rangeKey');
+    readCapacity = registerOutput<int>('readCapacity');
+    region = registerOutput<String>('region');
+    replicas = registerOutput<List<TableReplica>?>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableReplica>(guardedValue, (value) => TableReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    restoreBackupArn = registerOutput<String?>('restoreBackupArn');
+    restoreDateTime = registerOutput<String?>('restoreDateTime');
+    restoreSourceName = registerOutput<String?>('restoreSourceName');
+    restoreSourceTableArn = registerOutput<String?>('restoreSourceTableArn');
+    restoreToLatestTime = registerOutput<bool?>('restoreToLatestTime');
+    serverSideEncryption = registerOutput<TableServerSideEncryption>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    streamArn = registerOutput<String>('streamArn');
+    streamEnabled = registerOutput<bool?>('streamEnabled');
+    streamLabel = registerOutput<String>('streamLabel');
+    streamViewType = registerOutput<String>('streamViewType');
+    tableClass = registerOutput<String?>('tableClass');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<TableTtl>('ttl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableTtl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     warmThroughput = registerOutput<TableWarmThroughput>('warmThroughput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableWarmThroughput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     writeCapacity = registerOutput<int>('writeCapacity');

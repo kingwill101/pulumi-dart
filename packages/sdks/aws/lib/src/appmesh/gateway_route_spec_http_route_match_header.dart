@@ -5,8 +5,8 @@ import 'gateway_route_spec_http_route_match_header_match.dart';
 
 class GatewayRouteSpecHttpRouteMatchHeader {
   /// If `true`, the match is on the opposite of the `match` method and value. Default is `false`.
-  final pulumi.Input<bool>? invert;
-  final pulumi.Input<GatewayRouteSpecHttpRouteMatchHeaderMatch>? match;
+  final pulumi.Input<bool?>? invert;
+  final pulumi.Input<GatewayRouteSpecHttpRouteMatchHeaderMatch?>? match;
   /// Name to use for the gateway route. Must be between 1 and 255 characters in length.
   final pulumi.Input<String> name;
 

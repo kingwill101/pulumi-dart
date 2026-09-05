@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering QueryLog resources.
 class QueryLogState {
-  /// The Amazon Resource Name (ARN) of the Query Logging Config.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Query Logging Config.
+  final pulumi.Input<String?>? arn;
   /// CloudWatch log group ARN to send query logs.
-  final pulumi.Input<String>? cloudwatchLogGroupArn;
+  final pulumi.Input<String?>? cloudwatchLogGroupArn;
   /// Route53 hosted zone ID to enable query logs.
-  final pulumi.Input<String>? zoneId;
+  final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [QueryLogState].
-  /// [arn] The Amazon Resource Name (ARN) of the Query Logging Config.
+  /// [arn] ARN of the Query Logging Config.
   /// [cloudwatchLogGroupArn] CloudWatch log group ARN to send query logs.
   /// [zoneId] Route53 hosted zone ID to enable query logs.
   const QueryLogState({

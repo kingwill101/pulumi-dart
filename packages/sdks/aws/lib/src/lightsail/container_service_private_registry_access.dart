@@ -5,7 +5,7 @@ import 'container_service_private_registry_access_ecr_image_puller_role.dart';
 
 class ContainerServicePrivateRegistryAccess {
   /// Configuration to access private container image repositories, such as Amazon Elastic Container Registry (Amazon ECR) private repositories. See below.
-  final pulumi.Input<ContainerServicePrivateRegistryAccessEcrImagePullerRole>? ecrImagePullerRole;
+  final pulumi.Input<ContainerServicePrivateRegistryAccessEcrImagePullerRole?>? ecrImagePullerRole;
 
   /// Creates a new [ContainerServicePrivateRegistryAccess].
   /// [ecrImagePullerRole] Configuration to access private container image repositories, such as Amazon Elastic Container Registry (Amazon ECR) private repositories. See below.

@@ -6,7 +6,7 @@ class TableMetadataIcebergSchemaField {
   /// Name of the field.
   final pulumi.Input<String> name;
   /// Boolean value that specifies whether values are required for each row in this field. Defaults to `false`.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   /// Field type. S3 Tables supports all Apache Iceberg primitive types including: `boolean`, `int`, `long`, `float`, `double`, `decimal(precision,scale)`, `date`, `time`, `timestamp`, `timestamptz`, `string`, `uuid`, `fixed(length)`, `binary`.
   final pulumi.Input<String> type;
 

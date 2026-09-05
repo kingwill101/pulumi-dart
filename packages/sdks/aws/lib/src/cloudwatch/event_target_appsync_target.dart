@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventTargetAppsyncTarget {
   /// Contains the GraphQL mutation to be parsed and executed.
-  final pulumi.Input<String>? graphqlOperation;
+  final pulumi.Input<String?>? graphqlOperation;
 
   /// Creates a new [EventTargetAppsyncTarget].
   /// [graphqlOperation] Contains the GraphQL mutation to be parsed and executed.

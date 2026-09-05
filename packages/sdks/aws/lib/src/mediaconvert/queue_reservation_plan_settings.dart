@@ -32,7 +32,7 @@ class QueueReservationPlanSettings {
     return QueueReservationPlanSettings(
       commitment: pulumi.Input.fromValue(map['commitment'] as String),
       renewalType: pulumi.Input.fromValue(map['renewalType'] as String),
-      reservedSlots: pulumi.Input.fromValue(map['reservedSlots'] as int),
+      reservedSlots: pulumi.Input.fromValue((map['reservedSlots'] as num).toInt()),
     );
   }
 }

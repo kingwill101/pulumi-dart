@@ -6,11 +6,11 @@ class AssociationOutputLocation {
   /// The S3 bucket name.
   final pulumi.Input<String> s3BucketName;
   /// The S3 bucket prefix. Results stored in the root if not configured.
-  final pulumi.Input<String>? s3KeyPrefix;
+  final pulumi.Input<String?>? s3KeyPrefix;
   /// The S3 bucket region.
   ///
   /// Targets specify what instance IDs or tags to apply the document to and has these keys:
-  final pulumi.Input<String>? s3Region;
+  final pulumi.Input<String?>? s3Region;
 
   /// Creates a new [AssociationOutputLocation].
   /// [s3BucketName] The S3 bucket name.

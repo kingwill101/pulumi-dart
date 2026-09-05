@@ -21,17 +21,17 @@ import 'field_level_encryption_profile_state.dart';
 ///     name: "test_key",
 /// });
 /// const test = new aws.cloudfront.FieldLevelEncryptionProfile("test", {
-///     comment: "test comment",
-///     name: "test profile",
 ///     encryptionEntities: {
 ///         items: [{
-///             publicKeyId: example.id,
-///             providerId: "test provider",
 ///             fieldPatterns: {
 ///                 items: ["DateOfBirth"],
 ///             },
+///             publicKeyId: example.id,
+///             providerId: "test provider",
 ///         }],
 ///     },
+///     comment: "test comment",
+///     name: "test profile",
 /// });
 /// ```
 /// ```python
@@ -44,17 +44,17 @@ import 'field_level_encryption_profile_state.dart';
 ///     encoded_key=std.file(input="public_key.pem").result,
 ///     name="test_key")
 /// test = aws.cloudfront.FieldLevelEncryptionProfile("test",
-///     comment="test comment",
-///     name="test profile",
 ///     encryption_entities={
 ///         "items": [{
-///             "public_key_id": example.id,
-///             "provider_id": "test provider",
 ///             "field_patterns": {
 ///                 "items": ["DateOfBirth"],
 ///             },
+///             "public_key_id": example.id,
+///             "provider_id": "test provider",
 ///         }],
-///     })
+///     },
+///     comment="test comment",
+///     name="test profile")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -77,16 +77,12 @@ import 'field_level_encryption_profile_state.dart';
 ///
 ///     var test = new Aws.CloudFront.FieldLevelEncryptionProfile("test", new()
 ///     {
-///         Comment = "test comment",
-///         Name = "test profile",
 ///         EncryptionEntities = new Aws.CloudFront.Inputs.FieldLevelEncryptionProfileEncryptionEntitiesArgs
 ///         {
 ///             Items = new[]
 ///             {
 ///                 new Aws.CloudFront.Inputs.FieldLevelEncryptionProfileEncryptionEntitiesItemArgs
 ///                 {
-///                     PublicKeyId = example.Id,
-///                     ProviderId = "test provider",
 ///                     FieldPatterns = new Aws.CloudFront.Inputs.FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatternsArgs
 ///                     {
 ///                         Items = new[]
@@ -94,9 +90,13 @@ import 'field_level_encryption_profile_state.dart';
 ///                             "DateOfBirth",
 ///                         },
 ///                     },
+///                     PublicKeyId = example.Id,
+///                     ProviderId = "test provider",
 ///                 },
 ///             },
 ///         },
+///         Comment = "test comment",
+///         Name = "test profile",
 ///     });
 ///
 /// });
@@ -127,21 +127,21 @@ import 'field_level_encryption_profile_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudfront.NewFieldLevelEncryptionProfile(ctx, "test", &cloudfront.FieldLevelEncryptionProfileArgs{
-/// 			Comment: pulumi.String("test comment"),
-/// 			Name:    pulumi.String("test profile"),
 /// 			EncryptionEntities: &cloudfront.FieldLevelEncryptionProfileEncryptionEntitiesArgs{
 /// 				Items: cloudfront.FieldLevelEncryptionProfileEncryptionEntitiesItemArray{
 /// 					&cloudfront.FieldLevelEncryptionProfileEncryptionEntitiesItemArgs{
-/// 						PublicKeyId: example.ID().ToIDOutput().ToStringOutput(),
-/// 						ProviderId:  pulumi.String("test provider"),
 /// 						FieldPatterns: &cloudfront.FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatternsArgs{
 /// 							Items: pulumi.StringArray{
 /// 								pulumi.String("DateOfBirth"),
 /// 							},
 /// 						},
+/// 						PublicKeyId: example.ID().ToIDOutput().ToStringOutput(),
+/// 						ProviderId:  pulumi.String("test provider"),
 /// 					},
 /// 				},
 /// 			},
+/// 			Comment: pulumi.String("test comment"),
+/// 			Name:    pulumi.String("test profile"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -168,17 +168,17 @@ import 'field_level_encryption_profile_state.dart';
 ///   name        = "test_key"
 /// }
 /// resource "aws_cloudfront_fieldlevelencryptionprofile" "test" {
-///   comment = "test comment"
-///   name    = "test profile"
 ///   encryption_entities = {
 ///     items = [{
-///       "publicKeyId" = aws_cloudfront_publickey.example.id
-///       "providerId"  = "test provider"
 ///       "fieldPatterns" = {
 ///         "items" = ["DateOfBirth"]
 ///       }
+///       "publicKeyId" = aws_cloudfront_publickey.example.id
+///       "providerId"  = "test provider"
 ///     }]
 ///   }
+///   comment = "test comment"
+///   name    = "test profile"
 /// }
 /// ```
 /// ```java
@@ -218,17 +218,17 @@ import 'field_level_encryption_profile_state.dart';
 ///             .build());
 ///
 ///         var test = new FieldLevelEncryptionProfile("test", FieldLevelEncryptionProfileArgs.builder()
-///             .comment("test comment")
-///             .name("test profile")
 ///             .encryptionEntities(FieldLevelEncryptionProfileEncryptionEntitiesArgs.builder()
 ///                 .items(FieldLevelEncryptionProfileEncryptionEntitiesItemArgs.builder()
-///                     .publicKeyId(example.id())
-///                     .providerId("test provider")
 ///                     .fieldPatterns(FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatternsArgs.builder()
 ///                         .items("DateOfBirth")
 ///                         .build())
+///                     .publicKeyId(example.id())
+///                     .providerId("test provider")
 ///                     .build())
 ///                 .build())
+///             .comment("test comment")
+///             .name("test profile")
 ///             .build());
 ///
 ///     }
@@ -250,15 +250,15 @@ import 'field_level_encryption_profile_state.dart';
 ///   test:
 ///     type: aws:cloudfront:FieldLevelEncryptionProfile
 ///     properties:
-///       comment: test comment
-///       name: test profile
 ///       encryptionEntities:
 ///         items:
-///           - publicKeyId: ${example.id}
-///             providerId: test provider
-///             fieldPatterns:
+///           - fieldPatterns:
 ///               items:
 ///                 - DateOfBirth
+///             publicKeyId: ${example.id}
+///             providerId: test provider
+///       comment: test comment
+///       name: test profile
 /// ```
 ///
 ///
@@ -295,7 +295,7 @@ class FieldLevelEncryptionProfile extends pulumi.CustomResource {
           'aws:cloudfront/fieldLevelEncryptionProfile:FieldLevelEncryptionProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');
@@ -310,11 +310,12 @@ class FieldLevelEncryptionProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FieldLevelEncryptionProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FieldLevelEncryptionProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -328,6 +329,23 @@ class FieldLevelEncryptionProfile extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    callerReference = registerOutput<String>('callerReference');
+    comment = registerOutput<String?>('comment');
+    encryptionEntities = registerOutput<FieldLevelEncryptionProfileEncryptionEntities>('encryptionEntities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FieldLevelEncryptionProfileEncryptionEntities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [FieldLevelEncryptionProfile] resource.
+  FieldLevelEncryptionProfile.reference(String urn)
+    : super(
+        'aws:cloudfront/fieldLevelEncryptionProfile:FieldLevelEncryptionProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String?>('comment');

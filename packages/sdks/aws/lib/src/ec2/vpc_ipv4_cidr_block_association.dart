@@ -193,7 +193,7 @@ class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
@@ -207,11 +207,12 @@ class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcIpv4CidrBlockAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcIpv4CidrBlockAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -225,6 +226,22 @@ class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
+    ipv4NetmaskLength = registerOutput<int?>('ipv4NetmaskLength');
+    region = registerOutput<String>('region');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [VpcIpv4CidrBlockAssociation] resource.
+  VpcIpv4CidrBlockAssociation.reference(String urn)
+    : super(
+        'aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');
     ipv4NetmaskLength = registerOutput<int?>('ipv4NetmaskLength');

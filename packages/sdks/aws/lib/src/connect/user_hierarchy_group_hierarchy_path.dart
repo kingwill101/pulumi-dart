@@ -9,15 +9,15 @@ import 'user_hierarchy_group_hierarchy_path_level_two.dart';
 
 class UserHierarchyGroupHierarchyPath {
   /// A block that defines the details of level five. The level block is documented below.
-  final pulumi.Input<List<UserHierarchyGroupHierarchyPathLevelFife>>? levelFives;
+  final pulumi.Input<List<UserHierarchyGroupHierarchyPathLevelFife>?>? levelFives;
   /// A block that defines the details of level four. The level block is documented below.
-  final pulumi.Input<List<UserHierarchyGroupHierarchyPathLevelFour>>? levelFours;
+  final pulumi.Input<List<UserHierarchyGroupHierarchyPathLevelFour>?>? levelFours;
   /// A block that defines the details of level one. The level block is documented below.
-  final pulumi.Input<List<UserHierarchyGroupHierarchyPathLevelOne>>? levelOnes;
+  final pulumi.Input<List<UserHierarchyGroupHierarchyPathLevelOne>?>? levelOnes;
   /// A block that defines the details of level three. The level block is documented below.
-  final pulumi.Input<List<UserHierarchyGroupHierarchyPathLevelThree>>? levelThrees;
+  final pulumi.Input<List<UserHierarchyGroupHierarchyPathLevelThree>?>? levelThrees;
   /// A block that defines the details of level two. The level block is documented below.
-  final pulumi.Input<List<UserHierarchyGroupHierarchyPathLevelTwo>>? levelTwos;
+  final pulumi.Input<List<UserHierarchyGroupHierarchyPathLevelTwo>?>? levelTwos;
 
   /// Creates a new [UserHierarchyGroupHierarchyPath].
   /// [levelFives] A block that defines the details of level five. The level block is documented below.

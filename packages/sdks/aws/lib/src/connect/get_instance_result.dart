@@ -4,39 +4,39 @@
 /// Result data returned by getInstance.
 class GetInstanceResult {
   /// ARN of the instance.
-  final String arn;
-  final bool autoResolveBestVoicesEnabled;
+  final String? arn;
+  final bool? autoResolveBestVoicesEnabled;
   /// Whether contact flow logs are enabled.
-  final bool contactFlowLogsEnabled;
+  final bool? contactFlowLogsEnabled;
   /// Whether contact lens is enabled.
-  final bool contactLensEnabled;
+  final bool? contactLensEnabled;
   /// When the instance was created.
-  final String createdTime;
+  final String? createdTime;
   /// Whether early media for outbound calls is enabled .
-  final bool earlyMediaEnabled;
+  final bool? earlyMediaEnabled;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Specifies The identity management type attached to the instance.
-  final String identityManagementType;
+  final String? identityManagementType;
   /// Whether inbound calls are enabled.
-  final bool inboundCallsEnabled;
-  final String instanceAlias;
-  final String instanceId;
+  final bool? inboundCallsEnabled;
+  final String? instanceAlias;
+  final String? instanceId;
   /// Whether multi-party calls/conference is enabled.
-  final bool multiPartyConferenceEnabled;
+  final bool? multiPartyConferenceEnabled;
   /// Whether outbound calls are enabled.
-  final bool outboundCallsEnabled;
-  final String region;
+  final bool? outboundCallsEnabled;
+  final String? region;
   /// Service role of the instance.
-  final String serviceRole;
+  final String? serviceRole;
   /// State of the instance.
-  final String status;
+  final String? status;
   /// A map of tags to assigned to the instance.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetInstanceResult].
   /// [arn] ARN of the instance.
-  /// [autoResolveBestVoicesEnabled] Required.
+  /// [autoResolveBestVoicesEnabled] Optional.
   /// [contactFlowLogsEnabled] Whether contact flow logs are enabled.
   /// [contactLensEnabled] Whether contact lens is enabled.
   /// [createdTime] When the instance was created.
@@ -44,75 +44,75 @@ class GetInstanceResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identityManagementType] Specifies The identity management type attached to the instance.
   /// [inboundCallsEnabled] Whether inbound calls are enabled.
-  /// [instanceAlias] Required.
-  /// [instanceId] Required.
+  /// [instanceAlias] Optional.
+  /// [instanceId] Optional.
   /// [multiPartyConferenceEnabled] Whether multi-party calls/conference is enabled.
   /// [outboundCallsEnabled] Whether outbound calls are enabled.
-  /// [region] Required.
+  /// [region] Optional.
   /// [serviceRole] Service role of the instance.
   /// [status] State of the instance.
   /// [tags] A map of tags to assigned to the instance.
   const GetInstanceResult({
-    required this.arn,
-    required this.autoResolveBestVoicesEnabled,
-    required this.contactFlowLogsEnabled,
-    required this.contactLensEnabled,
-    required this.createdTime,
-    required this.earlyMediaEnabled,
-    required this.id,
-    required this.identityManagementType,
-    required this.inboundCallsEnabled,
-    required this.instanceAlias,
-    required this.instanceId,
-    required this.multiPartyConferenceEnabled,
-    required this.outboundCallsEnabled,
-    required this.region,
-    required this.serviceRole,
-    required this.status,
-    required this.tags,
+    this.arn,
+    this.autoResolveBestVoicesEnabled,
+    this.contactFlowLogsEnabled,
+    this.contactLensEnabled,
+    this.createdTime,
+    this.earlyMediaEnabled,
+    this.id,
+    this.identityManagementType,
+    this.inboundCallsEnabled,
+    this.instanceAlias,
+    this.instanceId,
+    this.multiPartyConferenceEnabled,
+    this.outboundCallsEnabled,
+    this.region,
+    this.serviceRole,
+    this.status,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'autoResolveBestVoicesEnabled': autoResolveBestVoicesEnabled,
-      'contactFlowLogsEnabled': contactFlowLogsEnabled,
-      'contactLensEnabled': contactLensEnabled,
-      'createdTime': createdTime,
-      'earlyMediaEnabled': earlyMediaEnabled,
-      'id': id,
-      'identityManagementType': identityManagementType,
-      'inboundCallsEnabled': inboundCallsEnabled,
-      'instanceAlias': instanceAlias,
-      'instanceId': instanceId,
-      'multiPartyConferenceEnabled': multiPartyConferenceEnabled,
-      'outboundCallsEnabled': outboundCallsEnabled,
-      'region': region,
-      'serviceRole': serviceRole,
-      'status': status,
-      'tags': tags,
+      'arn': ?arn,
+      'autoResolveBestVoicesEnabled': ?autoResolveBestVoicesEnabled,
+      'contactFlowLogsEnabled': ?contactFlowLogsEnabled,
+      'contactLensEnabled': ?contactLensEnabled,
+      'createdTime': ?createdTime,
+      'earlyMediaEnabled': ?earlyMediaEnabled,
+      'id': ?id,
+      'identityManagementType': ?identityManagementType,
+      'inboundCallsEnabled': ?inboundCallsEnabled,
+      'instanceAlias': ?instanceAlias,
+      'instanceId': ?instanceId,
+      'multiPartyConferenceEnabled': ?multiPartyConferenceEnabled,
+      'outboundCallsEnabled': ?outboundCallsEnabled,
+      'region': ?region,
+      'serviceRole': ?serviceRole,
+      'status': ?status,
+      'tags': ?tags,
     };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      arn: map['arn'] as String,
-      autoResolveBestVoicesEnabled: map['autoResolveBestVoicesEnabled'] as bool,
-      contactFlowLogsEnabled: map['contactFlowLogsEnabled'] as bool,
-      contactLensEnabled: map['contactLensEnabled'] as bool,
-      createdTime: map['createdTime'] as String,
-      earlyMediaEnabled: map['earlyMediaEnabled'] as bool,
-      id: map['id'] as String,
-      identityManagementType: map['identityManagementType'] as String,
-      inboundCallsEnabled: map['inboundCallsEnabled'] as bool,
-      instanceAlias: map['instanceAlias'] as String,
-      instanceId: map['instanceId'] as String,
-      multiPartyConferenceEnabled: map['multiPartyConferenceEnabled'] as bool,
-      outboundCallsEnabled: map['outboundCallsEnabled'] as bool,
-      region: map['region'] as String,
-      serviceRole: map['serviceRole'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      autoResolveBestVoicesEnabled: (() { final guardedValue = map['autoResolveBestVoicesEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      contactFlowLogsEnabled: (() { final guardedValue = map['contactFlowLogsEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      contactLensEnabled: (() { final guardedValue = map['contactLensEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      createdTime: (() { final guardedValue = map['createdTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      earlyMediaEnabled: (() { final guardedValue = map['earlyMediaEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identityManagementType: (() { final guardedValue = map['identityManagementType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      inboundCallsEnabled: (() { final guardedValue = map['inboundCallsEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      instanceAlias: (() { final guardedValue = map['instanceAlias']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      multiPartyConferenceEnabled: (() { final guardedValue = map['multiPartyConferenceEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      outboundCallsEnabled: (() { final guardedValue = map['outboundCallsEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceRole: (() { final guardedValue = map['serviceRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

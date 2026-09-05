@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetGroupStickiness {
   /// Only used when the type is `lbCookie`. The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).
-  final pulumi.Input<int>? cookieDuration;
+  final pulumi.Input<int?>? cookieDuration;
   /// Name of the application based cookie. AWSALB, AWSALBAPP, and AWSALBTG prefixes are reserved and cannot be used. Only needed when type is `appCookie`.
-  final pulumi.Input<String>? cookieName;
+  final pulumi.Input<String?>? cookieName;
   /// Boolean to enable / disable `stickiness`. Default is `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The type of sticky sessions. The only current possible values are `lbCookie`, `appCookie` for ALBs, `sourceIp` for NLBs, and `sourceIpDestIp`, `sourceIpDestIpProto` for GWLBs.
   final pulumi.Input<String> type;
 
@@ -35,7 +35,7 @@ class TargetGroupStickiness {
 
   factory TargetGroupStickiness.fromMap(Map<String, dynamic> map) {
     return TargetGroupStickiness(
-      cookieDuration: (() { final guardedValue = map['cookieDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cookieDuration: (() { final guardedValue = map['cookieDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       cookieName: (() { final guardedValue = map['cookieName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

@@ -10,22 +10,22 @@ import 'invoice_unit_timeouts.dart';
 /// {@macro pulumi_invoicing_invoice_unit_invoice_unit_args_doc}
 class InvoiceUnitArgs {
   /// Description of the invoice unit.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// AWS account ID that receives invoices for this unit. Cannot be changed after creation.
   final pulumi.Input<String> invoiceReceiver;
   /// Unique name of the invoice unit. Cannot be changed after creation.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for invoice unit rules. See `rule` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<InvoiceUnitRule>>? rules;
+  final pulumi.Input<List<InvoiceUnitRule>?>? rules;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether tax inheritance is disabled for this invoice unit.
-  final pulumi.Input<bool>? taxInheritanceDisabled;
-  final pulumi.Input<InvoiceUnitTimeouts>? timeouts;
+  final pulumi.Input<bool?>? taxInheritanceDisabled;
+  final pulumi.Input<InvoiceUnitTimeouts?>? timeouts;
 
   /// Creates a new [InvoiceUnitArgs].
   /// [description] Description of the invoice unit.

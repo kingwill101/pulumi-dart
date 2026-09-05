@@ -7,27 +7,27 @@ import 'maintenance_window_task_task_invocation_parameters_run_command_parameter
 
 class MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters {
   /// Configuration options for sending command output to CloudWatch Logs. Documented below.
-  final pulumi.Input<MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig>? cloudwatchConfig;
+  final pulumi.Input<MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig?>? cloudwatchConfig;
   /// Information about the command(s) to execute.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// The SHA-256 or SHA-1 hash created by the system when the document was created. SHA-1 hashes have been deprecated.
-  final pulumi.Input<String>? documentHash;
+  final pulumi.Input<String?>? documentHash;
   /// SHA-256 or SHA-1. SHA-1 hashes have been deprecated. Valid values: `Sha256` and `Sha1`
-  final pulumi.Input<String>? documentHashType;
+  final pulumi.Input<String?>? documentHashType;
   /// The version of an Automation document to use during task execution.
-  final pulumi.Input<String>? documentVersion;
+  final pulumi.Input<String?>? documentVersion;
   /// Configurations for sending notifications about command status changes on a per-instance basis. Documented below.
-  final pulumi.Input<MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig>? notificationConfig;
+  final pulumi.Input<MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig?>? notificationConfig;
   /// The name of the Amazon S3 bucket.
-  final pulumi.Input<String>? outputS3Bucket;
+  final pulumi.Input<String?>? outputS3Bucket;
   /// The Amazon S3 bucket subfolder.
-  final pulumi.Input<String>? outputS3KeyPrefix;
+  final pulumi.Input<String?>? outputS3KeyPrefix;
   /// The parameters for the RUN_COMMAND task execution. Documented below.
-  final pulumi.Input<List<MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter>>? parameters;
-  /// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
-  final pulumi.Input<String>? serviceRoleArn;
+  final pulumi.Input<List<MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter>?>? parameters;
+  /// ARN of the AWS Identity and Access Management (IAM) service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
+  final pulumi.Input<String?>? serviceRoleArn;
   /// If this time is reached and the command has not already started executing, it doesn't run.
-  final pulumi.Input<int>? timeoutSeconds;
+  final pulumi.Input<int?>? timeoutSeconds;
 
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters].
   /// [cloudwatchConfig] Configuration options for sending command output to CloudWatch Logs. Documented below.
@@ -39,7 +39,7 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters {
   /// [outputS3Bucket] The name of the Amazon S3 bucket.
   /// [outputS3KeyPrefix] The Amazon S3 bucket subfolder.
   /// [parameters] The parameters for the RUN_COMMAND task execution. Documented below.
-  /// [serviceRoleArn] The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
+  /// [serviceRoleArn] ARN of the AWS Identity and Access Management (IAM) service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
   /// [timeoutSeconds] If this time is reached and the command has not already started executing, it doesn't run.
   const MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters({
     this.cloudwatchConfig,
@@ -83,7 +83,7 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters {
       outputS3KeyPrefix: (() { final guardedValue = map['outputS3KeyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter>(guardedValue, (value) => MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       serviceRoleArn: (() { final guardedValue = map['serviceRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

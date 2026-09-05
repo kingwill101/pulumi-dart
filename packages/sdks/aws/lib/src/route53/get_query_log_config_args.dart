@@ -11,15 +11,15 @@ class GetQueryLogConfigArgs {
   /// One or more name/value pairs to use as filters. There are
   /// several valid keys, for a full reference, check out
   /// [Route53resolver Filter value in the AWS API reference](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_Filter.html).
-  final pulumi.Input<List<GetQueryLogConfigFilter>>? filters;
+  final pulumi.Input<List<GetQueryLogConfigFilter>?>? filters;
   /// The name of the query logging configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the Route53 Resolver Query Logging Configuration.
-  final pulumi.Input<String>? resolverQueryLogConfigId;
+  final pulumi.Input<String?>? resolverQueryLogConfigId;
   /// Map of tags to assign to the service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetQueryLogConfigArgs].
   /// [filters] One or more name/value pairs to use as filters. There are

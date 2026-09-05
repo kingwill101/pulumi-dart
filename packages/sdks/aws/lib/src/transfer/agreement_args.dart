@@ -12,17 +12,17 @@ class AgreementArgs {
   /// Landing directory for the files transferred by using the AS2 protocol.
   final pulumi.Input<String> baseDirectory;
   /// Optional description of the transdfer.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Unique identifier for the AS2 local profile.
   final pulumi.Input<String> localProfileId;
   /// Unique identifier for the AS2 partner profile.
   final pulumi.Input<String> partnerProfileId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Unique server identifier for the server instance. This is the specific server the agreement uses.
   final pulumi.Input<String> serverId;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AgreementArgs].
   /// [accessRole] IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.

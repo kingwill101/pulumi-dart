@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kx_volume_args.dart';
+import 'kx_volume_attached_cluster.dart';
+import 'kx_volume_nas1_configuration.dart';
 import 'kx_volume_state.dart';
 
 /// Resource for managing an AWS FinSpace Kx Volume.
@@ -14,15 +16,15 @@ import 'kx_volume_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.finspace.KxVolume("example", {
+///     nas1Configurations: [{
+///         size: 1200,
+///         type: "SSD_250",
+///     }],
 ///     name: "my-tf-kx-volume",
 ///     environmentId: exampleAwsFinspaceKxEnvironment.id,
 ///     availabilityZones: ["use1-az2"],
 ///     azMode: "SINGLE",
 ///     type: "NAS_1",
-///     nas1Configurations: [{
-///         size: 1200,
-///         type: "SSD_250",
-///     }],
 /// });
 /// ```
 /// ```python
@@ -30,15 +32,15 @@ import 'kx_volume_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.finspace.KxVolume("example",
+///     nas1_configurations=[{
+///         "size": 1200,
+///         "type": "SSD_250",
+///     }],
 ///     name="my-tf-kx-volume",
 ///     environment_id=example_aws_finspace_kx_environment["id"],
 ///     availability_zones=["use1-az2"],
 ///     az_mode="SINGLE",
-///     type="NAS_1",
-///     nas1_configurations=[{
-///         "size": 1200,
-///         "type": "SSD_250",
-///     }])
+///     type="NAS_1")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,14 +52,6 @@ import 'kx_volume_state.dart';
 /// {
 ///     var example = new Aws.FinSpace.KxVolume("example", new()
 ///     {
-///         Name = "my-tf-kx-volume",
-///         EnvironmentId = exampleAwsFinspaceKxEnvironment.Id,
-///         AvailabilityZones = new[]
-///         {
-///             "use1-az2",
-///         },
-///         AzMode = "SINGLE",
-///         Type = "NAS_1",
 ///         Nas1Configurations = new[]
 ///         {
 ///             new Aws.FinSpace.Inputs.KxVolumeNas1ConfigurationArgs
@@ -66,6 +60,14 @@ import 'kx_volume_state.dart';
 ///                 Type = "SSD_250",
 ///             },
 ///         },
+///         Name = "my-tf-kx-volume",
+///         EnvironmentId = exampleAwsFinspaceKxEnvironment.Id,
+///         AvailabilityZones = new[]
+///         {
+///             "use1-az2",
+///         },
+///         AzMode = "SINGLE",
+///         Type = "NAS_1",
 ///     });
 ///
 /// });
@@ -81,6 +83,12 @@ import 'kx_volume_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := finspace.NewKxVolume(ctx, "example", &finspace.KxVolumeArgs{
+/// 			Nas1Configurations: finspace.KxVolumeNas1ConfigurationArray{
+/// 				&finspace.KxVolumeNas1ConfigurationArgs{
+/// 					Size: pulumi.Int(1200),
+/// 					Type: pulumi.String("SSD_250"),
+/// 				},
+/// 			},
 /// 			Name:          pulumi.String("my-tf-kx-volume"),
 /// 			EnvironmentId: pulumi.Any(exampleAwsFinspaceKxEnvironment.Id),
 /// 			AvailabilityZones: pulumi.StringArray{
@@ -88,12 +96,6 @@ import 'kx_volume_state.dart';
 /// 			},
 /// 			AzMode: pulumi.String("SINGLE"),
 /// 			Type:   pulumi.String("NAS_1"),
-/// 			Nas1Configurations: finspace.KxVolumeNas1ConfigurationArray{
-/// 				&finspace.KxVolumeNas1ConfigurationArgs{
-/// 					Size: pulumi.Int(1200),
-/// 					Type: pulumi.String("SSD_250"),
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -112,15 +114,15 @@ import 'kx_volume_state.dart';
 /// }
 ///
 /// resource "aws_finspace_kxvolume" "example" {
+///   nas1_configurations {
+///     size = 1200
+///     type = "SSD_250"
+///   }
 ///   name               = "my-tf-kx-volume"
 ///   environment_id     = exampleAwsFinspaceKxEnvironment.id
 ///   availability_zones = ["use1-az2"]
 ///   az_mode            = "SINGLE"
 ///   type               = "NAS_1"
-///   nas1_configurations {
-///     size = 1200
-///     type = "SSD_250"
-///   }
 /// }
 /// ```
 /// ```java
@@ -146,15 +148,15 @@ import 'kx_volume_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new KxVolume("example", KxVolumeArgs.builder()
+///             .nas1Configurations(KxVolumeNas1ConfigurationArgs.builder()
+///                 .size(1200)
+///                 .type("SSD_250")
+///                 .build())
 ///             .name("my-tf-kx-volume")
 ///             .environmentId(exampleAwsFinspaceKxEnvironment.id())
 ///             .availabilityZones("use1-az2")
 ///             .azMode("SINGLE")
 ///             .type("NAS_1")
-///             .nas1Configurations(KxVolumeNas1ConfigurationArgs.builder()
-///                 .size(1200)
-///                 .type("SSD_250")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -165,15 +167,15 @@ import 'kx_volume_state.dart';
 ///   example:
 ///     type: aws:finspace:KxVolume
 ///     properties:
+///       nas1Configurations:
+///         - size: 1200
+///           type: SSD_250
 ///       name: my-tf-kx-volume
 ///       environmentId: ${exampleAwsFinspaceKxEnvironment.id}
 ///       availabilityZones:
 ///         - use1-az2
 ///       azMode: SINGLE
 ///       type: NAS_1
-///       nas1Configurations:
-///         - size: 1200
-///           type: SSD_250
 /// ```
 ///
 ///
@@ -185,10 +187,10 @@ import 'kx_volume_state.dart';
 /// $ pulumi import aws:finspace/kxVolume:KxVolume example n3ceo7wqxoxcti5tujqwzs,my-tf-kx-volume
 /// ```
 class KxVolume extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) identifier of the KX volume.
+  /// ARN identifier of the KX volume.
   late final pulumi.Output<String> arn;
   /// Clusters attached to the volume. See `attachedClusters` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> attachedClusters;
+  late final pulumi.Output<List<KxVolumeAttachedCluster>> attachedClusters;
   /// Identifier of the AWS Availability Zone IDs.
   late final pulumi.Output<List<String>> availabilityZones;
   /// Number of availability zones you want to assign per volume. Currently, FinSpace only supports `SINGLE` for volumes, which assigns one availability zone per volume.
@@ -204,7 +206,7 @@ class KxVolume extends pulumi.CustomResource {
   /// Unique name for the volume that you want to create.
   late final pulumi.Output<String> name;
   /// Configuration for the Network attached storage (`NAS_1`) file system volume. This parameter is required when `volumeType` is `NAS_1`. See `nas1Configuration` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> nas1Configurations;
+  late final pulumi.Output<List<KxVolumeNas1Configuration>?> nas1Configurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Status of volume creation. Values are `CREATING` (volume creation is in progress), `CREATE_FAILED` (volume creation has failed), `ACTIVE` (volume is active), `UPDATING` (volume is in the process of being updated), `UPDATE_FAILED` (update action failed), `UPDATED` (volume is successfully updated), `DELETING` (volume is in the process of being deleted), `DELETE_FAILED` (system failed to delete the volume), and `DELETED` (volume is successfully deleted).
@@ -231,23 +233,23 @@ class KxVolume extends pulumi.CustomResource {
           'aws:finspace/kxVolume:KxVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    attachedClusters = registerOutput<List<Map<String, dynamic>>>('attachedClusters');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    attachedClusters = registerOutput<List<KxVolumeAttachedCluster>>('attachedClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxVolumeAttachedCluster>(guardedValue, (value) => KxVolumeAttachedCluster.fromMap((value as Map).cast<String, dynamic>())); });
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azMode = registerOutput<String>('azMode');
     createdTimestamp = registerOutput<String>('createdTimestamp');
     description = registerOutput<String?>('description');
     environmentId = registerOutput<String>('environmentId');
     lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
     this.name = registerOutput<String>('name');
-    nas1Configurations = registerOutput<List<Map<String, dynamic>>?>('nas1Configurations');
+    nas1Configurations = registerOutput<List<KxVolumeNas1Configuration>?>('nas1Configurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxVolumeNas1Configuration>(guardedValue, (value) => KxVolumeNas1Configuration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -256,11 +258,12 @@ class KxVolume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KxVolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KxVolume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -275,20 +278,47 @@ class KxVolume extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    attachedClusters = registerOutput<List<Map<String, dynamic>>>('attachedClusters');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    attachedClusters = registerOutput<List<KxVolumeAttachedCluster>>('attachedClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxVolumeAttachedCluster>(guardedValue, (value) => KxVolumeAttachedCluster.fromMap((value as Map).cast<String, dynamic>())); });
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azMode = registerOutput<String>('azMode');
     createdTimestamp = registerOutput<String>('createdTimestamp');
     description = registerOutput<String?>('description');
     environmentId = registerOutput<String>('environmentId');
     lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
     this.name = registerOutput<String>('name');
-    nas1Configurations = registerOutput<List<Map<String, dynamic>>?>('nas1Configurations');
+    nas1Configurations = registerOutput<List<KxVolumeNas1Configuration>?>('nas1Configurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxVolumeNas1Configuration>(guardedValue, (value) => KxVolumeNas1Configuration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [KxVolume] resource.
+  KxVolume.reference(String urn)
+    : super(
+        'aws:finspace/kxVolume:KxVolume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attachedClusters = registerOutput<List<KxVolumeAttachedCluster>>('attachedClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxVolumeAttachedCluster>(guardedValue, (value) => KxVolumeAttachedCluster.fromMap((value as Map).cast<String, dynamic>())); });
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azMode = registerOutput<String>('azMode');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    description = registerOutput<String?>('description');
+    environmentId = registerOutput<String>('environmentId');
+    lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    nas1Configurations = registerOutput<List<KxVolumeNas1Configuration>?>('nas1Configurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxVolumeNas1Configuration>(guardedValue, (value) => KxVolumeNas1Configuration.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

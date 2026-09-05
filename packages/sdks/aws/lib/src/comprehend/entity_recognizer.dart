@@ -18,10 +18,13 @@ import 'entity_recognizer_vpc_config.dart';
 /// const documents = new aws.s3.BucketObjectv2("documents", {});
 /// const entities = new aws.s3.BucketObjectv2("entities", {});
 /// const example = new aws.comprehend.EntityRecognizer("example", {
-///     name: "example",
-///     dataAccessRoleArn: exampleAwsIamRole.arn,
-///     languageCode: "en",
 ///     inputDataConfig: {
+///         documents: {
+///             s3Uri: pulumi.interpolate`s3://${documentsAwsS3Bucket.bucket}/${documents.key}`,
+///         },
+///         entityList: {
+///             s3Uri: pulumi.interpolate`s3://${entitiesAwsS3Bucket.bucket}/${entities.key}`,
+///         },
 ///         entityTypes: [
 ///             {
 ///                 type: "ENTITY_1",
@@ -30,13 +33,10 @@ import 'entity_recognizer_vpc_config.dart';
 ///                 type: "ENTITY_2",
 ///             },
 ///         ],
-///         documents: {
-///             s3Uri: pulumi.interpolate`s3://${documentsAwsS3Bucket.bucket}/${documents.key}`,
-///         },
-///         entityList: {
-///             s3Uri: pulumi.interpolate`s3://${entitiesAwsS3Bucket.bucket}/${entities.key}`,
-///         },
 ///     },
+///     name: "example",
+///     dataAccessRoleArn: exampleAwsIamRole.arn,
+///     languageCode: "en",
 /// }, {
 ///     dependsOn: [exampleAwsIamRolePolicy],
 /// });
@@ -48,10 +48,13 @@ import 'entity_recognizer_vpc_config.dart';
 /// documents = aws.s3.BucketObjectv2("documents")
 /// entities = aws.s3.BucketObjectv2("entities")
 /// example = aws.comprehend.EntityRecognizer("example",
-///     name="example",
-///     data_access_role_arn=example_aws_iam_role["arn"],
-///     language_code="en",
 ///     input_data_config={
+///         "documents": {
+///             "s3_uri": documents.key.apply(lambda key: f"s3://{documents_aws_s3_bucket['bucket']}/{key}"),
+///         },
+///         "entity_list": {
+///             "s3_uri": entities.key.apply(lambda key: f"s3://{entities_aws_s3_bucket['bucket']}/{key}"),
+///         },
 ///         "entity_types": [
 ///             {
 ///                 "type": "ENTITY_1",
@@ -60,13 +63,10 @@ import 'entity_recognizer_vpc_config.dart';
 ///                 "type": "ENTITY_2",
 ///             },
 ///         ],
-///         "documents": {
-///             "s3_uri": documents.key.apply(lambda key: f"s3://{documents_aws_s3_bucket['bucket']}/{key}"),
-///         },
-///         "entity_list": {
-///             "s3_uri": entities.key.apply(lambda key: f"s3://{entities_aws_s3_bucket['bucket']}/{key}"),
-///         },
 ///     },
+///     name="example",
+///     data_access_role_arn=example_aws_iam_role["arn"],
+///     language_code="en",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aws_iam_role_policy]))
 /// ```
 /// ```csharp
@@ -83,11 +83,16 @@ import 'entity_recognizer_vpc_config.dart';
 ///
 ///     var example = new Aws.Comprehend.EntityRecognizer("example", new()
 ///     {
-///         Name = "example",
-///         DataAccessRoleArn = exampleAwsIamRole.Arn,
-///         LanguageCode = "en",
 ///         InputDataConfig = new Aws.Comprehend.Inputs.EntityRecognizerInputDataConfigArgs
 ///         {
+///             Documents = new Aws.Comprehend.Inputs.EntityRecognizerInputDataConfigDocumentsArgs
+///             {
+///                 S3Uri = documents.Key.Apply(key => $"s3://{documentsAwsS3Bucket.Bucket}/{key}"),
+///             },
+///             EntityList = new Aws.Comprehend.Inputs.EntityRecognizerInputDataConfigEntityListArgs
+///             {
+///                 S3Uri = entities.Key.Apply(key => $"s3://{entitiesAwsS3Bucket.Bucket}/{key}"),
+///             },
 ///             EntityTypes = new[]
 ///             {
 ///                 new Aws.Comprehend.Inputs.EntityRecognizerInputDataConfigEntityTypeArgs
@@ -99,15 +104,10 @@ import 'entity_recognizer_vpc_config.dart';
 ///                     Type = "ENTITY_2",
 ///                 },
 ///             },
-///             Documents = new Aws.Comprehend.Inputs.EntityRecognizerInputDataConfigDocumentsArgs
-///             {
-///                 S3Uri = documents.Key.Apply(key => $"s3://{documentsAwsS3Bucket.Bucket}/{key}"),
-///             },
-///             EntityList = new Aws.Comprehend.Inputs.EntityRecognizerInputDataConfigEntityListArgs
-///             {
-///                 S3Uri = entities.Key.Apply(key => $"s3://{entitiesAwsS3Bucket.Bucket}/{key}"),
-///             },
 ///         },
+///         Name = "example",
+///         DataAccessRoleArn = exampleAwsIamRole.Arn,
+///         LanguageCode = "en",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -140,18 +140,7 @@ import 'entity_recognizer_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = comprehend.NewEntityRecognizer(ctx, "example", &comprehend.EntityRecognizerArgs{
-/// 			Name:              pulumi.String("example"),
-/// 			DataAccessRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 			LanguageCode:      pulumi.String("en"),
 /// 			InputDataConfig: &comprehend.EntityRecognizerInputDataConfigArgs{
-/// 				EntityTypes: comprehend.EntityRecognizerInputDataConfigEntityTypeArray{
-/// 					&comprehend.EntityRecognizerInputDataConfigEntityTypeArgs{
-/// 						Type: pulumi.String("ENTITY_1"),
-/// 					},
-/// 					&comprehend.EntityRecognizerInputDataConfigEntityTypeArgs{
-/// 						Type: pulumi.String("ENTITY_2"),
-/// 					},
-/// 				},
 /// 				Documents: &comprehend.EntityRecognizerInputDataConfigDocumentsArgs{
 /// 					S3Uri: documents.Key.ApplyT(func(key string) (string, error) {
 /// 						return fmt.Sprintf("s3://%v/%v", documentsAwsS3Bucket.Bucket, key), nil
@@ -162,7 +151,18 @@ import 'entity_recognizer_vpc_config.dart';
 /// 						return fmt.Sprintf("s3://%v/%v", entitiesAwsS3Bucket.Bucket, key), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
+/// 				EntityTypes: comprehend.EntityRecognizerInputDataConfigEntityTypeArray{
+/// 					&comprehend.EntityRecognizerInputDataConfigEntityTypeArgs{
+/// 						Type: pulumi.String("ENTITY_1"),
+/// 					},
+/// 					&comprehend.EntityRecognizerInputDataConfigEntityTypeArgs{
+/// 						Type: pulumi.String("ENTITY_2"),
+/// 					},
+/// 				},
 /// 			},
+/// 			Name:              pulumi.String("example"),
+/// 			DataAccessRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			LanguageCode:      pulumi.String("en"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAwsIamRolePolicy,
 /// 		}))
@@ -183,23 +183,23 @@ import 'entity_recognizer_vpc_config.dart';
 /// }
 ///
 /// resource "aws_comprehend_entityrecognizer" "example" {
-///   depends_on           = [exampleAwsIamRolePolicy]
-///   name                 = "example"
-///   data_access_role_arn = exampleAwsIamRole.arn
-///   language_code        = "en"
+///   depends_on = [exampleAwsIamRolePolicy]
 ///   input_data_config = {
-///     entity_types = [{
-///       "type" = "ENTITY_1"
-///       }, {
-///       "type" = "ENTITY_2"
-///     }]
 ///     documents = {
 ///       s3_uri ="s3://${documentsAwsS3Bucket.bucket}/${aws_s3_bucketobjectv2.documents.key}"
 ///     }
 ///     entity_list = {
 ///       s3_uri ="s3://${entitiesAwsS3Bucket.bucket}/${aws_s3_bucketobjectv2.entities.key}"
 ///     }
+///     entity_types = [{
+///       "type" = "ENTITY_1"
+///       }, {
+///       "type" = "ENTITY_2"
+///     }]
 ///   }
+///   name                 = "example"
+///   data_access_role_arn = exampleAwsIamRole.arn
+///   language_code        = "en"
 /// }
 /// resource "aws_s3_bucketobjectv2" "documents" {
 /// }
@@ -216,9 +216,9 @@ import 'entity_recognizer_vpc_config.dart';
 /// import com.pulumi.aws.comprehend.EntityRecognizer;
 /// import com.pulumi.aws.comprehend.EntityRecognizerArgs;
 /// import com.pulumi.aws.comprehend.inputs.EntityRecognizerInputDataConfigArgs;
-/// import com.pulumi.aws.comprehend.inputs.EntityRecognizerInputDataConfigEntityTypeArgs;
 /// import com.pulumi.aws.comprehend.inputs.EntityRecognizerInputDataConfigDocumentsArgs;
 /// import com.pulumi.aws.comprehend.inputs.EntityRecognizerInputDataConfigEntityListArgs;
+/// import com.pulumi.aws.comprehend.inputs.EntityRecognizerInputDataConfigEntityTypeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -238,10 +238,13 @@ import 'entity_recognizer_vpc_config.dart';
 ///         var entities = new BucketObjectv2("entities");
 ///
 ///         var example = new EntityRecognizer("example", EntityRecognizerArgs.builder()
-///             .name("example")
-///             .dataAccessRoleArn(exampleAwsIamRole.arn())
-///             .languageCode("en")
 ///             .inputDataConfig(EntityRecognizerInputDataConfigArgs.builder()
+///                 .documents(EntityRecognizerInputDataConfigDocumentsArgs.builder()
+///                     .s3Uri(documents.key().applyValue(_key -> String.format("s3://%s/%s", documentsAwsS3Bucket.bucket(),_key)))
+///                     .build())
+///                 .entityList(EntityRecognizerInputDataConfigEntityListArgs.builder()
+///                     .s3Uri(entities.key().applyValue(_key -> String.format("s3://%s/%s", entitiesAwsS3Bucket.bucket(),_key)))
+///                     .build())
 ///                 .entityTypes(
 ///                     EntityRecognizerInputDataConfigEntityTypeArgs.builder()
 ///                         .type("ENTITY_1")
@@ -249,13 +252,10 @@ import 'entity_recognizer_vpc_config.dart';
 ///                     EntityRecognizerInputDataConfigEntityTypeArgs.builder()
 ///                         .type("ENTITY_2")
 ///                         .build())
-///                 .documents(EntityRecognizerInputDataConfigDocumentsArgs.builder()
-///                     .s3Uri(documents.key().applyValue(_key -> String.format("s3://%s/%s", documentsAwsS3Bucket.bucket(),_key)))
-///                     .build())
-///                 .entityList(EntityRecognizerInputDataConfigEntityListArgs.builder()
-///                     .s3Uri(entities.key().applyValue(_key -> String.format("s3://%s/%s", entitiesAwsS3Bucket.bucket(),_key)))
-///                     .build())
 ///                 .build())
+///             .name("example")
+///             .dataAccessRoleArn(exampleAwsIamRole.arn())
+///             .languageCode("en")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsIamRolePolicy)
 ///                 .build());
@@ -268,17 +268,17 @@ import 'entity_recognizer_vpc_config.dart';
 ///   example:
 ///     type: aws:comprehend:EntityRecognizer
 ///     properties:
-///       name: example
-///       dataAccessRoleArn: ${exampleAwsIamRole.arn}
-///       languageCode: en
 ///       inputDataConfig:
-///         entityTypes:
-///           - type: ENTITY_1
-///           - type: ENTITY_2
 ///         documents:
 ///           s3Uri: s3://${documentsAwsS3Bucket.bucket}/${documents.key}
 ///         entityList:
 ///           s3Uri: s3://${entitiesAwsS3Bucket.bucket}/${entities.key}
+///         entityTypes:
+///           - type: ENTITY_1
+///           - type: ENTITY_2
+///       name: example
+///       dataAccessRoleArn: ${exampleAwsIamRole.arn}
+///       languageCode: en
 ///     options:
 ///       dependsOn:
 ///         - ${exampleAwsIamRolePolicy}
@@ -295,7 +295,7 @@ import 'entity_recognizer_vpc_config.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Comprehend entity recognizer.
+/// - `arn` (String) ARN of the Comprehend entity recognizer.
 ///
 ///
 /// Using `pulumi import`, import Comprehend Entity Recognizer using the ARN. For example:
@@ -359,7 +359,7 @@ class EntityRecognizer extends pulumi.CustomResource {
           'aws:comprehend/entityRecognizer:EntityRecognizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
@@ -368,8 +368,8 @@ class EntityRecognizer extends pulumi.CustomResource {
     modelKmsKeyId = registerOutput<String?>('modelKmsKeyId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionName = registerOutput<String>('versionName');
     versionNamePrefix = registerOutput<String>('versionNamePrefix');
     volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
@@ -381,11 +381,12 @@ class EntityRecognizer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EntityRecognizerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EntityRecognizer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -406,8 +407,32 @@ class EntityRecognizer extends pulumi.CustomResource {
     modelKmsKeyId = registerOutput<String?>('modelKmsKeyId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    versionName = registerOutput<String>('versionName');
+    versionNamePrefix = registerOutput<String>('versionNamePrefix');
+    volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
+    vpcConfig = registerOutput<EntityRecognizerVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityRecognizerVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EntityRecognizer] resource.
+  EntityRecognizer.reference(String urn)
+    : super(
+        'aws:comprehend/entityRecognizer:EntityRecognizer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
+    inputDataConfig = registerOutput<EntityRecognizerInputDataConfig>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityRecognizerInputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageCode = registerOutput<String>('languageCode');
+    modelKmsKeyId = registerOutput<String?>('modelKmsKeyId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionName = registerOutput<String>('versionName');
     versionNamePrefix = registerOutput<String>('versionNamePrefix');
     volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');

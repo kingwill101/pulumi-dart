@@ -5,10 +5,10 @@ import 'environment_last_updated_error.dart';
 
 class EnvironmentLastUpdated {
   /// The Created At date of the MWAA Environment
-  final pulumi.Input<String>? createdAt;
-  final pulumi.Input<List<EnvironmentLastUpdatedError>>? errors;
+  final pulumi.Input<String?>? createdAt;
+  final pulumi.Input<List<EnvironmentLastUpdatedError>?>? errors;
   /// The status of the Amazon MWAA Environment
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [EnvironmentLastUpdated].
   /// [createdAt] The Created At date of the MWAA Environment

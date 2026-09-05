@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering HostedPrivateVirtualInterfaceAccepter resources.
 class HostedPrivateVirtualInterfaceAccepterState {
   /// The ARN of the virtual interface.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The ID of the Direct Connect gateway to which to connect the virtual interface.
-  final pulumi.Input<String>? dxGatewayId;
+  final pulumi.Input<String?>? dxGatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The ID of the Direct Connect virtual interface to accept.
-  final pulumi.Input<String>? virtualInterfaceId;
+  final pulumi.Input<String?>? virtualInterfaceId;
   /// The ID of the virtual private gateway to which to connect the virtual interface.
-  final pulumi.Input<String>? vpnGatewayId;
+  final pulumi.Input<String?>? vpnGatewayId;
 
   /// Creates a new [HostedPrivateVirtualInterfaceAccepterState].
   /// [arn] The ARN of the virtual interface.

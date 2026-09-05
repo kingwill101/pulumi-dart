@@ -151,15 +151,15 @@ import 'ontap_volume_tiering_policy.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.fsx.OntapVolume("test", {
+///     tieringPolicy: {
+///         name: "AUTO",
+///         coolingPeriod: 31,
+///     },
 ///     name: "test",
 ///     junctionPath: "/test",
 ///     sizeInMegabytes: 1024,
 ///     storageEfficiencyEnabled: true,
 ///     storageVirtualMachineId: testAwsFsxOntapStorageVirtualMachine.id,
-///     tieringPolicy: {
-///         name: "AUTO",
-///         coolingPeriod: 31,
-///     },
 /// });
 /// ```
 /// ```python
@@ -167,15 +167,15 @@ import 'ontap_volume_tiering_policy.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.fsx.OntapVolume("test",
+///     tiering_policy={
+///         "name": "AUTO",
+///         "cooling_period": 31,
+///     },
 ///     name="test",
 ///     junction_path="/test",
 ///     size_in_megabytes=1024,
 ///     storage_efficiency_enabled=True,
-///     storage_virtual_machine_id=test_aws_fsx_ontap_storage_virtual_machine["id"],
-///     tiering_policy={
-///         "name": "AUTO",
-///         "cooling_period": 31,
-///     })
+///     storage_virtual_machine_id=test_aws_fsx_ontap_storage_virtual_machine["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -187,16 +187,16 @@ import 'ontap_volume_tiering_policy.dart';
 /// {
 ///     var test = new Aws.Fsx.OntapVolume("test", new()
 ///     {
-///         Name = "test",
-///         JunctionPath = "/test",
-///         SizeInMegabytes = 1024,
-///         StorageEfficiencyEnabled = true,
-///         StorageVirtualMachineId = testAwsFsxOntapStorageVirtualMachine.Id,
 ///         TieringPolicy = new Aws.Fsx.Inputs.OntapVolumeTieringPolicyArgs
 ///         {
 ///             Name = "AUTO",
 ///             CoolingPeriod = 31,
 ///         },
+///         Name = "test",
+///         JunctionPath = "/test",
+///         SizeInMegabytes = 1024,
+///         StorageEfficiencyEnabled = true,
+///         StorageVirtualMachineId = testAwsFsxOntapStorageVirtualMachine.Id,
 ///     });
 ///
 /// });
@@ -212,15 +212,15 @@ import 'ontap_volume_tiering_policy.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := fsx.NewOntapVolume(ctx, "test", &fsx.OntapVolumeArgs{
+/// 			TieringPolicy: &fsx.OntapVolumeTieringPolicyArgs{
+/// 				Name:          pulumi.String("AUTO"),
+/// 				CoolingPeriod: pulumi.Int(31),
+/// 			},
 /// 			Name:                     pulumi.String("test"),
 /// 			JunctionPath:             pulumi.String("/test"),
 /// 			SizeInMegabytes:          pulumi.Int(1024),
 /// 			StorageEfficiencyEnabled: pulumi.Bool(true),
 /// 			StorageVirtualMachineId:  pulumi.Any(testAwsFsxOntapStorageVirtualMachine.Id),
-/// 			TieringPolicy: &fsx.OntapVolumeTieringPolicyArgs{
-/// 				Name:          pulumi.String("AUTO"),
-/// 				CoolingPeriod: pulumi.Int(31),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -239,15 +239,15 @@ import 'ontap_volume_tiering_policy.dart';
 /// }
 ///
 /// resource "aws_fsx_ontapvolume" "test" {
+///   tiering_policy = {
+///     name           = "AUTO"
+///     cooling_period = 31
+///   }
 ///   name                       = "test"
 ///   junction_path              = "/test"
 ///   size_in_megabytes          = 1024
 ///   storage_efficiency_enabled = true
 ///   storage_virtual_machine_id = testAwsFsxOntapStorageVirtualMachine.id
-///   tiering_policy = {
-///     name           = "AUTO"
-///     cooling_period = 31
-///   }
 /// }
 /// ```
 /// ```java
@@ -273,15 +273,15 @@ import 'ontap_volume_tiering_policy.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new OntapVolume("test", OntapVolumeArgs.builder()
+///             .tieringPolicy(OntapVolumeTieringPolicyArgs.builder()
+///                 .name("AUTO")
+///                 .coolingPeriod(31)
+///                 .build())
 ///             .name("test")
 ///             .junctionPath("/test")
 ///             .sizeInMegabytes(1024)
 ///             .storageEfficiencyEnabled(true)
 ///             .storageVirtualMachineId(testAwsFsxOntapStorageVirtualMachine.id())
-///             .tieringPolicy(OntapVolumeTieringPolicyArgs.builder()
-///                 .name("AUTO")
-///                 .coolingPeriod(31)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -292,14 +292,14 @@ import 'ontap_volume_tiering_policy.dart';
 ///   test:
 ///     type: aws:fsx:OntapVolume
 ///     properties:
+///       tieringPolicy:
+///         name: AUTO
+///         coolingPeriod: 31
 ///       name: test
 ///       junctionPath: /test
 ///       sizeInMegabytes: 1024
 ///       storageEfficiencyEnabled: true
 ///       storageVirtualMachineId: ${testAwsFsxOntapStorageVirtualMachine.id}
-///       tieringPolicy:
-///         name: AUTO
-///         coolingPeriod: 31
 /// ```
 ///
 ///
@@ -313,7 +313,7 @@ import 'ontap_volume_tiering_policy.dart';
 class OntapVolume extends pulumi.CustomResource {
   /// Aggregate configuration only applies to `FLEXGROUP` volumes. See [`aggregateConfiguration` Block] for details.
   late final pulumi.Output<OntapVolumeAggregateConfiguration?> aggregateConfiguration;
-  /// Amazon Resource Name of the volune.
+  /// ARN of the volune.
   late final pulumi.Output<String> arn;
   /// Whether to allow a SnapLock administrator to delete an FSx for ONTAP SnapLock Enterprise volume with unexpired write once, read many (WORM) files. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
   late final pulumi.Output<bool?> bypassSnaplockEnterpriseRetention;
@@ -376,14 +376,14 @@ class OntapVolume extends pulumi.CustomResource {
           'aws:fsx/ontapVolume:OntapVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     aggregateConfiguration = registerOutput<OntapVolumeAggregateConfiguration?>('aggregateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapVolumeAggregateConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     bypassSnaplockEnterpriseRetention = registerOutput<bool?>('bypassSnaplockEnterpriseRetention');
     copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
     fileSystemId = registerOutput<String>('fileSystemId');
-    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     flexcacheEndpointType = registerOutput<String>('flexcacheEndpointType');
     junctionPath = registerOutput<String?>('junctionPath');
     this.name = registerOutput<String>('name');
@@ -397,8 +397,8 @@ class OntapVolume extends pulumi.CustomResource {
     snapshotPolicy = registerOutput<String>('snapshotPolicy');
     storageEfficiencyEnabled = registerOutput<bool?>('storageEfficiencyEnabled');
     storageVirtualMachineId = registerOutput<String>('storageVirtualMachineId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tieringPolicy = registerOutput<OntapVolumeTieringPolicy?>('tieringPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapVolumeTieringPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uuid = registerOutput<String>('uuid');
     volumeStyle = registerOutput<String>('volumeStyle');
@@ -410,11 +410,12 @@ class OntapVolume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OntapVolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OntapVolume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -433,7 +434,7 @@ class OntapVolume extends pulumi.CustomResource {
     bypassSnaplockEnterpriseRetention = registerOutput<bool?>('bypassSnaplockEnterpriseRetention');
     copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
     fileSystemId = registerOutput<String>('fileSystemId');
-    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     flexcacheEndpointType = registerOutput<String>('flexcacheEndpointType');
     junctionPath = registerOutput<String?>('junctionPath');
     this.name = registerOutput<String>('name');
@@ -447,8 +448,44 @@ class OntapVolume extends pulumi.CustomResource {
     snapshotPolicy = registerOutput<String>('snapshotPolicy');
     storageEfficiencyEnabled = registerOutput<bool?>('storageEfficiencyEnabled');
     storageVirtualMachineId = registerOutput<String>('storageVirtualMachineId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tieringPolicy = registerOutput<OntapVolumeTieringPolicy?>('tieringPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapVolumeTieringPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uuid = registerOutput<String>('uuid');
+    volumeStyle = registerOutput<String>('volumeStyle');
+    volumeType = registerOutput<String?>('volumeType');
+  }
+
+  /// Creates a typed reference to an existing [OntapVolume] resource.
+  OntapVolume.reference(String urn)
+    : super(
+        'aws:fsx/ontapVolume:OntapVolume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregateConfiguration = registerOutput<OntapVolumeAggregateConfiguration?>('aggregateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapVolumeAggregateConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    bypassSnaplockEnterpriseRetention = registerOutput<bool?>('bypassSnaplockEnterpriseRetention');
+    copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    flexcacheEndpointType = registerOutput<String>('flexcacheEndpointType');
+    junctionPath = registerOutput<String?>('junctionPath');
+    this.name = registerOutput<String>('name');
+    ontapVolumeType = registerOutput<String>('ontapVolumeType');
+    region = registerOutput<String>('region');
+    securityStyle = registerOutput<String>('securityStyle');
+    sizeInBytes = registerOutput<String>('sizeInBytes');
+    sizeInMegabytes = registerOutput<int>('sizeInMegabytes');
+    skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
+    snaplockConfiguration = registerOutput<OntapVolumeSnaplockConfiguration?>('snaplockConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapVolumeSnaplockConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    snapshotPolicy = registerOutput<String>('snapshotPolicy');
+    storageEfficiencyEnabled = registerOutput<bool?>('storageEfficiencyEnabled');
+    storageVirtualMachineId = registerOutput<String>('storageVirtualMachineId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tieringPolicy = registerOutput<OntapVolumeTieringPolicy?>('tieringPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapVolumeTieringPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uuid = registerOutput<String>('uuid');
     volumeStyle = registerOutput<String>('volumeStyle');

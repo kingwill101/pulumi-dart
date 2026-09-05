@@ -6,15 +6,15 @@ import 'bucket_lifecycle_configuration_v2_rule_filter_tag.dart';
 
 class BucketLifecycleConfigurationV2RuleFilter {
   /// Configuration block used to apply a logical `AND` to two or more predicates. See below. The Lifecycle Rule will apply to any object matching all the predicates configured inside the `and` block.
-  final pulumi.Input<BucketLifecycleConfigurationV2RuleFilterAnd>? and;
+  final pulumi.Input<BucketLifecycleConfigurationV2RuleFilterAnd?>? and;
   /// Minimum object size (in bytes) to which the rule applies.
-  final pulumi.Input<int>? objectSizeGreaterThan;
+  final pulumi.Input<int?>? objectSizeGreaterThan;
   /// Maximum object size (in bytes) to which the rule applies.
-  final pulumi.Input<int>? objectSizeLessThan;
+  final pulumi.Input<int?>? objectSizeLessThan;
   /// Prefix identifying one or more objects to which the rule applies. Defaults to an empty string (`""`) if not specified.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Configuration block for specifying a tag key and value. See below.
-  final pulumi.Input<BucketLifecycleConfigurationV2RuleFilterTag>? tag;
+  final pulumi.Input<BucketLifecycleConfigurationV2RuleFilterTag?>? tag;
 
   /// Creates a new [BucketLifecycleConfigurationV2RuleFilter].
   /// [and] Configuration block used to apply a logical `AND` to two or more predicates. See below. The Lifecycle Rule will apply to any object matching all the predicates configured inside the `and` block.
@@ -43,8 +43,8 @@ class BucketLifecycleConfigurationV2RuleFilter {
   factory BucketLifecycleConfigurationV2RuleFilter.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationV2RuleFilter(
       and: (() { final guardedValue = map['and']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketLifecycleConfigurationV2RuleFilterAnd.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      objectSizeGreaterThan: (() { final guardedValue = map['objectSizeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      objectSizeLessThan: (() { final guardedValue = map['objectSizeLessThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      objectSizeGreaterThan: (() { final guardedValue = map['objectSizeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      objectSizeLessThan: (() { final guardedValue = map['objectSizeLessThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketLifecycleConfigurationV2RuleFilterTag.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

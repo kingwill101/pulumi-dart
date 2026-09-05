@@ -7,69 +7,69 @@ import 'get_cluster_shard.dart';
 /// Result data returned by getCluster.
 class GetClusterResult {
   /// Name of the Access Control List associated with the cluster.
-  final String aclName;
+  final String? aclName;
   /// ARN of the cluster.
-  final String arn;
+  final String? arn;
   /// True when the cluster allows automatic minor version upgrades.
-  final bool autoMinorVersionUpgrade;
-  final List<GetClusterClusterEndpoint> clusterEndpoints;
+  final bool? autoMinorVersionUpgrade;
+  final List<GetClusterClusterEndpoint>? clusterEndpoints;
   /// True when data tiering is enabled.
-  final bool dataTiering;
+  final bool? dataTiering;
   /// Description for the cluster.
-  final String description;
+  final String? description;
   /// Engine that will run on cluster nodes.
-  final String engine;
+  final String? engine;
   /// Patch version number of the engine used by the cluster.
-  final String enginePatchVersion;
+  final String? enginePatchVersion;
   /// Version number of the engine used by the cluster.
-  final String engineVersion;
+  final String? engineVersion;
   /// Name of the final cluster snapshot to be created when this resource is deleted. If omitted, no final snapshot will be made.
-  final String finalSnapshotName;
+  final String? finalSnapshotName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Mechanism that the cluster uses to discover IP addresses.
-  final String ipDiscovery;
+  final String? ipDiscovery;
   /// ARN of the KMS key used to encrypt the cluster at rest.
-  final String kmsKeyArn;
+  final String? kmsKeyArn;
   /// Weekly time range during which maintenance on the cluster is performed. Specify as a range in the format `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). Example: `sun:23:00-mon:01:30`.
-  final String maintenanceWindow;
+  final String? maintenanceWindow;
   /// Name of this node.
-  final String name;
+  final String? name;
   /// IP address type for the cluster.
-  final String networkType;
+  final String? networkType;
   /// Compute and memory capacity of the nodes in the cluster.
-  final String nodeType;
+  final String? nodeType;
   /// The number of replicas to apply to each shard.
-  final int numReplicasPerShard;
+  final int? numReplicasPerShard;
   /// Number of shards in the cluster.
-  final int numShards;
+  final int? numShards;
   /// The name of the parameter group associated with the cluster.
-  final String parameterGroupName;
+  final String? parameterGroupName;
   /// Port number that this node is listening on.
-  final int port;
-  final String region;
+  final int? port;
+  final String? region;
   /// Set of VPC Security Group ID-s associated with this cluster.
-  final List<String> securityGroupIds;
+  final List<String>? securityGroupIds;
   /// Set of shards in this cluster.
-  final List<GetClusterShard> shards;
+  final List<GetClusterShard>? shards;
   /// The number of days for which MemoryDB retains automatic snapshots before deleting them. When set to `0`, automatic backups are disabled.
-  final int snapshotRetentionLimit;
+  final int? snapshotRetentionLimit;
   /// Daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of your shard. Example: `05:00-09:00`.
-  final String snapshotWindow;
+  final String? snapshotWindow;
   /// ARN of the SNS topic to which cluster notifications are sent.
-  final String snsTopicArn;
+  final String? snsTopicArn;
   /// The name of the subnet group used for the cluster.
-  final String subnetGroupName;
+  final String? subnetGroupName;
   /// Map of tags assigned to the cluster.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// When true, in-transit encryption is enabled for the cluster.
-  final bool tlsEnabled;
+  final bool? tlsEnabled;
 
   /// Creates a new [GetClusterResult].
   /// [aclName] Name of the Access Control List associated with the cluster.
   /// [arn] ARN of the cluster.
   /// [autoMinorVersionUpgrade] True when the cluster allows automatic minor version upgrades.
-  /// [clusterEndpoints] Required.
+  /// [clusterEndpoints] Optional.
   /// [dataTiering] True when data tiering is enabled.
   /// [description] Description for the cluster.
   /// [engine] Engine that will run on cluster nodes.
@@ -87,7 +87,7 @@ class GetClusterResult {
   /// [numShards] Number of shards in the cluster.
   /// [parameterGroupName] The name of the parameter group associated with the cluster.
   /// [port] Port number that this node is listening on.
-  /// [region] Required.
+  /// [region] Optional.
   /// [securityGroupIds] Set of VPC Security Group ID-s associated with this cluster.
   /// [shards] Set of shards in this cluster.
   /// [snapshotRetentionLimit] The number of days for which MemoryDB retains automatic snapshots before deleting them. When set to `0`, automatic backups are disabled.
@@ -97,105 +97,105 @@ class GetClusterResult {
   /// [tags] Map of tags assigned to the cluster.
   /// [tlsEnabled] When true, in-transit encryption is enabled for the cluster.
   const GetClusterResult({
-    required this.aclName,
-    required this.arn,
-    required this.autoMinorVersionUpgrade,
-    required this.clusterEndpoints,
-    required this.dataTiering,
-    required this.description,
-    required this.engine,
-    required this.enginePatchVersion,
-    required this.engineVersion,
-    required this.finalSnapshotName,
-    required this.id,
-    required this.ipDiscovery,
-    required this.kmsKeyArn,
-    required this.maintenanceWindow,
-    required this.name,
-    required this.networkType,
-    required this.nodeType,
-    required this.numReplicasPerShard,
-    required this.numShards,
-    required this.parameterGroupName,
-    required this.port,
-    required this.region,
-    required this.securityGroupIds,
-    required this.shards,
-    required this.snapshotRetentionLimit,
-    required this.snapshotWindow,
-    required this.snsTopicArn,
-    required this.subnetGroupName,
-    required this.tags,
-    required this.tlsEnabled,
+    this.aclName,
+    this.arn,
+    this.autoMinorVersionUpgrade,
+    this.clusterEndpoints,
+    this.dataTiering,
+    this.description,
+    this.engine,
+    this.enginePatchVersion,
+    this.engineVersion,
+    this.finalSnapshotName,
+    this.id,
+    this.ipDiscovery,
+    this.kmsKeyArn,
+    this.maintenanceWindow,
+    this.name,
+    this.networkType,
+    this.nodeType,
+    this.numReplicasPerShard,
+    this.numShards,
+    this.parameterGroupName,
+    this.port,
+    this.region,
+    this.securityGroupIds,
+    this.shards,
+    this.snapshotRetentionLimit,
+    this.snapshotWindow,
+    this.snsTopicArn,
+    this.subnetGroupName,
+    this.tags,
+    this.tlsEnabled,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aclName': aclName,
-      'arn': arn,
-      'autoMinorVersionUpgrade': autoMinorVersionUpgrade,
-      'clusterEndpoints': pulumi.Input.encodeList<GetClusterClusterEndpoint, Map<String, dynamic>>(clusterEndpoints, (value) => value.toMap()),
-      'dataTiering': dataTiering,
-      'description': description,
-      'engine': engine,
-      'enginePatchVersion': enginePatchVersion,
-      'engineVersion': engineVersion,
-      'finalSnapshotName': finalSnapshotName,
-      'id': id,
-      'ipDiscovery': ipDiscovery,
-      'kmsKeyArn': kmsKeyArn,
-      'maintenanceWindow': maintenanceWindow,
-      'name': name,
-      'networkType': networkType,
-      'nodeType': nodeType,
-      'numReplicasPerShard': numReplicasPerShard,
-      'numShards': numShards,
-      'parameterGroupName': parameterGroupName,
-      'port': port,
-      'region': region,
-      'securityGroupIds': securityGroupIds,
-      'shards': pulumi.Input.encodeList<GetClusterShard, Map<String, dynamic>>(shards, (value) => value.toMap()),
-      'snapshotRetentionLimit': snapshotRetentionLimit,
-      'snapshotWindow': snapshotWindow,
-      'snsTopicArn': snsTopicArn,
-      'subnetGroupName': subnetGroupName,
-      'tags': tags,
-      'tlsEnabled': tlsEnabled,
+      'aclName': ?aclName,
+      'arn': ?arn,
+      'autoMinorVersionUpgrade': ?autoMinorVersionUpgrade,
+      'clusterEndpoints': ?(() { final guardedValue = clusterEndpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterClusterEndpoint, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'dataTiering': ?dataTiering,
+      'description': ?description,
+      'engine': ?engine,
+      'enginePatchVersion': ?enginePatchVersion,
+      'engineVersion': ?engineVersion,
+      'finalSnapshotName': ?finalSnapshotName,
+      'id': ?id,
+      'ipDiscovery': ?ipDiscovery,
+      'kmsKeyArn': ?kmsKeyArn,
+      'maintenanceWindow': ?maintenanceWindow,
+      'name': ?name,
+      'networkType': ?networkType,
+      'nodeType': ?nodeType,
+      'numReplicasPerShard': ?numReplicasPerShard,
+      'numShards': ?numShards,
+      'parameterGroupName': ?parameterGroupName,
+      'port': ?port,
+      'region': ?region,
+      'securityGroupIds': ?securityGroupIds,
+      'shards': ?(() { final guardedValue = shards; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterShard, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'snapshotRetentionLimit': ?snapshotRetentionLimit,
+      'snapshotWindow': ?snapshotWindow,
+      'snsTopicArn': ?snsTopicArn,
+      'subnetGroupName': ?subnetGroupName,
+      'tags': ?tags,
+      'tlsEnabled': ?tlsEnabled,
     };
   }
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      aclName: map['aclName'] as String,
-      arn: map['arn'] as String,
-      autoMinorVersionUpgrade: map['autoMinorVersionUpgrade'] as bool,
-      clusterEndpoints: pulumi.Input.decodeList<GetClusterClusterEndpoint>(map['clusterEndpoints']!, (value) => GetClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())),
-      dataTiering: map['dataTiering'] as bool,
-      description: map['description'] as String,
-      engine: map['engine'] as String,
-      enginePatchVersion: map['enginePatchVersion'] as String,
-      engineVersion: map['engineVersion'] as String,
-      finalSnapshotName: map['finalSnapshotName'] as String,
-      id: map['id'] as String,
-      ipDiscovery: map['ipDiscovery'] as String,
-      kmsKeyArn: map['kmsKeyArn'] as String,
-      maintenanceWindow: map['maintenanceWindow'] as String,
-      name: map['name'] as String,
-      networkType: map['networkType'] as String,
-      nodeType: map['nodeType'] as String,
-      numReplicasPerShard: map['numReplicasPerShard'] as int,
-      numShards: map['numShards'] as int,
-      parameterGroupName: map['parameterGroupName'] as String,
-      port: map['port'] as int,
-      region: map['region'] as String,
-      securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
-      shards: pulumi.Input.decodeList<GetClusterShard>(map['shards']!, (value) => GetClusterShard.fromMap((value as Map).cast<String, dynamic>())),
-      snapshotRetentionLimit: map['snapshotRetentionLimit'] as int,
-      snapshotWindow: map['snapshotWindow'] as String,
-      snsTopicArn: map['snsTopicArn'] as String,
-      subnetGroupName: map['subnetGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      tlsEnabled: map['tlsEnabled'] as bool,
+      aclName: (() { final guardedValue = map['aclName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      autoMinorVersionUpgrade: (() { final guardedValue = map['autoMinorVersionUpgrade']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      clusterEndpoints: (() { final guardedValue = map['clusterEndpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterClusterEndpoint>(guardedValue, (value) => GetClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); })(),
+      dataTiering: (() { final guardedValue = map['dataTiering']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enginePatchVersion: (() { final guardedValue = map['enginePatchVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      engineVersion: (() { final guardedValue = map['engineVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      finalSnapshotName: (() { final guardedValue = map['finalSnapshotName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipDiscovery: (() { final guardedValue = map['ipDiscovery']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numReplicasPerShard: (() { final guardedValue = map['numReplicasPerShard']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      numShards: (() { final guardedValue = map['numShards']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      parameterGroupName: (() { final guardedValue = map['parameterGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      shards: (() { final guardedValue = map['shards']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterShard>(guardedValue, (value) => GetClusterShard.fromMap((value as Map).cast<String, dynamic>())); })(),
+      snapshotRetentionLimit: (() { final guardedValue = map['snapshotRetentionLimit']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      snapshotWindow: (() { final guardedValue = map['snapshotWindow']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      snsTopicArn: (() { final guardedValue = map['snsTopicArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subnetGroupName: (() { final guardedValue = map['subnetGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      tlsEnabled: (() { final guardedValue = map['tlsEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

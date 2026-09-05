@@ -5,7 +5,7 @@ import 'core_network_connector_configuration_vpc_egress_configuration.dart';
 
 class CoreNetworkConnectorConfiguration {
   /// Configuration for routing egress traffic through a VPC. See `vpcEgressConfiguration` Block below.
-  final pulumi.Input<CoreNetworkConnectorConfigurationVpcEgressConfiguration>? vpcEgressConfiguration;
+  final pulumi.Input<CoreNetworkConnectorConfigurationVpcEgressConfiguration?>? vpcEgressConfiguration;
 
   /// Creates a new [CoreNetworkConnectorConfiguration].
   /// [vpcEgressConfiguration] Configuration for routing egress traffic through a VPC. See `vpcEgressConfiguration` Block below.

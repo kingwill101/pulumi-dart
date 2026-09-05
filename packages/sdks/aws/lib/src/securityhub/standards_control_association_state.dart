@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering StandardsControlAssociation resources.
 class StandardsControlAssociationState {
   /// The desired enablement status of the control in the standard. Valid values: `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? associationStatus;
+  final pulumi.Input<String?>? associationStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The unique identifier for the security control whose enablement status you want to update.
-  final pulumi.Input<String>? securityControlId;
-  /// The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
+  final pulumi.Input<String?>? securityControlId;
+  /// ARN of the standard in which you want to update the control's enablement status.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? standardsArn;
+  final pulumi.Input<String?>? standardsArn;
   /// The reason for updating the control's enablement status in the standard. Required when `associationStatus` is `DISABLED`.
-  final pulumi.Input<String>? updatedReason;
+  final pulumi.Input<String?>? updatedReason;
 
   /// Creates a new [StandardsControlAssociationState].
   /// [associationStatus] The desired enablement status of the control in the standard. Valid values: `ENABLED`, `DISABLED`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityControlId] The unique identifier for the security control whose enablement status you want to update.
-  /// [standardsArn] The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
+  /// [standardsArn] ARN of the standard in which you want to update the control's enablement status.
   /// [updatedReason] The reason for updating the control's enablement status in the standard. Required when `associationStatus` is `DISABLED`.
   const StandardsControlAssociationState({
     this.associationStatus,

@@ -10,41 +10,41 @@ import 'flow_log_tag_field_specification.dart';
 /// {@macro pulumi_ec2_flow_log_flow_log_args_doc}
 class FlowLogArgs {
   /// ARN of the IAM role in the destination account used for cross-account delivery of flow logs.
-  final pulumi.Input<String>? deliverCrossAccountRole;
+  final pulumi.Input<String?>? deliverCrossAccountRole;
   /// Destination options for a flow log. More details below.
-  final pulumi.Input<FlowLogDestinationOptions>? destinationOptions;
+  final pulumi.Input<FlowLogDestinationOptions?>? destinationOptions;
   /// Elastic Network Interface ID to attach to.
-  final pulumi.Input<String>? eniId;
+  final pulumi.Input<String?>? eniId;
   /// ARN of the IAM role used to post flow logs. Corresponds to `DeliverLogsPermissionArn` in the [AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFlowLogs.html).
-  final pulumi.Input<String>? iamRoleArn;
+  final pulumi.Input<String?>? iamRoleArn;
   /// ARN of the logging destination.
-  final pulumi.Input<String>? logDestination;
+  final pulumi.Input<String?>? logDestination;
   /// Logging destination type. Valid values: `cloud-watch-logs`, `s3`, `kinesis-data-firehose`. Default: `cloud-watch-logs`.
-  final pulumi.Input<String>? logDestinationType;
+  final pulumi.Input<String?>? logDestinationType;
   /// Fields to include in the flow log record. Accepted format example: `"$${interface-id} $${srcaddr} $${dstaddr} $${srcport} $${dstport}"`.
-  final pulumi.Input<String>? logFormat;
+  final pulumi.Input<String?>? logFormat;
   /// Maximum interval of time during which a flow of packets is captured and aggregated into a flow log record. Valid Values: `60` seconds (1 minute) or `600` seconds (10 minutes). Default: `600`. When `transitGatewayId` or `transitGatewayAttachmentId` is specified, `maxAggregationInterval` *must* be 60 seconds (1 minute).
-  final pulumi.Input<int>? maxAggregationInterval;
+  final pulumi.Input<int?>? maxAggregationInterval;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Regional NAT Gateway ID to attach to.
-  final pulumi.Input<String>? regionalNatGatewayId;
+  final pulumi.Input<String?>? regionalNatGatewayId;
   /// Subnet ID to attach to.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Tag configuration for the Flow Logs Amazon EC2 Tags feature fields (e.g., `$${instance-tag}`) used in `logFormat`. More details below.
-  final pulumi.Input<List<FlowLogTagFieldSpecification>>? tagFieldSpecifications;
+  final pulumi.Input<List<FlowLogTagFieldSpecification>?>? tagFieldSpecifications;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Type of traffic to capture. Valid values: `ACCEPT`,`REJECT`, `ALL`. Required if `eniId`, `regionalNatGatewayId`, `subnetId`, or `vpcId` is specified.
-  final pulumi.Input<String>? trafficType;
+  final pulumi.Input<String?>? trafficType;
   /// Transit Gateway Attachment ID to attach to.
-  final pulumi.Input<String>? transitGatewayAttachmentId;
+  final pulumi.Input<String?>? transitGatewayAttachmentId;
   /// Transit Gateway ID to attach to.
-  final pulumi.Input<String>? transitGatewayId;
+  final pulumi.Input<String?>? transitGatewayId;
   /// VPC ID to attach to.
   ///
   /// &gt; **NOTE:** One of `eniId`, `regionalNatGatewayId`, `subnetId`, `transitGatewayId`, `transitGatewayAttachmentId`, or `vpcId` must be specified.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [FlowLogArgs].
   /// [deliverCrossAccountRole] ARN of the IAM role in the destination account used for cross-account delivery of flow logs.
@@ -115,7 +115,7 @@ class FlowLogArgs {
       logDestination: (() { final guardedValue = map['logDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logDestinationType: (() { final guardedValue = map['logDestinationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logFormat: (() { final guardedValue = map['logFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxAggregationInterval: (() { final guardedValue = map['maxAggregationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAggregationInterval: (() { final guardedValue = map['maxAggregationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regionalNatGatewayId: (() { final guardedValue = map['regionalNatGatewayId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

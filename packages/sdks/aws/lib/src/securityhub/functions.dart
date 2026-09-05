@@ -114,6 +114,17 @@ Future<GetEnabledStandardsResult> getEnabledStandards(
   return GetEnabledStandardsResult.fromMap(result);
 }
 
+pulumi.Output<GetEnabledStandardsResult> getEnabledStandardsOutput(
+  GetEnabledStandardsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:securityhub/getEnabledStandards:getEnabledStandards',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnabledStandardsResult.fromMap);
+}
+
 /// Lists security controls.
 ///
 /// ## Example Usage
@@ -304,6 +315,17 @@ Future<GetSecurityControlsResult> getSecurityControls(
   return GetSecurityControlsResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityControlsResult> getSecurityControlsOutput(
+  GetSecurityControlsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:securityhub/getSecurityControls:getSecurityControls',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityControlsResult.fromMap);
+}
+
 /// Data source for managing an AWS Security Hub Standards Control Associations.
 ///
 /// ## Example Usage
@@ -440,4 +462,15 @@ Future<GetStandardsControlAssociationsResult> getStandardsControlAssociations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStandardsControlAssociationsResult.fromMap(result);
+}
+
+pulumi.Output<GetStandardsControlAssociationsResult> getStandardsControlAssociationsOutput(
+  GetStandardsControlAssociationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:securityhub/getStandardsControlAssociations:getStandardsControlAssociations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStandardsControlAssociationsResult.fromMap);
 }

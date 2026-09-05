@@ -12,13 +12,13 @@ class GeofenceCollectionArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> collectionName;
   /// The optional description for the geofence collection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the geofence collection. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GeofenceCollectionArgs].
   /// [collectionName] The name of the geofence collection.

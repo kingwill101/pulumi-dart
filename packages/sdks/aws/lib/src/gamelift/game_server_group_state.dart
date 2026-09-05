@@ -8,41 +8,41 @@ import 'game_server_group_launch_template.dart';
 /// Input properties used for looking up and filtering GameServerGroup resources.
 class GameServerGroupState {
   /// The ARN of the GameLift Game Server Group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The ARN of the created EC2 Auto Scaling group.
-  final pulumi.Input<String>? autoScalingGroupArn;
-  final pulumi.Input<GameServerGroupAutoScalingPolicy>? autoScalingPolicy;
+  final pulumi.Input<String?>? autoScalingGroupArn;
+  final pulumi.Input<GameServerGroupAutoScalingPolicy?>? autoScalingPolicy;
   /// Indicates how GameLift FleetIQ balances the use of Spot Instances and On-Demand Instances.
   /// Valid values: `SPOT_ONLY`, `SPOT_PREFERRED`, `ON_DEMAND_ONLY`. Defaults to `SPOT_PREFERRED`.
-  final pulumi.Input<String>? balancingStrategy;
+  final pulumi.Input<String?>? balancingStrategy;
   /// Name of the game server group.
   /// This value is used to generate unique ARN identifiers for the EC2 Auto Scaling group and the GameLift FleetIQ game server group.
-  final pulumi.Input<String>? gameServerGroupName;
+  final pulumi.Input<String?>? gameServerGroupName;
   /// Indicates whether instances in the game server group are protected from early termination.
   /// Unprotected instances that have active game servers running might be terminated during a scale-down event,
   /// causing players to be dropped from the game.
   /// Protected instances cannot be terminated while there are active game servers running except in the event
   /// of a forced game server group deletion.
   /// Valid values: `NO_PROTECTION`, `FULL_PROTECTION`. Defaults to `NO_PROTECTION`.
-  final pulumi.Input<String>? gameServerProtectionPolicy;
-  final pulumi.Input<List<GameServerGroupInstanceDefinition>>? instanceDefinitions;
-  final pulumi.Input<GameServerGroupLaunchTemplate>? launchTemplate;
+  final pulumi.Input<String?>? gameServerProtectionPolicy;
+  final pulumi.Input<List<GameServerGroupInstanceDefinition>?>? instanceDefinitions;
+  final pulumi.Input<GameServerGroupLaunchTemplate?>? launchTemplate;
   /// The maximum number of instances allowed in the EC2 Auto Scaling group.
   /// During automatic scaling events, GameLift FleetIQ and EC2 do not scale up the group above this maximum.
-  final pulumi.Input<int>? maxSize;
+  final pulumi.Input<int?>? maxSize;
   /// The minimum number of instances allowed in the EC2 Auto Scaling group.
   /// During automatic scaling events, GameLift FleetIQ and EC2 do not scale down the group below this minimum.
-  final pulumi.Input<int>? minSize;
+  final pulumi.Input<int?>? minSize;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN for an IAM role that allows Amazon GameLift to access your EC2 Auto Scaling groups.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// Key-value map of resource tags
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// A list of VPC subnets to use with instances in the game server group.
   /// By default, all GameLift FleetIQ-supported Availability Zones are used.
-  final pulumi.Input<List<String>>? vpcSubnets;
+  final pulumi.Input<List<String>?>? vpcSubnets;
 
   /// Creates a new [GameServerGroupState].
   /// [arn] The ARN of the GameLift Game Server Group.
@@ -108,8 +108,8 @@ class GameServerGroupState {
       gameServerProtectionPolicy: (() { final guardedValue = map['gameServerProtectionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceDefinitions: (() { final guardedValue = map['instanceDefinitions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GameServerGroupInstanceDefinition>(guardedValue, (value) => GameServerGroupInstanceDefinition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       launchTemplate: (() { final guardedValue = map['launchTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GameServerGroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

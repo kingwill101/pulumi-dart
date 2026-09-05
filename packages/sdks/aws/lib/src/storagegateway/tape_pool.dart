@@ -116,13 +116,13 @@ import 'tape_pool_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.storagegateway.TapePool` using the volume Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.storagegateway.TapePool` using the volume ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:storagegateway/tapePool:TapePool example arn:aws:storagegateway:us-east-1:123456789012:tapepool/pool-12345678
 /// ```
 class TapePool extends pulumi.CustomResource {
-  /// Volume Amazon Resource Name (ARN), e.g., `aws_storagegateway_tape_pool.example arn:aws:storagegateway:us-east-1:123456789012:tapepool/pool-12345678`.
+  /// Volume ARN, e.g., `aws_storagegateway_tape_pool.example arn:aws:storagegateway:us-east-1:123456789012:tapepool/pool-12345678`.
   late final pulumi.Output<String> arn;
   /// The name of the new custom tape pool.
   late final pulumi.Output<String> poolName;
@@ -151,7 +151,7 @@ class TapePool extends pulumi.CustomResource {
           'aws:storagegateway/tapePool:TapePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     poolName = registerOutput<String>('poolName');
@@ -159,8 +159,8 @@ class TapePool extends pulumi.CustomResource {
     retentionLockTimeInDays = registerOutput<int?>('retentionLockTimeInDays');
     retentionLockType = registerOutput<String?>('retentionLockType');
     storageClass = registerOutput<String>('storageClass');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [TapePool] resource's state with the given [name] and [id].
@@ -168,11 +168,12 @@ class TapePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TapePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TapePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -192,7 +193,26 @@ class TapePool extends pulumi.CustomResource {
     retentionLockTimeInDays = registerOutput<int?>('retentionLockTimeInDays');
     retentionLockType = registerOutput<String?>('retentionLockType');
     storageClass = registerOutput<String>('storageClass');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [TapePool] resource.
+  TapePool.reference(String urn)
+    : super(
+        'aws:storagegateway/tapePool:TapePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    poolName = registerOutput<String>('poolName');
+    region = registerOutput<String>('region');
+    retentionLockTimeInDays = registerOutput<int?>('retentionLockTimeInDays');
+    retentionLockType = registerOutput<String?>('retentionLockType');
+    storageClass = registerOutput<String>('storageClass');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

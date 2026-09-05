@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetDataSetUsageConfiguration {
   /// Controls whether a child dataset of a direct query can use this dataset as a source.
-  final pulumi.Input<bool>? disableUseAsDirectQuerySource;
+  final pulumi.Input<bool?>? disableUseAsDirectQuerySource;
   /// Controls whether a child dataset that's stored in QuickSight can use this dataset as a source.
-  final pulumi.Input<bool>? disableUseAsImportedSource;
+  final pulumi.Input<bool?>? disableUseAsImportedSource;
 
   /// Creates a new [DataSetDataSetUsageConfiguration].
   /// [disableUseAsDirectQuerySource] Controls whether a child dataset of a direct query can use this dataset as a source.

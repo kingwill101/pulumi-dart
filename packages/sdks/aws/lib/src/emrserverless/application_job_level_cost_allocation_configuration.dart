@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationJobLevelCostAllocationConfiguration {
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ApplicationJobLevelCostAllocationConfiguration].
   /// [enabled] Optional.

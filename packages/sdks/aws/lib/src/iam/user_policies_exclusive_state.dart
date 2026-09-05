@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering UserPoliciesExclusive resources.
 class UserPoliciesExclusiveState {
   /// A list of inline policy names to be assigned to the user. Policies attached to this user but not configured in this argument will be removed.
-  final pulumi.Input<List<String>>? policyNames;
+  final pulumi.Input<List<String>?>? policyNames;
   /// IAM user name.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [UserPoliciesExclusiveState].
   /// [policyNames] A list of inline policy names to be assigned to the user. Policies attached to this user but not configured in this argument will be removed.

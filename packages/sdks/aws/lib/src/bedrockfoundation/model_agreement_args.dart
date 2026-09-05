@@ -15,8 +15,8 @@ class ModelAgreementArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> offerToken;
   /// Region where this action should be [run](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<ModelAgreementTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<ModelAgreementTimeouts?>? timeouts;
 
   /// Creates a new [ModelAgreementArgs].
   /// [modelId] Model ID for the access request.

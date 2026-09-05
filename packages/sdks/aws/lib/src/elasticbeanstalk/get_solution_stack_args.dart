@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSolutionStackArgs {
   /// If more than one result is returned, use the most
   /// recent solution stack.
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// Regex string to apply to the solution stack list returned
   /// by AWS. See [Elastic Beanstalk Supported Platforms](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html) from
   /// AWS documentation for reference solution stack names.
@@ -19,7 +19,7 @@ class GetSolutionStackArgs {
   /// a single solution stack, or use `mostRecent` to choose the most recent one.
   final pulumi.Input<String> nameRegex;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetSolutionStackArgs].
   /// [mostRecent] If more than one result is returned, use the most

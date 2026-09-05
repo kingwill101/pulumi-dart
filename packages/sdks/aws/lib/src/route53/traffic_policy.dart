@@ -196,7 +196,7 @@ import 'traffic_policy_state.dart';
 /// $ pulumi import aws:route53/trafficPolicy:TrafficPolicy example 01a52019-d16f-422a-ae72-c306d2b6df7e/1
 /// ```
 class TrafficPolicy extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the traffic policy.
+  /// ARN of the traffic policy.
   late final pulumi.Output<String> arn;
   /// Comment for the traffic policy.
   late final pulumi.Output<String?> comment;
@@ -223,7 +223,7 @@ class TrafficPolicy extends pulumi.CustomResource {
           'aws:route53/trafficPolicy:TrafficPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
@@ -238,11 +238,12 @@ class TrafficPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrafficPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrafficPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -256,6 +257,23 @@ class TrafficPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    comment = registerOutput<String?>('comment');
+    document = registerOutput<String>('document');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [TrafficPolicy] resource.
+  TrafficPolicy.reference(String urn)
+    : super(
+        'aws:route53/trafficPolicy:TrafficPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
     document = registerOutput<String>('document');

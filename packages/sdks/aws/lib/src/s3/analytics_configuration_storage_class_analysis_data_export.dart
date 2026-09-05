@@ -7,7 +7,7 @@ class AnalyticsConfigurationStorageClassAnalysisDataExport {
   /// Destination for the exported analytics data (documented below).
   final pulumi.Input<AnalyticsConfigurationStorageClassAnalysisDataExportDestination> destination;
   /// Schema version of exported analytics data. Allowed values: `V_1`. Default value: `V_1`.
-  final pulumi.Input<String>? outputSchemaVersion;
+  final pulumi.Input<String?>? outputSchemaVersion;
 
   /// Creates a new [AnalyticsConfigurationStorageClassAnalysisDataExport].
   /// [destination] Destination for the exported analytics data (documented below).

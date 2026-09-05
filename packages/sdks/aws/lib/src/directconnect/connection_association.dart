@@ -220,7 +220,7 @@ class ConnectionAssociation extends pulumi.CustomResource {
           'aws:directconnect/connectionAssociation:ConnectionAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     connectionId = registerOutput<String>('connectionId');
     lagId = registerOutput<String>('lagId');
@@ -232,11 +232,12 @@ class ConnectionAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectionAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -250,6 +251,20 @@ class ConnectionAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    connectionId = registerOutput<String>('connectionId');
+    lagId = registerOutput<String>('lagId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionAssociation] resource.
+  ConnectionAssociation.reference(String urn)
+    : super(
+        'aws:directconnect/connectionAssociation:ConnectionAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     connectionId = registerOutput<String>('connectionId');
     lagId = registerOutput<String>('lagId');
     region = registerOutput<String>('region');

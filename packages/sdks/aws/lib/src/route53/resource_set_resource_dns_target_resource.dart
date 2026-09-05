@@ -7,13 +7,13 @@ class ResourceSetResourceDnsTargetResource {
   /// DNS Name that acts as the ingress point to a portion of application.
   final pulumi.Input<String> domainName;
   /// Hosted Zone ARN that contains the DNS record with the provided name of target resource.
-  final pulumi.Input<String>? hostedZoneArn;
+  final pulumi.Input<String?>? hostedZoneArn;
   /// Route53 record set id to uniquely identify a record given a `domainName` and a `recordType`.
-  final pulumi.Input<String>? recordSetId;
+  final pulumi.Input<String?>? recordSetId;
   /// Type of DNS Record of target resource.
-  final pulumi.Input<String>? recordType;
+  final pulumi.Input<String?>? recordType;
   /// Target resource the R53 record specified with the above params points to.
-  final pulumi.Input<ResourceSetResourceDnsTargetResourceTargetResource>? targetResource;
+  final pulumi.Input<ResourceSetResourceDnsTargetResourceTargetResource?>? targetResource;
 
   /// Creates a new [ResourceSetResourceDnsTargetResource].
   /// [domainName] DNS Name that acts as the ingress point to a portion of application.

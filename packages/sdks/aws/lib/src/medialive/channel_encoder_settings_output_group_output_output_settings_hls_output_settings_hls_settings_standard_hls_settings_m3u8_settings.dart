@@ -3,24 +3,24 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings {
-  final pulumi.Input<int>? audioFramesPerPes;
-  final pulumi.Input<String>? audioPids;
-  final pulumi.Input<String>? ecmPid;
-  final pulumi.Input<String>? nielsenId3Behavior;
-  final pulumi.Input<int>? patInterval;
-  final pulumi.Input<String>? pcrControl;
-  final pulumi.Input<int>? pcrPeriod;
-  final pulumi.Input<String>? pcrPid;
-  final pulumi.Input<int>? pmtInterval;
-  final pulumi.Input<String>? pmtPid;
-  final pulumi.Input<int>? programNum;
-  final pulumi.Input<String>? scte35Behavior;
+  final pulumi.Input<int?>? audioFramesPerPes;
+  final pulumi.Input<String?>? audioPids;
+  final pulumi.Input<String?>? ecmPid;
+  final pulumi.Input<String?>? nielsenId3Behavior;
+  final pulumi.Input<int?>? patInterval;
+  final pulumi.Input<String?>? pcrControl;
+  final pulumi.Input<int?>? pcrPeriod;
+  final pulumi.Input<String?>? pcrPid;
+  final pulumi.Input<int?>? pmtInterval;
+  final pulumi.Input<String?>? pmtPid;
+  final pulumi.Input<int?>? programNum;
+  final pulumi.Input<String?>? scte35Behavior;
   /// PID from which to read SCTE-35 messages.
-  final pulumi.Input<String>? scte35Pid;
-  final pulumi.Input<String>? timedMetadataBehavior;
-  final pulumi.Input<String>? timedMetadataPid;
-  final pulumi.Input<int>? transportStreamId;
-  final pulumi.Input<String>? videoPid;
+  final pulumi.Input<String?>? scte35Pid;
+  final pulumi.Input<String?>? timedMetadataBehavior;
+  final pulumi.Input<String?>? timedMetadataPid;
+  final pulumi.Input<int?>? transportStreamId;
+  final pulumi.Input<String?>? videoPid;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings].
   /// [audioFramesPerPes] Optional.
@@ -84,22 +84,22 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings(
-      audioFramesPerPes: (() { final guardedValue = map['audioFramesPerPes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      audioFramesPerPes: (() { final guardedValue = map['audioFramesPerPes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       audioPids: (() { final guardedValue = map['audioPids']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ecmPid: (() { final guardedValue = map['ecmPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nielsenId3Behavior: (() { final guardedValue = map['nielsenId3Behavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      patInterval: (() { final guardedValue = map['patInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      patInterval: (() { final guardedValue = map['patInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       pcrControl: (() { final guardedValue = map['pcrControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pcrPeriod: (() { final guardedValue = map['pcrPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pcrPeriod: (() { final guardedValue = map['pcrPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       pcrPid: (() { final guardedValue = map['pcrPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pmtInterval: (() { final guardedValue = map['pmtInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pmtInterval: (() { final guardedValue = map['pmtInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       pmtPid: (() { final guardedValue = map['pmtPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      programNum: (() { final guardedValue = map['programNum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      programNum: (() { final guardedValue = map['programNum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       scte35Behavior: (() { final guardedValue = map['scte35Behavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scte35Pid: (() { final guardedValue = map['scte35Pid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timedMetadataBehavior: (() { final guardedValue = map['timedMetadataBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timedMetadataPid: (() { final guardedValue = map['timedMetadataPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transportStreamId: (() { final guardedValue = map['transportStreamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      transportStreamId: (() { final guardedValue = map['transportStreamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       videoPid: (() { final guardedValue = map['videoPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

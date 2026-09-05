@@ -136,7 +136,7 @@ import 'proxy_endpoint_state.dart';
 /// $ pulumi import aws:rds/proxyEndpoint:ProxyEndpoint example example/example
 /// ```
 class ProxyEndpoint extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) for the proxy endpoint.
+  /// ARN for the proxy endpoint.
   late final pulumi.Output<String> arn;
   /// The identifier for the proxy endpoint. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
   late final pulumi.Output<String> dbProxyEndpointName;
@@ -172,7 +172,7 @@ class ProxyEndpoint extends pulumi.CustomResource {
           'aws:rds/proxyEndpoint:ProxyEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dbProxyEndpointName = registerOutput<String>('dbProxyEndpointName');
@@ -180,12 +180,12 @@ class ProxyEndpoint extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     isDefault = registerOutput<bool>('isDefault');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetRole = registerOutput<String?>('targetRole');
     vpcId = registerOutput<String>('vpcId');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
-    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ProxyEndpoint] resource's state with the given [name] and [id].
@@ -193,11 +193,12 @@ class ProxyEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProxyEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProxyEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -217,11 +218,34 @@ class ProxyEndpoint extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     isDefault = registerOutput<bool>('isDefault');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetRole = registerOutput<String?>('targetRole');
     vpcId = registerOutput<String>('vpcId');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
-    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ProxyEndpoint] resource.
+  ProxyEndpoint.reference(String urn)
+    : super(
+        'aws:rds/proxyEndpoint:ProxyEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dbProxyEndpointName = registerOutput<String>('dbProxyEndpointName');
+    dbProxyName = registerOutput<String>('dbProxyName');
+    endpoint = registerOutput<String>('endpoint');
+    isDefault = registerOutput<bool>('isDefault');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRole = registerOutput<String?>('targetRole');
+    vpcId = registerOutput<String>('vpcId');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

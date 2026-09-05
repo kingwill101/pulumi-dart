@@ -15,12 +15,12 @@ import 'relay_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.mailmanager.Relay("example", {
-///     name: "example",
-///     serverName: "smtp.example.com",
-///     serverPort: 25,
 ///     authentication: {
 ///         noAuthentication: {},
 ///     },
+///     name: "example",
+///     serverName: "smtp.example.com",
+///     serverPort: 25,
 /// });
 /// ```
 /// ```python
@@ -28,12 +28,12 @@ import 'relay_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.mailmanager.Relay("example",
-///     name="example",
-///     server_name="smtp.example.com",
-///     server_port=25,
 ///     authentication={
 ///         "no_authentication": {},
-///     })
+///     },
+///     name="example",
+///     server_name="smtp.example.com",
+///     server_port=25)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,13 +45,13 @@ import 'relay_state.dart';
 /// {
 ///     var example = new Aws.MailManager.Relay("example", new()
 ///     {
-///         Name = "example",
-///         ServerName = "smtp.example.com",
-///         ServerPort = 25,
 ///         Authentication = new Aws.MailManager.Inputs.RelayAuthenticationArgs
 ///         {
 ///             NoAuthentication = null,
 ///         },
+///         Name = "example",
+///         ServerName = "smtp.example.com",
+///         ServerPort = 25,
 ///     });
 ///
 /// });
@@ -67,12 +67,12 @@ import 'relay_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := mailmanager.NewRelay(ctx, "example", &mailmanager.RelayArgs{
-/// 			Name:       pulumi.String("example"),
-/// 			ServerName: pulumi.String("smtp.example.com"),
-/// 			ServerPort: pulumi.Int(25),
 /// 			Authentication: &mailmanager.RelayAuthenticationArgs{
 /// 				NoAuthentication: &mailmanager.RelayAuthenticationNoAuthenticationArgs{},
 /// 			},
+/// 			Name:       pulumi.String("example"),
+/// 			ServerName: pulumi.String("smtp.example.com"),
+/// 			ServerPort: pulumi.Int(25),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -91,12 +91,12 @@ import 'relay_state.dart';
 /// }
 ///
 /// resource "aws_mailmanager_relay" "example" {
-///   name        = "example"
-///   server_name = "smtp.example.com"
-///   server_port = 25
 ///   authentication = {
 ///     no_authentication = {}
 ///   }
+///   name        = "example"
+///   server_name = "smtp.example.com"
+///   server_port = 25
 /// }
 /// ```
 /// ```java
@@ -123,13 +123,13 @@ import 'relay_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Relay("example", RelayArgs.builder()
-///             .name("example")
-///             .serverName("smtp.example.com")
-///             .serverPort(25)
 ///             .authentication(RelayAuthenticationArgs.builder()
 ///                 .noAuthentication(RelayAuthenticationNoAuthenticationArgs.builder()
 ///                     .build())
 ///                 .build())
+///             .name("example")
+///             .serverName("smtp.example.com")
+///             .serverPort(25)
 ///             .build());
 ///
 ///     }
@@ -140,11 +140,11 @@ import 'relay_state.dart';
 ///   example:
 ///     type: aws:mailmanager:Relay
 ///     properties:
+///       authentication:
+///         noAuthentication: {}
 ///       name: example
 ///       serverName: smtp.example.com
 ///       serverPort: 25
-///       authentication:
-///         noAuthentication: {}
 /// ```
 ///
 ///
@@ -164,12 +164,12 @@ import 'relay_state.dart';
 ///     }),
 /// });
 /// const exampleRelay = new aws.mailmanager.Relay("example", {
-///     name: "example",
-///     serverName: "smtp.example.com",
-///     serverPort: 587,
 ///     authentication: {
 ///         secretArn: exampleSecretVersion.arn,
 ///     },
+///     name: "example",
+///     serverName: "smtp.example.com",
+///     serverPort: 587,
 /// });
 /// ```
 /// ```python
@@ -185,12 +185,12 @@ import 'relay_state.dart';
 ///         "password": "pass",
 ///     }))
 /// example_relay = aws.mailmanager.Relay("example",
-///     name="example",
-///     server_name="smtp.example.com",
-///     server_port=587,
 ///     authentication={
 ///         "secret_arn": example_secret_version.arn,
-///     })
+///     },
+///     name="example",
+///     server_name="smtp.example.com",
+///     server_port=587)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -218,13 +218,13 @@ import 'relay_state.dart';
 ///
 ///     var exampleRelay = new Aws.MailManager.Relay("example", new()
 ///     {
-///         Name = "example",
-///         ServerName = "smtp.example.com",
-///         ServerPort = 587,
 ///         Authentication = new Aws.MailManager.Inputs.RelayAuthenticationArgs
 ///         {
 ///             SecretArn = exampleSecretVersion.Arn,
 ///         },
+///         Name = "example",
+///         ServerName = "smtp.example.com",
+///         ServerPort = 587,
 ///     });
 ///
 /// });
@@ -264,12 +264,12 @@ import 'relay_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mailmanager.NewRelay(ctx, "example", &mailmanager.RelayArgs{
-/// 			Name:       pulumi.String("example"),
-/// 			ServerName: pulumi.String("smtp.example.com"),
-/// 			ServerPort: pulumi.Int(587),
 /// 			Authentication: &mailmanager.RelayAuthenticationArgs{
 /// 				SecretArn: exampleSecretVersion.Arn,
 /// 			},
+/// 			Name:       pulumi.String("example"),
+/// 			ServerName: pulumi.String("smtp.example.com"),
+/// 			ServerPort: pulumi.Int(587),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -298,12 +298,12 @@ import 'relay_state.dart';
 ///   })
 /// }
 /// resource "aws_mailmanager_relay" "example" {
-///   name        = "example"
-///   server_name = "smtp.example.com"
-///   server_port = 587
 ///   authentication = {
 ///     secret_arn = aws_secretsmanager_secretversion.example.arn
 ///   }
+///   name        = "example"
+///   server_name = "smtp.example.com"
+///   server_port = 587
 /// }
 /// ```
 /// ```java
@@ -347,12 +347,12 @@ import 'relay_state.dart';
 ///             .build());
 ///
 ///         var exampleRelay = new Relay("exampleRelay", RelayArgs.builder()
-///             .name("example")
-///             .serverName("smtp.example.com")
-///             .serverPort(587)
 ///             .authentication(RelayAuthenticationArgs.builder()
 ///                 .secretArn(exampleSecretVersion.arn())
 ///                 .build())
+///             .name("example")
+///             .serverName("smtp.example.com")
+///             .serverPort(587)
 ///             .build());
 ///
 ///     }
@@ -377,11 +377,11 @@ import 'relay_state.dart';
 ///     type: aws:mailmanager:Relay
 ///     name: example
 ///     properties:
+///       authentication:
+///         secretArn: ${exampleSecretVersion.arn}
 ///       name: example
 ///       serverName: smtp.example.com
 ///       serverPort: 587
-///       authentication:
-///         secretArn: ${exampleSecretVersion.arn}
 /// ```
 ///
 ///
@@ -440,7 +440,7 @@ class Relay extends pulumi.CustomResource {
           'aws:mailmanager/relay:Relay',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authentication = registerOutput<RelayAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RelayAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -450,8 +450,8 @@ class Relay extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serverName = registerOutput<String>('serverName');
     serverPort = registerOutput<int>('serverPort');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Relay] resource's state with the given [name] and [id].
@@ -459,11 +459,12 @@ class Relay extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RelayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Relay._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -485,7 +486,28 @@ class Relay extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serverName = registerOutput<String>('serverName');
     serverPort = registerOutput<int>('serverPort');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Relay] resource.
+  Relay.reference(String urn)
+    : super(
+        'aws:mailmanager/relay:Relay',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    authentication = registerOutput<RelayAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RelayAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    serverName = registerOutput<String>('serverName');
+    serverPort = registerOutput<int>('serverPort');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -4,17 +4,17 @@
 /// Result data returned by getEventSource.
 class GetEventSourceResult {
   /// ARN of the partner event source
-  final String arn;
+  final String? arn;
   /// Name of the SaaS partner that created the event source
-  final String createdBy;
+  final String? createdBy;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Name of the event source
-  final String name;
+  final String? name;
   final String? namePrefix;
-  final String region;
+  final String? region;
   /// State of the event source (`ACTIVE` or `PENDING`)
-  final String state;
+  final String? state;
 
   /// Creates a new [GetEventSourceResult].
   /// [arn] ARN of the partner event source
@@ -22,39 +22,39 @@ class GetEventSourceResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of the event source
   /// [namePrefix] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   /// [state] State of the event source (`ACTIVE` or `PENDING`)
   const GetEventSourceResult({
-    required this.arn,
-    required this.createdBy,
-    required this.id,
-    required this.name,
+    this.arn,
+    this.createdBy,
+    this.id,
+    this.name,
     this.namePrefix,
-    required this.region,
-    required this.state,
+    this.region,
+    this.state,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'createdBy': createdBy,
-      'id': id,
-      'name': name,
+      'arn': ?arn,
+      'createdBy': ?createdBy,
+      'id': ?id,
+      'name': ?name,
       'namePrefix': ?namePrefix,
-      'region': region,
-      'state': state,
+      'region': ?region,
+      'state': ?state,
     };
   }
 
   factory GetEventSourceResult.fromMap(Map<String, dynamic> map) {
     return GetEventSourceResult(
-      arn: map['arn'] as String,
-      createdBy: map['createdBy'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
-      state: map['state'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -7,43 +7,43 @@ import 'stage_canary_settings.dart';
 /// Input properties used for looking up and filtering Stage resources.
 class StageState {
   /// Enables access logs for the API stage. See Access Log Settings below.
-  final pulumi.Input<StageAccessLogSettings>? accessLogSettings;
+  final pulumi.Input<StageAccessLogSettings?>? accessLogSettings;
   /// ARN
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether a cache cluster is enabled for the stage
-  final pulumi.Input<bool>? cacheClusterEnabled;
+  final pulumi.Input<bool?>? cacheClusterEnabled;
   /// Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, `118` and `237`.
-  final pulumi.Input<String>? cacheClusterSize;
+  final pulumi.Input<String?>? cacheClusterSize;
   /// Configuration settings of a canary deployment. See Canary Settings below.
-  final pulumi.Input<StageCanarySettings>? canarySettings;
+  final pulumi.Input<StageCanarySettings?>? canarySettings;
   /// Identifier of a client certificate for the stage.
-  final pulumi.Input<String>? clientCertificateId;
+  final pulumi.Input<String?>? clientCertificateId;
   /// ID of the deployment that the stage points to
-  final pulumi.Input<String>? deployment;
+  final pulumi.Input<dynamic>? deployment;
   /// Description of the stage.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Version of the associated API documentation.
-  final pulumi.Input<String>? documentationVersion;
+  final pulumi.Input<String?>? documentationVersion;
   /// Execution ARN to be used in `lambdaPermission`'s `sourceArn` when allowing API Gateway to invoke a Lambda function, e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
-  final pulumi.Input<String>? executionArn;
+  final pulumi.Input<String?>? executionArn;
   /// URL to invoke the API pointing to the stage, e.g., `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
-  final pulumi.Input<String>? invokeUrl;
+  final pulumi.Input<String?>? invokeUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the associated REST API
-  final pulumi.Input<String>? restApi;
+  final pulumi.Input<dynamic>? restApi;
   /// Name of the stage
-  final pulumi.Input<String>? stageName;
+  final pulumi.Input<String?>? stageName;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Map that defines the stage variables.
-  final pulumi.Input<Map<String, String>>? variables;
+  final pulumi.Input<Map<String, String>?>? variables;
   /// ARN of the WebAcl associated with the Stage.
-  final pulumi.Input<String>? webAclArn;
+  final pulumi.Input<String?>? webAclArn;
   /// Whether active tracing with X-ray is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? xrayTracingEnabled;
+  final pulumi.Input<bool?>? xrayTracingEnabled;
 
   /// Creates a new [StageState].
   /// [accessLogSettings] Enables access logs for the API stage. See Access Log Settings below.
@@ -119,13 +119,13 @@ class StageState {
       cacheClusterSize: (() { final guardedValue = map['cacheClusterSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       canarySettings: (() { final guardedValue = map['canarySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StageCanarySettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clientCertificateId: (() { final guardedValue = map['clientCertificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deployment: (() { final guardedValue = map['deployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deployment: (() { final guardedValue = map['deployment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       documentationVersion: (() { final guardedValue = map['documentationVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionArn: (() { final guardedValue = map['executionArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       invokeUrl: (() { final guardedValue = map['invokeUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      restApi: (() { final guardedValue = map['restApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restApi: (() { final guardedValue = map['restApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       stageName: (() { final guardedValue = map['stageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

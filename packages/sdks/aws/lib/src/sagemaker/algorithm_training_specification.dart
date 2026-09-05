@@ -9,23 +9,23 @@ import 'algorithm_training_specification_training_channel.dart';
 
 class AlgorithmTrainingSpecification {
   /// Additional training data to make available to the algorithm. See Additional S3 Data Source.
-  final pulumi.Input<AlgorithmTrainingSpecificationAdditionalS3DataSource>? additionalS3DataSource;
+  final pulumi.Input<AlgorithmTrainingSpecificationAdditionalS3DataSource?>? additionalS3DataSource;
   /// List of metric definitions used to parse training logs. See Metric Definitions.
-  final pulumi.Input<List<AlgorithmTrainingSpecificationMetricDefinition>>? metricDefinitions;
+  final pulumi.Input<List<AlgorithmTrainingSpecificationMetricDefinition>?>? metricDefinitions;
   /// Hyperparameter definitions supported by the algorithm. See Supported Hyper Parameters.
-  final pulumi.Input<List<AlgorithmTrainingSpecificationSupportedHyperParameter>>? supportedHyperParameters;
+  final pulumi.Input<List<AlgorithmTrainingSpecificationSupportedHyperParameter>?>? supportedHyperParameters;
   /// Instance types supported for training.
   final pulumi.Input<List<String>> supportedTrainingInstanceTypes;
   /// Objective metrics supported for hyperparameter tuning jobs. See Supported Tuning Job Objective Metrics.
-  final pulumi.Input<List<AlgorithmTrainingSpecificationSupportedTuningJobObjectiveMetric>>? supportedTuningJobObjectiveMetrics;
+  final pulumi.Input<List<AlgorithmTrainingSpecificationSupportedTuningJobObjectiveMetric>?>? supportedTuningJobObjectiveMetrics;
   /// Whether the algorithm supports distributed training.
-  final pulumi.Input<bool>? supportsDistributedTraining;
+  final pulumi.Input<bool?>? supportsDistributedTraining;
   /// List of channel definitions supported for training. See Training Channels.
   final pulumi.Input<List<AlgorithmTrainingSpecificationTrainingChannel>> trainingChannels;
   /// Training image URI.
   final pulumi.Input<String> trainingImage;
   /// Digest of the training image.
-  final pulumi.Input<String>? trainingImageDigest;
+  final pulumi.Input<String?>? trainingImageDigest;
 
   /// Creates a new [AlgorithmTrainingSpecification].
   /// [additionalS3DataSource] Additional training data to make available to the algorithm. See Additional S3 Data Source.

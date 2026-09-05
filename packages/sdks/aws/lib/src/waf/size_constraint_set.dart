@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'size_constraint_set_args.dart';
+import 'size_constraint_set_size_constraint.dart';
 import 'size_constraint_set_state.dart';
 
 /// Use the `aws.waf.SizeConstraintSet` resource to manage WAF size constraint sets.
@@ -12,15 +13,15 @@ import 'size_constraint_set_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const sizeConstraintSet = new aws.waf.SizeConstraintSet("size_constraint_set", {
-///     name: "tfsize_constraints",
 ///     sizeConstraints: [{
-///         textTransformation: "NONE",
-///         comparisonOperator: "EQ",
-///         size: 4096,
 ///         fieldToMatch: {
 ///             type: "BODY",
 ///         },
+///         textTransformation: "NONE",
+///         comparisonOperator: "EQ",
+///         size: 4096,
 ///     }],
+///     name: "tfsize_constraints",
 /// });
 /// ```
 /// ```python
@@ -28,15 +29,15 @@ import 'size_constraint_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// size_constraint_set = aws.waf.SizeConstraintSet("size_constraint_set",
-///     name="tfsize_constraints",
 ///     size_constraints=[{
-///         "text_transformation": "NONE",
-///         "comparison_operator": "EQ",
-///         "size": 4096,
 ///         "field_to_match": {
 ///             "type": "BODY",
 ///         },
-///     }])
+///         "text_transformation": "NONE",
+///         "comparison_operator": "EQ",
+///         "size": 4096,
+///     }],
+///     name="tfsize_constraints")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,20 +49,20 @@ import 'size_constraint_set_state.dart';
 /// {
 ///     var sizeConstraintSet = new Aws.Waf.SizeConstraintSet("size_constraint_set", new()
 ///     {
-///         Name = "tfsize_constraints",
 ///         SizeConstraints = new[]
 ///         {
 ///             new Aws.Waf.Inputs.SizeConstraintSetSizeConstraintArgs
 ///             {
-///                 TextTransformation = "NONE",
-///                 ComparisonOperator = "EQ",
-///                 Size = 4096,
 ///                 FieldToMatch = new Aws.Waf.Inputs.SizeConstraintSetSizeConstraintFieldToMatchArgs
 ///                 {
 ///                     Type = "BODY",
 ///                 },
+///                 TextTransformation = "NONE",
+///                 ComparisonOperator = "EQ",
+///                 Size = 4096,
 ///             },
 ///         },
+///         Name = "tfsize_constraints",
 ///     });
 ///
 /// });
@@ -77,17 +78,17 @@ import 'size_constraint_set_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := waf.NewSizeConstraintSet(ctx, "size_constraint_set", &waf.SizeConstraintSetArgs{
-/// 			Name: pulumi.String("tfsize_constraints"),
 /// 			SizeConstraints: waf.SizeConstraintSetSizeConstraintArray{
 /// 				&waf.SizeConstraintSetSizeConstraintArgs{
-/// 					TextTransformation: pulumi.String("NONE"),
-/// 					ComparisonOperator: pulumi.String("EQ"),
-/// 					Size:               pulumi.Int(4096),
 /// 					FieldToMatch: &waf.SizeConstraintSetSizeConstraintFieldToMatchArgs{
 /// 						Type: pulumi.String("BODY"),
 /// 					},
+/// 					TextTransformation: pulumi.String("NONE"),
+/// 					ComparisonOperator: pulumi.String("EQ"),
+/// 					Size:               pulumi.Int(4096),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("tfsize_constraints"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -106,15 +107,15 @@ import 'size_constraint_set_state.dart';
 /// }
 ///
 /// resource "aws_waf_sizeconstraintset" "size_constraint_set" {
-///   name = "tfsize_constraints"
 ///   size_constraints {
-///     text_transformation = "NONE"
-///     comparison_operator = "EQ"
-///     size                = "4096"
 ///     field_to_match = {
 ///       type = "BODY"
 ///     }
+///     text_transformation = "NONE"
+///     comparison_operator = "EQ"
+///     size                = "4096"
 ///   }
+///   name = "tfsize_constraints"
 /// }
 /// ```
 /// ```java
@@ -141,15 +142,15 @@ import 'size_constraint_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var sizeConstraintSet = new SizeConstraintSet("sizeConstraintSet", SizeConstraintSetArgs.builder()
-///             .name("tfsize_constraints")
 ///             .sizeConstraints(SizeConstraintSetSizeConstraintArgs.builder()
-///                 .textTransformation("NONE")
-///                 .comparisonOperator("EQ")
-///                 .size(4096)
 ///                 .fieldToMatch(SizeConstraintSetSizeConstraintFieldToMatchArgs.builder()
 ///                     .type("BODY")
 ///                     .build())
+///                 .textTransformation("NONE")
+///                 .comparisonOperator("EQ")
+///                 .size(4096)
 ///                 .build())
+///             .name("tfsize_constraints")
 ///             .build());
 ///
 ///     }
@@ -161,13 +162,13 @@ import 'size_constraint_set_state.dart';
 ///     type: aws:waf:SizeConstraintSet
 ///     name: size_constraint_set
 ///     properties:
-///       name: tfsize_constraints
 ///       sizeConstraints:
-///         - textTransformation: NONE
+///         - fieldToMatch:
+///             type: BODY
+///           textTransformation: NONE
 ///           comparisonOperator: EQ
 ///           size: '4096'
-///           fieldToMatch:
-///             type: BODY
+///       name: tfsize_constraints
 /// ```
 ///
 ///
@@ -179,12 +180,12 @@ import 'size_constraint_set_state.dart';
 /// $ pulumi import aws:waf/sizeConstraintSet:SizeConstraintSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
 class SizeConstraintSet extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN).
+  /// ARN.
   late final pulumi.Output<String> arn;
   /// Name or description of the Size Constraint Set.
   late final pulumi.Output<String> name;
   /// Parts of web requests that you want to inspect the size of.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sizeConstraints;
+  late final pulumi.Output<List<SizeConstraintSetSizeConstraint>?> sizeConstraints;
 
   /// Creates a new [SizeConstraintSet].
   /// [name] The Pulumi resource name.
@@ -198,11 +199,11 @@ class SizeConstraintSet extends pulumi.CustomResource {
           'aws:waf/sizeConstraintSet:SizeConstraintSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    sizeConstraints = registerOutput<List<Map<String, dynamic>>?>('sizeConstraints');
+    sizeConstraints = registerOutput<List<SizeConstraintSetSizeConstraint>?>('sizeConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(guardedValue, (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [SizeConstraintSet] resource's state with the given [name] and [id].
@@ -210,11 +211,12 @@ class SizeConstraintSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SizeConstraintSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SizeConstraintSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -230,6 +232,20 @@ class SizeConstraintSet extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    sizeConstraints = registerOutput<List<Map<String, dynamic>>?>('sizeConstraints');
+    sizeConstraints = registerOutput<List<SizeConstraintSetSizeConstraint>?>('sizeConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(guardedValue, (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [SizeConstraintSet] resource.
+  SizeConstraintSet.reference(String urn)
+    : super(
+        'aws:waf/sizeConstraintSet:SizeConstraintSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    sizeConstraints = registerOutput<List<SizeConstraintSetSizeConstraint>?>('sizeConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SizeConstraintSetSizeConstraint>(guardedValue, (value) => SizeConstraintSetSizeConstraint.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

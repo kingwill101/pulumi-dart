@@ -12,15 +12,15 @@ class MediaInsightsPipelineConfigurationArgs {
   /// Collection of processors and sinks to transform media and deliver data.
   final pulumi.Input<List<MediaInsightsPipelineConfigurationElement>> elements;
   /// Configuration name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration for real-time alert rules to send EventBridge notifications when certain conditions are met.
-  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration>? realTimeAlertConfiguration;
+  final pulumi.Input<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?>? realTimeAlertConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of IAM Role used by service to invoke processors and sinks specified by configuration elements.
   final pulumi.Input<String> resourceAccessRoleArn;
   /// Key-value map of tags for the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MediaInsightsPipelineConfigurationArgs].
   /// [elements] Collection of processors and sinks to transform media and deliver data.

@@ -9,17 +9,17 @@ import 'logging_configuration_logging_configuration.dart';
 /// {@macro pulumi_networkfirewall_logging_configuration_logging_configuration_args_doc}
 class LoggingConfigurationArgs {
   /// Whether to enable the detailed firewall monitoring dashboard on the firewall. Defaults to `false`.
-  final pulumi.Input<bool>? enableMonitoringDashboard;
-  /// The Amazon Resource Name (ARN) of the Network Firewall firewall.
+  final pulumi.Input<bool?>? enableMonitoringDashboard;
+  /// ARN of the Network Firewall firewall.
   final pulumi.Input<String> firewallArn;
   /// A configuration block describing how AWS Network Firewall performs logging for a firewall. See Logging Configuration below for details.
   final pulumi.Input<LoggingConfigurationLoggingConfiguration> loggingConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LoggingConfigurationArgs].
   /// [enableMonitoringDashboard] Whether to enable the detailed firewall monitoring dashboard on the firewall. Defaults to `false`.
-  /// [firewallArn] The Amazon Resource Name (ARN) of the Network Firewall firewall.
+  /// [firewallArn] ARN of the Network Firewall firewall.
   /// [loggingConfiguration] A configuration block describing how AWS Network Firewall performs logging for a firewall. See Logging Configuration below for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const LoggingConfigurationArgs({

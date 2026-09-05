@@ -19,6 +19,8 @@ import 'tag_state.dart';
 /// const exampleOrganizationalUnit = new aws.organizations.OrganizationalUnit("example", {
 ///     name: "ExampleOU",
 ///     parentId: example.then(example => example.roots?.[0]?.id),
+/// }, {
+///     ignoreChanges: ["tags"],
 /// });
 /// const exampleTag = new aws.organizations.Tag("example", {
 ///     resourceId: exampleOrganizationalUnit.id,
@@ -33,7 +35,8 @@ import 'tag_state.dart';
 /// example = aws.organizations.get_organization()
 /// example_organizational_unit = aws.organizations.OrganizationalUnit("example",
 ///     name="ExampleOU",
-///     parent_id=example.roots[0].id)
+///     parent_id=example.roots[0].id,
+///     opts = pulumi.ResourceOptions(ignore_changes=["tags"]))
 /// example_tag = aws.organizations.Tag("example",
 ///     resource_id=example_organizational_unit.id,
 ///     key="ExampleKey",
@@ -53,6 +56,12 @@ import 'tag_state.dart';
 ///     {
 ///         Name = "ExampleOU",
 ///         ParentId = example.Apply(getOrganizationResult => getOrganizationResult.Roots[0]?.Id),
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "tags",
+///         },
 ///     });
 ///
 ///     var exampleTag = new Aws.Organizations.Tag("example", new()
@@ -81,7 +90,9 @@ import 'tag_state.dart';
 /// 		exampleOrganizationalUnit, err := organizations.NewOrganizationalUnit(ctx, "example", &organizations.OrganizationalUnitArgs{
 /// 			Name:     pulumi.String("ExampleOU"),
 /// 			ParentId: pulumi.String(example.Roots[0].Id),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"tags",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -110,6 +121,9 @@ import 'tag_state.dart';
 /// }
 ///
 /// resource "aws_organizations_organizationalunit" "example" {
+///   lifecycle {
+///     ignore_changes = [tags]
+///   }
 ///   name      = "ExampleOU"
 ///   parent_id = data.aws_organizations_getorganization.example.roots[0].id
 /// }
@@ -131,6 +145,7 @@ import 'tag_state.dart';
 /// import com.pulumi.aws.organizations.OrganizationalUnitArgs;
 /// import com.pulumi.aws.organizations.Tag;
 /// import com.pulumi.aws.organizations.TagArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -150,7 +165,9 @@ import 'tag_state.dart';
 ///         var exampleOrganizationalUnit = new OrganizationalUnit("exampleOrganizationalUnit", OrganizationalUnitArgs.builder()
 ///             .name("ExampleOU")
 ///             .parentId(example.roots()[0].id())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("tags")
+///                 .build());
 ///
 ///         var exampleTag = new Tag("exampleTag", TagArgs.builder()
 ///             .resourceId(exampleOrganizationalUnit.id())
@@ -169,6 +186,9 @@ import 'tag_state.dart';
 ///     properties:
 ///       name: ExampleOU
 ///       parentId: ${example.roots[0].id}
+///     options:
+///       ignoreChanges:
+///         - tags
 ///   exampleTag:
 ///     type: aws:organizations:Tag
 ///     name: example
@@ -211,7 +231,7 @@ class Tag extends pulumi.CustomResource {
           'aws:organizations/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     key = registerOutput<String>('key');
     resourceId = registerOutput<String>('resourceId');
@@ -223,11 +243,12 @@ class Tag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -241,6 +262,20 @@ class Tag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    key = registerOutput<String>('key');
+    resourceId = registerOutput<String>('resourceId');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [Tag] resource.
+  Tag.reference(String urn)
+    : super(
+        'aws:organizations/tag:Tag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     key = registerOutput<String>('key');
     resourceId = registerOutput<String>('resourceId');
     value = registerOutput<String>('value');

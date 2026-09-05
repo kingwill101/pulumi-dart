@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_args.dart';
 import 'repository_external_connections.dart';
 import 'repository_state.dart';
+import 'repository_upstream.dart';
 
 /// Provides a CodeArtifact Repository Resource.
 ///
@@ -191,11 +192,11 @@ import 'repository_state.dart';
 ///     domain: testAwsCodeartifactDomain.domain,
 /// });
 /// const test = new aws.codeartifact.Repository("test", {
-///     repository: "example",
-///     domain: example.domain,
 ///     upstreams: [{
 ///         repositoryName: upstream.repository,
 ///     }],
+///     repository: "example",
+///     domain: example.domain,
 /// });
 /// ```
 /// ```python
@@ -206,11 +207,11 @@ import 'repository_state.dart';
 ///     repository="upstream",
 ///     domain=test_aws_codeartifact_domain["domain"])
 /// test = aws.codeartifact.Repository("test",
-///     repository="example",
-///     domain=example["domain"],
 ///     upstreams=[{
 ///         "repository_name": upstream.repository,
-///     }])
+///     }],
+///     repository="example",
+///     domain=example["domain"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -228,8 +229,6 @@ import 'repository_state.dart';
 ///
 ///     var test = new Aws.CodeArtifact.Repository("test", new()
 ///     {
-///         RepositoryName = "example",
-///         Domain = example.Domain,
 ///         Upstreams = new[]
 ///         {
 ///             new Aws.CodeArtifact.Inputs.RepositoryUpstreamArgs
@@ -237,6 +236,8 @@ import 'repository_state.dart';
 ///                 RepositoryName = upstream.RepositoryName,
 ///             },
 ///         },
+///         RepositoryName = "example",
+///         Domain = example.Domain,
 ///     });
 ///
 /// });
@@ -259,13 +260,13 @@ import 'repository_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codeartifact.NewRepository(ctx, "test", &codeartifact.RepositoryArgs{
-/// 			Repository: pulumi.String("example"),
-/// 			Domain:     pulumi.Any(example.Domain),
 /// 			Upstreams: codeartifact.RepositoryUpstreamArray{
 /// 				&codeartifact.RepositoryUpstreamArgs{
 /// 					RepositoryName: upstream.Repository,
 /// 				},
 /// 			},
+/// 			Repository: pulumi.String("example"),
+/// 			Domain:     pulumi.Any(example.Domain),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -288,11 +289,11 @@ import 'repository_state.dart';
 ///   domain     = testAwsCodeartifactDomain.domain
 /// }
 /// resource "aws_codeartifact_repository" "test" {
-///   repository = "example"
-///   domain     = example.domain
 ///   upstreams {
 ///     repository_name = aws_codeartifact_repository.upstream.repository
 ///   }
+///   repository = "example"
+///   domain     = example.domain
 /// }
 /// ```
 /// ```java
@@ -323,11 +324,11 @@ import 'repository_state.dart';
 ///             .build());
 ///
 ///         var test = new Repository("test", RepositoryArgs.builder()
-///             .repository("example")
-///             .domain(example.domain())
 ///             .upstreams(RepositoryUpstreamArgs.builder()
 ///                 .repositoryName(upstream.repository())
 ///                 .build())
+///             .repository("example")
+///             .domain(example.domain())
 ///             .build());
 ///
 ///     }
@@ -343,10 +344,10 @@ import 'repository_state.dart';
 ///   test:
 ///     type: aws:codeartifact:Repository
 ///     properties:
-///       repository: example
-///       domain: ${example.domain}
 ///       upstreams:
 ///         - repositoryName: ${upstream.repository}
+///       repository: example
+///       domain: ${example.domain}
 /// ```
 ///
 ///
@@ -362,11 +363,11 @@ import 'repository_state.dart';
 ///     domain: testAwsCodeartifactDomain.domain,
 /// });
 /// const test = new aws.codeartifact.Repository("test", {
-///     repository: "example",
-///     domain: example.domain,
 ///     externalConnections: {
 ///         externalConnectionName: "public:npmjs",
 ///     },
+///     repository: "example",
+///     domain: example.domain,
 /// });
 /// ```
 /// ```python
@@ -377,11 +378,11 @@ import 'repository_state.dart';
 ///     repository="upstream",
 ///     domain=test_aws_codeartifact_domain["domain"])
 /// test = aws.codeartifact.Repository("test",
-///     repository="example",
-///     domain=example["domain"],
 ///     external_connections={
 ///         "external_connection_name": "public:npmjs",
-///     })
+///     },
+///     repository="example",
+///     domain=example["domain"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -399,12 +400,12 @@ import 'repository_state.dart';
 ///
 ///     var test = new Aws.CodeArtifact.Repository("test", new()
 ///     {
-///         RepositoryName = "example",
-///         Domain = example.Domain,
 ///         ExternalConnections = new Aws.CodeArtifact.Inputs.RepositoryExternalConnectionsArgs
 ///         {
 ///             ExternalConnectionName = "public:npmjs",
 ///         },
+///         RepositoryName = "example",
+///         Domain = example.Domain,
 ///     });
 ///
 /// });
@@ -427,11 +428,11 @@ import 'repository_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codeartifact.NewRepository(ctx, "test", &codeartifact.RepositoryArgs{
-/// 			Repository: pulumi.String("example"),
-/// 			Domain:     pulumi.Any(example.Domain),
 /// 			ExternalConnections: &codeartifact.RepositoryExternalConnectionsArgs{
 /// 				ExternalConnectionName: pulumi.String("public:npmjs"),
 /// 			},
+/// 			Repository: pulumi.String("example"),
+/// 			Domain:     pulumi.Any(example.Domain),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -454,11 +455,11 @@ import 'repository_state.dart';
 ///   domain     = testAwsCodeartifactDomain.domain
 /// }
 /// resource "aws_codeartifact_repository" "test" {
-///   repository = "example"
-///   domain     = example.domain
 ///   external_connections = {
 ///     external_connection_name = "public:npmjs"
 ///   }
+///   repository = "example"
+///   domain     = example.domain
 /// }
 /// ```
 /// ```java
@@ -489,11 +490,11 @@ import 'repository_state.dart';
 ///             .build());
 ///
 ///         var test = new Repository("test", RepositoryArgs.builder()
-///             .repository("example")
-///             .domain(example.domain())
 ///             .externalConnections(RepositoryExternalConnectionsArgs.builder()
 ///                 .externalConnectionName("public:npmjs")
 ///                 .build())
+///             .repository("example")
+///             .domain(example.domain())
 ///             .build());
 ///
 ///     }
@@ -509,10 +510,10 @@ import 'repository_state.dart';
 ///   test:
 ///     type: aws:codeartifact:Repository
 ///     properties:
-///       repository: example
-///       domain: ${example.domain}
 ///       externalConnections:
 ///         externalConnectionName: public:npmjs
+///       repository: example
+///       domain: ${example.domain}
 /// ```
 ///
 ///
@@ -522,7 +523,7 @@ import 'repository_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeArtifact repository.
+/// - `arn` (String) ARN of the CodeArtifact repository.
 ///
 ///
 /// Using `pulumi import`, import CodeArtifact Repository using the CodeArtifact Repository ARN. For example:
@@ -552,7 +553,7 @@ class Repository extends pulumi.CustomResource {
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A list of upstream repositories to associate with the repository. The order of the upstream repositories in the list determines their priority order when AWS CodeArtifact looks for a requested package version. see Upstream
-  late final pulumi.Output<List<Map<String, dynamic>>?> upstreams;
+  late final pulumi.Output<List<RepositoryUpstream>?> upstreams;
 
   /// Creates a new [Repository].
   /// [name] The Pulumi resource name.
@@ -566,7 +567,7 @@ class Repository extends pulumi.CustomResource {
           'aws:codeartifact/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     administratorAccount = registerOutput<String>('administratorAccount');
     arn = registerOutput<String>('arn');
@@ -576,9 +577,9 @@ class Repository extends pulumi.CustomResource {
     externalConnections = registerOutput<RepositoryExternalConnections?>('externalConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryExternalConnections.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     repository = registerOutput<String>('repository');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    upstreams = registerOutput<List<Map<String, dynamic>>?>('upstreams');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    upstreams = registerOutput<List<RepositoryUpstream>?>('upstreams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryUpstream>(guardedValue, (value) => RepositoryUpstream.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Repository] resource's state with the given [name] and [id].
@@ -586,11 +587,12 @@ class Repository extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Repository._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -612,8 +614,30 @@ class Repository extends pulumi.CustomResource {
     externalConnections = registerOutput<RepositoryExternalConnections?>('externalConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryExternalConnections.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     repository = registerOutput<String>('repository');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    upstreams = registerOutput<List<Map<String, dynamic>>?>('upstreams');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    upstreams = registerOutput<List<RepositoryUpstream>?>('upstreams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryUpstream>(guardedValue, (value) => RepositoryUpstream.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'aws:codeartifact/repository:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administratorAccount = registerOutput<String>('administratorAccount');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    domain = registerOutput<String>('domain');
+    domainOwner = registerOutput<String>('domainOwner');
+    externalConnections = registerOutput<RepositoryExternalConnections?>('externalConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryExternalConnections.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    repository = registerOutput<String>('repository');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    upstreams = registerOutput<List<RepositoryUpstream>?>('upstreams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryUpstream>(guardedValue, (value) => RepositoryUpstream.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

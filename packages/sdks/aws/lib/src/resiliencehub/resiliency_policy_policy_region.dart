@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResiliencyPolicyPolicyRegion {
   /// Recovery Point Objective (RPO) as a Go duration.
-  final pulumi.Input<String>? rpo;
+  final pulumi.Input<String?>? rpo;
   /// Recovery Time Objective (RTO) as a Go duration.
-  final pulumi.Input<String>? rto;
+  final pulumi.Input<String?>? rto;
 
   /// Creates a new [ResiliencyPolicyPolicyRegion].
   /// [rpo] Recovery Point Objective (RPO) as a Go duration.

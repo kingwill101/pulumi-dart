@@ -219,7 +219,7 @@ class ApplicationLayerAutomaticResponse extends pulumi.CustomResource {
           'aws:shield/applicationLayerAutomaticResponse:ApplicationLayerAutomaticResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     resourceArn = registerOutput<String>('resourceArn');
@@ -231,11 +231,12 @@ class ApplicationLayerAutomaticResponse extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationLayerAutomaticResponseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationLayerAutomaticResponse._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -249,6 +250,20 @@ class ApplicationLayerAutomaticResponse extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String>('action');
+    resourceArn = registerOutput<String>('resourceArn');
+    timeouts = registerOutput<ApplicationLayerAutomaticResponseTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationLayerAutomaticResponseTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ApplicationLayerAutomaticResponse] resource.
+  ApplicationLayerAutomaticResponse.reference(String urn)
+    : super(
+        'aws:shield/applicationLayerAutomaticResponse:ApplicationLayerAutomaticResponse',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String>('action');
     resourceArn = registerOutput<String>('resourceArn');
     timeouts = registerOutput<ApplicationLayerAutomaticResponseTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationLayerAutomaticResponseTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

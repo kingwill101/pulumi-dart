@@ -14,18 +14,18 @@ import 'package_association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const myDomain = new aws.opensearch.Domain("my_domain", {
-///     domainName: "my-opensearch-domain",
-///     engineVersion: "Elasticsearch_7.10",
 ///     clusterConfig: {
 ///         instanceType: "r4.large.search",
 ///     },
+///     domainName: "my-opensearch-domain",
+///     engineVersion: "Elasticsearch_7.10",
 /// });
 /// const example = new aws.opensearch.Package("example", {
-///     packageName: "example-txt",
 ///     packageSource: {
 ///         s3BucketName: myOpensearchPackages.bucket,
 ///         s3Key: exampleAwsS3Object.key,
 ///     },
+///     packageName: "example-txt",
 ///     packageType: "TXT-DICTIONARY",
 /// });
 /// const examplePackageAssociation = new aws.opensearch.PackageAssociation("example", {
@@ -38,17 +38,17 @@ import 'package_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// my_domain = aws.opensearch.Domain("my_domain",
-///     domain_name="my-opensearch-domain",
-///     engine_version="Elasticsearch_7.10",
 ///     cluster_config={
 ///         "instance_type": "r4.large.search",
-///     })
+///     },
+///     domain_name="my-opensearch-domain",
+///     engine_version="Elasticsearch_7.10")
 /// example = aws.opensearch.Package("example",
-///     package_name="example-txt",
 ///     package_source={
 ///         "s3_bucket_name": my_opensearch_packages["bucket"],
 ///         "s3_key": example_aws_s3_object["key"],
 ///     },
+///     package_name="example-txt",
 ///     package_type="TXT-DICTIONARY")
 /// example_package_association = aws.opensearch.PackageAssociation("example",
 ///     package_id=example.id,
@@ -64,22 +64,22 @@ import 'package_association_state.dart';
 /// {
 ///     var myDomain = new Aws.OpenSearch.Domain("my_domain", new()
 ///     {
-///         DomainName = "my-opensearch-domain",
-///         EngineVersion = "Elasticsearch_7.10",
 ///         ClusterConfig = new Aws.OpenSearch.Inputs.DomainClusterConfigArgs
 ///         {
 ///             InstanceType = "r4.large.search",
 ///         },
+///         DomainName = "my-opensearch-domain",
+///         EngineVersion = "Elasticsearch_7.10",
 ///     });
 ///
 ///     var example = new Aws.OpenSearch.Package("example", new()
 ///     {
-///         PackageName = "example-txt",
 ///         PackageSource = new Aws.OpenSearch.Inputs.PackagePackageSourceArgs
 ///         {
 ///             S3BucketName = myOpensearchPackages.Bucket,
 ///             S3Key = exampleAwsS3Object.Key,
 ///         },
+///         PackageName = "example-txt",
 ///         PackageType = "TXT-DICTIONARY",
 ///     });
 ///
@@ -102,21 +102,21 @@ import 'package_association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myDomain, err := opensearch.NewDomain(ctx, "my_domain", &opensearch.DomainArgs{
-/// 			DomainName:    pulumi.String("my-opensearch-domain"),
-/// 			EngineVersion: pulumi.String("Elasticsearch_7.10"),
 /// 			ClusterConfig: &opensearch.DomainClusterConfigArgs{
 /// 				InstanceType: pulumi.String("r4.large.search"),
 /// 			},
+/// 			DomainName:    pulumi.String("my-opensearch-domain"),
+/// 			EngineVersion: pulumi.String("Elasticsearch_7.10"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		example, err := opensearch.NewPackage(ctx, "example", &opensearch.PackageArgs{
-/// 			PackageName: pulumi.String("example-txt"),
 /// 			PackageSource: &opensearch.PackagePackageSourceArgs{
 /// 				S3BucketName: pulumi.Any(myOpensearchPackages.Bucket),
 /// 				S3Key:        pulumi.Any(exampleAwsS3Object.Key),
 /// 			},
+/// 			PackageName: pulumi.String("example-txt"),
 /// 			PackageType: pulumi.String("TXT-DICTIONARY"),
 /// 		})
 /// 		if err != nil {
@@ -143,18 +143,18 @@ import 'package_association_state.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "my_domain" {
-///   domain_name    = "my-opensearch-domain"
-///   engine_version = "Elasticsearch_7.10"
 ///   cluster_config = {
 ///     instance_type = "r4.large.search"
 ///   }
+///   domain_name    = "my-opensearch-domain"
+///   engine_version = "Elasticsearch_7.10"
 /// }
 /// resource "aws_opensearch_package" "example" {
-///   package_name = "example-txt"
 ///   package_source = {
 ///     s3_bucket_name = myOpensearchPackages.bucket
 ///     s3_key         = exampleAwsS3Object.key
 ///   }
+///   package_name = "example-txt"
 ///   package_type = "TXT-DICTIONARY"
 /// }
 /// resource "aws_opensearch_packageassociation" "example" {
@@ -190,19 +190,19 @@ import 'package_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var myDomain = new Domain("myDomain", DomainArgs.builder()
-///             .domainName("my-opensearch-domain")
-///             .engineVersion("Elasticsearch_7.10")
 ///             .clusterConfig(DomainClusterConfigArgs.builder()
 ///                 .instanceType("r4.large.search")
 ///                 .build())
+///             .domainName("my-opensearch-domain")
+///             .engineVersion("Elasticsearch_7.10")
 ///             .build());
 ///
 ///         var example = new Package("example", PackageArgs.builder()
-///             .packageName("example-txt")
 ///             .packageSource(PackagePackageSourceArgs.builder()
 ///                 .s3BucketName(myOpensearchPackages.bucket())
 ///                 .s3Key(exampleAwsS3Object.key())
 ///                 .build())
+///             .packageName("example-txt")
 ///             .packageType("TXT-DICTIONARY")
 ///             .build());
 ///
@@ -220,17 +220,17 @@ import 'package_association_state.dart';
 ///     type: aws:opensearch:Domain
 ///     name: my_domain
 ///     properties:
-///       domainName: my-opensearch-domain
-///       engineVersion: Elasticsearch_7.10
 ///       clusterConfig:
 ///         instanceType: r4.large.search
+///       domainName: my-opensearch-domain
+///       engineVersion: Elasticsearch_7.10
 ///   example:
 ///     type: aws:opensearch:Package
 ///     properties:
-///       packageName: example-txt
 ///       packageSource:
 ///         s3BucketName: ${myOpensearchPackages.bucket}
 ///         s3Key: ${exampleAwsS3Object.key}
+///       packageName: example-txt
 ///       packageType: TXT-DICTIONARY
 ///   examplePackageAssociation:
 ///     type: aws:opensearch:PackageAssociation
@@ -269,7 +269,7 @@ class PackageAssociation extends pulumi.CustomResource {
           'aws:opensearch/packageAssociation:PackageAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     packageId = registerOutput<String>('packageId');
@@ -282,11 +282,12 @@ class PackageAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PackageAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PackageAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,6 +301,21 @@ class PackageAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    domainName = registerOutput<String>('domainName');
+    packageId = registerOutput<String>('packageId');
+    referencePath = registerOutput<String>('referencePath');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [PackageAssociation] resource.
+  PackageAssociation.reference(String urn)
+    : super(
+        'aws:opensearch/packageAssociation:PackageAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domainName = registerOutput<String>('domainName');
     packageId = registerOutput<String>('packageId');
     referencePath = registerOutput<String>('referencePath');

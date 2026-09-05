@@ -32,7 +32,7 @@ class GetWorkgroupEndpoint {
   factory GetWorkgroupEndpoint.fromMap(Map<String, dynamic> map) {
     return GetWorkgroupEndpoint(
       address: pulumi.Input.fromValue(map['address'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       vpcEndpoints: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpoint>(map['vpcEndpoints']!, (value) => GetWorkgroupEndpointVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

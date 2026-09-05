@@ -241,11 +241,11 @@ class GroupMembership extends pulumi.CustomResource {
           'aws:iam/groupMembership:GroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
-    users = registerOutput<List<String>>('users');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [GroupMembership] resource's state with the given [name] and [id].
@@ -253,11 +253,12 @@ class GroupMembership extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupMembershipState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupMembership._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -273,6 +274,20 @@ class GroupMembership extends pulumi.CustomResource {
         ) {
     group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
-    users = registerOutput<List<String>>('users');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [GroupMembership] resource.
+  GroupMembership.reference(String urn)
+    : super(
+        'aws:iam/groupMembership:GroupMembership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    group = registerOutput<String>('group');
+    this.name = registerOutput<String>('name');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

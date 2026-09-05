@@ -6,9 +6,9 @@ import 'application_application_configuration_sql_application_configuration_inpu
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters {
   /// Provides additional mapping information when the record format uses delimiters (for example, CSV).
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters>? csvMappingParameters;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersCsvMappingParameters?>? csvMappingParameters;
   /// Provides additional mapping information when JSON is the record format on the streaming source.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters>? jsonMappingParameters;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParametersJsonMappingParameters?>? jsonMappingParameters;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters].
   /// [csvMappingParameters] Provides additional mapping information when the record format uses delimiters (for example, CSV).

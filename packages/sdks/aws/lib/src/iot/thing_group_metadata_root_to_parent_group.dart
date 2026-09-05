@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThingGroupMetadataRootToParentGroup {
-  final pulumi.Input<String>? groupArn;
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupArn;
+  final pulumi.Input<String?>? groupName;
 
   /// Creates a new [ThingGroupMetadataRootToParentGroup].
   /// [groupArn] Optional.

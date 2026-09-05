@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'association_args.dart';
 import 'association_output_location.dart';
 import 'association_state.dart';
+import 'association_target.dart';
 
 /// Associates an SSM Document to an instance or EC2 tag.
 ///
@@ -15,11 +16,11 @@ import 'association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ssm.Association("example", {
-///     name: exampleAwsSsmDocument.name,
 ///     targets: [{
 ///         key: "InstanceIds",
 ///         values: [exampleAwsInstance.id],
 ///     }],
+///     name: exampleAwsSsmDocument.name,
 /// });
 /// ```
 /// ```python
@@ -27,11 +28,11 @@ import 'association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssm.Association("example",
-///     name=example_aws_ssm_document["name"],
 ///     targets=[{
 ///         "key": "InstanceIds",
 ///         "values": [example_aws_instance["id"]],
-///     }])
+///     }],
+///     name=example_aws_ssm_document["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,7 +44,6 @@ import 'association_state.dart';
 /// {
 ///     var example = new Aws.Ssm.Association("example", new()
 ///     {
-///         Name = exampleAwsSsmDocument.Name,
 ///         Targets = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.AssociationTargetArgs
@@ -55,6 +55,7 @@ import 'association_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = exampleAwsSsmDocument.Name,
 ///     });
 ///
 /// });
@@ -70,7 +71,6 @@ import 'association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewAssociation(ctx, "example", &ssm.AssociationArgs{
-/// 			Name: pulumi.Any(exampleAwsSsmDocument.Name),
 /// 			Targets: ssm.AssociationTargetArray{
 /// 				&ssm.AssociationTargetArgs{
 /// 					Key: pulumi.String("InstanceIds"),
@@ -79,6 +79,7 @@ import 'association_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.Any(exampleAwsSsmDocument.Name),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -97,11 +98,11 @@ import 'association_state.dart';
 /// }
 ///
 /// resource "aws_ssm_association" "example" {
-///   name = exampleAwsSsmDocument.name
 ///   targets {
 ///     key    = "InstanceIds"
 ///     values = [exampleAwsInstance.id]
 ///   }
+///   name = exampleAwsSsmDocument.name
 /// }
 /// ```
 /// ```java
@@ -127,11 +128,11 @@ import 'association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Association("example", AssociationArgs.builder()
-///             .name(exampleAwsSsmDocument.name())
 ///             .targets(AssociationTargetArgs.builder()
 ///                 .key("InstanceIds")
 ///                 .values(exampleAwsInstance.id())
 ///                 .build())
+///             .name(exampleAwsSsmDocument.name())
 ///             .build());
 ///
 ///     }
@@ -142,11 +143,11 @@ import 'association_state.dart';
 ///   example:
 ///     type: aws:ssm:Association
 ///     properties:
-///       name: ${exampleAwsSsmDocument.name}
 ///       targets:
 ///         - key: InstanceIds
 ///           values:
 ///             - ${exampleAwsInstance.id}
+///       name: ${exampleAwsSsmDocument.name}
 /// ```
 ///
 ///
@@ -160,11 +161,11 @@ import 'association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ssm.Association("example", {
-///     name: "AmazonCloudWatch-ManageAgent",
 ///     targets: [{
 ///         key: "InstanceIds",
 ///         values: ["*"],
 ///     }],
+///     name: "AmazonCloudWatch-ManageAgent",
 /// });
 /// ```
 /// ```python
@@ -172,11 +173,11 @@ import 'association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssm.Association("example",
-///     name="AmazonCloudWatch-ManageAgent",
 ///     targets=[{
 ///         "key": "InstanceIds",
 ///         "values": ["*"],
-///     }])
+///     }],
+///     name="AmazonCloudWatch-ManageAgent")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -188,7 +189,6 @@ import 'association_state.dart';
 /// {
 ///     var example = new Aws.Ssm.Association("example", new()
 ///     {
-///         Name = "AmazonCloudWatch-ManageAgent",
 ///         Targets = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.AssociationTargetArgs
@@ -200,6 +200,7 @@ import 'association_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "AmazonCloudWatch-ManageAgent",
 ///     });
 ///
 /// });
@@ -215,7 +216,6 @@ import 'association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewAssociation(ctx, "example", &ssm.AssociationArgs{
-/// 			Name: pulumi.String("AmazonCloudWatch-ManageAgent"),
 /// 			Targets: ssm.AssociationTargetArray{
 /// 				&ssm.AssociationTargetArgs{
 /// 					Key: pulumi.String("InstanceIds"),
@@ -224,6 +224,7 @@ import 'association_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("AmazonCloudWatch-ManageAgent"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -242,11 +243,11 @@ import 'association_state.dart';
 /// }
 ///
 /// resource "aws_ssm_association" "example" {
-///   name = "AmazonCloudWatch-ManageAgent"
 ///   targets {
 ///     key    = "InstanceIds"
 ///     values = ["*"]
 ///   }
+///   name = "AmazonCloudWatch-ManageAgent"
 /// }
 /// ```
 /// ```java
@@ -272,11 +273,11 @@ import 'association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Association("example", AssociationArgs.builder()
-///             .name("AmazonCloudWatch-ManageAgent")
 ///             .targets(AssociationTargetArgs.builder()
 ///                 .key("InstanceIds")
 ///                 .values("*")
 ///                 .build())
+///             .name("AmazonCloudWatch-ManageAgent")
 ///             .build());
 ///
 ///     }
@@ -287,11 +288,11 @@ import 'association_state.dart';
 ///   example:
 ///     type: aws:ssm:Association
 ///     properties:
-///       name: AmazonCloudWatch-ManageAgent
 ///       targets:
 ///         - key: InstanceIds
 ///           values:
 ///             - '*'
+///       name: AmazonCloudWatch-ManageAgent
 /// ```
 ///
 ///
@@ -305,11 +306,11 @@ import 'association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ssm.Association("example", {
-///     name: "AmazonCloudWatch-ManageAgent",
 ///     targets: [{
 ///         key: "tag:Environment",
 ///         values: ["Development"],
 ///     }],
+///     name: "AmazonCloudWatch-ManageAgent",
 /// });
 /// ```
 /// ```python
@@ -317,11 +318,11 @@ import 'association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssm.Association("example",
-///     name="AmazonCloudWatch-ManageAgent",
 ///     targets=[{
 ///         "key": "tag:Environment",
 ///         "values": ["Development"],
-///     }])
+///     }],
+///     name="AmazonCloudWatch-ManageAgent")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -333,7 +334,6 @@ import 'association_state.dart';
 /// {
 ///     var example = new Aws.Ssm.Association("example", new()
 ///     {
-///         Name = "AmazonCloudWatch-ManageAgent",
 ///         Targets = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.AssociationTargetArgs
@@ -345,6 +345,7 @@ import 'association_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "AmazonCloudWatch-ManageAgent",
 ///     });
 ///
 /// });
@@ -360,7 +361,6 @@ import 'association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewAssociation(ctx, "example", &ssm.AssociationArgs{
-/// 			Name: pulumi.String("AmazonCloudWatch-ManageAgent"),
 /// 			Targets: ssm.AssociationTargetArray{
 /// 				&ssm.AssociationTargetArgs{
 /// 					Key: pulumi.String("tag:Environment"),
@@ -369,6 +369,7 @@ import 'association_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("AmazonCloudWatch-ManageAgent"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -387,11 +388,11 @@ import 'association_state.dart';
 /// }
 ///
 /// resource "aws_ssm_association" "example" {
-///   name = "AmazonCloudWatch-ManageAgent"
 ///   targets {
 ///     key    = "tag:Environment"
 ///     values = ["Development"]
 ///   }
+///   name = "AmazonCloudWatch-ManageAgent"
 /// }
 /// ```
 /// ```java
@@ -417,11 +418,11 @@ import 'association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Association("example", AssociationArgs.builder()
-///             .name("AmazonCloudWatch-ManageAgent")
 ///             .targets(AssociationTargetArgs.builder()
 ///                 .key("tag:Environment")
 ///                 .values("Development")
 ///                 .build())
+///             .name("AmazonCloudWatch-ManageAgent")
 ///             .build());
 ///
 ///     }
@@ -432,11 +433,11 @@ import 'association_state.dart';
 ///   example:
 ///     type: aws:ssm:Association
 ///     properties:
-///       name: AmazonCloudWatch-ManageAgent
 ///       targets:
 ///         - key: tag:Environment
 ///           values:
 ///             - Development
+///       name: AmazonCloudWatch-ManageAgent
 /// ```
 ///
 ///
@@ -450,12 +451,12 @@ import 'association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ssm.Association("example", {
-///     name: exampleAwsSsmDocument.name,
-///     scheduleExpression: "cron(0 2 ? * SUN *)",
 ///     targets: [{
 ///         key: "InstanceIds",
 ///         values: [exampleAwsInstance.id],
 ///     }],
+///     name: exampleAwsSsmDocument.name,
+///     scheduleExpression: "cron(0 2 ? * SUN *)",
 /// });
 /// ```
 /// ```python
@@ -463,12 +464,12 @@ import 'association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssm.Association("example",
-///     name=example_aws_ssm_document["name"],
-///     schedule_expression="cron(0 2 ? * SUN *)",
 ///     targets=[{
 ///         "key": "InstanceIds",
 ///         "values": [example_aws_instance["id"]],
-///     }])
+///     }],
+///     name=example_aws_ssm_document["name"],
+///     schedule_expression="cron(0 2 ? * SUN *)")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -480,8 +481,6 @@ import 'association_state.dart';
 /// {
 ///     var example = new Aws.Ssm.Association("example", new()
 ///     {
-///         Name = exampleAwsSsmDocument.Name,
-///         ScheduleExpression = "cron(0 2 ? * SUN *)",
 ///         Targets = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.AssociationTargetArgs
@@ -493,6 +492,8 @@ import 'association_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = exampleAwsSsmDocument.Name,
+///         ScheduleExpression = "cron(0 2 ? * SUN *)",
 ///     });
 ///
 /// });
@@ -508,8 +509,6 @@ import 'association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewAssociation(ctx, "example", &ssm.AssociationArgs{
-/// 			Name:               pulumi.Any(exampleAwsSsmDocument.Name),
-/// 			ScheduleExpression: pulumi.String("cron(0 2 ? * SUN *)"),
 /// 			Targets: ssm.AssociationTargetArray{
 /// 				&ssm.AssociationTargetArgs{
 /// 					Key: pulumi.String("InstanceIds"),
@@ -518,6 +517,8 @@ import 'association_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:               pulumi.Any(exampleAwsSsmDocument.Name),
+/// 			ScheduleExpression: pulumi.String("cron(0 2 ? * SUN *)"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -536,12 +537,12 @@ import 'association_state.dart';
 /// }
 ///
 /// resource "aws_ssm_association" "example" {
-///   name                = exampleAwsSsmDocument.name
-///   schedule_expression = "cron(0 2 ? * SUN *)"
 ///   targets {
 ///     key    = "InstanceIds"
 ///     values = [exampleAwsInstance.id]
 ///   }
+///   name                = exampleAwsSsmDocument.name
+///   schedule_expression = "cron(0 2 ? * SUN *)"
 /// }
 /// ```
 /// ```java
@@ -567,12 +568,12 @@ import 'association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Association("example", AssociationArgs.builder()
-///             .name(exampleAwsSsmDocument.name())
-///             .scheduleExpression("cron(0 2 ? * SUN *)")
 ///             .targets(AssociationTargetArgs.builder()
 ///                 .key("InstanceIds")
 ///                 .values(exampleAwsInstance.id())
 ///                 .build())
+///             .name(exampleAwsSsmDocument.name())
+///             .scheduleExpression("cron(0 2 ? * SUN *)")
 ///             .build());
 ///
 ///     }
@@ -583,12 +584,12 @@ import 'association_state.dart';
 ///   example:
 ///     type: aws:ssm:Association
 ///     properties:
-///       name: ${exampleAwsSsmDocument.name}
-///       scheduleExpression: cron(0 2 ? * SUN *)
 ///       targets:
 ///         - key: InstanceIds
 ///           values:
 ///             - ${exampleAwsInstance.id}
+///       name: ${exampleAwsSsmDocument.name}
+///       scheduleExpression: cron(0 2 ? * SUN *)
 /// ```
 ///
 ///
@@ -630,7 +631,6 @@ import 'association_state.dart';
 /// });
 /// // Removed EC2 provisioning dependencies for brevity
 /// const systemUpdate = new aws.ssm.Association("system_update", {
-///     name: "AWS-RunShellScript",
 ///     targets: [{
 ///         key: "InstanceIds",
 ///         values: [
@@ -638,6 +638,7 @@ import 'association_state.dart';
 ///             webServer2.id,
 ///         ],
 ///     }],
+///     name: "AWS-RunShellScript",
 ///     scheduleExpression: "cron(0 2 ? * SUN *)",
 ///     parameters: {
 ///         commands: std.join({
@@ -700,7 +701,6 @@ import 'association_state.dart';
 /// """)
 /// # Removed EC2 provisioning dependencies for brevity
 /// system_update = aws.ssm.Association("system_update",
-///     name="AWS-RunShellScript",
 ///     targets=[{
 ///         "key": "InstanceIds",
 ///         "values": [
@@ -708,6 +708,7 @@ import 'association_state.dart';
 ///             web_server2.id,
 ///         ],
 ///     }],
+///     name="AWS-RunShellScript",
 ///     schedule_expression="cron(0 2 ? * SUN *)",
 ///     parameters={
 ///         "commands": std.join(separator="\n",
@@ -784,7 +785,6 @@ import 'association_state.dart';
 ///     // Removed EC2 provisioning dependencies for brevity
 ///     var systemUpdate = new Aws.Ssm.Association("system_update", new()
 ///     {
-///         Name = "AWS-RunShellScript",
 ///         Targets = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.AssociationTargetArgs
@@ -797,6 +797,7 @@ import 'association_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "AWS-RunShellScript",
 ///         ScheduleExpression = "cron(0 2 ? * SUN *)",
 ///         Parameters =
 ///         {
@@ -902,7 +903,6 @@ import 'association_state.dart';
 /// 		}
 /// 		// Removed EC2 provisioning dependencies for brevity
 /// 		_, err = ssm.NewAssociation(ctx, "system_update", &ssm.AssociationArgs{
-/// 			Name: pulumi.String("AWS-RunShellScript"),
 /// 			Targets: ssm.AssociationTargetArray{
 /// 				&ssm.AssociationTargetArgs{
 /// 					Key: pulumi.String("InstanceIds"),
@@ -912,6 +912,7 @@ import 'association_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:               pulumi.String("AWS-RunShellScript"),
 /// 			ScheduleExpression: pulumi.String("cron(0 2 ? * SUN *)"),
 /// 			Parameters: pulumi.StringMap{
 /// 				"commands":         pulumi.String(invokeJoin.Result),
@@ -949,11 +950,11 @@ import 'association_state.dart';
 ///
 /// # Removed EC2 provisioning dependencies for brevity
 /// resource "aws_ssm_association" "system_update" {
-///   name = "AWS-RunShellScript"
 ///   targets {
 ///     key    = "InstanceIds"
 ///     values = [aws_ec2_instance.web_server_1.id, aws_ec2_instance.web_server_2.id]
 ///   }
+///   name                = "AWS-RunShellScript"
 ///   schedule_expression = "cron(0 2 ? * SUN *)"
 ///   parameters = {
 ///     "commands"         = join("\n", ["#!/bin/bash", "echo 'Starting system update on $(hostname)'", "echo 'Instance ID: $(curl -s http://169.254.169.254/latest/meta-data/instance-id)'", "yum update -y", "echo 'System update completed successfully'", "systemctl status httpd", "df -h", "free -m"])
@@ -1049,13 +1050,13 @@ import 'association_state.dart';
 ///
 ///         // Removed EC2 provisioning dependencies for brevity
 ///         var systemUpdate = new Association("systemUpdate", AssociationArgs.builder()
-///             .name("AWS-RunShellScript")
 ///             .targets(AssociationTargetArgs.builder()
 ///                 .key("InstanceIds")
 ///                 .values(
 ///                     webServer1.id(),
 ///                     webServer2.id())
 ///                 .build())
+///             .name("AWS-RunShellScript")
 ///             .scheduleExpression("cron(0 2 ? * SUN *)")
 ///             .parameters(Map.ofEntries(
 ///                 Map.entry("commands", StdFunctions.join(JoinArgs.builder()
@@ -1096,12 +1097,12 @@ import 'association_state.dart';
 ///     type: aws:ssm:Association
 ///     name: system_update
 ///     properties:
-///       name: AWS-RunShellScript
 ///       targets:
 ///         - key: InstanceIds
 ///           values:
 ///             - ${webServer1.id}
 ///             - ${webServer2.id}
+///       name: AWS-RunShellScript
 ///       scheduleExpression: cron(0 2 ? * SUN *)
 ///       parameters:
 ///         commands:
@@ -1176,7 +1177,6 @@ import 'association_state.dart';
 ///
 /// // SSM Association for Webbased Servers
 /// const databaseAssociation = new aws.ssm.Association("database_association", {
-///     name: systemUpdate.name,
 ///     targets: [{
 ///         key: "tag:Role",
 ///         values: [
@@ -1184,6 +1184,7 @@ import 'association_state.dart';
 ///             "Database",
 ///         ],
 ///     }],
+///     name: systemUpdate.name,
 ///     parameters: {
 ///         restartServices: "true",
 ///     },
@@ -1253,7 +1254,6 @@ import 'association_state.dart';
 ///
 /// # SSM Association for Webbased Servers
 /// database_association = aws.ssm.Association("database_association",
-///     name=system_update["name"],
 ///     targets=[{
 ///         "key": "tag:Role",
 ///         "values": [
@@ -1261,6 +1261,7 @@ import 'association_state.dart';
 ///             "Database",
 ///         ],
 ///     }],
+///     name=system_update["name"],
 ///     parameters={
 ///         "restartServices": "true",
 ///     },
@@ -1328,7 +1329,6 @@ import 'association_state.dart';
 ///     // SSM Association for Webbased Servers
 ///     var databaseAssociation = new Aws.Ssm.Association("database_association", new()
 ///     {
-///         Name = systemUpdate.Name,
 ///         Targets = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.AssociationTargetArgs
@@ -1341,6 +1341,7 @@ import 'association_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = systemUpdate.Name,
 ///         Parameters =
 ///         {
 ///             { "restartServices", "true" },
@@ -1437,7 +1438,6 @@ import 'association_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// SSM Association for Webbased Servers
 /// 		_, err := ssm.NewAssociation(ctx, "database_association", &ssm.AssociationArgs{
-/// 			Name: pulumi.Any(systemUpdate.Name),
 /// 			Targets: ssm.AssociationTargetArray{
 /// 				&ssm.AssociationTargetArgs{
 /// 					Key: pulumi.String("tag:Role"),
@@ -1447,6 +1447,7 @@ import 'association_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.Any(systemUpdate.Name),
 /// 			Parameters: pulumi.StringMap{
 /// 				"restartServices": pulumi.String("true"),
 /// 			},
@@ -1547,11 +1548,11 @@ import 'association_state.dart';
 ///
 /// # SSM Association for Webbased Servers
 /// resource "aws_ssm_association" "database_association" {
-///   name = systemUpdate.name
 ///   targets {
 ///     key    = "tag:Role"
 ///     values = ["WebServer", "Database"]
 ///   }
+///   name = systemUpdate.name
 ///   parameters = {
 ///     "restartServices" = "true"
 ///   }
@@ -1628,13 +1629,13 @@ import 'association_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // SSM Association for Webbased Servers
 ///         var databaseAssociation = new Association("databaseAssociation", AssociationArgs.builder()
-///             .name(systemUpdate.name())
 ///             .targets(AssociationTargetArgs.builder()
 ///                 .key("tag:Role")
 ///                 .values(
 ///                     "WebServer",
 ///                     "Database")
 ///                 .build())
+///             .name(systemUpdate.name())
 ///             .parameters(Map.of("restartServices", "true"))
 ///             .scheduleExpression("cron(0 3 ? * SUN *)")
 ///             .build());
@@ -1709,12 +1710,12 @@ import 'association_state.dart';
 ///     type: aws:ssm:Association
 ///     name: database_association
 ///     properties:
-///       name: ${systemUpdate.name}
 ///       targets:
 ///         - key: tag:Role
 ///           values:
 ///             - WebServer
 ///             - Database
+///       name: ${systemUpdate.name}
 ///       parameters:
 ///         restartServices: 'true'
 ///       scheduleExpression: cron(0 3 ? * SUN *)
@@ -1823,7 +1824,7 @@ class Association extends pulumi.CustomResource {
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
-  late final pulumi.Output<List<Map<String, dynamic>>> targets;
+  late final pulumi.Output<List<AssociationTarget>> targets;
   /// The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create opration will fail.
   ///
   /// Output Location (`outputLocation`) is an S3 bucket where you want to store the results of this association:
@@ -1841,27 +1842,27 @@ class Association extends pulumi.CustomResource {
           'aws:ssm/association:Association',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applyOnlyAtCronInterval = registerOutput<bool?>('applyOnlyAtCronInterval');
     arn = registerOutput<String>('arn');
     associationId = registerOutput<String>('associationId');
     associationName = registerOutput<String?>('associationName');
     automationTargetParameterName = registerOutput<String?>('automationTargetParameterName');
-    calendarNames = registerOutput<List<String>?>('calendarNames');
+    calendarNames = registerOutput<List<String>?>('calendarNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     complianceSeverity = registerOutput<String?>('complianceSeverity');
     documentVersion = registerOutput<String>('documentVersion');
     maxConcurrency = registerOutput<String?>('maxConcurrency');
     maxErrors = registerOutput<String?>('maxErrors');
     this.name = registerOutput<String>('name');
     outputLocation = registerOutput<AssociationOutputLocation?>('outputLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssociationOutputLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    parameters = registerOutput<Map<String, String>>('parameters');
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
     scheduleExpression = registerOutput<String?>('scheduleExpression');
     syncCompliance = registerOutput<String?>('syncCompliance');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<AssociationTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssociationTarget>(guardedValue, (value) => AssociationTarget.fromMap((value as Map).cast<String, dynamic>())); });
     waitForSuccessTimeoutSeconds = registerOutput<int?>('waitForSuccessTimeoutSeconds');
   }
 
@@ -1870,11 +1871,12 @@ class Association extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Association._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1893,20 +1895,51 @@ class Association extends pulumi.CustomResource {
     associationId = registerOutput<String>('associationId');
     associationName = registerOutput<String?>('associationName');
     automationTargetParameterName = registerOutput<String?>('automationTargetParameterName');
-    calendarNames = registerOutput<List<String>?>('calendarNames');
+    calendarNames = registerOutput<List<String>?>('calendarNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     complianceSeverity = registerOutput<String?>('complianceSeverity');
     documentVersion = registerOutput<String>('documentVersion');
     maxConcurrency = registerOutput<String?>('maxConcurrency');
     maxErrors = registerOutput<String?>('maxErrors');
     this.name = registerOutput<String>('name');
     outputLocation = registerOutput<AssociationOutputLocation?>('outputLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssociationOutputLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    parameters = registerOutput<Map<String, String>>('parameters');
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
     scheduleExpression = registerOutput<String?>('scheduleExpression');
     syncCompliance = registerOutput<String?>('syncCompliance');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<AssociationTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssociationTarget>(guardedValue, (value) => AssociationTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    waitForSuccessTimeoutSeconds = registerOutput<int?>('waitForSuccessTimeoutSeconds');
+  }
+
+  /// Creates a typed reference to an existing [Association] resource.
+  Association.reference(String urn)
+    : super(
+        'aws:ssm/association:Association',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applyOnlyAtCronInterval = registerOutput<bool?>('applyOnlyAtCronInterval');
+    arn = registerOutput<String>('arn');
+    associationId = registerOutput<String>('associationId');
+    associationName = registerOutput<String?>('associationName');
+    automationTargetParameterName = registerOutput<String?>('automationTargetParameterName');
+    calendarNames = registerOutput<List<String>?>('calendarNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    complianceSeverity = registerOutput<String?>('complianceSeverity');
+    documentVersion = registerOutput<String>('documentVersion');
+    maxConcurrency = registerOutput<String?>('maxConcurrency');
+    maxErrors = registerOutput<String?>('maxErrors');
+    this.name = registerOutput<String>('name');
+    outputLocation = registerOutput<AssociationOutputLocation?>('outputLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssociationOutputLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    region = registerOutput<String>('region');
+    scheduleExpression = registerOutput<String?>('scheduleExpression');
+    syncCompliance = registerOutput<String?>('syncCompliance');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targets = registerOutput<List<AssociationTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssociationTarget>(guardedValue, (value) => AssociationTarget.fromMap((value as Map).cast<String, dynamic>())); });
     waitForSuccessTimeoutSeconds = registerOutput<int?>('waitForSuccessTimeoutSeconds');
   }
 }

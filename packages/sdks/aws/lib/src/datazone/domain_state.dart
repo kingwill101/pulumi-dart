@@ -7,35 +7,35 @@ import 'domain_timeouts.dart';
 /// Input properties used for looking up and filtering Domain resources.
 class DomainState {
   /// ARN of the Domain.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Description of the Domain.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ARN of the role used by DataZone to configure the Domain.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? domainExecutionRole;
+  final pulumi.Input<String?>? domainExecutionRole;
   /// Version of the Domain. Valid values are `V1` and `V2`. Defaults to `V1`.
-  final pulumi.Input<String>? domainVersion;
+  final pulumi.Input<String?>? domainVersion;
   /// ARN of the KMS key used to encrypt the Amazon DataZone domain, metadata and reporting data.
-  final pulumi.Input<String>? kmsKeyIdentifier;
+  final pulumi.Input<String?>? kmsKeyIdentifier;
   /// Name of the Domain.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// URL of the data portal for the Domain.
-  final pulumi.Input<String>? portalUrl;
+  final pulumi.Input<String?>? portalUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the root domain unit.
-  final pulumi.Input<String>? rootDomainUnitId;
+  final pulumi.Input<String?>? rootDomainUnitId;
   /// ARN of the service role used by DataZone. Required when `domainVersion` is set to `V2`.
-  final pulumi.Input<String>? serviceRole;
+  final pulumi.Input<String?>? serviceRole;
   /// Single sign on options, used to [enable AWS IAM Identity Center](https://docs.aws.amazon.com/datazone/latest/userguide/enable-IAM-identity-center-for-datazone.html) for DataZone.
-  final pulumi.Input<DomainSingleSignOn>? singleSignOn;
+  final pulumi.Input<DomainSingleSignOn?>? singleSignOn;
   /// Whether to skip the deletion check for the Domain.
-  final pulumi.Input<bool>? skipDeletionCheck;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<bool?>? skipDeletionCheck;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<DomainTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<DomainTimeouts?>? timeouts;
 
   /// Creates a new [DomainState].
   /// [arn] ARN of the Domain.

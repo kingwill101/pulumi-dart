@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LocalGatewayRoute resources.
 class LocalGatewayRouteState {
   /// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-  final pulumi.Input<String>? destinationCidrBlock;
+  final pulumi.Input<String?>? destinationCidrBlock;
   /// Identifier of EC2 Local Gateway Route Table.
-  final pulumi.Input<String>? localGatewayRouteTableId;
+  final pulumi.Input<String?>? localGatewayRouteTableId;
   /// Identifier of EC2 Local Gateway Virtual Interface Group.
-  final pulumi.Input<String>? localGatewayVirtualInterfaceGroupId;
+  final pulumi.Input<String?>? localGatewayVirtualInterfaceGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [LocalGatewayRouteState].
   /// [destinationCidrBlock] IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.

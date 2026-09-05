@@ -23,8 +23,8 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChan
 
   factory ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel(
-      gain: pulumi.Input.fromValue(map['gain'] as int),
-      inputChannel: pulumi.Input.fromValue(map['inputChannel'] as int),
+      gain: pulumi.Input.fromValue((map['gain'] as num).toInt()),
+      inputChannel: pulumi.Input.fromValue((map['inputChannel'] as num).toInt()),
     );
   }
 }

@@ -20,39 +20,39 @@ import 'web_acl_rule_statement_xss_match_statement.dart';
 
 class WebAclRuleStatement {
   /// Logical AND statement that combines multiple statements. See And Statement below.
-  final pulumi.Input<WebAclRuleStatementAndStatement>? andStatement;
+  final pulumi.Input<WebAclRuleStatementAndStatement?>? andStatement;
   /// Match requests based on Autonomous System Number (ASN). See ASN Match Statement below.
-  final pulumi.Input<WebAclRuleStatementAsnMatchStatement>? asnMatchStatement;
+  final pulumi.Input<WebAclRuleStatementAsnMatchStatement?>? asnMatchStatement;
   /// Match requests based on byte patterns. See Byte Match Statement below.
-  final pulumi.Input<WebAclRuleStatementByteMatchStatement>? byteMatchStatement;
+  final pulumi.Input<WebAclRuleStatementByteMatchStatement?>? byteMatchStatement;
   /// Match requests by geographic location. See Geo Match Statement below.
-  final pulumi.Input<WebAclRuleStatementGeoMatchStatement>? geoMatchStatement;
+  final pulumi.Input<WebAclRuleStatementGeoMatchStatement?>? geoMatchStatement;
   /// Reference to an IP set. See IP Set Reference Statement below.
-  final pulumi.Input<WebAclRuleStatementIpSetReferenceStatement>? ipSetReferenceStatement;
+  final pulumi.Input<WebAclRuleStatementIpSetReferenceStatement?>? ipSetReferenceStatement;
   /// Match requests based on labels. See Label Match Statement below.
-  final pulumi.Input<WebAclRuleStatementLabelMatchStatement>? labelMatchStatement;
+  final pulumi.Input<WebAclRuleStatementLabelMatchStatement?>? labelMatchStatement;
   /// Reference to a managed rule group. See Managed Rule Group Statement below.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatement>? managedRuleGroupStatement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatement?>? managedRuleGroupStatement;
   /// Logical NOT statement that negates a single statement. See Not Statement below.
-  final pulumi.Input<WebAclRuleStatementNotStatement>? notStatement;
+  final pulumi.Input<WebAclRuleStatementNotStatement?>? notStatement;
   /// Logical OR statement that combines multiple statements. See Or Statement below.
-  final pulumi.Input<WebAclRuleStatementOrStatement>? orStatement;
+  final pulumi.Input<WebAclRuleStatementOrStatement?>? orStatement;
   /// Rate-based rule to track request rates. See Rate Based Statement below.
-  final pulumi.Input<WebAclRuleStatementRateBasedStatement>? rateBasedStatement;
+  final pulumi.Input<WebAclRuleStatementRateBasedStatement?>? rateBasedStatement;
   /// Match requests using regex patterns. See Regex Match Statement below.
-  final pulumi.Input<WebAclRuleStatementRegexMatchStatement>? regexMatchStatement;
+  final pulumi.Input<WebAclRuleStatementRegexMatchStatement?>? regexMatchStatement;
   /// Reference to a regex pattern set. See Regex Pattern Set Reference Statement below.
-  final pulumi.Input<WebAclRuleStatementRegexPatternSetReferenceStatement>? regexPatternSetReferenceStatement;
+  final pulumi.Input<WebAclRuleStatementRegexPatternSetReferenceStatement?>? regexPatternSetReferenceStatement;
   /// Reference to a rule group. See Rule Group Reference Statement below.
-  final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatement>? ruleGroupReferenceStatement;
+  final pulumi.Input<WebAclRuleStatementRuleGroupReferenceStatement?>? ruleGroupReferenceStatement;
   /// Match requests based on size constraints. See Size Constraint Statement below.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatement>? sizeConstraintStatement;
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatement?>? sizeConstraintStatement;
   /// Match requests that appear to contain SQL injection attacks. See SQL Injection Match Statement below.
-  final pulumi.Input<WebAclRuleStatementSqliMatchStatement>? sqliMatchStatement;
+  final pulumi.Input<WebAclRuleStatementSqliMatchStatement?>? sqliMatchStatement;
   /// Match requests that appear to contain cross-site scripting attacks. See Cross-Site Scripting Match Statement below.
   ///
   /// &gt; **NOTE:** Logical statements (`andStatement`, `notStatement`, `orStatement`) can be nested up to 3 levels deep. This matches the nesting limit of the `aws.wafv2.WebAcl` resource.
-  final pulumi.Input<WebAclRuleStatementXssMatchStatement>? xssMatchStatement;
+  final pulumi.Input<WebAclRuleStatementXssMatchStatement?>? xssMatchStatement;
 
   /// Creates a new [WebAclRuleStatement].
   /// [andStatement] Logical AND statement that combines multiple statements. See And Statement below.

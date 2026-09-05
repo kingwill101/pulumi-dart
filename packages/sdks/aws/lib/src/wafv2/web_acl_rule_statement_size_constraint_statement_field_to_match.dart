@@ -14,33 +14,33 @@ import 'web_acl_rule_statement_size_constraint_statement_field_to_match_uri_frag
 
 class WebAclRuleStatementSizeConstraintStatementFieldToMatch {
   /// Inspect all query arguments.
-  final pulumi.Input<Map<String, dynamic>>? allQueryArguments;
+  final pulumi.Input<Map<String, dynamic>?>? allQueryArguments;
   /// Inspect the request body as plain text. See Body below.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchBody>? body;
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchBody?>? body;
   /// Inspect the request cookies. See Cookies below.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchCookies>? cookies;
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchCookies?>? cookies;
   /// Inspect a string containing the list of the request's header names, ordered as they appear in the web request. See Header Order below.
-  final pulumi.Input<List<WebAclRuleStatementSizeConstraintStatementFieldToMatchHeaderOrder>>? headerOrders;
+  final pulumi.Input<List<WebAclRuleStatementSizeConstraintStatementFieldToMatchHeaderOrder>?>? headerOrders;
   /// Inspect the request headers. See Headers below.
-  final pulumi.Input<List<WebAclRuleStatementSizeConstraintStatementFieldToMatchHeader>>? headers;
+  final pulumi.Input<List<WebAclRuleStatementSizeConstraintStatementFieldToMatchHeader>?>? headers;
   /// Match against the request's JA3 fingerprint (CloudFront and ALB only). See JA3 Fingerprint below.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJa3Fingerprint>? ja3Fingerprint;
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJa3Fingerprint?>? ja3Fingerprint;
   /// Match against the request's JA4 fingerprint (CloudFront and ALB only). See JA4 Fingerprint below.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJa4Fingerprint>? ja4Fingerprint;
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJa4Fingerprint?>? ja4Fingerprint;
   /// Inspect the request body as JSON. See JSON Body below.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody>? jsonBody;
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBody?>? jsonBody;
   /// Inspect the HTTP method.
-  final pulumi.Input<Map<String, dynamic>>? method;
+  final pulumi.Input<Map<String, dynamic>?>? method;
   /// Inspect the query string.
-  final pulumi.Input<Map<String, dynamic>>? queryString;
+  final pulumi.Input<Map<String, dynamic>?>? queryString;
   /// Inspect a single header. See Single Header below.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader>? singleHeader;
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleHeader?>? singleHeader;
   /// Inspect a single query argument. See Single Query Argument below.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleQueryArgument>? singleQueryArgument;
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchSingleQueryArgument?>? singleQueryArgument;
   /// Inspect fragments of the request URI. See URI Fragment below.
-  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchUriFragment>? uriFragment;
+  final pulumi.Input<WebAclRuleStatementSizeConstraintStatementFieldToMatchUriFragment?>? uriFragment;
   /// Inspect the request URI path.
-  final pulumi.Input<Map<String, dynamic>>? uriPath;
+  final pulumi.Input<Map<String, dynamic>?>? uriPath;
 
   /// Creates a new [WebAclRuleStatementSizeConstraintStatementFieldToMatch].
   /// [allQueryArguments] Inspect all query arguments.

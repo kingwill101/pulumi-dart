@@ -6,11 +6,11 @@ import 'get_log_data_protection_policy_document_statement_operation_deidentify.d
 
 class GetLogDataProtectionPolicyDocumentStatementOperation {
   /// Configures the detection of sensitive data.
-  final pulumi.Input<GetLogDataProtectionPolicyDocumentStatementOperationAudit>? audit;
+  final pulumi.Input<GetLogDataProtectionPolicyDocumentStatementOperationAudit?>? audit;
   /// Configures the masking of sensitive data.
   ///
   /// &gt; Every policy statement must specify exactly one operation.
-  final pulumi.Input<GetLogDataProtectionPolicyDocumentStatementOperationDeidentify>? deidentify;
+  final pulumi.Input<GetLogDataProtectionPolicyDocumentStatementOperationDeidentify?>? deidentify;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperation].
   /// [audit] Configures the detection of sensitive data.

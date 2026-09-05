@@ -6,13 +6,13 @@ import 'domain_default_user_settings_rsession_app_settings_default_resource_spec
 
 class DomainDefaultUserSettingsRSessionAppSettings {
   /// A list of custom SageMaker AI images that are configured to run as a RSession app. see `customImage` Block below.
-  final pulumi.Input<List<DomainDefaultUserSettingsRSessionAppSettingsCustomImage>>? customImages;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block above.
-  final pulumi.Input<DomainDefaultUserSettingsRSessionAppSettingsDefaultResourceSpec>? defaultResourceSpec;
+  final pulumi.Input<List<DomainDefaultUserSettingsRSessionAppSettingsCustomImage>?>? customImages;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block above.
+  final pulumi.Input<DomainDefaultUserSettingsRSessionAppSettingsDefaultResourceSpec?>? defaultResourceSpec;
 
   /// Creates a new [DomainDefaultUserSettingsRSessionAppSettings].
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a RSession app. see `customImage` Block below.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block above.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block above.
   const DomainDefaultUserSettingsRSessionAppSettings({
     this.customImages,
     this.defaultResourceSpec,

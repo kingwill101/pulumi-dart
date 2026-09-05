@@ -36,8 +36,8 @@ class GetApplicationAppversionLifecycle {
   factory GetApplicationAppversionLifecycle.fromMap(Map<String, dynamic> map) {
     return GetApplicationAppversionLifecycle(
       deleteSourceFromS3: pulumi.Input.fromValue(map['deleteSourceFromS3'] as bool),
-      maxAgeInDays: pulumi.Input.fromValue(map['maxAgeInDays'] as int),
-      maxCount: pulumi.Input.fromValue(map['maxCount'] as int),
+      maxAgeInDays: pulumi.Input.fromValue((map['maxAgeInDays'] as num).toInt()),
+      maxCount: pulumi.Input.fromValue((map['maxCount'] as num).toInt()),
       serviceRole: pulumi.Input.fromValue(map['serviceRole'] as String),
     );
   }

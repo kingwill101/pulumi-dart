@@ -14,12 +14,6 @@ import 'user_group_state.dart';
 /// const main = new aws.cognito.UserPool("main", {name: "identity pool"});
 /// const groupRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
-///         principals: [{
-///             type: "Federated",
-///             identifiers: ["cognito-identity.amazonaws.com"],
-///         }],
-///         actions: ["sts:AssumeRoleWithWebIdentity"],
 ///         conditions: [
 ///             {
 ///                 test: "StringEquals",
@@ -32,6 +26,12 @@ import 'user_group_state.dart';
 ///                 values: ["authenticated"],
 ///             },
 ///         ],
+///         principals: [{
+///             type: "Federated",
+///             identifiers: ["cognito-identity.amazonaws.com"],
+///         }],
+///         effect: "Allow",
+///         actions: ["sts:AssumeRoleWithWebIdentity"],
 ///     }],
 /// });
 /// const groupRoleRole = new aws.iam.Role("group_role", {
@@ -52,12 +52,6 @@ import 'user_group_state.dart';
 ///
 /// main = aws.cognito.UserPool("main", name="identity pool")
 /// group_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "Federated",
-///         "identifiers": ["cognito-identity.amazonaws.com"],
-///     }],
-///     "actions": ["sts:AssumeRoleWithWebIdentity"],
 ///     "conditions": [
 ///         {
 ///             "test": "StringEquals",
@@ -70,6 +64,12 @@ import 'user_group_state.dart';
 ///             "values": ["authenticated"],
 ///         },
 ///     ],
+///     "principals": [{
+///         "type": "Federated",
+///         "identifiers": ["cognito-identity.amazonaws.com"],
+///     }],
+///     "effect": "Allow",
+///     "actions": ["sts:AssumeRoleWithWebIdentity"],
 /// }])
 /// group_role_role = aws.iam.Role("group_role",
 ///     name="user-group-role",
@@ -100,22 +100,6 @@ import 'user_group_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "Federated",
-///                         Identifiers = new[]
-///                         {
-///                             "cognito-identity.amazonaws.com",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRoleWithWebIdentity",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -136,6 +120,22 @@ import 'user_group_state.dart';
 ///                             "authenticated",
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "Federated",
+///                         Identifiers = new[]
+///                         {
+///                             "cognito-identity.amazonaws.com",
+///                         },
+///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRoleWithWebIdentity",
 ///                 },
 ///             },
 ///         },
@@ -178,18 +178,6 @@ import 'user_group_state.dart';
 /// 		groupRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Type: "Federated",
-/// 							Identifiers: []string{
-/// 								"cognito-identity.amazonaws.com",
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: []string{
-/// 						"sts:AssumeRoleWithWebIdentity",
-/// 					},
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test:     "StringEquals",
@@ -205,6 +193,18 @@ import 'user_group_state.dart';
 /// 								"authenticated",
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "Federated",
+/// 							Identifiers: []string{
+/// 								"cognito-identity.amazonaws.com",
+/// 							},
+/// 						},
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRoleWithWebIdentity",
 /// 					},
 /// 				},
 /// 			},
@@ -244,12 +244,6 @@ import 'user_group_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "groupRole" {
 ///   statements {
-///     effect = "Allow"
-///     principals {
-///       type        = "Federated"
-///       identifiers = ["cognito-identity.amazonaws.com"]
-///     }
-///     actions = ["sts:AssumeRoleWithWebIdentity"]
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "cognito-identity.amazonaws.com:aud"
@@ -260,6 +254,12 @@ import 'user_group_state.dart';
 ///       variable = "cognito-identity.amazonaws.com:amr"
 ///       values   = ["authenticated"]
 ///     }
+///     principals {
+///       type        = "Federated"
+///       identifiers = ["cognito-identity.amazonaws.com"]
+///     }
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRoleWithWebIdentity"]
 ///   }
 /// }
 ///
@@ -289,8 +289,8 @@ import 'user_group_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.cognito.UserGroup;
@@ -314,12 +314,6 @@ import 'user_group_state.dart';
 ///
 ///         final var groupRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("Federated")
-///                     .identifiers("cognito-identity.amazonaws.com")
-///                     .build())
-///                 .actions("sts:AssumeRoleWithWebIdentity")
 ///                 .conditions(
 ///                     GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
@@ -331,6 +325,12 @@ import 'user_group_state.dart';
 ///                         .variable("cognito-identity.amazonaws.com:amr")
 ///                         .values("authenticated")
 ///                         .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("Federated")
+///                     .identifiers("cognito-identity.amazonaws.com")
+///                     .build())
+///                 .effect("Allow")
+///                 .actions("sts:AssumeRoleWithWebIdentity")
 ///                 .build())
 ///             .build());
 ///
@@ -377,14 +377,7 @@ import 'user_group_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
-///               - type: Federated
-///                 identifiers:
-///                   - cognito-identity.amazonaws.com
-///             actions:
-///               - sts:AssumeRoleWithWebIdentity
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 variable: cognito-identity.amazonaws.com:aud
 ///                 values:
@@ -393,6 +386,13 @@ import 'user_group_state.dart';
 ///                 variable: cognito-identity.amazonaws.com:amr
 ///                 values:
 ///                   - authenticated
+///             principals:
+///               - type: Federated
+///                 identifiers:
+///                   - cognito-identity.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - sts:AssumeRoleWithWebIdentity
 /// ```
 ///
 ///
@@ -429,7 +429,7 @@ class UserGroup extends pulumi.CustomResource {
           'aws:cognito/userGroup:UserGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -444,11 +444,12 @@ class UserGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -462,6 +463,23 @@ class UserGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    precedence = registerOutput<int?>('precedence');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    userPoolId = registerOutput<String>('userPoolId');
+  }
+
+  /// Creates a typed reference to an existing [UserGroup] resource.
+  UserGroup.reference(String urn)
+    : super(
+        'aws:cognito/userGroup:UserGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     precedence = registerOutput<int?>('precedence');

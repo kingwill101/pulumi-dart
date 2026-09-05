@@ -15,13 +15,13 @@ import 'table_bucket_replication_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.s3tables.TableBucketReplication("example", {
-///     tableBucketArn: source.arn,
-///     role: exampleAwsIamRole.arn,
 ///     rule: {
 ///         destinations: [{
 ///             destinationTableBucketArn: target.arn,
 ///         }],
 ///     },
+///     tableBucketArn: source.arn,
+///     role: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -29,13 +29,13 @@ import 'table_bucket_replication_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.s3tables.TableBucketReplication("example",
-///     table_bucket_arn=source["arn"],
-///     role=example_aws_iam_role["arn"],
 ///     rule={
 ///         "destinations": [{
 ///             "destination_table_bucket_arn": target["arn"],
 ///         }],
-///     })
+///     },
+///     table_bucket_arn=source["arn"],
+///     role=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,8 +47,6 @@ import 'table_bucket_replication_state.dart';
 /// {
 ///     var example = new Aws.S3Tables.TableBucketReplication("example", new()
 ///     {
-///         TableBucketArn = source.Arn,
-///         Role = exampleAwsIamRole.Arn,
 ///         Rule = new Aws.S3Tables.Inputs.TableBucketReplicationRuleArgs
 ///         {
 ///             Destinations = new[]
@@ -59,6 +57,8 @@ import 'table_bucket_replication_state.dart';
 ///                 },
 ///             },
 ///         },
+///         TableBucketArn = source.Arn,
+///         Role = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -74,8 +74,6 @@ import 'table_bucket_replication_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := s3tables.NewTableBucketReplication(ctx, "example", &s3tables.TableBucketReplicationArgs{
-/// 			TableBucketArn: pulumi.Any(source.Arn),
-/// 			Role:           pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Rule: &s3tables.TableBucketReplicationRuleArgs{
 /// 				Destinations: s3tables.TableBucketReplicationRuleDestinationArray{
 /// 					&s3tables.TableBucketReplicationRuleDestinationArgs{
@@ -83,6 +81,8 @@ import 'table_bucket_replication_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			TableBucketArn: pulumi.Any(source.Arn),
+/// 			Role:           pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -101,13 +101,13 @@ import 'table_bucket_replication_state.dart';
 /// }
 ///
 /// resource "aws_s3tables_tablebucketreplication" "example" {
-///   table_bucket_arn = source.arn
-///   role             = exampleAwsIamRole.arn
 ///   rule = {
 ///     destinations = [{
 ///       "destinationTableBucketArn" = target.arn
 ///     }]
 ///   }
+///   table_bucket_arn = source.arn
+///   role             = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -134,13 +134,13 @@ import 'table_bucket_replication_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TableBucketReplication("example", TableBucketReplicationArgs.builder()
-///             .tableBucketArn(source.arn())
-///             .role(exampleAwsIamRole.arn())
 ///             .rule(TableBucketReplicationRuleArgs.builder()
 ///                 .destinations(TableBucketReplicationRuleDestinationArgs.builder()
 ///                     .destinationTableBucketArn(target.arn())
 ///                     .build())
 ///                 .build())
+///             .tableBucketArn(source.arn())
+///             .role(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -151,11 +151,11 @@ import 'table_bucket_replication_state.dart';
 ///   example:
 ///     type: aws:s3tables:TableBucketReplication
 ///     properties:
-///       tableBucketArn: ${source.arn}
-///       role: ${exampleAwsIamRole.arn}
 ///       rule:
 ///         destinations:
 ///           - destinationTableBucketArn: ${target.arn}
+///       tableBucketArn: ${source.arn}
+///       role: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -197,7 +197,7 @@ class TableBucketReplication extends pulumi.CustomResource {
           'aws:s3tables/tableBucketReplication:TableBucketReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
@@ -211,11 +211,12 @@ class TableBucketReplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableBucketReplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TableBucketReplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -229,6 +230,22 @@ class TableBucketReplication extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    rule = registerOutput<TableBucketReplicationRule?>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableBucketReplicationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableBucketArn = registerOutput<String>('tableBucketArn');
+    versionToken = registerOutput<String>('versionToken');
+  }
+
+  /// Creates a typed reference to an existing [TableBucketReplication] resource.
+  TableBucketReplication.reference(String urn)
+    : super(
+        'aws:s3tables/tableBucketReplication:TableBucketReplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     role = registerOutput<String>('role');
     rule = registerOutput<TableBucketReplicationRule?>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableBucketReplicationRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });

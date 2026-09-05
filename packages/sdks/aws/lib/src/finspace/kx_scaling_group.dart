@@ -138,7 +138,7 @@ import 'kx_scaling_group_state.dart';
 /// $ pulumi import aws:finspace/kxScalingGroup:KxScalingGroup example n3ceo7wqxoxcti5tujqwzs,my-tf-kx-scalinggroup
 /// ```
 class KxScalingGroup extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) identifier of the KX Scaling Group.
+  /// ARN identifier of the KX Scaling Group.
   late final pulumi.Output<String> arn;
   /// Availability zone identifiers for the requested regions.
   late final pulumi.Output<String> availabilityZoneId;
@@ -179,11 +179,11 @@ class KxScalingGroup extends pulumi.CustomResource {
           'aws:finspace/kxScalingGroup:KxScalingGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneId = registerOutput<String>('availabilityZoneId');
-    clusters = registerOutput<List<String>>('clusters');
+    clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdTimestamp = registerOutput<String>('createdTimestamp');
     environmentId = registerOutput<String>('environmentId');
     hostType = registerOutput<String>('hostType');
@@ -192,8 +192,8 @@ class KxScalingGroup extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [KxScalingGroup] resource's state with the given [name] and [id].
@@ -201,11 +201,12 @@ class KxScalingGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KxScalingGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KxScalingGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -221,7 +222,7 @@ class KxScalingGroup extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneId = registerOutput<String>('availabilityZoneId');
-    clusters = registerOutput<List<String>>('clusters');
+    clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdTimestamp = registerOutput<String>('createdTimestamp');
     environmentId = registerOutput<String>('environmentId');
     hostType = registerOutput<String>('hostType');
@@ -230,7 +231,31 @@ class KxScalingGroup extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [KxScalingGroup] resource.
+  KxScalingGroup.reference(String urn)
+    : super(
+        'aws:finspace/kxScalingGroup:KxScalingGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    environmentId = registerOutput<String>('environmentId');
+    hostType = registerOutput<String>('hostType');
+    lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlgorithmInferenceSpecificationContainerModelInput {
   /// Input configuration for the model.
-  final pulumi.Input<String>? dataInputConfig;
+  final pulumi.Input<String?>? dataInputConfig;
 
   /// Creates a new [AlgorithmInferenceSpecificationContainerModelInput].
   /// [dataInputConfig] Input configuration for the model.

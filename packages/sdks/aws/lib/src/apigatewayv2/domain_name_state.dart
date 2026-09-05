@@ -7,23 +7,23 @@ import 'domain_name_mutual_tls_authentication.dart';
 /// Input properties used for looking up and filtering DomainName resources.
 class DomainNameState {
   /// [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.
-  final pulumi.Input<String>? apiMappingSelectionExpression;
+  final pulumi.Input<String?>? apiMappingSelectionExpression;
   /// ARN of the domain name.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Domain name. Must be between 1 and 512 characters in length.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Domain name configuration. See below.
-  final pulumi.Input<DomainNameDomainNameConfiguration>? domainNameConfiguration;
+  final pulumi.Input<DomainNameDomainNameConfiguration?>? domainNameConfiguration;
   /// Mutual TLS authentication configuration for the domain name.
-  final pulumi.Input<DomainNameMutualTlsAuthentication>? mutualTlsAuthentication;
+  final pulumi.Input<DomainNameMutualTlsAuthentication?>? mutualTlsAuthentication;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Mode to route traffic for the domain name. Valid values: `API_MAPPING_ONLY`, `ROUTING_RULE_ONLY`, `ROUTING_RULE_THEN_API_MAPPING`.
-  final pulumi.Input<String>? routingMode;
+  final pulumi.Input<String?>? routingMode;
   /// Map of tags to assign to the domain name. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [DomainNameState].
   /// [apiMappingSelectionExpression] [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.

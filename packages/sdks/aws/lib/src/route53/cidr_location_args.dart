@@ -12,7 +12,7 @@ class CidrLocationArgs {
   /// The ID of the CIDR collection to update.
   final pulumi.Input<String> cidrCollectionId;
   /// Name for the CIDR location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CidrLocationArgs].
   /// [cidrBlocks] CIDR blocks for the location.

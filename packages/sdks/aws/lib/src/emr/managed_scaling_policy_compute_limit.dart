@@ -6,9 +6,9 @@ class ManagedScalingPolicyComputeLimit {
   /// The upper boundary of EC2 units. It is measured through VCPU cores or instances for instance groups and measured through units for instance fleets. Managed scaling activities are not allowed beyond this boundary. The limit only applies to the core and task nodes. The master node cannot be scaled after initial configuration.
   final pulumi.Input<int> maximumCapacityUnits;
   /// The upper boundary of EC2 units for core node type in a cluster. It is measured through VCPU cores or instances for instance groups and measured through units for instance fleets. The core units are not allowed to scale beyond this boundary. The parameter is used to split capacity allocation between core and task nodes.
-  final pulumi.Input<int>? maximumCoreCapacityUnits;
+  final pulumi.Input<int?>? maximumCoreCapacityUnits;
   /// The upper boundary of On-Demand EC2 units. It is measured through VCPU cores or instances for instance groups and measured through units for instance fleets. The On-Demand units are not allowed to scale beyond this boundary. The parameter is used to split capacity allocation between On-Demand and Spot instances.
-  final pulumi.Input<int>? maximumOndemandCapacityUnits;
+  final pulumi.Input<int?>? maximumOndemandCapacityUnits;
   /// The lower boundary of EC2 units. It is measured through VCPU cores or instances for instance groups and measured through units for instance fleets. Managed scaling activities are not allowed beyond this boundary. The limit only applies to the core and task nodes. The master node cannot be scaled after initial configuration.
   final pulumi.Input<int> minimumCapacityUnits;
   /// The unit type used for specifying a managed scaling policy. Valid Values: `InstanceFleetUnits` | `Instances` | `VCPU`
@@ -40,10 +40,10 @@ class ManagedScalingPolicyComputeLimit {
 
   factory ManagedScalingPolicyComputeLimit.fromMap(Map<String, dynamic> map) {
     return ManagedScalingPolicyComputeLimit(
-      maximumCapacityUnits: pulumi.Input.fromValue(map['maximumCapacityUnits'] as int),
-      maximumCoreCapacityUnits: (() { final guardedValue = map['maximumCoreCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maximumOndemandCapacityUnits: (() { final guardedValue = map['maximumOndemandCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minimumCapacityUnits: pulumi.Input.fromValue(map['minimumCapacityUnits'] as int),
+      maximumCapacityUnits: pulumi.Input.fromValue((map['maximumCapacityUnits'] as num).toInt()),
+      maximumCoreCapacityUnits: (() { final guardedValue = map['maximumCoreCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumOndemandCapacityUnits: (() { final guardedValue = map['maximumOndemandCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minimumCapacityUnits: pulumi.Input.fromValue((map['minimumCapacityUnits'] as num).toInt()),
       unitType: pulumi.Input.fromValue(map['unitType'] as String),
     );
   }

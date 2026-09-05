@@ -5,7 +5,7 @@ import 'flow_destination_flow_config_destination_connector_properties_honeycode_
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode {
   /// Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycodeErrorHandlingConfig>? errorHandlingConfig;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycodeErrorHandlingConfig?>? errorHandlingConfig;
   final pulumi.Input<String> object_;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode].

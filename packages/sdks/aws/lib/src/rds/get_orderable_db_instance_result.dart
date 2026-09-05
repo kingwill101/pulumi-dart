@@ -3,60 +3,60 @@
 
 /// Result data returned by getOrderableDbInstance.
 class GetOrderableDbInstanceResult {
-  final String availabilityZoneGroup;
+  final String? availabilityZoneGroup;
   /// Availability zones where the instance is available.
-  final List<String> availabilityZones;
-  final String engine;
+  final List<String>? availabilityZones;
+  final String? engine;
   final bool? engineLatestVersion;
-  final String engineVersion;
+  final String? engineVersion;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String instanceClass;
-  final String licenseModel;
+  final String? id;
+  final String? instanceClass;
+  final String? licenseModel;
   /// Maximum total provisioned IOPS for a DB instance.
-  final int maxIopsPerDbInstance;
+  final int? maxIopsPerDbInstance;
   /// Maximum provisioned IOPS per GiB for a DB instance.
-  final double maxIopsPerGib;
+  final double? maxIopsPerGib;
   /// Maximum storage size for a DB instance.
-  final int maxStorageSize;
+  final int? maxStorageSize;
   /// Minimum total provisioned IOPS for a DB instance.
-  final int minIopsPerDbInstance;
+  final int? minIopsPerDbInstance;
   /// Minimum provisioned IOPS per GiB for a DB instance.
-  final double minIopsPerGib;
+  final double? minIopsPerGib;
   /// Minimum storage size for a DB instance.
-  final int minStorageSize;
+  final int? minStorageSize;
   /// Whether a DB instance is Multi-AZ capable.
-  final bool multiAzCapable;
+  final bool? multiAzCapable;
   /// Whether a DB instance supports RDS on Outposts.
-  final bool outpostCapable;
+  final bool? outpostCapable;
   final List<String>? preferredEngineVersions;
   final List<String>? preferredInstanceClasses;
-  final bool readReplicaCapable;
-  final String region;
-  final String storageType;
-  final List<String> supportedEngineModes;
-  final List<String> supportedNetworkTypes;
-  final bool supportsClusters;
-  final bool supportsEnhancedMonitoring;
-  final bool supportsGlobalDatabases;
-  final bool supportsIamDatabaseAuthentication;
-  final bool supportsIops;
-  final bool supportsKerberosAuthentication;
-  final bool supportsMultiAz;
-  final bool supportsPerformanceInsights;
-  final bool supportsStorageAutoscaling;
-  final bool supportsStorageEncryption;
-  final bool vpc;
+  final bool? readReplicaCapable;
+  final String? region;
+  final String? storageType;
+  final List<String>? supportedEngineModes;
+  final List<String>? supportedNetworkTypes;
+  final bool? supportsClusters;
+  final bool? supportsEnhancedMonitoring;
+  final bool? supportsGlobalDatabases;
+  final bool? supportsIamDatabaseAuthentication;
+  final bool? supportsIops;
+  final bool? supportsKerberosAuthentication;
+  final bool? supportsMultiAz;
+  final bool? supportsPerformanceInsights;
+  final bool? supportsStorageAutoscaling;
+  final bool? supportsStorageEncryption;
+  final bool? vpc;
 
   /// Creates a new [GetOrderableDbInstanceResult].
-  /// [availabilityZoneGroup] Required.
+  /// [availabilityZoneGroup] Optional.
   /// [availabilityZones] Availability zones where the instance is available.
-  /// [engine] Required.
+  /// [engine] Optional.
   /// [engineLatestVersion] Optional.
-  /// [engineVersion] Required.
+  /// [engineVersion] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [instanceClass] Required.
-  /// [licenseModel] Required.
+  /// [instanceClass] Optional.
+  /// [licenseModel] Optional.
   /// [maxIopsPerDbInstance] Maximum total provisioned IOPS for a DB instance.
   /// [maxIopsPerGib] Maximum provisioned IOPS per GiB for a DB instance.
   /// [maxStorageSize] Maximum storage size for a DB instance.
@@ -67,134 +67,134 @@ class GetOrderableDbInstanceResult {
   /// [outpostCapable] Whether a DB instance supports RDS on Outposts.
   /// [preferredEngineVersions] Optional.
   /// [preferredInstanceClasses] Optional.
-  /// [readReplicaCapable] Required.
-  /// [region] Required.
-  /// [storageType] Required.
-  /// [supportedEngineModes] Required.
-  /// [supportedNetworkTypes] Required.
-  /// [supportsClusters] Required.
-  /// [supportsEnhancedMonitoring] Required.
-  /// [supportsGlobalDatabases] Required.
-  /// [supportsIamDatabaseAuthentication] Required.
-  /// [supportsIops] Required.
-  /// [supportsKerberosAuthentication] Required.
-  /// [supportsMultiAz] Required.
-  /// [supportsPerformanceInsights] Required.
-  /// [supportsStorageAutoscaling] Required.
-  /// [supportsStorageEncryption] Required.
-  /// [vpc] Required.
+  /// [readReplicaCapable] Optional.
+  /// [region] Optional.
+  /// [storageType] Optional.
+  /// [supportedEngineModes] Optional.
+  /// [supportedNetworkTypes] Optional.
+  /// [supportsClusters] Optional.
+  /// [supportsEnhancedMonitoring] Optional.
+  /// [supportsGlobalDatabases] Optional.
+  /// [supportsIamDatabaseAuthentication] Optional.
+  /// [supportsIops] Optional.
+  /// [supportsKerberosAuthentication] Optional.
+  /// [supportsMultiAz] Optional.
+  /// [supportsPerformanceInsights] Optional.
+  /// [supportsStorageAutoscaling] Optional.
+  /// [supportsStorageEncryption] Optional.
+  /// [vpc] Optional.
   const GetOrderableDbInstanceResult({
-    required this.availabilityZoneGroup,
-    required this.availabilityZones,
-    required this.engine,
+    this.availabilityZoneGroup,
+    this.availabilityZones,
+    this.engine,
     this.engineLatestVersion,
-    required this.engineVersion,
-    required this.id,
-    required this.instanceClass,
-    required this.licenseModel,
-    required this.maxIopsPerDbInstance,
-    required this.maxIopsPerGib,
-    required this.maxStorageSize,
-    required this.minIopsPerDbInstance,
-    required this.minIopsPerGib,
-    required this.minStorageSize,
-    required this.multiAzCapable,
-    required this.outpostCapable,
+    this.engineVersion,
+    this.id,
+    this.instanceClass,
+    this.licenseModel,
+    this.maxIopsPerDbInstance,
+    this.maxIopsPerGib,
+    this.maxStorageSize,
+    this.minIopsPerDbInstance,
+    this.minIopsPerGib,
+    this.minStorageSize,
+    this.multiAzCapable,
+    this.outpostCapable,
     this.preferredEngineVersions,
     this.preferredInstanceClasses,
-    required this.readReplicaCapable,
-    required this.region,
-    required this.storageType,
-    required this.supportedEngineModes,
-    required this.supportedNetworkTypes,
-    required this.supportsClusters,
-    required this.supportsEnhancedMonitoring,
-    required this.supportsGlobalDatabases,
-    required this.supportsIamDatabaseAuthentication,
-    required this.supportsIops,
-    required this.supportsKerberosAuthentication,
-    required this.supportsMultiAz,
-    required this.supportsPerformanceInsights,
-    required this.supportsStorageAutoscaling,
-    required this.supportsStorageEncryption,
-    required this.vpc,
+    this.readReplicaCapable,
+    this.region,
+    this.storageType,
+    this.supportedEngineModes,
+    this.supportedNetworkTypes,
+    this.supportsClusters,
+    this.supportsEnhancedMonitoring,
+    this.supportsGlobalDatabases,
+    this.supportsIamDatabaseAuthentication,
+    this.supportsIops,
+    this.supportsKerberosAuthentication,
+    this.supportsMultiAz,
+    this.supportsPerformanceInsights,
+    this.supportsStorageAutoscaling,
+    this.supportsStorageEncryption,
+    this.vpc,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availabilityZoneGroup': availabilityZoneGroup,
-      'availabilityZones': availabilityZones,
-      'engine': engine,
+      'availabilityZoneGroup': ?availabilityZoneGroup,
+      'availabilityZones': ?availabilityZones,
+      'engine': ?engine,
       'engineLatestVersion': ?engineLatestVersion,
-      'engineVersion': engineVersion,
-      'id': id,
-      'instanceClass': instanceClass,
-      'licenseModel': licenseModel,
-      'maxIopsPerDbInstance': maxIopsPerDbInstance,
-      'maxIopsPerGib': maxIopsPerGib,
-      'maxStorageSize': maxStorageSize,
-      'minIopsPerDbInstance': minIopsPerDbInstance,
-      'minIopsPerGib': minIopsPerGib,
-      'minStorageSize': minStorageSize,
-      'multiAzCapable': multiAzCapable,
-      'outpostCapable': outpostCapable,
+      'engineVersion': ?engineVersion,
+      'id': ?id,
+      'instanceClass': ?instanceClass,
+      'licenseModel': ?licenseModel,
+      'maxIopsPerDbInstance': ?maxIopsPerDbInstance,
+      'maxIopsPerGib': ?maxIopsPerGib,
+      'maxStorageSize': ?maxStorageSize,
+      'minIopsPerDbInstance': ?minIopsPerDbInstance,
+      'minIopsPerGib': ?minIopsPerGib,
+      'minStorageSize': ?minStorageSize,
+      'multiAzCapable': ?multiAzCapable,
+      'outpostCapable': ?outpostCapable,
       'preferredEngineVersions': ?preferredEngineVersions,
       'preferredInstanceClasses': ?preferredInstanceClasses,
-      'readReplicaCapable': readReplicaCapable,
-      'region': region,
-      'storageType': storageType,
-      'supportedEngineModes': supportedEngineModes,
-      'supportedNetworkTypes': supportedNetworkTypes,
-      'supportsClusters': supportsClusters,
-      'supportsEnhancedMonitoring': supportsEnhancedMonitoring,
-      'supportsGlobalDatabases': supportsGlobalDatabases,
-      'supportsIamDatabaseAuthentication': supportsIamDatabaseAuthentication,
-      'supportsIops': supportsIops,
-      'supportsKerberosAuthentication': supportsKerberosAuthentication,
-      'supportsMultiAz': supportsMultiAz,
-      'supportsPerformanceInsights': supportsPerformanceInsights,
-      'supportsStorageAutoscaling': supportsStorageAutoscaling,
-      'supportsStorageEncryption': supportsStorageEncryption,
-      'vpc': vpc,
+      'readReplicaCapable': ?readReplicaCapable,
+      'region': ?region,
+      'storageType': ?storageType,
+      'supportedEngineModes': ?supportedEngineModes,
+      'supportedNetworkTypes': ?supportedNetworkTypes,
+      'supportsClusters': ?supportsClusters,
+      'supportsEnhancedMonitoring': ?supportsEnhancedMonitoring,
+      'supportsGlobalDatabases': ?supportsGlobalDatabases,
+      'supportsIamDatabaseAuthentication': ?supportsIamDatabaseAuthentication,
+      'supportsIops': ?supportsIops,
+      'supportsKerberosAuthentication': ?supportsKerberosAuthentication,
+      'supportsMultiAz': ?supportsMultiAz,
+      'supportsPerformanceInsights': ?supportsPerformanceInsights,
+      'supportsStorageAutoscaling': ?supportsStorageAutoscaling,
+      'supportsStorageEncryption': ?supportsStorageEncryption,
+      'vpc': ?vpc,
     };
   }
 
   factory GetOrderableDbInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetOrderableDbInstanceResult(
-      availabilityZoneGroup: map['availabilityZoneGroup'] as String,
-      availabilityZones: (map['availabilityZones'] as List).cast<String>(),
-      engine: map['engine'] as String,
+      availabilityZoneGroup: (() { final guardedValue = map['availabilityZoneGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return guardedValue as String; })(),
       engineLatestVersion: (() { final guardedValue = map['engineLatestVersion']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      engineVersion: map['engineVersion'] as String,
-      id: map['id'] as String,
-      instanceClass: map['instanceClass'] as String,
-      licenseModel: map['licenseModel'] as String,
-      maxIopsPerDbInstance: map['maxIopsPerDbInstance'] as int,
-      maxIopsPerGib: map['maxIopsPerGib'] as double,
-      maxStorageSize: map['maxStorageSize'] as int,
-      minIopsPerDbInstance: map['minIopsPerDbInstance'] as int,
-      minIopsPerGib: map['minIopsPerGib'] as double,
-      minStorageSize: map['minStorageSize'] as int,
-      multiAzCapable: map['multiAzCapable'] as bool,
-      outpostCapable: map['outpostCapable'] as bool,
+      engineVersion: (() { final guardedValue = map['engineVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceClass: (() { final guardedValue = map['instanceClass']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      licenseModel: (() { final guardedValue = map['licenseModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maxIopsPerDbInstance: (() { final guardedValue = map['maxIopsPerDbInstance']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxIopsPerGib: (() { final guardedValue = map['maxIopsPerGib']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      maxStorageSize: (() { final guardedValue = map['maxStorageSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      minIopsPerDbInstance: (() { final guardedValue = map['minIopsPerDbInstance']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      minIopsPerGib: (() { final guardedValue = map['minIopsPerGib']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      minStorageSize: (() { final guardedValue = map['minStorageSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      multiAzCapable: (() { final guardedValue = map['multiAzCapable']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      outpostCapable: (() { final guardedValue = map['outpostCapable']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       preferredEngineVersions: (() { final guardedValue = map['preferredEngineVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       preferredInstanceClasses: (() { final guardedValue = map['preferredInstanceClasses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      readReplicaCapable: map['readReplicaCapable'] as bool,
-      region: map['region'] as String,
-      storageType: map['storageType'] as String,
-      supportedEngineModes: (map['supportedEngineModes'] as List).cast<String>(),
-      supportedNetworkTypes: (map['supportedNetworkTypes'] as List).cast<String>(),
-      supportsClusters: map['supportsClusters'] as bool,
-      supportsEnhancedMonitoring: map['supportsEnhancedMonitoring'] as bool,
-      supportsGlobalDatabases: map['supportsGlobalDatabases'] as bool,
-      supportsIamDatabaseAuthentication: map['supportsIamDatabaseAuthentication'] as bool,
-      supportsIops: map['supportsIops'] as bool,
-      supportsKerberosAuthentication: map['supportsKerberosAuthentication'] as bool,
-      supportsMultiAz: map['supportsMultiAz'] as bool,
-      supportsPerformanceInsights: map['supportsPerformanceInsights'] as bool,
-      supportsStorageAutoscaling: map['supportsStorageAutoscaling'] as bool,
-      supportsStorageEncryption: map['supportsStorageEncryption'] as bool,
-      vpc: map['vpc'] as bool,
+      readReplicaCapable: (() { final guardedValue = map['readReplicaCapable']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supportedEngineModes: (() { final guardedValue = map['supportedEngineModes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      supportedNetworkTypes: (() { final guardedValue = map['supportedNetworkTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      supportsClusters: (() { final guardedValue = map['supportsClusters']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      supportsEnhancedMonitoring: (() { final guardedValue = map['supportsEnhancedMonitoring']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      supportsGlobalDatabases: (() { final guardedValue = map['supportsGlobalDatabases']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      supportsIamDatabaseAuthentication: (() { final guardedValue = map['supportsIamDatabaseAuthentication']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      supportsIops: (() { final guardedValue = map['supportsIops']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      supportsKerberosAuthentication: (() { final guardedValue = map['supportsKerberosAuthentication']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      supportsMultiAz: (() { final guardedValue = map['supportsMultiAz']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      supportsPerformanceInsights: (() { final guardedValue = map['supportsPerformanceInsights']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      supportsStorageAutoscaling: (() { final guardedValue = map['supportsStorageAutoscaling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      supportsStorageEncryption: (() { final guardedValue = map['supportsStorageEncryption']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      vpc: (() { final guardedValue = map['vpc']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

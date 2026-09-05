@@ -7,7 +7,7 @@ class CostCategorySplitChargeRule {
   /// Method that's used to define how to split your source costs across your targets. Valid values are `FIXED`, `PROPORTIONAL`, `EVEN`
   final pulumi.Input<String> method;
   /// Configuration block for the parameters for a split charge method. This is only required for the `FIXED` method. See below.
-  final pulumi.Input<List<CostCategorySplitChargeRuleParameter>>? parameters;
+  final pulumi.Input<List<CostCategorySplitChargeRuleParameter>?>? parameters;
   /// Cost Category value that you want to split.
   final pulumi.Input<String> source;
   /// Cost Category values that you want to split costs across. These values can't be used as a source in other split charge rules.

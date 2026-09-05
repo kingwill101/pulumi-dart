@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OrganizationAdminAccount resources.
 class OrganizationAdminAccountState {
   /// AWS account identifier to designate as a delegated administrator for GuardDuty.
-  final pulumi.Input<String>? adminAccountId;
+  final pulumi.Input<String?>? adminAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [OrganizationAdminAccountState].
   /// [adminAccountId] AWS account identifier to designate as a delegated administrator for GuardDuty.

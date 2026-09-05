@@ -294,7 +294,7 @@ import 'cluster_policy_state.dart';
 /// $ pulumi import aws:msk/clusterPolicy:ClusterPolicy example arn:aws:kafka:us-west-2:123456789012:cluster/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3
 /// ```
 class ClusterPolicy extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) that uniquely identifies the cluster.
+  /// ARN that uniquely identifies the cluster.
   late final pulumi.Output<String> clusterArn;
   late final pulumi.Output<String> currentVersion;
   /// Resource policy for cluster.
@@ -314,7 +314,7 @@ class ClusterPolicy extends pulumi.CustomResource {
           'aws:msk/clusterPolicy:ClusterPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     clusterArn = registerOutput<String>('clusterArn');
     currentVersion = registerOutput<String>('currentVersion');
@@ -327,11 +327,12 @@ class ClusterPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -345,6 +346,21 @@ class ClusterPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clusterArn = registerOutput<String>('clusterArn');
+    currentVersion = registerOutput<String>('currentVersion');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ClusterPolicy] resource.
+  ClusterPolicy.reference(String urn)
+    : super(
+        'aws:msk/clusterPolicy:ClusterPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterArn = registerOutput<String>('clusterArn');
     currentVersion = registerOutput<String>('currentVersion');
     policy = registerOutput<String>('policy');

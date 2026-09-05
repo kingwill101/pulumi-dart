@@ -7,37 +7,37 @@ import 'template_source_entity.dart';
 /// Input properties used for looking up and filtering Template resources.
 class TemplateState {
   /// ARN of the template.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// The time that the template was created.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// The time that the template was last updated.
-  final pulumi.Input<String>? lastUpdatedTime;
+  final pulumi.Input<String?>? lastUpdatedTime;
   /// Display name for the template.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A set of resource permissions on the template. Maximum of 64 items. See permissions.
-  final pulumi.Input<List<TemplatePermission>>? permissions;
+  final pulumi.Input<List<TemplatePermission>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
-  final pulumi.Input<TemplateSourceEntity>? sourceEntity;
-  /// Amazon Resource Name (ARN) of an analysis or template that was used to create this template.
-  final pulumi.Input<String>? sourceEntityArn;
+  final pulumi.Input<TemplateSourceEntity?>? sourceEntity;
+  /// ARN of an analysis or template that was used to create this template.
+  final pulumi.Input<String?>? sourceEntityArn;
   /// The template creation status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Identifier for the template.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
   /// A description of the current template version being created/updated.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? versionDescription;
+  final pulumi.Input<String?>? versionDescription;
   /// The version number of the template version.
-  final pulumi.Input<int>? versionNumber;
+  final pulumi.Input<int?>? versionNumber;
 
   /// Creates a new [TemplateState].
   /// [arn] ARN of the template.
@@ -48,7 +48,7 @@ class TemplateState {
   /// [permissions] A set of resource permissions on the template. Maximum of 64 items. See permissions.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceEntity] The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
-  /// [sourceEntityArn] Amazon Resource Name (ARN) of an analysis or template that was used to create this template.
+  /// [sourceEntityArn] ARN of an analysis or template that was used to create this template.
   /// [status] The template creation status.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -109,7 +109,7 @@ class TemplateState {
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       templateId: (() { final guardedValue = map['templateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionDescription: (() { final guardedValue = map['versionDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

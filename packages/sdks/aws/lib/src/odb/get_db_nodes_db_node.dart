@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbNodesDbNode {
   /// Additional information about the planned maintenance.
   final pulumi.Input<String> additionalDetails;
-  /// Amazon Resource Name (ARN) of the DB node.
+  /// ARN of the DB node.
   final pulumi.Input<String> arn;
   /// Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
   final pulumi.Input<String> backupIpId;
@@ -58,7 +58,7 @@ class GetDbNodesDbNode {
 
   /// Creates a new [GetDbNodesDbNode].
   /// [additionalDetails] Additional information about the planned maintenance.
-  /// [arn] Amazon Resource Name (ARN) of the DB node.
+  /// [arn] ARN of the DB node.
   /// [backupIpId] Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
   /// [backupVnic2Id] OCID of the second backup virtual network interface card (VNIC) for the DB node.
   /// [backupVnicId] OCID of the backup VNIC for the DB node.
@@ -150,9 +150,9 @@ class GetDbNodesDbNode {
       backupIpId: pulumi.Input.fromValue(map['backupIpId'] as String),
       backupVnic2Id: pulumi.Input.fromValue(map['backupVnic2Id'] as String),
       backupVnicId: pulumi.Input.fromValue(map['backupVnicId'] as String),
-      cpuCoreCount: pulumi.Input.fromValue(map['cpuCoreCount'] as int),
+      cpuCoreCount: pulumi.Input.fromValue((map['cpuCoreCount'] as num).toInt()),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
-      dbNodeStorageSize: pulumi.Input.fromValue(map['dbNodeStorageSize'] as int),
+      dbNodeStorageSize: pulumi.Input.fromValue((map['dbNodeStorageSize'] as num).toInt()),
       dbServerId: pulumi.Input.fromValue(map['dbServerId'] as String),
       dbSystemId: pulumi.Input.fromValue(map['dbSystemId'] as String),
       faultDomain: pulumi.Input.fromValue(map['faultDomain'] as String),
@@ -160,15 +160,15 @@ class GetDbNodesDbNode {
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       maintenanceType: pulumi.Input.fromValue(map['maintenanceType'] as String),
-      memorySize: pulumi.Input.fromValue(map['memorySize'] as int),
+      memorySize: pulumi.Input.fromValue((map['memorySize'] as num).toInt()),
       ociResourceAnchorName: pulumi.Input.fromValue(map['ociResourceAnchorName'] as String),
       ocid: pulumi.Input.fromValue(map['ocid'] as String),
-      softwareStorageSize: pulumi.Input.fromValue(map['softwareStorageSize'] as int),
+      softwareStorageSize: pulumi.Input.fromValue((map['softwareStorageSize'] as num).toInt()),
       status: pulumi.Input.fromValue(map['status'] as String),
       statusReason: pulumi.Input.fromValue(map['statusReason'] as String),
       timeMaintenanceWindowEnd: pulumi.Input.fromValue(map['timeMaintenanceWindowEnd'] as String),
       timeMaintenanceWindowStart: pulumi.Input.fromValue(map['timeMaintenanceWindowStart'] as String),
-      totalCpuCoreCount: pulumi.Input.fromValue(map['totalCpuCoreCount'] as int),
+      totalCpuCoreCount: pulumi.Input.fromValue((map['totalCpuCoreCount'] as num).toInt()),
       vnic2Id: pulumi.Input.fromValue(map['vnic2Id'] as String),
       vnicId: pulumi.Input.fromValue(map['vnicId'] as String),
     );

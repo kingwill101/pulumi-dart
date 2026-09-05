@@ -2289,11 +2289,11 @@ import 'key_state.dart';
 /// $ pulumi import aws:kms/key:Key a 1234abcd-12ab-34cd-56ef-1234567890ab
 /// ```
 class Key extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the key.
+  /// ARN of the key.
   late final pulumi.Output<String> arn;
   /// A flag to indicate whether to bypass the key policy lockout safety check.
   /// Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately.
-  /// For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the _AWS Key Management Service Developer Guide_.
+  /// For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the _AWS KMS Developer Guide_.
   /// The default value is `false`.
   late final pulumi.Output<bool?> bypassPolicyLockoutSafetyCheck;
   /// ID of the KMS [Custom Key Store](https://docs.aws.amazon.com/kms/latest/developerguide/create-cmk-keystore.html) where the key will be stored instead of KMS (eg CloudHSM).
@@ -2345,7 +2345,7 @@ class Key extends pulumi.CustomResource {
           'aws:kms/key:Key',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
@@ -2361,8 +2361,8 @@ class Key extends pulumi.CustomResource {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     rotationPeriodInDays = registerOutput<int>('rotationPeriodInDays');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     xksKeyId = registerOutput<String?>('xksKeyId');
   }
 
@@ -2371,11 +2371,12 @@ class Key extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Key._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2403,8 +2404,36 @@ class Key extends pulumi.CustomResource {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     rotationPeriodInDays = registerOutput<int>('rotationPeriodInDays');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    xksKeyId = registerOutput<String?>('xksKeyId');
+  }
+
+  /// Creates a typed reference to an existing [Key] resource.
+  Key.reference(String urn)
+    : super(
+        'aws:kms/key:Key',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    customKeyStoreId = registerOutput<String?>('customKeyStoreId');
+    customerMasterKeySpec = registerOutput<String?>('customerMasterKeySpec');
+    deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
+    description = registerOutput<String>('description');
+    enableKeyRotation = registerOutput<bool?>('enableKeyRotation');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    keyId = registerOutput<String>('keyId');
+    keyUsage = registerOutput<String?>('keyUsage');
+    multiRegion = registerOutput<bool>('multiRegion');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    rotationPeriodInDays = registerOutput<int>('rotationPeriodInDays');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     xksKeyId = registerOutput<String?>('xksKeyId');
   }
 }

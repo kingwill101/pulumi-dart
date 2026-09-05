@@ -12,19 +12,19 @@ import 'get_fleet_result.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testFleet = new aws.codebuild.Fleet("test", {
+///     scalingConfiguration: {
+///         targetTrackingScalingConfigs: [{
+///             metricType: "FLEET_UTILIZATION_RATE",
+///             targetValue: 97.5,
+///         }],
+///         maxCapacity: 5,
+///         scalingType: "TARGET_TRACKING_SCALING",
+///     },
 ///     baseCapacity: 2,
 ///     computeType: "BUILD_GENERAL1_SMALL",
 ///     environmentType: "LINUX_CONTAINER",
 ///     name: "full-example-codebuild-fleet",
 ///     overflowBehavior: "QUEUE",
-///     scalingConfiguration: {
-///         maxCapacity: 5,
-///         scalingType: "TARGET_TRACKING_SCALING",
-///         targetTrackingScalingConfigs: [{
-///             metricType: "FLEET_UTILIZATION_RATE",
-///             targetValue: 97.5,
-///         }],
-///     },
 /// });
 /// const test = aws.codebuild.getFleetOutput({
 ///     name: testFleet.name,
@@ -35,19 +35,19 @@ import 'get_fleet_result.dart';
 /// import pulumi_aws as aws
 ///
 /// test_fleet = aws.codebuild.Fleet("test",
-///     base_capacity=2,
-///     compute_type="BUILD_GENERAL1_SMALL",
-///     environment_type="LINUX_CONTAINER",
-///     name="full-example-codebuild-fleet",
-///     overflow_behavior="QUEUE",
 ///     scaling_configuration={
-///         "max_capacity": 5,
-///         "scaling_type": "TARGET_TRACKING_SCALING",
 ///         "target_tracking_scaling_configs": [{
 ///             "metric_type": "FLEET_UTILIZATION_RATE",
 ///             "target_value": 97.5,
 ///         }],
-///     })
+///         "max_capacity": 5,
+///         "scaling_type": "TARGET_TRACKING_SCALING",
+///     },
+///     base_capacity=2,
+///     compute_type="BUILD_GENERAL1_SMALL",
+///     environment_type="LINUX_CONTAINER",
+///     name="full-example-codebuild-fleet",
+///     overflow_behavior="QUEUE")
 /// test = aws.codebuild.get_fleet_output(name=test_fleet.name)
 /// ```
 /// ```csharp
@@ -60,15 +60,8 @@ import 'get_fleet_result.dart';
 /// {
 ///     var testFleet = new Aws.CodeBuild.Fleet("test", new()
 ///     {
-///         BaseCapacity = 2,
-///         ComputeType = "BUILD_GENERAL1_SMALL",
-///         EnvironmentType = "LINUX_CONTAINER",
-///         Name = "full-example-codebuild-fleet",
-///         OverflowBehavior = "QUEUE",
 ///         ScalingConfiguration = new Aws.CodeBuild.Inputs.FleetScalingConfigurationArgs
 ///         {
-///             MaxCapacity = 5,
-///             ScalingType = "TARGET_TRACKING_SCALING",
 ///             TargetTrackingScalingConfigs = new[]
 ///             {
 ///                 new Aws.CodeBuild.Inputs.FleetScalingConfigurationTargetTrackingScalingConfigArgs
@@ -77,7 +70,14 @@ import 'get_fleet_result.dart';
 ///                     TargetValue = 97.5,
 ///                 },
 ///             },
+///             MaxCapacity = 5,
+///             ScalingType = "TARGET_TRACKING_SCALING",
 ///         },
+///         BaseCapacity = 2,
+///         ComputeType = "BUILD_GENERAL1_SMALL",
+///         EnvironmentType = "LINUX_CONTAINER",
+///         Name = "full-example-codebuild-fleet",
+///         OverflowBehavior = "QUEUE",
 ///     });
 ///
 ///     var test = Aws.CodeBuild.GetFleet.Invoke(new()
@@ -98,21 +98,21 @@ import 'get_fleet_result.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		testFleet, err := codebuild.NewFleet(ctx, "test", &codebuild.FleetArgs{
-/// 			BaseCapacity:     pulumi.Int(2),
-/// 			ComputeType:      pulumi.String("BUILD_GENERAL1_SMALL"),
-/// 			EnvironmentType:  pulumi.String("LINUX_CONTAINER"),
-/// 			Name:             pulumi.String("full-example-codebuild-fleet"),
-/// 			OverflowBehavior: pulumi.String("QUEUE"),
 /// 			ScalingConfiguration: &codebuild.FleetScalingConfigurationArgs{
-/// 				MaxCapacity: pulumi.Int(5),
-/// 				ScalingType: pulumi.String("TARGET_TRACKING_SCALING"),
 /// 				TargetTrackingScalingConfigs: codebuild.FleetScalingConfigurationTargetTrackingScalingConfigArray{
 /// 					&codebuild.FleetScalingConfigurationTargetTrackingScalingConfigArgs{
 /// 						MetricType:  pulumi.String("FLEET_UTILIZATION_RATE"),
 /// 						TargetValue: pulumi.Float64(97.5),
 /// 					},
 /// 				},
+/// 				MaxCapacity: pulumi.Int(5),
+/// 				ScalingType: pulumi.String("TARGET_TRACKING_SCALING"),
 /// 			},
+/// 			BaseCapacity:     pulumi.Int(2),
+/// 			ComputeType:      pulumi.String("BUILD_GENERAL1_SMALL"),
+/// 			EnvironmentType:  pulumi.String("LINUX_CONTAINER"),
+/// 			Name:             pulumi.String("full-example-codebuild-fleet"),
+/// 			OverflowBehavior: pulumi.String("QUEUE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -138,19 +138,19 @@ import 'get_fleet_result.dart';
 /// }
 ///
 /// resource "aws_codebuild_fleet" "test" {
+///   scaling_configuration = {
+///     target_tracking_scaling_configs = [{
+///       "metricType"  = "FLEET_UTILIZATION_RATE"
+///       "targetValue" = 97.5
+///     }]
+///     max_capacity = 5
+///     scaling_type = "TARGET_TRACKING_SCALING"
+///   }
 ///   base_capacity     = 2
 ///   compute_type      = "BUILD_GENERAL1_SMALL"
 ///   environment_type  = "LINUX_CONTAINER"
 ///   name              = "full-example-codebuild-fleet"
 ///   overflow_behavior = "QUEUE"
-///   scaling_configuration = {
-///     max_capacity = 5
-///     scaling_type = "TARGET_TRACKING_SCALING"
-///     target_tracking_scaling_configs = [{
-///       "metricType"  = "FLEET_UTILIZATION_RATE"
-///       "targetValue" = 97.5
-///     }]
-///   }
 /// }
 /// ```
 /// ```java
@@ -179,19 +179,19 @@ import 'get_fleet_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testFleet = new Fleet("testFleet", FleetArgs.builder()
+///             .scalingConfiguration(FleetScalingConfigurationArgs.builder()
+///                 .targetTrackingScalingConfigs(FleetScalingConfigurationTargetTrackingScalingConfigArgs.builder()
+///                     .metricType("FLEET_UTILIZATION_RATE")
+///                     .targetValue(97.5)
+///                     .build())
+///                 .maxCapacity(5)
+///                 .scalingType("TARGET_TRACKING_SCALING")
+///                 .build())
 ///             .baseCapacity(2)
 ///             .computeType("BUILD_GENERAL1_SMALL")
 ///             .environmentType("LINUX_CONTAINER")
 ///             .name("full-example-codebuild-fleet")
 ///             .overflowBehavior("QUEUE")
-///             .scalingConfiguration(FleetScalingConfigurationArgs.builder()
-///                 .maxCapacity(5)
-///                 .scalingType("TARGET_TRACKING_SCALING")
-///                 .targetTrackingScalingConfigs(FleetScalingConfigurationTargetTrackingScalingConfigArgs.builder()
-///                     .metricType("FLEET_UTILIZATION_RATE")
-///                     .targetValue(97.5)
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///         final var test = CodebuildFunctions.getFleet(GetFleetArgs.builder()
@@ -207,17 +207,17 @@ import 'get_fleet_result.dart';
 ///     type: aws:codebuild:Fleet
 ///     name: test
 ///     properties:
+///       scalingConfiguration:
+///         targetTrackingScalingConfigs:
+///           - metricType: FLEET_UTILIZATION_RATE
+///             targetValue: 97.5
+///         maxCapacity: 5
+///         scalingType: TARGET_TRACKING_SCALING
 ///       baseCapacity: 2
 ///       computeType: BUILD_GENERAL1_SMALL
 ///       environmentType: LINUX_CONTAINER
 ///       name: full-example-codebuild-fleet
 ///       overflowBehavior: QUEUE
-///       scalingConfiguration:
-///         maxCapacity: 5
-///         scalingType: TARGET_TRACKING_SCALING
-///         targetTrackingScalingConfigs:
-///           - metricType: FLEET_UTILIZATION_RATE
-///             targetValue: 97.5
 /// variables:
 ///   test:
 ///     fn::invoke:
@@ -341,4 +341,15 @@ Future<GetFleetResult> getFleet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFleetResult.fromMap(result);
+}
+
+pulumi.Output<GetFleetResult> getFleetOutput(
+  GetFleetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:codebuild/getFleet:getFleet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetResult.fromMap);
 }

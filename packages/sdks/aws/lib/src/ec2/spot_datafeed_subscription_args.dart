@@ -10,9 +10,9 @@ class SpotDatafeedSubscriptionArgs {
   /// The Amazon S3 bucket in which to store the Spot instance data feed.
   final pulumi.Input<String> bucket;
   /// Path of folder inside bucket to place spot pricing data.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [SpotDatafeedSubscriptionArgs].
   /// [bucket] The Amazon S3 bucket in which to store the Spot instance data feed.

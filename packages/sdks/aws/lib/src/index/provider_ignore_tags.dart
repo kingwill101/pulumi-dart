@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderIgnoreTags {
   /// Resource tag key prefixes to ignore across all resources. Can also be configured with the TF_AWS_IGNORE_TAGS_KEY_PREFIXES environment variable.
-  final pulumi.Input<List<String>>? keyPrefixes;
+  final pulumi.Input<List<String>?>? keyPrefixes;
   /// Resource tag keys to ignore across all resources. Can also be configured with the TF_AWS_IGNORE_TAGS_KEYS environment variable.
-  final pulumi.Input<List<String>>? keys;
+  final pulumi.Input<List<String>?>? keys;
 
   /// Creates a new [ProviderIgnoreTags].
   /// [keyPrefixes] Resource tag key prefixes to ignore across all resources. Can also be configured with the TF_AWS_IGNORE_TAGS_KEY_PREFIXES environment variable.

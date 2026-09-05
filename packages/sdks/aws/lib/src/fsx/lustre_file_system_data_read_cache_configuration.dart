@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LustreFileSystemDataReadCacheConfiguration {
   /// Size of the file system's SSD read cache, in gibibytes (GiB). Required when the `sizingMode` is `USER_PROVISIONED`.
-  final pulumi.Input<int>? size;
+  final pulumi.Input<int?>? size;
   /// Sizing mode for the cache. Valud values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`.
   final pulumi.Input<String> sizingMode;
 
@@ -25,7 +25,7 @@ class LustreFileSystemDataReadCacheConfiguration {
 
   factory LustreFileSystemDataReadCacheConfiguration.fromMap(Map<String, dynamic> map) {
     return LustreFileSystemDataReadCacheConfiguration(
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sizingMode: pulumi.Input.fromValue(map['sizingMode'] as String),
     );
   }

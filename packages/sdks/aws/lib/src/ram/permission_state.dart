@@ -6,26 +6,26 @@ import 'permission_timeouts.dart';
 /// Input properties used for looking up and filtering Permission resources.
 class PermissionState {
   /// ARN of the permission.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether this is the default version of the managed permission.
-  final pulumi.Input<bool>? defaultVersion;
+  final pulumi.Input<bool?>? defaultVersion;
   /// Name of the customer managed permission. The name must be unique within the AWS Region.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// String in JSON format string that contains the following elements of a resource-based policy: Effect, Action and Condition.
-  final pulumi.Input<String>? policyTemplate;
+  final pulumi.Input<String?>? policyTemplate;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// Current status of the permission.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags to assign to the resource share. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<PermissionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<PermissionTimeouts?>? timeouts;
   /// Version of the permission associated with this resource share.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PermissionState].
   /// [arn] ARN of the permission.

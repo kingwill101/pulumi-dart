@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogTablePartitionIndex {
   /// Name of the partition index.
   final pulumi.Input<String> indexName;
-  final pulumi.Input<String>? indexStatus;
+  final pulumi.Input<String?>? indexStatus;
   /// Keys for the partition index.
   final pulumi.Input<List<String>> keys;
 

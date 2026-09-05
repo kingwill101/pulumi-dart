@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDefaultUserSettingsJupyterServerAppSettingsDefaultResourceSpec {
   /// The instance type that the image version runs on.. For valid values see [SageMaker AI Instance Types](https://docs.aws.amazon.com/sagemaker/latest/dg/notebooks-available-instance-types.html).
-  final pulumi.Input<String>? instanceType;
-  /// The Amazon Resource Name (ARN) of the Lifecycle Configuration attached to the Resource.
-  final pulumi.Input<String>? lifecycleConfigArn;
+  final pulumi.Input<String?>? instanceType;
+  /// ARN of the Lifecycle Configuration attached to the Resource.
+  final pulumi.Input<String?>? lifecycleConfigArn;
   /// The ARN of the SageMaker AI image that the image version belongs to.
-  final pulumi.Input<String>? sagemakerImageArn;
+  final pulumi.Input<String?>? sagemakerImageArn;
   /// The SageMaker AI Image Version Alias.
-  final pulumi.Input<String>? sagemakerImageVersionAlias;
+  final pulumi.Input<String?>? sagemakerImageVersionAlias;
   /// The ARN of the image version created on the instance.
-  final pulumi.Input<String>? sagemakerImageVersionArn;
+  final pulumi.Input<String?>? sagemakerImageVersionArn;
 
   /// Creates a new [DomainDefaultUserSettingsJupyterServerAppSettingsDefaultResourceSpec].
   /// [instanceType] The instance type that the image version runs on.. For valid values see [SageMaker AI Instance Types](https://docs.aws.amazon.com/sagemaker/latest/dg/notebooks-available-instance-types.html).
-  /// [lifecycleConfigArn] The Amazon Resource Name (ARN) of the Lifecycle Configuration attached to the Resource.
+  /// [lifecycleConfigArn] ARN of the Lifecycle Configuration attached to the Resource.
   /// [sagemakerImageArn] The ARN of the SageMaker AI image that the image version belongs to.
   /// [sagemakerImageVersionAlias] The SageMaker AI Image Version Alias.
   /// [sagemakerImageVersionArn] The ARN of the image version created on the instance.

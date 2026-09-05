@@ -17,12 +17,12 @@ import 'vault_state.dart';
 /// const awsSnsTopic = new aws.sns.Topic("aws_sns_topic", {name: "glacier-sns-topic"});
 /// const myArchive = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "add-read-only-perm",
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "*",
 ///             identifiers: ["*"],
 ///         }],
+///         sid: "add-read-only-perm",
+///         effect: "Allow",
 ///         actions: [
 ///             "glacier:InitiateJob",
 ///             "glacier:GetJobOutput",
@@ -31,7 +31,6 @@ import 'vault_state.dart';
 ///     }],
 /// });
 /// const myArchiveVault = new aws.glacier.Vault("my_archive", {
-///     name: "MyArchive",
 ///     notification: {
 ///         snsTopic: awsSnsTopic.arn,
 ///         events: [
@@ -39,6 +38,7 @@ import 'vault_state.dart';
 ///             "InventoryRetrievalCompleted",
 ///         ],
 ///     },
+///     name: "MyArchive",
 ///     accessPolicy: myArchive.then(myArchive => myArchive.json),
 ///     tags: {
 ///         Test: "MyArchive",
@@ -51,12 +51,12 @@ import 'vault_state.dart';
 ///
 /// aws_sns_topic = aws.sns.Topic("aws_sns_topic", name="glacier-sns-topic")
 /// my_archive = aws.iam.get_policy_document(statements=[{
-///     "sid": "add-read-only-perm",
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "*",
 ///         "identifiers": ["*"],
 ///     }],
+///     "sid": "add-read-only-perm",
+///     "effect": "Allow",
 ///     "actions": [
 ///         "glacier:InitiateJob",
 ///         "glacier:GetJobOutput",
@@ -64,7 +64,6 @@ import 'vault_state.dart';
 ///     "resources": ["arn:aws:glacier:eu-west-1:432981146916:vaults/MyArchive"],
 /// }])
 /// my_archive_vault = aws.glacier.Vault("my_archive",
-///     name="MyArchive",
 ///     notification={
 ///         "sns_topic": aws_sns_topic.arn,
 ///         "events": [
@@ -72,6 +71,7 @@ import 'vault_state.dart';
 ///             "InventoryRetrievalCompleted",
 ///         ],
 ///     },
+///     name="MyArchive",
 ///     access_policy=my_archive.json,
 ///     tags={
 ///         "Test": "MyArchive",
@@ -96,8 +96,6 @@ import 'vault_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "add-read-only-perm",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -109,6 +107,8 @@ import 'vault_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "add-read-only-perm",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "glacier:InitiateJob",
@@ -124,7 +124,6 @@ import 'vault_state.dart';
 ///
 ///     var myArchiveVault = new Aws.Glacier.Vault("my_archive", new()
 ///     {
-///         Name = "MyArchive",
 ///         Notification = new Aws.Glacier.Inputs.VaultNotificationArgs
 ///         {
 ///             SnsTopic = awsSnsTopic.Arn,
@@ -134,6 +133,7 @@ import 'vault_state.dart';
 ///                 "InventoryRetrievalCompleted",
 ///             },
 ///         },
+///         Name = "MyArchive",
 ///         AccessPolicy = myArchive.Apply(getPolicyDocumentResult => getPolicyDocumentResult.Json),
 ///         Tags =
 ///         {
@@ -164,8 +164,6 @@ import 'vault_state.dart';
 /// 		myArchive, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("add-read-only-perm"),
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "*",
@@ -174,6 +172,8 @@ import 'vault_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("add-read-only-perm"),
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"glacier:InitiateJob",
 /// 						"glacier:GetJobOutput",
@@ -188,7 +188,6 @@ import 'vault_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = glacier.NewVault(ctx, "my_archive", &glacier.VaultArgs{
-/// 			Name: pulumi.String("MyArchive"),
 /// 			Notification: &glacier.VaultNotificationArgs{
 /// 				SnsTopic: awsSnsTopic.Arn,
 /// 				Events: pulumi.StringArray{
@@ -196,6 +195,7 @@ import 'vault_state.dart';
 /// 					pulumi.String("InventoryRetrievalCompleted"),
 /// 				},
 /// 			},
+/// 			Name:         pulumi.String("MyArchive"),
 /// 			AccessPolicy: pulumi.String(myArchive.Json),
 /// 			Tags: pulumi.StringMap{
 /// 				"Test": pulumi.String("MyArchive"),
@@ -219,12 +219,12 @@ import 'vault_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "myArchive" {
 ///   statements {
-///     sid    = "add-read-only-perm"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "*"
 ///       identifiers = ["*"]
 ///     }
+///     sid       = "add-read-only-perm"
+///     effect    = "Allow"
 ///     actions   = ["glacier:InitiateJob", "glacier:GetJobOutput"]
 ///     resources = ["arn:aws:glacier:eu-west-1:432981146916:vaults/MyArchive"]
 ///   }
@@ -234,11 +234,11 @@ import 'vault_state.dart';
 ///   name = "glacier-sns-topic"
 /// }
 /// resource "aws_glacier_vault" "my_archive" {
-///   name = "MyArchive"
 ///   notification = {
 ///     sns_topic = aws_sns_topic.aws_sns_topic.arn
 ///     events    = ["ArchiveRetrievalCompleted", "InventoryRetrievalCompleted"]
 ///   }
+///   name          = "MyArchive"
 ///   access_policy = data.aws_iam_getpolicydocument.myArchive.json
 ///   tags = {
 ///     "Test" = "MyArchive"
@@ -279,12 +279,12 @@ import 'vault_state.dart';
 ///
 ///         final var myArchive = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("add-read-only-perm")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("*")
 ///                     .identifiers("*")
 ///                     .build())
+///                 .sid("add-read-only-perm")
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "glacier:InitiateJob",
 ///                     "glacier:GetJobOutput")
@@ -293,13 +293,13 @@ import 'vault_state.dart';
 ///             .build());
 ///
 ///         var myArchiveVault = new Vault("myArchiveVault", VaultArgs.builder()
-///             .name("MyArchive")
 ///             .notification(VaultNotificationArgs.builder()
 ///                 .snsTopic(awsSnsTopic.arn())
 ///                 .events(
 ///                     "ArchiveRetrievalCompleted",
 ///                     "InventoryRetrievalCompleted")
 ///                 .build())
+///             .name("MyArchive")
 ///             .accessPolicy(myArchive.json())
 ///             .tags(Map.of("Test", "MyArchive"))
 ///             .build());
@@ -318,12 +318,12 @@ import 'vault_state.dart';
 ///     type: aws:glacier:Vault
 ///     name: my_archive
 ///     properties:
-///       name: MyArchive
 ///       notification:
 ///         snsTopic: ${awsSnsTopic.arn}
 ///         events:
 ///           - ArchiveRetrievalCompleted
 ///           - InventoryRetrievalCompleted
+///       name: MyArchive
 ///       accessPolicy: ${myArchive.json}
 ///       tags:
 ///         Test: MyArchive
@@ -333,12 +333,12 @@ import 'vault_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: add-read-only-perm
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: '*'
 ///                 identifiers:
 ///                   - '*'
+///             sid: add-read-only-perm
+///             effect: Allow
 ///             actions:
 ///               - glacier:InitiateJob
 ///               - glacier:GetJobOutput
@@ -385,7 +385,7 @@ class Vault extends pulumi.CustomResource {
           'aws:glacier/vault:Vault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessPolicy = registerOutput<String?>('accessPolicy');
     arn = registerOutput<String>('arn');
@@ -393,8 +393,8 @@ class Vault extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notification = registerOutput<VaultNotification?>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VaultNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Vault] resource's state with the given [name] and [id].
@@ -402,11 +402,12 @@ class Vault extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VaultState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Vault._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -426,7 +427,26 @@ class Vault extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notification = registerOutput<VaultNotification?>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VaultNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Vault] resource.
+  Vault.reference(String urn)
+    : super(
+        'aws:glacier/vault:Vault',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessPolicy = registerOutput<String?>('accessPolicy');
+    arn = registerOutput<String>('arn');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notification = registerOutput<VaultNotification?>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VaultNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

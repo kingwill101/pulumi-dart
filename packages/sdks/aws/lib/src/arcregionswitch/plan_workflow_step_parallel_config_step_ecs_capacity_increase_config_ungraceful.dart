@@ -20,7 +20,7 @@ class PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful {
 
   factory PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful(
-      minimumSuccessPercentage: pulumi.Input.fromValue(map['minimumSuccessPercentage'] as int),
+      minimumSuccessPercentage: pulumi.Input.fromValue((map['minimumSuccessPercentage'] as num).toInt()),
     );
   }
 }

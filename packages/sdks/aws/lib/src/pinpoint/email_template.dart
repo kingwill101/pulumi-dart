@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'email_template_args.dart';
+import 'email_template_email_template.dart';
 import 'email_template_state.dart';
 
 /// &gt; **NOTE:** This resource is deprecated. AWS End User Messaging email features are being discontinued on October 30, 2026. Migrate to Amazon SES using `aws.ses.Template` or `aws.sesv2.EmailIdentity` and related SESv2 resources. See the [AWS End User Messaging migration guide](https://docs.aws.amazon.com/pinpoint/latest/userguide/migrate.html) for details.
@@ -14,15 +15,15 @@ import 'email_template_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.pinpoint.EmailTemplate("test", {
-///     templateName: "testing",
 ///     emailTemplates: [{
-///         subject: "testing",
-///         textPart: "we are testing template text part",
 ///         headers: [{
 ///             name: "testingname",
 ///             value: "testingvalue",
 ///         }],
+///         subject: "testing",
+///         textPart: "we are testing template text part",
 ///     }],
+///     templateName: "testing",
 /// });
 /// ```
 /// ```python
@@ -30,15 +31,15 @@ import 'email_template_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.pinpoint.EmailTemplate("test",
-///     template_name="testing",
 ///     email_templates=[{
-///         "subject": "testing",
-///         "text_part": "we are testing template text part",
 ///         "headers": [{
 ///             "name": "testingname",
 ///             "value": "testingvalue",
 ///         }],
-///     }])
+///         "subject": "testing",
+///         "text_part": "we are testing template text part",
+///     }],
+///     template_name="testing")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,13 +51,10 @@ import 'email_template_state.dart';
 /// {
 ///     var test = new Aws.Pinpoint.EmailTemplate("test", new()
 ///     {
-///         TemplateName = "testing",
 ///         EmailTemplates = new[]
 ///         {
 ///             new Aws.Pinpoint.Inputs.EmailTemplateEmailTemplateArgs
 ///             {
-///                 Subject = "testing",
-///                 TextPart = "we are testing template text part",
 ///                 Headers = new[]
 ///                 {
 ///                     new Aws.Pinpoint.Inputs.EmailTemplateEmailTemplateHeaderArgs
@@ -65,8 +63,11 @@ import 'email_template_state.dart';
 ///                         Value = "testingvalue",
 ///                     },
 ///                 },
+///                 Subject = "testing",
+///                 TextPart = "we are testing template text part",
 ///             },
 ///         },
+///         TemplateName = "testing",
 ///     });
 ///
 /// });
@@ -82,19 +83,19 @@ import 'email_template_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := pinpoint.NewEmailTemplate(ctx, "test", &pinpoint.EmailTemplateArgs{
-/// 			TemplateName: pulumi.String("testing"),
 /// 			EmailTemplates: pinpoint.EmailTemplateEmailTemplateArray{
 /// 				&pinpoint.EmailTemplateEmailTemplateArgs{
-/// 					Subject:  pulumi.String("testing"),
-/// 					TextPart: pulumi.String("we are testing template text part"),
 /// 					Headers: pinpoint.EmailTemplateEmailTemplateHeaderArray{
 /// 						&pinpoint.EmailTemplateEmailTemplateHeaderArgs{
 /// 							Name:  pulumi.String("testingname"),
 /// 							Value: pulumi.String("testingvalue"),
 /// 						},
 /// 					},
+/// 					Subject:  pulumi.String("testing"),
+/// 					TextPart: pulumi.String("we are testing template text part"),
 /// 				},
 /// 			},
+/// 			TemplateName: pulumi.String("testing"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -113,15 +114,15 @@ import 'email_template_state.dart';
 /// }
 ///
 /// resource "aws_pinpoint_emailtemplate" "test" {
-///   template_name = "testing"
 ///   email_templates {
-///     subject   = "testing"
-///     text_part = "we are testing template text part"
 ///     headers {
 ///       name  = "testingname"
 ///       value = "testingvalue"
 ///     }
+///     subject   = "testing"
+///     text_part = "we are testing template text part"
 ///   }
+///   template_name = "testing"
 /// }
 /// ```
 /// ```java
@@ -148,15 +149,15 @@ import 'email_template_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new EmailTemplate("test", EmailTemplateArgs.builder()
-///             .templateName("testing")
 ///             .emailTemplates(EmailTemplateEmailTemplateArgs.builder()
-///                 .subject("testing")
-///                 .textPart("we are testing template text part")
 ///                 .headers(EmailTemplateEmailTemplateHeaderArgs.builder()
 ///                     .name("testingname")
 ///                     .value("testingvalue")
 ///                     .build())
+///                 .subject("testing")
+///                 .textPart("we are testing template text part")
 ///                 .build())
+///             .templateName("testing")
 ///             .build());
 ///
 ///     }
@@ -167,13 +168,13 @@ import 'email_template_state.dart';
 ///   test:
 ///     type: aws:pinpoint:EmailTemplate
 ///     properties:
-///       templateName: testing
 ///       emailTemplates:
-///         - subject: testing
-///           textPart: we are testing template text part
-///           headers:
+///         - headers:
 ///             - name: testingname
 ///               value: testingvalue
+///           subject: testing
+///           textPart: we are testing template text part
+///       templateName: testing
 /// ```
 ///
 ///
@@ -185,10 +186,10 @@ import 'email_template_state.dart';
 /// $ pulumi import aws:pinpoint/emailTemplate:EmailTemplate reset template_name
 /// ```
 class EmailTemplate extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the message template.
+  /// ARN of the message template.
   late final pulumi.Output<String> arn;
   /// Content and settings for a message template that can be used in messages that are sent through the email channel. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> emailTemplates;
+  late final pulumi.Output<List<EmailTemplateEmailTemplate>?> emailTemplates;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -210,13 +211,13 @@ class EmailTemplate extends pulumi.CustomResource {
           'aws:pinpoint/emailTemplate:EmailTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    emailTemplates = registerOutput<List<Map<String, dynamic>>?>('emailTemplates');
+    emailTemplates = registerOutput<List<EmailTemplateEmailTemplate>?>('emailTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailTemplateEmailTemplate>(guardedValue, (value) => EmailTemplateEmailTemplate.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateName = registerOutput<String>('templateName');
   }
 
@@ -225,11 +226,12 @@ class EmailTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EmailTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EmailTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -244,10 +246,27 @@ class EmailTemplate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    emailTemplates = registerOutput<List<Map<String, dynamic>>?>('emailTemplates');
+    emailTemplates = registerOutput<List<EmailTemplateEmailTemplate>?>('emailTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailTemplateEmailTemplate>(guardedValue, (value) => EmailTemplateEmailTemplate.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateName = registerOutput<String>('templateName');
+  }
+
+  /// Creates a typed reference to an existing [EmailTemplate] resource.
+  EmailTemplate.reference(String urn)
+    : super(
+        'aws:pinpoint/emailTemplate:EmailTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    emailTemplates = registerOutput<List<EmailTemplateEmailTemplate>?>('emailTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailTemplateEmailTemplate>(guardedValue, (value) => EmailTemplateEmailTemplate.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateName = registerOutput<String>('templateName');
   }
 }

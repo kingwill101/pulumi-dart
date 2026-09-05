@@ -3,12 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlanStageTargetContactTargetInfo {
-  /// The Amazon Resource Name (ARN) of the contact or escalation plan.
+  /// ARN of the contact or escalation plan.
   final pulumi.Input<String> contactId;
   final pulumi.Input<bool> isEssential;
 
   /// Creates a new [GetPlanStageTargetContactTargetInfo].
-  /// [contactId] The Amazon Resource Name (ARN) of the contact or escalation plan.
+  /// [contactId] ARN of the contact or escalation plan.
   /// [isEssential] Required.
   const GetPlanStageTargetContactTargetInfo({
     required this.contactId,

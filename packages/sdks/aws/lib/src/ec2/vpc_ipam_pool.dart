@@ -519,16 +519,16 @@ import 'vpc_ipam_pool_state.dart';
 ///     dependsOn: [testVpcIpamPoolCidr],
 /// });
 /// const vpc = new aws.ec2.VpcIpamPool("vpc", {
-///     addressFamily: "ipv4",
-///     ipamScopeId: testAwsVpcIpam.privateDefaultScopeId,
-///     locale: current.then(current => current.region),
-///     sourceIpamPoolId: test.id,
 ///     sourceResource: {
 ///         resourceId: testVpc.id,
 ///         resourceOwner: currentAwsCallerIdentity.accountId,
 ///         resourceRegion: current.then(current => current.region),
 ///         resourceType: "vpc",
 ///     },
+///     addressFamily: "ipv4",
+///     ipamScopeId: testAwsVpcIpam.privateDefaultScopeId,
+///     locale: current.then(current => current.region),
+///     sourceIpamPoolId: test.id,
 /// });
 /// ```
 /// ```python
@@ -550,16 +550,16 @@ import 'vpc_ipam_pool_state.dart';
 ///     ipv4_netmask_length=24,
 ///     opts = pulumi.ResourceOptions(depends_on=[test_vpc_ipam_pool_cidr]))
 /// vpc = aws.ec2.VpcIpamPool("vpc",
-///     address_family="ipv4",
-///     ipam_scope_id=test_aws_vpc_ipam["privateDefaultScopeId"],
-///     locale=current.region,
-///     source_ipam_pool_id=test.id,
 ///     source_resource={
 ///         "resource_id": test_vpc.id,
 ///         "resource_owner": current_aws_caller_identity["accountId"],
 ///         "resource_region": current.region,
 ///         "resource_type": "vpc",
-///     })
+///     },
+///     address_family="ipv4",
+///     ipam_scope_id=test_aws_vpc_ipam["privateDefaultScopeId"],
+///     locale=current.region,
+///     source_ipam_pool_id=test.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -608,10 +608,6 @@ import 'vpc_ipam_pool_state.dart';
 ///
 ///     var vpc = new Aws.Ec2.VpcIpamPool("vpc", new()
 ///     {
-///         AddressFamily = "ipv4",
-///         IpamScopeId = testAwsVpcIpam.PrivateDefaultScopeId,
-///         Locale = current.Apply(getRegionResult => getRegionResult.Region),
-///         SourceIpamPoolId = test.Id,
 ///         SourceResource = new Aws.Ec2.Inputs.VpcIpamPoolSourceResourceArgs
 ///         {
 ///             ResourceId = testVpc.Id,
@@ -619,6 +615,10 @@ import 'vpc_ipam_pool_state.dart';
 ///             ResourceRegion = current.Apply(getRegionResult => getRegionResult.Region),
 ///             ResourceType = "vpc",
 ///         },
+///         AddressFamily = "ipv4",
+///         IpamScopeId = testAwsVpcIpam.PrivateDefaultScopeId,
+///         Locale = current.Apply(getRegionResult => getRegionResult.Region),
+///         SourceIpamPoolId = test.Id,
 ///     });
 ///
 /// });
@@ -672,16 +672,16 @@ import 'vpc_ipam_pool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewVpcIpamPool(ctx, "vpc", &ec2.VpcIpamPoolArgs{
-/// 			AddressFamily:    pulumi.String("ipv4"),
-/// 			IpamScopeId:      pulumi.Any(testAwsVpcIpam.PrivateDefaultScopeId),
-/// 			Locale:           pulumi.String(current.Region),
-/// 			SourceIpamPoolId: test.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceResource: &ec2.VpcIpamPoolSourceResourceArgs{
 /// 				ResourceId:     testVpc.ID().ToIDOutput().ToStringOutput(),
 /// 				ResourceOwner:  pulumi.Any(currentAwsCallerIdentity.AccountId),
 /// 				ResourceRegion: pulumi.String(current.Region),
 /// 				ResourceType:   pulumi.String("vpc"),
 /// 			},
+/// 			AddressFamily:    pulumi.String("ipv4"),
+/// 			IpamScopeId:      pulumi.Any(testAwsVpcIpam.PrivateDefaultScopeId),
+/// 			Locale:           pulumi.String(current.Region),
+/// 			SourceIpamPoolId: test.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -721,16 +721,16 @@ import 'vpc_ipam_pool_state.dart';
 ///   ipv4_netmask_length = 24
 /// }
 /// resource "aws_ec2_vpcipampool" "vpc" {
-///   address_family      = "ipv4"
-///   ipam_scope_id       = testAwsVpcIpam.privateDefaultScopeId
-///   locale              = data.aws_getregion.current.region
-///   source_ipam_pool_id = aws_ec2_vpcipampool.test.id
 ///   source_resource = {
 ///     resource_id     = aws_ec2_vpc.test.id
 ///     resource_owner  = currentAwsCallerIdentity.accountId
 ///     resource_region = data.aws_getregion.current.region
 ///     resource_type   = "vpc"
 ///   }
+///   address_family      = "ipv4"
+///   ipam_scope_id       = testAwsVpcIpam.privateDefaultScopeId
+///   locale              = data.aws_getregion.current.region
+///   source_ipam_pool_id = aws_ec2_vpcipampool.test.id
 /// }
 /// ```
 /// ```java
@@ -792,16 +792,16 @@ import 'vpc_ipam_pool_state.dart';
 ///                 .build());
 ///
 ///         var vpc = new VpcIpamPool("vpc", VpcIpamPoolArgs.builder()
-///             .addressFamily("ipv4")
-///             .ipamScopeId(testAwsVpcIpam.privateDefaultScopeId())
-///             .locale(current.region())
-///             .sourceIpamPoolId(test.id())
 ///             .sourceResource(VpcIpamPoolSourceResourceArgs.builder()
 ///                 .resourceId(testVpc.id())
 ///                 .resourceOwner(currentAwsCallerIdentity.accountId())
 ///                 .resourceRegion(current.region())
 ///                 .resourceType("vpc")
 ///                 .build())
+///             .addressFamily("ipv4")
+///             .ipamScopeId(testAwsVpcIpam.privateDefaultScopeId())
+///             .locale(current.region())
+///             .sourceIpamPoolId(test.id())
 ///             .build());
 ///
 ///     }
@@ -837,15 +837,15 @@ import 'vpc_ipam_pool_state.dart';
 ///   vpc:
 ///     type: aws:ec2:VpcIpamPool
 ///     properties:
-///       addressFamily: ipv4
-///       ipamScopeId: ${testAwsVpcIpam.privateDefaultScopeId}
-///       locale: ${current.region}
-///       sourceIpamPoolId: ${test.id}
 ///       sourceResource:
 ///         resourceId: ${testVpc.id}
 ///         resourceOwner: ${currentAwsCallerIdentity.accountId}
 ///         resourceRegion: ${current.region}
 ///         resourceType: vpc
+///       addressFamily: ipv4
+///       ipamScopeId: ${testAwsVpcIpam.privateDefaultScopeId}
+///       locale: ${current.region}
+///       sourceIpamPoolId: ${test.id}
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -872,7 +872,7 @@ class VpcIpamPool extends pulumi.CustomResource {
   late final pulumi.Output<int?> allocationMinNetmaskLength;
   /// Tags that are required for resources that use CIDRs from this IPAM pool. Resources that do not have these tags will not be allowed to allocate space from the pool. If the resources have their tags changed after they have allocated space or if the allocation tagging requirements are changed on the pool, the resource may be marked as noncompliant.
   late final pulumi.Output<Map<String, String>?> allocationResourceTags;
-  /// Amazon Resource Name (ARN) of IPAM
+  /// ARN of IPAM
   late final pulumi.Output<String> arn;
   /// If you include this argument, IPAM automatically imports any VPCs you have in your scope that fall
   /// within the CIDR range in the pool.
@@ -918,13 +918,13 @@ class VpcIpamPool extends pulumi.CustomResource {
           'aws:ec2/vpcIpamPool:VpcIpamPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     allocationDefaultNetmaskLength = registerOutput<int?>('allocationDefaultNetmaskLength');
     allocationMaxNetmaskLength = registerOutput<int?>('allocationMaxNetmaskLength');
     allocationMinNetmaskLength = registerOutput<int?>('allocationMinNetmaskLength');
-    allocationResourceTags = registerOutput<Map<String, String>?>('allocationResourceTags');
+    allocationResourceTags = registerOutput<Map<String, String>?>('allocationResourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');
     autoImport = registerOutput<bool?>('autoImport');
     awsService = registerOutput<String?>('awsService');
@@ -940,8 +940,8 @@ class VpcIpamPool extends pulumi.CustomResource {
     sourceIpamPoolId = registerOutput<String?>('sourceIpamPoolId');
     sourceResource = registerOutput<VpcIpamPoolSourceResource?>('sourceResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcIpamPoolSourceResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VpcIpamPool] resource's state with the given [name] and [id].
@@ -949,11 +949,12 @@ class VpcIpamPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcIpamPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcIpamPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -971,7 +972,7 @@ class VpcIpamPool extends pulumi.CustomResource {
     allocationDefaultNetmaskLength = registerOutput<int?>('allocationDefaultNetmaskLength');
     allocationMaxNetmaskLength = registerOutput<int?>('allocationMaxNetmaskLength');
     allocationMinNetmaskLength = registerOutput<int?>('allocationMinNetmaskLength');
-    allocationResourceTags = registerOutput<Map<String, String>?>('allocationResourceTags');
+    allocationResourceTags = registerOutput<Map<String, String>?>('allocationResourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');
     autoImport = registerOutput<bool?>('autoImport');
     awsService = registerOutput<String?>('awsService');
@@ -987,7 +988,40 @@ class VpcIpamPool extends pulumi.CustomResource {
     sourceIpamPoolId = registerOutput<String?>('sourceIpamPoolId');
     sourceResource = registerOutput<VpcIpamPoolSourceResource?>('sourceResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcIpamPoolSourceResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VpcIpamPool] resource.
+  VpcIpamPool.reference(String urn)
+    : super(
+        'aws:ec2/vpcIpamPool:VpcIpamPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    allocationDefaultNetmaskLength = registerOutput<int?>('allocationDefaultNetmaskLength');
+    allocationMaxNetmaskLength = registerOutput<int?>('allocationMaxNetmaskLength');
+    allocationMinNetmaskLength = registerOutput<int?>('allocationMinNetmaskLength');
+    allocationResourceTags = registerOutput<Map<String, String>?>('allocationResourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    arn = registerOutput<String>('arn');
+    autoImport = registerOutput<bool?>('autoImport');
+    awsService = registerOutput<String?>('awsService');
+    cascade = registerOutput<bool?>('cascade');
+    description = registerOutput<String?>('description');
+    ipamScopeId = registerOutput<String>('ipamScopeId');
+    ipamScopeType = registerOutput<String>('ipamScopeType');
+    locale = registerOutput<String?>('locale');
+    poolDepth = registerOutput<int>('poolDepth');
+    publicIpSource = registerOutput<String?>('publicIpSource');
+    publiclyAdvertisable = registerOutput<bool?>('publiclyAdvertisable');
+    region = registerOutput<String>('region');
+    sourceIpamPoolId = registerOutput<String?>('sourceIpamPoolId');
+    sourceResource = registerOutput<VpcIpamPoolSourceResource?>('sourceResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcIpamPoolSourceResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

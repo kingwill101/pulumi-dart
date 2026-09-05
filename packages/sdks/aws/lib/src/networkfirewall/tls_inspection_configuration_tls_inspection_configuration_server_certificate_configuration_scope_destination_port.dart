@@ -25,8 +25,8 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
 
   factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort(
-      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
-      toPort: pulumi.Input.fromValue(map['toPort'] as int),
+      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
+      toPort: pulumi.Input.fromValue((map['toPort'] as num).toInt()),
     );
   }
 }

@@ -11,7 +11,7 @@ class AgentAgentKnowledgeBaseAssociationArgs {
   /// Unique identifier of the agent with which you want to associate the knowledge base.
   final pulumi.Input<String> agentId;
   /// Version of the agent with which you want to associate the knowledge base. Valid values: `DRAFT`.
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// Description of what the agent should use the knowledge base for.
   final pulumi.Input<String> description;
   /// Unique identifier of the knowledge base to associate with the agent.
@@ -21,8 +21,8 @@ class AgentAgentKnowledgeBaseAssociationArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> knowledgeBaseState;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<AgentAgentKnowledgeBaseAssociationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<AgentAgentKnowledgeBaseAssociationTimeouts?>? timeouts;
 
   /// Creates a new [AgentAgentKnowledgeBaseAssociationArgs].
   /// [agentId] Unique identifier of the agent with which you want to associate the knowledge base.

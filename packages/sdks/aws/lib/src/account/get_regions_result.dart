@@ -5,34 +5,34 @@ import 'get_regions_region.dart';
 
 /// Result data returned by getRegions.
 class GetRegionsResult {
-  final String accountId;
-  final List<String> regionOptStatusContains;
+  final String? accountId;
+  final List<String>? regionOptStatusContains;
   /// The regions for a given account
-  final List<GetRegionsRegion> regions;
+  final List<GetRegionsRegion>? regions;
 
   /// Creates a new [GetRegionsResult].
-  /// [accountId] Required.
-  /// [regionOptStatusContains] Required.
+  /// [accountId] Optional.
+  /// [regionOptStatusContains] Optional.
   /// [regions] The regions for a given account
   const GetRegionsResult({
-    required this.accountId,
-    required this.regionOptStatusContains,
-    required this.regions,
+    this.accountId,
+    this.regionOptStatusContains,
+    this.regions,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountId': accountId,
-      'regionOptStatusContains': regionOptStatusContains,
-      'regions': pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(regions, (value) => value.toMap()),
+      'accountId': ?accountId,
+      'regionOptStatusContains': ?regionOptStatusContains,
+      'regions': ?(() { final guardedValue = regions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetRegionsResult.fromMap(Map<String, dynamic> map) {
     return GetRegionsResult(
-      accountId: map['accountId'] as String,
-      regionOptStatusContains: (map['regionOptStatusContains'] as List).cast<String>(),
-      regions: pulumi.Input.decodeList<GetRegionsRegion>(map['regions']!, (value) => GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      regionOptStatusContains: (() { final guardedValue = map['regionOptStatusContains']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionsRegion>(guardedValue, (value) => GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

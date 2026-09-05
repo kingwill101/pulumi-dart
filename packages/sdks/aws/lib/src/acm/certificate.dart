@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_args.dart';
+import 'certificate_domain_validation_option.dart';
 import 'certificate_options.dart';
+import 'certificate_renewal_summary.dart';
 import 'certificate_state.dart';
+import 'certificate_validation_option.dart';
 
 /// The ACM certificate resource allows requesting and management of certificates
 /// from the Amazon Certificate Manager.
@@ -28,12 +31,12 @@ import 'certificate_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const cert = new aws.acm.Certificate("cert", {
-///     domainName: "testing.example.com",
-///     validationMethod: "EMAIL",
 ///     validationOptions: [{
 ///         domainName: "testing.example.com",
 ///         validationDomain: "example.com",
 ///     }],
+///     domainName: "testing.example.com",
+///     validationMethod: "EMAIL",
 /// });
 /// ```
 /// ```python
@@ -41,12 +44,12 @@ import 'certificate_state.dart';
 /// import pulumi_aws as aws
 ///
 /// cert = aws.acm.Certificate("cert",
-///     domain_name="testing.example.com",
-///     validation_method="EMAIL",
 ///     validation_options=[{
 ///         "domain_name": "testing.example.com",
 ///         "validation_domain": "example.com",
-///     }])
+///     }],
+///     domain_name="testing.example.com",
+///     validation_method="EMAIL")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -58,8 +61,6 @@ import 'certificate_state.dart';
 /// {
 ///     var cert = new Aws.Acm.Certificate("cert", new()
 ///     {
-///         DomainName = "testing.example.com",
-///         ValidationMethod = "EMAIL",
 ///         ValidationOptions = new[]
 ///         {
 ///             new Aws.Acm.Inputs.CertificateValidationOptionArgs
@@ -68,6 +69,8 @@ import 'certificate_state.dart';
 ///                 ValidationDomain = "example.com",
 ///             },
 ///         },
+///         DomainName = "testing.example.com",
+///         ValidationMethod = "EMAIL",
 ///     });
 ///
 /// });
@@ -83,14 +86,14 @@ import 'certificate_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := acm.NewCertificate(ctx, "cert", &acm.CertificateArgs{
-/// 			DomainName:       pulumi.String("testing.example.com"),
-/// 			ValidationMethod: pulumi.String("EMAIL"),
 /// 			ValidationOptions: acm.CertificateValidationOptionArray{
 /// 				&acm.CertificateValidationOptionArgs{
 /// 					DomainName:       pulumi.String("testing.example.com"),
 /// 					ValidationDomain: pulumi.String("example.com"),
 /// 				},
 /// 			},
+/// 			DomainName:       pulumi.String("testing.example.com"),
+/// 			ValidationMethod: pulumi.String("EMAIL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -109,12 +112,12 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "aws_acm_certificate" "cert" {
-///   domain_name       = "testing.example.com"
-///   validation_method = "EMAIL"
 ///   validation_options {
 ///     domain_name       = "testing.example.com"
 ///     validation_domain = "example.com"
 ///   }
+///   domain_name       = "testing.example.com"
+///   validation_method = "EMAIL"
 /// }
 /// ```
 /// ```java
@@ -140,12 +143,12 @@ import 'certificate_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var cert = new Certificate("cert", CertificateArgs.builder()
-///             .domainName("testing.example.com")
-///             .validationMethod("EMAIL")
 ///             .validationOptions(CertificateValidationOptionArgs.builder()
 ///                 .domainName("testing.example.com")
 ///                 .validationDomain("example.com")
 ///                 .build())
+///             .domainName("testing.example.com")
+///             .validationMethod("EMAIL")
 ///             .build());
 ///
 ///     }
@@ -156,11 +159,11 @@ import 'certificate_state.dart';
 ///   cert:
 ///     type: aws:acm:Certificate
 ///     properties:
-///       domainName: testing.example.com
-///       validationMethod: EMAIL
 ///       validationOptions:
 ///         - domainName: testing.example.com
 ///           validationDomain: example.com
+///       domainName: testing.example.com
+///       validationMethod: EMAIL
 /// ```
 ///
 ///
@@ -174,12 +177,12 @@ import 'certificate_state.dart';
 ///
 /// const example = new tls.PrivateKey("example", {algorithm: "RSA"});
 /// const exampleSelfSignedCert = new tls.SelfSignedCert("example", {
-///     keyAlgorithm: "RSA",
-///     privateKeyPem: example.privateKeyPem,
 ///     subject: [{
 ///         commonName: "example.com",
 ///         organization: "ACME Examples, Inc",
 ///     }],
+///     keyAlgorithm: "RSA",
+///     privateKeyPem: example.privateKeyPem,
 ///     validityPeriodHours: 12,
 ///     allowedUses: [
 ///         "key_encipherment",
@@ -199,12 +202,12 @@ import 'certificate_state.dart';
 ///
 /// example = tls.PrivateKey("example", algorithm="RSA")
 /// example_self_signed_cert = tls.SelfSignedCert("example",
-///     key_algorithm="RSA",
-///     private_key_pem=example.private_key_pem,
 ///     subject=[{
 ///         "commonName": "example.com",
 ///         "organization": "ACME Examples, Inc",
 ///     }],
+///     key_algorithm="RSA",
+///     private_key_pem=example.private_key_pem,
 ///     validity_period_hours=12,
 ///     allowed_uses=[
 ///         "key_encipherment",
@@ -231,8 +234,6 @@ import 'certificate_state.dart';
 ///
 ///     var exampleSelfSignedCert = new Tls.SelfSignedCert("example", new()
 ///     {
-///         KeyAlgorithm = "RSA",
-///         PrivateKeyPem = example.PrivateKeyPem,
 ///         Subject = new[]
 ///         {
 ///
@@ -241,6 +242,8 @@ import 'certificate_state.dart';
 ///                 { "organization", "ACME Examples, Inc" },
 ///             },
 ///         },
+///         KeyAlgorithm = "RSA",
+///         PrivateKeyPem = example.PrivateKeyPem,
 ///         ValidityPeriodHours = 12,
 ///         AllowedUses = new[]
 ///         {
@@ -276,14 +279,14 @@ import 'certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSelfSignedCert, err := tls.NewSelfSignedCert(ctx, "example", &tls.SelfSignedCertArgs{
-/// 			KeyAlgorithm:  "RSA",
-/// 			PrivateKeyPem: example.PrivateKeyPem,
 /// 			Subject: tls.SelfSignedCertSubjectArgs{
 /// 				map[string]string{
 /// 					"commonName":   "example.com",
 /// 					"organization": "ACME Examples, Inc",
 /// 				},
 /// 			},
+/// 			KeyAlgorithm:        "RSA",
+/// 			PrivateKeyPem:       example.PrivateKeyPem,
 /// 			ValidityPeriodHours: pulumi.Int(12),
 /// 			AllowedUses: pulumi.StringArray{
 /// 				pulumi.String("key_encipherment"),
@@ -321,12 +324,12 @@ import 'certificate_state.dart';
 ///   algorithm = "RSA"
 /// }
 /// resource "tls_selfsignedcert" "example" {
-///   key_algorithm   = "RSA"
-///   private_key_pem = tls_privatekey.example.private_key_pem
 ///   subject = [{
 ///     "commonName"   = "example.com"
 ///     "organization" = "ACME Examples, Inc"
 ///   }]
+///   key_algorithm         = "RSA"
+///   private_key_pem       = tls_privatekey.example.private_key_pem
 ///   validity_period_hours = 12
 ///   allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
 /// }
@@ -365,12 +368,12 @@ import 'certificate_state.dart';
 ///             .build());
 ///
 ///         var exampleSelfSignedCert = new SelfSignedCert("exampleSelfSignedCert", SelfSignedCertArgs.builder()
-///             .keyAlgorithm("RSA")
-///             .privateKeyPem(example.privateKeyPem())
 ///             .subject(com.pulumi.tls.inputs.SelfSignedCertSubjectArgs.builder()
 ///                 .commonName("example.com")
 ///                 .organization("ACME Examples, Inc")
 ///                 .build())
+///             .keyAlgorithm("RSA")
+///             .privateKeyPem(example.privateKeyPem())
 ///             .validityPeriodHours(12)
 ///             .allowedUses(
 ///                 "key_encipherment",
@@ -396,11 +399,11 @@ import 'certificate_state.dart';
 ///     type: tls:SelfSignedCert
 ///     name: example
 ///     properties:
-///       keyAlgorithm: RSA
-///       privateKeyPem: ${example.privateKeyPem}
 ///       subject:
 ///         - commonName: example.com
 ///           organization: ACME Examples, Inc
+///       keyAlgorithm: RSA
+///       privateKeyPem: ${example.privateKeyPem}
 ///       validityPeriodHours: 12
 ///       allowedUses:
 ///         - key_encipherment
@@ -424,12 +427,12 @@ import 'certificate_state.dart';
 ///
 /// const example = new tls.PrivateKey("example", {algorithm: "RSA"});
 /// const exampleSelfSignedCert = new tls.SelfSignedCert("example", {
-///     keyAlgorithm: "RSA",
-///     privateKeyPem: example.privateKeyPem,
 ///     subject: [{
 ///         commonName: "example.com",
 ///         organization: "ACME Examples, Inc",
 ///     }],
+///     keyAlgorithm: "RSA",
+///     privateKeyPem: example.privateKeyPem,
 ///     validityPeriodHours: 12,
 ///     allowedUses: [
 ///         "key_encipherment",
@@ -450,12 +453,12 @@ import 'certificate_state.dart';
 ///
 /// example = tls.PrivateKey("example", algorithm="RSA")
 /// example_self_signed_cert = tls.SelfSignedCert("example",
-///     key_algorithm="RSA",
-///     private_key_pem=example.private_key_pem,
 ///     subject=[{
 ///         "commonName": "example.com",
 ///         "organization": "ACME Examples, Inc",
 ///     }],
+///     key_algorithm="RSA",
+///     private_key_pem=example.private_key_pem,
 ///     validity_period_hours=12,
 ///     allowed_uses=[
 ///         "key_encipherment",
@@ -483,8 +486,6 @@ import 'certificate_state.dart';
 ///
 ///     var exampleSelfSignedCert = new Tls.SelfSignedCert("example", new()
 ///     {
-///         KeyAlgorithm = "RSA",
-///         PrivateKeyPem = example.PrivateKeyPem,
 ///         Subject = new[]
 ///         {
 ///
@@ -493,6 +494,8 @@ import 'certificate_state.dart';
 ///                 { "organization", "ACME Examples, Inc" },
 ///             },
 ///         },
+///         KeyAlgorithm = "RSA",
+///         PrivateKeyPem = example.PrivateKeyPem,
 ///         ValidityPeriodHours = 12,
 ///         AllowedUses = new[]
 ///         {
@@ -529,14 +532,14 @@ import 'certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSelfSignedCert, err := tls.NewSelfSignedCert(ctx, "example", &tls.SelfSignedCertArgs{
-/// 			KeyAlgorithm:  "RSA",
-/// 			PrivateKeyPem: example.PrivateKeyPem,
 /// 			Subject: tls.SelfSignedCertSubjectArgs{
 /// 				map[string]string{
 /// 					"commonName":   "example.com",
 /// 					"organization": "ACME Examples, Inc",
 /// 				},
 /// 			},
+/// 			KeyAlgorithm:        "RSA",
+/// 			PrivateKeyPem:       example.PrivateKeyPem,
 /// 			ValidityPeriodHours: pulumi.Int(12),
 /// 			AllowedUses: pulumi.StringArray{
 /// 				pulumi.String("key_encipherment"),
@@ -575,12 +578,12 @@ import 'certificate_state.dart';
 ///   algorithm = "RSA"
 /// }
 /// resource "tls_selfsignedcert" "example" {
-///   key_algorithm   = "RSA"
-///   private_key_pem = tls_privatekey.example.private_key_pem
 ///   subject = [{
 ///     "commonName"   = "example.com"
 ///     "organization" = "ACME Examples, Inc"
 ///   }]
+///   key_algorithm         = "RSA"
+///   private_key_pem       = tls_privatekey.example.private_key_pem
 ///   validity_period_hours = 12
 ///   allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
 /// }
@@ -620,12 +623,12 @@ import 'certificate_state.dart';
 ///             .build());
 ///
 ///         var exampleSelfSignedCert = new SelfSignedCert("exampleSelfSignedCert", SelfSignedCertArgs.builder()
-///             .keyAlgorithm("RSA")
-///             .privateKeyPem(example.privateKeyPem())
 ///             .subject(com.pulumi.tls.inputs.SelfSignedCertSubjectArgs.builder()
 ///                 .commonName("example.com")
 ///                 .organization("ACME Examples, Inc")
 ///                 .build())
+///             .keyAlgorithm("RSA")
+///             .privateKeyPem(example.privateKeyPem())
 ///             .validityPeriodHours(12)
 ///             .allowedUses(
 ///                 "key_encipherment",
@@ -652,11 +655,11 @@ import 'certificate_state.dart';
 ///     type: tls:SelfSignedCert
 ///     name: example
 ///     properties:
-///       keyAlgorithm: RSA
-///       privateKeyPem: ${example.privateKeyPem}
 ///       subject:
 ///         - commonName: example.com
 ///           organization: ACME Examples, Inc
+///       keyAlgorithm: RSA
+///       privateKeyPem: ${example.privateKeyPem}
 ///       validityPeriodHours: 12
 ///       allowedUses:
 ///         - key_encipherment
@@ -816,7 +819,7 @@ class Certificate extends pulumi.CustomResource {
   /// Set of domain validation objects which can be used to complete certificate validation.
   /// Can have more than one element, e.g., if SANs are defined.
   /// Only set if `DNS`-validation was used.
-  late final pulumi.Output<List<Map<String, dynamic>>> domainValidationOptions;
+  late final pulumi.Output<List<CertificateDomainValidationOption>> domainValidationOptions;
   late final pulumi.Output<String?> earlyRenewalDuration;
   late final pulumi.Output<String> keyAlgorithm;
   /// Expiration date and time of the certificate.
@@ -836,7 +839,7 @@ class Certificate extends pulumi.CustomResource {
   /// Whether the certificate is eligible for managed renewal.
   late final pulumi.Output<String> renewalEligibility;
   /// Contains information about the status of ACM's [managed renewal](https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for the certificate.
-  late final pulumi.Output<List<Map<String, dynamic>>> renewalSummaries;
+  late final pulumi.Output<List<CertificateRenewalSummary>> renewalSummaries;
   /// Status of the certificate.
   late final pulumi.Output<String> status;
   late final pulumi.Output<List<String>> subjectAlternativeNames;
@@ -849,7 +852,7 @@ class Certificate extends pulumi.CustomResource {
   /// List of addresses that received a validation email. Only set if `EMAIL` validation was used.
   late final pulumi.Output<List<String>> validationEmails;
   late final pulumi.Output<String> validationMethod;
-  late final pulumi.Output<List<Map<String, dynamic>>?> validationOptions;
+  late final pulumi.Output<List<CertificateValidationOption>?> validationOptions;
 
   /// Creates a new [Certificate].
   /// [name] The Pulumi resource name.
@@ -863,34 +866,35 @@ class Certificate extends pulumi.CustomResource {
           'aws:acm/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['privateKey', 'privateKeyWo'],
         ) {
     arn = registerOutput<String>('arn');
     certificateAuthorityArn = registerOutput<String?>('certificateAuthorityArn');
     certificateBody = registerOutput<String?>('certificateBody');
     certificateChain = registerOutput<String?>('certificateChain');
     domainName = registerOutput<String>('domainName');
-    domainValidationOptions = registerOutput<List<Map<String, dynamic>>>('domainValidationOptions');
+    domainValidationOptions = registerOutput<List<CertificateDomainValidationOption>>('domainValidationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateDomainValidationOption>(guardedValue, (value) => CertificateDomainValidationOption.fromMap((value as Map).cast<String, dynamic>())); });
     earlyRenewalDuration = registerOutput<String?>('earlyRenewalDuration');
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
     notAfter = registerOutput<String>('notAfter');
     notBefore = registerOutput<String>('notBefore');
     this.options = registerOutput<CertificateOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pendingRenewal = registerOutput<bool>('pendingRenewal');
-    privateKey = registerOutput<String?>('privateKey');
-    privateKeyWo = registerOutput<String?>('privateKeyWo');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    privateKeyWo = registerOutput<String?>('privateKeyWo', isSecret: true);
     privateKeyWoVersion = registerOutput<int?>('privateKeyWoVersion');
     region = registerOutput<String>('region');
     renewalEligibility = registerOutput<String>('renewalEligibility');
-    renewalSummaries = registerOutput<List<Map<String, dynamic>>>('renewalSummaries');
+    renewalSummaries = registerOutput<List<CertificateRenewalSummary>>('renewalSummaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateRenewalSummary>(guardedValue, (value) => CertificateRenewalSummary.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    validationEmails = registerOutput<List<String>>('validationEmails');
+    validationEmails = registerOutput<List<String>>('validationEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     validationMethod = registerOutput<String>('validationMethod');
-    validationOptions = registerOutput<List<Map<String, dynamic>>?>('validationOptions');
+    validationOptions = registerOutput<List<CertificateValidationOption>?>('validationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateValidationOption>(guardedValue, (value) => CertificateValidationOption.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -898,11 +902,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -921,26 +926,64 @@ class Certificate extends pulumi.CustomResource {
     certificateBody = registerOutput<String?>('certificateBody');
     certificateChain = registerOutput<String?>('certificateChain');
     domainName = registerOutput<String>('domainName');
-    domainValidationOptions = registerOutput<List<Map<String, dynamic>>>('domainValidationOptions');
+    domainValidationOptions = registerOutput<List<CertificateDomainValidationOption>>('domainValidationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateDomainValidationOption>(guardedValue, (value) => CertificateDomainValidationOption.fromMap((value as Map).cast<String, dynamic>())); });
     earlyRenewalDuration = registerOutput<String?>('earlyRenewalDuration');
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
     notAfter = registerOutput<String>('notAfter');
     notBefore = registerOutput<String>('notBefore');
     this.options = registerOutput<CertificateOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pendingRenewal = registerOutput<bool>('pendingRenewal');
-    privateKey = registerOutput<String?>('privateKey');
-    privateKeyWo = registerOutput<String?>('privateKeyWo');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    privateKeyWo = registerOutput<String?>('privateKeyWo', isSecret: true);
     privateKeyWoVersion = registerOutput<int?>('privateKeyWoVersion');
     region = registerOutput<String>('region');
     renewalEligibility = registerOutput<String>('renewalEligibility');
-    renewalSummaries = registerOutput<List<Map<String, dynamic>>>('renewalSummaries');
+    renewalSummaries = registerOutput<List<CertificateRenewalSummary>>('renewalSummaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateRenewalSummary>(guardedValue, (value) => CertificateRenewalSummary.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    validationEmails = registerOutput<List<String>>('validationEmails');
+    validationEmails = registerOutput<List<String>>('validationEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     validationMethod = registerOutput<String>('validationMethod');
-    validationOptions = registerOutput<List<Map<String, dynamic>>?>('validationOptions');
+    validationOptions = registerOutput<List<CertificateValidationOption>?>('validationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateValidationOption>(guardedValue, (value) => CertificateValidationOption.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'aws:acm/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['privateKey', 'privateKeyWo'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    certificateAuthorityArn = registerOutput<String?>('certificateAuthorityArn');
+    certificateBody = registerOutput<String?>('certificateBody');
+    certificateChain = registerOutput<String?>('certificateChain');
+    domainName = registerOutput<String>('domainName');
+    domainValidationOptions = registerOutput<List<CertificateDomainValidationOption>>('domainValidationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateDomainValidationOption>(guardedValue, (value) => CertificateDomainValidationOption.fromMap((value as Map).cast<String, dynamic>())); });
+    earlyRenewalDuration = registerOutput<String?>('earlyRenewalDuration');
+    keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    notAfter = registerOutput<String>('notAfter');
+    notBefore = registerOutput<String>('notBefore');
+    this.options = registerOutput<CertificateOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pendingRenewal = registerOutput<bool>('pendingRenewal');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    privateKeyWo = registerOutput<String?>('privateKeyWo', isSecret: true);
+    privateKeyWoVersion = registerOutput<int?>('privateKeyWoVersion');
+    region = registerOutput<String>('region');
+    renewalEligibility = registerOutput<String>('renewalEligibility');
+    renewalSummaries = registerOutput<List<CertificateRenewalSummary>>('renewalSummaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateRenewalSummary>(guardedValue, (value) => CertificateRenewalSummary.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    validationEmails = registerOutput<List<String>>('validationEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    validationMethod = registerOutput<String>('validationMethod');
+    validationOptions = registerOutput<List<CertificateValidationOption>?>('validationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateValidationOption>(guardedValue, (value) => CertificateValidationOption.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

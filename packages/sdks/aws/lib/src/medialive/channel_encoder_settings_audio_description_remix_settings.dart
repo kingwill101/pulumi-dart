@@ -5,8 +5,8 @@ import 'channel_encoder_settings_audio_description_remix_settings_channel_mappin
 
 class ChannelEncoderSettingsAudioDescriptionRemixSettings {
   final pulumi.Input<List<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping>> channelMappings;
-  final pulumi.Input<int>? channelsIn;
-  final pulumi.Input<int>? channelsOut;
+  final pulumi.Input<int?>? channelsIn;
+  final pulumi.Input<int?>? channelsOut;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionRemixSettings].
   /// [channelMappings] Required.
@@ -29,8 +29,8 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettings {
   factory ChannelEncoderSettingsAudioDescriptionRemixSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettings(
       channelMappings: pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping>(map['channelMappings']!, (value) => ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      channelsIn: (() { final guardedValue = map['channelsIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      channelsOut: (() { final guardedValue = map['channelsOut']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      channelsIn: (() { final guardedValue = map['channelsIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      channelsOut: (() { final guardedValue = map['channelsOut']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

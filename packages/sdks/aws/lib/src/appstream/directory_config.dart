@@ -14,8 +14,6 @@ import 'directory_config_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appstream.DirectoryConfig("example", {
-///     directoryName: "NAME OF DIRECTORY",
-///     organizationalUnitDistinguishedNames: ["DISTINGUISHED NAME"],
 ///     serviceAccountCredentials: {
 ///         accountName: "NAME OF ACCOUNT",
 ///         accountPassword: "PASSWORD OF ACCOUNT",
@@ -24,6 +22,8 @@ import 'directory_config_state.dart';
 ///         certificateAuthorityArn: "ARN OF CERTIFICATE AUTHORITY",
 ///         status: "STATUS OF CERTIFICATE BASED AUTHENTICATION",
 ///     },
+///     directoryName: "NAME OF DIRECTORY",
+///     organizationalUnitDistinguishedNames: ["DISTINGUISHED NAME"],
 /// });
 /// ```
 /// ```python
@@ -31,8 +31,6 @@ import 'directory_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appstream.DirectoryConfig("example",
-///     directory_name="NAME OF DIRECTORY",
-///     organizational_unit_distinguished_names=["DISTINGUISHED NAME"],
 ///     service_account_credentials={
 ///         "account_name": "NAME OF ACCOUNT",
 ///         "account_password": "PASSWORD OF ACCOUNT",
@@ -40,7 +38,9 @@ import 'directory_config_state.dart';
 ///     certificate_based_auth_properties={
 ///         "certificate_authority_arn": "ARN OF CERTIFICATE AUTHORITY",
 ///         "status": "STATUS OF CERTIFICATE BASED AUTHENTICATION",
-///     })
+///     },
+///     directory_name="NAME OF DIRECTORY",
+///     organizational_unit_distinguished_names=["DISTINGUISHED NAME"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -52,11 +52,6 @@ import 'directory_config_state.dart';
 /// {
 ///     var example = new Aws.AppStream.DirectoryConfig("example", new()
 ///     {
-///         DirectoryName = "NAME OF DIRECTORY",
-///         OrganizationalUnitDistinguishedNames = new[]
-///         {
-///             "DISTINGUISHED NAME",
-///         },
 ///         ServiceAccountCredentials = new Aws.AppStream.Inputs.DirectoryConfigServiceAccountCredentialsArgs
 ///         {
 ///             AccountName = "NAME OF ACCOUNT",
@@ -66,6 +61,11 @@ import 'directory_config_state.dart';
 ///         {
 ///             CertificateAuthorityArn = "ARN OF CERTIFICATE AUTHORITY",
 ///             Status = "STATUS OF CERTIFICATE BASED AUTHENTICATION",
+///         },
+///         DirectoryName = "NAME OF DIRECTORY",
+///         OrganizationalUnitDistinguishedNames = new[]
+///         {
+///             "DISTINGUISHED NAME",
 ///         },
 ///     });
 ///
@@ -82,10 +82,6 @@ import 'directory_config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appstream.NewDirectoryConfig(ctx, "example", &appstream.DirectoryConfigArgs{
-/// 			DirectoryName: pulumi.String("NAME OF DIRECTORY"),
-/// 			OrganizationalUnitDistinguishedNames: pulumi.StringArray{
-/// 				pulumi.String("DISTINGUISHED NAME"),
-/// 			},
 /// 			ServiceAccountCredentials: &appstream.DirectoryConfigServiceAccountCredentialsArgs{
 /// 				AccountName:     pulumi.String("NAME OF ACCOUNT"),
 /// 				AccountPassword: pulumi.String("PASSWORD OF ACCOUNT"),
@@ -93,6 +89,10 @@ import 'directory_config_state.dart';
 /// 			CertificateBasedAuthProperties: &appstream.DirectoryConfigCertificateBasedAuthPropertiesArgs{
 /// 				CertificateAuthorityArn: pulumi.String("ARN OF CERTIFICATE AUTHORITY"),
 /// 				Status:                  pulumi.String("STATUS OF CERTIFICATE BASED AUTHENTICATION"),
+/// 			},
+/// 			DirectoryName: pulumi.String("NAME OF DIRECTORY"),
+/// 			OrganizationalUnitDistinguishedNames: pulumi.StringArray{
+/// 				pulumi.String("DISTINGUISHED NAME"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -112,8 +112,6 @@ import 'directory_config_state.dart';
 /// }
 ///
 /// resource "aws_appstream_directoryconfig" "example" {
-///   directory_name                          = "NAME OF DIRECTORY"
-///   organizational_unit_distinguished_names = ["DISTINGUISHED NAME"]
 ///   service_account_credentials = {
 ///     account_name     = "NAME OF ACCOUNT"
 ///     account_password = "PASSWORD OF ACCOUNT"
@@ -122,6 +120,8 @@ import 'directory_config_state.dart';
 ///     certificate_authority_arn = "ARN OF CERTIFICATE AUTHORITY"
 ///     status                    = "STATUS OF CERTIFICATE BASED AUTHENTICATION"
 ///   }
+///   directory_name                          = "NAME OF DIRECTORY"
+///   organizational_unit_distinguished_names = ["DISTINGUISHED NAME"]
 /// }
 /// ```
 /// ```java
@@ -148,8 +148,6 @@ import 'directory_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DirectoryConfig("example", DirectoryConfigArgs.builder()
-///             .directoryName("NAME OF DIRECTORY")
-///             .organizationalUnitDistinguishedNames("DISTINGUISHED NAME")
 ///             .serviceAccountCredentials(DirectoryConfigServiceAccountCredentialsArgs.builder()
 ///                 .accountName("NAME OF ACCOUNT")
 ///                 .accountPassword("PASSWORD OF ACCOUNT")
@@ -158,6 +156,8 @@ import 'directory_config_state.dart';
 ///                 .certificateAuthorityArn("ARN OF CERTIFICATE AUTHORITY")
 ///                 .status("STATUS OF CERTIFICATE BASED AUTHENTICATION")
 ///                 .build())
+///             .directoryName("NAME OF DIRECTORY")
+///             .organizationalUnitDistinguishedNames("DISTINGUISHED NAME")
 ///             .build());
 ///
 ///     }
@@ -168,15 +168,15 @@ import 'directory_config_state.dart';
 ///   example:
 ///     type: aws:appstream:DirectoryConfig
 ///     properties:
-///       directoryName: NAME OF DIRECTORY
-///       organizationalUnitDistinguishedNames:
-///         - DISTINGUISHED NAME
 ///       serviceAccountCredentials:
 ///         accountName: NAME OF ACCOUNT
 ///         accountPassword: PASSWORD OF ACCOUNT
 ///       certificateBasedAuthProperties:
 ///         certificateAuthorityArn: ARN OF CERTIFICATE AUTHORITY
 ///         status: STATUS OF CERTIFICATE BASED AUTHENTICATION
+///       directoryName: NAME OF DIRECTORY
+///       organizationalUnitDistinguishedNames:
+///         - DISTINGUISHED NAME
 /// ```
 ///
 ///
@@ -213,12 +213,12 @@ class DirectoryConfig extends pulumi.CustomResource {
           'aws:appstream/directoryConfig:DirectoryConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     certificateBasedAuthProperties = registerOutput<DirectoryConfigCertificateBasedAuthProperties?>('certificateBasedAuthProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConfigCertificateBasedAuthProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTime = registerOutput<String>('createdTime');
     directoryName = registerOutput<String>('directoryName');
-    organizationalUnitDistinguishedNames = registerOutput<List<String>>('organizationalUnitDistinguishedNames');
+    organizationalUnitDistinguishedNames = registerOutput<List<String>>('organizationalUnitDistinguishedNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     serviceAccountCredentials = registerOutput<DirectoryConfigServiceAccountCredentials>('serviceAccountCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConfigServiceAccountCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -228,11 +228,12 @@ class DirectoryConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DirectoryConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DirectoryConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -249,7 +250,24 @@ class DirectoryConfig extends pulumi.CustomResource {
     certificateBasedAuthProperties = registerOutput<DirectoryConfigCertificateBasedAuthProperties?>('certificateBasedAuthProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConfigCertificateBasedAuthProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTime = registerOutput<String>('createdTime');
     directoryName = registerOutput<String>('directoryName');
-    organizationalUnitDistinguishedNames = registerOutput<List<String>>('organizationalUnitDistinguishedNames');
+    organizationalUnitDistinguishedNames = registerOutput<List<String>>('organizationalUnitDistinguishedNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    serviceAccountCredentials = registerOutput<DirectoryConfigServiceAccountCredentials>('serviceAccountCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConfigServiceAccountCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DirectoryConfig] resource.
+  DirectoryConfig.reference(String urn)
+    : super(
+        'aws:appstream/directoryConfig:DirectoryConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateBasedAuthProperties = registerOutput<DirectoryConfigCertificateBasedAuthProperties?>('certificateBasedAuthProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConfigCertificateBasedAuthProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdTime = registerOutput<String>('createdTime');
+    directoryName = registerOutput<String>('directoryName');
+    organizationalUnitDistinguishedNames = registerOutput<List<String>>('organizationalUnitDistinguishedNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     serviceAccountCredentials = registerOutput<DirectoryConfigServiceAccountCredentials>('serviceAccountCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConfigServiceAccountCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

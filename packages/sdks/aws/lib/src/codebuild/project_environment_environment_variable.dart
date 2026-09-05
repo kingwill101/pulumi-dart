@@ -6,7 +6,7 @@ class ProjectEnvironmentEnvironmentVariable {
   /// Environment variable's name or key.
   final pulumi.Input<String> name;
   /// Type of environment variable. Valid values: `PARAMETER_STORE`, `PLAINTEXT`, `SECRETS_MANAGER`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Environment variable's value.
   final pulumi.Input<String> value;
 

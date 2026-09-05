@@ -6,7 +6,7 @@ class MultitenantDistributionOriginOriginShield {
   /// Whether Origin Shield is enabled.
   final pulumi.Input<bool> enabled;
   /// AWS Region for Origin Shield. Required when `enabled` is `true`.
-  final pulumi.Input<String>? originShieldRegion;
+  final pulumi.Input<String?>? originShieldRegion;
 
   /// Creates a new [MultitenantDistributionOriginOriginShield].
   /// [enabled] Whether Origin Shield is enabled.

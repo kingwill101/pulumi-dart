@@ -6,17 +6,17 @@ import 'replicator_replication_info_list_topic_replication_topic_name_configurat
 
 class ReplicatorReplicationInfoListTopicReplication {
   /// Whether to periodically configure remote topic ACLs to match their corresponding upstream topics.
-  final pulumi.Input<bool>? copyAccessControlListsForTopics;
+  final pulumi.Input<bool?>? copyAccessControlListsForTopics;
   /// Whether to periodically configure remote topics to match their corresponding upstream topics.
-  final pulumi.Input<bool>? copyTopicConfigurations;
+  final pulumi.Input<bool?>? copyTopicConfigurations;
   /// Whether to periodically check for new topics and partitions.
-  final pulumi.Input<bool>? detectAndCopyNewTopics;
+  final pulumi.Input<bool?>? detectAndCopyNewTopics;
   /// Configuration for specifying the position in the topics to start replicating from.
-  final pulumi.Input<ReplicatorReplicationInfoListTopicReplicationStartingPosition>? startingPosition;
+  final pulumi.Input<ReplicatorReplicationInfoListTopicReplicationStartingPosition?>? startingPosition;
   /// Configuration for specifying replicated topic names should be the same as their corresponding upstream topics or prefixed with source cluster alias.
-  final pulumi.Input<ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration>? topicNameConfiguration;
+  final pulumi.Input<ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration?>? topicNameConfiguration;
   /// List of regular expression patterns indicating the topics that should not be replica.
-  final pulumi.Input<List<String>>? topicsToExcludes;
+  final pulumi.Input<List<String>?>? topicsToExcludes;
   /// List of regular expression patterns indicating the topics to copy.
   final pulumi.Input<List<String>> topicsToReplicates;
 

@@ -6,16 +6,16 @@ import 'web_acl_rule_override_action.dart';
 
 class WebAclRule {
   /// The action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Not used if `type` is `GROUP`.
-  final pulumi.Input<WebAclRuleAction>? action;
+  final pulumi.Input<WebAclRuleAction?>? action;
   /// Override the action that a group requests CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Only used if `type` is `GROUP`.
-  final pulumi.Input<WebAclRuleOverrideAction>? overrideAction;
+  final pulumi.Input<WebAclRuleOverrideAction?>? overrideAction;
   /// Specifies the order in which the rules in a WebACL are evaluated.
   /// Rules with a lower value are evaluated before rules with a higher value.
   final pulumi.Input<int> priority;
   /// ID of the associated WAF (Global) rule (e.g., `aws.waf.Rule`). WAF (Regional) rules cannot be used.
   final pulumi.Input<String> ruleId;
   /// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [WebAclRule].
   /// [action] The action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Not used if `type` is `GROUP`.
@@ -45,7 +45,7 @@ class WebAclRule {
     return WebAclRule(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       overrideAction: (() { final guardedValue = map['overrideAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleOverrideAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

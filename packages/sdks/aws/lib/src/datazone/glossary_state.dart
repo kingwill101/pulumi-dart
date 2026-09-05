@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Glossary resources.
 class GlossaryState {
   /// Description of the glossary. Must have a length between 0 and 4096.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? domainIdentifier;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? domainIdentifier;
   /// Name of the glossary. Must have length between 1 and 256.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the project that owns business glossary. Must follow regex of ^[a-zA-Z0-9_-]{1,36}$.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? owningProjectIdentifier;
+  final pulumi.Input<String?>? owningProjectIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Status of business glossary. Valid values are DISABLED and ENABLED.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [GlossaryState].
   /// [description] Description of the glossary. Must have a length between 0 and 4096.

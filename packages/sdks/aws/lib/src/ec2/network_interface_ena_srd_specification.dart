@@ -5,9 +5,9 @@ import 'network_interface_ena_srd_specification_ena_srd_udp_specification.dart';
 
 class NetworkInterfaceEnaSrdSpecification {
   /// Indicates whether ENA Express is enabled for the network interface.
-  final pulumi.Input<bool>? enaSrdEnabled;
+  final pulumi.Input<bool?>? enaSrdEnabled;
   /// Configures ENA Express for UDP network traffic. See ENA SRD UDP Specification below for more details.
-  final pulumi.Input<NetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification>? enaSrdUdpSpecification;
+  final pulumi.Input<NetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification?>? enaSrdUdpSpecification;
 
   /// Creates a new [NetworkInterfaceEnaSrdSpecification].
   /// [enaSrdEnabled] Indicates whether ENA Express is enabled for the network interface.

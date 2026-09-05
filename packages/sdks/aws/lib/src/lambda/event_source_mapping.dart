@@ -9,6 +9,7 @@ import 'event_source_mapping_provisioned_poller_config.dart';
 import 'event_source_mapping_scaling_config.dart';
 import 'event_source_mapping_self_managed_event_source.dart';
 import 'event_source_mapping_self_managed_kafka_event_source_config.dart';
+import 'event_source_mapping_source_access_configuration.dart';
 import 'event_source_mapping_state.dart';
 
 /// Manages an AWS Lambda Event Source Mapping. Use this resource to connect Lambda functions to event sources like Kinesis, DynamoDB, SQS, Amazon MQ, and Managed Streaming for Apache Kafka (MSK).
@@ -161,17 +162,17 @@ import 'event_source_mapping_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.EventSourceMapping("example", {
+///     destinationConfig: {
+///         onFailure: {
+///             destinationArn: dlq.arn,
+///         },
+///     },
 ///     eventSourceArn: exampleAwsKinesisStream.arn,
 ///     functionName: exampleAwsLambdaFunction.arn,
 ///     startingPosition: "LATEST",
 ///     batchSize: 100,
 ///     maximumBatchingWindowInSeconds: 5,
 ///     parallelizationFactor: 2,
-///     destinationConfig: {
-///         onFailure: {
-///             destinationArn: dlq.arn,
-///         },
-///     },
 /// });
 /// ```
 /// ```python
@@ -179,17 +180,17 @@ import 'event_source_mapping_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.EventSourceMapping("example",
+///     destination_config={
+///         "on_failure": {
+///             "destination_arn": dlq["arn"],
+///         },
+///     },
 ///     event_source_arn=example_aws_kinesis_stream["arn"],
 ///     function_name=example_aws_lambda_function["arn"],
 ///     starting_position="LATEST",
 ///     batch_size=100,
 ///     maximum_batching_window_in_seconds=5,
-///     parallelization_factor=2,
-///     destination_config={
-///         "on_failure": {
-///             "destination_arn": dlq["arn"],
-///         },
-///     })
+///     parallelization_factor=2)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -201,12 +202,6 @@ import 'event_source_mapping_state.dart';
 /// {
 ///     var example = new Aws.Lambda.EventSourceMapping("example", new()
 ///     {
-///         EventSourceArn = exampleAwsKinesisStream.Arn,
-///         FunctionName = exampleAwsLambdaFunction.Arn,
-///         StartingPosition = "LATEST",
-///         BatchSize = 100,
-///         MaximumBatchingWindowInSeconds = 5,
-///         ParallelizationFactor = 2,
 ///         DestinationConfig = new Aws.Lambda.Inputs.EventSourceMappingDestinationConfigArgs
 ///         {
 ///             OnFailure = new Aws.Lambda.Inputs.EventSourceMappingDestinationConfigOnFailureArgs
@@ -214,6 +209,12 @@ import 'event_source_mapping_state.dart';
 ///                 DestinationArn = dlq.Arn,
 ///             },
 ///         },
+///         EventSourceArn = exampleAwsKinesisStream.Arn,
+///         FunctionName = exampleAwsLambdaFunction.Arn,
+///         StartingPosition = "LATEST",
+///         BatchSize = 100,
+///         MaximumBatchingWindowInSeconds = 5,
+///         ParallelizationFactor = 2,
 ///     });
 ///
 /// });
@@ -229,17 +230,17 @@ import 'event_source_mapping_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewEventSourceMapping(ctx, "example", &lambda.EventSourceMappingArgs{
+/// 			DestinationConfig: &lambda.EventSourceMappingDestinationConfigArgs{
+/// 				OnFailure: &lambda.EventSourceMappingDestinationConfigOnFailureArgs{
+/// 					DestinationArn: pulumi.Any(dlq.Arn),
+/// 				},
+/// 			},
 /// 			EventSourceArn:                 pulumi.Any(exampleAwsKinesisStream.Arn),
 /// 			FunctionName:                   pulumi.Any(exampleAwsLambdaFunction.Arn),
 /// 			StartingPosition:               pulumi.String("LATEST"),
 /// 			BatchSize:                      pulumi.Int(100),
 /// 			MaximumBatchingWindowInSeconds: pulumi.Int(5),
 /// 			ParallelizationFactor:          pulumi.Int(2),
-/// 			DestinationConfig: &lambda.EventSourceMappingDestinationConfigArgs{
-/// 				OnFailure: &lambda.EventSourceMappingDestinationConfigOnFailureArgs{
-/// 					DestinationArn: pulumi.Any(dlq.Arn),
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -258,17 +259,17 @@ import 'event_source_mapping_state.dart';
 /// }
 ///
 /// resource "aws_lambda_eventsourcemapping" "example" {
+///   destination_config = {
+///     on_failure = {
+///       destination_arn = dlq.arn
+///     }
+///   }
 ///   event_source_arn                   = exampleAwsKinesisStream.arn
 ///   function_name                      = exampleAwsLambdaFunction.arn
 ///   starting_position                  = "LATEST"
 ///   batch_size                         = 100
 ///   maximum_batching_window_in_seconds = 5
 ///   parallelization_factor             = 2
-///   destination_config = {
-///     on_failure = {
-///       destination_arn = dlq.arn
-///     }
-///   }
 /// }
 /// ```
 /// ```java
@@ -295,17 +296,17 @@ import 'event_source_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
+///             .destinationConfig(EventSourceMappingDestinationConfigArgs.builder()
+///                 .onFailure(EventSourceMappingDestinationConfigOnFailureArgs.builder()
+///                     .destinationArn(dlq.arn())
+///                     .build())
+///                 .build())
 ///             .eventSourceArn(exampleAwsKinesisStream.arn())
 ///             .functionName(exampleAwsLambdaFunction.arn())
 ///             .startingPosition("LATEST")
 ///             .batchSize(100)
 ///             .maximumBatchingWindowInSeconds(5)
 ///             .parallelizationFactor(2)
-///             .destinationConfig(EventSourceMappingDestinationConfigArgs.builder()
-///                 .onFailure(EventSourceMappingDestinationConfigOnFailureArgs.builder()
-///                     .destinationArn(dlq.arn())
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -316,15 +317,15 @@ import 'event_source_mapping_state.dart';
 ///   example:
 ///     type: aws:lambda:EventSourceMapping
 ///     properties:
+///       destinationConfig:
+///         onFailure:
+///           destinationArn: ${dlq.arn}
 ///       eventSourceArn: ${exampleAwsKinesisStream.arn}
 ///       functionName: ${exampleAwsLambdaFunction.arn}
 ///       startingPosition: LATEST
 ///       batchSize: 100
 ///       maximumBatchingWindowInSeconds: 5
 ///       parallelizationFactor: 2
-///       destinationConfig:
-///         onFailure:
-///           destinationArn: ${dlq.arn}
 /// ```
 ///
 ///
@@ -336,12 +337,12 @@ import 'event_source_mapping_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.EventSourceMapping("example", {
-///     eventSourceArn: exampleAwsSqsQueue.arn,
-///     functionName: exampleAwsLambdaFunction.arn,
-///     batchSize: 10,
 ///     scalingConfig: {
 ///         maximumConcurrency: 100,
 ///     },
+///     eventSourceArn: exampleAwsSqsQueue.arn,
+///     functionName: exampleAwsLambdaFunction.arn,
+///     batchSize: 10,
 /// });
 /// ```
 /// ```python
@@ -349,12 +350,12 @@ import 'event_source_mapping_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.EventSourceMapping("example",
-///     event_source_arn=example_aws_sqs_queue["arn"],
-///     function_name=example_aws_lambda_function["arn"],
-///     batch_size=10,
 ///     scaling_config={
 ///         "maximum_concurrency": 100,
-///     })
+///     },
+///     event_source_arn=example_aws_sqs_queue["arn"],
+///     function_name=example_aws_lambda_function["arn"],
+///     batch_size=10)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -366,13 +367,13 @@ import 'event_source_mapping_state.dart';
 /// {
 ///     var example = new Aws.Lambda.EventSourceMapping("example", new()
 ///     {
-///         EventSourceArn = exampleAwsSqsQueue.Arn,
-///         FunctionName = exampleAwsLambdaFunction.Arn,
-///         BatchSize = 10,
 ///         ScalingConfig = new Aws.Lambda.Inputs.EventSourceMappingScalingConfigArgs
 ///         {
 ///             MaximumConcurrency = 100,
 ///         },
+///         EventSourceArn = exampleAwsSqsQueue.Arn,
+///         FunctionName = exampleAwsLambdaFunction.Arn,
+///         BatchSize = 10,
 ///     });
 ///
 /// });
@@ -388,12 +389,12 @@ import 'event_source_mapping_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewEventSourceMapping(ctx, "example", &lambda.EventSourceMappingArgs{
-/// 			EventSourceArn: pulumi.Any(exampleAwsSqsQueue.Arn),
-/// 			FunctionName:   pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 			BatchSize:      pulumi.Int(10),
 /// 			ScalingConfig: &lambda.EventSourceMappingScalingConfigArgs{
 /// 				MaximumConcurrency: pulumi.Int(100),
 /// 			},
+/// 			EventSourceArn: pulumi.Any(exampleAwsSqsQueue.Arn),
+/// 			FunctionName:   pulumi.Any(exampleAwsLambdaFunction.Arn),
+/// 			BatchSize:      pulumi.Int(10),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -412,12 +413,12 @@ import 'event_source_mapping_state.dart';
 /// }
 ///
 /// resource "aws_lambda_eventsourcemapping" "example" {
-///   event_source_arn = exampleAwsSqsQueue.arn
-///   function_name    = exampleAwsLambdaFunction.arn
-///   batch_size       = 10
 ///   scaling_config = {
 ///     maximum_concurrency = 100
 ///   }
+///   event_source_arn = exampleAwsSqsQueue.arn
+///   function_name    = exampleAwsLambdaFunction.arn
+///   batch_size       = 10
 /// }
 /// ```
 /// ```java
@@ -443,12 +444,12 @@ import 'event_source_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
-///             .eventSourceArn(exampleAwsSqsQueue.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
-///             .batchSize(10)
 ///             .scalingConfig(EventSourceMappingScalingConfigArgs.builder()
 ///                 .maximumConcurrency(100)
 ///                 .build())
+///             .eventSourceArn(exampleAwsSqsQueue.arn())
+///             .functionName(exampleAwsLambdaFunction.arn())
+///             .batchSize(10)
 ///             .build());
 ///
 ///     }
@@ -459,11 +460,11 @@ import 'event_source_mapping_state.dart';
 ///   example:
 ///     type: aws:lambda:EventSourceMapping
 ///     properties:
+///       scalingConfig:
+///         maximumConcurrency: 100
 ///       eventSourceArn: ${exampleAwsSqsQueue.arn}
 ///       functionName: ${exampleAwsLambdaFunction.arn}
 ///       batchSize: 10
-///       scalingConfig:
-///         maximumConcurrency: 100
 /// ```
 ///
 ///
@@ -475,8 +476,6 @@ import 'event_source_mapping_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.EventSourceMapping("example", {
-///     eventSourceArn: exampleAwsSqsQueue.arn,
-///     functionName: exampleAwsLambdaFunction.arn,
 ///     filterCriteria: {
 ///         filters: [{
 ///             pattern: JSON.stringify({
@@ -494,6 +493,8 @@ import 'event_source_mapping_state.dart';
 ///             }),
 ///         }],
 ///     },
+///     eventSourceArn: exampleAwsSqsQueue.arn,
+///     functionName: exampleAwsLambdaFunction.arn,
 /// });
 /// ```
 /// ```python
@@ -502,8 +503,6 @@ import 'event_source_mapping_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.EventSourceMapping("example",
-///     event_source_arn=example_aws_sqs_queue["arn"],
-///     function_name=example_aws_lambda_function["arn"],
 ///     filter_criteria={
 ///         "filters": [{
 ///             "pattern": json.dumps({
@@ -520,7 +519,9 @@ import 'event_source_mapping_state.dart';
 ///                 },
 ///             }),
 ///         }],
-///     })
+///     },
+///     event_source_arn=example_aws_sqs_queue["arn"],
+///     function_name=example_aws_lambda_function["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -533,8 +534,6 @@ import 'event_source_mapping_state.dart';
 /// {
 ///     var example = new Aws.Lambda.EventSourceMapping("example", new()
 ///     {
-///         EventSourceArn = exampleAwsSqsQueue.Arn,
-///         FunctionName = exampleAwsLambdaFunction.Arn,
 ///         FilterCriteria = new Aws.Lambda.Inputs.EventSourceMappingFilterCriteriaArgs
 ///         {
 ///             Filters = new[]
@@ -567,6 +566,8 @@ import 'event_source_mapping_state.dart';
 ///                 },
 ///             },
 ///         },
+///         EventSourceArn = exampleAwsSqsQueue.Arn,
+///         FunctionName = exampleAwsLambdaFunction.Arn,
 ///     });
 ///
 /// });
@@ -605,8 +606,6 @@ import 'event_source_mapping_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = lambda.NewEventSourceMapping(ctx, "example", &lambda.EventSourceMappingArgs{
-/// 			EventSourceArn: pulumi.Any(exampleAwsSqsQueue.Arn),
-/// 			FunctionName:   pulumi.Any(exampleAwsLambdaFunction.Arn),
 /// 			FilterCriteria: &lambda.EventSourceMappingFilterCriteriaArgs{
 /// 				Filters: lambda.EventSourceMappingFilterCriteriaFilterArray{
 /// 					&lambda.EventSourceMappingFilterCriteriaFilterArgs{
@@ -614,6 +613,8 @@ import 'event_source_mapping_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			EventSourceArn: pulumi.Any(exampleAwsSqsQueue.Arn),
+/// 			FunctionName:   pulumi.Any(exampleAwsLambdaFunction.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -632,8 +633,6 @@ import 'event_source_mapping_state.dart';
 /// }
 ///
 /// resource "aws_lambda_eventsourcemapping" "example" {
-///   event_source_arn = exampleAwsSqsQueue.arn
-///   function_name    = exampleAwsLambdaFunction.arn
 ///   filter_criteria = {
 ///     filters = [{
 ///       "pattern" = jsonencode({
@@ -646,6 +645,8 @@ import 'event_source_mapping_state.dart';
 ///       })
 ///     }]
 ///   }
+///   event_source_arn = exampleAwsSqsQueue.arn
+///   function_name    = exampleAwsLambdaFunction.arn
 /// }
 /// ```
 /// ```java
@@ -673,8 +674,6 @@ import 'event_source_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
-///             .eventSourceArn(exampleAwsSqsQueue.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
 ///             .filterCriteria(EventSourceMappingFilterCriteriaArgs.builder()
 ///                 .filters(EventSourceMappingFilterCriteriaFilterArgs.builder()
 ///                     .pattern(serializeJson(
@@ -693,6 +692,8 @@ import 'event_source_mapping_state.dart';
 ///                         )))
 ///                     .build())
 ///                 .build())
+///             .eventSourceArn(exampleAwsSqsQueue.arn())
+///             .functionName(exampleAwsLambdaFunction.arn())
 ///             .build());
 ///
 ///     }
@@ -703,8 +704,6 @@ import 'event_source_mapping_state.dart';
 ///   example:
 ///     type: aws:lambda:EventSourceMapping
 ///     properties:
-///       eventSourceArn: ${exampleAwsSqsQueue.arn}
-///       functionName: ${exampleAwsLambdaFunction.arn}
 ///       filterCriteria:
 ///         filters:
 ///           - pattern:
@@ -718,6 +717,8 @@ import 'event_source_mapping_state.dart';
 ///                         - 100
 ///                   Location:
 ///                     - New York
+///       eventSourceArn: ${exampleAwsSqsQueue.arn}
+///       functionName: ${exampleAwsLambdaFunction.arn}
 /// ```
 ///
 ///
@@ -729,6 +730,9 @@ import 'event_source_mapping_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.EventSourceMapping("example", {
+///     amazonManagedKafkaEventSourceConfig: {
+///         consumerGroupId: "lambda-consumer-group",
+///     },
 ///     eventSourceArn: exampleAwsMskCluster.arn,
 ///     functionName: exampleAwsLambdaFunction.arn,
 ///     topics: [
@@ -737,9 +741,6 @@ import 'event_source_mapping_state.dart';
 ///     ],
 ///     startingPosition: "TRIM_HORIZON",
 ///     batchSize: 100,
-///     amazonManagedKafkaEventSourceConfig: {
-///         consumerGroupId: "lambda-consumer-group",
-///     },
 /// });
 /// ```
 /// ```python
@@ -747,6 +748,9 @@ import 'event_source_mapping_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.EventSourceMapping("example",
+///     amazon_managed_kafka_event_source_config={
+///         "consumer_group_id": "lambda-consumer-group",
+///     },
 ///     event_source_arn=example_aws_msk_cluster["arn"],
 ///     function_name=example_aws_lambda_function["arn"],
 ///     topics=[
@@ -754,10 +758,7 @@ import 'event_source_mapping_state.dart';
 ///         "inventory",
 ///     ],
 ///     starting_position="TRIM_HORIZON",
-///     batch_size=100,
-///     amazon_managed_kafka_event_source_config={
-///         "consumer_group_id": "lambda-consumer-group",
-///     })
+///     batch_size=100)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -769,6 +770,10 @@ import 'event_source_mapping_state.dart';
 /// {
 ///     var example = new Aws.Lambda.EventSourceMapping("example", new()
 ///     {
+///         AmazonManagedKafkaEventSourceConfig = new Aws.Lambda.Inputs.EventSourceMappingAmazonManagedKafkaEventSourceConfigArgs
+///         {
+///             ConsumerGroupId = "lambda-consumer-group",
+///         },
 ///         EventSourceArn = exampleAwsMskCluster.Arn,
 ///         FunctionName = exampleAwsLambdaFunction.Arn,
 ///         Topics = new[]
@@ -778,10 +783,6 @@ import 'event_source_mapping_state.dart';
 ///         },
 ///         StartingPosition = "TRIM_HORIZON",
 ///         BatchSize = 100,
-///         AmazonManagedKafkaEventSourceConfig = new Aws.Lambda.Inputs.EventSourceMappingAmazonManagedKafkaEventSourceConfigArgs
-///         {
-///             ConsumerGroupId = "lambda-consumer-group",
-///         },
 ///     });
 ///
 /// });
@@ -797,6 +798,9 @@ import 'event_source_mapping_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewEventSourceMapping(ctx, "example", &lambda.EventSourceMappingArgs{
+/// 			AmazonManagedKafkaEventSourceConfig: &lambda.EventSourceMappingAmazonManagedKafkaEventSourceConfigArgs{
+/// 				ConsumerGroupId: pulumi.String("lambda-consumer-group"),
+/// 			},
 /// 			EventSourceArn: pulumi.Any(exampleAwsMskCluster.Arn),
 /// 			FunctionName:   pulumi.Any(exampleAwsLambdaFunction.Arn),
 /// 			Topics: pulumi.StringArray{
@@ -805,9 +809,6 @@ import 'event_source_mapping_state.dart';
 /// 			},
 /// 			StartingPosition: pulumi.String("TRIM_HORIZON"),
 /// 			BatchSize:        pulumi.Int(100),
-/// 			AmazonManagedKafkaEventSourceConfig: &lambda.EventSourceMappingAmazonManagedKafkaEventSourceConfigArgs{
-/// 				ConsumerGroupId: pulumi.String("lambda-consumer-group"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -826,14 +827,14 @@ import 'event_source_mapping_state.dart';
 /// }
 ///
 /// resource "aws_lambda_eventsourcemapping" "example" {
+///   amazon_managed_kafka_event_source_config = {
+///     consumer_group_id = "lambda-consumer-group"
+///   }
 ///   event_source_arn  = exampleAwsMskCluster.arn
 ///   function_name     = exampleAwsLambdaFunction.arn
 ///   topics            = ["orders", "inventory"]
 ///   starting_position = "TRIM_HORIZON"
 ///   batch_size        = 100
-///   amazon_managed_kafka_event_source_config = {
-///     consumer_group_id = "lambda-consumer-group"
-///   }
 /// }
 /// ```
 /// ```java
@@ -859,6 +860,9 @@ import 'event_source_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
+///             .amazonManagedKafkaEventSourceConfig(EventSourceMappingAmazonManagedKafkaEventSourceConfigArgs.builder()
+///                 .consumerGroupId("lambda-consumer-group")
+///                 .build())
 ///             .eventSourceArn(exampleAwsMskCluster.arn())
 ///             .functionName(exampleAwsLambdaFunction.arn())
 ///             .topics(
@@ -866,9 +870,6 @@ import 'event_source_mapping_state.dart';
 ///                 "inventory")
 ///             .startingPosition("TRIM_HORIZON")
 ///             .batchSize(100)
-///             .amazonManagedKafkaEventSourceConfig(EventSourceMappingAmazonManagedKafkaEventSourceConfigArgs.builder()
-///                 .consumerGroupId("lambda-consumer-group")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -879,6 +880,8 @@ import 'event_source_mapping_state.dart';
 ///   example:
 ///     type: aws:lambda:EventSourceMapping
 ///     properties:
+///       amazonManagedKafkaEventSourceConfig:
+///         consumerGroupId: lambda-consumer-group
 ///       eventSourceArn: ${exampleAwsMskCluster.arn}
 ///       functionName: ${exampleAwsLambdaFunction.arn}
 ///       topics:
@@ -886,8 +889,6 @@ import 'event_source_mapping_state.dart';
 ///         - inventory
 ///       startingPosition: TRIM_HORIZON
 ///       batchSize: 100
-///       amazonManagedKafkaEventSourceConfig:
-///         consumerGroupId: lambda-consumer-group
 /// ```
 ///
 ///
@@ -899,9 +900,6 @@ import 'event_source_mapping_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.EventSourceMapping("example", {
-///     functionName: exampleAwsLambdaFunction.arn,
-///     topics: ["orders"],
-///     startingPosition: "TRIM_HORIZON",
 ///     selfManagedEventSource: {
 ///         endpoints: {
 ///             KAFKA_BOOTSTRAP_SERVERS: "kafka1.example.com:9092,kafka2.example.com:9092",
@@ -909,6 +907,11 @@ import 'event_source_mapping_state.dart';
 ///     },
 ///     selfManagedKafkaEventSourceConfig: {
 ///         consumerGroupId: "lambda-consumer-group",
+///     },
+///     provisionedPollerConfig: {
+///         maximumPollers: 100,
+///         minimumPollers: 10,
+///         pollerGroupName: "group-123",
 ///     },
 ///     sourceAccessConfigurations: [
 ///         {
@@ -924,11 +927,9 @@ import 'event_source_mapping_state.dart';
 ///             uri: `security_group:${exampleAwsSecurityGroup.id}`,
 ///         },
 ///     ],
-///     provisionedPollerConfig: {
-///         maximumPollers: 100,
-///         minimumPollers: 10,
-///         pollerGroupName: "group-123",
-///     },
+///     functionName: exampleAwsLambdaFunction.arn,
+///     topics: ["orders"],
+///     startingPosition: "TRIM_HORIZON",
 /// });
 /// ```
 /// ```python
@@ -936,9 +937,6 @@ import 'event_source_mapping_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.EventSourceMapping("example",
-///     function_name=example_aws_lambda_function["arn"],
-///     topics=["orders"],
-///     starting_position="TRIM_HORIZON",
 ///     self_managed_event_source={
 ///         "endpoints": {
 ///             "KAFKA_BOOTSTRAP_SERVERS": "kafka1.example.com:9092,kafka2.example.com:9092",
@@ -946,6 +944,11 @@ import 'event_source_mapping_state.dart';
 ///     },
 ///     self_managed_kafka_event_source_config={
 ///         "consumer_group_id": "lambda-consumer-group",
+///     },
+///     provisioned_poller_config={
+///         "maximum_pollers": 100,
+///         "minimum_pollers": 10,
+///         "poller_group_name": "group-123",
 ///     },
 ///     source_access_configurations=[
 ///         {
@@ -961,11 +964,9 @@ import 'event_source_mapping_state.dart';
 ///             "uri": f"security_group:{example_aws_security_group['id']}",
 ///         },
 ///     ],
-///     provisioned_poller_config={
-///         "maximum_pollers": 100,
-///         "minimum_pollers": 10,
-///         "poller_group_name": "group-123",
-///     })
+///     function_name=example_aws_lambda_function["arn"],
+///     topics=["orders"],
+///     starting_position="TRIM_HORIZON")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -977,12 +978,6 @@ import 'event_source_mapping_state.dart';
 /// {
 ///     var example = new Aws.Lambda.EventSourceMapping("example", new()
 ///     {
-///         FunctionName = exampleAwsLambdaFunction.Arn,
-///         Topics = new[]
-///         {
-///             "orders",
-///         },
-///         StartingPosition = "TRIM_HORIZON",
 ///         SelfManagedEventSource = new Aws.Lambda.Inputs.EventSourceMappingSelfManagedEventSourceArgs
 ///         {
 ///             Endpoints =
@@ -993,6 +988,12 @@ import 'event_source_mapping_state.dart';
 ///         SelfManagedKafkaEventSourceConfig = new Aws.Lambda.Inputs.EventSourceMappingSelfManagedKafkaEventSourceConfigArgs
 ///         {
 ///             ConsumerGroupId = "lambda-consumer-group",
+///         },
+///         ProvisionedPollerConfig = new Aws.Lambda.Inputs.EventSourceMappingProvisionedPollerConfigArgs
+///         {
+///             MaximumPollers = 100,
+///             MinimumPollers = 10,
+///             PollerGroupName = "group-123",
 ///         },
 ///         SourceAccessConfigurations = new[]
 ///         {
@@ -1012,12 +1013,12 @@ import 'event_source_mapping_state.dart';
 ///                 Uri = $"security_group:{exampleAwsSecurityGroup.Id}",
 ///             },
 ///         },
-///         ProvisionedPollerConfig = new Aws.Lambda.Inputs.EventSourceMappingProvisionedPollerConfigArgs
+///         FunctionName = exampleAwsLambdaFunction.Arn,
+///         Topics = new[]
 ///         {
-///             MaximumPollers = 100,
-///             MinimumPollers = 10,
-///             PollerGroupName = "group-123",
+///             "orders",
 ///         },
+///         StartingPosition = "TRIM_HORIZON",
 ///     });
 ///
 /// });
@@ -1033,11 +1034,6 @@ import 'event_source_mapping_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewEventSourceMapping(ctx, "example", &lambda.EventSourceMappingArgs{
-/// 			FunctionName: pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 			Topics: pulumi.StringArray{
-/// 				pulumi.String("orders"),
-/// 			},
-/// 			StartingPosition: pulumi.String("TRIM_HORIZON"),
 /// 			SelfManagedEventSource: &lambda.EventSourceMappingSelfManagedEventSourceArgs{
 /// 				Endpoints: pulumi.StringMap{
 /// 					"KAFKA_BOOTSTRAP_SERVERS": pulumi.String("kafka1.example.com:9092,kafka2.example.com:9092"),
@@ -1045,6 +1041,11 @@ import 'event_source_mapping_state.dart';
 /// 			},
 /// 			SelfManagedKafkaEventSourceConfig: &lambda.EventSourceMappingSelfManagedKafkaEventSourceConfigArgs{
 /// 				ConsumerGroupId: pulumi.String("lambda-consumer-group"),
+/// 			},
+/// 			ProvisionedPollerConfig: &lambda.EventSourceMappingProvisionedPollerConfigArgs{
+/// 				MaximumPollers:  pulumi.Int(100),
+/// 				MinimumPollers:  pulumi.Int(10),
+/// 				PollerGroupName: pulumi.String("group-123"),
 /// 			},
 /// 			SourceAccessConfigurations: lambda.EventSourceMappingSourceAccessConfigurationArray{
 /// 				&lambda.EventSourceMappingSourceAccessConfigurationArgs{
@@ -1060,11 +1061,11 @@ import 'event_source_mapping_state.dart';
 /// 					Uri:  pulumi.Sprintf("security_group:%v", exampleAwsSecurityGroup.Id),
 /// 				},
 /// 			},
-/// 			ProvisionedPollerConfig: &lambda.EventSourceMappingProvisionedPollerConfigArgs{
-/// 				MaximumPollers:  pulumi.Int(100),
-/// 				MinimumPollers:  pulumi.Int(10),
-/// 				PollerGroupName: pulumi.String("group-123"),
+/// 			FunctionName: pulumi.Any(exampleAwsLambdaFunction.Arn),
+/// 			Topics: pulumi.StringArray{
+/// 				pulumi.String("orders"),
 /// 			},
+/// 			StartingPosition: pulumi.String("TRIM_HORIZON"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1083,9 +1084,6 @@ import 'event_source_mapping_state.dart';
 /// }
 ///
 /// resource "aws_lambda_eventsourcemapping" "example" {
-///   function_name     = exampleAwsLambdaFunction.arn
-///   topics            = ["orders"]
-///   starting_position = "TRIM_HORIZON"
 ///   self_managed_event_source = {
 ///     endpoints = {
 ///       "KAFKA_BOOTSTRAP_SERVERS" = "kafka1.example.com:9092,kafka2.example.com:9092"
@@ -1093,6 +1091,11 @@ import 'event_source_mapping_state.dart';
 ///   }
 ///   self_managed_kafka_event_source_config = {
 ///     consumer_group_id = "lambda-consumer-group"
+///   }
+///   provisioned_poller_config = {
+///     maximum_pollers   = 100
+///     minimum_pollers   = 10
+///     poller_group_name = "group-123"
 ///   }
 ///   source_access_configurations {
 ///     type = "VPC_SUBNET"
@@ -1106,11 +1109,9 @@ import 'event_source_mapping_state.dart';
 ///     type = "VPC_SECURITY_GROUP"
 ///     uri  ="security_group:${exampleAwsSecurityGroup.id}"
 ///   }
-///   provisioned_poller_config = {
-///     maximum_pollers   = 100
-///     minimum_pollers   = 10
-///     poller_group_name = "group-123"
-///   }
+///   function_name     = exampleAwsLambdaFunction.arn
+///   topics            = ["orders"]
+///   starting_position = "TRIM_HORIZON"
 /// }
 /// ```
 /// ```java
@@ -1123,8 +1124,8 @@ import 'event_source_mapping_state.dart';
 /// import com.pulumi.aws.lambda.EventSourceMappingArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingSelfManagedEventSourceArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingSelfManagedKafkaEventSourceConfigArgs;
-/// import com.pulumi.aws.lambda.inputs.EventSourceMappingSourceAccessConfigurationArgs;
 /// import com.pulumi.aws.lambda.inputs.EventSourceMappingProvisionedPollerConfigArgs;
+/// import com.pulumi.aws.lambda.inputs.EventSourceMappingSourceAccessConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1139,14 +1140,16 @@ import 'event_source_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
-///             .functionName(exampleAwsLambdaFunction.arn())
-///             .topics("orders")
-///             .startingPosition("TRIM_HORIZON")
 ///             .selfManagedEventSource(EventSourceMappingSelfManagedEventSourceArgs.builder()
 ///                 .endpoints(Map.of("KAFKA_BOOTSTRAP_SERVERS", "kafka1.example.com:9092,kafka2.example.com:9092"))
 ///                 .build())
 ///             .selfManagedKafkaEventSourceConfig(EventSourceMappingSelfManagedKafkaEventSourceConfigArgs.builder()
 ///                 .consumerGroupId("lambda-consumer-group")
+///                 .build())
+///             .provisionedPollerConfig(EventSourceMappingProvisionedPollerConfigArgs.builder()
+///                 .maximumPollers(100)
+///                 .minimumPollers(10)
+///                 .pollerGroupName("group-123")
 ///                 .build())
 ///             .sourceAccessConfigurations(
 ///                 EventSourceMappingSourceAccessConfigurationArgs.builder()
@@ -1161,11 +1164,9 @@ import 'event_source_mapping_state.dart';
 ///                     .type("VPC_SECURITY_GROUP")
 ///                     .uri(String.format("security_group:%s", exampleAwsSecurityGroup.id()))
 ///                     .build())
-///             .provisionedPollerConfig(EventSourceMappingProvisionedPollerConfigArgs.builder()
-///                 .maximumPollers(100)
-///                 .minimumPollers(10)
-///                 .pollerGroupName("group-123")
-///                 .build())
+///             .functionName(exampleAwsLambdaFunction.arn())
+///             .topics("orders")
+///             .startingPosition("TRIM_HORIZON")
 ///             .build());
 ///
 ///     }
@@ -1176,15 +1177,15 @@ import 'event_source_mapping_state.dart';
 ///   example:
 ///     type: aws:lambda:EventSourceMapping
 ///     properties:
-///       functionName: ${exampleAwsLambdaFunction.arn}
-///       topics:
-///         - orders
-///       startingPosition: TRIM_HORIZON
 ///       selfManagedEventSource:
 ///         endpoints:
 ///           KAFKA_BOOTSTRAP_SERVERS: kafka1.example.com:9092,kafka2.example.com:9092
 ///       selfManagedKafkaEventSourceConfig:
 ///         consumerGroupId: lambda-consumer-group
+///       provisionedPollerConfig:
+///         maximumPollers: 100
+///         minimumPollers: 10
+///         pollerGroupName: group-123
 ///       sourceAccessConfigurations:
 ///         - type: VPC_SUBNET
 ///           uri: subnet:${example1.id}
@@ -1192,10 +1193,10 @@ import 'event_source_mapping_state.dart';
 ///           uri: subnet:${example2.id}
 ///         - type: VPC_SECURITY_GROUP
 ///           uri: security_group:${exampleAwsSecurityGroup.id}
-///       provisionedPollerConfig:
-///         maximumPollers: 100
-///         minimumPollers: 10
-///         pollerGroupName: group-123
+///       functionName: ${exampleAwsLambdaFunction.arn}
+///       topics:
+///         - orders
+///       startingPosition: TRIM_HORIZON
 /// ```
 ///
 ///
@@ -1207,14 +1208,14 @@ import 'event_source_mapping_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.EventSourceMapping("example", {
-///     eventSourceArn: exampleAwsMqBroker.arn,
-///     functionName: exampleAwsLambdaFunction.arn,
-///     queues: "orders",
-///     batchSize: 10,
 ///     sourceAccessConfigurations: [{
 ///         type: "BASIC_AUTH",
 ///         uri: exampleAwsSecretsmanagerSecretVersion.arn,
 ///     }],
+///     eventSourceArn: exampleAwsMqBroker.arn,
+///     functionName: exampleAwsLambdaFunction.arn,
+///     queues: "orders",
+///     batchSize: 10,
 /// });
 /// ```
 /// ```python
@@ -1222,14 +1223,14 @@ import 'event_source_mapping_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.EventSourceMapping("example",
-///     event_source_arn=example_aws_mq_broker["arn"],
-///     function_name=example_aws_lambda_function["arn"],
-///     queues="orders",
-///     batch_size=10,
 ///     source_access_configurations=[{
 ///         "type": "BASIC_AUTH",
 ///         "uri": example_aws_secretsmanager_secret_version["arn"],
-///     }])
+///     }],
+///     event_source_arn=example_aws_mq_broker["arn"],
+///     function_name=example_aws_lambda_function["arn"],
+///     queues="orders",
+///     batch_size=10)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1241,10 +1242,6 @@ import 'event_source_mapping_state.dart';
 /// {
 ///     var example = new Aws.Lambda.EventSourceMapping("example", new()
 ///     {
-///         EventSourceArn = exampleAwsMqBroker.Arn,
-///         FunctionName = exampleAwsLambdaFunction.Arn,
-///         Queues = "orders",
-///         BatchSize = 10,
 ///         SourceAccessConfigurations = new[]
 ///         {
 ///             new Aws.Lambda.Inputs.EventSourceMappingSourceAccessConfigurationArgs
@@ -1253,6 +1250,10 @@ import 'event_source_mapping_state.dart';
 ///                 Uri = exampleAwsSecretsmanagerSecretVersion.Arn,
 ///             },
 ///         },
+///         EventSourceArn = exampleAwsMqBroker.Arn,
+///         FunctionName = exampleAwsLambdaFunction.Arn,
+///         Queues = "orders",
+///         BatchSize = 10,
 ///     });
 ///
 /// });
@@ -1268,16 +1269,16 @@ import 'event_source_mapping_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewEventSourceMapping(ctx, "example", &lambda.EventSourceMappingArgs{
-/// 			EventSourceArn: pulumi.Any(exampleAwsMqBroker.Arn),
-/// 			FunctionName:   pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 			Queues:         pulumi.String("orders"),
-/// 			BatchSize:      pulumi.Int(10),
 /// 			SourceAccessConfigurations: lambda.EventSourceMappingSourceAccessConfigurationArray{
 /// 				&lambda.EventSourceMappingSourceAccessConfigurationArgs{
 /// 					Type: pulumi.String("BASIC_AUTH"),
 /// 					Uri:  pulumi.Any(exampleAwsSecretsmanagerSecretVersion.Arn),
 /// 				},
 /// 			},
+/// 			EventSourceArn: pulumi.Any(exampleAwsMqBroker.Arn),
+/// 			FunctionName:   pulumi.Any(exampleAwsLambdaFunction.Arn),
+/// 			Queues:         pulumi.String("orders"),
+/// 			BatchSize:      pulumi.Int(10),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1296,14 +1297,14 @@ import 'event_source_mapping_state.dart';
 /// }
 ///
 /// resource "aws_lambda_eventsourcemapping" "example" {
-///   event_source_arn = exampleAwsMqBroker.arn
-///   function_name    = exampleAwsLambdaFunction.arn
-///   queues           = "orders"
-///   batch_size       = 10
 ///   source_access_configurations {
 ///     type = "BASIC_AUTH"
 ///     uri  = exampleAwsSecretsmanagerSecretVersion.arn
 ///   }
+///   event_source_arn = exampleAwsMqBroker.arn
+///   function_name    = exampleAwsLambdaFunction.arn
+///   queues           = "orders"
+///   batch_size       = 10
 /// }
 /// ```
 /// ```java
@@ -1329,14 +1330,14 @@ import 'event_source_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
-///             .eventSourceArn(exampleAwsMqBroker.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
-///             .queues("orders")
-///             .batchSize(10)
 ///             .sourceAccessConfigurations(EventSourceMappingSourceAccessConfigurationArgs.builder()
 ///                 .type("BASIC_AUTH")
 ///                 .uri(exampleAwsSecretsmanagerSecretVersion.arn())
 ///                 .build())
+///             .eventSourceArn(exampleAwsMqBroker.arn())
+///             .functionName(exampleAwsLambdaFunction.arn())
+///             .queues("orders")
+///             .batchSize(10)
 ///             .build());
 ///
 ///     }
@@ -1347,13 +1348,13 @@ import 'event_source_mapping_state.dart';
 ///   example:
 ///     type: aws:lambda:EventSourceMapping
 ///     properties:
+///       sourceAccessConfigurations:
+///         - type: BASIC_AUTH
+///           uri: ${exampleAwsSecretsmanagerSecretVersion.arn}
 ///       eventSourceArn: ${exampleAwsMqBroker.arn}
 ///       functionName: ${exampleAwsLambdaFunction.arn}
 ///       queues: orders
 ///       batchSize: 10
-///       sourceAccessConfigurations:
-///         - type: BASIC_AUTH
-///           uri: ${exampleAwsSecretsmanagerSecretVersion.arn}
 /// ```
 ///
 ///
@@ -1365,10 +1366,6 @@ import 'event_source_mapping_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.EventSourceMapping("example", {
-///     eventSourceArn: exampleAwsMqBroker.arn,
-///     functionName: exampleAwsLambdaFunction.arn,
-///     queues: "orders",
-///     batchSize: 1,
 ///     sourceAccessConfigurations: [
 ///         {
 ///             type: "VIRTUAL_HOST",
@@ -1379,6 +1376,10 @@ import 'event_source_mapping_state.dart';
 ///             uri: exampleAwsSecretsmanagerSecretVersion.arn,
 ///         },
 ///     ],
+///     eventSourceArn: exampleAwsMqBroker.arn,
+///     functionName: exampleAwsLambdaFunction.arn,
+///     queues: "orders",
+///     batchSize: 1,
 /// });
 /// ```
 /// ```python
@@ -1386,10 +1387,6 @@ import 'event_source_mapping_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.EventSourceMapping("example",
-///     event_source_arn=example_aws_mq_broker["arn"],
-///     function_name=example_aws_lambda_function["arn"],
-///     queues="orders",
-///     batch_size=1,
 ///     source_access_configurations=[
 ///         {
 ///             "type": "VIRTUAL_HOST",
@@ -1399,7 +1396,11 @@ import 'event_source_mapping_state.dart';
 ///             "type": "BASIC_AUTH",
 ///             "uri": example_aws_secretsmanager_secret_version["arn"],
 ///         },
-///     ])
+///     ],
+///     event_source_arn=example_aws_mq_broker["arn"],
+///     function_name=example_aws_lambda_function["arn"],
+///     queues="orders",
+///     batch_size=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1411,10 +1412,6 @@ import 'event_source_mapping_state.dart';
 /// {
 ///     var example = new Aws.Lambda.EventSourceMapping("example", new()
 ///     {
-///         EventSourceArn = exampleAwsMqBroker.Arn,
-///         FunctionName = exampleAwsLambdaFunction.Arn,
-///         Queues = "orders",
-///         BatchSize = 1,
 ///         SourceAccessConfigurations = new[]
 ///         {
 ///             new Aws.Lambda.Inputs.EventSourceMappingSourceAccessConfigurationArgs
@@ -1428,6 +1425,10 @@ import 'event_source_mapping_state.dart';
 ///                 Uri = exampleAwsSecretsmanagerSecretVersion.Arn,
 ///             },
 ///         },
+///         EventSourceArn = exampleAwsMqBroker.Arn,
+///         FunctionName = exampleAwsLambdaFunction.Arn,
+///         Queues = "orders",
+///         BatchSize = 1,
 ///     });
 ///
 /// });
@@ -1443,10 +1444,6 @@ import 'event_source_mapping_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewEventSourceMapping(ctx, "example", &lambda.EventSourceMappingArgs{
-/// 			EventSourceArn: pulumi.Any(exampleAwsMqBroker.Arn),
-/// 			FunctionName:   pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 			Queues:         pulumi.String("orders"),
-/// 			BatchSize:      pulumi.Int(1),
 /// 			SourceAccessConfigurations: lambda.EventSourceMappingSourceAccessConfigurationArray{
 /// 				&lambda.EventSourceMappingSourceAccessConfigurationArgs{
 /// 					Type: pulumi.String("VIRTUAL_HOST"),
@@ -1457,6 +1454,10 @@ import 'event_source_mapping_state.dart';
 /// 					Uri:  pulumi.Any(exampleAwsSecretsmanagerSecretVersion.Arn),
 /// 				},
 /// 			},
+/// 			EventSourceArn: pulumi.Any(exampleAwsMqBroker.Arn),
+/// 			FunctionName:   pulumi.Any(exampleAwsLambdaFunction.Arn),
+/// 			Queues:         pulumi.String("orders"),
+/// 			BatchSize:      pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1475,10 +1476,6 @@ import 'event_source_mapping_state.dart';
 /// }
 ///
 /// resource "aws_lambda_eventsourcemapping" "example" {
-///   event_source_arn = exampleAwsMqBroker.arn
-///   function_name    = exampleAwsLambdaFunction.arn
-///   queues           = "orders"
-///   batch_size       = 1
 ///   source_access_configurations {
 ///     type = "VIRTUAL_HOST"
 ///     uri  = "/production"
@@ -1487,6 +1484,10 @@ import 'event_source_mapping_state.dart';
 ///     type = "BASIC_AUTH"
 ///     uri  = exampleAwsSecretsmanagerSecretVersion.arn
 ///   }
+///   event_source_arn = exampleAwsMqBroker.arn
+///   function_name    = exampleAwsLambdaFunction.arn
+///   queues           = "orders"
+///   batch_size       = 1
 /// }
 /// ```
 /// ```java
@@ -1512,10 +1513,6 @@ import 'event_source_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
-///             .eventSourceArn(exampleAwsMqBroker.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
-///             .queues("orders")
-///             .batchSize(1)
 ///             .sourceAccessConfigurations(
 ///                 EventSourceMappingSourceAccessConfigurationArgs.builder()
 ///                     .type("VIRTUAL_HOST")
@@ -1525,6 +1522,10 @@ import 'event_source_mapping_state.dart';
 ///                     .type("BASIC_AUTH")
 ///                     .uri(exampleAwsSecretsmanagerSecretVersion.arn())
 ///                     .build())
+///             .eventSourceArn(exampleAwsMqBroker.arn())
+///             .functionName(exampleAwsLambdaFunction.arn())
+///             .queues("orders")
+///             .batchSize(1)
 ///             .build());
 ///
 ///     }
@@ -1535,15 +1536,15 @@ import 'event_source_mapping_state.dart';
 ///   example:
 ///     type: aws:lambda:EventSourceMapping
 ///     properties:
-///       eventSourceArn: ${exampleAwsMqBroker.arn}
-///       functionName: ${exampleAwsLambdaFunction.arn}
-///       queues: orders
-///       batchSize: 1
 ///       sourceAccessConfigurations:
 ///         - type: VIRTUAL_HOST
 ///           uri: /production
 ///         - type: BASIC_AUTH
 ///           uri: ${exampleAwsSecretsmanagerSecretVersion.arn}
+///       eventSourceArn: ${exampleAwsMqBroker.arn}
+///       functionName: ${exampleAwsLambdaFunction.arn}
+///       queues: orders
+///       batchSize: 1
 /// ```
 ///
 ///
@@ -1555,9 +1556,6 @@ import 'event_source_mapping_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lambda.EventSourceMapping("example", {
-///     eventSourceArn: exampleAwsDocdbCluster.arn,
-///     functionName: exampleAwsLambdaFunction.arn,
-///     startingPosition: "LATEST",
 ///     documentDbEventSourceConfig: {
 ///         databaseName: "orders",
 ///         collectionName: "transactions",
@@ -1567,6 +1565,9 @@ import 'event_source_mapping_state.dart';
 ///         type: "BASIC_AUTH",
 ///         uri: exampleAwsSecretsmanagerSecretVersion.arn,
 ///     }],
+///     eventSourceArn: exampleAwsDocdbCluster.arn,
+///     functionName: exampleAwsLambdaFunction.arn,
+///     startingPosition: "LATEST",
 /// });
 /// ```
 /// ```python
@@ -1574,9 +1575,6 @@ import 'event_source_mapping_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lambda_.EventSourceMapping("example",
-///     event_source_arn=example_aws_docdb_cluster["arn"],
-///     function_name=example_aws_lambda_function["arn"],
-///     starting_position="LATEST",
 ///     document_db_event_source_config={
 ///         "database_name": "orders",
 ///         "collection_name": "transactions",
@@ -1585,7 +1583,10 @@ import 'event_source_mapping_state.dart';
 ///     source_access_configurations=[{
 ///         "type": "BASIC_AUTH",
 ///         "uri": example_aws_secretsmanager_secret_version["arn"],
-///     }])
+///     }],
+///     event_source_arn=example_aws_docdb_cluster["arn"],
+///     function_name=example_aws_lambda_function["arn"],
+///     starting_position="LATEST")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1597,9 +1598,6 @@ import 'event_source_mapping_state.dart';
 /// {
 ///     var example = new Aws.Lambda.EventSourceMapping("example", new()
 ///     {
-///         EventSourceArn = exampleAwsDocdbCluster.Arn,
-///         FunctionName = exampleAwsLambdaFunction.Arn,
-///         StartingPosition = "LATEST",
 ///         DocumentDbEventSourceConfig = new Aws.Lambda.Inputs.EventSourceMappingDocumentDbEventSourceConfigArgs
 ///         {
 ///             DatabaseName = "orders",
@@ -1614,6 +1612,9 @@ import 'event_source_mapping_state.dart';
 ///                 Uri = exampleAwsSecretsmanagerSecretVersion.Arn,
 ///             },
 ///         },
+///         EventSourceArn = exampleAwsDocdbCluster.Arn,
+///         FunctionName = exampleAwsLambdaFunction.Arn,
+///         StartingPosition = "LATEST",
 ///     });
 ///
 /// });
@@ -1629,9 +1630,6 @@ import 'event_source_mapping_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lambda.NewEventSourceMapping(ctx, "example", &lambda.EventSourceMappingArgs{
-/// 			EventSourceArn:   pulumi.Any(exampleAwsDocdbCluster.Arn),
-/// 			FunctionName:     pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 			StartingPosition: pulumi.String("LATEST"),
 /// 			DocumentDbEventSourceConfig: &lambda.EventSourceMappingDocumentDbEventSourceConfigArgs{
 /// 				DatabaseName:   pulumi.String("orders"),
 /// 				CollectionName: pulumi.String("transactions"),
@@ -1643,6 +1641,9 @@ import 'event_source_mapping_state.dart';
 /// 					Uri:  pulumi.Any(exampleAwsSecretsmanagerSecretVersion.Arn),
 /// 				},
 /// 			},
+/// 			EventSourceArn:   pulumi.Any(exampleAwsDocdbCluster.Arn),
+/// 			FunctionName:     pulumi.Any(exampleAwsLambdaFunction.Arn),
+/// 			StartingPosition: pulumi.String("LATEST"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1661,9 +1662,6 @@ import 'event_source_mapping_state.dart';
 /// }
 ///
 /// resource "aws_lambda_eventsourcemapping" "example" {
-///   event_source_arn  = exampleAwsDocdbCluster.arn
-///   function_name     = exampleAwsLambdaFunction.arn
-///   starting_position = "LATEST"
 ///   document_db_event_source_config = {
 ///     database_name   = "orders"
 ///     collection_name = "transactions"
@@ -1673,6 +1671,9 @@ import 'event_source_mapping_state.dart';
 ///     type = "BASIC_AUTH"
 ///     uri  = exampleAwsSecretsmanagerSecretVersion.arn
 ///   }
+///   event_source_arn  = exampleAwsDocdbCluster.arn
+///   function_name     = exampleAwsLambdaFunction.arn
+///   starting_position = "LATEST"
 /// }
 /// ```
 /// ```java
@@ -1699,9 +1700,6 @@ import 'event_source_mapping_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new EventSourceMapping("example", EventSourceMappingArgs.builder()
-///             .eventSourceArn(exampleAwsDocdbCluster.arn())
-///             .functionName(exampleAwsLambdaFunction.arn())
-///             .startingPosition("LATEST")
 ///             .documentDbEventSourceConfig(EventSourceMappingDocumentDbEventSourceConfigArgs.builder()
 ///                 .databaseName("orders")
 ///                 .collectionName("transactions")
@@ -1711,6 +1709,9 @@ import 'event_source_mapping_state.dart';
 ///                 .type("BASIC_AUTH")
 ///                 .uri(exampleAwsSecretsmanagerSecretVersion.arn())
 ///                 .build())
+///             .eventSourceArn(exampleAwsDocdbCluster.arn())
+///             .functionName(exampleAwsLambdaFunction.arn())
+///             .startingPosition("LATEST")
 ///             .build());
 ///
 ///     }
@@ -1721,9 +1722,6 @@ import 'event_source_mapping_state.dart';
 ///   example:
 ///     type: aws:lambda:EventSourceMapping
 ///     properties:
-///       eventSourceArn: ${exampleAwsDocdbCluster.arn}
-///       functionName: ${exampleAwsLambdaFunction.arn}
-///       startingPosition: LATEST
 ///       documentDbEventSourceConfig:
 ///         databaseName: orders
 ///         collectionName: transactions
@@ -1731,6 +1729,9 @@ import 'event_source_mapping_state.dart';
 ///       sourceAccessConfigurations:
 ///         - type: BASIC_AUTH
 ///           uri: ${exampleAwsSecretsmanagerSecretVersion.arn}
+///       eventSourceArn: ${exampleAwsDocdbCluster.arn}
+///       functionName: ${exampleAwsLambdaFunction.arn}
+///       startingPosition: LATEST
 /// ```
 ///
 ///
@@ -1780,7 +1781,7 @@ class EventSourceMapping extends pulumi.CustomResource {
   late final pulumi.Output<String> functionName;
   /// List of current response type enums applied to the event source mapping for [AWS Lambda checkpointing](https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html#services-ddb-batchfailurereporting). Only available for SQS and stream sources (DynamoDB and Kinesis). Valid values: `ReportBatchItemFailures`.
   late final pulumi.Output<List<String>?> functionResponseTypes;
-  /// ARN of the Key Management Service (KMS) customer managed key that Lambda uses to encrypt your function's filter criteria.
+  /// ARN of the KMS customer managed key that Lambda uses to encrypt your function's filter criteria.
   late final pulumi.Output<String?> kmsKeyArn;
   /// Date this resource was last modified.
   late final pulumi.Output<String> lastModified;
@@ -1809,7 +1810,7 @@ class EventSourceMapping extends pulumi.CustomResource {
   /// Additional configuration block for Self Managed Kafka sources. Incompatible with `eventSourceArn` and `amazonManagedKafkaEventSourceConfig`. See below.
   late final pulumi.Output<EventSourceMappingSelfManagedKafkaEventSourceConfig> selfManagedKafkaEventSourceConfig;
   /// For Self Managed Kafka sources, the access configuration for the source. If set, configuration must also include `selfManagedEventSource`. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sourceAccessConfigurations;
+  late final pulumi.Output<List<EventSourceMappingSourceAccessConfiguration>?> sourceAccessConfigurations;
   /// Position in the stream where AWS Lambda should start reading. Must be one of `AT_TIMESTAMP` (Kinesis only), `LATEST` or `TRIM_HORIZON` if getting events from Kinesis, DynamoDB, MSK or Self Managed Apache Kafka. Must not be provided if getting events from SQS. More information about these positions can be found in the [AWS DynamoDB Streams API Reference](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_streams_GetShardIterator.html) and [AWS Kinesis API Reference](https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType).
   late final pulumi.Output<String?> startingPosition;
   /// Timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of the data record which to start reading when using `startingPosition` set to `AT_TIMESTAMP`. If a record with this exact timestamp does not exist, the next later record is chosen. If the timestamp is older than the current trim horizon, the oldest available record is chosen.
@@ -1843,7 +1844,7 @@ class EventSourceMapping extends pulumi.CustomResource {
           'aws:lambda/eventSourceMapping:EventSourceMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     amazonManagedKafkaEventSourceConfig = registerOutput<EventSourceMappingAmazonManagedKafkaEventSourceConfig>('amazonManagedKafkaEventSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingAmazonManagedKafkaEventSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
@@ -1856,7 +1857,7 @@ class EventSourceMapping extends pulumi.CustomResource {
     filterCriteria = registerOutput<EventSourceMappingFilterCriteria?>('filterCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingFilterCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
-    functionResponseTypes = registerOutput<List<String>?>('functionResponseTypes');
+    functionResponseTypes = registerOutput<List<String>?>('functionResponseTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     lastModified = registerOutput<String>('lastModified');
     lastProcessingResult = registerOutput<String>('lastProcessingResult');
@@ -1871,14 +1872,14 @@ class EventSourceMapping extends pulumi.CustomResource {
     scalingConfig = registerOutput<EventSourceMappingScalingConfig?>('scalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfManagedEventSource = registerOutput<EventSourceMappingSelfManagedEventSource?>('selfManagedEventSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingSelfManagedEventSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfManagedKafkaEventSourceConfig = registerOutput<EventSourceMappingSelfManagedKafkaEventSourceConfig>('selfManagedKafkaEventSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingSelfManagedKafkaEventSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sourceAccessConfigurations = registerOutput<List<Map<String, dynamic>>?>('sourceAccessConfigurations');
+    sourceAccessConfigurations = registerOutput<List<EventSourceMappingSourceAccessConfiguration>?>('sourceAccessConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventSourceMappingSourceAccessConfiguration>(guardedValue, (value) => EventSourceMappingSourceAccessConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     startingPosition = registerOutput<String?>('startingPosition');
     startingPositionTimestamp = registerOutput<String?>('startingPositionTimestamp');
     state = registerOutput<String>('state');
     stateTransitionReason = registerOutput<String>('stateTransitionReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    topics = registerOutput<List<String>?>('topics');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topics = registerOutput<List<String>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tumblingWindowInSeconds = registerOutput<int?>('tumblingWindowInSeconds');
     useResourceTimeoutForPropagation = registerOutput<bool?>('useResourceTimeoutForPropagation');
     uuid = registerOutput<String>('uuid');
@@ -1889,11 +1890,12 @@ class EventSourceMapping extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventSourceMappingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventSourceMapping._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1918,7 +1920,7 @@ class EventSourceMapping extends pulumi.CustomResource {
     filterCriteria = registerOutput<EventSourceMappingFilterCriteria?>('filterCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingFilterCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionArn = registerOutput<String>('functionArn');
     functionName = registerOutput<String>('functionName');
-    functionResponseTypes = registerOutput<List<String>?>('functionResponseTypes');
+    functionResponseTypes = registerOutput<List<String>?>('functionResponseTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     lastModified = registerOutput<String>('lastModified');
     lastProcessingResult = registerOutput<String>('lastProcessingResult');
@@ -1933,14 +1935,62 @@ class EventSourceMapping extends pulumi.CustomResource {
     scalingConfig = registerOutput<EventSourceMappingScalingConfig?>('scalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfManagedEventSource = registerOutput<EventSourceMappingSelfManagedEventSource?>('selfManagedEventSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingSelfManagedEventSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfManagedKafkaEventSourceConfig = registerOutput<EventSourceMappingSelfManagedKafkaEventSourceConfig>('selfManagedKafkaEventSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingSelfManagedKafkaEventSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sourceAccessConfigurations = registerOutput<List<Map<String, dynamic>>?>('sourceAccessConfigurations');
+    sourceAccessConfigurations = registerOutput<List<EventSourceMappingSourceAccessConfiguration>?>('sourceAccessConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventSourceMappingSourceAccessConfiguration>(guardedValue, (value) => EventSourceMappingSourceAccessConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     startingPosition = registerOutput<String?>('startingPosition');
     startingPositionTimestamp = registerOutput<String?>('startingPositionTimestamp');
     this.state = registerOutput<String>('state');
     stateTransitionReason = registerOutput<String>('stateTransitionReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    topics = registerOutput<List<String>?>('topics');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topics = registerOutput<List<String>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tumblingWindowInSeconds = registerOutput<int?>('tumblingWindowInSeconds');
+    useResourceTimeoutForPropagation = registerOutput<bool?>('useResourceTimeoutForPropagation');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [EventSourceMapping] resource.
+  EventSourceMapping.reference(String urn)
+    : super(
+        'aws:lambda/eventSourceMapping:EventSourceMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    amazonManagedKafkaEventSourceConfig = registerOutput<EventSourceMappingAmazonManagedKafkaEventSourceConfig>('amazonManagedKafkaEventSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingAmazonManagedKafkaEventSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    batchSize = registerOutput<int?>('batchSize');
+    bisectBatchOnFunctionError = registerOutput<bool?>('bisectBatchOnFunctionError');
+    destinationConfig = registerOutput<EventSourceMappingDestinationConfig?>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    documentDbEventSourceConfig = registerOutput<EventSourceMappingDocumentDbEventSourceConfig?>('documentDbEventSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingDocumentDbEventSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enabled = registerOutput<bool?>('enabled');
+    eventSourceArn = registerOutput<String?>('eventSourceArn');
+    filterCriteria = registerOutput<EventSourceMappingFilterCriteria?>('filterCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingFilterCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    functionArn = registerOutput<String>('functionArn');
+    functionName = registerOutput<String>('functionName');
+    functionResponseTypes = registerOutput<List<String>?>('functionResponseTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    lastModified = registerOutput<String>('lastModified');
+    lastProcessingResult = registerOutput<String>('lastProcessingResult');
+    maximumBatchingWindowInSeconds = registerOutput<int?>('maximumBatchingWindowInSeconds');
+    maximumRecordAgeInSeconds = registerOutput<int>('maximumRecordAgeInSeconds');
+    maximumRetryAttempts = registerOutput<int>('maximumRetryAttempts');
+    metricsConfig = registerOutput<EventSourceMappingMetricsConfig?>('metricsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingMetricsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parallelizationFactor = registerOutput<int>('parallelizationFactor');
+    provisionedPollerConfig = registerOutput<EventSourceMappingProvisionedPollerConfig?>('provisionedPollerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingProvisionedPollerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    queues = registerOutput<String?>('queues');
+    region = registerOutput<String>('region');
+    scalingConfig = registerOutput<EventSourceMappingScalingConfig?>('scalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfManagedEventSource = registerOutput<EventSourceMappingSelfManagedEventSource?>('selfManagedEventSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingSelfManagedEventSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfManagedKafkaEventSourceConfig = registerOutput<EventSourceMappingSelfManagedKafkaEventSourceConfig>('selfManagedKafkaEventSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSourceMappingSelfManagedKafkaEventSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceAccessConfigurations = registerOutput<List<EventSourceMappingSourceAccessConfiguration>?>('sourceAccessConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventSourceMappingSourceAccessConfiguration>(guardedValue, (value) => EventSourceMappingSourceAccessConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    startingPosition = registerOutput<String?>('startingPosition');
+    startingPositionTimestamp = registerOutput<String?>('startingPositionTimestamp');
+    state = registerOutput<String>('state');
+    stateTransitionReason = registerOutput<String>('stateTransitionReason');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topics = registerOutput<List<String>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tumblingWindowInSeconds = registerOutput<int?>('tumblingWindowInSeconds');
     useResourceTimeoutForPropagation = registerOutput<bool?>('useResourceTimeoutForPropagation');
     uuid = registerOutput<String>('uuid');

@@ -13,14 +13,14 @@ class HubContentReferenceArgs {
   /// Name of the private SageMaker Hub to add the content reference to.
   final pulumi.Input<String> hubName;
   /// Minimum version of the hub content to reference. Use `"1.0.0"` to support all versions. Changing this value to an empty string forces replacement of the resource.
-  final pulumi.Input<String>? minVersion;
+  final pulumi.Input<String?>? minVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the public SageMaker JumpStart hub content to reference. The ARN must not include a version suffix.
   final pulumi.Input<String> sagemakerPublicHubContentArn;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<HubContentReferenceTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<HubContentReferenceTimeouts?>? timeouts;
 
   /// Creates a new [HubContentReferenceArgs].
   /// [hubContentName] Name of the hub content reference.

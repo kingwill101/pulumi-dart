@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApplicationAssignment resources.
 class ApplicationAssignmentState {
   /// ARN of the application.
-  final pulumi.Input<String>? applicationArn;
+  final pulumi.Input<String?>? applicationArn;
   /// An identifier for an object in IAM Identity Center, such as a user or group.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<String?>? principalType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ApplicationAssignmentState].
   /// [applicationArn] ARN of the application.

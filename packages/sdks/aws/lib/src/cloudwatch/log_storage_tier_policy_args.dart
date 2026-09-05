@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudwatch_log_storage_tier_policy_log_storage_tier_policy_args_doc}
 class LogStorageTierPolicyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Storage tier to set for the account. Valid values are `STANDARD` or `INTELLIGENT_TIERING`.
   final pulumi.Input<String> storageTier;
 

@@ -6,7 +6,7 @@ class CertificateAuthorityRevocationConfigurationOcspConfiguration {
   /// Boolean value that specifies whether a custom OCSP responder is enabled.
   final pulumi.Input<bool> enabled;
   /// CNAME specifying a customized OCSP domain. Note: The value of the CNAME must not include a protocol prefix such as "http://" or "https://".
-  final pulumi.Input<String>? ocspCustomCname;
+  final pulumi.Input<String?>? ocspCustomCname;
 
   /// Creates a new [CertificateAuthorityRevocationConfigurationOcspConfiguration].
   /// [enabled] Boolean value that specifies whether a custom OCSP responder is enabled.

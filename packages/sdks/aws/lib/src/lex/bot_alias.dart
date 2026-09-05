@@ -172,7 +172,7 @@ class BotAlias extends pulumi.CustomResource {
           'aws:lex/botAlias:BotAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     botName = registerOutput<String>('botName');
@@ -191,11 +191,12 @@ class BotAlias extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BotAliasState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BotAlias._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -209,6 +210,27 @@ class BotAlias extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    botName = registerOutput<String>('botName');
+    botVersion = registerOutput<String>('botVersion');
+    checksum = registerOutput<String>('checksum');
+    conversationLogs = registerOutput<BotAliasConversationLogs?>('conversationLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotAliasConversationLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [BotAlias] resource.
+  BotAlias.reference(String urn)
+    : super(
+        'aws:lex/botAlias:BotAlias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     botName = registerOutput<String>('botName');
     botVersion = registerOutput<String>('botVersion');

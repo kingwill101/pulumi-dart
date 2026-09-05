@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering KeyGroup resources.
 class KeyGroupState {
   /// A comment to describe the key group..
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// The identifier for this version of the key group.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// A list of the identifiers of the public keys in the key group.
-  final pulumi.Input<List<String>>? items;
+  final pulumi.Input<List<String>?>? items;
   /// A name to identify the key group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [KeyGroupState].
   /// [comment] A comment to describe the key group..

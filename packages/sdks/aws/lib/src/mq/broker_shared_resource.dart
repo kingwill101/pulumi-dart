@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BrokerSharedResource {
   /// DNS names through which the broker reaches the shared resource.
-  final pulumi.Input<List<String>>? dnsNames;
+  final pulumi.Input<List<String>?>? dnsNames;
   /// ARN of the shared resource.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
   /// Status of the shared resource.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type of the shared resource, either `RESOURCE_SHARE` or `RESOURCE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [BrokerSharedResource].
   /// [dnsNames] DNS names through which the broker reaches the shared resource.

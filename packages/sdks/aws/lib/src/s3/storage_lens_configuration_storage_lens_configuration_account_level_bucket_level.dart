@@ -10,17 +10,17 @@ import 'storage_lens_configuration_storage_lens_configuration_account_level_buck
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel {
   /// S3 Storage Lens activity metrics. See `activityMetrics` above for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics>? activityMetrics;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics?>? activityMetrics;
   /// Advanced cost-optimization metrics for S3 Storage Lens. See `advancedCostOptimizationMetrics` above for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics>? advancedCostOptimizationMetrics;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics?>? advancedCostOptimizationMetrics;
   /// Advanced data-protection metrics for S3 Storage Lens. See `advancedDataProtectionMetrics` above for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics>? advancedDataProtectionMetrics;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics?>? advancedDataProtectionMetrics;
   /// Advanced performance metrics for S3 Storage Lens. See `advancedPerformanceMetrics` above for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedPerformanceMetrics>? advancedPerformanceMetrics;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedPerformanceMetrics?>? advancedPerformanceMetrics;
   /// Detailed status code metrics for S3 Storage Lens. See `detailedStatusCodeMetrics` above for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics>? detailedStatusCodeMetrics;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics?>? detailedStatusCodeMetrics;
   /// Prefix-level metrics for S3 Storage Lens. See `prefixLevel` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel>? prefixLevel;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel?>? prefixLevel;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel].
   /// [activityMetrics] S3 Storage Lens activity metrics. See `activityMetrics` above for more details.

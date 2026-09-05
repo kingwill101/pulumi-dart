@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AmiFromInstanceEphemeralBlockDevice {
   /// Path at which the device is exposed to created instances.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// Name for the ephemeral device, of the form "ephemeralN" where
   /// *N* is a volume number starting from zero.
-  final pulumi.Input<String>? virtualName;
+  final pulumi.Input<String?>? virtualName;
 
   /// Creates a new [AmiFromInstanceEphemeralBlockDevice].
   /// [deviceName] Path at which the device is exposed to created instances.

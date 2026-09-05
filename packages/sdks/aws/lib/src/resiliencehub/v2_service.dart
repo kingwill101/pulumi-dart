@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_service_args.dart';
+import 'v2_service_associated_system.dart';
 import 'v2_service_permission_model.dart';
 import 'v2_service_state.dart';
 
@@ -17,11 +18,11 @@ import 'v2_service_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.resiliencehub.V2Service("example", {
-///     name: "example-service",
-///     regions: ["us-west-2"],
 ///     permissionModel: {
 ///         invokerRoleName: "AWSResilienceHubAssessmentRole",
 ///     },
+///     name: "example-service",
+///     regions: ["us-west-2"],
 /// });
 /// ```
 /// ```python
@@ -29,11 +30,11 @@ import 'v2_service_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.resiliencehub.V2Service("example",
-///     name="example-service",
-///     regions=["us-west-2"],
 ///     permission_model={
 ///         "invoker_role_name": "AWSResilienceHubAssessmentRole",
-///     })
+///     },
+///     name="example-service",
+///     regions=["us-west-2"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,14 +46,14 @@ import 'v2_service_state.dart';
 /// {
 ///     var example = new Aws.ResilienceHub.V2Service("example", new()
 ///     {
+///         PermissionModel = new Aws.ResilienceHub.Inputs.V2ServicePermissionModelArgs
+///         {
+///             InvokerRoleName = "AWSResilienceHubAssessmentRole",
+///         },
 ///         Name = "example-service",
 ///         Regions = new[]
 ///         {
 ///             "us-west-2",
-///         },
-///         PermissionModel = new Aws.ResilienceHub.Inputs.V2ServicePermissionModelArgs
-///         {
-///             InvokerRoleName = "AWSResilienceHubAssessmentRole",
 ///         },
 ///     });
 ///
@@ -69,12 +70,12 @@ import 'v2_service_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := resiliencehub.NewV2Service(ctx, "example", &resiliencehub.V2ServiceArgs{
+/// 			PermissionModel: &resiliencehub.V2ServicePermissionModelArgs{
+/// 				InvokerRoleName: pulumi.String("AWSResilienceHubAssessmentRole"),
+/// 			},
 /// 			Name: pulumi.String("example-service"),
 /// 			Regions: pulumi.StringArray{
 /// 				pulumi.String("us-west-2"),
-/// 			},
-/// 			PermissionModel: &resiliencehub.V2ServicePermissionModelArgs{
-/// 				InvokerRoleName: pulumi.String("AWSResilienceHubAssessmentRole"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -94,11 +95,11 @@ import 'v2_service_state.dart';
 /// }
 ///
 /// resource "aws_resiliencehub_v2service" "example" {
-///   name    = "example-service"
-///   regions = ["us-west-2"]
 ///   permission_model = {
 ///     invoker_role_name = "AWSResilienceHubAssessmentRole"
 ///   }
+///   name    = "example-service"
+///   regions = ["us-west-2"]
 /// }
 /// ```
 /// ```java
@@ -124,11 +125,11 @@ import 'v2_service_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2Service("example", V2ServiceArgs.builder()
-///             .name("example-service")
-///             .regions("us-west-2")
 ///             .permissionModel(V2ServicePermissionModelArgs.builder()
 ///                 .invokerRoleName("AWSResilienceHubAssessmentRole")
 ///                 .build())
+///             .name("example-service")
+///             .regions("us-west-2")
 ///             .build());
 ///
 ///     }
@@ -139,11 +140,11 @@ import 'v2_service_state.dart';
 ///   example:
 ///     type: aws:resiliencehub:V2Service
 ///     properties:
+///       permissionModel:
+///         invokerRoleName: AWSResilienceHubAssessmentRole
 ///       name: example-service
 ///       regions:
 ///         - us-west-2
-///       permissionModel:
-///         invokerRoleName: AWSResilienceHubAssessmentRole
 /// ```
 ///
 ///
@@ -155,12 +156,15 @@ import 'v2_service_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.resiliencehub.V2Policy("example", {
-///     name: "example-policy",
 ///     availabilitySlo: {
 ///         target: 99.9,
 ///     },
+///     name: "example-policy",
 /// });
 /// const exampleV2Service = new aws.resiliencehub.V2Service("example", {
+///     permissionModel: {
+///         invokerRoleName: "AWSResilienceHubAssessmentRole",
+///     },
 ///     name: "example-service",
 ///     description: "Production API service",
 ///     policyArn: example.arn,
@@ -168,9 +172,6 @@ import 'v2_service_state.dart';
 ///         "us-west-2",
 ///         "us-east-1",
 ///     ],
-///     permissionModel: {
-///         invokerRoleName: "AWSResilienceHubAssessmentRole",
-///     },
 ///     tags: {
 ///         Environment: "production",
 ///     },
@@ -181,11 +182,14 @@ import 'v2_service_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.resiliencehub.V2Policy("example",
-///     name="example-policy",
 ///     availability_slo={
 ///         "target": 99.9,
-///     })
+///     },
+///     name="example-policy")
 /// example_v2_service = aws.resiliencehub.V2Service("example",
+///     permission_model={
+///         "invoker_role_name": "AWSResilienceHubAssessmentRole",
+///     },
 ///     name="example-service",
 ///     description="Production API service",
 ///     policy_arn=example.arn,
@@ -193,9 +197,6 @@ import 'v2_service_state.dart';
 ///         "us-west-2",
 ///         "us-east-1",
 ///     ],
-///     permission_model={
-///         "invoker_role_name": "AWSResilienceHubAssessmentRole",
-///     },
 ///     tags={
 ///         "Environment": "production",
 ///     })
@@ -210,15 +211,19 @@ import 'v2_service_state.dart';
 /// {
 ///     var example = new Aws.ResilienceHub.V2Policy("example", new()
 ///     {
-///         Name = "example-policy",
 ///         AvailabilitySlo = new Aws.ResilienceHub.Inputs.V2PolicyAvailabilitySloArgs
 ///         {
 ///             Target = 99.9,
 ///         },
+///         Name = "example-policy",
 ///     });
 ///
 ///     var exampleV2Service = new Aws.ResilienceHub.V2Service("example", new()
 ///     {
+///         PermissionModel = new Aws.ResilienceHub.Inputs.V2ServicePermissionModelArgs
+///         {
+///             InvokerRoleName = "AWSResilienceHubAssessmentRole",
+///         },
 ///         Name = "example-service",
 ///         Description = "Production API service",
 ///         PolicyArn = example.Arn,
@@ -226,10 +231,6 @@ import 'v2_service_state.dart';
 ///         {
 ///             "us-west-2",
 ///             "us-east-1",
-///         },
-///         PermissionModel = new Aws.ResilienceHub.Inputs.V2ServicePermissionModelArgs
-///         {
-///             InvokerRoleName = "AWSResilienceHubAssessmentRole",
 ///         },
 ///         Tags =
 ///         {
@@ -250,24 +251,24 @@ import 'v2_service_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := resiliencehub.NewV2Policy(ctx, "example", &resiliencehub.V2PolicyArgs{
-/// 			Name: pulumi.String("example-policy"),
 /// 			AvailabilitySlo: &resiliencehub.V2PolicyAvailabilitySloArgs{
 /// 				Target: pulumi.Float64(99.9),
 /// 			},
+/// 			Name: pulumi.String("example-policy"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = resiliencehub.NewV2Service(ctx, "example", &resiliencehub.V2ServiceArgs{
+/// 			PermissionModel: &resiliencehub.V2ServicePermissionModelArgs{
+/// 				InvokerRoleName: pulumi.String("AWSResilienceHubAssessmentRole"),
+/// 			},
 /// 			Name:        pulumi.String("example-service"),
 /// 			Description: pulumi.String("Production API service"),
 /// 			PolicyArn:   example.Arn,
 /// 			Regions: pulumi.StringArray{
 /// 				pulumi.String("us-west-2"),
 /// 				pulumi.String("us-east-1"),
-/// 			},
-/// 			PermissionModel: &resiliencehub.V2ServicePermissionModelArgs{
-/// 				InvokerRoleName: pulumi.String("AWSResilienceHubAssessmentRole"),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
@@ -290,19 +291,19 @@ import 'v2_service_state.dart';
 /// }
 ///
 /// resource "aws_resiliencehub_v2policy" "example" {
-///   name = "example-policy"
 ///   availability_slo = {
 ///     target = 99.9
 ///   }
+///   name = "example-policy"
 /// }
 /// resource "aws_resiliencehub_v2service" "example" {
+///   permission_model = {
+///     invoker_role_name = "AWSResilienceHubAssessmentRole"
+///   }
 ///   name        = "example-service"
 ///   description = "Production API service"
 ///   policy_arn  = aws_resiliencehub_v2policy.example.arn
 ///   regions     = ["us-west-2", "us-east-1"]
-///   permission_model = {
-///     invoker_role_name = "AWSResilienceHubAssessmentRole"
-///   }
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -334,22 +335,22 @@ import 'v2_service_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new V2Policy("example", V2PolicyArgs.builder()
-///             .name("example-policy")
 ///             .availabilitySlo(V2PolicyAvailabilitySloArgs.builder()
 ///                 .target(99.9)
 ///                 .build())
+///             .name("example-policy")
 ///             .build());
 ///
 ///         var exampleV2Service = new V2Service("exampleV2Service", V2ServiceArgs.builder()
+///             .permissionModel(V2ServicePermissionModelArgs.builder()
+///                 .invokerRoleName("AWSResilienceHubAssessmentRole")
+///                 .build())
 ///             .name("example-service")
 ///             .description("Production API service")
 ///             .policyArn(example.arn())
 ///             .regions(
 ///                 "us-west-2",
 ///                 "us-east-1")
-///             .permissionModel(V2ServicePermissionModelArgs.builder()
-///                 .invokerRoleName("AWSResilienceHubAssessmentRole")
-///                 .build())
 ///             .tags(Map.of("Environment", "production"))
 ///             .build());
 ///
@@ -361,21 +362,21 @@ import 'v2_service_state.dart';
 ///   example:
 ///     type: aws:resiliencehub:V2Policy
 ///     properties:
-///       name: example-policy
 ///       availabilitySlo:
 ///         target: 99.9
+///       name: example-policy
 ///   exampleV2Service:
 ///     type: aws:resiliencehub:V2Service
 ///     name: example
 ///     properties:
+///       permissionModel:
+///         invokerRoleName: AWSResilienceHubAssessmentRole
 ///       name: example-service
 ///       description: Production API service
 ///       policyArn: ${example.arn}
 ///       regions:
 ///         - us-west-2
 ///         - us-east-1
-///       permissionModel:
-///         invokerRoleName: AWSResilienceHubAssessmentRole
 ///       tags:
 ///         Environment: production
 /// ```
@@ -390,14 +391,14 @@ import 'v2_service_state.dart';
 ///
 /// const example = new aws.resiliencehub.V2System("example", {name: "example-system"});
 /// const exampleV2Service = new aws.resiliencehub.V2Service("example", {
-///     name: "example-service",
-///     regions: ["us-west-2"],
 ///     permissionModel: {
 ///         invokerRoleName: "AWSResilienceHubAssessmentRole",
 ///     },
 ///     associatedSystems: [{
 ///         systemArn: example.arn,
 ///     }],
+///     name: "example-service",
+///     regions: ["us-west-2"],
 /// });
 /// ```
 /// ```python
@@ -406,14 +407,14 @@ import 'v2_service_state.dart';
 ///
 /// example = aws.resiliencehub.V2System("example", name="example-system")
 /// example_v2_service = aws.resiliencehub.V2Service("example",
-///     name="example-service",
-///     regions=["us-west-2"],
 ///     permission_model={
 ///         "invoker_role_name": "AWSResilienceHubAssessmentRole",
 ///     },
 ///     associated_systems=[{
 ///         "system_arn": example.arn,
-///     }])
+///     }],
+///     name="example-service",
+///     regions=["us-west-2"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -430,11 +431,6 @@ import 'v2_service_state.dart';
 ///
 ///     var exampleV2Service = new Aws.ResilienceHub.V2Service("example", new()
 ///     {
-///         Name = "example-service",
-///         Regions = new[]
-///         {
-///             "us-west-2",
-///         },
 ///         PermissionModel = new Aws.ResilienceHub.Inputs.V2ServicePermissionModelArgs
 ///         {
 ///             InvokerRoleName = "AWSResilienceHubAssessmentRole",
@@ -445,6 +441,11 @@ import 'v2_service_state.dart';
 ///             {
 ///                 SystemArn = example.Arn,
 ///             },
+///         },
+///         Name = "example-service",
+///         Regions = new[]
+///         {
+///             "us-west-2",
 ///         },
 ///     });
 ///
@@ -467,10 +468,6 @@ import 'v2_service_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = resiliencehub.NewV2Service(ctx, "example", &resiliencehub.V2ServiceArgs{
-/// 			Name: pulumi.String("example-service"),
-/// 			Regions: pulumi.StringArray{
-/// 				pulumi.String("us-west-2"),
-/// 			},
 /// 			PermissionModel: &resiliencehub.V2ServicePermissionModelArgs{
 /// 				InvokerRoleName: pulumi.String("AWSResilienceHubAssessmentRole"),
 /// 			},
@@ -478,6 +475,10 @@ import 'v2_service_state.dart';
 /// 				&resiliencehub.V2ServiceAssociatedSystemArgs{
 /// 					SystemArn: example.Arn,
 /// 				},
+/// 			},
+/// 			Name: pulumi.String("example-service"),
+/// 			Regions: pulumi.StringArray{
+/// 				pulumi.String("us-west-2"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -500,14 +501,14 @@ import 'v2_service_state.dart';
 ///   name = "example-system"
 /// }
 /// resource "aws_resiliencehub_v2service" "example" {
-///   name    = "example-service"
-///   regions = ["us-west-2"]
 ///   permission_model = {
 ///     invoker_role_name = "AWSResilienceHubAssessmentRole"
 ///   }
 ///   associated_systems {
 ///     system_arn = aws_resiliencehub_v2system.example.arn
 ///   }
+///   name    = "example-service"
+///   regions = ["us-west-2"]
 /// }
 /// ```
 /// ```java
@@ -540,14 +541,14 @@ import 'v2_service_state.dart';
 ///             .build());
 ///
 ///         var exampleV2Service = new V2Service("exampleV2Service", V2ServiceArgs.builder()
-///             .name("example-service")
-///             .regions("us-west-2")
 ///             .permissionModel(V2ServicePermissionModelArgs.builder()
 ///                 .invokerRoleName("AWSResilienceHubAssessmentRole")
 ///                 .build())
 ///             .associatedSystems(V2ServiceAssociatedSystemArgs.builder()
 ///                 .systemArn(example.arn())
 ///                 .build())
+///             .name("example-service")
+///             .regions("us-west-2")
 ///             .build());
 ///
 ///     }
@@ -563,13 +564,13 @@ import 'v2_service_state.dart';
 ///     type: aws:resiliencehub:V2Service
 ///     name: example
 ///     properties:
-///       name: example-service
-///       regions:
-///         - us-west-2
 ///       permissionModel:
 ///         invokerRoleName: AWSResilienceHubAssessmentRole
 ///       associatedSystems:
 ///         - systemArn: ${example.arn}
+///       name: example-service
+///       regions:
+///         - us-west-2
 /// ```
 ///
 ///
@@ -579,7 +580,7 @@ import 'v2_service_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Resilience Hub V2 Service.
+/// - `arn` (String) ARN of the Resilience Hub V2 Service.
 ///
 ///
 /// Using `pulumi import`, import Resilience Hub V2 Service using the `arn`. For example:
@@ -591,7 +592,7 @@ class V2Service extends pulumi.CustomResource {
   /// ARN of the service.
   late final pulumi.Output<String> arn;
   /// Systems to associate with the service. See `associatedSystem` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> associatedSystems;
+  late final pulumi.Output<List<V2ServiceAssociatedSystem>?> associatedSystems;
   /// Dependency discovery. Valid values: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> dependencyDiscovery;
   /// Description of the service.
@@ -627,10 +628,10 @@ class V2Service extends pulumi.CustomResource {
           'aws:resiliencehub/v2Service:V2Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    associatedSystems = registerOutput<List<Map<String, dynamic>>?>('associatedSystems');
+    associatedSystems = registerOutput<List<V2ServiceAssociatedSystem>?>('associatedSystems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2ServiceAssociatedSystem>(guardedValue, (value) => V2ServiceAssociatedSystem.fromMap((value as Map).cast<String, dynamic>())); });
     dependencyDiscovery = registerOutput<String>('dependencyDiscovery');
     description = registerOutput<String?>('description');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -638,9 +639,9 @@ class V2Service extends pulumi.CustomResource {
     permissionModel = registerOutput<V2ServicePermissionModel>('permissionModel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2ServicePermissionModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyArn = registerOutput<String?>('policyArn');
     region = registerOutput<String>('region');
-    regions = registerOutput<List<String>>('regions');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [V2Service] resource's state with the given [name] and [id].
@@ -648,11 +649,12 @@ class V2Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -667,7 +669,7 @@ class V2Service extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    associatedSystems = registerOutput<List<Map<String, dynamic>>?>('associatedSystems');
+    associatedSystems = registerOutput<List<V2ServiceAssociatedSystem>?>('associatedSystems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2ServiceAssociatedSystem>(guardedValue, (value) => V2ServiceAssociatedSystem.fromMap((value as Map).cast<String, dynamic>())); });
     dependencyDiscovery = registerOutput<String>('dependencyDiscovery');
     description = registerOutput<String?>('description');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
@@ -675,8 +677,31 @@ class V2Service extends pulumi.CustomResource {
     permissionModel = registerOutput<V2ServicePermissionModel>('permissionModel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2ServicePermissionModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyArn = registerOutput<String?>('policyArn');
     region = registerOutput<String>('region');
-    regions = registerOutput<List<String>>('regions');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [V2Service] resource.
+  V2Service.reference(String urn)
+    : super(
+        'aws:resiliencehub/v2Service:V2Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    associatedSystems = registerOutput<List<V2ServiceAssociatedSystem>?>('associatedSystems', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2ServiceAssociatedSystem>(guardedValue, (value) => V2ServiceAssociatedSystem.fromMap((value as Map).cast<String, dynamic>())); });
+    dependencyDiscovery = registerOutput<String>('dependencyDiscovery');
+    description = registerOutput<String?>('description');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    permissionModel = registerOutput<V2ServicePermissionModel>('permissionModel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2ServicePermissionModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policyArn = registerOutput<String?>('policyArn');
+    region = registerOutput<String>('region');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

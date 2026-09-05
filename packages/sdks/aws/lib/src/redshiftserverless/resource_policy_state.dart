@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ResourcePolicy resources.
 class ResourcePolicyState {
   /// The policy to create or update. For example, the following policy grants a user authorization to restore a snapshot.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the account to create or update a resource policy for.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? region;
+  /// ARN of the account to create or update a resource policy for.
+  final pulumi.Input<String?>? resourceArn;
 
   /// Creates a new [ResourcePolicyState].
   /// [policy] The policy to create or update. For example, the following policy grants a user authorization to restore a snapshot.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceArn] The Amazon Resource Name (ARN) of the account to create or update a resource policy for.
+  /// [resourceArn] ARN of the account to create or update a resource policy for.
   const ResourcePolicyState({
     this.policy,
     this.region,

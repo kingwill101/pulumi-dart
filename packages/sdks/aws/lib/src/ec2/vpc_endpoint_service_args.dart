@@ -10,27 +10,27 @@ class VpcEndpointServiceArgs {
   /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
   final pulumi.Input<bool> acceptanceRequired;
   /// The ARNs of one or more principals allowed to discover the endpoint service.
-  final pulumi.Input<List<String>>? allowedPrincipals;
-  /// Amazon Resource Names (ARNs) of one or more Gateway Load Balancers for the endpoint service.
-  final pulumi.Input<List<String>>? gatewayLoadBalancerArns;
-  /// Amazon Resource Names (ARNs) of one or more Network Load Balancers for the endpoint service.
-  final pulumi.Input<List<String>>? networkLoadBalancerArns;
+  final pulumi.Input<List<String>?>? allowedPrincipals;
+  /// ARNs of one or more Gateway Load Balancers for the endpoint service.
+  final pulumi.Input<List<String>?>? gatewayLoadBalancerArns;
+  /// ARNs of one or more Network Load Balancers for the endpoint service.
+  final pulumi.Input<List<String>?>? networkLoadBalancerArns;
   /// The private DNS name for the service.
-  final pulumi.Input<String>? privateDnsName;
+  final pulumi.Input<String?>? privateDnsName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The supported IP address types. The possible values are `ipv4` and `ipv6`.
-  final pulumi.Input<List<String>>? supportedIpAddressTypes;
+  final pulumi.Input<List<String>?>? supportedIpAddressTypes;
   /// The set of regions from which service consumers can access the service.
-  final pulumi.Input<List<String>>? supportedRegions;
+  final pulumi.Input<List<String>?>? supportedRegions;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VpcEndpointServiceArgs].
   /// [acceptanceRequired] Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
   /// [allowedPrincipals] The ARNs of one or more principals allowed to discover the endpoint service.
-  /// [gatewayLoadBalancerArns] Amazon Resource Names (ARNs) of one or more Gateway Load Balancers for the endpoint service.
-  /// [networkLoadBalancerArns] Amazon Resource Names (ARNs) of one or more Network Load Balancers for the endpoint service.
+  /// [gatewayLoadBalancerArns] ARNs of one or more Gateway Load Balancers for the endpoint service.
+  /// [networkLoadBalancerArns] ARNs of one or more Network Load Balancers for the endpoint service.
   /// [privateDnsName] The private DNS name for the service.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [supportedIpAddressTypes] The supported IP address types. The possible values are `ipv4` and `ipv6`.

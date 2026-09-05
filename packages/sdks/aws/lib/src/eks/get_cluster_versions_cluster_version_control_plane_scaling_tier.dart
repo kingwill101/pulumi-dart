@@ -41,10 +41,10 @@ class GetClusterVersionsClusterVersionControlPlaneScalingTier {
 
   factory GetClusterVersionsClusterVersionControlPlaneScalingTier.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsClusterVersionControlPlaneScalingTier(
-      apiRequestConcurrency: pulumi.Input.fromValue(map['apiRequestConcurrency'] as int),
-      clusterDatabaseSizeGb: pulumi.Input.fromValue(map['clusterDatabaseSizeGb'] as int),
+      apiRequestConcurrency: pulumi.Input.fromValue((map['apiRequestConcurrency'] as num).toInt()),
+      clusterDatabaseSizeGb: pulumi.Input.fromValue((map['clusterDatabaseSizeGb'] as num).toInt()),
       controlPlaneComponentConfigOverrides: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterVersionsClusterVersionControlPlaneScalingTierControlPlaneComponentConfigOverride>(map['controlPlaneComponentConfigOverrides']!, (value) => GetClusterVersionsClusterVersionControlPlaneScalingTierControlPlaneComponentConfigOverride.fromMap((value as Map).cast<String, dynamic>()))),
-      podSchedulingRatePerSecond: pulumi.Input.fromValue(map['podSchedulingRatePerSecond'] as int),
+      podSchedulingRatePerSecond: pulumi.Input.fromValue((map['podSchedulingRatePerSecond'] as num).toInt()),
       tierName: pulumi.Input.fromValue(map['tierName'] as String),
     );
   }

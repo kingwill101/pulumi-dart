@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OrganizationalUnitAssociation resources.
 class OrganizationalUnitAssociationState {
   /// ARN of the notification configuration to associate the organizational unit with.
-  final pulumi.Input<String>? notificationConfigurationArn;
+  final pulumi.Input<String?>? notificationConfigurationArn;
   /// ID of the organizational unit or ID of the root to associate with the notification configuration. Can be a root ID (e.g., `r-1234`), or an organization ID (e.g., `o-1234567890`).
-  final pulumi.Input<String>? organizationalUnitId;
+  final pulumi.Input<String?>? organizationalUnitId;
 
   /// Creates a new [OrganizationalUnitAssociationState].
   /// [notificationConfigurationArn] ARN of the notification configuration to associate the organizational unit with.

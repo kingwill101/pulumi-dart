@@ -8,23 +8,23 @@ import 'job_definition_eks_properties_pod_properties_container_volume_mount.dart
 
 class JobDefinitionEksPropertiesPodPropertiesContainer {
   /// Array of arguments to the entrypoint. If this isn't specified, the CMD of the container image is used. This corresponds to the args member in the Entrypoint portion of the Pod in Kubernetes. Environment variable references are expanded using the container's environment.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Entrypoint for the container. This isn't run within a shell. If this isn't specified, the ENTRYPOINT of the container image is used. Environment variable references are expanded using the container's environment.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// Environment variables to pass to a container. See `env` below.
-  final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesContainerEnv>>? envs;
+  final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesContainerEnv>?>? envs;
   /// Docker image used to start the container.
   final pulumi.Input<String> image;
   /// Image pull policy for the container. Supported values are `Always`, `IfNotPresent`, and `Never`.
-  final pulumi.Input<String>? imagePullPolicy;
+  final pulumi.Input<String?>? imagePullPolicy;
   /// Name of the container. If the name isn't specified, the default name "Default" is used. Each container in a pod must have a unique name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type and amount of resources to assign to a container. See `resources` below.
-  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesContainerResources>? resources;
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesContainerResources?>? resources;
   /// Security context for a job. See `securityContext` below.
-  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesContainerSecurityContext>? securityContext;
+  final pulumi.Input<JobDefinitionEksPropertiesPodPropertiesContainerSecurityContext?>? securityContext;
   /// Volume mounts for the container. See `volumeMounts` below.
-  final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount>>? volumeMounts;
+  final pulumi.Input<List<JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount>?>? volumeMounts;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesContainer].
   /// [args] Array of arguments to the entrypoint. If this isn't specified, the CMD of the container image is used. This corresponds to the args member in the Entrypoint portion of the Pod in Kubernetes. Environment variable references are expanded using the container's environment.

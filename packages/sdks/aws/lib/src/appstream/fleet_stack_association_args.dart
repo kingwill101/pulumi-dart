@@ -10,7 +10,7 @@ class FleetStackAssociationArgs {
   /// Name of the fleet.
   final pulumi.Input<String> fleetName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the stack.
   final pulumi.Input<String> stackName;
 

@@ -6,9 +6,9 @@ import 'index_index_statistic_text_document_statistic.dart';
 
 class IndexIndexStatistic {
   /// A block that specifies the number of question and answer topics in the index. Detailed below.
-  final pulumi.Input<List<IndexIndexStatisticFaqStatistic>>? faqStatistics;
+  final pulumi.Input<List<IndexIndexStatisticFaqStatistic>?>? faqStatistics;
   /// A block that specifies the number of text documents indexed. Detailed below.
-  final pulumi.Input<List<IndexIndexStatisticTextDocumentStatistic>>? textDocumentStatistics;
+  final pulumi.Input<List<IndexIndexStatisticTextDocumentStatistic>?>? textDocumentStatistics;
 
   /// Creates a new [IndexIndexStatistic].
   /// [faqStatistics] A block that specifies the number of question and answer topics in the index. Detailed below.

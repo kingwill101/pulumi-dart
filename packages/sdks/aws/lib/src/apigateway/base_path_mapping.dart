@@ -59,7 +59,7 @@ class BasePathMapping extends pulumi.CustomResource {
           'aws:apigateway/basePathMapping:BasePathMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     basePath = registerOutput<String?>('basePath');
     domainName = registerOutput<String>('domainName');
@@ -74,11 +74,12 @@ class BasePathMapping extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BasePathMappingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BasePathMapping._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -92,6 +93,23 @@ class BasePathMapping extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    basePath = registerOutput<String?>('basePath');
+    domainName = registerOutput<String>('domainName');
+    domainNameId = registerOutput<String?>('domainNameId');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    stageName = registerOutput<String?>('stageName');
+  }
+
+  /// Creates a typed reference to an existing [BasePathMapping] resource.
+  BasePathMapping.reference(String urn)
+    : super(
+        'aws:apigateway/basePathMapping:BasePathMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     basePath = registerOutput<String?>('basePath');
     domainName = registerOutput<String>('domainName');
     domainNameId = registerOutput<String?>('domainNameId');

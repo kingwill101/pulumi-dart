@@ -8,29 +8,29 @@ import 'stack_set_instance_stack_instance_summary.dart';
 /// Input properties used for looking up and filtering StackSetInstance resources.
 class StackSetInstanceState {
   /// Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account. Valid values: `SELF` (default), `DELEGATED_ADMIN`.
-  final pulumi.Input<String>? callAs;
+  final pulumi.Input<String?>? callAs;
   /// AWS Organizations accounts to which StackSets deploys. StackSets doesn't deploy stack instances to the organization management account, even if the organization management account is in your organization or in an OU in your organization. Drift detection is not possible for this argument. See deploymentTargets below.
-  final pulumi.Input<StackSetInstanceDeploymentTargets>? deploymentTargets;
+  final pulumi.Input<StackSetInstanceDeploymentTargets?>? deploymentTargets;
   /// Preferences for how AWS CloudFormation performs a stack set operation.
-  final pulumi.Input<StackSetInstanceOperationPreferences>? operationPreferences;
+  final pulumi.Input<StackSetInstanceOperationPreferences?>? operationPreferences;
   /// Organizational unit ID in which the stack is deployed.
-  final pulumi.Input<String>? organizationalUnitId;
+  final pulumi.Input<String?>? organizationalUnitId;
   /// Key-value map of input parameters to override from the StackSet for this Instance.
-  final pulumi.Input<Map<String, String>>? parameterOverrides;
+  final pulumi.Input<Map<String, String>?>? parameterOverrides;
   /// Target AWS Region to create a Stack based on the StackSet. Defaults to current region. Use `stackSetInstanceRegion` instead.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// During resource destroy, remove Instance from StackSet while keeping the Stack and its associated resources. Must be enabled in the state _before_ destroy operation to take effect. You cannot reassociate a retained Stack or add an existing, saved Stack to a new StackSet. Defaults to `false`.
-  final pulumi.Input<bool>? retainStack;
+  final pulumi.Input<bool?>? retainStack;
   /// Stack identifier.
-  final pulumi.Input<String>? stackId;
+  final pulumi.Input<String?>? stackId;
   /// List of stack instances created from an organizational unit deployment target. This will only be populated when `deploymentTargets` is set. See `stackInstanceSummaries`.
-  final pulumi.Input<List<StackSetInstanceStackInstanceSummary>>? stackInstanceSummaries;
+  final pulumi.Input<List<StackSetInstanceStackInstanceSummary>?>? stackInstanceSummaries;
   /// Target AWS Region to create a Stack based on the StackSet. Defaults to current region.
-  final pulumi.Input<String>? stackSetInstanceRegion;
+  final pulumi.Input<String?>? stackSetInstanceRegion;
   /// Name of the StackSet.
-  final pulumi.Input<String>? stackSetName;
+  final pulumi.Input<String?>? stackSetName;
 
   /// Creates a new [StackSetInstanceState].
   /// [accountId] Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.

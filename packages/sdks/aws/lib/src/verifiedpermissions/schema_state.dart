@@ -6,13 +6,13 @@ import 'schema_definition.dart';
 /// Input properties used for looking up and filtering Schema resources.
 class SchemaState {
   /// The definition of the schema.
-  final pulumi.Input<SchemaDefinition>? definition;
+  final pulumi.Input<SchemaDefinition?>? definition;
   /// (Optional) Identifies the namespaces of the entities referenced by this schema.
-  final pulumi.Input<List<String>>? namespaces;
+  final pulumi.Input<List<String>?>? namespaces;
   /// The ID of the Policy Store.
-  final pulumi.Input<String>? policyStoreId;
+  final pulumi.Input<String?>? policyStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [SchemaState].
   /// [definition] The definition of the schema.

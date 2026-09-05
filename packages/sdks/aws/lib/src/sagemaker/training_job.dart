@@ -3,12 +3,15 @@ import 'training_job_algorithm_specification.dart';
 import 'training_job_args.dart';
 import 'training_job_checkpoint_config.dart';
 import 'training_job_debug_hook_config.dart';
+import 'training_job_debug_rule_configuration.dart';
 import 'training_job_experiment_config.dart';
 import 'training_job_infra_check_config.dart';
+import 'training_job_input_data_config.dart';
 import 'training_job_mlflow_config.dart';
 import 'training_job_model_package_config.dart';
 import 'training_job_output_data_config.dart';
 import 'training_job_profiler_config.dart';
+import 'training_job_profiler_rule_configuration.dart';
 import 'training_job_remote_debug_config.dart';
 import 'training_job_resource_config.dart';
 import 'training_job_retry_strategy.dart';
@@ -32,8 +35,6 @@ import 'training_job_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.TrainingJob("example", {
-///     trainingJobName: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     algorithmSpecification: {
 ///         trainingInputMode: "File",
 ///         trainingImage: exampleAwsSagemakerPrebuiltEcrImage.registryPath,
@@ -49,6 +50,8 @@ import 'training_job_vpc_config.dart';
 ///     stoppingCondition: {
 ///         maxRuntimeInSeconds: 3600,
 ///     },
+///     trainingJobName: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -56,8 +59,6 @@ import 'training_job_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.TrainingJob("example",
-///     training_job_name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     algorithm_specification={
 ///         "training_input_mode": "File",
 ///         "training_image": example_aws_sagemaker_prebuilt_ecr_image["registryPath"],
@@ -72,7 +73,9 @@ import 'training_job_vpc_config.dart';
 ///     },
 ///     stopping_condition={
 ///         "max_runtime_in_seconds": 3600,
-///     })
+///     },
+///     training_job_name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -84,8 +87,6 @@ import 'training_job_vpc_config.dart';
 /// {
 ///     var example = new Aws.Sagemaker.TrainingJob("example", new()
 ///     {
-///         TrainingJobName = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         AlgorithmSpecification = new Aws.Sagemaker.Inputs.TrainingJobAlgorithmSpecificationArgs
 ///         {
 ///             TrainingInputMode = "File",
@@ -105,6 +106,8 @@ import 'training_job_vpc_config.dart';
 ///         {
 ///             MaxRuntimeInSeconds = 3600,
 ///         },
+///         TrainingJobName = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -120,8 +123,6 @@ import 'training_job_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewTrainingJob(ctx, "example", &sagemaker.TrainingJobArgs{
-/// 			TrainingJobName: pulumi.String("example"),
-/// 			RoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 			AlgorithmSpecification: &sagemaker.TrainingJobAlgorithmSpecificationArgs{
 /// 				TrainingInputMode: pulumi.String("File"),
 /// 				TrainingImage:     pulumi.Any(exampleAwsSagemakerPrebuiltEcrImage.RegistryPath),
@@ -137,6 +138,8 @@ import 'training_job_vpc_config.dart';
 /// 			StoppingCondition: &sagemaker.TrainingJobStoppingConditionArgs{
 /// 				MaxRuntimeInSeconds: pulumi.Int(3600),
 /// 			},
+/// 			TrainingJobName: pulumi.String("example"),
+/// 			RoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -155,8 +158,6 @@ import 'training_job_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_trainingjob" "example" {
-///   training_job_name = "example"
-///   role_arn          = exampleAwsIamRole.arn
 ///   algorithm_specification = {
 ///     training_input_mode = "File"
 ///     training_image      = exampleAwsSagemakerPrebuiltEcrImage.registryPath
@@ -172,6 +173,8 @@ import 'training_job_vpc_config.dart';
 ///   stopping_condition = {
 ///     max_runtime_in_seconds = 3600
 ///   }
+///   training_job_name = "example"
+///   role_arn          = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -200,8 +203,6 @@ import 'training_job_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
-///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
 ///                 .trainingInputMode("File")
 ///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.registryPath())
@@ -217,6 +218,8 @@ import 'training_job_vpc_config.dart';
 ///             .stoppingCondition(TrainingJobStoppingConditionArgs.builder()
 ///                 .maxRuntimeInSeconds(3600)
 ///                 .build())
+///             .trainingJobName("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -227,8 +230,6 @@ import 'training_job_vpc_config.dart';
 ///   example:
 ///     type: aws:sagemaker:TrainingJob
 ///     properties:
-///       trainingJobName: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       algorithmSpecification:
 ///         trainingInputMode: File
 ///         trainingImage: ${exampleAwsSagemakerPrebuiltEcrImage.registryPath}
@@ -240,6 +241,8 @@ import 'training_job_vpc_config.dart';
 ///         volumeSizeInGb: 30
 ///       stoppingCondition:
 ///         maxRuntimeInSeconds: 3600
+///       trainingJobName: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -251,8 +254,6 @@ import 'training_job_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.TrainingJob("example", {
-///     trainingJobName: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     algorithmSpecification: {
 ///         trainingInputMode: "File",
 ///         trainingImage: exampleAwsSagemakerPrebuiltEcrImage.registryPath,
@@ -272,6 +273,8 @@ import 'training_job_vpc_config.dart';
 ///         securityGroupIds: [exampleAwsSecurityGroup.id],
 ///         subnets: [exampleAwsSubnet.id],
 ///     },
+///     trainingJobName: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -279,8 +282,6 @@ import 'training_job_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.TrainingJob("example",
-///     training_job_name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     algorithm_specification={
 ///         "training_input_mode": "File",
 ///         "training_image": example_aws_sagemaker_prebuilt_ecr_image["registryPath"],
@@ -299,7 +300,9 @@ import 'training_job_vpc_config.dart';
 ///     vpc_config={
 ///         "security_group_ids": [example_aws_security_group["id"]],
 ///         "subnets": [example_aws_subnet["id"]],
-///     })
+///     },
+///     training_job_name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -311,8 +314,6 @@ import 'training_job_vpc_config.dart';
 /// {
 ///     var example = new Aws.Sagemaker.TrainingJob("example", new()
 ///     {
-///         TrainingJobName = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         AlgorithmSpecification = new Aws.Sagemaker.Inputs.TrainingJobAlgorithmSpecificationArgs
 ///         {
 ///             TrainingInputMode = "File",
@@ -343,6 +344,8 @@ import 'training_job_vpc_config.dart';
 ///                 exampleAwsSubnet.Id,
 ///             },
 ///         },
+///         TrainingJobName = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -358,8 +361,6 @@ import 'training_job_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewTrainingJob(ctx, "example", &sagemaker.TrainingJobArgs{
-/// 			TrainingJobName: pulumi.String("example"),
-/// 			RoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 			AlgorithmSpecification: &sagemaker.TrainingJobAlgorithmSpecificationArgs{
 /// 				TrainingInputMode: pulumi.String("File"),
 /// 				TrainingImage:     pulumi.Any(exampleAwsSagemakerPrebuiltEcrImage.RegistryPath),
@@ -383,6 +384,8 @@ import 'training_job_vpc_config.dart';
 /// 					exampleAwsSubnet.Id,
 /// 				},
 /// 			},
+/// 			TrainingJobName: pulumi.String("example"),
+/// 			RoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -401,8 +404,6 @@ import 'training_job_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_trainingjob" "example" {
-///   training_job_name = "example"
-///   role_arn          = exampleAwsIamRole.arn
 ///   algorithm_specification = {
 ///     training_input_mode = "File"
 ///     training_image      = exampleAwsSagemakerPrebuiltEcrImage.registryPath
@@ -422,6 +423,8 @@ import 'training_job_vpc_config.dart';
 ///     security_group_ids = [exampleAwsSecurityGroup.id]
 ///     subnets            = [exampleAwsSubnet.id]
 ///   }
+///   training_job_name = "example"
+///   role_arn          = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -451,8 +454,6 @@ import 'training_job_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
-///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
 ///                 .trainingInputMode("File")
 ///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.registryPath())
@@ -472,6 +473,8 @@ import 'training_job_vpc_config.dart';
 ///                 .securityGroupIds(exampleAwsSecurityGroup.id())
 ///                 .subnets(exampleAwsSubnet.id())
 ///                 .build())
+///             .trainingJobName("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -482,8 +485,6 @@ import 'training_job_vpc_config.dart';
 ///   example:
 ///     type: aws:sagemaker:TrainingJob
 ///     properties:
-///       trainingJobName: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       algorithmSpecification:
 ///         trainingInputMode: File
 ///         trainingImage: ${exampleAwsSagemakerPrebuiltEcrImage.registryPath}
@@ -500,6 +501,8 @@ import 'training_job_vpc_config.dart';
 ///           - ${exampleAwsSecurityGroup.id}
 ///         subnets:
 ///           - ${exampleAwsSubnet.id}
+///       trainingJobName: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -511,26 +514,11 @@ import 'training_job_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.TrainingJob("example", {
-///     trainingJobName: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     algorithmSpecification: {
 ///         trainingInputMode: "File",
 ///         trainingImage: exampleAwsSagemakerPrebuiltEcrImage.registryPath,
 ///         enableSagemakerMetricsTimeSeries: true,
 ///     },
-///     hyperParameters: {
-///         mini_batch_size: "200",
-///         epochs: "10",
-///     },
-///     inputDataConfigs: [{
-///         channelName: "train",
-///         dataSource: {
-///             s3DataSource: {
-///                 s3DataType: "S3Prefix",
-///                 s3Uri: `s3://${exampleAwsS3Bucket.bucket}/train/`,
-///             },
-///         },
-///     }],
 ///     outputDataConfig: {
 ///         s3OutputPath: `s3://${exampleAwsS3Bucket.bucket}/output/`,
 ///     },
@@ -542,6 +530,21 @@ import 'training_job_vpc_config.dart';
 ///     stoppingCondition: {
 ///         maxRuntimeInSeconds: 3600,
 ///     },
+///     inputDataConfigs: [{
+///         dataSource: {
+///             s3DataSource: {
+///                 s3DataType: "S3Prefix",
+///                 s3Uri: `s3://${exampleAwsS3Bucket.bucket}/train/`,
+///             },
+///         },
+///         channelName: "train",
+///     }],
+///     trainingJobName: "example",
+///     roleArn: exampleAwsIamRole.arn,
+///     hyperParameters: {
+///         mini_batch_size: "200",
+///         epochs: "10",
+///     },
 /// });
 /// ```
 /// ```python
@@ -549,26 +552,11 @@ import 'training_job_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.TrainingJob("example",
-///     training_job_name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     algorithm_specification={
 ///         "training_input_mode": "File",
 ///         "training_image": example_aws_sagemaker_prebuilt_ecr_image["registryPath"],
 ///         "enable_sagemaker_metrics_time_series": True,
 ///     },
-///     hyper_parameters={
-///         "mini_batch_size": "200",
-///         "epochs": "10",
-///     },
-///     input_data_configs=[{
-///         "channel_name": "train",
-///         "data_source": {
-///             "s3_data_source": {
-///                 "s3_data_type": "S3Prefix",
-///                 "s3_uri": f"s3://{example_aws_s3_bucket['bucket']}/train/",
-///             },
-///         },
-///     }],
 ///     output_data_config={
 ///         "s3_output_path": f"s3://{example_aws_s3_bucket['bucket']}/output/",
 ///     },
@@ -579,6 +567,21 @@ import 'training_job_vpc_config.dart';
 ///     },
 ///     stopping_condition={
 ///         "max_runtime_in_seconds": 3600,
+///     },
+///     input_data_configs=[{
+///         "data_source": {
+///             "s3_data_source": {
+///                 "s3_data_type": "S3Prefix",
+///                 "s3_uri": f"s3://{example_aws_s3_bucket['bucket']}/train/",
+///             },
+///         },
+///         "channel_name": "train",
+///     }],
+///     training_job_name="example",
+///     role_arn=example_aws_iam_role["arn"],
+///     hyper_parameters={
+///         "mini_batch_size": "200",
+///         "epochs": "10",
 ///     })
 /// ```
 /// ```csharp
@@ -591,33 +594,11 @@ import 'training_job_vpc_config.dart';
 /// {
 ///     var example = new Aws.Sagemaker.TrainingJob("example", new()
 ///     {
-///         TrainingJobName = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         AlgorithmSpecification = new Aws.Sagemaker.Inputs.TrainingJobAlgorithmSpecificationArgs
 ///         {
 ///             TrainingInputMode = "File",
 ///             TrainingImage = exampleAwsSagemakerPrebuiltEcrImage.RegistryPath,
 ///             EnableSagemakerMetricsTimeSeries = true,
-///         },
-///         HyperParameters =
-///         {
-///             { "mini_batch_size", "200" },
-///             { "epochs", "10" },
-///         },
-///         InputDataConfigs = new[]
-///         {
-///             new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigArgs
-///             {
-///                 ChannelName = "train",
-///                 DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceArgs
-///                 {
-///                     S3DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceS3DataSourceArgs
-///                     {
-///                         S3DataType = "S3Prefix",
-///                         S3Uri = $"s3://{exampleAwsS3Bucket.Bucket}/train/",
-///                     },
-///                 },
-///             },
 ///         },
 ///         OutputDataConfig = new Aws.Sagemaker.Inputs.TrainingJobOutputDataConfigArgs
 ///         {
@@ -632,6 +613,28 @@ import 'training_job_vpc_config.dart';
 ///         StoppingCondition = new Aws.Sagemaker.Inputs.TrainingJobStoppingConditionArgs
 ///         {
 ///             MaxRuntimeInSeconds = 3600,
+///         },
+///         InputDataConfigs = new[]
+///         {
+///             new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigArgs
+///             {
+///                 DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceArgs
+///                 {
+///                     S3DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceS3DataSourceArgs
+///                     {
+///                         S3DataType = "S3Prefix",
+///                         S3Uri = $"s3://{exampleAwsS3Bucket.Bucket}/train/",
+///                     },
+///                 },
+///                 ChannelName = "train",
+///             },
+///         },
+///         TrainingJobName = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         HyperParameters =
+///         {
+///             { "mini_batch_size", "200" },
+///             { "epochs", "10" },
 ///         },
 ///     });
 ///
@@ -648,27 +651,10 @@ import 'training_job_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewTrainingJob(ctx, "example", &sagemaker.TrainingJobArgs{
-/// 			TrainingJobName: pulumi.String("example"),
-/// 			RoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 			AlgorithmSpecification: &sagemaker.TrainingJobAlgorithmSpecificationArgs{
 /// 				TrainingInputMode:                pulumi.String("File"),
 /// 				TrainingImage:                    pulumi.Any(exampleAwsSagemakerPrebuiltEcrImage.RegistryPath),
 /// 				EnableSagemakerMetricsTimeSeries: pulumi.Bool(true),
-/// 			},
-/// 			HyperParameters: pulumi.StringMap{
-/// 				"mini_batch_size": pulumi.String("200"),
-/// 				"epochs":          pulumi.String("10"),
-/// 			},
-/// 			InputDataConfigs: sagemaker.TrainingJobInputDataConfigArray{
-/// 				&sagemaker.TrainingJobInputDataConfigArgs{
-/// 					ChannelName: pulumi.String("train"),
-/// 					DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceArgs{
-/// 						S3DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceS3DataSourceArgs{
-/// 							S3DataType: pulumi.String("S3Prefix"),
-/// 							S3Uri:      pulumi.Sprintf("s3://%v/train/", exampleAwsS3Bucket.Bucket),
-/// 						},
-/// 					},
-/// 				},
 /// 			},
 /// 			OutputDataConfig: &sagemaker.TrainingJobOutputDataConfigArgs{
 /// 				S3OutputPath: pulumi.Sprintf("s3://%v/output/", exampleAwsS3Bucket.Bucket),
@@ -680,6 +666,23 @@ import 'training_job_vpc_config.dart';
 /// 			},
 /// 			StoppingCondition: &sagemaker.TrainingJobStoppingConditionArgs{
 /// 				MaxRuntimeInSeconds: pulumi.Int(3600),
+/// 			},
+/// 			InputDataConfigs: sagemaker.TrainingJobInputDataConfigArray{
+/// 				&sagemaker.TrainingJobInputDataConfigArgs{
+/// 					DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceArgs{
+/// 						S3DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceS3DataSourceArgs{
+/// 							S3DataType: pulumi.String("S3Prefix"),
+/// 							S3Uri:      pulumi.Sprintf("s3://%v/train/", exampleAwsS3Bucket.Bucket),
+/// 						},
+/// 					},
+/// 					ChannelName: pulumi.String("train"),
+/// 				},
+/// 			},
+/// 			TrainingJobName: pulumi.String("example"),
+/// 			RoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
+/// 			HyperParameters: pulumi.StringMap{
+/// 				"mini_batch_size": pulumi.String("200"),
+/// 				"epochs":          pulumi.String("10"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -699,25 +702,10 @@ import 'training_job_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_trainingjob" "example" {
-///   training_job_name = "example"
-///   role_arn          = exampleAwsIamRole.arn
 ///   algorithm_specification = {
 ///     training_input_mode                  = "File"
 ///     training_image                       = exampleAwsSagemakerPrebuiltEcrImage.registryPath
 ///     enable_sagemaker_metrics_time_series = true
-///   }
-///   hyper_parameters = {
-///     "mini_batch_size" = "200"
-///     "epochs"          = "10"
-///   }
-///   input_data_configs {
-///     channel_name = "train"
-///     data_source = {
-///       s3_data_source = {
-///         s3_data_type = "S3Prefix"
-///         s3_uri       ="s3://${exampleAwsS3Bucket.bucket}/train/"
-///       }
-///     }
 ///   }
 ///   output_data_config = {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/output/"
@@ -730,6 +718,21 @@ import 'training_job_vpc_config.dart';
 ///   stopping_condition = {
 ///     max_runtime_in_seconds = 3600
 ///   }
+///   input_data_configs {
+///     data_source = {
+///       s3_data_source = {
+///         s3_data_type = "S3Prefix"
+///         s3_uri       ="s3://${exampleAwsS3Bucket.bucket}/train/"
+///       }
+///     }
+///     channel_name = "train"
+///   }
+///   training_job_name = "example"
+///   role_arn          = exampleAwsIamRole.arn
+///   hyper_parameters = {
+///     "mini_batch_size" = "200"
+///     "epochs"          = "10"
+///   }
 /// }
 /// ```
 /// ```java
@@ -741,12 +744,12 @@ import 'training_job_vpc_config.dart';
 /// import com.pulumi.aws.sagemaker.TrainingJob;
 /// import com.pulumi.aws.sagemaker.TrainingJobArgs;
 /// import com.pulumi.aws.sagemaker.inputs.TrainingJobAlgorithmSpecificationArgs;
-/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigArgs;
-/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigDataSourceArgs;
-/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigDataSourceS3DataSourceArgs;
 /// import com.pulumi.aws.sagemaker.inputs.TrainingJobOutputDataConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.TrainingJobResourceConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.TrainingJobStoppingConditionArgs;
+/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigArgs;
+/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigDataSourceArgs;
+/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigDataSourceS3DataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -761,25 +764,10 @@ import 'training_job_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
-///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
 ///                 .trainingInputMode("File")
 ///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.registryPath())
 ///                 .enableSagemakerMetricsTimeSeries(true)
-///                 .build())
-///             .hyperParameters(Map.ofEntries(
-///                 Map.entry("mini_batch_size", "200"),
-///                 Map.entry("epochs", "10")
-///             ))
-///             .inputDataConfigs(TrainingJobInputDataConfigArgs.builder()
-///                 .channelName("train")
-///                 .dataSource(TrainingJobInputDataConfigDataSourceArgs.builder()
-///                     .s3DataSource(TrainingJobInputDataConfigDataSourceS3DataSourceArgs.builder()
-///                         .s3DataType("S3Prefix")
-///                         .s3Uri(String.format("s3://%s/train/", exampleAwsS3Bucket.bucket()))
-///                         .build())
-///                     .build())
 ///                 .build())
 ///             .outputDataConfig(TrainingJobOutputDataConfigArgs.builder()
 ///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
@@ -792,6 +780,21 @@ import 'training_job_vpc_config.dart';
 ///             .stoppingCondition(TrainingJobStoppingConditionArgs.builder()
 ///                 .maxRuntimeInSeconds(3600)
 ///                 .build())
+///             .inputDataConfigs(TrainingJobInputDataConfigArgs.builder()
+///                 .dataSource(TrainingJobInputDataConfigDataSourceArgs.builder()
+///                     .s3DataSource(TrainingJobInputDataConfigDataSourceS3DataSourceArgs.builder()
+///                         .s3DataType("S3Prefix")
+///                         .s3Uri(String.format("s3://%s/train/", exampleAwsS3Bucket.bucket()))
+///                         .build())
+///                     .build())
+///                 .channelName("train")
+///                 .build())
+///             .trainingJobName("example")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .hyperParameters(Map.ofEntries(
+///                 Map.entry("mini_batch_size", "200"),
+///                 Map.entry("epochs", "10")
+///             ))
 ///             .build());
 ///
 ///     }
@@ -802,21 +805,10 @@ import 'training_job_vpc_config.dart';
 ///   example:
 ///     type: aws:sagemaker:TrainingJob
 ///     properties:
-///       trainingJobName: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       algorithmSpecification:
 ///         trainingInputMode: File
 ///         trainingImage: ${exampleAwsSagemakerPrebuiltEcrImage.registryPath}
 ///         enableSagemakerMetricsTimeSeries: true
-///       hyperParameters:
-///         mini_batch_size: '200'
-///         epochs: '10'
-///       inputDataConfigs:
-///         - channelName: train
-///           dataSource:
-///             s3DataSource:
-///               s3DataType: S3Prefix
-///               s3Uri: s3://${exampleAwsS3Bucket.bucket}/train/
 ///       outputDataConfig:
 ///         s3OutputPath: s3://${exampleAwsS3Bucket.bucket}/output/
 ///       resourceConfig:
@@ -825,6 +817,17 @@ import 'training_job_vpc_config.dart';
 ///         volumeSizeInGb: 30
 ///       stoppingCondition:
 ///         maxRuntimeInSeconds: 3600
+///       inputDataConfigs:
+///         - dataSource:
+///             s3DataSource:
+///               s3DataType: S3Prefix
+///               s3Uri: s3://${exampleAwsS3Bucket.bucket}/train/
+///           channelName: train
+///       trainingJobName: example
+///       roleArn: ${exampleAwsIamRole.arn}
+///       hyperParameters:
+///         mini_batch_size: '200'
+///         epochs: '10'
 /// ```
 ///
 ///
@@ -836,8 +839,6 @@ import 'training_job_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.TrainingJob("example", {
-///     trainingJobName: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     algorithmSpecification: {
 ///         trainingInputMode: "File",
 ///         trainingImage: exampleAwsSagemakerPrebuiltEcrImage.registryPath,
@@ -864,6 +865,8 @@ import 'training_job_vpc_config.dart';
 ///         localPath: "/opt/ml/output/tensorboard",
 ///         s3OutputPath: `s3://${exampleAwsS3Bucket.bucket}/tensorboard/`,
 ///     },
+///     trainingJobName: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -871,8 +874,6 @@ import 'training_job_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.TrainingJob("example",
-///     training_job_name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     algorithm_specification={
 ///         "training_input_mode": "File",
 ///         "training_image": example_aws_sagemaker_prebuilt_ecr_image["registryPath"],
@@ -898,7 +899,9 @@ import 'training_job_vpc_config.dart';
 ///     tensor_board_output_config={
 ///         "local_path": "/opt/ml/output/tensorboard",
 ///         "s3_output_path": f"s3://{example_aws_s3_bucket['bucket']}/tensorboard/",
-///     })
+///     },
+///     training_job_name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -910,8 +913,6 @@ import 'training_job_vpc_config.dart';
 /// {
 ///     var example = new Aws.Sagemaker.TrainingJob("example", new()
 ///     {
-///         TrainingJobName = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         AlgorithmSpecification = new Aws.Sagemaker.Inputs.TrainingJobAlgorithmSpecificationArgs
 ///         {
 ///             TrainingInputMode = "File",
@@ -944,6 +945,8 @@ import 'training_job_vpc_config.dart';
 ///             LocalPath = "/opt/ml/output/tensorboard",
 ///             S3OutputPath = $"s3://{exampleAwsS3Bucket.Bucket}/tensorboard/",
 ///         },
+///         TrainingJobName = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -959,8 +962,6 @@ import 'training_job_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewTrainingJob(ctx, "example", &sagemaker.TrainingJobArgs{
-/// 			TrainingJobName: pulumi.String("example"),
-/// 			RoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 			AlgorithmSpecification: &sagemaker.TrainingJobAlgorithmSpecificationArgs{
 /// 				TrainingInputMode: pulumi.String("File"),
 /// 				TrainingImage:     pulumi.Any(exampleAwsSagemakerPrebuiltEcrImage.RegistryPath),
@@ -987,6 +988,8 @@ import 'training_job_vpc_config.dart';
 /// 				LocalPath:    pulumi.String("/opt/ml/output/tensorboard"),
 /// 				S3OutputPath: pulumi.Sprintf("s3://%v/tensorboard/", exampleAwsS3Bucket.Bucket),
 /// 			},
+/// 			TrainingJobName: pulumi.String("example"),
+/// 			RoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1005,8 +1008,6 @@ import 'training_job_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_trainingjob" "example" {
-///   training_job_name = "example"
-///   role_arn          = exampleAwsIamRole.arn
 ///   algorithm_specification = {
 ///     training_input_mode = "File"
 ///     training_image      = exampleAwsSagemakerPrebuiltEcrImage.registryPath
@@ -1033,6 +1034,8 @@ import 'training_job_vpc_config.dart';
 ///     local_path     = "/opt/ml/output/tensorboard"
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/tensorboard/"
 ///   }
+///   training_job_name = "example"
+///   role_arn          = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1063,8 +1066,6 @@ import 'training_job_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
-///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
 ///                 .trainingInputMode("File")
 ///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.registryPath())
@@ -1091,6 +1092,8 @@ import 'training_job_vpc_config.dart';
 ///                 .localPath("/opt/ml/output/tensorboard")
 ///                 .s3OutputPath(String.format("s3://%s/tensorboard/", exampleAwsS3Bucket.bucket()))
 ///                 .build())
+///             .trainingJobName("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1101,8 +1104,6 @@ import 'training_job_vpc_config.dart';
 ///   example:
 ///     type: aws:sagemaker:TrainingJob
 ///     properties:
-///       trainingJobName: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       algorithmSpecification:
 ///         trainingInputMode: File
 ///         trainingImage: ${exampleAwsSagemakerPrebuiltEcrImage.registryPath}
@@ -1123,6 +1124,8 @@ import 'training_job_vpc_config.dart';
 ///       tensorBoardOutputConfig:
 ///         localPath: /opt/ml/output/tensorboard
 ///         s3OutputPath: s3://${exampleAwsS3Bucket.bucket}/tensorboard/
+///       trainingJobName: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1134,12 +1137,17 @@ import 'training_job_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.TrainingJob("example", {
-///     trainingJobName: "example",
-///     roleArn: exampleAwsIamRole.arn,
-///     enableManagedSpotTraining: true,
-///     enableNetworkIsolation: true,
-///     enableInterContainerTrafficEncryption: true,
 ///     algorithmSpecification: {
+///         metricDefinitions: [
+///             {
+///                 name: "train:loss",
+///                 regex: "loss: ([0-9\\.]+)",
+///             },
+///             {
+///                 name: "validation:accuracy",
+///                 regex: "accuracy: ([0-9\\.]+)",
+///             },
+///         ],
 ///         trainingInputMode: "File",
 ///         trainingImage: trainingImage,
 ///         containerEntrypoints: [
@@ -1152,24 +1160,6 @@ import 'training_job_vpc_config.dart';
 ///             "--batch-size",
 ///             "128",
 ///         ],
-///         metricDefinitions: [
-///             {
-///                 name: "train:loss",
-///                 regex: "loss: ([0-9\\.]+)",
-///             },
-///             {
-///                 name: "validation:accuracy",
-///                 regex: "accuracy: ([0-9\\.]+)",
-///             },
-///         ],
-///     },
-///     environment: {
-///         MODEL_DIR: "/opt/ml/model",
-///         SM_LOG_LEVEL: "20",
-///     },
-///     hyperParameters: {
-///         epochs: "10",
-///         batch_size: "128",
 ///     },
 ///     outputDataConfig: {
 ///         s3OutputPath: `s3://${exampleAwsS3Bucket.bucket}/output/`,
@@ -1187,6 +1177,19 @@ import 'training_job_vpc_config.dart';
 ///         maxRuntimeInSeconds: 3600,
 ///         maxWaitTimeInSeconds: 7200,
 ///     },
+///     trainingJobName: "example",
+///     roleArn: exampleAwsIamRole.arn,
+///     enableManagedSpotTraining: true,
+///     enableNetworkIsolation: true,
+///     enableInterContainerTrafficEncryption: true,
+///     environment: {
+///         MODEL_DIR: "/opt/ml/model",
+///         SM_LOG_LEVEL: "20",
+///     },
+///     hyperParameters: {
+///         epochs: "10",
+///         batch_size: "128",
+///     },
 ///     tags: {
 ///         Environment: "test",
 ///         Workload: "training",
@@ -1198,12 +1201,17 @@ import 'training_job_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.TrainingJob("example",
-///     training_job_name="example",
-///     role_arn=example_aws_iam_role["arn"],
-///     enable_managed_spot_training=True,
-///     enable_network_isolation=True,
-///     enable_inter_container_traffic_encryption=True,
 ///     algorithm_specification={
+///         "metric_definitions": [
+///             {
+///                 "name": "train:loss",
+///                 "regex": "loss: ([0-9\\.]+)",
+///             },
+///             {
+///                 "name": "validation:accuracy",
+///                 "regex": "accuracy: ([0-9\\.]+)",
+///             },
+///         ],
 ///         "training_input_mode": "File",
 ///         "training_image": training_image,
 ///         "container_entrypoints": [
@@ -1216,24 +1224,6 @@ import 'training_job_vpc_config.dart';
 ///             "--batch-size",
 ///             "128",
 ///         ],
-///         "metric_definitions": [
-///             {
-///                 "name": "train:loss",
-///                 "regex": "loss: ([0-9\\.]+)",
-///             },
-///             {
-///                 "name": "validation:accuracy",
-///                 "regex": "accuracy: ([0-9\\.]+)",
-///             },
-///         ],
-///     },
-///     environment={
-///         "MODEL_DIR": "/opt/ml/model",
-///         "SM_LOG_LEVEL": "20",
-///     },
-///     hyper_parameters={
-///         "epochs": "10",
-///         "batch_size": "128",
 ///     },
 ///     output_data_config={
 ///         "s3_output_path": f"s3://{example_aws_s3_bucket['bucket']}/output/",
@@ -1251,6 +1241,19 @@ import 'training_job_vpc_config.dart';
 ///         "max_runtime_in_seconds": 3600,
 ///         "max_wait_time_in_seconds": 7200,
 ///     },
+///     training_job_name="example",
+///     role_arn=example_aws_iam_role["arn"],
+///     enable_managed_spot_training=True,
+///     enable_network_isolation=True,
+///     enable_inter_container_traffic_encryption=True,
+///     environment={
+///         "MODEL_DIR": "/opt/ml/model",
+///         "SM_LOG_LEVEL": "20",
+///     },
+///     hyper_parameters={
+///         "epochs": "10",
+///         "batch_size": "128",
+///     },
 ///     tags={
 ///         "Environment": "test",
 ///         "Workload": "training",
@@ -1266,13 +1269,21 @@ import 'training_job_vpc_config.dart';
 /// {
 ///     var example = new Aws.Sagemaker.TrainingJob("example", new()
 ///     {
-///         TrainingJobName = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
-///         EnableManagedSpotTraining = true,
-///         EnableNetworkIsolation = true,
-///         EnableInterContainerTrafficEncryption = true,
 ///         AlgorithmSpecification = new Aws.Sagemaker.Inputs.TrainingJobAlgorithmSpecificationArgs
 ///         {
+///             MetricDefinitions = new[]
+///             {
+///                 new Aws.Sagemaker.Inputs.TrainingJobAlgorithmSpecificationMetricDefinitionArgs
+///                 {
+///                     Name = "train:loss",
+///                     Regex = "loss: ([0-9\\.]+)",
+///                 },
+///                 new Aws.Sagemaker.Inputs.TrainingJobAlgorithmSpecificationMetricDefinitionArgs
+///                 {
+///                     Name = "validation:accuracy",
+///                     Regex = "accuracy: ([0-9\\.]+)",
+///                 },
+///             },
 ///             TrainingInputMode = "File",
 ///             TrainingImage = trainingImage,
 ///             ContainerEntrypoints = new[]
@@ -1287,29 +1298,6 @@ import 'training_job_vpc_config.dart';
 ///                 "--batch-size",
 ///                 "128",
 ///             },
-///             MetricDefinitions = new[]
-///             {
-///                 new Aws.Sagemaker.Inputs.TrainingJobAlgorithmSpecificationMetricDefinitionArgs
-///                 {
-///                     Name = "train:loss",
-///                     Regex = "loss: ([0-9\\.]+)",
-///                 },
-///                 new Aws.Sagemaker.Inputs.TrainingJobAlgorithmSpecificationMetricDefinitionArgs
-///                 {
-///                     Name = "validation:accuracy",
-///                     Regex = "accuracy: ([0-9\\.]+)",
-///                 },
-///             },
-///         },
-///         Environment =
-///         {
-///             { "MODEL_DIR", "/opt/ml/model" },
-///             { "SM_LOG_LEVEL", "20" },
-///         },
-///         HyperParameters =
-///         {
-///             { "epochs", "10" },
-///             { "batch_size", "128" },
 ///         },
 ///         OutputDataConfig = new Aws.Sagemaker.Inputs.TrainingJobOutputDataConfigArgs
 ///         {
@@ -1331,6 +1319,21 @@ import 'training_job_vpc_config.dart';
 ///             MaxRuntimeInSeconds = 3600,
 ///             MaxWaitTimeInSeconds = 7200,
 ///         },
+///         TrainingJobName = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         EnableManagedSpotTraining = true,
+///         EnableNetworkIsolation = true,
+///         EnableInterContainerTrafficEncryption = true,
+///         Environment =
+///         {
+///             { "MODEL_DIR", "/opt/ml/model" },
+///             { "SM_LOG_LEVEL", "20" },
+///         },
+///         HyperParameters =
+///         {
+///             { "epochs", "10" },
+///             { "batch_size", "128" },
+///         },
 ///         Tags =
 ///         {
 ///             { "Environment", "test" },
@@ -1351,12 +1354,17 @@ import 'training_job_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewTrainingJob(ctx, "example", &sagemaker.TrainingJobArgs{
-/// 			TrainingJobName:                       pulumi.String("example"),
-/// 			RoleArn:                               pulumi.Any(exampleAwsIamRole.Arn),
-/// 			EnableManagedSpotTraining:             pulumi.Bool(true),
-/// 			EnableNetworkIsolation:                pulumi.Bool(true),
-/// 			EnableInterContainerTrafficEncryption: pulumi.Bool(true),
 /// 			AlgorithmSpecification: &sagemaker.TrainingJobAlgorithmSpecificationArgs{
+/// 				MetricDefinitions: sagemaker.TrainingJobAlgorithmSpecificationMetricDefinitionArray{
+/// 					&sagemaker.TrainingJobAlgorithmSpecificationMetricDefinitionArgs{
+/// 						Name:  pulumi.String("train:loss"),
+/// 						Regex: pulumi.String("loss: ([0-9\\.]+)"),
+/// 					},
+/// 					&sagemaker.TrainingJobAlgorithmSpecificationMetricDefinitionArgs{
+/// 						Name:  pulumi.String("validation:accuracy"),
+/// 						Regex: pulumi.String("accuracy: ([0-9\\.]+)"),
+/// 					},
+/// 				},
 /// 				TrainingInputMode: pulumi.String("File"),
 /// 				TrainingImage:     pulumi.Any(trainingImage),
 /// 				ContainerEntrypoints: pulumi.StringArray{
@@ -1369,24 +1377,6 @@ import 'training_job_vpc_config.dart';
 /// 					pulumi.String("--batch-size"),
 /// 					pulumi.String("128"),
 /// 				},
-/// 				MetricDefinitions: sagemaker.TrainingJobAlgorithmSpecificationMetricDefinitionArray{
-/// 					&sagemaker.TrainingJobAlgorithmSpecificationMetricDefinitionArgs{
-/// 						Name:  pulumi.String("train:loss"),
-/// 						Regex: pulumi.String("loss: ([0-9\\.]+)"),
-/// 					},
-/// 					&sagemaker.TrainingJobAlgorithmSpecificationMetricDefinitionArgs{
-/// 						Name:  pulumi.String("validation:accuracy"),
-/// 						Regex: pulumi.String("accuracy: ([0-9\\.]+)"),
-/// 					},
-/// 				},
-/// 			},
-/// 			Environment: pulumi.StringMap{
-/// 				"MODEL_DIR":    pulumi.String("/opt/ml/model"),
-/// 				"SM_LOG_LEVEL": pulumi.String("20"),
-/// 			},
-/// 			HyperParameters: pulumi.StringMap{
-/// 				"epochs":     pulumi.String("10"),
-/// 				"batch_size": pulumi.String("128"),
 /// 			},
 /// 			OutputDataConfig: &sagemaker.TrainingJobOutputDataConfigArgs{
 /// 				S3OutputPath: pulumi.Sprintf("s3://%v/output/", exampleAwsS3Bucket.Bucket),
@@ -1403,6 +1393,19 @@ import 'training_job_vpc_config.dart';
 /// 			StoppingCondition: &sagemaker.TrainingJobStoppingConditionArgs{
 /// 				MaxRuntimeInSeconds:  pulumi.Int(3600),
 /// 				MaxWaitTimeInSeconds: pulumi.Int(7200),
+/// 			},
+/// 			TrainingJobName:                       pulumi.String("example"),
+/// 			RoleArn:                               pulumi.Any(exampleAwsIamRole.Arn),
+/// 			EnableManagedSpotTraining:             pulumi.Bool(true),
+/// 			EnableNetworkIsolation:                pulumi.Bool(true),
+/// 			EnableInterContainerTrafficEncryption: pulumi.Bool(true),
+/// 			Environment: pulumi.StringMap{
+/// 				"MODEL_DIR":    pulumi.String("/opt/ml/model"),
+/// 				"SM_LOG_LEVEL": pulumi.String("20"),
+/// 			},
+/// 			HyperParameters: pulumi.StringMap{
+/// 				"epochs":     pulumi.String("10"),
+/// 				"batch_size": pulumi.String("128"),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("test"),
@@ -1426,16 +1429,7 @@ import 'training_job_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_trainingjob" "example" {
-///   training_job_name                         = "example"
-///   role_arn                                  = exampleAwsIamRole.arn
-///   enable_managed_spot_training              = true
-///   enable_network_isolation                  = true
-///   enable_inter_container_traffic_encryption = true
 ///   algorithm_specification = {
-///     training_input_mode   = "File"
-///     training_image        = trainingImage
-///     container_entrypoints = ["python", "/opt/ml/code/train.py"]
-///     container_arguments   = ["--epochs", "10", "--batch-size", "128"]
 ///     metric_definitions = [{
 ///       "name"  = "train:loss"
 ///       "regex" = "loss: ([0-9\\.]+)"
@@ -1443,14 +1437,10 @@ import 'training_job_vpc_config.dart';
 ///       "name"  = "validation:accuracy"
 ///       "regex" = "accuracy: ([0-9\\.]+)"
 ///     }]
-///   }
-///   environment = {
-///     "MODEL_DIR"    = "/opt/ml/model"
-///     "SM_LOG_LEVEL" = "20"
-///   }
-///   hyper_parameters = {
-///     "epochs"     = "10"
-///     "batch_size" = "128"
+///     training_input_mode   = "File"
+///     training_image        = trainingImage
+///     container_entrypoints = ["python", "/opt/ml/code/train.py"]
+///     container_arguments   = ["--epochs", "10", "--batch-size", "128"]
 ///   }
 ///   output_data_config = {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/output/"
@@ -1467,6 +1457,19 @@ import 'training_job_vpc_config.dart';
 ///   stopping_condition = {
 ///     max_runtime_in_seconds   = 3600
 ///     max_wait_time_in_seconds = 7200
+///   }
+///   training_job_name                         = "example"
+///   role_arn                                  = exampleAwsIamRole.arn
+///   enable_managed_spot_training              = true
+///   enable_network_isolation                  = true
+///   enable_inter_container_traffic_encryption = true
+///   environment = {
+///     "MODEL_DIR"    = "/opt/ml/model"
+///     "SM_LOG_LEVEL" = "20"
+///   }
+///   hyper_parameters = {
+///     "epochs"     = "10"
+///     "batch_size" = "128"
 ///   }
 ///   tags = {
 ///     "Environment" = "test"
@@ -1502,12 +1505,16 @@ import 'training_job_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
-///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .enableManagedSpotTraining(true)
-///             .enableNetworkIsolation(true)
-///             .enableInterContainerTrafficEncryption(true)
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
+///                 .metricDefinitions(
+///                     TrainingJobAlgorithmSpecificationMetricDefinitionArgs.builder()
+///                         .name("train:loss")
+///                         .regex("loss: ([0-9\\.]+)")
+///                         .build(),
+///                     TrainingJobAlgorithmSpecificationMetricDefinitionArgs.builder()
+///                         .name("validation:accuracy")
+///                         .regex("accuracy: ([0-9\\.]+)")
+///                         .build())
 ///                 .trainingInputMode("File")
 ///                 .trainingImage(trainingImage)
 ///                 .containerEntrypoints(
@@ -1518,24 +1525,7 @@ import 'training_job_vpc_config.dart';
 ///                     "10",
 ///                     "--batch-size",
 ///                     "128")
-///                 .metricDefinitions(
-///                     TrainingJobAlgorithmSpecificationMetricDefinitionArgs.builder()
-///                         .name("train:loss")
-///                         .regex("loss: ([0-9\\.]+)")
-///                         .build(),
-///                     TrainingJobAlgorithmSpecificationMetricDefinitionArgs.builder()
-///                         .name("validation:accuracy")
-///                         .regex("accuracy: ([0-9\\.]+)")
-///                         .build())
 ///                 .build())
-///             .environment(Map.ofEntries(
-///                 Map.entry("MODEL_DIR", "/opt/ml/model"),
-///                 Map.entry("SM_LOG_LEVEL", "20")
-///             ))
-///             .hyperParameters(Map.ofEntries(
-///                 Map.entry("epochs", "10"),
-///                 Map.entry("batch_size", "128")
-///             ))
 ///             .outputDataConfig(TrainingJobOutputDataConfigArgs.builder()
 ///                 .s3OutputPath(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
 ///                 .build())
@@ -1552,6 +1542,19 @@ import 'training_job_vpc_config.dart';
 ///                 .maxRuntimeInSeconds(3600)
 ///                 .maxWaitTimeInSeconds(7200)
 ///                 .build())
+///             .trainingJobName("example")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .enableManagedSpotTraining(true)
+///             .enableNetworkIsolation(true)
+///             .enableInterContainerTrafficEncryption(true)
+///             .environment(Map.ofEntries(
+///                 Map.entry("MODEL_DIR", "/opt/ml/model"),
+///                 Map.entry("SM_LOG_LEVEL", "20")
+///             ))
+///             .hyperParameters(Map.ofEntries(
+///                 Map.entry("epochs", "10"),
+///                 Map.entry("batch_size", "128")
+///             ))
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "test"),
 ///                 Map.entry("Workload", "training")
@@ -1566,12 +1569,12 @@ import 'training_job_vpc_config.dart';
 ///   example:
 ///     type: aws:sagemaker:TrainingJob
 ///     properties:
-///       trainingJobName: example
-///       roleArn: ${exampleAwsIamRole.arn}
-///       enableManagedSpotTraining: true
-///       enableNetworkIsolation: true
-///       enableInterContainerTrafficEncryption: true
 ///       algorithmSpecification:
+///         metricDefinitions:
+///           - name: train:loss
+///             regex: 'loss: ([0-9\.]+)'
+///           - name: validation:accuracy
+///             regex: 'accuracy: ([0-9\.]+)'
 ///         trainingInputMode: File
 ///         trainingImage: ${trainingImage}
 ///         containerEntrypoints:
@@ -1582,17 +1585,6 @@ import 'training_job_vpc_config.dart';
 ///           - '10'
 ///           - --batch-size
 ///           - '128'
-///         metricDefinitions:
-///           - name: train:loss
-///             regex: 'loss: ([0-9\.]+)'
-///           - name: validation:accuracy
-///             regex: 'accuracy: ([0-9\.]+)'
-///       environment:
-///         MODEL_DIR: /opt/ml/model
-///         SM_LOG_LEVEL: '20'
-///       hyperParameters:
-///         epochs: '10'
-///         batch_size: '128'
 ///       outputDataConfig:
 ///         s3OutputPath: s3://${exampleAwsS3Bucket.bucket}/output/
 ///       resourceConfig:
@@ -1605,6 +1597,17 @@ import 'training_job_vpc_config.dart';
 ///       stoppingCondition:
 ///         maxRuntimeInSeconds: 3600
 ///         maxWaitTimeInSeconds: 7200
+///       trainingJobName: example
+///       roleArn: ${exampleAwsIamRole.arn}
+///       enableManagedSpotTraining: true
+///       enableNetworkIsolation: true
+///       enableInterContainerTrafficEncryption: true
+///       environment:
+///         MODEL_DIR: /opt/ml/model
+///         SM_LOG_LEVEL: '20'
+///       hyperParameters:
+///         epochs: '10'
+///         batch_size: '128'
 ///       tags:
 ///         Environment: test
 ///         Workload: training
@@ -1619,38 +1622,10 @@ import 'training_job_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.TrainingJob("example", {
-///     trainingJobName: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     algorithmSpecification: {
 ///         trainingInputMode: "File",
 ///         trainingImage: exampleAwsSagemakerPrebuiltEcrImage.registryPath,
 ///     },
-///     inputDataConfigs: [
-///         {
-///             channelName: "train",
-///             contentType: "text/csv",
-///             inputMode: "File",
-///             dataSource: {
-///                 s3DataSource: {
-///                     s3DataDistributionType: "FullyReplicated",
-///                     s3DataType: "S3Prefix",
-///                     s3Uri: `s3://${exampleAwsS3Bucket.bucket}/train/`,
-///                 },
-///             },
-///         },
-///         {
-///             channelName: "validation",
-///             contentType: "text/csv",
-///             inputMode: "File",
-///             dataSource: {
-///                 s3DataSource: {
-///                     s3DataDistributionType: "FullyReplicated",
-///                     s3DataType: "S3Prefix",
-///                     s3Uri: `s3://${exampleAwsS3Bucket.bucket}/validation/`,
-///                 },
-///             },
-///         },
-///     ],
 ///     infraCheckConfig: {
 ///         enableInfraCheck: true,
 ///     },
@@ -1668,6 +1643,34 @@ import 'training_job_vpc_config.dart';
 ///     stoppingCondition: {
 ///         maxRuntimeInSeconds: 3600,
 ///     },
+///     inputDataConfigs: [
+///         {
+///             dataSource: {
+///                 s3DataSource: {
+///                     s3DataDistributionType: "FullyReplicated",
+///                     s3DataType: "S3Prefix",
+///                     s3Uri: `s3://${exampleAwsS3Bucket.bucket}/train/`,
+///                 },
+///             },
+///             channelName: "train",
+///             contentType: "text/csv",
+///             inputMode: "File",
+///         },
+///         {
+///             dataSource: {
+///                 s3DataSource: {
+///                     s3DataDistributionType: "FullyReplicated",
+///                     s3DataType: "S3Prefix",
+///                     s3Uri: `s3://${exampleAwsS3Bucket.bucket}/validation/`,
+///                 },
+///             },
+///             channelName: "validation",
+///             contentType: "text/csv",
+///             inputMode: "File",
+///         },
+///     ],
+///     trainingJobName: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -1675,38 +1678,10 @@ import 'training_job_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.TrainingJob("example",
-///     training_job_name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     algorithm_specification={
 ///         "training_input_mode": "File",
 ///         "training_image": example_aws_sagemaker_prebuilt_ecr_image["registryPath"],
 ///     },
-///     input_data_configs=[
-///         {
-///             "channel_name": "train",
-///             "content_type": "text/csv",
-///             "input_mode": "File",
-///             "data_source": {
-///                 "s3_data_source": {
-///                     "s3_data_distribution_type": "FullyReplicated",
-///                     "s3_data_type": "S3Prefix",
-///                     "s3_uri": f"s3://{example_aws_s3_bucket['bucket']}/train/",
-///                 },
-///             },
-///         },
-///         {
-///             "channel_name": "validation",
-///             "content_type": "text/csv",
-///             "input_mode": "File",
-///             "data_source": {
-///                 "s3_data_source": {
-///                     "s3_data_distribution_type": "FullyReplicated",
-///                     "s3_data_type": "S3Prefix",
-///                     "s3_uri": f"s3://{example_aws_s3_bucket['bucket']}/validation/",
-///                 },
-///             },
-///         },
-///     ],
 ///     infra_check_config={
 ///         "enable_infra_check": True,
 ///     },
@@ -1723,7 +1698,35 @@ import 'training_job_vpc_config.dart';
 ///     },
 ///     stopping_condition={
 ///         "max_runtime_in_seconds": 3600,
-///     })
+///     },
+///     input_data_configs=[
+///         {
+///             "data_source": {
+///                 "s3_data_source": {
+///                     "s3_data_distribution_type": "FullyReplicated",
+///                     "s3_data_type": "S3Prefix",
+///                     "s3_uri": f"s3://{example_aws_s3_bucket['bucket']}/train/",
+///                 },
+///             },
+///             "channel_name": "train",
+///             "content_type": "text/csv",
+///             "input_mode": "File",
+///         },
+///         {
+///             "data_source": {
+///                 "s3_data_source": {
+///                     "s3_data_distribution_type": "FullyReplicated",
+///                     "s3_data_type": "S3Prefix",
+///                     "s3_uri": f"s3://{example_aws_s3_bucket['bucket']}/validation/",
+///                 },
+///             },
+///             "channel_name": "validation",
+///             "content_type": "text/csv",
+///             "input_mode": "File",
+///         },
+///     ],
+///     training_job_name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1735,45 +1738,10 @@ import 'training_job_vpc_config.dart';
 /// {
 ///     var example = new Aws.Sagemaker.TrainingJob("example", new()
 ///     {
-///         TrainingJobName = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         AlgorithmSpecification = new Aws.Sagemaker.Inputs.TrainingJobAlgorithmSpecificationArgs
 ///         {
 ///             TrainingInputMode = "File",
 ///             TrainingImage = exampleAwsSagemakerPrebuiltEcrImage.RegistryPath,
-///         },
-///         InputDataConfigs = new[]
-///         {
-///             new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigArgs
-///             {
-///                 ChannelName = "train",
-///                 ContentType = "text/csv",
-///                 InputMode = "File",
-///                 DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceArgs
-///                 {
-///                     S3DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceS3DataSourceArgs
-///                     {
-///                         S3DataDistributionType = "FullyReplicated",
-///                         S3DataType = "S3Prefix",
-///                         S3Uri = $"s3://{exampleAwsS3Bucket.Bucket}/train/",
-///                     },
-///                 },
-///             },
-///             new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigArgs
-///             {
-///                 ChannelName = "validation",
-///                 ContentType = "text/csv",
-///                 InputMode = "File",
-///                 DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceArgs
-///                 {
-///                     S3DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceS3DataSourceArgs
-///                     {
-///                         S3DataDistributionType = "FullyReplicated",
-///                         S3DataType = "S3Prefix",
-///                         S3Uri = $"s3://{exampleAwsS3Bucket.Bucket}/validation/",
-///                     },
-///                 },
-///             },
 ///         },
 ///         InfraCheckConfig = new Aws.Sagemaker.Inputs.TrainingJobInfraCheckConfigArgs
 ///         {
@@ -1797,6 +1765,41 @@ import 'training_job_vpc_config.dart';
 ///         {
 ///             MaxRuntimeInSeconds = 3600,
 ///         },
+///         InputDataConfigs = new[]
+///         {
+///             new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigArgs
+///             {
+///                 DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceArgs
+///                 {
+///                     S3DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceS3DataSourceArgs
+///                     {
+///                         S3DataDistributionType = "FullyReplicated",
+///                         S3DataType = "S3Prefix",
+///                         S3Uri = $"s3://{exampleAwsS3Bucket.Bucket}/train/",
+///                     },
+///                 },
+///                 ChannelName = "train",
+///                 ContentType = "text/csv",
+///                 InputMode = "File",
+///             },
+///             new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigArgs
+///             {
+///                 DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceArgs
+///                 {
+///                     S3DataSource = new Aws.Sagemaker.Inputs.TrainingJobInputDataConfigDataSourceS3DataSourceArgs
+///                     {
+///                         S3DataDistributionType = "FullyReplicated",
+///                         S3DataType = "S3Prefix",
+///                         S3Uri = $"s3://{exampleAwsS3Bucket.Bucket}/validation/",
+///                     },
+///                 },
+///                 ChannelName = "validation",
+///                 ContentType = "text/csv",
+///                 InputMode = "File",
+///             },
+///         },
+///         TrainingJobName = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -1812,37 +1815,9 @@ import 'training_job_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewTrainingJob(ctx, "example", &sagemaker.TrainingJobArgs{
-/// 			TrainingJobName: pulumi.String("example"),
-/// 			RoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 			AlgorithmSpecification: &sagemaker.TrainingJobAlgorithmSpecificationArgs{
 /// 				TrainingInputMode: pulumi.String("File"),
 /// 				TrainingImage:     pulumi.Any(exampleAwsSagemakerPrebuiltEcrImage.RegistryPath),
-/// 			},
-/// 			InputDataConfigs: sagemaker.TrainingJobInputDataConfigArray{
-/// 				&sagemaker.TrainingJobInputDataConfigArgs{
-/// 					ChannelName: pulumi.String("train"),
-/// 					ContentType: pulumi.String("text/csv"),
-/// 					InputMode:   pulumi.String("File"),
-/// 					DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceArgs{
-/// 						S3DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceS3DataSourceArgs{
-/// 							S3DataDistributionType: pulumi.String("FullyReplicated"),
-/// 							S3DataType:             pulumi.String("S3Prefix"),
-/// 							S3Uri:                  pulumi.Sprintf("s3://%v/train/", exampleAwsS3Bucket.Bucket),
-/// 						},
-/// 					},
-/// 				},
-/// 				&sagemaker.TrainingJobInputDataConfigArgs{
-/// 					ChannelName: pulumi.String("validation"),
-/// 					ContentType: pulumi.String("text/csv"),
-/// 					InputMode:   pulumi.String("File"),
-/// 					DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceArgs{
-/// 						S3DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceS3DataSourceArgs{
-/// 							S3DataDistributionType: pulumi.String("FullyReplicated"),
-/// 							S3DataType:             pulumi.String("S3Prefix"),
-/// 							S3Uri:                  pulumi.Sprintf("s3://%v/validation/", exampleAwsS3Bucket.Bucket),
-/// 						},
-/// 					},
-/// 				},
 /// 			},
 /// 			InfraCheckConfig: &sagemaker.TrainingJobInfraCheckConfigArgs{
 /// 				EnableInfraCheck: pulumi.Bool(true),
@@ -1861,6 +1836,34 @@ import 'training_job_vpc_config.dart';
 /// 			StoppingCondition: &sagemaker.TrainingJobStoppingConditionArgs{
 /// 				MaxRuntimeInSeconds: pulumi.Int(3600),
 /// 			},
+/// 			InputDataConfigs: sagemaker.TrainingJobInputDataConfigArray{
+/// 				&sagemaker.TrainingJobInputDataConfigArgs{
+/// 					DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceArgs{
+/// 						S3DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceS3DataSourceArgs{
+/// 							S3DataDistributionType: pulumi.String("FullyReplicated"),
+/// 							S3DataType:             pulumi.String("S3Prefix"),
+/// 							S3Uri:                  pulumi.Sprintf("s3://%v/train/", exampleAwsS3Bucket.Bucket),
+/// 						},
+/// 					},
+/// 					ChannelName: pulumi.String("train"),
+/// 					ContentType: pulumi.String("text/csv"),
+/// 					InputMode:   pulumi.String("File"),
+/// 				},
+/// 				&sagemaker.TrainingJobInputDataConfigArgs{
+/// 					DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceArgs{
+/// 						S3DataSource: &sagemaker.TrainingJobInputDataConfigDataSourceS3DataSourceArgs{
+/// 							S3DataDistributionType: pulumi.String("FullyReplicated"),
+/// 							S3DataType:             pulumi.String("S3Prefix"),
+/// 							S3Uri:                  pulumi.Sprintf("s3://%v/validation/", exampleAwsS3Bucket.Bucket),
+/// 						},
+/// 					},
+/// 					ChannelName: pulumi.String("validation"),
+/// 					ContentType: pulumi.String("text/csv"),
+/// 					InputMode:   pulumi.String("File"),
+/// 				},
+/// 			},
+/// 			TrainingJobName: pulumi.String("example"),
+/// 			RoleArn:         pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1879,35 +1882,9 @@ import 'training_job_vpc_config.dart';
 /// }
 ///
 /// resource "aws_sagemaker_trainingjob" "example" {
-///   training_job_name = "example"
-///   role_arn          = exampleAwsIamRole.arn
 ///   algorithm_specification = {
 ///     training_input_mode = "File"
 ///     training_image      = exampleAwsSagemakerPrebuiltEcrImage.registryPath
-///   }
-///   input_data_configs {
-///     channel_name = "train"
-///     content_type = "text/csv"
-///     input_mode   = "File"
-///     data_source = {
-///       s3_data_source = {
-///         s3_data_distribution_type = "FullyReplicated"
-///         s3_data_type              = "S3Prefix"
-///         s3_uri                    ="s3://${exampleAwsS3Bucket.bucket}/train/"
-///       }
-///     }
-///   }
-///   input_data_configs {
-///     channel_name = "validation"
-///     content_type = "text/csv"
-///     input_mode   = "File"
-///     data_source = {
-///       s3_data_source = {
-///         s3_data_distribution_type = "FullyReplicated"
-///         s3_data_type              = "S3Prefix"
-///         s3_uri                    ="s3://${exampleAwsS3Bucket.bucket}/validation/"
-///       }
-///     }
 ///   }
 ///   infra_check_config = {
 ///     enable_infra_check = true
@@ -1926,6 +1903,32 @@ import 'training_job_vpc_config.dart';
 ///   stopping_condition = {
 ///     max_runtime_in_seconds = 3600
 ///   }
+///   input_data_configs {
+///     data_source = {
+///       s3_data_source = {
+///         s3_data_distribution_type = "FullyReplicated"
+///         s3_data_type              = "S3Prefix"
+///         s3_uri                    ="s3://${exampleAwsS3Bucket.bucket}/train/"
+///       }
+///     }
+///     channel_name = "train"
+///     content_type = "text/csv"
+///     input_mode   = "File"
+///   }
+///   input_data_configs {
+///     data_source = {
+///       s3_data_source = {
+///         s3_data_distribution_type = "FullyReplicated"
+///         s3_data_type              = "S3Prefix"
+///         s3_uri                    ="s3://${exampleAwsS3Bucket.bucket}/validation/"
+///       }
+///     }
+///     channel_name = "validation"
+///     content_type = "text/csv"
+///     input_mode   = "File"
+///   }
+///   training_job_name = "example"
+///   role_arn          = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1937,14 +1940,14 @@ import 'training_job_vpc_config.dart';
 /// import com.pulumi.aws.sagemaker.TrainingJob;
 /// import com.pulumi.aws.sagemaker.TrainingJobArgs;
 /// import com.pulumi.aws.sagemaker.inputs.TrainingJobAlgorithmSpecificationArgs;
-/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigArgs;
-/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigDataSourceArgs;
-/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigDataSourceS3DataSourceArgs;
 /// import com.pulumi.aws.sagemaker.inputs.TrainingJobInfraCheckConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.TrainingJobOutputDataConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.TrainingJobResourceConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.TrainingJobSessionChainingConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.TrainingJobStoppingConditionArgs;
+/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigArgs;
+/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigDataSourceArgs;
+/// import com.pulumi.aws.sagemaker.inputs.TrainingJobInputDataConfigDataSourceS3DataSourceArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1959,37 +1962,10 @@ import 'training_job_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TrainingJob("example", TrainingJobArgs.builder()
-///             .trainingJobName("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .algorithmSpecification(TrainingJobAlgorithmSpecificationArgs.builder()
 ///                 .trainingInputMode("File")
 ///                 .trainingImage(exampleAwsSagemakerPrebuiltEcrImage.registryPath())
 ///                 .build())
-///             .inputDataConfigs(
-///                 TrainingJobInputDataConfigArgs.builder()
-///                     .channelName("train")
-///                     .contentType("text/csv")
-///                     .inputMode("File")
-///                     .dataSource(TrainingJobInputDataConfigDataSourceArgs.builder()
-///                         .s3DataSource(TrainingJobInputDataConfigDataSourceS3DataSourceArgs.builder()
-///                             .s3DataDistributionType("FullyReplicated")
-///                             .s3DataType("S3Prefix")
-///                             .s3Uri(String.format("s3://%s/train/", exampleAwsS3Bucket.bucket()))
-///                             .build())
-///                         .build())
-///                     .build(),
-///                 TrainingJobInputDataConfigArgs.builder()
-///                     .channelName("validation")
-///                     .contentType("text/csv")
-///                     .inputMode("File")
-///                     .dataSource(TrainingJobInputDataConfigDataSourceArgs.builder()
-///                         .s3DataSource(TrainingJobInputDataConfigDataSourceS3DataSourceArgs.builder()
-///                             .s3DataDistributionType("FullyReplicated")
-///                             .s3DataType("S3Prefix")
-///                             .s3Uri(String.format("s3://%s/validation/", exampleAwsS3Bucket.bucket()))
-///                             .build())
-///                         .build())
-///                     .build())
 ///             .infraCheckConfig(TrainingJobInfraCheckConfigArgs.builder()
 ///                 .enableInfraCheck(true)
 ///                 .build())
@@ -2007,6 +1983,33 @@ import 'training_job_vpc_config.dart';
 ///             .stoppingCondition(TrainingJobStoppingConditionArgs.builder()
 ///                 .maxRuntimeInSeconds(3600)
 ///                 .build())
+///             .inputDataConfigs(
+///                 TrainingJobInputDataConfigArgs.builder()
+///                     .dataSource(TrainingJobInputDataConfigDataSourceArgs.builder()
+///                         .s3DataSource(TrainingJobInputDataConfigDataSourceS3DataSourceArgs.builder()
+///                             .s3DataDistributionType("FullyReplicated")
+///                             .s3DataType("S3Prefix")
+///                             .s3Uri(String.format("s3://%s/train/", exampleAwsS3Bucket.bucket()))
+///                             .build())
+///                         .build())
+///                     .channelName("train")
+///                     .contentType("text/csv")
+///                     .inputMode("File")
+///                     .build(),
+///                 TrainingJobInputDataConfigArgs.builder()
+///                     .dataSource(TrainingJobInputDataConfigDataSourceArgs.builder()
+///                         .s3DataSource(TrainingJobInputDataConfigDataSourceS3DataSourceArgs.builder()
+///                             .s3DataDistributionType("FullyReplicated")
+///                             .s3DataType("S3Prefix")
+///                             .s3Uri(String.format("s3://%s/validation/", exampleAwsS3Bucket.bucket()))
+///                             .build())
+///                         .build())
+///                     .channelName("validation")
+///                     .contentType("text/csv")
+///                     .inputMode("File")
+///                     .build())
+///             .trainingJobName("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -2017,28 +2020,9 @@ import 'training_job_vpc_config.dart';
 ///   example:
 ///     type: aws:sagemaker:TrainingJob
 ///     properties:
-///       trainingJobName: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       algorithmSpecification:
 ///         trainingInputMode: File
 ///         trainingImage: ${exampleAwsSagemakerPrebuiltEcrImage.registryPath}
-///       inputDataConfigs:
-///         - channelName: train
-///           contentType: text/csv
-///           inputMode: File
-///           dataSource:
-///             s3DataSource:
-///               s3DataDistributionType: FullyReplicated
-///               s3DataType: S3Prefix
-///               s3Uri: s3://${exampleAwsS3Bucket.bucket}/train/
-///         - channelName: validation
-///           contentType: text/csv
-///           inputMode: File
-///           dataSource:
-///             s3DataSource:
-///               s3DataDistributionType: FullyReplicated
-///               s3DataType: S3Prefix
-///               s3Uri: s3://${exampleAwsS3Bucket.bucket}/validation/
 ///       infraCheckConfig:
 ///         enableInfraCheck: true
 ///       outputDataConfig:
@@ -2051,6 +2035,25 @@ import 'training_job_vpc_config.dart';
 ///         enableSessionTagChaining: true
 ///       stoppingCondition:
 ///         maxRuntimeInSeconds: 3600
+///       inputDataConfigs:
+///         - dataSource:
+///             s3DataSource:
+///               s3DataDistributionType: FullyReplicated
+///               s3DataType: S3Prefix
+///               s3Uri: s3://${exampleAwsS3Bucket.bucket}/train/
+///           channelName: train
+///           contentType: text/csv
+///           inputMode: File
+///         - dataSource:
+///             s3DataSource:
+///               s3DataDistributionType: FullyReplicated
+///               s3DataType: S3Prefix
+///               s3Uri: s3://${exampleAwsS3Bucket.bucket}/validation/
+///           channelName: validation
+///           contentType: text/csv
+///           inputMode: File
+///       trainingJobName: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -2083,7 +2086,7 @@ class TrainingJob extends pulumi.CustomResource {
   /// Configuration for debugging rules. See `debugHookConfig` below. Conflicts with `serverlessJobConfig`.
   late final pulumi.Output<TrainingJobDebugHookConfig?> debugHookConfig;
   /// List of debug rule configurations. Maximum of 20. See `debugRuleConfigurations` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> debugRuleConfigurations;
+  late final pulumi.Output<List<TrainingJobDebugRuleConfiguration>?> debugRuleConfigurations;
   /// Whether to delete model packages in the configured model package group when the training job is destroyed. Default is `false`.
   late final pulumi.Output<bool?> deleteModelPackagesOnDestroy;
   /// Whether to delete detached VPC ENIs SageMaker may leave behind when the training job is destroyed. Default is `false`.
@@ -2103,7 +2106,7 @@ class TrainingJob extends pulumi.CustomResource {
   /// Infrastructure health check configuration. See `infraCheckConfig` below.
   late final pulumi.Output<TrainingJobInfraCheckConfig?> infraCheckConfig;
   /// List of input data channel configurations for the training job. Maximum of 20. See `inputDataConfig` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inputDataConfigs;
+  late final pulumi.Output<List<TrainingJobInputDataConfig>?> inputDataConfigs;
   /// MLflow integration configuration. See `mlflowConfig` below.
   late final pulumi.Output<TrainingJobMlflowConfig?> mlflowConfig;
   /// Model package configuration. Requires `serverlessJobConfig`. See `modelPackageConfig` below.
@@ -2115,7 +2118,7 @@ class TrainingJob extends pulumi.CustomResource {
   /// Configuration for the profiler. See `profilerConfig` below. Conflicts with `serverlessJobConfig`.
   late final pulumi.Output<TrainingJobProfilerConfig?> profilerConfig;
   /// List of profiler rule configurations. Maximum of 20. See `profilerRuleConfigurations` below. Conflicts with `serverlessJobConfig`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> profilerRuleConfigurations;
+  late final pulumi.Output<List<TrainingJobProfilerRuleConfiguration>?> profilerRuleConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration for remote debugging. See `remoteDebugConfig` below.
@@ -2155,28 +2158,28 @@ class TrainingJob extends pulumi.CustomResource {
           'aws:sagemaker/trainingJob:TrainingJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     algorithmSpecification = registerOutput<TrainingJobAlgorithmSpecification?>('algorithmSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobAlgorithmSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     checkpointConfig = registerOutput<TrainingJobCheckpointConfig?>('checkpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobCheckpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     debugHookConfig = registerOutput<TrainingJobDebugHookConfig?>('debugHookConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobDebugHookConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    debugRuleConfigurations = registerOutput<List<Map<String, dynamic>>?>('debugRuleConfigurations');
+    debugRuleConfigurations = registerOutput<List<TrainingJobDebugRuleConfiguration>?>('debugRuleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrainingJobDebugRuleConfiguration>(guardedValue, (value) => TrainingJobDebugRuleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     deleteModelPackagesOnDestroy = registerOutput<bool?>('deleteModelPackagesOnDestroy');
     deleteVpcEnisOnDestroy = registerOutput<bool?>('deleteVpcEnisOnDestroy');
     enableInterContainerTrafficEncryption = registerOutput<bool>('enableInterContainerTrafficEncryption');
     enableManagedSpotTraining = registerOutput<bool>('enableManagedSpotTraining');
     enableNetworkIsolation = registerOutput<bool>('enableNetworkIsolation');
-    environment = registerOutput<Map<String, String>?>('environment');
+    environment = registerOutput<Map<String, String>?>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     experimentConfig = registerOutput<TrainingJobExperimentConfig?>('experimentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobExperimentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hyperParameters = registerOutput<Map<String, String>?>('hyperParameters');
+    hyperParameters = registerOutput<Map<String, String>?>('hyperParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     infraCheckConfig = registerOutput<TrainingJobInfraCheckConfig?>('infraCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobInfraCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inputDataConfigs = registerOutput<List<Map<String, dynamic>>?>('inputDataConfigs');
+    inputDataConfigs = registerOutput<List<TrainingJobInputDataConfig>?>('inputDataConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrainingJobInputDataConfig>(guardedValue, (value) => TrainingJobInputDataConfig.fromMap((value as Map).cast<String, dynamic>())); });
     mlflowConfig = registerOutput<TrainingJobMlflowConfig?>('mlflowConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobMlflowConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modelPackageConfig = registerOutput<TrainingJobModelPackageConfig?>('modelPackageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobModelPackageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputDataConfig = registerOutput<TrainingJobOutputDataConfig?>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     profilerConfig = registerOutput<TrainingJobProfilerConfig?>('profilerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobProfilerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    profilerRuleConfigurations = registerOutput<List<Map<String, dynamic>>?>('profilerRuleConfigurations');
+    profilerRuleConfigurations = registerOutput<List<TrainingJobProfilerRuleConfiguration>?>('profilerRuleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrainingJobProfilerRuleConfiguration>(guardedValue, (value) => TrainingJobProfilerRuleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     remoteDebugConfig = registerOutput<TrainingJobRemoteDebugConfig?>('remoteDebugConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobRemoteDebugConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceConfig = registerOutput<TrainingJobResourceConfig?>('resourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobResourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2185,8 +2188,8 @@ class TrainingJob extends pulumi.CustomResource {
     serverlessJobConfig = registerOutput<TrainingJobServerlessJobConfig?>('serverlessJobConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobServerlessJobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sessionChainingConfig = registerOutput<TrainingJobSessionChainingConfig?>('sessionChainingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobSessionChainingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stoppingCondition = registerOutput<TrainingJobStoppingCondition?>('stoppingCondition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobStoppingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tensorBoardOutputConfig = registerOutput<TrainingJobTensorBoardOutputConfig?>('tensorBoardOutputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobTensorBoardOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<TrainingJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trainingJobName = registerOutput<String>('trainingJobName');
@@ -2198,11 +2201,12 @@ class TrainingJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrainingJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrainingJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2220,22 +2224,22 @@ class TrainingJob extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     checkpointConfig = registerOutput<TrainingJobCheckpointConfig?>('checkpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobCheckpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     debugHookConfig = registerOutput<TrainingJobDebugHookConfig?>('debugHookConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobDebugHookConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    debugRuleConfigurations = registerOutput<List<Map<String, dynamic>>?>('debugRuleConfigurations');
+    debugRuleConfigurations = registerOutput<List<TrainingJobDebugRuleConfiguration>?>('debugRuleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrainingJobDebugRuleConfiguration>(guardedValue, (value) => TrainingJobDebugRuleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     deleteModelPackagesOnDestroy = registerOutput<bool?>('deleteModelPackagesOnDestroy');
     deleteVpcEnisOnDestroy = registerOutput<bool?>('deleteVpcEnisOnDestroy');
     enableInterContainerTrafficEncryption = registerOutput<bool>('enableInterContainerTrafficEncryption');
     enableManagedSpotTraining = registerOutput<bool>('enableManagedSpotTraining');
     enableNetworkIsolation = registerOutput<bool>('enableNetworkIsolation');
-    environment = registerOutput<Map<String, String>?>('environment');
+    environment = registerOutput<Map<String, String>?>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     experimentConfig = registerOutput<TrainingJobExperimentConfig?>('experimentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobExperimentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hyperParameters = registerOutput<Map<String, String>?>('hyperParameters');
+    hyperParameters = registerOutput<Map<String, String>?>('hyperParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     infraCheckConfig = registerOutput<TrainingJobInfraCheckConfig?>('infraCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobInfraCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inputDataConfigs = registerOutput<List<Map<String, dynamic>>?>('inputDataConfigs');
+    inputDataConfigs = registerOutput<List<TrainingJobInputDataConfig>?>('inputDataConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrainingJobInputDataConfig>(guardedValue, (value) => TrainingJobInputDataConfig.fromMap((value as Map).cast<String, dynamic>())); });
     mlflowConfig = registerOutput<TrainingJobMlflowConfig?>('mlflowConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobMlflowConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modelPackageConfig = registerOutput<TrainingJobModelPackageConfig?>('modelPackageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobModelPackageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputDataConfig = registerOutput<TrainingJobOutputDataConfig?>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     profilerConfig = registerOutput<TrainingJobProfilerConfig?>('profilerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobProfilerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    profilerRuleConfigurations = registerOutput<List<Map<String, dynamic>>?>('profilerRuleConfigurations');
+    profilerRuleConfigurations = registerOutput<List<TrainingJobProfilerRuleConfiguration>?>('profilerRuleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrainingJobProfilerRuleConfiguration>(guardedValue, (value) => TrainingJobProfilerRuleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     remoteDebugConfig = registerOutput<TrainingJobRemoteDebugConfig?>('remoteDebugConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobRemoteDebugConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceConfig = registerOutput<TrainingJobResourceConfig?>('resourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobResourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2244,8 +2248,53 @@ class TrainingJob extends pulumi.CustomResource {
     serverlessJobConfig = registerOutput<TrainingJobServerlessJobConfig?>('serverlessJobConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobServerlessJobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sessionChainingConfig = registerOutput<TrainingJobSessionChainingConfig?>('sessionChainingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobSessionChainingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stoppingCondition = registerOutput<TrainingJobStoppingCondition?>('stoppingCondition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobStoppingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tensorBoardOutputConfig = registerOutput<TrainingJobTensorBoardOutputConfig?>('tensorBoardOutputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobTensorBoardOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<TrainingJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingJobName = registerOutput<String>('trainingJobName');
+    vpcConfig = registerOutput<TrainingJobVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TrainingJob] resource.
+  TrainingJob.reference(String urn)
+    : super(
+        'aws:sagemaker/trainingJob:TrainingJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    algorithmSpecification = registerOutput<TrainingJobAlgorithmSpecification?>('algorithmSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobAlgorithmSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    checkpointConfig = registerOutput<TrainingJobCheckpointConfig?>('checkpointConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobCheckpointConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    debugHookConfig = registerOutput<TrainingJobDebugHookConfig?>('debugHookConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobDebugHookConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    debugRuleConfigurations = registerOutput<List<TrainingJobDebugRuleConfiguration>?>('debugRuleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrainingJobDebugRuleConfiguration>(guardedValue, (value) => TrainingJobDebugRuleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    deleteModelPackagesOnDestroy = registerOutput<bool?>('deleteModelPackagesOnDestroy');
+    deleteVpcEnisOnDestroy = registerOutput<bool?>('deleteVpcEnisOnDestroy');
+    enableInterContainerTrafficEncryption = registerOutput<bool>('enableInterContainerTrafficEncryption');
+    enableManagedSpotTraining = registerOutput<bool>('enableManagedSpotTraining');
+    enableNetworkIsolation = registerOutput<bool>('enableNetworkIsolation');
+    environment = registerOutput<Map<String, String>?>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    experimentConfig = registerOutput<TrainingJobExperimentConfig?>('experimentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobExperimentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hyperParameters = registerOutput<Map<String, String>?>('hyperParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    infraCheckConfig = registerOutput<TrainingJobInfraCheckConfig?>('infraCheckConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobInfraCheckConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputDataConfigs = registerOutput<List<TrainingJobInputDataConfig>?>('inputDataConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrainingJobInputDataConfig>(guardedValue, (value) => TrainingJobInputDataConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    mlflowConfig = registerOutput<TrainingJobMlflowConfig?>('mlflowConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobMlflowConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    modelPackageConfig = registerOutput<TrainingJobModelPackageConfig?>('modelPackageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobModelPackageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outputDataConfig = registerOutput<TrainingJobOutputDataConfig?>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    profilerConfig = registerOutput<TrainingJobProfilerConfig?>('profilerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobProfilerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    profilerRuleConfigurations = registerOutput<List<TrainingJobProfilerRuleConfiguration>?>('profilerRuleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrainingJobProfilerRuleConfiguration>(guardedValue, (value) => TrainingJobProfilerRuleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    remoteDebugConfig = registerOutput<TrainingJobRemoteDebugConfig?>('remoteDebugConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobRemoteDebugConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceConfig = registerOutput<TrainingJobResourceConfig?>('resourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobResourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retryStrategy = registerOutput<TrainingJobRetryStrategy?>('retryStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobRetryStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roleArn = registerOutput<String>('roleArn');
+    serverlessJobConfig = registerOutput<TrainingJobServerlessJobConfig?>('serverlessJobConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobServerlessJobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sessionChainingConfig = registerOutput<TrainingJobSessionChainingConfig?>('sessionChainingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobSessionChainingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    stoppingCondition = registerOutput<TrainingJobStoppingCondition?>('stoppingCondition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobStoppingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tensorBoardOutputConfig = registerOutput<TrainingJobTensorBoardOutputConfig?>('tensorBoardOutputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobTensorBoardOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<TrainingJobTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrainingJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trainingJobName = registerOutput<String>('trainingJobName');

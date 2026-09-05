@@ -8,15 +8,15 @@ class FileCacheLustreConfiguration {
   /// Cache deployment type. The only supported value is `CACHE_1`.
   final pulumi.Input<String> deploymentType;
   /// Configuration for Lustre logging used to write the enabled logging events for the cache. See `logConfiguration` Block below.
-  final pulumi.Input<List<FileCacheLustreConfigurationLogConfiguration>>? logConfigurations;
+  final pulumi.Input<List<FileCacheLustreConfigurationLogConfiguration>?>? logConfigurations;
   /// Configuration for a Lustre MDT (Metadata Target) storage volume. See `metadataConfiguration` Block below.
   final pulumi.Input<List<FileCacheLustreConfigurationMetadataConfiguration>> metadataConfigurations;
   /// Mount name of the cache.
-  final pulumi.Input<String>? mountName;
+  final pulumi.Input<String?>? mountName;
   /// Throughput provisioned for each 1 tebibyte (TiB) of cache storage capacity, in MB/s/TiB. The only supported value is `1000`.
   final pulumi.Input<int> perUnitStorageThroughput;
   /// Recurring weekly time to start maintenance, in the format `D:HH:MM`. `D` is the day of the week, where `1` represents Monday and `7` represents Sunday. `HH` is the zero-padded hour of the day (0-23), and `MM` is the zero-padded minute of the hour. See the [ISO week date](https://en.wikipedia.org/wiki/ISO_week_date) for more information.
-  final pulumi.Input<String>? weeklyMaintenanceStartTime;
+  final pulumi.Input<String?>? weeklyMaintenanceStartTime;
 
   /// Creates a new [FileCacheLustreConfiguration].
   /// [deploymentType] Cache deployment type. The only supported value is `CACHE_1`.
@@ -51,7 +51,7 @@ class FileCacheLustreConfiguration {
       logConfigurations: (() { final guardedValue = map['logConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FileCacheLustreConfigurationLogConfiguration>(guardedValue, (value) => FileCacheLustreConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       metadataConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<FileCacheLustreConfigurationMetadataConfiguration>(map['metadataConfigurations']!, (value) => FileCacheLustreConfigurationMetadataConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
       mountName: (() { final guardedValue = map['mountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      perUnitStorageThroughput: pulumi.Input.fromValue(map['perUnitStorageThroughput'] as int),
+      perUnitStorageThroughput: pulumi.Input.fromValue((map['perUnitStorageThroughput'] as num).toInt()),
       weeklyMaintenanceStartTime: (() { final guardedValue = map['weeklyMaintenanceStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

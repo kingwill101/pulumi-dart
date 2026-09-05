@@ -14,12 +14,12 @@ class DeploymentArgs {
   final pulumi.Input<int> applicationVersion;
   /// Environment to deploy application to.
   final pulumi.Input<String> environmentId;
-  final pulumi.Input<bool>? forceStop;
+  final pulumi.Input<bool?>? forceStop;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Start the application once deployed.
   final pulumi.Input<bool> start;
-  final pulumi.Input<DeploymentTimeouts>? timeouts;
+  final pulumi.Input<DeploymentTimeouts?>? timeouts;
 
   /// Creates a new [DeploymentArgs].
   /// [applicationId] Application to deploy.
@@ -54,7 +54,7 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      applicationVersion: pulumi.Input.fromValue(map['applicationVersion'] as int),
+      applicationVersion: pulumi.Input.fromValue((map['applicationVersion'] as num).toInt()),
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
       forceStop: (() { final guardedValue = map['forceStop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

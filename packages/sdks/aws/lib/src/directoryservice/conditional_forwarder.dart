@@ -167,10 +167,10 @@ class ConditionalForwarder extends pulumi.CustomResource {
           'aws:directoryservice/conditionalForwarder:ConditionalForwarder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     directoryId = registerOutput<String>('directoryId');
-    dnsIps = registerOutput<List<String>>('dnsIps');
+    dnsIps = registerOutput<List<String>>('dnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     remoteDomainName = registerOutput<String>('remoteDomainName');
   }
@@ -180,11 +180,12 @@ class ConditionalForwarder extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConditionalForwarderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConditionalForwarder._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -199,7 +200,22 @@ class ConditionalForwarder extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     directoryId = registerOutput<String>('directoryId');
-    dnsIps = registerOutput<List<String>>('dnsIps');
+    dnsIps = registerOutput<List<String>>('dnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    remoteDomainName = registerOutput<String>('remoteDomainName');
+  }
+
+  /// Creates a typed reference to an existing [ConditionalForwarder] resource.
+  ConditionalForwarder.reference(String urn)
+    : super(
+        'aws:directoryservice/conditionalForwarder:ConditionalForwarder',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    directoryId = registerOutput<String>('directoryId');
+    dnsIps = registerOutput<List<String>>('dnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     remoteDomainName = registerOutput<String>('remoteDomainName');
   }

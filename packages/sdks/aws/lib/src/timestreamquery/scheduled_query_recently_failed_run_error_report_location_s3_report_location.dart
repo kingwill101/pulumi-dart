@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryRecentlyFailedRunErrorReportLocationS3ReportLocation {
   /// S3 bucket name.
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// S3 key.
-  final pulumi.Input<String>? objectKey;
+  final pulumi.Input<String?>? objectKey;
 
   /// Creates a new [ScheduledQueryRecentlyFailedRunErrorReportLocationS3ReportLocation].
   /// [bucketName] S3 bucket name.

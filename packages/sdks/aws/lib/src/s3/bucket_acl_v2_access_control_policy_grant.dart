@@ -5,7 +5,7 @@ import 'bucket_acl_v2_access_control_policy_grant_grantee.dart';
 
 class BucketAclV2AccessControlPolicyGrant {
   /// Configuration block for the person being granted permissions. See below.
-  final pulumi.Input<BucketAclV2AccessControlPolicyGrantGrantee>? grantee;
+  final pulumi.Input<BucketAclV2AccessControlPolicyGrantGrantee?>? grantee;
   /// Logging permissions assigned to the grantee for the bucket. Valid values: `FULL_CONTROL`, `WRITE`, `WRITE_ACP`, `READ`, `READ_ACP`. See [What permissions can I grant?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions) for more details about what each permission means in the context of buckets.
   final pulumi.Input<String> permission;
 

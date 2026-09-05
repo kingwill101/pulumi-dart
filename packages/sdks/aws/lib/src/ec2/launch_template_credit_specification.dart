@@ -7,7 +7,7 @@ class LaunchTemplateCreditSpecification {
   /// Can be `standard` or `unlimited`.
   /// T3 instances are launched as `unlimited` by default.
   /// T2 instances are launched as `standard` by default.
-  final pulumi.Input<String>? cpuCredits;
+  final pulumi.Input<String?>? cpuCredits;
 
   /// Creates a new [LaunchTemplateCreditSpecification].
   /// [cpuCredits] The credit option for CPU usage.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobTensorBoardOutputConfig {
   /// Local path where TensorBoard output is written.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
   /// S3 URI where TensorBoard output is stored.
   final pulumi.Input<String> s3OutputPath;
 

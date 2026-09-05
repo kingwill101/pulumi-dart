@@ -3,40 +3,40 @@
 
 /// Result data returned by getRegistry.
 class GetRegistryResult {
-  /// Amazon Resource Name (ARN) of Glue Registry.
-  final String arn;
+  /// ARN of Glue Registry.
+  final String? arn;
   /// A description of the registry.
-  final String description;
-  final String name;
-  final String region;
+  final String? description;
+  final String? name;
+  final String? region;
 
   /// Creates a new [GetRegistryResult].
-  /// [arn] Amazon Resource Name (ARN) of Glue Registry.
+  /// [arn] ARN of Glue Registry.
   /// [description] A description of the registry.
-  /// [name] Required.
-  /// [region] Required.
+  /// [name] Optional.
+  /// [region] Optional.
   const GetRegistryResult({
-    required this.arn,
-    required this.description,
-    required this.name,
-    required this.region,
+    this.arn,
+    this.description,
+    this.name,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'description': description,
-      'name': name,
-      'region': region,
+      'arn': ?arn,
+      'description': ?description,
+      'name': ?name,
+      'region': ?region,
     };
   }
 
   factory GetRegistryResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryResult(
-      arn: map['arn'] as String,
-      description: map['description'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

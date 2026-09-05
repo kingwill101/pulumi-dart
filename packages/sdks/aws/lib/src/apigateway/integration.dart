@@ -370,11 +370,11 @@ import 'integration_tls_config.dart';
 /// // IAM
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["lambda.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -430,11 +430,11 @@ import 'integration_tls_config.dart';
 ///     authorization="NONE")
 /// # IAM
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["lambda.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// role = aws.iam.Role("role",
@@ -510,7 +510,6 @@ import 'integration_tls_config.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -522,6 +521,7 @@ import 'integration_tls_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -636,7 +636,6 @@ import 'integration_tls_config.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -645,6 +644,7 @@ import 'integration_tls_config.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -729,11 +729,11 @@ import 'integration_tls_config.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -857,11 +857,11 @@ import 'integration_tls_config.dart';
 ///         // IAM
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("lambda.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -986,11 +986,11 @@ import 'integration_tls_config.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - lambda.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -1663,17 +1663,17 @@ import 'integration_tls_config.dart';
 ///     subnets: exampleAwsSubnet.map(__item => __item.id),
 /// });
 /// const exampleListener = new aws.lb.Listener("example", {
-///     loadBalancerArn: exampleLoadBalancer.arn,
-///     port: 80,
-///     protocol: "HTTP",
 ///     defaultActions: [{
-///         type: "fixed-response",
 ///         fixedResponse: {
 ///             contentType: "text/plain",
 ///             messageBody: "OK",
 ///             statusCode: "200",
 ///         },
+///         type: "fixed-response",
 ///     }],
+///     loadBalancerArn: exampleLoadBalancer.arn,
+///     port: 80,
+///     protocol: "HTTP",
 /// });
 /// const exampleRestApi = new aws.apigateway.RestApi("example", {name: "example"});
 /// const exampleResource = new aws.apigateway.Resource("example", {
@@ -1714,17 +1714,17 @@ import 'integration_tls_config.dart';
 ///     security_groups=[example_aws_security_group["id"]],
 ///     subnets=[__item["id"] for __item in example_aws_subnet])
 /// example_listener = aws.lb.Listener("example",
-///     load_balancer_arn=example_load_balancer.arn,
-///     port=80,
-///     protocol="HTTP",
 ///     default_actions=[{
-///         "type": "fixed-response",
 ///         "fixed_response": {
 ///             "content_type": "text/plain",
 ///             "message_body": "OK",
 ///             "status_code": "200",
 ///         },
-///     }])
+///         "type": "fixed-response",
+///     }],
+///     load_balancer_arn=example_load_balancer.arn,
+///     port=80,
+///     protocol="HTTP")
 /// example_rest_api = aws.apigateway.RestApi("example", name="example")
 /// example_resource = aws.apigateway.Resource("example",
 ///     rest_api=example_rest_api.id,
@@ -1778,22 +1778,22 @@ import 'integration_tls_config.dart';
 ///
 ///     var exampleListener = new Aws.LB.Listener("example", new()
 ///     {
-///         LoadBalancerArn = exampleLoadBalancer.Arn,
-///         Port = 80,
-///         Protocol = "HTTP",
 ///         DefaultActions = new[]
 ///         {
 ///             new Aws.LB.Inputs.ListenerDefaultActionArgs
 ///             {
-///                 Type = "fixed-response",
 ///                 FixedResponse = new Aws.LB.Inputs.ListenerDefaultActionFixedResponseArgs
 ///                 {
 ///                     ContentType = "text/plain",
 ///                     MessageBody = "OK",
 ///                     StatusCode = "200",
 ///                 },
+///                 Type = "fixed-response",
 ///             },
 ///         },
+///         LoadBalancerArn = exampleLoadBalancer.Arn,
+///         Port = 80,
+///         Protocol = "HTTP",
 ///     });
 ///
 ///     var exampleRestApi = new Aws.ApiGateway.RestApi("example", new()
@@ -1873,19 +1873,19 @@ import 'integration_tls_config.dart';
 /// return err
 /// }
 /// _, err = lb.NewListener(ctx, "example", &lb.ListenerArgs{
-/// LoadBalancerArn: exampleLoadBalancer.Arn,
-/// Port: pulumi.Int(80),
-/// Protocol: pulumi.String("HTTP"),
 /// DefaultActions: lb.ListenerDefaultActionArray{
 /// &lb.ListenerDefaultActionArgs{
-/// Type: pulumi.String("fixed-response"),
 /// FixedResponse: &lb.ListenerDefaultActionFixedResponseArgs{
 /// ContentType: pulumi.String("text/plain"),
 /// MessageBody: pulumi.String("OK"),
 /// StatusCode: pulumi.String("200"),
 /// },
+/// Type: pulumi.String("fixed-response"),
 /// },
 /// },
+/// LoadBalancerArn: exampleLoadBalancer.Arn,
+/// Port: pulumi.Int(80),
+/// Protocol: pulumi.String("HTTP"),
 /// })
 /// if err != nil {
 /// return err
@@ -1960,17 +1960,17 @@ import 'integration_tls_config.dart';
 ///   subnets            = exampleAwsSubnet[*].id
 /// }
 /// resource "aws_lb_listener" "example" {
-///   load_balancer_arn = aws_lb_loadbalancer.example.arn
-///   port              = "80"
-///   protocol          = "HTTP"
 ///   default_actions {
-///     type = "fixed-response"
 ///     fixed_response = {
 ///       content_type = "text/plain"
 ///       message_body = "OK"
 ///       status_code  = "200"
 ///     }
+///     type = "fixed-response"
 ///   }
+///   load_balancer_arn = aws_lb_loadbalancer.example.arn
+///   port              = "80"
+///   protocol          = "HTTP"
 /// }
 /// resource "aws_apigateway_restapi" "example" {
 ///   name = "example"
@@ -2048,17 +2048,17 @@ import 'integration_tls_config.dart';
 ///             .build());
 ///
 ///         var exampleListener = new Listener("exampleListener", ListenerArgs.builder()
-///             .loadBalancerArn(exampleLoadBalancer.arn())
-///             .port(80)
-///             .protocol("HTTP")
 ///             .defaultActions(ListenerDefaultActionArgs.builder()
-///                 .type("fixed-response")
 ///                 .fixedResponse(ListenerDefaultActionFixedResponseArgs.builder()
 ///                     .contentType("text/plain")
 ///                     .messageBody("OK")
 ///                     .statusCode("200")
 ///                     .build())
+///                 .type("fixed-response")
 ///                 .build())
+///             .loadBalancerArn(exampleLoadBalancer.arn())
+///             .port(80)
+///             .protocol("HTTP")
 ///             .build());
 ///
 ///         var exampleRestApi = new RestApi("exampleRestApi", RestApiArgs.builder()
@@ -2170,9 +2170,9 @@ class Integration extends pulumi.CustomResource {
           'aws:apigateway/integration:Integration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    cacheKeyParameters = registerOutput<List<String>?>('cacheKeyParameters');
+    cacheKeyParameters = registerOutput<List<String>?>('cacheKeyParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cacheNamespace = registerOutput<String>('cacheNamespace');
     connectionId = registerOutput<String?>('connectionId');
     connectionType = registerOutput<String?>('connectionType');
@@ -2183,8 +2183,8 @@ class Integration extends pulumi.CustomResource {
     integrationTarget = registerOutput<String?>('integrationTarget');
     passthroughBehavior = registerOutput<String>('passthroughBehavior');
     region = registerOutput<String>('region');
-    requestParameters = registerOutput<Map<String, String>?>('requestParameters');
-    requestTemplates = registerOutput<Map<String, String>?>('requestTemplates');
+    requestParameters = registerOutput<Map<String, String>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestTemplates = registerOutput<Map<String, String>?>('requestTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceId = registerOutput<String>('resourceId');
     responseTransferMode = registerOutput<String>('responseTransferMode');
     restApi = registerOutput<String>('restApi');
@@ -2199,11 +2199,12 @@ class Integration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Integration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2217,7 +2218,7 @@ class Integration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    cacheKeyParameters = registerOutput<List<String>?>('cacheKeyParameters');
+    cacheKeyParameters = registerOutput<List<String>?>('cacheKeyParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cacheNamespace = registerOutput<String>('cacheNamespace');
     connectionId = registerOutput<String?>('connectionId');
     connectionType = registerOutput<String?>('connectionType');
@@ -2228,8 +2229,39 @@ class Integration extends pulumi.CustomResource {
     integrationTarget = registerOutput<String?>('integrationTarget');
     passthroughBehavior = registerOutput<String>('passthroughBehavior');
     region = registerOutput<String>('region');
-    requestParameters = registerOutput<Map<String, String>?>('requestParameters');
-    requestTemplates = registerOutput<Map<String, String>?>('requestTemplates');
+    requestParameters = registerOutput<Map<String, String>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestTemplates = registerOutput<Map<String, String>?>('requestTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resourceId = registerOutput<String>('resourceId');
+    responseTransferMode = registerOutput<String>('responseTransferMode');
+    restApi = registerOutput<String>('restApi');
+    timeoutMilliseconds = registerOutput<int?>('timeoutMilliseconds');
+    tlsConfig = registerOutput<IntegrationTlsConfig?>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    uri = registerOutput<String?>('uri');
+  }
+
+  /// Creates a typed reference to an existing [Integration] resource.
+  Integration.reference(String urn)
+    : super(
+        'aws:apigateway/integration:Integration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cacheKeyParameters = registerOutput<List<String>?>('cacheKeyParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cacheNamespace = registerOutput<String>('cacheNamespace');
+    connectionId = registerOutput<String?>('connectionId');
+    connectionType = registerOutput<String?>('connectionType');
+    contentHandling = registerOutput<String?>('contentHandling');
+    credentials = registerOutput<String?>('credentials');
+    httpMethod = registerOutput<String>('httpMethod');
+    integrationHttpMethod = registerOutput<String?>('integrationHttpMethod');
+    integrationTarget = registerOutput<String?>('integrationTarget');
+    passthroughBehavior = registerOutput<String>('passthroughBehavior');
+    region = registerOutput<String>('region');
+    requestParameters = registerOutput<Map<String, String>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestTemplates = registerOutput<Map<String, String>?>('requestTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceId = registerOutput<String>('resourceId');
     responseTransferMode = registerOutput<String>('responseTransferMode');
     restApi = registerOutput<String>('restApi');

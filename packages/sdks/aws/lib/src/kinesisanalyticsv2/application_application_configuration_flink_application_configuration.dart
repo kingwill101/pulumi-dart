@@ -7,11 +7,11 @@ import 'application_application_configuration_flink_application_configuration_pa
 
 class ApplicationApplicationConfigurationFlinkApplicationConfiguration {
   /// Describes an application's checkpointing configuration.
-  final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration>? checkpointConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration?>? checkpointConfiguration;
   /// Describes configuration parameters for CloudWatch logging for an application.
-  final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration>? monitoringConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration?>? monitoringConfiguration;
   /// Describes parameters for how an application executes multiple tasks simultaneously.
-  final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration>? parallelismConfiguration;
+  final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration?>? parallelismConfiguration;
 
   /// Creates a new [ApplicationApplicationConfigurationFlinkApplicationConfiguration].
   /// [checkpointConfiguration] Describes an application's checkpointing configuration.

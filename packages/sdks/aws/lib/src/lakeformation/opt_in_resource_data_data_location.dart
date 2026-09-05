@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInResourceDataDataLocation {
   /// Identifier for the Data Catalog where the location is registered with Lake Formation. By default, it is the account ID of the caller.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// ARN that uniquely identifies the data location resource.
   final pulumi.Input<String> resourceArn;
 

@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'plan_advanced_backup_setting.dart';
 import 'plan_args.dart';
+import 'plan_rule.dart';
+import 'plan_scan_setting.dart';
 import 'plan_state.dart';
 
 /// Provides an AWS Backup plan resource.
@@ -12,21 +15,21 @@ import 'plan_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.backup.Plan("example", {
-///     name: "my_example_backup_plan",
-///     rules: [{
-///         ruleName: "my_example_backup_rule",
-///         targetVaultName: test.name,
-///         schedule: "cron(0 12 * * ? *)",
-///         lifecycle: {
-///             deleteAfter: 14,
-///         },
-///     }],
 ///     advancedBackupSettings: [{
 ///         backupOptions: {
 ///             WindowsVSS: "enabled",
 ///         },
 ///         resourceType: "EC2",
 ///     }],
+///     rules: [{
+///         lifecycle: {
+///             deleteAfter: 14,
+///         },
+///         ruleName: "my_example_backup_rule",
+///         targetVaultName: test.name,
+///         schedule: "cron(0 12 * * ? *)",
+///     }],
+///     name: "my_example_backup_plan",
 /// });
 /// ```
 /// ```python
@@ -34,21 +37,21 @@ import 'plan_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.backup.Plan("example",
-///     name="my_example_backup_plan",
-///     rules=[{
-///         "rule_name": "my_example_backup_rule",
-///         "target_vault_name": test["name"],
-///         "schedule": "cron(0 12 * * ? *)",
-///         "lifecycle": {
-///             "delete_after": 14,
-///         },
-///     }],
 ///     advanced_backup_settings=[{
 ///         "backup_options": {
 ///             "WindowsVSS": "enabled",
 ///         },
 ///         "resource_type": "EC2",
-///     }])
+///     }],
+///     rules=[{
+///         "lifecycle": {
+///             "delete_after": 14,
+///         },
+///         "rule_name": "my_example_backup_rule",
+///         "target_vault_name": test["name"],
+///         "schedule": "cron(0 12 * * ? *)",
+///     }],
+///     name="my_example_backup_plan")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -60,20 +63,6 @@ import 'plan_state.dart';
 /// {
 ///     var example = new Aws.Backup.Plan("example", new()
 ///     {
-///         Name = "my_example_backup_plan",
-///         Rules = new[]
-///         {
-///             new Aws.Backup.Inputs.PlanRuleArgs
-///             {
-///                 RuleName = "my_example_backup_rule",
-///                 TargetVaultName = test.Name,
-///                 Schedule = "cron(0 12 * * ? *)",
-///                 Lifecycle = new Aws.Backup.Inputs.PlanRuleLifecycleArgs
-///                 {
-///                     DeleteAfter = 14,
-///                 },
-///             },
-///         },
 ///         AdvancedBackupSettings = new[]
 ///         {
 ///             new Aws.Backup.Inputs.PlanAdvancedBackupSettingArgs
@@ -85,6 +74,20 @@ import 'plan_state.dart';
 ///                 ResourceType = "EC2",
 ///             },
 ///         },
+///         Rules = new[]
+///         {
+///             new Aws.Backup.Inputs.PlanRuleArgs
+///             {
+///                 Lifecycle = new Aws.Backup.Inputs.PlanRuleLifecycleArgs
+///                 {
+///                     DeleteAfter = 14,
+///                 },
+///                 RuleName = "my_example_backup_rule",
+///                 TargetVaultName = test.Name,
+///                 Schedule = "cron(0 12 * * ? *)",
+///             },
+///         },
+///         Name = "my_example_backup_plan",
 ///     });
 ///
 /// });
@@ -100,17 +103,6 @@ import 'plan_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := backup.NewPlan(ctx, "example", &backup.PlanArgs{
-/// 			Name: pulumi.String("my_example_backup_plan"),
-/// 			Rules: backup.PlanRuleArray{
-/// 				&backup.PlanRuleArgs{
-/// 					RuleName:        pulumi.String("my_example_backup_rule"),
-/// 					TargetVaultName: pulumi.Any(test.Name),
-/// 					Schedule:        pulumi.String("cron(0 12 * * ? *)"),
-/// 					Lifecycle: &backup.PlanRuleLifecycleArgs{
-/// 						DeleteAfter: pulumi.Int(14),
-/// 					},
-/// 				},
-/// 			},
 /// 			AdvancedBackupSettings: backup.PlanAdvancedBackupSettingArray{
 /// 				&backup.PlanAdvancedBackupSettingArgs{
 /// 					BackupOptions: pulumi.StringMap{
@@ -119,6 +111,17 @@ import 'plan_state.dart';
 /// 					ResourceType: pulumi.String("EC2"),
 /// 				},
 /// 			},
+/// 			Rules: backup.PlanRuleArray{
+/// 				&backup.PlanRuleArgs{
+/// 					Lifecycle: &backup.PlanRuleLifecycleArgs{
+/// 						DeleteAfter: pulumi.Int(14),
+/// 					},
+/// 					RuleName:        pulumi.String("my_example_backup_rule"),
+/// 					TargetVaultName: pulumi.Any(test.Name),
+/// 					Schedule:        pulumi.String("cron(0 12 * * ? *)"),
+/// 				},
+/// 			},
+/// 			Name: pulumi.String("my_example_backup_plan"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -137,21 +140,21 @@ import 'plan_state.dart';
 /// }
 ///
 /// resource "aws_backup_plan" "example" {
-///   name = "my_example_backup_plan"
-///   rules {
-///     rule_name         = "my_example_backup_rule"
-///     target_vault_name = test.name
-///     schedule          = "cron(0 12 * * ? *)"
-///     lifecycle = {
-///       delete_after = 14
-///     }
-///   }
 ///   advanced_backup_settings {
 ///     backup_options = {
 ///       "WindowsVSS" = "enabled"
 ///     }
 ///     resource_type = "EC2"
 ///   }
+///   rules {
+///     lifecycle = {
+///       delete_after = 14
+///     }
+///     rule_name         = "my_example_backup_rule"
+///     target_vault_name = test.name
+///     schedule          = "cron(0 12 * * ? *)"
+///   }
+///   name = "my_example_backup_plan"
 /// }
 /// ```
 /// ```java
@@ -162,9 +165,9 @@ import 'plan_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.backup.Plan;
 /// import com.pulumi.aws.backup.PlanArgs;
+/// import com.pulumi.aws.backup.inputs.PlanAdvancedBackupSettingArgs;
 /// import com.pulumi.aws.backup.inputs.PlanRuleArgs;
 /// import com.pulumi.aws.backup.inputs.PlanRuleLifecycleArgs;
-/// import com.pulumi.aws.backup.inputs.PlanAdvancedBackupSettingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -179,19 +182,19 @@ import 'plan_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Plan("example", PlanArgs.builder()
-///             .name("my_example_backup_plan")
-///             .rules(PlanRuleArgs.builder()
-///                 .ruleName("my_example_backup_rule")
-///                 .targetVaultName(test.name())
-///                 .schedule("cron(0 12 * * ? *)")
-///                 .lifecycle(PlanRuleLifecycleArgs.builder()
-///                     .deleteAfter(14)
-///                     .build())
-///                 .build())
 ///             .advancedBackupSettings(PlanAdvancedBackupSettingArgs.builder()
 ///                 .backupOptions(Map.of("WindowsVSS", "enabled"))
 ///                 .resourceType("EC2")
 ///                 .build())
+///             .rules(PlanRuleArgs.builder()
+///                 .lifecycle(PlanRuleLifecycleArgs.builder()
+///                     .deleteAfter(14)
+///                     .build())
+///                 .ruleName("my_example_backup_rule")
+///                 .targetVaultName(test.name())
+///                 .schedule("cron(0 12 * * ? *)")
+///                 .build())
+///             .name("my_example_backup_plan")
 ///             .build());
 ///
 ///     }
@@ -202,17 +205,17 @@ import 'plan_state.dart';
 ///   example:
 ///     type: aws:backup:Plan
 ///     properties:
-///       name: my_example_backup_plan
-///       rules:
-///         - ruleName: my_example_backup_rule
-///           targetVaultName: ${test.name}
-///           schedule: cron(0 12 * * ? *)
-///           lifecycle:
-///             deleteAfter: 14
 ///       advancedBackupSettings:
 ///         - backupOptions:
 ///             WindowsVSS: enabled
 ///           resourceType: EC2
+///       rules:
+///         - lifecycle:
+///             deleteAfter: 14
+///           ruleName: my_example_backup_rule
+///           targetVaultName: ${test.name}
+///           schedule: cron(0 12 * * ? *)
+///       name: my_example_backup_plan
 /// ```
 ///
 ///
@@ -237,7 +240,7 @@ import 'plan_state.dart';
 /// ```
 class Plan extends pulumi.CustomResource {
   /// An object that specifies backup options for each resource type.
-  late final pulumi.Output<List<Map<String, dynamic>>?> advancedBackupSettings;
+  late final pulumi.Output<List<PlanAdvancedBackupSetting>?> advancedBackupSettings;
   /// The ARN of the backup plan.
   late final pulumi.Output<String> arn;
   /// The display name of a backup plan.
@@ -245,9 +248,9 @@ class Plan extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A rule object that specifies a scheduled task that is used to back up a selection of resources.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<PlanRule>> rules;
   /// Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> scanSettings;
+  late final pulumi.Output<List<PlanScanSetting>?> scanSettings;
   /// Metadata that you can assign to help organize the plans you create. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -267,16 +270,16 @@ class Plan extends pulumi.CustomResource {
           'aws:backup/plan:Plan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    advancedBackupSettings = registerOutput<List<Map<String, dynamic>>?>('advancedBackupSettings');
+    advancedBackupSettings = registerOutput<List<PlanAdvancedBackupSetting>?>('advancedBackupSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanAdvancedBackupSetting>(guardedValue, (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    scanSettings = registerOutput<List<Map<String, dynamic>>?>('scanSettings');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<PlanRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanRule>(guardedValue, (value) => PlanRule.fromMap((value as Map).cast<String, dynamic>())); });
+    scanSettings = registerOutput<List<PlanScanSetting>?>('scanSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanScanSetting>(guardedValue, (value) => PlanScanSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
   }
 
@@ -285,11 +288,12 @@ class Plan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Plan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -303,14 +307,34 @@ class Plan extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    advancedBackupSettings = registerOutput<List<Map<String, dynamic>>?>('advancedBackupSettings');
+    advancedBackupSettings = registerOutput<List<PlanAdvancedBackupSetting>?>('advancedBackupSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanAdvancedBackupSetting>(guardedValue, (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    scanSettings = registerOutput<List<Map<String, dynamic>>?>('scanSettings');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<PlanRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanRule>(guardedValue, (value) => PlanRule.fromMap((value as Map).cast<String, dynamic>())); });
+    scanSettings = registerOutput<List<PlanScanSetting>?>('scanSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanScanSetting>(guardedValue, (value) => PlanScanSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Plan] resource.
+  Plan.reference(String urn)
+    : super(
+        'aws:backup/plan:Plan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    advancedBackupSettings = registerOutput<List<PlanAdvancedBackupSetting>?>('advancedBackupSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanAdvancedBackupSetting>(guardedValue, (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<PlanRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanRule>(guardedValue, (value) => PlanRule.fromMap((value as Map).cast<String, dynamic>())); });
+    scanSettings = registerOutput<List<PlanScanSetting>?>('scanSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanScanSetting>(guardedValue, (value) => PlanScanSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
   }
 }

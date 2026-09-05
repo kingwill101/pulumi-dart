@@ -19,15 +19,15 @@ import 'graph_vector_search_configuration.dart';
 ///
 /// // Create Neptune Graph
 /// const example = new aws.neptunegraph.Graph("example", {
+///     vectorSearchConfiguration: {
+///         vectorSearchDimension: 128,
+///     },
 ///     graphName: "example-graph-test-20250203",
 ///     provisionedMemory: 16,
 ///     deletionProtection: false,
 ///     publicConnectivity: false,
 ///     replicaCount: 1,
 ///     kmsKeyIdentifier: "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
-///     vectorSearchConfiguration: {
-///         vectorSearchDimension: 128,
-///     },
 ///     tags: {
 ///         Environment: "Development",
 ///         ModifiedBy: "AWS",
@@ -40,15 +40,15 @@ import 'graph_vector_search_configuration.dart';
 ///
 /// # Create Neptune Graph
 /// example = aws.neptunegraph.Graph("example",
+///     vector_search_configuration={
+///         "vector_search_dimension": 128,
+///     },
 ///     graph_name="example-graph-test-20250203",
 ///     provisioned_memory=16,
 ///     deletion_protection=False,
 ///     public_connectivity=False,
 ///     replica_count=1,
 ///     kms_key_identifier="arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
-///     vector_search_configuration={
-///         "vector_search_dimension": 128,
-///     },
 ///     tags={
 ///         "Environment": "Development",
 ///         "ModifiedBy": "AWS",
@@ -65,16 +65,16 @@ import 'graph_vector_search_configuration.dart';
 ///     // Create Neptune Graph
 ///     var example = new Aws.NeptuneGraph.Graph("example", new()
 ///     {
+///         VectorSearchConfiguration = new Aws.NeptuneGraph.Inputs.GraphVectorSearchConfigurationArgs
+///         {
+///             VectorSearchDimension = 128,
+///         },
 ///         GraphName = "example-graph-test-20250203",
 ///         ProvisionedMemory = 16,
 ///         DeletionProtection = false,
 ///         PublicConnectivity = false,
 ///         ReplicaCount = 1,
 ///         KmsKeyIdentifier = "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
-///         VectorSearchConfiguration = new Aws.NeptuneGraph.Inputs.GraphVectorSearchConfigurationArgs
-///         {
-///             VectorSearchDimension = 128,
-///         },
 ///         Tags =
 ///         {
 ///             { "Environment", "Development" },
@@ -96,15 +96,15 @@ import 'graph_vector_search_configuration.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// Create Neptune Graph
 /// 		_, err := neptunegraph.NewGraph(ctx, "example", &neptunegraph.GraphArgs{
+/// 			VectorSearchConfiguration: &neptunegraph.GraphVectorSearchConfigurationArgs{
+/// 				VectorSearchDimension: pulumi.Int(128),
+/// 			},
 /// 			GraphName:          pulumi.String("example-graph-test-20250203"),
 /// 			ProvisionedMemory:  pulumi.Int(16),
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 			PublicConnectivity: pulumi.Bool(false),
 /// 			ReplicaCount:       pulumi.Int(1),
 /// 			KmsKeyIdentifier:   pulumi.String("arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"),
-/// 			VectorSearchConfiguration: &neptunegraph.GraphVectorSearchConfigurationArgs{
-/// 				VectorSearchDimension: pulumi.Int(128),
-/// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("Development"),
 /// 				"ModifiedBy":  pulumi.String("AWS"),
@@ -128,15 +128,15 @@ import 'graph_vector_search_configuration.dart';
 ///
 /// # Create Neptune Graph
 /// resource "aws_neptunegraph_graph" "example" {
+///   vector_search_configuration = {
+///     vector_search_dimension = 128
+///   }
 ///   graph_name          = "example-graph-test-20250203"
 ///   provisioned_memory  = 16
 ///   deletion_protection = false
 ///   public_connectivity = false
 ///   replica_count       = 1
 ///   kms_key_identifier  = "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
-///   vector_search_configuration = {
-///     vector_search_dimension = 128
-///   }
 ///   tags = {
 ///     "Environment" = "Development"
 ///     "ModifiedBy"  = "AWS"
@@ -167,15 +167,15 @@ import 'graph_vector_search_configuration.dart';
 ///     public static void stack(Context ctx) {
 ///         // Create Neptune Graph
 ///         var example = new Graph("example", GraphArgs.builder()
+///             .vectorSearchConfiguration(GraphVectorSearchConfigurationArgs.builder()
+///                 .vectorSearchDimension(128)
+///                 .build())
 ///             .graphName("example-graph-test-20250203")
 ///             .provisionedMemory(16)
 ///             .deletionProtection(false)
 ///             .publicConnectivity(false)
 ///             .replicaCount(1)
 ///             .kmsKeyIdentifier("arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012")
-///             .vectorSearchConfiguration(GraphVectorSearchConfigurationArgs.builder()
-///                 .vectorSearchDimension(128)
-///                 .build())
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "Development"),
 ///                 Map.entry("ModifiedBy", "AWS")
@@ -191,14 +191,14 @@ import 'graph_vector_search_configuration.dart';
 ///   example:
 ///     type: aws:neptunegraph:Graph
 ///     properties:
+///       vectorSearchConfiguration:
+///         vectorSearchDimension: 128
 ///       graphName: example-graph-test-20250203
 ///       provisionedMemory: 16
 ///       deletionProtection: false
 ///       publicConnectivity: false
 ///       replicaCount: 1
 ///       kmsKeyIdentifier: arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
-///       vectorSearchConfiguration:
-///         vectorSearchDimension: 128
 ///       tags:
 ///         Environment: Development
 ///         ModifiedBy: AWS
@@ -229,7 +229,7 @@ class Graph extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<int> provisionedMemory;
-  /// Specifies whether the Graph can be reached over the internet. Access to all graphs requires IAM authentication.  When the Graph is publicly reachable, its Domain Name System (DNS) endpoint resolves to the public IP address from the internet.  When the Graph isn't publicly reachable, you need to create a PrivateGraphEndpoint in a given VPC to ensure the DNS name resolves to a private IP address that is reachable from the VPC.
+  /// Specifies whether the Graph can be reached over the internet. Access to all graphs requires IAM authentication.  When the Graph is publicly reachable, its DNS endpoint resolves to the public IP address from the internet.  When the Graph isn't publicly reachable, you need to create a PrivateGraphEndpoint in a given VPC to ensure the DNS name resolves to a private IP address that is reachable from the VPC.
   late final pulumi.Output<bool> publicConnectivity;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -255,7 +255,7 @@ class Graph extends pulumi.CustomResource {
           'aws:neptunegraph/graph:Graph',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<bool>('deletionProtection');
@@ -267,8 +267,8 @@ class Graph extends pulumi.CustomResource {
     publicConnectivity = registerOutput<bool>('publicConnectivity');
     region = registerOutput<String>('region');
     replicaCount = registerOutput<int>('replicaCount');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<GraphTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vectorSearchConfiguration = registerOutput<GraphVectorSearchConfiguration?>('vectorSearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphVectorSearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -278,11 +278,12 @@ class Graph extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GraphState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Graph._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -306,8 +307,33 @@ class Graph extends pulumi.CustomResource {
     publicConnectivity = registerOutput<bool>('publicConnectivity');
     region = registerOutput<String>('region');
     replicaCount = registerOutput<int>('replicaCount');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<GraphTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vectorSearchConfiguration = registerOutput<GraphVectorSearchConfiguration?>('vectorSearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphVectorSearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Graph] resource.
+  Graph.reference(String urn)
+    : super(
+        'aws:neptunegraph/graph:Graph',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deletionProtection = registerOutput<bool>('deletionProtection');
+    endpoint = registerOutput<String>('endpoint');
+    graphName = registerOutput<String>('graphName');
+    graphNamePrefix = registerOutput<String?>('graphNamePrefix');
+    kmsKeyIdentifier = registerOutput<String>('kmsKeyIdentifier');
+    provisionedMemory = registerOutput<int>('provisionedMemory');
+    publicConnectivity = registerOutput<bool>('publicConnectivity');
+    region = registerOutput<String>('region');
+    replicaCount = registerOutput<int>('replicaCount');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<GraphTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vectorSearchConfiguration = registerOutput<GraphVectorSearchConfiguration?>('vectorSearchConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GraphVectorSearchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

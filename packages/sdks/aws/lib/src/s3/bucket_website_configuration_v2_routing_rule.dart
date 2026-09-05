@@ -6,7 +6,7 @@ import 'bucket_website_configuration_v2_routing_rule_redirect.dart';
 
 class BucketWebsiteConfigurationV2RoutingRule {
   /// Configuration block for describing a condition that must be met for the specified redirect to apply. See below.
-  final pulumi.Input<BucketWebsiteConfigurationV2RoutingRuleCondition>? condition;
+  final pulumi.Input<BucketWebsiteConfigurationV2RoutingRuleCondition?>? condition;
   /// Configuration block for redirect information. See below.
   final pulumi.Input<BucketWebsiteConfigurationV2RoutingRuleRedirect> redirect;
 

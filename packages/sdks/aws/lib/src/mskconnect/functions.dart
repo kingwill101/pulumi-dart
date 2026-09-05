@@ -124,6 +124,17 @@ Future<GetConnectorResult> getConnector(
   return GetConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectorResult> getConnectorOutput(
+  GetConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:mskconnect/getConnector:getConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectorResult.fromMap);
+}
+
 /// Get information on an Amazon MSK Connect custom plugin.
 ///
 /// ## Example Usage
@@ -242,6 +253,17 @@ Future<GetCustomPluginResult> getCustomPlugin(
   return GetCustomPluginResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomPluginResult> getCustomPluginOutput(
+  GetCustomPluginArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:mskconnect/getCustomPlugin:getCustomPlugin',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomPluginResult.fromMap);
+}
+
 /// Get information on an Amazon MSK Connect Worker Configuration.
 ///
 /// ## Example Usage
@@ -358,4 +380,15 @@ Future<GetWorkerConfigurationResult> getWorkerConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkerConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkerConfigurationResult> getWorkerConfigurationOutput(
+  GetWorkerConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:mskconnect/getWorkerConfiguration:getWorkerConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkerConfigurationResult.fromMap);
 }

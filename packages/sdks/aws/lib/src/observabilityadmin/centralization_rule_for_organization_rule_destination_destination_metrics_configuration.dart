@@ -5,7 +5,7 @@ import 'centralization_rule_for_organization_rule_destination_destination_metric
 
 class CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfiguration {
   /// Configuration block for metrics backup settings. See `destinationMetricsBackupConfiguration` below.
-  final pulumi.Input<CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationBackupConfiguration>? backupConfiguration;
+  final pulumi.Input<CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfigurationBackupConfiguration?>? backupConfiguration;
 
   /// Creates a new [CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfiguration].
   /// [backupConfiguration] Configuration block for metrics backup settings. See `destinationMetricsBackupConfiguration` below.

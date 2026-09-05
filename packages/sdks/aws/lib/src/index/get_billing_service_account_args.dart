@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_billing_service_account_get_billing_service_account_args_doc}
 class GetBillingServiceAccountArgs {
   /// ID of the AWS billing service account.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [GetBillingServiceAccountArgs].
   /// [id] ID of the AWS billing service account.

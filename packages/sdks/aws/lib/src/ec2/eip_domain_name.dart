@@ -230,7 +230,7 @@ class EipDomainName extends pulumi.CustomResource {
           'aws:ec2/eipDomainName:EipDomainName',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allocationId = registerOutput<String>('allocationId');
     domainName = registerOutput<String>('domainName');
@@ -244,11 +244,12 @@ class EipDomainName extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EipDomainNameState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EipDomainName._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -262,6 +263,22 @@ class EipDomainName extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allocationId = registerOutput<String>('allocationId');
+    domainName = registerOutput<String>('domainName');
+    ptrRecord = registerOutput<String>('ptrRecord');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<EipDomainNameTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EipDomainNameTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EipDomainName] resource.
+  EipDomainName.reference(String urn)
+    : super(
+        'aws:ec2/eipDomainName:EipDomainName',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allocationId = registerOutput<String>('allocationId');
     domainName = registerOutput<String>('domainName');
     ptrRecord = registerOutput<String>('ptrRecord');

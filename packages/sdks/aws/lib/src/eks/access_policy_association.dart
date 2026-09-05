@@ -13,13 +13,13 @@ import 'access_policy_association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.eks.AccessPolicyAssociation("example", {
-///     clusterName: exampleAwsEksCluster.name,
-///     policyArn: "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy",
-///     principalArn: exampleAwsIamUser.arn,
 ///     accessScope: {
 ///         type: "namespace",
 ///         namespaces: ["example-namespace"],
 ///     },
+///     clusterName: exampleAwsEksCluster.name,
+///     policyArn: "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy",
+///     principalArn: exampleAwsIamUser.arn,
 /// });
 /// ```
 /// ```python
@@ -27,13 +27,13 @@ import 'access_policy_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.eks.AccessPolicyAssociation("example",
-///     cluster_name=example_aws_eks_cluster["name"],
-///     policy_arn="arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy",
-///     principal_arn=example_aws_iam_user["arn"],
 ///     access_scope={
 ///         "type": "namespace",
 ///         "namespaces": ["example-namespace"],
-///     })
+///     },
+///     cluster_name=example_aws_eks_cluster["name"],
+///     policy_arn="arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy",
+///     principal_arn=example_aws_iam_user["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,9 +45,6 @@ import 'access_policy_association_state.dart';
 /// {
 ///     var example = new Aws.Eks.AccessPolicyAssociation("example", new()
 ///     {
-///         ClusterName = exampleAwsEksCluster.Name,
-///         PolicyArn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy",
-///         PrincipalArn = exampleAwsIamUser.Arn,
 ///         AccessScope = new Aws.Eks.Inputs.AccessPolicyAssociationAccessScopeArgs
 ///         {
 ///             Type = "namespace",
@@ -56,6 +53,9 @@ import 'access_policy_association_state.dart';
 ///                 "example-namespace",
 ///             },
 ///         },
+///         ClusterName = exampleAwsEksCluster.Name,
+///         PolicyArn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy",
+///         PrincipalArn = exampleAwsIamUser.Arn,
 ///     });
 ///
 /// });
@@ -71,15 +71,15 @@ import 'access_policy_association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := eks.NewAccessPolicyAssociation(ctx, "example", &eks.AccessPolicyAssociationArgs{
-/// 			ClusterName:  pulumi.Any(exampleAwsEksCluster.Name),
-/// 			PolicyArn:    pulumi.String("arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"),
-/// 			PrincipalArn: pulumi.Any(exampleAwsIamUser.Arn),
 /// 			AccessScope: &eks.AccessPolicyAssociationAccessScopeArgs{
 /// 				Type: pulumi.String("namespace"),
 /// 				Namespaces: pulumi.StringArray{
 /// 					pulumi.String("example-namespace"),
 /// 				},
 /// 			},
+/// 			ClusterName:  pulumi.Any(exampleAwsEksCluster.Name),
+/// 			PolicyArn:    pulumi.String("arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"),
+/// 			PrincipalArn: pulumi.Any(exampleAwsIamUser.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -98,13 +98,13 @@ import 'access_policy_association_state.dart';
 /// }
 ///
 /// resource "aws_eks_accesspolicyassociation" "example" {
-///   cluster_name  = exampleAwsEksCluster.name
-///   policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"
-///   principal_arn = exampleAwsIamUser.arn
 ///   access_scope = {
 ///     type       = "namespace"
 ///     namespaces = ["example-namespace"]
 ///   }
+///   cluster_name  = exampleAwsEksCluster.name
+///   policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"
+///   principal_arn = exampleAwsIamUser.arn
 /// }
 /// ```
 /// ```java
@@ -130,13 +130,13 @@ import 'access_policy_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AccessPolicyAssociation("example", AccessPolicyAssociationArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
-///             .policyArn("arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy")
-///             .principalArn(exampleAwsIamUser.arn())
 ///             .accessScope(AccessPolicyAssociationAccessScopeArgs.builder()
 ///                 .type("namespace")
 ///                 .namespaces("example-namespace")
 ///                 .build())
+///             .clusterName(exampleAwsEksCluster.name())
+///             .policyArn("arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy")
+///             .principalArn(exampleAwsIamUser.arn())
 ///             .build());
 ///
 ///     }
@@ -147,13 +147,13 @@ import 'access_policy_association_state.dart';
 ///   example:
 ///     type: aws:eks:AccessPolicyAssociation
 ///     properties:
-///       clusterName: ${exampleAwsEksCluster.name}
-///       policyArn: arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy
-///       principalArn: ${exampleAwsIamUser.arn}
 ///       accessScope:
 ///         type: namespace
 ///         namespaces:
 ///           - example-namespace
+///       clusterName: ${exampleAwsEksCluster.name}
+///       policyArn: arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy
+///       principalArn: ${exampleAwsIamUser.arn}
 /// ```
 ///
 ///
@@ -206,7 +206,7 @@ class AccessPolicyAssociation extends pulumi.CustomResource {
           'aws:eks/accessPolicyAssociation:AccessPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessScope = registerOutput<AccessPolicyAssociationAccessScope>('accessScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyAssociationAccessScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     associatedAt = registerOutput<String>('associatedAt');
@@ -222,11 +222,12 @@ class AccessPolicyAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPolicyAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPolicyAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -240,6 +241,24 @@ class AccessPolicyAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessScope = registerOutput<AccessPolicyAssociationAccessScope>('accessScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyAssociationAccessScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    associatedAt = registerOutput<String>('associatedAt');
+    clusterName = registerOutput<String>('clusterName');
+    modifiedAt = registerOutput<String>('modifiedAt');
+    policyArn = registerOutput<String>('policyArn');
+    principalArn = registerOutput<String>('principalArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AccessPolicyAssociation] resource.
+  AccessPolicyAssociation.reference(String urn)
+    : super(
+        'aws:eks/accessPolicyAssociation:AccessPolicyAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessScope = registerOutput<AccessPolicyAssociationAccessScope>('accessScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyAssociationAccessScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     associatedAt = registerOutput<String>('associatedAt');
     clusterName = registerOutput<String>('clusterName');

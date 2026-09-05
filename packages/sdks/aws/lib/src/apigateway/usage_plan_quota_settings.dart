@@ -6,7 +6,7 @@ class UsagePlanQuotaSettings {
   /// Maximum number of requests that can be made in a given time period.
   final pulumi.Input<int> limit;
   /// Number of requests subtracted from the given limit in the initial time period.
-  final pulumi.Input<int>? offset;
+  final pulumi.Input<int?>? offset;
   /// Time period in which the limit applies. Valid values are `DAY`, `WEEK`, or `MONTH`.
   ///
   /// The following arguments are optional:
@@ -32,8 +32,8 @@ class UsagePlanQuotaSettings {
 
   factory UsagePlanQuotaSettings.fromMap(Map<String, dynamic> map) {
     return UsagePlanQuotaSettings(
-      limit: pulumi.Input.fromValue(map['limit'] as int),
-      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      limit: pulumi.Input.fromValue((map['limit'] as num).toInt()),
+      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       period: pulumi.Input.fromValue(map['period'] as String),
     );
   }

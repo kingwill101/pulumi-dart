@@ -9,16 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyArgs {
   /// ARN of the IAM policy.
   /// Conflicts with `name` and `pathPrefix`.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name of the IAM policy.
   /// Conflicts with `arn`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Prefix of the path to the IAM policy.
   /// Defaults to a slash (`/`).
   /// Conflicts with `arn`.
-  final pulumi.Input<String>? pathPrefix;
+  final pulumi.Input<String?>? pathPrefix;
   /// Key-value mapping of tags for the IAM Policy.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetPolicyArgs].
   /// [arn] ARN of the IAM policy.

@@ -16,8 +16,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 /// const example = new aws.sesv2.ConfigurationSet("example", {configurationSetName: "example"});
 /// const exampleConfigurationSetEventDestination = new aws.sesv2.ConfigurationSetEventDestination("example", {
-///     configurationSetName: example.configurationSetName,
-///     eventDestinationName: "example",
 ///     eventDestination: {
 ///         cloudWatchDestination: {
 ///             dimensionConfigurations: [{
@@ -29,6 +27,8 @@ import 'configuration_set_event_destination_state.dart';
 ///         enabled: true,
 ///         matchingEventTypes: ["SEND"],
 ///     },
+///     configurationSetName: example.configurationSetName,
+///     eventDestinationName: "example",
 /// });
 /// ```
 /// ```python
@@ -37,8 +37,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 /// example = aws.sesv2.ConfigurationSet("example", configuration_set_name="example")
 /// example_configuration_set_event_destination = aws.sesv2.ConfigurationSetEventDestination("example",
-///     configuration_set_name=example.configuration_set_name,
-///     event_destination_name="example",
 ///     event_destination={
 ///         "cloud_watch_destination": {
 ///             "dimension_configurations": [{
@@ -49,7 +47,9 @@ import 'configuration_set_event_destination_state.dart';
 ///         },
 ///         "enabled": True,
 ///         "matching_event_types": ["SEND"],
-///     })
+///     },
+///     configuration_set_name=example.configuration_set_name,
+///     event_destination_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -66,8 +66,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 ///     var exampleConfigurationSetEventDestination = new Aws.SesV2.ConfigurationSetEventDestination("example", new()
 ///     {
-///         ConfigurationSetName = example.ConfigurationSetName,
-///         EventDestinationName = "example",
 ///         EventDestination = new Aws.SesV2.Inputs.ConfigurationSetEventDestinationEventDestinationArgs
 ///         {
 ///             CloudWatchDestination = new Aws.SesV2.Inputs.ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationArgs
@@ -88,6 +86,8 @@ import 'configuration_set_event_destination_state.dart';
 ///                 "SEND",
 ///             },
 ///         },
+///         ConfigurationSetName = example.ConfigurationSetName,
+///         EventDestinationName = "example",
 ///     });
 ///
 /// });
@@ -109,8 +109,6 @@ import 'configuration_set_event_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sesv2.NewConfigurationSetEventDestination(ctx, "example", &sesv2.ConfigurationSetEventDestinationArgs{
-/// 			ConfigurationSetName: example.ConfigurationSetName,
-/// 			EventDestinationName: pulumi.String("example"),
 /// 			EventDestination: &sesv2.ConfigurationSetEventDestinationEventDestinationArgs{
 /// 				CloudWatchDestination: &sesv2.ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationArgs{
 /// 					DimensionConfigurations: sesv2.ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfigurationArray{
@@ -126,6 +124,8 @@ import 'configuration_set_event_destination_state.dart';
 /// 					pulumi.String("SEND"),
 /// 				},
 /// 			},
+/// 			ConfigurationSetName: example.ConfigurationSetName,
+/// 			EventDestinationName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -147,8 +147,6 @@ import 'configuration_set_event_destination_state.dart';
 ///   configuration_set_name = "example"
 /// }
 /// resource "aws_sesv2_configurationseteventdestination" "example" {
-///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
-///   event_destination_name = "example"
 ///   event_destination = {
 ///     cloud_watch_destination = {
 ///       dimension_configurations = [{
@@ -160,6 +158,8 @@ import 'configuration_set_event_destination_state.dart';
 ///     enabled              = true
 ///     matching_event_types = ["SEND"]
 ///   }
+///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   event_destination_name = "example"
 /// }
 /// ```
 /// ```java
@@ -193,8 +193,6 @@ import 'configuration_set_event_destination_state.dart';
 ///             .build());
 ///
 ///         var exampleConfigurationSetEventDestination = new ConfigurationSetEventDestination("exampleConfigurationSetEventDestination", ConfigurationSetEventDestinationArgs.builder()
-///             .configurationSetName(example.configurationSetName())
-///             .eventDestinationName("example")
 ///             .eventDestination(ConfigurationSetEventDestinationEventDestinationArgs.builder()
 ///                 .cloudWatchDestination(ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationArgs.builder()
 ///                     .dimensionConfigurations(ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfigurationArgs.builder()
@@ -206,6 +204,8 @@ import 'configuration_set_event_destination_state.dart';
 ///                 .enabled(true)
 ///                 .matchingEventTypes("SEND")
 ///                 .build())
+///             .configurationSetName(example.configurationSetName())
+///             .eventDestinationName("example")
 ///             .build());
 ///
 ///     }
@@ -221,8 +221,6 @@ import 'configuration_set_event_destination_state.dart';
 ///     type: aws:sesv2:ConfigurationSetEventDestination
 ///     name: example
 ///     properties:
-///       configurationSetName: ${example.configurationSetName}
-///       eventDestinationName: example
 ///       eventDestination:
 ///         cloudWatchDestination:
 ///           dimensionConfigurations:
@@ -232,6 +230,8 @@ import 'configuration_set_event_destination_state.dart';
 ///         enabled: true
 ///         matchingEventTypes:
 ///           - SEND
+///       configurationSetName: ${example.configurationSetName}
+///       eventDestinationName: example
 /// ```
 ///
 ///
@@ -246,8 +246,6 @@ import 'configuration_set_event_destination_state.dart';
 ///     name: "default",
 /// });
 /// const example = new aws.sesv2.ConfigurationSetEventDestination("example", {
-///     configurationSetName: exampleAwsSesv2ConfigurationSet.configurationSetName,
-///     eventDestinationName: "example",
 ///     eventDestination: {
 ///         eventBridgeDestination: {
 ///             eventBusArn: _default.then(_default => _default.arn),
@@ -255,6 +253,8 @@ import 'configuration_set_event_destination_state.dart';
 ///         enabled: true,
 ///         matchingEventTypes: ["SEND"],
 ///     },
+///     configurationSetName: exampleAwsSesv2ConfigurationSet.configurationSetName,
+///     eventDestinationName: "example",
 /// });
 /// ```
 /// ```python
@@ -263,15 +263,15 @@ import 'configuration_set_event_destination_state.dart';
 ///
 /// default = aws.cloudwatch.get_event_bus(name="default")
 /// example = aws.sesv2.ConfigurationSetEventDestination("example",
-///     configuration_set_name=example_aws_sesv2_configuration_set["configurationSetName"],
-///     event_destination_name="example",
 ///     event_destination={
 ///         "event_bridge_destination": {
 ///             "event_bus_arn": default.arn,
 ///         },
 ///         "enabled": True,
 ///         "matching_event_types": ["SEND"],
-///     })
+///     },
+///     configuration_set_name=example_aws_sesv2_configuration_set["configurationSetName"],
+///     event_destination_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -288,8 +288,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 ///     var example = new Aws.SesV2.ConfigurationSetEventDestination("example", new()
 ///     {
-///         ConfigurationSetName = exampleAwsSesv2ConfigurationSet.ConfigurationSetName,
-///         EventDestinationName = "example",
 ///         EventDestination = new Aws.SesV2.Inputs.ConfigurationSetEventDestinationEventDestinationArgs
 ///         {
 ///             EventBridgeDestination = new Aws.SesV2.Inputs.ConfigurationSetEventDestinationEventDestinationEventBridgeDestinationArgs
@@ -302,6 +300,8 @@ import 'configuration_set_event_destination_state.dart';
 ///                 "SEND",
 ///             },
 ///         },
+///         ConfigurationSetName = exampleAwsSesv2ConfigurationSet.ConfigurationSetName,
+///         EventDestinationName = "example",
 ///     });
 ///
 /// });
@@ -324,8 +324,6 @@ import 'configuration_set_event_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sesv2.NewConfigurationSetEventDestination(ctx, "example", &sesv2.ConfigurationSetEventDestinationArgs{
-/// 			ConfigurationSetName: pulumi.Any(exampleAwsSesv2ConfigurationSet.ConfigurationSetName),
-/// 			EventDestinationName: pulumi.String("example"),
 /// 			EventDestination: &sesv2.ConfigurationSetEventDestinationEventDestinationArgs{
 /// 				EventBridgeDestination: &sesv2.ConfigurationSetEventDestinationEventDestinationEventBridgeDestinationArgs{
 /// 					EventBusArn: pulumi.String(_default.Arn),
@@ -335,6 +333,8 @@ import 'configuration_set_event_destination_state.dart';
 /// 					pulumi.String("SEND"),
 /// 				},
 /// 			},
+/// 			ConfigurationSetName: pulumi.Any(exampleAwsSesv2ConfigurationSet.ConfigurationSetName),
+/// 			EventDestinationName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -357,8 +357,6 @@ import 'configuration_set_event_destination_state.dart';
 /// }
 ///
 /// resource "aws_sesv2_configurationseteventdestination" "example" {
-///   configuration_set_name = exampleAwsSesv2ConfigurationSet.configurationSetName
-///   event_destination_name = "example"
 ///   event_destination = {
 ///     event_bridge_destination = {
 ///       event_bus_arn = data.aws_cloudwatch_geteventbus.default.arn
@@ -366,6 +364,8 @@ import 'configuration_set_event_destination_state.dart';
 ///     enabled              = true
 ///     matching_event_types = ["SEND"]
 ///   }
+///   configuration_set_name = exampleAwsSesv2ConfigurationSet.configurationSetName
+///   event_destination_name = "example"
 /// }
 /// ```
 /// ```java
@@ -398,8 +398,6 @@ import 'configuration_set_event_destination_state.dart';
 ///             .build());
 ///
 ///         var example = new ConfigurationSetEventDestination("example", ConfigurationSetEventDestinationArgs.builder()
-///             .configurationSetName(exampleAwsSesv2ConfigurationSet.configurationSetName())
-///             .eventDestinationName("example")
 ///             .eventDestination(ConfigurationSetEventDestinationEventDestinationArgs.builder()
 ///                 .eventBridgeDestination(ConfigurationSetEventDestinationEventDestinationEventBridgeDestinationArgs.builder()
 ///                     .eventBusArn(default_.arn())
@@ -407,6 +405,8 @@ import 'configuration_set_event_destination_state.dart';
 ///                 .enabled(true)
 ///                 .matchingEventTypes("SEND")
 ///                 .build())
+///             .configurationSetName(exampleAwsSesv2ConfigurationSet.configurationSetName())
+///             .eventDestinationName("example")
 ///             .build());
 ///
 ///     }
@@ -417,14 +417,14 @@ import 'configuration_set_event_destination_state.dart';
 ///   example:
 ///     type: aws:sesv2:ConfigurationSetEventDestination
 ///     properties:
-///       configurationSetName: ${exampleAwsSesv2ConfigurationSet.configurationSetName}
-///       eventDestinationName: example
 ///       eventDestination:
 ///         eventBridgeDestination:
 ///           eventBusArn: ${default.arn}
 ///         enabled: true
 ///         matchingEventTypes:
 ///           - SEND
+///       configurationSetName: ${exampleAwsSesv2ConfigurationSet.configurationSetName}
+///       eventDestinationName: example
 /// variables:
 ///   default:
 ///     fn::invoke:
@@ -443,8 +443,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 /// const example = new aws.sesv2.ConfigurationSet("example", {configurationSetName: "example"});
 /// const exampleConfigurationSetEventDestination = new aws.sesv2.ConfigurationSetEventDestination("example", {
-///     configurationSetName: example.configurationSetName,
-///     eventDestinationName: "example",
 ///     eventDestination: {
 ///         kinesisFirehoseDestination: {
 ///             deliveryStreamArn: exampleAwsKinesisFirehoseDeliveryStream.arn,
@@ -453,6 +451,8 @@ import 'configuration_set_event_destination_state.dart';
 ///         enabled: true,
 ///         matchingEventTypes: ["SEND"],
 ///     },
+///     configurationSetName: example.configurationSetName,
+///     eventDestinationName: "example",
 /// });
 /// ```
 /// ```python
@@ -461,8 +461,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 /// example = aws.sesv2.ConfigurationSet("example", configuration_set_name="example")
 /// example_configuration_set_event_destination = aws.sesv2.ConfigurationSetEventDestination("example",
-///     configuration_set_name=example.configuration_set_name,
-///     event_destination_name="example",
 ///     event_destination={
 ///         "kinesis_firehose_destination": {
 ///             "delivery_stream_arn": example_aws_kinesis_firehose_delivery_stream["arn"],
@@ -470,7 +468,9 @@ import 'configuration_set_event_destination_state.dart';
 ///         },
 ///         "enabled": True,
 ///         "matching_event_types": ["SEND"],
-///     })
+///     },
+///     configuration_set_name=example.configuration_set_name,
+///     event_destination_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -487,8 +487,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 ///     var exampleConfigurationSetEventDestination = new Aws.SesV2.ConfigurationSetEventDestination("example", new()
 ///     {
-///         ConfigurationSetName = example.ConfigurationSetName,
-///         EventDestinationName = "example",
 ///         EventDestination = new Aws.SesV2.Inputs.ConfigurationSetEventDestinationEventDestinationArgs
 ///         {
 ///             KinesisFirehoseDestination = new Aws.SesV2.Inputs.ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestinationArgs
@@ -502,6 +500,8 @@ import 'configuration_set_event_destination_state.dart';
 ///                 "SEND",
 ///             },
 ///         },
+///         ConfigurationSetName = example.ConfigurationSetName,
+///         EventDestinationName = "example",
 ///     });
 ///
 /// });
@@ -523,8 +523,6 @@ import 'configuration_set_event_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sesv2.NewConfigurationSetEventDestination(ctx, "example", &sesv2.ConfigurationSetEventDestinationArgs{
-/// 			ConfigurationSetName: example.ConfigurationSetName,
-/// 			EventDestinationName: pulumi.String("example"),
 /// 			EventDestination: &sesv2.ConfigurationSetEventDestinationEventDestinationArgs{
 /// 				KinesisFirehoseDestination: &sesv2.ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestinationArgs{
 /// 					DeliveryStreamArn: pulumi.Any(exampleAwsKinesisFirehoseDeliveryStream.Arn),
@@ -535,6 +533,8 @@ import 'configuration_set_event_destination_state.dart';
 /// 					pulumi.String("SEND"),
 /// 				},
 /// 			},
+/// 			ConfigurationSetName: example.ConfigurationSetName,
+/// 			EventDestinationName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -556,8 +556,6 @@ import 'configuration_set_event_destination_state.dart';
 ///   configuration_set_name = "example"
 /// }
 /// resource "aws_sesv2_configurationseteventdestination" "example" {
-///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
-///   event_destination_name = "example"
 ///   event_destination = {
 ///     kinesis_firehose_destination = {
 ///       delivery_stream_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
@@ -566,6 +564,8 @@ import 'configuration_set_event_destination_state.dart';
 ///     enabled              = true
 ///     matching_event_types = ["SEND"]
 ///   }
+///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   event_destination_name = "example"
 /// }
 /// ```
 /// ```java
@@ -598,8 +598,6 @@ import 'configuration_set_event_destination_state.dart';
 ///             .build());
 ///
 ///         var exampleConfigurationSetEventDestination = new ConfigurationSetEventDestination("exampleConfigurationSetEventDestination", ConfigurationSetEventDestinationArgs.builder()
-///             .configurationSetName(example.configurationSetName())
-///             .eventDestinationName("example")
 ///             .eventDestination(ConfigurationSetEventDestinationEventDestinationArgs.builder()
 ///                 .kinesisFirehoseDestination(ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestinationArgs.builder()
 ///                     .deliveryStreamArn(exampleAwsKinesisFirehoseDeliveryStream.arn())
@@ -608,6 +606,8 @@ import 'configuration_set_event_destination_state.dart';
 ///                 .enabled(true)
 ///                 .matchingEventTypes("SEND")
 ///                 .build())
+///             .configurationSetName(example.configurationSetName())
+///             .eventDestinationName("example")
 ///             .build());
 ///
 ///     }
@@ -623,8 +623,6 @@ import 'configuration_set_event_destination_state.dart';
 ///     type: aws:sesv2:ConfigurationSetEventDestination
 ///     name: example
 ///     properties:
-///       configurationSetName: ${example.configurationSetName}
-///       eventDestinationName: example
 ///       eventDestination:
 ///         kinesisFirehoseDestination:
 ///           deliveryStreamArn: ${exampleAwsKinesisFirehoseDeliveryStream.arn}
@@ -632,6 +630,8 @@ import 'configuration_set_event_destination_state.dart';
 ///         enabled: true
 ///         matchingEventTypes:
 ///           - SEND
+///       configurationSetName: ${example.configurationSetName}
+///       eventDestinationName: example
 /// ```
 ///
 ///
@@ -644,8 +644,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 /// const example = new aws.sesv2.ConfigurationSet("example", {configurationSetName: "example"});
 /// const exampleConfigurationSetEventDestination = new aws.sesv2.ConfigurationSetEventDestination("example", {
-///     configurationSetName: example.configurationSetName,
-///     eventDestinationName: "example",
 ///     eventDestination: {
 ///         pinpointDestination: {
 ///             applicationArn: exampleAwsPinpointApp.arn,
@@ -653,6 +651,8 @@ import 'configuration_set_event_destination_state.dart';
 ///         enabled: true,
 ///         matchingEventTypes: ["SEND"],
 ///     },
+///     configurationSetName: example.configurationSetName,
+///     eventDestinationName: "example",
 /// });
 /// ```
 /// ```python
@@ -661,15 +661,15 @@ import 'configuration_set_event_destination_state.dart';
 ///
 /// example = aws.sesv2.ConfigurationSet("example", configuration_set_name="example")
 /// example_configuration_set_event_destination = aws.sesv2.ConfigurationSetEventDestination("example",
-///     configuration_set_name=example.configuration_set_name,
-///     event_destination_name="example",
 ///     event_destination={
 ///         "pinpoint_destination": {
 ///             "application_arn": example_aws_pinpoint_app["arn"],
 ///         },
 ///         "enabled": True,
 ///         "matching_event_types": ["SEND"],
-///     })
+///     },
+///     configuration_set_name=example.configuration_set_name,
+///     event_destination_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -686,8 +686,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 ///     var exampleConfigurationSetEventDestination = new Aws.SesV2.ConfigurationSetEventDestination("example", new()
 ///     {
-///         ConfigurationSetName = example.ConfigurationSetName,
-///         EventDestinationName = "example",
 ///         EventDestination = new Aws.SesV2.Inputs.ConfigurationSetEventDestinationEventDestinationArgs
 ///         {
 ///             PinpointDestination = new Aws.SesV2.Inputs.ConfigurationSetEventDestinationEventDestinationPinpointDestinationArgs
@@ -700,6 +698,8 @@ import 'configuration_set_event_destination_state.dart';
 ///                 "SEND",
 ///             },
 ///         },
+///         ConfigurationSetName = example.ConfigurationSetName,
+///         EventDestinationName = "example",
 ///     });
 ///
 /// });
@@ -721,8 +721,6 @@ import 'configuration_set_event_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sesv2.NewConfigurationSetEventDestination(ctx, "example", &sesv2.ConfigurationSetEventDestinationArgs{
-/// 			ConfigurationSetName: example.ConfigurationSetName,
-/// 			EventDestinationName: pulumi.String("example"),
 /// 			EventDestination: &sesv2.ConfigurationSetEventDestinationEventDestinationArgs{
 /// 				PinpointDestination: &sesv2.ConfigurationSetEventDestinationEventDestinationPinpointDestinationArgs{
 /// 					ApplicationArn: pulumi.Any(exampleAwsPinpointApp.Arn),
@@ -732,6 +730,8 @@ import 'configuration_set_event_destination_state.dart';
 /// 					pulumi.String("SEND"),
 /// 				},
 /// 			},
+/// 			ConfigurationSetName: example.ConfigurationSetName,
+/// 			EventDestinationName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -753,8 +753,6 @@ import 'configuration_set_event_destination_state.dart';
 ///   configuration_set_name = "example"
 /// }
 /// resource "aws_sesv2_configurationseteventdestination" "example" {
-///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
-///   event_destination_name = "example"
 ///   event_destination = {
 ///     pinpoint_destination = {
 ///       application_arn = exampleAwsPinpointApp.arn
@@ -762,6 +760,8 @@ import 'configuration_set_event_destination_state.dart';
 ///     enabled              = true
 ///     matching_event_types = ["SEND"]
 ///   }
+///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   event_destination_name = "example"
 /// }
 /// ```
 /// ```java
@@ -794,8 +794,6 @@ import 'configuration_set_event_destination_state.dart';
 ///             .build());
 ///
 ///         var exampleConfigurationSetEventDestination = new ConfigurationSetEventDestination("exampleConfigurationSetEventDestination", ConfigurationSetEventDestinationArgs.builder()
-///             .configurationSetName(example.configurationSetName())
-///             .eventDestinationName("example")
 ///             .eventDestination(ConfigurationSetEventDestinationEventDestinationArgs.builder()
 ///                 .pinpointDestination(ConfigurationSetEventDestinationEventDestinationPinpointDestinationArgs.builder()
 ///                     .applicationArn(exampleAwsPinpointApp.arn())
@@ -803,6 +801,8 @@ import 'configuration_set_event_destination_state.dart';
 ///                 .enabled(true)
 ///                 .matchingEventTypes("SEND")
 ///                 .build())
+///             .configurationSetName(example.configurationSetName())
+///             .eventDestinationName("example")
 ///             .build());
 ///
 ///     }
@@ -818,14 +818,14 @@ import 'configuration_set_event_destination_state.dart';
 ///     type: aws:sesv2:ConfigurationSetEventDestination
 ///     name: example
 ///     properties:
-///       configurationSetName: ${example.configurationSetName}
-///       eventDestinationName: example
 ///       eventDestination:
 ///         pinpointDestination:
 ///           applicationArn: ${exampleAwsPinpointApp.arn}
 ///         enabled: true
 ///         matchingEventTypes:
 ///           - SEND
+///       configurationSetName: ${example.configurationSetName}
+///       eventDestinationName: example
 /// ```
 ///
 ///
@@ -838,8 +838,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 /// const example = new aws.sesv2.ConfigurationSet("example", {configurationSetName: "example"});
 /// const exampleConfigurationSetEventDestination = new aws.sesv2.ConfigurationSetEventDestination("example", {
-///     configurationSetName: example.configurationSetName,
-///     eventDestinationName: "example",
 ///     eventDestination: {
 ///         snsDestination: {
 ///             topicArn: exampleAwsSnsTopic.arn,
@@ -847,6 +845,8 @@ import 'configuration_set_event_destination_state.dart';
 ///         enabled: true,
 ///         matchingEventTypes: ["SEND"],
 ///     },
+///     configurationSetName: example.configurationSetName,
+///     eventDestinationName: "example",
 /// });
 /// ```
 /// ```python
@@ -855,15 +855,15 @@ import 'configuration_set_event_destination_state.dart';
 ///
 /// example = aws.sesv2.ConfigurationSet("example", configuration_set_name="example")
 /// example_configuration_set_event_destination = aws.sesv2.ConfigurationSetEventDestination("example",
-///     configuration_set_name=example.configuration_set_name,
-///     event_destination_name="example",
 ///     event_destination={
 ///         "sns_destination": {
 ///             "topic_arn": example_aws_sns_topic["arn"],
 ///         },
 ///         "enabled": True,
 ///         "matching_event_types": ["SEND"],
-///     })
+///     },
+///     configuration_set_name=example.configuration_set_name,
+///     event_destination_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -880,8 +880,6 @@ import 'configuration_set_event_destination_state.dart';
 ///
 ///     var exampleConfigurationSetEventDestination = new Aws.SesV2.ConfigurationSetEventDestination("example", new()
 ///     {
-///         ConfigurationSetName = example.ConfigurationSetName,
-///         EventDestinationName = "example",
 ///         EventDestination = new Aws.SesV2.Inputs.ConfigurationSetEventDestinationEventDestinationArgs
 ///         {
 ///             SnsDestination = new Aws.SesV2.Inputs.ConfigurationSetEventDestinationEventDestinationSnsDestinationArgs
@@ -894,6 +892,8 @@ import 'configuration_set_event_destination_state.dart';
 ///                 "SEND",
 ///             },
 ///         },
+///         ConfigurationSetName = example.ConfigurationSetName,
+///         EventDestinationName = "example",
 ///     });
 ///
 /// });
@@ -915,8 +915,6 @@ import 'configuration_set_event_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sesv2.NewConfigurationSetEventDestination(ctx, "example", &sesv2.ConfigurationSetEventDestinationArgs{
-/// 			ConfigurationSetName: example.ConfigurationSetName,
-/// 			EventDestinationName: pulumi.String("example"),
 /// 			EventDestination: &sesv2.ConfigurationSetEventDestinationEventDestinationArgs{
 /// 				SnsDestination: &sesv2.ConfigurationSetEventDestinationEventDestinationSnsDestinationArgs{
 /// 					TopicArn: pulumi.Any(exampleAwsSnsTopic.Arn),
@@ -926,6 +924,8 @@ import 'configuration_set_event_destination_state.dart';
 /// 					pulumi.String("SEND"),
 /// 				},
 /// 			},
+/// 			ConfigurationSetName: example.ConfigurationSetName,
+/// 			EventDestinationName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -947,8 +947,6 @@ import 'configuration_set_event_destination_state.dart';
 ///   configuration_set_name = "example"
 /// }
 /// resource "aws_sesv2_configurationseteventdestination" "example" {
-///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
-///   event_destination_name = "example"
 ///   event_destination = {
 ///     sns_destination = {
 ///       topic_arn = exampleAwsSnsTopic.arn
@@ -956,6 +954,8 @@ import 'configuration_set_event_destination_state.dart';
 ///     enabled              = true
 ///     matching_event_types = ["SEND"]
 ///   }
+///   configuration_set_name = aws_sesv2_configurationset.example.configuration_set_name
+///   event_destination_name = "example"
 /// }
 /// ```
 /// ```java
@@ -988,8 +988,6 @@ import 'configuration_set_event_destination_state.dart';
 ///             .build());
 ///
 ///         var exampleConfigurationSetEventDestination = new ConfigurationSetEventDestination("exampleConfigurationSetEventDestination", ConfigurationSetEventDestinationArgs.builder()
-///             .configurationSetName(example.configurationSetName())
-///             .eventDestinationName("example")
 ///             .eventDestination(ConfigurationSetEventDestinationEventDestinationArgs.builder()
 ///                 .snsDestination(ConfigurationSetEventDestinationEventDestinationSnsDestinationArgs.builder()
 ///                     .topicArn(exampleAwsSnsTopic.arn())
@@ -997,6 +995,8 @@ import 'configuration_set_event_destination_state.dart';
 ///                 .enabled(true)
 ///                 .matchingEventTypes("SEND")
 ///                 .build())
+///             .configurationSetName(example.configurationSetName())
+///             .eventDestinationName("example")
 ///             .build());
 ///
 ///     }
@@ -1012,14 +1012,14 @@ import 'configuration_set_event_destination_state.dart';
 ///     type: aws:sesv2:ConfigurationSetEventDestination
 ///     name: example
 ///     properties:
-///       configurationSetName: ${example.configurationSetName}
-///       eventDestinationName: example
 ///       eventDestination:
 ///         snsDestination:
 ///           topicArn: ${exampleAwsSnsTopic.arn}
 ///         enabled: true
 ///         matchingEventTypes:
 ///           - SEND
+///       configurationSetName: ${example.configurationSetName}
+///       eventDestinationName: example
 /// ```
 ///
 ///
@@ -1031,11 +1031,11 @@ import 'configuration_set_event_destination_state.dart';
 /// $ pulumi import aws:sesv2/configurationSetEventDestination:ConfigurationSetEventDestination example example_configuration_set|example_event_destination
 /// ```
 class ConfigurationSetEventDestination extends pulumi.CustomResource {
-  /// The name of the configuration set.
+  /// Name of the configuration set.
   late final pulumi.Output<String> configurationSetName;
-  /// An object that defines the event destination. See `eventDestination` Block for details.
+  /// Object that defines the event destination. See `eventDestination` Block for details.
   late final pulumi.Output<ConfigurationSetEventDestinationEventDestination> eventDestination;
-  /// A name that identifies the event destination within the configuration set.
+  /// Name that identifies the event destination within the configuration set.
   late final pulumi.Output<String> eventDestinationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -1052,7 +1052,7 @@ class ConfigurationSetEventDestination extends pulumi.CustomResource {
           'aws:sesv2/configurationSetEventDestination:ConfigurationSetEventDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     configurationSetName = registerOutput<String>('configurationSetName');
     eventDestination = registerOutput<ConfigurationSetEventDestinationEventDestination>('eventDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetEventDestinationEventDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1065,11 +1065,12 @@ class ConfigurationSetEventDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationSetEventDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationSetEventDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1083,6 +1084,21 @@ class ConfigurationSetEventDestination extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    configurationSetName = registerOutput<String>('configurationSetName');
+    eventDestination = registerOutput<ConfigurationSetEventDestinationEventDestination>('eventDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetEventDestinationEventDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventDestinationName = registerOutput<String>('eventDestinationName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationSetEventDestination] resource.
+  ConfigurationSetEventDestination.reference(String urn)
+    : super(
+        'aws:sesv2/configurationSetEventDestination:ConfigurationSetEventDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configurationSetName = registerOutput<String>('configurationSetName');
     eventDestination = registerOutput<ConfigurationSetEventDestinationEventDestination>('eventDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationSetEventDestinationEventDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventDestinationName = registerOutput<String>('eventDestinationName');

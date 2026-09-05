@@ -15,14 +15,16 @@ import 'access_point_policy_state.dart';
 ///
 /// const example = new aws.s3.Bucket("example", {bucket: "example"});
 /// const exampleAccessPoint = new aws.s3.AccessPoint("example", {
-///     bucket: example.id,
-///     name: "example",
 ///     publicAccessBlockConfiguration: {
 ///         blockPublicAcls: true,
 ///         blockPublicPolicy: false,
 ///         ignorePublicAcls: true,
 ///         restrictPublicBuckets: false,
 ///     },
+///     bucket: example.id,
+///     name: "example",
+/// }, {
+///     ignoreChanges: ["policy"],
 /// });
 /// const exampleAccessPointPolicy = new aws.s3control.AccessPointPolicy("example", {
 ///     accessPointArn: exampleAccessPoint.arn,
@@ -46,14 +48,15 @@ import 'access_point_policy_state.dart';
 ///
 /// example = aws.s3.Bucket("example", bucket="example")
 /// example_access_point = aws.s3.AccessPoint("example",
-///     bucket=example.id,
-///     name="example",
 ///     public_access_block_configuration={
 ///         "block_public_acls": True,
 ///         "block_public_policy": False,
 ///         "ignore_public_acls": True,
 ///         "restrict_public_buckets": False,
-///     })
+///     },
+///     bucket=example.id,
+///     name="example",
+///     opts = pulumi.ResourceOptions(ignore_changes=["policy"]))
 /// example_access_point_policy = aws.s3control.AccessPointPolicy("example",
 ///     access_point_arn=example_access_point.arn,
 ///     policy=pulumi.Output.json_dumps({
@@ -84,14 +87,20 @@ import 'access_point_policy_state.dart';
 ///
 ///     var exampleAccessPoint = new Aws.S3.AccessPoint("example", new()
 ///     {
-///         Bucket = example.Id,
-///         Name = "example",
 ///         PublicAccessBlockConfiguration = new Aws.S3.Inputs.AccessPointPublicAccessBlockConfigurationArgs
 ///         {
 ///             BlockPublicAcls = true,
 ///             BlockPublicPolicy = false,
 ///             IgnorePublicAcls = true,
 ///             RestrictPublicBuckets = false,
+///         },
+///         Bucket = example.Id,
+///         Name = "example",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "policy",
 ///         },
 ///     });
 ///
@@ -140,15 +149,17 @@ import 'access_point_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAccessPoint, err := s3.NewAccessPoint(ctx, "example", &s3.AccessPointArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:   pulumi.String("example"),
 /// 			PublicAccessBlockConfiguration: &s3.AccessPointPublicAccessBlockConfigurationArgs{
 /// 				BlockPublicAcls:       pulumi.Bool(true),
 /// 				BlockPublicPolicy:     pulumi.Bool(false),
 /// 				IgnorePublicAcls:      pulumi.Bool(true),
 /// 				RestrictPublicBuckets: pulumi.Bool(false),
 /// 			},
-/// 		})
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:   pulumi.String("example"),
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"policy",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -196,14 +207,17 @@ import 'access_point_policy_state.dart';
 ///   bucket = "example"
 /// }
 /// resource "aws_s3_accesspoint" "example" {
-///   bucket = aws_s3_bucket.example.id
-///   name   = "example"
+///   lifecycle {
+///     ignore_changes = [policy]
+///   }
 ///   public_access_block_configuration = {
 ///     block_public_acls       = true
 ///     block_public_policy     = false
 ///     ignore_public_acls      = true
 ///     restrict_public_buckets = false
 ///   }
+///   bucket = aws_s3_bucket.example.id
+///   name   = "example"
 /// }
 /// resource "aws_s3control_accesspointpolicy" "example" {
 ///   access_point_arn = aws_s3_accesspoint.example.arn
@@ -234,6 +248,7 @@ import 'access_point_policy_state.dart';
 /// import com.pulumi.aws.s3control.AccessPointPolicy;
 /// import com.pulumi.aws.s3control.AccessPointPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -252,15 +267,17 @@ import 'access_point_policy_state.dart';
 ///             .build());
 ///
 ///         var exampleAccessPoint = new AccessPoint("exampleAccessPoint", AccessPointArgs.builder()
-///             .bucket(example.id())
-///             .name("example")
 ///             .publicAccessBlockConfiguration(AccessPointPublicAccessBlockConfigurationArgs.builder()
 ///                 .blockPublicAcls(true)
 ///                 .blockPublicPolicy(false)
 ///                 .ignorePublicAcls(true)
 ///                 .restrictPublicBuckets(false)
 ///                 .build())
-///             .build());
+///             .bucket(example.id())
+///             .name("example")
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("policy")
+///                 .build());
 ///
 ///         var exampleAccessPointPolicy = new AccessPointPolicy("exampleAccessPointPolicy", AccessPointPolicyArgs.builder()
 ///             .accessPointArn(exampleAccessPoint.arn())
@@ -291,13 +308,16 @@ import 'access_point_policy_state.dart';
 ///     type: aws:s3:AccessPoint
 ///     name: example
 ///     properties:
-///       bucket: ${example.id}
-///       name: example
 ///       publicAccessBlockConfiguration:
 ///         blockPublicAcls: true
 ///         blockPublicPolicy: false
 ///         ignorePublicAcls: true
 ///         restrictPublicBuckets: false
+///       bucket: ${example.id}
+///       name: example
+///     options:
+///       ignoreChanges:
+///         - policy
 ///   exampleAccessPointPolicy:
 ///     type: aws:s3control:AccessPointPolicy
 ///     name: example
@@ -344,7 +364,7 @@ class AccessPointPolicy extends pulumi.CustomResource {
           'aws:s3control/accessPointPolicy:AccessPointPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessPointArn = registerOutput<String>('accessPointArn');
     hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
@@ -357,11 +377,12 @@ class AccessPointPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPointPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPointPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -375,6 +396,21 @@ class AccessPointPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPointArn = registerOutput<String>('accessPointArn');
+    hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AccessPointPolicy] resource.
+  AccessPointPolicy.reference(String urn)
+    : super(
+        'aws:s3control/accessPointPolicy:AccessPointPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPointArn = registerOutput<String>('accessPointArn');
     hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');
     policy = registerOutput<String>('policy');

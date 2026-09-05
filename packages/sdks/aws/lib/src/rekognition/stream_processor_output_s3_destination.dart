@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamProcessorOutputS3Destination {
   /// Name of the Amazon S3 bucket you want to associate with the streaming video project.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Prefix value of the location within the bucket that you want the information to be published to.
-  final pulumi.Input<String>? keyPrefix;
+  final pulumi.Input<String?>? keyPrefix;
 
   /// Creates a new [StreamProcessorOutputS3Destination].
   /// [bucket] Name of the Amazon S3 bucket you want to associate with the streaming video project.

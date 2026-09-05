@@ -11,17 +11,17 @@ import 'serverless_security_config_saml_options.dart';
 /// {@macro pulumi_opensearch_serverless_security_config_serverless_security_config_args_doc}
 class ServerlessSecurityConfigArgs {
   /// Description of the security configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block for IAM Federation options. Required if `type` is set to `iamfederation`. See `iamFederationOptions` Block below for details.
-  final pulumi.Input<ServerlessSecurityConfigIamFederationOptions>? iamFederationOptions;
+  final pulumi.Input<ServerlessSecurityConfigIamFederationOptions?>? iamFederationOptions;
   /// Configuration block for IAM Identity Center options. Required if `type` is set to `iamidentitycenter`. See `iamIdentityCenterOptions` Block below for details.
-  final pulumi.Input<ServerlessSecurityConfigIamIdentityCenterOptions>? iamIdentityCenterOptions;
+  final pulumi.Input<ServerlessSecurityConfigIamIdentityCenterOptions?>? iamIdentityCenterOptions;
   /// Name of the policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for SAML options. Required if `type` is set to `saml`. See `samlOptions` Block below for details.
-  final pulumi.Input<ServerlessSecurityConfigSamlOptions>? samlOptions;
+  final pulumi.Input<ServerlessSecurityConfigSamlOptions?>? samlOptions;
   /// Type of configuration. Valid values are `saml`, `iamidentitycenter` and `iamfederation`.
   ///
   /// The following arguments are optional:

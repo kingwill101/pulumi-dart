@@ -203,17 +203,18 @@ class RadiusSettings extends pulumi.CustomResource {
           'aws:directoryservice/radiusSettings:RadiusSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['sharedSecret'],
         ) {
     authenticationProtocol = registerOutput<String>('authenticationProtocol');
     directoryId = registerOutput<String>('directoryId');
     displayLabel = registerOutput<String>('displayLabel');
     radiusPort = registerOutput<int>('radiusPort');
     radiusRetries = registerOutput<int>('radiusRetries');
-    radiusServers = registerOutput<List<String>>('radiusServers');
+    radiusServers = registerOutput<List<String>>('radiusServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     radiusTimeout = registerOutput<int>('radiusTimeout');
     region = registerOutput<String>('region');
-    sharedSecret = registerOutput<String>('sharedSecret');
+    sharedSecret = registerOutput<String>('sharedSecret', isSecret: true);
     useSameUsername = registerOutput<bool?>('useSameUsername');
   }
 
@@ -222,11 +223,12 @@ class RadiusSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RadiusSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RadiusSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -245,10 +247,32 @@ class RadiusSettings extends pulumi.CustomResource {
     displayLabel = registerOutput<String>('displayLabel');
     radiusPort = registerOutput<int>('radiusPort');
     radiusRetries = registerOutput<int>('radiusRetries');
-    radiusServers = registerOutput<List<String>>('radiusServers');
+    radiusServers = registerOutput<List<String>>('radiusServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     radiusTimeout = registerOutput<int>('radiusTimeout');
     region = registerOutput<String>('region');
-    sharedSecret = registerOutput<String>('sharedSecret');
+    sharedSecret = registerOutput<String>('sharedSecret', isSecret: true);
+    useSameUsername = registerOutput<bool?>('useSameUsername');
+  }
+
+  /// Creates a typed reference to an existing [RadiusSettings] resource.
+  RadiusSettings.reference(String urn)
+    : super(
+        'aws:directoryservice/radiusSettings:RadiusSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sharedSecret'],
+        isResourceReference: true,
+      ) {
+    authenticationProtocol = registerOutput<String>('authenticationProtocol');
+    directoryId = registerOutput<String>('directoryId');
+    displayLabel = registerOutput<String>('displayLabel');
+    radiusPort = registerOutput<int>('radiusPort');
+    radiusRetries = registerOutput<int>('radiusRetries');
+    radiusServers = registerOutput<List<String>>('radiusServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    radiusTimeout = registerOutput<int>('radiusTimeout');
+    region = registerOutput<String>('region');
+    sharedSecret = registerOutput<String>('sharedSecret', isSecret: true);
     useSameUsername = registerOutput<bool?>('useSameUsername');
   }
 }

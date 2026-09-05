@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_rotation_args.dart';
+import 'secret_rotation_external_secret_rotation_metadata.dart';
 import 'secret_rotation_rotation_rules.dart';
 import 'secret_rotation_state.dart';
 
@@ -15,11 +16,11 @@ import 'secret_rotation_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.secretsmanager.SecretRotation("example", {
-///     secretId: exampleAwsSecretsmanagerSecret.id,
-///     rotationLambdaArn: exampleAwsLambdaFunction.arn,
 ///     rotationRules: {
 ///         automaticallyAfterDays: 30,
 ///     },
+///     secretId: exampleAwsSecretsmanagerSecret.id,
+///     rotationLambdaArn: exampleAwsLambdaFunction.arn,
 /// });
 /// ```
 /// ```python
@@ -27,11 +28,11 @@ import 'secret_rotation_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.secretsmanager.SecretRotation("example",
-///     secret_id=example_aws_secretsmanager_secret["id"],
-///     rotation_lambda_arn=example_aws_lambda_function["arn"],
 ///     rotation_rules={
 ///         "automatically_after_days": 30,
-///     })
+///     },
+///     secret_id=example_aws_secretsmanager_secret["id"],
+///     rotation_lambda_arn=example_aws_lambda_function["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,12 +44,12 @@ import 'secret_rotation_state.dart';
 /// {
 ///     var example = new Aws.SecretsManager.SecretRotation("example", new()
 ///     {
-///         SecretId = exampleAwsSecretsmanagerSecret.Id,
-///         RotationLambdaArn = exampleAwsLambdaFunction.Arn,
 ///         RotationRules = new Aws.SecretsManager.Inputs.SecretRotationRotationRulesArgs
 ///         {
 ///             AutomaticallyAfterDays = 30,
 ///         },
+///         SecretId = exampleAwsSecretsmanagerSecret.Id,
+///         RotationLambdaArn = exampleAwsLambdaFunction.Arn,
 ///     });
 ///
 /// });
@@ -64,11 +65,11 @@ import 'secret_rotation_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := secretsmanager.NewSecretRotation(ctx, "example", &secretsmanager.SecretRotationArgs{
-/// 			SecretId:          pulumi.Any(exampleAwsSecretsmanagerSecret.Id),
-/// 			RotationLambdaArn: pulumi.Any(exampleAwsLambdaFunction.Arn),
 /// 			RotationRules: &secretsmanager.SecretRotationRotationRulesArgs{
 /// 				AutomaticallyAfterDays: pulumi.Int(30),
 /// 			},
+/// 			SecretId:          pulumi.Any(exampleAwsSecretsmanagerSecret.Id),
+/// 			RotationLambdaArn: pulumi.Any(exampleAwsLambdaFunction.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -87,11 +88,11 @@ import 'secret_rotation_state.dart';
 /// }
 ///
 /// resource "aws_secretsmanager_secretrotation" "example" {
-///   secret_id           = exampleAwsSecretsmanagerSecret.id
-///   rotation_lambda_arn = exampleAwsLambdaFunction.arn
 ///   rotation_rules = {
 ///     automatically_after_days = 30
 ///   }
+///   secret_id           = exampleAwsSecretsmanagerSecret.id
+///   rotation_lambda_arn = exampleAwsLambdaFunction.arn
 /// }
 /// ```
 /// ```java
@@ -117,11 +118,11 @@ import 'secret_rotation_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SecretRotation("example", SecretRotationArgs.builder()
-///             .secretId(exampleAwsSecretsmanagerSecret.id())
-///             .rotationLambdaArn(exampleAwsLambdaFunction.arn())
 ///             .rotationRules(SecretRotationRotationRulesArgs.builder()
 ///                 .automaticallyAfterDays(30)
 ///                 .build())
+///             .secretId(exampleAwsSecretsmanagerSecret.id())
+///             .rotationLambdaArn(exampleAwsLambdaFunction.arn())
 ///             .build());
 ///
 ///     }
@@ -132,10 +133,10 @@ import 'secret_rotation_state.dart';
 ///   example:
 ///     type: aws:secretsmanager:SecretRotation
 ///     properties:
-///       secretId: ${exampleAwsSecretsmanagerSecret.id}
-///       rotationLambdaArn: ${exampleAwsLambdaFunction.arn}
 ///       rotationRules:
 ///         automaticallyAfterDays: 30
+///       secretId: ${exampleAwsSecretsmanagerSecret.id}
+///       rotationLambdaArn: ${exampleAwsLambdaFunction.arn}
 /// ```
 ///
 ///
@@ -153,8 +154,9 @@ import 'secret_rotation_state.dart';
 ///     type: "SalesforceClientSecret",
 /// });
 /// const exampleSecretRotation = new aws.secretsmanager.SecretRotation("example", {
-///     secretId: example.id,
-///     externalSecretRotationRoleArn: exampleAwsIamRole.arn,
+///     rotationRules: {
+///         automaticallyAfterDays: Number(rotationDays),
+///     },
 ///     externalSecretRotationMetadatas: [
 ///         {
 ///             key: "adminSecretArn",
@@ -165,9 +167,8 @@ import 'secret_rotation_state.dart';
 ///             value: "v65.0",
 ///         },
 ///     ],
-///     rotationRules: {
-///         automaticallyAfterDays: Number(rotationDays),
-///     },
+///     secretId: example.id,
+///     externalSecretRotationRoleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -178,8 +179,9 @@ import 'secret_rotation_state.dart';
 ///     name="example-salesforce-client-secret",
 ///     type="SalesforceClientSecret")
 /// example_secret_rotation = aws.secretsmanager.SecretRotation("example",
-///     secret_id=example.id,
-///     external_secret_rotation_role_arn=example_aws_iam_role["arn"],
+///     rotation_rules={
+///         "automatically_after_days": int(rotation_days),
+///     },
 ///     external_secret_rotation_metadatas=[
 ///         {
 ///             "key": "adminSecretArn",
@@ -190,9 +192,8 @@ import 'secret_rotation_state.dart';
 ///             "value": "v65.0",
 ///         },
 ///     ],
-///     rotation_rules={
-///         "automatically_after_days": int(rotation_days),
-///     })
+///     secret_id=example.id,
+///     external_secret_rotation_role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -210,8 +211,10 @@ import 'secret_rotation_state.dart';
 ///
 ///     var exampleSecretRotation = new Aws.SecretsManager.SecretRotation("example", new()
 ///     {
-///         SecretId = example.Id,
-///         ExternalSecretRotationRoleArn = exampleAwsIamRole.Arn,
+///         RotationRules = new Aws.SecretsManager.Inputs.SecretRotationRotationRulesArgs
+///         {
+///             AutomaticallyAfterDays = rotationDays,
+///         },
 ///         ExternalSecretRotationMetadatas = new[]
 ///         {
 ///             new Aws.SecretsManager.Inputs.SecretRotationExternalSecretRotationMetadataArgs
@@ -225,10 +228,8 @@ import 'secret_rotation_state.dart';
 ///                 Value = "v65.0",
 ///             },
 ///         },
-///         RotationRules = new Aws.SecretsManager.Inputs.SecretRotationRotationRulesArgs
-///         {
-///             AutomaticallyAfterDays = rotationDays,
-///         },
+///         SecretId = example.Id,
+///         ExternalSecretRotationRoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -251,8 +252,9 @@ import 'secret_rotation_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretsmanager.NewSecretRotation(ctx, "example", &secretsmanager.SecretRotationArgs{
-/// 			SecretId:                      example.ID().ToIDOutput().ToStringOutput(),
-/// 			ExternalSecretRotationRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			RotationRules: &secretsmanager.SecretRotationRotationRulesArgs{
+/// 				AutomaticallyAfterDays: pulumi.Any(rotationDays),
+/// 			},
 /// 			ExternalSecretRotationMetadatas: secretsmanager.SecretRotationExternalSecretRotationMetadataArray{
 /// 				&secretsmanager.SecretRotationExternalSecretRotationMetadataArgs{
 /// 					Key:   pulumi.String("adminSecretArn"),
@@ -263,9 +265,8 @@ import 'secret_rotation_state.dart';
 /// 					Value: pulumi.String("v65.0"),
 /// 				},
 /// 			},
-/// 			RotationRules: &secretsmanager.SecretRotationRotationRulesArgs{
-/// 				AutomaticallyAfterDays: pulumi.Any(rotationDays),
-/// 			},
+/// 			SecretId:                      example.ID().ToIDOutput().ToStringOutput(),
+/// 			ExternalSecretRotationRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -288,8 +289,9 @@ import 'secret_rotation_state.dart';
 ///   type = "SalesforceClientSecret"
 /// }
 /// resource "aws_secretsmanager_secretrotation" "example" {
-///   secret_id                         = aws_secretsmanager_secret.example.id
-///   external_secret_rotation_role_arn = exampleAwsIamRole.arn
+///   rotation_rules = {
+///     automatically_after_days = rotationDays
+///   }
 ///   external_secret_rotation_metadatas {
 ///     key   = "adminSecretArn"
 ///     value = aws_secretsmanager_secret.example.arn
@@ -298,9 +300,8 @@ import 'secret_rotation_state.dart';
 ///     key   = "apiVersion"
 ///     value = "v65.0"
 ///   }
-///   rotation_rules = {
-///     automatically_after_days = rotationDays
-///   }
+///   secret_id                         = aws_secretsmanager_secret.example.id
+///   external_secret_rotation_role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -313,8 +314,8 @@ import 'secret_rotation_state.dart';
 /// import com.pulumi.aws.secretsmanager.SecretArgs;
 /// import com.pulumi.aws.secretsmanager.SecretRotation;
 /// import com.pulumi.aws.secretsmanager.SecretRotationArgs;
-/// import com.pulumi.aws.secretsmanager.inputs.SecretRotationExternalSecretRotationMetadataArgs;
 /// import com.pulumi.aws.secretsmanager.inputs.SecretRotationRotationRulesArgs;
+/// import com.pulumi.aws.secretsmanager.inputs.SecretRotationExternalSecretRotationMetadataArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -334,8 +335,9 @@ import 'secret_rotation_state.dart';
 ///             .build());
 ///
 ///         var exampleSecretRotation = new SecretRotation("exampleSecretRotation", SecretRotationArgs.builder()
-///             .secretId(example.id())
-///             .externalSecretRotationRoleArn(exampleAwsIamRole.arn())
+///             .rotationRules(SecretRotationRotationRulesArgs.builder()
+///                 .automaticallyAfterDays(rotationDays)
+///                 .build())
 ///             .externalSecretRotationMetadatas(
 ///                 SecretRotationExternalSecretRotationMetadataArgs.builder()
 ///                     .key("adminSecretArn")
@@ -345,9 +347,8 @@ import 'secret_rotation_state.dart';
 ///                     .key("apiVersion")
 ///                     .value("v65.0")
 ///                     .build())
-///             .rotationRules(SecretRotationRotationRulesArgs.builder()
-///                 .automaticallyAfterDays(rotationDays)
-///                 .build())
+///             .secretId(example.id())
+///             .externalSecretRotationRoleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -364,19 +365,303 @@ import 'secret_rotation_state.dart';
 ///     type: aws:secretsmanager:SecretRotation
 ///     name: example
 ///     properties:
-///       secretId: ${example.id}
-///       externalSecretRotationRoleArn: ${exampleAwsIamRole.arn}
+///       rotationRules:
+///         automaticallyAfterDays: ${rotationDays}
 ///       externalSecretRotationMetadatas:
 ///         - key: adminSecretArn
 ///           value: ${example.arn}
 ///         - key: apiVersion
 ///           value: v65.0
-///       rotationRules:
-///         automaticallyAfterDays: ${rotationDays}
+///       secretId: ${example.id}
+///       externalSecretRotationRoleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
 /// For more information about managed external secrets and partner-specific metadata requirements, see the [AWS documentation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/managed-external-secrets.html) and [partner-specific guides](https://docs.aws.amazon.com/secretsmanager/latest/userguide/mes-partners.html).
+///
+/// ### Disable Rotation for a Managed Secret
+///
+/// When a secret is managed by AWS, such as an RDS master user password secret created via `manageMasterUserPassword`, rotation is enabled automatically. Set `rotationEnabled` to `false` (and omit `rotationRules`) to turn that rotation off:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.rds.Instance("example", {manageMasterUserPassword: true});
+/// const exampleSecretRotation = new aws.secretsmanager.SecretRotation("example", {
+///     secretId: example.masterUserSecrets[0].secretArn,
+///     rotationEnabled: false,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.rds.Instance("example", manage_master_user_password=True)
+/// example_secret_rotation = aws.secretsmanager.SecretRotation("example",
+///     secret_id=example.master_user_secrets[0].secret_arn,
+///     rotation_enabled=False)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Rds.Instance("example", new()
+///     {
+///         ManageMasterUserPassword = true,
+///     });
+///
+///     var exampleSecretRotation = new Aws.SecretsManager.SecretRotation("example", new()
+///     {
+///         SecretId = example.MasterUserSecrets.Apply(masterUserSecrets => masterUserSecrets[0].SecretArn),
+///         RotationEnabled = false,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/rds"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/secretsmanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := rds.NewInstance(ctx, "example", &rds.InstanceArgs{
+/// 			ManageMasterUserPassword: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = secretsmanager.NewSecretRotation(ctx, "example", &secretsmanager.SecretRotationArgs{
+/// 			SecretId: example.MasterUserSecrets.ApplyT(func(masterUserSecrets []rds.InstanceMasterUserSecret) (*string, error) {
+/// 				return masterUserSecrets[0].SecretArn, nil
+/// 			}).(pulumi.StringPtrOutput),
+/// 			RotationEnabled: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_rds_instance" "example" {
+///   manage_master_user_password = true
+/// }
+/// resource "aws_secretsmanager_secretrotation" "example" {
+///   secret_id        = aws_rds_instance.example.master_user_secrets[0].secret_arn
+///   rotation_enabled = false
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.rds.Instance;
+/// import com.pulumi.aws.rds.InstanceArgs;
+/// import com.pulumi.aws.secretsmanager.SecretRotation;
+/// import com.pulumi.aws.secretsmanager.SecretRotationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Instance("example", InstanceArgs.builder()
+///             .manageMasterUserPassword(true)
+///             .build());
+///
+///         var exampleSecretRotation = new SecretRotation("exampleSecretRotation", SecretRotationArgs.builder()
+///             .secretId(example.masterUserSecrets().applyValue(_masterUserSecrets -> _masterUserSecrets[0].secretArn()))
+///             .rotationEnabled(false)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:rds:Instance
+///     properties:
+///       manageMasterUserPassword: true
+///   exampleSecretRotation:
+///     type: aws:secretsmanager:SecretRotation
+///     name: example
+///     properties:
+///       secretId: ${example.masterUserSecrets[0].secretArn}
+///       rotationEnabled: false
+/// ```
+///
+///
+/// &gt; **NOTE:** For Amazon Aurora and other clustered engines, rotation is finalized once a cluster instance is available, and AWS re-enables rotation if it is cancelled before then. Ensure this resource depends on the cluster instance (for example, with `dependsOn = [aws_rds_cluster_instance.example]`) so the cancellation is applied after the instance is available.
+///
+/// When `rotationEnabled` is `false`, `rotationRules` must be omitted. If you toggle rotation on and off through a variable (for example, in a module), gate the block with a `dynamic` block so it is only present when rotation is enabled:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// function singleOrNone<T>(elements: pulumi.Input<T>[]): pulumi.Input<T> | undefined {
+///     if (elements.length > 1) {
+///         throw new Error("singleOrNone expected input list to have a single element");
+///     }
+///     return elements[0];
+/// }
+///
+/// const config = new pulumi.Config();
+/// const rotationEnabled = config.getBoolean("rotationEnabled") || true;
+/// const example = new aws.secretsmanager.SecretRotation("example", {
+///     rotationRules: singleOrNone(rotationEnabled ? [{
+///         automaticallyAfterDays: 30,
+///     }] : []),
+///     secretId: exampleAwsDbInstance.masterUserSecret[0].secretArn,
+///     rotationEnabled: rotationEnabled,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// def single_or_none(elements):
+///     if len(elements) > 1:
+///         raise Exception("single_or_none expected input list to have a single element")
+///     return elements[0] if elements else None
+///
+///
+/// config = pulumi.Config()
+/// rotation_enabled = config.get_bool("rotationEnabled")
+/// if rotation_enabled is None:
+///     rotation_enabled = True
+/// example = aws.secretsmanager.SecretRotation("example",
+///     rotation_rules=single_or_none([{
+///         "automaticallyAfterDays": 30,
+///     }] if rotation_enabled else []),
+///     secret_id=example_aws_db_instance["masterUserSecret"][0]["secretArn"],
+///     rotation_enabled=rotation_enabled)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var config = new Config();
+///     var rotationEnabled = config.GetBoolean("rotationEnabled") ?? true;
+///     var example = new Aws.SecretsManager.SecretRotation("example", new()
+///     {
+///         RotationRules = Enumerable.SingleOrDefault(rotationEnabled ? new[]
+///         {
+///
+///             {
+///                 { "automaticallyAfterDays", 30 },
+///             },
+///         } : new[] {}),
+///         SecretId = exampleAwsDbInstance.MasterUserSecret[0].SecretArn,
+///         RotationEnabled = rotationEnabled,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/secretsmanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+/// )
+///
+/// func singleOrNone[T any](elements []T) T {
+/// 	if len(elements) != 1 {
+/// 		panic(fmt.Errorf("singleOrNone expected input slice to have a single element"))
+/// 	}
+/// 	return elements[0]
+/// }
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		cfg := config.New(ctx, "")
+/// 		rotationEnabled := true
+/// 		if param := cfg.GetBool("rotationEnabled"); param {
+/// 			rotationEnabled = param
+/// 		}
+/// 		var tmp0 []map[string]int
+/// 		if rotationEnabled {
+/// 			tmp0 = []map[string]int{
+/// 				{
+/// 					"automaticallyAfterDays": 30,
+/// 				},
+/// 			}
+/// 		} else {
+/// 			tmp0 = []interface{}{}
+/// 		}
+/// 		_, err := secretsmanager.NewSecretRotation(ctx, "example", &secretsmanager.SecretRotationArgs{
+/// 			RotationRules:   singleOrNone(tmp0),
+/// 			SecretId:        pulumi.Any(exampleAwsDbInstance.MasterUserSecret[0].SecretArn),
+/// 			RotationEnabled: pulumi.Bool(rotationEnabled),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_secretsmanager_secretrotation" "example" {
+///   rotation_rules = one(var.rotationEnabled ? [{
+///     "automaticallyAfterDays" = 30
+///   }] : [])
+///   secret_id        = exampleAwsDbInstance.masterUserSecret[0].secretArn
+///   rotation_enabled = var.rotationEnabled
+/// }
+/// variable "rotationEnabled" {
+///   type    = bool
+///   default = true
+/// }
+/// ```
+///
 ///
 /// ### Rotation Configuration
 ///
@@ -392,30 +677,30 @@ import 'secret_rotation_state.dart';
 ///
 /// #### Required
 ///
-/// - `secretId` (String) Amazon Resource Name (ARN) of the Secrets Manager secret.
+/// - `secretId` (String) ARN of the Secrets Manager secret.
 ///
 ///
-/// Using `pulumi import`, import `aws.secretsmanager.SecretRotation` using the secret Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.secretsmanager.SecretRotation` using the secret ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:secretsmanager/secretRotation:SecretRotation example arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456
 /// ```
 class SecretRotation extends pulumi.CustomResource {
   /// Configuration block for metadata required by the external secret partner. Required for managed external secrets. See details below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> externalSecretRotationMetadatas;
+  late final pulumi.Output<List<SecretRotationExternalSecretRotationMetadata>?> externalSecretRotationMetadatas;
   /// ARN of the IAM role that allows Secrets Manager to rotate the secret held by a third-party partner. Required for managed external secrets.
   late final pulumi.Output<String?> externalSecretRotationRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Whether to rotate the secret immediately or wait until the next scheduled rotation window. The rotation schedule is defined in `rotationRules`. For secrets that use a Lambda rotation function to rotate, if you don't immediately rotate the secret, Secrets Manager tests the rotation configuration by running the testSecret step (https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_how.html) of the Lambda rotation function. The test creates an AWSPENDING version of the secret and then removes it. Defaults to `true`.
   late final pulumi.Output<bool?> rotateImmediately;
-  /// Whether automatic rotation is enabled for this secret.
+  /// Whether automatic rotation is enabled for the secret. Set to `false` to disable rotation on a secret whose rotation is otherwise managed by AWS (for example, an RDS master user password secret). When `false`, `rotationRules` must be omitted. Defaults to enabled when `rotationRules` is configured. Destroying this resource does not re-enable the automatic rotation that AWS configured.
   late final pulumi.Output<bool> rotationEnabled;
   /// ARN of the Lambda function that can rotate the secret. Must be supplied if the secret is not managed by AWS.
   late final pulumi.Output<String?> rotationLambdaArn;
-  /// Structure that defines the rotation configuration for this secret. Defined below.
-  late final pulumi.Output<SecretRotationRotationRules> rotationRules;
-  /// Secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
+  /// Structure that defines the rotation configuration for this secret. Required unless `rotationEnabled` is `false`. Defined below.
+  late final pulumi.Output<SecretRotationRotationRules?> rotationRules;
+  /// Secret to which you want to add a new version. You can specify either the ARN or the friendly name of the secret. The secret must already exist.
   late final pulumi.Output<String> secretId;
 
   /// Creates a new [SecretRotation].
@@ -430,15 +715,15 @@ class SecretRotation extends pulumi.CustomResource {
           'aws:secretsmanager/secretRotation:SecretRotation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    externalSecretRotationMetadatas = registerOutput<List<Map<String, dynamic>>?>('externalSecretRotationMetadatas');
+    externalSecretRotationMetadatas = registerOutput<List<SecretRotationExternalSecretRotationMetadata>?>('externalSecretRotationMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretRotationExternalSecretRotationMetadata>(guardedValue, (value) => SecretRotationExternalSecretRotationMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     externalSecretRotationRoleArn = registerOutput<String?>('externalSecretRotationRoleArn');
     region = registerOutput<String>('region');
     rotateImmediately = registerOutput<bool?>('rotateImmediately');
     rotationEnabled = registerOutput<bool>('rotationEnabled');
     rotationLambdaArn = registerOutput<String?>('rotationLambdaArn');
-    rotationRules = registerOutput<SecretRotationRotationRules>('rotationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretRotationRotationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rotationRules = registerOutput<SecretRotationRotationRules?>('rotationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretRotationRotationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
   }
 
@@ -447,11 +732,12 @@ class SecretRotation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecretRotationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecretRotation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -465,13 +751,32 @@ class SecretRotation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    externalSecretRotationMetadatas = registerOutput<List<Map<String, dynamic>>?>('externalSecretRotationMetadatas');
+    externalSecretRotationMetadatas = registerOutput<List<SecretRotationExternalSecretRotationMetadata>?>('externalSecretRotationMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretRotationExternalSecretRotationMetadata>(guardedValue, (value) => SecretRotationExternalSecretRotationMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     externalSecretRotationRoleArn = registerOutput<String?>('externalSecretRotationRoleArn');
     region = registerOutput<String>('region');
     rotateImmediately = registerOutput<bool?>('rotateImmediately');
     rotationEnabled = registerOutput<bool>('rotationEnabled');
     rotationLambdaArn = registerOutput<String?>('rotationLambdaArn');
-    rotationRules = registerOutput<SecretRotationRotationRules>('rotationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretRotationRotationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rotationRules = registerOutput<SecretRotationRotationRules?>('rotationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretRotationRotationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secretId = registerOutput<String>('secretId');
+  }
+
+  /// Creates a typed reference to an existing [SecretRotation] resource.
+  SecretRotation.reference(String urn)
+    : super(
+        'aws:secretsmanager/secretRotation:SecretRotation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    externalSecretRotationMetadatas = registerOutput<List<SecretRotationExternalSecretRotationMetadata>?>('externalSecretRotationMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretRotationExternalSecretRotationMetadata>(guardedValue, (value) => SecretRotationExternalSecretRotationMetadata.fromMap((value as Map).cast<String, dynamic>())); });
+    externalSecretRotationRoleArn = registerOutput<String?>('externalSecretRotationRoleArn');
+    region = registerOutput<String>('region');
+    rotateImmediately = registerOutput<bool?>('rotateImmediately');
+    rotationEnabled = registerOutput<bool>('rotationEnabled');
+    rotationLambdaArn = registerOutput<String?>('rotationLambdaArn');
+    rotationRules = registerOutput<SecretRotationRotationRules?>('rotationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretRotationRotationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
   }
 }

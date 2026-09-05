@@ -13,10 +13,6 @@ import 'filter_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const myFilter = new aws.guardduty.Filter("MyFilter", {
-///     name: "MyFilter",
-///     action: "ARCHIVE",
-///     detectorId: example.id,
-///     rank: 1,
 ///     findingCriteria: {
 ///         criterions: [
 ///             {
@@ -41,6 +37,10 @@ import 'filter_state.dart';
 ///             },
 ///         ],
 ///     },
+///     name: "MyFilter",
+///     action: "ARCHIVE",
+///     detectorId: example.id,
+///     rank: 1,
 /// });
 /// ```
 /// ```python
@@ -48,10 +48,6 @@ import 'filter_state.dart';
 /// import pulumi_aws as aws
 ///
 /// my_filter = aws.guardduty.Filter("MyFilter",
-///     name="MyFilter",
-///     action="ARCHIVE",
-///     detector_id=example["id"],
-///     rank=1,
 ///     finding_criteria={
 ///         "criterions": [
 ///             {
@@ -75,7 +71,11 @@ import 'filter_state.dart';
 ///                 "greater_than_or_equal": "4",
 ///             },
 ///         ],
-///     })
+///     },
+///     name="MyFilter",
+///     action="ARCHIVE",
+///     detector_id=example["id"],
+///     rank=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -87,10 +87,6 @@ import 'filter_state.dart';
 /// {
 ///     var myFilter = new Aws.GuardDuty.Filter("MyFilter", new()
 ///     {
-///         Name = "MyFilter",
-///         Action = "ARCHIVE",
-///         DetectorId = example.Id,
-///         Rank = 1,
 ///         FindingCriteria = new Aws.GuardDuty.Inputs.FilterFindingCriteriaArgs
 ///         {
 ///             Criterions = new[]
@@ -125,6 +121,10 @@ import 'filter_state.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "MyFilter",
+///         Action = "ARCHIVE",
+///         DetectorId = example.Id,
+///         Rank = 1,
 ///     });
 ///
 /// });
@@ -140,10 +140,6 @@ import 'filter_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := guardduty.NewFilter(ctx, "MyFilter", &guardduty.FilterArgs{
-/// 			Name:       pulumi.String("MyFilter"),
-/// 			Action:     pulumi.String("ARCHIVE"),
-/// 			DetectorId: pulumi.Any(example.Id),
-/// 			Rank:       pulumi.Int(1),
 /// 			FindingCriteria: &guardduty.FilterFindingCriteriaArgs{
 /// 				Criterions: guardduty.FilterFindingCriteriaCriterionArray{
 /// 					&guardduty.FilterFindingCriteriaCriterionArgs{
@@ -170,6 +166,10 @@ import 'filter_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("MyFilter"),
+/// 			Action:     pulumi.String("ARCHIVE"),
+/// 			DetectorId: pulumi.Any(example.Id),
+/// 			Rank:       pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -188,10 +188,6 @@ import 'filter_state.dart';
 /// }
 ///
 /// resource "aws_guardduty_filter" "MyFilter" {
-///   name        = "MyFilter"
-///   action      = "ARCHIVE"
-///   detector_id = example.id
-///   rank        = 1
 ///   finding_criteria = {
 ///     criterions = [{
 ///       "field"  = "region"
@@ -208,6 +204,10 @@ import 'filter_state.dart';
 ///       "greaterThanOrEqual" = "4"
 ///     }]
 ///   }
+///   name        = "MyFilter"
+///   action      = "ARCHIVE"
+///   detector_id = example.id
+///   rank        = 1
 /// }
 /// ```
 /// ```java
@@ -234,10 +234,6 @@ import 'filter_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var myFilter = new Filter("myFilter", FilterArgs.builder()
-///             .name("MyFilter")
-///             .action("ARCHIVE")
-///             .detectorId(example.id())
-///             .rank(1)
 ///             .findingCriteria(FilterFindingCriteriaArgs.builder()
 ///                 .criterions(
 ///                     FilterFindingCriteriaCriterionArgs.builder()
@@ -260,6 +256,10 @@ import 'filter_state.dart';
 ///                         .greaterThanOrEqual("4")
 ///                         .build())
 ///                 .build())
+///             .name("MyFilter")
+///             .action("ARCHIVE")
+///             .detectorId(example.id())
+///             .rank(1)
 ///             .build());
 ///
 ///     }
@@ -271,10 +271,6 @@ import 'filter_state.dart';
 ///     type: aws:guardduty:Filter
 ///     name: MyFilter
 ///     properties:
-///       name: MyFilter
-///       action: ARCHIVE
-///       detectorId: ${example.id}
-///       rank: 1
 ///       findingCriteria:
 ///         criterions:
 ///           - field: region
@@ -289,6 +285,10 @@ import 'filter_state.dart';
 ///             lessThan: 2020-02-01T00:00:00Z
 ///           - field: severity
 ///             greaterThanOrEqual: '4'
+///       name: MyFilter
+///       action: ARCHIVE
+///       detectorId: ${example.id}
+///       rank: 1
 /// ```
 ///
 ///
@@ -333,7 +333,7 @@ class Filter extends pulumi.CustomResource {
           'aws:guardduty/filter:Filter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');
@@ -343,8 +343,8 @@ class Filter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     rank = registerOutput<int>('rank');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Filter] resource's state with the given [name] and [id].
@@ -352,11 +352,12 @@ class Filter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FilterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Filter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -378,7 +379,28 @@ class Filter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     rank = registerOutput<int>('rank');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Filter] resource.
+  Filter.reference(String urn)
+    : super(
+        'aws:guardduty/filter:Filter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    detectorId = registerOutput<String>('detectorId');
+    findingCriteria = registerOutput<FilterFindingCriteria>('findingCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilterFindingCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    rank = registerOutput<int>('rank');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

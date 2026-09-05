@@ -10,9 +10,9 @@ class GetIdentityPoolArgs {
   /// The Cognito Identity Pool name.
   final pulumi.Input<String> identityPoolName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assigned to the Identity Pool.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetIdentityPoolArgs].
   /// [identityPoolName] The Cognito Identity Pool name.

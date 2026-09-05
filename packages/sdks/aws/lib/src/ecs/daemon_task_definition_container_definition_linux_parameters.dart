@@ -7,13 +7,13 @@ import 'daemon_task_definition_container_definition_linux_parameters_tmpf.dart';
 
 class DaemonTaskDefinitionContainerDefinitionLinuxParameters {
   /// Linux capabilities for the container. Detailed below.
-  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionLinuxParametersCapabilities>? capabilities;
+  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionLinuxParametersCapabilities?>? capabilities;
   /// Any host devices to expose to the container. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionLinuxParametersDevice>>? devices;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionLinuxParametersDevice>?>? devices;
   /// Run an init process inside the container that forwards signals and reaps processes.
-  final pulumi.Input<bool>? initProcessEnabled;
+  final pulumi.Input<bool?>? initProcessEnabled;
   /// Container path, mount options, and size of the tmpfs mount. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionLinuxParametersTmpf>>? tmpfs;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionLinuxParametersTmpf>?>? tmpfs;
 
   /// Creates a new [DaemonTaskDefinitionContainerDefinitionLinuxParameters].
   /// [capabilities] Linux capabilities for the container. Detailed below.

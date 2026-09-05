@@ -21,7 +21,6 @@ import 'data_quality_job_definition_stopping_condition.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.sagemaker.DataQualityJobDefinition("test", {
-///     name: "my-data-quality-job-definition",
 ///     dataQualityAppSpecification: {
 ///         imageUri: monitor.registryPath,
 ///     },
@@ -44,6 +43,7 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///             volumeSizeInGb: 20,
 ///         },
 ///     },
+///     name: "my-data-quality-job-definition",
 ///     roleArn: myRole.arn,
 /// });
 /// ```
@@ -52,7 +52,6 @@ import 'data_quality_job_definition_stopping_condition.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.sagemaker.DataQualityJobDefinition("test",
-///     name="my-data-quality-job-definition",
 ///     data_quality_app_specification={
 ///         "image_uri": monitor["registryPath"],
 ///     },
@@ -75,6 +74,7 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///             "volume_size_in_gb": 20,
 ///         },
 ///     },
+///     name="my-data-quality-job-definition",
 ///     role_arn=my_role["arn"])
 /// ```
 /// ```csharp
@@ -87,7 +87,6 @@ import 'data_quality_job_definition_stopping_condition.dart';
 /// {
 ///     var test = new Aws.Sagemaker.DataQualityJobDefinition("test", new()
 ///     {
-///         Name = "my-data-quality-job-definition",
 ///         DataQualityAppSpecification = new Aws.Sagemaker.Inputs.DataQualityJobDefinitionDataQualityAppSpecificationArgs
 ///         {
 ///             ImageUri = monitor.RegistryPath,
@@ -118,6 +117,7 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///                 VolumeSizeInGb = 20,
 ///             },
 ///         },
+///         Name = "my-data-quality-job-definition",
 ///         RoleArn = myRole.Arn,
 ///     });
 ///
@@ -134,7 +134,6 @@ import 'data_quality_job_definition_stopping_condition.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewDataQualityJobDefinition(ctx, "test", &sagemaker.DataQualityJobDefinitionArgs{
-/// 			Name: pulumi.String("my-data-quality-job-definition"),
 /// 			DataQualityAppSpecification: &sagemaker.DataQualityJobDefinitionDataQualityAppSpecificationArgs{
 /// 				ImageUri: pulumi.Any(monitor.RegistryPath),
 /// 			},
@@ -157,6 +156,7 @@ import 'data_quality_job_definition_stopping_condition.dart';
 /// 					VolumeSizeInGb: pulumi.Int(20),
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("my-data-quality-job-definition"),
 /// 			RoleArn: pulumi.Any(myRole.Arn),
 /// 		})
 /// 		if err != nil {
@@ -176,7 +176,6 @@ import 'data_quality_job_definition_stopping_condition.dart';
 /// }
 ///
 /// resource "aws_sagemaker_dataqualityjobdefinition" "test" {
-///   name = "my-data-quality-job-definition"
 ///   data_quality_app_specification = {
 ///     image_uri = monitor.registryPath
 ///   }
@@ -199,6 +198,7 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///       volume_size_in_gb = 20
 ///     }
 ///   }
+///   name     = "my-data-quality-job-definition"
 ///   role_arn = myRole.arn
 /// }
 /// ```
@@ -232,7 +232,6 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new DataQualityJobDefinition("test", DataQualityJobDefinitionArgs.builder()
-///             .name("my-data-quality-job-definition")
 ///             .dataQualityAppSpecification(DataQualityJobDefinitionDataQualityAppSpecificationArgs.builder()
 ///                 .imageUri(monitor.registryPath())
 ///                 .build())
@@ -255,6 +254,7 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///                     .volumeSizeInGb(20)
 ///                     .build())
 ///                 .build())
+///             .name("my-data-quality-job-definition")
 ///             .roleArn(myRole.arn())
 ///             .build());
 ///
@@ -266,7 +266,6 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///   test:
 ///     type: aws:sagemaker:DataQualityJobDefinition
 ///     properties:
-///       name: my-data-quality-job-definition
 ///       dataQualityAppSpecification:
 ///         imageUri: ${monitor.registryPath}
 ///       dataQualityJobInput:
@@ -281,6 +280,7 @@ import 'data_quality_job_definition_stopping_condition.dart';
 ///           instanceCount: 1
 ///           instanceType: ml.t3.medium
 ///           volumeSizeInGb: 20
+///       name: my-data-quality-job-definition
 ///       roleArn: ${myRole.arn}
 /// ```
 ///
@@ -293,7 +293,7 @@ import 'data_quality_job_definition_stopping_condition.dart';
 /// $ pulumi import aws:sagemaker/dataQualityJobDefinition:DataQualityJobDefinition test_data_quality_job_definition data-quality-job-definition-foo
 /// ```
 class DataQualityJobDefinition extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this data quality job definition.
+  /// ARN assigned by AWS to this data quality job definition.
   late final pulumi.Output<String> arn;
   /// Specifies the container that runs the monitoring job. Fields are documented below.
   late final pulumi.Output<DataQualityJobDefinitionDataQualityAppSpecification> dataQualityAppSpecification;
@@ -311,7 +311,7 @@ class DataQualityJobDefinition extends pulumi.CustomResource {
   late final pulumi.Output<DataQualityJobDefinitionNetworkConfig?> networkConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf.
+  /// ARN of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf.
   late final pulumi.Output<String> roleArn;
   /// A time limit for how long the monitoring job is allowed to run before stopping. Fields are documented below.
   late final pulumi.Output<DataQualityJobDefinitionStoppingCondition> stoppingCondition;
@@ -332,7 +332,7 @@ class DataQualityJobDefinition extends pulumi.CustomResource {
           'aws:sagemaker/dataQualityJobDefinition:DataQualityJobDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataQualityAppSpecification = registerOutput<DataQualityJobDefinitionDataQualityAppSpecification>('dataQualityAppSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionDataQualityAppSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -345,8 +345,8 @@ class DataQualityJobDefinition extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     stoppingCondition = registerOutput<DataQualityJobDefinitionStoppingCondition>('stoppingCondition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionStoppingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DataQualityJobDefinition] resource's state with the given [name] and [id].
@@ -354,11 +354,12 @@ class DataQualityJobDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataQualityJobDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataQualityJobDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -383,7 +384,31 @@ class DataQualityJobDefinition extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     stoppingCondition = registerOutput<DataQualityJobDefinitionStoppingCondition>('stoppingCondition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionStoppingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataQualityJobDefinition] resource.
+  DataQualityJobDefinition.reference(String urn)
+    : super(
+        'aws:sagemaker/dataQualityJobDefinition:DataQualityJobDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dataQualityAppSpecification = registerOutput<DataQualityJobDefinitionDataQualityAppSpecification>('dataQualityAppSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionDataQualityAppSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataQualityBaselineConfig = registerOutput<DataQualityJobDefinitionDataQualityBaselineConfig?>('dataQualityBaselineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionDataQualityBaselineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataQualityJobInput = registerOutput<DataQualityJobDefinitionDataQualityJobInput>('dataQualityJobInput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionDataQualityJobInput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataQualityJobOutputConfig = registerOutput<DataQualityJobDefinitionDataQualityJobOutputConfig>('dataQualityJobOutputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobResources = registerOutput<DataQualityJobDefinitionJobResources>('jobResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionJobResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<DataQualityJobDefinitionNetworkConfig?>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    stoppingCondition = registerOutput<DataQualityJobDefinitionStoppingCondition>('stoppingCondition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionStoppingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

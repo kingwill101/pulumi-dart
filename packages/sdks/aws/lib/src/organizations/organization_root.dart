@@ -5,13 +5,13 @@ import 'organization_root_policy_type.dart';
 
 class OrganizationRoot {
   /// ARN of the root.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Identifier of the root.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the policy type.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of policy types enabled for this root. All elements have these attributes:
-  final pulumi.Input<List<OrganizationRootPolicyType>>? policyTypes;
+  final pulumi.Input<List<OrganizationRootPolicyType>?>? policyTypes;
 
   /// Creates a new [OrganizationRoot].
   /// [arn] ARN of the root.

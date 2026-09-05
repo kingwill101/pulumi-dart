@@ -7,11 +7,11 @@ import 'application_application_configuration_sql_application_configuration_refe
 
 class ApplicationApplicationConfigurationSqlApplicationConfiguration {
   /// The input stream used by the application.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInput>? input;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInput?>? input;
   /// The destination streams used by the application.
-  final pulumi.Input<List<ApplicationApplicationConfigurationSqlApplicationConfigurationOutput>>? outputs;
+  final pulumi.Input<List<ApplicationApplicationConfigurationSqlApplicationConfigurationOutput>?>? outputs;
   /// The reference data source used by the application.
-  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource>? referenceDataSource;
+  final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource?>? referenceDataSource;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfiguration].
   /// [input] The input stream used by the application.

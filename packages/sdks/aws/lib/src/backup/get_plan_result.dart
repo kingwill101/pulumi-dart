@@ -7,69 +7,69 @@ import 'get_plan_scan_setting.dart';
 /// Result data returned by getPlan.
 class GetPlanResult {
   /// ARN of the backup plan.
-  final String arn;
+  final String? arn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Display name of a backup plan.
-  final String name;
-  final String planId;
-  final String region;
+  final String? name;
+  final String? planId;
+  final String? region;
   /// Rules of a backup plan.
-  final List<GetPlanRule> rules;
+  final List<GetPlanRule>? rules;
   /// Scanning configuration for the backup rule.
-  final List<GetPlanScanSetting> scanSettings;
+  final List<GetPlanScanSetting>? scanSettings;
   /// Metadata that you can assign to help organize the plans you create.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetPlanResult].
   /// [arn] ARN of the backup plan.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Display name of a backup plan.
-  /// [planId] Required.
-  /// [region] Required.
+  /// [planId] Optional.
+  /// [region] Optional.
   /// [rules] Rules of a backup plan.
   /// [scanSettings] Scanning configuration for the backup rule.
   /// [tags] Metadata that you can assign to help organize the plans you create.
   /// [version] Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
   const GetPlanResult({
-    required this.arn,
-    required this.id,
-    required this.name,
-    required this.planId,
-    required this.region,
-    required this.rules,
-    required this.scanSettings,
-    required this.tags,
-    required this.version,
+    this.arn,
+    this.id,
+    this.name,
+    this.planId,
+    this.region,
+    this.rules,
+    this.scanSettings,
+    this.tags,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'id': id,
-      'name': name,
-      'planId': planId,
-      'region': region,
-      'rules': pulumi.Input.encodeList<GetPlanRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
-      'scanSettings': pulumi.Input.encodeList<GetPlanScanSetting, Map<String, dynamic>>(scanSettings, (value) => value.toMap()),
-      'tags': tags,
-      'version': version,
+      'arn': ?arn,
+      'id': ?id,
+      'name': ?name,
+      'planId': ?planId,
+      'region': ?region,
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPlanRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'scanSettings': ?(() { final guardedValue = scanSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPlanScanSetting, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
+      'version': ?version,
     };
   }
 
   factory GetPlanResult.fromMap(Map<String, dynamic> map) {
     return GetPlanResult(
-      arn: map['arn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      planId: map['planId'] as String,
-      region: map['region'] as String,
-      rules: pulumi.Input.decodeList<GetPlanRule>(map['rules']!, (value) => GetPlanRule.fromMap((value as Map).cast<String, dynamic>())),
-      scanSettings: pulumi.Input.decodeList<GetPlanScanSetting>(map['scanSettings']!, (value) => GetPlanScanSetting.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      version: map['version'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      planId: (() { final guardedValue = map['planId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPlanRule>(guardedValue, (value) => GetPlanRule.fromMap((value as Map).cast<String, dynamic>())); })(),
+      scanSettings: (() { final guardedValue = map['scanSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPlanScanSetting>(guardedValue, (value) => GetPlanScanSetting.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

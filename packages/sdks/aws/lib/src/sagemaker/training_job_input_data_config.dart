@@ -8,17 +8,17 @@ class TrainingJobInputDataConfig {
   /// Name of the channel. Must be between 1 and 64 characters.
   final pulumi.Input<String> channelName;
   /// Compression type for the input data. Valid values: `None`, `Gzip`.
-  final pulumi.Input<String>? compressionType;
+  final pulumi.Input<String?>? compressionType;
   /// MIME type of the input data.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Location of the channel data. See `dataSource` below.
-  final pulumi.Input<TrainingJobInputDataConfigDataSource>? dataSource;
+  final pulumi.Input<TrainingJobInputDataConfigDataSource?>? dataSource;
   /// Input mode for the channel data. Valid values: `File`, `Pipe`, `FastFile`.
-  final pulumi.Input<String>? inputMode;
+  final pulumi.Input<String?>? inputMode;
   /// Record wrapper type. Valid values: `None`, `RecordIO`.
-  final pulumi.Input<String>? recordWrapperType;
+  final pulumi.Input<String?>? recordWrapperType;
   /// Configuration for shuffling data in the channel. See `shuffleConfig` below.
-  final pulumi.Input<TrainingJobInputDataConfigShuffleConfig>? shuffleConfig;
+  final pulumi.Input<TrainingJobInputDataConfigShuffleConfig?>? shuffleConfig;
 
   /// Creates a new [TrainingJobInputDataConfig].
   /// [channelName] Name of the channel. Must be between 1 and 64 characters.

@@ -3,14 +3,18 @@ import 'instance_args.dart';
 import 'instance_capacity_reservation_specification.dart';
 import 'instance_cpu_options.dart';
 import 'instance_credit_specification.dart';
+import 'instance_ebs_block_device.dart';
 import 'instance_enclave_options.dart';
+import 'instance_ephemeral_block_device.dart';
 import 'instance_instance_market_options.dart';
 import 'instance_launch_template.dart';
 import 'instance_maintenance_options.dart';
 import 'instance_metadata_options.dart';
+import 'instance_network_interface.dart';
 import 'instance_primary_network_interface.dart';
 import 'instance_private_dns_name_options.dart';
 import 'instance_root_block_device.dart';
+import 'instance_secondary_network_interface.dart';
 import 'instance_state.dart';
 
 /// Provides an EC2 instance resource. This allows instances to be created, updated, and deleted.
@@ -27,7 +31,6 @@ import 'instance_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ubuntu = aws.ec2.getAmi({
-///     mostRecent: true,
 ///     filters: [
 ///         {
 ///             name: "name",
@@ -38,6 +41,7 @@ import 'instance_state.dart';
 ///             values: ["hvm"],
 ///         },
 ///     ],
+///     mostRecent: true,
 ///     owners: ["099720109477"],
 /// });
 /// const example = new aws.ec2.Instance("example", {
@@ -52,8 +56,7 @@ import 'instance_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// ubuntu = aws.ec2.get_ami(most_recent=True,
-///     filters=[
+/// ubuntu = aws.ec2.get_ami(filters=[
 ///         {
 ///             "name": "name",
 ///             "values": ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"],
@@ -63,6 +66,7 @@ import 'instance_state.dart';
 ///             "values": ["hvm"],
 ///         },
 ///     ],
+///     most_recent=True,
 ///     owners=["099720109477"])
 /// example = aws.ec2.Instance("example",
 ///     ami=ubuntu.id,
@@ -81,7 +85,6 @@ import 'instance_state.dart';
 /// {
 ///     var ubuntu = Aws.Ec2.GetAmi.Invoke(new()
 ///     {
-///         MostRecent = true,
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.GetAmiFilterInputArgs
@@ -101,6 +104,7 @@ import 'instance_state.dart';
 ///                 },
 ///             },
 ///         },
+///         MostRecent = true,
 ///         Owners = new[]
 ///         {
 ///             "099720109477",
@@ -130,7 +134,6 @@ import 'instance_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		ubuntu, err := ec2.LookupAmi(ctx, &ec2.LookupAmiArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
 /// 			Filters: []ec2.GetAmiFilter{
 /// 				{
 /// 					Name: "name",
@@ -145,6 +148,7 @@ import 'instance_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
 /// 			Owners: []string{
 /// 				"099720109477",
 /// 			},
@@ -176,7 +180,6 @@ import 'instance_state.dart';
 /// }
 ///
 /// data "aws_ec2_getami" "ubuntu" {
-///   most_recent = true
 ///   filters {
 ///     name   = "name"
 ///     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
@@ -185,7 +188,8 @@ import 'instance_state.dart';
 ///     name   = "virtualization-type"
 ///     values = ["hvm"]
 ///   }
-///   owners = ["099720109477"]
+///   most_recent = true
+///   owners      = ["099720109477"]
 /// }
 ///
 /// # Canonical
@@ -222,7 +226,6 @@ import 'instance_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var ubuntu = Ec2Functions.getAmi(GetAmiArgs.builder()
-///             .mostRecent(true)
 ///             .filters(
 ///                 GetAmiFilterArgs.builder()
 ///                     .name("name")
@@ -232,6 +235,7 @@ import 'instance_state.dart';
 ///                     .name("virtualization-type")
 ///                     .values("hvm")
 ///                     .build())
+///             .mostRecent(true)
 ///             .owners("099720109477")
 ///             .build());
 ///
@@ -258,7 +262,6 @@ import 'instance_state.dart';
 ///     fn::invoke:
 ///       function: aws:ec2:getAmi
 ///       arguments:
-///         mostRecent: true
 ///         filters:
 ///           - name: name
 ///             values:
@@ -266,6 +269,7 @@ import 'instance_state.dart';
 ///           - name: virtualization-type
 ///             values:
 ///               - hvm
+///         mostRecent: true
 ///         owners:
 ///           - '099720109477'
 /// ```
@@ -408,8 +412,6 @@ import 'instance_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.ec2.getAmi({
-///     mostRecent: true,
-///     owners: ["amazon"],
 ///     filters: [
 ///         {
 ///             name: "architecture",
@@ -420,15 +422,17 @@ import 'instance_state.dart';
 ///             values: ["al2023-ami-2023*"],
 ///         },
 ///     ],
+///     mostRecent: true,
+///     owners: ["amazon"],
 /// });
 /// const exampleInstance = new aws.ec2.Instance("example", {
-///     ami: example.then(example => example.id),
 ///     instanceMarketOptions: {
-///         marketType: "spot",
 ///         spotOptions: {
 ///             maxPrice: "0.0031",
 ///         },
+///         marketType: "spot",
 ///     },
+///     ami: example.then(example => example.id),
 ///     instanceType: aws.ec2.InstanceType.T4g_Nano,
 ///     tags: {
 ///         Name: "test-spot",
@@ -439,9 +443,7 @@ import 'instance_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.ec2.get_ami(most_recent=True,
-///     owners=["amazon"],
-///     filters=[
+/// example = aws.ec2.get_ami(filters=[
 ///         {
 ///             "name": "architecture",
 ///             "values": ["arm64"],
@@ -450,15 +452,17 @@ import 'instance_state.dart';
 ///             "name": "name",
 ///             "values": ["al2023-ami-2023*"],
 ///         },
-///     ])
+///     ],
+///     most_recent=True,
+///     owners=["amazon"])
 /// example_instance = aws.ec2.Instance("example",
-///     ami=example.id,
 ///     instance_market_options={
-///         "market_type": "spot",
 ///         "spot_options": {
 ///             "max_price": "0.0031",
 ///         },
+///         "market_type": "spot",
 ///     },
+///     ami=example.id,
 ///     instance_type=aws.ec2.InstanceType.T4G_NANO,
 ///     tags={
 ///         "Name": "test-spot",
@@ -474,11 +478,6 @@ import 'instance_state.dart';
 /// {
 ///     var example = Aws.Ec2.GetAmi.Invoke(new()
 ///     {
-///         MostRecent = true,
-///         Owners = new[]
-///         {
-///             "amazon",
-///         },
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.GetAmiFilterInputArgs
@@ -498,19 +497,24 @@ import 'instance_state.dart';
 ///                 },
 ///             },
 ///         },
+///         MostRecent = true,
+///         Owners = new[]
+///         {
+///             "amazon",
+///         },
 ///     });
 ///
 ///     var exampleInstance = new Aws.Ec2.Instance("example", new()
 ///     {
-///         Ami = example.Apply(getAmiResult => getAmiResult.Id),
 ///         InstanceMarketOptions = new Aws.Ec2.Inputs.InstanceInstanceMarketOptionsArgs
 ///         {
-///             MarketType = "spot",
 ///             SpotOptions = new Aws.Ec2.Inputs.InstanceInstanceMarketOptionsSpotOptionsArgs
 ///             {
 ///                 MaxPrice = "0.0031",
 ///             },
+///             MarketType = "spot",
 ///         },
+///         Ami = example.Apply(getAmiResult => getAmiResult.Id),
 ///         InstanceType = Aws.Ec2.InstanceType.T4g_Nano,
 ///         Tags =
 ///         {
@@ -531,10 +535,6 @@ import 'instance_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := ec2.LookupAmi(ctx, &ec2.LookupAmiArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
-/// 			Owners: []string{
-/// 				"amazon",
-/// 			},
 /// 			Filters: []ec2.GetAmiFilter{
 /// 				{
 /// 					Name: "architecture",
@@ -549,18 +549,22 @@ import 'instance_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
+/// 			Owners: []string{
+/// 				"amazon",
+/// 			},
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewInstance(ctx, "example", &ec2.InstanceArgs{
-/// 			Ami: pulumi.String(example.Id),
 /// 			InstanceMarketOptions: &ec2.InstanceInstanceMarketOptionsArgs{
-/// 				MarketType: pulumi.String("spot"),
 /// 				SpotOptions: &ec2.InstanceInstanceMarketOptionsSpotOptionsArgs{
 /// 					MaxPrice: pulumi.String("0.0031"),
 /// 				},
+/// 				MarketType: pulumi.String("spot"),
 /// 			},
+/// 			Ami:          pulumi.String(example.Id),
 /// 			InstanceType: pulumi.String(ec2.InstanceType_T4g_Nano),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("test-spot"),
@@ -583,8 +587,6 @@ import 'instance_state.dart';
 /// }
 ///
 /// data "aws_ec2_getami" "example" {
-///   most_recent = true
-///   owners      = ["amazon"]
 ///   filters {
 ///     name   = "architecture"
 ///     values = ["arm64"]
@@ -593,16 +595,18 @@ import 'instance_state.dart';
 ///     name   = "name"
 ///     values = ["al2023-ami-2023*"]
 ///   }
+///   most_recent = true
+///   owners      = ["amazon"]
 /// }
 ///
 /// resource "aws_ec2_instance" "example" {
-///   ami = data.aws_ec2_getami.example.id
 ///   instance_market_options = {
-///     market_type = "spot"
 ///     spot_options = {
 ///       max_price = 0.0031
 ///     }
+///     market_type = "spot"
 ///   }
+///   ami           = data.aws_ec2_getami.example.id
 ///   instance_type = "t4g.nano"
 ///   tags = {
 ///     "Name" = "test-spot"
@@ -636,8 +640,6 @@ import 'instance_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = Ec2Functions.getAmi(GetAmiArgs.builder()
-///             .mostRecent(true)
-///             .owners("amazon")
 ///             .filters(
 ///                 GetAmiFilterArgs.builder()
 ///                     .name("architecture")
@@ -647,16 +649,18 @@ import 'instance_state.dart';
 ///                     .name("name")
 ///                     .values("al2023-ami-2023*")
 ///                     .build())
+///             .mostRecent(true)
+///             .owners("amazon")
 ///             .build());
 ///
 ///         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
-///             .ami(example.id())
 ///             .instanceMarketOptions(InstanceInstanceMarketOptionsArgs.builder()
-///                 .marketType("spot")
 ///                 .spotOptions(InstanceInstanceMarketOptionsSpotOptionsArgs.builder()
 ///                     .maxPrice("0.0031")
 ///                     .build())
+///                 .marketType("spot")
 ///                 .build())
+///             .ami(example.id())
 ///             .instanceType("t4g.nano")
 ///             .tags(Map.of("Name", "test-spot"))
 ///             .build());
@@ -670,11 +674,11 @@ import 'instance_state.dart';
 ///     type: aws:ec2:Instance
 ///     name: example
 ///     properties:
-///       ami: ${example.id}
 ///       instanceMarketOptions:
-///         marketType: spot
 ///         spotOptions:
 ///           maxPrice: 0.0031
+///         marketType: spot
+///       ami: ${example.id}
 ///       instanceType: t4g.nano
 ///       tags:
 ///         Name: test-spot
@@ -683,9 +687,6 @@ import 'instance_state.dart';
 ///     fn::invoke:
 ///       function: aws:ec2:getAmi
 ///       arguments:
-///         mostRecent: true
-///         owners:
-///           - amazon
 ///         filters:
 ///           - name: architecture
 ///             values:
@@ -693,6 +694,9 @@ import 'instance_state.dart';
 ///           - name: name
 ///             values:
 ///               - al2023-ami-2023*
+///         mostRecent: true
+///         owners:
+///           - amazon
 /// ```
 ///
 ///
@@ -725,14 +729,14 @@ import 'instance_state.dart';
 ///     },
 /// });
 /// const exampleInstance = new aws.ec2.Instance("example", {
-///     ami: "ami-005e54dee72cc1d00",
-///     instanceType: aws.ec2.InstanceType.T2_Micro,
 ///     primaryNetworkInterface: {
 ///         networkInterfaceId: example.id,
 ///     },
 ///     creditSpecification: {
 ///         cpuCredits: "unlimited",
 ///     },
+///     ami: "ami-005e54dee72cc1d00",
+///     instanceType: aws.ec2.InstanceType.T2_Micro,
 /// });
 /// ```
 /// ```python
@@ -758,14 +762,14 @@ import 'instance_state.dart';
 ///         "Name": "primary_network_interface",
 ///     })
 /// example_instance = aws.ec2.Instance("example",
-///     ami="ami-005e54dee72cc1d00",
-///     instance_type=aws.ec2.InstanceType.T2_MICRO,
 ///     primary_network_interface={
 ///         "network_interface_id": example.id,
 ///     },
 ///     credit_specification={
 ///         "cpu_credits": "unlimited",
-///     })
+///     },
+///     ami="ami-005e54dee72cc1d00",
+///     instance_type=aws.ec2.InstanceType.T2_MICRO)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -810,8 +814,6 @@ import 'instance_state.dart';
 ///
 ///     var exampleInstance = new Aws.Ec2.Instance("example", new()
 ///     {
-///         Ami = "ami-005e54dee72cc1d00",
-///         InstanceType = Aws.Ec2.InstanceType.T2_Micro,
 ///         PrimaryNetworkInterface = new Aws.Ec2.Inputs.InstancePrimaryNetworkInterfaceArgs
 ///         {
 ///             NetworkInterfaceId = example.Id,
@@ -820,6 +822,8 @@ import 'instance_state.dart';
 ///         {
 ///             CpuCredits = "unlimited",
 ///         },
+///         Ami = "ami-005e54dee72cc1d00",
+///         InstanceType = Aws.Ec2.InstanceType.T2_Micro,
 ///     });
 ///
 /// });
@@ -867,14 +871,14 @@ import 'instance_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewInstance(ctx, "example", &ec2.InstanceArgs{
-/// 			Ami:          pulumi.String("ami-005e54dee72cc1d00"),
-/// 			InstanceType: pulumi.String(ec2.InstanceType_T2_Micro),
 /// 			PrimaryNetworkInterface: &ec2.InstancePrimaryNetworkInterfaceArgs{
 /// 				NetworkInterfaceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			CreditSpecification: &ec2.InstanceCreditSpecificationArgs{
 /// 				CpuCredits: pulumi.String("unlimited"),
 /// 			},
+/// 			Ami:          pulumi.String("ami-005e54dee72cc1d00"),
+/// 			InstanceType: pulumi.String(ec2.InstanceType_T2_Micro),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -914,14 +918,14 @@ import 'instance_state.dart';
 ///   }
 /// }
 /// resource "aws_ec2_instance" "example" {
-///   ami           = "ami-005e54dee72cc1d00"
-///   instance_type = "t2.micro"
 ///   primary_network_interface = {
 ///     network_interface_id = aws_ec2_networkinterface.example.id
 ///   }
 ///   credit_specification = {
 ///     cpu_credits = "unlimited"
 ///   }
+///   ami           = "ami-005e54dee72cc1d00"
+///   instance_type = "t2.micro"
 /// }
 /// ```
 /// ```java
@@ -972,14 +976,14 @@ import 'instance_state.dart';
 ///             .build());
 ///
 ///         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
-///             .ami("ami-005e54dee72cc1d00")
-///             .instanceType("t2.micro")
 ///             .primaryNetworkInterface(InstancePrimaryNetworkInterfaceArgs.builder()
 ///                 .networkInterfaceId(example.id())
 ///                 .build())
 ///             .creditSpecification(InstanceCreditSpecificationArgs.builder()
 ///                 .cpuCredits("unlimited")
 ///                 .build())
+///             .ami("ami-005e54dee72cc1d00")
+///             .instanceType("t2.micro")
 ///             .build());
 ///
 ///     }
@@ -1015,12 +1019,12 @@ import 'instance_state.dart';
 ///     type: aws:ec2:Instance
 ///     name: example
 ///     properties:
-///       ami: ami-005e54dee72cc1d00
-///       instanceType: t2.micro
 ///       primaryNetworkInterface:
 ///         networkInterfaceId: ${example.id}
 ///       creditSpecification:
 ///         cpuCredits: unlimited
+///       ami: ami-005e54dee72cc1d00
+///       instanceType: t2.micro
 /// ```
 ///
 ///
@@ -1046,21 +1050,21 @@ import 'instance_state.dart';
 ///     },
 /// });
 /// const amzn_linux_2023_ami = aws.ec2.getAmi({
-///     mostRecent: true,
-///     owners: ["amazon"],
 ///     filters: [{
 ///         name: "name",
 ///         values: ["al2023-ami-2023.*-x86_64"],
 ///     }],
+///     mostRecent: true,
+///     owners: ["amazon"],
 /// });
 /// const exampleInstance = new aws.ec2.Instance("example", {
-///     ami: amzn_linux_2023_ami.then(amzn_linux_2023_ami => amzn_linux_2023_ami.id),
-///     instanceType: aws.ec2.InstanceType.C6a_2XLarge,
-///     subnetId: exampleSubnet.id,
 ///     cpuOptions: {
 ///         coreCount: 2,
 ///         threadsPerCore: 2,
 ///     },
+///     ami: amzn_linux_2023_ami.then(amzn_linux_2023_ami => amzn_linux_2023_ami.id),
+///     instanceType: aws.ec2.InstanceType.C6a_2XLarge,
+///     subnetId: exampleSubnet.id,
 ///     tags: {
 ///         Name: "tf-example",
 ///     },
@@ -1082,20 +1086,20 @@ import 'instance_state.dart';
 ///     tags={
 ///         "Name": "tf-example",
 ///     })
-/// amzn_linux_2023_ami = aws.ec2.get_ami(most_recent=True,
-///     owners=["amazon"],
-///     filters=[{
+/// amzn_linux_2023_ami = aws.ec2.get_ami(filters=[{
 ///         "name": "name",
 ///         "values": ["al2023-ami-2023.*-x86_64"],
-///     }])
+///     }],
+///     most_recent=True,
+///     owners=["amazon"])
 /// example_instance = aws.ec2.Instance("example",
-///     ami=amzn_linux_2023_ami.id,
-///     instance_type=aws.ec2.InstanceType.C6A_2_X_LARGE,
-///     subnet_id=example_subnet.id,
 ///     cpu_options={
 ///         "core_count": 2,
 ///         "threads_per_core": 2,
 ///     },
+///     ami=amzn_linux_2023_ami.id,
+///     instance_type=aws.ec2.InstanceType.C6A_2_X_LARGE,
+///     subnet_id=example_subnet.id,
 ///     tags={
 ///         "Name": "tf-example",
 ///     })
@@ -1130,11 +1134,6 @@ import 'instance_state.dart';
 ///
 ///     var amzn_linux_2023_ami = Aws.Ec2.GetAmi.Invoke(new()
 ///     {
-///         MostRecent = true,
-///         Owners = new[]
-///         {
-///             "amazon",
-///         },
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.GetAmiFilterInputArgs
@@ -1146,18 +1145,23 @@ import 'instance_state.dart';
 ///                 },
 ///             },
 ///         },
+///         MostRecent = true,
+///         Owners = new[]
+///         {
+///             "amazon",
+///         },
 ///     });
 ///
 ///     var exampleInstance = new Aws.Ec2.Instance("example", new()
 ///     {
-///         Ami = amzn_linux_2023_ami.Apply(amzn_linux_2023_ami => amzn_linux_2023_ami.Apply(getAmiResult => getAmiResult.Id)),
-///         InstanceType = Aws.Ec2.InstanceType.C6a_2XLarge,
-///         SubnetId = exampleSubnet.Id,
 ///         CpuOptions = new Aws.Ec2.Inputs.InstanceCpuOptionsArgs
 ///         {
 ///             CoreCount = 2,
 ///             ThreadsPerCore = 2,
 ///         },
+///         Ami = amzn_linux_2023_ami.Apply(amzn_linux_2023_ami => amzn_linux_2023_ami.Apply(getAmiResult => getAmiResult.Id)),
+///         InstanceType = Aws.Ec2.InstanceType.C6a_2XLarge,
+///         SubnetId = exampleSubnet.Id,
 ///         Tags =
 ///         {
 ///             { "Name", "tf-example" },
@@ -1197,10 +1201,6 @@ import 'instance_state.dart';
 /// 			return err
 /// 		}
 /// 		amzn_linux_2023_ami, err := ec2.LookupAmi(ctx, &ec2.LookupAmiArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
-/// 			Owners: []string{
-/// 				"amazon",
-/// 			},
 /// 			Filters: []ec2.GetAmiFilter{
 /// 				{
 /// 					Name: "name",
@@ -1209,18 +1209,22 @@ import 'instance_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
+/// 			Owners: []string{
+/// 				"amazon",
+/// 			},
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewInstance(ctx, "example", &ec2.InstanceArgs{
-/// 			Ami:          pulumi.String(amzn_linux_2023_ami.Id),
-/// 			InstanceType: pulumi.String(ec2.InstanceType_C6a_2XLarge),
-/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			CpuOptions: &ec2.InstanceCpuOptionsArgs{
 /// 				CoreCount:      pulumi.Int(2),
 /// 				ThreadsPerCore: pulumi.Int(2),
 /// 			},
+/// 			Ami:          pulumi.String(amzn_linux_2023_ami.Id),
+/// 			InstanceType: pulumi.String(ec2.InstanceType_C6a_2XLarge),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("tf-example"),
 /// 			},
@@ -1242,12 +1246,12 @@ import 'instance_state.dart';
 /// }
 ///
 /// data "aws_ec2_getami" "amzn-linux-2023-ami" {
-///   most_recent = true
-///   owners      = ["amazon"]
 ///   filters {
 ///     name   = "name"
 ///     values = ["al2023-ami-2023.*-x86_64"]
 ///   }
+///   most_recent = true
+///   owners      = ["amazon"]
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
@@ -1265,13 +1269,13 @@ import 'instance_state.dart';
 ///   }
 /// }
 /// resource "aws_ec2_instance" "example" {
-///   ami           = data.aws_ec2_getami.amzn-linux-2023-ami.id
-///   instance_type = "c6a.2xlarge"
-///   subnet_id     = aws_ec2_subnet.example.id
 ///   cpu_options = {
 ///     core_count       = 2
 ///     threads_per_core = 2
 ///   }
+///   ami           = data.aws_ec2_getami.amzn-linux-2023-ami.id
+///   instance_type = "c6a.2xlarge"
+///   subnet_id     = aws_ec2_subnet.example.id
 ///   tags = {
 ///     "Name" = "tf-example"
 ///   }
@@ -1319,22 +1323,22 @@ import 'instance_state.dart';
 ///             .build());
 ///
 ///         final var amzn-linux-2023-ami = Ec2Functions.getAmi(GetAmiArgs.builder()
-///             .mostRecent(true)
-///             .owners("amazon")
 ///             .filters(GetAmiFilterArgs.builder()
 ///                 .name("name")
 ///                 .values("al2023-ami-2023.*-x86_64")
 ///                 .build())
+///             .mostRecent(true)
+///             .owners("amazon")
 ///             .build());
 ///
 ///         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
-///             .ami(amzn_linux_2023_ami.id())
-///             .instanceType("c6a.2xlarge")
-///             .subnetId(exampleSubnet.id())
 ///             .cpuOptions(InstanceCpuOptionsArgs.builder()
 ///                 .coreCount(2)
 ///                 .threadsPerCore(2)
 ///                 .build())
+///             .ami(amzn_linux_2023_ami.id())
+///             .instanceType("c6a.2xlarge")
+///             .subnetId(exampleSubnet.id())
 ///             .tags(Map.of("Name", "tf-example"))
 ///             .build());
 ///
@@ -1362,12 +1366,12 @@ import 'instance_state.dart';
 ///     type: aws:ec2:Instance
 ///     name: example
 ///     properties:
-///       ami: ${["amzn-linux-2023-ami"].id}
-///       instanceType: c6a.2xlarge
-///       subnetId: ${exampleSubnet.id}
 ///       cpuOptions:
 ///         coreCount: 2
 ///         threadsPerCore: 2
+///       ami: ${["amzn-linux-2023-ami"].id}
+///       instanceType: c6a.2xlarge
+///       subnetId: ${exampleSubnet.id}
 ///       tags:
 ///         Name: tf-example
 /// variables:
@@ -1375,13 +1379,13 @@ import 'instance_state.dart';
 ///     fn::invoke:
 ///       function: aws:ec2:getAmi
 ///       arguments:
-///         mostRecent: true
-///         owners:
-///           - amazon
 ///         filters:
 ///           - name: name
 ///             values:
 ///               - al2023-ami-2023.*-x86_64
+///         mostRecent: true
+///         owners:
+///           - amazon
 /// ```
 ///
 ///
@@ -1554,7 +1558,7 @@ class Instance extends pulumi.CustomResource {
   /// If true, enables [EC2 Instance Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination).
   late final pulumi.Output<bool> disableApiTermination;
   /// One or more configuration blocks with additional EBS block devices to attach to the instance. Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection. When accessing this as an attribute reference, it is a set of objects.
-  late final pulumi.Output<List<Map<String, dynamic>>> ebsBlockDevices;
+  late final pulumi.Output<List<InstanceEbsBlockDevice>> ebsBlockDevices;
   /// If true, the launched EC2 instance will be EBS-optimized. Note that if this is not set on an instance type that is optimized by default then this will show as disabled but if the instance type is optimized by default then there is no need to set this and there is no effect to disabling it. See the [EBS Optimized section](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) of the AWS User Guide for more information.
   late final pulumi.Output<bool> ebsOptimized;
   /// Whether to assign a primary IPv6 Global Unicast Address (GUA) to the instance when launched in a dual-stack or IPv6-only subnet. A primary IPv6 address ensures a consistent IPv6 address for the instance and is automatically assigned by AWS to the ENI. Once enabled, the first IPv6 GUA becomes the primary IPv6 address and cannot be disabled. The primary IPv6 address remains until the instance is terminated or the ENI is detached. Disabling `enablePrimaryIpv6` after it has been enabled forces recreation of the instance.
@@ -1562,7 +1566,7 @@ class Instance extends pulumi.CustomResource {
   /// Enable Nitro Enclaves on launched instances. See Enclave Options below for more details.
   late final pulumi.Output<InstanceEnclaveOptions> enclaveOptions;
   /// One or more configuration blocks to customize Ephemeral (also known as "Instance Store") volumes on the instance. See Block Devices below for details. When accessing this as an attribute reference, it is a set of objects.
-  late final pulumi.Output<List<Map<String, dynamic>>> ephemeralBlockDevices;
+  late final pulumi.Output<List<InstanceEphemeralBlockDevice>> ephemeralBlockDevices;
   /// Destroys instance even if `disableApiTermination` or `disableApiStop` is set to `true`. Defaults to `false`. Once this parameter is set to `true`, a successful `pulumi up` run before a destroy is required to update this value in the resource state. Without a successful `pulumi up` after this parameter is set, this flag will have no effect. If setting this field in the same operation that would require replacing the instance or destroying the instance, this flag will not work. Additionally when importing an instance, a successful `pulumi up` is required to set this value in state before it will take effect on a destroy operation.
   late final pulumi.Output<bool?> forceDestroy;
   /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `passwordData` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
@@ -1600,7 +1604,7 @@ class Instance extends pulumi.CustomResource {
   /// If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
   late final pulumi.Output<bool> monitoring;
   /// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<InstanceNetworkInterface>> networkInterfaces;
   /// ARN of the Outpost the instance is assigned to.
   late final pulumi.Output<String> outpostArn;
   /// Base-64 encoded encrypted password data for the instance. Useful for getting the administrator password for instances running Microsoft Windows. This attribute is only exported if `getPasswordData` is true. Note that this encrypted value will be stored in the state file, as with all exported attributes. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
@@ -1630,7 +1634,7 @@ class Instance extends pulumi.CustomResource {
   /// Configuration block to customize details about the root block device of the instance. See Block Devices below for details. When accessing this as an attribute reference, it is a list containing one object.
   late final pulumi.Output<InstanceRootBlockDevice> rootBlockDevice;
   /// One or more secondary network interfaces to attach to the instance at launch time. See Secondary Network Interface below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>> secondaryNetworkInterfaces;
+  late final pulumi.Output<List<InstanceSecondaryNetworkInterface>> secondaryNetworkInterfaces;
   /// List of secondary private IPv4 addresses to assign to the instance's primary network interface (eth0) in a VPC. Can only be assigned to the primary network interface (eth0) attached at instance creation, not a pre-existing network interface i.e., referenced in a `networkInterface` block. Refer to the [Elastic network interfaces documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) to see the maximum number of private IP addresses allowed per instance type.
   late final pulumi.Output<List<String>> secondaryPrivateIps;
   /// List of security group names to associate with.
@@ -1674,7 +1678,7 @@ class Instance extends pulumi.CustomResource {
           'aws:ec2/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     ami = registerOutput<String>('ami');
     arn = registerOutput<String>('arn');
@@ -1685,11 +1689,11 @@ class Instance extends pulumi.CustomResource {
     creditSpecification = registerOutput<InstanceCreditSpecification?>('creditSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCreditSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     disableApiStop = registerOutput<bool>('disableApiStop');
     disableApiTermination = registerOutput<bool>('disableApiTermination');
-    ebsBlockDevices = registerOutput<List<Map<String, dynamic>>>('ebsBlockDevices');
+    ebsBlockDevices = registerOutput<List<InstanceEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceEbsBlockDevice>(guardedValue, (value) => InstanceEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     ebsOptimized = registerOutput<bool>('ebsOptimized');
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
     enclaveOptions = registerOutput<InstanceEnclaveOptions>('enclaveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceEnclaveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>>('ephemeralBlockDevices');
+    ephemeralBlockDevices = registerOutput<List<InstanceEphemeralBlockDevice>>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceEphemeralBlockDevice>(guardedValue, (value) => InstanceEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
     getPasswordData = registerOutput<bool?>('getPasswordData');
     hibernation = registerOutput<bool?>('hibernation');
@@ -1702,13 +1706,13 @@ class Instance extends pulumi.CustomResource {
     instanceState = registerOutput<String>('instanceState');
     instanceType = registerOutput<String>('instanceType');
     ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
-    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keyName = registerOutput<String>('keyName');
     launchTemplate = registerOutput<InstanceLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maintenanceOptions = registerOutput<InstanceMaintenanceOptions>('maintenanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataOptions = registerOutput<InstanceMetadataOptions>('metadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitoring = registerOutput<bool>('monitoring');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<InstanceNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceNetworkInterface>(guardedValue, (value) => InstanceNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     outpostArn = registerOutput<String>('outpostArn');
     passwordData = registerOutput<String>('passwordData');
     placementGroup = registerOutput<String>('placementGroup');
@@ -1723,20 +1727,20 @@ class Instance extends pulumi.CustomResource {
     publicIp = registerOutput<String>('publicIp');
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<InstanceRootBlockDevice>('rootBlockDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceRootBlockDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secondaryNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>('secondaryNetworkInterfaces');
-    secondaryPrivateIps = registerOutput<List<String>>('secondaryPrivateIps');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    secondaryNetworkInterfaces = registerOutput<List<InstanceSecondaryNetworkInterface>>('secondaryNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceSecondaryNetworkInterface>(guardedValue, (value) => InstanceSecondaryNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    secondaryPrivateIps = registerOutput<List<String>>('secondaryPrivateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
     spotInstanceRequestId = registerOutput<String>('spotInstanceRequestId');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancy = registerOutput<String>('tenancy');
     userData = registerOutput<String?>('userData');
     userDataBase64 = registerOutput<String>('userDataBase64');
     userDataReplaceOnChange = registerOutput<bool?>('userDataReplaceOnChange');
-    volumeTags = registerOutput<Map<String, String>?>('volumeTags');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    volumeTags = registerOutput<Map<String, String>?>('volumeTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -1744,11 +1748,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1771,11 +1776,11 @@ class Instance extends pulumi.CustomResource {
     creditSpecification = registerOutput<InstanceCreditSpecification?>('creditSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCreditSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     disableApiStop = registerOutput<bool>('disableApiStop');
     disableApiTermination = registerOutput<bool>('disableApiTermination');
-    ebsBlockDevices = registerOutput<List<Map<String, dynamic>>>('ebsBlockDevices');
+    ebsBlockDevices = registerOutput<List<InstanceEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceEbsBlockDevice>(guardedValue, (value) => InstanceEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     ebsOptimized = registerOutput<bool>('ebsOptimized');
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
     enclaveOptions = registerOutput<InstanceEnclaveOptions>('enclaveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceEnclaveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ephemeralBlockDevices = registerOutput<List<Map<String, dynamic>>>('ephemeralBlockDevices');
+    ephemeralBlockDevices = registerOutput<List<InstanceEphemeralBlockDevice>>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceEphemeralBlockDevice>(guardedValue, (value) => InstanceEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
     forceDestroy = registerOutput<bool?>('forceDestroy');
     getPasswordData = registerOutput<bool?>('getPasswordData');
     hibernation = registerOutput<bool?>('hibernation');
@@ -1788,13 +1793,13 @@ class Instance extends pulumi.CustomResource {
     instanceState = registerOutput<String>('instanceState');
     instanceType = registerOutput<String>('instanceType');
     ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
-    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keyName = registerOutput<String>('keyName');
     launchTemplate = registerOutput<InstanceLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maintenanceOptions = registerOutput<InstanceMaintenanceOptions>('maintenanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadataOptions = registerOutput<InstanceMetadataOptions>('metadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitoring = registerOutput<bool>('monitoring');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<InstanceNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceNetworkInterface>(guardedValue, (value) => InstanceNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     outpostArn = registerOutput<String>('outpostArn');
     passwordData = registerOutput<String>('passwordData');
     placementGroup = registerOutput<String>('placementGroup');
@@ -1809,19 +1814,91 @@ class Instance extends pulumi.CustomResource {
     publicIp = registerOutput<String>('publicIp');
     region = registerOutput<String>('region');
     rootBlockDevice = registerOutput<InstanceRootBlockDevice>('rootBlockDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceRootBlockDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secondaryNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>('secondaryNetworkInterfaces');
-    secondaryPrivateIps = registerOutput<List<String>>('secondaryPrivateIps');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    secondaryNetworkInterfaces = registerOutput<List<InstanceSecondaryNetworkInterface>>('secondaryNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceSecondaryNetworkInterface>(guardedValue, (value) => InstanceSecondaryNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    secondaryPrivateIps = registerOutput<List<String>>('secondaryPrivateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
     spotInstanceRequestId = registerOutput<String>('spotInstanceRequestId');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancy = registerOutput<String>('tenancy');
     userData = registerOutput<String?>('userData');
     userDataBase64 = registerOutput<String>('userDataBase64');
     userDataReplaceOnChange = registerOutput<bool?>('userDataReplaceOnChange');
-    volumeTags = registerOutput<Map<String, String>?>('volumeTags');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    volumeTags = registerOutput<Map<String, String>?>('volumeTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'aws:ec2/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    ami = registerOutput<String>('ami');
+    arn = registerOutput<String>('arn');
+    associatePublicIpAddress = registerOutput<bool>('associatePublicIpAddress');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    capacityReservationSpecification = registerOutput<InstanceCapacityReservationSpecification>('capacityReservationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCapacityReservationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cpuOptions = registerOutput<InstanceCpuOptions>('cpuOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCpuOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creditSpecification = registerOutput<InstanceCreditSpecification?>('creditSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCreditSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    disableApiStop = registerOutput<bool>('disableApiStop');
+    disableApiTermination = registerOutput<bool>('disableApiTermination');
+    ebsBlockDevices = registerOutput<List<InstanceEbsBlockDevice>>('ebsBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceEbsBlockDevice>(guardedValue, (value) => InstanceEbsBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    ebsOptimized = registerOutput<bool>('ebsOptimized');
+    enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
+    enclaveOptions = registerOutput<InstanceEnclaveOptions>('enclaveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceEnclaveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ephemeralBlockDevices = registerOutput<List<InstanceEphemeralBlockDevice>>('ephemeralBlockDevices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceEphemeralBlockDevice>(guardedValue, (value) => InstanceEphemeralBlockDevice.fromMap((value as Map).cast<String, dynamic>())); });
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    getPasswordData = registerOutput<bool?>('getPasswordData');
+    hibernation = registerOutput<bool?>('hibernation');
+    hostId = registerOutput<String>('hostId');
+    hostResourceGroupArn = registerOutput<String>('hostResourceGroupArn');
+    iamInstanceProfile = registerOutput<String>('iamInstanceProfile');
+    instanceInitiatedShutdownBehavior = registerOutput<String>('instanceInitiatedShutdownBehavior');
+    instanceLifecycle = registerOutput<String>('instanceLifecycle');
+    instanceMarketOptions = registerOutput<InstanceInstanceMarketOptions>('instanceMarketOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceInstanceMarketOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceState = registerOutput<String>('instanceState');
+    instanceType = registerOutput<String>('instanceType');
+    ipv6AddressCount = registerOutput<int>('ipv6AddressCount');
+    ipv6Addresses = registerOutput<List<String>>('ipv6Addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keyName = registerOutput<String>('keyName');
+    launchTemplate = registerOutput<InstanceLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceOptions = registerOutput<InstanceMaintenanceOptions>('maintenanceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenanceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadataOptions = registerOutput<InstanceMetadataOptions>('metadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitoring = registerOutput<bool>('monitoring');
+    networkInterfaces = registerOutput<List<InstanceNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceNetworkInterface>(guardedValue, (value) => InstanceNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    outpostArn = registerOutput<String>('outpostArn');
+    passwordData = registerOutput<String>('passwordData');
+    placementGroup = registerOutput<String>('placementGroup');
+    placementGroupId = registerOutput<String>('placementGroupId');
+    placementPartitionNumber = registerOutput<int>('placementPartitionNumber');
+    primaryNetworkInterface = registerOutput<InstancePrimaryNetworkInterface>('primaryNetworkInterface', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePrimaryNetworkInterface.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    primaryNetworkInterfaceId = registerOutput<String>('primaryNetworkInterfaceId');
+    privateDns = registerOutput<String>('privateDns');
+    privateDnsNameOptions = registerOutput<InstancePrivateDnsNameOptions>('privateDnsNameOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePrivateDnsNameOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateIp = registerOutput<String>('privateIp');
+    publicDns = registerOutput<String>('publicDns');
+    publicIp = registerOutput<String>('publicIp');
+    region = registerOutput<String>('region');
+    rootBlockDevice = registerOutput<InstanceRootBlockDevice>('rootBlockDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceRootBlockDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secondaryNetworkInterfaces = registerOutput<List<InstanceSecondaryNetworkInterface>>('secondaryNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceSecondaryNetworkInterface>(guardedValue, (value) => InstanceSecondaryNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    secondaryPrivateIps = registerOutput<List<String>>('secondaryPrivateIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceDestCheck = registerOutput<bool?>('sourceDestCheck');
+    spotInstanceRequestId = registerOutput<String>('spotInstanceRequestId');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenancy = registerOutput<String>('tenancy');
+    userData = registerOutput<String?>('userData');
+    userDataBase64 = registerOutput<String>('userDataBase64');
+    userDataReplaceOnChange = registerOutput<bool?>('userDataReplaceOnChange');
+    volumeTags = registerOutput<Map<String, String>?>('volumeTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

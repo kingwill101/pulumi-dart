@@ -5,9 +5,9 @@ import 'user_pool_admin_create_user_config_invite_message_template.dart';
 
 class UserPoolAdminCreateUserConfig {
   /// Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
-  final pulumi.Input<bool>? allowAdminCreateUserOnly;
+  final pulumi.Input<bool?>? allowAdminCreateUserOnly;
   /// Invite message template structure. Detailed below.
-  final pulumi.Input<UserPoolAdminCreateUserConfigInviteMessageTemplate>? inviteMessageTemplate;
+  final pulumi.Input<UserPoolAdminCreateUserConfigInviteMessageTemplate?>? inviteMessageTemplate;
 
   /// Creates a new [UserPoolAdminCreateUserConfig].
   /// [allowAdminCreateUserOnly] Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.

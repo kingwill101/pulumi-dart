@@ -118,12 +118,12 @@ import 'activity_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const sfnActivity = new aws.sfn.Activity("sfn_activity", {
-///     name: "my-activity",
 ///     encryptionConfiguration: {
 ///         kmsKeyId: kmsKeyForSfn.arn,
 ///         type: "CUSTOMER_MANAGED_KMS_KEY",
 ///         kmsDataKeyReusePeriodSeconds: 900,
 ///     },
+///     name: "my-activity",
 /// });
 /// ```
 /// ```python
@@ -131,12 +131,12 @@ import 'activity_state.dart';
 /// import pulumi_aws as aws
 ///
 /// sfn_activity = aws.sfn.Activity("sfn_activity",
-///     name="my-activity",
 ///     encryption_configuration={
 ///         "kms_key_id": kms_key_for_sfn["arn"],
 ///         "type": "CUSTOMER_MANAGED_KMS_KEY",
 ///         "kms_data_key_reuse_period_seconds": 900,
-///     })
+///     },
+///     name="my-activity")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -148,13 +148,13 @@ import 'activity_state.dart';
 /// {
 ///     var sfnActivity = new Aws.Sfn.Activity("sfn_activity", new()
 ///     {
-///         Name = "my-activity",
 ///         EncryptionConfiguration = new Aws.Sfn.Inputs.ActivityEncryptionConfigurationArgs
 ///         {
 ///             KmsKeyId = kmsKeyForSfn.Arn,
 ///             Type = "CUSTOMER_MANAGED_KMS_KEY",
 ///             KmsDataKeyReusePeriodSeconds = 900,
 ///         },
+///         Name = "my-activity",
 ///     });
 ///
 /// });
@@ -170,12 +170,12 @@ import 'activity_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sfn.NewActivity(ctx, "sfn_activity", &sfn.ActivityArgs{
-/// 			Name: pulumi.String("my-activity"),
 /// 			EncryptionConfiguration: &sfn.ActivityEncryptionConfigurationArgs{
 /// 				KmsKeyId:                     pulumi.Any(kmsKeyForSfn.Arn),
 /// 				Type:                         pulumi.String("CUSTOMER_MANAGED_KMS_KEY"),
 /// 				KmsDataKeyReusePeriodSeconds: pulumi.Int(900),
 /// 			},
+/// 			Name: pulumi.String("my-activity"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -194,12 +194,12 @@ import 'activity_state.dart';
 /// }
 ///
 /// resource "aws_sfn_activity" "sfn_activity" {
-///   name = "my-activity"
 ///   encryption_configuration = {
 ///     kms_key_id                        = kmsKeyForSfn.arn
 ///     type                              = "CUSTOMER_MANAGED_KMS_KEY"
 ///     kms_data_key_reuse_period_seconds = 900
 ///   }
+///   name = "my-activity"
 /// }
 /// ```
 /// ```java
@@ -225,12 +225,12 @@ import 'activity_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var sfnActivity = new Activity("sfnActivity", ActivityArgs.builder()
-///             .name("my-activity")
 ///             .encryptionConfiguration(ActivityEncryptionConfigurationArgs.builder()
 ///                 .kmsKeyId(kmsKeyForSfn.arn())
 ///                 .type("CUSTOMER_MANAGED_KMS_KEY")
 ///                 .kmsDataKeyReusePeriodSeconds(900)
 ///                 .build())
+///             .name("my-activity")
 ///             .build());
 ///
 ///     }
@@ -242,11 +242,11 @@ import 'activity_state.dart';
 ///     type: aws:sfn:Activity
 ///     name: sfn_activity
 ///     properties:
-///       name: my-activity
 ///       encryptionConfiguration:
 ///         kmsKeyId: ${kmsKeyForSfn.arn}
 ///         type: CUSTOMER_MANAGED_KMS_KEY
 ///         kmsDataKeyReusePeriodSeconds: 900
+///       name: my-activity
 /// ```
 ///
 ///
@@ -265,7 +265,7 @@ import 'activity_state.dart';
 /// $ pulumi import aws:sfn/activity:Activity example arn:aws:states:eu-west-1:123456789098:activity:bar
 /// ```
 class Activity extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the activity.
+  /// ARN of the activity.
   late final pulumi.Output<String> arn;
   /// Date the activity was created.
   late final pulumi.Output<String> creationDate;
@@ -292,15 +292,15 @@ class Activity extends pulumi.CustomResource {
           'aws:sfn/activity:Activity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');
     encryptionConfiguration = registerOutput<ActivityEncryptionConfiguration>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Activity] resource's state with the given [name] and [id].
@@ -308,11 +308,12 @@ class Activity extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActivityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Activity._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -331,7 +332,25 @@ class Activity extends pulumi.CustomResource {
     encryptionConfiguration = registerOutput<ActivityEncryptionConfiguration>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Activity] resource.
+  Activity.reference(String urn)
+    : super(
+        'aws:sfn/activity:Activity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationDate = registerOutput<String>('creationDate');
+    encryptionConfiguration = registerOutput<ActivityEncryptionConfiguration>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

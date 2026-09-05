@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters {
   /// The inputs for the STEP_FUNCTION task.
-  final pulumi.Input<String>? input;
+  final pulumi.Input<String?>? input;
   /// The name of the STEP_FUNCTION task.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters].
   /// [input] The inputs for the STEP_FUNCTION task.

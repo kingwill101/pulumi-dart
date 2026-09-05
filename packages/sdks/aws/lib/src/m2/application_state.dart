@@ -7,32 +7,32 @@ import 'application_timeouts.dart';
 /// Input properties used for looking up and filtering Application resources.
 class ApplicationState {
   /// Id of the Application.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// ARN of the Application.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Current version of the application deployed.
-  final pulumi.Input<int>? currentVersion;
+  final pulumi.Input<int?>? currentVersion;
   /// The application definition for this application. You can specify either inline JSON or an S3 bucket location.
-  final pulumi.Input<ApplicationDefinition>? definition;
+  final pulumi.Input<ApplicationDefinition?>? definition;
   /// Description of the application.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Engine type must be `microfocus | bluage`.
-  final pulumi.Input<String>? engineType;
+  final pulumi.Input<String?>? engineType;
   /// KMS Key to use for the Application.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Unique identifier of the application.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of role for application to use to access AWS resources.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ApplicationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ApplicationTimeouts?>? timeouts;
 
   /// Creates a new [ApplicationState].
   /// [applicationId] Id of the Application.
@@ -86,7 +86,7 @@ class ApplicationState {
     return ApplicationState(
       applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      currentVersion: (() { final guardedValue = map['currentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      currentVersion: (() { final guardedValue = map['currentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       definition: (() { final guardedValue = map['definition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engineType: (() { final guardedValue = map['engineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

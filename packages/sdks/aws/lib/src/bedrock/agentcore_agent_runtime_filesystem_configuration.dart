@@ -7,11 +7,11 @@ import 'agentcore_agent_runtime_filesystem_configuration_session_storage.dart';
 
 class AgentcoreAgentRuntimeFilesystemConfiguration {
   /// Amazon EFS access point to mount as shared file storage. Exactly one of `sessionStorage`, `s3FilesAccessPoint`, or `efsAccessPoint` must be specified. See `efsAccessPoint` below.
-  final pulumi.Input<AgentcoreAgentRuntimeFilesystemConfigurationEfsAccessPoint>? efsAccessPoint;
+  final pulumi.Input<AgentcoreAgentRuntimeFilesystemConfigurationEfsAccessPoint?>? efsAccessPoint;
   /// Amazon S3 Files access point to mount as shared file storage. Exactly one of `sessionStorage`, `s3FilesAccessPoint`, or `efsAccessPoint` must be specified. See `s3FilesAccessPoint` below.
-  final pulumi.Input<AgentcoreAgentRuntimeFilesystemConfigurationS3FilesAccessPoint>? s3FilesAccessPoint;
+  final pulumi.Input<AgentcoreAgentRuntimeFilesystemConfigurationS3FilesAccessPoint?>? s3FilesAccessPoint;
   /// Session storage filesystem providing persistent storage across agent runtime session invocations. Exactly one of `sessionStorage`, `s3FilesAccessPoint`, or `efsAccessPoint` must be specified. See `sessionStorage` below.
-  final pulumi.Input<AgentcoreAgentRuntimeFilesystemConfigurationSessionStorage>? sessionStorage;
+  final pulumi.Input<AgentcoreAgentRuntimeFilesystemConfigurationSessionStorage?>? sessionStorage;
 
   /// Creates a new [AgentcoreAgentRuntimeFilesystemConfiguration].
   /// [efsAccessPoint] Amazon EFS access point to mount as shared file storage. Exactly one of `sessionStorage`, `s3FilesAccessPoint`, or `efsAccessPoint` must be specified. See `efsAccessPoint` below.

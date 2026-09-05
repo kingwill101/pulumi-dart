@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TlsInspectionConfigurationEncryptionConfiguration {
-  /// ARN of the Amazon Web Services Key Management Service (KMS) customer managed key.
+  /// ARN of the Amazon Web Services KMS customer managed key.
   final pulumi.Input<String> keyId;
   /// Type of KMS key to use for encryption of your Network Firewall resources. Valid values: `AWS_OWNED_KMS_KEY`, `CUSTOMER_KMS`.
   final pulumi.Input<String> type;
 
   /// Creates a new [TlsInspectionConfigurationEncryptionConfiguration].
-  /// [keyId] ARN of the Amazon Web Services Key Management Service (KMS) customer managed key.
+  /// [keyId] ARN of the Amazon Web Services KMS customer managed key.
   /// [type] Type of KMS key to use for encryption of your Network Firewall resources. Valid values: `AWS_OWNED_KMS_KEY`, `CUSTOMER_KMS`.
   const TlsInspectionConfigurationEncryptionConfiguration({
     required this.keyId,

@@ -5,37 +5,37 @@ import 'get_certificate_authority_revocation_configuration.dart';
 
 /// Result data returned by getCertificateAuthority.
 class GetCertificateAuthorityResult {
-  final String arn;
+  final String? arn;
   /// Base64-encoded certificate authority (CA) certificate. Only available after the certificate authority certificate has been imported.
-  final String certificate;
+  final String? certificate;
   /// Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. Only available after the certificate authority certificate has been imported.
-  final String certificateChain;
+  final String? certificateChain;
   /// The base64 PEM-encoded certificate signing request (CSR) for your private CA certificate.
-  final String certificateSigningRequest;
+  final String? certificateSigningRequest;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Level of security of the key storage endpoint of the certificate authority.
-  final String keyStorageSecurityStandard;
+  final String? keyStorageSecurityStandard;
   /// Date and time after which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
-  final String notAfter;
+  final String? notAfter;
   /// Date and time before which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
-  final String notBefore;
-  final String region;
+  final String? notBefore;
+  final String? region;
   /// Nested attribute containing revocation configuration. See `revocationConfiguration` below.
-  final List<GetCertificateAuthorityRevocationConfiguration> revocationConfigurations;
+  final List<GetCertificateAuthorityRevocationConfiguration>? revocationConfigurations;
   /// Serial number of the certificate authority. Only available after the certificate authority certificate has been imported.
-  final String serial;
+  final String? serial;
   /// Status of the certificate authority.
-  final String status;
+  final String? status;
   /// Key-value map of user-defined tags that are attached to the certificate authority.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Type of the certificate authority.
-  final String type;
+  final String? type;
   /// Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly.
-  final String usageMode;
+  final String? usageMode;
 
   /// Creates a new [GetCertificateAuthorityResult].
-  /// [arn] Required.
+  /// [arn] Optional.
   /// [certificate] Base64-encoded certificate authority (CA) certificate. Only available after the certificate authority certificate has been imported.
   /// [certificateChain] Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. Only available after the certificate authority certificate has been imported.
   /// [certificateSigningRequest] The base64 PEM-encoded certificate signing request (CSR) for your private CA certificate.
@@ -43,7 +43,7 @@ class GetCertificateAuthorityResult {
   /// [keyStorageSecurityStandard] Level of security of the key storage endpoint of the certificate authority.
   /// [notAfter] Date and time after which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
   /// [notBefore] Date and time before which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
-  /// [region] Required.
+  /// [region] Optional.
   /// [revocationConfigurations] Nested attribute containing revocation configuration. See `revocationConfiguration` below.
   /// [serial] Serial number of the certificate authority. Only available after the certificate authority certificate has been imported.
   /// [status] Status of the certificate authority.
@@ -51,60 +51,60 @@ class GetCertificateAuthorityResult {
   /// [type] Type of the certificate authority.
   /// [usageMode] Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly.
   const GetCertificateAuthorityResult({
-    required this.arn,
-    required this.certificate,
-    required this.certificateChain,
-    required this.certificateSigningRequest,
-    required this.id,
-    required this.keyStorageSecurityStandard,
-    required this.notAfter,
-    required this.notBefore,
-    required this.region,
-    required this.revocationConfigurations,
-    required this.serial,
-    required this.status,
-    required this.tags,
-    required this.type,
-    required this.usageMode,
+    this.arn,
+    this.certificate,
+    this.certificateChain,
+    this.certificateSigningRequest,
+    this.id,
+    this.keyStorageSecurityStandard,
+    this.notAfter,
+    this.notBefore,
+    this.region,
+    this.revocationConfigurations,
+    this.serial,
+    this.status,
+    this.tags,
+    this.type,
+    this.usageMode,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'certificate': certificate,
-      'certificateChain': certificateChain,
-      'certificateSigningRequest': certificateSigningRequest,
-      'id': id,
-      'keyStorageSecurityStandard': keyStorageSecurityStandard,
-      'notAfter': notAfter,
-      'notBefore': notBefore,
-      'region': region,
-      'revocationConfigurations': pulumi.Input.encodeList<GetCertificateAuthorityRevocationConfiguration, Map<String, dynamic>>(revocationConfigurations, (value) => value.toMap()),
-      'serial': serial,
-      'status': status,
-      'tags': tags,
-      'type': type,
-      'usageMode': usageMode,
+      'arn': ?arn,
+      'certificate': ?certificate,
+      'certificateChain': ?certificateChain,
+      'certificateSigningRequest': ?certificateSigningRequest,
+      'id': ?id,
+      'keyStorageSecurityStandard': ?keyStorageSecurityStandard,
+      'notAfter': ?notAfter,
+      'notBefore': ?notBefore,
+      'region': ?region,
+      'revocationConfigurations': ?(() { final guardedValue = revocationConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetCertificateAuthorityRevocationConfiguration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'serial': ?serial,
+      'status': ?status,
+      'tags': ?tags,
+      'type': ?type,
+      'usageMode': ?usageMode,
     };
   }
 
   factory GetCertificateAuthorityResult.fromMap(Map<String, dynamic> map) {
     return GetCertificateAuthorityResult(
-      arn: map['arn'] as String,
-      certificate: map['certificate'] as String,
-      certificateChain: map['certificateChain'] as String,
-      certificateSigningRequest: map['certificateSigningRequest'] as String,
-      id: map['id'] as String,
-      keyStorageSecurityStandard: map['keyStorageSecurityStandard'] as String,
-      notAfter: map['notAfter'] as String,
-      notBefore: map['notBefore'] as String,
-      region: map['region'] as String,
-      revocationConfigurations: pulumi.Input.decodeList<GetCertificateAuthorityRevocationConfiguration>(map['revocationConfigurations']!, (value) => GetCertificateAuthorityRevocationConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      serial: map['serial'] as String,
-      status: map['status'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
-      usageMode: map['usageMode'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificate: (() { final guardedValue = map['certificate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificateChain: (() { final guardedValue = map['certificateChain']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificateSigningRequest: (() { final guardedValue = map['certificateSigningRequest']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keyStorageSecurityStandard: (() { final guardedValue = map['keyStorageSecurityStandard']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notAfter: (() { final guardedValue = map['notAfter']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notBefore: (() { final guardedValue = map['notBefore']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revocationConfigurations: (() { final guardedValue = map['revocationConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCertificateAuthorityRevocationConfiguration>(guardedValue, (value) => GetCertificateAuthorityRevocationConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
+      serial: (() { final guardedValue = map['serial']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      usageMode: (() { final guardedValue = map['usageMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

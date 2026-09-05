@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupSseConfiguration {
   /// Boolean flag to indicate that the CMK should be used.
-  final pulumi.Input<bool>? customerManagedKeyEnabled;
+  final pulumi.Input<bool?>? customerManagedKeyEnabled;
   /// ARN of the KMS key to use.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
 
   /// Creates a new [GroupSseConfiguration].
   /// [customerManagedKeyEnabled] Boolean flag to indicate that the CMK should be used.

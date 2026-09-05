@@ -11,22 +11,22 @@ import 'agent_knowledge_base_timeouts.dart';
 /// {@macro pulumi_bedrock_agent_knowledge_base_agent_knowledge_base_args_doc}
 class AgentKnowledgeBaseArgs {
   /// Description of the knowledge base.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Details about the embeddings configuration of the knowledge base. See `knowledgeBaseConfiguration` block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfiguration> knowledgeBaseConfiguration;
   /// Name of the knowledge base.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the IAM role with permissions to invoke API operations on the knowledge base.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> roleArn;
   /// Details about the storage configuration of the knowledge base. See `storageConfiguration` block for details.
-  final pulumi.Input<AgentKnowledgeBaseStorageConfiguration>? storageConfiguration;
+  final pulumi.Input<AgentKnowledgeBaseStorageConfiguration?>? storageConfiguration;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<AgentKnowledgeBaseTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<AgentKnowledgeBaseTimeouts?>? timeouts;
 
   /// Creates a new [AgentKnowledgeBaseArgs].
   /// [description] Description of the knowledge base.

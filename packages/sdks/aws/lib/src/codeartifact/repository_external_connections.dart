@@ -5,8 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryExternalConnections {
   /// The name of the external connection associated with a repository.
   final pulumi.Input<String> externalConnectionName;
-  final pulumi.Input<String>? packageFormat;
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? packageFormat;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [RepositoryExternalConnections].
   /// [externalConnectionName] The name of the external connection associated with a repository.

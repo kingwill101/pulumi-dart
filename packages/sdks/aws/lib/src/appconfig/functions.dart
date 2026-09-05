@@ -130,6 +130,17 @@ Future<GetApplicationResult> getApplication(
   return GetApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appconfig/getApplication:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
+}
+
 /// Provides access to an AppConfig Configuration Profile.
 ///
 /// ## Example Usage
@@ -257,6 +268,17 @@ Future<GetConfigurationProfileResult> getConfigurationProfile(
   return GetConfigurationProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationProfileResult> getConfigurationProfileOutput(
+  GetConfigurationProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appconfig/getConfigurationProfile:getConfigurationProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationProfileResult.fromMap);
+}
+
 /// Provides access to all Configuration Properties for an AppConfig Application. This will allow you to pass Configuration
 /// Profile IDs to another resource.
 ///
@@ -337,6 +359,17 @@ Future<GetConfigurationProfilesResult> getConfigurationProfiles(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationProfilesResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigurationProfilesResult> getConfigurationProfilesOutput(
+  GetConfigurationProfilesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appconfig/getConfigurationProfiles:getConfigurationProfiles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationProfilesResult.fromMap);
 }
 
 /// Provides access to an AppConfig Environment.
@@ -466,6 +499,17 @@ Future<GetEnvironmentResult> getEnvironment(
   return GetEnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
+  GetEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appconfig/getEnvironment:getEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentResult.fromMap);
+}
+
 /// Provides access to all Environments for an AppConfig Application. This will allow you to pass Environment IDs to another
 /// resource.
 ///
@@ -585,4 +629,15 @@ Future<GetEnvironmentsResult> getEnvironments(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnvironmentsResult.fromMap(result);
+}
+
+pulumi.Output<GetEnvironmentsResult> getEnvironmentsOutput(
+  GetEnvironmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appconfig/getEnvironments:getEnvironments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentsResult.fromMap);
 }

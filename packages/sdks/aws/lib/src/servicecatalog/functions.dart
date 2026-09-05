@@ -138,6 +138,17 @@ Future<GetAppregistryApplicationResult> getAppregistryApplication(
   return GetAppregistryApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetAppregistryApplicationResult> getAppregistryApplicationOutput(
+  GetAppregistryApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicecatalog/getAppregistryApplication:getAppregistryApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppregistryApplicationResult.fromMap);
+}
+
 /// Data source for managing an AWS Service Catalog AppRegistry Attribute Group.
 ///
 /// ## Example Usage
@@ -258,6 +269,17 @@ Future<GetAppregistryAttributeGroupResult> getAppregistryAttributeGroup(
   return GetAppregistryAttributeGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetAppregistryAttributeGroupResult> getAppregistryAttributeGroupOutput(
+  GetAppregistryAttributeGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicecatalog/getAppregistryAttributeGroup:getAppregistryAttributeGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppregistryAttributeGroupResult.fromMap);
+}
+
 /// Data source for managing AWS Service Catalog AppRegistry Attribute Group Associations.
 ///
 /// ## Example Usage
@@ -376,6 +398,17 @@ Future<GetAppregistryAttributeGroupAssociationsResult> getAppregistryAttributeGr
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppregistryAttributeGroupAssociationsResult.fromMap(result);
+}
+
+pulumi.Output<GetAppregistryAttributeGroupAssociationsResult> getAppregistryAttributeGroupAssociationsOutput(
+  GetAppregistryAttributeGroupAssociationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicecatalog/getAppregistryAttributeGroupAssociations:getAppregistryAttributeGroupAssociations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppregistryAttributeGroupAssociationsResult.fromMap);
 }
 
 /// Provides information on a Service Catalog Constraint.
@@ -505,6 +538,17 @@ Future<GetConstraintResult> getConstraint(
   return GetConstraintResult.fromMap(result);
 }
 
+pulumi.Output<GetConstraintResult> getConstraintOutput(
+  GetConstraintArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicecatalog/getConstraint:getConstraint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConstraintResult.fromMap);
+}
+
 /// Lists the paths to the specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.
 ///
 /// ## Example Usage
@@ -625,6 +669,17 @@ Future<GetLaunchPathsResult> getLaunchPaths(
   return GetLaunchPathsResult.fromMap(result);
 }
 
+pulumi.Output<GetLaunchPathsResult> getLaunchPathsOutput(
+  GetLaunchPathsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicecatalog/getLaunchPaths:getLaunchPaths',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLaunchPathsResult.fromMap);
+}
+
 /// Provides information for a Service Catalog Portfolio.
 ///
 /// ## Example Usage
@@ -741,6 +796,17 @@ Future<GetPortfolioResult> getPortfolio(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPortfolioResult.fromMap(result);
+}
+
+pulumi.Output<GetPortfolioResult> getPortfolioOutput(
+  GetPortfolioArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicecatalog/getPortfolio:getPortfolio',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPortfolioResult.fromMap);
 }
 
 /// Provides information on Service Catalog Portfolio Constraints.
@@ -861,6 +927,17 @@ Future<GetPortfolioConstraintsResult> getPortfolioConstraints(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPortfolioConstraintsResult.fromMap(result);
+}
+
+pulumi.Output<GetPortfolioConstraintsResult> getPortfolioConstraintsOutput(
+  GetPortfolioConstraintsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicecatalog/getPortfolioConstraints:getPortfolioConstraints',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPortfolioConstraintsResult.fromMap);
 }
 
 /// Use this data source to retrieve information about a Service Catalog product.
@@ -985,6 +1062,17 @@ Future<GetProductResult> getProduct(
   return GetProductResult.fromMap(result);
 }
 
+pulumi.Output<GetProductResult> getProductOutput(
+  GetProductArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicecatalog/getProduct:getProduct',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProductResult.fromMap);
+}
+
 /// Lists the provisioning artifacts for the specified product.
 ///
 /// ## Example Usage
@@ -1103,4 +1191,15 @@ Future<GetProvisioningArtifactsResult> getProvisioningArtifacts(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProvisioningArtifactsResult.fromMap(result);
+}
+
+pulumi.Output<GetProvisioningArtifactsResult> getProvisioningArtifactsOutput(
+  GetProvisioningArtifactsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:servicecatalog/getProvisioningArtifacts:getProvisioningArtifacts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProvisioningArtifactsResult.fromMap);
 }

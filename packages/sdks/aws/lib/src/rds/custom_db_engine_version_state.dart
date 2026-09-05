@@ -4,49 +4,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering CustomDbEngineVersion resources.
 class CustomDbEngineVersionState {
-  /// The Amazon Resource Name (ARN) for the custom engine version.
-  final pulumi.Input<String>? arn;
+  /// ARN for the custom engine version.
+  final pulumi.Input<String?>? arn;
   /// The date and time that the CEV was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The name of the Amazon S3 bucket that contains the database installation files.
-  final pulumi.Input<String>? databaseInstallationFilesS3BucketName;
+  final pulumi.Input<String?>? databaseInstallationFilesS3BucketName;
   /// The prefix for the Amazon S3 bucket that contains the database installation files.
-  final pulumi.Input<String>? databaseInstallationFilesS3Prefix;
+  final pulumi.Input<String?>? databaseInstallationFilesS3Prefix;
   /// The name of the DB parameter group family for the CEV.
-  final pulumi.Input<String>? dbParameterGroupFamily;
+  final pulumi.Input<String?>? dbParameterGroupFamily;
   /// The description of the CEV.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the database engine. Valid values are `custom-oracle*`, `custom-sqlserver*`.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// The version of the database engine.
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// The name of the manifest file within the local filesystem. Conflicts with `manifest`.
-  final pulumi.Input<String>? filename;
+  final pulumi.Input<String?>? filename;
   /// The ID of the AMI that was created with the CEV.
-  final pulumi.Input<String>? imageId;
+  final pulumi.Input<String?>? imageId;
   /// The ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// The major version of the database engine.
-  final pulumi.Input<String>? majorEngineVersion;
+  final pulumi.Input<String?>? majorEngineVersion;
   /// The manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
-  final pulumi.Input<String>? manifest;
+  final pulumi.Input<String?>? manifest;
   /// The returned manifest file, in JSON format, service generated and often different from input `manifest`.
-  final pulumi.Input<String>? manifestComputed;
+  final pulumi.Input<String?>? manifestComputed;
   /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
-  final pulumi.Input<String>? manifestHash;
+  final pulumi.Input<String?>? manifestHash;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
-  final pulumi.Input<String>? sourceImageId;
+  final pulumi.Input<String?>? sourceImageId;
   /// The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CustomDbEngineVersionState].
-  /// [arn] The Amazon Resource Name (ARN) for the custom engine version.
+  /// [arn] ARN for the custom engine version.
   /// [createTime] The date and time that the CEV was created.
   /// [databaseInstallationFilesS3BucketName] The name of the Amazon S3 bucket that contains the database installation files.
   /// [databaseInstallationFilesS3Prefix] The prefix for the Amazon S3 bucket that contains the database installation files.

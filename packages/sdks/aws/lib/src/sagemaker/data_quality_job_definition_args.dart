@@ -17,7 +17,7 @@ class DataQualityJobDefinitionArgs {
   /// Specifies the container that runs the monitoring job. Fields are documented below.
   final pulumi.Input<DataQualityJobDefinitionDataQualityAppSpecification> dataQualityAppSpecification;
   /// Configures the constraints and baselines for the monitoring job. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionDataQualityBaselineConfig>? dataQualityBaselineConfig;
+  final pulumi.Input<DataQualityJobDefinitionDataQualityBaselineConfig?>? dataQualityBaselineConfig;
   /// A list of inputs for the monitoring job. Fields are documented below.
   final pulumi.Input<DataQualityJobDefinitionDataQualityJobInput> dataQualityJobInput;
   /// The output configuration for monitoring jobs. Fields are documented below.
@@ -25,17 +25,17 @@ class DataQualityJobDefinitionArgs {
   /// Identifies the resources to deploy for a monitoring job. Fields are documented below.
   final pulumi.Input<DataQualityJobDefinitionJobResources> jobResources;
   /// The name of the data quality job definition. If omitted, the provider will assign a random, unique name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies networking configuration for the monitoring job. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionNetworkConfig>? networkConfig;
+  final pulumi.Input<DataQualityJobDefinitionNetworkConfig?>? networkConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf.
+  final pulumi.Input<String?>? region;
+  /// ARN of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf.
   final pulumi.Input<String> roleArn;
   /// A time limit for how long the monitoring job is allowed to run before stopping. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionStoppingCondition>? stoppingCondition;
+  final pulumi.Input<DataQualityJobDefinitionStoppingCondition?>? stoppingCondition;
   /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DataQualityJobDefinitionArgs].
   /// [dataQualityAppSpecification] Specifies the container that runs the monitoring job. Fields are documented below.
@@ -46,7 +46,7 @@ class DataQualityJobDefinitionArgs {
   /// [name] The name of the data quality job definition. If omitted, the provider will assign a random, unique name.
   /// [networkConfig] Specifies networking configuration for the monitoring job. Fields are documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf.
+  /// [roleArn] ARN of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf.
   /// [stoppingCondition] A time limit for how long the monitoring job is allowed to run before stopping. Fields are documented below.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const DataQualityJobDefinitionArgs({

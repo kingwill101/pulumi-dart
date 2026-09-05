@@ -5,7 +5,7 @@ import 'v2_service_permission_model_cross_account_role.dart';
 
 class V2ServicePermissionModel {
   /// Cross-account IAM role. See `crossAccountRole` Block below.
-  final pulumi.Input<List<V2ServicePermissionModelCrossAccountRole>>? crossAccountRoles;
+  final pulumi.Input<List<V2ServicePermissionModelCrossAccountRole>?>? crossAccountRoles;
   /// Name of the IAM role that Resilience Hub assumes for resource discovery.
   final pulumi.Input<String> invokerRoleName;
 

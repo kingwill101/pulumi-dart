@@ -5,9 +5,9 @@ import 'agentcore_harness_authorizer_configuration_custom_jwt_authorizer_allowed
 
 class AgentcoreHarnessAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfiguration {
   /// Hosting environments allowed to use the authorizer. Between 1 and 10 entries. See `hostingEnvironment` Block below.
-  final pulumi.Input<List<AgentcoreHarnessAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfigurationHostingEnvironment>>? hostingEnvironments;
+  final pulumi.Input<List<AgentcoreHarnessAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfigurationHostingEnvironment>?>? hostingEnvironments;
   /// List of workload identity names allowed to use the authorizer. Between 1 and 10 entries.
-  final pulumi.Input<List<String>>? workloadIdentities;
+  final pulumi.Input<List<String>?>? workloadIdentities;
 
   /// Creates a new [AgentcoreHarnessAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfiguration].
   /// [hostingEnvironments] Hosting environments allowed to use the authorizer. Between 1 and 10 entries. See `hostingEnvironment` Block below.

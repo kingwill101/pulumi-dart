@@ -474,7 +474,7 @@ import 'workspace_vpc_configuration.dart';
 class Workspace extends pulumi.CustomResource {
   /// The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizationalUnits` must also be present.
   late final pulumi.Output<String> accountAccessType;
-  /// The Amazon Resource Name (ARN) of the Grafana workspace.
+  /// ARN of the Grafana workspace.
   late final pulumi.Output<String> arn;
   /// The authentication providers for the workspace. Valid values are `AWS_SSO`, `SAML`, or both.
   late final pulumi.Output<List<String>> authenticationProviders;
@@ -530,29 +530,29 @@ class Workspace extends pulumi.CustomResource {
           'aws:grafana/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountAccessType = registerOutput<String>('accountAccessType');
     arn = registerOutput<String>('arn');
-    authenticationProviders = registerOutput<List<String>>('authenticationProviders');
+    authenticationProviders = registerOutput<List<String>>('authenticationProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     configuration = registerOutput<String>('configuration');
-    dataSources = registerOutput<List<String>?>('dataSources');
+    dataSources = registerOutput<List<String>?>('dataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     endpoint = registerOutput<String>('endpoint');
     grafanaVersion = registerOutput<String>('grafanaVersion');
     kmsKeyId = registerOutput<String>('kmsKeyId');
     this.name = registerOutput<String>('name');
     networkAccessControl = registerOutput<WorkspaceNetworkAccessControl?>('networkAccessControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceNetworkAccessControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    notificationDestinations = registerOutput<List<String>?>('notificationDestinations');
+    notificationDestinations = registerOutput<List<String>?>('notificationDestinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     organizationRoleName = registerOutput<String?>('organizationRoleName');
-    organizationalUnits = registerOutput<List<String>?>('organizationalUnits');
+    organizationalUnits = registerOutput<List<String>?>('organizationalUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     permissionType = registerOutput<String>('permissionType');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
     samlConfigurationStatus = registerOutput<String>('samlConfigurationStatus');
     stackSetName = registerOutput<String?>('stackSetName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfiguration = registerOutput<WorkspaceVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -561,11 +561,12 @@ class Workspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -581,25 +582,58 @@ class Workspace extends pulumi.CustomResource {
         ) {
     accountAccessType = registerOutput<String>('accountAccessType');
     arn = registerOutput<String>('arn');
-    authenticationProviders = registerOutput<List<String>>('authenticationProviders');
+    authenticationProviders = registerOutput<List<String>>('authenticationProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     configuration = registerOutput<String>('configuration');
-    dataSources = registerOutput<List<String>?>('dataSources');
+    dataSources = registerOutput<List<String>?>('dataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     endpoint = registerOutput<String>('endpoint');
     grafanaVersion = registerOutput<String>('grafanaVersion');
     kmsKeyId = registerOutput<String>('kmsKeyId');
     this.name = registerOutput<String>('name');
     networkAccessControl = registerOutput<WorkspaceNetworkAccessControl?>('networkAccessControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceNetworkAccessControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    notificationDestinations = registerOutput<List<String>?>('notificationDestinations');
+    notificationDestinations = registerOutput<List<String>?>('notificationDestinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     organizationRoleName = registerOutput<String?>('organizationRoleName');
-    organizationalUnits = registerOutput<List<String>?>('organizationalUnits');
+    organizationalUnits = registerOutput<List<String>?>('organizationalUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     permissionType = registerOutput<String>('permissionType');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
     samlConfigurationStatus = registerOutput<String>('samlConfigurationStatus');
     stackSetName = registerOutput<String?>('stackSetName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcConfiguration = registerOutput<WorkspaceVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'aws:grafana/workspace:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountAccessType = registerOutput<String>('accountAccessType');
+    arn = registerOutput<String>('arn');
+    authenticationProviders = registerOutput<List<String>>('authenticationProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    configuration = registerOutput<String>('configuration');
+    dataSources = registerOutput<List<String>?>('dataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    endpoint = registerOutput<String>('endpoint');
+    grafanaVersion = registerOutput<String>('grafanaVersion');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    networkAccessControl = registerOutput<WorkspaceNetworkAccessControl?>('networkAccessControl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceNetworkAccessControl.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notificationDestinations = registerOutput<List<String>?>('notificationDestinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    organizationRoleName = registerOutput<String?>('organizationRoleName');
+    organizationalUnits = registerOutput<List<String>?>('organizationalUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    permissionType = registerOutput<String>('permissionType');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    samlConfigurationStatus = registerOutput<String>('samlConfigurationStatus');
+    stackSetName = registerOutput<String?>('stackSetName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcConfiguration = registerOutput<WorkspaceVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

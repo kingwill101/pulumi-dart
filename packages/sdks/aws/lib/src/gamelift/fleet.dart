@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_args.dart';
 import 'fleet_certificate_configuration.dart';
+import 'fleet_ec2_inbound_permission.dart';
 import 'fleet_resource_creation_limit_policy.dart';
 import 'fleet_runtime_configuration.dart';
 import 'fleet_state.dart';
@@ -15,16 +16,16 @@ import 'fleet_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.gamelift.Fleet("example", {
-///     buildId: exampleAwsGameliftBuild.id,
-///     ec2InstanceType: "t2.micro",
-///     fleetType: "ON_DEMAND",
-///     name: "example-fleet-name",
 ///     runtimeConfiguration: {
 ///         serverProcesses: [{
 ///             concurrentExecutions: 1,
 ///             launchPath: "C:\\game\\GomokuServer.exe",
 ///         }],
 ///     },
+///     buildId: exampleAwsGameliftBuild.id,
+///     ec2InstanceType: "t2.micro",
+///     fleetType: "ON_DEMAND",
+///     name: "example-fleet-name",
 /// });
 /// ```
 /// ```python
@@ -32,16 +33,16 @@ import 'fleet_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.gamelift.Fleet("example",
-///     build_id=example_aws_gamelift_build["id"],
-///     ec2_instance_type="t2.micro",
-///     fleet_type="ON_DEMAND",
-///     name="example-fleet-name",
 ///     runtime_configuration={
 ///         "server_processes": [{
 ///             "concurrent_executions": 1,
 ///             "launch_path": "C:\\game\\GomokuServer.exe",
 ///         }],
-///     })
+///     },
+///     build_id=example_aws_gamelift_build["id"],
+///     ec2_instance_type="t2.micro",
+///     fleet_type="ON_DEMAND",
+///     name="example-fleet-name")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -53,10 +54,6 @@ import 'fleet_state.dart';
 /// {
 ///     var example = new Aws.GameLift.Fleet("example", new()
 ///     {
-///         BuildId = exampleAwsGameliftBuild.Id,
-///         Ec2InstanceType = "t2.micro",
-///         FleetType = "ON_DEMAND",
-///         Name = "example-fleet-name",
 ///         RuntimeConfiguration = new Aws.GameLift.Inputs.FleetRuntimeConfigurationArgs
 ///         {
 ///             ServerProcesses = new[]
@@ -68,6 +65,10 @@ import 'fleet_state.dart';
 ///                 },
 ///             },
 ///         },
+///         BuildId = exampleAwsGameliftBuild.Id,
+///         Ec2InstanceType = "t2.micro",
+///         FleetType = "ON_DEMAND",
+///         Name = "example-fleet-name",
 ///     });
 ///
 /// });
@@ -83,10 +84,6 @@ import 'fleet_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := gamelift.NewFleet(ctx, "example", &gamelift.FleetArgs{
-/// 			BuildId:         pulumi.Any(exampleAwsGameliftBuild.Id),
-/// 			Ec2InstanceType: pulumi.String("t2.micro"),
-/// 			FleetType:       pulumi.String("ON_DEMAND"),
-/// 			Name:            pulumi.String("example-fleet-name"),
 /// 			RuntimeConfiguration: &gamelift.FleetRuntimeConfigurationArgs{
 /// 				ServerProcesses: gamelift.FleetRuntimeConfigurationServerProcessArray{
 /// 					&gamelift.FleetRuntimeConfigurationServerProcessArgs{
@@ -95,6 +92,10 @@ import 'fleet_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			BuildId:         pulumi.Any(exampleAwsGameliftBuild.Id),
+/// 			Ec2InstanceType: pulumi.String("t2.micro"),
+/// 			FleetType:       pulumi.String("ON_DEMAND"),
+/// 			Name:            pulumi.String("example-fleet-name"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -113,16 +114,16 @@ import 'fleet_state.dart';
 /// }
 ///
 /// resource "aws_gamelift_fleet" "example" {
-///   build_id          = exampleAwsGameliftBuild.id
-///   ec2_instance_type = "t2.micro"
-///   fleet_type        = "ON_DEMAND"
-///   name              = "example-fleet-name"
 ///   runtime_configuration = {
 ///     server_processes = [{
 ///       "concurrentExecutions" = 1
 ///       "launchPath"           = "C:\\game\\GomokuServer.exe"
 ///     }]
 ///   }
+///   build_id          = exampleAwsGameliftBuild.id
+///   ec2_instance_type = "t2.micro"
+///   fleet_type        = "ON_DEMAND"
+///   name              = "example-fleet-name"
 /// }
 /// ```
 /// ```java
@@ -149,16 +150,16 @@ import 'fleet_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Fleet("example", FleetArgs.builder()
-///             .buildId(exampleAwsGameliftBuild.id())
-///             .ec2InstanceType("t2.micro")
-///             .fleetType("ON_DEMAND")
-///             .name("example-fleet-name")
 ///             .runtimeConfiguration(FleetRuntimeConfigurationArgs.builder()
 ///                 .serverProcesses(FleetRuntimeConfigurationServerProcessArgs.builder()
 ///                     .concurrentExecutions(1)
 ///                     .launchPath("C:\\game\\GomokuServer.exe")
 ///                     .build())
 ///                 .build())
+///             .buildId(exampleAwsGameliftBuild.id())
+///             .ec2InstanceType("t2.micro")
+///             .fleetType("ON_DEMAND")
+///             .name("example-fleet-name")
 ///             .build());
 ///
 ///     }
@@ -169,14 +170,14 @@ import 'fleet_state.dart';
 ///   example:
 ///     type: aws:gamelift:Fleet
 ///     properties:
-///       buildId: ${exampleAwsGameliftBuild.id}
-///       ec2InstanceType: t2.micro
-///       fleetType: ON_DEMAND
-///       name: example-fleet-name
 ///       runtimeConfiguration:
 ///         serverProcesses:
 ///           - concurrentExecutions: 1
 ///             launchPath: C:\game\GomokuServer.exe
+///       buildId: ${exampleAwsGameliftBuild.id}
+///       ec2InstanceType: t2.micro
+///       fleetType: ON_DEMAND
+///       name: example-fleet-name
 /// ```
 ///
 ///
@@ -199,7 +200,7 @@ class Fleet extends pulumi.CustomResource {
   /// Human-readable description of the fleet.
   late final pulumi.Output<String?> description;
   /// Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ec2InboundPermissions;
+  late final pulumi.Output<List<FleetEc2InboundPermission>> ec2InboundPermissions;
   /// Name of an EC2 instance typeE.g., `t2.micro`
   late final pulumi.Output<String> ec2InstanceType;
   /// Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
@@ -242,19 +243,19 @@ class Fleet extends pulumi.CustomResource {
           'aws:gamelift/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     buildArn = registerOutput<String>('buildArn');
     buildId = registerOutput<String?>('buildId');
     certificateConfiguration = registerOutput<FleetCertificateConfiguration>('certificateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetCertificateConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    ec2InboundPermissions = registerOutput<List<Map<String, dynamic>>>('ec2InboundPermissions');
+    ec2InboundPermissions = registerOutput<List<FleetEc2InboundPermission>>('ec2InboundPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetEc2InboundPermission>(guardedValue, (value) => FleetEc2InboundPermission.fromMap((value as Map).cast<String, dynamic>())); });
     ec2InstanceType = registerOutput<String>('ec2InstanceType');
     fleetType = registerOutput<String?>('fleetType');
     instanceRoleArn = registerOutput<String?>('instanceRoleArn');
-    logPaths = registerOutput<List<String>>('logPaths');
-    metricGroups = registerOutput<List<String>>('metricGroups');
+    logPaths = registerOutput<List<String>>('logPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    metricGroups = registerOutput<List<String>>('metricGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     newGameSessionProtectionPolicy = registerOutput<String?>('newGameSessionProtectionPolicy');
     operatingSystem = registerOutput<String>('operatingSystem');
@@ -263,8 +264,8 @@ class Fleet extends pulumi.CustomResource {
     runtimeConfiguration = registerOutput<FleetRuntimeConfiguration?>('runtimeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetRuntimeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scriptArn = registerOutput<String>('scriptArn');
     scriptId = registerOutput<String?>('scriptId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Fleet] resource's state with the given [name] and [id].
@@ -272,11 +273,12 @@ class Fleet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FleetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Fleet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -295,12 +297,12 @@ class Fleet extends pulumi.CustomResource {
     buildId = registerOutput<String?>('buildId');
     certificateConfiguration = registerOutput<FleetCertificateConfiguration>('certificateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetCertificateConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    ec2InboundPermissions = registerOutput<List<Map<String, dynamic>>>('ec2InboundPermissions');
+    ec2InboundPermissions = registerOutput<List<FleetEc2InboundPermission>>('ec2InboundPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetEc2InboundPermission>(guardedValue, (value) => FleetEc2InboundPermission.fromMap((value as Map).cast<String, dynamic>())); });
     ec2InstanceType = registerOutput<String>('ec2InstanceType');
     fleetType = registerOutput<String?>('fleetType');
     instanceRoleArn = registerOutput<String?>('instanceRoleArn');
-    logPaths = registerOutput<List<String>>('logPaths');
-    metricGroups = registerOutput<List<String>>('metricGroups');
+    logPaths = registerOutput<List<String>>('logPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    metricGroups = registerOutput<List<String>>('metricGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     newGameSessionProtectionPolicy = registerOutput<String?>('newGameSessionProtectionPolicy');
     operatingSystem = registerOutput<String>('operatingSystem');
@@ -309,7 +311,39 @@ class Fleet extends pulumi.CustomResource {
     runtimeConfiguration = registerOutput<FleetRuntimeConfiguration?>('runtimeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetRuntimeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scriptArn = registerOutput<String>('scriptArn');
     scriptId = registerOutput<String?>('scriptId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Fleet] resource.
+  Fleet.reference(String urn)
+    : super(
+        'aws:gamelift/fleet:Fleet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    buildArn = registerOutput<String>('buildArn');
+    buildId = registerOutput<String?>('buildId');
+    certificateConfiguration = registerOutput<FleetCertificateConfiguration>('certificateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetCertificateConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    ec2InboundPermissions = registerOutput<List<FleetEc2InboundPermission>>('ec2InboundPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetEc2InboundPermission>(guardedValue, (value) => FleetEc2InboundPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    ec2InstanceType = registerOutput<String>('ec2InstanceType');
+    fleetType = registerOutput<String?>('fleetType');
+    instanceRoleArn = registerOutput<String?>('instanceRoleArn');
+    logPaths = registerOutput<List<String>>('logPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    metricGroups = registerOutput<List<String>>('metricGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    newGameSessionProtectionPolicy = registerOutput<String?>('newGameSessionProtectionPolicy');
+    operatingSystem = registerOutput<String>('operatingSystem');
+    region = registerOutput<String>('region');
+    resourceCreationLimitPolicy = registerOutput<FleetResourceCreationLimitPolicy?>('resourceCreationLimitPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetResourceCreationLimitPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runtimeConfiguration = registerOutput<FleetRuntimeConfiguration?>('runtimeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetRuntimeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scriptArn = registerOutput<String>('scriptArn');
+    scriptId = registerOutput<String?>('scriptId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

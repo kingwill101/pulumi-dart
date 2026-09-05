@@ -227,7 +227,7 @@ class StaticIpAttachment extends pulumi.CustomResource {
           'aws:lightsail/staticIpAttachment:StaticIpAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     instanceName = registerOutput<String>('instanceName');
     ipAddress = registerOutput<String>('ipAddress');
@@ -240,11 +240,12 @@ class StaticIpAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StaticIpAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StaticIpAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -258,6 +259,21 @@ class StaticIpAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    instanceName = registerOutput<String>('instanceName');
+    ipAddress = registerOutput<String>('ipAddress');
+    region = registerOutput<String>('region');
+    staticIpName = registerOutput<String>('staticIpName');
+  }
+
+  /// Creates a typed reference to an existing [StaticIpAttachment] resource.
+  StaticIpAttachment.reference(String urn)
+    : super(
+        'aws:lightsail/staticIpAttachment:StaticIpAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     instanceName = registerOutput<String>('instanceName');
     ipAddress = registerOutput<String>('ipAddress');
     region = registerOutput<String>('region');

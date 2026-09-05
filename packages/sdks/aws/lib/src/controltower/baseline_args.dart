@@ -14,16 +14,16 @@ class BaselineArgs {
   /// The version of the baseline to be enabled.
   final pulumi.Input<String> baselineVersion;
   /// A list of key-value objects that specify enablement parameters, where key is a string and value is a document of any type. See Parameter below for details.
-  final pulumi.Input<BaselineParameters>? parameters;
+  final pulumi.Input<BaselineParameters?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to apply to the landing zone. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ARN of the target on which the baseline will be enabled. Only OUs are supported as targets.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> targetIdentifier;
-  final pulumi.Input<BaselineTimeouts>? timeouts;
+  final pulumi.Input<BaselineTimeouts?>? timeouts;
 
   /// Creates a new [BaselineArgs].
   /// [baselineIdentifier] The ARN of the baseline to be enabled.

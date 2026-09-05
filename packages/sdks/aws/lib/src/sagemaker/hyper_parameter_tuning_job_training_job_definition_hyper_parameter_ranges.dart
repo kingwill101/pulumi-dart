@@ -8,13 +8,13 @@ import 'hyper_parameter_tuning_job_training_job_definition_hyper_parameter_range
 
 class HyperParameterTuningJobTrainingJobDefinitionHyperParameterRanges {
   /// Parameter list for automatic range selection.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionHyperParameterRangesAutoParameter>>? autoParameters;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionHyperParameterRangesAutoParameter>?>? autoParameters;
   /// Categorical parameter ranges.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionHyperParameterRangesCategoricalParameterRange>>? categoricalParameterRanges;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionHyperParameterRangesCategoricalParameterRange>?>? categoricalParameterRanges;
   /// Continuous parameter ranges.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionHyperParameterRangesContinuousParameterRange>>? continuousParameterRanges;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionHyperParameterRangesContinuousParameterRange>?>? continuousParameterRanges;
   /// Integer parameter ranges.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionHyperParameterRangesIntegerParameterRange>>? integerParameterRanges;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionHyperParameterRangesIntegerParameterRange>?>? integerParameterRanges;
 
   /// Creates a new [HyperParameterTuningJobTrainingJobDefinitionHyperParameterRanges].
   /// [autoParameters] Parameter list for automatic range selection.

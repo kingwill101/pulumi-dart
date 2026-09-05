@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContainerServiceDeploymentVersionContainer {
   /// Launch command for the container. A list of strings.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// Name of the container.
   final pulumi.Input<String> containerName;
   /// Key-value map of the environment variables of the container.
-  final pulumi.Input<Map<String, String>>? environment;
+  final pulumi.Input<Map<String, String>?>? environment;
   /// Name of the image used for the container. Container images sourced from your Lightsail container service, that are registered and stored on your service, start with a colon (`:`). For example, `:container-service-1.mystaticwebsite.1`. Container images sourced from a public registry like Docker Hub don't start with a colon. For example, `nginx:latest` or `nginx`.
   final pulumi.Input<String> image;
   /// Key-value map of the open firewall ports of the container. Valid values: `HTTP`, `HTTPS`, `TCP`, `UDP`.
-  final pulumi.Input<Map<String, String>>? ports;
+  final pulumi.Input<Map<String, String>?>? ports;
 
   /// Creates a new [ContainerServiceDeploymentVersionContainer].
   /// [commands] Launch command for the container. A list of strings.

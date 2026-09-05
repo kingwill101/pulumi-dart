@@ -17,43 +17,43 @@ import 'kx_cluster_vpc_configuration.dart';
 /// {@macro pulumi_finspace_kx_cluster_kx_cluster_args_doc}
 class KxClusterArgs {
   /// Configuration based on which FinSpace will scale in or scale out nodes in your cluster. See `autoScalingConfiguration` Block.
-  final pulumi.Input<KxClusterAutoScalingConfiguration>? autoScalingConfiguration;
+  final pulumi.Input<KxClusterAutoScalingConfiguration?>? autoScalingConfiguration;
   /// Availability zone identifiers for the requested regions. Required when `azMode` is set to SINGLE.
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// Number of availability zones to assign per cluster. Valid values are `SINGLE` (assigns one availability zone per cluster) and `MULTI` (assigns all the availability zones per cluster).
   final pulumi.Input<String> azMode;
   /// Configurations for a read only cache storage associated with a cluster. This cache will be stored as an FSx Lustre that reads from the S3 store. See `cacheStorageConfigurations` Block.
-  final pulumi.Input<List<KxClusterCacheStorageConfiguration>>? cacheStorageConfigurations;
+  final pulumi.Input<List<KxClusterCacheStorageConfiguration>?>? cacheStorageConfigurations;
   /// Structure for the metadata of a cluster. Includes information like the CPUs needed, memory of instances, and number of instances. See `capacityConfiguration` Block.
-  final pulumi.Input<KxClusterCapacityConfiguration>? capacityConfiguration;
+  final pulumi.Input<KxClusterCapacityConfiguration?>? capacityConfiguration;
   /// Details of the custom code that you want to use inside a cluster when analyzing data. Consists of the S3 source bucket, location, object version, and the relative path from where the custom code is loaded into the cluster. See `code` Block.
-  final pulumi.Input<KxClusterCode>? code;
+  final pulumi.Input<KxClusterCode?>? code;
   /// List of key-value pairs to make available inside the cluster.
-  final pulumi.Input<Map<String, String>>? commandLineArguments;
+  final pulumi.Input<Map<String, String>?>? commandLineArguments;
   /// KX database that will be available for querying. See `database` Block.
-  final pulumi.Input<List<KxClusterDatabase>>? databases;
+  final pulumi.Input<List<KxClusterDatabase>?>? databases;
   /// Description of the cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Unique identifier for the KX environment.
   final pulumi.Input<String> environmentId;
   /// IAM role that defines a set of permissions associated with a cluster. These permissions are assumed when a cluster attempts to access another cluster.
-  final pulumi.Input<String>? executionRole;
+  final pulumi.Input<String?>? executionRole;
   /// Path to Q program that will be run at launch of a cluster. This is a relative path within .zip file that contains the custom code, which will be loaded on the cluster. It must include the file name itself. For example, somedir/init.q.
-  final pulumi.Input<String>? initializationScript;
+  final pulumi.Input<String?>? initializationScript;
   /// Unique name for the cluster that you want to create.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Version of FinSpace Managed kdb to run.
   final pulumi.Input<String> releaseLabel;
   /// Size and type of the temporary storage that is used to hold data during the savedown process. This parameter is required when you choose `type` as RDB. All the data written to this storage space is lost when the cluster node is restarted. See `savedownStorageConfiguration` Block.
-  final pulumi.Input<KxClusterSavedownStorageConfiguration>? savedownStorageConfiguration;
+  final pulumi.Input<KxClusterSavedownStorageConfiguration?>? savedownStorageConfiguration;
   /// Structure that stores the configuration details of a scaling group. See `scalingGroupConfiguration` Block.
-  final pulumi.Input<KxClusterScalingGroupConfiguration>? scalingGroupConfiguration;
+  final pulumi.Input<KxClusterScalingGroupConfiguration?>? scalingGroupConfiguration;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration to store Tickerplant logs. It consists of a list of volumes that will be mounted to your cluster. For the cluster type Tickerplant, the location of the TP volume on the cluster will be available by using the global variable .aws.tp_log_path. See `tickerplantLogConfiguration` Block.
-  final pulumi.Input<List<KxClusterTickerplantLogConfiguration>>? tickerplantLogConfigurations;
+  final pulumi.Input<List<KxClusterTickerplantLogConfiguration>?>? tickerplantLogConfigurations;
   /// Type of KDB database. Valid values are `HDB` (Historical Database), `RDB` (Realtime Database, which requires the `savedownStorageConfiguration` parameter), `GATEWAY`, `GP` (general purpose), and `Tickerplant`.
   final pulumi.Input<String> type;
   /// Configuration details about the network where the Privatelink endpoint of the cluster resides. See `vpcConfiguration` Block.

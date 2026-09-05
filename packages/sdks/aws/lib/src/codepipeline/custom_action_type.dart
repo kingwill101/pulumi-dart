@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_action_type_args.dart';
+import 'custom_action_type_configuration_property.dart';
 import 'custom_action_type_input_artifact_details.dart';
 import 'custom_action_type_output_artifact_details.dart';
 import 'custom_action_type_settings.dart';
@@ -15,7 +16,6 @@ import 'custom_action_type_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.codepipeline.CustomActionType("example", {
-///     category: "Build",
 ///     inputArtifactDetails: {
 ///         maximumCount: 1,
 ///         minimumCount: 0,
@@ -24,6 +24,7 @@ import 'custom_action_type_state.dart';
 ///         maximumCount: 1,
 ///         minimumCount: 0,
 ///     },
+///     category: "Build",
 ///     providerName: "example",
 ///     version: "1",
 /// });
@@ -33,7 +34,6 @@ import 'custom_action_type_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.codepipeline.CustomActionType("example",
-///     category="Build",
 ///     input_artifact_details={
 ///         "maximum_count": 1,
 ///         "minimum_count": 0,
@@ -42,6 +42,7 @@ import 'custom_action_type_state.dart';
 ///         "maximum_count": 1,
 ///         "minimum_count": 0,
 ///     },
+///     category="Build",
 ///     provider_name="example",
 ///     version="1")
 /// ```
@@ -55,7 +56,6 @@ import 'custom_action_type_state.dart';
 /// {
 ///     var example = new Aws.CodePipeline.CustomActionType("example", new()
 ///     {
-///         Category = "Build",
 ///         InputArtifactDetails = new Aws.CodePipeline.Inputs.CustomActionTypeInputArtifactDetailsArgs
 ///         {
 ///             MaximumCount = 1,
@@ -66,6 +66,7 @@ import 'custom_action_type_state.dart';
 ///             MaximumCount = 1,
 ///             MinimumCount = 0,
 ///         },
+///         Category = "Build",
 ///         ProviderName = "example",
 ///         Version = "1",
 ///     });
@@ -83,7 +84,6 @@ import 'custom_action_type_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := codepipeline.NewCustomActionType(ctx, "example", &codepipeline.CustomActionTypeArgs{
-/// 			Category: pulumi.String("Build"),
 /// 			InputArtifactDetails: &codepipeline.CustomActionTypeInputArtifactDetailsArgs{
 /// 				MaximumCount: pulumi.Int(1),
 /// 				MinimumCount: pulumi.Int(0),
@@ -92,6 +92,7 @@ import 'custom_action_type_state.dart';
 /// 				MaximumCount: pulumi.Int(1),
 /// 				MinimumCount: pulumi.Int(0),
 /// 			},
+/// 			Category:     pulumi.String("Build"),
 /// 			ProviderName: pulumi.String("example"),
 /// 			Version:      pulumi.String("1"),
 /// 		})
@@ -112,7 +113,6 @@ import 'custom_action_type_state.dart';
 /// }
 ///
 /// resource "aws_codepipeline_customactiontype" "example" {
-///   category = "Build"
 ///   input_artifact_details = {
 ///     maximum_count = 1
 ///     minimum_count = 0
@@ -121,6 +121,7 @@ import 'custom_action_type_state.dart';
 ///     maximum_count = 1
 ///     minimum_count = 0
 ///   }
+///   category      = "Build"
 ///   provider_name = "example"
 ///   version       = "1"
 /// }
@@ -149,7 +150,6 @@ import 'custom_action_type_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CustomActionType("example", CustomActionTypeArgs.builder()
-///             .category("Build")
 ///             .inputArtifactDetails(CustomActionTypeInputArtifactDetailsArgs.builder()
 ///                 .maximumCount(1)
 ///                 .minimumCount(0)
@@ -158,6 +158,7 @@ import 'custom_action_type_state.dart';
 ///                 .maximumCount(1)
 ///                 .minimumCount(0)
 ///                 .build())
+///             .category("Build")
 ///             .providerName("example")
 ///             .version("1")
 ///             .build());
@@ -170,13 +171,13 @@ import 'custom_action_type_state.dart';
 ///   example:
 ///     type: aws:codepipeline:CustomActionType
 ///     properties:
-///       category: Build
 ///       inputArtifactDetails:
 ///         maximumCount: 1
 ///         minimumCount: 0
 ///       outputArtifactDetails:
 ///         maximumCount: 1
 ///         minimumCount: 0
+///       category: Build
 ///       providerName: example
 ///       version: '1'
 /// ```
@@ -195,7 +196,7 @@ class CustomActionType extends pulumi.CustomResource {
   /// The category of the custom action. Valid values: `Source`, `Build`, `Deploy`, `Test`, `Invoke`, `Approval`
   late final pulumi.Output<String> category;
   /// The configuration properties for the custom action. Max 10 items.
-  late final pulumi.Output<List<Map<String, dynamic>>?> configurationProperties;
+  late final pulumi.Output<List<CustomActionTypeConfigurationProperty>?> configurationProperties;
   late final pulumi.Output<CustomActionTypeInputArtifactDetails> inputArtifactDetails;
   late final pulumi.Output<CustomActionTypeOutputArtifactDetails> outputArtifactDetails;
   /// The creator of the action being called.
@@ -221,19 +222,19 @@ class CustomActionType extends pulumi.CustomResource {
           'aws:codepipeline/customActionType:CustomActionType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');
-    configurationProperties = registerOutput<List<Map<String, dynamic>>?>('configurationProperties');
+    configurationProperties = registerOutput<List<CustomActionTypeConfigurationProperty>?>('configurationProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(guardedValue, (value) => CustomActionTypeConfigurationProperty.fromMap((value as Map).cast<String, dynamic>())); });
     inputArtifactDetails = registerOutput<CustomActionTypeInputArtifactDetails>('inputArtifactDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeInputArtifactDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputArtifactDetails = registerOutput<CustomActionTypeOutputArtifactDetails>('outputArtifactDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeOutputArtifactDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     owner = registerOutput<String>('owner');
     providerName = registerOutput<String>('providerName');
     region = registerOutput<String>('region');
     settings = registerOutput<CustomActionTypeSettings?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
   }
 
@@ -242,11 +243,12 @@ class CustomActionType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomActionTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomActionType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -262,15 +264,38 @@ class CustomActionType extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');
-    configurationProperties = registerOutput<List<Map<String, dynamic>>?>('configurationProperties');
+    configurationProperties = registerOutput<List<CustomActionTypeConfigurationProperty>?>('configurationProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(guardedValue, (value) => CustomActionTypeConfigurationProperty.fromMap((value as Map).cast<String, dynamic>())); });
     inputArtifactDetails = registerOutput<CustomActionTypeInputArtifactDetails>('inputArtifactDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeInputArtifactDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputArtifactDetails = registerOutput<CustomActionTypeOutputArtifactDetails>('outputArtifactDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeOutputArtifactDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     owner = registerOutput<String>('owner');
     providerName = registerOutput<String>('providerName');
     region = registerOutput<String>('region');
     settings = registerOutput<CustomActionTypeSettings?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [CustomActionType] resource.
+  CustomActionType.reference(String urn)
+    : super(
+        'aws:codepipeline/customActionType:CustomActionType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    category = registerOutput<String>('category');
+    configurationProperties = registerOutput<List<CustomActionTypeConfigurationProperty>?>('configurationProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(guardedValue, (value) => CustomActionTypeConfigurationProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    inputArtifactDetails = registerOutput<CustomActionTypeInputArtifactDetails>('inputArtifactDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeInputArtifactDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outputArtifactDetails = registerOutput<CustomActionTypeOutputArtifactDetails>('outputArtifactDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeOutputArtifactDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    owner = registerOutput<String>('owner');
+    providerName = registerOutput<String>('providerName');
+    region = registerOutput<String>('region');
+    settings = registerOutput<CustomActionTypeSettings?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomActionTypeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
   }
 }

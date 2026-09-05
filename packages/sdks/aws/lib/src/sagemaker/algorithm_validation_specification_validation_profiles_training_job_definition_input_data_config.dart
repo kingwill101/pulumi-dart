@@ -8,17 +8,17 @@ class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInp
   /// Name of the channel.
   final pulumi.Input<String> channelName;
   /// Compression type of the input data. Allowed values are: `None` and `Gzip`.
-  final pulumi.Input<String>? compressionType;
+  final pulumi.Input<String?>? compressionType;
   /// MIME type of the input data.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Source of the input data. See Data Source.
   final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSource> dataSource;
   /// Training input mode for the channel. Allowed values are: `Pipe`, `File`, and `FastFile`.
-  final pulumi.Input<String>? inputMode;
+  final pulumi.Input<String?>? inputMode;
   /// Record wrapper type. Allowed values are: `None` and `RecordIO`.
-  final pulumi.Input<String>? recordWrapperType;
+  final pulumi.Input<String?>? recordWrapperType;
   /// Shuffle configuration for the channel. See Shuffle Config.
-  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfig>? shuffleConfig;
+  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfig?>? shuffleConfig;
 
   /// Creates a new [AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfig].
   /// [channelName] Name of the channel.

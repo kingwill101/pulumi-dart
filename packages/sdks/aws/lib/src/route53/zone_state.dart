@@ -5,34 +5,34 @@ import 'zone_vpc.dart';
 
 /// Input properties used for looking up and filtering Zone resources.
 class ZoneState {
-  /// The Amazon Resource Name (ARN) of the Hosted Zone.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Hosted Zone.
+  final pulumi.Input<String?>? arn;
   /// A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with `vpc` as delegation sets can only be used for public zones.
-  final pulumi.Input<String>? delegationSetId;
+  final pulumi.Input<String?>? delegationSetId;
   /// Boolean to indicate whether to enable accelerated recovery for the hosted zone. Defaults to `false`. Once set, switching to `false` requires explicitly specifying `false` rather than removing the argument.
-  final pulumi.Input<bool>? enableAcceleratedRecovery;
+  final pulumi.Input<bool?>? enableAcceleratedRecovery;
   /// Whether to destroy all records (possibly managed outside of this provider) in the zone when destroying the zone.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// This is the name of the hosted zone.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of name servers in associated (or default) delegation set.
   /// Find more about delegation sets in [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/actions-on-reusable-delegation-sets.html).
-  final pulumi.Input<List<String>>? nameServers;
+  final pulumi.Input<List<String>?>? nameServers;
   /// The Route 53 name server that created the SOA record.
-  final pulumi.Input<String>? primaryNameServer;
+  final pulumi.Input<String?>? primaryNameServer;
   /// A mapping of tags to assign to the zone. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
-  final pulumi.Input<List<ZoneVpc>>? vpcs;
+  final pulumi.Input<List<ZoneVpc>?>? vpcs;
   /// The Hosted Zone ID. This can be referenced by zone records.
-  final pulumi.Input<String>? zoneId;
+  final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [ZoneState].
-  /// [arn] The Amazon Resource Name (ARN) of the Hosted Zone.
+  /// [arn] ARN of the Hosted Zone.
   /// [comment] A comment for the hosted zone. Defaults to 'Managed by Pulumi'.
   /// [delegationSetId] The ID of the reusable delegation set whose NS records you want to assign to the hosted zone. Conflicts with `vpc` as delegation sets can only be used for public zones.
   /// [enableAcceleratedRecovery] Boolean to indicate whether to enable accelerated recovery for the hosted zone. Defaults to `false`. Once set, switching to `false` requires explicitly specifying `false` rather than removing the argument.
@@ -44,9 +44,9 @@ class ZoneState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [vpcs] Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
   /// [zoneId] The Hosted Zone ID. This can be referenced by zone records.
-  const ZoneState({
+  ZoneState({
     this.arn,
-    this.comment,
+    pulumi.Input<String?>? comment,
     this.delegationSetId,
     this.enableAcceleratedRecovery,
     this.forceDestroy,
@@ -57,7 +57,7 @@ class ZoneState {
     this.tagsAll,
     this.vpcs,
     this.zoneId,
-  });
+  }) : comment = comment ?? pulumi.Input.fromValue('Managed by Pulumi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

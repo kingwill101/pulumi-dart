@@ -23,7 +23,7 @@ class GetWindowsFileSystemDiskIopsConfiguration {
 
   factory GetWindowsFileSystemDiskIopsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetWindowsFileSystemDiskIopsConfiguration(
-      iops: pulumi.Input.fromValue(map['iops'] as int),
+      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }

@@ -233,11 +233,11 @@ import 'pod_identity_association_state.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["pods.eks.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: [
 ///             "sts:AssumeRole",
 ///             "sts:TagSession",
@@ -264,11 +264,11 @@ import 'pod_identity_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["pods.eks.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": [
 ///         "sts:AssumeRole",
 ///         "sts:TagSession",
@@ -300,7 +300,6 @@ import 'pod_identity_association_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -312,6 +311,7 @@ import 'pod_identity_association_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -357,7 +357,6 @@ import 'pod_identity_association_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -366,6 +365,7 @@ import 'pod_identity_association_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 						"sts:TagSession",
@@ -414,11 +414,11 @@ import 'pod_identity_association_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["pods.eks.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole", "sts:TagSession"]
 ///   }
 /// }
@@ -469,11 +469,11 @@ import 'pod_identity_association_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("pods.eks.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions(
 ///                     "sts:AssumeRole",
 ///                     "sts:TagSession")
@@ -527,11 +527,11 @@ import 'pod_identity_association_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - pods.eks.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///               - sts:TagSession
@@ -559,7 +559,7 @@ import 'pod_identity_association_state.dart';
 /// $ pulumi import aws:eks/podIdentityAssociation:PodIdentityAssociation example example-cluster,a-yrpsdroc4ei7k6xps
 /// ```
 class PodIdentityAssociation extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the association.
+  /// ARN of the association.
   late final pulumi.Output<String> associationArn;
   /// The ID of the association.
   late final pulumi.Output<String> associationId;
@@ -575,7 +575,7 @@ class PodIdentityAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String?> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the IAM role to associate with the service account. The EKS Pod Identity agent manages credentials to assume this role for applications in the containers in the pods that use this service account.
+  /// ARN of the IAM role to associate with the service account. The EKS Pod Identity agent manages credentials to assume this role for applications in the containers in the pods that use this service account.
   late final pulumi.Output<String> roleArn;
   /// The name of the Kubernetes service account inside the cluster to associate the IAM credentials with.
   ///
@@ -585,7 +585,7 @@ class PodIdentityAssociation extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The Amazon Resource Name (ARN) of the IAM role to be chained to the the IAM role specified as `roleArn`.
+  /// ARN of the IAM role to be chained to the the IAM role specified as `roleArn`.
   late final pulumi.Output<String?> targetRoleArn;
 
   /// Creates a new [PodIdentityAssociation].
@@ -600,7 +600,7 @@ class PodIdentityAssociation extends pulumi.CustomResource {
           'aws:eks/podIdentityAssociation:PodIdentityAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     associationArn = registerOutput<String>('associationArn');
     associationId = registerOutput<String>('associationId');
@@ -612,8 +612,8 @@ class PodIdentityAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     serviceAccount = registerOutput<String>('serviceAccount');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetRoleArn = registerOutput<String?>('targetRoleArn');
   }
 
@@ -622,11 +622,12 @@ class PodIdentityAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PodIdentityAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PodIdentityAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -650,8 +651,32 @@ class PodIdentityAssociation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     serviceAccount = registerOutput<String>('serviceAccount');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRoleArn = registerOutput<String?>('targetRoleArn');
+  }
+
+  /// Creates a typed reference to an existing [PodIdentityAssociation] resource.
+  PodIdentityAssociation.reference(String urn)
+    : super(
+        'aws:eks/podIdentityAssociation:PodIdentityAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associationArn = registerOutput<String>('associationArn');
+    associationId = registerOutput<String>('associationId');
+    clusterName = registerOutput<String>('clusterName');
+    disableSessionTags = registerOutput<bool>('disableSessionTags');
+    externalId = registerOutput<String>('externalId');
+    namespace = registerOutput<String>('namespace');
+    policy = registerOutput<String?>('policy');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetRoleArn = registerOutput<String?>('targetRoleArn');
   }
 }

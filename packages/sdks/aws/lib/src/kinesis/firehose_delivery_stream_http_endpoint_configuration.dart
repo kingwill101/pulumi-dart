@@ -9,29 +9,29 @@ import 'firehose_delivery_stream_http_endpoint_configuration_secrets_manager_con
 
 class FirehoseDeliveryStreamHttpEndpointConfiguration {
   /// The access key required for Kinesis Firehose to authenticate with the HTTP endpoint selected as the destination.
-  final pulumi.Input<String>? accessKey;
+  final pulumi.Input<String?>? accessKey;
   /// Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. The default value is 300 (5 minutes).
-  final pulumi.Input<int>? bufferingInterval;
+  final pulumi.Input<int?>? bufferingInterval;
   /// Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5.
-  final pulumi.Input<int>? bufferingSize;
+  final pulumi.Input<int?>? bufferingSize;
   /// The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions>? cloudwatchLoggingOptions;
+  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions?>? cloudwatchLoggingOptions;
   /// The HTTP endpoint name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The data processing configuration.  See `processingConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration>? processingConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration?>? processingConfiguration;
   /// The request configuration.  See `requestConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration>? requestConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration?>? requestConfiguration;
   /// Total amount of seconds Firehose spends on retries. This duration starts after the initial attempt fails, It does not include the time periods during which Firehose waits for acknowledgment from the specified destination after each attempt. Valid values between `0` and `7200`. Default is `300`.
-  final pulumi.Input<int>? retryDuration;
+  final pulumi.Input<int?>? retryDuration;
   /// Kinesis Data Firehose uses this IAM role for all the permissions that the delivery stream needs. The pattern needs to be `arn:.*`.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// Defines how documents should be delivered to Amazon S3.  Valid values are `FailedDataOnly` and `AllData`.  Default value is `FailedDataOnly`.
-  final pulumi.Input<String>? s3BackupMode;
+  final pulumi.Input<String?>? s3BackupMode;
   /// The S3 Configuration. See `s3Configuration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfigurationS3Configuration> s3Configuration;
   /// The Secret Manager Configuration. See `secretsManagerConfiguration` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfigurationSecretsManagerConfiguration>? secretsManagerConfiguration;
+  final pulumi.Input<FirehoseDeliveryStreamHttpEndpointConfigurationSecretsManagerConfiguration?>? secretsManagerConfiguration;
   /// The HTTP endpoint URL to which Kinesis Firehose sends your data. Refer to the target vendor's documentation for the correct intake URL (for example, [New Relic](https://docs.newrelic.com/docs/infrastructure/amazon-integrations/connect/aws-firehose/) or [Datadog](https://docs.datadoghq.com/integrations/amazon_kinesis_data_firehose/)).
   final pulumi.Input<String> url;
 
@@ -86,13 +86,13 @@ class FirehoseDeliveryStreamHttpEndpointConfiguration {
   factory FirehoseDeliveryStreamHttpEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamHttpEndpointConfiguration(
       accessKey: (() { final guardedValue = map['accessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       cloudwatchLoggingOptions: (() { final guardedValue = map['cloudwatchLoggingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       processingConfiguration: (() { final guardedValue = map['processingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       requestConfiguration: (() { final guardedValue = map['requestConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      retryDuration: (() { final guardedValue = map['retryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retryDuration: (() { final guardedValue = map['retryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3BackupMode: (() { final guardedValue = map['s3BackupMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3Configuration: pulumi.Input.fromValue(FirehoseDeliveryStreamHttpEndpointConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())),

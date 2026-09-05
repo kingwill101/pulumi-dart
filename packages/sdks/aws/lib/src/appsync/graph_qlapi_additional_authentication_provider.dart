@@ -9,11 +9,11 @@ class GraphQLApiAdditionalAuthenticationProvider {
   /// Authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`
   final pulumi.Input<String> authenticationType;
   /// Nested argument containing Lambda authorizer configuration. See `lambdaAuthorizerConfig` Block for details.
-  final pulumi.Input<GraphQLApiAdditionalAuthenticationProviderLambdaAuthorizerConfig>? lambdaAuthorizerConfig;
+  final pulumi.Input<GraphQLApiAdditionalAuthenticationProviderLambdaAuthorizerConfig?>? lambdaAuthorizerConfig;
   /// Nested argument containing OpenID Connect configuration. See `openidConnectConfig` Block for details.
-  final pulumi.Input<GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfig>? openidConnectConfig;
+  final pulumi.Input<GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfig?>? openidConnectConfig;
   /// Amazon Cognito User Pool configuration. See `additional_authentication_provider.user_pool_config` Block for details.
-  final pulumi.Input<GraphQLApiAdditionalAuthenticationProviderUserPoolConfig>? userPoolConfig;
+  final pulumi.Input<GraphQLApiAdditionalAuthenticationProviderUserPoolConfig?>? userPoolConfig;
 
   /// Creates a new [GraphQLApiAdditionalAuthenticationProvider].
   /// [authenticationType] Authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`

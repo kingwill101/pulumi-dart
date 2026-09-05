@@ -6,17 +6,17 @@ import 'data_source_configuration_s3_configuration_documents_metadata_configurat
 
 class DataSourceConfigurationS3Configuration {
   /// A block that provides the path to the S3 bucket that contains the user context filtering files for the data source. For the format of the file, see [Access control for S3 data sources](https://docs.aws.amazon.com/kendra/latest/dg/s3-acl.html). Detailed below.
-  final pulumi.Input<DataSourceConfigurationS3ConfigurationAccessControlListConfiguration>? accessControlListConfiguration;
+  final pulumi.Input<DataSourceConfigurationS3ConfigurationAccessControlListConfiguration?>? accessControlListConfiguration;
   /// The name of the bucket that contains the documents.
   final pulumi.Input<String> bucketName;
   /// A block that defines the Document metadata files that contain information such as the document access control information, source URI, document author, and custom attributes. Each metadata file contains metadata about a single document. Detailed below.
-  final pulumi.Input<DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration>? documentsMetadataConfiguration;
+  final pulumi.Input<DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration?>? documentsMetadataConfiguration;
   /// A list of glob patterns for documents that should not be indexed. If a document that matches an inclusion prefix or inclusion pattern also matches an exclusion pattern, the document is not indexed. Refer to [Exclusion Patterns for more examples](https://docs.aws.amazon.com/kendra/latest/dg/API_S3DataSourceConfiguration.html#Kendra-Type-S3DataSourceConfiguration-ExclusionPatterns).
-  final pulumi.Input<List<String>>? exclusionPatterns;
+  final pulumi.Input<List<String>?>? exclusionPatterns;
   /// A list of glob patterns for documents that should be indexed. If a document that matches an inclusion pattern also matches an exclusion pattern, the document is not indexed. Refer to [Inclusion Patterns for more examples](https://docs.aws.amazon.com/kendra/latest/dg/API_S3DataSourceConfiguration.html#Kendra-Type-S3DataSourceConfiguration-InclusionPatterns).
-  final pulumi.Input<List<String>>? inclusionPatterns;
+  final pulumi.Input<List<String>?>? inclusionPatterns;
   /// A list of S3 prefixes for the documents that should be included in the index.
-  final pulumi.Input<List<String>>? inclusionPrefixes;
+  final pulumi.Input<List<String>?>? inclusionPrefixes;
 
   /// Creates a new [DataSourceConfigurationS3Configuration].
   /// [accessControlListConfiguration] A block that provides the path to the S3 bucket that contains the user context filtering files for the data source. For the format of the file, see [Access control for S3 data sources](https://docs.aws.amazon.com/kendra/latest/dg/s3-acl.html). Detailed below.

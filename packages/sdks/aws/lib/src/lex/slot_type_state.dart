@@ -7,32 +7,32 @@ import 'slot_type_enumeration_value.dart';
 class SlotTypeState {
   /// Checksum identifying the version of the slot type that was created. The checksum is
   /// not included as an argument because the resource will add it automatically when updating the slot type.
-  final pulumi.Input<String>? checksum;
+  final pulumi.Input<String?>? checksum;
   /// Determines if a new slot type version is created when the initial resource is created and on each
   /// update. Defaults to `false`.
-  final pulumi.Input<bool>? createVersion;
+  final pulumi.Input<bool?>? createVersion;
   /// The date when the slot type version was created.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// A description of the slot type. Must be less than or equal to 200 characters in length.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of EnumerationValue objects that defines the values that
   /// the slot type can take. Each value can have a list of synonyms, which are additional values that help
   /// train the machine learning model about the values that it resolves for a slot. Attributes are
   /// documented under enumeration_value.
-  final pulumi.Input<List<SlotTypeEnumerationValue>>? enumerationValues;
+  final pulumi.Input<List<SlotTypeEnumerationValue>?>? enumerationValues;
   /// The date when the `$LATEST` version of this slot type was updated.
-  final pulumi.Input<String>? lastUpdatedDate;
+  final pulumi.Input<String?>? lastUpdatedDate;
   /// The name of the slot type. The name is not case sensitive. Must be less than or equal to 100 characters in length.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Determines the slot resolution strategy that Amazon Lex
   /// uses to return slot type values. `ORIGINAL_VALUE` returns the value entered by the user if the user
   /// value is similar to the slot value. `TOP_RESOLUTION` returns the first value in the resolution list
   /// if there is a resolution list for the slot, otherwise null is returned. Defaults to `ORIGINAL_VALUE`.
-  final pulumi.Input<String>? valueSelectionStrategy;
+  final pulumi.Input<String?>? valueSelectionStrategy;
   /// The version of the slot type.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [SlotTypeState].
   /// [checksum] Checksum identifying the version of the slot type that was created. The checksum is

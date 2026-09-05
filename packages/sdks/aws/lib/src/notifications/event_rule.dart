@@ -286,13 +286,13 @@ class EventRule extends pulumi.CustomResource {
           'aws:notifications/eventRule:EventRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     eventPattern = registerOutput<String?>('eventPattern');
     eventType = registerOutput<String>('eventType');
     notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     source = registerOutput<String>('source');
   }
 
@@ -301,11 +301,12 @@ class EventRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -323,7 +324,24 @@ class EventRule extends pulumi.CustomResource {
     eventPattern = registerOutput<String?>('eventPattern');
     eventType = registerOutput<String>('eventType');
     notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    source = registerOutput<String>('source');
+  }
+
+  /// Creates a typed reference to an existing [EventRule] resource.
+  EventRule.reference(String urn)
+    : super(
+        'aws:notifications/eventRule:EventRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    eventPattern = registerOutput<String?>('eventPattern');
+    eventType = registerOutput<String>('eventType');
+    notificationConfigurationArn = registerOutput<String>('notificationConfigurationArn');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     source = registerOutput<String>('source');
   }
 }

@@ -40,11 +40,11 @@ class GetFleetComputeConfiguration {
 
   factory GetFleetComputeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFleetComputeConfiguration(
-      disk: pulumi.Input.fromValue(map['disk'] as int),
+      disk: pulumi.Input.fromValue((map['disk'] as num).toInt()),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
-      memory: pulumi.Input.fromValue(map['memory'] as int),
-      vcpu: pulumi.Input.fromValue(map['vcpu'] as int),
+      memory: pulumi.Input.fromValue((map['memory'] as num).toInt()),
+      vcpu: pulumi.Input.fromValue((map['vcpu'] as num).toInt()),
     );
   }
 }

@@ -5,8 +5,8 @@ import 'agent_data_source_data_source_configuration_web_configuration_crawler_co
 import 'agent_data_source_data_source_configuration_web_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationWebConfiguration {
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration>? crawlerConfiguration;
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration>? sourceConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration?>? crawlerConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration?>? sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfiguration].
   /// [crawlerConfiguration] Optional.

@@ -121,3 +121,14 @@ Future<GetProfilingGroupResult> getProfilingGroup(
   );
   return GetProfilingGroupResult.fromMap(result);
 }
+
+pulumi.Output<GetProfilingGroupResult> getProfilingGroupOutput(
+  GetProfilingGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:codeguruprofiler/getProfilingGroup:getProfilingGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProfilingGroupResult.fromMap);
+}

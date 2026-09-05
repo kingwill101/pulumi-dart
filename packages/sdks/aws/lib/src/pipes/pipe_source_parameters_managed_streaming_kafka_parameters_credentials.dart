@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersManagedStreamingKafkaParametersCredentials {
   /// The ARN of the Secrets Manager secret containing the credentials.
-  final pulumi.Input<String>? clientCertificateTlsAuth;
+  final pulumi.Input<String?>? clientCertificateTlsAuth;
   /// The ARN of the Secrets Manager secret containing the credentials.
-  final pulumi.Input<String>? saslScram512Auth;
+  final pulumi.Input<String?>? saslScram512Auth;
 
   /// Creates a new [PipeSourceParametersManagedStreamingKafkaParametersCredentials].
   /// [clientCertificateTlsAuth] The ARN of the Secrets Manager secret containing the credentials.

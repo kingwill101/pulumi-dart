@@ -12,12 +12,12 @@ import 'fleet_stack_association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appstream.Fleet("example", {
-///     name: "NAME",
-///     imageName: "Amazon-AppStream2-Sample-Image-03-11-2023",
-///     instanceType: "stream.standard.small",
 ///     computeCapacity: {
 ///         desiredInstances: 1,
 ///     },
+///     name: "NAME",
+///     imageName: "Amazon-AppStream2-Sample-Image-03-11-2023",
+///     instanceType: "stream.standard.small",
 /// });
 /// const exampleStack = new aws.appstream.Stack("example", {name: "STACK NAME"});
 /// const exampleFleetStackAssociation = new aws.appstream.FleetStackAssociation("example", {
@@ -30,12 +30,12 @@ import 'fleet_stack_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appstream.Fleet("example",
-///     name="NAME",
-///     image_name="Amazon-AppStream2-Sample-Image-03-11-2023",
-///     instance_type="stream.standard.small",
 ///     compute_capacity={
 ///         "desired_instances": 1,
-///     })
+///     },
+///     name="NAME",
+///     image_name="Amazon-AppStream2-Sample-Image-03-11-2023",
+///     instance_type="stream.standard.small")
 /// example_stack = aws.appstream.Stack("example", name="STACK NAME")
 /// example_fleet_stack_association = aws.appstream.FleetStackAssociation("example",
 ///     fleet_name=example.name,
@@ -51,13 +51,13 @@ import 'fleet_stack_association_state.dart';
 /// {
 ///     var example = new Aws.AppStream.Fleet("example", new()
 ///     {
-///         Name = "NAME",
-///         ImageName = "Amazon-AppStream2-Sample-Image-03-11-2023",
-///         InstanceType = "stream.standard.small",
 ///         ComputeCapacity = new Aws.AppStream.Inputs.FleetComputeCapacityArgs
 ///         {
 ///             DesiredInstances = 1,
 ///         },
+///         Name = "NAME",
+///         ImageName = "Amazon-AppStream2-Sample-Image-03-11-2023",
+///         InstanceType = "stream.standard.small",
 ///     });
 ///
 ///     var exampleStack = new Aws.AppStream.Stack("example", new()
@@ -84,12 +84,12 @@ import 'fleet_stack_association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := appstream.NewFleet(ctx, "example", &appstream.FleetArgs{
-/// 			Name:         pulumi.String("NAME"),
-/// 			ImageName:    pulumi.String("Amazon-AppStream2-Sample-Image-03-11-2023"),
-/// 			InstanceType: pulumi.String("stream.standard.small"),
 /// 			ComputeCapacity: &appstream.FleetComputeCapacityArgs{
 /// 				DesiredInstances: pulumi.Int(1),
 /// 			},
+/// 			Name:         pulumi.String("NAME"),
+/// 			ImageName:    pulumi.String("Amazon-AppStream2-Sample-Image-03-11-2023"),
+/// 			InstanceType: pulumi.String("stream.standard.small"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -121,12 +121,12 @@ import 'fleet_stack_association_state.dart';
 /// }
 ///
 /// resource "aws_appstream_fleet" "example" {
-///   name          = "NAME"
-///   image_name    = "Amazon-AppStream2-Sample-Image-03-11-2023"
-///   instance_type = "stream.standard.small"
 ///   compute_capacity = {
 ///     desired_instances = 1
 ///   }
+///   name          = "NAME"
+///   image_name    = "Amazon-AppStream2-Sample-Image-03-11-2023"
+///   instance_type = "stream.standard.small"
 /// }
 /// resource "aws_appstream_stack" "example" {
 ///   name = "STACK NAME"
@@ -163,12 +163,12 @@ import 'fleet_stack_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Fleet("example", FleetArgs.builder()
-///             .name("NAME")
-///             .imageName("Amazon-AppStream2-Sample-Image-03-11-2023")
-///             .instanceType("stream.standard.small")
 ///             .computeCapacity(FleetComputeCapacityArgs.builder()
 ///                 .desiredInstances(1)
 ///                 .build())
+///             .name("NAME")
+///             .imageName("Amazon-AppStream2-Sample-Image-03-11-2023")
+///             .instanceType("stream.standard.small")
 ///             .build());
 ///
 ///         var exampleStack = new Stack("exampleStack", StackArgs.builder()
@@ -188,11 +188,11 @@ import 'fleet_stack_association_state.dart';
 ///   example:
 ///     type: aws:appstream:Fleet
 ///     properties:
+///       computeCapacity:
+///         desiredInstances: 1
 ///       name: NAME
 ///       imageName: Amazon-AppStream2-Sample-Image-03-11-2023
 ///       instanceType: stream.standard.small
-///       computeCapacity:
-///         desiredInstances: 1
 ///   exampleStack:
 ///     type: aws:appstream:Stack
 ///     name: example
@@ -234,7 +234,7 @@ class FleetStackAssociation extends pulumi.CustomResource {
           'aws:appstream/fleetStackAssociation:FleetStackAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     fleetName = registerOutput<String>('fleetName');
     region = registerOutput<String>('region');
@@ -246,11 +246,12 @@ class FleetStackAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FleetStackAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FleetStackAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -264,6 +265,20 @@ class FleetStackAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    fleetName = registerOutput<String>('fleetName');
+    region = registerOutput<String>('region');
+    stackName = registerOutput<String>('stackName');
+  }
+
+  /// Creates a typed reference to an existing [FleetStackAssociation] resource.
+  FleetStackAssociation.reference(String urn)
+    : super(
+        'aws:appstream/fleetStackAssociation:FleetStackAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     fleetName = registerOutput<String>('fleetName');
     region = registerOutput<String>('region');
     stackName = registerOutput<String>('stackName');

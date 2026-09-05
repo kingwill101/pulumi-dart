@@ -5,7 +5,7 @@ import 'revision_assets_asset_import_assets_from_s3_asset_source.dart';
 
 class RevisionAssetsAssetImportAssetsFromS3 {
   /// A block specifying the source bucket and key for the asset. This block supports the following:
-  final pulumi.Input<RevisionAssetsAssetImportAssetsFromS3AssetSource>? assetSource;
+  final pulumi.Input<RevisionAssetsAssetImportAssetsFromS3AssetSource?>? assetSource;
 
   /// Creates a new [RevisionAssetsAssetImportAssetsFromS3].
   /// [assetSource] A block specifying the source bucket and key for the asset. This block supports the following:

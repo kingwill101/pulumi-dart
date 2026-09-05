@@ -5,7 +5,7 @@ import 'agentcore_gateway_authorizer_configuration_custom_jwt_authorizer.dart';
 
 class AgentcoreGatewayAuthorizerConfiguration {
   /// JWT-based authorization configuration block. See `customJwtAuthorizer` below.
-  final pulumi.Input<AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer>? customJwtAuthorizer;
+  final pulumi.Input<AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer?>? customJwtAuthorizer;
 
   /// Creates a new [AgentcoreGatewayAuthorizerConfiguration].
   /// [customJwtAuthorizer] JWT-based authorization configuration block. See `customJwtAuthorizer` below.

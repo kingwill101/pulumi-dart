@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetCredentialProviderConfigurationCallerIamCredentials {
   /// The AWS region for the credentials.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The service name for the credentials.
   final pulumi.Input<String> service;
 

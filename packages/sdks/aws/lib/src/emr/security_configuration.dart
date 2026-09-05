@@ -237,7 +237,7 @@ class SecurityConfiguration extends pulumi.CustomResource {
           'aws:emr/securityConfiguration:SecurityConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     configuration = registerOutput<String>('configuration');
     creationDate = registerOutput<String>('creationDate');
@@ -251,11 +251,12 @@ class SecurityConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -269,6 +270,22 @@ class SecurityConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    configuration = registerOutput<String>('configuration');
+    creationDate = registerOutput<String>('creationDate');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [SecurityConfiguration] resource.
+  SecurityConfiguration.reference(String urn)
+    : super(
+        'aws:emr/securityConfiguration:SecurityConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configuration = registerOutput<String>('configuration');
     creationDate = registerOutput<String>('creationDate');
     this.name = registerOutput<String>('name');

@@ -10,7 +10,7 @@ class NamespaceArgs {
   /// Name of the namespace. Must be between 1 and 255 characters in length. Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   final pulumi.Input<String> namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN referencing the Table Bucket that contains this Namespace.
   final pulumi.Input<String> tableBucketArn;
 

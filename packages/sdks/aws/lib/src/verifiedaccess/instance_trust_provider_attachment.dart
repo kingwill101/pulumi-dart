@@ -13,12 +13,12 @@ import 'instance_trust_provider_attachment_state.dart';
 ///
 /// const example = new aws.verifiedaccess.Instance("example", {});
 /// const exampleTrustProvider = new aws.verifiedaccess.TrustProvider("example", {
-///     deviceTrustProviderType: "jamf",
-///     policyReferenceName: "example",
-///     trustProviderType: "device",
 ///     deviceOptions: {
 ///         tenantId: "example",
 ///     },
+///     deviceTrustProviderType: "jamf",
+///     policyReferenceName: "example",
+///     trustProviderType: "device",
 /// });
 /// const exampleInstanceTrustProviderAttachment = new aws.verifiedaccess.InstanceTrustProviderAttachment("example", {
 ///     verifiedaccessInstanceId: example.id,
@@ -31,12 +31,12 @@ import 'instance_trust_provider_attachment_state.dart';
 ///
 /// example = aws.verifiedaccess.Instance("example")
 /// example_trust_provider = aws.verifiedaccess.TrustProvider("example",
-///     device_trust_provider_type="jamf",
-///     policy_reference_name="example",
-///     trust_provider_type="device",
 ///     device_options={
 ///         "tenant_id": "example",
-///     })
+///     },
+///     device_trust_provider_type="jamf",
+///     policy_reference_name="example",
+///     trust_provider_type="device")
 /// example_instance_trust_provider_attachment = aws.verifiedaccess.InstanceTrustProviderAttachment("example",
 ///     verifiedaccess_instance_id=example.id,
 ///     verifiedaccess_trust_provider_id=example_trust_provider.id)
@@ -53,13 +53,13 @@ import 'instance_trust_provider_attachment_state.dart';
 ///
 ///     var exampleTrustProvider = new Aws.VerifiedAccess.TrustProvider("example", new()
 ///     {
-///         DeviceTrustProviderType = "jamf",
-///         PolicyReferenceName = "example",
-///         TrustProviderType = "device",
 ///         DeviceOptions = new Aws.VerifiedAccess.Inputs.TrustProviderDeviceOptionsArgs
 ///         {
 ///             TenantId = "example",
 ///         },
+///         DeviceTrustProviderType = "jamf",
+///         PolicyReferenceName = "example",
+///         TrustProviderType = "device",
 ///     });
 ///
 ///     var exampleInstanceTrustProviderAttachment = new Aws.VerifiedAccess.InstanceTrustProviderAttachment("example", new()
@@ -85,12 +85,12 @@ import 'instance_trust_provider_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleTrustProvider, err := verifiedaccess.NewTrustProvider(ctx, "example", &verifiedaccess.TrustProviderArgs{
-/// 			DeviceTrustProviderType: pulumi.String("jamf"),
-/// 			PolicyReferenceName:     pulumi.String("example"),
-/// 			TrustProviderType:       pulumi.String("device"),
 /// 			DeviceOptions: &verifiedaccess.TrustProviderDeviceOptionsArgs{
 /// 				TenantId: pulumi.String("example"),
 /// 			},
+/// 			DeviceTrustProviderType: pulumi.String("jamf"),
+/// 			PolicyReferenceName:     pulumi.String("example"),
+/// 			TrustProviderType:       pulumi.String("device"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -118,12 +118,12 @@ import 'instance_trust_provider_attachment_state.dart';
 /// resource "aws_verifiedaccess_instance" "example" {
 /// }
 /// resource "aws_verifiedaccess_trustprovider" "example" {
-///   device_trust_provider_type = "jamf"
-///   policy_reference_name      = "example"
-///   trust_provider_type        = "device"
 ///   device_options = {
 ///     tenant_id = "example"
 ///   }
+///   device_trust_provider_type = "jamf"
+///   policy_reference_name      = "example"
+///   trust_provider_type        = "device"
 /// }
 /// resource "aws_verifiedaccess_instancetrustproviderattachment" "example" {
 ///   verifiedaccess_instance_id       = aws_verifiedaccess_instance.example.id
@@ -158,12 +158,12 @@ import 'instance_trust_provider_attachment_state.dart';
 ///         var example = new Instance("example");
 ///
 ///         var exampleTrustProvider = new TrustProvider("exampleTrustProvider", TrustProviderArgs.builder()
-///             .deviceTrustProviderType("jamf")
-///             .policyReferenceName("example")
-///             .trustProviderType("device")
 ///             .deviceOptions(TrustProviderDeviceOptionsArgs.builder()
 ///                 .tenantId("example")
 ///                 .build())
+///             .deviceTrustProviderType("jamf")
+///             .policyReferenceName("example")
+///             .trustProviderType("device")
 ///             .build());
 ///
 ///         var exampleInstanceTrustProviderAttachment = new InstanceTrustProviderAttachment("exampleInstanceTrustProviderAttachment", InstanceTrustProviderAttachmentArgs.builder()
@@ -182,11 +182,11 @@ import 'instance_trust_provider_attachment_state.dart';
 ///     type: aws:verifiedaccess:TrustProvider
 ///     name: example
 ///     properties:
+///       deviceOptions:
+///         tenantId: example
 ///       deviceTrustProviderType: jamf
 ///       policyReferenceName: example
 ///       trustProviderType: device
-///       deviceOptions:
-///         tenantId: example
 ///   exampleInstanceTrustProviderAttachment:
 ///     type: aws:verifiedaccess:InstanceTrustProviderAttachment
 ///     name: example
@@ -223,7 +223,7 @@ class InstanceTrustProviderAttachment extends pulumi.CustomResource {
           'aws:verifiedaccess/instanceTrustProviderAttachment:InstanceTrustProviderAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');
@@ -235,11 +235,12 @@ class InstanceTrustProviderAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceTrustProviderAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceTrustProviderAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -253,6 +254,20 @@ class InstanceTrustProviderAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');
+    verifiedaccessTrustProviderId = registerOutput<String>('verifiedaccessTrustProviderId');
+  }
+
+  /// Creates a typed reference to an existing [InstanceTrustProviderAttachment] resource.
+  InstanceTrustProviderAttachment.reference(String urn)
+    : super(
+        'aws:verifiedaccess/instanceTrustProviderAttachment:InstanceTrustProviderAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     verifiedaccessInstanceId = registerOutput<String>('verifiedaccessInstanceId');
     verifiedaccessTrustProviderId = registerOutput<String>('verifiedaccessTrustProviderId');

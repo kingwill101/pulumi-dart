@@ -10,9 +10,9 @@ class GetWindowsFileSystemArgs {
   /// Identifier of the file system (e.g. `fs-12345678`).
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to associate with the file system.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetWindowsFileSystemArgs].
   /// [id] Identifier of the file system (e.g. `fs-12345678`).

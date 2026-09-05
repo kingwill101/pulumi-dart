@@ -147,7 +147,7 @@ class InstanceDesiredState extends pulumi.CustomResource {
           'aws:rds/instanceDesiredState:InstanceDesiredState',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
@@ -160,11 +160,12 @@ class InstanceDesiredState extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceDesiredStateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceDesiredState._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -181,6 +182,21 @@ class InstanceDesiredState extends pulumi.CustomResource {
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+    timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDesiredStateTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [InstanceDesiredState] resource.
+  InstanceDesiredState.reference(String urn)
+    : super(
+        'aws:rds/instanceDesiredState:InstanceDesiredState',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    identifier = registerOutput<String>('identifier');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
     timeouts = registerOutput<InstanceDesiredStateTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDesiredStateTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

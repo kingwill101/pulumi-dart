@@ -15,8 +15,6 @@ import 'multicast_domain_state.dart';
 ///     state: "available",
 /// });
 /// const amazonLinux = aws.ec2.getAmi({
-///     mostRecent: true,
-///     owners: ["amazon"],
 ///     filters: [
 ///         {
 ///             name: "name",
@@ -27,6 +25,8 @@ import 'multicast_domain_state.dart';
 ///             values: ["amazon"],
 ///         },
 ///     ],
+///     mostRecent: true,
+///     owners: ["amazon"],
 /// });
 /// const vpc1 = new aws.ec2.Vpc("vpc1", {cidrBlock: "10.0.0.0/16"});
 /// const vpc2 = new aws.ec2.Vpc("vpc2", {cidrBlock: "10.1.0.0/16"});
@@ -117,9 +117,7 @@ import 'multicast_domain_state.dart';
 /// import pulumi_aws as aws
 ///
 /// available = aws.get_availability_zones(state="available")
-/// amazon_linux = aws.ec2.get_ami(most_recent=True,
-///     owners=["amazon"],
-///     filters=[
+/// amazon_linux = aws.ec2.get_ami(filters=[
 ///         {
 ///             "name": "name",
 ///             "values": ["amzn-ami-hvm-*-x86_64-gp2"],
@@ -128,7 +126,9 @@ import 'multicast_domain_state.dart';
 ///             "name": "owner-alias",
 ///             "values": ["amazon"],
 ///         },
-///     ])
+///     ],
+///     most_recent=True,
+///     owners=["amazon"])
 /// vpc1 = aws.ec2.Vpc("vpc1", cidr_block="10.0.0.0/16")
 /// vpc2 = aws.ec2.Vpc("vpc2", cidr_block="10.1.0.0/16")
 /// subnet1 = aws.ec2.Subnet("subnet1",
@@ -213,11 +213,6 @@ import 'multicast_domain_state.dart';
 ///
 ///     var amazonLinux = Aws.Ec2.GetAmi.Invoke(new()
 ///     {
-///         MostRecent = true,
-///         Owners = new[]
-///         {
-///             "amazon",
-///         },
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.GetAmiFilterInputArgs
@@ -236,6 +231,11 @@ import 'multicast_domain_state.dart';
 ///                     "amazon",
 ///                 },
 ///             },
+///         },
+///         MostRecent = true,
+///         Owners = new[]
+///         {
+///             "amazon",
 ///         },
 ///     });
 ///
@@ -390,10 +390,6 @@ import 'multicast_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		amazonLinux, err := ec2.LookupAmi(ctx, &ec2.LookupAmiArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
-/// 			Owners: []string{
-/// 				"amazon",
-/// 			},
 /// 			Filters: []ec2.GetAmiFilter{
 /// 				{
 /// 					Name: "name",
@@ -407,6 +403,10 @@ import 'multicast_domain_state.dart';
 /// 						"amazon",
 /// 					},
 /// 				},
+/// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
+/// 			Owners: []string{
+/// 				"amazon",
 /// 			},
 /// 		}, nil)
 /// 		if err != nil {
@@ -574,8 +574,6 @@ import 'multicast_domain_state.dart';
 ///   state = "available"
 /// }
 /// data "aws_ec2_getami" "amazonLinux" {
-///   most_recent = true
-///   owners      = ["amazon"]
 ///   filters {
 ///     name   = "name"
 ///     values = ["amzn-ami-hvm-*-x86_64-gp2"]
@@ -584,6 +582,8 @@ import 'multicast_domain_state.dart';
 ///     name   = "owner-alias"
 ///     values = ["amazon"]
 ///   }
+///   most_recent = true
+///   owners      = ["amazon"]
 /// }
 ///
 /// resource "aws_ec2_vpc" "vpc1" {
@@ -720,8 +720,6 @@ import 'multicast_domain_state.dart';
 ///             .build());
 ///
 ///         final var amazonLinux = Ec2Functions.getAmi(GetAmiArgs.builder()
-///             .mostRecent(true)
-///             .owners("amazon")
 ///             .filters(
 ///                 GetAmiFilterArgs.builder()
 ///                     .name("name")
@@ -731,6 +729,8 @@ import 'multicast_domain_state.dart';
 ///                     .name("owner-alias")
 ///                     .values("amazon")
 ///                     .build())
+///             .mostRecent(true)
+///             .owners("amazon")
 ///             .build());
 ///
 ///         var vpc1 = new Vpc("vpc1", VpcArgs.builder()
@@ -958,9 +958,6 @@ import 'multicast_domain_state.dart';
 ///     fn::invoke:
 ///       function: aws:ec2:getAmi
 ///       arguments:
-///         mostRecent: true
-///         owners:
-///           - amazon
 ///         filters:
 ///           - name: name
 ///             values:
@@ -968,6 +965,9 @@ import 'multicast_domain_state.dart';
 ///           - name: owner-alias
 ///             values:
 ///               - amazon
+///         mostRecent: true
+///         owners:
+///           - amazon
 /// ```
 ///
 ///
@@ -979,7 +979,7 @@ import 'multicast_domain_state.dart';
 /// $ pulumi import aws:ec2transitgateway/multicastDomain:MulticastDomain example tgw-mcast-domain-12345
 /// ```
 class MulticastDomain extends pulumi.CustomResource {
-  /// EC2 Transit Gateway Multicast Domain Amazon Resource Name (ARN).
+  /// EC2 Transit Gateway Multicast Domain ARN.
   late final pulumi.Output<String> arn;
   /// Whether to automatically accept cross-account subnet associations that are associated with the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
   late final pulumi.Output<String?> autoAcceptSharedAssociations;
@@ -1010,7 +1010,7 @@ class MulticastDomain extends pulumi.CustomResource {
           'aws:ec2transitgateway/multicastDomain:MulticastDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoAcceptSharedAssociations = registerOutput<String?>('autoAcceptSharedAssociations');
@@ -1018,8 +1018,8 @@ class MulticastDomain extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     staticSourcesSupport = registerOutput<String?>('staticSourcesSupport');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 
@@ -1028,11 +1028,12 @@ class MulticastDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MulticastDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MulticastDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1052,8 +1053,28 @@ class MulticastDomain extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     staticSourcesSupport = registerOutput<String?>('staticSourcesSupport');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayId = registerOutput<String>('transitGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [MulticastDomain] resource.
+  MulticastDomain.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/multicastDomain:MulticastDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoAcceptSharedAssociations = registerOutput<String?>('autoAcceptSharedAssociations');
+    igmpv2Support = registerOutput<String?>('igmpv2Support');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    staticSourcesSupport = registerOutput<String?>('staticSourcesSupport');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayId = registerOutput<String>('transitGatewayId');
   }
 }

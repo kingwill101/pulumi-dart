@@ -9,11 +9,11 @@ import 'get_container_recipes_filter.dart';
 /// {@macro pulumi_imagebuilder_get_container_recipes_get_container_recipes_args_doc}
 class GetContainerRecipesArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetContainerRecipesFilter>>? filters;
+  final pulumi.Input<List<GetContainerRecipesFilter>?>? filters;
   /// Owner of the container recipes. Valid values are `Self`, `Shared`, `Amazon` and `ThirdParty`. Defaults to `Self`.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetContainerRecipesArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

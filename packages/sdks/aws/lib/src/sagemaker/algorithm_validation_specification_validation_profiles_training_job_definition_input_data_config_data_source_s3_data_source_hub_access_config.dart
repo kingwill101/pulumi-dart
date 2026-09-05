@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceHubAccessConfig {
   /// ARN of the SageMaker AI Hub content.
-  final pulumi.Input<String>? hubContentArn;
+  final pulumi.Input<String?>? hubContentArn;
 
   /// Creates a new [AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceHubAccessConfig].
   /// [hubContentArn] ARN of the SageMaker AI Hub content.

@@ -6,8 +6,8 @@ import 'otel_enrichment_timeouts.dart';
 /// Input properties used for looking up and filtering OtelEnrichment resources.
 class OtelEnrichmentState {
   /// AWS region where this resource is managed.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<OtelEnrichmentTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<OtelEnrichmentTimeouts?>? timeouts;
 
   /// Creates a new [OtelEnrichmentState].
   /// [region] AWS region where this resource is managed.

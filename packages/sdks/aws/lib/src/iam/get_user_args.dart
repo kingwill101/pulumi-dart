@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_get_user_get_user_args_doc}
 class GetUserArgs {
   /// Map of key-value pairs associated with the user.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Friendly IAM user name to match.
   final pulumi.Input<String> userName;
 

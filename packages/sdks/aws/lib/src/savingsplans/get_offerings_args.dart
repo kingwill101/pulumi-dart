@@ -9,27 +9,27 @@ import 'get_offerings_filter.dart';
 /// {@macro pulumi_savingsplans_get_offerings_get_offerings_args_doc}
 class GetOfferingsArgs {
   /// List of currencies.
-  final pulumi.Input<List<String>>? currencies;
+  final pulumi.Input<List<String>?>? currencies;
   /// List of descriptions.
-  final pulumi.Input<List<String>>? descriptions;
+  final pulumi.Input<List<String>?>? descriptions;
   /// List of durations, in seconds.
-  final pulumi.Input<List<int>>? durations;
+  final pulumi.Input<List<int>?>? durations;
   /// List of filters. See Filter.
-  final pulumi.Input<List<GetOfferingsFilter>>? filters;
+  final pulumi.Input<List<GetOfferingsFilter>?>? filters;
   /// List of offering IDs.
-  final pulumi.Input<List<String>>? offeringIds;
+  final pulumi.Input<List<String>?>? offeringIds;
   /// List of operations.
-  final pulumi.Input<List<String>>? operations;
+  final pulumi.Input<List<String>?>? operations;
   /// List of payment options.
-  final pulumi.Input<List<String>>? paymentOptions;
+  final pulumi.Input<List<String>?>? paymentOptions;
   /// List of plan types.
-  final pulumi.Input<List<String>>? planTypes;
+  final pulumi.Input<List<String>?>? planTypes;
   /// Product type.
-  final pulumi.Input<String>? productType;
+  final pulumi.Input<String?>? productType;
   /// List of service codes.
-  final pulumi.Input<List<String>>? serviceCodes;
+  final pulumi.Input<List<String>?>? serviceCodes;
   /// List of usage types.
-  final pulumi.Input<List<String>>? usageTypes;
+  final pulumi.Input<List<String>?>? usageTypes;
 
   /// Creates a new [GetOfferingsArgs].
   /// [currencies] List of currencies.

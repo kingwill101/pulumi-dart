@@ -6,11 +6,11 @@ import 'get_user_alternate_identifier_unique_attribute.dart';
 
 class GetUserAlternateIdentifier {
   /// Configuration block for filtering by the identifier issued by an external identity provider. Detailed below.
-  final pulumi.Input<GetUserAlternateIdentifierExternalId>? externalId;
+  final pulumi.Input<GetUserAlternateIdentifierExternalId?>? externalId;
   /// An entity attribute that's unique to a specific entity. Detailed below.
   ///
   /// &gt; Exactly one of the above arguments must be provided.
-  final pulumi.Input<GetUserAlternateIdentifierUniqueAttribute>? uniqueAttribute;
+  final pulumi.Input<GetUserAlternateIdentifierUniqueAttribute?>? uniqueAttribute;
 
   /// Creates a new [GetUserAlternateIdentifier].
   /// [externalId] Configuration block for filtering by the identifier issued by an external identity provider. Detailed below.

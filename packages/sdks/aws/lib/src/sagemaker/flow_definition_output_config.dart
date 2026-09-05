@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDefinitionOutputConfig {
-  /// The Amazon Key Management Service (KMS) key ARN for server-side encryption.
-  final pulumi.Input<String>? kmsKeyId;
+  /// KMS key ARN for server-side encryption.
+  final pulumi.Input<String?>? kmsKeyId;
   /// The Amazon S3 path where the object containing human output will be made available.
   final pulumi.Input<String> s3OutputPath;
 
   /// Creates a new [FlowDefinitionOutputConfig].
-  /// [kmsKeyId] The Amazon Key Management Service (KMS) key ARN for server-side encryption.
+  /// [kmsKeyId] KMS key ARN for server-side encryption.
   /// [s3OutputPath] The Amazon S3 path where the object containing human output will be made available.
   const FlowDefinitionOutputConfig({
     this.kmsKeyId,

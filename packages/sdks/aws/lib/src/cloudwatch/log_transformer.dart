@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_transformer_args.dart';
 import 'log_transformer_state.dart';
+import 'log_transformer_transformer_config.dart';
 
 /// Resource for managing an AWS CloudWatch Logs Transformer.
 ///
@@ -178,7 +179,7 @@ import 'log_transformer_state.dart';
 ///
 /// #### Required
 ///
-/// - `logGroupArn` (String) Amazon Resource Name (ARN) of the CloudWatch Logs log group.
+/// - `logGroupArn` (String) ARN of the CloudWatch Logs log group.
 ///
 ///
 /// Using `pulumi import`, import CloudWatch Logs Transformer using the `logGroupArn`. For example:
@@ -192,7 +193,7 @@ class LogTransformer extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Specifies the configuration of the transformer. You must include at least one configuration, and 20 at most. See `transformerConfig` below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> transformerConfigs;
+  late final pulumi.Output<List<LogTransformerTransformerConfig>> transformerConfigs;
 
   /// Creates a new [LogTransformer].
   /// [name] The Pulumi resource name.
@@ -206,11 +207,11 @@ class LogTransformer extends pulumi.CustomResource {
           'aws:cloudwatch/logTransformer:LogTransformer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     logGroupArn = registerOutput<String>('logGroupArn');
     region = registerOutput<String>('region');
-    transformerConfigs = registerOutput<List<Map<String, dynamic>>>('transformerConfigs');
+    transformerConfigs = registerOutput<List<LogTransformerTransformerConfig>>('transformerConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogTransformerTransformerConfig>(guardedValue, (value) => LogTransformerTransformerConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [LogTransformer] resource's state with the given [name] and [id].
@@ -218,11 +219,12 @@ class LogTransformer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogTransformerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogTransformer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -238,6 +240,20 @@ class LogTransformer extends pulumi.CustomResource {
         ) {
     logGroupArn = registerOutput<String>('logGroupArn');
     region = registerOutput<String>('region');
-    transformerConfigs = registerOutput<List<Map<String, dynamic>>>('transformerConfigs');
+    transformerConfigs = registerOutput<List<LogTransformerTransformerConfig>>('transformerConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogTransformerTransformerConfig>(guardedValue, (value) => LogTransformerTransformerConfig.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [LogTransformer] resource.
+  LogTransformer.reference(String urn)
+    : super(
+        'aws:cloudwatch/logTransformer:LogTransformer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    logGroupArn = registerOutput<String>('logGroupArn');
+    region = registerOutput<String>('region');
+    transformerConfigs = registerOutput<List<LogTransformerTransformerConfig>>('transformerConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogTransformerTransformerConfig>(guardedValue, (value) => LogTransformerTransformerConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

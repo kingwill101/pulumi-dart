@@ -9,9 +9,9 @@ import 'get_ontap_storage_virtual_machines_filter.dart';
 /// {@macro pulumi_fsx_get_ontap_storage_virtual_machines_get_ontap_storage_virtual_machines_args_doc}
 class GetOntapStorageVirtualMachinesArgs {
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<GetOntapStorageVirtualMachinesFilter>>? filters;
+  final pulumi.Input<List<GetOntapStorageVirtualMachinesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetOntapStorageVirtualMachinesArgs].
   /// [filters] Configuration block. Detailed below.

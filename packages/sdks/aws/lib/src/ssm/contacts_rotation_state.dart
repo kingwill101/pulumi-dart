@@ -5,30 +5,30 @@ import 'contacts_rotation_recurrence.dart';
 
 /// Input properties used for looking up and filtering ContactsRotation resources.
 class ContactsRotationState {
-  /// The Amazon Resource Name (ARN) of the rotation.
-  final pulumi.Input<String>? arn;
-  /// Amazon Resource Names (ARNs) of the contacts to add to the rotation. The order in which you list the contacts is their shift order in the rotation schedule.
-  final pulumi.Input<List<String>>? contactIds;
+  /// ARN of the rotation.
+  final pulumi.Input<String?>? arn;
+  /// ARNs of the contacts to add to the rotation. The order in which you list the contacts is their shift order in the rotation schedule.
+  final pulumi.Input<List<String>?>? contactIds;
   /// The name for the rotation.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Information about when an on-call rotation is in effect and how long the rotation period lasts. Exactly one of either `dailySettings`, `monthlySettings`, or `weeklySettings` must be populated. See Recurrence for more details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<ContactsRotationRecurrence>? recurrence;
+  final pulumi.Input<ContactsRotationRecurrence?>? recurrence;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The date and time, in RFC 3339 format, that the rotation goes into effect.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The time zone to base the rotation’s activity on in Internet Assigned Numbers Authority (IANA) format.
-  final pulumi.Input<String>? timeZoneId;
+  final pulumi.Input<String?>? timeZoneId;
 
   /// Creates a new [ContactsRotationState].
-  /// [arn] The Amazon Resource Name (ARN) of the rotation.
-  /// [contactIds] Amazon Resource Names (ARNs) of the contacts to add to the rotation. The order in which you list the contacts is their shift order in the rotation schedule.
+  /// [arn] ARN of the rotation.
+  /// [contactIds] ARNs of the contacts to add to the rotation. The order in which you list the contacts is their shift order in the rotation schedule.
   /// [name] The name for the rotation.
   /// [recurrence] Information about when an on-call rotation is in effect and how long the rotation period lasts. Exactly one of either `dailySettings`, `monthlySettings`, or `weeklySettings` must be populated. See Recurrence for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

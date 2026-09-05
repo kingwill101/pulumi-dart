@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'task_set_args.dart';
+import 'task_set_capacity_provider_strategy.dart';
+import 'task_set_load_balancer.dart';
 import 'task_set_network_configuration.dart';
 import 'task_set_scale.dart';
 import 'task_set_service_registries.dart';
@@ -17,14 +19,14 @@ import 'task_set_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.TaskSet("example", {
-///     service: exampleAwsEcsService.id,
-///     cluster: exampleAwsEcsCluster.id,
-///     taskDefinition: exampleAwsEcsTaskDefinition.arn,
 ///     loadBalancers: [{
 ///         targetGroupArn: exampleAwsLbTargetGroup.arn,
 ///         containerName: "mongo",
 ///         containerPort: 8080,
 ///     }],
+///     service: exampleAwsEcsService.id,
+///     cluster: exampleAwsEcsCluster.id,
+///     taskDefinition: exampleAwsEcsTaskDefinition.arn,
 /// });
 /// ```
 /// ```python
@@ -32,14 +34,14 @@ import 'task_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.TaskSet("example",
-///     service=example_aws_ecs_service["id"],
-///     cluster=example_aws_ecs_cluster["id"],
-///     task_definition=example_aws_ecs_task_definition["arn"],
 ///     load_balancers=[{
 ///         "target_group_arn": example_aws_lb_target_group["arn"],
 ///         "container_name": "mongo",
 ///         "container_port": 8080,
-///     }])
+///     }],
+///     service=example_aws_ecs_service["id"],
+///     cluster=example_aws_ecs_cluster["id"],
+///     task_definition=example_aws_ecs_task_definition["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -51,9 +53,6 @@ import 'task_set_state.dart';
 /// {
 ///     var example = new Aws.Ecs.TaskSet("example", new()
 ///     {
-///         Service = exampleAwsEcsService.Id,
-///         Cluster = exampleAwsEcsCluster.Id,
-///         TaskDefinition = exampleAwsEcsTaskDefinition.Arn,
 ///         LoadBalancers = new[]
 ///         {
 ///             new Aws.Ecs.Inputs.TaskSetLoadBalancerArgs
@@ -63,6 +62,9 @@ import 'task_set_state.dart';
 ///                 ContainerPort = 8080,
 ///             },
 ///         },
+///         Service = exampleAwsEcsService.Id,
+///         Cluster = exampleAwsEcsCluster.Id,
+///         TaskDefinition = exampleAwsEcsTaskDefinition.Arn,
 ///     });
 ///
 /// });
@@ -78,9 +80,6 @@ import 'task_set_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewTaskSet(ctx, "example", &ecs.TaskSetArgs{
-/// 			Service:        pulumi.Any(exampleAwsEcsService.Id),
-/// 			Cluster:        pulumi.Any(exampleAwsEcsCluster.Id),
-/// 			TaskDefinition: pulumi.Any(exampleAwsEcsTaskDefinition.Arn),
 /// 			LoadBalancers: ecs.TaskSetLoadBalancerArray{
 /// 				&ecs.TaskSetLoadBalancerArgs{
 /// 					TargetGroupArn: pulumi.Any(exampleAwsLbTargetGroup.Arn),
@@ -88,6 +87,9 @@ import 'task_set_state.dart';
 /// 					ContainerPort:  pulumi.Int(8080),
 /// 				},
 /// 			},
+/// 			Service:        pulumi.Any(exampleAwsEcsService.Id),
+/// 			Cluster:        pulumi.Any(exampleAwsEcsCluster.Id),
+/// 			TaskDefinition: pulumi.Any(exampleAwsEcsTaskDefinition.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -106,14 +108,14 @@ import 'task_set_state.dart';
 /// }
 ///
 /// resource "aws_ecs_taskset" "example" {
-///   service         = exampleAwsEcsService.id
-///   cluster         = exampleAwsEcsCluster.id
-///   task_definition = exampleAwsEcsTaskDefinition.arn
 ///   load_balancers {
 ///     target_group_arn = exampleAwsLbTargetGroup.arn
 ///     container_name   = "mongo"
 ///     container_port   = 8080
 ///   }
+///   service         = exampleAwsEcsService.id
+///   cluster         = exampleAwsEcsCluster.id
+///   task_definition = exampleAwsEcsTaskDefinition.arn
 /// }
 /// ```
 /// ```java
@@ -139,14 +141,14 @@ import 'task_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TaskSet("example", TaskSetArgs.builder()
-///             .service(exampleAwsEcsService.id())
-///             .cluster(exampleAwsEcsCluster.id())
-///             .taskDefinition(exampleAwsEcsTaskDefinition.arn())
 ///             .loadBalancers(TaskSetLoadBalancerArgs.builder()
 ///                 .targetGroupArn(exampleAwsLbTargetGroup.arn())
 ///                 .containerName("mongo")
 ///                 .containerPort(8080)
 ///                 .build())
+///             .service(exampleAwsEcsService.id())
+///             .cluster(exampleAwsEcsCluster.id())
+///             .taskDefinition(exampleAwsEcsTaskDefinition.arn())
 ///             .build());
 ///
 ///     }
@@ -157,13 +159,13 @@ import 'task_set_state.dart';
 ///   example:
 ///     type: aws:ecs:TaskSet
 ///     properties:
-///       service: ${exampleAwsEcsService.id}
-///       cluster: ${exampleAwsEcsCluster.id}
-///       taskDefinition: ${exampleAwsEcsTaskDefinition.arn}
 ///       loadBalancers:
 ///         - targetGroupArn: ${exampleAwsLbTargetGroup.arn}
 ///           containerName: mongo
 ///           containerPort: 8080
+///       service: ${exampleAwsEcsService.id}
+///       cluster: ${exampleAwsEcsCluster.id}
+///       taskDefinition: ${exampleAwsEcsTaskDefinition.arn}
 /// ```
 ///
 ///
@@ -178,7 +180,9 @@ import 'task_set_state.dart';
 ///
 /// const example = new aws.ecs.TaskSet("example", {scale: {
 ///     value: 50,
-/// }});
+/// }}, {
+///     ignoreChanges: ["scale"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
@@ -186,7 +190,8 @@ import 'task_set_state.dart';
 ///
 /// example = aws.ecs.TaskSet("example", scale={
 ///     "value": float(50),
-/// })
+/// },
+/// opts = pulumi.ResourceOptions(ignore_changes=["scale"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -201,6 +206,12 @@ import 'task_set_state.dart';
 ///         Scale = new Aws.Ecs.Inputs.TaskSetScaleArgs
 ///         {
 ///             Value = 50,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "scale",
 ///         },
 ///     });
 ///
@@ -220,7 +231,9 @@ import 'task_set_state.dart';
 /// 			Scale: &ecs.TaskSetScaleArgs{
 /// 				Value: pulumi.Float64(50),
 /// 			},
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"scale",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -238,6 +251,9 @@ import 'task_set_state.dart';
 /// }
 ///
 /// resource "aws_ecs_taskset" "example" {
+///   lifecycle {
+///     ignore_changes = [scale]
+///   }
 ///   scale = {
 ///     value = 50
 ///   }
@@ -252,6 +268,7 @@ import 'task_set_state.dart';
 /// import com.pulumi.aws.ecs.TaskSet;
 /// import com.pulumi.aws.ecs.TaskSetArgs;
 /// import com.pulumi.aws.ecs.inputs.TaskSetScaleArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -269,7 +286,9 @@ import 'task_set_state.dart';
 ///             .scale(TaskSetScaleArgs.builder()
 ///                 .value(50.0)
 ///                 .build())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("scale")
+///                 .build());
 ///
 ///     }
 /// }
@@ -281,6 +300,9 @@ import 'task_set_state.dart';
 ///     properties:
 ///       scale:
 ///         value: 50
+///     options:
+///       ignoreChanges:
+///         - scale
 /// ```
 ///
 ///
@@ -292,10 +314,10 @@ import 'task_set_state.dart';
 /// $ pulumi import aws:ecs/taskSet:TaskSet example ecs-svc/7177320696926227436,arn:aws:ecs:us-west-2:123456789101:service/example/example-1234567890,arn:aws:ecs:us-west-2:123456789101:cluster/example
 /// ```
 class TaskSet extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) that identifies the task set.
+  /// ARN that identifies the task set.
   late final pulumi.Output<String> arn;
   /// Capacity provider strategy to use for the service. Can be one or more. Defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> capacityProviderStrategies;
+  late final pulumi.Output<List<TaskSetCapacityProviderStrategy>?> capacityProviderStrategies;
   /// Short name or ARN of the cluster that hosts the service to create the task set in.
   late final pulumi.Output<String> cluster;
   /// External ID associated with the task set.
@@ -305,7 +327,7 @@ class TaskSet extends pulumi.CustomResource {
   /// Launch type on which to run your service. Valid values are `EC2`, `FARGATE`, and `EXTERNAL`. Defaults to `EC2`.
   late final pulumi.Output<String> launchType;
   /// Details on load balancers that are used with a task set. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancers;
+  late final pulumi.Output<List<TaskSetLoadBalancer>?> loadBalancers;
   /// Network configuration for the service. Required for task definitions that use the `awsvpc` network mode to receive their own Elastic Network Interface, and not supported for other network modes. Detailed below.
   late final pulumi.Output<TaskSetNetworkConfiguration?> networkConfiguration;
   /// Platform version on which to run your service. Only applicable for `launchType` set to `FARGATE`. Defaults to `LATEST`. More information about Fargate platform versions can be found in the [AWS ECS User Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
@@ -349,15 +371,15 @@ class TaskSet extends pulumi.CustomResource {
           'aws:ecs/taskSet:TaskSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    capacityProviderStrategies = registerOutput<List<Map<String, dynamic>>?>('capacityProviderStrategies');
+    capacityProviderStrategies = registerOutput<List<TaskSetCapacityProviderStrategy>?>('capacityProviderStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskSetCapacityProviderStrategy>(guardedValue, (value) => TaskSetCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); });
     cluster = registerOutput<String>('cluster');
     externalId = registerOutput<String>('externalId');
     forceDelete = registerOutput<bool?>('forceDelete');
     launchType = registerOutput<String>('launchType');
-    loadBalancers = registerOutput<List<Map<String, dynamic>>?>('loadBalancers');
+    loadBalancers = registerOutput<List<TaskSetLoadBalancer>?>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskSetLoadBalancer>(guardedValue, (value) => TaskSetLoadBalancer.fromMap((value as Map).cast<String, dynamic>())); });
     networkConfiguration = registerOutput<TaskSetNetworkConfiguration?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSetNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformVersion = registerOutput<String>('platformVersion');
     region = registerOutput<String>('region');
@@ -366,8 +388,8 @@ class TaskSet extends pulumi.CustomResource {
     serviceRegistries = registerOutput<TaskSetServiceRegistries?>('serviceRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSetServiceRegistries.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stabilityStatus = registerOutput<String>('stabilityStatus');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskDefinition = registerOutput<String>('taskDefinition');
     taskSetId = registerOutput<String>('taskSetId');
     waitUntilStable = registerOutput<bool?>('waitUntilStable');
@@ -379,11 +401,12 @@ class TaskSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TaskSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TaskSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -398,12 +421,12 @@ class TaskSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    capacityProviderStrategies = registerOutput<List<Map<String, dynamic>>?>('capacityProviderStrategies');
+    capacityProviderStrategies = registerOutput<List<TaskSetCapacityProviderStrategy>?>('capacityProviderStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskSetCapacityProviderStrategy>(guardedValue, (value) => TaskSetCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); });
     cluster = registerOutput<String>('cluster');
     externalId = registerOutput<String>('externalId');
     forceDelete = registerOutput<bool?>('forceDelete');
     launchType = registerOutput<String>('launchType');
-    loadBalancers = registerOutput<List<Map<String, dynamic>>?>('loadBalancers');
+    loadBalancers = registerOutput<List<TaskSetLoadBalancer>?>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskSetLoadBalancer>(guardedValue, (value) => TaskSetLoadBalancer.fromMap((value as Map).cast<String, dynamic>())); });
     networkConfiguration = registerOutput<TaskSetNetworkConfiguration?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSetNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     platformVersion = registerOutput<String>('platformVersion');
     region = registerOutput<String>('region');
@@ -412,8 +435,40 @@ class TaskSet extends pulumi.CustomResource {
     serviceRegistries = registerOutput<TaskSetServiceRegistries?>('serviceRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSetServiceRegistries.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     stabilityStatus = registerOutput<String>('stabilityStatus');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taskDefinition = registerOutput<String>('taskDefinition');
+    taskSetId = registerOutput<String>('taskSetId');
+    waitUntilStable = registerOutput<bool?>('waitUntilStable');
+    waitUntilStableTimeout = registerOutput<String?>('waitUntilStableTimeout');
+  }
+
+  /// Creates a typed reference to an existing [TaskSet] resource.
+  TaskSet.reference(String urn)
+    : super(
+        'aws:ecs/taskSet:TaskSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    capacityProviderStrategies = registerOutput<List<TaskSetCapacityProviderStrategy>?>('capacityProviderStrategies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskSetCapacityProviderStrategy>(guardedValue, (value) => TaskSetCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); });
+    cluster = registerOutput<String>('cluster');
+    externalId = registerOutput<String>('externalId');
+    forceDelete = registerOutput<bool?>('forceDelete');
+    launchType = registerOutput<String>('launchType');
+    loadBalancers = registerOutput<List<TaskSetLoadBalancer>?>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskSetLoadBalancer>(guardedValue, (value) => TaskSetLoadBalancer.fromMap((value as Map).cast<String, dynamic>())); });
+    networkConfiguration = registerOutput<TaskSetNetworkConfiguration?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSetNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformVersion = registerOutput<String>('platformVersion');
+    region = registerOutput<String>('region');
+    scale = registerOutput<TaskSetScale>('scale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSetScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    service = registerOutput<String>('service');
+    serviceRegistries = registerOutput<TaskSetServiceRegistries?>('serviceRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSetServiceRegistries.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    stabilityStatus = registerOutput<String>('stabilityStatus');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskDefinition = registerOutput<String>('taskDefinition');
     taskSetId = registerOutput<String>('taskSetId');
     waitUntilStable = registerOutput<bool?>('waitUntilStable');

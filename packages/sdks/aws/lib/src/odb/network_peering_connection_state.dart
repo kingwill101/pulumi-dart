@@ -6,38 +6,38 @@ import 'network_peering_connection_timeouts.dart';
 /// Input properties used for looking up and filtering NetworkPeeringConnection resources.
 class NetworkPeeringConnectionState {
   /// ARN of the ODB network peering connection.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Created time of the ODB network peering connection.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Display name of the ODB network peering connection. Changing this will force Terraform to create a new resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odbNetworkId or odbNetworkArn should be used.
-  final pulumi.Input<String>? odbNetworkArn;
+  final pulumi.Input<String?>? odbNetworkArn;
   /// Unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
-  final pulumi.Input<String>? odbNetworkId;
+  final pulumi.Input<String?>? odbNetworkId;
   /// Type of the ODB peering connection.
-  final pulumi.Input<String>? odbPeeringConnectionType;
+  final pulumi.Input<String?>? odbPeeringConnectionType;
   /// ARN of the peer network peering connection.
-  final pulumi.Input<String>? peerNetworkArn;
+  final pulumi.Input<String?>? peerNetworkArn;
   /// Set of peer network cidrs. Add remove is only supported during update operation. During create this attribute is compute only.
-  final pulumi.Input<List<String>>? peerNetworkCidrs;
+  final pulumi.Input<List<String>?>? peerNetworkCidrs;
   /// Unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odbNetworkId or odbNetworkArn should be used.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? peerNetworkId;
+  final pulumi.Input<String?>? peerNetworkId;
   /// Progress of the ODB network peering connection.
-  final pulumi.Input<double>? percentProgress;
+  final pulumi.Input<double?>? percentProgress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Status of the ODB network peering connection.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Reason for the current status of the ODB peering connection.
-  final pulumi.Input<String>? statusReason;
+  final pulumi.Input<String?>? statusReason;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including inherited tags.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<NetworkPeeringConnectionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<NetworkPeeringConnectionTimeouts?>? timeouts;
 
   /// Creates a new [NetworkPeeringConnectionState].
   /// [arn] ARN of the ODB network peering connection.
@@ -107,7 +107,7 @@ class NetworkPeeringConnectionState {
       peerNetworkArn: (() { final guardedValue = map['peerNetworkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peerNetworkCidrs: (() { final guardedValue = map['peerNetworkCidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       peerNetworkId: (() { final guardedValue = map['peerNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      percentProgress: (() { final guardedValue = map['percentProgress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      percentProgress: (() { final guardedValue = map['percentProgress']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       statusReason: (() { final guardedValue = map['statusReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

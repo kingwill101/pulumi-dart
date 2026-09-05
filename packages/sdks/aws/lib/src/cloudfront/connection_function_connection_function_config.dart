@@ -7,7 +7,7 @@ class ConnectionFunctionConnectionFunctionConfig {
   /// Comment to describe the function.
   final pulumi.Input<String> comment;
   /// Key value store associations. See `keyValueStoreAssociation` below.
-  final pulumi.Input<ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation>? keyValueStoreAssociation;
+  final pulumi.Input<ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation?>? keyValueStoreAssociation;
   /// Runtime environment for the function. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
   final pulumi.Input<String> runtime;
 

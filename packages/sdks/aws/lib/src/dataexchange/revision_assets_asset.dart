@@ -7,20 +7,20 @@ import 'revision_assets_asset_import_assets_from_signed_url.dart';
 
 class RevisionAssetsAsset {
   /// The ARN of the Data Exchange Revision Assets.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// A block to create S3 data access from an S3 bucket. See Create S3 Data Access from S3 Bucket for more details.
-  final pulumi.Input<RevisionAssetsAssetCreateS3DataAccessFromS3Bucket>? createS3DataAccessFromS3Bucket;
+  final pulumi.Input<RevisionAssetsAssetCreateS3DataAccessFromS3Bucket?>? createS3DataAccessFromS3Bucket;
   /// The timestamp when the revision was created, in RFC3339 format.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The unique identifier for the revision.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A block to import assets from S3. See Import Assets from S3 for more details.
-  final pulumi.Input<RevisionAssetsAssetImportAssetsFromS3>? importAssetsFromS3;
+  final pulumi.Input<RevisionAssetsAssetImportAssetsFromS3?>? importAssetsFromS3;
   /// A block to import assets from a signed URL. See Import Assets from Signed URL for more details.
-  final pulumi.Input<RevisionAssetsAssetImportAssetsFromSignedUrl>? importAssetsFromSignedUrl;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<RevisionAssetsAssetImportAssetsFromSignedUrl?>? importAssetsFromSignedUrl;
+  final pulumi.Input<String?>? name;
   /// The timestamp when the revision was last updated, in RFC3339 format.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [RevisionAssetsAsset].
   /// [arn] The ARN of the Data Exchange Revision Assets.

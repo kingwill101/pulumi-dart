@@ -19,11 +19,11 @@ import 'recorder_state.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["config.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -41,11 +41,11 @@ import 'recorder_state.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["config.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// r = aws.iam.Role("r",
@@ -69,7 +69,6 @@ import 'recorder_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -81,6 +80,7 @@ import 'recorder_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -117,7 +117,6 @@ import 'recorder_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -126,6 +125,7 @@ import 'recorder_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -164,11 +164,11 @@ import 'recorder_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["config.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -211,11 +211,11 @@ import 'recorder_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("config.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -251,11 +251,11 @@ import 'recorder_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - config.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -269,17 +269,17 @@ import 'recorder_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const foo = new aws.cfg.Recorder("foo", {
-///     name: "example",
-///     roleArn: r.arn,
 ///     recordingGroup: {
-///         allSupported: false,
 ///         exclusionByResourceTypes: [{
 ///             resourceTypes: ["AWS::EC2::Instance"],
 ///         }],
 ///         recordingStrategies: [{
 ///             useOnly: "EXCLUSION_BY_RESOURCE_TYPES",
 ///         }],
+///         allSupported: false,
 ///     },
+///     name: "example",
+///     roleArn: r.arn,
 /// });
 /// ```
 /// ```python
@@ -287,17 +287,17 @@ import 'recorder_state.dart';
 /// import pulumi_aws as aws
 ///
 /// foo = aws.cfg.Recorder("foo",
-///     name="example",
-///     role_arn=r["arn"],
 ///     recording_group={
-///         "all_supported": False,
 ///         "exclusion_by_resource_types": [{
 ///             "resource_types": ["AWS::EC2::Instance"],
 ///         }],
 ///         "recording_strategies": [{
 ///             "use_only": "EXCLUSION_BY_RESOURCE_TYPES",
 ///         }],
-///     })
+///         "all_supported": False,
+///     },
+///     name="example",
+///     role_arn=r["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -309,11 +309,8 @@ import 'recorder_state.dart';
 /// {
 ///     var foo = new Aws.Cfg.Recorder("foo", new()
 ///     {
-///         Name = "example",
-///         RoleArn = r.Arn,
 ///         RecordingGroup = new Aws.Cfg.Inputs.RecorderRecordingGroupArgs
 ///         {
-///             AllSupported = false,
 ///             ExclusionByResourceTypes = new[]
 ///             {
 ///                 new Aws.Cfg.Inputs.RecorderRecordingGroupExclusionByResourceTypeArgs
@@ -331,7 +328,10 @@ import 'recorder_state.dart';
 ///                     UseOnly = "EXCLUSION_BY_RESOURCE_TYPES",
 ///                 },
 ///             },
+///             AllSupported = false,
 ///         },
+///         Name = "example",
+///         RoleArn = r.Arn,
 ///     });
 ///
 /// });
@@ -347,10 +347,7 @@ import 'recorder_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cfg.NewRecorder(ctx, "foo", &cfg.RecorderArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(r.Arn),
 /// 			RecordingGroup: &cfg.RecorderRecordingGroupArgs{
-/// 				AllSupported: pulumi.Bool(false),
 /// 				ExclusionByResourceTypes: cfg.RecorderRecordingGroupExclusionByResourceTypeArray{
 /// 					&cfg.RecorderRecordingGroupExclusionByResourceTypeArgs{
 /// 						ResourceTypes: pulumi.StringArray{
@@ -363,7 +360,10 @@ import 'recorder_state.dart';
 /// 						UseOnly: pulumi.String("EXCLUSION_BY_RESOURCE_TYPES"),
 /// 					},
 /// 				},
+/// 				AllSupported: pulumi.Bool(false),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(r.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -382,17 +382,17 @@ import 'recorder_state.dart';
 /// }
 ///
 /// resource "aws_cfg_recorder" "foo" {
-///   name     = "example"
-///   role_arn = r.arn
 ///   recording_group = {
-///     all_supported = false
 ///     exclusion_by_resource_types = [{
 ///       "resourceTypes" = ["AWS::EC2::Instance"]
 ///     }]
 ///     recording_strategies = [{
 ///       "useOnly" = "EXCLUSION_BY_RESOURCE_TYPES"
 ///     }]
+///     all_supported = false
 ///   }
+///   name     = "example"
+///   role_arn = r.arn
 /// }
 /// ```
 /// ```java
@@ -420,17 +420,17 @@ import 'recorder_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foo = new Recorder("foo", RecorderArgs.builder()
-///             .name("example")
-///             .roleArn(r.arn())
 ///             .recordingGroup(RecorderRecordingGroupArgs.builder()
-///                 .allSupported(false)
 ///                 .exclusionByResourceTypes(RecorderRecordingGroupExclusionByResourceTypeArgs.builder()
 ///                     .resourceTypes("AWS::EC2::Instance")
 ///                     .build())
 ///                 .recordingStrategies(RecorderRecordingGroupRecordingStrategyArgs.builder()
 ///                     .useOnly("EXCLUSION_BY_RESOURCE_TYPES")
 ///                     .build())
+///                 .allSupported(false)
 ///                 .build())
+///             .name("example")
+///             .roleArn(r.arn())
 ///             .build());
 ///
 ///     }
@@ -441,15 +441,15 @@ import 'recorder_state.dart';
 ///   foo:
 ///     type: aws:cfg:Recorder
 ///     properties:
-///       name: example
-///       roleArn: ${r.arn}
 ///       recordingGroup:
-///         allSupported: false
 ///         exclusionByResourceTypes:
 ///           - resourceTypes:
 ///               - AWS::EC2::Instance
 ///         recordingStrategies:
 ///           - useOnly: EXCLUSION_BY_RESOURCE_TYPES
+///         allSupported: false
+///       name: example
+///       roleArn: ${r.arn}
 /// ```
 ///
 ///
@@ -461,8 +461,6 @@ import 'recorder_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const foo = new aws.cfg.Recorder("foo", {
-///     name: "example",
-///     roleArn: r.arn,
 ///     recordingGroup: {
 ///         allSupported: false,
 ///         includeGlobalResourceTypes: false,
@@ -472,13 +470,15 @@ import 'recorder_state.dart';
 ///         ],
 ///     },
 ///     recordingMode: {
-///         recordingFrequency: "CONTINUOUS",
 ///         recordingModeOverride: {
 ///             description: "Only record EC2 network interfaces daily",
 ///             resourceTypes: ["AWS::EC2::NetworkInterface"],
 ///             recordingFrequency: "DAILY",
 ///         },
+///         recordingFrequency: "CONTINUOUS",
 ///     },
+///     name: "example",
+///     roleArn: r.arn,
 /// });
 /// ```
 /// ```python
@@ -486,8 +486,6 @@ import 'recorder_state.dart';
 /// import pulumi_aws as aws
 ///
 /// foo = aws.cfg.Recorder("foo",
-///     name="example",
-///     role_arn=r["arn"],
 ///     recording_group={
 ///         "all_supported": False,
 ///         "include_global_resource_types": False,
@@ -497,13 +495,15 @@ import 'recorder_state.dart';
 ///         ],
 ///     },
 ///     recording_mode={
-///         "recording_frequency": "CONTINUOUS",
 ///         "recording_mode_override": {
 ///             "description": "Only record EC2 network interfaces daily",
 ///             "resource_types": ["AWS::EC2::NetworkInterface"],
 ///             "recording_frequency": "DAILY",
 ///         },
-///     })
+///         "recording_frequency": "CONTINUOUS",
+///     },
+///     name="example",
+///     role_arn=r["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -515,8 +515,6 @@ import 'recorder_state.dart';
 /// {
 ///     var foo = new Aws.Cfg.Recorder("foo", new()
 ///     {
-///         Name = "example",
-///         RoleArn = r.Arn,
 ///         RecordingGroup = new Aws.Cfg.Inputs.RecorderRecordingGroupArgs
 ///         {
 ///             AllSupported = false,
@@ -529,7 +527,6 @@ import 'recorder_state.dart';
 ///         },
 ///         RecordingMode = new Aws.Cfg.Inputs.RecorderRecordingModeArgs
 ///         {
-///             RecordingFrequency = "CONTINUOUS",
 ///             RecordingModeOverride = new Aws.Cfg.Inputs.RecorderRecordingModeRecordingModeOverrideArgs
 ///             {
 ///                 Description = "Only record EC2 network interfaces daily",
@@ -539,7 +536,10 @@ import 'recorder_state.dart';
 ///                 },
 ///                 RecordingFrequency = "DAILY",
 ///             },
+///             RecordingFrequency = "CONTINUOUS",
 ///         },
+///         Name = "example",
+///         RoleArn = r.Arn,
 ///     });
 ///
 /// });
@@ -555,8 +555,6 @@ import 'recorder_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cfg.NewRecorder(ctx, "foo", &cfg.RecorderArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(r.Arn),
 /// 			RecordingGroup: &cfg.RecorderRecordingGroupArgs{
 /// 				AllSupported:               pulumi.Bool(false),
 /// 				IncludeGlobalResourceTypes: pulumi.Bool(false),
@@ -566,7 +564,6 @@ import 'recorder_state.dart';
 /// 				},
 /// 			},
 /// 			RecordingMode: &cfg.RecorderRecordingModeArgs{
-/// 				RecordingFrequency: pulumi.String("CONTINUOUS"),
 /// 				RecordingModeOverride: &cfg.RecorderRecordingModeRecordingModeOverrideArgs{
 /// 					Description: pulumi.String("Only record EC2 network interfaces daily"),
 /// 					ResourceTypes: pulumi.StringArray{
@@ -574,7 +571,10 @@ import 'recorder_state.dart';
 /// 					},
 /// 					RecordingFrequency: pulumi.String("DAILY"),
 /// 				},
+/// 				RecordingFrequency: pulumi.String("CONTINUOUS"),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(r.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -593,21 +593,21 @@ import 'recorder_state.dart';
 /// }
 ///
 /// resource "aws_cfg_recorder" "foo" {
-///   name     = "example"
-///   role_arn = r.arn
 ///   recording_group = {
 ///     all_supported                 = false
 ///     include_global_resource_types = false
 ///     resource_types                = ["AWS::EC2::Instance", "AWS::EC2::NetworkInterface"]
 ///   }
 ///   recording_mode = {
-///     recording_frequency = "CONTINUOUS"
 ///     recording_mode_override = {
 ///       description         = "Only record EC2 network interfaces daily"
 ///       resource_types      = ["AWS::EC2::NetworkInterface"]
 ///       recording_frequency = "DAILY"
 ///     }
+///     recording_frequency = "CONTINUOUS"
 ///   }
+///   name     = "example"
+///   role_arn = r.arn
 /// }
 /// ```
 /// ```java
@@ -635,8 +635,6 @@ import 'recorder_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foo = new Recorder("foo", RecorderArgs.builder()
-///             .name("example")
-///             .roleArn(r.arn())
 ///             .recordingGroup(RecorderRecordingGroupArgs.builder()
 ///                 .allSupported(false)
 ///                 .includeGlobalResourceTypes(false)
@@ -645,13 +643,15 @@ import 'recorder_state.dart';
 ///                     "AWS::EC2::NetworkInterface")
 ///                 .build())
 ///             .recordingMode(RecorderRecordingModeArgs.builder()
-///                 .recordingFrequency("CONTINUOUS")
 ///                 .recordingModeOverride(RecorderRecordingModeRecordingModeOverrideArgs.builder()
 ///                     .description("Only record EC2 network interfaces daily")
 ///                     .resourceTypes("AWS::EC2::NetworkInterface")
 ///                     .recordingFrequency("DAILY")
 ///                     .build())
+///                 .recordingFrequency("CONTINUOUS")
 ///                 .build())
+///             .name("example")
+///             .roleArn(r.arn())
 ///             .build());
 ///
 ///     }
@@ -662,8 +662,6 @@ import 'recorder_state.dart';
 ///   foo:
 ///     type: aws:cfg:Recorder
 ///     properties:
-///       name: example
-///       roleArn: ${r.arn}
 ///       recordingGroup:
 ///         allSupported: false
 ///         includeGlobalResourceTypes: false
@@ -671,12 +669,14 @@ import 'recorder_state.dart';
 ///           - AWS::EC2::Instance
 ///           - AWS::EC2::NetworkInterface
 ///       recordingMode:
-///         recordingFrequency: CONTINUOUS
 ///         recordingModeOverride:
 ///           description: Only record EC2 network interfaces daily
 ///           resourceTypes:
 ///             - AWS::EC2::NetworkInterface
 ///           recordingFrequency: DAILY
+///         recordingFrequency: CONTINUOUS
+///       name: example
+///       roleArn: ${r.arn}
 /// ```
 ///
 ///
@@ -708,7 +708,7 @@ class Recorder extends pulumi.CustomResource {
   late final pulumi.Output<RecorderRecordingMode> recordingMode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
+  /// ARN of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
   late final pulumi.Output<String> roleArn;
 
   /// Creates a new [Recorder].
@@ -723,7 +723,7 @@ class Recorder extends pulumi.CustomResource {
           'aws:cfg/recorder:Recorder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecorderRecordingGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -737,11 +737,12 @@ class Recorder extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RecorderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Recorder._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -755,6 +756,22 @@ class Recorder extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecorderRecordingGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    recordingMode = registerOutput<RecorderRecordingMode>('recordingMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecorderRecordingMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+  }
+
+  /// Creates a typed reference to an existing [Recorder] resource.
+  Recorder.reference(String urn)
+    : super(
+        'aws:cfg/recorder:Recorder',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     recordingGroup = registerOutput<RecorderRecordingGroup>('recordingGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecorderRecordingGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     recordingMode = registerOutput<RecorderRecordingMode>('recordingMode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecorderRecordingMode.fromMap((guardedValue as Map).cast<String, dynamic>()); });

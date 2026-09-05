@@ -155,7 +155,7 @@ class BgpPeer extends pulumi.CustomResource {
           'aws:directconnect/bgpPeer:BgpPeer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
@@ -174,11 +174,12 @@ class BgpPeer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BgpPeerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BgpPeer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -192,6 +193,27 @@ class BgpPeer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    amazonAddress = registerOutput<String>('amazonAddress');
+    awsDevice = registerOutput<String>('awsDevice');
+    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    bgpPeerId = registerOutput<String>('bgpPeerId');
+    bgpStatus = registerOutput<String>('bgpStatus');
+    customerAddress = registerOutput<String>('customerAddress');
+    region = registerOutput<String>('region');
+    virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
+  }
+
+  /// Creates a typed reference to an existing [BgpPeer] resource.
+  BgpPeer.reference(String urn)
+    : super(
+        'aws:directconnect/bgpPeer:BgpPeer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
     awsDevice = registerOutput<String>('awsDevice');

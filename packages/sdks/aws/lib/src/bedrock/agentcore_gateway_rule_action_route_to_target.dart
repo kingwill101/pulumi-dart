@@ -6,9 +6,9 @@ import 'agentcore_gateway_rule_action_route_to_target_weighted_route.dart';
 
 class AgentcoreGatewayRuleActionRouteToTarget {
   /// Route all matching requests to a single named gateway target.
-  final pulumi.Input<AgentcoreGatewayRuleActionRouteToTargetStaticRoute>? staticRoute;
+  final pulumi.Input<AgentcoreGatewayRuleActionRouteToTargetStaticRoute?>? staticRoute;
   /// Distribute requests across two named targets by weight.
-  final pulumi.Input<AgentcoreGatewayRuleActionRouteToTargetWeightedRoute>? weightedRoute;
+  final pulumi.Input<AgentcoreGatewayRuleActionRouteToTargetWeightedRoute?>? weightedRoute;
 
   /// Creates a new [AgentcoreGatewayRuleActionRouteToTarget].
   /// [staticRoute] Route all matching requests to a single named gateway target.

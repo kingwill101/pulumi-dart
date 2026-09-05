@@ -7,27 +7,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ec2_default_subnet_default_subnet_args_doc}
 class DefaultSubnetArgs {
-  final pulumi.Input<bool>? assignIpv6AddressOnCreation;
+  final pulumi.Input<bool?>? assignIpv6AddressOnCreation;
   /// is required
   /// * The `availabilityZoneId`, `cidrBlock` and `vpcId` arguments become computed attributes
   /// * The default value for `mapPublicIpOnLaunch` is `true`
   ///
   /// This resource supports the following additional arguments:
   final pulumi.Input<String> availabilityZone;
-  final pulumi.Input<String>? customerOwnedIpv4Pool;
-  final pulumi.Input<bool>? enableDns64;
-  final pulumi.Input<bool>? enableResourceNameDnsARecordOnLaunch;
-  final pulumi.Input<bool>? enableResourceNameDnsAaaaRecordOnLaunch;
+  final pulumi.Input<String?>? customerOwnedIpv4Pool;
+  final pulumi.Input<bool?>? enableDns64;
+  final pulumi.Input<bool?>? enableResourceNameDnsARecordOnLaunch;
+  final pulumi.Input<bool?>? enableResourceNameDnsAaaaRecordOnLaunch;
   /// Whether destroying the resource deletes the default subnet. Default: `false`
-  final pulumi.Input<bool>? forceDestroy;
-  final pulumi.Input<String>? ipv6CidrBlock;
-  final pulumi.Input<bool>? ipv6Native;
-  final pulumi.Input<bool>? mapCustomerOwnedIpOnLaunch;
-  final pulumi.Input<bool>? mapPublicIpOnLaunch;
-  final pulumi.Input<String>? privateDnsHostnameTypeOnLaunch;
+  final pulumi.Input<bool?>? forceDestroy;
+  final pulumi.Input<String?>? ipv6CidrBlock;
+  final pulumi.Input<bool?>? ipv6Native;
+  final pulumi.Input<bool?>? mapCustomerOwnedIpOnLaunch;
+  final pulumi.Input<bool?>? mapPublicIpOnLaunch;
+  final pulumi.Input<String?>? privateDnsHostnameTypeOnLaunch;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final pulumi.Input<String>? region;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DefaultSubnetArgs].
   /// [assignIpv6AddressOnCreation] Optional.

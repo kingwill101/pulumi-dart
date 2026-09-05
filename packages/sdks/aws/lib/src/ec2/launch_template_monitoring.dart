@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LaunchTemplateMonitoring {
   /// If `true`, the launched EC2 instance will have detailed monitoring enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [LaunchTemplateMonitoring].
   /// [enabled] If `true`, the launched EC2 instance will have detailed monitoring enabled.

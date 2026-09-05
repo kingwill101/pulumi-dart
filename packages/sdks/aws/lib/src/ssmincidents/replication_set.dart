@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replication_set_args.dart';
+import 'replication_set_region.dart';
 import 'replication_set_state.dart';
 
 /// Provides a resource for managing a replication set in AWS Systems Manager Incident Manager.
@@ -419,7 +420,7 @@ import 'replication_set_state.dart';
 ///
 /// ### Basic Usage with an AWS Customer Managed Key
 ///
-/// Create a replication set with an AWS Key Management Service (AWS KMS) customer manager key:
+/// Create a replication set with a KMS customer manager key:
 ///
 ///
 /// ```typescript
@@ -602,9 +603,9 @@ class ReplicationSet extends pulumi.CustomResource {
   /// A timestamp showing when the replication set was last modified.
   late final pulumi.Output<String> lastModifiedBy;
   /// The replication set's Regions. Use `regions` instead.
-  late final pulumi.Output<List<Map<String, dynamic>>> region;
+  late final pulumi.Output<List<ReplicationSetRegion>> region;
   /// The replication set's Regions.
-  late final pulumi.Output<List<Map<String, dynamic>>> regions;
+  late final pulumi.Output<List<ReplicationSetRegion>> regions;
   /// The current status of the Region.
   /// * Valid Values: `ACTIVE` | `CREATING` | `UPDATING` | `DELETING` | `FAILED`
   late final pulumi.Output<String> status;
@@ -637,17 +638,17 @@ class ReplicationSet extends pulumi.CustomResource {
           'aws:ssmincidents/replicationSet:ReplicationSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdBy = registerOutput<String>('createdBy');
     deletionProtected = registerOutput<bool>('deletionProtected');
     lastModifiedBy = registerOutput<String>('lastModifiedBy');
-    region = registerOutput<List<Map<String, dynamic>>>('region');
-    regions = registerOutput<List<Map<String, dynamic>>>('regions');
+    region = registerOutput<List<ReplicationSetRegion>>('region', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationSetRegion>(guardedValue, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())); });
+    regions = registerOutput<List<ReplicationSetRegion>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationSetRegion>(guardedValue, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ReplicationSet] resource's state with the given [name] and [id].
@@ -655,11 +656,12 @@ class ReplicationSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -677,10 +679,30 @@ class ReplicationSet extends pulumi.CustomResource {
     createdBy = registerOutput<String>('createdBy');
     deletionProtected = registerOutput<bool>('deletionProtected');
     lastModifiedBy = registerOutput<String>('lastModifiedBy');
-    region = registerOutput<List<Map<String, dynamic>>>('region');
-    regions = registerOutput<List<Map<String, dynamic>>>('regions');
+    region = registerOutput<List<ReplicationSetRegion>>('region', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationSetRegion>(guardedValue, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())); });
+    regions = registerOutput<List<ReplicationSetRegion>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationSetRegion>(guardedValue, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ReplicationSet] resource.
+  ReplicationSet.reference(String urn)
+    : super(
+        'aws:ssmincidents/replicationSet:ReplicationSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdBy = registerOutput<String>('createdBy');
+    deletionProtected = registerOutput<bool>('deletionProtected');
+    lastModifiedBy = registerOutput<String>('lastModifiedBy');
+    region = registerOutput<List<ReplicationSetRegion>>('region', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationSetRegion>(guardedValue, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())); });
+    regions = registerOutput<List<ReplicationSetRegion>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationSetRegion>(guardedValue, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

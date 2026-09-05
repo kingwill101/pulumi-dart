@@ -905,7 +905,7 @@ class EventArchive extends pulumi.CustomResource {
   late final pulumi.Output<String?> eventPattern;
   /// ARN of the event bus associated with the archive. Only events from this event bus are sent to the archive.
   late final pulumi.Output<String> eventSourceArn;
-  /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this archive. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
+  /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this archive. The identifier can be the key ARN, KeyId, key alias, or key alias ARN.
   late final pulumi.Output<String?> kmsKeyIdentifier;
   /// Name of the archive. The archive name cannot exceed 48 characters.
   late final pulumi.Output<String> name;
@@ -926,7 +926,7 @@ class EventArchive extends pulumi.CustomResource {
           'aws:cloudwatch/eventArchive:EventArchive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -943,11 +943,12 @@ class EventArchive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventArchiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventArchive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -961,6 +962,25 @@ class EventArchive extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    eventPattern = registerOutput<String?>('eventPattern');
+    eventSourceArn = registerOutput<String>('eventSourceArn');
+    kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    retentionDays = registerOutput<int?>('retentionDays');
+  }
+
+  /// Creates a typed reference to an existing [EventArchive] resource.
+  EventArchive.reference(String urn)
+    : super(
+        'aws:cloudwatch/eventArchive:EventArchive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     eventPattern = registerOutput<String?>('eventPattern');

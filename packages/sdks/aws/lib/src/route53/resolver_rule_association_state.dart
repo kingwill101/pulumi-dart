@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ResolverRuleAssociation resources.
 class ResolverRuleAssociationState {
   /// A name for the association that you're creating between a resolver rule and a VPC.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the resolver rule that you want to associate with the VPC.
-  final pulumi.Input<String>? resolverRuleId;
+  final pulumi.Input<String?>? resolverRuleId;
   /// The ID of the VPC that you want to associate the resolver rule with.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [ResolverRuleAssociationState].
   /// [name] A name for the association that you're creating between a resolver rule and a VPC.

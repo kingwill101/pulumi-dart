@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallFirewallStatusTransitGatewayAttachmentSyncState {
   /// The unique identifier of the transit gateway attachment.
-  final pulumi.Input<String>? attachmentId;
+  final pulumi.Input<String?>? attachmentId;
 
   /// Creates a new [FirewallFirewallStatusTransitGatewayAttachmentSyncState].
   /// [attachmentId] The unique identifier of the transit gateway attachment.

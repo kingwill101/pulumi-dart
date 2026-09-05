@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'flow_destination_flow_config_destination_connector_properties_redshift_error_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesRedshift {
-  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<String?>? bucketPrefix;
   /// Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesRedshiftErrorHandlingConfig>? errorHandlingConfig;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesRedshiftErrorHandlingConfig?>? errorHandlingConfig;
   /// Intermediate bucket that Amazon AppFlow uses when moving data into Amazon Snowflake.
   final pulumi.Input<String> intermediateBucketName;
   final pulumi.Input<String> object_;

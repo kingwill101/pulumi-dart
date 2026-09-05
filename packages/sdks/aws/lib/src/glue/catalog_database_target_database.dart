@@ -8,7 +8,7 @@ class CatalogDatabaseTargetDatabase {
   /// Name of the catalog database.
   final pulumi.Input<String> databaseName;
   /// Region of the target database.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [CatalogDatabaseTargetDatabase].
   /// [catalogId] ID of the Data Catalog in which the database resides.

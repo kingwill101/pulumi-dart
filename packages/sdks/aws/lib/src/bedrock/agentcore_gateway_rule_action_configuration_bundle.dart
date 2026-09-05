@@ -6,9 +6,9 @@ import 'agentcore_gateway_rule_action_configuration_bundle_weighted_override.dar
 
 class AgentcoreGatewayRuleActionConfigurationBundle {
   /// Statically override the configuration bundle used for the matched request.
-  final pulumi.Input<AgentcoreGatewayRuleActionConfigurationBundleStaticOverride>? staticOverride;
+  final pulumi.Input<AgentcoreGatewayRuleActionConfigurationBundleStaticOverride?>? staticOverride;
   /// Distribute the request across two configuration bundle versions by weight.
-  final pulumi.Input<AgentcoreGatewayRuleActionConfigurationBundleWeightedOverride>? weightedOverride;
+  final pulumi.Input<AgentcoreGatewayRuleActionConfigurationBundleWeightedOverride?>? weightedOverride;
 
   /// Creates a new [AgentcoreGatewayRuleActionConfigurationBundle].
   /// [staticOverride] Statically override the configuration bundle used for the matched request.

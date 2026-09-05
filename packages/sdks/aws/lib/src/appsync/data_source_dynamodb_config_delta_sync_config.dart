@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceDynamodbConfigDeltaSyncConfig {
   /// Number of minutes that an Item is stored in the data source.
-  final pulumi.Input<int>? baseTableTtl;
+  final pulumi.Input<int?>? baseTableTtl;
   /// Table name.
   final pulumi.Input<String> deltaSyncTableName;
   /// Number of minutes that a Delta Sync log entry is stored in the Delta Sync table.
-  final pulumi.Input<int>? deltaSyncTableTtl;
+  final pulumi.Input<int?>? deltaSyncTableTtl;
 
   /// Creates a new [DataSourceDynamodbConfigDeltaSyncConfig].
   /// [baseTableTtl] Number of minutes that an Item is stored in the data source.
@@ -30,9 +30,9 @@ class DataSourceDynamodbConfigDeltaSyncConfig {
 
   factory DataSourceDynamodbConfigDeltaSyncConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceDynamodbConfigDeltaSyncConfig(
-      baseTableTtl: (() { final guardedValue = map['baseTableTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      baseTableTtl: (() { final guardedValue = map['baseTableTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deltaSyncTableName: pulumi.Input.fromValue(map['deltaSyncTableName'] as String),
-      deltaSyncTableTtl: (() { final guardedValue = map['deltaSyncTableTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deltaSyncTableTtl: (() { final guardedValue = map['deltaSyncTableTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

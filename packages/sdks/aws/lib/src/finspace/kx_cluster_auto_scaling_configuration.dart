@@ -46,11 +46,11 @@ class KxClusterAutoScalingConfiguration {
   factory KxClusterAutoScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterAutoScalingConfiguration(
       autoScalingMetric: pulumi.Input.fromValue(map['autoScalingMetric'] as String),
-      maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
-      metricTarget: pulumi.Input.fromValue(map['metricTarget'] as double),
-      minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
-      scaleInCooldownSeconds: pulumi.Input.fromValue(map['scaleInCooldownSeconds'] as double),
-      scaleOutCooldownSeconds: pulumi.Input.fromValue(map['scaleOutCooldownSeconds'] as double),
+      maxNodeCount: pulumi.Input.fromValue((map['maxNodeCount'] as num).toInt()),
+      metricTarget: pulumi.Input.fromValue((map['metricTarget'] as num).toDouble()),
+      minNodeCount: pulumi.Input.fromValue((map['minNodeCount'] as num).toInt()),
+      scaleInCooldownSeconds: pulumi.Input.fromValue((map['scaleInCooldownSeconds'] as num).toDouble()),
+      scaleOutCooldownSeconds: pulumi.Input.fromValue((map['scaleOutCooldownSeconds'] as num).toDouble()),
     );
   }
 }

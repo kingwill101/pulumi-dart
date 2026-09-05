@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineNotifications {
   /// The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing a job in this pipeline.
-  final pulumi.Input<String>? completed;
+  final pulumi.Input<String?>? completed;
   /// The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition while processing a job in this pipeline.
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
   /// The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process a job in this pipeline.
-  final pulumi.Input<String>? progressing;
+  final pulumi.Input<String?>? progressing;
   /// The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition while processing a job in this pipeline.
   ///
   /// The `thumbnailConfig` object specifies information about the Amazon S3 bucket in
@@ -20,7 +20,7 @@ class PipelineNotifications {
   /// whether to create thumbnails when you create a job. For more information, see
   /// ThumbnailPattern in the topic Create Job.) If you specify values for
   /// `contentConfig` and `thumbnailConfig`, omit the OutputBucket object.
-  final pulumi.Input<String>? warning;
+  final pulumi.Input<String?>? warning;
 
   /// Creates a new [PipelineNotifications].
   /// [completed] The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder has finished processing a job in this pipeline.

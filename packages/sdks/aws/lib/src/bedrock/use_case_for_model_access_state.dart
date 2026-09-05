@@ -7,7 +7,7 @@ class UseCaseForModelAccessState {
   /// Form data from the Anthropic first time user request. See also the example [payload](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_PutUseCaseForModelAccess.html#API_PutUseCaseForModelAccess_Examples).
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? formData;
+  final pulumi.Input<String?>? formData;
 
   /// Creates a new [UseCaseForModelAccessState].
   /// [formData] Form data from the Anthropic first time user request. See also the example [payload](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_PutUseCaseForModelAccess.html#API_PutUseCaseForModelAccess_Examples).

@@ -6,7 +6,7 @@ import 'channel_input_attachment_input_settings_audio_selector_selector_settings
 
 class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection {
   /// Configure decoding options for Dolby E streams - these should be Dolby E frames carried in PCM streams tagged with SMPTE-337. See Dolby E Decode for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionDolbyEDecode>? dolbyEDecode;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionDolbyEDecode?>? dolbyEDecode;
   /// Selects one or more unique audio tracks from within a source. See Audio Tracks for more details.
   final pulumi.Input<List<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack>> tracks;
 

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPhoneConfig {
   /// The After Call Work (ACW) timeout setting, in seconds. Minimum value of 0.
-  final pulumi.Input<int>? afterContactWorkTimeLimit;
+  final pulumi.Input<int?>? afterContactWorkTimeLimit;
   /// When Auto-Accept Call is enabled for an available agent, the agent connects to contacts automatically.
-  final pulumi.Input<bool>? autoAccept;
+  final pulumi.Input<bool?>? autoAccept;
   /// The phone number for the user's desk phone. Required if `phoneType` is set as `DESK_PHONE`.
-  final pulumi.Input<String>? deskPhoneNumber;
+  final pulumi.Input<String?>? deskPhoneNumber;
   /// The phone type. Valid values are `DESK_PHONE` and `SOFT_PHONE`.
   final pulumi.Input<String> phoneType;
 
@@ -35,7 +35,7 @@ class UserPhoneConfig {
 
   factory UserPhoneConfig.fromMap(Map<String, dynamic> map) {
     return UserPhoneConfig(
-      afterContactWorkTimeLimit: (() { final guardedValue = map['afterContactWorkTimeLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      afterContactWorkTimeLimit: (() { final guardedValue = map['afterContactWorkTimeLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       autoAccept: (() { final guardedValue = map['autoAccept']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deskPhoneNumber: (() { final guardedValue = map['deskPhoneNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       phoneType: pulumi.Input.fromValue(map['phoneType'] as String),

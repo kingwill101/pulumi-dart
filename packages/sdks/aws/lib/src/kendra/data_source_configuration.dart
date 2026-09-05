@@ -7,11 +7,11 @@ import 'data_source_configuration_web_crawler_configuration.dart';
 
 class DataSourceConfiguration {
   /// A block that provides the configuration information to connect to an Amazon S3 bucket as your data source. Detailed below.
-  final pulumi.Input<DataSourceConfigurationS3Configuration>? s3Configuration;
+  final pulumi.Input<DataSourceConfigurationS3Configuration?>? s3Configuration;
   /// A block that provides the configuration information required for Amazon Kendra Web Crawler. Detailed below.
-  final pulumi.Input<DataSourceConfigurationTemplateConfiguration>? templateConfiguration;
+  final pulumi.Input<DataSourceConfigurationTemplateConfiguration?>? templateConfiguration;
   /// A block that provides the configuration information required for Amazon Kendra Web Crawler. Detailed below.
-  final pulumi.Input<DataSourceConfigurationWebCrawlerConfiguration>? webCrawlerConfiguration;
+  final pulumi.Input<DataSourceConfigurationWebCrawlerConfiguration?>? webCrawlerConfiguration;
 
   /// Creates a new [DataSourceConfiguration].
   /// [s3Configuration] A block that provides the configuration information to connect to an Amazon S3 bucket as your data source. Detailed below.

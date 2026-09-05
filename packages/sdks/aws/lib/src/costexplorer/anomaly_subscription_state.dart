@@ -7,23 +7,23 @@ import 'anomaly_subscription_threshold_expression.dart';
 /// Input properties used for looking up and filtering AnomalySubscription resources.
 class AnomalySubscriptionState {
   /// The unique identifier for the AWS account in which the anomaly subscription ought to be created.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// ARN of the anomaly subscription.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The frequency that anomaly reports are sent. Valid Values: `DAILY` | `IMMEDIATE` | `WEEKLY`.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
   /// A list of cost anomaly monitors.
-  final pulumi.Input<List<String>>? monitorArnLists;
+  final pulumi.Input<List<String>?>? monitorArnLists;
   /// The name for the subscription.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A subscriber configuration. Multiple subscribers can be defined.
-  final pulumi.Input<List<AnomalySubscriptionSubscriber>>? subscribers;
+  final pulumi.Input<List<AnomalySubscriptionSubscriber>?>? subscribers;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
-  final pulumi.Input<AnomalySubscriptionThresholdExpression>? thresholdExpression;
+  final pulumi.Input<AnomalySubscriptionThresholdExpression?>? thresholdExpression;
 
   /// Creates a new [AnomalySubscriptionState].
   /// [accountId] The unique identifier for the AWS account in which the anomaly subscription ought to be created.

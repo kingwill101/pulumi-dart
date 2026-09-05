@@ -8,15 +8,15 @@ class ResourceDataSyncS3Destination {
   final pulumi.Input<String> bucketName;
   /// Enables destination data sharing.
   /// See `destinationDataSharing` below.
-  final pulumi.Input<ResourceDataSyncS3DestinationDestinationDataSharing>? destinationDataSharing;
+  final pulumi.Input<ResourceDataSyncS3DestinationDestinationDataSharing?>? destinationDataSharing;
   /// ARN of an encryption key for a destination in Amazon S3.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Prefix for the bucket.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Region with the bucket targeted by the Resource Data Sync.
   final pulumi.Input<String> region;
   /// A supported sync format. Only JsonSerDe is currently supported. Defaults to JsonSerDe.
-  final pulumi.Input<String>? syncFormat;
+  final pulumi.Input<String?>? syncFormat;
 
   /// Creates a new [ResourceDataSyncS3Destination].
   /// [bucketName] Name of S3 bucket where the aggregated data is stored.

@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2transitgateway_vpc_attachment_accepter_vpc_attachment_accepter_args_doc}
 class VpcAttachmentAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the EC2 Transit Gateway VPC Attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the EC2 Transit Gateway Attachment to manage.
   final pulumi.Input<String> transitGatewayAttachmentId;
   /// Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. Default value: `true`.
-  final pulumi.Input<bool>? transitGatewayDefaultRouteTableAssociation;
+  final pulumi.Input<bool?>? transitGatewayDefaultRouteTableAssociation;
   /// Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. Default value: `true`.
-  final pulumi.Input<bool>? transitGatewayDefaultRouteTablePropagation;
+  final pulumi.Input<bool?>? transitGatewayDefaultRouteTablePropagation;
 
   /// Creates a new [VpcAttachmentAccepterArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

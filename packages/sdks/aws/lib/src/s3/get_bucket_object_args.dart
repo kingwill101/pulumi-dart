@@ -12,13 +12,13 @@ class GetBucketObjectArgs {
   /// Full path to the object inside the bucket
   final pulumi.Input<String> key;
   /// Range of bytes to read from the object, formatted as an [HTTP `Range` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Range).
-  final pulumi.Input<String>? range;
+  final pulumi.Input<String?>? range;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the object.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specific version ID of the object returned (defaults to latest version)
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [GetBucketObjectArgs].
   /// [bucket] Name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified. Use the `aws.s3.BucketObjectv2` data source instead.

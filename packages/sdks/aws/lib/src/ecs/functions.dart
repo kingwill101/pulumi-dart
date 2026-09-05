@@ -131,6 +131,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecs/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Data source for managing an AWS ECS (Elastic Container) Clusters.
 ///
 /// ## Example Usage
@@ -239,6 +250,17 @@ Future<GetClustersResult> getClusters(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClustersResult.fromMap(result);
+}
+
+pulumi.Output<GetClustersResult> getClustersOutput(
+  GetClustersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecs/getClusters:getClusters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClustersResult.fromMap);
 }
 
 /// The ECS container definition data source allows access to details of
@@ -367,6 +389,17 @@ Future<GetContainerDefinitionResult> getContainerDefinition(
   return GetContainerDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetContainerDefinitionResult> getContainerDefinitionOutput(
+  GetContainerDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecs/getContainerDefinition:getContainerDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerDefinitionResult.fromMap);
+}
+
 /// The ECS Service data source allows access to details of a specific
 /// Service within a AWS ECS Cluster.
 ///
@@ -491,6 +524,17 @@ Future<GetServiceResult> getService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecs/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
 }
 
 /// The ECS task definition data source allows access to details of
@@ -818,6 +862,17 @@ Future<GetTaskDefinitionResult> getTaskDefinition(
   return GetTaskDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetTaskDefinitionResult> getTaskDefinitionOutput(
+  GetTaskDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecs/getTaskDefinition:getTaskDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTaskDefinitionResult.fromMap);
+}
+
 /// Data source for managing an AWS ECS (Elastic Container) Task Execution. This data source calls the [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html) API, allowing execution of one-time tasks that don't fit a standard resource lifecycle. See the feature request issue for additional context.
 ///
 /// &gt; **NOTE on preview operations:** This data source calls the `RunTask` API on every read operation, which means new task(s) may be created from a `pulumi preview` command if all attributes are known. Placing this functionality behind a data source is an intentional trade off to enable use cases requiring a one-time task execution without relying on provisioners. Caution should be taken to ensure the data source is only executed once, or that the resulting tasks can safely run in parallel.
@@ -832,30 +887,30 @@ Future<GetTaskDefinitionResult> getTaskDefinition(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.ecs.getTaskExecution({
-///     cluster: exampleAwsEcsCluster.id,
-///     taskDefinition: exampleAwsEcsTaskDefinition.arn,
-///     desiredCount: 1,
-///     launchType: "FARGATE",
 ///     networkConfiguration: {
 ///         subnets: exampleAwsSubnet.map(__item => __item.id),
 ///         securityGroups: [exampleAwsSecurityGroup.id],
 ///         assignPublicIp: false,
 ///     },
+///     cluster: exampleAwsEcsCluster.id,
+///     taskDefinition: exampleAwsEcsTaskDefinition.arn,
+///     desiredCount: 1,
+///     launchType: "FARGATE",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.ecs.get_task_execution(cluster=example_aws_ecs_cluster["id"],
-///     task_definition=example_aws_ecs_task_definition["arn"],
-///     desired_count=1,
-///     launch_type="FARGATE",
-///     network_configuration={
+/// example = aws.ecs.get_task_execution(network_configuration={
 ///         "subnets": [__item["id"] for __item in example_aws_subnet],
 ///         "security_groups": [example_aws_security_group["id"]],
 ///         "assign_public_ip": False,
-///     })
+///     },
+///     cluster=example_aws_ecs_cluster["id"],
+///     task_definition=example_aws_ecs_task_definition["arn"],
+///     desired_count=1,
+///     launch_type="FARGATE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -867,10 +922,6 @@ Future<GetTaskDefinitionResult> getTaskDefinition(
 /// {
 ///     var example = Aws.Ecs.GetTaskExecution.Invoke(new()
 ///     {
-///         Cluster = exampleAwsEcsCluster.Id,
-///         TaskDefinition = exampleAwsEcsTaskDefinition.Arn,
-///         DesiredCount = 1,
-///         LaunchType = "FARGATE",
 ///         NetworkConfiguration = new Aws.Ecs.Inputs.GetTaskExecutionNetworkConfigurationInputArgs
 ///         {
 ///             Subnets = exampleAwsSubnet.Select(__item => __item.Id).ToList(),
@@ -880,6 +931,10 @@ Future<GetTaskDefinitionResult> getTaskDefinition(
 ///             },
 ///             AssignPublicIp = false,
 ///         },
+///         Cluster = exampleAwsEcsCluster.Id,
+///         TaskDefinition = exampleAwsEcsTaskDefinition.Arn,
+///         DesiredCount = 1,
+///         LaunchType = "FARGATE",
 ///     });
 ///
 /// });
@@ -894,17 +949,17 @@ Future<GetTaskDefinitionResult> getTaskDefinition(
 /// func main() {
 /// pulumi.Run(func(ctx *pulumi.Context) error {
 /// _, err := ecs.GetTaskExecution(ctx, &ecs.GetTaskExecutionArgs{
-/// Cluster: exampleAwsEcsCluster.Id,
-/// TaskDefinition: exampleAwsEcsTaskDefinition.Arn,
-/// DesiredCount: pulumi.IntRef(1),
-/// LaunchType: pulumi.StringRef("FARGATE"),
 /// NetworkConfiguration: ecs.GetTaskExecutionNetworkConfiguration{
-/// Subnets: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,22-44)),
+/// Subnets: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:2,22-44)),
 /// SecurityGroups: pulumi.StringArray{
 /// exampleAwsSecurityGroup.Id,
 /// },
 /// AssignPublicIp: pulumi.BoolRef(false),
 /// },
+/// Cluster: exampleAwsEcsCluster.Id,
+/// TaskDefinition: exampleAwsEcsTaskDefinition.Arn,
+/// DesiredCount: pulumi.IntRef(1),
+/// LaunchType: pulumi.StringRef("FARGATE"),
 /// }, nil);
 /// if err != nil {
 /// return err
@@ -923,15 +978,15 @@ Future<GetTaskDefinitionResult> getTaskDefinition(
 /// }
 ///
 /// data "aws_ecs_gettaskexecution" "example" {
-///   cluster         = exampleAwsEcsCluster.id
-///   task_definition = exampleAwsEcsTaskDefinition.arn
-///   desired_count   = 1
-///   launch_type     = "FARGATE"
 ///   network_configuration = {
 ///     subnets          = exampleAwsSubnet[*].id
 ///     security_groups  = [exampleAwsSecurityGroup.id]
 ///     assign_public_ip = false
 ///   }
+///   cluster         = exampleAwsEcsCluster.id
+///   task_definition = exampleAwsEcsTaskDefinition.arn
+///   desired_count   = 1
+///   launch_type     = "FARGATE"
 /// }
 /// ```
 /// ```java
@@ -957,15 +1012,15 @@ Future<GetTaskDefinitionResult> getTaskDefinition(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = EcsFunctions.getTaskExecution(GetTaskExecutionArgs.builder()
-///             .cluster(exampleAwsEcsCluster.id())
-///             .taskDefinition(exampleAwsEcsTaskDefinition.arn())
-///             .desiredCount(1)
-///             .launchType("FARGATE")
 ///             .networkConfiguration(GetTaskExecutionNetworkConfigurationArgs.builder()
 ///                 .subnets(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
 ///                 .securityGroups(exampleAwsSecurityGroup.id())
 ///                 .assignPublicIp(false)
 ///                 .build())
+///             .cluster(exampleAwsEcsCluster.id())
+///             .taskDefinition(exampleAwsEcsTaskDefinition.arn())
+///             .desiredCount(1)
+///             .launchType("FARGATE")
 ///             .build());
 ///
 ///     }
@@ -984,4 +1039,15 @@ Future<GetTaskExecutionResult> getTaskExecution(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTaskExecutionResult.fromMap(result);
+}
+
+pulumi.Output<GetTaskExecutionResult> getTaskExecutionOutput(
+  GetTaskExecutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ecs/getTaskExecution:getTaskExecution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTaskExecutionResult.fromMap);
 }

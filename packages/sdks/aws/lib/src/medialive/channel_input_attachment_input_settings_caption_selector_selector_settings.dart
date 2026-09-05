@@ -10,19 +10,19 @@ import 'channel_input_attachment_input_settings_caption_selector_selector_settin
 
 class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings {
   /// Ancillary Source Settings. See Ancillary Source Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsAncillarySourceSettings>? ancillarySourceSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsAncillarySourceSettings?>? ancillarySourceSettings;
   /// ARIB Source Settings.
-  final pulumi.Input<Map<String, dynamic>>? aribSourceSettings;
+  final pulumi.Input<Map<String, dynamic>?>? aribSourceSettings;
   /// DVB Sub Source Settings. See DVB Sub Source Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings>? dvbSubSourceSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings?>? dvbSubSourceSettings;
   /// Embedded Source Settings. See Embedded Source Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsEmbeddedSourceSettings>? embeddedSourceSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsEmbeddedSourceSettings?>? embeddedSourceSettings;
   /// SCTE20 Source Settings. See SCTE 20 Source Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings>? scte20SourceSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings?>? scte20SourceSettings;
   /// SCTE27 Source Settings. See SCTE 27 Source Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings>? scte27SourceSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings?>? scte27SourceSettings;
   /// Teletext Source Settings. See Teletext Source Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings>? teletextSourceSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings?>? teletextSourceSettings;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings].
   /// [ancillarySourceSettings] Ancillary Source Settings. See Ancillary Source Settings for more details.

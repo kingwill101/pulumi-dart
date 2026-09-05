@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_access_logs.dart';
 import 'load_balancer_args.dart';
 import 'load_balancer_health_check.dart';
+import 'load_balancer_listener.dart';
 import 'load_balancer_state.dart';
 
 /// Provides an Elastic Load Balancer resource, also known as a "Classic
@@ -24,16 +25,17 @@ import 'load_balancer_state.dart';
 ///
 /// // Create a new load balancer
 /// const bar = new aws.elb.LoadBalancer("bar", {
-///     name: "foobar-elb",
-///     availabilityZones: [
-///         "us-west-2a",
-///         "us-west-2b",
-///         "us-west-2c",
-///     ],
 ///     accessLogs: {
 ///         bucket: "foo",
 ///         bucketPrefix: "bar",
 ///         interval: 60,
+///     },
+///     healthCheck: {
+///         healthyThreshold: 2,
+///         unhealthyThreshold: 2,
+///         timeout: 3,
+///         target: "HTTP:8000/",
+///         interval: 30,
 ///     },
 ///     listeners: [
 ///         {
@@ -50,13 +52,12 @@ import 'load_balancer_state.dart';
 ///             sslCertificateId: "arn:aws:iam::123456789012:server-certificate/certName",
 ///         },
 ///     ],
-///     healthCheck: {
-///         healthyThreshold: 2,
-///         unhealthyThreshold: 2,
-///         timeout: 3,
-///         target: "HTTP:8000/",
-///         interval: 30,
-///     },
+///     name: "foobar-elb",
+///     availabilityZones: [
+///         "us-west-2a",
+///         "us-west-2b",
+///         "us-west-2c",
+///     ],
 ///     instances: [foo.id],
 ///     crossZoneLoadBalancing: true,
 ///     idleTimeout: 400,
@@ -73,16 +74,17 @@ import 'load_balancer_state.dart';
 ///
 /// # Create a new load balancer
 /// bar = aws.elb.LoadBalancer("bar",
-///     name="foobar-elb",
-///     availability_zones=[
-///         "us-west-2a",
-///         "us-west-2b",
-///         "us-west-2c",
-///     ],
 ///     access_logs={
 ///         "bucket": "foo",
 ///         "bucket_prefix": "bar",
 ///         "interval": 60,
+///     },
+///     health_check={
+///         "healthy_threshold": 2,
+///         "unhealthy_threshold": 2,
+///         "timeout": 3,
+///         "target": "HTTP:8000/",
+///         "interval": 30,
 ///     },
 ///     listeners=[
 ///         {
@@ -99,13 +101,12 @@ import 'load_balancer_state.dart';
 ///             "ssl_certificate_id": "arn:aws:iam::123456789012:server-certificate/certName",
 ///         },
 ///     ],
-///     health_check={
-///         "healthy_threshold": 2,
-///         "unhealthy_threshold": 2,
-///         "timeout": 3,
-///         "target": "HTTP:8000/",
-///         "interval": 30,
-///     },
+///     name="foobar-elb",
+///     availability_zones=[
+///         "us-west-2a",
+///         "us-west-2b",
+///         "us-west-2c",
+///     ],
 ///     instances=[foo["id"]],
 ///     cross_zone_load_balancing=True,
 ///     idle_timeout=400,
@@ -126,18 +127,19 @@ import 'load_balancer_state.dart';
 ///     // Create a new load balancer
 ///     var bar = new Aws.Elb.LoadBalancer("bar", new()
 ///     {
-///         Name = "foobar-elb",
-///         AvailabilityZones = new[]
-///         {
-///             "us-west-2a",
-///             "us-west-2b",
-///             "us-west-2c",
-///         },
 ///         AccessLogs = new Aws.Elb.Inputs.LoadBalancerAccessLogsArgs
 ///         {
 ///             Bucket = "foo",
 ///             BucketPrefix = "bar",
 ///             Interval = 60,
+///         },
+///         HealthCheck = new Aws.Elb.Inputs.LoadBalancerHealthCheckArgs
+///         {
+///             HealthyThreshold = 2,
+///             UnhealthyThreshold = 2,
+///             Timeout = 3,
+///             Target = "HTTP:8000/",
+///             Interval = 30,
 ///         },
 ///         Listeners = new[]
 ///         {
@@ -157,13 +159,12 @@ import 'load_balancer_state.dart';
 ///                 SslCertificateId = "arn:aws:iam::123456789012:server-certificate/certName",
 ///             },
 ///         },
-///         HealthCheck = new Aws.Elb.Inputs.LoadBalancerHealthCheckArgs
+///         Name = "foobar-elb",
+///         AvailabilityZones = new[]
 ///         {
-///             HealthyThreshold = 2,
-///             UnhealthyThreshold = 2,
-///             Timeout = 3,
-///             Target = "HTTP:8000/",
-///             Interval = 30,
+///             "us-west-2a",
+///             "us-west-2b",
+///             "us-west-2c",
 ///         },
 ///         Instances = new[]
 ///         {
@@ -193,16 +194,17 @@ import 'load_balancer_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// Create a new load balancer
 /// 		_, err := elb.NewLoadBalancer(ctx, "bar", &elb.LoadBalancerArgs{
-/// 			Name: pulumi.String("foobar-elb"),
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String("us-west-2a"),
-/// 				pulumi.String("us-west-2b"),
-/// 				pulumi.String("us-west-2c"),
-/// 			},
 /// 			AccessLogs: &elb.LoadBalancerAccessLogsArgs{
 /// 				Bucket:       pulumi.String("foo"),
 /// 				BucketPrefix: pulumi.String("bar"),
 /// 				Interval:     pulumi.Int(60),
+/// 			},
+/// 			HealthCheck: &elb.LoadBalancerHealthCheckArgs{
+/// 				HealthyThreshold:   pulumi.Int(2),
+/// 				UnhealthyThreshold: pulumi.Int(2),
+/// 				Timeout:            pulumi.Int(3),
+/// 				Target:             pulumi.String("HTTP:8000/"),
+/// 				Interval:           pulumi.Int(30),
 /// 			},
 /// 			Listeners: elb.LoadBalancerListenerArray{
 /// 				&elb.LoadBalancerListenerArgs{
@@ -219,12 +221,11 @@ import 'load_balancer_state.dart';
 /// 					SslCertificateId: pulumi.String("arn:aws:iam::123456789012:server-certificate/certName"),
 /// 				},
 /// 			},
-/// 			HealthCheck: &elb.LoadBalancerHealthCheckArgs{
-/// 				HealthyThreshold:   pulumi.Int(2),
-/// 				UnhealthyThreshold: pulumi.Int(2),
-/// 				Timeout:            pulumi.Int(3),
-/// 				Target:             pulumi.String("HTTP:8000/"),
-/// 				Interval:           pulumi.Int(30),
+/// 			Name: pulumi.String("foobar-elb"),
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String("us-west-2a"),
+/// 				pulumi.String("us-west-2b"),
+/// 				pulumi.String("us-west-2c"),
 /// 			},
 /// 			Instances: pulumi.StringArray{
 /// 				foo.Id,
@@ -255,12 +256,17 @@ import 'load_balancer_state.dart';
 ///
 /// # Create a new load balancer
 /// resource "aws_elb_loadbalancer" "bar" {
-///   name               = "foobar-elb"
-///   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
 ///   access_logs = {
 ///     bucket        = "foo"
 ///     bucket_prefix = "bar"
 ///     interval      = 60
+///   }
+///   health_check = {
+///     healthy_threshold   = 2
+///     unhealthy_threshold = 2
+///     timeout             = 3
+///     target              = "HTTP:8000/"
+///     interval            = 30
 ///   }
 ///   listeners {
 ///     instance_port     = 8000
@@ -275,13 +281,8 @@ import 'load_balancer_state.dart';
 ///     lb_protocol        = "https"
 ///     ssl_certificate_id = "arn:aws:iam::123456789012:server-certificate/certName"
 ///   }
-///   health_check = {
-///     healthy_threshold   = 2
-///     unhealthy_threshold = 2
-///     timeout             = 3
-///     target              = "HTTP:8000/"
-///     interval            = 30
-///   }
+///   name                        = "foobar-elb"
+///   availability_zones          = ["us-west-2a", "us-west-2b", "us-west-2c"]
 ///   instances                   = [foo.id]
 ///   cross_zone_load_balancing   = true
 ///   idle_timeout                = 400
@@ -301,8 +302,8 @@ import 'load_balancer_state.dart';
 /// import com.pulumi.aws.elb.LoadBalancer;
 /// import com.pulumi.aws.elb.LoadBalancerArgs;
 /// import com.pulumi.aws.elb.inputs.LoadBalancerAccessLogsArgs;
-/// import com.pulumi.aws.elb.inputs.LoadBalancerListenerArgs;
 /// import com.pulumi.aws.elb.inputs.LoadBalancerHealthCheckArgs;
+/// import com.pulumi.aws.elb.inputs.LoadBalancerListenerArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -318,15 +319,17 @@ import 'load_balancer_state.dart';
 ///     public static void stack(Context ctx) {
 ///         // Create a new load balancer
 ///         var bar = new LoadBalancer("bar", LoadBalancerArgs.builder()
-///             .name("foobar-elb")
-///             .availabilityZones(
-///                 "us-west-2a",
-///                 "us-west-2b",
-///                 "us-west-2c")
 ///             .accessLogs(LoadBalancerAccessLogsArgs.builder()
 ///                 .bucket("foo")
 ///                 .bucketPrefix("bar")
 ///                 .interval(60)
+///                 .build())
+///             .healthCheck(LoadBalancerHealthCheckArgs.builder()
+///                 .healthyThreshold(2)
+///                 .unhealthyThreshold(2)
+///                 .timeout(3)
+///                 .target("HTTP:8000/")
+///                 .interval(30)
 ///                 .build())
 ///             .listeners(
 ///                 LoadBalancerListenerArgs.builder()
@@ -342,13 +345,11 @@ import 'load_balancer_state.dart';
 ///                     .lbProtocol("https")
 ///                     .sslCertificateId("arn:aws:iam::123456789012:server-certificate/certName")
 ///                     .build())
-///             .healthCheck(LoadBalancerHealthCheckArgs.builder()
-///                 .healthyThreshold(2)
-///                 .unhealthyThreshold(2)
-///                 .timeout(3)
-///                 .target("HTTP:8000/")
-///                 .interval(30)
-///                 .build())
+///             .name("foobar-elb")
+///             .availabilityZones(
+///                 "us-west-2a",
+///                 "us-west-2b",
+///                 "us-west-2c")
 ///             .instances(foo.id())
 ///             .crossZoneLoadBalancing(true)
 ///             .idleTimeout(400)
@@ -366,15 +367,16 @@ import 'load_balancer_state.dart';
 ///   bar:
 ///     type: aws:elb:LoadBalancer
 ///     properties:
-///       name: foobar-elb
-///       availabilityZones:
-///         - us-west-2a
-///         - us-west-2b
-///         - us-west-2c
 ///       accessLogs:
 ///         bucket: foo
 ///         bucketPrefix: bar
 ///         interval: 60
+///       healthCheck:
+///         healthyThreshold: 2
+///         unhealthyThreshold: 2
+///         timeout: 3
+///         target: HTTP:8000/
+///         interval: 30
 ///       listeners:
 ///         - instancePort: 8000
 ///           instanceProtocol: http
@@ -385,12 +387,11 @@ import 'load_balancer_state.dart';
 ///           lbPort: 443
 ///           lbProtocol: https
 ///           sslCertificateId: arn:aws:iam::123456789012:server-certificate/certName
-///       healthCheck:
-///         healthyThreshold: 2
-///         unhealthyThreshold: 2
-///         timeout: 3
-///         target: HTTP:8000/
-///         interval: 30
+///       name: foobar-elb
+///       availabilityZones:
+///         - us-west-2a
+///         - us-west-2b
+///         - us-west-2c
 ///       instances:
 ///         - ${foo.id}
 ///       crossZoneLoadBalancing: true
@@ -447,7 +448,7 @@ class LoadBalancer extends pulumi.CustomResource {
   /// If true, ELB will be an internal ELB.
   late final pulumi.Output<bool> internal;
   /// A list of listener blocks. Listeners documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> listeners;
+  late final pulumi.Output<List<LoadBalancerListener>> listeners;
   /// The name of the ELB. By default generated by this provider.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified
@@ -490,11 +491,11 @@ class LoadBalancer extends pulumi.CustomResource {
           'aws:elb/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectionDraining = registerOutput<bool?>('connectionDraining');
     connectionDrainingTimeout = registerOutput<int?>('connectionDrainingTimeout');
     crossZoneLoadBalancing = registerOutput<bool?>('crossZoneLoadBalancing');
@@ -502,18 +503,18 @@ class LoadBalancer extends pulumi.CustomResource {
     dnsName = registerOutput<String>('dnsName');
     healthCheck = registerOutput<LoadBalancerHealthCheck>('healthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     idleTimeout = registerOutput<int?>('idleTimeout');
-    instances = registerOutput<List<String>>('instances');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     internal = registerOutput<bool>('internal');
-    listeners = registerOutput<List<Map<String, dynamic>>>('listeners');
+    listeners = registerOutput<List<LoadBalancerListener>>('listeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerListener>(guardedValue, (value) => LoadBalancerListener.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceSecurityGroup = registerOutput<String>('sourceSecurityGroup');
     sourceSecurityGroupId = registerOutput<String>('sourceSecurityGroupId');
-    subnets = registerOutput<List<String>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -522,11 +523,12 @@ class LoadBalancer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoadBalancerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoadBalancer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -542,7 +544,7 @@ class LoadBalancer extends pulumi.CustomResource {
         ) {
     accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectionDraining = registerOutput<bool?>('connectionDraining');
     connectionDrainingTimeout = registerOutput<int?>('connectionDrainingTimeout');
     crossZoneLoadBalancing = registerOutput<bool?>('crossZoneLoadBalancing');
@@ -550,18 +552,52 @@ class LoadBalancer extends pulumi.CustomResource {
     dnsName = registerOutput<String>('dnsName');
     healthCheck = registerOutput<LoadBalancerHealthCheck>('healthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     idleTimeout = registerOutput<int?>('idleTimeout');
-    instances = registerOutput<List<String>>('instances');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     internal = registerOutput<bool>('internal');
-    listeners = registerOutput<List<Map<String, dynamic>>>('listeners');
+    listeners = registerOutput<List<LoadBalancerListener>>('listeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerListener>(guardedValue, (value) => LoadBalancerListener.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceSecurityGroup = registerOutput<String>('sourceSecurityGroup');
     sourceSecurityGroupId = registerOutput<String>('sourceSecurityGroupId');
-    subnets = registerOutput<List<String>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zoneId = registerOutput<String>('zoneId');
+  }
+
+  /// Creates a typed reference to an existing [LoadBalancer] resource.
+  LoadBalancer.reference(String urn)
+    : super(
+        'aws:elb/loadBalancer:LoadBalancer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionDraining = registerOutput<bool?>('connectionDraining');
+    connectionDrainingTimeout = registerOutput<int?>('connectionDrainingTimeout');
+    crossZoneLoadBalancing = registerOutput<bool?>('crossZoneLoadBalancing');
+    desyncMitigationMode = registerOutput<String?>('desyncMitigationMode');
+    dnsName = registerOutput<String>('dnsName');
+    healthCheck = registerOutput<LoadBalancerHealthCheck>('healthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    idleTimeout = registerOutput<int?>('idleTimeout');
+    instances = registerOutput<List<String>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    internal = registerOutput<bool>('internal');
+    listeners = registerOutput<List<LoadBalancerListener>>('listeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerListener>(guardedValue, (value) => LoadBalancerListener.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceSecurityGroup = registerOutput<String>('sourceSecurityGroup');
+    sourceSecurityGroupId = registerOutput<String>('sourceSecurityGroupId');
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneId = registerOutput<String>('zoneId');
   }
 }

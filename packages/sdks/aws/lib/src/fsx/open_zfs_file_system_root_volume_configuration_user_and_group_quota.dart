@@ -30,8 +30,8 @@ class OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota {
 
   factory OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota.fromMap(Map<String, dynamic> map) {
     return OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota(
-      id: pulumi.Input.fromValue(map['id'] as int),
-      storageCapacityQuotaGib: pulumi.Input.fromValue(map['storageCapacityQuotaGib'] as int),
+      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      storageCapacityQuotaGib: pulumi.Input.fromValue((map['storageCapacityQuotaGib'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

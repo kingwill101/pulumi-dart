@@ -6,9 +6,9 @@ import 'agentcore_gateway_target_target_configuration_mcp_mcp_server_mcp_tool_sc
 
 class AgentcoreGatewayTargetTargetConfigurationMcpMcpServerMcpToolSchema {
   /// Inline tool schema payload. The `inlinePayload` block requires a `payload` (string) containing the MCP tool schema definition.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpMcpServerMcpToolSchemaInlinePayload>? inlinePayload;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpMcpServerMcpToolSchemaInlinePayload?>? inlinePayload;
   /// S3 location of the tool schema. See `s3` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpMcpServerMcpToolSchemaS3>? s3;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpMcpServerMcpToolSchemaS3?>? s3;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpMcpServerMcpToolSchema].
   /// [inlinePayload] Inline tool schema payload. The `inlinePayload` block requires a `payload` (string) containing the MCP tool schema definition.

@@ -14,14 +14,14 @@ import 'get_hosted_zone_id_result.dart';
 ///
 /// const main = aws.apprunner.getHostedZoneId({});
 /// const www = new aws.route53.Record("www", {
-///     zoneId: primary.zoneId,
-///     name: "example.com",
-///     type: aws.route53.RecordType.A,
 ///     aliases: [{
 ///         name: mainAwsApprunnerCustomDomainAssociation.dnsTarget,
 ///         zoneId: main.then(main => main.id),
 ///         evaluateTargetHealth: true,
 ///     }],
+///     zoneId: primary.zoneId,
+///     name: "example.com",
+///     type: aws.route53.RecordType.A,
 /// });
 /// ```
 /// ```python
@@ -30,14 +30,14 @@ import 'get_hosted_zone_id_result.dart';
 ///
 /// main = aws.apprunner.get_hosted_zone_id()
 /// www = aws.route53.Record("www",
-///     zone_id=primary["zoneId"],
-///     name="example.com",
-///     type=aws.route53.RecordType.A,
 ///     aliases=[{
 ///         "name": main_aws_apprunner_custom_domain_association["dnsTarget"],
 ///         "zone_id": main.id,
 ///         "evaluate_target_health": True,
-///     }])
+///     }],
+///     zone_id=primary["zoneId"],
+///     name="example.com",
+///     type=aws.route53.RecordType.A)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -51,9 +51,6 @@ import 'get_hosted_zone_id_result.dart';
 ///
 ///     var www = new Aws.Route53.Record("www", new()
 ///     {
-///         ZoneId = primary.ZoneId,
-///         Name = "example.com",
-///         Type = Aws.Route53.RecordType.A,
 ///         Aliases = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordAliasArgs
@@ -63,6 +60,9 @@ import 'get_hosted_zone_id_result.dart';
 ///                 EvaluateTargetHealth = true,
 ///             },
 ///         },
+///         ZoneId = primary.ZoneId,
+///         Name = "example.com",
+///         Type = Aws.Route53.RecordType.A,
 ///     });
 ///
 /// });
@@ -83,9 +83,6 @@ import 'get_hosted_zone_id_result.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewRecord(ctx, "www", &route53.RecordArgs{
-/// 			ZoneId: pulumi.Any(primary.ZoneId),
-/// 			Name:   pulumi.String("example.com"),
-/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 			Aliases: route53.RecordAliasArray{
 /// 				&route53.RecordAliasArgs{
 /// 					Name:                 pulumi.Any(mainAwsApprunnerCustomDomainAssociation.DnsTarget),
@@ -93,6 +90,9 @@ import 'get_hosted_zone_id_result.dart';
 /// 					EvaluateTargetHealth: pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			ZoneId: pulumi.Any(primary.ZoneId),
+/// 			Name:   pulumi.String("example.com"),
+/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -114,14 +114,14 @@ import 'get_hosted_zone_id_result.dart';
 /// }
 ///
 /// resource "aws_route53_record" "www" {
-///   zone_id = primary.zoneId
-///   name    = "example.com"
-///   type    = "A"
 ///   aliases {
 ///     name                   = mainAwsApprunnerCustomDomainAssociation.dnsTarget
 ///     zone_id                = data.aws_apprunner_gethostedzoneid.main.id
 ///     evaluate_target_health = true
 ///   }
+///   zone_id = primary.zoneId
+///   name    = "example.com"
+///   type    = "A"
 /// }
 /// ```
 /// ```java
@@ -152,14 +152,14 @@ import 'get_hosted_zone_id_result.dart';
 ///             .build());
 ///
 ///         var www = new Record("www", RecordArgs.builder()
-///             .zoneId(primary.zoneId())
-///             .name("example.com")
-///             .type("A")
 ///             .aliases(RecordAliasArgs.builder()
 ///                 .name(mainAwsApprunnerCustomDomainAssociation.dnsTarget())
 ///                 .zoneId(main.id())
 ///                 .evaluateTargetHealth(true)
 ///                 .build())
+///             .zoneId(primary.zoneId())
+///             .name("example.com")
+///             .type("A")
 ///             .build());
 ///
 ///     }
@@ -170,13 +170,13 @@ import 'get_hosted_zone_id_result.dart';
 ///   www:
 ///     type: aws:route53:Record
 ///     properties:
-///       zoneId: ${primary.zoneId}
-///       name: example.com
-///       type: A
 ///       aliases:
 ///         - name: ${mainAwsApprunnerCustomDomainAssociation.dnsTarget}
 ///           zoneId: ${main.id}
 ///           evaluateTargetHealth: true
+///       zoneId: ${primary.zoneId}
+///       name: example.com
+///       type: A
 /// variables:
 ///   main:
 ///     fn::invoke:
@@ -196,4 +196,15 @@ Future<GetHostedZoneIdResult> getHostedZoneId(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHostedZoneIdResult.fromMap(result);
+}
+
+pulumi.Output<GetHostedZoneIdResult> getHostedZoneIdOutput(
+  GetHostedZoneIdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:apprunner/getHostedZoneId:getHostedZoneId',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostedZoneIdResult.fromMap);
 }

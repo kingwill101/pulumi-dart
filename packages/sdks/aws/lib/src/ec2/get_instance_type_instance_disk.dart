@@ -27,8 +27,8 @@ class GetInstanceTypeInstanceDisk {
 
   factory GetInstanceTypeInstanceDisk.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeInstanceDisk(
-      count: pulumi.Input.fromValue(map['count'] as int),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

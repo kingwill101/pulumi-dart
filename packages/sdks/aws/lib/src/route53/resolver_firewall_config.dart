@@ -188,7 +188,7 @@ class ResolverFirewallConfig extends pulumi.CustomResource {
           'aws:route53/resolverFirewallConfig:ResolverFirewallConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     firewallFailOpen = registerOutput<String>('firewallFailOpen');
     ownerId = registerOutput<String>('ownerId');
@@ -201,11 +201,12 @@ class ResolverFirewallConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverFirewallConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverFirewallConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -219,6 +220,21 @@ class ResolverFirewallConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    firewallFailOpen = registerOutput<String>('firewallFailOpen');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+  }
+
+  /// Creates a typed reference to an existing [ResolverFirewallConfig] resource.
+  ResolverFirewallConfig.reference(String urn)
+    : super(
+        'aws:route53/resolverFirewallConfig:ResolverFirewallConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     firewallFailOpen = registerOutput<String>('firewallFailOpen');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');

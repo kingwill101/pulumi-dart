@@ -15,7 +15,7 @@ class ByteMatchSetByteMatchTuple {
   /// The value that you want to search for within the field specified by `fieldToMatch`, e.g., `badrefer1`.
   /// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_waf_ByteMatchTuple.html)
   /// for all supported values.
-  final pulumi.Input<String>? targetString;
+  final pulumi.Input<String?>? targetString;
   /// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
   /// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
   /// e.g., `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.

@@ -12,9 +12,9 @@ class GetModelAgreementOffersArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> modelId;
   /// Type of offer associated with the model. Valid values are `ALL` and `PUBLIC`.
-  final pulumi.Input<String>? offerType;
+  final pulumi.Input<String?>? offerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetModelAgreementOffersArgs].
   /// [modelId] Model ID of the foundation model

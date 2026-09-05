@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReceiptRuleLambdaAction {
-  /// The ARN of the Lambda function to invoke
+  /// ARN of the Lambda function to invoke.
   final pulumi.Input<String> functionArn;
-  /// `Event` or `RequestResponse`
-  final pulumi.Input<String>? invocationType;
-  /// The position of the action in the receipt rule
+  /// `Event` or `RequestResponse`.
+  final pulumi.Input<String?>? invocationType;
+  /// Position of the action in the receipt rule.
   final pulumi.Input<int> position;
-  /// The ARN of an SNS topic to notify
-  final pulumi.Input<String>? topicArn;
+  /// ARN of an SNS topic to notify.
+  final pulumi.Input<String?>? topicArn;
 
   /// Creates a new [ReceiptRuleLambdaAction].
-  /// [functionArn] The ARN of the Lambda function to invoke
-  /// [invocationType] `Event` or `RequestResponse`
-  /// [position] The position of the action in the receipt rule
-  /// [topicArn] The ARN of an SNS topic to notify
+  /// [functionArn] ARN of the Lambda function to invoke.
+  /// [invocationType] `Event` or `RequestResponse`.
+  /// [position] Position of the action in the receipt rule.
+  /// [topicArn] ARN of an SNS topic to notify.
   const ReceiptRuleLambdaAction({
     required this.functionArn,
     this.invocationType,
@@ -37,7 +37,7 @@ class ReceiptRuleLambdaAction {
     return ReceiptRuleLambdaAction(
       functionArn: pulumi.Input.fromValue(map['functionArn'] as String),
       invocationType: (() { final guardedValue = map['invocationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      position: pulumi.Input.fromValue(map['position'] as int),
+      position: pulumi.Input.fromValue((map['position'] as num).toInt()),
       topicArn: (() { final guardedValue = map['topicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

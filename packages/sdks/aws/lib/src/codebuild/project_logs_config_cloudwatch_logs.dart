@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectLogsConfigCloudwatchLogs {
   /// Group name of the logs in CloudWatch Logs.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// Current status of logs in CloudWatch Logs for a build project. Valid values: `ENABLED`,
   /// `DISABLED`. Defaults to `ENABLED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Prefix of the log stream name of the logs in CloudWatch Logs.
-  final pulumi.Input<String>? streamName;
+  final pulumi.Input<String?>? streamName;
 
   /// Creates a new [ProjectLogsConfigCloudwatchLogs].
   /// [groupName] Group name of the logs in CloudWatch Logs.

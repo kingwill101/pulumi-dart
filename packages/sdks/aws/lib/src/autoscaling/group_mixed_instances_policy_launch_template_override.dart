@@ -6,13 +6,13 @@ import 'group_mixed_instances_policy_launch_template_override_launch_template_sp
 
 class GroupMixedInstancesPolicyLaunchTemplateOverride {
   /// Override the instance type in the Launch Template with instance types that satisfy the requirements.
-  final pulumi.Input<GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements>? instanceRequirements;
+  final pulumi.Input<GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirements?>? instanceRequirements;
   /// Override the instance type in the Launch Template.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// Override the instance launch template specification in the Launch Template.
-  final pulumi.Input<GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification>? launchTemplateSpecification;
+  final pulumi.Input<GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification?>? launchTemplateSpecification;
   /// Number of capacity units, which gives the instance type a proportional weight to other instance types.
-  final pulumi.Input<String>? weightedCapacity;
+  final pulumi.Input<String?>? weightedCapacity;
 
   /// Creates a new [GroupMixedInstancesPolicyLaunchTemplateOverride].
   /// [instanceRequirements] Override the instance type in the Launch Template with instance types that satisfy the requirements.

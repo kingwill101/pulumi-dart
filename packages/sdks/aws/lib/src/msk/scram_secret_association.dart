@@ -24,12 +24,12 @@ import 'scram_secret_association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleCluster = new aws.msk.Cluster("example", {
-///     clusterName: "example",
 ///     clientAuthentication: {
 ///         sasl: {
 ///             scram: true,
 ///         },
 ///     },
+///     clusterName: "example",
 /// });
 /// const exampleKey = new aws.kms.Key("example", {description: "Example Key for MSK Cluster Scram Secret Association"});
 /// const exampleSecret = new aws.secretsmanager.Secret("example", {
@@ -51,12 +51,12 @@ import 'scram_secret_association_state.dart';
 /// });
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         sid: "AWSKafkaResourcePolicy",
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["kafka.amazonaws.com"],
 ///         }],
+///         sid: "AWSKafkaResourcePolicy",
+///         effect: "Allow",
 ///         actions: ["secretsmanager:getSecretValue"],
 ///         resources: [exampleSecret.arn],
 ///     }],
@@ -72,12 +72,12 @@ import 'scram_secret_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_cluster = aws.msk.Cluster("example",
-///     cluster_name="example",
 ///     client_authentication={
 ///         "sasl": {
 ///             "scram": True,
 ///         },
-///     })
+///     },
+///     cluster_name="example")
 /// example_key = aws.kms.Key("example", description="Example Key for MSK Cluster Scram Secret Association")
 /// example_secret = aws.secretsmanager.Secret("example",
 ///     name="AmazonMSK_example",
@@ -93,12 +93,12 @@ import 'scram_secret_association_state.dart';
 ///     secret_arn_lists=[example_secret.arn],
 ///     opts = pulumi.ResourceOptions(depends_on=[example_secret_version]))
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "sid": "AWSKafkaResourcePolicy",
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["kafka.amazonaws.com"],
 ///     }],
+///     "sid": "AWSKafkaResourcePolicy",
+///     "effect": "Allow",
 ///     "actions": ["secretsmanager:getSecretValue"],
 ///     "resources": [example_secret.arn],
 /// }])
@@ -117,7 +117,6 @@ import 'scram_secret_association_state.dart';
 /// {
 ///     var exampleCluster = new Aws.Msk.Cluster("example", new()
 ///     {
-///         ClusterName = "example",
 ///         ClientAuthentication = new Aws.Msk.Inputs.ClusterClientAuthenticationArgs
 ///         {
 ///             Sasl = new Aws.Msk.Inputs.ClusterClientAuthenticationSaslArgs
@@ -125,6 +124,7 @@ import 'scram_secret_association_state.dart';
 ///                 Scram = true,
 ///             },
 ///         },
+///         ClusterName = "example",
 ///     });
 ///
 ///     var exampleKey = new Aws.Kms.Key("example", new()
@@ -169,8 +169,6 @@ import 'scram_secret_association_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "AWSKafkaResourcePolicy",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -182,6 +180,8 @@ import 'scram_secret_association_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "AWSKafkaResourcePolicy",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "secretsmanager:getSecretValue",
@@ -218,12 +218,12 @@ import 'scram_secret_association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleCluster, err := msk.NewCluster(ctx, "example", &msk.ClusterArgs{
-/// 			ClusterName: pulumi.String("example"),
 /// 			ClientAuthentication: &msk.ClusterClientAuthenticationArgs{
 /// 				Sasl: &msk.ClusterClientAuthenticationSaslArgs{
 /// 					Scram: pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			ClusterName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -270,8 +270,6 @@ import 'scram_secret_association_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid:    pulumi.String("AWSKafkaResourcePolicy"),
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -280,6 +278,8 @@ import 'scram_secret_association_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.String("AWSKafkaResourcePolicy"),
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("secretsmanager:getSecretValue"),
 /// 					},
@@ -311,12 +311,12 @@ import 'scram_secret_association_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "AWSKafkaResourcePolicy"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["kafka.amazonaws.com"]
 ///     }
+///     sid       = "AWSKafkaResourcePolicy"
+///     effect    = "Allow"
 ///     actions   = ["secretsmanager:getSecretValue"]
 ///     resources = [aws_secretsmanager_secret.example.arn]
 ///   }
@@ -328,12 +328,12 @@ import 'scram_secret_association_state.dart';
 ///   secret_arn_lists = [aws_secretsmanager_secret.example.arn]
 /// }
 /// resource "aws_msk_cluster" "example" {
-///   cluster_name = "example"
 ///   client_authentication = {
 ///     sasl = {
 ///       scram = true
 ///     }
 ///   }
+///   cluster_name = "example"
 /// }
 /// resource "aws_secretsmanager_secret" "example" {
 ///   name       = "AmazonMSK_example"
@@ -394,12 +394,12 @@ import 'scram_secret_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
-///             .clusterName("example")
 ///             .clientAuthentication(ClusterClientAuthenticationArgs.builder()
 ///                 .sasl(ClusterClientAuthenticationSaslArgs.builder()
 ///                     .scram(true)
 ///                     .build())
 ///                 .build())
+///             .clusterName("example")
 ///             .build());
 ///
 ///         var exampleKey = new Key("exampleKey", KeyArgs.builder()
@@ -429,12 +429,12 @@ import 'scram_secret_association_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("AWSKafkaResourcePolicy")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("kafka.amazonaws.com")
 ///                     .build())
+///                 .sid("AWSKafkaResourcePolicy")
+///                 .effect("Allow")
 ///                 .actions("secretsmanager:getSecretValue")
 ///                 .resources(exampleSecret.arn())
 ///                 .build())
@@ -464,10 +464,10 @@ import 'scram_secret_association_state.dart';
 ///     type: aws:msk:Cluster
 ///     name: example
 ///     properties:
-///       clusterName: example
 ///       clientAuthentication:
 ///         sasl:
 ///           scram: true
+///       clusterName: example
 ///   exampleSecret:
 ///     type: aws:secretsmanager:Secret
 ///     name: example
@@ -500,12 +500,12 @@ import 'scram_secret_association_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: AWSKafkaResourcePolicy
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - kafka.amazonaws.com
+///             sid: AWSKafkaResourcePolicy
+///             effect: Allow
 ///             actions:
 ///               - secretsmanager:getSecretValue
 ///             resources:
@@ -521,7 +521,7 @@ import 'scram_secret_association_state.dart';
 /// $ pulumi import aws:msk/scramSecretAssociation:ScramSecretAssociation example arn:aws:kafka:us-west-2:123456789012:cluster/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3
 /// ```
 class ScramSecretAssociation extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the MSK cluster.
+  /// ARN of the MSK cluster.
   late final pulumi.Output<String> clusterArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -540,11 +540,11 @@ class ScramSecretAssociation extends pulumi.CustomResource {
           'aws:msk/scramSecretAssociation:ScramSecretAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     clusterArn = registerOutput<String>('clusterArn');
     region = registerOutput<String>('region');
-    secretArnLists = registerOutput<List<String>>('secretArnLists');
+    secretArnLists = registerOutput<List<String>>('secretArnLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ScramSecretAssociation] resource's state with the given [name] and [id].
@@ -552,11 +552,12 @@ class ScramSecretAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScramSecretAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScramSecretAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -572,6 +573,20 @@ class ScramSecretAssociation extends pulumi.CustomResource {
         ) {
     clusterArn = registerOutput<String>('clusterArn');
     region = registerOutput<String>('region');
-    secretArnLists = registerOutput<List<String>>('secretArnLists');
+    secretArnLists = registerOutput<List<String>>('secretArnLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ScramSecretAssociation] resource.
+  ScramSecretAssociation.reference(String urn)
+    : super(
+        'aws:msk/scramSecretAssociation:ScramSecretAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterArn = registerOutput<String>('clusterArn');
+    region = registerOutput<String>('region');
+    secretArnLists = registerOutput<List<String>>('secretArnLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

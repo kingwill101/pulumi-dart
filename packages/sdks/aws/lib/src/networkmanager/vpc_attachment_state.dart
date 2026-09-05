@@ -6,39 +6,39 @@ import 'vpc_attachment_options.dart';
 /// Input properties used for looking up and filtering VpcAttachment resources.
 class VpcAttachmentState {
   /// ARN of the attachment.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Policy rule number associated with the attachment.
-  final pulumi.Input<int>? attachmentPolicyRuleNumber;
+  final pulumi.Input<int?>? attachmentPolicyRuleNumber;
   /// Type of attachment.
-  final pulumi.Input<String>? attachmentType;
+  final pulumi.Input<String?>? attachmentType;
   /// ARN of a core network.
-  final pulumi.Input<String>? coreNetworkArn;
+  final pulumi.Input<String?>? coreNetworkArn;
   /// ID of a core network for the VPC attachment.
-  final pulumi.Input<String>? coreNetworkId;
+  final pulumi.Input<String?>? coreNetworkId;
   /// Region where the edge is located.
-  final pulumi.Input<String>? edgeLocation;
+  final pulumi.Input<String?>? edgeLocation;
   /// Options for the VPC attachment. See below.
-  final pulumi.Input<VpcAttachmentOptions>? options;
+  final pulumi.Input<VpcAttachmentOptions?>? options;
   /// ID of the attachment account owner.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// Attachment resource ARN.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
   /// The routing policy label to apply to the VPC attachment for traffic routing decisions. Maximum length of 256 characters.
-  final pulumi.Input<String>? routingPolicyLabel;
+  final pulumi.Input<String?>? routingPolicyLabel;
   /// Name of the segment attachment.
-  final pulumi.Input<String>? segmentName;
+  final pulumi.Input<String?>? segmentName;
   /// State of the attachment.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Subnet ARNs of the VPC attachment.
-  final pulumi.Input<List<String>>? subnetArns;
+  final pulumi.Input<List<String>?>? subnetArns;
   /// Key-value tags for the attachment. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ARN of the VPC.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? vpcArn;
+  final pulumi.Input<String?>? vpcArn;
 
   /// Creates a new [VpcAttachmentState].
   /// [arn] ARN of the attachment.
@@ -100,7 +100,7 @@ class VpcAttachmentState {
   factory VpcAttachmentState.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      attachmentPolicyRuleNumber: (() { final guardedValue = map['attachmentPolicyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      attachmentPolicyRuleNumber: (() { final guardedValue = map['attachmentPolicyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       attachmentType: (() { final guardedValue = map['attachmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreNetworkArn: (() { final guardedValue = map['coreNetworkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coreNetworkId: (() { final guardedValue = map['coreNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

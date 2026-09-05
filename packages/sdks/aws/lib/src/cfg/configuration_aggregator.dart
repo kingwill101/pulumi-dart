@@ -16,11 +16,11 @@ import 'configuration_aggregator_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const account = new aws.cfg.ConfigurationAggregator("account", {
-///     name: "example",
 ///     accountAggregationSource: {
 ///         accountIds: ["123456789012"],
 ///         regions: ["us-west-2"],
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -28,11 +28,11 @@ import 'configuration_aggregator_state.dart';
 /// import pulumi_aws as aws
 ///
 /// account = aws.cfg.ConfigurationAggregator("account",
-///     name="example",
 ///     account_aggregation_source={
 ///         "account_ids": ["123456789012"],
 ///         "regions": ["us-west-2"],
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,7 +44,6 @@ import 'configuration_aggregator_state.dart';
 /// {
 ///     var account = new Aws.Cfg.ConfigurationAggregator("account", new()
 ///     {
-///         Name = "example",
 ///         AccountAggregationSource = new Aws.Cfg.Inputs.ConfigurationAggregatorAccountAggregationSourceArgs
 ///         {
 ///             AccountIds = new[]
@@ -56,6 +55,7 @@ import 'configuration_aggregator_state.dart';
 ///                 "us-west-2",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -71,7 +71,6 @@ import 'configuration_aggregator_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cfg.NewConfigurationAggregator(ctx, "account", &cfg.ConfigurationAggregatorArgs{
-/// 			Name: pulumi.String("example"),
 /// 			AccountAggregationSource: &cfg.ConfigurationAggregatorAccountAggregationSourceArgs{
 /// 				AccountIds: pulumi.StringArray{
 /// 					pulumi.String("123456789012"),
@@ -80,6 +79,7 @@ import 'configuration_aggregator_state.dart';
 /// 					pulumi.String("us-west-2"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -98,11 +98,11 @@ import 'configuration_aggregator_state.dart';
 /// }
 ///
 /// resource "aws_cfg_configurationaggregator" "account" {
-///   name = "example"
 ///   account_aggregation_source = {
 ///     account_ids = ["123456789012"]
 ///     regions     = ["us-west-2"]
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -128,11 +128,11 @@ import 'configuration_aggregator_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var account = new ConfigurationAggregator("account", ConfigurationAggregatorArgs.builder()
-///             .name("example")
 ///             .accountAggregationSource(ConfigurationAggregatorAccountAggregationSourceArgs.builder()
 ///                 .accountIds("123456789012")
 ///                 .regions("us-west-2")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -143,12 +143,12 @@ import 'configuration_aggregator_state.dart';
 ///   account:
 ///     type: aws:cfg:ConfigurationAggregator
 ///     properties:
-///       name: example
 ///       accountAggregationSource:
 ///         accountIds:
 ///           - '123456789012'
 ///         regions:
 ///           - us-west-2
+///       name: example
 /// ```
 ///
 ///
@@ -161,11 +161,11 @@ import 'configuration_aggregator_state.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["config.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -178,11 +178,11 @@ import 'configuration_aggregator_state.dart';
 ///     policyArn: "arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations",
 /// });
 /// const organization = new aws.cfg.ConfigurationAggregator("organization", {
-///     name: "example",
 ///     organizationAggregationSource: {
 ///         allRegions: true,
 ///         roleArn: organizationRole.arn,
 ///     },
+///     name: "example",
 /// }, {
 ///     dependsOn: [organizationRolePolicyAttachment],
 /// });
@@ -192,11 +192,11 @@ import 'configuration_aggregator_state.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["config.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// organization_role = aws.iam.Role("organization",
@@ -206,11 +206,11 @@ import 'configuration_aggregator_state.dart';
 ///     role=organization_role.name,
 ///     policy_arn="arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations")
 /// organization = aws.cfg.ConfigurationAggregator("organization",
-///     name="example",
 ///     organization_aggregation_source={
 ///         "all_regions": True,
 ///         "role_arn": organization_role.arn,
 ///     },
+///     name="example",
 ///     opts = pulumi.ResourceOptions(depends_on=[organization_role_policy_attachment]))
 /// ```
 /// ```csharp
@@ -227,7 +227,6 @@ import 'configuration_aggregator_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -239,6 +238,7 @@ import 'configuration_aggregator_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -261,12 +261,12 @@ import 'configuration_aggregator_state.dart';
 ///
 ///     var organization = new Aws.Cfg.ConfigurationAggregator("organization", new()
 ///     {
-///         Name = "example",
 ///         OrganizationAggregationSource = new Aws.Cfg.Inputs.ConfigurationAggregatorOrganizationAggregationSourceArgs
 ///         {
 ///             AllRegions = true,
 ///             RoleArn = organizationRole.Arn,
 ///         },
+///         Name = "example",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -291,7 +291,6 @@ import 'configuration_aggregator_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -300,6 +299,7 @@ import 'configuration_aggregator_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -324,11 +324,11 @@ import 'configuration_aggregator_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cfg.NewConfigurationAggregator(ctx, "organization", &cfg.ConfigurationAggregatorArgs{
-/// 			Name: pulumi.String("example"),
 /// 			OrganizationAggregationSource: &cfg.ConfigurationAggregatorOrganizationAggregationSourceArgs{
 /// 				AllRegions: pulumi.Bool(true),
 /// 				RoleArn:    organizationRole.Arn,
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			organizationRolePolicyAttachment,
 /// 		}))
@@ -350,22 +350,22 @@ import 'configuration_aggregator_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["config.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
 /// resource "aws_cfg_configurationaggregator" "organization" {
 ///   depends_on = [aws_iam_rolepolicyattachment.organization]
-///   name       = "example"
 ///   organization_aggregation_source = {
 ///     all_regions = true
 ///     role_arn    = aws_iam_role.organization.arn
 ///   }
+///   name = "example"
 /// }
 /// resource "aws_iam_role" "organization" {
 ///   name               = "example"
@@ -409,11 +409,11 @@ import 'configuration_aggregator_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("config.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -429,11 +429,11 @@ import 'configuration_aggregator_state.dart';
 ///             .build());
 ///
 ///         var organization = new ConfigurationAggregator("organization", ConfigurationAggregatorArgs.builder()
-///             .name("example")
 ///             .organizationAggregationSource(ConfigurationAggregatorOrganizationAggregationSourceArgs.builder()
 ///                 .allRegions(true)
 ///                 .roleArn(organizationRole.arn())
 ///                 .build())
+///             .name("example")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(organizationRolePolicyAttachment)
 ///                 .build());
@@ -446,10 +446,10 @@ import 'configuration_aggregator_state.dart';
 ///   organization:
 ///     type: aws:cfg:ConfigurationAggregator
 ///     properties:
-///       name: example
 ///       organizationAggregationSource:
 ///         allRegions: true
 ///         roleArn: ${organizationRole.arn}
+///       name: example
 ///     options:
 ///       dependsOn:
 ///         - ${organizationRolePolicyAttachment}
@@ -471,11 +471,11 @@ import 'configuration_aggregator_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - config.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -530,15 +530,15 @@ class ConfigurationAggregator extends pulumi.CustomResource {
           'aws:cfg/configurationAggregator:ConfigurationAggregator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountAggregationSource = registerOutput<ConfigurationAggregatorAccountAggregationSource?>('accountAggregationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAggregatorAccountAggregationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     organizationAggregationSource = registerOutput<ConfigurationAggregatorOrganizationAggregationSource?>('organizationAggregationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAggregatorOrganizationAggregationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ConfigurationAggregator] resource's state with the given [name] and [id].
@@ -546,11 +546,12 @@ class ConfigurationAggregator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationAggregatorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationAggregator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -569,7 +570,25 @@ class ConfigurationAggregator extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     organizationAggregationSource = registerOutput<ConfigurationAggregatorOrganizationAggregationSource?>('organizationAggregationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAggregatorOrganizationAggregationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationAggregator] resource.
+  ConfigurationAggregator.reference(String urn)
+    : super(
+        'aws:cfg/configurationAggregator:ConfigurationAggregator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountAggregationSource = registerOutput<ConfigurationAggregatorAccountAggregationSource?>('accountAggregationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAggregatorAccountAggregationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    organizationAggregationSource = registerOutput<ConfigurationAggregatorOrganizationAggregationSource?>('organizationAggregationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAggregatorOrganizationAggregationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

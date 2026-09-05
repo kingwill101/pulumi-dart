@@ -14,19 +14,19 @@ class FlowDefinitionArgs {
   /// The name of your flow definition.
   final pulumi.Input<String> flowDefinitionName;
   /// An object containing information about the events that trigger a human workflow. See Human Loop Activation Config details below.
-  final pulumi.Input<FlowDefinitionHumanLoopActivationConfig>? humanLoopActivationConfig;
+  final pulumi.Input<FlowDefinitionHumanLoopActivationConfig?>? humanLoopActivationConfig;
   /// An object containing information about the tasks the human reviewers will perform. See Human Loop Config details below.
   final pulumi.Input<FlowDefinitionHumanLoopConfig> humanLoopConfig;
   /// Container for configuring the source of human task requests. Use to specify if Amazon Rekognition or Amazon Textract is used as an integration source. See Human Loop Request Source details below.
-  final pulumi.Input<FlowDefinitionHumanLoopRequestSource>? humanLoopRequestSource;
+  final pulumi.Input<FlowDefinitionHumanLoopRequestSource?>? humanLoopRequestSource;
   /// An object containing information about where the human review results will be uploaded. See Output Config details below.
   final pulumi.Input<FlowDefinitionOutputConfig> outputConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the role needed to call other services on your behalf.
+  final pulumi.Input<String?>? region;
+  /// ARN of the role needed to call other services on your behalf.
   final pulumi.Input<String> roleArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FlowDefinitionArgs].
   /// [flowDefinitionName] The name of your flow definition.
@@ -35,7 +35,7 @@ class FlowDefinitionArgs {
   /// [humanLoopRequestSource] Container for configuring the source of human task requests. Use to specify if Amazon Rekognition or Amazon Textract is used as an integration source. See Human Loop Request Source details below.
   /// [outputConfig] An object containing information about where the human review results will be uploaded. See Output Config details below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] The Amazon Resource Name (ARN) of the role needed to call other services on your behalf.
+  /// [roleArn] ARN of the role needed to call other services on your behalf.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const FlowDefinitionArgs({
     required this.flowDefinitionName,

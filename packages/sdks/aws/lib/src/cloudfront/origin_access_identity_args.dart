@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudfront_origin_access_identity_origin_access_identity_args_doc}
 class OriginAccessIdentityArgs {
   /// An optional comment for the origin access identity.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
 
   /// Creates a new [OriginAccessIdentityArgs].
   /// [comment] An optional comment for the origin access identity.

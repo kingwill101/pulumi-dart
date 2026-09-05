@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceModelAccessConfig {
   /// Whether to accept the model end-user license agreement.
-  final pulumi.Input<bool>? acceptEula;
+  final pulumi.Input<bool?>? acceptEula;
 
   /// Creates a new [AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceModelAccessConfig].
   /// [acceptEula] Whether to accept the model end-user license agreement.

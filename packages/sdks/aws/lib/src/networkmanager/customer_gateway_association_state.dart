@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering CustomerGatewayAssociation resources.
 class CustomerGatewayAssociationState {
   /// ARN of the customer gateway.
-  final pulumi.Input<String>? customerGatewayArn;
+  final pulumi.Input<String?>? customerGatewayArn;
   /// ID of the device.
-  final pulumi.Input<String>? deviceId;
+  final pulumi.Input<String?>? deviceId;
   /// ID of the global network.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? globalNetworkId;
+  final pulumi.Input<String?>? globalNetworkId;
   /// ID of the link.
-  final pulumi.Input<String>? linkId;
+  final pulumi.Input<String?>? linkId;
 
   /// Creates a new [CustomerGatewayAssociationState].
   /// [customerGatewayArn] ARN of the customer gateway.

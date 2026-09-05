@@ -144,6 +144,17 @@ Future<GetModelResult> getModel(
   return GetModelResult.fromMap(result);
 }
 
+pulumi.Output<GetModelResult> getModelOutput(
+  GetModelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:bedrockfoundation/getModel:getModel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetModelResult.fromMap);
+}
+
 /// Provides details about AWS Bedrock Foundation Model Agreement Offers.
 ///
 /// ## Example Usage
@@ -262,6 +273,17 @@ Future<GetModelAgreementOffersResult> getModelAgreementOffers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetModelAgreementOffersResult.fromMap(result);
+}
+
+pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
+  GetModelAgreementOffersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:bedrockfoundation/getModelAgreementOffers:getModelAgreementOffers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetModelAgreementOffersResult.fromMap);
 }
 
 /// Data source for managing AWS Bedrock Foundation Models.
@@ -475,4 +497,15 @@ Future<GetModelsResult> getModels(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetModelsResult.fromMap(result);
+}
+
+pulumi.Output<GetModelsResult> getModelsOutput(
+  GetModelsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:bedrockfoundation/getModels:getModels',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetModelsResult.fromMap);
 }

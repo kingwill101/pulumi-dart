@@ -134,6 +134,17 @@ Future<GetGeofenceCollectionResult> getGeofenceCollection(
   return GetGeofenceCollectionResult.fromMap(result);
 }
 
+pulumi.Output<GetGeofenceCollectionResult> getGeofenceCollectionOutput(
+  GetGeofenceCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:location/getGeofenceCollection:getGeofenceCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGeofenceCollectionResult.fromMap);
+}
+
 /// Retrieve information about a Location Service Map.
 ///
 /// ## Example Usage
@@ -250,6 +261,17 @@ Future<GetMapResult> getMap(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMapResult.fromMap(result);
+}
+
+pulumi.Output<GetMapResult> getMapOutput(
+  GetMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:location/getMap:getMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMapResult.fromMap);
 }
 
 /// Retrieve information about a Location Service Place Index.
@@ -370,6 +392,17 @@ Future<GetPlaceIndexResult> getPlaceIndex(
   return GetPlaceIndexResult.fromMap(result);
 }
 
+pulumi.Output<GetPlaceIndexResult> getPlaceIndexOutput(
+  GetPlaceIndexArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:location/getPlaceIndex:getPlaceIndex',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlaceIndexResult.fromMap);
+}
+
 /// Retrieve information about a Location Service Route Calculator.
 ///
 /// ## Example Usage
@@ -488,6 +521,17 @@ Future<GetRouteCalculatorResult> getRouteCalculator(
   return GetRouteCalculatorResult.fromMap(result);
 }
 
+pulumi.Output<GetRouteCalculatorResult> getRouteCalculatorOutput(
+  GetRouteCalculatorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:location/getRouteCalculator:getRouteCalculator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteCalculatorResult.fromMap);
+}
+
 /// Retrieve information about a Location Service Tracker.
 ///
 /// ## Example Usage
@@ -604,6 +648,17 @@ Future<GetTrackerResult> getTracker(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrackerResult.fromMap(result);
+}
+
+pulumi.Output<GetTrackerResult> getTrackerOutput(
+  GetTrackerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:location/getTracker:getTracker',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrackerResult.fromMap);
 }
 
 /// Retrieve information about a Location Service Tracker Association.
@@ -733,6 +788,17 @@ Future<GetTrackerAssociationResult> getTrackerAssociation(
   return GetTrackerAssociationResult.fromMap(result);
 }
 
+pulumi.Output<GetTrackerAssociationResult> getTrackerAssociationOutput(
+  GetTrackerAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:location/getTrackerAssociation:getTrackerAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrackerAssociationResult.fromMap);
+}
+
 /// Retrieve information about Location Service Tracker Associations.
 ///
 /// ## Example Usage
@@ -851,4 +917,15 @@ Future<GetTrackerAssociationsResult> getTrackerAssociations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrackerAssociationsResult.fromMap(result);
+}
+
+pulumi.Output<GetTrackerAssociationsResult> getTrackerAssociationsOutput(
+  GetTrackerAssociationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:location/getTrackerAssociations:getTrackerAssociations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrackerAssociationsResult.fromMap);
 }

@@ -10,7 +10,7 @@ class UserPolicyAttachmentArgs {
   /// The ARN of the policy you want to apply
   final pulumi.Input<String> policyArn;
   /// The user the policy should be applied to
-  final pulumi.Input<String> user;
+  final pulumi.Input<dynamic> user;
 
   /// Creates a new [UserPolicyAttachmentArgs].
   /// [policyArn] The ARN of the policy you want to apply
@@ -30,7 +30,7 @@ class UserPolicyAttachmentArgs {
   factory UserPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return UserPolicyAttachmentArgs(
       policyArn: pulumi.Input.fromValue(map['policyArn'] as String),
-      user: pulumi.Input.fromValue(map['user'] as String),
+      user: pulumi.Input.fromValue(map['user']),
     );
   }
 }

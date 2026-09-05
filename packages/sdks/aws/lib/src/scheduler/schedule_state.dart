@@ -7,37 +7,37 @@ import 'schedule_target.dart';
 /// Input properties used for looking up and filtering Schedule resources.
 class ScheduleState {
   /// Action that applies to the schedule after completing invocation of the target. Valid values are `NONE` and `DELETE`. Defaults to `NONE`.
-  final pulumi.Input<String>? actionAfterCompletion;
+  final pulumi.Input<String?>? actionAfterCompletion;
   /// ARN of the schedule.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Brief description of the schedule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The date, in UTC, before which the schedule can invoke its target. Depending on the schedule's recurrence expression, invocations might stop on, or before, the end date you specify. EventBridge Scheduler ignores the end date for one-time schedules. Example: `2030-01-01T01:00:00Z`.
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// Configures a time window during which EventBridge Scheduler invokes the schedule. Detailed below.
-  final pulumi.Input<ScheduleFlexibleTimeWindow>? flexibleTimeWindow;
+  final pulumi.Input<ScheduleFlexibleTimeWindow?>? flexibleTimeWindow;
   /// Name of the schedule group to associate with this schedule. When omitted, the `default` schedule group is used.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// ARN for the customer managed KMS key that EventBridge Scheduler will use to encrypt and decrypt your data.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Name of the schedule. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Defines when the schedule runs. Read more in [Schedule types on EventBridge Scheduler](https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html).
-  final pulumi.Input<String>? scheduleExpression;
+  final pulumi.Input<String?>? scheduleExpression;
   /// Timezone in which the scheduling expression is evaluated. Defaults to `UTC`. Example: `Australia/Sydney`.
-  final pulumi.Input<String>? scheduleExpressionTimezone;
+  final pulumi.Input<String?>? scheduleExpressionTimezone;
   /// The date, in UTC, after which the schedule can begin invoking its target. Depending on the schedule's recurrence expression, invocations might occur on, or after, the start date you specify. EventBridge Scheduler ignores the start date for one-time schedules. Example: `2030-01-01T01:00:00Z`.
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// Specifies whether the schedule is enabled or disabled. One of: `ENABLED` (default), `DISABLED`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Configures the target of the schedule. Detailed below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<ScheduleTarget>? target;
+  final pulumi.Input<ScheduleTarget?>? target;
 
   /// Creates a new [ScheduleState].
   /// [actionAfterCompletion] Action that applies to the schedule after completing invocation of the target. Valid values are `NONE` and `DELETE`. Defaults to `NONE`.

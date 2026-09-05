@@ -3,7 +3,7 @@ import 'route_server_args.dart';
 import 'route_server_state.dart';
 import 'route_server_timeouts.dart';
 
-/// Provides a resource for managing a VPC (Virtual Private Cloud) Route Server.
+/// Provides a resource for managing a VPC Route Server.
 ///
 /// ## Example Usage
 ///
@@ -274,7 +274,7 @@ import 'route_server_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import VPC (Virtual Private Cloud) Route Server using the `routeServerId`. For example:
+/// Using `pulumi import`, import VPC Route Server using the `routeServerId`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpc/routeServer:RouteServer example rs-12345678
@@ -316,7 +316,7 @@ class RouteServer extends pulumi.CustomResource {
           'aws:vpc/routeServer:RouteServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     amazonSideAsn = registerOutput<int>('amazonSideAsn');
     arn = registerOutput<String>('arn');
@@ -326,8 +326,8 @@ class RouteServer extends pulumi.CustomResource {
     routeServerId = registerOutput<String>('routeServerId');
     snsNotificationsEnabled = registerOutput<bool>('snsNotificationsEnabled');
     snsTopicArn = registerOutput<String>('snsTopicArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<RouteServerTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -336,11 +336,12 @@ class RouteServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -362,8 +363,30 @@ class RouteServer extends pulumi.CustomResource {
     routeServerId = registerOutput<String>('routeServerId');
     snsNotificationsEnabled = registerOutput<bool>('snsNotificationsEnabled');
     snsTopicArn = registerOutput<String>('snsTopicArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<RouteServerTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [RouteServer] resource.
+  RouteServer.reference(String urn)
+    : super(
+        'aws:vpc/routeServer:RouteServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    amazonSideAsn = registerOutput<int>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    persistRoutes = registerOutput<String>('persistRoutes');
+    persistRoutesDuration = registerOutput<int?>('persistRoutesDuration');
+    region = registerOutput<String>('region');
+    routeServerId = registerOutput<String>('routeServerId');
+    snsNotificationsEnabled = registerOutput<bool>('snsNotificationsEnabled');
+    snsTopicArn = registerOutput<String>('snsTopicArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<RouteServerTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

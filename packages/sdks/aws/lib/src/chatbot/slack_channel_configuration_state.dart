@@ -6,36 +6,36 @@ import 'slack_channel_configuration_timeouts.dart';
 /// Input properties used for looking up and filtering SlackChannelConfiguration resources.
 class SlackChannelConfigurationState {
   /// ARN of the Slack channel configuration.
-  final pulumi.Input<String>? chatConfigurationArn;
+  final pulumi.Input<String?>? chatConfigurationArn;
   /// Name of the Slack channel configuration.
-  final pulumi.Input<String>? configurationName;
+  final pulumi.Input<String?>? configurationName;
   /// List of IAM policy ARNs that are applied as channel guardrails. The AWS managed `AdministratorAccess` policy is applied by default if this is not set.
-  final pulumi.Input<List<String>>? guardrailPolicyArns;
+  final pulumi.Input<List<String>?>? guardrailPolicyArns;
   /// User-defined role that AWS Chatbot assumes. This is not the service-linked role.
-  final pulumi.Input<String>? iamRoleArn;
+  final pulumi.Input<String?>? iamRoleArn;
   /// Logging levels include `ERROR`, `INFO`, or `NONE`.
-  final pulumi.Input<String>? loggingLevel;
+  final pulumi.Input<String?>? loggingLevel;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the Slack channel. For example, `C07EZ1ABC23`.
-  final pulumi.Input<String>? slackChannelId;
+  final pulumi.Input<String?>? slackChannelId;
   /// Name of the Slack channel.
-  final pulumi.Input<String>? slackChannelName;
+  final pulumi.Input<String?>? slackChannelName;
   /// ID of the Slack workspace authorized with AWS Chatbot. For example, `T07EA123LEP`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? slackTeamId;
+  final pulumi.Input<String?>? slackTeamId;
   /// Name of the Slack team.
-  final pulumi.Input<String>? slackTeamName;
+  final pulumi.Input<String?>? slackTeamName;
   /// ARNs of the SNS topics that deliver notifications to AWS Chatbot.
-  final pulumi.Input<List<String>>? snsTopicArns;
+  final pulumi.Input<List<String>?>? snsTopicArns;
   /// Map of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<SlackChannelConfigurationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<SlackChannelConfigurationTimeouts?>? timeouts;
   /// Enables use of a user role requirement in your chat configuration.
-  final pulumi.Input<bool>? userAuthorizationRequired;
+  final pulumi.Input<bool?>? userAuthorizationRequired;
 
   /// Creates a new [SlackChannelConfigurationState].
   /// [chatConfigurationArn] ARN of the Slack channel configuration.

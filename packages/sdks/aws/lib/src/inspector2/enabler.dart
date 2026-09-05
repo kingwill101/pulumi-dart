@@ -315,11 +315,11 @@ class Enabler extends pulumi.CustomResource {
           'aws:inspector2/enabler:Enabler',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    accountIds = registerOutput<List<String>>('accountIds');
+    accountIds = registerOutput<List<String>>('accountIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    resourceTypes = registerOutput<List<String>>('resourceTypes');
+    resourceTypes = registerOutput<List<String>>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Enabler] resource's state with the given [name] and [id].
@@ -327,11 +327,12 @@ class Enabler extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnablerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Enabler._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -345,8 +346,22 @@ class Enabler extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accountIds = registerOutput<List<String>>('accountIds');
+    accountIds = registerOutput<List<String>>('accountIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    resourceTypes = registerOutput<List<String>>('resourceTypes');
+    resourceTypes = registerOutput<List<String>>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Enabler] resource.
+  Enabler.reference(String urn)
+    : super(
+        'aws:inspector2/enabler:Enabler',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountIds = registerOutput<List<String>>('accountIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    resourceTypes = registerOutput<List<String>>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

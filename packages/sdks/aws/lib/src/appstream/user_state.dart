@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering User resources.
 class UserState {
   /// ARN of the appstream user.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Authentication type for the user. You must specify USERPOOL. Valid values: `API`, `SAML`, `USERPOOL`
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// Date and time, in UTC and extended RFC 3339 format, when the user was created.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// Whether the user in the user pool is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// First name, or given name, of the user.
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// Last name, or surname, of the user.
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Send an email notification.
-  final pulumi.Input<bool>? sendEmailNotification;
+  final pulumi.Input<bool?>? sendEmailNotification;
   /// Email address of the user.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [UserState].
   /// [arn] ARN of the appstream user.

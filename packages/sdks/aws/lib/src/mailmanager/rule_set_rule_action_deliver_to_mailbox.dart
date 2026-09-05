@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleSetRuleActionDeliverToMailbox {
   /// Policy applied when the action fails.
-  final pulumi.Input<String>? actionFailurePolicy;
+  final pulumi.Input<String?>? actionFailurePolicy;
   /// ARN of the WorkMail organization.
   final pulumi.Input<String> mailboxArn;
   /// ARN of the IAM role used to deliver the email.

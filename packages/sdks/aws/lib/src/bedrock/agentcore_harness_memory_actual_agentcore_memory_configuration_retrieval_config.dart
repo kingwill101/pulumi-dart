@@ -36,9 +36,9 @@ class AgentcoreHarnessMemoryActualAgentcoreMemoryConfigurationRetrievalConfig {
   factory AgentcoreHarnessMemoryActualAgentcoreMemoryConfigurationRetrievalConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreHarnessMemoryActualAgentcoreMemoryConfigurationRetrievalConfig(
       mapBlockKey: pulumi.Input.fromValue(map['mapBlockKey'] as String),
-      relevanceScore: pulumi.Input.fromValue(map['relevanceScore'] as double),
+      relevanceScore: pulumi.Input.fromValue((map['relevanceScore'] as num).toDouble()),
       strategyId: pulumi.Input.fromValue(map['strategyId'] as String),
-      topK: pulumi.Input.fromValue(map['topK'] as int),
+      topK: pulumi.Input.fromValue((map['topK'] as num).toInt()),
     );
   }
 }

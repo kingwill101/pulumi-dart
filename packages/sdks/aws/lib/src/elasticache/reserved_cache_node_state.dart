@@ -7,43 +7,43 @@ import 'reserved_cache_node_timeouts.dart';
 /// Input properties used for looking up and filtering ReservedCacheNode resources.
 class ReservedCacheNodeState {
   /// ARN for the reserved cache node.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Number of cache node instances to reserve.
   /// Default value is `1`.
-  final pulumi.Input<int>? cacheNodeCount;
+  final pulumi.Input<int?>? cacheNodeCount;
   /// Node type for the reserved cache nodes.
-  final pulumi.Input<String>? cacheNodeType;
+  final pulumi.Input<String?>? cacheNodeType;
   /// Duration of the reservation as an RFC3339 duration.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// Customer-specified identifier to track this reservation.
   /// If not specified, AWS will assign a random ID.
-  final pulumi.Input<String>? elasticacheReservedCacheNodeId;
+  final pulumi.Input<String?>? elasticacheReservedCacheNodeId;
   /// Fixed price charged for this reserved cache node.
-  final pulumi.Input<double>? fixedPrice;
+  final pulumi.Input<double?>? fixedPrice;
   /// Offering type of this reserved cache node.
-  final pulumi.Input<String>? offeringType;
+  final pulumi.Input<String?>? offeringType;
   /// Engine type for the reserved cache node.
-  final pulumi.Input<String>? productDescription;
+  final pulumi.Input<String?>? productDescription;
   /// Recurring price charged to run this reserved cache node.
-  final pulumi.Input<List<ReservedCacheNodeRecurringCharge>>? recurringCharges;
+  final pulumi.Input<List<ReservedCacheNodeRecurringCharge>?>? recurringCharges;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the reserved cache node offering to purchase.
   /// To determine an `reservedCacheNodesOfferingId`, see the `aws.elasticache.getReservedCacheNodeOffering` data source.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? reservedCacheNodesOfferingId;
+  final pulumi.Input<String?>? reservedCacheNodesOfferingId;
   /// Time the reservation started.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// State of the reserved cache node.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Map of tags to assign to the reservation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ReservedCacheNodeTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ReservedCacheNodeTimeouts?>? timeouts;
   /// Hourly price charged for this reserved cache node.
-  final pulumi.Input<double>? usagePrice;
+  final pulumi.Input<double?>? usagePrice;
 
   /// Creates a new [ReservedCacheNodeState].
   /// [arn] ARN for the reserved cache node.
@@ -108,11 +108,11 @@ class ReservedCacheNodeState {
   factory ReservedCacheNodeState.fromMap(Map<String, dynamic> map) {
     return ReservedCacheNodeState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cacheNodeCount: (() { final guardedValue = map['cacheNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cacheNodeCount: (() { final guardedValue = map['cacheNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       cacheNodeType: (() { final guardedValue = map['cacheNodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       elasticacheReservedCacheNodeId: (() { final guardedValue = map['elasticacheReservedCacheNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fixedPrice: (() { final guardedValue = map['fixedPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      fixedPrice: (() { final guardedValue = map['fixedPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       offeringType: (() { final guardedValue = map['offeringType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productDescription: (() { final guardedValue = map['productDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recurringCharges: (() { final guardedValue = map['recurringCharges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReservedCacheNodeRecurringCharge>(guardedValue, (value) => ReservedCacheNodeRecurringCharge.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -123,7 +123,7 @@ class ReservedCacheNodeState {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReservedCacheNodeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      usagePrice: (() { final guardedValue = map['usagePrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      usagePrice: (() { final guardedValue = map['usagePrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

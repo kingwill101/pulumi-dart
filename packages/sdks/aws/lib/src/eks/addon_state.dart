@@ -8,35 +8,35 @@ import 'addon_pod_identity_association.dart';
 class AddonState {
   /// Name of the EKS add-on. The name must match one of
   /// the names returned by [describe-addon-versions](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-versions.html).
-  final pulumi.Input<String>? addonName;
+  final pulumi.Input<String?>? addonName;
   /// The version of the EKS add-on. The version must
   /// match one of the versions returned by [describe-addon-versions](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-versions.html).
-  final pulumi.Input<String>? addonVersion;
-  /// Amazon Resource Name (ARN) of the EKS add-on.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? addonVersion;
+  /// ARN of the EKS add-on.
+  final pulumi.Input<String?>? arn;
   /// Name of the EKS Cluster.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
-  final pulumi.Input<String>? configurationValues;
+  final pulumi.Input<String?>? configurationValues;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was updated.
-  final pulumi.Input<String>? modifiedAt;
+  final pulumi.Input<String?>? modifiedAt;
   /// Namespace configuration for the add-on. See `namespaceConfig` below for details.
-  final pulumi.Input<AddonNamespaceConfig>? namespaceConfig;
+  final pulumi.Input<AddonNamespaceConfig?>? namespaceConfig;
   /// Configuration block with EKS Pod Identity association settings. See `podIdentityAssociation` below for details.
-  final pulumi.Input<List<AddonPodIdentityAssociation>>? podIdentityAssociations;
+  final pulumi.Input<List<AddonPodIdentityAssociation>?>? podIdentityAssociations;
   /// Indicates if you want to preserve the created resources when deleting the EKS add-on.
-  final pulumi.Input<bool>? preserve;
+  final pulumi.Input<bool?>? preserve;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// How to resolve field value conflicts when migrating a self-managed add-on to an Amazon EKS add-on. Valid values are `NONE` and `OVERWRITE`. For more details see the [CreateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateAddon.html) API Documentation.
-  final pulumi.Input<String>? resolveConflictsOnCreate;
+  final pulumi.Input<String?>? resolveConflictsOnCreate;
   /// How to resolve field value conflicts for an Amazon EKS add-on if you've changed a value from the Amazon EKS default value. Valid values are `NONE`, `OVERWRITE`, and `PRESERVE`. For more details see the [UpdateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateAddon.html) API Documentation.
-  final pulumi.Input<String>? resolveConflictsOnUpdate;
-  /// The Amazon Resource Name (ARN) of an
+  final pulumi.Input<String?>? resolveConflictsOnUpdate;
+  /// ARN of an
   /// existing IAM role to bind to the add-on's service account. The role must be
   /// assigned the IAM permissions required by the add-on. If you don't specify
   /// an existing IAM role, then the add-on uses the permissions assigned to the node
@@ -47,16 +47,16 @@ class AddonState {
   /// provider created for your cluster. For more information, [see Enabling IAM roles
   /// for service accounts on your cluster](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
   /// in the Amazon EKS User Guide.
-  final pulumi.Input<String>? serviceAccountRoleArn;
+  final pulumi.Input<String?>? serviceAccountRoleArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// (Optional) Key-value map of resource tags, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AddonState].
   /// [addonName] Name of the EKS add-on. The name must match one of
   /// [addonVersion] The version of the EKS add-on. The version must
-  /// [arn] Amazon Resource Name (ARN) of the EKS add-on.
+  /// [arn] ARN of the EKS add-on.
   /// [clusterName] Name of the EKS Cluster.
   /// [configurationValues] Custom configuration values for addons with single JSON string. This JSON string value must match the JSON schema derived from [describe-addon-configuration](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-configuration.html).
   /// [createdAt] Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was created.
@@ -67,7 +67,7 @@ class AddonState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resolveConflictsOnCreate] How to resolve field value conflicts when migrating a self-managed add-on to an Amazon EKS add-on. Valid values are `NONE` and `OVERWRITE`. For more details see the [CreateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateAddon.html) API Documentation.
   /// [resolveConflictsOnUpdate] How to resolve field value conflicts for an Amazon EKS add-on if you've changed a value from the Amazon EKS default value. Valid values are `NONE`, `OVERWRITE`, and `PRESERVE`. For more details see the [UpdateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateAddon.html) API Documentation.
-  /// [serviceAccountRoleArn] The Amazon Resource Name (ARN) of an
+  /// [serviceAccountRoleArn] ARN of an
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] (Optional) Key-value map of resource tags, including those inherited from the provider `defaultTags` configuration block.
   const AddonState({

@@ -27,41 +27,41 @@ import 'topic_rule_timestream.dart';
 /// {@endtemplate}
 /// {@macro pulumi_iot_topic_rule_topic_rule_args_doc}
 class TopicRuleArgs {
-  final pulumi.Input<List<TopicRuleCloudwatchAlarm>>? cloudwatchAlarms;
-  final pulumi.Input<List<TopicRuleCloudwatchLog>>? cloudwatchLogs;
-  final pulumi.Input<List<TopicRuleCloudwatchMetric>>? cloudwatchMetrics;
+  final pulumi.Input<List<TopicRuleCloudwatchAlarm>?>? cloudwatchAlarms;
+  final pulumi.Input<List<TopicRuleCloudwatchLog>?>? cloudwatchLogs;
+  final pulumi.Input<List<TopicRuleCloudwatchMetric>?>? cloudwatchMetrics;
   /// The description of the rule.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<List<TopicRuleDynamodb>>? dynamodbs;
-  final pulumi.Input<List<TopicRuleDynamodbv2>>? dynamodbv2s;
-  final pulumi.Input<List<TopicRuleElasticsearch>>? elasticsearch;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<List<TopicRuleDynamodb>?>? dynamodbs;
+  final pulumi.Input<List<TopicRuleDynamodbv2>?>? dynamodbv2s;
+  final pulumi.Input<List<TopicRuleElasticsearch>?>? elasticsearch;
   /// Specifies whether the rule is enabled.
   final pulumi.Input<bool> enabled;
   /// Configuration block with error action to be associated with the rule. See the documentation for `cloudwatchAlarm`, `cloudwatchLogs`, `cloudwatchMetric`, `dynamodb`, `dynamodbv2`, `elasticsearch`, `firehose`, `http`, `iotAnalytics`, `iotEvents`, `kafka`, `kinesis`, `lambda`, `republish`, `s3`, `sns`, `sqs`, `stepFunctions`, `timestream` configuration blocks for further configuration details.
-  final pulumi.Input<TopicRuleErrorAction>? errorAction;
-  final pulumi.Input<List<TopicRuleFirehose>>? firehoses;
-  final pulumi.Input<List<TopicRuleHttp>>? https;
-  final pulumi.Input<List<TopicRuleIotAnalytic>>? iotAnalytics;
-  final pulumi.Input<List<TopicRuleIotEvent>>? iotEvents;
-  final pulumi.Input<List<TopicRuleKafka>>? kafkas;
-  final pulumi.Input<List<TopicRuleKinesis>>? kineses;
-  final pulumi.Input<List<TopicRuleLambda>>? lambdas;
+  final pulumi.Input<TopicRuleErrorAction?>? errorAction;
+  final pulumi.Input<List<TopicRuleFirehose>?>? firehoses;
+  final pulumi.Input<List<TopicRuleHttp>?>? https;
+  final pulumi.Input<List<TopicRuleIotAnalytic>?>? iotAnalytics;
+  final pulumi.Input<List<TopicRuleIotEvent>?>? iotEvents;
+  final pulumi.Input<List<TopicRuleKafka>?>? kafkas;
+  final pulumi.Input<List<TopicRuleKinesis>?>? kineses;
+  final pulumi.Input<List<TopicRuleLambda>?>? lambdas;
   /// The name of the rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<List<TopicRuleRepublish>>? republishes;
-  final pulumi.Input<List<TopicRuleS3>>? s3;
-  final pulumi.Input<List<TopicRuleSns>>? sns;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<List<TopicRuleRepublish>?>? republishes;
+  final pulumi.Input<List<TopicRuleS3>?>? s3;
+  final pulumi.Input<List<TopicRuleSns>?>? sns;
   /// The SQL statement used to query the topic. For more information, see AWS IoT SQL Reference (http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference) in the AWS IoT Developer Guide.
   final pulumi.Input<String> sql;
   /// The version of the SQL rules engine to use when evaluating the rule.
   final pulumi.Input<String> sqlVersion;
-  final pulumi.Input<List<TopicRuleSqs>>? sqs;
-  final pulumi.Input<List<TopicRuleStepFunction>>? stepFunctions;
+  final pulumi.Input<List<TopicRuleSqs>?>? sqs;
+  final pulumi.Input<List<TopicRuleStepFunction>?>? stepFunctions;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<List<TopicRuleTimestream>>? timestreams;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<List<TopicRuleTimestream>?>? timestreams;
 
   /// Creates a new [TopicRuleArgs].
   /// [cloudwatchAlarms] Optional.

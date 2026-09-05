@@ -7,7 +7,7 @@ class ModelPrimaryContainerModelDataSourceS3DataSource {
   /// How the model data is prepared. Allowed values are: `None` and `Gzip`.
   final pulumi.Input<String> compressionType;
   /// Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the [`modelAccessConfig` configuration block]. See Model Access Config.
-  final pulumi.Input<ModelPrimaryContainerModelDataSourceS3DataSourceModelAccessConfig>? modelAccessConfig;
+  final pulumi.Input<ModelPrimaryContainerModelDataSourceS3DataSourceModelAccessConfig?>? modelAccessConfig;
   /// Type of model data to deploy. Allowed values are: `S3Object` and `S3Prefix`.
   final pulumi.Input<String> s3DataType;
   /// The S3 path of model data to deploy.

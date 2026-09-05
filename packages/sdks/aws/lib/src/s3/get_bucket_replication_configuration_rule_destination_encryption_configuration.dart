@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration {
-  /// ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket.
+  /// ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in KMS for the destination bucket.
   final pulumi.Input<String> replicaKmsKeyId;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration].
-  /// [replicaKmsKeyId] ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket.
+  /// [replicaKmsKeyId] ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in KMS for the destination bucket.
   const GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration({
     required this.replicaKmsKeyId,
   });

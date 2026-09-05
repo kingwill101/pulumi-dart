@@ -17,8 +17,8 @@ class ManagedPolicyAttachmentsExclusiveArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> permissionSetArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<ManagedPolicyAttachmentsExclusiveTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<ManagedPolicyAttachmentsExclusiveTimeouts?>? timeouts;
 
   /// Creates a new [ManagedPolicyAttachmentsExclusiveArgs].
   /// [instanceArn] ARN of the SSO Instance.

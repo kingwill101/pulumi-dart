@@ -5,7 +5,7 @@ import 'event_source_mapping_destination_config_on_failure.dart';
 
 class EventSourceMappingDestinationConfig {
   /// Destination configuration for failed invocations. See below.
-  final pulumi.Input<EventSourceMappingDestinationConfigOnFailure>? onFailure;
+  final pulumi.Input<EventSourceMappingDestinationConfigOnFailure?>? onFailure;
 
   /// Creates a new [EventSourceMappingDestinationConfig].
   /// [onFailure] Destination configuration for failed invocations. See below.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_vpc_endpoint_route_table_association_vpc_endpoint_route_table_association_args_doc}
 class VpcEndpointRouteTableAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
   final pulumi.Input<String> routeTableId;
   /// Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HyperParameterTuningJobTrainingJobDefinitionOutputDataConfig {
   /// Compression type for output.
-  final pulumi.Input<String>? compressionType;
+  final pulumi.Input<String?>? compressionType;
   /// KMS key ID for output encryption.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// S3 or HTTPS output path.
   final pulumi.Input<String> s3OutputPath;
 

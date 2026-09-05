@@ -11,9 +11,9 @@ import 'pipeline_definition_pipeline_object.dart';
 /// {@macro pulumi_datapipeline_pipeline_definition_pipeline_definition_args_doc}
 class PipelineDefinitionArgs {
   /// Configuration block for the parameter objects used in the pipeline definition. See below
-  final pulumi.Input<List<PipelineDefinitionParameterObject>>? parameterObjects;
+  final pulumi.Input<List<PipelineDefinitionParameterObject>?>? parameterObjects;
   /// Configuration block for the parameter values used in the pipeline definition. See below
-  final pulumi.Input<List<PipelineDefinitionParameterValue>>? parameterValues;
+  final pulumi.Input<List<PipelineDefinitionParameterValue>?>? parameterValues;
   /// ID of the pipeline.
   final pulumi.Input<String> pipelineId;
   /// Configuration block for the objects that define the pipeline. See below
@@ -21,7 +21,7 @@ class PipelineDefinitionArgs {
   /// The following arguments are optional:
   final pulumi.Input<List<PipelineDefinitionPipelineObject>> pipelineObjects;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [PipelineDefinitionArgs].
   /// [parameterObjects] Configuration block for the parameter objects used in the pipeline definition. See below

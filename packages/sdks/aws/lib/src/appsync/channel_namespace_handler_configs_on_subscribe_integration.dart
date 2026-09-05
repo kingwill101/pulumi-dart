@@ -7,7 +7,7 @@ class ChannelNamespaceHandlerConfigsOnSubscribeIntegration {
   /// Unique name of the data source that has been configured on the API.
   final pulumi.Input<String> dataSourceName;
   /// Configuration for a Lambda data source. See `lambdaConfig` below.
-  final pulumi.Input<ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig>? lambdaConfig;
+  final pulumi.Input<ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig?>? lambdaConfig;
 
   /// Creates a new [ChannelNamespaceHandlerConfigsOnSubscribeIntegration].
   /// [dataSourceName] Unique name of the data source that has been configured on the API.

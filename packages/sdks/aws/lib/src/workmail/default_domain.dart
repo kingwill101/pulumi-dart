@@ -184,7 +184,7 @@ class DefaultDomain extends pulumi.CustomResource {
           'aws:workmail/defaultDomain:DefaultDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     organizationId = registerOutput<String>('organizationId');
@@ -196,11 +196,12 @@ class DefaultDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -214,6 +215,20 @@ class DefaultDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    domainName = registerOutput<String>('domainName');
+    organizationId = registerOutput<String>('organizationId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DefaultDomain] resource.
+  DefaultDomain.reference(String urn)
+    : super(
+        'aws:workmail/defaultDomain:DefaultDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domainName = registerOutput<String>('domainName');
     organizationId = registerOutput<String>('organizationId');
     region = registerOutput<String>('region');

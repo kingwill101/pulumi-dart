@@ -230,7 +230,7 @@ import 'secret_version_state.dart';
 /// # The map here can come from other supported configurations
 /// # like locals, resource attribute, map() built-in, etc.
 /// variable "example" {
-///   type = map(string)
+///   type = map(optional(string))
 ///   default = {
 ///     "key1" = "value1"
 ///     "key2" = "value2"
@@ -427,7 +427,7 @@ class SecretVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> secretArn;
   /// Binary data that you want to encrypt and store in this version of the secret. This is required if `secretString` or `secretStringWo` is not set. Needs to be encoded to base64.
   late final pulumi.Output<String?> secretBinary;
-  /// Secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
+  /// Secret to which you want to add a new version. You can specify either the ARN or the friendly name of the secret. The secret must already exist.
   late final pulumi.Output<String> secretId;
   /// Text data that you want to encrypt and store in this version of the secret. This is required if `secretBinary` or `secretStringWo` is not set.
   late final pulumi.Output<String?> secretString;
@@ -455,19 +455,20 @@ class SecretVersion extends pulumi.CustomResource {
           'aws:secretsmanager/secretVersion:SecretVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['secretBinary', 'secretString', 'secretStringWo'],
         ) {
     arn = registerOutput<String>('arn');
     hasSecretStringWo = registerOutput<bool>('hasSecretStringWo');
     region = registerOutput<String>('region');
     secretArn = registerOutput<String>('secretArn');
-    secretBinary = registerOutput<String?>('secretBinary');
+    secretBinary = registerOutput<String?>('secretBinary', isSecret: true);
     secretId = registerOutput<String>('secretId');
-    secretString = registerOutput<String?>('secretString');
-    secretStringWo = registerOutput<String?>('secretStringWo');
+    secretString = registerOutput<String?>('secretString', isSecret: true);
+    secretStringWo = registerOutput<String?>('secretStringWo', isSecret: true);
     secretStringWoVersion = registerOutput<int?>('secretStringWoVersion');
     versionId = registerOutput<String>('versionId');
-    versionStages = registerOutput<List<String>>('versionStages');
+    versionStages = registerOutput<List<String>>('versionStages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [SecretVersion] resource's state with the given [name] and [id].
@@ -475,11 +476,12 @@ class SecretVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecretVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecretVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -497,12 +499,35 @@ class SecretVersion extends pulumi.CustomResource {
     hasSecretStringWo = registerOutput<bool>('hasSecretStringWo');
     region = registerOutput<String>('region');
     secretArn = registerOutput<String>('secretArn');
-    secretBinary = registerOutput<String?>('secretBinary');
+    secretBinary = registerOutput<String?>('secretBinary', isSecret: true);
     secretId = registerOutput<String>('secretId');
-    secretString = registerOutput<String?>('secretString');
-    secretStringWo = registerOutput<String?>('secretStringWo');
+    secretString = registerOutput<String?>('secretString', isSecret: true);
+    secretStringWo = registerOutput<String?>('secretStringWo', isSecret: true);
     secretStringWoVersion = registerOutput<int?>('secretStringWoVersion');
     versionId = registerOutput<String>('versionId');
-    versionStages = registerOutput<List<String>>('versionStages');
+    versionStages = registerOutput<List<String>>('versionStages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SecretVersion] resource.
+  SecretVersion.reference(String urn)
+    : super(
+        'aws:secretsmanager/secretVersion:SecretVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secretBinary', 'secretString', 'secretStringWo'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    hasSecretStringWo = registerOutput<bool>('hasSecretStringWo');
+    region = registerOutput<String>('region');
+    secretArn = registerOutput<String>('secretArn');
+    secretBinary = registerOutput<String?>('secretBinary', isSecret: true);
+    secretId = registerOutput<String>('secretId');
+    secretString = registerOutput<String?>('secretString', isSecret: true);
+    secretStringWo = registerOutput<String?>('secretStringWo', isSecret: true);
+    secretStringWoVersion = registerOutput<int?>('secretStringWoVersion');
+    versionId = registerOutput<String>('versionId');
+    versionStages = registerOutput<List<String>>('versionStages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

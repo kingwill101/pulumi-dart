@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetTrackingOptions {
   /// Custom subdomain that is used to redirect email recipients to the Amazon SES event tracking domain.
-  final pulumi.Input<String>? customRedirectDomain;
+  final pulumi.Input<String?>? customRedirectDomain;
 
   /// Creates a new [ConfigurationSetTrackingOptions].
   /// [customRedirectDomain] Custom subdomain that is used to redirect email recipients to the Amazon SES event tracking domain.

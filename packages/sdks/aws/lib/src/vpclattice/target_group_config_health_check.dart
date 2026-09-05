@@ -5,25 +5,25 @@ import 'target_group_config_health_check_matcher.dart';
 
 class TargetGroupConfigHealthCheck {
   /// Whether health checking is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Approximate amount of time, in seconds, between health checks of an individual target. The range is 5–300 seconds. The default is 30 seconds.
-  final pulumi.Input<int>? healthCheckIntervalSeconds;
+  final pulumi.Input<int?>? healthCheckIntervalSeconds;
   /// Amount of time, in seconds, to wait before reporting a target as unhealthy. The range is 1–120 seconds. The default is 5 seconds.
-  final pulumi.Input<int>? healthCheckTimeoutSeconds;
+  final pulumi.Input<int?>? healthCheckTimeoutSeconds;
   /// Number of consecutive successful health checks required before considering an unhealthy target healthy. The range is 2–10. The default is 5.
-  final pulumi.Input<int>? healthyThresholdCount;
+  final pulumi.Input<int?>? healthyThresholdCount;
   /// Codes to use when checking for a successful response from a target. See `matcher` Block below.
-  final pulumi.Input<TargetGroupConfigHealthCheckMatcher>? matcher;
+  final pulumi.Input<TargetGroupConfigHealthCheckMatcher?>? matcher;
   /// Destination for health checks on the targets. If the protocol version is HTTP/1.1 or HTTP/2, specify a valid URI (for example, /path?query). The default path is `/`. Health checks are not supported if the protocol version is gRPC, however, you can choose HTTP/1.1 or HTTP/2 and specify a valid URI.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Port used when performing health checks on targets. The default setting is the port that a target receives traffic on.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Protocol used when performing health checks on targets. The possible protocols are `HTTP` and `HTTPS`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Protocol version used when performing health checks on targets. The possible protocol versions are `HTTP1` and `HTTP2`. The default is `HTTP1`.
-  final pulumi.Input<String>? protocolVersion;
+  final pulumi.Input<String?>? protocolVersion;
   /// Number of consecutive failed health checks required before considering a target unhealthy. The range is 2–10. The default is 2.
-  final pulumi.Input<int>? unhealthyThresholdCount;
+  final pulumi.Input<int?>? unhealthyThresholdCount;
 
   /// Creates a new [TargetGroupConfigHealthCheck].
   /// [enabled] Whether health checking is enabled. Defaults to `true`.
@@ -67,15 +67,15 @@ class TargetGroupConfigHealthCheck {
   factory TargetGroupConfigHealthCheck.fromMap(Map<String, dynamic> map) {
     return TargetGroupConfigHealthCheck(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      healthCheckIntervalSeconds: (() { final guardedValue = map['healthCheckIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      healthCheckTimeoutSeconds: (() { final guardedValue = map['healthCheckTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      healthyThresholdCount: (() { final guardedValue = map['healthyThresholdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      healthCheckIntervalSeconds: (() { final guardedValue = map['healthCheckIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      healthCheckTimeoutSeconds: (() { final guardedValue = map['healthCheckTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      healthyThresholdCount: (() { final guardedValue = map['healthyThresholdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       matcher: (() { final guardedValue = map['matcher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TargetGroupConfigHealthCheckMatcher.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocolVersion: (() { final guardedValue = map['protocolVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      unhealthyThresholdCount: (() { final guardedValue = map['unhealthyThresholdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      unhealthyThresholdCount: (() { final guardedValue = map['unhealthyThresholdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

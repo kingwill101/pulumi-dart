@@ -49,14 +49,14 @@ class DeploymentType extends pulumi.CustomResource {
           'aws:apigateway/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');
-    triggers = registerOutput<Map<String, String>?>('triggers');
-    variables = registerOutput<Map<String, String>?>('variables');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    variables = registerOutput<Map<String, String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -64,11 +64,12 @@ class DeploymentType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeploymentType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -86,7 +87,24 @@ class DeploymentType extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
     restApi = registerOutput<String>('restApi');
-    triggers = registerOutput<Map<String, String>?>('triggers');
-    variables = registerOutput<Map<String, String>?>('variables');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    variables = registerOutput<Map<String, String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DeploymentType] resource.
+  DeploymentType.reference(String urn)
+    : super(
+        'aws:apigateway/deployment:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    region = registerOutput<String>('region');
+    restApi = registerOutput<String>('restApi');
+    triggers = registerOutput<Map<String, String>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    variables = registerOutput<Map<String, String>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

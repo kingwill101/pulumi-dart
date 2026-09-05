@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceQuotaUsageMetricMetricDimension {
-  final pulumi.Input<String>? class_;
-  final pulumi.Input<String>? resource;
-  final pulumi.Input<String>? service;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? class_;
+  final pulumi.Input<String?>? resource;
+  final pulumi.Input<String?>? service;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServiceQuotaUsageMetricMetricDimension].
   /// [class_] Optional.

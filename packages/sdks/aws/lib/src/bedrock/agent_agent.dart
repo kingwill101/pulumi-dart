@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_agent_args.dart';
+import 'agent_agent_guardrail_configuration.dart';
+import 'agent_agent_memory_configuration.dart';
+import 'agent_agent_prompt_override_configuration.dart';
 import 'agent_agent_state.dart';
 import 'agent_agent_timeouts.dart';
 
@@ -19,11 +22,6 @@ import 'agent_agent_timeouts.dart';
 /// const currentGetRegion = aws.getRegion({});
 /// const exampleAgentTrust = Promise.all([current, currentGetPartition, currentGetRegion]).then(([current, currentGetPartition, currentGetRegion]) => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
-///         principals: [{
-///             identifiers: ["bedrock.amazonaws.com"],
-///             type: "Service",
-///         }],
 ///         conditions: [
 ///             {
 ///                 test: "StringEquals",
@@ -36,6 +34,11 @@ import 'agent_agent_timeouts.dart';
 ///                 variable: "AWS:SourceArn",
 ///             },
 ///         ],
+///         principals: [{
+///             identifiers: ["bedrock.amazonaws.com"],
+///             type: "Service",
+///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// }));
 /// const exampleAgentPermissions = Promise.all([currentGetPartition, currentGetRegion]).then(([currentGetPartition, currentGetRegion]) => aws.iam.getPolicyDocument({
@@ -68,11 +71,6 @@ import 'agent_agent_timeouts.dart';
 /// current_get_partition = aws.get_partition()
 /// current_get_region = aws.get_region()
 /// example_agent_trust = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
-///     "principals": [{
-///         "identifiers": ["bedrock.amazonaws.com"],
-///         "type": "Service",
-///     }],
 ///     "conditions": [
 ///         {
 ///             "test": "StringEquals",
@@ -85,6 +83,11 @@ import 'agent_agent_timeouts.dart';
 ///             "variable": "AWS:SourceArn",
 ///         },
 ///     ],
+///     "principals": [{
+///         "identifiers": ["bedrock.amazonaws.com"],
+///         "type": "Service",
+///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_agent_permissions = aws.iam.get_policy_document(statements=[{
 ///     "actions": ["bedrock:InvokeModel"],
@@ -123,21 +126,6 @@ import 'agent_agent_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Identifiers = new[]
-///                         {
-///                             "bedrock.amazonaws.com",
-///                         },
-///                         Type = "Service",
-///                     },
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -158,6 +146,21 @@ import 'agent_agent_timeouts.dart';
 ///                         },
 ///                         Variable = "AWS:SourceArn",
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Identifiers = new[]
+///                         {
+///                             "bedrock.amazonaws.com",
+///                         },
+///                         Type = "Service",
+///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -233,17 +236,6 @@ import 'agent_agent_timeouts.dart';
 /// 		exampleAgentTrust, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Identifiers: []string{
-/// 								"bedrock.amazonaws.com",
-/// 							},
-/// 							Type: "Service",
-/// 						},
-/// 					},
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test: "StringEquals",
@@ -259,6 +251,17 @@ import 'agent_agent_timeouts.dart';
 /// 							},
 /// 							Variable: "AWS:SourceArn",
 /// 						},
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Identifiers: []string{
+/// 								"bedrock.amazonaws.com",
+/// 							},
+/// 							Type: "Service",
+/// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -326,11 +329,6 @@ import 'agent_agent_timeouts.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "exampleAgentTrust" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
-///     principals {
-///       identifiers = ["bedrock.amazonaws.com"]
-///       type        = "Service"
-///     }
 ///     conditions {
 ///       test     = "StringEquals"
 ///       values   = [data.aws_getcalleridentity.current.account_id]
@@ -341,6 +339,11 @@ import 'agent_agent_timeouts.dart';
 ///       values   = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent/*"]
 ///       variable = "AWS:SourceArn"
 ///     }
+///     principals {
+///       identifiers = ["bedrock.amazonaws.com"]
+///       type        = "Service"
+///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "exampleAgentPermissions" {
@@ -379,8 +382,8 @@ import 'agent_agent_timeouts.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.RolePolicy;
@@ -411,11 +414,6 @@ import 'agent_agent_timeouts.dart';
 ///
 ///         final var exampleAgentTrust = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .identifiers("bedrock.amazonaws.com")
-///                     .type("Service")
-///                     .build())
 ///                 .conditions(
 ///                     GetPolicyDocumentStatementConditionArgs.builder()
 ///                         .test("StringEquals")
@@ -427,6 +425,11 @@ import 'agent_agent_timeouts.dart';
 ///                         .values(String.format("arn:%s:bedrock:%s:%s:agent/*", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
 ///                         .variable("AWS:SourceArn")
 ///                         .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .identifiers("bedrock.amazonaws.com")
+///                     .type("Service")
+///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -498,13 +501,7 @@ import 'agent_agent_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
-///               - identifiers:
-///                   - bedrock.amazonaws.com
-///                 type: Service
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 values:
 ///                   - ${current.accountId}
@@ -513,6 +510,12 @@ import 'agent_agent_timeouts.dart';
 ///                 values:
 ///                   - arn:${currentGetPartition.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent/*
 ///                 variable: AWS:SourceArn
+///             principals:
+///               - identifiers:
+///                   - bedrock.amazonaws.com
+///                 type: Service
+///             actions:
+///               - sts:AssumeRole
 ///   exampleAgentPermissions:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
@@ -554,19 +557,19 @@ class AgentAgent extends pulumi.CustomResource {
   /// The following arguments are optional:
   late final pulumi.Output<String> foundationModel;
   /// Details about the guardrail associated with the agent. See `guardrailConfiguration` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> guardrailConfigurations;
+  late final pulumi.Output<List<AgentAgentGuardrailConfiguration>?> guardrailConfigurations;
   /// Number of seconds for which Amazon Bedrock keeps information about a user's conversation with the agent. A user interaction remains active for the amount of time specified. If no conversation occurs during this time, the session expires and Amazon Bedrock deletes any data provided before the timeout.
   late final pulumi.Output<int> idleSessionTtlInSeconds;
   /// Instructions that tell the agent what it should do and how it should interact with users. If `prepareAgent` is `true` this argument is required. The valid range is 40 - 20000 characters.
   late final pulumi.Output<String> instruction;
   /// Configurations for the agent's ability to retain the conversational context.
-  late final pulumi.Output<List<Map<String, dynamic>>> memoryConfigurations;
+  late final pulumi.Output<List<AgentAgentMemoryConfiguration>> memoryConfigurations;
   /// Whether to prepare the agent after creation or modification. Defaults to `true`.
   late final pulumi.Output<bool> prepareAgent;
   /// Timestamp of when the agent was last prepared.
   late final pulumi.Output<String> preparedAt;
   /// Configurations to override prompt templates in different parts of an agent sequence. For more information, see [Advanced prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html). See `promptOverrideConfiguration` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> promptOverrideConfigurations;
+  late final pulumi.Output<List<AgentAgentPromptOverrideConfiguration>> promptOverrideConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Whether the in-use check is skipped when deleting the agent.
@@ -589,7 +592,7 @@ class AgentAgent extends pulumi.CustomResource {
           'aws:bedrock/agentAgent:AgentAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     agentArn = registerOutput<String>('agentArn');
     agentCollaboration = registerOutput<String>('agentCollaboration');
@@ -600,17 +603,17 @@ class AgentAgent extends pulumi.CustomResource {
     customerEncryptionKeyArn = registerOutput<String?>('customerEncryptionKeyArn');
     description = registerOutput<String?>('description');
     foundationModel = registerOutput<String>('foundationModel');
-    guardrailConfigurations = registerOutput<List<Map<String, dynamic>>?>('guardrailConfigurations');
+    guardrailConfigurations = registerOutput<List<AgentAgentGuardrailConfiguration>?>('guardrailConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentGuardrailConfiguration>(guardedValue, (value) => AgentAgentGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     idleSessionTtlInSeconds = registerOutput<int>('idleSessionTtlInSeconds');
     instruction = registerOutput<String>('instruction');
-    memoryConfigurations = registerOutput<List<Map<String, dynamic>>>('memoryConfigurations');
+    memoryConfigurations = registerOutput<List<AgentAgentMemoryConfiguration>>('memoryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentMemoryConfiguration>(guardedValue, (value) => AgentAgentMemoryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     prepareAgent = registerOutput<bool>('prepareAgent');
     preparedAt = registerOutput<String>('preparedAt');
-    promptOverrideConfigurations = registerOutput<List<Map<String, dynamic>>>('promptOverrideConfigurations');
+    promptOverrideConfigurations = registerOutput<List<AgentAgentPromptOverrideConfiguration>>('promptOverrideConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentPromptOverrideConfiguration>(guardedValue, (value) => AgentAgentPromptOverrideConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     skipResourceInUseCheck = registerOutput<bool>('skipResourceInUseCheck');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentAgentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -619,11 +622,12 @@ class AgentAgent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentAgentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentAgent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -646,17 +650,49 @@ class AgentAgent extends pulumi.CustomResource {
     customerEncryptionKeyArn = registerOutput<String?>('customerEncryptionKeyArn');
     description = registerOutput<String?>('description');
     foundationModel = registerOutput<String>('foundationModel');
-    guardrailConfigurations = registerOutput<List<Map<String, dynamic>>?>('guardrailConfigurations');
+    guardrailConfigurations = registerOutput<List<AgentAgentGuardrailConfiguration>?>('guardrailConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentGuardrailConfiguration>(guardedValue, (value) => AgentAgentGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     idleSessionTtlInSeconds = registerOutput<int>('idleSessionTtlInSeconds');
     instruction = registerOutput<String>('instruction');
-    memoryConfigurations = registerOutput<List<Map<String, dynamic>>>('memoryConfigurations');
+    memoryConfigurations = registerOutput<List<AgentAgentMemoryConfiguration>>('memoryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentMemoryConfiguration>(guardedValue, (value) => AgentAgentMemoryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     prepareAgent = registerOutput<bool>('prepareAgent');
     preparedAt = registerOutput<String>('preparedAt');
-    promptOverrideConfigurations = registerOutput<List<Map<String, dynamic>>>('promptOverrideConfigurations');
+    promptOverrideConfigurations = registerOutput<List<AgentAgentPromptOverrideConfiguration>>('promptOverrideConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentPromptOverrideConfiguration>(guardedValue, (value) => AgentAgentPromptOverrideConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     skipResourceInUseCheck = registerOutput<bool>('skipResourceInUseCheck');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentAgentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentAgent] resource.
+  AgentAgent.reference(String urn)
+    : super(
+        'aws:bedrock/agentAgent:AgentAgent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentArn = registerOutput<String>('agentArn');
+    agentCollaboration = registerOutput<String>('agentCollaboration');
+    agentId = registerOutput<String>('agentId');
+    agentName = registerOutput<String>('agentName');
+    agentResourceRoleArn = registerOutput<String>('agentResourceRoleArn');
+    agentVersion = registerOutput<String>('agentVersion');
+    customerEncryptionKeyArn = registerOutput<String?>('customerEncryptionKeyArn');
+    description = registerOutput<String?>('description');
+    foundationModel = registerOutput<String>('foundationModel');
+    guardrailConfigurations = registerOutput<List<AgentAgentGuardrailConfiguration>?>('guardrailConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentGuardrailConfiguration>(guardedValue, (value) => AgentAgentGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    idleSessionTtlInSeconds = registerOutput<int>('idleSessionTtlInSeconds');
+    instruction = registerOutput<String>('instruction');
+    memoryConfigurations = registerOutput<List<AgentAgentMemoryConfiguration>>('memoryConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentMemoryConfiguration>(guardedValue, (value) => AgentAgentMemoryConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    prepareAgent = registerOutput<bool>('prepareAgent');
+    preparedAt = registerOutput<String>('preparedAt');
+    promptOverrideConfigurations = registerOutput<List<AgentAgentPromptOverrideConfiguration>>('promptOverrideConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAgentPromptOverrideConfiguration>(guardedValue, (value) => AgentAgentPromptOverrideConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    skipResourceInUseCheck = registerOutput<bool>('skipResourceInUseCheck');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentAgentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

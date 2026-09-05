@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hours_of_operation_args.dart';
+import 'hours_of_operation_config.dart';
 import 'hours_of_operation_state.dart';
 
 /// Provides an Amazon Connect Hours of Operation resource. For more information see
@@ -13,13 +14,8 @@ import 'hours_of_operation_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.connect.HoursOfOperation("test", {
-///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///     name: "Office Hours",
-///     description: "Monday office hours",
-///     timeZone: "EST",
 ///     configs: [
 ///         {
-///             day: "MONDAY",
 ///             endTime: {
 ///                 hours: 23,
 ///                 minutes: 8,
@@ -28,9 +24,9 @@ import 'hours_of_operation_state.dart';
 ///                 hours: 8,
 ///                 minutes: 0,
 ///             },
+///             day: "MONDAY",
 ///         },
 ///         {
-///             day: "TUESDAY",
 ///             endTime: {
 ///                 hours: 21,
 ///                 minutes: 0,
@@ -39,8 +35,13 @@ import 'hours_of_operation_state.dart';
 ///                 hours: 9,
 ///                 minutes: 0,
 ///             },
+///             day: "TUESDAY",
 ///         },
 ///     ],
+///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///     name: "Office Hours",
+///     description: "Monday office hours",
+///     timeZone: "EST",
 ///     tags: {
 ///         Name: "Example Hours of Operation",
 ///     },
@@ -51,13 +52,8 @@ import 'hours_of_operation_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.connect.HoursOfOperation("test",
-///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///     name="Office Hours",
-///     description="Monday office hours",
-///     time_zone="EST",
 ///     configs=[
 ///         {
-///             "day": "MONDAY",
 ///             "end_time": {
 ///                 "hours": 23,
 ///                 "minutes": 8,
@@ -66,9 +62,9 @@ import 'hours_of_operation_state.dart';
 ///                 "hours": 8,
 ///                 "minutes": 0,
 ///             },
+///             "day": "MONDAY",
 ///         },
 ///         {
-///             "day": "TUESDAY",
 ///             "end_time": {
 ///                 "hours": 21,
 ///                 "minutes": 0,
@@ -77,8 +73,13 @@ import 'hours_of_operation_state.dart';
 ///                 "hours": 9,
 ///                 "minutes": 0,
 ///             },
+///             "day": "TUESDAY",
 ///         },
 ///     ],
+///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///     name="Office Hours",
+///     description="Monday office hours",
+///     time_zone="EST",
 ///     tags={
 ///         "Name": "Example Hours of Operation",
 ///     })
@@ -93,15 +94,10 @@ import 'hours_of_operation_state.dart';
 /// {
 ///     var test = new Aws.Connect.HoursOfOperation("test", new()
 ///     {
-///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
-///         Name = "Office Hours",
-///         Description = "Monday office hours",
-///         TimeZone = "EST",
 ///         Configs = new[]
 ///         {
 ///             new Aws.Connect.Inputs.HoursOfOperationConfigArgs
 ///             {
-///                 Day = "MONDAY",
 ///                 EndTime = new Aws.Connect.Inputs.HoursOfOperationConfigEndTimeArgs
 ///                 {
 ///                     Hours = 23,
@@ -112,10 +108,10 @@ import 'hours_of_operation_state.dart';
 ///                     Hours = 8,
 ///                     Minutes = 0,
 ///                 },
+///                 Day = "MONDAY",
 ///             },
 ///             new Aws.Connect.Inputs.HoursOfOperationConfigArgs
 ///             {
-///                 Day = "TUESDAY",
 ///                 EndTime = new Aws.Connect.Inputs.HoursOfOperationConfigEndTimeArgs
 ///                 {
 ///                     Hours = 21,
@@ -126,8 +122,13 @@ import 'hours_of_operation_state.dart';
 ///                     Hours = 9,
 ///                     Minutes = 0,
 ///                 },
+///                 Day = "TUESDAY",
 ///             },
 ///         },
+///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
+///         Name = "Office Hours",
+///         Description = "Monday office hours",
+///         TimeZone = "EST",
 ///         Tags =
 ///         {
 ///             { "Name", "Example Hours of Operation" },
@@ -147,13 +148,8 @@ import 'hours_of_operation_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewHoursOfOperation(ctx, "test", &connect.HoursOfOperationArgs{
-/// 			InstanceId:  pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
-/// 			Name:        pulumi.String("Office Hours"),
-/// 			Description: pulumi.String("Monday office hours"),
-/// 			TimeZone:    pulumi.String("EST"),
 /// 			Configs: connect.HoursOfOperationConfigArray{
 /// 				&connect.HoursOfOperationConfigArgs{
-/// 					Day: pulumi.String("MONDAY"),
 /// 					EndTime: &connect.HoursOfOperationConfigEndTimeArgs{
 /// 						Hours:   pulumi.Int(23),
 /// 						Minutes: pulumi.Int(8),
@@ -162,9 +158,9 @@ import 'hours_of_operation_state.dart';
 /// 						Hours:   pulumi.Int(8),
 /// 						Minutes: pulumi.Int(0),
 /// 					},
+/// 					Day: pulumi.String("MONDAY"),
 /// 				},
 /// 				&connect.HoursOfOperationConfigArgs{
-/// 					Day: pulumi.String("TUESDAY"),
 /// 					EndTime: &connect.HoursOfOperationConfigEndTimeArgs{
 /// 						Hours:   pulumi.Int(21),
 /// 						Minutes: pulumi.Int(0),
@@ -173,8 +169,13 @@ import 'hours_of_operation_state.dart';
 /// 						Hours:   pulumi.Int(9),
 /// 						Minutes: pulumi.Int(0),
 /// 					},
+/// 					Day: pulumi.String("TUESDAY"),
 /// 				},
 /// 			},
+/// 			InstanceId:  pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
+/// 			Name:        pulumi.String("Office Hours"),
+/// 			Description: pulumi.String("Monday office hours"),
+/// 			TimeZone:    pulumi.String("EST"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("Example Hours of Operation"),
 /// 			},
@@ -196,12 +197,7 @@ import 'hours_of_operation_state.dart';
 /// }
 ///
 /// resource "aws_connect_hoursofoperation" "test" {
-///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
-///   name        = "Office Hours"
-///   description = "Monday office hours"
-///   time_zone   = "EST"
 ///   configs {
-///     day = "MONDAY"
 ///     end_time = {
 ///       hours   = 23
 ///       minutes = 8
@@ -210,9 +206,9 @@ import 'hours_of_operation_state.dart';
 ///       hours   = 8
 ///       minutes = 0
 ///     }
+///     day = "MONDAY"
 ///   }
 ///   configs {
-///     day = "TUESDAY"
 ///     end_time = {
 ///       hours   = 21
 ///       minutes = 0
@@ -221,7 +217,12 @@ import 'hours_of_operation_state.dart';
 ///       hours   = 9
 ///       minutes = 0
 ///     }
+///     day = "TUESDAY"
 ///   }
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
+///   name        = "Office Hours"
+///   description = "Monday office hours"
+///   time_zone   = "EST"
 ///   tags = {
 ///     "Name" = "Example Hours of Operation"
 ///   }
@@ -252,13 +253,8 @@ import 'hours_of_operation_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new HoursOfOperation("test", HoursOfOperationArgs.builder()
-///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
-///             .name("Office Hours")
-///             .description("Monday office hours")
-///             .timeZone("EST")
 ///             .configs(
 ///                 HoursOfOperationConfigArgs.builder()
-///                     .day("MONDAY")
 ///                     .endTime(HoursOfOperationConfigEndTimeArgs.builder()
 ///                         .hours(23)
 ///                         .minutes(8)
@@ -267,9 +263,9 @@ import 'hours_of_operation_state.dart';
 ///                         .hours(8)
 ///                         .minutes(0)
 ///                         .build())
+///                     .day("MONDAY")
 ///                     .build(),
 ///                 HoursOfOperationConfigArgs.builder()
-///                     .day("TUESDAY")
 ///                     .endTime(HoursOfOperationConfigEndTimeArgs.builder()
 ///                         .hours(21)
 ///                         .minutes(0)
@@ -278,7 +274,12 @@ import 'hours_of_operation_state.dart';
 ///                         .hours(9)
 ///                         .minutes(0)
 ///                         .build())
+///                     .day("TUESDAY")
 ///                     .build())
+///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
+///             .name("Office Hours")
+///             .description("Monday office hours")
+///             .timeZone("EST")
 ///             .tags(Map.of("Name", "Example Hours of Operation"))
 ///             .build());
 ///
@@ -290,25 +291,25 @@ import 'hours_of_operation_state.dart';
 ///   test:
 ///     type: aws:connect:HoursOfOperation
 ///     properties:
-///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
-///       name: Office Hours
-///       description: Monday office hours
-///       timeZone: EST
 ///       configs:
-///         - day: MONDAY
-///           endTime:
+///         - endTime:
 ///             hours: 23
 ///             minutes: 8
 ///           startTime:
 ///             hours: 8
 ///             minutes: 0
-///         - day: TUESDAY
-///           endTime:
+///           day: MONDAY
+///         - endTime:
 ///             hours: 21
 ///             minutes: 0
 ///           startTime:
 ///             hours: 9
 ///             minutes: 0
+///           day: TUESDAY
+///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
+///       name: Office Hours
+///       description: Monday office hours
+///       timeZone: EST
 ///       tags:
 ///         Name: Example Hours of Operation
 /// ```
@@ -322,10 +323,10 @@ import 'hours_of_operation_state.dart';
 /// $ pulumi import aws:connect/hoursOfOperation:HoursOfOperation example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
 class HoursOfOperation extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Hours of Operation.
+  /// ARN of the Hours of Operation.
   late final pulumi.Output<String> arn;
   /// One or more config blocks which define the configuration information for the hours of operation: day, start time, and end time . Config blocks are documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> configs;
+  late final pulumi.Output<List<HoursOfOperationConfig>> configs;
   /// Specifies the description of the Hours of Operation.
   late final pulumi.Output<String?> description;
   /// The identifier for the hours of operation.
@@ -355,17 +356,17 @@ class HoursOfOperation extends pulumi.CustomResource {
           'aws:connect/hoursOfOperation:HoursOfOperation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    configs = registerOutput<List<Map<String, dynamic>>>('configs');
+    configs = registerOutput<List<HoursOfOperationConfig>>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HoursOfOperationConfig>(guardedValue, (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     hoursOfOperationId = registerOutput<String>('hoursOfOperationId');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeZone = registerOutput<String>('timeZone');
   }
 
@@ -374,11 +375,12 @@ class HoursOfOperation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HoursOfOperationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HoursOfOperation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -393,14 +395,35 @@ class HoursOfOperation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    configs = registerOutput<List<Map<String, dynamic>>>('configs');
+    configs = registerOutput<List<HoursOfOperationConfig>>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HoursOfOperationConfig>(guardedValue, (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     hoursOfOperationId = registerOutput<String>('hoursOfOperationId');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeZone = registerOutput<String>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [HoursOfOperation] resource.
+  HoursOfOperation.reference(String urn)
+    : super(
+        'aws:connect/hoursOfOperation:HoursOfOperation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    configs = registerOutput<List<HoursOfOperationConfig>>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HoursOfOperationConfig>(guardedValue, (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    hoursOfOperationId = registerOutput<String>('hoursOfOperationId');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeZone = registerOutput<String>('timeZone');
   }
 }

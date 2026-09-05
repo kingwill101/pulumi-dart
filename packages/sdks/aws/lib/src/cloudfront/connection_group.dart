@@ -171,7 +171,7 @@ class ConnectionGroup extends pulumi.CustomResource {
           'aws:cloudfront/connectionGroup:ConnectionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     anycastIpListId = registerOutput<String?>('anycastIpListId');
     arn = registerOutput<String>('arn');
@@ -183,8 +183,8 @@ class ConnectionGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     routingEndpoint = registerOutput<String>('routingEndpoint');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ConnectionGroupTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     waitForDeployment = registerOutput<bool>('waitForDeployment');
   }
@@ -194,11 +194,12 @@ class ConnectionGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectionGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -222,8 +223,33 @@ class ConnectionGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     routingEndpoint = registerOutput<String>('routingEndpoint');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ConnectionGroupTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    waitForDeployment = registerOutput<bool>('waitForDeployment');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionGroup] resource.
+  ConnectionGroup.reference(String urn)
+    : super(
+        'aws:cloudfront/connectionGroup:ConnectionGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    anycastIpListId = registerOutput<String?>('anycastIpListId');
+    arn = registerOutput<String>('arn');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String>('etag');
+    ipv6Enabled = registerOutput<bool>('ipv6Enabled');
+    isDefault = registerOutput<bool>('isDefault');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    routingEndpoint = registerOutput<String>('routingEndpoint');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ConnectionGroupTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     waitForDeployment = registerOutput<bool>('waitForDeployment');
   }

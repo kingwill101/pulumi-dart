@@ -138,7 +138,7 @@ import 'organization_delegated_admin_account_state.dart';
 class OrganizationDelegatedAdminAccount extends pulumi.CustomResource {
   /// An organization member account ID that you want to designate as a delegated administrator.
   late final pulumi.Output<String> accountId;
-  /// The Amazon Resource Name (ARN) of the delegated administrator's account.
+  /// ARN of the delegated administrator's account.
   late final pulumi.Output<String> arn;
   /// The email address that is associated with the delegated administrator's AWS account.
   late final pulumi.Output<String> email;
@@ -159,7 +159,7 @@ class OrganizationDelegatedAdminAccount extends pulumi.CustomResource {
           'aws:cloudtrail/organizationDelegatedAdminAccount:OrganizationDelegatedAdminAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
@@ -173,11 +173,12 @@ class OrganizationDelegatedAdminAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationDelegatedAdminAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationDelegatedAdminAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -191,6 +192,22 @@ class OrganizationDelegatedAdminAccount extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    arn = registerOutput<String>('arn');
+    email = registerOutput<String>('email');
+    this.name = registerOutput<String>('name');
+    servicePrincipal = registerOutput<String>('servicePrincipal');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationDelegatedAdminAccount] resource.
+  OrganizationDelegatedAdminAccount.reference(String urn)
+    : super(
+        'aws:cloudtrail/organizationDelegatedAdminAccount:OrganizationDelegatedAdminAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     email = registerOutput<String>('email');

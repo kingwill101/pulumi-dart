@@ -5,7 +5,7 @@ import 'remediation_configuration_execution_controls_ssm_controls.dart';
 
 class RemediationConfigurationExecutionControls {
   /// Configuration block for SSM controls. See below.
-  final pulumi.Input<RemediationConfigurationExecutionControlsSsmControls>? ssmControls;
+  final pulumi.Input<RemediationConfigurationExecutionControlsSsmControls?>? ssmControls;
 
   /// Creates a new [RemediationConfigurationExecutionControls].
   /// [ssmControls] Configuration block for SSM controls. See below.

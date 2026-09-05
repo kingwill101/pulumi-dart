@@ -6,23 +6,23 @@ import 'profiles_profile_timeouts.dart';
 /// Input properties used for looking up and filtering ProfilesProfile resources.
 class ProfilesProfileState {
   /// ARN of the Profile.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name of the Profile.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Share status of the Profile.
-  final pulumi.Input<String>? shareStatus;
+  final pulumi.Input<String?>? shareStatus;
   /// Status of the Profile.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Status message of the Profile.
-  final pulumi.Input<String>? statusMessage;
+  final pulumi.Input<String?>? statusMessage;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<ProfilesProfileTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<ProfilesProfileTimeouts?>? timeouts;
 
   /// Creates a new [ProfilesProfileState].
   /// [arn] ARN of the Profile.

@@ -12,11 +12,11 @@ import 'resource_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.codebuild.ReportGroup("example", {
-///     name: "example",
-///     type: "TEST",
 ///     exportConfig: {
 ///         type: "NO_EXPORT",
 ///     },
+///     name: "example",
+///     type: "TEST",
 /// });
 /// const current = aws.getPartition({});
 /// const currentGetCallerIdentity = aws.getCallerIdentity({});
@@ -48,11 +48,11 @@ import 'resource_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.codebuild.ReportGroup("example",
-///     name="example",
-///     type="TEST",
 ///     export_config={
 ///         "type": "NO_EXPORT",
-///     })
+///     },
+///     name="example",
+///     type="TEST")
 /// current = aws.get_partition()
 /// current_get_caller_identity = aws.get_caller_identity()
 /// example_resource_policy = aws.codebuild.ResourcePolicy("example",
@@ -87,12 +87,12 @@ import 'resource_policy_state.dart';
 /// {
 ///     var example = new Aws.CodeBuild.ReportGroup("example", new()
 ///     {
-///         Name = "example",
-///         Type = "TEST",
 ///         ExportConfig = new Aws.CodeBuild.Inputs.ReportGroupExportConfigArgs
 ///         {
 ///             Type = "NO_EXPORT",
 ///         },
+///         Name = "example",
+///         Type = "TEST",
 ///     });
 ///
 ///     var current = Aws.GetPartition.Invoke();
@@ -151,11 +151,11 @@ import 'resource_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := codebuild.NewReportGroup(ctx, "example", &codebuild.ReportGroupArgs{
-/// 			Name: pulumi.String("example"),
-/// 			Type: pulumi.String("TEST"),
 /// 			ExportConfig: &codebuild.ReportGroupExportConfigArgs{
 /// 				Type: pulumi.String("NO_EXPORT"),
 /// 			},
+/// 			Name: pulumi.String("example"),
+/// 			Type: pulumi.String("TEST"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -221,11 +221,11 @@ import 'resource_policy_state.dart';
 /// }
 ///
 /// resource "aws_codebuild_reportgroup" "example" {
-///   name = "example"
-///   type = "TEST"
 ///   export_config = {
 ///     type = "NO_EXPORT"
 ///   }
+///   name = "example"
+///   type = "TEST"
 /// }
 /// resource "aws_codebuild_resourcepolicy" "example" {
 ///   resource_arn = aws_codebuild_reportgroup.example.arn
@@ -273,11 +273,11 @@ import 'resource_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ReportGroup("example", ReportGroupArgs.builder()
-///             .name("example")
-///             .type("TEST")
 ///             .exportConfig(ReportGroupExportConfigArgs.builder()
 ///                 .type("NO_EXPORT")
 ///                 .build())
+///             .name("example")
+///             .type("TEST")
 ///             .build());
 ///
 ///         final var current = AwsFunctions.getPartition(GetPartitionArgs.builder()
@@ -317,10 +317,10 @@ import 'resource_policy_state.dart';
 ///   example:
 ///     type: aws:codebuild:ReportGroup
 ///     properties:
-///       name: example
-///       type: TEST
 ///       exportConfig:
 ///         type: NO_EXPORT
+///       name: example
+///       type: TEST
 ///   exampleResourcePolicy:
 ///     type: aws:codebuild:ResourcePolicy
 ///     name: example
@@ -359,7 +359,7 @@ import 'resource_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `resourceArn` (String) Amazon Resource Name (ARN) of the CodeBuild resource.
+/// - `resourceArn` (String) ARN of the CodeBuild resource.
 ///
 ///
 /// Using `pulumi import`, import CodeBuild Resource Policy using the CodeBuild Resource Policy arn. For example:
@@ -387,7 +387,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:codebuild/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -399,11 +399,12 @@ class ResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -417,6 +418,20 @@ class ResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicy] resource.
+  ResourcePolicy.reference(String urn)
+    : super(
+        'aws:codebuild/resourcePolicy:ResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

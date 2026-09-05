@@ -7,19 +7,19 @@ import 'billing_group_properties.dart';
 /// Input properties used for looking up and filtering BillingGroup resources.
 class BillingGroupState {
   /// The ARN of the Billing Group.
-  final pulumi.Input<String>? arn;
-  final pulumi.Input<List<BillingGroupMetadata>>? metadatas;
+  final pulumi.Input<String?>? arn;
+  final pulumi.Input<List<BillingGroupMetadata>?>? metadatas;
   /// The name of the Billing Group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Billing Group properties. Defined below.
-  final pulumi.Input<BillingGroupProperties>? properties;
+  final pulumi.Input<BillingGroupProperties?>? properties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The current version of the Billing Group record in the registry.
-  final pulumi.Input<int>? version;
+  final pulumi.Input<int?>? version;
 
   /// Creates a new [BillingGroupState].
   /// [arn] The ARN of the Billing Group.
@@ -63,7 +63,7 @@ class BillingGroupState {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

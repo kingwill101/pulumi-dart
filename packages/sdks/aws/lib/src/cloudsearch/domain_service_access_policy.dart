@@ -16,21 +16,21 @@ import 'domain_service_access_policy_state.dart';
 /// const exampleDomain = new aws.cloudsearch.Domain("example", {name: "example-domain"});
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "search_only",
-///         effect: "Allow",
-///         principals: [{
-///             type: "*",
-///             identifiers: ["*"],
-///         }],
-///         actions: [
-///             "cloudsearch:search",
-///             "cloudsearch:document",
-///         ],
 ///         conditions: [{
 ///             test: "IpAddress",
 ///             variable: "aws:SourceIp",
 ///             values: ["192.0.2.0/32"],
 ///         }],
+///         principals: [{
+///             type: "*",
+///             identifiers: ["*"],
+///         }],
+///         sid: "search_only",
+///         effect: "Allow",
+///         actions: [
+///             "cloudsearch:search",
+///             "cloudsearch:document",
+///         ],
 ///     }],
 /// });
 /// const exampleDomainServiceAccessPolicy = new aws.cloudsearch.DomainServiceAccessPolicy("example", {
@@ -44,21 +44,21 @@ import 'domain_service_access_policy_state.dart';
 ///
 /// example_domain = aws.cloudsearch.Domain("example", name="example-domain")
 /// example = aws.iam.get_policy_document(statements=[{
-///     "sid": "search_only",
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "*",
-///         "identifiers": ["*"],
-///     }],
-///     "actions": [
-///         "cloudsearch:search",
-///         "cloudsearch:document",
-///     ],
 ///     "conditions": [{
 ///         "test": "IpAddress",
 ///         "variable": "aws:SourceIp",
 ///         "values": ["192.0.2.0/32"],
 ///     }],
+///     "principals": [{
+///         "type": "*",
+///         "identifiers": ["*"],
+///     }],
+///     "sid": "search_only",
+///     "effect": "Allow",
+///     "actions": [
+///         "cloudsearch:search",
+///         "cloudsearch:document",
+///     ],
 /// }])
 /// example_domain_service_access_policy = aws.cloudsearch.DomainServiceAccessPolicy("example",
 ///     domain_name=example_domain.id,
@@ -83,24 +83,6 @@ import 'domain_service_access_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "search_only",
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "*",
-///                         Identifiers = new[]
-///                         {
-///                             "*",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "cloudsearch:search",
-///                     "cloudsearch:document",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -112,6 +94,24 @@ import 'domain_service_access_policy_state.dart';
 ///                             "192.0.2.0/32",
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "*",
+///                         Identifiers = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
+///                 Sid = "search_only",
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "cloudsearch:search",
+///                     "cloudsearch:document",
 ///                 },
 ///             },
 ///         },
@@ -145,20 +145,6 @@ import 'domain_service_access_policy_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("search_only"),
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
-/// 						{
-/// 							Type: "*",
-/// 							Identifiers: []string{
-/// 								"*",
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: []string{
-/// 						"cloudsearch:search",
-/// 						"cloudsearch:document",
-/// 					},
 /// 					Conditions: []iam.GetPolicyDocumentStatementCondition{
 /// 						{
 /// 							Test:     "IpAddress",
@@ -167,6 +153,20 @@ import 'domain_service_access_policy_state.dart';
 /// 								"192.0.2.0/32",
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
+/// 						{
+/// 							Type: "*",
+/// 							Identifiers: []string{
+/// 								"*",
+/// 							},
+/// 						},
+/// 					},
+/// 					Sid:    pulumi.StringRef("search_only"),
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"cloudsearch:search",
+/// 						"cloudsearch:document",
 /// 					},
 /// 				},
 /// 			},
@@ -196,18 +196,18 @@ import 'domain_service_access_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "search_only"
-///     effect = "Allow"
-///     principals {
-///       type        = "*"
-///       identifiers = ["*"]
-///     }
-///     actions = ["cloudsearch:search", "cloudsearch:document"]
 ///     conditions {
 ///       test     = "IpAddress"
 ///       variable = "aws:SourceIp"
 ///       values   = ["192.0.2.0/32"]
 ///     }
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     sid     = "search_only"
+///     effect  = "Allow"
+///     actions = ["cloudsearch:search", "cloudsearch:document"]
 ///   }
 /// }
 ///
@@ -230,8 +230,8 @@ import 'domain_service_access_policy_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.cloudsearch.DomainServiceAccessPolicy;
 /// import com.pulumi.aws.cloudsearch.DomainServiceAccessPolicyArgs;
 /// import java.util.ArrayList;
@@ -253,20 +253,20 @@ import 'domain_service_access_policy_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("search_only")
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("*")
-///                     .identifiers("*")
-///                     .build())
-///                 .actions(
-///                     "cloudsearch:search",
-///                     "cloudsearch:document")
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("IpAddress")
 ///                     .variable("aws:SourceIp")
 ///                     .values("192.0.2.0/32")
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("*")
+///                     .identifiers("*")
+///                     .build())
+///                 .sid("search_only")
+///                 .effect("Allow")
+///                 .actions(
+///                     "cloudsearch:search",
+///                     "cloudsearch:document")
 ///                 .build())
 ///             .build());
 ///
@@ -297,20 +297,20 @@ import 'domain_service_access_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: search_only
-///             effect: Allow
-///             principals:
-///               - type: '*'
-///                 identifiers:
-///                   - '*'
-///             actions:
-///               - cloudsearch:search
-///               - cloudsearch:document
-///             conditions:
+///           - conditions:
 ///               - test: IpAddress
 ///                 variable: aws:SourceIp
 ///                 values:
 ///                   - 192.0.2.0/32
+///             principals:
+///               - type: '*'
+///                 identifiers:
+///                   - '*'
+///             sid: search_only
+///             effect: Allow
+///             actions:
+///               - cloudsearch:search
+///               - cloudsearch:document
 /// ```
 ///
 ///
@@ -341,7 +341,7 @@ class DomainServiceAccessPolicy extends pulumi.CustomResource {
           'aws:cloudsearch/domainServiceAccessPolicy:DomainServiceAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessPolicy = registerOutput<String>('accessPolicy');
     domainName = registerOutput<String>('domainName');
@@ -353,11 +353,12 @@ class DomainServiceAccessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainServiceAccessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainServiceAccessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -371,6 +372,20 @@ class DomainServiceAccessPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicy = registerOutput<String>('accessPolicy');
+    domainName = registerOutput<String>('domainName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DomainServiceAccessPolicy] resource.
+  DomainServiceAccessPolicy.reference(String urn)
+    : super(
+        'aws:cloudsearch/domainServiceAccessPolicy:DomainServiceAccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicy = registerOutput<String>('accessPolicy');
     domainName = registerOutput<String>('domainName');
     region = registerOutput<String>('region');

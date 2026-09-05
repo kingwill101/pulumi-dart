@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalSecondaryIndexProvisionedThroughput {
   /// Number of read capacity units for this index.
-  final pulumi.Input<int>? readCapacityUnits;
+  final pulumi.Input<int?>? readCapacityUnits;
   /// Number of write capacity units for this index.
-  final pulumi.Input<int>? writeCapacityUnits;
+  final pulumi.Input<int?>? writeCapacityUnits;
 
   /// Creates a new [GlobalSecondaryIndexProvisionedThroughput].
   /// [readCapacityUnits] Number of read capacity units for this index.
@@ -25,8 +25,8 @@ class GlobalSecondaryIndexProvisionedThroughput {
 
   factory GlobalSecondaryIndexProvisionedThroughput.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexProvisionedThroughput(
-      readCapacityUnits: (() { final guardedValue = map['readCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      writeCapacityUnits: (() { final guardedValue = map['writeCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      readCapacityUnits: (() { final guardedValue = map['readCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      writeCapacityUnits: (() { final guardedValue = map['writeCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicRuleStepFunction {
   /// The prefix used to generate, along with a UUID, the unique state machine execution name.
-  final pulumi.Input<String>? executionNamePrefix;
+  final pulumi.Input<String?>? executionNamePrefix;
   /// The ARN of the IAM role that grants access to start execution of the state machine.
   final pulumi.Input<String> roleArn;
   /// The name of the Step Functions state machine whose execution will be started.

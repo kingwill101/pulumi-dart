@@ -20,7 +20,7 @@ class AgentAgentMemoryConfigurationSessionSummaryConfiguration {
 
   factory AgentAgentMemoryConfigurationSessionSummaryConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentMemoryConfigurationSessionSummaryConfiguration(
-      maxRecentSessions: pulumi.Input.fromValue(map['maxRecentSessions'] as int),
+      maxRecentSessions: pulumi.Input.fromValue((map['maxRecentSessions'] as num).toInt()),
     );
   }
 }

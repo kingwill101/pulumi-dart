@@ -9,13 +9,13 @@ import 'get_attachment_filter.dart';
 /// {@macro pulumi_ec2transitgateway_get_attachment_get_attachment_args_doc}
 class GetAttachmentArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final pulumi.Input<List<GetAttachmentFilter>>? filters;
+  final pulumi.Input<List<GetAttachmentFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the attachment.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ID of the attachment.
-  final pulumi.Input<String>? transitGatewayAttachmentId;
+  final pulumi.Input<String?>? transitGatewayAttachmentId;
 
   /// Creates a new [GetAttachmentArgs].
   /// [filters] One or more configuration blocks containing name-values filters. Detailed below.

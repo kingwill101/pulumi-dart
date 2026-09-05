@@ -123,3 +123,14 @@ Future<GetReportDefinitionResult> getReportDefinition(
   );
   return GetReportDefinitionResult.fromMap(result);
 }
+
+pulumi.Output<GetReportDefinitionResult> getReportDefinitionOutput(
+  GetReportDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cur/getReportDefinition:getReportDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportDefinitionResult.fromMap);
+}

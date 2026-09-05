@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudfront_get_log_delivery_canonical_user_id_get_log_delivery_canonical_user_id_args_doc}
 class GetLogDeliveryCanonicalUserIdArgs {
   /// Name of the Region whose canonical user ID is desired. Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetLogDeliveryCanonicalUserIdArgs].
   /// [region] Name of the Region whose canonical user ID is desired. Defaults to the Region set in the provider configuration.

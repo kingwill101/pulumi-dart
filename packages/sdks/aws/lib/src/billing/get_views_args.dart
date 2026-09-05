@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_billing_get_views_get_views_args_doc}
 class GetViewsArgs {
   /// List of billing view types to retrieve. Valid values are `PRIMARY`, `BILLING_GROUP`, `CUSTOM`.
-  final pulumi.Input<List<String>>? billingViewTypes;
+  final pulumi.Input<List<String>?>? billingViewTypes;
 
   /// Creates a new [GetViewsArgs].
   /// [billingViewTypes] List of billing view types to retrieve. Valid values are `PRIMARY`, `BILLING_GROUP`, `CUSTOM`.

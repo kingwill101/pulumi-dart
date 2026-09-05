@@ -6,9 +6,9 @@ class PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg {
   /// ARN of the Auto Scaling group.
   final pulumi.Input<String> arn;
   /// ARN of the cross-account role to assume.
-  final pulumi.Input<String>? crossAccountRole;
+  final pulumi.Input<String?>? crossAccountRole;
   /// External ID for cross-account role assumption.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg].
   /// [arn] ARN of the Auto Scaling group.

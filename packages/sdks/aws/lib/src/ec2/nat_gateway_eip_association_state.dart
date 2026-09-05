@@ -6,15 +6,15 @@ import 'nat_gateway_eip_association_timeouts.dart';
 /// Input properties used for looking up and filtering NatGatewayEipAssociation resources.
 class NatGatewayEipAssociationState {
   /// The ID of the Elastic IP Allocation to associate with the NAT Gateway.
-  final pulumi.Input<String>? allocationId;
-  final pulumi.Input<String>? associationId;
+  final pulumi.Input<String?>? allocationId;
+  final pulumi.Input<String?>? associationId;
   /// The ID of the NAT Gateway to associate the Elastic IP Allocation to.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? natGatewayId;
+  final pulumi.Input<String?>? natGatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<NatGatewayEipAssociationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<NatGatewayEipAssociationTimeouts?>? timeouts;
 
   /// Creates a new [NatGatewayEipAssociationState].
   /// [allocationId] The ID of the Elastic IP Allocation to associate with the NAT Gateway.

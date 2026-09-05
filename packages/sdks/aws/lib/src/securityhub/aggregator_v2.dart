@@ -309,7 +309,7 @@ import 'aggregator_v2_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Security Hub V2 aggregator.
+/// - `arn` (String) ARN of the Security Hub V2 aggregator.
 ///
 ///
 /// Using `pulumi import`, import Security Hub V2 aggregators using `arn`. For example:
@@ -345,15 +345,15 @@ class AggregatorV2 extends pulumi.CustomResource {
           'aws:securityhub/aggregatorV2:AggregatorV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     aggregationRegion = registerOutput<String>('aggregationRegion');
     arn = registerOutput<String>('arn');
-    linkedRegions = registerOutput<List<String>?>('linkedRegions');
+    linkedRegions = registerOutput<List<String>?>('linkedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     regionLinkingMode = registerOutput<String>('regionLinkingMode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AggregatorV2] resource's state with the given [name] and [id].
@@ -361,11 +361,12 @@ class AggregatorV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AggregatorV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AggregatorV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -381,10 +382,28 @@ class AggregatorV2 extends pulumi.CustomResource {
         ) {
     aggregationRegion = registerOutput<String>('aggregationRegion');
     arn = registerOutput<String>('arn');
-    linkedRegions = registerOutput<List<String>?>('linkedRegions');
+    linkedRegions = registerOutput<List<String>?>('linkedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     regionLinkingMode = registerOutput<String>('regionLinkingMode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AggregatorV2] resource.
+  AggregatorV2.reference(String urn)
+    : super(
+        'aws:securityhub/aggregatorV2:AggregatorV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregationRegion = registerOutput<String>('aggregationRegion');
+    arn = registerOutput<String>('arn');
+    linkedRegions = registerOutput<List<String>?>('linkedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    regionLinkingMode = registerOutput<String>('regionLinkingMode');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

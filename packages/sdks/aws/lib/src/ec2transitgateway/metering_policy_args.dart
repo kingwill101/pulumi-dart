@@ -9,12 +9,12 @@ import 'metering_policy_timeouts.dart';
 /// {@macro pulumi_ec2transitgateway_metering_policy_metering_policy_args_doc}
 class MeteringPolicyArgs {
   /// Set of Transit Gateway attachment IDs to designate as middlebox attachments for this metering policy.
-  final pulumi.Input<List<String>>? middleboxAttachmentIds;
+  final pulumi.Input<List<String>?>? middleboxAttachmentIds;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the EC2 Transit Gateway Metering Policy. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<MeteringPolicyTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<MeteringPolicyTimeouts?>? timeouts;
   /// EC2 Transit Gateway identifier.
   ///
   /// The following arguments are optional:

@@ -46,8 +46,8 @@ class GetRoutingProfileQueueConfig {
   factory GetRoutingProfileQueueConfig.fromMap(Map<String, dynamic> map) {
     return GetRoutingProfileQueueConfig(
       channel: pulumi.Input.fromValue(map['channel'] as String),
-      delay: pulumi.Input.fromValue(map['delay'] as int),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      delay: pulumi.Input.fromValue((map['delay'] as num).toInt()),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       queueArn: pulumi.Input.fromValue(map['queueArn'] as String),
       queueId: pulumi.Input.fromValue(map['queueId'] as String),
       queueName: pulumi.Input.fromValue(map['queueName'] as String),

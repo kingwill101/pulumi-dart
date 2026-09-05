@@ -13,12 +13,12 @@ import 'vpc_ingress_connection_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.apprunner.VpcIngressConnection("example", {
-///     name: "example",
-///     serviceArn: exampleAwsApprunnerService.arn,
 ///     ingressVpcConfiguration: {
 ///         vpcId: _default.id,
 ///         vpcEndpointId: apprunner.id,
 ///     },
+///     name: "example",
+///     serviceArn: exampleAwsApprunnerService.arn,
 ///     tags: {
 ///         foo: "bar",
 ///     },
@@ -29,12 +29,12 @@ import 'vpc_ingress_connection_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.apprunner.VpcIngressConnection("example",
-///     name="example",
-///     service_arn=example_aws_apprunner_service["arn"],
 ///     ingress_vpc_configuration={
 ///         "vpc_id": default["id"],
 ///         "vpc_endpoint_id": apprunner["id"],
 ///     },
+///     name="example",
+///     service_arn=example_aws_apprunner_service["arn"],
 ///     tags={
 ///         "foo": "bar",
 ///     })
@@ -49,13 +49,13 @@ import 'vpc_ingress_connection_state.dart';
 /// {
 ///     var example = new Aws.AppRunner.VpcIngressConnection("example", new()
 ///     {
-///         Name = "example",
-///         ServiceArn = exampleAwsApprunnerService.Arn,
 ///         IngressVpcConfiguration = new Aws.AppRunner.Inputs.VpcIngressConnectionIngressVpcConfigurationArgs
 ///         {
 ///             VpcId = @default.Id,
 ///             VpcEndpointId = apprunner.Id,
 ///         },
+///         Name = "example",
+///         ServiceArn = exampleAwsApprunnerService.Arn,
 ///         Tags =
 ///         {
 ///             { "foo", "bar" },
@@ -75,12 +75,12 @@ import 'vpc_ingress_connection_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apprunner.NewVpcIngressConnection(ctx, "example", &apprunner.VpcIngressConnectionArgs{
-/// 			Name:       pulumi.String("example"),
-/// 			ServiceArn: pulumi.Any(exampleAwsApprunnerService.Arn),
 /// 			IngressVpcConfiguration: &apprunner.VpcIngressConnectionIngressVpcConfigurationArgs{
 /// 				VpcId:         pulumi.Any(_default.Id),
 /// 				VpcEndpointId: pulumi.Any(apprunner.Id),
 /// 			},
+/// 			Name:       pulumi.String("example"),
+/// 			ServiceArn: pulumi.Any(exampleAwsApprunnerService.Arn),
 /// 			Tags: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -102,12 +102,12 @@ import 'vpc_ingress_connection_state.dart';
 /// }
 ///
 /// resource "aws_apprunner_vpcingressconnection" "example" {
-///   name        = "example"
-///   service_arn = exampleAwsApprunnerService.arn
 ///   ingress_vpc_configuration = {
 ///     vpc_id          = default.id
 ///     vpc_endpoint_id = apprunner.id
 ///   }
+///   name        = "example"
+///   service_arn = exampleAwsApprunnerService.arn
 ///   tags = {
 ///     "foo" = "bar"
 ///   }
@@ -136,12 +136,12 @@ import 'vpc_ingress_connection_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new VpcIngressConnection("example", VpcIngressConnectionArgs.builder()
-///             .name("example")
-///             .serviceArn(exampleAwsApprunnerService.arn())
 ///             .ingressVpcConfiguration(VpcIngressConnectionIngressVpcConfigurationArgs.builder()
 ///                 .vpcId(default_.id())
 ///                 .vpcEndpointId(apprunner.id())
 ///                 .build())
+///             .name("example")
+///             .serviceArn(exampleAwsApprunnerService.arn())
 ///             .tags(Map.of("foo", "bar"))
 ///             .build());
 ///
@@ -153,11 +153,11 @@ import 'vpc_ingress_connection_state.dart';
 ///   example:
 ///     type: aws:apprunner:VpcIngressConnection
 ///     properties:
-///       name: example
-///       serviceArn: ${exampleAwsApprunnerService.arn}
 ///       ingressVpcConfiguration:
 ///         vpcId: ${default.id}
 ///         vpcEndpointId: ${apprunner.id}
+///       name: example
+///       serviceArn: ${exampleAwsApprunnerService.arn}
 ///       tags:
 ///         foo: bar
 /// ```
@@ -169,7 +169,7 @@ import 'vpc_ingress_connection_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the App Runner VPC ingress connection.
+/// - `arn` (String) ARN of the App Runner VPC ingress connection.
 ///
 ///
 /// Using `pulumi import`, import App Runner VPC Ingress Connection using the `arn`. For example:
@@ -178,7 +178,7 @@ import 'vpc_ingress_connection_state.dart';
 /// $ pulumi import aws:apprunner/vpcIngressConnection:VpcIngressConnection example "arn:aws:apprunner:us-west-2:837424938642:vpcingressconnection/example/b379f86381d74825832c2e82080342fa"
 /// ```
 class VpcIngressConnection extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the VPC Ingress Connection.
+  /// ARN of the VPC Ingress Connection.
   late final pulumi.Output<String> arn;
   /// Domain name associated with the VPC Ingress Connection resource.
   late final pulumi.Output<String> domainName;
@@ -188,7 +188,7 @@ class VpcIngressConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) for this App Runner service that is used to create the VPC Ingress Connection resource.
+  /// ARN for this App Runner service that is used to create the VPC Ingress Connection resource.
   late final pulumi.Output<String> serviceArn;
   /// Current status of the VPC Ingress Connection.
   late final pulumi.Output<String> status;
@@ -209,7 +209,7 @@ class VpcIngressConnection extends pulumi.CustomResource {
           'aws:apprunner/vpcIngressConnection:VpcIngressConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String>('domainName');
@@ -218,8 +218,8 @@ class VpcIngressConnection extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serviceArn = registerOutput<String>('serviceArn');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VpcIngressConnection] resource's state with the given [name] and [id].
@@ -227,11 +227,12 @@ class VpcIngressConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcIngressConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcIngressConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,7 +253,27 @@ class VpcIngressConnection extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serviceArn = registerOutput<String>('serviceArn');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VpcIngressConnection] resource.
+  VpcIngressConnection.reference(String urn)
+    : super(
+        'aws:apprunner/vpcIngressConnection:VpcIngressConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    domainName = registerOutput<String>('domainName');
+    ingressVpcConfiguration = registerOutput<VpcIngressConnectionIngressVpcConfiguration>('ingressVpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcIngressConnectionIngressVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    serviceArn = registerOutput<String>('serviceArn');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

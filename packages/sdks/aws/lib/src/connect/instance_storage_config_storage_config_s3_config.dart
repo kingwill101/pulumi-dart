@@ -9,7 +9,7 @@ class InstanceStorageConfigStorageConfigS3Config {
   /// The S3 bucket prefix.
   final pulumi.Input<String> bucketPrefix;
   /// The encryption configuration. Documented below.
-  final pulumi.Input<InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<InstanceStorageConfigStorageConfigS3ConfigEncryptionConfig?>? encryptionConfig;
 
   /// Creates a new [InstanceStorageConfigStorageConfigS3Config].
   /// [bucketName] The S3 bucket name.

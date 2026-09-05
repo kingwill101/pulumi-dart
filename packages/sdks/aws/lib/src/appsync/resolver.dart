@@ -38,15 +38,22 @@ import 'resolver_sync_config.dart';
 /// `,
 /// });
 /// const testDataSource = new aws.appsync.DataSource("test", {
-///     apiId: test.id,
-///     name: "my_example",
-///     type: "HTTP",
 ///     httpConfig: {
 ///         endpoint: "http://example.com",
 ///     },
+///     apiId: test.id,
+///     name: "my_example",
+///     type: "HTTP",
 /// });
 /// // UNIT type resolver (default)
 /// const testResolver = new aws.appsync.Resolver("test", {
+///     cachingConfig: {
+///         cachingKeys: [
+///             "$context.identity.sub",
+///             "$context.arguments.id",
+///         ],
+///         ttl: 60,
+///     },
 ///     apiId: test.id,
 ///     field: "singlePost",
 ///     type: "Query",
@@ -66,22 +73,9 @@ import 'resolver_sync_config.dart';
 ///     utils.appendError(ctx.result.body, ctx.result.statusCode)
 /// #end
 /// `,
-///     cachingConfig: {
-///         cachingKeys: [
-///             "$context.identity.sub",
-///             "$context.arguments.id",
-///         ],
-///         ttl: 60,
-///     },
 /// });
 /// // PIPELINE type resolver
 /// const mutationPipelineTest = new aws.appsync.Resolver("Mutation_pipelineTest", {
-///     type: "Mutation",
-///     apiId: test.id,
-///     field: "pipelineTest",
-///     requestTemplate: "{}",
-///     responseTemplate: "$util.toJson($ctx.result)",
-///     kind: "PIPELINE",
 ///     pipelineConfig: {
 ///         functions: [
 ///             test1.functionId,
@@ -89,6 +83,12 @@ import 'resolver_sync_config.dart';
 ///             test3.functionId,
 ///         ],
 ///     },
+///     type: "Mutation",
+///     apiId: test.id,
+///     field: "pipelineTest",
+///     requestTemplate: "{}",
+///     responseTemplate: "$util.toJson($ctx.result)",
+///     kind: "PIPELINE",
 /// });
 /// ```
 /// ```python
@@ -117,14 +117,21 @@ import 'resolver_sync_config.dart';
 /// }
 /// """)
 /// test_data_source = aws.appsync.DataSource("test",
-///     api_id=test.id,
-///     name="my_example",
-///     type="HTTP",
 ///     http_config={
 ///         "endpoint": "http://example.com",
-///     })
+///     },
+///     api_id=test.id,
+///     name="my_example",
+///     type="HTTP")
 /// # UNIT type resolver (default)
 /// test_resolver = aws.appsync.Resolver("test",
+///     caching_config={
+///         "caching_keys": [
+///             "$context.identity.sub",
+///             "$context.arguments.id",
+///         ],
+///         "ttl": 60,
+///     },
 ///     api_id=test.id,
 ///     field="singlePost",
 ///     type="Query",
@@ -143,29 +150,22 @@ import 'resolver_sync_config.dart';
 /// #else
 ///     $utils.appendError($ctx.result.body, $ctx.result.statusCode)
 /// #end
-/// """,
-///     caching_config={
-///         "caching_keys": [
-///             "$context.identity.sub",
-///             "$context.arguments.id",
-///         ],
-///         "ttl": 60,
-///     })
+/// """)
 /// # PIPELINE type resolver
 /// mutation_pipeline_test = aws.appsync.Resolver("Mutation_pipelineTest",
-///     type="Mutation",
-///     api_id=test.id,
-///     field="pipelineTest",
-///     request_template="{}",
-///     response_template="$util.toJson($ctx.result)",
-///     kind="PIPELINE",
 ///     pipeline_config={
 ///         "functions": [
 ///             test1["functionId"],
 ///             test2["functionId"],
 ///             test3["functionId"],
 ///         ],
-///     })
+///     },
+///     type="Mutation",
+///     api_id=test.id,
+///     field="pipelineTest",
+///     request_template="{}",
+///     response_template="$util.toJson($ctx.result)",
+///     kind="PIPELINE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -201,18 +201,27 @@ import 'resolver_sync_config.dart';
 ///
 ///     var testDataSource = new Aws.AppSync.DataSource("test", new()
 ///     {
-///         ApiId = test.Id,
-///         Name = "my_example",
-///         Type = "HTTP",
 ///         HttpConfig = new Aws.AppSync.Inputs.DataSourceHttpConfigArgs
 ///         {
 ///             Endpoint = "http://example.com",
 ///         },
+///         ApiId = test.Id,
+///         Name = "my_example",
+///         Type = "HTTP",
 ///     });
 ///
 ///     // UNIT type resolver (default)
 ///     var testResolver = new Aws.AppSync.Resolver("test", new()
 ///     {
+///         CachingConfig = new Aws.AppSync.Inputs.ResolverCachingConfigArgs
+///         {
+///             CachingKeys = new[]
+///             {
+///                 "$context.identity.sub",
+///                 "$context.arguments.id",
+///             },
+///             Ttl = 60,
+///         },
 ///         ApiId = test.Id,
 ///         Field = "singlePost",
 ///         Type = "Query",
@@ -232,26 +241,11 @@ import 'resolver_sync_config.dart';
 ///     $utils.appendError($ctx.result.body, $ctx.result.statusCode)
 /// #end
 /// ",
-///         CachingConfig = new Aws.AppSync.Inputs.ResolverCachingConfigArgs
-///         {
-///             CachingKeys = new[]
-///             {
-///                 "$context.identity.sub",
-///                 "$context.arguments.id",
-///             },
-///             Ttl = 60,
-///         },
 ///     });
 ///
 ///     // PIPELINE type resolver
 ///     var mutationPipelineTest = new Aws.AppSync.Resolver("Mutation_pipelineTest", new()
 ///     {
-///         Type = "Mutation",
-///         ApiId = test.Id,
-///         Field = "pipelineTest",
-///         RequestTemplate = "{}",
-///         ResponseTemplate = "$util.toJson($ctx.result)",
-///         Kind = "PIPELINE",
 ///         PipelineConfig = new Aws.AppSync.Inputs.ResolverPipelineConfigArgs
 ///         {
 ///             Functions = new[]
@@ -261,6 +255,12 @@ import 'resolver_sync_config.dart';
 ///                 test3.FunctionId,
 ///             },
 ///         },
+///         Type = "Mutation",
+///         ApiId = test.Id,
+///         Field = "pipelineTest",
+///         RequestTemplate = "{}",
+///         ResponseTemplate = "$util.toJson($ctx.result)",
+///         Kind = "PIPELINE",
 ///     });
 ///
 /// });
@@ -301,18 +301,25 @@ import 'resolver_sync_config.dart';
 /// 			return err
 /// 		}
 /// 		testDataSource, err := appsync.NewDataSource(ctx, "test", &appsync.DataSourceArgs{
-/// 			ApiId: test.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:  pulumi.String("my_example"),
-/// 			Type:  pulumi.String("HTTP"),
 /// 			HttpConfig: &appsync.DataSourceHttpConfigArgs{
 /// 				Endpoint: pulumi.String("http://example.com"),
 /// 			},
+/// 			ApiId: test.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:  pulumi.String("my_example"),
+/// 			Type:  pulumi.String("HTTP"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// UNIT type resolver (default)
 /// 		_, err = appsync.NewResolver(ctx, "test", &appsync.ResolverArgs{
+/// 			CachingConfig: &appsync.ResolverCachingConfigArgs{
+/// 				CachingKeys: pulumi.StringArray{
+/// 					pulumi.String("$context.identity.sub"),
+/// 					pulumi.String("$context.arguments.id"),
+/// 				},
+/// 				Ttl: pulumi.Int(60),
+/// 			},
 /// 			ApiId:      test.ID().ToIDOutput().ToStringOutput(),
 /// 			Field:      pulumi.String("singlePost"),
 /// 			Type:       pulumi.String("Query"),
@@ -332,25 +339,12 @@ import 'resolver_sync_config.dart';
 ///     $utils.appendError($ctx.result.body, $ctx.result.statusCode)
 /// #end
 /// `),
-/// 			CachingConfig: &appsync.ResolverCachingConfigArgs{
-/// 				CachingKeys: pulumi.StringArray{
-/// 					pulumi.String("$context.identity.sub"),
-/// 					pulumi.String("$context.arguments.id"),
-/// 				},
-/// 				Ttl: pulumi.Int(60),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// PIPELINE type resolver
 /// 		_, err = appsync.NewResolver(ctx, "Mutation_pipelineTest", &appsync.ResolverArgs{
-/// 			Type:             pulumi.String("Mutation"),
-/// 			ApiId:            test.ID().ToIDOutput().ToStringOutput(),
-/// 			Field:            pulumi.String("pipelineTest"),
-/// 			RequestTemplate:  pulumi.String("{}"),
-/// 			ResponseTemplate: pulumi.String("$util.toJson($ctx.result)"),
-/// 			Kind:             pulumi.String("PIPELINE"),
 /// 			PipelineConfig: &appsync.ResolverPipelineConfigArgs{
 /// 				Functions: pulumi.StringArray{
 /// 					test1.FunctionId,
@@ -358,6 +352,12 @@ import 'resolver_sync_config.dart';
 /// 					test3.FunctionId,
 /// 				},
 /// 			},
+/// 			Type:             pulumi.String("Mutation"),
+/// 			ApiId:            test.ID().ToIDOutput().ToStringOutput(),
+/// 			Field:            pulumi.String("pipelineTest"),
+/// 			RequestTemplate:  pulumi.String("{}"),
+/// 			ResponseTemplate: pulumi.String("$util.toJson($ctx.result)"),
+/// 			Kind:             pulumi.String("PIPELINE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -381,37 +381,37 @@ import 'resolver_sync_config.dart';
 ///   schema              = "type Mutation {\n\\tputPost(id: ID!, title: String!): Post\n}\n\ntype Post {\n\\tid: ID!\n\\ttitle: String!\n}\n\ntype Query {\n\\tsinglePost(id: ID!): Post\n}\n\nschema {\n\\tquery: Query\n\\tmutation: Mutation\n}\n"
 /// }
 /// resource "aws_appsync_datasource" "test" {
-///   api_id = aws_appsync_graphqlapi.test.id
-///   name   = "my_example"
-///   type   = "HTTP"
 ///   http_config = {
 ///     endpoint = "http://example.com"
 ///   }
+///   api_id = aws_appsync_graphqlapi.test.id
+///   name   = "my_example"
+///   type   = "HTTP"
 /// }
 /// # UNIT type resolver (default)
 /// resource "aws_appsync_resolver" "test" {
+///   caching_config = {
+///     caching_keys = ["$context.identity.sub", "$context.arguments.id"]
+///     ttl          = 60
+///   }
 ///   api_id            = aws_appsync_graphqlapi.test.id
 ///   field             = "singlePost"
 ///   type              = "Query"
 ///   data_source       = aws_appsync_datasource.test.name
 ///   request_template  = "{\n    \\\"version\\\": \\\"2018-05-29\\\",\n    \\\"method\\\": \\\"GET\\\",\n    \\\"resourcePath\\\": \\\"/\\\",\n    \\\"params\\\":{\n        \\\"headers\\\": $utils.http.copyheaders($ctx.request.headers)\n    }\n}\n"
 ///   response_template = "#if($ctx.result.statusCode == 200)\n    $ctx.result.body\n#else\n    $utils.appendError($ctx.result.body, $ctx.result.statusCode)\n#end\n"
-///   caching_config = {
-///     caching_keys = ["$context.identity.sub", "$context.arguments.id"]
-///     ttl          = 60
-///   }
 /// }
 /// # PIPELINE type resolver
 /// resource "aws_appsync_resolver" "Mutation_pipelineTest" {
+///   pipeline_config = {
+///     functions = [test1.functionId, test2.functionId, test3.functionId]
+///   }
 ///   type              = "Mutation"
 ///   api_id            = aws_appsync_graphqlapi.test.id
 ///   field             = "pipelineTest"
 ///   request_template  = "{}"
 ///   response_template = "$util.toJson($ctx.result)"
 ///   kind              = "PIPELINE"
-///   pipeline_config = {
-///     functions = [test1.functionId, test2.functionId, test3.functionId]
-///   }
 /// }
 /// ```
 /// ```java
@@ -467,16 +467,22 @@ import 'resolver_sync_config.dart';
 ///             .build());
 ///
 ///         var testDataSource = new DataSource("testDataSource", DataSourceArgs.builder()
-///             .apiId(test.id())
-///             .name("my_example")
-///             .type("HTTP")
 ///             .httpConfig(DataSourceHttpConfigArgs.builder()
 ///                 .endpoint("http://example.com")
 ///                 .build())
+///             .apiId(test.id())
+///             .name("my_example")
+///             .type("HTTP")
 ///             .build());
 ///
 ///         // UNIT type resolver (default)
 ///         var testResolver = new Resolver("testResolver", ResolverArgs.builder()
+///             .cachingConfig(ResolverCachingConfigArgs.builder()
+///                 .cachingKeys(
+///                     "$context.identity.sub",
+///                     "$context.arguments.id")
+///                 .ttl(60)
+///                 .build())
 ///             .apiId(test.id())
 ///             .field("singlePost")
 ///             .type("Query")
@@ -498,28 +504,22 @@ import 'resolver_sync_config.dart';
 ///     $utils.appendError($ctx.result.body, $ctx.result.statusCode)
 /// #end
 ///             """)
-///             .cachingConfig(ResolverCachingConfigArgs.builder()
-///                 .cachingKeys(
-///                     "$context.identity.sub",
-///                     "$context.arguments.id")
-///                 .ttl(60)
-///                 .build())
 ///             .build());
 ///
 ///         // PIPELINE type resolver
 ///         var mutationPipelineTest = new Resolver("mutationPipelineTest", ResolverArgs.builder()
-///             .type("Mutation")
-///             .apiId(test.id())
-///             .field("pipelineTest")
-///             .requestTemplate("{}")
-///             .responseTemplate("$util.toJson($ctx.result)")
-///             .kind("PIPELINE")
 ///             .pipelineConfig(ResolverPipelineConfigArgs.builder()
 ///                 .functions(
 ///                     test1.functionId(),
 ///                     test2.functionId(),
 ///                     test3.functionId())
 ///                 .build())
+///             .type("Mutation")
+///             .apiId(test.id())
+///             .field("pipelineTest")
+///             .requestTemplate("{}")
+///             .responseTemplate("$util.toJson($ctx.result)")
+///             .kind("PIPELINE")
 ///             .build());
 ///
 ///     }
@@ -554,16 +554,21 @@ import 'resolver_sync_config.dart';
 ///     type: aws:appsync:DataSource
 ///     name: test
 ///     properties:
+///       httpConfig:
+///         endpoint: http://example.com
 ///       apiId: ${test.id}
 ///       name: my_example
 ///       type: HTTP
-///       httpConfig:
-///         endpoint: http://example.com
 ///   # UNIT type resolver (default)
 ///   testResolver:
 ///     type: aws:appsync:Resolver
 ///     name: test
 ///     properties:
+///       cachingConfig:
+///         cachingKeys:
+///           - $context.identity.sub
+///           - $context.arguments.id
+///         ttl: 60
 ///       apiId: ${test.id}
 ///       field: singlePost
 ///       type: Query
@@ -583,27 +588,22 @@ import 'resolver_sync_config.dart';
 ///         #else
 ///             $utils.appendError($ctx.result.body, $ctx.result.statusCode)
 ///         #end
-///       cachingConfig:
-///         cachingKeys:
-///           - $context.identity.sub
-///           - $context.arguments.id
-///         ttl: 60
 ///   # PIPELINE type resolver
 ///   mutationPipelineTest:
 ///     type: aws:appsync:Resolver
 ///     name: Mutation_pipelineTest
 ///     properties:
+///       pipelineConfig:
+///         functions:
+///           - ${test1.functionId}
+///           - ${test2.functionId}
+///           - ${test3.functionId}
 ///       type: Mutation
 ///       apiId: ${test.id}
 ///       field: pipelineTest
 ///       requestTemplate: '{}'
 ///       responseTemplate: $util.toJson($ctx.result)
 ///       kind: PIPELINE
-///       pipelineConfig:
-///         functions:
-///           - ${test1.functionId}
-///           - ${test2.functionId}
-///           - ${test3.functionId}
 /// ```
 ///
 ///
@@ -616,13 +616,6 @@ import 'resolver_sync_config.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const example = new aws.appsync.Resolver("example", {
-///     type: "Query",
-///     apiId: testAwsAppsyncGraphqlApi.id,
-///     field: "pipelineTest",
-///     kind: "PIPELINE",
-///     code: std.file({
-///         input: "some-code-dir",
-///     }).then(invoke => invoke.result),
 ///     runtime: {
 ///         name: "APPSYNC_JS",
 ///         runtimeVersion: "1.0.0",
@@ -630,6 +623,13 @@ import 'resolver_sync_config.dart';
 ///     pipelineConfig: {
 ///         functions: [test.functionId],
 ///     },
+///     type: "Query",
+///     apiId: testAwsAppsyncGraphqlApi.id,
+///     field: "pipelineTest",
+///     kind: "PIPELINE",
+///     code: std.file({
+///         input: "some-code-dir",
+///     }).then(invoke => invoke.result),
 /// });
 /// ```
 /// ```python
@@ -638,18 +638,18 @@ import 'resolver_sync_config.dart';
 /// import pulumi_std as std
 ///
 /// example = aws.appsync.Resolver("example",
-///     type="Query",
-///     api_id=test_aws_appsync_graphql_api["id"],
-///     field="pipelineTest",
-///     kind="PIPELINE",
-///     code=std.file(input="some-code-dir").result,
 ///     runtime={
 ///         "name": "APPSYNC_JS",
 ///         "runtime_version": "1.0.0",
 ///     },
 ///     pipeline_config={
 ///         "functions": [test["functionId"]],
-///     })
+///     },
+///     type="Query",
+///     api_id=test_aws_appsync_graphql_api["id"],
+///     field="pipelineTest",
+///     kind="PIPELINE",
+///     code=std.file(input="some-code-dir").result)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -662,14 +662,6 @@ import 'resolver_sync_config.dart';
 /// {
 ///     var example = new Aws.AppSync.Resolver("example", new()
 ///     {
-///         Type = "Query",
-///         ApiId = testAwsAppsyncGraphqlApi.Id,
-///         Field = "pipelineTest",
-///         Kind = "PIPELINE",
-///         Code = Std.File.Invoke(new()
-///         {
-///             Input = "some-code-dir",
-///         }).Apply(invoke => invoke.Result),
 ///         Runtime = new Aws.AppSync.Inputs.ResolverRuntimeArgs
 ///         {
 ///             Name = "APPSYNC_JS",
@@ -682,6 +674,14 @@ import 'resolver_sync_config.dart';
 ///                 test.FunctionId,
 ///             },
 ///         },
+///         Type = "Query",
+///         ApiId = testAwsAppsyncGraphqlApi.Id,
+///         Field = "pipelineTest",
+///         Kind = "PIPELINE",
+///         Code = Std.File.Invoke(new()
+///         {
+///             Input = "some-code-dir",
+///         }).Apply(invoke => invoke.Result),
 ///     });
 ///
 /// });
@@ -704,11 +704,6 @@ import 'resolver_sync_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appsync.NewResolver(ctx, "example", &appsync.ResolverArgs{
-/// 			Type:  pulumi.String("Query"),
-/// 			ApiId: pulumi.Any(testAwsAppsyncGraphqlApi.Id),
-/// 			Field: pulumi.String("pipelineTest"),
-/// 			Kind:  pulumi.String("PIPELINE"),
-/// 			Code:  pulumi.String(invokeFile.Result),
 /// 			Runtime: &appsync.ResolverRuntimeArgs{
 /// 				Name:           pulumi.String("APPSYNC_JS"),
 /// 				RuntimeVersion: pulumi.String("1.0.0"),
@@ -718,6 +713,11 @@ import 'resolver_sync_config.dart';
 /// 					test.FunctionId,
 /// 				},
 /// 			},
+/// 			Type:  pulumi.String("Query"),
+/// 			ApiId: pulumi.Any(testAwsAppsyncGraphqlApi.Id),
+/// 			Field: pulumi.String("pipelineTest"),
+/// 			Kind:  pulumi.String("PIPELINE"),
+/// 			Code:  pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -739,11 +739,6 @@ import 'resolver_sync_config.dart';
 /// }
 ///
 /// resource "aws_appsync_resolver" "example" {
-///   type   = "Query"
-///   api_id = testAwsAppsyncGraphqlApi.id
-///   field  = "pipelineTest"
-///   kind   = "PIPELINE"
-///   code   = file("some-code-dir")
 ///   runtime = {
 ///     name            = "APPSYNC_JS"
 ///     runtime_version = "1.0.0"
@@ -751,6 +746,11 @@ import 'resolver_sync_config.dart';
 ///   pipeline_config = {
 ///     functions = [test.functionId]
 ///   }
+///   type   = "Query"
+///   api_id = testAwsAppsyncGraphqlApi.id
+///   field  = "pipelineTest"
+///   kind   = "PIPELINE"
+///   code   = file("some-code-dir")
 /// }
 /// ```
 /// ```java
@@ -779,13 +779,6 @@ import 'resolver_sync_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Resolver("example", ResolverArgs.builder()
-///             .type("Query")
-///             .apiId(testAwsAppsyncGraphqlApi.id())
-///             .field("pipelineTest")
-///             .kind("PIPELINE")
-///             .code(StdFunctions.file(FileArgs.builder()
-///                 .input("some-code-dir")
-///                 .build()).result())
 ///             .runtime(ResolverRuntimeArgs.builder()
 ///                 .name("APPSYNC_JS")
 ///                 .runtimeVersion("1.0.0")
@@ -793,6 +786,13 @@ import 'resolver_sync_config.dart';
 ///             .pipelineConfig(ResolverPipelineConfigArgs.builder()
 ///                 .functions(test.functionId())
 ///                 .build())
+///             .type("Query")
+///             .apiId(testAwsAppsyncGraphqlApi.id())
+///             .field("pipelineTest")
+///             .kind("PIPELINE")
+///             .code(StdFunctions.file(FileArgs.builder()
+///                 .input("some-code-dir")
+///                 .build()).result())
 ///             .build());
 ///
 ///     }
@@ -803,6 +803,12 @@ import 'resolver_sync_config.dart';
 ///   example:
 ///     type: aws:appsync:Resolver
 ///     properties:
+///       runtime:
+///         name: APPSYNC_JS
+///         runtimeVersion: 1.0.0
+///       pipelineConfig:
+///         functions:
+///           - ${test.functionId}
 ///       type: Query
 ///       apiId: ${testAwsAppsyncGraphqlApi.id}
 ///       field: pipelineTest
@@ -813,12 +819,6 @@ import 'resolver_sync_config.dart';
 ///           arguments:
 ///             input: some-code-dir
 ///           return: result
-///       runtime:
-///         name: APPSYNC_JS
-///         runtimeVersion: 1.0.0
-///       pipelineConfig:
-///         functions:
-///           - ${test.functionId}
 /// ```
 ///
 ///
@@ -873,7 +873,7 @@ class Resolver extends pulumi.CustomResource {
           'aws:appsync/resolver:Resolver',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
@@ -897,11 +897,12 @@ class Resolver extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Resolver._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -915,6 +916,32 @@ class Resolver extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiId = registerOutput<String>('apiId');
+    arn = registerOutput<String>('arn');
+    cachingConfig = registerOutput<ResolverCachingConfig?>('cachingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverCachingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    code = registerOutput<String?>('code');
+    dataSource = registerOutput<String?>('dataSource');
+    field = registerOutput<String>('field');
+    kind = registerOutput<String?>('kind');
+    maxBatchSize = registerOutput<int?>('maxBatchSize');
+    pipelineConfig = registerOutput<ResolverPipelineConfig?>('pipelineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverPipelineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    requestTemplate = registerOutput<String?>('requestTemplate');
+    responseTemplate = registerOutput<String?>('responseTemplate');
+    runtime = registerOutput<ResolverRuntime?>('runtime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    syncConfig = registerOutput<ResolverSyncConfig?>('syncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Resolver] resource.
+  Resolver.reference(String urn)
+    : super(
+        'aws:appsync/resolver:Resolver',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');
     cachingConfig = registerOutput<ResolverCachingConfig?>('cachingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverCachingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

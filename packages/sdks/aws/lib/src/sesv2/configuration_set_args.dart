@@ -13,35 +13,35 @@ import 'configuration_set_vdm_options.dart';
 /// {@endtemplate}
 /// {@macro pulumi_sesv2_configuration_set_configuration_set_args_doc}
 class ConfigurationSetArgs {
-  /// The name of the configuration set.
+  /// Name of the configuration set.
   final pulumi.Input<String> configurationSetName;
-  /// An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `deliveryOptions` Block for details.
-  final pulumi.Input<ConfigurationSetDeliveryOptions>? deliveryOptions;
+  /// Object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `deliveryOptions` Block for details.
+  final pulumi.Input<ConfigurationSetDeliveryOptions?>? deliveryOptions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// An object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputationOptions` Block for details.
-  final pulumi.Input<ConfigurationSetReputationOptions>? reputationOptions;
-  /// An object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sendingOptions` Block for details.
-  final pulumi.Input<ConfigurationSetSendingOptions>? sendingOptions;
-  /// An object that contains information about the suppression list preferences for your account. See `suppressionOptions` Block for details.
-  final pulumi.Input<ConfigurationSetSuppressionOptions>? suppressionOptions;
-  /// A map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  /// An object that defines the open and click tracking options for emails that you send using the configuration set. See `trackingOptions` Block for details.
-  final pulumi.Input<ConfigurationSetTrackingOptions>? trackingOptions;
-  /// An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdmOptions` Block for details.
-  final pulumi.Input<ConfigurationSetVdmOptions>? vdmOptions;
+  final pulumi.Input<String?>? region;
+  /// Object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputationOptions` Block for details.
+  final pulumi.Input<ConfigurationSetReputationOptions?>? reputationOptions;
+  /// Object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sendingOptions` Block for details.
+  final pulumi.Input<ConfigurationSetSendingOptions?>? sendingOptions;
+  /// Object that contains information about the suppression list preferences for your account. See `suppressionOptions` Block for details.
+  final pulumi.Input<ConfigurationSetSuppressionOptions?>? suppressionOptions;
+  /// Map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>?>? tags;
+  /// Object that defines the open and click tracking options for emails that you send using the configuration set. See `trackingOptions` Block for details.
+  final pulumi.Input<ConfigurationSetTrackingOptions?>? trackingOptions;
+  /// Object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdmOptions` Block for details.
+  final pulumi.Input<ConfigurationSetVdmOptions?>? vdmOptions;
 
   /// Creates a new [ConfigurationSetArgs].
-  /// [configurationSetName] The name of the configuration set.
-  /// [deliveryOptions] An object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `deliveryOptions` Block for details.
+  /// [configurationSetName] Name of the configuration set.
+  /// [deliveryOptions] Object that defines the dedicated IP pool that is used to send emails that you send using the configuration set. See `deliveryOptions` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [reputationOptions] An object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputationOptions` Block for details.
-  /// [sendingOptions] An object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sendingOptions` Block for details.
-  /// [suppressionOptions] An object that contains information about the suppression list preferences for your account. See `suppressionOptions` Block for details.
-  /// [tags] A map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [trackingOptions] An object that defines the open and click tracking options for emails that you send using the configuration set. See `trackingOptions` Block for details.
-  /// [vdmOptions] An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdmOptions` Block for details.
+  /// [reputationOptions] Object that defines whether or not Amazon SES collects reputation metrics for the emails that you send that use the configuration set. See `reputationOptions` Block for details.
+  /// [sendingOptions] Object that defines whether or not Amazon SES can send email that you send using the configuration set. See `sendingOptions` Block for details.
+  /// [suppressionOptions] Object that contains information about the suppression list preferences for your account. See `suppressionOptions` Block for details.
+  /// [tags] Map of tags to assign to the service. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [trackingOptions] Object that defines the open and click tracking options for emails that you send using the configuration set. See `trackingOptions` Block for details.
+  /// [vdmOptions] Object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdmOptions` Block for details.
   const ConfigurationSetArgs({
     required this.configurationSetName,
     this.deliveryOptions,

@@ -6,18 +6,18 @@ import 'deployment_timeouts.dart';
 /// Input properties used for looking up and filtering Deployment resources.
 class DeploymentState {
   /// Application to deploy.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Version to application to deploy
-  final pulumi.Input<int>? applicationVersion;
-  final pulumi.Input<String>? deploymentId;
+  final pulumi.Input<int?>? applicationVersion;
+  final pulumi.Input<String?>? deploymentId;
   /// Environment to deploy application to.
-  final pulumi.Input<String>? environmentId;
-  final pulumi.Input<bool>? forceStop;
+  final pulumi.Input<String?>? environmentId;
+  final pulumi.Input<bool?>? forceStop;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Start the application once deployed.
-  final pulumi.Input<bool>? start;
-  final pulumi.Input<DeploymentTimeouts>? timeouts;
+  final pulumi.Input<bool?>? start;
+  final pulumi.Input<DeploymentTimeouts?>? timeouts;
 
   /// Creates a new [DeploymentState].
   /// [applicationId] Application to deploy.
@@ -55,7 +55,7 @@ class DeploymentState {
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
       applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      applicationVersion: (() { final guardedValue = map['applicationVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      applicationVersion: (() { final guardedValue = map['applicationVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deploymentId: (() { final guardedValue = map['deploymentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forceStop: (() { final guardedValue = map['forceStop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

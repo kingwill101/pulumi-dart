@@ -10,20 +10,20 @@ import 'reserved_cache_node_timeouts.dart';
 class ReservedCacheNodeArgs {
   /// Number of cache node instances to reserve.
   /// Default value is `1`.
-  final pulumi.Input<int>? cacheNodeCount;
+  final pulumi.Input<int?>? cacheNodeCount;
   /// Customer-specified identifier to track this reservation.
   /// If not specified, AWS will assign a random ID.
-  final pulumi.Input<String>? elasticacheReservedCacheNodeId;
+  final pulumi.Input<String?>? elasticacheReservedCacheNodeId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the reserved cache node offering to purchase.
   /// To determine an `reservedCacheNodesOfferingId`, see the `aws.elasticache.getReservedCacheNodeOffering` data source.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> reservedCacheNodesOfferingId;
   /// Map of tags to assign to the reservation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ReservedCacheNodeTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ReservedCacheNodeTimeouts?>? timeouts;
 
   /// Creates a new [ReservedCacheNodeArgs].
   /// [cacheNodeCount] Number of cache node instances to reserve.
@@ -54,7 +54,7 @@ class ReservedCacheNodeArgs {
 
   factory ReservedCacheNodeArgs.fromMap(Map<String, dynamic> map) {
     return ReservedCacheNodeArgs(
-      cacheNodeCount: (() { final guardedValue = map['cacheNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cacheNodeCount: (() { final guardedValue = map['cacheNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       elasticacheReservedCacheNodeId: (() { final guardedValue = map['elasticacheReservedCacheNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reservedCacheNodesOfferingId: pulumi.Input.fromValue(map['reservedCacheNodesOfferingId'] as String),

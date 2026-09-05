@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DaemonTaskDefinitionContainerDefinitionEnvironment {
   /// Name of the environment variable.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of the environment variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DaemonTaskDefinitionContainerDefinitionEnvironment].
   /// [name] Name of the environment variable.

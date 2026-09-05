@@ -119,3 +119,14 @@ Future<GetDomainResult> getDomain(
   );
   return GetDomainResult.fromMap(result);
 }
+
+pulumi.Output<GetDomainResult> getDomainOutput(
+  GetDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:elasticsearch/getDomain:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainResult.fromMap);
+}

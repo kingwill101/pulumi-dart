@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dev_environment_args.dart';
 import 'dev_environment_ides.dart';
 import 'dev_environment_persistent_storage.dart';
+import 'dev_environment_repository.dart';
 import 'dev_environment_state.dart';
 
 /// Resource for managing an AWS CodeCatalyst Dev Environment.
@@ -14,10 +15,6 @@ import 'dev_environment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.codecatalyst.DevEnvironment("test", {
-///     alias: "devenv",
-///     spaceName: "myspace",
-///     projectName: "myproject",
-///     instanceType: "dev.standard1.small",
 ///     persistentStorage: {
 ///         size: 16,
 ///     },
@@ -25,11 +22,15 @@ import 'dev_environment_state.dart';
 ///         name: "PyCharm",
 ///         runtime: "public.ecr.aws/jetbrains/py",
 ///     },
-///     inactivityTimeoutMinutes: 40,
 ///     repositories: [{
 ///         repositoryName: "pulumi-provider-aws",
 ///         branchName: "main",
 ///     }],
+///     alias: "devenv",
+///     spaceName: "myspace",
+///     projectName: "myproject",
+///     instanceType: "dev.standard1.small",
+///     inactivityTimeoutMinutes: 40,
 /// });
 /// ```
 /// ```python
@@ -37,10 +38,6 @@ import 'dev_environment_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.codecatalyst.DevEnvironment("test",
-///     alias="devenv",
-///     space_name="myspace",
-///     project_name="myproject",
-///     instance_type="dev.standard1.small",
 ///     persistent_storage={
 ///         "size": 16,
 ///     },
@@ -48,11 +45,15 @@ import 'dev_environment_state.dart';
 ///         "name": "PyCharm",
 ///         "runtime": "public.ecr.aws/jetbrains/py",
 ///     },
-///     inactivity_timeout_minutes=40,
 ///     repositories=[{
 ///         "repository_name": "pulumi-provider-aws",
 ///         "branch_name": "main",
-///     }])
+///     }],
+///     alias="devenv",
+///     space_name="myspace",
+///     project_name="myproject",
+///     instance_type="dev.standard1.small",
+///     inactivity_timeout_minutes=40)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -64,10 +65,6 @@ import 'dev_environment_state.dart';
 /// {
 ///     var test = new Aws.CodeCatalyst.DevEnvironment("test", new()
 ///     {
-///         Alias = "devenv",
-///         SpaceName = "myspace",
-///         ProjectName = "myproject",
-///         InstanceType = "dev.standard1.small",
 ///         PersistentStorage = new Aws.CodeCatalyst.Inputs.DevEnvironmentPersistentStorageArgs
 ///         {
 ///             Size = 16,
@@ -77,7 +74,6 @@ import 'dev_environment_state.dart';
 ///             Name = "PyCharm",
 ///             Runtime = "public.ecr.aws/jetbrains/py",
 ///         },
-///         InactivityTimeoutMinutes = 40,
 ///         Repositories = new[]
 ///         {
 ///             new Aws.CodeCatalyst.Inputs.DevEnvironmentRepositoryArgs
@@ -86,6 +82,11 @@ import 'dev_environment_state.dart';
 ///                 BranchName = "main",
 ///             },
 ///         },
+///         Alias = "devenv",
+///         SpaceName = "myspace",
+///         ProjectName = "myproject",
+///         InstanceType = "dev.standard1.small",
+///         InactivityTimeoutMinutes = 40,
 ///     });
 ///
 /// });
@@ -101,10 +102,6 @@ import 'dev_environment_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := codecatalyst.NewDevEnvironment(ctx, "test", &codecatalyst.DevEnvironmentArgs{
-/// 			Alias:        pulumi.String("devenv"),
-/// 			SpaceName:    pulumi.String("myspace"),
-/// 			ProjectName:  pulumi.String("myproject"),
-/// 			InstanceType: pulumi.String("dev.standard1.small"),
 /// 			PersistentStorage: &codecatalyst.DevEnvironmentPersistentStorageArgs{
 /// 				Size: pulumi.Int(16),
 /// 			},
@@ -112,13 +109,17 @@ import 'dev_environment_state.dart';
 /// 				Name:    pulumi.String("PyCharm"),
 /// 				Runtime: pulumi.String("public.ecr.aws/jetbrains/py"),
 /// 			},
-/// 			InactivityTimeoutMinutes: pulumi.Int(40),
 /// 			Repositories: codecatalyst.DevEnvironmentRepositoryArray{
 /// 				&codecatalyst.DevEnvironmentRepositoryArgs{
 /// 					RepositoryName: pulumi.String("pulumi-provider-aws"),
 /// 					BranchName:     pulumi.String("main"),
 /// 				},
 /// 			},
+/// 			Alias:                    pulumi.String("devenv"),
+/// 			SpaceName:                pulumi.String("myspace"),
+/// 			ProjectName:              pulumi.String("myproject"),
+/// 			InstanceType:             pulumi.String("dev.standard1.small"),
+/// 			InactivityTimeoutMinutes: pulumi.Int(40),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -137,10 +138,6 @@ import 'dev_environment_state.dart';
 /// }
 ///
 /// resource "aws_codecatalyst_devenvironment" "test" {
-///   alias         = "devenv"
-///   space_name    = "myspace"
-///   project_name  = "myproject"
-///   instance_type = "dev.standard1.small"
 ///   persistent_storage = {
 ///     size = 16
 ///   }
@@ -148,11 +145,15 @@ import 'dev_environment_state.dart';
 ///     name    = "PyCharm"
 ///     runtime = "public.ecr.aws/jetbrains/py"
 ///   }
-///   inactivity_timeout_minutes = 40
 ///   repositories {
 ///     repository_name = "pulumi-provider-aws"
 ///     branch_name     = "main"
 ///   }
+///   alias                      = "devenv"
+///   space_name                 = "myspace"
+///   project_name               = "myproject"
+///   instance_type              = "dev.standard1.small"
+///   inactivity_timeout_minutes = 40
 /// }
 /// ```
 /// ```java
@@ -180,10 +181,6 @@ import 'dev_environment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new DevEnvironment("test", DevEnvironmentArgs.builder()
-///             .alias("devenv")
-///             .spaceName("myspace")
-///             .projectName("myproject")
-///             .instanceType("dev.standard1.small")
 ///             .persistentStorage(DevEnvironmentPersistentStorageArgs.builder()
 ///                 .size(16)
 ///                 .build())
@@ -191,11 +188,15 @@ import 'dev_environment_state.dart';
 ///                 .name("PyCharm")
 ///                 .runtime("public.ecr.aws/jetbrains/py")
 ///                 .build())
-///             .inactivityTimeoutMinutes(40)
 ///             .repositories(DevEnvironmentRepositoryArgs.builder()
 ///                 .repositoryName("pulumi-provider-aws")
 ///                 .branchName("main")
 ///                 .build())
+///             .alias("devenv")
+///             .spaceName("myspace")
+///             .projectName("myproject")
+///             .instanceType("dev.standard1.small")
+///             .inactivityTimeoutMinutes(40)
 ///             .build());
 ///
 ///     }
@@ -206,19 +207,19 @@ import 'dev_environment_state.dart';
 ///   test:
 ///     type: aws:codecatalyst:DevEnvironment
 ///     properties:
-///       alias: devenv
-///       spaceName: myspace
-///       projectName: myproject
-///       instanceType: dev.standard1.small
 ///       persistentStorage:
 ///         size: 16
 ///       ides:
 ///         name: PyCharm
 ///         runtime: public.ecr.aws/jetbrains/py
-///       inactivityTimeoutMinutes: 40
 ///       repositories:
 ///         - repositoryName: pulumi-provider-aws
 ///           branchName: main
+///       alias: devenv
+///       spaceName: myspace
+///       projectName: myproject
+///       instanceType: dev.standard1.small
+///       inactivityTimeoutMinutes: 40
 /// ```
 class DevEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<String?> alias;
@@ -237,7 +238,7 @@ class DevEnvironment extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The source repository that contains the branch to clone into the Dev Environment.
-  late final pulumi.Output<List<Map<String, dynamic>>?> repositories;
+  late final pulumi.Output<List<DevEnvironmentRepository>?> repositories;
   /// The name of the space.
   late final pulumi.Output<String> spaceName;
 
@@ -253,7 +254,7 @@ class DevEnvironment extends pulumi.CustomResource {
           'aws:codecatalyst/devEnvironment:DevEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     alias = registerOutput<String?>('alias');
     ides = registerOutput<DevEnvironmentIdes>('ides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentIdes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -262,7 +263,7 @@ class DevEnvironment extends pulumi.CustomResource {
     persistentStorage = registerOutput<DevEnvironmentPersistentStorage>('persistentStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentPersistentStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     projectName = registerOutput<String>('projectName');
     region = registerOutput<String>('region');
-    repositories = registerOutput<List<Map<String, dynamic>>?>('repositories');
+    repositories = registerOutput<List<DevEnvironmentRepository>?>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DevEnvironmentRepository>(guardedValue, (value) => DevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>())); });
     spaceName = registerOutput<String>('spaceName');
   }
 
@@ -271,11 +272,12 @@ class DevEnvironment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DevEnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DevEnvironment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -296,7 +298,27 @@ class DevEnvironment extends pulumi.CustomResource {
     persistentStorage = registerOutput<DevEnvironmentPersistentStorage>('persistentStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentPersistentStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     projectName = registerOutput<String>('projectName');
     region = registerOutput<String>('region');
-    repositories = registerOutput<List<Map<String, dynamic>>?>('repositories');
+    repositories = registerOutput<List<DevEnvironmentRepository>?>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DevEnvironmentRepository>(guardedValue, (value) => DevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>())); });
+    spaceName = registerOutput<String>('spaceName');
+  }
+
+  /// Creates a typed reference to an existing [DevEnvironment] resource.
+  DevEnvironment.reference(String urn)
+    : super(
+        'aws:codecatalyst/devEnvironment:DevEnvironment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alias = registerOutput<String?>('alias');
+    ides = registerOutput<DevEnvironmentIdes>('ides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentIdes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inactivityTimeoutMinutes = registerOutput<int?>('inactivityTimeoutMinutes');
+    instanceType = registerOutput<String>('instanceType');
+    persistentStorage = registerOutput<DevEnvironmentPersistentStorage>('persistentStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentPersistentStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    projectName = registerOutput<String>('projectName');
+    region = registerOutput<String>('region');
+    repositories = registerOutput<List<DevEnvironmentRepository>?>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DevEnvironmentRepository>(guardedValue, (value) => DevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>())); });
     spaceName = registerOutput<String>('spaceName');
   }
 }

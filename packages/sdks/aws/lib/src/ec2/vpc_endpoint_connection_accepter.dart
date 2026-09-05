@@ -19,10 +19,10 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 /// });
 /// const exampleVpcEndpoint = new aws.ec2.VpcEndpoint("example", {
 ///     vpcId: testAlternate.id,
-///     serviceName: testAwsVpcEndpointService.serviceName,
+///     serviceName: test.serviceName,
 ///     vpcEndpointType: "Interface",
 ///     privateDnsEnabled: false,
-///     securityGroupIds: [test.id],
+///     securityGroupIds: [testAwsSecurityGroup.id],
 /// });
 /// const exampleVpcEndpointConnectionAccepter = new aws.ec2.VpcEndpointConnectionAccepter("example", {
 ///     vpcEndpointServiceId: example.id,
@@ -38,10 +38,10 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 ///     network_load_balancer_arns=[example_aws_lb["arn"]])
 /// example_vpc_endpoint = aws.ec2.VpcEndpoint("example",
 ///     vpc_id=test_alternate["id"],
-///     service_name=test_aws_vpc_endpoint_service["serviceName"],
+///     service_name=test["serviceName"],
 ///     vpc_endpoint_type="Interface",
 ///     private_dns_enabled=False,
-///     security_group_ids=[test["id"]])
+///     security_group_ids=[test_aws_security_group["id"]])
 /// example_vpc_endpoint_connection_accepter = aws.ec2.VpcEndpointConnectionAccepter("example",
 ///     vpc_endpoint_service_id=example.id,
 ///     vpc_endpoint_id=example_vpc_endpoint.id)
@@ -66,12 +66,12 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 ///     var exampleVpcEndpoint = new Aws.Ec2.VpcEndpoint("example", new()
 ///     {
 ///         VpcId = testAlternate.Id,
-///         ServiceName = testAwsVpcEndpointService.ServiceName,
+///         ServiceName = test.ServiceName,
 ///         VpcEndpointType = "Interface",
 ///         PrivateDnsEnabled = false,
 ///         SecurityGroupIds = new[]
 ///         {
-///             test.Id,
+///             testAwsSecurityGroup.Id,
 ///         },
 ///     });
 ///
@@ -104,11 +104,11 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 /// 		}
 /// 		exampleVpcEndpoint, err := ec2.NewVpcEndpoint(ctx, "example", &ec2.VpcEndpointArgs{
 /// 			VpcId:             pulumi.Any(testAlternate.Id),
-/// 			ServiceName:       pulumi.Any(testAwsVpcEndpointService.ServiceName),
+/// 			ServiceName:       pulumi.Any(test.ServiceName),
 /// 			VpcEndpointType:   pulumi.String("Interface"),
 /// 			PrivateDnsEnabled: pulumi.Bool(false),
 /// 			SecurityGroupIds: pulumi.StringArray{
-/// 				test.Id,
+/// 				testAwsSecurityGroup.Id,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -140,10 +140,10 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 /// }
 /// resource "aws_ec2_vpcendpoint" "example" {
 ///   vpc_id              = testAlternate.id
-///   service_name        = testAwsVpcEndpointService.serviceName
+///   service_name        = test.serviceName
 ///   vpc_endpoint_type   = "Interface"
 ///   private_dns_enabled = false
-///   security_group_ids  = [test.id]
+///   security_group_ids  = [testAwsSecurityGroup.id]
 /// }
 /// resource "aws_ec2_vpcendpointconnectionaccepter" "example" {
 ///   vpc_endpoint_service_id = aws_ec2_vpcendpointservice.example.id
@@ -182,10 +182,10 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 ///
 ///         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()
 ///             .vpcId(testAlternate.id())
-///             .serviceName(testAwsVpcEndpointService.serviceName())
+///             .serviceName(test.serviceName())
 ///             .vpcEndpointType("Interface")
 ///             .privateDnsEnabled(false)
-///             .securityGroupIds(test.id())
+///             .securityGroupIds(testAwsSecurityGroup.id())
 ///             .build());
 ///
 ///         var exampleVpcEndpointConnectionAccepter = new VpcEndpointConnectionAccepter("exampleVpcEndpointConnectionAccepter", VpcEndpointConnectionAccepterArgs.builder()
@@ -209,11 +209,11 @@ import 'vpc_endpoint_connection_accepter_state.dart';
 ///     name: example
 ///     properties:
 ///       vpcId: ${testAlternate.id}
-///       serviceName: ${testAwsVpcEndpointService.serviceName}
+///       serviceName: ${test.serviceName}
 ///       vpcEndpointType: Interface
 ///       privateDnsEnabled: false
 ///       securityGroupIds:
-///         - ${test.id}
+///         - ${testAwsSecurityGroup.id}
 ///   exampleVpcEndpointConnectionAccepter:
 ///     type: aws:ec2:VpcEndpointConnectionAccepter
 ///     name: example
@@ -252,7 +252,7 @@ class VpcEndpointConnectionAccepter extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointConnectionAccepter:VpcEndpointConnectionAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     vpcEndpointId = registerOutput<String>('vpcEndpointId');
@@ -265,11 +265,12 @@ class VpcEndpointConnectionAccepter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcEndpointConnectionAccepterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcEndpointConnectionAccepter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,6 +284,21 @@ class VpcEndpointConnectionAccepter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    vpcEndpointId = registerOutput<String>('vpcEndpointId');
+    vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');
+    vpcEndpointState = registerOutput<String>('vpcEndpointState');
+  }
+
+  /// Creates a typed reference to an existing [VpcEndpointConnectionAccepter] resource.
+  VpcEndpointConnectionAccepter.reference(String urn)
+    : super(
+        'aws:ec2/vpcEndpointConnectionAccepter:VpcEndpointConnectionAccepter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     vpcEndpointId = registerOutput<String>('vpcEndpointId');
     vpcEndpointServiceId = registerOutput<String>('vpcEndpointServiceId');

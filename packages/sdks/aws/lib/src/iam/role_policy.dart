@@ -362,7 +362,7 @@ class RolePolicy extends pulumi.CustomResource {
           'aws:iam/rolePolicy:RolePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
@@ -375,11 +375,12 @@ class RolePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RolePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RolePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -393,6 +394,21 @@ class RolePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    policy = registerOutput<String>('policy');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [RolePolicy] resource.
+  RolePolicy.reference(String urn)
+    : super(
+        'aws:iam/rolePolicy:RolePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     policy = registerOutput<String>('policy');

@@ -9,29 +9,29 @@ import 'trust_provider_sse_specification.dart';
 /// Input properties used for looking up and filtering TrustProvider resources.
 class TrustProviderState {
   /// A description for the AWS Verified Access trust provider.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A block of options for device identity based trust providers.
-  final pulumi.Input<TrustProviderDeviceOptions>? deviceOptions;
+  final pulumi.Input<TrustProviderDeviceOptions?>? deviceOptions;
   /// The type of device-based trust provider.
-  final pulumi.Input<String>? deviceTrustProviderType;
+  final pulumi.Input<String?>? deviceTrustProviderType;
   /// The OpenID Connect details for an Native Application OIDC, user-identity based trust provider.
-  final pulumi.Input<TrustProviderNativeApplicationOidcOptions>? nativeApplicationOidcOptions;
+  final pulumi.Input<TrustProviderNativeApplicationOidcOptions?>? nativeApplicationOidcOptions;
   /// The OpenID Connect details for an oidc-type, user-identity based trust provider.
-  final pulumi.Input<TrustProviderOidcOptions>? oidcOptions;
+  final pulumi.Input<TrustProviderOidcOptions?>? oidcOptions;
   /// The identifier to be used when working with policy rules.
-  final pulumi.Input<String>? policyReferenceName;
+  final pulumi.Input<String?>? policyReferenceName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<TrustProviderSseSpecification>? sseSpecification;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<TrustProviderSseSpecification?>? sseSpecification;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The type of trust provider can be either user or device-based.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? trustProviderType;
+  final pulumi.Input<String?>? trustProviderType;
   /// The type of user-based trust provider.
-  final pulumi.Input<String>? userTrustProviderType;
+  final pulumi.Input<String?>? userTrustProviderType;
 
   /// Creates a new [TrustProviderState].
   /// [description] A description for the AWS Verified Access trust provider.

@@ -29,8 +29,6 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///
 /// // Web ACL must use lifecycle.ignore_changes to prevent drift from this resource
 /// const example = new aws.wafv2.WebAcl("example", {
-///     name: "example-web-acl",
-///     scope: "REGIONAL",
 ///     defaultAction: {
 ///         allow: {},
 ///     },
@@ -39,15 +37,19 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///         metricName: "example-web-acl",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     name: "example-web-acl",
+///     scope: "REGIONAL",
+/// }, {
+///     ignoreChanges: ["rules"],
 /// });
 /// // Associate a custom rule group
 /// const exampleWebAclRuleGroupAssociation = new aws.wafv2.WebAclRuleGroupAssociation("example", {
-///     ruleName: "example-rule-group-rule",
-///     priority: 100,
-///     webAclArn: example.arn,
 ///     ruleGroupReference: {
 ///         arn: exampleAwsWafv2RuleGroup.arn,
 ///     },
+///     ruleName: "example-rule-group-rule",
+///     priority: 100,
+///     webAclArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -56,8 +58,6 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///
 /// # Web ACL must use lifecycle.ignore_changes to prevent drift from this resource
 /// example = aws.wafv2.WebAcl("example",
-///     name="example-web-acl",
-///     scope="REGIONAL",
 ///     default_action={
 ///         "allow": {},
 ///     },
@@ -65,15 +65,18 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "example-web-acl",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     name="example-web-acl",
+///     scope="REGIONAL",
+///     opts = pulumi.ResourceOptions(ignore_changes=["rules"]))
 /// # Associate a custom rule group
 /// example_web_acl_rule_group_association = aws.wafv2.WebAclRuleGroupAssociation("example",
-///     rule_name="example-rule-group-rule",
-///     priority=100,
-///     web_acl_arn=example.arn,
 ///     rule_group_reference={
 ///         "arn": example_aws_wafv2_rule_group["arn"],
-///     })
+///     },
+///     rule_name="example-rule-group-rule",
+///     priority=100,
+///     web_acl_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -86,8 +89,6 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///     // Web ACL must use lifecycle.ignore_changes to prevent drift from this resource
 ///     var example = new Aws.WafV2.WebAcl("example", new()
 ///     {
-///         Name = "example-web-acl",
-///         Scope = "REGIONAL",
 ///         DefaultAction = new Aws.WafV2.Inputs.WebAclDefaultActionArgs
 ///         {
 ///             Allow = null,
@@ -98,18 +99,26 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///             MetricName = "example-web-acl",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         Name = "example-web-acl",
+///         Scope = "REGIONAL",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "rules",
+///         },
 ///     });
 ///
 ///     // Associate a custom rule group
 ///     var exampleWebAclRuleGroupAssociation = new Aws.WafV2.WebAclRuleGroupAssociation("example", new()
 ///     {
-///         RuleName = "example-rule-group-rule",
-///         Priority = 100,
-///         WebAclArn = example.Arn,
 ///         RuleGroupReference = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationRuleGroupReferenceArgs
 ///         {
 ///             Arn = exampleAwsWafv2RuleGroup.Arn,
 ///         },
+///         RuleName = "example-rule-group-rule",
+///         Priority = 100,
+///         WebAclArn = example.Arn,
 ///     });
 ///
 /// });
@@ -126,8 +135,6 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// Web ACL must use lifecycle.ignore_changes to prevent drift from this resource
 /// 		example, err := wafv2.NewWebAcl(ctx, "example", &wafv2.WebAclArgs{
-/// 			Name:  pulumi.String("example-web-acl"),
-/// 			Scope: pulumi.String("REGIONAL"),
 /// 			DefaultAction: &wafv2.WebAclDefaultActionArgs{
 /// 				Allow: &wafv2.WebAclDefaultActionAllowArgs{},
 /// 			},
@@ -136,18 +143,22 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// 				MetricName:               pulumi.String("example-web-acl"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
-/// 		})
+/// 			Name:  pulumi.String("example-web-acl"),
+/// 			Scope: pulumi.String("REGIONAL"),
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"rules",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Associate a custom rule group
 /// 		_, err = wafv2.NewWebAclRuleGroupAssociation(ctx, "example", &wafv2.WebAclRuleGroupAssociationArgs{
-/// 			RuleName:  pulumi.String("example-rule-group-rule"),
-/// 			Priority:  pulumi.Int(100),
-/// 			WebAclArn: example.Arn,
 /// 			RuleGroupReference: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceArgs{
 /// 				Arn: pulumi.Any(exampleAwsWafv2RuleGroup.Arn),
 /// 			},
+/// 			RuleName:  pulumi.String("example-rule-group-rule"),
+/// 			Priority:  pulumi.Int(100),
+/// 			WebAclArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -167,8 +178,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///
 /// # Web ACL must use lifecycle.ignore_changes to prevent drift from this resource
 /// resource "aws_wafv2_webacl" "example" {
-///   name  = "example-web-acl"
-///   scope = "REGIONAL"
+///   lifecycle {
+///     ignore_changes = [rules]
+///   }
 ///   default_action = {
 ///     allow = {}
 ///   }
@@ -177,15 +189,17 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///     metric_name                = "example-web-acl"
 ///     sampled_requests_enabled   = true
 ///   }
+///   name  = "example-web-acl"
+///   scope = "REGIONAL"
 /// }
 /// # Associate a custom rule group
 /// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_name   = "example-rule-group-rule"
-///   priority    = 100
-///   web_acl_arn = aws_wafv2_webacl.example.arn
 ///   rule_group_reference = {
 ///     arn = exampleAwsWafv2RuleGroup.arn
 ///   }
+///   rule_name   = "example-rule-group-rule"
+///   priority    = 100
+///   web_acl_arn = aws_wafv2_webacl.example.arn
 /// }
 /// ```
 /// ```java
@@ -202,6 +216,7 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import com.pulumi.aws.wafv2.WebAclRuleGroupAssociation;
 /// import com.pulumi.aws.wafv2.WebAclRuleGroupAssociationArgs;
 /// import com.pulumi.aws.wafv2.inputs.WebAclRuleGroupAssociationRuleGroupReferenceArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -217,8 +232,6 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///     public static void stack(Context ctx) {
 ///         // Web ACL must use lifecycle.ignore_changes to prevent drift from this resource
 ///         var example = new WebAcl("example", WebAclArgs.builder()
-///             .name("example-web-acl")
-///             .scope("REGIONAL")
 ///             .defaultAction(WebAclDefaultActionArgs.builder()
 ///                 .allow(WebAclDefaultActionAllowArgs.builder()
 ///                     .build())
@@ -228,16 +241,20 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                 .metricName("example-web-acl")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
-///             .build());
+///             .name("example-web-acl")
+///             .scope("REGIONAL")
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("rules")
+///                 .build());
 ///
 ///         // Associate a custom rule group
 ///         var exampleWebAclRuleGroupAssociation = new WebAclRuleGroupAssociation("exampleWebAclRuleGroupAssociation", WebAclRuleGroupAssociationArgs.builder()
-///             .ruleName("example-rule-group-rule")
-///             .priority(100)
-///             .webAclArn(example.arn())
 ///             .ruleGroupReference(WebAclRuleGroupAssociationRuleGroupReferenceArgs.builder()
 ///                 .arn(exampleAwsWafv2RuleGroup.arn())
 ///                 .build())
+///             .ruleName("example-rule-group-rule")
+///             .priority(100)
+///             .webAclArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -249,24 +266,27 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAcl
 ///     properties:
-///       name: example-web-acl
-///       scope: REGIONAL
 ///       defaultAction:
 ///         allow: {}
 ///       visibilityConfig:
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: example-web-acl
 ///         sampledRequestsEnabled: true
+///       name: example-web-acl
+///       scope: REGIONAL
+///     options:
+///       ignoreChanges:
+///         - rules
 ///   # Associate a custom rule group
 ///   exampleWebAclRuleGroupAssociation:
 ///     type: aws:wafv2:WebAclRuleGroupAssociation
 ///     name: example
 ///     properties:
+///       ruleGroupReference:
+///         arn: ${exampleAwsWafv2RuleGroup.arn}
 ///       ruleName: example-rule-group-rule
 ///       priority: 100
 ///       webAclArn: ${example.arn}
-///       ruleGroupReference:
-///         arn: ${exampleAwsWafv2RuleGroup.arn}
 /// ```
 ///
 /// ### Managed Rule Group
@@ -277,13 +297,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAclRuleGroupAssociation("example", {
-///     ruleName: "aws-common-rule-set",
-///     priority: 50,
-///     webAclArn: exampleAwsWafv2WebAcl.arn,
 ///     managedRuleGroup: {
 ///         name: "AWSManagedRulesCommonRuleSet",
 ///         vendorName: "AWS",
 ///     },
+///     ruleName: "aws-common-rule-set",
+///     priority: 50,
+///     webAclArn: exampleAwsWafv2WebAcl.arn,
 /// });
 /// ```
 /// ```python
@@ -291,13 +311,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAclRuleGroupAssociation("example",
-///     rule_name="aws-common-rule-set",
-///     priority=50,
-///     web_acl_arn=example_aws_wafv2_web_acl["arn"],
 ///     managed_rule_group={
 ///         "name": "AWSManagedRulesCommonRuleSet",
 ///         "vendor_name": "AWS",
-///     })
+///     },
+///     rule_name="aws-common-rule-set",
+///     priority=50,
+///     web_acl_arn=example_aws_wafv2_web_acl["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -309,14 +329,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAclRuleGroupAssociation("example", new()
 ///     {
-///         RuleName = "aws-common-rule-set",
-///         Priority = 50,
-///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///         ManagedRuleGroup = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupArgs
 ///         {
 ///             Name = "AWSManagedRulesCommonRuleSet",
 ///             VendorName = "AWS",
 ///         },
+///         RuleName = "aws-common-rule-set",
+///         Priority = 50,
+///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///     });
 ///
 /// });
@@ -332,13 +352,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRuleGroupAssociation(ctx, "example", &wafv2.WebAclRuleGroupAssociationArgs{
-/// 			RuleName:  pulumi.String("aws-common-rule-set"),
-/// 			Priority:  pulumi.Int(50),
-/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 			ManagedRuleGroup: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupArgs{
 /// 				Name:       pulumi.String("AWSManagedRulesCommonRuleSet"),
 /// 				VendorName: pulumi.String("AWS"),
 /// 			},
+/// 			RuleName:  pulumi.String("aws-common-rule-set"),
+/// 			Priority:  pulumi.Int(50),
+/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -357,13 +377,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_name   = "aws-common-rule-set"
-///   priority    = 50
-///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 ///   managed_rule_group = {
 ///     name        = "AWSManagedRulesCommonRuleSet"
 ///     vendor_name = "AWS"
 ///   }
+///   rule_name   = "aws-common-rule-set"
+///   priority    = 50
+///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 /// }
 /// ```
 /// ```java
@@ -389,13 +409,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclRuleGroupAssociation("example", WebAclRuleGroupAssociationArgs.builder()
-///             .ruleName("aws-common-rule-set")
-///             .priority(50)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .managedRuleGroup(WebAclRuleGroupAssociationManagedRuleGroupArgs.builder()
 ///                 .name("AWSManagedRulesCommonRuleSet")
 ///                 .vendorName("AWS")
 ///                 .build())
+///             .ruleName("aws-common-rule-set")
+///             .priority(50)
+///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .build());
 ///
 ///     }
@@ -406,12 +426,12 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAclRuleGroupAssociation
 ///     properties:
-///       ruleName: aws-common-rule-set
-///       priority: 50
-///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 ///       managedRuleGroup:
 ///         name: AWSManagedRulesCommonRuleSet
 ///         vendorName: AWS
+///       ruleName: aws-common-rule-set
+///       priority: 50
+///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 /// ```
 ///
 /// ### Managed Rule Group With Version
@@ -422,14 +442,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAclRuleGroupAssociation("example", {
-///     ruleName: "aws-common-rule-set-versioned",
-///     priority: 60,
-///     webAclArn: exampleAwsWafv2WebAcl.arn,
 ///     managedRuleGroup: {
 ///         name: "AWSManagedRulesCommonRuleSet",
 ///         vendorName: "AWS",
 ///         version: "Version_1.0",
 ///     },
+///     ruleName: "aws-common-rule-set-versioned",
+///     priority: 60,
+///     webAclArn: exampleAwsWafv2WebAcl.arn,
 /// });
 /// ```
 /// ```python
@@ -437,14 +457,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAclRuleGroupAssociation("example",
-///     rule_name="aws-common-rule-set-versioned",
-///     priority=60,
-///     web_acl_arn=example_aws_wafv2_web_acl["arn"],
 ///     managed_rule_group={
 ///         "name": "AWSManagedRulesCommonRuleSet",
 ///         "vendor_name": "AWS",
 ///         "version": "Version_1.0",
-///     })
+///     },
+///     rule_name="aws-common-rule-set-versioned",
+///     priority=60,
+///     web_acl_arn=example_aws_wafv2_web_acl["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -456,15 +476,15 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAclRuleGroupAssociation("example", new()
 ///     {
-///         RuleName = "aws-common-rule-set-versioned",
-///         Priority = 60,
-///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///         ManagedRuleGroup = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupArgs
 ///         {
 ///             Name = "AWSManagedRulesCommonRuleSet",
 ///             VendorName = "AWS",
 ///             Version = "Version_1.0",
 ///         },
+///         RuleName = "aws-common-rule-set-versioned",
+///         Priority = 60,
+///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///     });
 ///
 /// });
@@ -480,14 +500,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRuleGroupAssociation(ctx, "example", &wafv2.WebAclRuleGroupAssociationArgs{
-/// 			RuleName:  pulumi.String("aws-common-rule-set-versioned"),
-/// 			Priority:  pulumi.Int(60),
-/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 			ManagedRuleGroup: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupArgs{
 /// 				Name:       pulumi.String("AWSManagedRulesCommonRuleSet"),
 /// 				VendorName: pulumi.String("AWS"),
 /// 				Version:    pulumi.String("Version_1.0"),
 /// 			},
+/// 			RuleName:  pulumi.String("aws-common-rule-set-versioned"),
+/// 			Priority:  pulumi.Int(60),
+/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -506,14 +526,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_name   = "aws-common-rule-set-versioned"
-///   priority    = 60
-///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 ///   managed_rule_group = {
 ///     name        = "AWSManagedRulesCommonRuleSet"
 ///     vendor_name = "AWS"
 ///     version     = "Version_1.0"
 ///   }
+///   rule_name   = "aws-common-rule-set-versioned"
+///   priority    = 60
+///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 /// }
 /// ```
 /// ```java
@@ -539,14 +559,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclRuleGroupAssociation("example", WebAclRuleGroupAssociationArgs.builder()
-///             .ruleName("aws-common-rule-set-versioned")
-///             .priority(60)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .managedRuleGroup(WebAclRuleGroupAssociationManagedRuleGroupArgs.builder()
 ///                 .name("AWSManagedRulesCommonRuleSet")
 ///                 .vendorName("AWS")
 ///                 .version("Version_1.0")
 ///                 .build())
+///             .ruleName("aws-common-rule-set-versioned")
+///             .priority(60)
+///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .build());
 ///
 ///     }
@@ -557,13 +577,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAclRuleGroupAssociation
 ///     properties:
-///       ruleName: aws-common-rule-set-versioned
-///       priority: 60
-///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 ///       managedRuleGroup:
 ///         name: AWSManagedRulesCommonRuleSet
 ///         vendorName: AWS
 ///         version: Version_1.0
+///       ruleName: aws-common-rule-set-versioned
+///       priority: 60
+///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 /// ```
 ///
 /// ### Managed Rule Group With Rule Action Overrides
@@ -574,15 +594,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAclRuleGroupAssociation("example", {
-///     ruleName: "aws-common-rule-set-with-overrides",
-///     priority: 70,
-///     webAclArn: exampleAwsWafv2WebAcl.arn,
 ///     managedRuleGroup: {
-///         name: "AWSManagedRulesCommonRuleSet",
-///         vendorName: "AWS",
 ///         ruleActionOverrides: [
 ///             {
-///                 name: "GenericRFI_BODY",
 ///                 actionToUse: {
 ///                     count: {
 ///                         customRequestHandling: {
@@ -593,15 +607,21 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 name: "GenericRFI_BODY",
 ///             },
 ///             {
-///                 name: "SizeRestrictions_BODY",
 ///                 actionToUse: {
 ///                     captcha: {},
 ///                 },
+///                 name: "SizeRestrictions_BODY",
 ///             },
 ///         ],
+///         name: "AWSManagedRulesCommonRuleSet",
+///         vendorName: "AWS",
 ///     },
+///     ruleName: "aws-common-rule-set-with-overrides",
+///     priority: 70,
+///     webAclArn: exampleAwsWafv2WebAcl.arn,
 /// });
 /// ```
 /// ```python
@@ -609,15 +629,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAclRuleGroupAssociation("example",
-///     rule_name="aws-common-rule-set-with-overrides",
-///     priority=70,
-///     web_acl_arn=example_aws_wafv2_web_acl["arn"],
 ///     managed_rule_group={
-///         "name": "AWSManagedRulesCommonRuleSet",
-///         "vendor_name": "AWS",
 ///         "rule_action_overrides": [
 ///             {
-///                 "name": "GenericRFI_BODY",
 ///                 "action_to_use": {
 ///                     "count": {
 ///                         "custom_request_handling": {
@@ -628,15 +642,21 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 "name": "GenericRFI_BODY",
 ///             },
 ///             {
-///                 "name": "SizeRestrictions_BODY",
 ///                 "action_to_use": {
 ///                     "captcha": {},
 ///                 },
+///                 "name": "SizeRestrictions_BODY",
 ///             },
 ///         ],
-///     })
+///         "name": "AWSManagedRulesCommonRuleSet",
+///         "vendor_name": "AWS",
+///     },
+///     rule_name="aws-common-rule-set-with-overrides",
+///     priority=70,
+///     web_acl_arn=example_aws_wafv2_web_acl["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -648,18 +668,12 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAclRuleGroupAssociation("example", new()
 ///     {
-///         RuleName = "aws-common-rule-set-with-overrides",
-///         Priority = 70,
-///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///         ManagedRuleGroup = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupArgs
 ///         {
-///             Name = "AWSManagedRulesCommonRuleSet",
-///             VendorName = "AWS",
 ///             RuleActionOverrides = new[]
 ///             {
 ///                 new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideArgs
 ///                 {
-///                     Name = "GenericRFI_BODY",
 ///                     ActionToUse = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseArgs
 ///                     {
 ///                         Count = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountArgs
@@ -677,17 +691,23 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                             },
 ///                         },
 ///                     },
+///                     Name = "GenericRFI_BODY",
 ///                 },
 ///                 new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideArgs
 ///                 {
-///                     Name = "SizeRestrictions_BODY",
 ///                     ActionToUse = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseArgs
 ///                     {
 ///                         Captcha = null,
 ///                     },
+///                     Name = "SizeRestrictions_BODY",
 ///                 },
 ///             },
+///             Name = "AWSManagedRulesCommonRuleSet",
+///             VendorName = "AWS",
 ///         },
+///         RuleName = "aws-common-rule-set-with-overrides",
+///         Priority = 70,
+///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///     });
 ///
 /// });
@@ -703,15 +723,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRuleGroupAssociation(ctx, "example", &wafv2.WebAclRuleGroupAssociationArgs{
-/// 			RuleName:  pulumi.String("aws-common-rule-set-with-overrides"),
-/// 			Priority:  pulumi.Int(70),
-/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 			ManagedRuleGroup: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupArgs{
-/// 				Name:       pulumi.String("AWSManagedRulesCommonRuleSet"),
-/// 				VendorName: pulumi.String("AWS"),
 /// 				RuleActionOverrides: wafv2.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideArray{
 /// 					&wafv2.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideArgs{
-/// 						Name: pulumi.String("GenericRFI_BODY"),
 /// 						ActionToUse: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseArgs{
 /// 							Count: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountArgs{
 /// 								CustomRequestHandling: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingArgs{
@@ -724,15 +738,21 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// 								},
 /// 							},
 /// 						},
+/// 						Name: pulumi.String("GenericRFI_BODY"),
 /// 					},
 /// 					&wafv2.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideArgs{
-/// 						Name: pulumi.String("SizeRestrictions_BODY"),
 /// 						ActionToUse: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseArgs{
 /// 							Captcha: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptchaArgs{},
 /// 						},
+/// 						Name: pulumi.String("SizeRestrictions_BODY"),
 /// 					},
 /// 				},
+/// 				Name:       pulumi.String("AWSManagedRulesCommonRuleSet"),
+/// 				VendorName: pulumi.String("AWS"),
 /// 			},
+/// 			RuleName:  pulumi.String("aws-common-rule-set-with-overrides"),
+/// 			Priority:  pulumi.Int(70),
+/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -751,14 +771,8 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_name   = "aws-common-rule-set-with-overrides"
-///   priority    = 70
-///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 ///   managed_rule_group = {
-///     name        = "AWSManagedRulesCommonRuleSet"
-///     vendor_name = "AWS"
 ///     rule_action_overrides = [{
-///       "name" = "GenericRFI_BODY"
 ///       "actionToUse" = {
 ///         "count" = {
 ///           "customRequestHandling" = {
@@ -769,13 +783,19 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///           }
 ///         }
 ///       }
+///       "name" = "GenericRFI_BODY"
 ///       }, {
-///       "name" = "SizeRestrictions_BODY"
 ///       "actionToUse" = {
 ///         "captcha" = {}
 ///       }
+///       "name" = "SizeRestrictions_BODY"
 ///     }]
+///     name        = "AWSManagedRulesCommonRuleSet"
+///     vendor_name = "AWS"
 ///   }
+///   rule_name   = "aws-common-rule-set-with-overrides"
+///   priority    = 70
+///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 /// }
 /// ```
 /// ```java
@@ -807,15 +827,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclRuleGroupAssociation("example", WebAclRuleGroupAssociationArgs.builder()
-///             .ruleName("aws-common-rule-set-with-overrides")
-///             .priority(70)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .managedRuleGroup(WebAclRuleGroupAssociationManagedRuleGroupArgs.builder()
-///                 .name("AWSManagedRulesCommonRuleSet")
-///                 .vendorName("AWS")
 ///                 .ruleActionOverrides(
 ///                     WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideArgs.builder()
-///                         .name("GenericRFI_BODY")
 ///                         .actionToUse(WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseArgs.builder()
 ///                             .count(WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountArgs.builder()
 ///                                 .customRequestHandling(WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingArgs.builder()
@@ -826,15 +840,21 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                                     .build())
 ///                                 .build())
 ///                             .build())
+///                         .name("GenericRFI_BODY")
 ///                         .build(),
 ///                     WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideArgs.builder()
-///                         .name("SizeRestrictions_BODY")
 ///                         .actionToUse(WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseArgs.builder()
 ///                             .captcha(WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCaptchaArgs.builder()
 ///                                 .build())
 ///                             .build())
+///                         .name("SizeRestrictions_BODY")
 ///                         .build())
+///                 .name("AWSManagedRulesCommonRuleSet")
+///                 .vendorName("AWS")
 ///                 .build())
+///             .ruleName("aws-common-rule-set-with-overrides")
+///             .priority(70)
+///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .build());
 ///
 ///     }
@@ -845,23 +865,23 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAclRuleGroupAssociation
 ///     properties:
-///       ruleName: aws-common-rule-set-with-overrides
-///       priority: 70
-///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 ///       managedRuleGroup:
-///         name: AWSManagedRulesCommonRuleSet
-///         vendorName: AWS
 ///         ruleActionOverrides:
-///           - name: GenericRFI_BODY
-///             actionToUse:
+///           - actionToUse:
 ///               count:
 ///                 customRequestHandling:
 ///                   insertHeaders:
 ///                     - name: X-RFI-Override
 ///                       value: counted
-///           - name: SizeRestrictions_BODY
-///             actionToUse:
+///             name: GenericRFI_BODY
+///           - actionToUse:
 ///               captcha: {}
+///             name: SizeRestrictions_BODY
+///         name: AWSManagedRulesCommonRuleSet
+///         vendorName: AWS
+///       ruleName: aws-common-rule-set-with-overrides
+///       priority: 70
+///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 /// ```
 ///
 /// ### Managed Rule Group With Managed Rule Group Configs
@@ -872,16 +892,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAclRuleGroupAssociation("example", {
-///     ruleName: "acfp-ruleset-with-rule-config",
-///     priority: 70,
-///     webAclArn: exampleAwsWafv2WebAcl.arn,
 ///     managedRuleGroup: {
-///         name: "AWSManagedRulesACFPRuleSet",
-///         vendorName: "AWS",
 ///         managedRuleGroupConfigs: {
 ///             awsManagedRulesAcfpRuleSet: {
-///                 creationPath: "/creation",
-///                 registrationPagePath: "/registration",
 ///                 requestInspection: {
 ///                     emailField: {
 ///                         identifier: "/email",
@@ -901,19 +914,26 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                             "work",
 ///                         ],
 ///                     },
-///                     payloadType: "JSON",
 ///                     usernameField: {
 ///                         identifier: "/username",
 ///                     },
+///                     payloadType: "JSON",
 ///                 },
+///                 creationPath: "/creation",
+///                 registrationPagePath: "/registration",
 ///             },
 ///         },
+///         name: "AWSManagedRulesACFPRuleSet",
+///         vendorName: "AWS",
 ///     },
 ///     visibilityConfig: {
 ///         cloudwatchMetricsEnabled: true,
 ///         metricName: "friendly-metric-name",
 ///         sampledRequestsEnabled: true,
 ///     },
+///     ruleName: "acfp-ruleset-with-rule-config",
+///     priority: 70,
+///     webAclArn: exampleAwsWafv2WebAcl.arn,
 /// });
 /// ```
 /// ```python
@@ -921,16 +941,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAclRuleGroupAssociation("example",
-///     rule_name="acfp-ruleset-with-rule-config",
-///     priority=70,
-///     web_acl_arn=example_aws_wafv2_web_acl["arn"],
 ///     managed_rule_group={
-///         "name": "AWSManagedRulesACFPRuleSet",
-///         "vendor_name": "AWS",
 ///         "managed_rule_group_configs": {
 ///             "aws_managed_rules_acfp_rule_set": {
-///                 "creation_path": "/creation",
-///                 "registration_page_path": "/registration",
 ///                 "request_inspection": {
 ///                     "email_field": {
 ///                         "identifier": "/email",
@@ -950,19 +963,26 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                             "work",
 ///                         ],
 ///                     },
-///                     "payload_type": "JSON",
 ///                     "username_field": {
 ///                         "identifier": "/username",
 ///                     },
+///                     "payload_type": "JSON",
 ///                 },
+///                 "creation_path": "/creation",
+///                 "registration_page_path": "/registration",
 ///             },
 ///         },
+///         "name": "AWSManagedRulesACFPRuleSet",
+///         "vendor_name": "AWS",
 ///     },
 ///     visibility_config={
 ///         "cloudwatch_metrics_enabled": True,
 ///         "metric_name": "friendly-metric-name",
 ///         "sampled_requests_enabled": True,
-///     })
+///     },
+///     rule_name="acfp-ruleset-with-rule-config",
+///     priority=70,
+///     web_acl_arn=example_aws_wafv2_web_acl["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -974,19 +994,12 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAclRuleGroupAssociation("example", new()
 ///     {
-///         RuleName = "acfp-ruleset-with-rule-config",
-///         Priority = 70,
-///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///         ManagedRuleGroup = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupArgs
 ///         {
-///             Name = "AWSManagedRulesACFPRuleSet",
-///             VendorName = "AWS",
 ///             ManagedRuleGroupConfigs = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsArgs
 ///             {
 ///                 AwsManagedRulesAcfpRuleSet = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetArgs
 ///                 {
-///                     CreationPath = "/creation",
-///                     RegistrationPagePath = "/registration",
 ///                     RequestInspection = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspectionArgs
 ///                     {
 ///                         EmailField = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspectionEmailFieldArgs
@@ -1013,14 +1026,18 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                                 "work",
 ///                             },
 ///                         },
-///                         PayloadType = "JSON",
 ///                         UsernameField = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspectionUsernameFieldArgs
 ///                         {
 ///                             Identifier = "/username",
 ///                         },
+///                         PayloadType = "JSON",
 ///                     },
+///                     CreationPath = "/creation",
+///                     RegistrationPagePath = "/registration",
 ///                 },
 ///             },
+///             Name = "AWSManagedRulesACFPRuleSet",
+///             VendorName = "AWS",
 ///         },
 ///         VisibilityConfig = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationVisibilityConfigArgs
 ///         {
@@ -1028,6 +1045,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///             MetricName = "friendly-metric-name",
 ///             SampledRequestsEnabled = true,
 ///         },
+///         RuleName = "acfp-ruleset-with-rule-config",
+///         Priority = 70,
+///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///     });
 ///
 /// });
@@ -1043,16 +1063,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRuleGroupAssociation(ctx, "example", &wafv2.WebAclRuleGroupAssociationArgs{
-/// 			RuleName:  pulumi.String("acfp-ruleset-with-rule-config"),
-/// 			Priority:  pulumi.Int(70),
-/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 			ManagedRuleGroup: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupArgs{
-/// 				Name:       pulumi.String("AWSManagedRulesACFPRuleSet"),
-/// 				VendorName: pulumi.String("AWS"),
 /// 				ManagedRuleGroupConfigs: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsArgs{
 /// 					AwsManagedRulesAcfpRuleSet: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetArgs{
-/// 						CreationPath:         pulumi.String("/creation"),
-/// 						RegistrationPagePath: pulumi.String("/registration"),
 /// 						RequestInspection: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspectionArgs{
 /// 							EmailField: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspectionEmailFieldArgs{
 /// 								Identifier: pulumi.String("/email"),
@@ -1072,19 +1085,26 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// 									pulumi.String("work"),
 /// 								},
 /// 							},
-/// 							PayloadType: pulumi.String("JSON"),
 /// 							UsernameField: &wafv2.WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspectionUsernameFieldArgs{
 /// 								Identifier: pulumi.String("/username"),
 /// 							},
+/// 							PayloadType: pulumi.String("JSON"),
 /// 						},
+/// 						CreationPath:         pulumi.String("/creation"),
+/// 						RegistrationPagePath: pulumi.String("/registration"),
 /// 					},
 /// 				},
+/// 				Name:       pulumi.String("AWSManagedRulesACFPRuleSet"),
+/// 				VendorName: pulumi.String("AWS"),
 /// 			},
 /// 			VisibilityConfig: &wafv2.WebAclRuleGroupAssociationVisibilityConfigArgs{
 /// 				CloudwatchMetricsEnabled: pulumi.Bool(true),
 /// 				MetricName:               pulumi.String("friendly-metric-name"),
 /// 				SampledRequestsEnabled:   pulumi.Bool(true),
 /// 			},
+/// 			RuleName:  pulumi.String("acfp-ruleset-with-rule-config"),
+/// 			Priority:  pulumi.Int(70),
+/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1103,16 +1123,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_name   = "acfp-ruleset-with-rule-config"
-///   priority    = 70
-///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 ///   managed_rule_group = {
-///     name        = "AWSManagedRulesACFPRuleSet"
-///     vendor_name = "AWS"
 ///     managed_rule_group_configs = {
 ///       aws_managed_rules_acfp_rule_set = {
-///         creation_path          = "/creation"
-///         registration_page_path = "/registration"
 ///         request_inspection = {
 ///           email_field = {
 ///             identifier = "/email"
@@ -1126,19 +1139,26 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///           address_fields = {
 ///             identifiers = ["home", "work"]
 ///           }
-///           payload_type = "JSON"
 ///           username_field = {
 ///             identifier = "/username"
 ///           }
+///           payload_type = "JSON"
 ///         }
+///         creation_path          = "/creation"
+///         registration_page_path = "/registration"
 ///       }
 ///     }
+///     name        = "AWSManagedRulesACFPRuleSet"
+///     vendor_name = "AWS"
 ///   }
 ///   visibility_config = {
 ///     cloudwatch_metrics_enabled = true
 ///     metric_name                = "friendly-metric-name"
 ///     sampled_requests_enabled   = true
 ///   }
+///   rule_name   = "acfp-ruleset-with-rule-config"
+///   priority    = 70
+///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 /// }
 /// ```
 /// ```java
@@ -1173,16 +1193,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclRuleGroupAssociation("example", WebAclRuleGroupAssociationArgs.builder()
-///             .ruleName("acfp-ruleset-with-rule-config")
-///             .priority(70)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .managedRuleGroup(WebAclRuleGroupAssociationManagedRuleGroupArgs.builder()
-///                 .name("AWSManagedRulesACFPRuleSet")
-///                 .vendorName("AWS")
 ///                 .managedRuleGroupConfigs(WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsArgs.builder()
 ///                     .awsManagedRulesAcfpRuleSet(WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetArgs.builder()
-///                         .creationPath("/creation")
-///                         .registrationPagePath("/registration")
 ///                         .requestInspection(WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspectionArgs.builder()
 ///                             .emailField(WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspectionEmailFieldArgs.builder()
 ///                                 .identifier("/email")
@@ -1200,19 +1213,26 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                                     "home",
 ///                                     "work")
 ///                                 .build())
-///                             .payloadType("JSON")
 ///                             .usernameField(WebAclRuleGroupAssociationManagedRuleGroupManagedRuleGroupConfigsAwsManagedRulesAcfpRuleSetRequestInspectionUsernameFieldArgs.builder()
 ///                                 .identifier("/username")
 ///                                 .build())
+///                             .payloadType("JSON")
 ///                             .build())
+///                         .creationPath("/creation")
+///                         .registrationPagePath("/registration")
 ///                         .build())
 ///                     .build())
+///                 .name("AWSManagedRulesACFPRuleSet")
+///                 .vendorName("AWS")
 ///                 .build())
 ///             .visibilityConfig(WebAclRuleGroupAssociationVisibilityConfigArgs.builder()
 ///                 .cloudwatchMetricsEnabled(true)
 ///                 .metricName("friendly-metric-name")
 ///                 .sampledRequestsEnabled(true)
 ///                 .build())
+///             .ruleName("acfp-ruleset-with-rule-config")
+///             .priority(70)
+///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .build());
 ///
 ///     }
@@ -1223,16 +1243,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAclRuleGroupAssociation
 ///     properties:
-///       ruleName: acfp-ruleset-with-rule-config
-///       priority: 70
-///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 ///       managedRuleGroup:
-///         name: AWSManagedRulesACFPRuleSet
-///         vendorName: AWS
 ///         managedRuleGroupConfigs:
 ///           awsManagedRulesAcfpRuleSet:
-///             creationPath: /creation
-///             registrationPagePath: /registration
 ///             requestInspection:
 ///               emailField:
 ///                 identifier: /email
@@ -1246,13 +1259,20 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                 identifiers:
 ///                   - home
 ///                   - work
-///               payloadType: JSON
 ///               usernameField:
 ///                 identifier: /username
+///               payloadType: JSON
+///             creationPath: /creation
+///             registrationPagePath: /registration
+///         name: AWSManagedRulesACFPRuleSet
+///         vendorName: AWS
 ///       visibilityConfig:
 ///         cloudwatchMetricsEnabled: true
 ///         metricName: friendly-metric-name
 ///         sampledRequestsEnabled: true
+///       ruleName: acfp-ruleset-with-rule-config
+///       priority: 70
+///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 /// ```
 ///
 /// ### Custom Rule Group With Override Action
@@ -1263,13 +1283,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAclRuleGroupAssociation("example", {
+///     ruleGroupReference: {
+///         arn: exampleAwsWafv2RuleGroup.arn,
+///     },
 ///     ruleName: "example-rule-group-rule",
 ///     priority: 100,
 ///     webAclArn: exampleAwsWafv2WebAcl.arn,
 ///     overrideAction: "count",
-///     ruleGroupReference: {
-///         arn: exampleAwsWafv2RuleGroup.arn,
-///     },
 /// });
 /// ```
 /// ```python
@@ -1277,13 +1297,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAclRuleGroupAssociation("example",
+///     rule_group_reference={
+///         "arn": example_aws_wafv2_rule_group["arn"],
+///     },
 ///     rule_name="example-rule-group-rule",
 ///     priority=100,
 ///     web_acl_arn=example_aws_wafv2_web_acl["arn"],
-///     override_action="count",
-///     rule_group_reference={
-///         "arn": example_aws_wafv2_rule_group["arn"],
-///     })
+///     override_action="count")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1295,14 +1315,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAclRuleGroupAssociation("example", new()
 ///     {
-///         RuleName = "example-rule-group-rule",
-///         Priority = 100,
-///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
-///         OverrideAction = "count",
 ///         RuleGroupReference = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationRuleGroupReferenceArgs
 ///         {
 ///             Arn = exampleAwsWafv2RuleGroup.Arn,
 ///         },
+///         RuleName = "example-rule-group-rule",
+///         Priority = 100,
+///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
+///         OverrideAction = "count",
 ///     });
 ///
 /// });
@@ -1318,13 +1338,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRuleGroupAssociation(ctx, "example", &wafv2.WebAclRuleGroupAssociationArgs{
+/// 			RuleGroupReference: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceArgs{
+/// 				Arn: pulumi.Any(exampleAwsWafv2RuleGroup.Arn),
+/// 			},
 /// 			RuleName:       pulumi.String("example-rule-group-rule"),
 /// 			Priority:       pulumi.Int(100),
 /// 			WebAclArn:      pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 			OverrideAction: pulumi.String("count"),
-/// 			RuleGroupReference: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceArgs{
-/// 				Arn: pulumi.Any(exampleAwsWafv2RuleGroup.Arn),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1343,13 +1363,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrulegroupassociation" "example" {
+///   rule_group_reference = {
+///     arn = exampleAwsWafv2RuleGroup.arn
+///   }
 ///   rule_name       = "example-rule-group-rule"
 ///   priority        = 100
 ///   web_acl_arn     = exampleAwsWafv2WebAcl.arn
 ///   override_action = "count"
-///   rule_group_reference = {
-///     arn = exampleAwsWafv2RuleGroup.arn
-///   }
 /// }
 /// ```
 /// ```java
@@ -1375,13 +1395,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclRuleGroupAssociation("example", WebAclRuleGroupAssociationArgs.builder()
+///             .ruleGroupReference(WebAclRuleGroupAssociationRuleGroupReferenceArgs.builder()
+///                 .arn(exampleAwsWafv2RuleGroup.arn())
+///                 .build())
 ///             .ruleName("example-rule-group-rule")
 ///             .priority(100)
 ///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .overrideAction("count")
-///             .ruleGroupReference(WebAclRuleGroupAssociationRuleGroupReferenceArgs.builder()
-///                 .arn(exampleAwsWafv2RuleGroup.arn())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -1392,12 +1412,12 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAclRuleGroupAssociation
 ///     properties:
+///       ruleGroupReference:
+///         arn: ${exampleAwsWafv2RuleGroup.arn}
 ///       ruleName: example-rule-group-rule
 ///       priority: 100
 ///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 ///       overrideAction: count
-///       ruleGroupReference:
-///         arn: ${exampleAwsWafv2RuleGroup.arn}
 /// ```
 ///
 /// ### Custom Rule Group With Rule Action Overrides
@@ -1408,14 +1428,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAclRuleGroupAssociation("example", {
-///     ruleName: "example-rule-group-rule",
-///     priority: 100,
-///     webAclArn: exampleAwsWafv2WebAcl.arn,
 ///     ruleGroupReference: {
-///         arn: exampleAwsWafv2RuleGroup.arn,
 ///         ruleActionOverrides: [
 ///             {
-///                 name: "geo-block-rule",
 ///                 actionToUse: {
 ///                     count: {
 ///                         customRequestHandling: {
@@ -1426,9 +1441,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 name: "geo-block-rule",
 ///             },
 ///             {
-///                 name: "rate-limit-rule",
 ///                 actionToUse: {
 ///                     captcha: {
 ///                         customRequestHandling: {
@@ -1439,9 +1454,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 name: "rate-limit-rule",
 ///             },
 ///         ],
+///         arn: exampleAwsWafv2RuleGroup.arn,
 ///     },
+///     ruleName: "example-rule-group-rule",
+///     priority: 100,
+///     webAclArn: exampleAwsWafv2WebAcl.arn,
 /// });
 /// ```
 /// ```python
@@ -1449,14 +1469,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAclRuleGroupAssociation("example",
-///     rule_name="example-rule-group-rule",
-///     priority=100,
-///     web_acl_arn=example_aws_wafv2_web_acl["arn"],
 ///     rule_group_reference={
-///         "arn": example_aws_wafv2_rule_group["arn"],
 ///         "rule_action_overrides": [
 ///             {
-///                 "name": "geo-block-rule",
 ///                 "action_to_use": {
 ///                     "count": {
 ///                         "custom_request_handling": {
@@ -1467,9 +1482,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 "name": "geo-block-rule",
 ///             },
 ///             {
-///                 "name": "rate-limit-rule",
 ///                 "action_to_use": {
 ///                     "captcha": {
 ///                         "custom_request_handling": {
@@ -1480,9 +1495,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 "name": "rate-limit-rule",
 ///             },
 ///         ],
-///     })
+///         "arn": example_aws_wafv2_rule_group["arn"],
+///     },
+///     rule_name="example-rule-group-rule",
+///     priority=100,
+///     web_acl_arn=example_aws_wafv2_web_acl["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1494,17 +1514,12 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAclRuleGroupAssociation("example", new()
 ///     {
-///         RuleName = "example-rule-group-rule",
-///         Priority = 100,
-///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///         RuleGroupReference = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationRuleGroupReferenceArgs
 ///         {
-///             Arn = exampleAwsWafv2RuleGroup.Arn,
 ///             RuleActionOverrides = new[]
 ///             {
 ///                 new Aws.WafV2.Inputs.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideArgs
 ///                 {
-///                     Name = "geo-block-rule",
 ///                     ActionToUse = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseArgs
 ///                     {
 ///                         Count = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountArgs
@@ -1522,10 +1537,10 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                             },
 ///                         },
 ///                     },
+///                     Name = "geo-block-rule",
 ///                 },
 ///                 new Aws.WafV2.Inputs.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideArgs
 ///                 {
-///                     Name = "rate-limit-rule",
 ///                     ActionToUse = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseArgs
 ///                     {
 ///                         Captcha = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptchaArgs
@@ -1543,9 +1558,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                             },
 ///                         },
 ///                     },
+///                     Name = "rate-limit-rule",
 ///                 },
 ///             },
+///             Arn = exampleAwsWafv2RuleGroup.Arn,
 ///         },
+///         RuleName = "example-rule-group-rule",
+///         Priority = 100,
+///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///     });
 ///
 /// });
@@ -1561,14 +1581,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRuleGroupAssociation(ctx, "example", &wafv2.WebAclRuleGroupAssociationArgs{
-/// 			RuleName:  pulumi.String("example-rule-group-rule"),
-/// 			Priority:  pulumi.Int(100),
-/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 			RuleGroupReference: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceArgs{
-/// 				Arn: pulumi.Any(exampleAwsWafv2RuleGroup.Arn),
 /// 				RuleActionOverrides: wafv2.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideArray{
 /// 					&wafv2.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideArgs{
-/// 						Name: pulumi.String("geo-block-rule"),
 /// 						ActionToUse: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseArgs{
 /// 							Count: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountArgs{
 /// 								CustomRequestHandling: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountCustomRequestHandlingArgs{
@@ -1581,9 +1596,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// 								},
 /// 							},
 /// 						},
+/// 						Name: pulumi.String("geo-block-rule"),
 /// 					},
 /// 					&wafv2.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideArgs{
-/// 						Name: pulumi.String("rate-limit-rule"),
 /// 						ActionToUse: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseArgs{
 /// 							Captcha: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptchaArgs{
 /// 								CustomRequestHandling: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptchaCustomRequestHandlingArgs{
@@ -1596,9 +1611,14 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// 								},
 /// 							},
 /// 						},
+/// 						Name: pulumi.String("rate-limit-rule"),
 /// 					},
 /// 				},
+/// 				Arn: pulumi.Any(exampleAwsWafv2RuleGroup.Arn),
 /// 			},
+/// 			RuleName:  pulumi.String("example-rule-group-rule"),
+/// 			Priority:  pulumi.Int(100),
+/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1617,13 +1637,8 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_name   = "example-rule-group-rule"
-///   priority    = 100
-///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 ///   rule_group_reference = {
-///     arn = exampleAwsWafv2RuleGroup.arn
 ///     rule_action_overrides = [{
-///       "name" = "geo-block-rule"
 ///       "actionToUse" = {
 ///         "count" = {
 ///           "customRequestHandling" = {
@@ -1634,8 +1649,8 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///           }
 ///         }
 ///       }
+///       "name" = "geo-block-rule"
 ///       }, {
-///       "name" = "rate-limit-rule"
 ///       "actionToUse" = {
 ///         "captcha" = {
 ///           "customRequestHandling" = {
@@ -1646,8 +1661,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///           }
 ///         }
 ///       }
+///       "name" = "rate-limit-rule"
 ///     }]
+///     arn = exampleAwsWafv2RuleGroup.arn
 ///   }
+///   rule_name   = "example-rule-group-rule"
+///   priority    = 100
+///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 /// }
 /// ```
 /// ```java
@@ -1681,14 +1701,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclRuleGroupAssociation("example", WebAclRuleGroupAssociationArgs.builder()
-///             .ruleName("example-rule-group-rule")
-///             .priority(100)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .ruleGroupReference(WebAclRuleGroupAssociationRuleGroupReferenceArgs.builder()
-///                 .arn(exampleAwsWafv2RuleGroup.arn())
 ///                 .ruleActionOverrides(
 ///                     WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideArgs.builder()
-///                         .name("geo-block-rule")
 ///                         .actionToUse(WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseArgs.builder()
 ///                             .count(WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountArgs.builder()
 ///                                 .customRequestHandling(WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountCustomRequestHandlingArgs.builder()
@@ -1699,9 +1714,9 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                                     .build())
 ///                                 .build())
 ///                             .build())
+///                         .name("geo-block-rule")
 ///                         .build(),
 ///                     WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideArgs.builder()
-///                         .name("rate-limit-rule")
 ///                         .actionToUse(WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseArgs.builder()
 ///                             .captcha(WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptchaArgs.builder()
 ///                                 .customRequestHandling(WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCaptchaCustomRequestHandlingArgs.builder()
@@ -1712,8 +1727,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///                                     .build())
 ///                                 .build())
 ///                             .build())
+///                         .name("rate-limit-rule")
 ///                         .build())
+///                 .arn(exampleAwsWafv2RuleGroup.arn())
 ///                 .build())
+///             .ruleName("example-rule-group-rule")
+///             .priority(100)
+///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .build());
 ///
 ///     }
@@ -1724,26 +1744,26 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAclRuleGroupAssociation
 ///     properties:
-///       ruleName: example-rule-group-rule
-///       priority: 100
-///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 ///       ruleGroupReference:
-///         arn: ${exampleAwsWafv2RuleGroup.arn}
 ///         ruleActionOverrides:
-///           - name: geo-block-rule
-///             actionToUse:
+///           - actionToUse:
 ///               count:
 ///                 customRequestHandling:
 ///                   insertHeaders:
 ///                     - name: X-Geo-Block-Override
 ///                       value: counted
-///           - name: rate-limit-rule
-///             actionToUse:
+///             name: geo-block-rule
+///           - actionToUse:
 ///               captcha:
 ///                 customRequestHandling:
 ///                   insertHeaders:
 ///                     - name: X-Rate-Limit-Override
 ///                       value: captcha-required
+///             name: rate-limit-rule
+///         arn: ${exampleAwsWafv2RuleGroup.arn}
+///       ruleName: example-rule-group-rule
+///       priority: 100
+///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
 /// ```
 ///
 /// ### CloudFront Web ACL
@@ -1754,12 +1774,12 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAclRuleGroupAssociation("example", {
-///     ruleName: "cloudfront-rule-group-rule",
-///     priority: 50,
-///     webAclArn: exampleAwsWafv2WebAcl.arn,
 ///     ruleGroupReference: {
 ///         arn: exampleAwsWafv2RuleGroup.arn,
 ///     },
+///     ruleName: "cloudfront-rule-group-rule",
+///     priority: 50,
+///     webAclArn: exampleAwsWafv2WebAcl.arn,
 /// });
 /// ```
 /// ```python
@@ -1767,12 +1787,12 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAclRuleGroupAssociation("example",
-///     rule_name="cloudfront-rule-group-rule",
-///     priority=50,
-///     web_acl_arn=example_aws_wafv2_web_acl["arn"],
 ///     rule_group_reference={
 ///         "arn": example_aws_wafv2_rule_group["arn"],
-///     })
+///     },
+///     rule_name="cloudfront-rule-group-rule",
+///     priority=50,
+///     web_acl_arn=example_aws_wafv2_web_acl["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1784,13 +1804,13 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAclRuleGroupAssociation("example", new()
 ///     {
-///         RuleName = "cloudfront-rule-group-rule",
-///         Priority = 50,
-///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///         RuleGroupReference = new Aws.WafV2.Inputs.WebAclRuleGroupAssociationRuleGroupReferenceArgs
 ///         {
 ///             Arn = exampleAwsWafv2RuleGroup.Arn,
 ///         },
+///         RuleName = "cloudfront-rule-group-rule",
+///         Priority = 50,
+///         WebAclArn = exampleAwsWafv2WebAcl.Arn,
 ///     });
 ///
 /// });
@@ -1806,12 +1826,12 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclRuleGroupAssociation(ctx, "example", &wafv2.WebAclRuleGroupAssociationArgs{
-/// 			RuleName:  pulumi.String("cloudfront-rule-group-rule"),
-/// 			Priority:  pulumi.Int(50),
-/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 			RuleGroupReference: &wafv2.WebAclRuleGroupAssociationRuleGroupReferenceArgs{
 /// 				Arn: pulumi.Any(exampleAwsWafv2RuleGroup.Arn),
 /// 			},
+/// 			RuleName:  pulumi.String("cloudfront-rule-group-rule"),
+/// 			Priority:  pulumi.Int(50),
+/// 			WebAclArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1830,12 +1850,12 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclrulegroupassociation" "example" {
-///   rule_name   = "cloudfront-rule-group-rule"
-///   priority    = 50
-///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 ///   rule_group_reference = {
 ///     arn = exampleAwsWafv2RuleGroup.arn
 ///   }
+///   rule_name   = "cloudfront-rule-group-rule"
+///   priority    = 50
+///   web_acl_arn = exampleAwsWafv2WebAcl.arn
 /// }
 /// ```
 /// ```java
@@ -1861,12 +1881,12 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclRuleGroupAssociation("example", WebAclRuleGroupAssociationArgs.builder()
-///             .ruleName("cloudfront-rule-group-rule")
-///             .priority(50)
-///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .ruleGroupReference(WebAclRuleGroupAssociationRuleGroupReferenceArgs.builder()
 ///                 .arn(exampleAwsWafv2RuleGroup.arn())
 ///                 .build())
+///             .ruleName("cloudfront-rule-group-rule")
+///             .priority(50)
+///             .webAclArn(exampleAwsWafv2WebAcl.arn())
 ///             .build());
 ///
 ///     }
@@ -1877,11 +1897,11 @@ import 'web_acl_rule_group_association_visibility_config.dart';
 ///   example:
 ///     type: aws:wafv2:WebAclRuleGroupAssociation
 ///     properties:
+///       ruleGroupReference:
+///         arn: ${exampleAwsWafv2RuleGroup.arn}
 ///       ruleName: cloudfront-rule-group-rule
 ///       priority: 50
 ///       webAclArn: ${exampleAwsWafv2WebAcl.arn}
-///       ruleGroupReference:
-///         arn: ${exampleAwsWafv2RuleGroup.arn}
 /// ```
 ///
 ///
@@ -1931,7 +1951,7 @@ class WebAclRuleGroupAssociation extends pulumi.CustomResource {
           'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     managedRuleGroup = registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>('managedRuleGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationManagedRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overrideAction = registerOutput<String>('overrideAction');
@@ -1949,11 +1969,12 @@ class WebAclRuleGroupAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAclRuleGroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebAclRuleGroupAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1967,6 +1988,26 @@ class WebAclRuleGroupAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    managedRuleGroup = registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>('managedRuleGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationManagedRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    overrideAction = registerOutput<String>('overrideAction');
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    ruleGroupReference = registerOutput<WebAclRuleGroupAssociationRuleGroupReference?>('ruleGroupReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationRuleGroupReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ruleName = registerOutput<String>('ruleName');
+    timeouts = registerOutput<WebAclRuleGroupAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    visibilityConfig = registerOutput<WebAclRuleGroupAssociationVisibilityConfig?>('visibilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationVisibilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webAclArn = registerOutput<String>('webAclArn');
+  }
+
+  /// Creates a typed reference to an existing [WebAclRuleGroupAssociation] resource.
+  WebAclRuleGroupAssociation.reference(String urn)
+    : super(
+        'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     managedRuleGroup = registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>('managedRuleGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationManagedRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overrideAction = registerOutput<String>('overrideAction');
     priority = registerOutput<int>('priority');

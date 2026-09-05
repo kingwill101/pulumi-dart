@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_recipe_component_parameter.dart';
 
 class ContainerRecipeComponent {
-  /// Amazon Resource Name (ARN) of the Image Builder Component to associate.
+  /// ARN of the Image Builder Component to associate.
   final pulumi.Input<String> componentArn;
   /// Configuration block(s) for parameters to configure the component. Detailed below.
-  final pulumi.Input<List<ContainerRecipeComponentParameter>>? parameters;
+  final pulumi.Input<List<ContainerRecipeComponentParameter>?>? parameters;
 
   /// Creates a new [ContainerRecipeComponent].
-  /// [componentArn] Amazon Resource Name (ARN) of the Image Builder Component to associate.
+  /// [componentArn] ARN of the Image Builder Component to associate.
   /// [parameters] Configuration block(s) for parameters to configure the component. Detailed below.
   const ContainerRecipeComponent({
     required this.componentArn,

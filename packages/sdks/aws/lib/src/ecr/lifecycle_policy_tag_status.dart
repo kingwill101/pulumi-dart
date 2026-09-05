@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The tag status of the image.
-enum LifecyclePolicyTagStatus {
+enum LifecyclePolicyTagStatus implements pulumi.PulumiEnum<String> {
   tagged("tagged"),
   untagged("untagged"),
   any("any");
 
   const LifecyclePolicyTagStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static LifecyclePolicyTagStatus fromValue(String value) {

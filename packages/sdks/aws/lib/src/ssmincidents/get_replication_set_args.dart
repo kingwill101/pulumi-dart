@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ssmincidents_get_replication_set_get_replication_set_args_doc}
 class GetReplicationSetArgs {
   /// All tags applied to the replication set.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetReplicationSetArgs].
   /// [tags] All tags applied to the replication set.

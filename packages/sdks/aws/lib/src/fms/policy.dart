@@ -21,10 +21,6 @@ import 'policy_state.dart';
 ///     name: "WAF-Rule-Group-Example",
 /// });
 /// const example = new aws.fms.Policy("example", {
-///     name: "FMS-Policy-Example",
-///     excludeResourceTags: false,
-///     remediationEnabled: false,
-///     resourceType: "AWS::ElasticLoadBalancingV2::LoadBalancer",
 ///     securityServicePolicyData: {
 ///         type: "WAF",
 ///         managedServiceData: pulumi.jsonStringify({
@@ -41,6 +37,10 @@ import 'policy_state.dart';
 ///             overrideCustomerWebACLAssociation: false,
 ///         }),
 ///     },
+///     name: "FMS-Policy-Example",
+///     excludeResourceTags: false,
+///     remediationEnabled: false,
+///     resourceType: "AWS::ElasticLoadBalancingV2::LoadBalancer",
 ///     tags: {
 ///         Name: "example-fms-policy",
 ///     },
@@ -55,10 +55,6 @@ import 'policy_state.dart';
 ///     metric_name="WAFRuleGroupExample",
 ///     name="WAF-Rule-Group-Example")
 /// example = aws.fms.Policy("example",
-///     name="FMS-Policy-Example",
-///     exclude_resource_tags=False,
-///     remediation_enabled=False,
-///     resource_type="AWS::ElasticLoadBalancingV2::LoadBalancer",
 ///     security_service_policy_data={
 ///         "type": "WAF",
 ///         "managed_service_data": pulumi.Output.json_dumps({
@@ -75,6 +71,10 @@ import 'policy_state.dart';
 ///             "overrideCustomerWebACLAssociation": False,
 ///         }),
 ///     },
+///     name="FMS-Policy-Example",
+///     exclude_resource_tags=False,
+///     remediation_enabled=False,
+///     resource_type="AWS::ElasticLoadBalancingV2::LoadBalancer",
 ///     tags={
 ///         "Name": "example-fms-policy",
 ///     })
@@ -96,10 +96,6 @@ import 'policy_state.dart';
 ///
 ///     var example = new Aws.Fms.Policy("example", new()
 ///     {
-///         Name = "FMS-Policy-Example",
-///         ExcludeResourceTags = false,
-///         RemediationEnabled = false,
-///         ResourceType = "AWS::ElasticLoadBalancingV2::LoadBalancer",
 ///         SecurityServicePolicyData = new Aws.Fms.Inputs.PolicySecurityServicePolicyDataArgs
 ///         {
 ///             Type = "WAF",
@@ -124,6 +120,10 @@ import 'policy_state.dart';
 ///                 ["overrideCustomerWebACLAssociation"] = false,
 ///             })),
 ///         },
+///         Name = "FMS-Policy-Example",
+///         ExcludeResourceTags = false,
+///         RemediationEnabled = false,
+///         ResourceType = "AWS::ElasticLoadBalancingV2::LoadBalancer",
 ///         Tags =
 ///         {
 ///             { "Name", "example-fms-policy" },
@@ -153,10 +153,6 @@ import 'policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = fms.NewPolicy(ctx, "example", &fms.PolicyArgs{
-/// 			Name:                pulumi.String("FMS-Policy-Example"),
-/// 			ExcludeResourceTags: pulumi.Bool(false),
-/// 			RemediationEnabled:  pulumi.Bool(false),
-/// 			ResourceType:        pulumi.String("AWS::ElasticLoadBalancingV2::LoadBalancer"),
 /// 			SecurityServicePolicyData: &fms.PolicySecurityServicePolicyDataArgs{
 /// 				Type: pulumi.String("WAF"),
 /// 				ManagedServiceData: exampleRuleGroup.ID().ApplyT(func(id pulumi.ID) (pulumi.String, error) {
@@ -183,6 +179,10 @@ import 'policy_state.dart';
 /// 					return pulumi.String(json0), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
+/// 			Name:                pulumi.String("FMS-Policy-Example"),
+/// 			ExcludeResourceTags: pulumi.Bool(false),
+/// 			RemediationEnabled:  pulumi.Bool(false),
+/// 			ResourceType:        pulumi.String("AWS::ElasticLoadBalancingV2::LoadBalancer"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-fms-policy"),
 /// 			},
@@ -204,10 +204,6 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "aws_fms_policy" "example" {
-///   name                  = "FMS-Policy-Example"
-///   exclude_resource_tags = false
-///   remediation_enabled   = false
-///   resource_type         = "AWS::ElasticLoadBalancingV2::LoadBalancer"
 ///   security_service_policy_data = {
 ///     type = "WAF"
 ///     managed_service_data = jsonencode({
@@ -224,6 +220,10 @@ import 'policy_state.dart';
 ///       "overrideCustomerWebACLAssociation" = false
 ///     })
 ///   }
+///   name                  = "FMS-Policy-Example"
+///   exclude_resource_tags = false
+///   remediation_enabled   = false
+///   resource_type         = "AWS::ElasticLoadBalancingV2::LoadBalancer"
 ///   tags = {
 ///     "Name" = "example-fms-policy"
 ///   }
@@ -264,10 +264,6 @@ import 'policy_state.dart';
 ///             .build());
 ///
 ///         var example = new Policy("example", PolicyArgs.builder()
-///             .name("FMS-Policy-Example")
-///             .excludeResourceTags(false)
-///             .remediationEnabled(false)
-///             .resourceType("AWS::ElasticLoadBalancingV2::LoadBalancer")
 ///             .securityServicePolicyData(PolicySecurityServicePolicyDataArgs.builder()
 ///                 .type("WAF")
 ///                 .managedServiceData(exampleRuleGroup.id().applyValue(_id -> serializeJson(
@@ -285,6 +281,10 @@ import 'policy_state.dart';
 ///                         jsonProperty("overrideCustomerWebACLAssociation", false)
 ///                     ))))
 ///                 .build())
+///             .name("FMS-Policy-Example")
+///             .excludeResourceTags(false)
+///             .remediationEnabled(false)
+///             .resourceType("AWS::ElasticLoadBalancingV2::LoadBalancer")
 ///             .tags(Map.of("Name", "example-fms-policy"))
 ///             .build());
 ///
@@ -296,10 +296,6 @@ import 'policy_state.dart';
 ///   example:
 ///     type: aws:fms:Policy
 ///     properties:
-///       name: FMS-Policy-Example
-///       excludeResourceTags: false
-///       remediationEnabled: false
-///       resourceType: AWS::ElasticLoadBalancingV2::LoadBalancer
 ///       securityServicePolicyData:
 ///         type: WAF
 ///         managedServiceData:
@@ -312,6 +308,10 @@ import 'policy_state.dart';
 ///             defaultAction:
 ///               type: BLOCK
 ///             overrideCustomerWebACLAssociation: false
+///       name: FMS-Policy-Example
+///       excludeResourceTags: false
+///       remediationEnabled: false
+///       resourceType: AWS::ElasticLoadBalancingV2::LoadBalancer
 ///       tags:
 ///         Name: example-fms-policy
 ///   exampleRuleGroup:
@@ -382,7 +382,7 @@ class Policy extends pulumi.CustomResource {
           'aws:fms/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deleteAllPolicyResources = registerOutput<bool?>('deleteAllPolicyResources');
@@ -395,14 +395,14 @@ class Policy extends pulumi.CustomResource {
     policyUpdateToken = registerOutput<String>('policyUpdateToken');
     region = registerOutput<String>('region');
     remediationEnabled = registerOutput<bool?>('remediationEnabled');
-    resourceSetIds = registerOutput<List<String>>('resourceSetIds');
+    resourceSetIds = registerOutput<List<String>>('resourceSetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceTagLogicalOperator = registerOutput<String>('resourceTagLogicalOperator');
-    resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceType = registerOutput<String>('resourceType');
-    resourceTypeLists = registerOutput<List<String>>('resourceTypeLists');
+    resourceTypeLists = registerOutput<List<String>>('resourceTypeLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     securityServicePolicyData = registerOutput<PolicySecurityServicePolicyData>('securityServicePolicyData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicySecurityServicePolicyData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -410,11 +410,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -439,13 +440,43 @@ class Policy extends pulumi.CustomResource {
     policyUpdateToken = registerOutput<String>('policyUpdateToken');
     region = registerOutput<String>('region');
     remediationEnabled = registerOutput<bool?>('remediationEnabled');
-    resourceSetIds = registerOutput<List<String>>('resourceSetIds');
+    resourceSetIds = registerOutput<List<String>>('resourceSetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceTagLogicalOperator = registerOutput<String>('resourceTagLogicalOperator');
-    resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceType = registerOutput<String>('resourceType');
-    resourceTypeLists = registerOutput<List<String>>('resourceTypeLists');
+    resourceTypeLists = registerOutput<List<String>>('resourceTypeLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     securityServicePolicyData = registerOutput<PolicySecurityServicePolicyData>('securityServicePolicyData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicySecurityServicePolicyData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'aws:fms/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deleteAllPolicyResources = registerOutput<bool?>('deleteAllPolicyResources');
+    deleteUnusedFmManagedResources = registerOutput<bool?>('deleteUnusedFmManagedResources');
+    description = registerOutput<String?>('description');
+    excludeMap = registerOutput<PolicyExcludeMap?>('excludeMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyExcludeMap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    excludeResourceTags = registerOutput<bool>('excludeResourceTags');
+    includeMap = registerOutput<PolicyIncludeMap?>('includeMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyIncludeMap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    policyUpdateToken = registerOutput<String>('policyUpdateToken');
+    region = registerOutput<String>('region');
+    remediationEnabled = registerOutput<bool?>('remediationEnabled');
+    resourceSetIds = registerOutput<List<String>>('resourceSetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceTagLogicalOperator = registerOutput<String>('resourceTagLogicalOperator');
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resourceType = registerOutput<String>('resourceType');
+    resourceTypeLists = registerOutput<List<String>>('resourceTypeLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityServicePolicyData = registerOutput<PolicySecurityServicePolicyData>('securityServicePolicyData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicySecurityServicePolicyData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

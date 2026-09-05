@@ -11,7 +11,7 @@ class LogDeliveryConfigurationArgs {
   /// Configuration block for log delivery. At least one configuration block is required. See Log Configurations below.
   final pulumi.Input<List<LogDeliveryConfigurationLogConfiguration>> logConfigurations;
   /// The AWS region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the user pool for which to configure log delivery.
   ///
   /// The following arguments are optional:

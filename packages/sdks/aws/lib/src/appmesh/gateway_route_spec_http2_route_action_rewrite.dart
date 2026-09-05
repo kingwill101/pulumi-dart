@@ -7,11 +7,11 @@ import 'gateway_route_spec_http2_route_action_rewrite_prefix.dart';
 
 class GatewayRouteSpecHttp2RouteActionRewrite {
   /// Host name to match on. See `spec.http2_route.match.hostname` Block for details.
-  final pulumi.Input<GatewayRouteSpecHttp2RouteActionRewriteHostname>? hostname;
+  final pulumi.Input<GatewayRouteSpecHttp2RouteActionRewriteHostname?>? hostname;
   /// Client request path to match on. See `spec.http2_route.match.path` Block for details.
-  final pulumi.Input<GatewayRouteSpecHttp2RouteActionRewritePath>? path;
+  final pulumi.Input<GatewayRouteSpecHttp2RouteActionRewritePath?>? path;
   /// Header value sent by the client must begin with the specified characters.
-  final pulumi.Input<GatewayRouteSpecHttp2RouteActionRewritePrefix>? prefix;
+  final pulumi.Input<GatewayRouteSpecHttp2RouteActionRewritePrefix?>? prefix;
 
   /// Creates a new [GatewayRouteSpecHttp2RouteActionRewrite].
   /// [hostname] Host name to match on. See `spec.http2_route.match.hostname` Block for details.

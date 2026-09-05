@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_gateway_spec_backend_defaults_client_policy_tls.dart';
 
 class VirtualGatewaySpecBackendDefaultsClientPolicy {
-  /// Transport Layer Security (TLS) client policy. See `spec.backend_defaults.client_policy.tls` Block for details.
-  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTls>? tls;
+  /// TLS client policy. See `spec.backend_defaults.client_policy.tls` Block for details.
+  final pulumi.Input<VirtualGatewaySpecBackendDefaultsClientPolicyTls?>? tls;
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicy].
-  /// [tls] Transport Layer Security (TLS) client policy. See `spec.backend_defaults.client_policy.tls` Block for details.
+  /// [tls] TLS client policy. See `spec.backend_defaults.client_policy.tls` Block for details.
   const VirtualGatewaySpecBackendDefaultsClientPolicy({
     this.tls,
   });

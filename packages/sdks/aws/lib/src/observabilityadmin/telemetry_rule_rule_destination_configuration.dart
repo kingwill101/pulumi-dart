@@ -10,23 +10,23 @@ import 'telemetry_rule_rule_destination_configuration_waf_logging_parameters.dar
 
 class TelemetryRuleRuleDestinationConfiguration {
   /// CloudTrail-specific parameters when CloudTrail is the source. See `cloudtrailParameters` below.
-  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationCloudtrailParameters>? cloudtrailParameters;
+  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationCloudtrailParameters?>? cloudtrailParameters;
   /// Pattern used to generate the destination path or name. May contain alphanumeric characters, the macros `&lt;accountId&gt;` and `&lt;resourceId&gt;`, and the symbols `_`, `/`, `-`.
-  final pulumi.Input<String>? destinationPattern;
+  final pulumi.Input<String?>? destinationPattern;
   /// Destination type for the telemetry data (for example `cloud-watch-logs`).
-  final pulumi.Input<String>? destinationType;
+  final pulumi.Input<String?>? destinationType;
   /// ELB load balancer logging parameters when the resource is an ELB. See `elbLoadBalancerLoggingParameters` below.
-  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationElbLoadBalancerLoggingParameters>? elbLoadBalancerLoggingParameters;
+  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationElbLoadBalancerLoggingParameters?>? elbLoadBalancerLoggingParameters;
   /// Amazon Bedrock AgentCore log delivery parameters. See `logDeliveryParameters` below.
-  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationLogDeliveryParameters>? logDeliveryParameters;
+  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationLogDeliveryParameters?>? logDeliveryParameters;
   /// Amazon MSK cluster monitoring parameters. See `mskMonitoringParameters` below.
-  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationMskMonitoringParameters>? mskMonitoringParameters;
+  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationMskMonitoringParameters?>? mskMonitoringParameters;
   /// Number of days to retain the telemetry data in the destination.
-  final pulumi.Input<int>? retentionInDays;
+  final pulumi.Input<int?>? retentionInDays;
   /// VPC Flow Logs-specific parameters when the resource is `AWS::EC2::VPC`. See `vpcFlowLogParameters` below.
-  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationVpcFlowLogParameters>? vpcFlowLogParameters;
+  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationVpcFlowLogParameters?>? vpcFlowLogParameters;
   /// WAF logging parameters when the resource is `AWS::WAFv2::WebACL`. See `wafLoggingParameters` below.
-  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationWafLoggingParameters>? wafLoggingParameters;
+  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationWafLoggingParameters?>? wafLoggingParameters;
 
   /// Creates a new [TelemetryRuleRuleDestinationConfiguration].
   /// [cloudtrailParameters] CloudTrail-specific parameters when CloudTrail is the source. See `cloudtrailParameters` below.
@@ -72,7 +72,7 @@ class TelemetryRuleRuleDestinationConfiguration {
       elbLoadBalancerLoggingParameters: (() { final guardedValue = map['elbLoadBalancerLoggingParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TelemetryRuleRuleDestinationConfigurationElbLoadBalancerLoggingParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logDeliveryParameters: (() { final guardedValue = map['logDeliveryParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TelemetryRuleRuleDestinationConfigurationLogDeliveryParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mskMonitoringParameters: (() { final guardedValue = map['mskMonitoringParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TelemetryRuleRuleDestinationConfigurationMskMonitoringParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       vpcFlowLogParameters: (() { final guardedValue = map['vpcFlowLogParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TelemetryRuleRuleDestinationConfigurationVpcFlowLogParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       wafLoggingParameters: (() { final guardedValue = map['wafLoggingParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TelemetryRuleRuleDestinationConfigurationWafLoggingParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

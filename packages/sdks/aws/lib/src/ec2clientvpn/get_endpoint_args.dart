@@ -9,13 +9,13 @@ import 'get_endpoint_filter.dart';
 /// {@macro pulumi_ec2clientvpn_get_endpoint_get_endpoint_args_doc}
 class GetEndpointArgs {
   /// ID of the Client VPN endpoint.
-  final pulumi.Input<String>? clientVpnEndpointId;
+  final pulumi.Input<String?>? clientVpnEndpointId;
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final pulumi.Input<List<GetEndpointFilter>>? filters;
+  final pulumi.Input<List<GetEndpointFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match a pair on the desired endpoint.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetEndpointArgs].
   /// [clientVpnEndpointId] ID of the Client VPN endpoint.

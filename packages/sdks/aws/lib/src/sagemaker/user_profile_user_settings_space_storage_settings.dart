@@ -5,7 +5,7 @@ import 'user_profile_user_settings_space_storage_settings_default_ebs_storage_se
 
 class UserProfileUserSettingsSpaceStorageSettings {
   /// The default EBS storage settings for a private space. See Default EBS Storage Settings below.
-  final pulumi.Input<UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings>? defaultEbsStorageSettings;
+  final pulumi.Input<UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings?>? defaultEbsStorageSettings;
 
   /// Creates a new [UserProfileUserSettingsSpaceStorageSettings].
   /// [defaultEbsStorageSettings] The default EBS storage settings for a private space. See Default EBS Storage Settings below.

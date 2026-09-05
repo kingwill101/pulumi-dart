@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_args.dart';
+import 'instance_group_ebs_config.dart';
 import 'instance_group_state.dart';
 
 /// Provides an Elastic MapReduce Cluster Instance Group configuration.
@@ -332,7 +333,7 @@ class InstanceGroup extends pulumi.CustomResource {
   /// ```
   late final pulumi.Output<String?> configurationsJson;
   /// One or more `ebsConfig` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>> ebsConfigs;
+  late final pulumi.Output<List<InstanceGroupEbsConfig>> ebsConfigs;
   /// Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> ebsOptimized;
   /// target number of instances for the instance group. defaults to 0.
@@ -360,13 +361,13 @@ class InstanceGroup extends pulumi.CustomResource {
           'aws:emr/instanceGroup:InstanceGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     autoscalingPolicy = registerOutput<String?>('autoscalingPolicy');
     bidPrice = registerOutput<String?>('bidPrice');
     clusterId = registerOutput<String>('clusterId');
     configurationsJson = registerOutput<String?>('configurationsJson');
-    ebsConfigs = registerOutput<List<Map<String, dynamic>>>('ebsConfigs');
+    ebsConfigs = registerOutput<List<InstanceGroupEbsConfig>>('ebsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupEbsConfig>(guardedValue, (value) => InstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>())); });
     ebsOptimized = registerOutput<bool?>('ebsOptimized');
     instanceCount = registerOutput<int>('instanceCount');
     instanceType = registerOutput<String>('instanceType');
@@ -381,11 +382,12 @@ class InstanceGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -403,7 +405,30 @@ class InstanceGroup extends pulumi.CustomResource {
     bidPrice = registerOutput<String?>('bidPrice');
     clusterId = registerOutput<String>('clusterId');
     configurationsJson = registerOutput<String?>('configurationsJson');
-    ebsConfigs = registerOutput<List<Map<String, dynamic>>>('ebsConfigs');
+    ebsConfigs = registerOutput<List<InstanceGroupEbsConfig>>('ebsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupEbsConfig>(guardedValue, (value) => InstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    ebsOptimized = registerOutput<bool?>('ebsOptimized');
+    instanceCount = registerOutput<int>('instanceCount');
+    instanceType = registerOutput<String>('instanceType');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    runningInstanceCount = registerOutput<int>('runningInstanceCount');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [InstanceGroup] resource.
+  InstanceGroup.reference(String urn)
+    : super(
+        'aws:emr/instanceGroup:InstanceGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoscalingPolicy = registerOutput<String?>('autoscalingPolicy');
+    bidPrice = registerOutput<String?>('bidPrice');
+    clusterId = registerOutput<String>('clusterId');
+    configurationsJson = registerOutput<String?>('configurationsJson');
+    ebsConfigs = registerOutput<List<InstanceGroupEbsConfig>>('ebsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceGroupEbsConfig>(guardedValue, (value) => InstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>())); });
     ebsOptimized = registerOutput<bool?>('ebsOptimized');
     instanceCount = registerOutput<int>('instanceCount');
     instanceType = registerOutput<String>('instanceType');

@@ -9,16 +9,16 @@ import 'topic_rule_destination_vpc_configuration.dart';
 /// {@macro pulumi_iot_topic_rule_destination_topic_rule_destination_args_doc}
 class TopicRuleDestinationArgs {
   /// Whether or not to enable the destination. Default: `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Configuration of the virtual private cloud (VPC) connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
+  final pulumi.Input<String?>? region;
+  /// Configuration of the VPC connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
   final pulumi.Input<TopicRuleDestinationVpcConfiguration> vpcConfiguration;
 
   /// Creates a new [TopicRuleDestinationArgs].
   /// [enabled] Whether or not to enable the destination. Default: `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [vpcConfiguration] Configuration of the virtual private cloud (VPC) connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
+  /// [vpcConfiguration] Configuration of the VPC connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
   const TopicRuleDestinationArgs({
     this.enabled,
     this.region,

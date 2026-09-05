@@ -7,15 +7,15 @@ import 'organization_configuration_datasources.dart';
 class OrganizationConfigurationState {
   /// Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization.
   /// Valid values are `ALL`, `NEW`, `NONE`.
-  final pulumi.Input<String>? autoEnableOrganizationMembers;
+  final pulumi.Input<String?>? autoEnableOrganizationMembers;
   /// Configuration for the collected datasources. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
   ///
   /// &gt; **NOTE:** One of `autoEnable` or `autoEnableOrganizationMembers` must be specified.
-  final pulumi.Input<OrganizationConfigurationDatasources>? datasources;
+  final pulumi.Input<OrganizationConfigurationDatasources?>? datasources;
   /// The detector ID of the GuardDuty account.
-  final pulumi.Input<String>? detectorId;
+  final pulumi.Input<String?>? detectorId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [OrganizationConfigurationState].
   /// [autoEnableOrganizationMembers] Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization.

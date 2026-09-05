@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeLogConfigurationFirehoseLogDestination {
-  /// Amazon Resource Name (ARN) of the Kinesis Data Firehose delivery stream to which EventBridge delivers the pipe log records.
+  /// ARN of the Kinesis Data Firehose delivery stream to which EventBridge delivers the pipe log records.
   final pulumi.Input<String> deliveryStreamArn;
 
   /// Creates a new [PipeLogConfigurationFirehoseLogDestination].
-  /// [deliveryStreamArn] Amazon Resource Name (ARN) of the Kinesis Data Firehose delivery stream to which EventBridge delivers the pipe log records.
+  /// [deliveryStreamArn] ARN of the Kinesis Data Firehose delivery stream to which EventBridge delivers the pipe log records.
   const PipeLogConfigurationFirehoseLogDestination({
     required this.deliveryStreamArn,
   });

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_args.dart';
+import 'key_key_attribute.dart';
 import 'key_state.dart';
 import 'key_timeouts.dart';
 
@@ -15,18 +16,18 @@ import 'key_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.paymentcryptography.Key("test", {
-///     exportable: true,
 ///     keyAttributes: [{
-///         keyAlgorithm: "TDES_3KEY",
-///         keyClass: "SYMMETRIC_KEY",
-///         keyUsage: "TR31_P0_PIN_ENCRYPTION_KEY",
 ///         keyModesOfUses: [{
 ///             decrypt: true,
 ///             encrypt: true,
 ///             wrap: true,
 ///             unwrap: true,
 ///         }],
+///         keyAlgorithm: "TDES_3KEY",
+///         keyClass: "SYMMETRIC_KEY",
+///         keyUsage: "TR31_P0_PIN_ENCRYPTION_KEY",
 ///     }],
+///     exportable: true,
 /// });
 /// ```
 /// ```python
@@ -34,18 +35,18 @@ import 'key_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.paymentcryptography.Key("test",
-///     exportable=True,
 ///     key_attributes=[{
-///         "key_algorithm": "TDES_3KEY",
-///         "key_class": "SYMMETRIC_KEY",
-///         "key_usage": "TR31_P0_PIN_ENCRYPTION_KEY",
 ///         "key_modes_of_uses": [{
 ///             "decrypt": True,
 ///             "encrypt": True,
 ///             "wrap": True,
 ///             "unwrap": True,
 ///         }],
-///     }])
+///         "key_algorithm": "TDES_3KEY",
+///         "key_class": "SYMMETRIC_KEY",
+///         "key_usage": "TR31_P0_PIN_ENCRYPTION_KEY",
+///     }],
+///     exportable=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -57,14 +58,10 @@ import 'key_timeouts.dart';
 /// {
 ///     var test = new Aws.PaymentCryptography.Key("test", new()
 ///     {
-///         Exportable = true,
 ///         KeyAttributes = new[]
 ///         {
 ///             new Aws.PaymentCryptography.Inputs.KeyKeyAttributeArgs
 ///             {
-///                 KeyAlgorithm = "TDES_3KEY",
-///                 KeyClass = "SYMMETRIC_KEY",
-///                 KeyUsage = "TR31_P0_PIN_ENCRYPTION_KEY",
 ///                 KeyModesOfUses = new[]
 ///                 {
 ///                     new Aws.PaymentCryptography.Inputs.KeyKeyAttributeKeyModesOfUseArgs
@@ -75,8 +72,12 @@ import 'key_timeouts.dart';
 ///                         Unwrap = true,
 ///                     },
 ///                 },
+///                 KeyAlgorithm = "TDES_3KEY",
+///                 KeyClass = "SYMMETRIC_KEY",
+///                 KeyUsage = "TR31_P0_PIN_ENCRYPTION_KEY",
 ///             },
 ///         },
+///         Exportable = true,
 ///     });
 ///
 /// });
@@ -92,12 +93,8 @@ import 'key_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := paymentcryptography.NewKey(ctx, "test", &paymentcryptography.KeyArgs{
-/// 			Exportable: pulumi.Bool(true),
 /// 			KeyAttributes: paymentcryptography.KeyKeyAttributeArray{
 /// 				&paymentcryptography.KeyKeyAttributeArgs{
-/// 					KeyAlgorithm: pulumi.String("TDES_3KEY"),
-/// 					KeyClass:     pulumi.String("SYMMETRIC_KEY"),
-/// 					KeyUsage:     pulumi.String("TR31_P0_PIN_ENCRYPTION_KEY"),
 /// 					KeyModesOfUses: paymentcryptography.KeyKeyAttributeKeyModesOfUseArray{
 /// 						&paymentcryptography.KeyKeyAttributeKeyModesOfUseArgs{
 /// 							Decrypt: pulumi.Bool(true),
@@ -106,8 +103,12 @@ import 'key_timeouts.dart';
 /// 							Unwrap:  pulumi.Bool(true),
 /// 						},
 /// 					},
+/// 					KeyAlgorithm: pulumi.String("TDES_3KEY"),
+/// 					KeyClass:     pulumi.String("SYMMETRIC_KEY"),
+/// 					KeyUsage:     pulumi.String("TR31_P0_PIN_ENCRYPTION_KEY"),
 /// 				},
 /// 			},
+/// 			Exportable: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -126,18 +127,18 @@ import 'key_timeouts.dart';
 /// }
 ///
 /// resource "aws_paymentcryptography_key" "test" {
-///   exportable = true
 ///   key_attributes {
-///     key_algorithm = "TDES_3KEY"
-///     key_class     = "SYMMETRIC_KEY"
-///     key_usage     = "TR31_P0_PIN_ENCRYPTION_KEY"
 ///     key_modes_of_uses {
 ///       decrypt = true
 ///       encrypt = true
 ///       wrap    = true
 ///       unwrap  = true
 ///     }
+///     key_algorithm = "TDES_3KEY"
+///     key_class     = "SYMMETRIC_KEY"
+///     key_usage     = "TR31_P0_PIN_ENCRYPTION_KEY"
 ///   }
+///   exportable = true
 /// }
 /// ```
 /// ```java
@@ -164,18 +165,18 @@ import 'key_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Key("test", KeyArgs.builder()
-///             .exportable(true)
 ///             .keyAttributes(KeyKeyAttributeArgs.builder()
-///                 .keyAlgorithm("TDES_3KEY")
-///                 .keyClass("SYMMETRIC_KEY")
-///                 .keyUsage("TR31_P0_PIN_ENCRYPTION_KEY")
 ///                 .keyModesOfUses(KeyKeyAttributeKeyModesOfUseArgs.builder()
 ///                     .decrypt(true)
 ///                     .encrypt(true)
 ///                     .wrap(true)
 ///                     .unwrap(true)
 ///                     .build())
+///                 .keyAlgorithm("TDES_3KEY")
+///                 .keyClass("SYMMETRIC_KEY")
+///                 .keyUsage("TR31_P0_PIN_ENCRYPTION_KEY")
 ///                 .build())
+///             .exportable(true)
 ///             .build());
 ///
 ///     }
@@ -186,16 +187,16 @@ import 'key_timeouts.dart';
 ///   test:
 ///     type: aws:paymentcryptography:Key
 ///     properties:
-///       exportable: true
 ///       keyAttributes:
-///         - keyAlgorithm: TDES_3KEY
-///           keyClass: SYMMETRIC_KEY
-///           keyUsage: TR31_P0_PIN_ENCRYPTION_KEY
-///           keyModesOfUses:
+///         - keyModesOfUses:
 ///             - decrypt: true
 ///               encrypt: true
 ///               wrap: true
 ///               unwrap: true
+///           keyAlgorithm: TDES_3KEY
+///           keyClass: SYMMETRIC_KEY
+///           keyUsage: TR31_P0_PIN_ENCRYPTION_KEY
+///       exportable: true
 /// ```
 ///
 ///
@@ -205,7 +206,7 @@ import 'key_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Payment Cryptography key.
+/// - `arn` (String) ARN of the Payment Cryptography key.
 ///
 ///
 /// Using `pulumi import`, import Payment Cryptography Control Plane Key using the `arn:aws:payment-cryptography:us-east-1:123456789012:key/qtbojf64yshyvyzf`. For example:
@@ -224,7 +225,7 @@ class Key extends pulumi.CustomResource {
   /// Role of the key, the algorithm it supports, and the cryptographic operations allowed with the key.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>?> keyAttributes;
+  late final pulumi.Output<List<KeyKeyAttribute>?> keyAttributes;
   /// Key check value (KCV) is used to check if all parties holding a given key have the same key or to detect that a key has changed.
   late final pulumi.Output<String> keyCheckValue;
   /// Algorithm that AWS Payment Cryptography uses to calculate the key check value (KCV).
@@ -253,20 +254,20 @@ class Key extends pulumi.CustomResource {
           'aws:paymentcryptography/key:Key',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionWindowInDays = registerOutput<int>('deletionWindowInDays');
     enabled = registerOutput<bool>('enabled');
     exportable = registerOutput<bool>('exportable');
-    keyAttributes = registerOutput<List<Map<String, dynamic>>?>('keyAttributes');
+    keyAttributes = registerOutput<List<KeyKeyAttribute>?>('keyAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyKeyAttribute>(guardedValue, (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     keyCheckValue = registerOutput<String>('keyCheckValue');
     keyCheckValueAlgorithm = registerOutput<String>('keyCheckValueAlgorithm');
     keyOrigin = registerOutput<String>('keyOrigin');
     keyState = registerOutput<String>('keyState');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<KeyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -275,11 +276,12 @@ class Key extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Key._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,14 +299,38 @@ class Key extends pulumi.CustomResource {
     deletionWindowInDays = registerOutput<int>('deletionWindowInDays');
     enabled = registerOutput<bool>('enabled');
     exportable = registerOutput<bool>('exportable');
-    keyAttributes = registerOutput<List<Map<String, dynamic>>?>('keyAttributes');
+    keyAttributes = registerOutput<List<KeyKeyAttribute>?>('keyAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyKeyAttribute>(guardedValue, (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     keyCheckValue = registerOutput<String>('keyCheckValue');
     keyCheckValueAlgorithm = registerOutput<String>('keyCheckValueAlgorithm');
     keyOrigin = registerOutput<String>('keyOrigin');
     keyState = registerOutput<String>('keyState');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<KeyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Key] resource.
+  Key.reference(String urn)
+    : super(
+        'aws:paymentcryptography/key:Key',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deletionWindowInDays = registerOutput<int>('deletionWindowInDays');
+    enabled = registerOutput<bool>('enabled');
+    exportable = registerOutput<bool>('exportable');
+    keyAttributes = registerOutput<List<KeyKeyAttribute>?>('keyAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyKeyAttribute>(guardedValue, (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>())); });
+    keyCheckValue = registerOutput<String>('keyCheckValue');
+    keyCheckValueAlgorithm = registerOutput<String>('keyCheckValueAlgorithm');
+    keyOrigin = registerOutput<String>('keyOrigin');
+    keyState = registerOutput<String>('keyState');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<KeyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

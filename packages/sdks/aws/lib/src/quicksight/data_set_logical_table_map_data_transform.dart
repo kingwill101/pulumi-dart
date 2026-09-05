@@ -11,19 +11,19 @@ import 'data_set_logical_table_map_data_transform_untag_column_operation.dart';
 
 class DataSetLogicalTableMapDataTransform {
   /// A transform operation that casts a column to a different type. See cast_column_type_operation.
-  final pulumi.Input<DataSetLogicalTableMapDataTransformCastColumnTypeOperation>? castColumnTypeOperation;
+  final pulumi.Input<DataSetLogicalTableMapDataTransformCastColumnTypeOperation?>? castColumnTypeOperation;
   /// An operation that creates calculated columns. Columns created in one such operation form a lexical closure. See create_columns_operation.
-  final pulumi.Input<DataSetLogicalTableMapDataTransformCreateColumnsOperation>? createColumnsOperation;
+  final pulumi.Input<DataSetLogicalTableMapDataTransformCreateColumnsOperation?>? createColumnsOperation;
   /// An operation that filters rows based on some condition. See filter_operation.
-  final pulumi.Input<DataSetLogicalTableMapDataTransformFilterOperation>? filterOperation;
+  final pulumi.Input<DataSetLogicalTableMapDataTransformFilterOperation?>? filterOperation;
   /// An operation that projects columns. Operations that come after a projection can only refer to projected columns. See project_operation.
-  final pulumi.Input<DataSetLogicalTableMapDataTransformProjectOperation>? projectOperation;
+  final pulumi.Input<DataSetLogicalTableMapDataTransformProjectOperation?>? projectOperation;
   /// An operation that renames a column. See rename_column_operation.
-  final pulumi.Input<DataSetLogicalTableMapDataTransformRenameColumnOperation>? renameColumnOperation;
+  final pulumi.Input<DataSetLogicalTableMapDataTransformRenameColumnOperation?>? renameColumnOperation;
   /// An operation that tags a column with additional information. See tag_column_operation.
-  final pulumi.Input<DataSetLogicalTableMapDataTransformTagColumnOperation>? tagColumnOperation;
+  final pulumi.Input<DataSetLogicalTableMapDataTransformTagColumnOperation?>? tagColumnOperation;
   /// A transform operation that removes tags associated with a column. See untag_column_operation.
-  final pulumi.Input<DataSetLogicalTableMapDataTransformUntagColumnOperation>? untagColumnOperation;
+  final pulumi.Input<DataSetLogicalTableMapDataTransformUntagColumnOperation?>? untagColumnOperation;
 
   /// Creates a new [DataSetLogicalTableMapDataTransform].
   /// [castColumnTypeOperation] A transform operation that casts a column to a different type. See cast_column_type_operation.

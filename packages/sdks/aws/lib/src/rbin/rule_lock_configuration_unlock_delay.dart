@@ -26,7 +26,7 @@ class RuleLockConfigurationUnlockDelay {
   factory RuleLockConfigurationUnlockDelay.fromMap(Map<String, dynamic> map) {
     return RuleLockConfigurationUnlockDelay(
       unlockDelayUnit: pulumi.Input.fromValue(map['unlockDelayUnit'] as String),
-      unlockDelayValue: pulumi.Input.fromValue(map['unlockDelayValue'] as int),
+      unlockDelayValue: pulumi.Input.fromValue((map['unlockDelayValue'] as num).toInt()),
     );
   }
 }

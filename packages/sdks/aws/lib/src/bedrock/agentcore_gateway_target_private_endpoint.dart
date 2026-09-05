@@ -6,9 +6,9 @@ import 'agentcore_gateway_target_private_endpoint_self_managed_lattice_resource.
 
 class AgentcoreGatewayTargetPrivateEndpoint {
   /// AWS creates and manages the VPC Lattice resource gateway and resource configuration on your behalf using a service-linked role. See `managedVpcResource` below.
-  final pulumi.Input<AgentcoreGatewayTargetPrivateEndpointManagedVpcResource>? managedVpcResource;
+  final pulumi.Input<AgentcoreGatewayTargetPrivateEndpointManagedVpcResource?>? managedVpcResource;
   /// Use an existing VPC Lattice resource configuration that you manage yourself. Useful for cross-account setups or advanced Lattice configurations. See `selfManagedLatticeResource` below.
-  final pulumi.Input<AgentcoreGatewayTargetPrivateEndpointSelfManagedLatticeResource>? selfManagedLatticeResource;
+  final pulumi.Input<AgentcoreGatewayTargetPrivateEndpointSelfManagedLatticeResource?>? selfManagedLatticeResource;
 
   /// Creates a new [AgentcoreGatewayTargetPrivateEndpoint].
   /// [managedVpcResource] AWS creates and manages the VPC Lattice resource gateway and resource configuration on your behalf using a service-linked role. See `managedVpcResource` below.

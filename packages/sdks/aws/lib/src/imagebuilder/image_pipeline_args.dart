@@ -12,51 +12,51 @@ import 'image_pipeline_workflow.dart';
 /// {@endtemplate}
 /// {@macro pulumi_imagebuilder_image_pipeline_image_pipeline_args_doc}
 class ImagePipelineArgs {
-  /// Amazon Resource Name (ARN) of the container recipe.
-  final pulumi.Input<String>? containerRecipeArn;
+  /// ARN of the container recipe.
+  final pulumi.Input<String?>? containerRecipeArn;
   /// Description of the image pipeline.
-  final pulumi.Input<String>? description;
-  /// Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
-  final pulumi.Input<String>? distributionConfigurationArn;
+  final pulumi.Input<String?>? description;
+  /// ARN of the Image Builder Distribution Configuration.
+  final pulumi.Input<String?>? distributionConfigurationArn;
   /// Whether additional information about the image being created is collected. Defaults to `true`.
-  final pulumi.Input<bool>? enhancedImageMetadataEnabled;
-  /// Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
-  final pulumi.Input<String>? executionRole;
-  /// Amazon Resource Name (ARN) of the image recipe.
-  final pulumi.Input<String>? imageRecipeArn;
+  final pulumi.Input<bool?>? enhancedImageMetadataEnabled;
+  /// ARN of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
+  final pulumi.Input<String?>? executionRole;
+  /// ARN of the image recipe.
+  final pulumi.Input<String?>? imageRecipeArn;
   /// Configuration block with image scanning configuration. Detailed below.
-  final pulumi.Input<ImagePipelineImageScanningConfiguration>? imageScanningConfiguration;
+  final pulumi.Input<ImagePipelineImageScanningConfiguration?>? imageScanningConfiguration;
   /// Configuration block with image tests configuration. Detailed below.
-  final pulumi.Input<ImagePipelineImageTestsConfiguration>? imageTestsConfiguration;
-  /// Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
+  final pulumi.Input<ImagePipelineImageTestsConfiguration?>? imageTestsConfiguration;
+  /// ARN of the Image Builder Infrastructure Configuration.
   final pulumi.Input<String> infrastructureConfigurationArn;
   /// Configuration block with logging configuration. Detailed below.
-  final pulumi.Input<ImagePipelineLoggingConfiguration>? loggingConfiguration;
+  final pulumi.Input<ImagePipelineLoggingConfiguration?>? loggingConfiguration;
   /// Name of the image pipeline.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block with schedule settings. Detailed below.
-  final pulumi.Input<ImagePipelineSchedule>? schedule;
+  final pulumi.Input<ImagePipelineSchedule?>? schedule;
   /// Status of the image pipeline. Valid values are `DISABLED` and `ENABLED`. Defaults to `ENABLED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value map of resource tags for the image pipeline. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration block with the workflow configuration. Detailed below.
-  final pulumi.Input<List<ImagePipelineWorkflow>>? workflows;
+  final pulumi.Input<List<ImagePipelineWorkflow>?>? workflows;
 
   /// Creates a new [ImagePipelineArgs].
-  /// [containerRecipeArn] Amazon Resource Name (ARN) of the container recipe.
+  /// [containerRecipeArn] ARN of the container recipe.
   /// [description] Description of the image pipeline.
-  /// [distributionConfigurationArn] Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
+  /// [distributionConfigurationArn] ARN of the Image Builder Distribution Configuration.
   /// [enhancedImageMetadataEnabled] Whether additional information about the image being created is collected. Defaults to `true`.
-  /// [executionRole] Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
-  /// [imageRecipeArn] Amazon Resource Name (ARN) of the image recipe.
+  /// [executionRole] ARN of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
+  /// [imageRecipeArn] ARN of the image recipe.
   /// [imageScanningConfiguration] Configuration block with image scanning configuration. Detailed below.
   /// [imageTestsConfiguration] Configuration block with image tests configuration. Detailed below.
-  /// [infrastructureConfigurationArn] Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
+  /// [infrastructureConfigurationArn] ARN of the Image Builder Infrastructure Configuration.
   /// [loggingConfiguration] Configuration block with logging configuration. Detailed below.
   /// [name] Name of the image pipeline.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

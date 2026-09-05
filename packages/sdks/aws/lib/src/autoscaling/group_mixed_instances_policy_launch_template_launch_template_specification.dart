@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification {
   /// ID of the launch template. Conflicts with `launchTemplateName`.
-  final pulumi.Input<String>? launchTemplateId;
+  final pulumi.Input<String?>? launchTemplateId;
   /// Name of the launch template. Conflicts with `launchTemplateId`.
-  final pulumi.Input<String>? launchTemplateName;
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? launchTemplateName;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification].
   /// [launchTemplateId] ID of the launch template. Conflicts with `launchTemplateName`.

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_get_open_id_connect_provider_get_open_id_connect_provider_args_doc}
 class GetOpenIdConnectProviderArgs {
   /// ARN of the OpenID Connect provider.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Map of resource tags for the IAM OIDC provider.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// URL of the OpenID Connect provider.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [GetOpenIdConnectProviderArgs].
   /// [arn] ARN of the OpenID Connect provider.

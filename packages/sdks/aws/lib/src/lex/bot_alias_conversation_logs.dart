@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bot_alias_conversation_logs_log_setting.dart';
 
 class BotAliasConversationLogs {
-  /// The Amazon Resource Name (ARN) of the IAM role used to write your logs to CloudWatch Logs or an S3 bucket. Must be between 20 and 2048 characters in length.
+  /// ARN of the IAM role used to write your logs to CloudWatch Logs or an S3 bucket. Must be between 20 and 2048 characters in length.
   final pulumi.Input<String> iamRoleArn;
   /// The settings for your conversation logs. You can log text, audio, or both. Attributes are documented under log_settings.
-  final pulumi.Input<List<BotAliasConversationLogsLogSetting>>? logSettings;
+  final pulumi.Input<List<BotAliasConversationLogsLogSetting>?>? logSettings;
 
   /// Creates a new [BotAliasConversationLogs].
-  /// [iamRoleArn] The Amazon Resource Name (ARN) of the IAM role used to write your logs to CloudWatch Logs or an S3 bucket. Must be between 20 and 2048 characters in length.
+  /// [iamRoleArn] ARN of the IAM role used to write your logs to CloudWatch Logs or an S3 bucket. Must be between 20 and 2048 characters in length.
   /// [logSettings] The settings for your conversation logs. You can log text, audio, or both. Attributes are documented under log_settings.
   const BotAliasConversationLogs({
     required this.iamRoleArn,

@@ -9,9 +9,9 @@ import 'package_package_source.dart';
 /// {@macro pulumi_opensearch_package_package_args_doc}
 class PackageArgs {
   /// Engine version that the package is compatible with. This argument is required and only valid when `packageType` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// Description of the package.
-  final pulumi.Input<String>? packageDescription;
+  final pulumi.Input<String?>? packageDescription;
   /// Unique name for the package.
   final pulumi.Input<String> packageName;
   /// Configuration block for the package source options.
@@ -19,7 +19,7 @@ class PackageArgs {
   /// The type of package. Valid values are `TXT-DICTIONARY`, `ZIP-PLUGIN`, `PACKAGE-LICENSE` and `PACKAGE-CONFIG`.
   final pulumi.Input<String> packageType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [PackageArgs].
   /// [engineVersion] Engine version that the package is compatible with. This argument is required and only valid when `packageType` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.

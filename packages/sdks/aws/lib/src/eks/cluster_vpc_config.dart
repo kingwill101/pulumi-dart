@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterVpcConfig {
   /// Cluster security group that is created by Amazon EKS for the cluster. Managed node groups use this security group for control-plane-to-data-plane communication.
-  final pulumi.Input<String>? clusterSecurityGroupId;
+  final pulumi.Input<String?>? clusterSecurityGroupId;
   /// Egress mode for the EKS control plane. Valid values are `AWS_MANAGED` and `CUSTOMER_ROUTED`. Defaults to `AWS_MANAGED`. Changing from `CUSTOMER_ROUTED` back to `AWS_MANAGED` forces a new resource.
-  final pulumi.Input<String>? controlPlaneEgressMode;
+  final pulumi.Input<String?>? controlPlaneEgressMode;
   /// Whether the Amazon EKS private API server endpoint is enabled. Default is `false`.
-  final pulumi.Input<bool>? endpointPrivateAccess;
+  final pulumi.Input<bool?>? endpointPrivateAccess;
   /// Whether the Amazon EKS public API server endpoint is enabled. Default is `true`.
-  final pulumi.Input<bool>? endpointPublicAccess;
+  final pulumi.Input<bool?>? endpointPublicAccess;
   /// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled. EKS defaults this to a list with `0.0.0.0/0`. The provider will only perform drift detection of its value when present in a configuration.
-  final pulumi.Input<List<String>>? publicAccessCidrs;
+  final pulumi.Input<List<String>?>? publicAccessCidrs;
   /// List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
   final pulumi.Input<List<String>> subnetIds;
   /// ID of the VPC associated with your cluster.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [ClusterVpcConfig].
   /// [clusterSecurityGroupId] Cluster security group that is created by Amazon EKS for the cluster. Managed node groups use this security group for control-plane-to-data-plane communication.

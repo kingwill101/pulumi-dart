@@ -3,8 +3,10 @@ import 'node_group_args.dart';
 import 'node_group_launch_template.dart';
 import 'node_group_node_repair_config.dart';
 import 'node_group_remote_access.dart';
+import 'node_group_resource.dart';
 import 'node_group_scaling_config.dart';
 import 'node_group_state.dart';
+import 'node_group_taint.dart';
 import 'node_group_update_config.dart';
 import 'node_group_warm_pool_config.dart';
 
@@ -18,10 +20,6 @@ import 'node_group_warm_pool_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.eks.NodeGroup("example", {
-///     clusterName: exampleAwsEksCluster.name,
-///     nodeGroupName: "example",
-///     nodeRoleArn: exampleAwsIamRole.arn,
-///     subnetIds: exampleAwsSubnet.map(__item => __item.id),
 ///     scalingConfig: {
 ///         desiredSize: 1,
 ///         maxSize: 2,
@@ -30,6 +28,10 @@ import 'node_group_warm_pool_config.dart';
 ///     updateConfig: {
 ///         maxUnavailable: 1,
 ///     },
+///     clusterName: exampleAwsEksCluster.name,
+///     nodeGroupName: "example",
+///     nodeRoleArn: exampleAwsIamRole.arn,
+///     subnetIds: exampleAwsSubnet.map(__item => __item.id),
 /// }, {
 ///     dependsOn: [
 ///         example_AmazonEKSWorkerNodePolicy,
@@ -43,10 +45,6 @@ import 'node_group_warm_pool_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.eks.NodeGroup("example",
-///     cluster_name=example_aws_eks_cluster["name"],
-///     node_group_name="example",
-///     node_role_arn=example_aws_iam_role["arn"],
-///     subnet_ids=[__item["id"] for __item in example_aws_subnet],
 ///     scaling_config={
 ///         "desired_size": 1,
 ///         "max_size": 2,
@@ -55,6 +53,10 @@ import 'node_group_warm_pool_config.dart';
 ///     update_config={
 ///         "max_unavailable": 1,
 ///     },
+///     cluster_name=example_aws_eks_cluster["name"],
+///     node_group_name="example",
+///     node_role_arn=example_aws_iam_role["arn"],
+///     subnet_ids=[__item["id"] for __item in example_aws_subnet],
 ///     opts = pulumi.ResourceOptions(depends_on=[
 ///             example__amazon_eks_worker_node_policy,
 ///             example__amazon_ekscni_policy,
@@ -71,10 +73,6 @@ import 'node_group_warm_pool_config.dart';
 /// {
 ///     var example = new Aws.Eks.NodeGroup("example", new()
 ///     {
-///         ClusterName = exampleAwsEksCluster.Name,
-///         NodeGroupName = "example",
-///         NodeRoleArn = exampleAwsIamRole.Arn,
-///         SubnetIds = exampleAwsSubnet.Select(__item => __item.Id).ToList(),
 ///         ScalingConfig = new Aws.Eks.Inputs.NodeGroupScalingConfigArgs
 ///         {
 ///             DesiredSize = 1,
@@ -85,6 +83,10 @@ import 'node_group_warm_pool_config.dart';
 ///         {
 ///             MaxUnavailable = 1,
 ///         },
+///         ClusterName = exampleAwsEksCluster.Name,
+///         NodeGroupName = "example",
+///         NodeRoleArn = exampleAwsIamRole.Arn,
+///         SubnetIds = exampleAwsSubnet.Select(__item => __item.Id).ToList(),
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -111,10 +113,6 @@ import 'node_group_warm_pool_config.dart';
 /// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := eks.NewNodeGroup(ctx, "example", &eks.NodeGroupArgs{
-/// ClusterName: pulumi.Any(exampleAwsEksCluster.Name),
-/// NodeGroupName: pulumi.String("example"),
-/// NodeRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// SubnetIds: toPulumiArray(splat0),
 /// ScalingConfig: &eks.NodeGroupScalingConfigArgs{
 /// DesiredSize: pulumi.Int(1),
 /// MaxSize: pulumi.Int(2),
@@ -123,6 +121,10 @@ import 'node_group_warm_pool_config.dart';
 /// UpdateConfig: &eks.NodeGroupUpdateConfigArgs{
 /// MaxUnavailable: pulumi.Int(1),
 /// },
+/// ClusterName: pulumi.Any(exampleAwsEksCluster.Name),
+/// NodeGroupName: pulumi.String("example"),
+/// NodeRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// SubnetIds: toPulumiArray(splat0),
 /// }, pulumi.DependsOn([]pulumi.Resource{
 /// example_AmazonEKSWorkerNodePolicy,
 /// example_AmazonEKSCNIPolicy,
@@ -152,11 +154,7 @@ import 'node_group_warm_pool_config.dart';
 /// }
 ///
 /// resource "aws_eks_nodegroup" "example" {
-///   depends_on      = [example-AmazonEKSWorkerNodePolicy, example-AmazonEKSCNIPolicy, example-AmazonEC2ContainerRegistryReadOnly]
-///   cluster_name    = exampleAwsEksCluster.name
-///   node_group_name = "example"
-///   node_role_arn   = exampleAwsIamRole.arn
-///   subnet_ids      = exampleAwsSubnet[*].id
+///   depends_on = [example-AmazonEKSWorkerNodePolicy, example-AmazonEKSCNIPolicy, example-AmazonEC2ContainerRegistryReadOnly]
 ///   scaling_config = {
 ///     desired_size = 1
 ///     max_size     = 2
@@ -165,6 +163,10 @@ import 'node_group_warm_pool_config.dart';
 ///   update_config = {
 ///     max_unavailable = 1
 ///   }
+///   cluster_name    = exampleAwsEksCluster.name
+///   node_group_name = "example"
+///   node_role_arn   = exampleAwsIamRole.arn
+///   subnet_ids      = exampleAwsSubnet[*].id
 /// }
 /// ```
 /// ```java
@@ -192,10 +194,6 @@ import 'node_group_warm_pool_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new NodeGroup("example", NodeGroupArgs.builder()
-///             .clusterName(exampleAwsEksCluster.name())
-///             .nodeGroupName("example")
-///             .nodeRoleArn(exampleAwsIamRole.arn())
-///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
 ///             .scalingConfig(NodeGroupScalingConfigArgs.builder()
 ///                 .desiredSize(1)
 ///                 .maxSize(2)
@@ -204,6 +202,10 @@ import 'node_group_warm_pool_config.dart';
 ///             .updateConfig(NodeGroupUpdateConfigArgs.builder()
 ///                 .maxUnavailable(1)
 ///                 .build())
+///             .clusterName(exampleAwsEksCluster.name())
+///             .nodeGroupName("example")
+///             .nodeRoleArn(exampleAwsIamRole.arn())
+///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     example_AmazonEKSWorkerNodePolicy,
@@ -227,7 +229,9 @@ import 'node_group_warm_pool_config.dart';
 ///
 /// const example = new aws.eks.NodeGroup("example", {scalingConfig: {
 ///     desiredSize: 2,
-/// }});
+/// }}, {
+///     ignoreChanges: ["scalingConfig.desiredSize"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
@@ -235,7 +239,8 @@ import 'node_group_warm_pool_config.dart';
 ///
 /// example = aws.eks.NodeGroup("example", scaling_config={
 ///     "desired_size": 2,
-/// })
+/// },
+/// opts = pulumi.ResourceOptions(ignore_changes=["scalingConfig.desiredSize"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -250,6 +255,12 @@ import 'node_group_warm_pool_config.dart';
 ///         ScalingConfig = new Aws.Eks.Inputs.NodeGroupScalingConfigArgs
 ///         {
 ///             DesiredSize = 2,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "scalingConfig.desiredSize",
 ///         },
 ///     });
 ///
@@ -269,7 +280,9 @@ import 'node_group_warm_pool_config.dart';
 /// 			ScalingConfig: &eks.NodeGroupScalingConfigArgs{
 /// 				DesiredSize: pulumi.Int(2),
 /// 			},
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"scalingConfig.desiredSize",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -287,6 +300,9 @@ import 'node_group_warm_pool_config.dart';
 /// }
 ///
 /// resource "aws_eks_nodegroup" "example" {
+///   lifecycle {
+///     ignore_changes = [scalingConfig.desiredSize]
+///   }
 ///   scaling_config = {
 ///     desired_size = 2
 ///   }
@@ -301,6 +317,7 @@ import 'node_group_warm_pool_config.dart';
 /// import com.pulumi.aws.eks.NodeGroup;
 /// import com.pulumi.aws.eks.NodeGroupArgs;
 /// import com.pulumi.aws.eks.inputs.NodeGroupScalingConfigArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -318,7 +335,9 @@ import 'node_group_warm_pool_config.dart';
 ///             .scalingConfig(NodeGroupScalingConfigArgs.builder()
 ///                 .desiredSize(2)
 ///                 .build())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("scalingConfig.desiredSize")
+///                 .build());
 ///
 ///     }
 /// }
@@ -330,6 +349,175 @@ import 'node_group_warm_pool_config.dart';
 ///     properties:
 ///       scalingConfig:
 ///         desiredSize: 2
+///     options:
+///       ignoreChanges:
+///         - scalingConfig.desiredSize
+/// ```
+///
+///
+/// ### Tracking the latest EKS Node Group AMI releases
+///
+/// You can have the node group track the latest version of the Amazon EKS optimized Amazon Linux AMI for a given EKS version by querying an Amazon provided SSM parameter. Replace `standard` in the parameter name below with `nvidia` to retrieve the accelerated AMI version. Replace `x8664` in the parameter name below with `arm64` to retrieve the ARM version.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const eksAmiReleaseVersion = aws.ssm.getParameter({
+///     name: `/aws/service/eks/optimized-ami/${exampleAwsEksCluster.version}/amazon-linux-2023/x86_64/standard/recommended/release_version`,
+/// });
+/// const example = new aws.eks.NodeGroup("example", {
+///     clusterName: exampleAwsEksCluster.name,
+///     nodeGroupName: "example",
+///     version: exampleAwsEksCluster.version,
+///     releaseVersion: pulumi.unsecret(eksAmiReleaseVersion.then(eksAmiReleaseVersion => eksAmiReleaseVersion.value)),
+///     nodeRoleArn: exampleAwsIamRole.arn,
+///     subnetIds: exampleAwsSubnet.map(__item => __item.id),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// eks_ami_release_version = aws.ssm.get_parameter(name=f"/aws/service/eks/optimized-ami/{example_aws_eks_cluster['version']}/amazon-linux-2023/x86_64/standard/recommended/release_version")
+/// example = aws.eks.NodeGroup("example",
+///     cluster_name=example_aws_eks_cluster["name"],
+///     node_group_name="example",
+///     version=example_aws_eks_cluster["version"],
+///     release_version=pulumi.Output.unsecret(eks_ami_release_version.value),
+///     node_role_arn=example_aws_iam_role["arn"],
+///     subnet_ids=[__item["id"] for __item in example_aws_subnet])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var eksAmiReleaseVersion = Aws.Ssm.GetParameter.Invoke(new()
+///     {
+///         Name = $"/aws/service/eks/optimized-ami/{exampleAwsEksCluster.Version}/amazon-linux-2023/x86_64/standard/recommended/release_version",
+///     });
+///
+///     var example = new Aws.Eks.NodeGroup("example", new()
+///     {
+///         ClusterName = exampleAwsEksCluster.Name,
+///         NodeGroupName = "example",
+///         Version = exampleAwsEksCluster.Version,
+///         ReleaseVersion = Output.Unsecret(eksAmiReleaseVersion.Apply(getParameterResult => getParameterResult.Value)),
+///         NodeRoleArn = exampleAwsIamRole.Arn,
+///         SubnetIds = exampleAwsSubnet.Select(__item => __item.Id).ToList(),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/eks"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ssm"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// eksAmiReleaseVersion, err := ssm.LookupParameter(ctx, &ssm.LookupParameterArgs{
+/// Name: fmt.Sprintf("/aws/service/eks/optimized-ami/%v/amazon-linux-2023/x86_64/standard/recommended/release_version", exampleAwsEksCluster.Version),
+/// }, nil);
+/// if err != nil {
+/// return err
+/// }
+/// var splat0 []interface{}
+/// for _, val0 := range exampleAwsSubnet {
+/// splat0 = append(splat0, val0.(map[string]interface{})["id"])
+/// }
+/// _, err = eks.NewNodeGroup(ctx, "example", &eks.NodeGroupArgs{
+/// ClusterName: pulumi.Any(exampleAwsEksCluster.Name),
+/// NodeGroupName: pulumi.String("example"),
+/// Version: pulumi.Any(exampleAwsEksCluster.Version),
+/// ReleaseVersion: pulumi.Unsecret(eksAmiReleaseVersion.Value).(pulumi.StringPtrOutput),
+/// NodeRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// SubnetIds: toPulumiArray(splat0),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// func toPulumiArray(arr []) pulumi.Array {
+/// var pulumiArr pulumi.Array
+/// for _, v := range arr {
+/// pulumiArr = append(pulumiArr, pulumi.(v))
+/// }
+/// return pulumiArr
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_ssm_getparameter" "eksAmiReleaseVersion" {
+///   name ="/aws/service/eks/optimized-ami/${exampleAwsEksCluster.version}/amazon-linux-2023/x86_64/standard/recommended/release_version"
+/// }
+///
+/// resource "aws_eks_nodegroup" "example" {
+///   cluster_name    = exampleAwsEksCluster.name
+///   node_group_name = "example"
+///   version         = exampleAwsEksCluster.version
+///   release_version = nonsensitive(data.aws_ssm_getparameter.eksAmiReleaseVersion.value)
+///   node_role_arn   = exampleAwsIamRole.arn
+///   subnet_ids      = exampleAwsSubnet[*].id
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ssm.SsmFunctions;
+/// import com.pulumi.aws.ssm.inputs.GetParameterArgs;
+/// import com.pulumi.aws.eks.NodeGroup;
+/// import com.pulumi.aws.eks.NodeGroupArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var eksAmiReleaseVersion = SsmFunctions.getParameter(GetParameterArgs.builder()
+///             .name(String.format("/aws/service/eks/optimized-ami/%s/amazon-linux-2023/x86_64/standard/recommended/release_version", exampleAwsEksCluster.version()))
+///             .build());
+///
+///         var example = new NodeGroup("example", NodeGroupArgs.builder()
+///             .clusterName(exampleAwsEksCluster.name())
+///             .nodeGroupName("example")
+///             .version(exampleAwsEksCluster.version())
+///             .releaseVersion(eksAmiReleaseVersion.value().asPlaintext())
+///             .nodeRoleArn(exampleAwsIamRole.arn())
+///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///             .build());
+///
+///     }
+/// }
 /// ```
 ///
 ///
@@ -838,9 +1026,9 @@ import 'node_group_warm_pool_config.dart';
 /// $ pulumi import aws:eks/nodeGroup:NodeGroup example example-cluster:example-group
 /// ```
 class NodeGroup extends pulumi.CustomResource {
-  /// Type of Amazon Machine Image (AMI) associated with the EKS Node Group. See the [AWS documentation](https://docs.aws.amazon.com/eks/latest/APIReference/API_Nodegroup.html#AmazonEKS-Type-Nodegroup-amiType) for valid values. This provider will only perform drift detection if a configuration value is provided.
+  /// Type of AMI associated with the EKS Node Group. See the [AWS documentation](https://docs.aws.amazon.com/eks/latest/APIReference/API_Nodegroup.html#AmazonEKS-Type-Nodegroup-amiType) for valid values. The provider will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<String> amiType;
-  /// Amazon Resource Name (ARN) of the EKS Node Group.
+  /// ARN of the EKS Node Group.
   late final pulumi.Output<String> arn;
   /// Type of capacity associated with the EKS Node Group. Valid values: `ON_DEMAND`, `SPOT`. This provider will only perform drift detection if a configuration value is provided.
   late final pulumi.Output<String> capacityType;
@@ -862,7 +1050,7 @@ class NodeGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> nodeGroupNamePrefix;
   /// The node auto repair configuration for the node group. See `nodeRepairConfig` below for details.
   late final pulumi.Output<NodeGroupNodeRepairConfig> nodeRepairConfig;
-  /// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Node Group.
+  /// ARN of the IAM Role that provides permissions for the EKS Node Group.
   late final pulumi.Output<String> nodeRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -871,7 +1059,7 @@ class NodeGroup extends pulumi.CustomResource {
   /// Configuration block with remote access settings. See `remoteAccess` below for details. Conflicts with `launchTemplate`.
   late final pulumi.Output<NodeGroupRemoteAccess?> remoteAccess;
   /// List of objects containing information about underlying resources.
-  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+  late final pulumi.Output<List<NodeGroupResource>> resources;
   /// Configuration block with scaling settings. See `scalingConfig` below for details.
   late final pulumi.Output<NodeGroupScalingConfig> scalingConfig;
   /// Status of the EKS Node Group.
@@ -885,7 +1073,7 @@ class NodeGroup extends pulumi.CustomResource {
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The Kubernetes taints to be applied to the nodes in the node group. Maximum of 50 taints per node group. See taint below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> taints;
+  late final pulumi.Output<List<NodeGroupTaint>?> taints;
   /// Configuration block with update settings. See `updateConfig` below for details.
   late final pulumi.Output<NodeGroupUpdateConfig> updateConfig;
   /// Kubernetes version. Defaults to EKS Cluster Kubernetes version. The provider will only perform drift detection if a configuration value is provided.
@@ -905,7 +1093,7 @@ class NodeGroup extends pulumi.CustomResource {
           'aws:eks/nodeGroup:NodeGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     amiType = registerOutput<String>('amiType');
     arn = registerOutput<String>('arn');
@@ -913,8 +1101,8 @@ class NodeGroup extends pulumi.CustomResource {
     clusterName = registerOutput<String>('clusterName');
     diskSize = registerOutput<int>('diskSize');
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
-    instanceTypes = registerOutput<List<String>>('instanceTypes');
-    labels = registerOutput<Map<String, String>?>('labels');
+    instanceTypes = registerOutput<List<String>>('instanceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     launchTemplate = registerOutput<NodeGroupLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeGroupName = registerOutput<String>('nodeGroupName');
     nodeGroupNamePrefix = registerOutput<String>('nodeGroupNamePrefix');
@@ -923,13 +1111,13 @@ class NodeGroup extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     releaseVersion = registerOutput<String>('releaseVersion');
     remoteAccess = registerOutput<NodeGroupRemoteAccess?>('remoteAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupRemoteAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    resources = registerOutput<List<NodeGroupResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeGroupResource>(guardedValue, (value) => NodeGroupResource.fromMap((value as Map).cast<String, dynamic>())); });
     scalingConfig = registerOutput<NodeGroupScalingConfig>('scalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    taints = registerOutput<List<Map<String, dynamic>>?>('taints');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taints = registerOutput<List<NodeGroupTaint>?>('taints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeGroupTaint>(guardedValue, (value) => NodeGroupTaint.fromMap((value as Map).cast<String, dynamic>())); });
     updateConfig = registerOutput<NodeGroupUpdateConfig>('updateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupUpdateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
     warmPoolConfig = registerOutput<NodeGroupWarmPoolConfig?>('warmPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupWarmPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -940,11 +1128,12 @@ class NodeGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NodeGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NodeGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -964,8 +1153,8 @@ class NodeGroup extends pulumi.CustomResource {
     clusterName = registerOutput<String>('clusterName');
     diskSize = registerOutput<int>('diskSize');
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
-    instanceTypes = registerOutput<List<String>>('instanceTypes');
-    labels = registerOutput<Map<String, String>?>('labels');
+    instanceTypes = registerOutput<List<String>>('instanceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     launchTemplate = registerOutput<NodeGroupLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeGroupName = registerOutput<String>('nodeGroupName');
     nodeGroupNamePrefix = registerOutput<String>('nodeGroupNamePrefix');
@@ -974,13 +1163,50 @@ class NodeGroup extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     releaseVersion = registerOutput<String>('releaseVersion');
     remoteAccess = registerOutput<NodeGroupRemoteAccess?>('remoteAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupRemoteAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    resources = registerOutput<List<NodeGroupResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeGroupResource>(guardedValue, (value) => NodeGroupResource.fromMap((value as Map).cast<String, dynamic>())); });
     scalingConfig = registerOutput<NodeGroupScalingConfig>('scalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    taints = registerOutput<List<Map<String, dynamic>>?>('taints');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taints = registerOutput<List<NodeGroupTaint>?>('taints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeGroupTaint>(guardedValue, (value) => NodeGroupTaint.fromMap((value as Map).cast<String, dynamic>())); });
+    updateConfig = registerOutput<NodeGroupUpdateConfig>('updateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupUpdateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String>('version');
+    warmPoolConfig = registerOutput<NodeGroupWarmPoolConfig?>('warmPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupWarmPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NodeGroup] resource.
+  NodeGroup.reference(String urn)
+    : super(
+        'aws:eks/nodeGroup:NodeGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    amiType = registerOutput<String>('amiType');
+    arn = registerOutput<String>('arn');
+    capacityType = registerOutput<String>('capacityType');
+    clusterName = registerOutput<String>('clusterName');
+    diskSize = registerOutput<int>('diskSize');
+    forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
+    instanceTypes = registerOutput<List<String>>('instanceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    launchTemplate = registerOutput<NodeGroupLaunchTemplate?>('launchTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeGroupName = registerOutput<String>('nodeGroupName');
+    nodeGroupNamePrefix = registerOutput<String>('nodeGroupNamePrefix');
+    nodeRepairConfig = registerOutput<NodeGroupNodeRepairConfig>('nodeRepairConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupNodeRepairConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeRoleArn = registerOutput<String>('nodeRoleArn');
+    region = registerOutput<String>('region');
+    releaseVersion = registerOutput<String>('releaseVersion');
+    remoteAccess = registerOutput<NodeGroupRemoteAccess?>('remoteAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupRemoteAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resources = registerOutput<List<NodeGroupResource>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeGroupResource>(guardedValue, (value) => NodeGroupResource.fromMap((value as Map).cast<String, dynamic>())); });
+    scalingConfig = registerOutput<NodeGroupScalingConfig>('scalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taints = registerOutput<List<NodeGroupTaint>?>('taints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeGroupTaint>(guardedValue, (value) => NodeGroupTaint.fromMap((value as Map).cast<String, dynamic>())); });
     updateConfig = registerOutput<NodeGroupUpdateConfig>('updateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupUpdateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
     warmPoolConfig = registerOutput<NodeGroupWarmPoolConfig?>('warmPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupWarmPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

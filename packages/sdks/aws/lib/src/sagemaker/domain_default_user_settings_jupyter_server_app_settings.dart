@@ -6,16 +6,16 @@ import 'domain_default_user_settings_jupyter_server_app_settings_default_resourc
 
 class DomainDefaultUserSettingsJupyterServerAppSettings {
   /// A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see `codeRepository` Block below.
-  final pulumi.Input<List<DomainDefaultUserSettingsJupyterServerAppSettingsCodeRepository>>? codeRepositories;
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
-  final pulumi.Input<DomainDefaultUserSettingsJupyterServerAppSettingsDefaultResourceSpec>? defaultResourceSpec;
-  /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  final pulumi.Input<List<String>>? lifecycleConfigArns;
+  final pulumi.Input<List<DomainDefaultUserSettingsJupyterServerAppSettingsCodeRepository>?>? codeRepositories;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
+  final pulumi.Input<DomainDefaultUserSettingsJupyterServerAppSettingsDefaultResourceSpec?>? defaultResourceSpec;
+  /// ARN of the Lifecycle Configurations.
+  final pulumi.Input<List<String>?>? lifecycleConfigArns;
 
   /// Creates a new [DomainDefaultUserSettingsJupyterServerAppSettings].
   /// [codeRepositories] A list of Git repositories that SageMaker AI automatically displays to users for cloning in the JupyterServer application. see `codeRepository` Block below.
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
-  /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see `defaultResourceSpec` Block below.
+  /// [lifecycleConfigArns] ARN of the Lifecycle Configurations.
   const DomainDefaultUserSettingsJupyterServerAppSettings({
     this.codeRepositories,
     this.defaultResourceSpec,

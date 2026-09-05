@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleOverrideAction {
   /// Override the rule action with count.
-  final pulumi.Input<Map<String, dynamic>>? count;
+  final pulumi.Input<Map<String, dynamic>?>? count;
   /// Don't override the rule action.
-  final pulumi.Input<Map<String, dynamic>>? none;
+  final pulumi.Input<Map<String, dynamic>?>? none;
 
   /// Creates a new [WebAclRuleOverrideAction].
   /// [count] Override the rule action with count.

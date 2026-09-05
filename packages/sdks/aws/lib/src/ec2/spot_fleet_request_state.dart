@@ -10,31 +10,31 @@ class SpotFleetRequestState {
   /// Indicates how to allocate the target capacity across
   /// the Spot pools specified by the Spot fleet request. Valid values: `lowestPrice`, `diversified`, `capacityOptimized`, `capacityOptimizedPrioritized`, and `priceCapacityOptimized`. The default is
   /// `lowestPrice`.
-  final pulumi.Input<String>? allocationStrategy;
-  final pulumi.Input<String>? clientToken;
+  final pulumi.Input<String?>? allocationStrategy;
+  final pulumi.Input<String?>? clientToken;
   /// Reserved.
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// Indicates whether running Spot
   /// instances should be terminated if the target capacity of the Spot fleet
   /// request is decreased below the current size of the Spot fleet.
-  final pulumi.Input<String>? excessCapacityTerminationPolicy;
+  final pulumi.Input<String?>? excessCapacityTerminationPolicy;
   /// The type of fleet request. Indicates whether the Spot Fleet only requests the target
   /// capacity or also attempts to maintain it. Default is `maintain`.
-  final pulumi.Input<String>? fleetType;
+  final pulumi.Input<String?>? fleetType;
   /// Grants the Spot fleet permission to terminate
   /// Spot instances on your behalf when you cancel its Spot fleet request using
   /// CancelSpotFleetRequests or when the Spot fleet request expires, if you set
   /// terminateInstancesWithExpiration.
-  final pulumi.Input<String>? iamFleetRole;
+  final pulumi.Input<String?>? iamFleetRole;
   /// Indicates whether a Spot
   /// instance stops or terminates when it is interrupted. Default is
   /// `terminate`.
-  final pulumi.Input<String>? instanceInterruptionBehaviour;
+  final pulumi.Input<String?>? instanceInterruptionBehaviour;
   /// The number of Spot pools across which to allocate your target Spot capacity.
   /// Valid only when `allocationStrategy` is set to `lowestPrice`. Spot Fleet selects
   /// the cheapest Spot pools and evenly allocates your target Spot capacity across
   /// the number of Spot pools that you specify.
-  final pulumi.Input<int>? instancePoolsToUseCount;
+  final pulumi.Input<int?>? instancePoolsToUseCount;
   /// Used to define the launch configuration of the
   /// spot-fleet request. Can be specified multiple times to define different bids
   /// across different markets and instance types. Conflicts with `launchTemplateConfig`. At least one of `launchSpecification` or `launchTemplateConfig` is required.
@@ -44,54 +44,54 @@ class SpotFleetRequestState {
   /// what you can specify. See the list of officially supported inputs in the
   /// [reference documentation](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetLaunchSpecification.html). Any normal `aws.ec2.Instance` parameter that corresponds to those inputs may be used and it have
   /// a additional parameter `iamInstanceProfileArn` takes `aws.iam.InstanceProfile` attribute `arn` as input.
-  final pulumi.Input<List<SpotFleetRequestLaunchSpecification>>? launchSpecifications;
+  final pulumi.Input<List<SpotFleetRequestLaunchSpecification>?>? launchSpecifications;
   /// Launch template configuration block. See Launch Template Configs below for more details. Conflicts with `launchSpecification`. At least one of `launchSpecification` or `launchTemplateConfig` is required.
-  final pulumi.Input<List<SpotFleetRequestLaunchTemplateConfig>>? launchTemplateConfigs;
+  final pulumi.Input<List<SpotFleetRequestLaunchTemplateConfig>?>? launchTemplateConfigs;
   /// A list of elastic load balancer names to add to the Spot fleet.
-  final pulumi.Input<List<String>>? loadBalancers;
+  final pulumi.Input<List<String>?>? loadBalancers;
   /// The order of the launch template overrides to use in fulfilling On-Demand capacity. the possible values are: `lowestPrice` and `prioritized`. the default is `lowestPrice`.
-  final pulumi.Input<String>? onDemandAllocationStrategy;
+  final pulumi.Input<String?>? onDemandAllocationStrategy;
   /// The maximum amount per hour for On-Demand Instances that you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching instances even if it hasn’t met the target capacity.
-  final pulumi.Input<String>? onDemandMaxTotalPrice;
+  final pulumi.Input<String?>? onDemandMaxTotalPrice;
   /// The number of On-Demand units to request. If the request type is `maintain`, you can specify a target capacity of 0 and add capacity later.
-  final pulumi.Input<int>? onDemandTargetCapacity;
+  final pulumi.Input<int?>? onDemandTargetCapacity;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
-  final pulumi.Input<bool>? replaceUnhealthyInstances;
+  final pulumi.Input<bool?>? replaceUnhealthyInstances;
   /// Nested argument containing maintenance strategies for managing your Spot Instances that are at an elevated risk of being interrupted. Defined below.
-  final pulumi.Input<SpotFleetRequestSpotMaintenanceStrategies>? spotMaintenanceStrategies;
+  final pulumi.Input<SpotFleetRequestSpotMaintenanceStrategies?>? spotMaintenanceStrategies;
   /// The maximum bid price per unit hour.
-  final pulumi.Input<String>? spotPrice;
+  final pulumi.Input<String?>? spotPrice;
   /// The state of the Spot fleet request.
-  final pulumi.Input<String>? spotRequestState;
+  final pulumi.Input<String?>? spotRequestState;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The number of units to request. You can choose to set the
   /// target capacity in terms of instances or a performance characteristic that is
   /// important to your application workload, such as vCPUs, memory, or I/O.
-  final pulumi.Input<int>? targetCapacity;
+  final pulumi.Input<int?>? targetCapacity;
   /// The unit for the target capacity. This can only be done with `instanceRequirements` defined
-  final pulumi.Input<String>? targetCapacityUnitType;
+  final pulumi.Input<String?>? targetCapacityUnitType;
   /// A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
-  final pulumi.Input<List<String>>? targetGroupArns;
+  final pulumi.Input<List<String>?>? targetGroupArns;
   /// Indicates whether running Spot
   /// instances should be terminated when the resource is deleted (and the Spot fleet request cancelled).
   /// If no value is specified, the value of the `terminateInstancesWithExpiration` argument is used.
-  final pulumi.Input<String>? terminateInstancesOnDelete;
+  final pulumi.Input<String?>? terminateInstancesOnDelete;
   /// Indicates whether running Spot
   /// instances should be terminated when the Spot fleet request expires.
-  final pulumi.Input<bool>? terminateInstancesWithExpiration;
+  final pulumi.Input<bool?>? terminateInstancesWithExpiration;
   /// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
-  final pulumi.Input<String>? validFrom;
+  final pulumi.Input<String?>? validFrom;
   /// The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request.
-  final pulumi.Input<String>? validUntil;
+  final pulumi.Input<String?>? validUntil;
   /// If set, this provider will
   /// wait for the Spot Request to be fulfilled, and will throw an error if the
   /// timeout of 10m is reached.
-  final pulumi.Input<bool>? waitForFulfillment;
+  final pulumi.Input<bool?>? waitForFulfillment;
 
   /// Creates a new [SpotFleetRequestState].
   /// [allocationStrategy] Indicates how to allocate the target capacity across
@@ -198,13 +198,13 @@ class SpotFleetRequestState {
       fleetType: (() { final guardedValue = map['fleetType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iamFleetRole: (() { final guardedValue = map['iamFleetRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceInterruptionBehaviour: (() { final guardedValue = map['instanceInterruptionBehaviour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instancePoolsToUseCount: (() { final guardedValue = map['instancePoolsToUseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instancePoolsToUseCount: (() { final guardedValue = map['instancePoolsToUseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       launchSpecifications: (() { final guardedValue = map['launchSpecifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpotFleetRequestLaunchSpecification>(guardedValue, (value) => SpotFleetRequestLaunchSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       launchTemplateConfigs: (() { final guardedValue = map['launchTemplateConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpotFleetRequestLaunchTemplateConfig>(guardedValue, (value) => SpotFleetRequestLaunchTemplateConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       loadBalancers: (() { final guardedValue = map['loadBalancers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       onDemandAllocationStrategy: (() { final guardedValue = map['onDemandAllocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       onDemandMaxTotalPrice: (() { final guardedValue = map['onDemandMaxTotalPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      onDemandTargetCapacity: (() { final guardedValue = map['onDemandTargetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      onDemandTargetCapacity: (() { final guardedValue = map['onDemandTargetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replaceUnhealthyInstances: (() { final guardedValue = map['replaceUnhealthyInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       spotMaintenanceStrategies: (() { final guardedValue = map['spotMaintenanceStrategies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpotFleetRequestSpotMaintenanceStrategies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -212,7 +212,7 @@ class SpotFleetRequestState {
       spotRequestState: (() { final guardedValue = map['spotRequestState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      targetCapacity: (() { final guardedValue = map['targetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetCapacity: (() { final guardedValue = map['targetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       targetCapacityUnitType: (() { final guardedValue = map['targetCapacityUnitType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetGroupArns: (() { final guardedValue = map['targetGroupArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       terminateInstancesOnDelete: (() { final guardedValue = map['terminateInstancesOnDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

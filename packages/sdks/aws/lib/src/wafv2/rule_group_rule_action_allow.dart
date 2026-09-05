@@ -5,7 +5,7 @@ import 'rule_group_rule_action_allow_custom_request_handling.dart';
 
 class RuleGroupRuleActionAllow {
   /// Defines custom handling for the web request. See Custom Request Handling below for details.
-  final pulumi.Input<RuleGroupRuleActionAllowCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<RuleGroupRuleActionAllowCustomRequestHandling?>? customRequestHandling;
 
   /// Creates a new [RuleGroupRuleActionAllow].
   /// [customRequestHandling] Defines custom handling for the web request. See Custom Request Handling below for details.

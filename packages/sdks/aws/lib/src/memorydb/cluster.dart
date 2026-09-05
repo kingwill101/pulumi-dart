@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
+import 'cluster_cluster_endpoint.dart';
+import 'cluster_shard.dart';
 import 'cluster_state.dart';
 
 /// Provides a MemoryDB Cluster.
@@ -185,7 +187,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// When set to `true`, the cluster will automatically receive minor engine version upgrades after launch. Defaults to `true`.
   late final pulumi.Output<bool?> autoMinorVersionUpgrade;
-  late final pulumi.Output<List<Map<String, dynamic>>> clusterEndpoints;
+  late final pulumi.Output<List<ClusterClusterEndpoint>> clusterEndpoints;
   /// Enables data tiering. This option is not supported by all instance types. For more information, see [Data tiering](https://docs.aws.amazon.com/memorydb/latest/devguide/data-tiering.html).
   late final pulumi.Output<bool?> dataTiering;
   /// Description for the cluster. Defaults to `"Managed by Pulumi"`.
@@ -229,7 +231,7 @@ class Cluster extends pulumi.CustomResource {
   /// Set of VPC Security Group ID-s to associate with this cluster.
   late final pulumi.Output<List<String>?> securityGroupIds;
   /// Set of shards in this cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>> shards;
+  late final pulumi.Output<List<ClusterShard>> shards;
   /// List of ARN-s that uniquely identify RDB snapshot files stored in S3. The snapshot files will be used to populate the new cluster. Object names in the ARN-s cannot contain any commas.
   late final pulumi.Output<List<String>?> snapshotArns;
   /// The name of a snapshot from which to restore data into the new cluster.
@@ -261,12 +263,12 @@ class Cluster extends pulumi.CustomResource {
           'aws:memorydb/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     aclName = registerOutput<String>('aclName');
     arn = registerOutput<String>('arn');
     autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
-    clusterEndpoints = registerOutput<List<Map<String, dynamic>>>('clusterEndpoints');
+    clusterEndpoints = registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterEndpoint>(guardedValue, (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     dataTiering = registerOutput<bool?>('dataTiering');
     description = registerOutput<String?>('description');
     engine = registerOutput<String>('engine');
@@ -286,16 +288,16 @@ class Cluster extends pulumi.CustomResource {
     parameterGroupName = registerOutput<String>('parameterGroupName');
     port = registerOutput<int>('port');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
-    shards = registerOutput<List<Map<String, dynamic>>>('shards');
-    snapshotArns = registerOutput<List<String>?>('snapshotArns');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    shards = registerOutput<List<ClusterShard>>('shards', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterShard>(guardedValue, (value) => ClusterShard.fromMap((value as Map).cast<String, dynamic>())); });
+    snapshotArns = registerOutput<List<String>?>('snapshotArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotName = registerOutput<String?>('snapshotName');
     snapshotRetentionLimit = registerOutput<int>('snapshotRetentionLimit');
     snapshotWindow = registerOutput<String>('snapshotWindow');
     snsTopicArn = registerOutput<String?>('snsTopicArn');
     subnetGroupName = registerOutput<String>('subnetGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tlsEnabled = registerOutput<bool?>('tlsEnabled');
   }
 
@@ -304,11 +306,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,7 +328,7 @@ class Cluster extends pulumi.CustomResource {
     aclName = registerOutput<String>('aclName');
     arn = registerOutput<String>('arn');
     autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
-    clusterEndpoints = registerOutput<List<Map<String, dynamic>>>('clusterEndpoints');
+    clusterEndpoints = registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterEndpoint>(guardedValue, (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     dataTiering = registerOutput<bool?>('dataTiering');
     description = registerOutput<String?>('description');
     engine = registerOutput<String>('engine');
@@ -345,16 +348,61 @@ class Cluster extends pulumi.CustomResource {
     parameterGroupName = registerOutput<String>('parameterGroupName');
     port = registerOutput<int>('port');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
-    shards = registerOutput<List<Map<String, dynamic>>>('shards');
-    snapshotArns = registerOutput<List<String>?>('snapshotArns');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    shards = registerOutput<List<ClusterShard>>('shards', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterShard>(guardedValue, (value) => ClusterShard.fromMap((value as Map).cast<String, dynamic>())); });
+    snapshotArns = registerOutput<List<String>?>('snapshotArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snapshotName = registerOutput<String?>('snapshotName');
     snapshotRetentionLimit = registerOutput<int>('snapshotRetentionLimit');
     snapshotWindow = registerOutput<String>('snapshotWindow');
     snsTopicArn = registerOutput<String?>('snsTopicArn');
     subnetGroupName = registerOutput<String>('subnetGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tlsEnabled = registerOutput<bool?>('tlsEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:memorydb/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aclName = registerOutput<String>('aclName');
+    arn = registerOutput<String>('arn');
+    autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
+    clusterEndpoints = registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterEndpoint>(guardedValue, (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    dataTiering = registerOutput<bool?>('dataTiering');
+    description = registerOutput<String?>('description');
+    engine = registerOutput<String>('engine');
+    enginePatchVersion = registerOutput<String>('enginePatchVersion');
+    engineVersion = registerOutput<String>('engineVersion');
+    finalSnapshotName = registerOutput<String?>('finalSnapshotName');
+    ipDiscovery = registerOutput<String>('ipDiscovery');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    maintenanceWindow = registerOutput<String>('maintenanceWindow');
+    multiRegionClusterName = registerOutput<String?>('multiRegionClusterName');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    networkType = registerOutput<String>('networkType');
+    nodeType = registerOutput<String>('nodeType');
+    numReplicasPerShard = registerOutput<int?>('numReplicasPerShard');
+    numShards = registerOutput<int?>('numShards');
+    parameterGroupName = registerOutput<String>('parameterGroupName');
+    port = registerOutput<int>('port');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    shards = registerOutput<List<ClusterShard>>('shards', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterShard>(guardedValue, (value) => ClusterShard.fromMap((value as Map).cast<String, dynamic>())); });
+    snapshotArns = registerOutput<List<String>?>('snapshotArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snapshotName = registerOutput<String?>('snapshotName');
+    snapshotRetentionLimit = registerOutput<int>('snapshotRetentionLimit');
+    snapshotWindow = registerOutput<String>('snapshotWindow');
+    snsTopicArn = registerOutput<String?>('snsTopicArn');
+    subnetGroupName = registerOutput<String>('subnetGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tlsEnabled = registerOutput<bool?>('tlsEnabled');
   }
 }

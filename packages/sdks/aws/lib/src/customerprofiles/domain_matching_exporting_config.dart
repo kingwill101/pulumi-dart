@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_matching_exporting_config_s3_exporting.dart';
 
 class DomainMatchingExportingConfig {
-  final pulumi.Input<DomainMatchingExportingConfigS3Exporting>? s3Exporting;
+  final pulumi.Input<DomainMatchingExportingConfigS3Exporting?>? s3Exporting;
 
   /// Creates a new [DomainMatchingExportingConfig].
   /// [s3Exporting] Optional.

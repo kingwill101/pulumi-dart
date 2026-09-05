@@ -126,7 +126,7 @@ import 'snapshot_schedule_state.dart';
 /// $ pulumi import aws:redshift/snapshotSchedule:SnapshotSchedule default tf-redshift-snapshot-schedule
 /// ```
 class SnapshotSchedule extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Redshift Snapshot Schedule.
+  /// ARN of the Redshift Snapshot Schedule.
   late final pulumi.Output<String> arn;
   /// The definition of the snapshot schedule. The definition is made up of schedule expressions, for example `cron(30 12 *)` or `rate(12 hours)`.
   late final pulumi.Output<List<String>> definitions;
@@ -158,17 +158,17 @@ class SnapshotSchedule extends pulumi.CustomResource {
           'aws:redshift/snapshotSchedule:SnapshotSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    definitions = registerOutput<List<String>>('definitions');
+    definitions = registerOutput<List<String>>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     identifier = registerOutput<String>('identifier');
     identifierPrefix = registerOutput<String>('identifierPrefix');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SnapshotSchedule] resource's state with the given [name] and [id].
@@ -176,11 +176,12 @@ class SnapshotSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SnapshotSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -195,13 +196,33 @@ class SnapshotSchedule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    definitions = registerOutput<List<String>>('definitions');
+    definitions = registerOutput<List<String>>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     identifier = registerOutput<String>('identifier');
     identifierPrefix = registerOutput<String>('identifierPrefix');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SnapshotSchedule] resource.
+  SnapshotSchedule.reference(String urn)
+    : super(
+        'aws:redshift/snapshotSchedule:SnapshotSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    definitions = registerOutput<List<String>>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    identifier = registerOutput<String>('identifier');
+    identifierPrefix = registerOutput<String>('identifierPrefix');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -569,7 +569,7 @@ class Pipeline extends pulumi.CustomResource {
   late final pulumi.Output<int> maxUnits;
   /// The minimum pipeline capacity, in Ingestion Compute Units (ICUs).
   late final pulumi.Output<int> minUnits;
-  /// Amazon Resource Name (ARN) of the pipeline.
+  /// ARN of the pipeline.
   late final pulumi.Output<String> pipelineArn;
   /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a .yaml file. If you provide the configuration as a string, each new line must be escaped with `\n`.
   late final pulumi.Output<String> pipelineConfigurationBody;
@@ -600,11 +600,11 @@ class Pipeline extends pulumi.CustomResource {
           'aws:opensearchingest/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineBufferOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>('encryptionAtRestOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ingestEndpointUrls = registerOutput<List<String>>('ingestEndpointUrls');
+    ingestEndpointUrls = registerOutput<List<String>>('ingestEndpointUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logPublishingOptions = registerOutput<PipelineLogPublishingOptions?>('logPublishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineLogPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxUnits = registerOutput<int>('maxUnits');
     minUnits = registerOutput<int>('minUnits');
@@ -613,8 +613,8 @@ class Pipeline extends pulumi.CustomResource {
     pipelineName = registerOutput<String>('pipelineName');
     pipelineRoleArn = registerOutput<String>('pipelineRoleArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<PipelineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcOptions = registerOutput<PipelineVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -624,11 +624,12 @@ class Pipeline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PipelineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pipeline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -644,7 +645,7 @@ class Pipeline extends pulumi.CustomResource {
         ) {
     bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineBufferOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>('encryptionAtRestOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ingestEndpointUrls = registerOutput<List<String>>('ingestEndpointUrls');
+    ingestEndpointUrls = registerOutput<List<String>>('ingestEndpointUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logPublishingOptions = registerOutput<PipelineLogPublishingOptions?>('logPublishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineLogPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxUnits = registerOutput<int>('maxUnits');
     minUnits = registerOutput<int>('minUnits');
@@ -653,8 +654,34 @@ class Pipeline extends pulumi.CustomResource {
     pipelineName = registerOutput<String>('pipelineName');
     pipelineRoleArn = registerOutput<String>('pipelineRoleArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<PipelineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcOptions = registerOutput<PipelineVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Pipeline] resource.
+  Pipeline.reference(String urn)
+    : super(
+        'aws:opensearchingest/pipeline:Pipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineBufferOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>('encryptionAtRestOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingestEndpointUrls = registerOutput<List<String>>('ingestEndpointUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    logPublishingOptions = registerOutput<PipelineLogPublishingOptions?>('logPublishingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineLogPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxUnits = registerOutput<int>('maxUnits');
+    minUnits = registerOutput<int>('minUnits');
+    pipelineArn = registerOutput<String>('pipelineArn');
+    pipelineConfigurationBody = registerOutput<String>('pipelineConfigurationBody');
+    pipelineName = registerOutput<String>('pipelineName');
+    pipelineRoleArn = registerOutput<String>('pipelineRoleArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<PipelineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcOptions = registerOutput<PipelineVpcOptions?>('vpcOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineVpcOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

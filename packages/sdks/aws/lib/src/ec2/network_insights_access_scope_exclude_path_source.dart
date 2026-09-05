@@ -7,11 +7,11 @@ import 'network_insights_access_scope_exclude_path_source_resource_statement.dar
 class NetworkInsightsAccessScopeExcludePathSource {
   /// Packet header statement.
   /// See `packetHeaderStatement` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeExcludePathSourcePacketHeaderStatement>? packetHeaderStatement;
+  final pulumi.Input<NetworkInsightsAccessScopeExcludePathSourcePacketHeaderStatement?>? packetHeaderStatement;
   /// Resource statement.
   /// Exactly one of `resources` or `resourceTypes` must be specified.
   /// See `resourceStatement` below for details.
-  final pulumi.Input<NetworkInsightsAccessScopeExcludePathSourceResourceStatement>? resourceStatement;
+  final pulumi.Input<NetworkInsightsAccessScopeExcludePathSourceResourceStatement?>? resourceStatement;
 
   /// Creates a new [NetworkInsightsAccessScopeExcludePathSource].
   /// [packetHeaderStatement] Packet header statement.

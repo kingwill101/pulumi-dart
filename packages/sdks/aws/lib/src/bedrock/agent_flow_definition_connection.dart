@@ -5,7 +5,7 @@ import 'agent_flow_definition_connection_configuration.dart';
 
 class AgentFlowDefinitionConnection {
   /// Configuration of the connection. See Connection Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionConnectionConfiguration>? configuration;
+  final pulumi.Input<AgentFlowDefinitionConnectionConfiguration?>? configuration;
   /// A name for the connection that you can reference.
   final pulumi.Input<String> name;
   /// The node that the connection starts at.

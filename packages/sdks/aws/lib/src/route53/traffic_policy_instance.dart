@@ -143,7 +143,7 @@ import 'traffic_policy_instance_state.dart';
 /// $ pulumi import aws:route53/trafficPolicyInstance:TrafficPolicyInstance test df579d9a-6396-410e-ac22-e7ad60cf9e7e
 /// ```
 class TrafficPolicyInstance extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the traffic policy instance.
+  /// ARN of the traffic policy instance.
   late final pulumi.Output<String> arn;
   /// ID of the hosted zone that you want Amazon Route 53 to create resource record sets in by using the configuration in a traffic policy.
   late final pulumi.Output<String> hostedZoneId;
@@ -168,7 +168,7 @@ class TrafficPolicyInstance extends pulumi.CustomResource {
           'aws:route53/trafficPolicyInstance:TrafficPolicyInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hostedZoneId = registerOutput<String>('hostedZoneId');
@@ -183,11 +183,12 @@ class TrafficPolicyInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrafficPolicyInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrafficPolicyInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,6 +202,23 @@ class TrafficPolicyInstance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    this.name = registerOutput<String>('name');
+    trafficPolicyId = registerOutput<String>('trafficPolicyId');
+    trafficPolicyVersion = registerOutput<int>('trafficPolicyVersion');
+    ttl = registerOutput<int>('ttl');
+  }
+
+  /// Creates a typed reference to an existing [TrafficPolicyInstance] resource.
+  TrafficPolicyInstance.reference(String urn)
+    : super(
+        'aws:route53/trafficPolicyInstance:TrafficPolicyInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     hostedZoneId = registerOutput<String>('hostedZoneId');
     this.name = registerOutput<String>('name');

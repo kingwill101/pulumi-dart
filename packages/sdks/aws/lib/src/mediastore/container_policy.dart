@@ -20,19 +20,19 @@ import 'container_policy_state.dart';
 /// const exampleContainer = new aws.mediastore.Container("example", {name: "example"});
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         sid: "MediaStoreFullAccess",
-///         effect: "Allow",
-///         principals: [{
-///             type: "AWS",
-///             identifiers: [currentGetCallerIdentity.then(currentGetCallerIdentity => `arn:aws:iam::${currentGetCallerIdentity.accountId}:root`)],
-///         }],
-///         actions: ["mediastore:*"],
-///         resources: [pulumi.all([current, currentGetCallerIdentity, exampleContainer.name]).apply(([current, currentGetCallerIdentity, name]) => `arn:aws:mediastore:${current.region}:${currentGetCallerIdentity.accountId}:container/${name}/*`)],
 ///         conditions: [{
 ///             test: "Bool",
 ///             variable: "aws:SecureTransport",
 ///             values: ["true"],
 ///         }],
+///         principals: [{
+///             type: "AWS",
+///             identifiers: [currentGetCallerIdentity.then(currentGetCallerIdentity => `arn:aws:iam::${currentGetCallerIdentity.accountId}:root`)],
+///         }],
+///         sid: "MediaStoreFullAccess",
+///         effect: "Allow",
+///         actions: ["mediastore:*"],
+///         resources: [pulumi.all([current, currentGetCallerIdentity, exampleContainer.name]).apply(([current, currentGetCallerIdentity, name]) => `arn:aws:mediastore:${current.region}:${currentGetCallerIdentity.accountId}:container/${name}/*`)],
 ///     }],
 /// });
 /// const exampleContainerPolicy = new aws.mediastore.ContainerPolicy("example", {
@@ -48,19 +48,19 @@ import 'container_policy_state.dart';
 /// current_get_caller_identity = aws.get_caller_identity()
 /// example_container = aws.mediastore.Container("example", name="example")
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "sid": "MediaStoreFullAccess",
-///     "effect": "Allow",
-///     "principals": [{
-///         "type": "AWS",
-///         "identifiers": [f"arn:aws:iam::{current_get_caller_identity.account_id}:root"],
-///     }],
-///     "actions": ["mediastore:*"],
-///     "resources": [example_container.name.apply(lambda name: f"arn:aws:mediastore:{current.region}:{current_get_caller_identity.account_id}:container/{name}/*")],
 ///     "conditions": [{
 ///         "test": "Bool",
 ///         "variable": "aws:SecureTransport",
 ///         "values": ["true"],
 ///     }],
+///     "principals": [{
+///         "type": "AWS",
+///         "identifiers": [f"arn:aws:iam::{current_get_caller_identity.account_id}:root"],
+///     }],
+///     "sid": "MediaStoreFullAccess",
+///     "effect": "Allow",
+///     "actions": ["mediastore:*"],
+///     "resources": [example_container.name.apply(lambda name: f"arn:aws:mediastore:{current.region}:{current_get_caller_identity.account_id}:container/{name}/*")],
 /// }])
 /// example_container_policy = aws.mediastore.ContainerPolicy("example",
 ///     container_name=example_container.name,
@@ -89,27 +89,6 @@ import 'container_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "MediaStoreFullAccess",
-///                 Effect = "Allow",
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "AWS",
-///                         Identifiers = new[]
-///                         {
-///                             $"arn:aws:iam::{currentGetCallerIdentity.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:root",
-///                         },
-///                     },
-///                 },
-///                 Actions = new[]
-///                 {
-///                     "mediastore:*",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     $"arn:aws:mediastore:{current.Apply(getRegionResult => getRegionResult.Region)}:{currentGetCallerIdentity.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:container/{exampleContainer.Name}/*",
-///                 },
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
@@ -121,6 +100,27 @@ import 'container_policy_state.dart';
 ///                             "true",
 ///                         },
 ///                     },
+///                 },
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "AWS",
+///                         Identifiers = new[]
+///                         {
+///                             $"arn:aws:iam::{currentGetCallerIdentity.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:root",
+///                         },
+///                     },
+///                 },
+///                 Sid = "MediaStoreFullAccess",
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "mediastore:*",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"arn:aws:mediastore:{current.Apply(getRegionResult => getRegionResult.Region)}:{currentGetCallerIdentity.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:container/{exampleContainer.Name}/*",
 ///                 },
 ///             },
 ///         },
@@ -165,24 +165,6 @@ import 'container_policy_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid:    pulumi.String("MediaStoreFullAccess"),
-/// 					Effect: pulumi.String("Allow"),
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("AWS"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.Sprintf("arn:aws:iam::%v:root", currentGetCallerIdentity.AccountId),
-/// 							},
-/// 						},
-/// 					},
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("mediastore:*"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						exampleContainer.Name.ApplyT(func(name string) (string, error) {
-/// 							return fmt.Sprintf("arn:aws:mediastore:%v:%v:container/%v/*", current.Region, currentGetCallerIdentity.AccountId, name), nil
-/// 						}).(pulumi.StringOutput),
-/// 					},
 /// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
 /// 						&iam.GetPolicyDocumentStatementConditionArgs{
 /// 							Test:     pulumi.String("Bool"),
@@ -191,6 +173,24 @@ import 'container_policy_state.dart';
 /// 								pulumi.String("true"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("AWS"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.Sprintf("arn:aws:iam::%v:root", currentGetCallerIdentity.AccountId),
+/// 							},
+/// 						},
+/// 					},
+/// 					Sid:    pulumi.String("MediaStoreFullAccess"),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("mediastore:*"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleContainer.Name.ApplyT(func(name string) (string, error) {
+/// 							return fmt.Sprintf("arn:aws:mediastore:%v:%v:container/%v/*", current.Region, currentGetCallerIdentity.AccountId, name), nil
+/// 						}).(pulumi.StringOutput),
 /// 					},
 /// 				},
 /// 			},
@@ -221,19 +221,19 @@ import 'container_policy_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "MediaStoreFullAccess"
-///     effect = "Allow"
-///     principals {
-///       type        = "AWS"
-///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:root"]
-///     }
-///     actions   = ["mediastore:*"]
-///     resources = ["arn:aws:mediastore:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:container/${aws_mediastore_container.example.name}/*"]
 ///     conditions {
 ///       test     = "Bool"
 ///       variable = "aws:SecureTransport"
 ///       values   = ["true"]
 ///     }
+///     principals {
+///       type        = "AWS"
+///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:root"]
+///     }
+///     sid       = "MediaStoreFullAccess"
+///     effect    = "Allow"
+///     actions   = ["mediastore:*"]
+///     resources = ["arn:aws:mediastore:${data.aws_getregion.current.region}:${data.aws_getcalleridentity.currentGetCallerIdentity.account_id}:container/${aws_mediastore_container.example.name}/*"]
 ///   }
 /// }
 ///
@@ -259,8 +259,8 @@ import 'container_policy_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.mediastore.ContainerPolicy;
 /// import com.pulumi.aws.mediastore.ContainerPolicyArgs;
 /// import java.util.ArrayList;
@@ -288,19 +288,19 @@ import 'container_policy_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("MediaStoreFullAccess")
-///                 .effect("Allow")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("AWS")
-///                     .identifiers(String.format("arn:aws:iam::%s:root", currentGetCallerIdentity.accountId()))
-///                     .build())
-///                 .actions("mediastore:*")
-///                 .resources(exampleContainer.name().applyValue(_name -> String.format("arn:aws:mediastore:%s:%s:container/%s/*", current.region(),currentGetCallerIdentity.accountId(),_name)))
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("Bool")
 ///                     .variable("aws:SecureTransport")
 ///                     .values("true")
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("AWS")
+///                     .identifiers(String.format("arn:aws:iam::%s:root", currentGetCallerIdentity.accountId()))
+///                     .build())
+///                 .sid("MediaStoreFullAccess")
+///                 .effect("Allow")
+///                 .actions("mediastore:*")
+///                 .resources(exampleContainer.name().applyValue(_name -> String.format("arn:aws:mediastore:%s:%s:container/%s/*", current.region(),currentGetCallerIdentity.accountId(),_name)))
 ///                 .build())
 ///             .build());
 ///
@@ -339,21 +339,21 @@ import 'container_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: MediaStoreFullAccess
-///             effect: Allow
-///             principals:
-///               - type: AWS
-///                 identifiers:
-///                   - arn:aws:iam::${currentGetCallerIdentity.accountId}:root
-///             actions:
-///               - mediastore:*
-///             resources:
-///               - arn:aws:mediastore:${current.region}:${currentGetCallerIdentity.accountId}:container/${exampleContainer.name}/*
-///             conditions:
+///           - conditions:
 ///               - test: Bool
 ///                 variable: aws:SecureTransport
 ///                 values:
 ///                   - 'true'
+///             principals:
+///               - type: AWS
+///                 identifiers:
+///                   - arn:aws:iam::${currentGetCallerIdentity.accountId}:root
+///             sid: MediaStoreFullAccess
+///             effect: Allow
+///             actions:
+///               - mediastore:*
+///             resources:
+///               - arn:aws:mediastore:${current.region}:${currentGetCallerIdentity.accountId}:container/${exampleContainer.name}/*
 /// ```
 ///
 ///
@@ -384,7 +384,7 @@ class ContainerPolicy extends pulumi.CustomResource {
           'aws:mediastore/containerPolicy:ContainerPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     containerName = registerOutput<String>('containerName');
     policy = registerOutput<String>('policy');
@@ -396,11 +396,12 @@ class ContainerPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContainerPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -414,6 +415,20 @@ class ContainerPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    containerName = registerOutput<String>('containerName');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ContainerPolicy] resource.
+  ContainerPolicy.reference(String urn)
+    : super(
+        'aws:mediastore/containerPolicy:ContainerPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     containerName = registerOutput<String>('containerName');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

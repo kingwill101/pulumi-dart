@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering BrowserSettingsAssociation resources.
 class BrowserSettingsAssociationState {
   /// ARN of the browser settings to associate with the portal. Forces replacement if changed.
-  final pulumi.Input<String>? browserSettingsArn;
+  final pulumi.Input<String?>? browserSettingsArn;
   /// ARN of the portal to associate with the browser settings. Forces replacement if changed.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? portalArn;
+  final pulumi.Input<String?>? portalArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BrowserSettingsAssociationState].
   /// [browserSettingsArn] ARN of the browser settings to associate with the portal. Forces replacement if changed.

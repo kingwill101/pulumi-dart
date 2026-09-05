@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'addon_args.dart';
 import 'addon_namespace_config.dart';
+import 'addon_pod_identity_association.dart';
 import 'addon_state.dart';
 
 /// Manages an EKS add-on.
@@ -502,7 +503,7 @@ class Addon extends pulumi.CustomResource {
   /// The version of the EKS add-on. The version must
   /// match one of the versions returned by [describe-addon-versions](https://docs.aws.amazon.com/cli/latest/reference/eks/describe-addon-versions.html).
   late final pulumi.Output<String> addonVersion;
-  /// Amazon Resource Name (ARN) of the EKS add-on.
+  /// ARN of the EKS add-on.
   late final pulumi.Output<String> arn;
   /// Name of the EKS Cluster.
   ///
@@ -517,7 +518,7 @@ class Addon extends pulumi.CustomResource {
   /// Namespace configuration for the add-on. See `namespaceConfig` below for details.
   late final pulumi.Output<AddonNamespaceConfig> namespaceConfig;
   /// Configuration block with EKS Pod Identity association settings. See `podIdentityAssociation` below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> podIdentityAssociations;
+  late final pulumi.Output<List<AddonPodIdentityAssociation>?> podIdentityAssociations;
   /// Indicates if you want to preserve the created resources when deleting the EKS add-on.
   late final pulumi.Output<bool?> preserve;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -526,7 +527,7 @@ class Addon extends pulumi.CustomResource {
   late final pulumi.Output<String?> resolveConflictsOnCreate;
   /// How to resolve field value conflicts for an Amazon EKS add-on if you've changed a value from the Amazon EKS default value. Valid values are `NONE`, `OVERWRITE`, and `PRESERVE`. For more details see the [UpdateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateAddon.html) API Documentation.
   late final pulumi.Output<String?> resolveConflictsOnUpdate;
-  /// The Amazon Resource Name (ARN) of an
+  /// ARN of an
   /// existing IAM role to bind to the add-on's service account. The role must be
   /// assigned the IAM permissions required by the add-on. If you don't specify
   /// an existing IAM role, then the add-on uses the permissions assigned to the node
@@ -555,7 +556,7 @@ class Addon extends pulumi.CustomResource {
           'aws:eks/addon:Addon',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addonName = registerOutput<String>('addonName');
     addonVersion = registerOutput<String>('addonVersion');
@@ -565,14 +566,14 @@ class Addon extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     modifiedAt = registerOutput<String>('modifiedAt');
     namespaceConfig = registerOutput<AddonNamespaceConfig>('namespaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonNamespaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    podIdentityAssociations = registerOutput<List<Map<String, dynamic>>?>('podIdentityAssociations');
+    podIdentityAssociations = registerOutput<List<AddonPodIdentityAssociation>?>('podIdentityAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AddonPodIdentityAssociation>(guardedValue, (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>())); });
     preserve = registerOutput<bool?>('preserve');
     region = registerOutput<String>('region');
     resolveConflictsOnCreate = registerOutput<String?>('resolveConflictsOnCreate');
     resolveConflictsOnUpdate = registerOutput<String?>('resolveConflictsOnUpdate');
     serviceAccountRoleArn = registerOutput<String?>('serviceAccountRoleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Addon] resource's state with the given [name] and [id].
@@ -580,11 +581,12 @@ class Addon extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AddonState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Addon._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -606,13 +608,40 @@ class Addon extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     modifiedAt = registerOutput<String>('modifiedAt');
     namespaceConfig = registerOutput<AddonNamespaceConfig>('namespaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonNamespaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    podIdentityAssociations = registerOutput<List<Map<String, dynamic>>?>('podIdentityAssociations');
+    podIdentityAssociations = registerOutput<List<AddonPodIdentityAssociation>?>('podIdentityAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AddonPodIdentityAssociation>(guardedValue, (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>())); });
     preserve = registerOutput<bool?>('preserve');
     region = registerOutput<String>('region');
     resolveConflictsOnCreate = registerOutput<String?>('resolveConflictsOnCreate');
     resolveConflictsOnUpdate = registerOutput<String?>('resolveConflictsOnUpdate');
     serviceAccountRoleArn = registerOutput<String?>('serviceAccountRoleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Addon] resource.
+  Addon.reference(String urn)
+    : super(
+        'aws:eks/addon:Addon',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addonName = registerOutput<String>('addonName');
+    addonVersion = registerOutput<String>('addonVersion');
+    arn = registerOutput<String>('arn');
+    clusterName = registerOutput<String>('clusterName');
+    configurationValues = registerOutput<String>('configurationValues');
+    createdAt = registerOutput<String>('createdAt');
+    modifiedAt = registerOutput<String>('modifiedAt');
+    namespaceConfig = registerOutput<AddonNamespaceConfig>('namespaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonNamespaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    podIdentityAssociations = registerOutput<List<AddonPodIdentityAssociation>?>('podIdentityAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AddonPodIdentityAssociation>(guardedValue, (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>())); });
+    preserve = registerOutput<bool?>('preserve');
+    region = registerOutput<String>('region');
+    resolveConflictsOnCreate = registerOutput<String?>('resolveConflictsOnCreate');
+    resolveConflictsOnUpdate = registerOutput<String?>('resolveConflictsOnUpdate');
+    serviceAccountRoleArn = registerOutput<String?>('serviceAccountRoleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

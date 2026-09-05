@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount {
   /// The maximum number of network interfaces. To specify no maximum limit, omit this parameter.
-  final pulumi.Input<int>? max;
+  final pulumi.Input<int?>? max;
   /// The minimum number of network interfaces. To specify no minimum limit, omit this parameter.
-  final pulumi.Input<int>? min;
+  final pulumi.Input<int?>? min;
 
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount].
   /// [max] The maximum number of network interfaces. To specify no maximum limit, omit this parameter.
@@ -25,8 +25,8 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount
 
   factory FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount.fromMap(Map<String, dynamic> map) {
     return FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount(
-      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'virtual_gateway_spec_logging_access_log_file_format_json.dart';
 
 class VirtualGatewaySpecLoggingAccessLogFileFormat {
   /// Logging format for JSON. See `json` Block for details.
-  final pulumi.Input<List<VirtualGatewaySpecLoggingAccessLogFileFormatJson>>? jsons;
+  final pulumi.Input<List<VirtualGatewaySpecLoggingAccessLogFileFormatJson>?>? jsons;
   /// Logging format for text. Must be between 1 and 1000 characters in length.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [VirtualGatewaySpecLoggingAccessLogFileFormat].
   /// [jsons] Logging format for JSON. See `json` Block for details.

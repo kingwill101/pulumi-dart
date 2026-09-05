@@ -12,9 +12,9 @@ class TableItemArgs {
   /// JSON representation of a map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
   final pulumi.Input<String> item;
   /// Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-  final pulumi.Input<String>? rangeKey;
+  final pulumi.Input<String?>? rangeKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name or ARN of the table to contain the item.
   ///
   /// &gt; **Note:** Names included in `item` are represented internally with everything but letters removed. There is the possibility of collisions if two names, once filtered, are the same. For example, the names `your-name-here` and `yournamehere` will overlap and cause an error.

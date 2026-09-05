@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'view_args.dart';
 import 'view_filters.dart';
+import 'view_included_property.dart';
 import 'view_state.dart';
 
 /// Provides a resource to manage a Resource Explorer view.
@@ -14,13 +15,13 @@ import 'view_state.dart';
 ///
 /// const example = new aws.resourceexplorer.Index("example", {type: "LOCAL"});
 /// const exampleView = new aws.resourceexplorer.View("example", {
-///     name: "exampleview",
 ///     filters: {
 ///         filterString: "resourcetype:ec2:instance",
 ///     },
 ///     includedProperties: [{
 ///         name: "tags",
 ///     }],
+///     name: "exampleview",
 /// }, {
 ///     dependsOn: [example],
 /// });
@@ -31,13 +32,13 @@ import 'view_state.dart';
 ///
 /// example = aws.resourceexplorer.Index("example", type="LOCAL")
 /// example_view = aws.resourceexplorer.View("example",
-///     name="exampleview",
 ///     filters={
 ///         "filter_string": "resourcetype:ec2:instance",
 ///     },
 ///     included_properties=[{
 ///         "name": "tags",
 ///     }],
+///     name="exampleview",
 ///     opts = pulumi.ResourceOptions(depends_on=[example]))
 /// ```
 /// ```csharp
@@ -55,7 +56,6 @@ import 'view_state.dart';
 ///
 ///     var exampleView = new Aws.ResourceExplorer.View("example", new()
 ///     {
-///         Name = "exampleview",
 ///         Filters = new Aws.ResourceExplorer.Inputs.ViewFiltersArgs
 ///         {
 ///             FilterString = "resourcetype:ec2:instance",
@@ -67,6 +67,7 @@ import 'view_state.dart';
 ///                 Name = "tags",
 ///             },
 ///         },
+///         Name = "exampleview",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -94,7 +95,6 @@ import 'view_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = resourceexplorer.NewView(ctx, "example", &resourceexplorer.ViewArgs{
-/// 			Name: pulumi.String("exampleview"),
 /// 			Filters: &resourceexplorer.ViewFiltersArgs{
 /// 				FilterString: pulumi.String("resourcetype:ec2:instance"),
 /// 			},
@@ -103,6 +103,7 @@ import 'view_state.dart';
 /// 					Name: pulumi.String("tags"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("exampleview"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			example,
 /// 		}))
@@ -127,13 +128,13 @@ import 'view_state.dart';
 /// }
 /// resource "aws_resourceexplorer_view" "example" {
 ///   depends_on = [aws_resourceexplorer_index.example]
-///   name       = "exampleview"
 ///   filters = {
 ///     filter_string = "resourcetype:ec2:instance"
 ///   }
 ///   included_properties {
 ///     name = "tags"
 ///   }
+///   name = "exampleview"
 /// }
 /// ```
 /// ```java
@@ -167,13 +168,13 @@ import 'view_state.dart';
 ///             .build());
 ///
 ///         var exampleView = new View("exampleView", ViewArgs.builder()
-///             .name("exampleview")
 ///             .filters(ViewFiltersArgs.builder()
 ///                 .filterString("resourcetype:ec2:instance")
 ///                 .build())
 ///             .includedProperties(ViewIncludedPropertyArgs.builder()
 ///                 .name("tags")
 ///                 .build())
+///             .name("exampleview")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(example)
 ///                 .build());
@@ -191,11 +192,11 @@ import 'view_state.dart';
 ///     type: aws:resourceexplorer:View
 ///     name: example
 ///     properties:
-///       name: exampleview
 ///       filters:
 ///         filterString: resourcetype:ec2:instance
 ///       includedProperties:
 ///         - name: tags
+///       name: exampleview
 ///     options:
 ///       dependsOn:
 ///         - ${example}
@@ -208,7 +209,7 @@ import 'view_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Resource Explorer view.
+/// - `arn` (String) ARN of the Resource Explorer view.
 ///
 ///
 /// Using `pulumi import`, import Resource Explorer views using the `arn`. For example:
@@ -217,14 +218,14 @@ import 'view_state.dart';
 /// $ pulumi import aws:resourceexplorer/view:View example arn:aws:resource-explorer-2:us-west-2:123456789012:view/exampleview/e0914f6c-6c27-4b47-b5d4-6b28381a2421
 /// ```
 class View extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Resource Explorer view.
+  /// ARN of the Resource Explorer view.
   late final pulumi.Output<String> arn;
   /// Specifies whether the view is the [_default view_](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-views-about.html#manage-views-about-default) for the AWS Region. Default: `false`.
   late final pulumi.Output<bool> defaultView;
   /// Specifies which resources are included in the results of queries made using this view. See Filters below for more details.
   late final pulumi.Output<ViewFilters?> filters;
   /// Optional fields to be included in search results from this view. See Included Properties below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> includedProperties;
+  late final pulumi.Output<List<ViewIncludedProperty>?> includedProperties;
   /// The name of the view. The name must be no more than 64 characters long, and can include letters, digits, and the dash (-) character. The name must be unique within its AWS Region.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -248,17 +249,17 @@ class View extends pulumi.CustomResource {
           'aws:resourceexplorer/view:View',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultView = registerOutput<bool>('defaultView');
     filters = registerOutput<ViewFilters?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ViewFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    includedProperties = registerOutput<List<Map<String, dynamic>>?>('includedProperties');
+    includedProperties = registerOutput<List<ViewIncludedProperty>?>('includedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ViewIncludedProperty>(guardedValue, (value) => ViewIncludedProperty.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     scope = registerOutput<String>('scope');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [View] resource's state with the given [name] and [id].
@@ -266,11 +267,12 @@ class View extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ViewState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return View._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,11 +289,31 @@ class View extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     defaultView = registerOutput<bool>('defaultView');
     filters = registerOutput<ViewFilters?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ViewFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    includedProperties = registerOutput<List<Map<String, dynamic>>?>('includedProperties');
+    includedProperties = registerOutput<List<ViewIncludedProperty>?>('includedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ViewIncludedProperty>(guardedValue, (value) => ViewIncludedProperty.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     scope = registerOutput<String>('scope');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [View] resource.
+  View.reference(String urn)
+    : super(
+        'aws:resourceexplorer/view:View',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    defaultView = registerOutput<bool>('defaultView');
+    filters = registerOutput<ViewFilters?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ViewFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includedProperties = registerOutput<List<ViewIncludedProperty>?>('includedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ViewIncludedProperty>(guardedValue, (value) => ViewIncludedProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    scope = registerOutput<String>('scope');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

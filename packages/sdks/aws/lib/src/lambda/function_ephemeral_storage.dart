@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionEphemeralStorage {
   /// Amount of ephemeral storage (`/tmp`) in MB. Valid between 512 MB and 10,240 MB (10 GB).
-  final pulumi.Input<int>? size;
+  final pulumi.Input<int?>? size;
 
   /// Creates a new [FunctionEphemeralStorage].
   /// [size] Amount of ephemeral storage (`/tmp`) in MB. Valid between 512 MB and 10,240 MB (10 GB).
@@ -20,7 +20,7 @@ class FunctionEphemeralStorage {
 
   factory FunctionEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return FunctionEphemeralStorage(
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

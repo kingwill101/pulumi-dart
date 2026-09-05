@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformOutput {
   /// MIME type of the transform output.
-  final pulumi.Input<String>? accept;
+  final pulumi.Input<String?>? accept;
   /// Method used to assemble the transform output. Allowed values are: `None` and `Line`.
-  final pulumi.Input<String>? assembleWith;
+  final pulumi.Input<String?>? assembleWith;
   /// KMS key ID used to encrypt transform output.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// S3 or HTTPS URI where transform output is stored.
   final pulumi.Input<String> s3OutputPath;
 

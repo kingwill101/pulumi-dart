@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudwatch_get_log_groups_get_log_groups_args_doc}
 class GetLogGroupsArgs {
   /// Group prefix of the Cloudwatch log groups to list
-  final pulumi.Input<String>? logGroupNamePrefix;
+  final pulumi.Input<String?>? logGroupNamePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetLogGroupsArgs].
   /// [logGroupNamePrefix] Group prefix of the Cloudwatch log groups to list

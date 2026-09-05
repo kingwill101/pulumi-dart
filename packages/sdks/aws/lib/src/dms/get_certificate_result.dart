@@ -3,93 +3,93 @@
 
 /// Result data returned by getCertificate.
 class GetCertificateResult {
-  /// The Amazon Resource Name (ARN) for the certificate.
-  final String certificateArn;
+  /// ARN for the certificate.
+  final String? certificateArn;
   /// The date that the certificate was created.
-  final String certificateCreationDate;
-  final String certificateId;
+  final String? certificateCreationDate;
+  final String? certificateId;
   /// The owner of the certificate.
-  final String certificateOwner;
+  final String? certificateOwner;
   /// The contents of a .pem file, which contains an X.509 certificate.
-  final String certificatePem;
+  final String? certificatePem;
   /// The owner of the certificate.
-  final String certificateWallet;
+  final String? certificateWallet;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The key length of the cryptographic algorithm being used.
-  final int keyLength;
-  final String region;
+  final int? keyLength;
+  final String? region;
   /// The algorithm for the certificate.
-  final String signingAlgorithm;
-  final Map<String, String> tags;
+  final String? signingAlgorithm;
+  final Map<String, String>? tags;
   /// The beginning date that the certificate is valid.
-  final String validFromDate;
+  final String? validFromDate;
   /// The final date that the certificate is valid.
-  final String validToDate;
+  final String? validToDate;
 
   /// Creates a new [GetCertificateResult].
-  /// [certificateArn] The Amazon Resource Name (ARN) for the certificate.
+  /// [certificateArn] ARN for the certificate.
   /// [certificateCreationDate] The date that the certificate was created.
-  /// [certificateId] Required.
+  /// [certificateId] Optional.
   /// [certificateOwner] The owner of the certificate.
   /// [certificatePem] The contents of a .pem file, which contains an X.509 certificate.
   /// [certificateWallet] The owner of the certificate.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyLength] The key length of the cryptographic algorithm being used.
-  /// [region] Required.
+  /// [region] Optional.
   /// [signingAlgorithm] The algorithm for the certificate.
-  /// [tags] Required.
+  /// [tags] Optional.
   /// [validFromDate] The beginning date that the certificate is valid.
   /// [validToDate] The final date that the certificate is valid.
   const GetCertificateResult({
-    required this.certificateArn,
-    required this.certificateCreationDate,
-    required this.certificateId,
-    required this.certificateOwner,
-    required this.certificatePem,
-    required this.certificateWallet,
-    required this.id,
-    required this.keyLength,
-    required this.region,
-    required this.signingAlgorithm,
-    required this.tags,
-    required this.validFromDate,
-    required this.validToDate,
+    this.certificateArn,
+    this.certificateCreationDate,
+    this.certificateId,
+    this.certificateOwner,
+    this.certificatePem,
+    this.certificateWallet,
+    this.id,
+    this.keyLength,
+    this.region,
+    this.signingAlgorithm,
+    this.tags,
+    this.validFromDate,
+    this.validToDate,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateArn': certificateArn,
-      'certificateCreationDate': certificateCreationDate,
-      'certificateId': certificateId,
-      'certificateOwner': certificateOwner,
-      'certificatePem': certificatePem,
-      'certificateWallet': certificateWallet,
-      'id': id,
-      'keyLength': keyLength,
-      'region': region,
-      'signingAlgorithm': signingAlgorithm,
-      'tags': tags,
-      'validFromDate': validFromDate,
-      'validToDate': validToDate,
+      'certificateArn': ?certificateArn,
+      'certificateCreationDate': ?certificateCreationDate,
+      'certificateId': ?certificateId,
+      'certificateOwner': ?certificateOwner,
+      'certificatePem': ?certificatePem,
+      'certificateWallet': ?certificateWallet,
+      'id': ?id,
+      'keyLength': ?keyLength,
+      'region': ?region,
+      'signingAlgorithm': ?signingAlgorithm,
+      'tags': ?tags,
+      'validFromDate': ?validFromDate,
+      'validToDate': ?validToDate,
     };
   }
 
   factory GetCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetCertificateResult(
-      certificateArn: map['certificateArn'] as String,
-      certificateCreationDate: map['certificateCreationDate'] as String,
-      certificateId: map['certificateId'] as String,
-      certificateOwner: map['certificateOwner'] as String,
-      certificatePem: map['certificatePem'] as String,
-      certificateWallet: map['certificateWallet'] as String,
-      id: map['id'] as String,
-      keyLength: map['keyLength'] as int,
-      region: map['region'] as String,
-      signingAlgorithm: map['signingAlgorithm'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      validFromDate: map['validFromDate'] as String,
-      validToDate: map['validToDate'] as String,
+      certificateArn: (() { final guardedValue = map['certificateArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificateCreationDate: (() { final guardedValue = map['certificateCreationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificateOwner: (() { final guardedValue = map['certificateOwner']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificatePem: (() { final guardedValue = map['certificatePem']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificateWallet: (() { final guardedValue = map['certificateWallet']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keyLength: (() { final guardedValue = map['keyLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      signingAlgorithm: (() { final guardedValue = map['signingAlgorithm']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      validFromDate: (() { final guardedValue = map['validFromDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validToDate: (() { final guardedValue = map['validToDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

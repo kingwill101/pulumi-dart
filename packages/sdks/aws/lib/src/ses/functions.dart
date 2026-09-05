@@ -114,6 +114,17 @@ Future<GetActiveReceiptRuleSetResult> getActiveReceiptRuleSet(
   return GetActiveReceiptRuleSetResult.fromMap(result);
 }
 
+pulumi.Output<GetActiveReceiptRuleSetResult> getActiveReceiptRuleSetOutput(
+  GetActiveReceiptRuleSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ses/getActiveReceiptRuleSet:getActiveReceiptRuleSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActiveReceiptRuleSetResult.fromMap);
+}
+
 /// Retrieve the SES domain identity
 ///
 /// ## Example Usage
@@ -232,6 +243,17 @@ Future<GetDomainIdentityResult> getDomainIdentity(
   return GetDomainIdentityResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainIdentityResult> getDomainIdentityOutput(
+  GetDomainIdentityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ses/getDomainIdentity:getDomainIdentity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainIdentityResult.fromMap);
+}
+
 /// Retrieve the active SES email identity
 ///
 /// ## Example Usage
@@ -348,4 +370,15 @@ Future<GetEmailIdentityResult> getEmailIdentity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEmailIdentityResult.fromMap(result);
+}
+
+pulumi.Output<GetEmailIdentityResult> getEmailIdentityOutput(
+  GetEmailIdentityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ses/getEmailIdentity:getEmailIdentity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmailIdentityResult.fromMap);
 }

@@ -15,7 +15,7 @@ import 'channel_vpc.dart';
 /// {@macro pulumi_medialive_channel_channel_args_doc}
 class ChannelArgs {
   /// Specification of CDI inputs for this channel. See CDI Input Specification for more details.
-  final pulumi.Input<ChannelCdiInputSpecification>? cdiInputSpecification;
+  final pulumi.Input<ChannelCdiInputSpecification?>? cdiInputSpecification;
   /// Concise argument description.
   final pulumi.Input<String> channelClass;
   /// Destinations for channel. See Destinations for more details.
@@ -27,23 +27,23 @@ class ChannelArgs {
   /// Specification of network and file inputs for the channel.
   final pulumi.Input<ChannelInputSpecification> inputSpecification;
   /// The log level to write to Cloudwatch logs.
-  final pulumi.Input<String>? logLevel;
+  final pulumi.Input<String?>? logLevel;
   /// Maintenance settings for this channel. See Maintenance for more details.
-  final pulumi.Input<ChannelMaintenance>? maintenance;
+  final pulumi.Input<ChannelMaintenance?>? maintenance;
   /// Name of the Channel.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Concise argument description.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// Whether to start/stop channel. Default: `false`
-  final pulumi.Input<bool>? startChannel;
+  final pulumi.Input<bool?>? startChannel;
   /// A map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Settings for the VPC outputs. See VPC for more details.
-  final pulumi.Input<ChannelVpc>? vpc;
+  final pulumi.Input<ChannelVpc?>? vpc;
 
   /// Creates a new [ChannelArgs].
   /// [cdiInputSpecification] Specification of CDI inputs for this channel. See CDI Input Specification for more details.

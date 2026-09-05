@@ -11,13 +11,13 @@ import 'get_tags_time_period.dart';
 /// {@macro pulumi_costexplorer_get_tags_get_tags_args_doc}
 class GetTagsArgs {
   /// Configuration block for the `Expression` object used to categorize costs. See `filter` block below for details.
-  final pulumi.Input<GetTagsFilter>? filter;
+  final pulumi.Input<GetTagsFilter?>? filter;
   /// Value that you want to search for.
-  final pulumi.Input<String>? searchString;
+  final pulumi.Input<String?>? searchString;
   /// Configuration block for the value by which you want to sort the data. `sortBy` block below for details.
-  final pulumi.Input<List<GetTagsSortBy>>? sortBies;
+  final pulumi.Input<List<GetTagsSortBy>?>? sortBies;
   /// Key of the tag that you want to return values for.
-  final pulumi.Input<String>? tagKey;
+  final pulumi.Input<String?>? tagKey;
   /// Configuration block for the start and end dates for retrieving the dimension values. See `timePeriod` block below for details.
   final pulumi.Input<GetTagsTimePeriod> timePeriod;
 

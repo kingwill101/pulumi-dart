@@ -186,11 +186,11 @@ import 'voice_connector_streaming_state.dart';
 /// });
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["mediapipelines.chime.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -203,32 +203,32 @@ import 'voice_connector_streaming_state.dart';
 ///     shardCount: 2,
 /// });
 /// const example = new aws.chimesdkmediapipelines.MediaInsightsPipelineConfiguration("example", {
-///     name: "ExampleConfig",
-///     resourceAccessRoleArn: exampleRole.arn,
 ///     elements: [
 ///         {
-///             type: "AmazonTranscribeCallAnalyticsProcessor",
 ///             amazonTranscribeCallAnalyticsProcessorConfiguration: {
 ///                 languageCode: "en-US",
 ///             },
+///             type: "AmazonTranscribeCallAnalyticsProcessor",
 ///         },
 ///         {
-///             type: "KinesisDataStreamSink",
 ///             kinesisDataStreamSinkConfiguration: {
 ///                 insightsTarget: exampleStream.arn,
 ///             },
+///             type: "KinesisDataStreamSink",
 ///         },
 ///     ],
+///     name: "ExampleConfig",
+///     resourceAccessRoleArn: exampleRole.arn,
 /// });
 /// const defaultVoiceConnectorStreaming = new aws.chime.VoiceConnectorStreaming("default", {
-///     disabled: false,
-///     voiceConnectorId: _default.id,
-///     dataRetention: 7,
-///     streamingNotificationTargets: ["SQS"],
 ///     mediaInsightsConfiguration: {
 ///         disabled: false,
 ///         configurationArn: example.arn,
 ///     },
+///     disabled: false,
+///     voiceConnectorId: _default.id,
+///     dataRetention: 7,
+///     streamingNotificationTargets: ["SQS"],
 /// });
 /// ```
 /// ```python
@@ -239,11 +239,11 @@ import 'voice_connector_streaming_state.dart';
 ///     name="vc-name-test",
 ///     require_encryption=True)
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["mediapipelines.chime.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
@@ -253,31 +253,31 @@ import 'voice_connector_streaming_state.dart';
 ///     name="ExampleStream",
 ///     shard_count=2)
 /// example = aws.chimesdkmediapipelines.MediaInsightsPipelineConfiguration("example",
-///     name="ExampleConfig",
-///     resource_access_role_arn=example_role.arn,
 ///     elements=[
 ///         {
-///             "type": "AmazonTranscribeCallAnalyticsProcessor",
 ///             "amazon_transcribe_call_analytics_processor_configuration": {
 ///                 "language_code": "en-US",
 ///             },
+///             "type": "AmazonTranscribeCallAnalyticsProcessor",
 ///         },
 ///         {
-///             "type": "KinesisDataStreamSink",
 ///             "kinesis_data_stream_sink_configuration": {
 ///                 "insights_target": example_stream.arn,
 ///             },
+///             "type": "KinesisDataStreamSink",
 ///         },
-///     ])
+///     ],
+///     name="ExampleConfig",
+///     resource_access_role_arn=example_role.arn)
 /// default_voice_connector_streaming = aws.chime.VoiceConnectorStreaming("default",
-///     disabled=False,
-///     voice_connector_id=default.id,
-///     data_retention=7,
-///     streaming_notification_targets=["SQS"],
 ///     media_insights_configuration={
 ///         "disabled": False,
 ///         "configuration_arn": example.arn,
-///     })
+///     },
+///     disabled=False,
+///     voice_connector_id=default.id,
+///     data_retention=7,
+///     streaming_notification_targets=["SQS"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -299,7 +299,6 @@ import 'voice_connector_streaming_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -311,6 +310,7 @@ import 'voice_connector_streaming_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -333,42 +333,42 @@ import 'voice_connector_streaming_state.dart';
 ///
 ///     var example = new Aws.ChimeSDKMediaPipelines.MediaInsightsPipelineConfiguration("example", new()
 ///     {
-///         Name = "ExampleConfig",
-///         ResourceAccessRoleArn = exampleRole.Arn,
 ///         Elements = new[]
 ///         {
 ///             new Aws.ChimeSDKMediaPipelines.Inputs.MediaInsightsPipelineConfigurationElementArgs
 ///             {
-///                 Type = "AmazonTranscribeCallAnalyticsProcessor",
 ///                 AmazonTranscribeCallAnalyticsProcessorConfiguration = new Aws.ChimeSDKMediaPipelines.Inputs.MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationArgs
 ///                 {
 ///                     LanguageCode = "en-US",
 ///                 },
+///                 Type = "AmazonTranscribeCallAnalyticsProcessor",
 ///             },
 ///             new Aws.ChimeSDKMediaPipelines.Inputs.MediaInsightsPipelineConfigurationElementArgs
 ///             {
-///                 Type = "KinesisDataStreamSink",
 ///                 KinesisDataStreamSinkConfiguration = new Aws.ChimeSDKMediaPipelines.Inputs.MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs
 ///                 {
 ///                     InsightsTarget = exampleStream.Arn,
 ///                 },
+///                 Type = "KinesisDataStreamSink",
 ///             },
 ///         },
+///         Name = "ExampleConfig",
+///         ResourceAccessRoleArn = exampleRole.Arn,
 ///     });
 ///
 ///     var defaultVoiceConnectorStreaming = new Aws.Chime.VoiceConnectorStreaming("default", new()
 ///     {
+///         MediaInsightsConfiguration = new Aws.Chime.Inputs.VoiceConnectorStreamingMediaInsightsConfigurationArgs
+///         {
+///             Disabled = false,
+///             ConfigurationArn = example.Arn,
+///         },
 ///         Disabled = false,
 ///         VoiceConnectorId = @default.Id,
 ///         DataRetention = 7,
 ///         StreamingNotificationTargets = new[]
 ///         {
 ///             "SQS",
-///         },
-///         MediaInsightsConfiguration = new Aws.Chime.Inputs.VoiceConnectorStreamingMediaInsightsConfigurationArgs
-///         {
-///             Disabled = false,
-///             ConfigurationArn = example.Arn,
 ///         },
 ///     });
 ///
@@ -397,7 +397,6 @@ import 'voice_connector_streaming_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -406,6 +405,7 @@ import 'voice_connector_streaming_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -430,36 +430,36 @@ import 'voice_connector_streaming_state.dart';
 /// 			return err
 /// 		}
 /// 		example, err := chimesdkmediapipelines.NewMediaInsightsPipelineConfiguration(ctx, "example", &chimesdkmediapipelines.MediaInsightsPipelineConfigurationArgs{
-/// 			Name:                  pulumi.String("ExampleConfig"),
-/// 			ResourceAccessRoleArn: exampleRole.Arn,
 /// 			Elements: chimesdkmediapipelines.MediaInsightsPipelineConfigurationElementArray{
 /// 				&chimesdkmediapipelines.MediaInsightsPipelineConfigurationElementArgs{
-/// 					Type: pulumi.String("AmazonTranscribeCallAnalyticsProcessor"),
 /// 					AmazonTranscribeCallAnalyticsProcessorConfiguration: &chimesdkmediapipelines.MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationArgs{
 /// 						LanguageCode: pulumi.String("en-US"),
 /// 					},
+/// 					Type: pulumi.String("AmazonTranscribeCallAnalyticsProcessor"),
 /// 				},
 /// 				&chimesdkmediapipelines.MediaInsightsPipelineConfigurationElementArgs{
-/// 					Type: pulumi.String("KinesisDataStreamSink"),
 /// 					KinesisDataStreamSinkConfiguration: &chimesdkmediapipelines.MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs{
 /// 						InsightsTarget: exampleStream.Arn,
 /// 					},
+/// 					Type: pulumi.String("KinesisDataStreamSink"),
 /// 				},
 /// 			},
+/// 			Name:                  pulumi.String("ExampleConfig"),
+/// 			ResourceAccessRoleArn: exampleRole.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = chime.NewVoiceConnectorStreaming(ctx, "default", &chime.VoiceConnectorStreamingArgs{
+/// 			MediaInsightsConfiguration: &chime.VoiceConnectorStreamingMediaInsightsConfigurationArgs{
+/// 				Disabled:         pulumi.Bool(false),
+/// 				ConfigurationArn: example.Arn,
+/// 			},
 /// 			Disabled:         pulumi.Bool(false),
 /// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			DataRetention:    pulumi.Int(7),
 /// 			StreamingNotificationTargets: pulumi.StringArray{
 /// 				pulumi.String("SQS"),
-/// 			},
-/// 			MediaInsightsConfiguration: &chime.VoiceConnectorStreamingMediaInsightsConfigurationArgs{
-/// 				Disabled:         pulumi.Bool(false),
-/// 				ConfigurationArn: example.Arn,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -480,11 +480,11 @@ import 'voice_connector_streaming_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["mediapipelines.chime.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -494,30 +494,30 @@ import 'voice_connector_streaming_state.dart';
 ///   require_encryption = true
 /// }
 /// resource "aws_chime_voiceconnectorstreaming" "default" {
-///   disabled                       = false
-///   voice_connector_id             = aws_chime_voiceconnector.default.id
-///   data_retention                 = 7
-///   streaming_notification_targets = ["SQS"]
 ///   media_insights_configuration = {
 ///     disabled          = false
 ///     configuration_arn = aws_chimesdkmediapipelines_mediainsightspipelineconfiguration.example.arn
 ///   }
+///   disabled                       = false
+///   voice_connector_id             = aws_chime_voiceconnector.default.id
+///   data_retention                 = 7
+///   streaming_notification_targets = ["SQS"]
 /// }
 /// resource "aws_chimesdkmediapipelines_mediainsightspipelineconfiguration" "example" {
-///   name                     = "ExampleConfig"
-///   resource_access_role_arn = aws_iam_role.example.arn
 ///   elements {
-///     type = "AmazonTranscribeCallAnalyticsProcessor"
 ///     amazon_transcribe_call_analytics_processor_configuration = {
 ///       language_code = "en-US"
 ///     }
+///     type = "AmazonTranscribeCallAnalyticsProcessor"
 ///   }
 ///   elements {
-///     type = "KinesisDataStreamSink"
 ///     kinesis_data_stream_sink_configuration = {
 ///       insights_target = aws_kinesis_stream.example.arn
 ///     }
+///     type = "KinesisDataStreamSink"
 ///   }
+///   name                     = "ExampleConfig"
+///   resource_access_role_arn = aws_iam_role.example.arn
 /// }
 /// resource "aws_iam_role" "example" {
 ///   name               = "ExampleResourceAccessRole"
@@ -572,11 +572,11 @@ import 'voice_connector_streaming_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("mediapipelines.chime.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -592,32 +592,32 @@ import 'voice_connector_streaming_state.dart';
 ///             .build());
 ///
 ///         var example = new MediaInsightsPipelineConfiguration("example", MediaInsightsPipelineConfigurationArgs.builder()
-///             .name("ExampleConfig")
-///             .resourceAccessRoleArn(exampleRole.arn())
 ///             .elements(
 ///                 MediaInsightsPipelineConfigurationElementArgs.builder()
-///                     .type("AmazonTranscribeCallAnalyticsProcessor")
 ///                     .amazonTranscribeCallAnalyticsProcessorConfiguration(MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationArgs.builder()
 ///                         .languageCode("en-US")
 ///                         .build())
+///                     .type("AmazonTranscribeCallAnalyticsProcessor")
 ///                     .build(),
 ///                 MediaInsightsPipelineConfigurationElementArgs.builder()
-///                     .type("KinesisDataStreamSink")
 ///                     .kinesisDataStreamSinkConfiguration(MediaInsightsPipelineConfigurationElementKinesisDataStreamSinkConfigurationArgs.builder()
 ///                         .insightsTarget(exampleStream.arn())
 ///                         .build())
+///                     .type("KinesisDataStreamSink")
 ///                     .build())
+///             .name("ExampleConfig")
+///             .resourceAccessRoleArn(exampleRole.arn())
 ///             .build());
 ///
 ///         var defaultVoiceConnectorStreaming = new VoiceConnectorStreaming("defaultVoiceConnectorStreaming", VoiceConnectorStreamingArgs.builder()
-///             .disabled(false)
-///             .voiceConnectorId(default_.id())
-///             .dataRetention(7)
-///             .streamingNotificationTargets("SQS")
 ///             .mediaInsightsConfiguration(VoiceConnectorStreamingMediaInsightsConfigurationArgs.builder()
 ///                 .disabled(false)
 ///                 .configurationArn(example.arn())
 ///                 .build())
+///             .disabled(false)
+///             .voiceConnectorId(default_.id())
+///             .dataRetention(7)
+///             .streamingNotificationTargets("SQS")
 ///             .build());
 ///
 ///     }
@@ -634,26 +634,26 @@ import 'voice_connector_streaming_state.dart';
 ///     type: aws:chime:VoiceConnectorStreaming
 ///     name: default
 ///     properties:
+///       mediaInsightsConfiguration:
+///         disabled: false
+///         configurationArn: ${example.arn}
 ///       disabled: false
 ///       voiceConnectorId: ${default.id}
 ///       dataRetention: 7
 ///       streamingNotificationTargets:
 ///         - SQS
-///       mediaInsightsConfiguration:
-///         disabled: false
-///         configurationArn: ${example.arn}
 ///   example:
 ///     type: aws:chimesdkmediapipelines:MediaInsightsPipelineConfiguration
 ///     properties:
+///       elements:
+///         - amazonTranscribeCallAnalyticsProcessorConfiguration:
+///             languageCode: en-US
+///           type: AmazonTranscribeCallAnalyticsProcessor
+///         - kinesisDataStreamSinkConfiguration:
+///             insightsTarget: ${exampleStream.arn}
+///           type: KinesisDataStreamSink
 ///       name: ExampleConfig
 ///       resourceAccessRoleArn: ${exampleRole.arn}
-///       elements:
-///         - type: AmazonTranscribeCallAnalyticsProcessor
-///           amazonTranscribeCallAnalyticsProcessorConfiguration:
-///             languageCode: en-US
-///         - type: KinesisDataStreamSink
-///           kinesisDataStreamSinkConfiguration:
-///             insightsTarget: ${exampleStream.arn}
 ///   exampleRole:
 ///     type: aws:iam:Role
 ///     name: example
@@ -672,11 +672,11 @@ import 'voice_connector_streaming_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - mediapipelines.chime.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -715,13 +715,13 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
           'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dataRetention = registerOutput<int>('dataRetention');
     disabled = registerOutput<bool?>('disabled');
     mediaInsightsConfiguration = registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>('mediaInsightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    streamingNotificationTargets = registerOutput<List<String>?>('streamingNotificationTargets');
+    streamingNotificationTargets = registerOutput<List<String>?>('streamingNotificationTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 
@@ -730,11 +730,12 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VoiceConnectorStreamingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VoiceConnectorStreaming._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -752,7 +753,24 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
     disabled = registerOutput<bool?>('disabled');
     mediaInsightsConfiguration = registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>('mediaInsightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    streamingNotificationTargets = registerOutput<List<String>?>('streamingNotificationTargets');
+    streamingNotificationTargets = registerOutput<List<String>?>('streamingNotificationTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    voiceConnectorId = registerOutput<String>('voiceConnectorId');
+  }
+
+  /// Creates a typed reference to an existing [VoiceConnectorStreaming] resource.
+  VoiceConnectorStreaming.reference(String urn)
+    : super(
+        'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataRetention = registerOutput<int>('dataRetention');
+    disabled = registerOutput<bool?>('disabled');
+    mediaInsightsConfiguration = registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>('mediaInsightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    streamingNotificationTargets = registerOutput<List<String>?>('streamingNotificationTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 }

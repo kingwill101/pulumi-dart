@@ -9,13 +9,13 @@ import 'mesh_spec.dart';
 /// {@macro pulumi_appmesh_mesh_mesh_args_doc}
 class MeshArgs {
   /// Name to use for the service mesh. Must be between 1 and 255 characters in length.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Service mesh specification to apply. See `spec` Block for details.
-  final pulumi.Input<MeshSpec>? spec;
+  final pulumi.Input<MeshSpec?>? spec;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MeshArgs].
   /// [name] Name to use for the service mesh. Must be between 1 and 255 characters in length.

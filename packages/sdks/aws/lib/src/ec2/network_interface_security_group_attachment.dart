@@ -27,11 +27,11 @@ import 'network_interface_security_group_attachment_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ami = aws.ec2.getAmi({
-///     mostRecent: true,
 ///     filters: [{
 ///         name: "name",
 ///         values: ["amzn-ami-hvm-*"],
 ///     }],
+///     mostRecent: true,
 ///     owners: ["amazon"],
 /// });
 /// const instance = new aws.ec2.Instance("instance", {
@@ -53,11 +53,11 @@ import 'network_interface_security_group_attachment_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// ami = aws.ec2.get_ami(most_recent=True,
-///     filters=[{
+/// ami = aws.ec2.get_ami(filters=[{
 ///         "name": "name",
 ///         "values": ["amzn-ami-hvm-*"],
 ///     }],
+///     most_recent=True,
 ///     owners=["amazon"])
 /// instance = aws.ec2.Instance("instance",
 ///     instance_type=aws.ec2.InstanceType.T2_MICRO,
@@ -82,7 +82,6 @@ import 'network_interface_security_group_attachment_state.dart';
 /// {
 ///     var ami = Aws.Ec2.GetAmi.Invoke(new()
 ///     {
-///         MostRecent = true,
 ///         Filters = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.GetAmiFilterInputArgs
@@ -94,6 +93,7 @@ import 'network_interface_security_group_attachment_state.dart';
 ///                 },
 ///             },
 ///         },
+///         MostRecent = true,
 ///         Owners = new[]
 ///         {
 ///             "amazon",
@@ -137,7 +137,6 @@ import 'network_interface_security_group_attachment_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		ami, err := ec2.LookupAmi(ctx, &ec2.LookupAmiArgs{
-/// 			MostRecent: pulumi.BoolRef(true),
 /// 			Filters: []ec2.GetAmiFilter{
 /// 				{
 /// 					Name: "name",
@@ -146,6 +145,7 @@ import 'network_interface_security_group_attachment_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			MostRecent: pulumi.BoolRef(true),
 /// 			Owners: []string{
 /// 				"amazon",
 /// 			},
@@ -192,12 +192,12 @@ import 'network_interface_security_group_attachment_state.dart';
 /// }
 ///
 /// data "aws_ec2_getami" "ami" {
-///   most_recent = true
 ///   filters {
 ///     name   = "name"
 ///     values = ["amzn-ami-hvm-*"]
 ///   }
-///   owners = ["amazon"]
+///   most_recent = true
+///   owners      = ["amazon"]
 /// }
 ///
 /// resource "aws_ec2_instance" "instance" {
@@ -246,11 +246,11 @@ import 'network_interface_security_group_attachment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var ami = Ec2Functions.getAmi(GetAmiArgs.builder()
-///             .mostRecent(true)
 ///             .filters(GetAmiFilterArgs.builder()
 ///                 .name("name")
 ///                 .values("amzn-ami-hvm-*")
 ///                 .build())
+///             .mostRecent(true)
 ///             .owners("amazon")
 ///             .build());
 ///
@@ -297,11 +297,11 @@ import 'network_interface_security_group_attachment_state.dart';
 ///     fn::invoke:
 ///       function: aws:ec2:getAmi
 ///       arguments:
-///         mostRecent: true
 ///         filters:
 ///           - name: name
 ///             values:
 ///               - amzn-ami-hvm-*
+///         mostRecent: true
 ///         owners:
 ///           - amazon
 /// ```
@@ -516,7 +516,7 @@ class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResource {
           'aws:ec2/networkInterfaceSecurityGroupAttachment:NetworkInterfaceSecurityGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     region = registerOutput<String>('region');
@@ -528,11 +528,12 @@ class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkInterfaceSecurityGroupAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInterfaceSecurityGroupAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -546,6 +547,20 @@ class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    region = registerOutput<String>('region');
+    securityGroupId = registerOutput<String>('securityGroupId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkInterfaceSecurityGroupAttachment] resource.
+  NetworkInterfaceSecurityGroupAttachment.reference(String urn)
+    : super(
+        'aws:ec2/networkInterfaceSecurityGroupAttachment:NetworkInterfaceSecurityGroupAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     region = registerOutput<String>('region');
     securityGroupId = registerOutput<String>('securityGroupId');

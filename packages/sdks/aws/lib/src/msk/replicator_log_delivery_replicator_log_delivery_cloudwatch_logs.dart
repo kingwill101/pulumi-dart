@@ -6,7 +6,7 @@ class ReplicatorLogDeliveryReplicatorLogDeliveryCloudwatchLogs {
   /// Boolean whether to enable log delivery to CloudWatch Logs.
   final pulumi.Input<bool> enabled;
   /// Name of CloudWatch Logs log group. Required if `enabled` is `true`. If `enabled` is `false`, this value must not be set.
-  final pulumi.Input<String>? logGroup;
+  final pulumi.Input<String?>? logGroup;
 
   /// Creates a new [ReplicatorLogDeliveryReplicatorLogDeliveryCloudwatchLogs].
   /// [enabled] Boolean whether to enable log delivery to CloudWatch Logs.

@@ -177,7 +177,7 @@ class FilesMountTarget extends pulumi.CustomResource {
           'aws:s3/filesMountTarget:FilesMountTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     availabilityZoneId = registerOutput<String>('availabilityZoneId');
     fileSystemId = registerOutput<String>('fileSystemId');
@@ -187,7 +187,7 @@ class FilesMountTarget extends pulumi.CustomResource {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
     subnetId = registerOutput<String>('subnetId');
@@ -200,11 +200,12 @@ class FilesMountTarget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FilesMountTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FilesMountTarget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -226,7 +227,32 @@ class FilesMountTarget extends pulumi.CustomResource {
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    securityGroups = registerOutput<List<String>>('securityGroups');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    subnetId = registerOutput<String>('subnetId');
+    timeouts = registerOutput<FilesMountTargetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilesMountTargetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [FilesMountTarget] resource.
+  FilesMountTarget.reference(String urn)
+    : super(
+        'aws:s3/filesMountTarget:FilesMountTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availabilityZoneId = registerOutput<String>('availabilityZoneId');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    ipAddressType = registerOutput<String?>('ipAddressType');
+    ipv4Address = registerOutput<String>('ipv4Address');
+    ipv6Address = registerOutput<String>('ipv6Address');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
     subnetId = registerOutput<String>('subnetId');

@@ -10,20 +10,20 @@ import 'get_traffic_policy_document_rule_secondary.dart';
 
 class GetTrafficPolicyDocumentRule {
   /// Configuration block for when you add a geoproximity rule, you configure Amazon Route 53 to route traffic to your resources based on the geographic location of your resources. Only valid for `geoproximity` type. See below
-  final pulumi.Input<List<GetTrafficPolicyDocumentRuleGeoProximityLocation>>? geoProximityLocations;
+  final pulumi.Input<List<GetTrafficPolicyDocumentRuleGeoProximityLocation>?>? geoProximityLocations;
   /// ID of a rule you want to assign.
   final pulumi.Input<String> id;
   /// Configuration block for when you add a multivalue answer rule, you configure your traffic policy to route traffic approximately randomly to your healthy resources.  Only valid for `multivalue` type. See below
-  final pulumi.Input<List<GetTrafficPolicyDocumentRuleItem>>? items;
+  final pulumi.Input<List<GetTrafficPolicyDocumentRuleItem>?>? items;
   /// Configuration block for when you add a geolocation rule, you configure your traffic policy to route your traffic based on the geographic location of your users.  Only valid for `geo` type. See below
-  final pulumi.Input<List<GetTrafficPolicyDocumentRuleLocation>>? locations;
+  final pulumi.Input<List<GetTrafficPolicyDocumentRuleLocation>?>? locations;
   /// Configuration block for the settings for the rule or endpoint that you want to route traffic to whenever the corresponding resources are available. Only valid for `failover` type. See below
-  final pulumi.Input<GetTrafficPolicyDocumentRulePrimary>? primary;
-  final pulumi.Input<List<GetTrafficPolicyDocumentRuleRegion>>? regions;
+  final pulumi.Input<GetTrafficPolicyDocumentRulePrimary?>? primary;
+  final pulumi.Input<List<GetTrafficPolicyDocumentRuleRegion>?>? regions;
   /// Configuration block for the rule or endpoint that you want to route traffic to whenever the primary resources are not available. Only valid for `failover` type. See below
-  final pulumi.Input<GetTrafficPolicyDocumentRuleSecondary>? secondary;
+  final pulumi.Input<GetTrafficPolicyDocumentRuleSecondary?>? secondary;
   /// Type of the rule.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GetTrafficPolicyDocumentRule].
   /// [geoProximityLocations] Configuration block for when you add a geoproximity rule, you configure Amazon Route 53 to route traffic to your resources based on the geographic location of your resources. Only valid for `geoproximity` type. See below

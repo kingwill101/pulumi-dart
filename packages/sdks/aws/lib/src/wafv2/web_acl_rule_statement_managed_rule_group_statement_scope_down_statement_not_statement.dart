@@ -5,7 +5,7 @@ import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement {
   /// Single statement to negate. Exactly one statement must be specified.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement>? statement;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement?>? statement;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement].
   /// [statement] Single statement to negate. Exactly one statement must be specified.

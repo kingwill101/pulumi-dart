@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeTargetParametersHttpParameters {
-  final pulumi.Input<Map<String, String>>? headerParameters;
-  final pulumi.Input<String>? pathParameterValues;
-  final pulumi.Input<Map<String, String>>? queryStringParameters;
+  final pulumi.Input<Map<String, String>?>? headerParameters;
+  final pulumi.Input<String?>? pathParameterValues;
+  final pulumi.Input<Map<String, String>?>? queryStringParameters;
 
   /// Creates a new [PipeTargetParametersHttpParameters].
   /// [headerParameters] Optional.

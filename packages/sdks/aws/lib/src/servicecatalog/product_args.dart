@@ -9,27 +9,27 @@ import 'product_provisioning_artifact_parameters.dart';
 /// {@macro pulumi_servicecatalog_product_product_args_doc}
 class ProductArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  final pulumi.Input<String>? acceptLanguage;
+  final pulumi.Input<String?>? acceptLanguage;
   /// Description of the product.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Distributor (i.e., vendor) of the product.
-  final pulumi.Input<String>? distributor;
+  final pulumi.Input<String?>? distributor;
   /// Name of the product.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Owner of the product.
   final pulumi.Input<String> owner;
   /// Configuration block for provisioning artifact (i.e., version) parameters. See `provisioningArtifactParameters` Block for details.
   final pulumi.Input<ProductProvisioningArtifactParameters> provisioningArtifactParameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Support information about the product.
-  final pulumi.Input<String>? supportDescription;
+  final pulumi.Input<String?>? supportDescription;
   /// Contact email for product support.
-  final pulumi.Input<String>? supportEmail;
+  final pulumi.Input<String?>? supportEmail;
   /// Contact URL for product support.
-  final pulumi.Input<String>? supportUrl;
+  final pulumi.Input<String?>? supportUrl;
   /// Tags to apply to the product. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Type of product. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_CreateProduct.html#API_CreateProduct_RequestSyntax) for valid list of values.
   ///
   /// The following arguments are optional:

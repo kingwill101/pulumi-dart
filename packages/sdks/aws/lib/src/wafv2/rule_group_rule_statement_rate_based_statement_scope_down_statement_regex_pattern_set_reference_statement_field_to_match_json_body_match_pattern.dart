@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern {
   /// An empty configuration block that is used for inspecting all headers.
-  final pulumi.Input<Map<String, dynamic>>? all;
-  final pulumi.Input<List<String>>? includedPaths;
+  final pulumi.Input<Map<String, dynamic>?>? all;
+  final pulumi.Input<List<String>?>? includedPaths;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.

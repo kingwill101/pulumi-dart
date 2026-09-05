@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPhoneNumbers {
   /// When `true`, this is the primary phone number associated with the user.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// The type of phone number.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The user's phone number.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [UserPhoneNumbers].
   /// [primary] When `true`, this is the primary phone number associated with the user.

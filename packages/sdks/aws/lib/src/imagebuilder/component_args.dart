@@ -8,29 +8,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_imagebuilder_component_component_args_doc}
 class ComponentArgs {
   /// Change description of the component.
-  final pulumi.Input<String>? changeDescription;
+  final pulumi.Input<String?>? changeDescription;
   /// Inline YAML string with data of the component. Exactly one of `data` and `uri` can be specified. the provider will only perform drift detection of its value when present in a configuration.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// Description of the component.
-  final pulumi.Input<String>? description;
-  /// Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the component.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? description;
+  /// ARN of the KMS Key used to encrypt the component.
+  final pulumi.Input<String?>? kmsKeyId;
   /// Name of the component.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Platform of the component.
   final pulumi.Input<String> platform;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether to retain the old version when the resource is destroyed or replacement is necessary. Defaults to `false`.
-  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<bool?>? skipDestroy;
   /// Set of Operating Systems (OS) supported by the component.
-  final pulumi.Input<List<String>>? supportedOsVersions;
+  final pulumi.Input<List<String>?>? supportedOsVersions;
   /// Key-value map of resource tags for the component. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// S3 URI with data of the component. Exactly one of `data` and `uri` can be specified.
   ///
   /// &gt; **NOTE:** Updating `data` or `uri` requires specifying a new `version`. This causes replacement of the resource. The `skipDestroy` argument can be used to retain the old version.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// Version of the component.
   ///
   /// The following arguments are optional:
@@ -40,7 +40,7 @@ class ComponentArgs {
   /// [changeDescription] Change description of the component.
   /// [data] Inline YAML string with data of the component. Exactly one of `data` and `uri` can be specified. the provider will only perform drift detection of its value when present in a configuration.
   /// [description] Description of the component.
-  /// [kmsKeyId] Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the component.
+  /// [kmsKeyId] ARN of the KMS Key used to encrypt the component.
   /// [name] Name of the component.
   /// [platform] Platform of the component.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

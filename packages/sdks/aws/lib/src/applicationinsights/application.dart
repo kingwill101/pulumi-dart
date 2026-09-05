@@ -12,7 +12,6 @@ import 'application_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleGroup = new aws.resourcegroups.Group("example", {
-///     name: "example",
 ///     resourceQuery: {
 ///         query: JSON.stringify({
 ///             ResourceTypeFilters: ["AWS::EC2::Instance"],
@@ -22,6 +21,7 @@ import 'application_state.dart';
 ///             }],
 ///         }),
 ///     },
+///     name: "example",
 /// });
 /// const example = new aws.applicationinsights.Application("example", {resourceGroupName: exampleGroup.name});
 /// ```
@@ -31,7 +31,6 @@ import 'application_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_group = aws.resourcegroups.Group("example",
-///     name="example",
 ///     resource_query={
 ///         "query": json.dumps({
 ///             "ResourceTypeFilters": ["AWS::EC2::Instance"],
@@ -40,7 +39,8 @@ import 'application_state.dart';
 ///                 "Values": ["Test"],
 ///             }],
 ///         }),
-///     })
+///     },
+///     name="example")
 /// example = aws.applicationinsights.Application("example", resource_group_name=example_group.name)
 /// ```
 /// ```csharp
@@ -54,7 +54,6 @@ import 'application_state.dart';
 /// {
 ///     var exampleGroup = new Aws.ResourceGroups.Group("example", new()
 ///     {
-///         Name = "example",
 ///         ResourceQuery = new Aws.ResourceGroups.Inputs.GroupResourceQueryArgs
 ///         {
 ///             Query = JsonSerializer.Serialize(new Dictionary<string, object?>
@@ -76,6 +75,7 @@ import 'application_state.dart';
 ///                 },
 ///             }),
 ///         },
+///         Name = "example",
 ///     });
 ///
 ///     var example = new Aws.ApplicationInsights.Application("example", new()
@@ -116,10 +116,10 @@ import 'application_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		exampleGroup, err := resourcegroups.NewGroup(ctx, "example", &resourcegroups.GroupArgs{
-/// 			Name: pulumi.String("example"),
 /// 			ResourceQuery: &resourcegroups.GroupResourceQueryArgs{
 /// 				Query: pulumi.String(json0),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -147,7 +147,6 @@ import 'application_state.dart';
 ///   resource_group_name = aws_resourcegroups_group.example.name
 /// }
 /// resource "aws_resourcegroups_group" "example" {
-///   name = "example"
 ///   resource_query = {
 ///     query = jsonencode({
 ///       "ResourceTypeFilters" = ["AWS::EC2::Instance"]
@@ -157,6 +156,7 @@ import 'application_state.dart';
 ///       }]
 ///     })
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -185,7 +185,6 @@ import 'application_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
-///             .name("example")
 ///             .resourceQuery(GroupResourceQueryArgs.builder()
 ///                 .query(serializeJson(
 ///                     jsonObject(
@@ -196,6 +195,7 @@ import 'application_state.dart';
 ///                         )))
 ///                     )))
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///         var example = new Application("example", ApplicationArgs.builder()
@@ -215,7 +215,6 @@ import 'application_state.dart';
 ///     type: aws:resourcegroups:Group
 ///     name: example
 ///     properties:
-///       name: example
 ///       resourceQuery:
 ///         query:
 ///           fn::toJSON:
@@ -225,6 +224,7 @@ import 'application_state.dart';
 ///               - Key: Stage
 ///                 Values:
 ///                   - Test
+///       name: example
 /// ```
 ///
 ///
@@ -273,7 +273,7 @@ class Application extends pulumi.CustomResource {
           'aws:applicationinsights/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoConfigEnabled = registerOutput<bool?>('autoConfigEnabled');
@@ -284,8 +284,8 @@ class Application extends pulumi.CustomResource {
     opsItemSnsTopicArn = registerOutput<String?>('opsItemSnsTopicArn');
     region = registerOutput<String>('region');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -293,11 +293,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -320,7 +321,29 @@ class Application extends pulumi.CustomResource {
     opsItemSnsTopicArn = registerOutput<String?>('opsItemSnsTopicArn');
     region = registerOutput<String>('region');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'aws:applicationinsights/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoConfigEnabled = registerOutput<bool?>('autoConfigEnabled');
+    autoCreate = registerOutput<bool?>('autoCreate');
+    cweMonitorEnabled = registerOutput<bool?>('cweMonitorEnabled');
+    groupingType = registerOutput<String?>('groupingType');
+    opsCenterEnabled = registerOutput<bool?>('opsCenterEnabled');
+    opsItemSnsTopicArn = registerOutput<String?>('opsItemSnsTopicArn');
+    region = registerOutput<String>('region');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

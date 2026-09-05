@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering BrowserSettings resources.
 class BrowserSettingsState {
   /// Additional encryption context for the browser settings.
-  final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+  final pulumi.Input<Map<String, String>?>? additionalEncryptionContext;
   /// List of web portal ARNs to associate with the browser settings.
-  final pulumi.Input<List<String>>? associatedPortalArns;
+  final pulumi.Input<List<String>?>? associatedPortalArns;
   /// Browser policy for the browser settings. This is a JSON string that defines the browser settings policy.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? browserPolicy;
+  final pulumi.Input<String?>? browserPolicy;
   /// ARN of the browser settings resource.
-  final pulumi.Input<String>? browserSettingsArn;
+  final pulumi.Input<String?>? browserSettingsArn;
   /// ARN of the customer managed KMS key.
-  final pulumi.Input<String>? customerManagedKey;
+  final pulumi.Input<String?>? customerManagedKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [BrowserSettingsState].
   /// [additionalEncryptionContext] Additional encryption context for the browser settings.

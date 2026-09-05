@@ -10,7 +10,7 @@ class ZoneAssociationArgs {
   /// The VPC to associate with the private hosted zone.
   final pulumi.Input<String> vpcId;
   /// The VPC's region. Defaults to the region of the AWS provider.
-  final pulumi.Input<String>? vpcRegion;
+  final pulumi.Input<String?>? vpcRegion;
   /// The private hosted zone to associate.
   final pulumi.Input<String> zoneId;
 

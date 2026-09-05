@@ -6,20 +6,20 @@ import 'agent_agent_knowledge_base_association_timeouts.dart';
 /// Input properties used for looking up and filtering AgentAgentKnowledgeBaseAssociation resources.
 class AgentAgentKnowledgeBaseAssociationState {
   /// Unique identifier of the agent with which you want to associate the knowledge base.
-  final pulumi.Input<String>? agentId;
+  final pulumi.Input<String?>? agentId;
   /// Version of the agent with which you want to associate the knowledge base. Valid values: `DRAFT`.
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// Description of what the agent should use the knowledge base for.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Unique identifier of the knowledge base to associate with the agent.
-  final pulumi.Input<String>? knowledgeBaseId;
+  final pulumi.Input<String?>? knowledgeBaseId;
   /// Whether to use the knowledge base when sending an [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html) request. Valid values: `ENABLED`, `DISABLED`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? knowledgeBaseState;
+  final pulumi.Input<String?>? knowledgeBaseState;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<AgentAgentKnowledgeBaseAssociationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<AgentAgentKnowledgeBaseAssociationTimeouts?>? timeouts;
 
   /// Creates a new [AgentAgentKnowledgeBaseAssociationState].
   /// [agentId] Unique identifier of the agent with which you want to associate the knowledge base.

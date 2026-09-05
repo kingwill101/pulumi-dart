@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'usage_plan_api_stage.dart';
 import 'usage_plan_args.dart';
 import 'usage_plan_quota_settings.dart';
 import 'usage_plan_state.dart';
@@ -15,7 +16,7 @@ import 'usage_plan_throttle_settings.dart';
 /// ```
 class UsagePlan extends pulumi.CustomResource {
   /// Associated API stages of the usage plan. See `apiStages` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> apiStages;
+  late final pulumi.Output<List<UsagePlanApiStage>?> apiStages;
   /// ARN of the usage plan.
   late final pulumi.Output<String> arn;
   /// Description of a usage plan.
@@ -47,17 +48,17 @@ class UsagePlan extends pulumi.CustomResource {
           'aws:apigateway/usagePlan:UsagePlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    apiStages = registerOutput<List<Map<String, dynamic>>?>('apiStages');
+    apiStages = registerOutput<List<UsagePlanApiStage>?>('apiStages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UsagePlanApiStage>(guardedValue, (value) => UsagePlanApiStage.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     productCode = registerOutput<String?>('productCode');
     quotaSettings = registerOutput<UsagePlanQuotaSettings?>('quotaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsagePlanQuotaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throttleSettings = registerOutput<UsagePlanThrottleSettings?>('throttleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsagePlanThrottleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -66,11 +67,12 @@ class UsagePlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UsagePlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UsagePlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -84,15 +86,36 @@ class UsagePlan extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiStages = registerOutput<List<Map<String, dynamic>>?>('apiStages');
+    apiStages = registerOutput<List<UsagePlanApiStage>?>('apiStages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UsagePlanApiStage>(guardedValue, (value) => UsagePlanApiStage.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     productCode = registerOutput<String?>('productCode');
     quotaSettings = registerOutput<UsagePlanQuotaSettings?>('quotaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsagePlanQuotaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throttleSettings = registerOutput<UsagePlanThrottleSettings?>('throttleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsagePlanThrottleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [UsagePlan] resource.
+  UsagePlan.reference(String urn)
+    : super(
+        'aws:apigateway/usagePlan:UsagePlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiStages = registerOutput<List<UsagePlanApiStage>?>('apiStages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UsagePlanApiStage>(guardedValue, (value) => UsagePlanApiStage.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    productCode = registerOutput<String?>('productCode');
+    quotaSettings = registerOutput<UsagePlanQuotaSettings?>('quotaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsagePlanQuotaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throttleSettings = registerOutput<UsagePlanThrottleSettings?>('throttleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UsagePlanThrottleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

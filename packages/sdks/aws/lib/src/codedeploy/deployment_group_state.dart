@@ -15,51 +15,51 @@ import 'deployment_group_trigger_configuration.dart';
 /// Input properties used for looking up and filtering DeploymentGroup resources.
 class DeploymentGroupState {
   /// Configuration block of alarms associated with the deployment group (documented below).
-  final pulumi.Input<DeploymentGroupAlarmConfiguration>? alarmConfiguration;
+  final pulumi.Input<DeploymentGroupAlarmConfiguration?>? alarmConfiguration;
   /// The name of the application.
-  final pulumi.Input<String>? appName;
+  final pulumi.Input<String?>? appName;
   /// The ARN of the CodeDeploy deployment group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Configuration block of the automatic rollback configuration associated with the deployment group (documented below).
-  final pulumi.Input<DeploymentGroupAutoRollbackConfiguration>? autoRollbackConfiguration;
+  final pulumi.Input<DeploymentGroupAutoRollbackConfiguration?>? autoRollbackConfiguration;
   /// Autoscaling groups associated with the deployment group.
-  final pulumi.Input<List<String>>? autoscalingGroups;
+  final pulumi.Input<List<String>?>? autoscalingGroups;
   /// Configuration block of the blue/green deployment options for a deployment group (documented below).
-  final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfig>? blueGreenDeploymentConfig;
+  final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfig?>? blueGreenDeploymentConfig;
   /// The destination platform type for the deployment.
-  final pulumi.Input<String>? computePlatform;
+  final pulumi.Input<String?>? computePlatform;
   /// The name of the group's deployment config. The default is "CodeDeployDefault.OneAtATime".
-  final pulumi.Input<String>? deploymentConfigName;
+  final pulumi.Input<String?>? deploymentConfigName;
   /// The ID of the CodeDeploy deployment group.
-  final pulumi.Input<String>? deploymentGroupId;
+  final pulumi.Input<String?>? deploymentGroupId;
   /// The name of the deployment group.
-  final pulumi.Input<String>? deploymentGroupName;
+  final pulumi.Input<String?>? deploymentGroupName;
   /// Configuration block of the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer (documented below).
-  final pulumi.Input<DeploymentGroupDeploymentStyle>? deploymentStyle;
+  final pulumi.Input<DeploymentGroupDeploymentStyle?>? deploymentStyle;
   /// Tag filters associated with the deployment group. See the AWS docs for details.
-  final pulumi.Input<List<DeploymentGroupEc2TagFilter>>? ec2TagFilters;
+  final pulumi.Input<List<DeploymentGroupEc2TagFilter>?>? ec2TagFilters;
   /// Configuration block(s) of Tag filters associated with the deployment group, which are also referred to as tag groups (documented below). See the AWS docs for details.
-  final pulumi.Input<List<DeploymentGroupEc2TagSet>>? ec2TagSets;
+  final pulumi.Input<List<DeploymentGroupEc2TagSet>?>? ec2TagSets;
   /// Configuration block(s) of the ECS services for a deployment group (documented below).
-  final pulumi.Input<DeploymentGroupEcsService>? ecsService;
+  final pulumi.Input<DeploymentGroupEcsService?>? ecsService;
   /// Single configuration block of the load balancer to use in a blue/green deployment (documented below).
-  final pulumi.Input<DeploymentGroupLoadBalancerInfo>? loadBalancerInfo;
+  final pulumi.Input<DeploymentGroupLoadBalancerInfo?>? loadBalancerInfo;
   /// On premise tag filters associated with the group. See the AWS docs for details.
-  final pulumi.Input<List<DeploymentGroupOnPremisesInstanceTagFilter>>? onPremisesInstanceTagFilters;
+  final pulumi.Input<List<DeploymentGroupOnPremisesInstanceTagFilter>?>? onPremisesInstanceTagFilters;
   /// Configuration block of Indicates what happens when new Amazon EC2 instances are launched mid-deployment and do not receive the deployed application revision. Valid values are `UPDATE` and `IGNORE`. Defaults to `UPDATE`.
-  final pulumi.Input<String>? outdatedInstancesStrategy;
+  final pulumi.Input<String?>? outdatedInstancesStrategy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The service role ARN that allows deployments.
-  final pulumi.Input<String>? serviceRoleArn;
+  final pulumi.Input<String?>? serviceRoleArn;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
-  final pulumi.Input<bool>? terminationHookEnabled;
+  final pulumi.Input<bool?>? terminationHookEnabled;
   /// Configuration block(s) of the triggers for the deployment group (documented below).
-  final pulumi.Input<List<DeploymentGroupTriggerConfiguration>>? triggerConfigurations;
+  final pulumi.Input<List<DeploymentGroupTriggerConfiguration>?>? triggerConfigurations;
 
   /// Creates a new [DeploymentGroupState].
   /// [alarmConfiguration] Configuration block of alarms associated with the deployment group (documented below).

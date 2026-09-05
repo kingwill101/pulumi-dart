@@ -6,9 +6,9 @@ import 'plan_stage_target_contact_target_info.dart';
 
 class PlanStageTarget {
   /// A configuration block for specifying information about the contact channel that Incident Manager engages. See Channel Target Info for more details.
-  final pulumi.Input<PlanStageTargetChannelTargetInfo>? channelTargetInfo;
+  final pulumi.Input<PlanStageTargetChannelTargetInfo?>? channelTargetInfo;
   /// A configuration block for specifying information about the contact that Incident Manager engages. See Contact Target Info for more details.
-  final pulumi.Input<PlanStageTargetContactTargetInfo>? contactTargetInfo;
+  final pulumi.Input<PlanStageTargetContactTargetInfo?>? contactTargetInfo;
 
   /// Creates a new [PlanStageTarget].
   /// [channelTargetInfo] A configuration block for specifying information about the contact channel that Incident Manager engages. See Channel Target Info for more details.

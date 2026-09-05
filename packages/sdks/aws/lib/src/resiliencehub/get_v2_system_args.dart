@@ -10,7 +10,7 @@ class GetV2SystemArgs {
   /// ARN of the system.
   final pulumi.Input<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetV2SystemArgs].
   /// [arn] ARN of the system.

@@ -6,40 +6,40 @@ import 'get_group_memberships_group_membership.dart';
 /// Result data returned by getGroupMemberships.
 class GetGroupMembershipsResult {
   /// Group identifier.
-  final String groupId;
+  final String? groupId;
   /// A list of group membership objects. See `groupMemberships` below.
-  final List<GetGroupMembershipsGroupMembership> groupMemberships;
+  final List<GetGroupMembershipsGroupMembership>? groupMemberships;
   /// Identity store identifier.
-  final String identityStoreId;
-  final String region;
+  final String? identityStoreId;
+  final String? region;
 
   /// Creates a new [GetGroupMembershipsResult].
   /// [groupId] Group identifier.
   /// [groupMemberships] A list of group membership objects. See `groupMemberships` below.
   /// [identityStoreId] Identity store identifier.
-  /// [region] Required.
+  /// [region] Optional.
   const GetGroupMembershipsResult({
-    required this.groupId,
-    required this.groupMemberships,
-    required this.identityStoreId,
-    required this.region,
+    this.groupId,
+    this.groupMemberships,
+    this.identityStoreId,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groupId': groupId,
-      'groupMemberships': pulumi.Input.encodeList<GetGroupMembershipsGroupMembership, Map<String, dynamic>>(groupMemberships, (value) => value.toMap()),
-      'identityStoreId': identityStoreId,
-      'region': region,
+      'groupId': ?groupId,
+      'groupMemberships': ?(() { final guardedValue = groupMemberships; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGroupMembershipsGroupMembership, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'identityStoreId': ?identityStoreId,
+      'region': ?region,
     };
   }
 
   factory GetGroupMembershipsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsResult(
-      groupId: map['groupId'] as String,
-      groupMemberships: pulumi.Input.decodeList<GetGroupMembershipsGroupMembership>(map['groupMemberships']!, (value) => GetGroupMembershipsGroupMembership.fromMap((value as Map).cast<String, dynamic>())),
-      identityStoreId: map['identityStoreId'] as String,
-      region: map['region'] as String,
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      groupMemberships: (() { final guardedValue = map['groupMemberships']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupMembershipsGroupMembership>(guardedValue, (value) => GetGroupMembershipsGroupMembership.fromMap((value as Map).cast<String, dynamic>())); })(),
+      identityStoreId: (() { final guardedValue = map['identityStoreId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

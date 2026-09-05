@@ -14,8 +14,8 @@ class LogS3TableIntegrationSourceArgs {
   /// ARN of the `aws.observabilityadmin.S3TableIntegration` to associate the data source with.
   final pulumi.Input<String> integrationArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<LogS3TableIntegrationSourceTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<LogS3TableIntegrationSourceTimeouts?>? timeouts;
 
   /// Creates a new [LogS3TableIntegrationSourceArgs].
   /// [dataSource] Data source to associate with the S3 Table Integration. See `dataSource` Block below.

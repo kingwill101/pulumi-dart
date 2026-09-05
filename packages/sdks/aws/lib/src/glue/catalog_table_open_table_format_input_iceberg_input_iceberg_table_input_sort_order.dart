@@ -27,7 +27,7 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrder {
   factory CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrder.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrder(
       fields: pulumi.Input.fromValue(pulumi.Input.decodeList<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrderField>(map['fields']!, (value) => CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrderField.fromMap((value as Map).cast<String, dynamic>()))),
-      orderId: pulumi.Input.fromValue(map['orderId'] as int),
+      orderId: pulumi.Input.fromValue((map['orderId'] as num).toInt()),
     );
   }
 }

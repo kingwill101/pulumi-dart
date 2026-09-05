@@ -152,7 +152,7 @@ class SecurityGroupAssociation extends pulumi.CustomResource {
           'aws:ec2/securityGroupAssociation:SecurityGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     replaceDefaultAssociation = registerOutput<bool?>('replaceDefaultAssociation');
@@ -165,11 +165,12 @@ class SecurityGroupAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityGroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityGroupAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -183,6 +184,21 @@ class SecurityGroupAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    replaceDefaultAssociation = registerOutput<bool?>('replaceDefaultAssociation');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    vpcEndpointId = registerOutput<String>('vpcEndpointId');
+  }
+
+  /// Creates a typed reference to an existing [SecurityGroupAssociation] resource.
+  SecurityGroupAssociation.reference(String urn)
+    : super(
+        'aws:ec2/securityGroupAssociation:SecurityGroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     replaceDefaultAssociation = registerOutput<bool?>('replaceDefaultAssociation');
     securityGroupId = registerOutput<String>('securityGroupId');

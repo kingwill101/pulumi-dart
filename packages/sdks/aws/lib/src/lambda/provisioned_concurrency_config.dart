@@ -250,7 +250,7 @@ import 'provisioned_concurrency_config_state.dart';
 /// $ pulumi import aws:lambda/provisionedConcurrencyConfig:ProvisionedConcurrencyConfig example example,production
 /// ```
 class ProvisionedConcurrencyConfig extends pulumi.CustomResource {
-  /// Name or Amazon Resource Name (ARN) of the Lambda Function.
+  /// Name or ARN of the Lambda Function.
   late final pulumi.Output<String> functionName;
   /// Amount of capacity to allocate. Must be greater than or equal to 1.
   late final pulumi.Output<int> provisionedConcurrentExecutions;
@@ -275,7 +275,7 @@ class ProvisionedConcurrencyConfig extends pulumi.CustomResource {
           'aws:lambda/provisionedConcurrencyConfig:ProvisionedConcurrencyConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     functionName = registerOutput<String>('functionName');
     provisionedConcurrentExecutions = registerOutput<int>('provisionedConcurrentExecutions');
@@ -289,11 +289,12 @@ class ProvisionedConcurrencyConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProvisionedConcurrencyConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProvisionedConcurrencyConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,6 +308,22 @@ class ProvisionedConcurrencyConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    functionName = registerOutput<String>('functionName');
+    provisionedConcurrentExecutions = registerOutput<int>('provisionedConcurrentExecutions');
+    qualifier = registerOutput<String>('qualifier');
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+  }
+
+  /// Creates a typed reference to an existing [ProvisionedConcurrencyConfig] resource.
+  ProvisionedConcurrencyConfig.reference(String urn)
+    : super(
+        'aws:lambda/provisionedConcurrencyConfig:ProvisionedConcurrencyConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     functionName = registerOutput<String>('functionName');
     provisionedConcurrentExecutions = registerOutput<int>('provisionedConcurrentExecutions');
     qualifier = registerOutput<String>('qualifier');

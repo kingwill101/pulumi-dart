@@ -127,10 +127,10 @@ class TenantResourceAssociation extends pulumi.CustomResource {
   /// AWS region for SESv2 operations. If not specified, the default provider region is used.
   late final pulumi.Output<String> region;
   /// ARN of the SES resource to associate with the tenant.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<String> resourceArn;
   /// Name of SES Tenant.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> tenantName;
 
   /// Creates a new [TenantResourceAssociation].
@@ -145,7 +145,7 @@ class TenantResourceAssociation extends pulumi.CustomResource {
           'aws:sesv2/tenantResourceAssociation:TenantResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
@@ -157,11 +157,12 @@ class TenantResourceAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TenantResourceAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TenantResourceAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -175,6 +176,20 @@ class TenantResourceAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    tenantName = registerOutput<String>('tenantName');
+  }
+
+  /// Creates a typed reference to an existing [TenantResourceAssociation] resource.
+  TenantResourceAssociation.reference(String urn)
+    : super(
+        'aws:sesv2/tenantResourceAssociation:TenantResourceAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     tenantName = registerOutput<String>('tenantName');

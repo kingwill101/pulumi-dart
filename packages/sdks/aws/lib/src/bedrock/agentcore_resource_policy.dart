@@ -16,19 +16,19 @@ import 'agentcore_resource_policy_state.dart';
 /// const exampleAgentcoreAgentRuntime = new aws.bedrock.AgentcoreAgentRuntime("example", {});
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         sid: "AllowOAuthFromVPC",
-///         effect: "Allow",
-///         actions: ["bedrock-agentcore:InvokeAgentRuntime"],
-///         principals: [{
-///             type: "*",
-///             identifiers: ["*"],
-///         }],
-///         resources: [exampleAgentcoreAgentRuntime.agentRuntimeArn],
 ///         conditions: [{
 ///             test: "StringEquals",
 ///             variable: "aws:SourceVpc",
 ///             values: ["vpc-1a2b3c4d"],
 ///         }],
+///         principals: [{
+///             type: "*",
+///             identifiers: ["*"],
+///         }],
+///         sid: "AllowOAuthFromVPC",
+///         effect: "Allow",
+///         actions: ["bedrock-agentcore:InvokeAgentRuntime"],
+///         resources: [exampleAgentcoreAgentRuntime.agentRuntimeArn],
 ///     }],
 /// });
 /// const exampleAgentcoreResourcePolicy = new aws.bedrock.AgentcoreResourcePolicy("example", {
@@ -42,19 +42,19 @@ import 'agentcore_resource_policy_state.dart';
 ///
 /// example_agentcore_agent_runtime = aws.bedrock.AgentcoreAgentRuntime("example")
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "sid": "AllowOAuthFromVPC",
-///     "effect": "Allow",
-///     "actions": ["bedrock-agentcore:InvokeAgentRuntime"],
-///     "principals": [{
-///         "type": "*",
-///         "identifiers": ["*"],
-///     }],
-///     "resources": [example_agentcore_agent_runtime.agent_runtime_arn],
 ///     "conditions": [{
 ///         "test": "StringEquals",
 ///         "variable": "aws:SourceVpc",
 ///         "values": ["vpc-1a2b3c4d"],
 ///     }],
+///     "principals": [{
+///         "type": "*",
+///         "identifiers": ["*"],
+///     }],
+///     "sid": "AllowOAuthFromVPC",
+///     "effect": "Allow",
+///     "actions": ["bedrock-agentcore:InvokeAgentRuntime"],
+///     "resources": [example_agentcore_agent_runtime.agent_runtime_arn],
 /// }])
 /// example_agentcore_resource_policy = aws.bedrock.AgentcoreResourcePolicy("example",
 ///     policy=example.json,
@@ -76,11 +76,17 @@ import 'agentcore_resource_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "AllowOAuthFromVPC",
-///                 Effect = "Allow",
-///                 Actions = new[]
+///                 Conditions = new[]
 ///                 {
-///                     "bedrock-agentcore:InvokeAgentRuntime",
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+///                     {
+///                         Test = "StringEquals",
+///                         Variable = "aws:SourceVpc",
+///                         Values = new[]
+///                         {
+///                             "vpc-1a2b3c4d",
+///                         },
+///                     },
 ///                 },
 ///                 Principals = new[]
 ///                 {
@@ -93,21 +99,15 @@ import 'agentcore_resource_policy_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "AllowOAuthFromVPC",
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "bedrock-agentcore:InvokeAgentRuntime",
+///                 },
 ///                 Resources = new[]
 ///                 {
 ///                     exampleAgentcoreAgentRuntime.AgentRuntimeArn,
-///                 },
-///                 Conditions = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-///                     {
-///                         Test = "StringEquals",
-///                         Variable = "aws:SourceVpc",
-///                         Values = new[]
-///                         {
-///                             "vpc-1a2b3c4d",
-///                         },
-///                     },
 ///                 },
 ///             },
 ///         },
@@ -139,10 +139,14 @@ import 'agentcore_resource_policy_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid:    pulumi.String("AllowOAuthFromVPC"),
-/// 					Effect: pulumi.String("Allow"),
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("bedrock-agentcore:InvokeAgentRuntime"),
+/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
+/// 						&iam.GetPolicyDocumentStatementConditionArgs{
+/// 							Test:     pulumi.String("StringEquals"),
+/// 							Variable: pulumi.String("aws:SourceVpc"),
+/// 							Values: pulumi.StringArray{
+/// 								pulumi.String("vpc-1a2b3c4d"),
+/// 							},
+/// 						},
 /// 					},
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
@@ -152,17 +156,13 @@ import 'agentcore_resource_policy_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.String("AllowOAuthFromVPC"),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("bedrock-agentcore:InvokeAgentRuntime"),
+/// 					},
 /// 					Resources: pulumi.StringArray{
 /// 						exampleAgentcoreAgentRuntime.AgentRuntimeArn,
-/// 					},
-/// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
-/// 						&iam.GetPolicyDocumentStatementConditionArgs{
-/// 							Test:     pulumi.String("StringEquals"),
-/// 							Variable: pulumi.String("aws:SourceVpc"),
-/// 							Values: pulumi.StringArray{
-/// 								pulumi.String("vpc-1a2b3c4d"),
-/// 							},
-/// 						},
 /// 					},
 /// 				},
 /// 			},
@@ -189,19 +189,19 @@ import 'agentcore_resource_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid     = "AllowOAuthFromVPC"
-///     effect  = "Allow"
-///     actions = ["bedrock-agentcore:InvokeAgentRuntime"]
-///     principals {
-///       type        = "*"
-///       identifiers = ["*"]
-///     }
-///     resources = [aws_bedrock_agentcoreagentruntime.example.agent_runtime_arn]
 ///     conditions {
 ///       test     = "StringEquals"
 ///       variable = "aws:SourceVpc"
 ///       values   = ["vpc-1a2b3c4d"]
 ///     }
+///     principals {
+///       type        = "*"
+///       identifiers = ["*"]
+///     }
+///     sid       = "AllowOAuthFromVPC"
+///     effect    = "Allow"
+///     actions   = ["bedrock-agentcore:InvokeAgentRuntime"]
+///     resources = [aws_bedrock_agentcoreagentruntime.example.agent_runtime_arn]
 ///   }
 /// }
 ///
@@ -222,8 +222,8 @@ import 'agentcore_resource_policy_state.dart';
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
-/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementConditionArgs;
+/// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementPrincipalArgs;
 /// import com.pulumi.aws.bedrock.AgentcoreResourcePolicy;
 /// import com.pulumi.aws.bedrock.AgentcoreResourcePolicyArgs;
 /// import java.util.ArrayList;
@@ -243,19 +243,19 @@ import 'agentcore_resource_policy_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("AllowOAuthFromVPC")
-///                 .effect("Allow")
-///                 .actions("bedrock-agentcore:InvokeAgentRuntime")
-///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                     .type("*")
-///                     .identifiers("*")
-///                     .build())
-///                 .resources(exampleAgentcoreAgentRuntime.agentRuntimeArn())
 ///                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
 ///                     .test("StringEquals")
 ///                     .variable("aws:SourceVpc")
 ///                     .values("vpc-1a2b3c4d")
 ///                     .build())
+///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                     .type("*")
+///                     .identifiers("*")
+///                     .build())
+///                 .sid("AllowOAuthFromVPC")
+///                 .effect("Allow")
+///                 .actions("bedrock-agentcore:InvokeAgentRuntime")
+///                 .resources(exampleAgentcoreAgentRuntime.agentRuntimeArn())
 ///                 .build())
 ///             .build());
 ///
@@ -284,21 +284,21 @@ import 'agentcore_resource_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: AllowOAuthFromVPC
-///             effect: Allow
-///             actions:
-///               - bedrock-agentcore:InvokeAgentRuntime
-///             principals:
-///               - type: '*'
-///                 identifiers:
-///                   - '*'
-///             resources:
-///               - ${exampleAgentcoreAgentRuntime.agentRuntimeArn}
-///             conditions:
+///           - conditions:
 ///               - test: StringEquals
 ///                 variable: aws:SourceVpc
 ///                 values:
 ///                   - vpc-1a2b3c4d
+///             principals:
+///               - type: '*'
+///                 identifiers:
+///                   - '*'
+///             sid: AllowOAuthFromVPC
+///             effect: Allow
+///             actions:
+///               - bedrock-agentcore:InvokeAgentRuntime
+///             resources:
+///               - ${exampleAgentcoreAgentRuntime.agentRuntimeArn}
 /// ```
 ///
 ///
@@ -321,7 +321,7 @@ class AgentcoreResourcePolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the resource for which to create or update the resource policy.
+  /// ARN of the resource for which to create or update the resource policy.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> resourceArn;
@@ -338,7 +338,7 @@ class AgentcoreResourcePolicy extends pulumi.CustomResource {
           'aws:bedrock/agentcoreResourcePolicy:AgentcoreResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -350,11 +350,12 @@ class AgentcoreResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,6 +369,20 @@ class AgentcoreResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreResourcePolicy] resource.
+  AgentcoreResourcePolicy.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreResourcePolicy:AgentcoreResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

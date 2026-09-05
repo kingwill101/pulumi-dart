@@ -152,7 +152,7 @@ import 'alias_state.dart';
 /// $ pulumi import aws:kms/alias:Alias a alias/my-key-alias
 /// ```
 class Alias extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the key alias.
+  /// ARN of the key alias.
   late final pulumi.Output<String> arn;
   /// The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
   late final pulumi.Output<String> name;
@@ -161,7 +161,7 @@ class Alias extends pulumi.CustomResource {
   late final pulumi.Output<String> namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the target key identifier.
+  /// ARN of the target key identifier.
   late final pulumi.Output<String> targetKeyArn;
   /// Identifier for the key for which the alias is for, can be either an ARN or key_id.
   late final pulumi.Output<String> targetKeyId;
@@ -178,7 +178,7 @@ class Alias extends pulumi.CustomResource {
           'aws:kms/alias:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
@@ -193,11 +193,12 @@ class Alias extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AliasState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Alias._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -211,6 +212,23 @@ class Alias extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    targetKeyArn = registerOutput<String>('targetKeyArn');
+    targetKeyId = registerOutput<String>('targetKeyId');
+  }
+
+  /// Creates a typed reference to an existing [Alias] resource.
+  Alias.reference(String urn)
+    : super(
+        'aws:kms/alias:Alias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');

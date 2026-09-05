@@ -10,17 +10,17 @@ import 'firewall_policy_firewall_policy.dart';
 /// {@macro pulumi_networkfirewall_firewall_policy_firewall_policy_args_doc}
 class FirewallPolicyArgs {
   /// A friendly description of the firewall policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// KMS encryption configuration settings. See Encryption Configuration below for details.
-  final pulumi.Input<FirewallPolicyEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<FirewallPolicyEncryptionConfiguration?>? encryptionConfiguration;
   /// A configuration block describing the rule groups and policy actions to use in the firewall policy. See Firewall Policy below for details.
   final pulumi.Input<FirewallPolicyFirewallPolicy> firewallPolicy;
   /// A friendly name of the firewall policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FirewallPolicyArgs].
   /// [description] A friendly description of the firewall policy.

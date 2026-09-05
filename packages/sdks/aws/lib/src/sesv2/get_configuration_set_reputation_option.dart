@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationSetReputationOption {
-  /// The date and time (in Unix time) when the reputation metrics were last given a fresh start.
+  /// Date and time (in Unix time) when the reputation metrics were last given a fresh start.
   final pulumi.Input<String> lastFreshStart;
-  /// Specifies whether tracking of reputation metrics is enabled.
+  /// Whether tracking of reputation metrics is enabled.
   final pulumi.Input<bool> reputationMetricsEnabled;
 
   /// Creates a new [GetConfigurationSetReputationOption].
-  /// [lastFreshStart] The date and time (in Unix time) when the reputation metrics were last given a fresh start.
-  /// [reputationMetricsEnabled] Specifies whether tracking of reputation metrics is enabled.
+  /// [lastFreshStart] Date and time (in Unix time) when the reputation metrics were last given a fresh start.
+  /// [reputationMetricsEnabled] Whether tracking of reputation metrics is enabled.
   const GetConfigurationSetReputationOption({
     required this.lastFreshStart,
     required this.reputationMetricsEnabled,

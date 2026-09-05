@@ -6,15 +6,15 @@ import 'partition_index_partition_index.dart';
 /// Input properties used for looking up and filtering PartitionIndex resources.
 class PartitionIndexState {
   /// The catalog ID where the table resides.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Configuration block for a partition index. See `partitionIndex` below.
-  final pulumi.Input<PartitionIndexPartitionIndex>? partitionIndex;
+  final pulumi.Input<PartitionIndexPartitionIndex?>? partitionIndex;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the table. For Hive compatibility, this must be entirely lowercase.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [PartitionIndexState].
   /// [catalogId] The catalog ID where the table resides.

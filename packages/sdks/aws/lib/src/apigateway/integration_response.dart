@@ -472,14 +472,14 @@ class IntegrationResponse extends pulumi.CustomResource {
           'aws:apigateway/integrationResponse:IntegrationResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     contentHandling = registerOutput<String?>('contentHandling');
     httpMethod = registerOutput<String>('httpMethod');
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');
-    responseParameters = registerOutput<Map<String, String>?>('responseParameters');
-    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates');
+    responseParameters = registerOutput<Map<String, String>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     restApi = registerOutput<String>('restApi');
     selectionPattern = registerOutput<String?>('selectionPattern');
     statusCode = registerOutput<String>('statusCode');
@@ -490,11 +490,12 @@ class IntegrationResponse extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationResponseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationResponse._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -512,8 +513,28 @@ class IntegrationResponse extends pulumi.CustomResource {
     httpMethod = registerOutput<String>('httpMethod');
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');
-    responseParameters = registerOutput<Map<String, String>?>('responseParameters');
-    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates');
+    responseParameters = registerOutput<Map<String, String>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    restApi = registerOutput<String>('restApi');
+    selectionPattern = registerOutput<String?>('selectionPattern');
+    statusCode = registerOutput<String>('statusCode');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationResponse] resource.
+  IntegrationResponse.reference(String urn)
+    : super(
+        'aws:apigateway/integrationResponse:IntegrationResponse',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contentHandling = registerOutput<String?>('contentHandling');
+    httpMethod = registerOutput<String>('httpMethod');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    responseParameters = registerOutput<Map<String, String>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     restApi = registerOutput<String>('restApi');
     selectionPattern = registerOutput<String?>('selectionPattern');
     statusCode = registerOutput<String>('statusCode');

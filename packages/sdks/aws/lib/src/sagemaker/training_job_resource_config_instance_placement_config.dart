@@ -5,9 +5,9 @@ import 'training_job_resource_config_instance_placement_config_placement_specifi
 
 class TrainingJobResourceConfigInstancePlacementConfig {
   /// Whether to enable multiple jobs on the same instance.
-  final pulumi.Input<bool>? enableMultipleJobs;
+  final pulumi.Input<bool?>? enableMultipleJobs;
   /// Placement specifications for instance placement. See `placementSpecifications` below.
-  final pulumi.Input<List<TrainingJobResourceConfigInstancePlacementConfigPlacementSpecification>>? placementSpecifications;
+  final pulumi.Input<List<TrainingJobResourceConfigInstancePlacementConfigPlacementSpecification>?>? placementSpecifications;
 
   /// Creates a new [TrainingJobResourceConfigInstancePlacementConfig].
   /// [enableMultipleJobs] Whether to enable multiple jobs on the same instance.

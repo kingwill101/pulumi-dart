@@ -167,10 +167,10 @@ import 'assessment_target_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Inspector assessment target.
+/// - `arn` (String) ARN of the Inspector assessment target.
 ///
 ///
-/// Using `pulumi import`, import Inspector Classic Assessment Targets using their Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import Inspector Classic Assessment Targets using their ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:inspector/assessmentTarget:AssessmentTarget example arn:aws:inspector:us-east-1:123456789012:target/0-xxxxxxx
@@ -182,7 +182,7 @@ class AssessmentTarget extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
+  /// Inspector Resource Group ARN stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
   late final pulumi.Output<String?> resourceGroupArn;
 
   /// Creates a new [AssessmentTarget].
@@ -197,7 +197,7 @@ class AssessmentTarget extends pulumi.CustomResource {
           'aws:inspector/assessmentTarget:AssessmentTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
@@ -210,11 +210,12 @@ class AssessmentTarget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssessmentTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssessmentTarget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -228,6 +229,21 @@ class AssessmentTarget extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceGroupArn = registerOutput<String?>('resourceGroupArn');
+  }
+
+  /// Creates a typed reference to an existing [AssessmentTarget] resource.
+  AssessmentTarget.reference(String urn)
+    : super(
+        'aws:inspector/assessmentTarget:AssessmentTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

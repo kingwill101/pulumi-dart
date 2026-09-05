@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DelegatedAdministrator resources.
 class DelegatedAdministratorState {
   /// The account ID number of the member account in the organization to register as a delegated administrator.
-  final pulumi.Input<String>? accountId;
-  /// The Amazon Resource Name (ARN) of the delegated administrator's account.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? accountId;
+  /// ARN of the delegated administrator's account.
+  final pulumi.Input<String?>? arn;
   /// The date when the account was made a delegated administrator.
-  final pulumi.Input<String>? delegationEnabledDate;
+  final pulumi.Input<String?>? delegationEnabledDate;
   /// The email address that is associated with the delegated administrator's AWS account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The method by which the delegated administrator's account joined the organization.
-  final pulumi.Input<String>? joinedMethod;
+  final pulumi.Input<String?>? joinedMethod;
   /// The date when the delegated administrator's account became a part of the organization.
-  final pulumi.Input<String>? joinedTimestamp;
+  final pulumi.Input<String?>? joinedTimestamp;
   /// The friendly name of the delegated administrator's account.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The service principal of the AWS service for which you want to make the member account a delegated administrator.
-  final pulumi.Input<String>? servicePrincipal;
+  final pulumi.Input<String?>? servicePrincipal;
   /// The status of the delegated administrator's account in the organization.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DelegatedAdministratorState].
   /// [accountId] The account ID number of the member account in the organization to register as a delegated administrator.
-  /// [arn] The Amazon Resource Name (ARN) of the delegated administrator's account.
+  /// [arn] ARN of the delegated administrator's account.
   /// [delegationEnabledDate] The date when the account was made a delegated administrator.
   /// [email] The email address that is associated with the delegated administrator's AWS account.
   /// [joinedMethod] The method by which the delegated administrator's account joined the organization.

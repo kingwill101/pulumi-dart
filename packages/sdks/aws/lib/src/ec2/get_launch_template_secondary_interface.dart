@@ -44,10 +44,10 @@ class GetLaunchTemplateSecondaryInterface {
   factory GetLaunchTemplateSecondaryInterface.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateSecondaryInterface(
       deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as bool),
-      deviceIndex: pulumi.Input.fromValue(map['deviceIndex'] as int),
+      deviceIndex: pulumi.Input.fromValue((map['deviceIndex'] as num).toInt()),
       interfaceType: pulumi.Input.fromValue(map['interfaceType'] as String),
-      networkCardIndex: pulumi.Input.fromValue(map['networkCardIndex'] as int),
-      privateIpAddressCount: pulumi.Input.fromValue(map['privateIpAddressCount'] as int),
+      networkCardIndex: pulumi.Input.fromValue((map['networkCardIndex'] as num).toInt()),
+      privateIpAddressCount: pulumi.Input.fromValue((map['privateIpAddressCount'] as num).toInt()),
       privateIpAddresses: pulumi.Input.fromValue((map['privateIpAddresses'] as List).cast<String>()),
       secondarySubnetId: pulumi.Input.fromValue(map['secondarySubnetId'] as String),
     );

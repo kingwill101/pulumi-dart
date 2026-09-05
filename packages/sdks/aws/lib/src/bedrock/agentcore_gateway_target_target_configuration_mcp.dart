@@ -9,15 +9,15 @@ import 'agentcore_gateway_target_target_configuration_mcp_smithy_model.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcp {
   /// API Gateway target configuration. See `apiGateway` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpApiGateway>? apiGateway;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpApiGateway?>? apiGateway;
   /// Lambda function target configuration. See `lambda` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambda>? lambda;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambda?>? lambda;
   /// MCP server target configuration. See `mcpServer` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpMcpServer>? mcpServer;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpMcpServer?>? mcpServer;
   /// OpenAPI schema-based target configuration. See `apiSchemaConfiguration` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema>? openApiSchema;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema?>? openApiSchema;
   /// Smithy model-based target configuration. See `apiSchemaConfiguration` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel>? smithyModel;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel?>? smithyModel;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcp].
   /// [apiGateway] API Gateway target configuration. See `apiGateway` below.

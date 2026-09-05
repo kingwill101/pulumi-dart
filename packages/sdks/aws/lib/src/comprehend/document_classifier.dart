@@ -18,12 +18,12 @@ import 'document_classifier_vpc_config.dart';
 ///
 /// const documents = new aws.s3.BucketObjectv2("documents", {});
 /// const example = new aws.comprehend.DocumentClassifier("example", {
-///     name: "example",
-///     dataAccessRoleArn: exampleAwsIamRole.arn,
-///     languageCode: "en",
 ///     inputDataConfig: {
 ///         s3Uri: pulumi.interpolate`s3://${test.bucket}/${documents.key}`,
 ///     },
+///     name: "example",
+///     dataAccessRoleArn: exampleAwsIamRole.arn,
+///     languageCode: "en",
 /// }, {
 ///     dependsOn: [exampleAwsIamRolePolicy],
 /// });
@@ -35,12 +35,12 @@ import 'document_classifier_vpc_config.dart';
 ///
 /// documents = aws.s3.BucketObjectv2("documents")
 /// example = aws.comprehend.DocumentClassifier("example",
-///     name="example",
-///     data_access_role_arn=example_aws_iam_role["arn"],
-///     language_code="en",
 ///     input_data_config={
 ///         "s3_uri": documents.key.apply(lambda key: f"s3://{test['bucket']}/{key}"),
 ///     },
+///     name="example",
+///     data_access_role_arn=example_aws_iam_role["arn"],
+///     language_code="en",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aws_iam_role_policy]))
 /// entities = aws.s3.BucketObjectv2("entities")
 /// ```
@@ -56,13 +56,13 @@ import 'document_classifier_vpc_config.dart';
 ///
 ///     var example = new Aws.Comprehend.DocumentClassifier("example", new()
 ///     {
-///         Name = "example",
-///         DataAccessRoleArn = exampleAwsIamRole.Arn,
-///         LanguageCode = "en",
 ///         InputDataConfig = new Aws.Comprehend.Inputs.DocumentClassifierInputDataConfigArgs
 ///         {
 ///             S3Uri = documents.Key.Apply(key => $"s3://{test.Bucket}/{key}"),
 ///         },
+///         Name = "example",
+///         DataAccessRoleArn = exampleAwsIamRole.Arn,
+///         LanguageCode = "en",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -93,14 +93,14 @@ import 'document_classifier_vpc_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = comprehend.NewDocumentClassifier(ctx, "example", &comprehend.DocumentClassifierArgs{
-/// 			Name:              pulumi.String("example"),
-/// 			DataAccessRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 			LanguageCode:      pulumi.String("en"),
 /// 			InputDataConfig: &comprehend.DocumentClassifierInputDataConfigArgs{
 /// 				S3Uri: documents.Key.ApplyT(func(key string) (string, error) {
 /// 					return fmt.Sprintf("s3://%v/%v", test.Bucket, key), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
+/// 			Name:              pulumi.String("example"),
+/// 			DataAccessRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			LanguageCode:      pulumi.String("en"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAwsIamRolePolicy,
 /// 		}))
@@ -125,13 +125,13 @@ import 'document_classifier_vpc_config.dart';
 /// }
 ///
 /// resource "aws_comprehend_documentclassifier" "example" {
-///   depends_on           = [exampleAwsIamRolePolicy]
-///   name                 = "example"
-///   data_access_role_arn = exampleAwsIamRole.arn
-///   language_code        = "en"
+///   depends_on = [exampleAwsIamRolePolicy]
 ///   input_data_config = {
 ///     s3_uri ="s3://${test.bucket}/${aws_s3_bucketobjectv2.documents.key}"
 ///   }
+///   name                 = "example"
+///   data_access_role_arn = exampleAwsIamRole.arn
+///   language_code        = "en"
 /// }
 /// resource "aws_s3_bucketobjectv2" "documents" {
 /// }
@@ -165,12 +165,12 @@ import 'document_classifier_vpc_config.dart';
 ///         var documents = new BucketObjectv2("documents");
 ///
 ///         var example = new DocumentClassifier("example", DocumentClassifierArgs.builder()
-///             .name("example")
-///             .dataAccessRoleArn(exampleAwsIamRole.arn())
-///             .languageCode("en")
 ///             .inputDataConfig(DocumentClassifierInputDataConfigArgs.builder()
 ///                 .s3Uri(documents.key().applyValue(_key -> String.format("s3://%s/%s", test.bucket(),_key)))
 ///                 .build())
+///             .name("example")
+///             .dataAccessRoleArn(exampleAwsIamRole.arn())
+///             .languageCode("en")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsIamRolePolicy)
 ///                 .build());
@@ -185,11 +185,11 @@ import 'document_classifier_vpc_config.dart';
 ///   example:
 ///     type: aws:comprehend:DocumentClassifier
 ///     properties:
+///       inputDataConfig:
+///         s3Uri: s3://${test.bucket}/${documents.key}
 ///       name: example
 ///       dataAccessRoleArn: ${exampleAwsIamRole.arn}
 ///       languageCode: en
-///       inputDataConfig:
-///         s3Uri: s3://${test.bucket}/${documents.key}
 ///     options:
 ///       dependsOn:
 ///         - ${exampleAwsIamRolePolicy}
@@ -206,7 +206,7 @@ import 'document_classifier_vpc_config.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Comprehend document classifier.
+/// - `arn` (String) ARN of the Comprehend document classifier.
 ///
 ///
 /// Using `pulumi import`, import Comprehend Document Classifier using the ARN. For example:
@@ -279,7 +279,7 @@ class DocumentClassifier extends pulumi.CustomResource {
           'aws:comprehend/documentClassifier:DocumentClassifier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
@@ -290,8 +290,8 @@ class DocumentClassifier extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputDataConfig = registerOutput<DocumentClassifierOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionName = registerOutput<String>('versionName');
     versionNamePrefix = registerOutput<String>('versionNamePrefix');
     volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
@@ -303,11 +303,12 @@ class DocumentClassifier extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DocumentClassifierState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DocumentClassifier._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -330,8 +331,34 @@ class DocumentClassifier extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputDataConfig = registerOutput<DocumentClassifierOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    versionName = registerOutput<String>('versionName');
+    versionNamePrefix = registerOutput<String>('versionNamePrefix');
+    volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');
+    vpcConfig = registerOutput<DocumentClassifierVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DocumentClassifier] resource.
+  DocumentClassifier.reference(String urn)
+    : super(
+        'aws:comprehend/documentClassifier:DocumentClassifier',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
+    inputDataConfig = registerOutput<DocumentClassifierInputDataConfig>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierInputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageCode = registerOutput<String>('languageCode');
+    mode = registerOutput<String?>('mode');
+    modelKmsKeyId = registerOutput<String?>('modelKmsKeyId');
+    this.name = registerOutput<String>('name');
+    outputDataConfig = registerOutput<DocumentClassifierOutputDataConfig>('outputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentClassifierOutputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     versionName = registerOutput<String>('versionName');
     versionNamePrefix = registerOutput<String>('versionNamePrefix');
     volumeKmsKeyId = registerOutput<String?>('volumeKmsKeyId');

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_route53_resolver_dns_sec_config_resolver_dns_sec_config_args_doc}
 class ResolverDnsSecConfigArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The ID of the virtual private cloud (VPC) that you're updating the DNSSEC validation status for.
+  final pulumi.Input<String?>? region;
+  /// ID of the VPC that you're updating the DNSSEC validation status for.
   final pulumi.Input<String> resourceId;
 
   /// Creates a new [ResolverDnsSecConfigArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceId] The ID of the virtual private cloud (VPC) that you're updating the DNSSEC validation status for.
+  /// [resourceId] ID of the VPC that you're updating the DNSSEC validation status for.
   const ResolverDnsSecConfigArgs({
     this.region,
     required this.resourceId,

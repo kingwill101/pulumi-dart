@@ -30,7 +30,7 @@ class GetCoreNetworkEdge {
 
   factory GetCoreNetworkEdge.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkEdge(
-      asn: pulumi.Input.fromValue(map['asn'] as int),
+      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
       edgeLocation: pulumi.Input.fromValue(map['edgeLocation'] as String),
       insideCidrBlocks: pulumi.Input.fromValue((map['insideCidrBlocks'] as List).cast<String>()),
     );

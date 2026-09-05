@@ -112,7 +112,7 @@ import 'instance_profile_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Device Farm instance profile.
+/// - `arn` (String) ARN of the Device Farm instance profile.
 ///
 ///
 /// Using `pulumi import`, import DeviceFarm Instance Profiles using their ARN. For example:
@@ -121,7 +121,7 @@ import 'instance_profile_state.dart';
 /// $ pulumi import aws:devicefarm/instanceProfile:InstanceProfile example arn:aws:devicefarm:us-west-2:123456789012:instanceprofile:4fa784c7-ccb4-4dbf-ba4f-02198320daa1
 /// ```
 class InstanceProfile extends pulumi.CustomResource {
-  /// The Amazon Resource Name of this instance profile.
+  /// ARN of this instance profile.
   late final pulumi.Output<String> arn;
   /// The description of the instance profile.
   late final pulumi.Output<String?> description;
@@ -152,17 +152,17 @@ class InstanceProfile extends pulumi.CustomResource {
           'aws:devicefarm/instanceProfile:InstanceProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    excludeAppPackagesFromCleanups = registerOutput<List<String>?>('excludeAppPackagesFromCleanups');
+    excludeAppPackagesFromCleanups = registerOutput<List<String>?>('excludeAppPackagesFromCleanups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     packageCleanup = registerOutput<bool?>('packageCleanup');
     rebootAfterUse = registerOutput<bool?>('rebootAfterUse');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [InstanceProfile] resource's state with the given [name] and [id].
@@ -170,11 +170,12 @@ class InstanceProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -190,12 +191,32 @@ class InstanceProfile extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    excludeAppPackagesFromCleanups = registerOutput<List<String>?>('excludeAppPackagesFromCleanups');
+    excludeAppPackagesFromCleanups = registerOutput<List<String>?>('excludeAppPackagesFromCleanups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     packageCleanup = registerOutput<bool?>('packageCleanup');
     rebootAfterUse = registerOutput<bool?>('rebootAfterUse');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [InstanceProfile] resource.
+  InstanceProfile.reference(String urn)
+    : super(
+        'aws:devicefarm/instanceProfile:InstanceProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    excludeAppPackagesFromCleanups = registerOutput<List<String>?>('excludeAppPackagesFromCleanups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    packageCleanup = registerOutput<bool?>('packageCleanup');
+    rebootAfterUse = registerOutput<bool?>('rebootAfterUse');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

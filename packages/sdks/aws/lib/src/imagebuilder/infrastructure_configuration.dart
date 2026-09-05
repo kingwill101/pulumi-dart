@@ -15,6 +15,12 @@ import 'infrastructure_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.imagebuilder.InfrastructureConfiguration("example", {
+///     logging: {
+///         s3Logs: {
+///             s3BucketName: exampleAwsS3Bucket.bucket,
+///             s3KeyPrefix: "logs",
+///         },
+///     },
 ///     description: "example description",
 ///     instanceProfileName: exampleAwsIamInstanceProfile.name,
 ///     instanceTypes: [
@@ -27,12 +33,6 @@ import 'infrastructure_configuration_state.dart';
 ///     snsTopicArn: exampleAwsSnsTopic.arn,
 ///     subnetId: main.id,
 ///     terminateInstanceOnFailure: true,
-///     logging: {
-///         s3Logs: {
-///             s3BucketName: exampleAwsS3Bucket.bucket,
-///             s3KeyPrefix: "logs",
-///         },
-///     },
 ///     tags: {
 ///         foo: "bar",
 ///     },
@@ -43,6 +43,12 @@ import 'infrastructure_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.imagebuilder.InfrastructureConfiguration("example",
+///     logging={
+///         "s3_logs": {
+///             "s3_bucket_name": example_aws_s3_bucket["bucket"],
+///             "s3_key_prefix": "logs",
+///         },
+///     },
 ///     description="example description",
 ///     instance_profile_name=example_aws_iam_instance_profile["name"],
 ///     instance_types=[
@@ -55,12 +61,6 @@ import 'infrastructure_configuration_state.dart';
 ///     sns_topic_arn=example_aws_sns_topic["arn"],
 ///     subnet_id=main["id"],
 ///     terminate_instance_on_failure=True,
-///     logging={
-///         "s3_logs": {
-///             "s3_bucket_name": example_aws_s3_bucket["bucket"],
-///             "s3_key_prefix": "logs",
-///         },
-///     },
 ///     tags={
 ///         "foo": "bar",
 ///     })
@@ -75,6 +75,14 @@ import 'infrastructure_configuration_state.dart';
 /// {
 ///     var example = new Aws.ImageBuilder.InfrastructureConfiguration("example", new()
 ///     {
+///         Logging = new Aws.ImageBuilder.Inputs.InfrastructureConfigurationLoggingArgs
+///         {
+///             S3Logs = new Aws.ImageBuilder.Inputs.InfrastructureConfigurationLoggingS3LogsArgs
+///             {
+///                 S3BucketName = exampleAwsS3Bucket.Bucket,
+///                 S3KeyPrefix = "logs",
+///             },
+///         },
 ///         Description = "example description",
 ///         InstanceProfileName = exampleAwsIamInstanceProfile.Name,
 ///         InstanceTypes = new[]
@@ -91,14 +99,6 @@ import 'infrastructure_configuration_state.dart';
 ///         SnsTopicArn = exampleAwsSnsTopic.Arn,
 ///         SubnetId = main.Id,
 ///         TerminateInstanceOnFailure = true,
-///         Logging = new Aws.ImageBuilder.Inputs.InfrastructureConfigurationLoggingArgs
-///         {
-///             S3Logs = new Aws.ImageBuilder.Inputs.InfrastructureConfigurationLoggingS3LogsArgs
-///             {
-///                 S3BucketName = exampleAwsS3Bucket.Bucket,
-///                 S3KeyPrefix = "logs",
-///             },
-///         },
 ///         Tags =
 ///         {
 ///             { "foo", "bar" },
@@ -118,6 +118,12 @@ import 'infrastructure_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := imagebuilder.NewInfrastructureConfiguration(ctx, "example", &imagebuilder.InfrastructureConfigurationArgs{
+/// 			Logging: &imagebuilder.InfrastructureConfigurationLoggingArgs{
+/// 				S3Logs: &imagebuilder.InfrastructureConfigurationLoggingS3LogsArgs{
+/// 					S3BucketName: pulumi.Any(exampleAwsS3Bucket.Bucket),
+/// 					S3KeyPrefix:  pulumi.String("logs"),
+/// 				},
+/// 			},
 /// 			Description:         pulumi.String("example description"),
 /// 			InstanceProfileName: pulumi.Any(exampleAwsIamInstanceProfile.Name),
 /// 			InstanceTypes: pulumi.StringArray{
@@ -132,12 +138,6 @@ import 'infrastructure_configuration_state.dart';
 /// 			SnsTopicArn:                pulumi.Any(exampleAwsSnsTopic.Arn),
 /// 			SubnetId:                   pulumi.Any(main.Id),
 /// 			TerminateInstanceOnFailure: pulumi.Bool(true),
-/// 			Logging: &imagebuilder.InfrastructureConfigurationLoggingArgs{
-/// 				S3Logs: &imagebuilder.InfrastructureConfigurationLoggingS3LogsArgs{
-/// 					S3BucketName: pulumi.Any(exampleAwsS3Bucket.Bucket),
-/// 					S3KeyPrefix:  pulumi.String("logs"),
-/// 				},
-/// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -159,6 +159,12 @@ import 'infrastructure_configuration_state.dart';
 /// }
 ///
 /// resource "aws_imagebuilder_infrastructureconfiguration" "example" {
+///   logging = {
+///     s3_logs = {
+///       s3_bucket_name = exampleAwsS3Bucket.bucket
+///       s3_key_prefix  = "logs"
+///     }
+///   }
 ///   description                   = "example description"
 ///   instance_profile_name         = exampleAwsIamInstanceProfile.name
 ///   instance_types                = ["t2.nano", "t3.micro"]
@@ -168,12 +174,6 @@ import 'infrastructure_configuration_state.dart';
 ///   sns_topic_arn                 = exampleAwsSnsTopic.arn
 ///   subnet_id                     = main.id
 ///   terminate_instance_on_failure = true
-///   logging = {
-///     s3_logs = {
-///       s3_bucket_name = exampleAwsS3Bucket.bucket
-///       s3_key_prefix  = "logs"
-///     }
-///   }
 ///   tags = {
 ///     "foo" = "bar"
 ///   }
@@ -203,6 +203,12 @@ import 'infrastructure_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new InfrastructureConfiguration("example", InfrastructureConfigurationArgs.builder()
+///             .logging(InfrastructureConfigurationLoggingArgs.builder()
+///                 .s3Logs(InfrastructureConfigurationLoggingS3LogsArgs.builder()
+///                     .s3BucketName(exampleAwsS3Bucket.bucket())
+///                     .s3KeyPrefix("logs")
+///                     .build())
+///                 .build())
 ///             .description("example description")
 ///             .instanceProfileName(exampleAwsIamInstanceProfile.name())
 ///             .instanceTypes(
@@ -214,12 +220,6 @@ import 'infrastructure_configuration_state.dart';
 ///             .snsTopicArn(exampleAwsSnsTopic.arn())
 ///             .subnetId(main.id())
 ///             .terminateInstanceOnFailure(true)
-///             .logging(InfrastructureConfigurationLoggingArgs.builder()
-///                 .s3Logs(InfrastructureConfigurationLoggingS3LogsArgs.builder()
-///                     .s3BucketName(exampleAwsS3Bucket.bucket())
-///                     .s3KeyPrefix("logs")
-///                     .build())
-///                 .build())
 ///             .tags(Map.of("foo", "bar"))
 ///             .build());
 ///
@@ -231,6 +231,10 @@ import 'infrastructure_configuration_state.dart';
 ///   example:
 ///     type: aws:imagebuilder:InfrastructureConfiguration
 ///     properties:
+///       logging:
+///         s3Logs:
+///           s3BucketName: ${exampleAwsS3Bucket.bucket}
+///           s3KeyPrefix: logs
 ///       description: example description
 ///       instanceProfileName: ${exampleAwsIamInstanceProfile.name}
 ///       instanceTypes:
@@ -243,10 +247,6 @@ import 'infrastructure_configuration_state.dart';
 ///       snsTopicArn: ${exampleAwsSnsTopic.arn}
 ///       subnetId: ${main.id}
 ///       terminateInstanceOnFailure: true
-///       logging:
-///         s3Logs:
-///           s3BucketName: ${exampleAwsS3Bucket.bucket}
-///           s3KeyPrefix: logs
 ///       tags:
 ///         foo: bar
 /// ```
@@ -258,16 +258,16 @@ import 'infrastructure_configuration_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Image Builder infrastructure configuration.
+/// - `arn` (String) ARN of the Image Builder infrastructure configuration.
 ///
 ///
-/// Using `pulumi import`, import `aws.imagebuilder.InfrastructureConfiguration` using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.imagebuilder.InfrastructureConfiguration` using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:imagebuilder/infrastructureConfiguration:InfrastructureConfiguration example arn:aws:imagebuilder:us-east-1:123456789012:infrastructure-configuration/example
 /// ```
 class InfrastructureConfiguration extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the configuration.
+  /// ARN of the configuration.
   late final pulumi.Output<String> arn;
   /// Date when the configuration was created.
   late final pulumi.Output<String> dateCreated;
@@ -297,7 +297,7 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> resourceTags;
   /// Set of EC2 Security Group identifiers.
   late final pulumi.Output<List<String>?> securityGroupIds;
-  /// Amazon Resource Name (ARN) of SNS Topic.
+  /// ARN of SNS Topic.
   late final pulumi.Output<String?> snsTopicArn;
   /// EC2 Subnet identifier. Also requires `securityGroupIds` argument.
   late final pulumi.Output<String?> subnetId;
@@ -320,7 +320,7 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
           'aws:imagebuilder/infrastructureConfiguration:InfrastructureConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dateCreated = registerOutput<String>('dateCreated');
@@ -328,18 +328,18 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     instanceMetadataOptions = registerOutput<InfrastructureConfigurationInstanceMetadataOptions?>('instanceMetadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationInstanceMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceProfileName = registerOutput<String>('instanceProfileName');
-    instanceTypes = registerOutput<List<String>?>('instanceTypes');
+    instanceTypes = registerOutput<List<String>?>('instanceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keyPair = registerOutput<String?>('keyPair');
     logging = registerOutput<InfrastructureConfigurationLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     placement = registerOutput<InfrastructureConfigurationPlacement?>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationPlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    resourceTags = registerOutput<Map<String, String>?>('resourceTags');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snsTopicArn = registerOutput<String?>('snsTopicArn');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminateInstanceOnFailure = registerOutput<bool?>('terminateInstanceOnFailure');
   }
 
@@ -348,11 +348,12 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InfrastructureConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InfrastructureConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -372,18 +373,48 @@ class InfrastructureConfiguration extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     instanceMetadataOptions = registerOutput<InfrastructureConfigurationInstanceMetadataOptions?>('instanceMetadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationInstanceMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceProfileName = registerOutput<String>('instanceProfileName');
-    instanceTypes = registerOutput<List<String>?>('instanceTypes');
+    instanceTypes = registerOutput<List<String>?>('instanceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keyPair = registerOutput<String?>('keyPair');
     logging = registerOutput<InfrastructureConfigurationLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     placement = registerOutput<InfrastructureConfigurationPlacement?>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationPlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    resourceTags = registerOutput<Map<String, String>?>('resourceTags');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     snsTopicArn = registerOutput<String?>('snsTopicArn');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    terminateInstanceOnFailure = registerOutput<bool?>('terminateInstanceOnFailure');
+  }
+
+  /// Creates a typed reference to an existing [InfrastructureConfiguration] resource.
+  InfrastructureConfiguration.reference(String urn)
+    : super(
+        'aws:imagebuilder/infrastructureConfiguration:InfrastructureConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dateCreated = registerOutput<String>('dateCreated');
+    dateUpdated = registerOutput<String>('dateUpdated');
+    description = registerOutput<String?>('description');
+    instanceMetadataOptions = registerOutput<InfrastructureConfigurationInstanceMetadataOptions?>('instanceMetadataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationInstanceMetadataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceProfileName = registerOutput<String>('instanceProfileName');
+    instanceTypes = registerOutput<List<String>?>('instanceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keyPair = registerOutput<String?>('keyPair');
+    logging = registerOutput<InfrastructureConfigurationLogging?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationLogging.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    placement = registerOutput<InfrastructureConfigurationPlacement?>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureConfigurationPlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    snsTopicArn = registerOutput<String?>('snsTopicArn');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminateInstanceOnFailure = registerOutput<bool?>('terminateInstanceOnFailure');
   }
 }

@@ -9,11 +9,11 @@ import 'get_service_link_virtual_interfaces_filter.dart';
 /// {@macro pulumi_ec2_get_service_link_virtual_interfaces_get_service_link_virtual_interfaces_args_doc}
 class GetServiceLinkVirtualInterfacesArgs {
   /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeServiceLinkVirtualInterfaces.html) for supported filters. Detailed below.
-  final pulumi.Input<List<GetServiceLinkVirtualInterfacesFilter>>? filters;
+  final pulumi.Input<List<GetServiceLinkVirtualInterfacesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags, each pair of which must exactly match a pair on the desired Service Link Virtual Interfaces.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetServiceLinkVirtualInterfacesArgs].
   /// [filters] One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeServiceLinkVirtualInterfaces.html) for supported filters. Detailed below.

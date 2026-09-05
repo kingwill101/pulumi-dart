@@ -5,17 +5,17 @@ import 'plan_workflow_step_parallel_config_step_route53_health_check_config_reco
 
 class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
   /// ARN of the cross-account role to assume.
-  final pulumi.Input<String>? crossAccountRole;
+  final pulumi.Input<String?>? crossAccountRole;
   /// External ID for cross-account role assumption.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// Route53 hosted zone ID.
   final pulumi.Input<String> hostedZoneId;
   /// DNS record name.
   final pulumi.Input<String> recordName;
   /// Configuration block for record sets. See `recordSet` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet>>? recordSets;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet>?>? recordSets;
   /// Timeout in minutes.
-  final pulumi.Input<int>? timeoutMinutes;
+  final pulumi.Input<int?>? timeoutMinutes;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig].
   /// [crossAccountRole] ARN of the cross-account role to assume.
@@ -51,7 +51,7 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
       hostedZoneId: pulumi.Input.fromValue(map['hostedZoneId'] as String),
       recordName: pulumi.Input.fromValue(map['recordName'] as String),
       recordSets: (() { final guardedValue = map['recordSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

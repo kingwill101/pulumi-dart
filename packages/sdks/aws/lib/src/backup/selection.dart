@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'selection_args.dart';
+import 'selection_condition.dart';
+import 'selection_selection_tag.dart';
 import 'selection_state.dart';
 
 /// Manages selection conditions for AWS Backup plan resources.
@@ -19,11 +21,11 @@ import 'selection_state.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["backup.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -42,11 +44,11 @@ import 'selection_state.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["backup.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example = aws.iam.Role("example",
@@ -71,7 +73,6 @@ import 'selection_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -83,6 +84,7 @@ import 'selection_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -124,7 +126,6 @@ import 'selection_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -133,6 +134,7 @@ import 'selection_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -177,11 +179,11 @@ import 'selection_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["backup.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -229,11 +231,11 @@ import 'selection_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("backup.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -279,11 +281,11 @@ import 'selection_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - backup.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -297,14 +299,14 @@ import 'selection_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.backup.Selection("example", {
-///     iamRoleArn: exampleAwsIamRole.arn,
-///     name: "my_example_backup_selection",
-///     planId: exampleAwsBackupPlan.id,
 ///     selectionTags: [{
 ///         type: "STRINGEQUALS",
 ///         key: "foo",
 ///         value: "bar",
 ///     }],
+///     iamRoleArn: exampleAwsIamRole.arn,
+///     name: "my_example_backup_selection",
+///     planId: exampleAwsBackupPlan.id,
 /// });
 /// ```
 /// ```python
@@ -312,14 +314,14 @@ import 'selection_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.backup.Selection("example",
-///     iam_role_arn=example_aws_iam_role["arn"],
-///     name="my_example_backup_selection",
-///     plan_id=example_aws_backup_plan["id"],
 ///     selection_tags=[{
 ///         "type": "STRINGEQUALS",
 ///         "key": "foo",
 ///         "value": "bar",
-///     }])
+///     }],
+///     iam_role_arn=example_aws_iam_role["arn"],
+///     name="my_example_backup_selection",
+///     plan_id=example_aws_backup_plan["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -331,9 +333,6 @@ import 'selection_state.dart';
 /// {
 ///     var example = new Aws.Backup.Selection("example", new()
 ///     {
-///         IamRoleArn = exampleAwsIamRole.Arn,
-///         Name = "my_example_backup_selection",
-///         PlanId = exampleAwsBackupPlan.Id,
 ///         SelectionTags = new[]
 ///         {
 ///             new Aws.Backup.Inputs.SelectionSelectionTagArgs
@@ -343,6 +342,9 @@ import 'selection_state.dart';
 ///                 Value = "bar",
 ///             },
 ///         },
+///         IamRoleArn = exampleAwsIamRole.Arn,
+///         Name = "my_example_backup_selection",
+///         PlanId = exampleAwsBackupPlan.Id,
 ///     });
 ///
 /// });
@@ -358,9 +360,6 @@ import 'selection_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := backup.NewSelection(ctx, "example", &backup.SelectionArgs{
-/// 			IamRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Name:       pulumi.String("my_example_backup_selection"),
-/// 			PlanId:     pulumi.Any(exampleAwsBackupPlan.Id),
 /// 			SelectionTags: backup.SelectionSelectionTagArray{
 /// 				&backup.SelectionSelectionTagArgs{
 /// 					Type:  pulumi.String("STRINGEQUALS"),
@@ -368,6 +367,9 @@ import 'selection_state.dart';
 /// 					Value: pulumi.String("bar"),
 /// 				},
 /// 			},
+/// 			IamRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Name:       pulumi.String("my_example_backup_selection"),
+/// 			PlanId:     pulumi.Any(exampleAwsBackupPlan.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -386,14 +388,14 @@ import 'selection_state.dart';
 /// }
 ///
 /// resource "aws_backup_selection" "example" {
-///   iam_role_arn = exampleAwsIamRole.arn
-///   name         = "my_example_backup_selection"
-///   plan_id      = exampleAwsBackupPlan.id
 ///   selection_tags {
 ///     type  = "STRINGEQUALS"
 ///     key   = "foo"
 ///     value = "bar"
 ///   }
+///   iam_role_arn = exampleAwsIamRole.arn
+///   name         = "my_example_backup_selection"
+///   plan_id      = exampleAwsBackupPlan.id
 /// }
 /// ```
 /// ```java
@@ -419,14 +421,14 @@ import 'selection_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Selection("example", SelectionArgs.builder()
-///             .iamRoleArn(exampleAwsIamRole.arn())
-///             .name("my_example_backup_selection")
-///             .planId(exampleAwsBackupPlan.id())
 ///             .selectionTags(SelectionSelectionTagArgs.builder()
 ///                 .type("STRINGEQUALS")
 ///                 .key("foo")
 ///                 .value("bar")
 ///                 .build())
+///             .iamRoleArn(exampleAwsIamRole.arn())
+///             .name("my_example_backup_selection")
+///             .planId(exampleAwsBackupPlan.id())
 ///             .build());
 ///
 ///     }
@@ -437,13 +439,13 @@ import 'selection_state.dart';
 ///   example:
 ///     type: aws:backup:Selection
 ///     properties:
-///       iamRoleArn: ${exampleAwsIamRole.arn}
-///       name: my_example_backup_selection
-///       planId: ${exampleAwsBackupPlan.id}
 ///       selectionTags:
 ///         - type: STRINGEQUALS
 ///           key: foo
 ///           value: bar
+///       iamRoleArn: ${exampleAwsIamRole.arn}
+///       name: my_example_backup_selection
+///       planId: ${exampleAwsBackupPlan.id}
 /// ```
 ///
 ///
@@ -455,10 +457,6 @@ import 'selection_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.backup.Selection("example", {
-///     iamRoleArn: exampleAwsIamRole.arn,
-///     name: "my_example_backup_selection",
-///     planId: exampleAwsBackupPlan.id,
-///     resources: ["*"],
 ///     conditions: [{
 ///         stringEquals: [{
 ///             key: "aws:ResourceTag/Component",
@@ -477,6 +475,10 @@ import 'selection_state.dart';
 ///             value: "test*",
 ///         }],
 ///     }],
+///     iamRoleArn: exampleAwsIamRole.arn,
+///     name: "my_example_backup_selection",
+///     planId: exampleAwsBackupPlan.id,
+///     resources: ["*"],
 /// });
 /// ```
 /// ```python
@@ -484,10 +486,6 @@ import 'selection_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.backup.Selection("example",
-///     iam_role_arn=example_aws_iam_role["arn"],
-///     name="my_example_backup_selection",
-///     plan_id=example_aws_backup_plan["id"],
-///     resources=["*"],
 ///     conditions=[{
 ///         "string_equals": [{
 ///             "key": "aws:ResourceTag/Component",
@@ -505,7 +503,11 @@ import 'selection_state.dart';
 ///             "key": "aws:ResourceTag/Environment",
 ///             "value": "test*",
 ///         }],
-///     }])
+///     }],
+///     iam_role_arn=example_aws_iam_role["arn"],
+///     name="my_example_backup_selection",
+///     plan_id=example_aws_backup_plan["id"],
+///     resources=["*"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -517,13 +519,6 @@ import 'selection_state.dart';
 /// {
 ///     var example = new Aws.Backup.Selection("example", new()
 ///     {
-///         IamRoleArn = exampleAwsIamRole.Arn,
-///         Name = "my_example_backup_selection",
-///         PlanId = exampleAwsBackupPlan.Id,
-///         Resources = new[]
-///         {
-///             "*",
-///         },
 ///         Conditions = new[]
 ///         {
 ///             new Aws.Backup.Inputs.SelectionConditionArgs
@@ -562,6 +557,13 @@ import 'selection_state.dart';
 ///                 },
 ///             },
 ///         },
+///         IamRoleArn = exampleAwsIamRole.Arn,
+///         Name = "my_example_backup_selection",
+///         PlanId = exampleAwsBackupPlan.Id,
+///         Resources = new[]
+///         {
+///             "*",
+///         },
 ///     });
 ///
 /// });
@@ -577,12 +579,6 @@ import 'selection_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := backup.NewSelection(ctx, "example", &backup.SelectionArgs{
-/// 			IamRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Name:       pulumi.String("my_example_backup_selection"),
-/// 			PlanId:     pulumi.Any(exampleAwsBackupPlan.Id),
-/// 			Resources: pulumi.StringArray{
-/// 				pulumi.String("*"),
-/// 			},
 /// 			Conditions: backup.SelectionConditionArray{
 /// 				&backup.SelectionConditionArgs{
 /// 					StringEquals: backup.SelectionConditionStringEqualArray{
@@ -611,6 +607,12 @@ import 'selection_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			IamRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Name:       pulumi.String("my_example_backup_selection"),
+/// 			PlanId:     pulumi.Any(exampleAwsBackupPlan.Id),
+/// 			Resources: pulumi.StringArray{
+/// 				pulumi.String("*"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -629,10 +631,6 @@ import 'selection_state.dart';
 /// }
 ///
 /// resource "aws_backup_selection" "example" {
-///   iam_role_arn = exampleAwsIamRole.arn
-///   name         = "my_example_backup_selection"
-///   plan_id      = exampleAwsBackupPlan.id
-///   resources    = ["*"]
 ///   conditions {
 ///     string_equals {
 ///       key   = "aws:ResourceTag/Component"
@@ -651,6 +649,10 @@ import 'selection_state.dart';
 ///       value = "test*"
 ///     }
 ///   }
+///   iam_role_arn = exampleAwsIamRole.arn
+///   name         = "my_example_backup_selection"
+///   plan_id      = exampleAwsBackupPlan.id
+///   resources    = ["*"]
 /// }
 /// ```
 /// ```java
@@ -680,10 +682,6 @@ import 'selection_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Selection("example", SelectionArgs.builder()
-///             .iamRoleArn(exampleAwsIamRole.arn())
-///             .name("my_example_backup_selection")
-///             .planId(exampleAwsBackupPlan.id())
-///             .resources("*")
 ///             .conditions(SelectionConditionArgs.builder()
 ///                 .stringEquals(SelectionConditionStringEqualArgs.builder()
 ///                     .key("aws:ResourceTag/Component")
@@ -702,6 +700,10 @@ import 'selection_state.dart';
 ///                     .value("test*")
 ///                     .build())
 ///                 .build())
+///             .iamRoleArn(exampleAwsIamRole.arn())
+///             .name("my_example_backup_selection")
+///             .planId(exampleAwsBackupPlan.id())
+///             .resources("*")
 ///             .build());
 ///
 ///     }
@@ -712,11 +714,6 @@ import 'selection_state.dart';
 ///   example:
 ///     type: aws:backup:Selection
 ///     properties:
-///       iamRoleArn: ${exampleAwsIamRole.arn}
-///       name: my_example_backup_selection
-///       planId: ${exampleAwsBackupPlan.id}
-///       resources:
-///         - '*'
 ///       conditions:
 ///         - stringEquals:
 ///             - key: aws:ResourceTag/Component
@@ -730,6 +727,11 @@ import 'selection_state.dart';
 ///           stringNotLikes:
 ///             - key: aws:ResourceTag/Environment
 ///               value: test*
+///       iamRoleArn: ${exampleAwsIamRole.arn}
+///       name: my_example_backup_selection
+///       planId: ${exampleAwsBackupPlan.id}
+///       resources:
+///         - '*'
 /// ```
 ///
 ///
@@ -1049,21 +1051,21 @@ import 'selection_state.dart';
 /// ```
 class Selection extends pulumi.CustomResource {
   /// Condition-based filters used to specify sets of resources for a backup plan. See below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<SelectionCondition>> conditions;
   /// The ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
   late final pulumi.Output<String> iamRoleArn;
   /// The display name of a resource selection document.
   late final pulumi.Output<String> name;
-  /// An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to exclude from a backup plan.
+  /// Array of strings that either contain ARNs or match patterns of resources to exclude from a backup plan.
   late final pulumi.Output<List<String>> notResources;
   /// The backup plan ID to be associated with the selection of resources.
   late final pulumi.Output<String> planId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan.
+  /// Array of strings that either contain ARNs or match patterns of resources to assign to a backup plan.
   late final pulumi.Output<List<String>?> resources;
   /// Tag-based conditions used to specify a set of resources to assign to a backup plan. See below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> selectionTags;
+  late final pulumi.Output<List<SelectionSelectionTag>?> selectionTags;
 
   /// Creates a new [Selection].
   /// [name] The Pulumi resource name.
@@ -1077,16 +1079,16 @@ class Selection extends pulumi.CustomResource {
           'aws:backup/selection:Selection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<SelectionCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SelectionCondition>(guardedValue, (value) => SelectionCondition.fromMap((value as Map).cast<String, dynamic>())); });
     iamRoleArn = registerOutput<String>('iamRoleArn');
     this.name = registerOutput<String>('name');
-    notResources = registerOutput<List<String>>('notResources');
+    notResources = registerOutput<List<String>>('notResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     planId = registerOutput<String>('planId');
     region = registerOutput<String>('region');
-    resources = registerOutput<List<String>?>('resources');
-    selectionTags = registerOutput<List<Map<String, dynamic>>?>('selectionTags');
+    resources = registerOutput<List<String>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    selectionTags = registerOutput<List<SelectionSelectionTag>?>('selectionTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SelectionSelectionTag>(guardedValue, (value) => SelectionSelectionTag.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Selection] resource's state with the given [name] and [id].
@@ -1094,11 +1096,12 @@ class Selection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SelectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Selection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1112,13 +1115,32 @@ class Selection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<SelectionCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SelectionCondition>(guardedValue, (value) => SelectionCondition.fromMap((value as Map).cast<String, dynamic>())); });
     iamRoleArn = registerOutput<String>('iamRoleArn');
     this.name = registerOutput<String>('name');
-    notResources = registerOutput<List<String>>('notResources');
+    notResources = registerOutput<List<String>>('notResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     planId = registerOutput<String>('planId');
     region = registerOutput<String>('region');
-    resources = registerOutput<List<String>?>('resources');
-    selectionTags = registerOutput<List<Map<String, dynamic>>?>('selectionTags');
+    resources = registerOutput<List<String>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    selectionTags = registerOutput<List<SelectionSelectionTag>?>('selectionTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SelectionSelectionTag>(guardedValue, (value) => SelectionSelectionTag.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Selection] resource.
+  Selection.reference(String urn)
+    : super(
+        'aws:backup/selection:Selection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    conditions = registerOutput<List<SelectionCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SelectionCondition>(guardedValue, (value) => SelectionCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    this.name = registerOutput<String>('name');
+    notResources = registerOutput<List<String>>('notResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    planId = registerOutput<String>('planId');
+    region = registerOutput<String>('region');
+    resources = registerOutput<List<String>?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    selectionTags = registerOutput<List<SelectionSelectionTag>?>('selectionTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SelectionSelectionTag>(guardedValue, (value) => SelectionSelectionTag.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

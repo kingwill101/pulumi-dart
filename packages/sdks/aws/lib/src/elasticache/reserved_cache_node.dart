@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reserved_cache_node_args.dart';
+import 'reserved_cache_node_recurring_charge.dart';
 import 'reserved_cache_node_state.dart';
 import 'reserved_cache_node_timeouts.dart';
 
@@ -206,7 +207,7 @@ class ReservedCacheNode extends pulumi.CustomResource {
   /// Engine type for the reserved cache node.
   late final pulumi.Output<String> productDescription;
   /// Recurring price charged to run this reserved cache node.
-  late final pulumi.Output<List<Map<String, dynamic>>> recurringCharges;
+  late final pulumi.Output<List<ReservedCacheNodeRecurringCharge>> recurringCharges;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// ID of the reserved cache node offering to purchase.
@@ -238,7 +239,7 @@ class ReservedCacheNode extends pulumi.CustomResource {
           'aws:elasticache/reservedCacheNode:ReservedCacheNode',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cacheNodeCount = registerOutput<int>('cacheNodeCount');
@@ -248,13 +249,13 @@ class ReservedCacheNode extends pulumi.CustomResource {
     fixedPrice = registerOutput<double>('fixedPrice');
     offeringType = registerOutput<String>('offeringType');
     productDescription = registerOutput<String>('productDescription');
-    recurringCharges = registerOutput<List<Map<String, dynamic>>>('recurringCharges');
+    recurringCharges = registerOutput<List<ReservedCacheNodeRecurringCharge>>('recurringCharges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservedCacheNodeRecurringCharge>(guardedValue, (value) => ReservedCacheNodeRecurringCharge.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     reservedCacheNodesOfferingId = registerOutput<String>('reservedCacheNodesOfferingId');
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ReservedCacheNodeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservedCacheNodeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     usagePrice = registerOutput<double>('usagePrice');
   }
@@ -264,11 +265,12 @@ class ReservedCacheNode extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReservedCacheNodeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReservedCacheNode._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,13 +292,41 @@ class ReservedCacheNode extends pulumi.CustomResource {
     fixedPrice = registerOutput<double>('fixedPrice');
     offeringType = registerOutput<String>('offeringType');
     productDescription = registerOutput<String>('productDescription');
-    recurringCharges = registerOutput<List<Map<String, dynamic>>>('recurringCharges');
+    recurringCharges = registerOutput<List<ReservedCacheNodeRecurringCharge>>('recurringCharges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservedCacheNodeRecurringCharge>(guardedValue, (value) => ReservedCacheNodeRecurringCharge.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     reservedCacheNodesOfferingId = registerOutput<String>('reservedCacheNodesOfferingId');
     startTime = registerOutput<String>('startTime');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ReservedCacheNodeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservedCacheNodeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    usagePrice = registerOutput<double>('usagePrice');
+  }
+
+  /// Creates a typed reference to an existing [ReservedCacheNode] resource.
+  ReservedCacheNode.reference(String urn)
+    : super(
+        'aws:elasticache/reservedCacheNode:ReservedCacheNode',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cacheNodeCount = registerOutput<int>('cacheNodeCount');
+    cacheNodeType = registerOutput<String>('cacheNodeType');
+    duration = registerOutput<String>('duration');
+    elasticacheReservedCacheNodeId = registerOutput<String>('elasticacheReservedCacheNodeId');
+    fixedPrice = registerOutput<double>('fixedPrice');
+    offeringType = registerOutput<String>('offeringType');
+    productDescription = registerOutput<String>('productDescription');
+    recurringCharges = registerOutput<List<ReservedCacheNodeRecurringCharge>>('recurringCharges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservedCacheNodeRecurringCharge>(guardedValue, (value) => ReservedCacheNodeRecurringCharge.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    reservedCacheNodesOfferingId = registerOutput<String>('reservedCacheNodesOfferingId');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ReservedCacheNodeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservedCacheNodeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     usagePrice = registerOutput<double>('usagePrice');
   }

@@ -7,11 +7,11 @@ import 'v2models_slot_value_elicitation_setting_prompt_specification_message_gro
 class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup {
   /// Configuration block for the primary message that Amazon Lex should send to the user.
   /// See the `aws.lex.V2modelsIntent` resource for details on the `message` argument reference - they are identical.
-  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage>? message;
+  final pulumi.Input<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage?>? message;
   /// Configuration blocks for message variations to send to the user.
   /// When variations are defined, Amazon Lex chooses the primary message or one of the variations to send to the user.
   /// See the `aws.lex.V2modelsIntent` resource for details on the `variation` argument reference - they are identical.
-  final pulumi.Input<List<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariation>>? variations;
+  final pulumi.Input<List<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariation>?>? variations;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup].
   /// [message] Configuration block for the primary message that Amazon Lex should send to the user.

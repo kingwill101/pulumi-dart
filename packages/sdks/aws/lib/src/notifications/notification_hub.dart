@@ -131,7 +131,7 @@ class NotificationHub extends pulumi.CustomResource {
           'aws:notifications/notificationHub:NotificationHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     notificationHubRegion = registerOutput<String>('notificationHubRegion');
     timeouts = registerOutput<NotificationHubTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationHubTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -142,11 +142,12 @@ class NotificationHub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotificationHubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NotificationHub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -160,6 +161,19 @@ class NotificationHub extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    notificationHubRegion = registerOutput<String>('notificationHubRegion');
+    timeouts = registerOutput<NotificationHubTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationHubTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NotificationHub] resource.
+  NotificationHub.reference(String urn)
+    : super(
+        'aws:notifications/notificationHub:NotificationHub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     notificationHubRegion = registerOutput<String>('notificationHubRegion');
     timeouts = registerOutput<NotificationHubTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationHubTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

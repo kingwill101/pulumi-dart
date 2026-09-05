@@ -122,6 +122,17 @@ Future<GetPipelineResult> getPipeline(
   return GetPipelineResult.fromMap(result);
 }
 
+pulumi.Output<GetPipelineResult> getPipelineOutput(
+  GetPipelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:datapipeline/getPipeline:getPipeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPipelineResult.fromMap);
+}
+
 /// Provides details about a specific DataPipeline Pipeline Definition.
 ///
 /// ## Example Usage
@@ -238,4 +249,15 @@ Future<GetPipelineDefinitionResult> getPipelineDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPipelineDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetPipelineDefinitionResult> getPipelineDefinitionOutput(
+  GetPipelineDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:datapipeline/getPipelineDefinition:getPipelineDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPipelineDefinitionResult.fromMap);
 }

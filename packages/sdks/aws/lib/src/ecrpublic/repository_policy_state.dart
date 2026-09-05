@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RepositoryPolicy resources.
 class RepositoryPolicyState {
   /// The policy document. This is a JSON formatted string.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The registry ID where the repository was created.
-  final pulumi.Input<String>? registryId;
+  final pulumi.Input<String?>? registryId;
   /// Name of the repository to apply the policy.
-  final pulumi.Input<String>? repositoryName;
+  final pulumi.Input<String?>? repositoryName;
 
   /// Creates a new [RepositoryPolicyState].
   /// [policy] The policy document. This is a JSON formatted string.

@@ -1,8 +1,11 @@
-enum Tenancy {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum Tenancy implements pulumi.PulumiEnum<String> {
   default_("default"),
   dedicated("dedicated");
 
   const Tenancy(this.wireValue);
+  @override
   final String wireValue;
 
   static Tenancy fromValue(String value) {

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification {
-  /// Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+  /// Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in KMS.
   final pulumi.Input<String> status;
 
   /// Creates a new [GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification].
-  /// [status] Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+  /// [status] Whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in KMS.
   const GetBucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModification({
     required this.status,
   });

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
+import 'cluster_cluster_node.dart';
 import 'cluster_state.dart';
 
 /// Provides a Redshift Cluster Resource.
@@ -303,7 +304,7 @@ class Cluster extends pulumi.CustomResource {
   /// No longer supported by the AWS API.
   /// Always returns `auto`.
   late final pulumi.Output<String> aquaConfigurationStatus;
-  /// Amazon Resource Name (ARN) of cluster
+  /// ARN of cluster
   late final pulumi.Output<String> arn;
   /// The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Even if automated snapshots are disabled, you can still create manual snapshots when you want with create-cluster-snapshot. Default is 1.
   late final pulumi.Output<int?> automatedSnapshotRetentionPeriod;
@@ -313,17 +314,17 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> availabilityZoneRelocationEnabled;
   /// The Cluster Identifier. Must be a lower case string.
   late final pulumi.Output<String> clusterIdentifier;
-  /// The namespace Amazon Resource Name (ARN) of the cluster
+  /// Namespace ARN of the cluster
   late final pulumi.Output<String> clusterNamespaceArn;
   /// The nodes in the cluster. Cluster node blocks are documented below
-  late final pulumi.Output<List<Map<String, dynamic>>> clusterNodes;
+  late final pulumi.Output<List<ClusterClusterNode>> clusterNodes;
   /// The name of the parameter group to be associated with this cluster.
   late final pulumi.Output<String> clusterParameterGroupName;
   /// The public key for the cluster
   late final pulumi.Output<String> clusterPublicKey;
   /// The specific revision number of the database in the cluster
   late final pulumi.Output<String> clusterRevisionNumber;
-  /// The name of a cluster subnet group to be associated with this cluster. If this parameter is not provided the resulting cluster will be deployed outside virtual private cloud (VPC).
+  /// Name of a cluster subnet group to be associated with this cluster. If this parameter is not provided the resulting cluster will be deployed outside VPC.
   late final pulumi.Output<String> clusterSubnetGroupName;
   /// The cluster type to use. Either `single-node` or `multi-node`.
   late final pulumi.Output<String> clusterType;
@@ -333,7 +334,7 @@ class Cluster extends pulumi.CustomResource {
   /// The name of the first database to be created when the cluster is created.
   /// If you do not provide a name, Amazon Redshift will create a default database called `dev`.
   late final pulumi.Output<String> databaseName;
-  /// The Amazon Resource Name (ARN) for the IAM role that was set as default for the cluster when the cluster was created.
+  /// ARN for the IAM role that was set as default for the cluster when the cluster was created.
   late final pulumi.Output<String> defaultIamRoleArn;
   /// The DNS name of the cluster
   late final pulumi.Output<String> dnsName;
@@ -416,7 +417,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
+  /// List of VPC security groups to be associated with the cluster.
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;
 
   /// Creates a new [Cluster].
@@ -431,7 +432,8 @@ class Cluster extends pulumi.CustomResource {
           'aws:redshift/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['masterPassword', 'masterPasswordWo'],
         ) {
     allowVersionUpgrade = registerOutput<bool?>('allowVersionUpgrade');
     applyImmediately = registerOutput<bool?>('applyImmediately');
@@ -442,7 +444,7 @@ class Cluster extends pulumi.CustomResource {
     availabilityZoneRelocationEnabled = registerOutput<bool?>('availabilityZoneRelocationEnabled');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     clusterNamespaceArn = registerOutput<String>('clusterNamespaceArn');
-    clusterNodes = registerOutput<List<Map<String, dynamic>>>('clusterNodes');
+    clusterNodes = registerOutput<List<ClusterClusterNode>>('clusterNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterNode>(guardedValue, (value) => ClusterClusterNode.fromMap((value as Map).cast<String, dynamic>())); });
     clusterParameterGroupName = registerOutput<String>('clusterParameterGroupName');
     clusterPublicKey = registerOutput<String>('clusterPublicKey');
     clusterRevisionNumber = registerOutput<String>('clusterRevisionNumber');
@@ -457,15 +459,15 @@ class Cluster extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     enhancedVpcRouting = registerOutput<bool>('enhancedVpcRouting');
     finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
-    iamRoles = registerOutput<List<String>>('iamRoles');
+    iamRoles = registerOutput<List<String>>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsKeyId = registerOutput<String>('kmsKeyId');
     maintenanceTrackName = registerOutput<String?>('maintenanceTrackName');
     manageMasterPassword = registerOutput<bool?>('manageMasterPassword');
     manualSnapshotRetentionPeriod = registerOutput<int?>('manualSnapshotRetentionPeriod');
-    masterPassword = registerOutput<String?>('masterPassword');
+    masterPassword = registerOutput<String?>('masterPassword', isSecret: true);
     masterPasswordSecretArn = registerOutput<String>('masterPasswordSecretArn');
     masterPasswordSecretKmsKeyId = registerOutput<String>('masterPasswordSecretKmsKeyId');
-    masterPasswordWo = registerOutput<String?>('masterPasswordWo');
+    masterPasswordWo = registerOutput<String?>('masterPasswordWo', isSecret: true);
     masterPasswordWoVersion = registerOutput<int?>('masterPasswordWoVersion');
     masterUsername = registerOutput<String?>('masterUsername');
     multiAz = registerOutput<bool?>('multiAz');
@@ -480,9 +482,9 @@ class Cluster extends pulumi.CustomResource {
     snapshotArn = registerOutput<String?>('snapshotArn');
     snapshotClusterIdentifier = registerOutput<String?>('snapshotClusterIdentifier');
     snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -490,11 +492,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -517,7 +520,7 @@ class Cluster extends pulumi.CustomResource {
     availabilityZoneRelocationEnabled = registerOutput<bool?>('availabilityZoneRelocationEnabled');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     clusterNamespaceArn = registerOutput<String>('clusterNamespaceArn');
-    clusterNodes = registerOutput<List<Map<String, dynamic>>>('clusterNodes');
+    clusterNodes = registerOutput<List<ClusterClusterNode>>('clusterNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterNode>(guardedValue, (value) => ClusterClusterNode.fromMap((value as Map).cast<String, dynamic>())); });
     clusterParameterGroupName = registerOutput<String>('clusterParameterGroupName');
     clusterPublicKey = registerOutput<String>('clusterPublicKey');
     clusterRevisionNumber = registerOutput<String>('clusterRevisionNumber');
@@ -532,15 +535,15 @@ class Cluster extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     enhancedVpcRouting = registerOutput<bool>('enhancedVpcRouting');
     finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
-    iamRoles = registerOutput<List<String>>('iamRoles');
+    iamRoles = registerOutput<List<String>>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsKeyId = registerOutput<String>('kmsKeyId');
     maintenanceTrackName = registerOutput<String?>('maintenanceTrackName');
     manageMasterPassword = registerOutput<bool?>('manageMasterPassword');
     manualSnapshotRetentionPeriod = registerOutput<int?>('manualSnapshotRetentionPeriod');
-    masterPassword = registerOutput<String?>('masterPassword');
+    masterPassword = registerOutput<String?>('masterPassword', isSecret: true);
     masterPasswordSecretArn = registerOutput<String>('masterPasswordSecretArn');
     masterPasswordSecretKmsKeyId = registerOutput<String>('masterPasswordSecretKmsKeyId');
-    masterPasswordWo = registerOutput<String?>('masterPasswordWo');
+    masterPasswordWo = registerOutput<String?>('masterPasswordWo', isSecret: true);
     masterPasswordWoVersion = registerOutput<int?>('masterPasswordWoVersion');
     masterUsername = registerOutput<String?>('masterUsername');
     multiAz = registerOutput<bool?>('multiAz');
@@ -555,8 +558,70 @@ class Cluster extends pulumi.CustomResource {
     snapshotArn = registerOutput<String?>('snapshotArn');
     snapshotClusterIdentifier = registerOutput<String?>('snapshotClusterIdentifier');
     snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:redshift/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['masterPassword', 'masterPasswordWo'],
+        isResourceReference: true,
+      ) {
+    allowVersionUpgrade = registerOutput<bool?>('allowVersionUpgrade');
+    applyImmediately = registerOutput<bool?>('applyImmediately');
+    aquaConfigurationStatus = registerOutput<String>('aquaConfigurationStatus');
+    arn = registerOutput<String>('arn');
+    automatedSnapshotRetentionPeriod = registerOutput<int?>('automatedSnapshotRetentionPeriod');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    availabilityZoneRelocationEnabled = registerOutput<bool?>('availabilityZoneRelocationEnabled');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    clusterNamespaceArn = registerOutput<String>('clusterNamespaceArn');
+    clusterNodes = registerOutput<List<ClusterClusterNode>>('clusterNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterNode>(guardedValue, (value) => ClusterClusterNode.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterParameterGroupName = registerOutput<String>('clusterParameterGroupName');
+    clusterPublicKey = registerOutput<String>('clusterPublicKey');
+    clusterRevisionNumber = registerOutput<String>('clusterRevisionNumber');
+    clusterSubnetGroupName = registerOutput<String>('clusterSubnetGroupName');
+    clusterType = registerOutput<String>('clusterType');
+    clusterVersion = registerOutput<String?>('clusterVersion');
+    databaseName = registerOutput<String>('databaseName');
+    defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');
+    dnsName = registerOutput<String>('dnsName');
+    elasticIp = registerOutput<String?>('elasticIp');
+    encrypted = registerOutput<String?>('encrypted');
+    endpoint = registerOutput<String>('endpoint');
+    enhancedVpcRouting = registerOutput<bool>('enhancedVpcRouting');
+    finalSnapshotIdentifier = registerOutput<String?>('finalSnapshotIdentifier');
+    iamRoles = registerOutput<List<String>>('iamRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    maintenanceTrackName = registerOutput<String?>('maintenanceTrackName');
+    manageMasterPassword = registerOutput<bool?>('manageMasterPassword');
+    manualSnapshotRetentionPeriod = registerOutput<int?>('manualSnapshotRetentionPeriod');
+    masterPassword = registerOutput<String?>('masterPassword', isSecret: true);
+    masterPasswordSecretArn = registerOutput<String>('masterPasswordSecretArn');
+    masterPasswordSecretKmsKeyId = registerOutput<String>('masterPasswordSecretKmsKeyId');
+    masterPasswordWo = registerOutput<String?>('masterPasswordWo', isSecret: true);
+    masterPasswordWoVersion = registerOutput<int?>('masterPasswordWoVersion');
+    masterUsername = registerOutput<String?>('masterUsername');
+    multiAz = registerOutput<bool?>('multiAz');
+    nodeType = registerOutput<String>('nodeType');
+    numberOfNodes = registerOutput<int?>('numberOfNodes');
+    ownerAccount = registerOutput<String?>('ownerAccount');
+    port = registerOutput<int?>('port');
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
+    publiclyAccessible = registerOutput<bool?>('publiclyAccessible');
+    region = registerOutput<String>('region');
+    skipFinalSnapshot = registerOutput<bool?>('skipFinalSnapshot');
+    snapshotArn = registerOutput<String?>('snapshotArn');
+    snapshotClusterIdentifier = registerOutput<String?>('snapshotClusterIdentifier');
+    snapshotIdentifier = registerOutput<String?>('snapshotIdentifier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

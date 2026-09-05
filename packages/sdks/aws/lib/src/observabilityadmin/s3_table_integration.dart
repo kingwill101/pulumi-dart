@@ -54,10 +54,10 @@ import 's3_table_integration_timeouts.dart';
 ///     }),
 /// });
 /// const exampleS3TableIntegration = new aws.observabilityadmin.S3TableIntegration("example", {
-///     roleArn: example.arn,
 ///     encryption: {
 ///         sseAlgorithm: "AES256",
 ///     },
+///     roleArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -100,10 +100,10 @@ import 's3_table_integration_timeouts.dart';
 ///         }],
 ///     }))
 /// example_s3_table_integration = aws.observabilityadmin.S3TableIntegration("example",
-///     role_arn=example.arn,
 ///     encryption={
 ///         "sse_algorithm": "AES256",
-///     })
+///     },
+///     role_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -168,11 +168,11 @@ import 's3_table_integration_timeouts.dart';
 ///
 ///     var exampleS3TableIntegration = new Aws.Observabilityadmin.S3TableIntegration("example", new()
 ///     {
-///         RoleArn = example.Arn,
 ///         Encryption = new Aws.Observabilityadmin.Inputs.S3TableIntegrationEncryptionArgs
 ///         {
 ///             SseAlgorithm = "AES256",
 ///         },
+///         RoleArn = example.Arn,
 ///     });
 ///
 /// });
@@ -247,10 +247,10 @@ import 's3_table_integration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewS3TableIntegration(ctx, "example", &observabilityadmin.S3TableIntegrationArgs{
-/// 			RoleArn: example.Arn,
 /// 			Encryption: &observabilityadmin.S3TableIntegrationEncryptionArgs{
 /// 				SseAlgorithm: pulumi.String("AES256"),
 /// 			},
+/// 			RoleArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -293,10 +293,10 @@ import 's3_table_integration_timeouts.dart';
 ///   })
 /// }
 /// resource "aws_observabilityadmin_s3tableintegration" "example" {
-///   role_arn = aws_iam_role.example.arn
 ///   encryption = {
 ///     sse_algorithm = "AES256"
 ///   }
+///   role_arn = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -367,10 +367,10 @@ import 's3_table_integration_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleS3TableIntegration = new S3TableIntegration("exampleS3TableIntegration", S3TableIntegrationArgs.builder()
-///             .roleArn(example.arn())
 ///             .encryption(S3TableIntegrationEncryptionArgs.builder()
 ///                 .sseAlgorithm("AES256")
 ///                 .build())
+///             .roleArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -417,9 +417,9 @@ import 's3_table_integration_timeouts.dart';
 ///     type: aws:observabilityadmin:S3TableIntegration
 ///     name: example
 ///     properties:
-///       roleArn: ${example.arn}
 ///       encryption:
 ///         sseAlgorithm: AES256
+///       roleArn: ${example.arn}
 /// ```
 ///
 ///
@@ -448,11 +448,11 @@ import 's3_table_integration_timeouts.dart';
 ///     deletionWindowInDays: 7,
 /// });
 /// const exampleS3TableIntegration = new aws.observabilityadmin.S3TableIntegration("example", {
-///     roleArn: example.arn,
 ///     encryption: {
 ///         sseAlgorithm: "aws:kms",
 ///         kmsKeyArn: exampleKey.arn,
 ///     },
+///     roleArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -476,11 +476,11 @@ import 's3_table_integration_timeouts.dart';
 ///     description="S3 Table Integration KMS key",
 ///     deletion_window_in_days=7)
 /// example_s3_table_integration = aws.observabilityadmin.S3TableIntegration("example",
-///     role_arn=example.arn,
 ///     encryption={
 ///         "sse_algorithm": "aws:kms",
 ///         "kms_key_arn": example_key.arn,
-///     })
+///     },
+///     role_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -520,12 +520,12 @@ import 's3_table_integration_timeouts.dart';
 ///
 ///     var exampleS3TableIntegration = new Aws.Observabilityadmin.S3TableIntegration("example", new()
 ///     {
-///         RoleArn = example.Arn,
 ///         Encryption = new Aws.Observabilityadmin.Inputs.S3TableIntegrationEncryptionArgs
 ///         {
 ///             SseAlgorithm = "aws:kms",
 ///             KmsKeyArn = exampleKey.Arn,
 ///         },
+///         RoleArn = example.Arn,
 ///     });
 ///
 /// });
@@ -575,11 +575,11 @@ import 's3_table_integration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = observabilityadmin.NewS3TableIntegration(ctx, "example", &observabilityadmin.S3TableIntegrationArgs{
-/// 			RoleArn: example.Arn,
 /// 			Encryption: &observabilityadmin.S3TableIntegrationEncryptionArgs{
 /// 				SseAlgorithm: pulumi.String("aws:kms"),
 /// 				KmsKeyArn:    exampleKey.Arn,
 /// 			},
+/// 			RoleArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -615,11 +615,11 @@ import 's3_table_integration_timeouts.dart';
 ///   deletion_window_in_days = 7
 /// }
 /// resource "aws_observabilityadmin_s3tableintegration" "example" {
-///   role_arn = aws_iam_role.example.arn
 ///   encryption = {
 ///     sse_algorithm = "aws:kms"
 ///     kms_key_arn   = aws_kms_key.example.arn
 ///   }
+///   role_arn = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -670,11 +670,11 @@ import 's3_table_integration_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleS3TableIntegration = new S3TableIntegration("exampleS3TableIntegration", S3TableIntegrationArgs.builder()
-///             .roleArn(example.arn())
 ///             .encryption(S3TableIntegrationEncryptionArgs.builder()
 ///                 .sseAlgorithm("aws:kms")
 ///                 .kmsKeyArn(exampleKey.arn())
 ///                 .build())
+///             .roleArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -704,10 +704,10 @@ import 's3_table_integration_timeouts.dart';
 ///     type: aws:observabilityadmin:S3TableIntegration
 ///     name: example
 ///     properties:
-///       roleArn: ${example.arn}
 ///       encryption:
 ///         sseAlgorithm: aws:kms
 ///         kmsKeyArn: ${exampleKey.arn}
+///       roleArn: ${example.arn}
 /// ```
 ///
 ///
@@ -726,7 +726,7 @@ import 's3_table_integration_timeouts.dart';
 /// $ pulumi import aws:observabilityadmin/s3TableIntegration:S3TableIntegration example arn:aws:observabilityadmin:us-east-1:123456789012:s3-table-integration/example-id
 /// ```
 class S3TableIntegration extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the S3 Table integration.
+  /// ARN of the S3 Table integration.
   late final pulumi.Output<String> arn;
   /// ARN of the S3 Table bucket where CloudWatch data is stored. AWS automatically creates a bucket named `_aws-cloudwatch_` if one does not already exist.
   late final pulumi.Output<String> destinationTableBucketArn;
@@ -734,7 +734,7 @@ class S3TableIntegration extends pulumi.CustomResource {
   late final pulumi.Output<S3TableIntegrationEncryption> encryption;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the IAM role that grants the S3 Table integration permissions to access necessary resources.
+  /// ARN of the IAM role that grants the S3 Table integration permissions to access necessary resources.
   late final pulumi.Output<String> roleArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -754,15 +754,15 @@ class S3TableIntegration extends pulumi.CustomResource {
           'aws:observabilityadmin/s3TableIntegration:S3TableIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationTableBucketArn = registerOutput<String>('destinationTableBucketArn');
     encryption = registerOutput<S3TableIntegrationEncryption>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3TableIntegrationEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<S3TableIntegrationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3TableIntegrationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -771,11 +771,12 @@ class S3TableIntegration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     S3TableIntegrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return S3TableIntegration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -794,8 +795,27 @@ class S3TableIntegration extends pulumi.CustomResource {
     encryption = registerOutput<S3TableIntegrationEncryption>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3TableIntegrationEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<S3TableIntegrationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3TableIntegrationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [S3TableIntegration] resource.
+  S3TableIntegration.reference(String urn)
+    : super(
+        'aws:observabilityadmin/s3TableIntegration:S3TableIntegration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    destinationTableBucketArn = registerOutput<String>('destinationTableBucketArn');
+    encryption = registerOutput<S3TableIntegrationEncryption>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3TableIntegrationEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<S3TableIntegrationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3TableIntegrationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

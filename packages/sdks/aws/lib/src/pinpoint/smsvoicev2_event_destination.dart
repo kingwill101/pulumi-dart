@@ -20,13 +20,13 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 /// const example = new aws.pinpoint.Smsvoicev2ConfigurationSet("example", {name: "example-configuration-set"});
 /// const exampleSmsvoicev2EventDestination = new aws.pinpoint.Smsvoicev2EventDestination("example", {
-///     configurationSetName: example.name,
-///     eventDestinationName: "example",
-///     matchingEventTypes: ["ALL"],
 ///     cloudwatchLogsDestination: {
 ///         iamRoleArn: exampleAwsIamRole.arn,
 ///         logGroupArn: exampleAwsCloudwatchLogGroup.arn,
 ///     },
+///     configurationSetName: example.name,
+///     eventDestinationName: "example",
+///     matchingEventTypes: ["ALL"],
 /// });
 /// ```
 /// ```python
@@ -35,13 +35,13 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 /// example = aws.pinpoint.Smsvoicev2ConfigurationSet("example", name="example-configuration-set")
 /// example_smsvoicev2_event_destination = aws.pinpoint.Smsvoicev2EventDestination("example",
-///     configuration_set_name=example.name,
-///     event_destination_name="example",
-///     matching_event_types=["ALL"],
 ///     cloudwatch_logs_destination={
 ///         "iam_role_arn": example_aws_iam_role["arn"],
 ///         "log_group_arn": example_aws_cloudwatch_log_group["arn"],
-///     })
+///     },
+///     configuration_set_name=example.name,
+///     event_destination_name="example",
+///     matching_event_types=["ALL"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -58,16 +58,16 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 ///     var exampleSmsvoicev2EventDestination = new Aws.Pinpoint.Smsvoicev2EventDestination("example", new()
 ///     {
+///         CloudwatchLogsDestination = new Aws.Pinpoint.Inputs.Smsvoicev2EventDestinationCloudwatchLogsDestinationArgs
+///         {
+///             IamRoleArn = exampleAwsIamRole.Arn,
+///             LogGroupArn = exampleAwsCloudwatchLogGroup.Arn,
+///         },
 ///         ConfigurationSetName = example.Name,
 ///         EventDestinationName = "example",
 ///         MatchingEventTypes = new[]
 ///         {
 ///             "ALL",
-///         },
-///         CloudwatchLogsDestination = new Aws.Pinpoint.Inputs.Smsvoicev2EventDestinationCloudwatchLogsDestinationArgs
-///         {
-///             IamRoleArn = exampleAwsIamRole.Arn,
-///             LogGroupArn = exampleAwsCloudwatchLogGroup.Arn,
 ///         },
 ///     });
 ///
@@ -90,14 +90,14 @@ import 'smsvoicev2_event_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = pinpoint.NewSmsvoicev2EventDestination(ctx, "example", &pinpoint.Smsvoicev2EventDestinationArgs{
+/// 			CloudwatchLogsDestination: &pinpoint.Smsvoicev2EventDestinationCloudwatchLogsDestinationArgs{
+/// 				IamRoleArn:  pulumi.Any(exampleAwsIamRole.Arn),
+/// 				LogGroupArn: pulumi.Any(exampleAwsCloudwatchLogGroup.Arn),
+/// 			},
 /// 			ConfigurationSetName: example.Name,
 /// 			EventDestinationName: pulumi.String("example"),
 /// 			MatchingEventTypes: pulumi.StringArray{
 /// 				pulumi.String("ALL"),
-/// 			},
-/// 			CloudwatchLogsDestination: &pinpoint.Smsvoicev2EventDestinationCloudwatchLogsDestinationArgs{
-/// 				IamRoleArn:  pulumi.Any(exampleAwsIamRole.Arn),
-/// 				LogGroupArn: pulumi.Any(exampleAwsCloudwatchLogGroup.Arn),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -120,13 +120,13 @@ import 'smsvoicev2_event_destination_state.dart';
 ///   name = "example-configuration-set"
 /// }
 /// resource "aws_pinpoint_smsvoicev2eventdestination" "example" {
-///   configuration_set_name = aws_pinpoint_smsvoicev2configurationset.example.name
-///   event_destination_name = "example"
-///   matching_event_types   = ["ALL"]
 ///   cloudwatch_logs_destination = {
 ///     iam_role_arn  = exampleAwsIamRole.arn
 ///     log_group_arn = exampleAwsCloudwatchLogGroup.arn
 ///   }
+///   configuration_set_name = aws_pinpoint_smsvoicev2configurationset.example.name
+///   event_destination_name = "example"
+///   matching_event_types   = ["ALL"]
 /// }
 /// ```
 /// ```java
@@ -158,13 +158,13 @@ import 'smsvoicev2_event_destination_state.dart';
 ///             .build());
 ///
 ///         var exampleSmsvoicev2EventDestination = new Smsvoicev2EventDestination("exampleSmsvoicev2EventDestination", Smsvoicev2EventDestinationArgs.builder()
-///             .configurationSetName(example.name())
-///             .eventDestinationName("example")
-///             .matchingEventTypes("ALL")
 ///             .cloudwatchLogsDestination(Smsvoicev2EventDestinationCloudwatchLogsDestinationArgs.builder()
 ///                 .iamRoleArn(exampleAwsIamRole.arn())
 ///                 .logGroupArn(exampleAwsCloudwatchLogGroup.arn())
 ///                 .build())
+///             .configurationSetName(example.name())
+///             .eventDestinationName("example")
+///             .matchingEventTypes("ALL")
 ///             .build());
 ///
 ///     }
@@ -180,13 +180,13 @@ import 'smsvoicev2_event_destination_state.dart';
 ///     type: aws:pinpoint:Smsvoicev2EventDestination
 ///     name: example
 ///     properties:
+///       cloudwatchLogsDestination:
+///         iamRoleArn: ${exampleAwsIamRole.arn}
+///         logGroupArn: ${exampleAwsCloudwatchLogGroup.arn}
 ///       configurationSetName: ${example.name}
 ///       eventDestinationName: example
 ///       matchingEventTypes:
 ///         - ALL
-///       cloudwatchLogsDestination:
-///         iamRoleArn: ${exampleAwsIamRole.arn}
-///         logGroupArn: ${exampleAwsCloudwatchLogGroup.arn}
 /// ```
 ///
 ///
@@ -199,13 +199,13 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 /// const example = new aws.pinpoint.Smsvoicev2ConfigurationSet("example", {name: "example-configuration-set"});
 /// const exampleSmsvoicev2EventDestination = new aws.pinpoint.Smsvoicev2EventDestination("example", {
-///     configurationSetName: example.name,
-///     eventDestinationName: "example",
-///     matchingEventTypes: ["ALL"],
 ///     kinesisFirehoseDestination: {
 ///         deliveryStreamArn: exampleAwsKinesisFirehoseDeliveryStream.arn,
 ///         iamRoleArn: exampleAwsIamRole.arn,
 ///     },
+///     configurationSetName: example.name,
+///     eventDestinationName: "example",
+///     matchingEventTypes: ["ALL"],
 /// });
 /// ```
 /// ```python
@@ -214,13 +214,13 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 /// example = aws.pinpoint.Smsvoicev2ConfigurationSet("example", name="example-configuration-set")
 /// example_smsvoicev2_event_destination = aws.pinpoint.Smsvoicev2EventDestination("example",
-///     configuration_set_name=example.name,
-///     event_destination_name="example",
-///     matching_event_types=["ALL"],
 ///     kinesis_firehose_destination={
 ///         "delivery_stream_arn": example_aws_kinesis_firehose_delivery_stream["arn"],
 ///         "iam_role_arn": example_aws_iam_role["arn"],
-///     })
+///     },
+///     configuration_set_name=example.name,
+///     event_destination_name="example",
+///     matching_event_types=["ALL"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -237,16 +237,16 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 ///     var exampleSmsvoicev2EventDestination = new Aws.Pinpoint.Smsvoicev2EventDestination("example", new()
 ///     {
+///         KinesisFirehoseDestination = new Aws.Pinpoint.Inputs.Smsvoicev2EventDestinationKinesisFirehoseDestinationArgs
+///         {
+///             DeliveryStreamArn = exampleAwsKinesisFirehoseDeliveryStream.Arn,
+///             IamRoleArn = exampleAwsIamRole.Arn,
+///         },
 ///         ConfigurationSetName = example.Name,
 ///         EventDestinationName = "example",
 ///         MatchingEventTypes = new[]
 ///         {
 ///             "ALL",
-///         },
-///         KinesisFirehoseDestination = new Aws.Pinpoint.Inputs.Smsvoicev2EventDestinationKinesisFirehoseDestinationArgs
-///         {
-///             DeliveryStreamArn = exampleAwsKinesisFirehoseDeliveryStream.Arn,
-///             IamRoleArn = exampleAwsIamRole.Arn,
 ///         },
 ///     });
 ///
@@ -269,14 +269,14 @@ import 'smsvoicev2_event_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = pinpoint.NewSmsvoicev2EventDestination(ctx, "example", &pinpoint.Smsvoicev2EventDestinationArgs{
+/// 			KinesisFirehoseDestination: &pinpoint.Smsvoicev2EventDestinationKinesisFirehoseDestinationArgs{
+/// 				DeliveryStreamArn: pulumi.Any(exampleAwsKinesisFirehoseDeliveryStream.Arn),
+/// 				IamRoleArn:        pulumi.Any(exampleAwsIamRole.Arn),
+/// 			},
 /// 			ConfigurationSetName: example.Name,
 /// 			EventDestinationName: pulumi.String("example"),
 /// 			MatchingEventTypes: pulumi.StringArray{
 /// 				pulumi.String("ALL"),
-/// 			},
-/// 			KinesisFirehoseDestination: &pinpoint.Smsvoicev2EventDestinationKinesisFirehoseDestinationArgs{
-/// 				DeliveryStreamArn: pulumi.Any(exampleAwsKinesisFirehoseDeliveryStream.Arn),
-/// 				IamRoleArn:        pulumi.Any(exampleAwsIamRole.Arn),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -299,13 +299,13 @@ import 'smsvoicev2_event_destination_state.dart';
 ///   name = "example-configuration-set"
 /// }
 /// resource "aws_pinpoint_smsvoicev2eventdestination" "example" {
-///   configuration_set_name = aws_pinpoint_smsvoicev2configurationset.example.name
-///   event_destination_name = "example"
-///   matching_event_types   = ["ALL"]
 ///   kinesis_firehose_destination = {
 ///     delivery_stream_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///     iam_role_arn        = exampleAwsIamRole.arn
 ///   }
+///   configuration_set_name = aws_pinpoint_smsvoicev2configurationset.example.name
+///   event_destination_name = "example"
+///   matching_event_types   = ["ALL"]
 /// }
 /// ```
 /// ```java
@@ -337,13 +337,13 @@ import 'smsvoicev2_event_destination_state.dart';
 ///             .build());
 ///
 ///         var exampleSmsvoicev2EventDestination = new Smsvoicev2EventDestination("exampleSmsvoicev2EventDestination", Smsvoicev2EventDestinationArgs.builder()
-///             .configurationSetName(example.name())
-///             .eventDestinationName("example")
-///             .matchingEventTypes("ALL")
 ///             .kinesisFirehoseDestination(Smsvoicev2EventDestinationKinesisFirehoseDestinationArgs.builder()
 ///                 .deliveryStreamArn(exampleAwsKinesisFirehoseDeliveryStream.arn())
 ///                 .iamRoleArn(exampleAwsIamRole.arn())
 ///                 .build())
+///             .configurationSetName(example.name())
+///             .eventDestinationName("example")
+///             .matchingEventTypes("ALL")
 ///             .build());
 ///
 ///     }
@@ -359,13 +359,13 @@ import 'smsvoicev2_event_destination_state.dart';
 ///     type: aws:pinpoint:Smsvoicev2EventDestination
 ///     name: example
 ///     properties:
+///       kinesisFirehoseDestination:
+///         deliveryStreamArn: ${exampleAwsKinesisFirehoseDeliveryStream.arn}
+///         iamRoleArn: ${exampleAwsIamRole.arn}
 ///       configurationSetName: ${example.name}
 ///       eventDestinationName: example
 ///       matchingEventTypes:
 ///         - ALL
-///       kinesisFirehoseDestination:
-///         deliveryStreamArn: ${exampleAwsKinesisFirehoseDeliveryStream.arn}
-///         iamRoleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -378,12 +378,12 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 /// const example = new aws.pinpoint.Smsvoicev2ConfigurationSet("example", {name: "example-configuration-set"});
 /// const exampleSmsvoicev2EventDestination = new aws.pinpoint.Smsvoicev2EventDestination("example", {
-///     configurationSetName: example.name,
-///     eventDestinationName: "example",
-///     matchingEventTypes: ["ALL"],
 ///     snsDestination: {
 ///         topicArn: exampleAwsSnsTopic.arn,
 ///     },
+///     configurationSetName: example.name,
+///     eventDestinationName: "example",
+///     matchingEventTypes: ["ALL"],
 /// });
 /// ```
 /// ```python
@@ -392,12 +392,12 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 /// example = aws.pinpoint.Smsvoicev2ConfigurationSet("example", name="example-configuration-set")
 /// example_smsvoicev2_event_destination = aws.pinpoint.Smsvoicev2EventDestination("example",
-///     configuration_set_name=example.name,
-///     event_destination_name="example",
-///     matching_event_types=["ALL"],
 ///     sns_destination={
 ///         "topic_arn": example_aws_sns_topic["arn"],
-///     })
+///     },
+///     configuration_set_name=example.name,
+///     event_destination_name="example",
+///     matching_event_types=["ALL"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -414,15 +414,15 @@ import 'smsvoicev2_event_destination_state.dart';
 ///
 ///     var exampleSmsvoicev2EventDestination = new Aws.Pinpoint.Smsvoicev2EventDestination("example", new()
 ///     {
+///         SnsDestination = new Aws.Pinpoint.Inputs.Smsvoicev2EventDestinationSnsDestinationArgs
+///         {
+///             TopicArn = exampleAwsSnsTopic.Arn,
+///         },
 ///         ConfigurationSetName = example.Name,
 ///         EventDestinationName = "example",
 ///         MatchingEventTypes = new[]
 ///         {
 ///             "ALL",
-///         },
-///         SnsDestination = new Aws.Pinpoint.Inputs.Smsvoicev2EventDestinationSnsDestinationArgs
-///         {
-///             TopicArn = exampleAwsSnsTopic.Arn,
 ///         },
 ///     });
 ///
@@ -445,13 +445,13 @@ import 'smsvoicev2_event_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = pinpoint.NewSmsvoicev2EventDestination(ctx, "example", &pinpoint.Smsvoicev2EventDestinationArgs{
+/// 			SnsDestination: &pinpoint.Smsvoicev2EventDestinationSnsDestinationArgs{
+/// 				TopicArn: pulumi.Any(exampleAwsSnsTopic.Arn),
+/// 			},
 /// 			ConfigurationSetName: example.Name,
 /// 			EventDestinationName: pulumi.String("example"),
 /// 			MatchingEventTypes: pulumi.StringArray{
 /// 				pulumi.String("ALL"),
-/// 			},
-/// 			SnsDestination: &pinpoint.Smsvoicev2EventDestinationSnsDestinationArgs{
-/// 				TopicArn: pulumi.Any(exampleAwsSnsTopic.Arn),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -474,12 +474,12 @@ import 'smsvoicev2_event_destination_state.dart';
 ///   name = "example-configuration-set"
 /// }
 /// resource "aws_pinpoint_smsvoicev2eventdestination" "example" {
-///   configuration_set_name = aws_pinpoint_smsvoicev2configurationset.example.name
-///   event_destination_name = "example"
-///   matching_event_types   = ["ALL"]
 ///   sns_destination = {
 ///     topic_arn = exampleAwsSnsTopic.arn
 ///   }
+///   configuration_set_name = aws_pinpoint_smsvoicev2configurationset.example.name
+///   event_destination_name = "example"
+///   matching_event_types   = ["ALL"]
 /// }
 /// ```
 /// ```java
@@ -511,12 +511,12 @@ import 'smsvoicev2_event_destination_state.dart';
 ///             .build());
 ///
 ///         var exampleSmsvoicev2EventDestination = new Smsvoicev2EventDestination("exampleSmsvoicev2EventDestination", Smsvoicev2EventDestinationArgs.builder()
-///             .configurationSetName(example.name())
-///             .eventDestinationName("example")
-///             .matchingEventTypes("ALL")
 ///             .snsDestination(Smsvoicev2EventDestinationSnsDestinationArgs.builder()
 ///                 .topicArn(exampleAwsSnsTopic.arn())
 ///                 .build())
+///             .configurationSetName(example.name())
+///             .eventDestinationName("example")
+///             .matchingEventTypes("ALL")
 ///             .build());
 ///
 ///     }
@@ -532,12 +532,12 @@ import 'smsvoicev2_event_destination_state.dart';
 ///     type: aws:pinpoint:Smsvoicev2EventDestination
 ///     name: example
 ///     properties:
+///       snsDestination:
+///         topicArn: ${exampleAwsSnsTopic.arn}
 ///       configurationSetName: ${example.name}
 ///       eventDestinationName: example
 ///       matchingEventTypes:
 ///         - ALL
-///       snsDestination:
-///         topicArn: ${exampleAwsSnsTopic.arn}
 /// ```
 ///
 ///
@@ -595,7 +595,7 @@ class Smsvoicev2EventDestination extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2EventDestination:Smsvoicev2EventDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cloudwatchLogsDestination = registerOutput<Smsvoicev2EventDestinationCloudwatchLogsDestination?>('cloudwatchLogsDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2EventDestinationCloudwatchLogsDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     configurationSetArn = registerOutput<String>('configurationSetArn');
@@ -603,7 +603,7 @@ class Smsvoicev2EventDestination extends pulumi.CustomResource {
     enabled = registerOutput<bool>('enabled');
     eventDestinationName = registerOutput<String>('eventDestinationName');
     kinesisFirehoseDestination = registerOutput<Smsvoicev2EventDestinationKinesisFirehoseDestination?>('kinesisFirehoseDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2EventDestinationKinesisFirehoseDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    matchingEventTypes = registerOutput<List<String>>('matchingEventTypes');
+    matchingEventTypes = registerOutput<List<String>>('matchingEventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     snsDestination = registerOutput<Smsvoicev2EventDestinationSnsDestination?>('snsDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2EventDestinationSnsDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -613,11 +613,12 @@ class Smsvoicev2EventDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Smsvoicev2EventDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Smsvoicev2EventDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -637,7 +638,27 @@ class Smsvoicev2EventDestination extends pulumi.CustomResource {
     enabled = registerOutput<bool>('enabled');
     eventDestinationName = registerOutput<String>('eventDestinationName');
     kinesisFirehoseDestination = registerOutput<Smsvoicev2EventDestinationKinesisFirehoseDestination?>('kinesisFirehoseDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2EventDestinationKinesisFirehoseDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    matchingEventTypes = registerOutput<List<String>>('matchingEventTypes');
+    matchingEventTypes = registerOutput<List<String>>('matchingEventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    snsDestination = registerOutput<Smsvoicev2EventDestinationSnsDestination?>('snsDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2EventDestinationSnsDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Smsvoicev2EventDestination] resource.
+  Smsvoicev2EventDestination.reference(String urn)
+    : super(
+        'aws:pinpoint/smsvoicev2EventDestination:Smsvoicev2EventDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cloudwatchLogsDestination = registerOutput<Smsvoicev2EventDestinationCloudwatchLogsDestination?>('cloudwatchLogsDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2EventDestinationCloudwatchLogsDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationSetArn = registerOutput<String>('configurationSetArn');
+    configurationSetName = registerOutput<String>('configurationSetName');
+    enabled = registerOutput<bool>('enabled');
+    eventDestinationName = registerOutput<String>('eventDestinationName');
+    kinesisFirehoseDestination = registerOutput<Smsvoicev2EventDestinationKinesisFirehoseDestination?>('kinesisFirehoseDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2EventDestinationKinesisFirehoseDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    matchingEventTypes = registerOutput<List<String>>('matchingEventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     snsDestination = registerOutput<Smsvoicev2EventDestinationSnsDestination?>('snsDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Smsvoicev2EventDestinationSnsDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

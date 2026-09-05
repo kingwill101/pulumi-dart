@@ -171,6 +171,9 @@ import 'environment_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.m2.Environment("test", {
+///     highAvailabilityConfig: {
+///         desiredCapacity: 2,
+///     },
 ///     name: "test-env",
 ///     engineType: "bluage",
 ///     instanceType: "M2.m5.large",
@@ -179,9 +182,6 @@ import 'environment_timeouts.dart';
 ///         "subnet-01234567890abcdef",
 ///         "subnet-01234567890abcdea",
 ///     ],
-///     highAvailabilityConfig: {
-///         desiredCapacity: 2,
-///     },
 /// });
 /// ```
 /// ```python
@@ -189,6 +189,9 @@ import 'environment_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.m2.Environment("test",
+///     high_availability_config={
+///         "desired_capacity": 2,
+///     },
 ///     name="test-env",
 ///     engine_type="bluage",
 ///     instance_type="M2.m5.large",
@@ -196,10 +199,7 @@ import 'environment_timeouts.dart';
 ///     subnet_ids=[
 ///         "subnet-01234567890abcdef",
 ///         "subnet-01234567890abcdea",
-///     ],
-///     high_availability_config={
-///         "desired_capacity": 2,
-///     })
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -211,6 +211,10 @@ import 'environment_timeouts.dart';
 /// {
 ///     var test = new Aws.M2.Environment("test", new()
 ///     {
+///         HighAvailabilityConfig = new Aws.M2.Inputs.EnvironmentHighAvailabilityConfigArgs
+///         {
+///             DesiredCapacity = 2,
+///         },
 ///         Name = "test-env",
 ///         EngineType = "bluage",
 ///         InstanceType = "M2.m5.large",
@@ -222,10 +226,6 @@ import 'environment_timeouts.dart';
 ///         {
 ///             "subnet-01234567890abcdef",
 ///             "subnet-01234567890abcdea",
-///         },
-///         HighAvailabilityConfig = new Aws.M2.Inputs.EnvironmentHighAvailabilityConfigArgs
-///         {
-///             DesiredCapacity = 2,
 ///         },
 ///     });
 ///
@@ -242,6 +242,9 @@ import 'environment_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := m2.NewEnvironment(ctx, "test", &m2.EnvironmentArgs{
+/// 			HighAvailabilityConfig: &m2.EnvironmentHighAvailabilityConfigArgs{
+/// 				DesiredCapacity: pulumi.Int(2),
+/// 			},
 /// 			Name:         pulumi.String("test-env"),
 /// 			EngineType:   pulumi.String("bluage"),
 /// 			InstanceType: pulumi.String("M2.m5.large"),
@@ -251,9 +254,6 @@ import 'environment_timeouts.dart';
 /// 			SubnetIds: pulumi.StringArray{
 /// 				pulumi.String("subnet-01234567890abcdef"),
 /// 				pulumi.String("subnet-01234567890abcdea"),
-/// 			},
-/// 			HighAvailabilityConfig: &m2.EnvironmentHighAvailabilityConfigArgs{
-/// 				DesiredCapacity: pulumi.Int(2),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -273,14 +273,14 @@ import 'environment_timeouts.dart';
 /// }
 ///
 /// resource "aws_m2_environment" "test" {
+///   high_availability_config = {
+///     desired_capacity = 2
+///   }
 ///   name            = "test-env"
 ///   engine_type     = "bluage"
 ///   instance_type   = "M2.m5.large"
 ///   security_groups = ["sg-01234567890abcdef"]
 ///   subnet_ids      = ["subnet-01234567890abcdef", "subnet-01234567890abcdea"]
-///   high_availability_config = {
-///     desired_capacity = 2
-///   }
 /// }
 /// ```
 /// ```java
@@ -306,6 +306,9 @@ import 'environment_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Environment("test", EnvironmentArgs.builder()
+///             .highAvailabilityConfig(EnvironmentHighAvailabilityConfigArgs.builder()
+///                 .desiredCapacity(2)
+///                 .build())
 ///             .name("test-env")
 ///             .engineType("bluage")
 ///             .instanceType("M2.m5.large")
@@ -313,9 +316,6 @@ import 'environment_timeouts.dart';
 ///             .subnetIds(
 ///                 "subnet-01234567890abcdef",
 ///                 "subnet-01234567890abcdea")
-///             .highAvailabilityConfig(EnvironmentHighAvailabilityConfigArgs.builder()
-///                 .desiredCapacity(2)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -326,6 +326,8 @@ import 'environment_timeouts.dart';
 ///   test:
 ///     type: aws:m2:Environment
 ///     properties:
+///       highAvailabilityConfig:
+///         desiredCapacity: 2
 ///       name: test-env
 ///       engineType: bluage
 ///       instanceType: M2.m5.large
@@ -334,8 +336,6 @@ import 'environment_timeouts.dart';
 ///       subnetIds:
 ///         - subnet-01234567890abcdef
 ///         - subnet-01234567890abcdea
-///       highAvailabilityConfig:
-///         desiredCapacity: 2
 /// ```
 ///
 ///
@@ -347,6 +347,12 @@ import 'environment_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.m2.Environment("test", {
+///     storageConfiguration: {
+///         efs: {
+///             fileSystemId: "fs-01234567890abcdef",
+///             mountPoint: "/m2/mount/example",
+///         },
+///     },
 ///     name: "test-env",
 ///     engineType: "bluage",
 ///     instanceType: "M2.m5.large",
@@ -355,12 +361,6 @@ import 'environment_timeouts.dart';
 ///         "subnet-01234567890abcdef",
 ///         "subnet-01234567890abcdea",
 ///     ],
-///     storageConfiguration: {
-///         efs: {
-///             fileSystemId: "fs-01234567890abcdef",
-///             mountPoint: "/m2/mount/example",
-///         },
-///     },
 /// });
 /// ```
 /// ```python
@@ -368,6 +368,12 @@ import 'environment_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.m2.Environment("test",
+///     storage_configuration={
+///         "efs": {
+///             "file_system_id": "fs-01234567890abcdef",
+///             "mount_point": "/m2/mount/example",
+///         },
+///     },
 ///     name="test-env",
 ///     engine_type="bluage",
 ///     instance_type="M2.m5.large",
@@ -375,13 +381,7 @@ import 'environment_timeouts.dart';
 ///     subnet_ids=[
 ///         "subnet-01234567890abcdef",
 ///         "subnet-01234567890abcdea",
-///     ],
-///     storage_configuration={
-///         "efs": {
-///             "file_system_id": "fs-01234567890abcdef",
-///             "mount_point": "/m2/mount/example",
-///         },
-///     })
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -393,6 +393,14 @@ import 'environment_timeouts.dart';
 /// {
 ///     var test = new Aws.M2.Environment("test", new()
 ///     {
+///         StorageConfiguration = new Aws.M2.Inputs.EnvironmentStorageConfigurationArgs
+///         {
+///             Efs = new Aws.M2.Inputs.EnvironmentStorageConfigurationEfsArgs
+///             {
+///                 FileSystemId = "fs-01234567890abcdef",
+///                 MountPoint = "/m2/mount/example",
+///             },
+///         },
 ///         Name = "test-env",
 ///         EngineType = "bluage",
 ///         InstanceType = "M2.m5.large",
@@ -404,14 +412,6 @@ import 'environment_timeouts.dart';
 ///         {
 ///             "subnet-01234567890abcdef",
 ///             "subnet-01234567890abcdea",
-///         },
-///         StorageConfiguration = new Aws.M2.Inputs.EnvironmentStorageConfigurationArgs
-///         {
-///             Efs = new Aws.M2.Inputs.EnvironmentStorageConfigurationEfsArgs
-///             {
-///                 FileSystemId = "fs-01234567890abcdef",
-///                 MountPoint = "/m2/mount/example",
-///             },
 ///         },
 ///     });
 ///
@@ -428,6 +428,12 @@ import 'environment_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := m2.NewEnvironment(ctx, "test", &m2.EnvironmentArgs{
+/// 			StorageConfiguration: &m2.EnvironmentStorageConfigurationArgs{
+/// 				Efs: &m2.EnvironmentStorageConfigurationEfsArgs{
+/// 					FileSystemId: pulumi.String("fs-01234567890abcdef"),
+/// 					MountPoint:   pulumi.String("/m2/mount/example"),
+/// 				},
+/// 			},
 /// 			Name:         pulumi.String("test-env"),
 /// 			EngineType:   pulumi.String("bluage"),
 /// 			InstanceType: pulumi.String("M2.m5.large"),
@@ -437,12 +443,6 @@ import 'environment_timeouts.dart';
 /// 			SubnetIds: pulumi.StringArray{
 /// 				pulumi.String("subnet-01234567890abcdef"),
 /// 				pulumi.String("subnet-01234567890abcdea"),
-/// 			},
-/// 			StorageConfiguration: &m2.EnvironmentStorageConfigurationArgs{
-/// 				Efs: &m2.EnvironmentStorageConfigurationEfsArgs{
-/// 					FileSystemId: pulumi.String("fs-01234567890abcdef"),
-/// 					MountPoint:   pulumi.String("/m2/mount/example"),
-/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -462,17 +462,17 @@ import 'environment_timeouts.dart';
 /// }
 ///
 /// resource "aws_m2_environment" "test" {
-///   name            = "test-env"
-///   engine_type     = "bluage"
-///   instance_type   = "M2.m5.large"
-///   security_groups = ["sg-01234567890abcdef"]
-///   subnet_ids      = ["subnet-01234567890abcdef", "subnet-01234567890abcdea"]
 ///   storage_configuration = {
 ///     efs = {
 ///       file_system_id = "fs-01234567890abcdef"
 ///       mount_point    = "/m2/mount/example"
 ///     }
 ///   }
+///   name            = "test-env"
+///   engine_type     = "bluage"
+///   instance_type   = "M2.m5.large"
+///   security_groups = ["sg-01234567890abcdef"]
+///   subnet_ids      = ["subnet-01234567890abcdef", "subnet-01234567890abcdea"]
 /// }
 /// ```
 /// ```java
@@ -499,6 +499,12 @@ import 'environment_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Environment("test", EnvironmentArgs.builder()
+///             .storageConfiguration(EnvironmentStorageConfigurationArgs.builder()
+///                 .efs(EnvironmentStorageConfigurationEfsArgs.builder()
+///                     .fileSystemId("fs-01234567890abcdef")
+///                     .mountPoint("/m2/mount/example")
+///                     .build())
+///                 .build())
 ///             .name("test-env")
 ///             .engineType("bluage")
 ///             .instanceType("M2.m5.large")
@@ -506,12 +512,6 @@ import 'environment_timeouts.dart';
 ///             .subnetIds(
 ///                 "subnet-01234567890abcdef",
 ///                 "subnet-01234567890abcdea")
-///             .storageConfiguration(EnvironmentStorageConfigurationArgs.builder()
-///                 .efs(EnvironmentStorageConfigurationEfsArgs.builder()
-///                     .fileSystemId("fs-01234567890abcdef")
-///                     .mountPoint("/m2/mount/example")
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -522,6 +522,10 @@ import 'environment_timeouts.dart';
 ///   test:
 ///     type: aws:m2:Environment
 ///     properties:
+///       storageConfiguration:
+///         efs:
+///           fileSystemId: fs-01234567890abcdef
+///           mountPoint: /m2/mount/example
 ///       name: test-env
 ///       engineType: bluage
 ///       instanceType: M2.m5.large
@@ -530,10 +534,6 @@ import 'environment_timeouts.dart';
 ///       subnetIds:
 ///         - subnet-01234567890abcdef
 ///         - subnet-01234567890abcdea
-///       storageConfiguration:
-///         efs:
-///           fileSystemId: fs-01234567890abcdef
-///           mountPoint: /m2/mount/example
 /// ```
 ///
 ///
@@ -545,6 +545,12 @@ import 'environment_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.m2.Environment("test", {
+///     storageConfiguration: {
+///         fsx: {
+///             fileSystemId: "fs-01234567890abcdef",
+///             mountPoint: "/m2/mount/example",
+///         },
+///     },
 ///     name: "test-env",
 ///     engineType: "bluage",
 ///     instanceType: "M2.m5.large",
@@ -553,12 +559,6 @@ import 'environment_timeouts.dart';
 ///         "subnet-01234567890abcdef",
 ///         "subnet-01234567890abcdea",
 ///     ],
-///     storageConfiguration: {
-///         fsx: {
-///             fileSystemId: "fs-01234567890abcdef",
-///             mountPoint: "/m2/mount/example",
-///         },
-///     },
 /// });
 /// ```
 /// ```python
@@ -566,6 +566,12 @@ import 'environment_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.m2.Environment("test",
+///     storage_configuration={
+///         "fsx": {
+///             "file_system_id": "fs-01234567890abcdef",
+///             "mount_point": "/m2/mount/example",
+///         },
+///     },
 ///     name="test-env",
 ///     engine_type="bluage",
 ///     instance_type="M2.m5.large",
@@ -573,13 +579,7 @@ import 'environment_timeouts.dart';
 ///     subnet_ids=[
 ///         "subnet-01234567890abcdef",
 ///         "subnet-01234567890abcdea",
-///     ],
-///     storage_configuration={
-///         "fsx": {
-///             "file_system_id": "fs-01234567890abcdef",
-///             "mount_point": "/m2/mount/example",
-///         },
-///     })
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -591,6 +591,14 @@ import 'environment_timeouts.dart';
 /// {
 ///     var test = new Aws.M2.Environment("test", new()
 ///     {
+///         StorageConfiguration = new Aws.M2.Inputs.EnvironmentStorageConfigurationArgs
+///         {
+///             Fsx = new Aws.M2.Inputs.EnvironmentStorageConfigurationFsxArgs
+///             {
+///                 FileSystemId = "fs-01234567890abcdef",
+///                 MountPoint = "/m2/mount/example",
+///             },
+///         },
 ///         Name = "test-env",
 ///         EngineType = "bluage",
 ///         InstanceType = "M2.m5.large",
@@ -602,14 +610,6 @@ import 'environment_timeouts.dart';
 ///         {
 ///             "subnet-01234567890abcdef",
 ///             "subnet-01234567890abcdea",
-///         },
-///         StorageConfiguration = new Aws.M2.Inputs.EnvironmentStorageConfigurationArgs
-///         {
-///             Fsx = new Aws.M2.Inputs.EnvironmentStorageConfigurationFsxArgs
-///             {
-///                 FileSystemId = "fs-01234567890abcdef",
-///                 MountPoint = "/m2/mount/example",
-///             },
 ///         },
 ///     });
 ///
@@ -626,6 +626,12 @@ import 'environment_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := m2.NewEnvironment(ctx, "test", &m2.EnvironmentArgs{
+/// 			StorageConfiguration: &m2.EnvironmentStorageConfigurationArgs{
+/// 				Fsx: &m2.EnvironmentStorageConfigurationFsxArgs{
+/// 					FileSystemId: pulumi.String("fs-01234567890abcdef"),
+/// 					MountPoint:   pulumi.String("/m2/mount/example"),
+/// 				},
+/// 			},
 /// 			Name:         pulumi.String("test-env"),
 /// 			EngineType:   pulumi.String("bluage"),
 /// 			InstanceType: pulumi.String("M2.m5.large"),
@@ -635,12 +641,6 @@ import 'environment_timeouts.dart';
 /// 			SubnetIds: pulumi.StringArray{
 /// 				pulumi.String("subnet-01234567890abcdef"),
 /// 				pulumi.String("subnet-01234567890abcdea"),
-/// 			},
-/// 			StorageConfiguration: &m2.EnvironmentStorageConfigurationArgs{
-/// 				Fsx: &m2.EnvironmentStorageConfigurationFsxArgs{
-/// 					FileSystemId: pulumi.String("fs-01234567890abcdef"),
-/// 					MountPoint:   pulumi.String("/m2/mount/example"),
-/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -660,17 +660,17 @@ import 'environment_timeouts.dart';
 /// }
 ///
 /// resource "aws_m2_environment" "test" {
-///   name            = "test-env"
-///   engine_type     = "bluage"
-///   instance_type   = "M2.m5.large"
-///   security_groups = ["sg-01234567890abcdef"]
-///   subnet_ids      = ["subnet-01234567890abcdef", "subnet-01234567890abcdea"]
 ///   storage_configuration = {
 ///     fsx = {
 ///       file_system_id = "fs-01234567890abcdef"
 ///       mount_point    = "/m2/mount/example"
 ///     }
 ///   }
+///   name            = "test-env"
+///   engine_type     = "bluage"
+///   instance_type   = "M2.m5.large"
+///   security_groups = ["sg-01234567890abcdef"]
+///   subnet_ids      = ["subnet-01234567890abcdef", "subnet-01234567890abcdea"]
 /// }
 /// ```
 /// ```java
@@ -697,6 +697,12 @@ import 'environment_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Environment("test", EnvironmentArgs.builder()
+///             .storageConfiguration(EnvironmentStorageConfigurationArgs.builder()
+///                 .fsx(EnvironmentStorageConfigurationFsxArgs.builder()
+///                     .fileSystemId("fs-01234567890abcdef")
+///                     .mountPoint("/m2/mount/example")
+///                     .build())
+///                 .build())
 ///             .name("test-env")
 ///             .engineType("bluage")
 ///             .instanceType("M2.m5.large")
@@ -704,12 +710,6 @@ import 'environment_timeouts.dart';
 ///             .subnetIds(
 ///                 "subnet-01234567890abcdef",
 ///                 "subnet-01234567890abcdea")
-///             .storageConfiguration(EnvironmentStorageConfigurationArgs.builder()
-///                 .fsx(EnvironmentStorageConfigurationFsxArgs.builder()
-///                     .fileSystemId("fs-01234567890abcdef")
-///                     .mountPoint("/m2/mount/example")
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -720,6 +720,10 @@ import 'environment_timeouts.dart';
 ///   test:
 ///     type: aws:m2:Environment
 ///     properties:
+///       storageConfiguration:
+///         fsx:
+///           fileSystemId: fs-01234567890abcdef
+///           mountPoint: /m2/mount/example
 ///       name: test-env
 ///       engineType: bluage
 ///       instanceType: M2.m5.large
@@ -728,10 +732,6 @@ import 'environment_timeouts.dart';
 ///       subnetIds:
 ///         - subnet-01234567890abcdef
 ///         - subnet-01234567890abcdea
-///       storageConfiguration:
-///         fsx:
-///           fileSystemId: fs-01234567890abcdef
-///           mountPoint: /m2/mount/example
 /// ```
 ///
 ///
@@ -794,7 +794,7 @@ class Environment extends pulumi.CustomResource {
           'aws:m2/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applyChangesDuringMaintenanceWindow = registerOutput<bool?>('applyChangesDuringMaintenanceWindow');
     arn = registerOutput<String>('arn');
@@ -811,11 +811,11 @@ class Environment extends pulumi.CustomResource {
     preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
     publiclyAccessible = registerOutput<bool>('publiclyAccessible');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageConfiguration = registerOutput<EnvironmentStorageConfiguration?>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentStorageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<EnvironmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -824,11 +824,12 @@ class Environment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Environment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -857,11 +858,43 @@ class Environment extends pulumi.CustomResource {
     preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
     publiclyAccessible = registerOutput<bool>('publiclyAccessible');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageConfiguration = registerOutput<EnvironmentStorageConfiguration?>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentStorageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<EnvironmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'aws:m2/environment:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applyChangesDuringMaintenanceWindow = registerOutput<bool?>('applyChangesDuringMaintenanceWindow');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    engineType = registerOutput<String>('engineType');
+    engineVersion = registerOutput<String>('engineVersion');
+    environmentId = registerOutput<String>('environmentId');
+    forceUpdate = registerOutput<bool?>('forceUpdate');
+    highAvailabilityConfig = registerOutput<EnvironmentHighAvailabilityConfig?>('highAvailabilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentHighAvailabilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceType = registerOutput<String>('instanceType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    loadBalancerArn = registerOutput<String>('loadBalancerArn');
+    this.name = registerOutput<String>('name');
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
+    publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storageConfiguration = registerOutput<EnvironmentStorageConfiguration?>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentStorageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<EnvironmentTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

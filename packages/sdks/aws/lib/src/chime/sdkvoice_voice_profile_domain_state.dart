@@ -6,17 +6,17 @@ import 'sdkvoice_voice_profile_domain_server_side_encryption_configuration.dart'
 /// Input properties used for looking up and filtering SdkvoiceVoiceProfileDomain resources.
 class SdkvoiceVoiceProfileDomainState {
   /// ARN of the Voice Profile Domain.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Description of Voice Profile Domain.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of Voice Profile Domain.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration for server side encryption.
-  final pulumi.Input<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>? serverSideEncryptionConfiguration;
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration?>? serverSideEncryptionConfiguration;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [SdkvoiceVoiceProfileDomainState].
   /// [arn] ARN of the Voice Profile Domain.

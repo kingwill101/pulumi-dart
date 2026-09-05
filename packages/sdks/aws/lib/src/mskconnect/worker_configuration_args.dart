@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_mskconnect_worker_configuration_worker_configuration_args_doc}
 class WorkerConfigurationArgs {
   /// A summary description of the worker configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the worker configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Contents of connect-distributed.properties file. The value can be either base64 encoded or in raw format.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> propertiesFileContent;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WorkerConfigurationArgs].
   /// [description] A summary description of the worker configuration.

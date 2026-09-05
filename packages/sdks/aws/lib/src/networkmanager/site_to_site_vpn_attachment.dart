@@ -141,18 +141,27 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///     Name: "test",
 /// }});
 /// const test = aws.networkmanager.getCoreNetworkPolicyDocument({
+///     attachmentPolicies: [{
+///         action: {
+///             associationMethod: "constant",
+///             segment: "shared",
+///         },
+///         conditions: [{
+///             type: "tag-value",
+///             operator: "equals",
+///             key: "segment",
+///             value: "shared",
+///         }],
+///         ruleNumber: 1,
+///         conditionLogic: "or",
+///     }],
 ///     coreNetworkConfigurations: [{
-///         vpnEcmpSupport: false,
-///         asnRanges: ["64512-64555"],
 ///         edgeLocations: [{
 ///             location: current.region,
 ///             asn: "64512",
 ///         }],
-///     }],
-///     segments: [{
-///         name: "shared",
-///         description: "SegmentForSharedServices",
-///         requireAttachmentAcceptance: true,
+///         vpnEcmpSupport: false,
+///         asnRanges: ["64512-64555"],
 ///     }],
 ///     segmentActions: [{
 ///         action: "share",
@@ -160,19 +169,10 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///         segment: "shared",
 ///         shareWiths: ["*"],
 ///     }],
-///     attachmentPolicies: [{
-///         ruleNumber: 1,
-///         conditionLogic: "or",
-///         conditions: [{
-///             type: "tag-value",
-///             operator: "equals",
-///             key: "segment",
-///             value: "shared",
-///         }],
-///         action: {
-///             associationMethod: "constant",
-///             segment: "shared",
-///         },
+///     segments: [{
+///         name: "shared",
+///         description: "SegmentForSharedServices",
+///         requireAttachmentAcceptance: true,
 ///     }],
 /// });
 /// const testNetworkmanagerCoreNetwork = new awscc.index.NetworkmanagerCoreNetwork("test", {
@@ -213,18 +213,27 @@ import 'site_to_site_vpn_attachment_state.dart';
 /// test_global_network = aws.networkmanager.GlobalNetwork("test", tags={
 ///     "Name": "test",
 /// })
-/// test = aws.networkmanager.get_core_network_policy_document(core_network_configurations=[{
-///         "vpn_ecmp_support": False,
-///         "asn_ranges": ["64512-64555"],
+/// test = aws.networkmanager.get_core_network_policy_document(attachment_policies=[{
+///         "action": {
+///             "association_method": "constant",
+///             "segment": "shared",
+///         },
+///         "conditions": [{
+///             "type": "tag-value",
+///             "operator": "equals",
+///             "key": "segment",
+///             "value": "shared",
+///         }],
+///         "rule_number": 1,
+///         "condition_logic": "or",
+///     }],
+///     core_network_configurations=[{
 ///         "edge_locations": [{
 ///             "location": current["region"],
 ///             "asn": "64512",
 ///         }],
-///     }],
-///     segments=[{
-///         "name": "shared",
-///         "description": "SegmentForSharedServices",
-///         "require_attachment_acceptance": True,
+///         "vpn_ecmp_support": False,
+///         "asn_ranges": ["64512-64555"],
 ///     }],
 ///     segment_actions=[{
 ///         "action": "share",
@@ -232,19 +241,10 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///         "segment": "shared",
 ///         "share_withs": ["*"],
 ///     }],
-///     attachment_policies=[{
-///         "rule_number": 1,
-///         "condition_logic": "or",
-///         "conditions": [{
-///             "type": "tag-value",
-///             "operator": "equals",
-///             "key": "segment",
-///             "value": "shared",
-///         }],
-///         "action": {
-///             "association_method": "constant",
-///             "segment": "shared",
-///         },
+///     segments=[{
+///         "name": "shared",
+///         "description": "SegmentForSharedServices",
+///         "require_attachment_acceptance": True,
 ///     }])
 /// test_networkmanager_core_network = awscc.NetworkmanagerCoreNetwork("test",
 ///     global_network_id=test_global_network.id,
@@ -297,15 +297,33 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///
 ///     var test = Aws.NetworkManager.GetCoreNetworkPolicyDocument.Invoke(new()
 ///     {
+///         AttachmentPolicies = new[]
+///         {
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyInputArgs
+///             {
+///                 Action = new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionInputArgs
+///                 {
+///                     AssociationMethod = "constant",
+///                     Segment = "shared",
+///                 },
+///                 Conditions = new[]
+///                 {
+///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionInputArgs
+///                     {
+///                         Type = "tag-value",
+///                         Operator = "equals",
+///                         Key = "segment",
+///                         Value = "shared",
+///                     },
+///                 },
+///                 RuleNumber = 1,
+///                 ConditionLogic = "or",
+///             },
+///         },
 ///         CoreNetworkConfigurations = new[]
 ///         {
 ///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationInputArgs
 ///             {
-///                 VpnEcmpSupport = false,
-///                 AsnRanges = new[]
-///                 {
-///                     "64512-64555",
-///                 },
 ///                 EdgeLocations = new[]
 ///                 {
 ///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationInputArgs
@@ -314,15 +332,11 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///                         Asn = "64512",
 ///                     },
 ///                 },
-///             },
-///         },
-///         Segments = new[]
-///         {
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
-///             {
-///                 Name = "shared",
-///                 Description = "SegmentForSharedServices",
-///                 RequireAttachmentAcceptance = true,
+///                 VpnEcmpSupport = false,
+///                 AsnRanges = new[]
+///                 {
+///                     "64512-64555",
+///                 },
 ///             },
 ///         },
 ///         SegmentActions = new[]
@@ -338,27 +352,13 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///                 },
 ///             },
 ///         },
-///         AttachmentPolicies = new[]
+///         Segments = new[]
 ///         {
-///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyInputArgs
+///             new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentSegmentInputArgs
 ///             {
-///                 RuleNumber = 1,
-///                 ConditionLogic = "or",
-///                 Conditions = new[]
-///                 {
-///                     new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionInputArgs
-///                     {
-///                         Type = "tag-value",
-///                         Operator = "equals",
-///                         Key = "segment",
-///                         Value = "shared",
-///                     },
-///                 },
-///                 Action = new Aws.NetworkManager.Inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionInputArgs
-///                 {
-///                     AssociationMethod = "constant",
-///                     Segment = "shared",
-///                 },
+///                 Name = "shared",
+///                 Description = "SegmentForSharedServices",
+///                 RequireAttachmentAcceptance = true,
 ///             },
 ///         },
 ///     });
@@ -431,25 +431,36 @@ import 'site_to_site_vpn_attachment_state.dart';
 /// return err
 /// }
 /// test, err := networkmanager.GetCoreNetworkPolicyDocument(ctx, &networkmanager.GetCoreNetworkPolicyDocumentArgs{
+/// AttachmentPolicies: []networkmanager.GetCoreNetworkPolicyDocumentAttachmentPolicy{
+/// {
+/// Action: {
+/// AssociationMethod: pulumi.StringRef("constant"),
+/// Segment: pulumi.StringRef("shared"),
+/// },
+/// Conditions: []networkmanager.GetCoreNetworkPolicyDocumentAttachmentPolicyCondition{
+/// {
+/// Type: "tag-value",
+/// Operator: pulumi.StringRef("equals"),
+/// Key: pulumi.StringRef("segment"),
+/// Value: pulumi.StringRef("shared"),
+/// },
+/// },
+/// RuleNumber: 1,
+/// ConditionLogic: pulumi.StringRef("or"),
+/// },
+/// },
 /// CoreNetworkConfigurations: []networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfiguration{
 /// {
-/// VpnEcmpSupport: pulumi.BoolRef(false),
-/// AsnRanges: []string{
-/// "64512-64555",
-/// },
 /// EdgeLocations: []networkmanager.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation{
 /// {
 /// Location: current.Region,
 /// Asn: pulumi.StringRef("64512"),
 /// },
 /// },
+/// VpnEcmpSupport: pulumi.BoolRef(false),
+/// AsnRanges: []string{
+/// "64512-64555",
 /// },
-/// },
-/// Segments: []networkmanager.GetCoreNetworkPolicyDocumentSegment{
-/// {
-/// Name: "shared",
-/// Description: pulumi.StringRef("SegmentForSharedServices"),
-/// RequireAttachmentAcceptance: pulumi.BoolRef(true),
 /// },
 /// },
 /// SegmentActions: []networkmanager.GetCoreNetworkPolicyDocumentSegmentAction{
@@ -462,22 +473,11 @@ import 'site_to_site_vpn_attachment_state.dart';
 /// },
 /// },
 /// },
-/// AttachmentPolicies: []networkmanager.GetCoreNetworkPolicyDocumentAttachmentPolicy{
+/// Segments: []networkmanager.GetCoreNetworkPolicyDocumentSegment{
 /// {
-/// RuleNumber: 1,
-/// ConditionLogic: pulumi.StringRef("or"),
-/// Conditions: []networkmanager.GetCoreNetworkPolicyDocumentAttachmentPolicyCondition{
-/// {
-/// Type: "tag-value",
-/// Operator: pulumi.StringRef("equals"),
-/// Key: pulumi.StringRef("segment"),
-/// Value: pulumi.StringRef("shared"),
-/// },
-/// },
-/// Action: {
-/// AssociationMethod: pulumi.StringRef("constant"),
-/// Segment: pulumi.StringRef("shared"),
-/// },
+/// Name: "shared",
+/// Description: pulumi.StringRef("SegmentForSharedServices"),
+/// RequireAttachmentAcceptance: pulumi.BoolRef(true),
 /// },
 /// },
 /// }, nil);
@@ -525,18 +525,27 @@ import 'site_to_site_vpn_attachment_state.dart';
 /// }
 ///
 /// data "aws_networkmanager_getcorenetworkpolicydocument" "test" {
+///   attachment_policies {
+///     action = {
+///       association_method = "constant"
+///       segment            = "shared"
+///     }
+///     conditions {
+///       type     = "tag-value"
+///       operator = "equals"
+///       key      = "segment"
+///       value    = "shared"
+///     }
+///     rule_number     = 1
+///     condition_logic = "or"
+///   }
 ///   core_network_configurations {
-///     vpn_ecmp_support = false
-///     asn_ranges       = ["64512-64555"]
 ///     edge_locations {
 ///       location = current.region
 ///       asn      = 64512
 ///     }
-///   }
-///   segments {
-///     name                          = "shared"
-///     description                   = "SegmentForSharedServices"
-///     require_attachment_acceptance = true
+///     vpn_ecmp_support = false
+///     asn_ranges       = ["64512-64555"]
 ///   }
 ///   segment_actions {
 ///     action      = "share"
@@ -544,19 +553,10 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///     segment     = "shared"
 ///     share_withs = ["*"]
 ///   }
-///   attachment_policies {
-///     rule_number     = 1
-///     condition_logic = "or"
-///     conditions {
-///       type     = "tag-value"
-///       operator = "equals"
-///       key      = "segment"
-///       value    = "shared"
-///     }
-///     action = {
-///       association_method = "constant"
-///       segment            = "shared"
-///     }
+///   segments {
+///     name                          = "shared"
+///     description                   = "SegmentForSharedServices"
+///     require_attachment_acceptance = true
 ///   }
 /// }
 ///
@@ -607,13 +607,13 @@ import 'site_to_site_vpn_attachment_state.dart';
 /// import com.pulumi.aws.networkmanager.GlobalNetworkArgs;
 /// import com.pulumi.aws.networkmanager.NetworkmanagerFunctions;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs;
-/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
 /// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentActionArgs;
-/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyArgs;
-/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs;
-/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs;
+/// import com.pulumi.aws.networkmanager.inputs.GetCoreNetworkPolicyDocumentSegmentArgs;
 /// import com.pulumi.awscc.NetworkmanagerCoreNetwork;
 /// import com.pulumi.awscc.NetworkmanagerCoreNetworkArgs;
 /// import com.pulumi.std.StdFunctions;
@@ -653,18 +653,27 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///             .build());
 ///
 ///         final var test = NetworkmanagerFunctions.getCoreNetworkPolicyDocument(GetCoreNetworkPolicyDocumentArgs.builder()
+///             .attachmentPolicies(GetCoreNetworkPolicyDocumentAttachmentPolicyArgs.builder()
+///                 .action(GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs.builder()
+///                     .associationMethod("constant")
+///                     .segment("shared")
+///                     .build())
+///                 .conditions(GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs.builder()
+///                     .type("tag-value")
+///                     .operator("equals")
+///                     .key("segment")
+///                     .value("shared")
+///                     .build())
+///                 .ruleNumber(1)
+///                 .conditionLogic("or")
+///                 .build())
 ///             .coreNetworkConfigurations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationArgs.builder()
-///                 .vpnEcmpSupport(false)
-///                 .asnRanges("64512-64555")
 ///                 .edgeLocations(GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocationArgs.builder()
 ///                     .location(current.region())
 ///                     .asn("64512")
 ///                     .build())
-///                 .build())
-///             .segments(GetCoreNetworkPolicyDocumentSegmentArgs.builder()
-///                 .name("shared")
-///                 .description("SegmentForSharedServices")
-///                 .requireAttachmentAcceptance(true)
+///                 .vpnEcmpSupport(false)
+///                 .asnRanges("64512-64555")
 ///                 .build())
 ///             .segmentActions(GetCoreNetworkPolicyDocumentSegmentActionArgs.builder()
 ///                 .action("share")
@@ -672,19 +681,10 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///                 .segment("shared")
 ///                 .shareWiths("*")
 ///                 .build())
-///             .attachmentPolicies(GetCoreNetworkPolicyDocumentAttachmentPolicyArgs.builder()
-///                 .ruleNumber(1)
-///                 .conditionLogic("or")
-///                 .conditions(GetCoreNetworkPolicyDocumentAttachmentPolicyConditionArgs.builder()
-///                     .type("tag-value")
-///                     .operator("equals")
-///                     .key("segment")
-///                     .value("shared")
-///                     .build())
-///                 .action(GetCoreNetworkPolicyDocumentAttachmentPolicyActionArgs.builder()
-///                     .associationMethod("constant")
-///                     .segment("shared")
-///                     .build())
+///             .segments(GetCoreNetworkPolicyDocumentSegmentArgs.builder()
+///                 .name("shared")
+///                 .description("SegmentForSharedServices")
+///                 .requireAttachmentAcceptance(true)
 ///                 .build())
 ///             .build());
 ///
@@ -764,34 +764,34 @@ import 'site_to_site_vpn_attachment_state.dart';
 ///     fn::invoke:
 ///       function: aws:networkmanager:getCoreNetworkPolicyDocument
 ///       arguments:
+///         attachmentPolicies:
+///           - action:
+///               associationMethod: constant
+///               segment: shared
+///             conditions:
+///               - type: tag-value
+///                 operator: equals
+///                 key: segment
+///                 value: shared
+///             ruleNumber: 1
+///             conditionLogic: or
 ///         coreNetworkConfigurations:
-///           - vpnEcmpSupport: false
-///             asnRanges:
-///               - 64512-64555
-///             edgeLocations:
+///           - edgeLocations:
 ///               - location: ${current.region}
 ///                 asn: 64512
-///         segments:
-///           - name: shared
-///             description: SegmentForSharedServices
-///             requireAttachmentAcceptance: true
+///             vpnEcmpSupport: false
+///             asnRanges:
+///               - 64512-64555
 ///         segmentActions:
 ///           - action: share
 ///             mode: attachment-route
 ///             segment: shared
 ///             shareWiths:
 ///               - '*'
-///         attachmentPolicies:
-///           - ruleNumber: 1
-///             conditionLogic: or
-///             conditions:
-///               - type: tag-value
-///                 operator: equals
-///                 key: segment
-///                 value: shared
-///             action:
-///               associationMethod: constant
-///               segment: shared
+///         segments:
+///           - name: shared
+///             description: SegmentForSharedServices
+///             requireAttachmentAcceptance: true
 /// ```
 ///
 ///
@@ -846,7 +846,7 @@ class SiteToSiteVpnAttachment extends pulumi.CustomResource {
           'aws:networkmanager/siteToSiteVpnAttachment:SiteToSiteVpnAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');
@@ -859,8 +859,8 @@ class SiteToSiteVpnAttachment extends pulumi.CustomResource {
     routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
     segmentName = registerOutput<String>('segmentName');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpnConnectionArn = registerOutput<String>('vpnConnectionArn');
   }
 
@@ -869,11 +869,12 @@ class SiteToSiteVpnAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SiteToSiteVpnAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SiteToSiteVpnAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -898,8 +899,33 @@ class SiteToSiteVpnAttachment extends pulumi.CustomResource {
     routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
     segmentName = registerOutput<String>('segmentName');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpnConnectionArn = registerOutput<String>('vpnConnectionArn');
+  }
+
+  /// Creates a typed reference to an existing [SiteToSiteVpnAttachment] resource.
+  SiteToSiteVpnAttachment.reference(String urn)
+    : super(
+        'aws:networkmanager/siteToSiteVpnAttachment:SiteToSiteVpnAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    attachmentPolicyRuleNumber = registerOutput<int>('attachmentPolicyRuleNumber');
+    attachmentType = registerOutput<String>('attachmentType');
+    coreNetworkArn = registerOutput<String>('coreNetworkArn');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    edgeLocation = registerOutput<String>('edgeLocation');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    resourceArn = registerOutput<String>('resourceArn');
+    routingPolicyLabel = registerOutput<String?>('routingPolicyLabel');
+    segmentName = registerOutput<String>('segmentName');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpnConnectionArn = registerOutput<String>('vpnConnectionArn');
   }
 }

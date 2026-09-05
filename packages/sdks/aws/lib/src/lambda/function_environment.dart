@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionEnvironment {
   /// Map of environment variables available to your Lambda function during execution.
-  final pulumi.Input<Map<String, String>>? variables;
+  final pulumi.Input<Map<String, String>?>? variables;
 
   /// Creates a new [FunctionEnvironment].
   /// [variables] Map of environment variables available to your Lambda function during execution.

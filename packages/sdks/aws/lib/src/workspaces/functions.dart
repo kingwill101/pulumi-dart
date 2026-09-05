@@ -238,6 +238,17 @@ Future<GetBundleResult> getBundle(
   return GetBundleResult.fromMap(result);
 }
 
+pulumi.Output<GetBundleResult> getBundleOutput(
+  GetBundleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:workspaces/getBundle:getBundle',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBundleResult.fromMap);
+}
+
 /// Retrieve information about an AWS WorkSpaces directory.
 ///
 /// ## Example Usage
@@ -356,6 +367,17 @@ Future<GetDirectoryResult> getDirectory(
   return GetDirectoryResult.fromMap(result);
 }
 
+pulumi.Output<GetDirectoryResult> getDirectoryOutput(
+  GetDirectoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:workspaces/getDirectory:getDirectory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDirectoryResult.fromMap);
+}
+
 /// Use this data source to get information about a Workspaces image.
 ///
 /// ## Example Usage
@@ -472,6 +494,17 @@ Future<GetImageResult> getImage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageResult.fromMap(result);
+}
+
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:workspaces/getImage:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
 }
 
 /// Use this data source to get information about a workspace in [AWS Workspaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html) Service.
@@ -702,4 +735,15 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:workspaces/getWorkspace:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }

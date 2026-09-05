@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationProfileValidator {
   /// Either the JSON Schema content or the ARN of an AWS Lambda function.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// Type of validator. Valid values: `JSON_SCHEMA` and `LAMBDA`.
   final pulumi.Input<String> type;
 

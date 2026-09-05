@@ -14,13 +14,13 @@ class CodeSigningConfigArgs {
   /// The following arguments are optional:
   final pulumi.Input<CodeSigningConfigAllowedPublishers> allowedPublishers;
   /// Descriptive name for this code signing configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block of code signing policies that define the actions to take if the validation checks fail. See below.
-  final pulumi.Input<CodeSigningConfigPolicies>? policies;
+  final pulumi.Input<CodeSigningConfigPolicies?>? policies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CodeSigningConfigArgs].
   /// [allowedPublishers] Configuration block of allowed publishers as signing profiles for this code signing configuration. See below.

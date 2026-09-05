@@ -6,9 +6,9 @@ import 'target_group_target_group_health_unhealthy_state_routing.dart';
 
 class TargetGroupTargetGroupHealth {
   /// Block to configure DNS Failover requirements. See DNS Failover below for details on attributes.
-  final pulumi.Input<TargetGroupTargetGroupHealthDnsFailover>? dnsFailover;
+  final pulumi.Input<TargetGroupTargetGroupHealthDnsFailover?>? dnsFailover;
   /// Block to configure Unhealthy State Routing requirements. See Unhealthy State Routing below for details on attributes.
-  final pulumi.Input<TargetGroupTargetGroupHealthUnhealthyStateRouting>? unhealthyStateRouting;
+  final pulumi.Input<TargetGroupTargetGroupHealthUnhealthyStateRouting?>? unhealthyStateRouting;
 
   /// Creates a new [TargetGroupTargetGroupHealth].
   /// [dnsFailover] Block to configure DNS Failover requirements. See DNS Failover below for details on attributes.

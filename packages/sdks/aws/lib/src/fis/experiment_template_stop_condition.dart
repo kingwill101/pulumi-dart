@@ -6,7 +6,7 @@ class ExperimentTemplateStopCondition {
   /// Source of the condition. One of `none`, `aws:cloudwatch:alarm`.
   final pulumi.Input<String> source;
   /// ARN of the CloudWatch alarm. Required if the source is a CloudWatch alarm.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ExperimentTemplateStopCondition].
   /// [source] Source of the condition. One of `none`, `aws:cloudwatch:alarm`.

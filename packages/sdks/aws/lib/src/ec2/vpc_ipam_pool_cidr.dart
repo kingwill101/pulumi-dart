@@ -521,7 +521,7 @@ class VpcIpamPoolCidr extends pulumi.CustomResource {
           'aws:ec2/vpcIpamPoolCidr:VpcIpamPoolCidr',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     cidrAuthorizationContext = registerOutput<VpcIpamPoolCidrCidrAuthorizationContext?>('cidrAuthorizationContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcIpamPoolCidrCidrAuthorizationContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -536,11 +536,12 @@ class VpcIpamPoolCidr extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcIpamPoolCidrState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcIpamPoolCidr._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -554,6 +555,23 @@ class VpcIpamPoolCidr extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cidr = registerOutput<String>('cidr');
+    cidrAuthorizationContext = registerOutput<VpcIpamPoolCidrCidrAuthorizationContext?>('cidrAuthorizationContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcIpamPoolCidrCidrAuthorizationContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipamPoolCidrId = registerOutput<String>('ipamPoolCidrId');
+    ipamPoolId = registerOutput<String>('ipamPoolId');
+    netmaskLength = registerOutput<int>('netmaskLength');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [VpcIpamPoolCidr] resource.
+  VpcIpamPoolCidr.reference(String urn)
+    : super(
+        'aws:ec2/vpcIpamPoolCidr:VpcIpamPoolCidr',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cidr = registerOutput<String>('cidr');
     cidrAuthorizationContext = registerOutput<VpcIpamPoolCidrCidrAuthorizationContext?>('cidrAuthorizationContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcIpamPoolCidrCidrAuthorizationContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipamPoolCidrId = registerOutput<String>('ipamPoolCidrId');

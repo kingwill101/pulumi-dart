@@ -125,7 +125,7 @@ import 'connection_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeConnections connection.
+/// - `arn` (String) ARN of the CodeConnections connection.
 ///
 ///
 /// Using `pulumi import`, import CodeConnections connection using the ARN. For example:
@@ -138,7 +138,7 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The codeconnections connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
   late final pulumi.Output<String> connectionStatus;
-  /// The Amazon Resource Name (ARN) of the host associated with the connection. Conflicts with `providerType`
+  /// ARN of the host associated with the connection. Conflicts with `providerType`
   late final pulumi.Output<String?> hostArn;
   /// The name of the connection to be created. The name must be unique in the calling AWS account. Changing `name` will create a new resource.
   late final pulumi.Output<String> name;
@@ -165,7 +165,7 @@ class Connection extends pulumi.CustomResource {
           'aws:codeconnections/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionStatus = registerOutput<String>('connectionStatus');
@@ -174,8 +174,8 @@ class Connection extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     providerType = registerOutput<String>('providerType');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -184,11 +184,12 @@ class Connection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -209,8 +210,29 @@ class Connection extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     providerType = registerOutput<String>('providerType');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Connection] resource.
+  Connection.reference(String urn)
+    : super(
+        'aws:codeconnections/connection:Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    connectionStatus = registerOutput<String>('connectionStatus');
+    hostArn = registerOutput<String?>('hostArn');
+    this.name = registerOutput<String>('name');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    providerType = registerOutput<String>('providerType');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ConnectionTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

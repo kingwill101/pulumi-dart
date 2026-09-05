@@ -6,19 +6,19 @@ class TopicRuleDynamodb {
   /// The hash key name.
   final pulumi.Input<String> hashKeyField;
   /// The hash key type. Valid values are "STRING" or "NUMBER".
-  final pulumi.Input<String>? hashKeyType;
+  final pulumi.Input<String?>? hashKeyType;
   /// The hash key value.
   final pulumi.Input<String> hashKeyValue;
   /// The operation. Valid values are "INSERT", "UPDATE", or "DELETE".
-  final pulumi.Input<String>? operation;
+  final pulumi.Input<String?>? operation;
   /// The action payload.
-  final pulumi.Input<String>? payloadField;
+  final pulumi.Input<String?>? payloadField;
   /// The range key name.
-  final pulumi.Input<String>? rangeKeyField;
+  final pulumi.Input<String?>? rangeKeyField;
   /// The range key type. Valid values are "STRING" or "NUMBER".
-  final pulumi.Input<String>? rangeKeyType;
+  final pulumi.Input<String?>? rangeKeyType;
   /// The range key value.
-  final pulumi.Input<String>? rangeKeyValue;
+  final pulumi.Input<String?>? rangeKeyValue;
   /// The ARN of the IAM role that grants access to the DynamoDB table.
   final pulumi.Input<String> roleArn;
   /// The name of the DynamoDB table.

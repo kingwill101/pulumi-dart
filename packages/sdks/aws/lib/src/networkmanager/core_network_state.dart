@@ -7,31 +7,31 @@ import 'core_network_segment.dart';
 /// Input properties used for looking up and filtering CoreNetwork resources.
 class CoreNetworkState {
   /// Core Network ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Sets the base policy document for the core network. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
-  final pulumi.Input<String>? basePolicyDocument;
+  final pulumi.Input<String?>? basePolicyDocument;
   /// List of regions to add to the base policy. The base policy created by setting the `createBasePolicy` argument to `true` requires one or more regions to be set in the `edge-locations`, `location` key. If `basePolicyRegions` is not specified, the region used in the base policy defaults to the region specified in the `provider` block.
-  final pulumi.Input<List<String>>? basePolicyRegions;
+  final pulumi.Input<List<String>?>? basePolicyRegions;
   /// Whether to create a base policy when a core network is created or updated. A base policy is created and set to `LIVE` to allow attachments to the core network (e.g. VPC Attachments) before applying a policy document provided using the `aws.networkmanager.CoreNetworkPolicyAttachment` resource. This base policy is needed if your core network does not have any `LIVE` policies and your policy document has static routes pointing to VPC attachments and you want to attach your VPCs to the core network before applying the desired policy document. Valid values are `true` or `false`. An example of this Pulumi snippet can be found above for VPC Attachment in a single region and for VPC Attachment multi-region. An example base policy is shown in the Base Policy Example section. This base policy is overridden with the policy that you specify in the `aws.networkmanager.CoreNetworkPolicyAttachment` resource.
-  final pulumi.Input<bool>? createBasePolicy;
+  final pulumi.Input<bool?>? createBasePolicy;
   /// Timestamp when a core network was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Description of the Core Network.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One or more blocks detailing the edges within a core network. Detailed below.
-  final pulumi.Input<List<CoreNetworkEdge>>? edges;
+  final pulumi.Input<List<CoreNetworkEdge>?>? edges;
   /// ID of the global network that a core network will be a part of.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? globalNetworkId;
+  final pulumi.Input<String?>? globalNetworkId;
   /// One or more blocks detailing the segments within a core network. Detailed below.
-  final pulumi.Input<List<CoreNetworkSegment>>? segments;
+  final pulumi.Input<List<CoreNetworkSegment>?>? segments;
   /// Current state of a core network.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Key-value tags for the Core Network. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CoreNetworkState].
   /// [arn] Core Network ARN.

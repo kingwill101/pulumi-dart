@@ -16,12 +16,12 @@ import 'user_hierarchy_structure_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.UserHierarchyStructure("example", {
-///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///     hierarchyStructure: {
 ///         levelOne: {
 ///             name: "levelone",
 ///         },
 ///     },
+///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 /// });
 /// ```
 /// ```python
@@ -29,12 +29,12 @@ import 'user_hierarchy_structure_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.UserHierarchyStructure("example",
-///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///     hierarchy_structure={
 ///         "level_one": {
 ///             "name": "levelone",
 ///         },
-///     })
+///     },
+///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -46,7 +46,6 @@ import 'user_hierarchy_structure_state.dart';
 /// {
 ///     var example = new Aws.Connect.UserHierarchyStructure("example", new()
 ///     {
-///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///         HierarchyStructure = new Aws.Connect.Inputs.UserHierarchyStructureHierarchyStructureArgs
 ///         {
 ///             LevelOne = new Aws.Connect.Inputs.UserHierarchyStructureHierarchyStructureLevelOneArgs
@@ -54,6 +53,7 @@ import 'user_hierarchy_structure_state.dart';
 ///                 Name = "levelone",
 ///             },
 ///         },
+///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///     });
 ///
 /// });
@@ -69,12 +69,12 @@ import 'user_hierarchy_structure_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewUserHierarchyStructure(ctx, "example", &connect.UserHierarchyStructureArgs{
-/// 			InstanceId: pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
 /// 			HierarchyStructure: &connect.UserHierarchyStructureHierarchyStructureArgs{
 /// 				LevelOne: &connect.UserHierarchyStructureHierarchyStructureLevelOneArgs{
 /// 					Name: pulumi.String("levelone"),
 /// 				},
 /// 			},
+/// 			InstanceId: pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,12 +93,12 @@ import 'user_hierarchy_structure_state.dart';
 /// }
 ///
 /// resource "aws_connect_userhierarchystructure" "example" {
-///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   hierarchy_structure = {
 ///     level_one = {
 ///       name = "levelone"
 ///     }
 ///   }
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 /// }
 /// ```
 /// ```java
@@ -125,12 +125,12 @@ import 'user_hierarchy_structure_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserHierarchyStructure("example", UserHierarchyStructureArgs.builder()
-///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
 ///             .hierarchyStructure(UserHierarchyStructureHierarchyStructureArgs.builder()
 ///                 .levelOne(UserHierarchyStructureHierarchyStructureLevelOneArgs.builder()
 ///                     .name("levelone")
 ///                     .build())
 ///                 .build())
+///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
 ///             .build());
 ///
 ///     }
@@ -141,10 +141,10 @@ import 'user_hierarchy_structure_state.dart';
 ///   example:
 ///     type: aws:connect:UserHierarchyStructure
 ///     properties:
-///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
 ///       hierarchyStructure:
 ///         levelOne:
 ///           name: levelone
+///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
 /// ```
 ///
 ///
@@ -156,7 +156,6 @@ import 'user_hierarchy_structure_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.UserHierarchyStructure("example", {
-///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///     hierarchyStructure: {
 ///         levelOne: {
 ///             name: "levelone",
@@ -174,6 +173,7 @@ import 'user_hierarchy_structure_state.dart';
 ///             name: "levelfive",
 ///         },
 ///     },
+///     instanceId: "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 /// });
 /// ```
 /// ```python
@@ -181,7 +181,6 @@ import 'user_hierarchy_structure_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.UserHierarchyStructure("example",
-///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///     hierarchy_structure={
 ///         "level_one": {
 ///             "name": "levelone",
@@ -198,7 +197,8 @@ import 'user_hierarchy_structure_state.dart';
 ///         "level_five": {
 ///             "name": "levelfive",
 ///         },
-///     })
+///     },
+///     instance_id="aaaaaaaa-bbbb-cccc-dddd-111111111111")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -210,7 +210,6 @@ import 'user_hierarchy_structure_state.dart';
 /// {
 ///     var example = new Aws.Connect.UserHierarchyStructure("example", new()
 ///     {
-///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///         HierarchyStructure = new Aws.Connect.Inputs.UserHierarchyStructureHierarchyStructureArgs
 ///         {
 ///             LevelOne = new Aws.Connect.Inputs.UserHierarchyStructureHierarchyStructureLevelOneArgs
@@ -234,6 +233,7 @@ import 'user_hierarchy_structure_state.dart';
 ///                 Name = "levelfive",
 ///             },
 ///         },
+///         InstanceId = "aaaaaaaa-bbbb-cccc-dddd-111111111111",
 ///     });
 ///
 /// });
@@ -249,7 +249,6 @@ import 'user_hierarchy_structure_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewUserHierarchyStructure(ctx, "example", &connect.UserHierarchyStructureArgs{
-/// 			InstanceId: pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
 /// 			HierarchyStructure: &connect.UserHierarchyStructureHierarchyStructureArgs{
 /// 				LevelOne: &connect.UserHierarchyStructureHierarchyStructureLevelOneArgs{
 /// 					Name: pulumi.String("levelone"),
@@ -267,6 +266,7 @@ import 'user_hierarchy_structure_state.dart';
 /// 					Name: pulumi.String("levelfive"),
 /// 				},
 /// 			},
+/// 			InstanceId: pulumi.String("aaaaaaaa-bbbb-cccc-dddd-111111111111"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -285,7 +285,6 @@ import 'user_hierarchy_structure_state.dart';
 /// }
 ///
 /// resource "aws_connect_userhierarchystructure" "example" {
-///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 ///   hierarchy_structure = {
 ///     level_one = {
 ///       name = "levelone"
@@ -303,6 +302,7 @@ import 'user_hierarchy_structure_state.dart';
 ///       name = "levelfive"
 ///     }
 ///   }
+///   instance_id = "aaaaaaaa-bbbb-cccc-dddd-111111111111"
 /// }
 /// ```
 /// ```java
@@ -333,7 +333,6 @@ import 'user_hierarchy_structure_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserHierarchyStructure("example", UserHierarchyStructureArgs.builder()
-///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
 ///             .hierarchyStructure(UserHierarchyStructureHierarchyStructureArgs.builder()
 ///                 .levelOne(UserHierarchyStructureHierarchyStructureLevelOneArgs.builder()
 ///                     .name("levelone")
@@ -351,6 +350,7 @@ import 'user_hierarchy_structure_state.dart';
 ///                     .name("levelfive")
 ///                     .build())
 ///                 .build())
+///             .instanceId("aaaaaaaa-bbbb-cccc-dddd-111111111111")
 ///             .build());
 ///
 ///     }
@@ -361,7 +361,6 @@ import 'user_hierarchy_structure_state.dart';
 ///   example:
 ///     type: aws:connect:UserHierarchyStructure
 ///     properties:
-///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
 ///       hierarchyStructure:
 ///         levelOne:
 ///           name: levelone
@@ -373,6 +372,7 @@ import 'user_hierarchy_structure_state.dart';
 ///           name: levelfour
 ///         levelFive:
 ///           name: levelfive
+///       instanceId: aaaaaaaa-bbbb-cccc-dddd-111111111111
 /// ```
 ///
 ///
@@ -403,7 +403,7 @@ class UserHierarchyStructure extends pulumi.CustomResource {
           'aws:connect/userHierarchyStructure:UserHierarchyStructure',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     hierarchyStructure = registerOutput<UserHierarchyStructureHierarchyStructure>('hierarchyStructure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserHierarchyStructureHierarchyStructure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
@@ -415,11 +415,12 @@ class UserHierarchyStructure extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserHierarchyStructureState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserHierarchyStructure._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -433,6 +434,20 @@ class UserHierarchyStructure extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    hierarchyStructure = registerOutput<UserHierarchyStructureHierarchyStructure>('hierarchyStructure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserHierarchyStructureHierarchyStructure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceId = registerOutput<String>('instanceId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [UserHierarchyStructure] resource.
+  UserHierarchyStructure.reference(String urn)
+    : super(
+        'aws:connect/userHierarchyStructure:UserHierarchyStructure',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     hierarchyStructure = registerOutput<UserHierarchyStructureHierarchyStructure>('hierarchyStructure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserHierarchyStructureHierarchyStructure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');

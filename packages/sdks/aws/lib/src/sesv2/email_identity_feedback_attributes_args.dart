@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sesv2_email_identity_feedback_attributes_email_identity_feedback_attributes_args_doc}
 class EmailIdentityFeedbackAttributesArgs {
   /// Sets the feedback forwarding configuration for the identity.
-  final pulumi.Input<bool>? emailForwardingEnabled;
-  /// The email identity.
+  final pulumi.Input<bool?>? emailForwardingEnabled;
+  /// Email identity.
   final pulumi.Input<String> emailIdentity;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [EmailIdentityFeedbackAttributesArgs].
   /// [emailForwardingEnabled] Sets the feedback forwarding configuration for the identity.
-  /// [emailIdentity] The email identity.
+  /// [emailIdentity] Email identity.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const EmailIdentityFeedbackAttributesArgs({
     this.emailForwardingEnabled,

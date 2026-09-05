@@ -389,21 +389,21 @@ import 'caches_iscsi_volume_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.storagegateway.CachesIscsiVolume` using the volume Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.storagegateway.CachesIscsiVolume` using the volume ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:storagegateway/cachesIscsiVolume:CachesIscsiVolume example arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678
 /// ```
 class CachesIscsiVolume extends pulumi.CustomResource {
-  /// Volume Amazon Resource Name (ARN), e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678`.
+  /// Volume ARN, e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678`.
   late final pulumi.Output<String> arn;
   /// Whether mutual CHAP is enabled for the iSCSI target.
   late final pulumi.Output<bool> chapEnabled;
-  /// The Amazon Resource Name (ARN) of the gateway.
+  /// ARN of the gateway.
   late final pulumi.Output<String> gatewayArn;
   /// Set to `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3.
   late final pulumi.Output<bool?> kmsEncrypted;
-  /// The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. Is required when `kmsEncrypted` is set.
+  /// ARN of the AWS KMS key used for Amazon S3 server side encryption. Is required when `kmsEncrypted` is set.
   late final pulumi.Output<String?> kmsKey;
   /// Logical disk number.
   late final pulumi.Output<int> lunNumber;
@@ -421,11 +421,11 @@ class CachesIscsiVolume extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Target Amazon Resource Name (ARN), e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/target/iqn.1997-05.com.amazon:TargetName`.
+  /// Target ARN, e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/target/iqn.1997-05.com.amazon:TargetName`.
   late final pulumi.Output<String> targetArn;
   /// The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. The target name must be unique across all volumes of a gateway.
   late final pulumi.Output<String> targetName;
-  /// Volume Amazon Resource Name (ARN), e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678`.
+  /// Volume ARN, e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678`.
   late final pulumi.Output<String> volumeArn;
   /// Volume ID, e.g., `vol-12345678`.
   late final pulumi.Output<String> volumeId;
@@ -444,7 +444,7 @@ class CachesIscsiVolume extends pulumi.CustomResource {
           'aws:storagegateway/cachesIscsiVolume:CachesIscsiVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     chapEnabled = registerOutput<bool>('chapEnabled');
@@ -457,8 +457,8 @@ class CachesIscsiVolume extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     snapshotId = registerOutput<String?>('snapshotId');
     sourceVolumeArn = registerOutput<String?>('sourceVolumeArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
     targetName = registerOutput<String>('targetName');
     volumeArn = registerOutput<String>('volumeArn');
@@ -471,11 +471,12 @@ class CachesIscsiVolume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CachesIscsiVolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CachesIscsiVolume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -500,8 +501,37 @@ class CachesIscsiVolume extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     snapshotId = registerOutput<String?>('snapshotId');
     sourceVolumeArn = registerOutput<String?>('sourceVolumeArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetArn = registerOutput<String>('targetArn');
+    targetName = registerOutput<String>('targetName');
+    volumeArn = registerOutput<String>('volumeArn');
+    volumeId = registerOutput<String>('volumeId');
+    volumeSizeInBytes = registerOutput<int>('volumeSizeInBytes');
+  }
+
+  /// Creates a typed reference to an existing [CachesIscsiVolume] resource.
+  CachesIscsiVolume.reference(String urn)
+    : super(
+        'aws:storagegateway/cachesIscsiVolume:CachesIscsiVolume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    chapEnabled = registerOutput<bool>('chapEnabled');
+    gatewayArn = registerOutput<String>('gatewayArn');
+    kmsEncrypted = registerOutput<bool?>('kmsEncrypted');
+    kmsKey = registerOutput<String?>('kmsKey');
+    lunNumber = registerOutput<int>('lunNumber');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    networkInterfacePort = registerOutput<int>('networkInterfacePort');
+    region = registerOutput<String>('region');
+    snapshotId = registerOutput<String?>('snapshotId');
+    sourceVolumeArn = registerOutput<String?>('sourceVolumeArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
     targetName = registerOutput<String>('targetName');
     volumeArn = registerOutput<String>('volumeArn');

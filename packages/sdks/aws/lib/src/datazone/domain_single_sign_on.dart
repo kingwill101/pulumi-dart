@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainSingleSignOn {
-  final pulumi.Input<String>? type;
-  final pulumi.Input<String>? userAssignment;
+  final pulumi.Input<String?>? type;
+  final pulumi.Input<String?>? userAssignment;
 
   /// Creates a new [DomainSingleSignOn].
   /// [type] Optional.

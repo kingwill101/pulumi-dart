@@ -8,7 +8,7 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount {
   /// Name the volume mount. This must match the name of one of the volumes in the pod.
   final pulumi.Input<String> name;
   /// Whether the container has read-only access to the volume. The default value is `false`.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount].
   /// [mountPath] Path on the container where the volume is mounted.

@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connect_peer_configuration_bgp_configuration.dart';
 
 class ConnectPeerConfiguration {
-  final pulumi.Input<List<ConnectPeerConfigurationBgpConfiguration>>? bgpConfigurations;
+  final pulumi.Input<List<ConnectPeerConfigurationBgpConfiguration>?>? bgpConfigurations;
   /// Connect peer core network address.
-  final pulumi.Input<String>? coreNetworkAddress;
+  final pulumi.Input<String?>? coreNetworkAddress;
   /// Inside IP addresses used for BGP peering. Required when the Connect attachment protocol is `GRE`. See `aws.networkmanager.ConnectAttachment` for details.
-  final pulumi.Input<List<String>>? insideCidrBlocks;
+  final pulumi.Input<List<String>?>? insideCidrBlocks;
   /// Connect peer address.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? peerAddress;
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? peerAddress;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [ConnectPeerConfiguration].
   /// [bgpConfigurations] Optional.

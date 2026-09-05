@@ -142,6 +142,8 @@ import 'private_virtual_interface_state.dart';
 /// ```sh
 /// $ pulumi import aws:directconnect/privateVirtualInterface:PrivateVirtualInterface test dxvif-33cc44dd
 /// ```
+///
+/// &gt; **Note:** When a virtual interface uses an ASN in the `bgpAsn` range (`1` to `2147483646`), AWS returns the value in both the `asn` and `asnLong` API fields, so import always populates `bgpAsn` rather than `bgpAsnLong`. If the virtual interface was originally created with `bgpAsnLong` set to a value in that range, update your configuration to use `bgpAsn` after import to avoid a difference. Virtual interfaces using a 4-byte ASN (greater than `2147483646`) import into `bgpAsnLong` as expected.
 class PrivateVirtualInterface extends pulumi.CustomResource {
   /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   late final pulumi.Output<String> addressFamily;
@@ -152,8 +154,10 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The Direct Connect endpoint on which the virtual interface terminates.
   late final pulumi.Output<String> awsDevice;
-  /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-  late final pulumi.Output<int> bgpAsn;
+  /// BGP autonomous system number as an integer between `1` and `2147483646`. For larger values, use `bgpAsnLong`. Exactly one of `bgpAsn` or `bgpAsnLong` must be specified.
+  late final pulumi.Output<int?> bgpAsn;
+  /// BGP autonomous system number as an asplain decimal string between `1` and `4294967294`. This argument also accepts values in the `bgpAsn` range. Exactly one of `bgpAsn` or `bgpAsnLong` must be specified.
+  late final pulumi.Output<String?> bgpAsnLong;
   /// The authentication key for BGP configuration.
   late final pulumi.Output<String> bgpAuthKey;
   /// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
@@ -194,14 +198,15 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
           'aws:directconnect/privateVirtualInterface:PrivateVirtualInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
     amazonSideAsn = registerOutput<String>('amazonSideAsn');
     arn = registerOutput<String>('arn');
     awsDevice = registerOutput<String>('awsDevice');
-    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAsn = registerOutput<int?>('bgpAsn');
+    bgpAsnLong = registerOutput<String?>('bgpAsnLong');
     bgpAuthKey = registerOutput<String>('bgpAuthKey');
     connectionId = registerOutput<String>('connectionId');
     customerAddress = registerOutput<String>('customerAddress');
@@ -211,8 +216,8 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     sitelinkEnabled = registerOutput<bool?>('sitelinkEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vlan = registerOutput<int>('vlan');
     vpnGatewayId = registerOutput<String?>('vpnGatewayId');
   }
@@ -222,11 +227,12 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateVirtualInterfaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateVirtualInterface._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -245,7 +251,8 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
     amazonSideAsn = registerOutput<String>('amazonSideAsn');
     arn = registerOutput<String>('arn');
     awsDevice = registerOutput<String>('awsDevice');
-    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAsn = registerOutput<int?>('bgpAsn');
+    bgpAsnLong = registerOutput<String?>('bgpAsnLong');
     bgpAuthKey = registerOutput<String>('bgpAuthKey');
     connectionId = registerOutput<String>('connectionId');
     customerAddress = registerOutput<String>('customerAddress');
@@ -255,8 +262,39 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     sitelinkEnabled = registerOutput<bool?>('sitelinkEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vlan = registerOutput<int>('vlan');
+    vpnGatewayId = registerOutput<String?>('vpnGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [PrivateVirtualInterface] resource.
+  PrivateVirtualInterface.reference(String urn)
+    : super(
+        'aws:directconnect/privateVirtualInterface:PrivateVirtualInterface',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    amazonAddress = registerOutput<String>('amazonAddress');
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    awsDevice = registerOutput<String>('awsDevice');
+    bgpAsn = registerOutput<int?>('bgpAsn');
+    bgpAsnLong = registerOutput<String?>('bgpAsnLong');
+    bgpAuthKey = registerOutput<String>('bgpAuthKey');
+    connectionId = registerOutput<String>('connectionId');
+    customerAddress = registerOutput<String>('customerAddress');
+    dxGatewayId = registerOutput<String?>('dxGatewayId');
+    jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
+    mtu = registerOutput<int?>('mtu');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    sitelinkEnabled = registerOutput<bool?>('sitelinkEnabled');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vlan = registerOutput<int>('vlan');
     vpnGatewayId = registerOutput<String?>('vpnGatewayId');
   }

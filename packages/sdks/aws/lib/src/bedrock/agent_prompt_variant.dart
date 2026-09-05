@@ -8,19 +8,19 @@ import 'agent_prompt_variant_template_configuration.dart';
 
 class AgentPromptVariant {
   /// Contains model-specific inference configurations that aren’t in the inferenceConfiguration field. To see model-specific inference parameters, see [Inference request parameters and response fields for foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
-  final pulumi.Input<String>? additionalModelRequestFields;
+  final pulumi.Input<String?>? additionalModelRequestFields;
   /// Specifies a generative AI resource with which to use the prompt. If this is not supplied, then a `genAiResource` must be defined. See Generative AI Resource for more information.
-  final pulumi.Input<AgentPromptVariantGenAiResource>? genAiResource;
+  final pulumi.Input<AgentPromptVariantGenAiResource?>? genAiResource;
   /// Contains inference configurations for the prompt variant. See Inference Configuration for more information.
-  final pulumi.Input<AgentPromptVariantInferenceConfiguration>? inferenceConfiguration;
+  final pulumi.Input<AgentPromptVariantInferenceConfiguration?>? inferenceConfiguration;
   /// A list of objects, each containing a key-value pair that defines a metadata tag and value to attach to a prompt variant. See Metadata for more information.
-  final pulumi.Input<List<AgentPromptVariantMetadata>>? metadatas;
+  final pulumi.Input<List<AgentPromptVariantMetadata>?>? metadatas;
   /// Unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) with which to run inference on the prompt. If this is not supplied, then a `genAiResource` must be defined.
-  final pulumi.Input<String>? modelId;
+  final pulumi.Input<String?>? modelId;
   /// Name of the prompt variant.
   final pulumi.Input<String> name;
   /// Contains configurations for the prompt template. See Template Configuration for more information.
-  final pulumi.Input<AgentPromptVariantTemplateConfiguration>? templateConfiguration;
+  final pulumi.Input<AgentPromptVariantTemplateConfiguration?>? templateConfiguration;
   /// Type of prompt template to use. Valid values: `CHAT`, `TEXT`.
   final pulumi.Input<String> templateType;
 

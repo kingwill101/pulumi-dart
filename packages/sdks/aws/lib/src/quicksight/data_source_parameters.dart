@@ -25,47 +25,47 @@ import 'data_source_parameters_twitter.dart';
 
 class DataSourceParameters {
   /// Parameters for connecting to Amazon Elasticsearch.
-  final pulumi.Input<DataSourceParametersAmazonElasticsearch>? amazonElasticsearch;
+  final pulumi.Input<DataSourceParametersAmazonElasticsearch?>? amazonElasticsearch;
   /// Parameters for connecting to Athena.
-  final pulumi.Input<DataSourceParametersAthena>? athena;
+  final pulumi.Input<DataSourceParametersAthena?>? athena;
   /// Parameters for connecting to Aurora MySQL.
-  final pulumi.Input<DataSourceParametersAurora>? aurora;
+  final pulumi.Input<DataSourceParametersAurora?>? aurora;
   /// Parameters for connecting to Aurora Postgresql.
-  final pulumi.Input<DataSourceParametersAuroraPostgresql>? auroraPostgresql;
+  final pulumi.Input<DataSourceParametersAuroraPostgresql?>? auroraPostgresql;
   /// Parameters for connecting to AWS IOT Analytics.
-  final pulumi.Input<DataSourceParametersAwsIotAnalytics>? awsIotAnalytics;
+  final pulumi.Input<DataSourceParametersAwsIotAnalytics?>? awsIotAnalytics;
   /// Parameters for connecting to Databricks.
-  final pulumi.Input<DataSourceParametersDatabricks>? databricks;
+  final pulumi.Input<DataSourceParametersDatabricks?>? databricks;
   /// Parameters for connecting to Jira.
-  final pulumi.Input<DataSourceParametersJira>? jira;
+  final pulumi.Input<DataSourceParametersJira?>? jira;
   /// Parameters for connecting to MariaDB.
-  final pulumi.Input<DataSourceParametersMariaDb>? mariaDb;
+  final pulumi.Input<DataSourceParametersMariaDb?>? mariaDb;
   /// Parameters for connecting to MySQL.
-  final pulumi.Input<DataSourceParametersMysql>? mysql;
+  final pulumi.Input<DataSourceParametersMysql?>? mysql;
   /// Parameters for connecting to Oracle.
-  final pulumi.Input<DataSourceParametersOracle>? oracle;
+  final pulumi.Input<DataSourceParametersOracle?>? oracle;
   /// Parameters for connecting to Postgresql.
-  final pulumi.Input<DataSourceParametersPostgresql>? postgresql;
+  final pulumi.Input<DataSourceParametersPostgresql?>? postgresql;
   /// Parameters for connecting to Presto.
-  final pulumi.Input<DataSourceParametersPresto>? presto;
+  final pulumi.Input<DataSourceParametersPresto?>? presto;
   /// Parameters for connecting to RDS.
-  final pulumi.Input<DataSourceParametersRds>? rds;
+  final pulumi.Input<DataSourceParametersRds?>? rds;
   /// Parameters for connecting to Redshift.
-  final pulumi.Input<DataSourceParametersRedshift>? redshift;
+  final pulumi.Input<DataSourceParametersRedshift?>? redshift;
   /// Parameters for connecting to S3.
-  final pulumi.Input<DataSourceParametersS3>? s3;
+  final pulumi.Input<DataSourceParametersS3?>? s3;
   /// Parameters for connecting to ServiceNow.
-  final pulumi.Input<DataSourceParametersServiceNow>? serviceNow;
+  final pulumi.Input<DataSourceParametersServiceNow?>? serviceNow;
   /// Parameters for connecting to Snowflake.
-  final pulumi.Input<DataSourceParametersSnowflake>? snowflake;
+  final pulumi.Input<DataSourceParametersSnowflake?>? snowflake;
   /// Parameters for connecting to Spark.
-  final pulumi.Input<DataSourceParametersSpark>? spark;
+  final pulumi.Input<DataSourceParametersSpark?>? spark;
   /// Parameters for connecting to SQL Server.
-  final pulumi.Input<DataSourceParametersSqlServer>? sqlServer;
+  final pulumi.Input<DataSourceParametersSqlServer?>? sqlServer;
   /// Parameters for connecting to Teradata.
-  final pulumi.Input<DataSourceParametersTeradata>? teradata;
+  final pulumi.Input<DataSourceParametersTeradata?>? teradata;
   /// Parameters for connecting to Twitter.
-  final pulumi.Input<DataSourceParametersTwitter>? twitter;
+  final pulumi.Input<DataSourceParametersTwitter?>? twitter;
 
   /// Creates a new [DataSourceParameters].
   /// [amazonElasticsearch] Parameters for connecting to Amazon Elasticsearch.

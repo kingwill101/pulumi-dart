@@ -5,8 +5,8 @@ import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement
 import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_xss_match_statement_text_transformation.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement {
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatch>? fieldToMatch;
-  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation>>? textTransformations;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatch?>? fieldToMatch;
+  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatement].
   /// [fieldToMatch] Optional.

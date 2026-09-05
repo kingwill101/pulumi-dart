@@ -191,7 +191,7 @@ class LocalGatewayRouteTable extends pulumi.CustomResource {
           'aws:ec2/localGatewayRouteTable:LocalGatewayRouteTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     localGatewayId = registerOutput<String>('localGatewayId');
@@ -201,8 +201,8 @@ class LocalGatewayRouteTable extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<LocalGatewayRouteTableTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalGatewayRouteTableTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -211,11 +211,12 @@ class LocalGatewayRouteTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocalGatewayRouteTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocalGatewayRouteTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,8 +238,30 @@ class LocalGatewayRouteTable extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<LocalGatewayRouteTableTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalGatewayRouteTableTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [LocalGatewayRouteTable] resource.
+  LocalGatewayRouteTable.reference(String urn)
+    : super(
+        'aws:ec2/localGatewayRouteTable:LocalGatewayRouteTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    localGatewayId = registerOutput<String>('localGatewayId');
+    localGatewayRouteTableId = registerOutput<String>('localGatewayRouteTableId');
+    mode = registerOutput<String>('mode');
+    outpostArn = registerOutput<String>('outpostArn');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<LocalGatewayRouteTableTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalGatewayRouteTableTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

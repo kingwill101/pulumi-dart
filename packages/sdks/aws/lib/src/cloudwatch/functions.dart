@@ -136,6 +136,17 @@ Future<GetContributorManagedInsightRulesResult> getContributorManagedInsightRule
   return GetContributorManagedInsightRulesResult.fromMap(result);
 }
 
+pulumi.Output<GetContributorManagedInsightRulesResult> getContributorManagedInsightRulesOutput(
+  GetContributorManagedInsightRulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudwatch/getContributorManagedInsightRules:getContributorManagedInsightRules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContributorManagedInsightRulesResult.fromMap);
+}
+
 /// This data source can be used to fetch information about a specific
 /// EventBridge event bus. Use this data source to compute the ARN of
 /// an event bus, given the name of the bus.
@@ -254,6 +265,17 @@ Future<GetEventBusResult> getEventBus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEventBusResult.fromMap(result);
+}
+
+pulumi.Output<GetEventBusResult> getEventBusOutput(
+  GetEventBusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudwatch/getEventBus:getEventBus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventBusResult.fromMap);
 }
 
 /// Data source for managing an AWS EventBridge Event Buses.
@@ -376,6 +398,17 @@ Future<GetEventBusesResult> getEventBuses(
   return GetEventBusesResult.fromMap(result);
 }
 
+pulumi.Output<GetEventBusesResult> getEventBusesOutput(
+  GetEventBusesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudwatch/getEventBuses:getEventBuses',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventBusesResult.fromMap);
+}
+
 /// Use this data source to retrieve information about an EventBridge connection.
 ///
 /// &gt; **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
@@ -494,6 +527,17 @@ Future<GetEventConnectionResult> getEventConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEventConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetEventConnectionResult> getEventConnectionOutput(
+  GetEventConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudwatch/getEventConnection:getEventConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventConnectionResult.fromMap);
 }
 
 /// Use this data source to get information about an EventBridge Partner Event Source. This data source will only return one partner event source. An error will be returned if multiple sources match the same name prefix.
@@ -616,6 +660,17 @@ Future<GetEventSourceResult> getEventSource(
   return GetEventSourceResult.fromMap(result);
 }
 
+pulumi.Output<GetEventSourceResult> getEventSourceOutput(
+  GetEventSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudwatch/getEventSource:getEventSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventSourceResult.fromMap);
+}
+
 /// Generates a CloudWatch Log Group Data Protection Policy document in JSON format for use with the `aws.cloudwatch.LogDataProtectionPolicy` resource.
 ///
 /// &gt; For more information about data protection policies, see the [Help protect sensitive log data with masking](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html).
@@ -628,14 +683,8 @@ Future<GetEventSourceResult> getEventSource(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.cloudwatch.getLogDataProtectionPolicyDocument({
-///     name: "Example",
 ///     statements: [
 ///         {
-///             sid: "Audit",
-///             dataIdentifiers: [
-///                 "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
-///                 "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
-///             ],
 ///             operation: {
 ///                 audit: {
 ///                     findingsDestination: {
@@ -651,20 +700,26 @@ Future<GetEventSourceResult> getEventSource(
 ///                     },
 ///                 },
 ///             },
-///         },
-///         {
-///             sid: "Deidentify",
+///             sid: "Audit",
 ///             dataIdentifiers: [
 ///                 "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
 ///                 "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
 ///             ],
+///         },
+///         {
 ///             operation: {
 ///                 deidentify: {
 ///                     maskConfig: {},
 ///                 },
 ///             },
+///             sid: "Deidentify",
+///             dataIdentifiers: [
+///                 "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
+///                 "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
+///             ],
 ///         },
 ///     ],
+///     name: "Example",
 /// });
 /// const exampleLogDataProtectionPolicy = new aws.cloudwatch.LogDataProtectionPolicy("example", {
 ///     logGroupName: exampleAwsCloudwatchLogGroup.name,
@@ -675,14 +730,8 @@ Future<GetEventSourceResult> getEventSource(
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.cloudwatch.get_log_data_protection_policy_document(name="Example",
-///     statements=[
+/// example = aws.cloudwatch.get_log_data_protection_policy_document(statements=[
 ///         {
-///             "sid": "Audit",
-///             "data_identifiers": [
-///                 "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
-///                 "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
-///             ],
 ///             "operation": {
 ///                 "audit": {
 ///                     "findings_destination": {
@@ -698,20 +747,26 @@ Future<GetEventSourceResult> getEventSource(
 ///                     },
 ///                 },
 ///             },
-///         },
-///         {
-///             "sid": "Deidentify",
+///             "sid": "Audit",
 ///             "data_identifiers": [
 ///                 "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
 ///                 "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
 ///             ],
+///         },
+///         {
 ///             "operation": {
 ///                 "deidentify": {
 ///                     "mask_config": {},
 ///                 },
 ///             },
+///             "sid": "Deidentify",
+///             "data_identifiers": [
+///                 "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
+///                 "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
+///             ],
 ///         },
-///     ])
+///     ],
+///     name="Example")
 /// example_log_data_protection_policy = aws.cloudwatch.LogDataProtectionPolicy("example",
 ///     log_group_name=example_aws_cloudwatch_log_group["name"],
 ///     policy_document=example.json)
@@ -726,17 +781,10 @@ Future<GetEventSourceResult> getEventSource(
 /// {
 ///     var example = Aws.CloudWatch.GetLogDataProtectionPolicyDocument.Invoke(new()
 ///     {
-///         Name = "Example",
 ///         Statements = new[]
 ///         {
 ///             new Aws.CloudWatch.Inputs.GetLogDataProtectionPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "Audit",
-///                 DataIdentifiers = new[]
-///                 {
-///                     "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
-///                     "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
-///                 },
 ///                 Operation = new Aws.CloudWatch.Inputs.GetLogDataProtectionPolicyDocumentStatementOperationInputArgs
 ///                 {
 ///                     Audit = new Aws.CloudWatch.Inputs.GetLogDataProtectionPolicyDocumentStatementOperationAuditInputArgs
@@ -758,15 +806,15 @@ Future<GetEventSourceResult> getEventSource(
 ///                         },
 ///                     },
 ///                 },
-///             },
-///             new Aws.CloudWatch.Inputs.GetLogDataProtectionPolicyDocumentStatementInputArgs
-///             {
-///                 Sid = "Deidentify",
+///                 Sid = "Audit",
 ///                 DataIdentifiers = new[]
 ///                 {
 ///                     "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
 ///                     "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
 ///                 },
+///             },
+///             new Aws.CloudWatch.Inputs.GetLogDataProtectionPolicyDocumentStatementInputArgs
+///             {
 ///                 Operation = new Aws.CloudWatch.Inputs.GetLogDataProtectionPolicyDocumentStatementOperationInputArgs
 ///                 {
 ///                     Deidentify = new Aws.CloudWatch.Inputs.GetLogDataProtectionPolicyDocumentStatementOperationDeidentifyInputArgs
@@ -774,8 +822,15 @@ Future<GetEventSourceResult> getEventSource(
 ///                         MaskConfig = null,
 ///                     },
 ///                 },
+///                 Sid = "Deidentify",
+///                 DataIdentifiers = new[]
+///                 {
+///                     "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
+///                     "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
+///                 },
 ///             },
 ///         },
+///         Name = "Example",
 ///     });
 ///
 ///     var exampleLogDataProtectionPolicy = new Aws.CloudWatch.LogDataProtectionPolicy("example", new()
@@ -797,14 +852,8 @@ Future<GetEventSourceResult> getEventSource(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := cloudwatch.GetLogDataProtectionPolicyDocument(ctx, &cloudwatch.GetLogDataProtectionPolicyDocumentArgs{
-/// 			Name: "Example",
 /// 			Statements: []cloudwatch.GetLogDataProtectionPolicyDocumentStatement{
 /// 				{
-/// 					Sid: pulumi.StringRef("Audit"),
-/// 					DataIdentifiers: []string{
-/// 						"arn:aws:dataprotection::aws:data-identifier/EmailAddress",
-/// 						"arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
-/// 					},
 /// 					Operation: {
 /// 						Audit: {
 /// 							FindingsDestination: {
@@ -820,20 +869,26 @@ Future<GetEventSourceResult> getEventSource(
 /// 							},
 /// 						},
 /// 					},
-/// 				},
-/// 				{
-/// 					Sid: pulumi.StringRef("Deidentify"),
+/// 					Sid: pulumi.StringRef("Audit"),
 /// 					DataIdentifiers: []string{
 /// 						"arn:aws:dataprotection::aws:data-identifier/EmailAddress",
 /// 						"arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
 /// 					},
+/// 				},
+/// 				{
 /// 					Operation: {
 /// 						Deidentify: {
 /// 							MaskConfig: {},
 /// 						},
 /// 					},
+/// 					Sid: pulumi.StringRef("Deidentify"),
+/// 					DataIdentifiers: []string{
+/// 						"arn:aws:dataprotection::aws:data-identifier/EmailAddress",
+/// 						"arn:aws:dataprotection::aws:data-identifier/DriversLicense-US",
+/// 					},
 /// 				},
 /// 			},
+/// 			Name: "Example",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -859,10 +914,7 @@ Future<GetEventSourceResult> getEventSource(
 /// }
 ///
 /// data "aws_cloudwatch_getlogdataprotectionpolicydocument" "example" {
-///   name = "Example"
 ///   statements {
-///     sid              = "Audit"
-///     data_identifiers = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress", "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US"]
 ///     operation = {
 ///       audit = {
 ///         findings_destination = {
@@ -878,16 +930,19 @@ Future<GetEventSourceResult> getEventSource(
 ///         }
 ///       }
 ///     }
+///     sid              = "Audit"
+///     data_identifiers = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress", "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US"]
 ///   }
 ///   statements {
-///     sid              = "Deidentify"
-///     data_identifiers = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress", "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US"]
 ///     operation = {
 ///       deidentify = {
 ///         mask_config = {}
 ///       }
 ///     }
+///     sid              = "Deidentify"
+///     data_identifiers = ["arn:aws:dataprotection::aws:data-identifier/EmailAddress", "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US"]
 ///   }
+///   name = "Example"
 /// }
 ///
 /// resource "aws_cloudwatch_logdataprotectionpolicy" "example" {
@@ -928,13 +983,8 @@ Future<GetEventSourceResult> getEventSource(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = CloudwatchFunctions.getLogDataProtectionPolicyDocument(GetLogDataProtectionPolicyDocumentArgs.builder()
-///             .name("Example")
 ///             .statements(
 ///                 GetLogDataProtectionPolicyDocumentStatementArgs.builder()
-///                     .sid("Audit")
-///                     .dataIdentifiers(
-///                         "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
-///                         "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US")
 ///                     .operation(GetLogDataProtectionPolicyDocumentStatementOperationArgs.builder()
 ///                         .audit(GetLogDataProtectionPolicyDocumentStatementOperationAuditArgs.builder()
 ///                             .findingsDestination(GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationArgs.builder()
@@ -950,19 +1000,24 @@ Future<GetEventSourceResult> getEventSource(
 ///                                 .build())
 ///                             .build())
 ///                         .build())
-///                     .build(),
-///                 GetLogDataProtectionPolicyDocumentStatementArgs.builder()
-///                     .sid("Deidentify")
+///                     .sid("Audit")
 ///                     .dataIdentifiers(
 ///                         "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
 ///                         "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US")
+///                     .build(),
+///                 GetLogDataProtectionPolicyDocumentStatementArgs.builder()
 ///                     .operation(GetLogDataProtectionPolicyDocumentStatementOperationArgs.builder()
 ///                         .deidentify(GetLogDataProtectionPolicyDocumentStatementOperationDeidentifyArgs.builder()
 ///                             .maskConfig(GetLogDataProtectionPolicyDocumentStatementOperationDeidentifyMaskConfigArgs.builder()
 ///                                 .build())
 ///                             .build())
 ///                         .build())
+///                     .sid("Deidentify")
+///                     .dataIdentifiers(
+///                         "arn:aws:dataprotection::aws:data-identifier/EmailAddress",
+///                         "arn:aws:dataprotection::aws:data-identifier/DriversLicense-US")
 ///                     .build())
+///             .name("Example")
 ///             .build());
 ///
 ///         var exampleLogDataProtectionPolicy = new LogDataProtectionPolicy("exampleLogDataProtectionPolicy", LogDataProtectionPolicyArgs.builder()
@@ -986,13 +1041,8 @@ Future<GetEventSourceResult> getEventSource(
 ///     fn::invoke:
 ///       function: aws:cloudwatch:getLogDataProtectionPolicyDocument
 ///       arguments:
-///         name: Example
 ///         statements:
-///           - sid: Audit
-///             dataIdentifiers:
-///               - arn:aws:dataprotection::aws:data-identifier/EmailAddress
-///               - arn:aws:dataprotection::aws:data-identifier/DriversLicense-US
-///             operation:
+///           - operation:
 ///               audit:
 ///                 findingsDestination:
 ///                   cloudwatchLogs:
@@ -1001,13 +1051,18 @@ Future<GetEventSourceResult> getEventSource(
 ///                     deliveryStream: ${auditAwsKinesisFirehoseDeliveryStream.name}
 ///                   s3:
 ///                     bucket: ${auditAwsS3Bucket.bucket}
-///           - sid: Deidentify
+///             sid: Audit
 ///             dataIdentifiers:
 ///               - arn:aws:dataprotection::aws:data-identifier/EmailAddress
 ///               - arn:aws:dataprotection::aws:data-identifier/DriversLicense-US
-///             operation:
+///           - operation:
 ///               deidentify:
 ///                 maskConfig: {}
+///             sid: Deidentify
+///             dataIdentifiers:
+///               - arn:aws:dataprotection::aws:data-identifier/EmailAddress
+///               - arn:aws:dataprotection::aws:data-identifier/DriversLicense-US
+///         name: Example
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudwatch_get_log_data_protection_policy_document_get_log_data_protection_policy_document_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1022,6 +1077,17 @@ Future<GetLogDataProtectionPolicyDocumentResult> getLogDataProtectionPolicyDocum
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLogDataProtectionPolicyDocumentResult.fromMap(result);
+}
+
+pulumi.Output<GetLogDataProtectionPolicyDocumentResult> getLogDataProtectionPolicyDocumentOutput(
+  GetLogDataProtectionPolicyDocumentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudwatch/getLogDataProtectionPolicyDocument:getLogDataProtectionPolicyDocument',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogDataProtectionPolicyDocumentResult.fromMap);
 }
 
 /// Use this data source to get information about an AWS Cloudwatch Log Group
@@ -1142,6 +1208,17 @@ Future<GetLogGroupResult> getLogGroup(
   return GetLogGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetLogGroupResult> getLogGroupOutput(
+  GetLogGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudwatch/getLogGroup:getLogGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogGroupResult.fromMap);
+}
+
 /// Use this data source to get a list of AWS Cloudwatch Log Groups
 ///
 /// ## Example Usage
@@ -1258,4 +1335,15 @@ Future<GetLogGroupsResult> getLogGroups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLogGroupsResult.fromMap(result);
+}
+
+pulumi.Output<GetLogGroupsResult> getLogGroupsOutput(
+  GetLogGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudwatch/getLogGroups:getLogGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogGroupsResult.fromMap);
 }

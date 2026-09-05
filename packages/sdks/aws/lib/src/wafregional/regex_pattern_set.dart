@@ -158,10 +158,10 @@ class RegexPatternSet extends pulumi.CustomResource {
           'aws:wafregional/regexPatternSet:RegexPatternSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
-    regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings');
+    regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
   }
 
@@ -170,11 +170,12 @@ class RegexPatternSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegexPatternSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegexPatternSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -189,7 +190,21 @@ class RegexPatternSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
-    regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings');
+    regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [RegexPatternSet] resource.
+  RegexPatternSet.reference(String urn)
+    : super(
+        'aws:wafregional/regexPatternSet:RegexPatternSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.name = registerOutput<String>('name');
+    regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
   }
 }

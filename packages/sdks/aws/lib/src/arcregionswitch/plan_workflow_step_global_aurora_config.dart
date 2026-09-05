@@ -7,17 +7,17 @@ class PlanWorkflowStepGlobalAuroraConfig {
   /// Behavior for Aurora operations. Valid values: `switchoverOnly`, `failover`.
   final pulumi.Input<String> behavior;
   /// ARN of the cross-account role to assume.
-  final pulumi.Input<String>? crossAccountRole;
+  final pulumi.Input<String?>? crossAccountRole;
   /// List of database cluster ARNs.
   final pulumi.Input<List<String>> databaseClusterArns;
   /// External ID for cross-account role assumption.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// Global cluster identifier.
   final pulumi.Input<String> globalClusterIdentifier;
   /// Timeout in minutes.
-  final pulumi.Input<int>? timeoutMinutes;
+  final pulumi.Input<int?>? timeoutMinutes;
   /// Ungraceful behavior configuration. See `workflow.step.global_aurora_config.ungraceful` Block for details.
-  final pulumi.Input<List<PlanWorkflowStepGlobalAuroraConfigUngraceful>>? ungracefuls;
+  final pulumi.Input<List<PlanWorkflowStepGlobalAuroraConfigUngraceful>?>? ungracefuls;
 
   /// Creates a new [PlanWorkflowStepGlobalAuroraConfig].
   /// [behavior] Behavior for Aurora operations. Valid values: `switchoverOnly`, `failover`.
@@ -56,7 +56,7 @@ class PlanWorkflowStepGlobalAuroraConfig {
       databaseClusterArns: pulumi.Input.fromValue((map['databaseClusterArns'] as List).cast<String>()),
       externalId: (() { final guardedValue = map['externalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       globalClusterIdentifier: pulumi.Input.fromValue(map['globalClusterIdentifier'] as String),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ungracefuls: (() { final guardedValue = map['ungracefuls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepGlobalAuroraConfigUngraceful>(guardedValue, (value) => PlanWorkflowStepGlobalAuroraConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

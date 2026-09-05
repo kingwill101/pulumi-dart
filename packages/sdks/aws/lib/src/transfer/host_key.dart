@@ -133,7 +133,7 @@ import 'host_key_state.dart';
 /// $ pulumi import aws:transfer/hostKey:HostKey example s-12345678,key-12345
 /// ```
 class HostKey extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of host key.
+  /// ARN of host key.
   late final pulumi.Output<String> arn;
   /// Text description.
   late final pulumi.Output<String?> description;
@@ -167,18 +167,19 @@ class HostKey extends pulumi.CustomResource {
           'aws:transfer/hostKey:HostKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['hostKeyBody', 'hostKeyBodyWo'],
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    hostKeyBody = registerOutput<String?>('hostKeyBody');
-    hostKeyBodyWo = registerOutput<String?>('hostKeyBodyWo');
+    hostKeyBody = registerOutput<String?>('hostKeyBody', isSecret: true);
+    hostKeyBodyWo = registerOutput<String?>('hostKeyBodyWo', isSecret: true);
     hostKeyFingerprint = registerOutput<String>('hostKeyFingerprint');
     hostKeyId = registerOutput<String>('hostKeyId');
     region = registerOutput<String>('region');
     serverId = registerOutput<String>('serverId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [HostKey] resource's state with the given [name] and [id].
@@ -186,11 +187,12 @@ class HostKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -206,13 +208,35 @@ class HostKey extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
-    hostKeyBody = registerOutput<String?>('hostKeyBody');
-    hostKeyBodyWo = registerOutput<String?>('hostKeyBodyWo');
+    hostKeyBody = registerOutput<String?>('hostKeyBody', isSecret: true);
+    hostKeyBodyWo = registerOutput<String?>('hostKeyBodyWo', isSecret: true);
     hostKeyFingerprint = registerOutput<String>('hostKeyFingerprint');
     hostKeyId = registerOutput<String>('hostKeyId');
     region = registerOutput<String>('region');
     serverId = registerOutput<String>('serverId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [HostKey] resource.
+  HostKey.reference(String urn)
+    : super(
+        'aws:transfer/hostKey:HostKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['hostKeyBody', 'hostKeyBodyWo'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    hostKeyBody = registerOutput<String?>('hostKeyBody', isSecret: true);
+    hostKeyBodyWo = registerOutput<String?>('hostKeyBodyWo', isSecret: true);
+    hostKeyFingerprint = registerOutput<String>('hostKeyFingerprint');
+    hostKeyId = registerOutput<String>('hostKeyId');
+    region = registerOutput<String>('region');
+    serverId = registerOutput<String>('serverId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -6,22 +6,22 @@ import 'get_query_log_config_filter.dart';
 /// Result data returned by getQueryLogConfig.
 class GetQueryLogConfigResult {
   /// Computed ARN of the Route53 Resolver Query Logging Configuration.
-  final String arn;
+  final String? arn;
   /// The ARN of the resource that you want Resolver to send query logs: an Amazon S3 bucket, a CloudWatch Logs log group or a Kinesis Data Firehose delivery stream.
-  final String destinationArn;
+  final String? destinationArn;
   final List<GetQueryLogConfigFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The name of the query logging configuration.
   final String? name;
   /// The AWS account ID for the account that created the query logging configuration.
-  final String ownerId;
-  final String region;
+  final String? ownerId;
+  final String? region;
   final String? resolverQueryLogConfigId;
   /// An indication of whether the query logging configuration is shared with other AWS accounts or was shared with the current account by another AWS account.
-  final String shareStatus;
+  final String? shareStatus;
   /// Map of tags to assign to the service.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetQueryLogConfigResult].
   /// [arn] Computed ARN of the Route53 Resolver Query Logging Configuration.
@@ -30,50 +30,50 @@ class GetQueryLogConfigResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The name of the query logging configuration.
   /// [ownerId] The AWS account ID for the account that created the query logging configuration.
-  /// [region] Required.
+  /// [region] Optional.
   /// [resolverQueryLogConfigId] Optional.
   /// [shareStatus] An indication of whether the query logging configuration is shared with other AWS accounts or was shared with the current account by another AWS account.
   /// [tags] Map of tags to assign to the service.
   const GetQueryLogConfigResult({
-    required this.arn,
-    required this.destinationArn,
+    this.arn,
+    this.destinationArn,
     this.filters,
-    required this.id,
+    this.id,
     this.name,
-    required this.ownerId,
-    required this.region,
+    this.ownerId,
+    this.region,
     this.resolverQueryLogConfigId,
-    required this.shareStatus,
-    required this.tags,
+    this.shareStatus,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'destinationArn': destinationArn,
+      'arn': ?arn,
+      'destinationArn': ?destinationArn,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetQueryLogConfigFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
+      'id': ?id,
       'name': ?name,
-      'ownerId': ownerId,
-      'region': region,
+      'ownerId': ?ownerId,
+      'region': ?region,
       'resolverQueryLogConfigId': ?resolverQueryLogConfigId,
-      'shareStatus': shareStatus,
-      'tags': tags,
+      'shareStatus': ?shareStatus,
+      'tags': ?tags,
     };
   }
 
   factory GetQueryLogConfigResult.fromMap(Map<String, dynamic> map) {
     return GetQueryLogConfigResult(
-      arn: map['arn'] as String,
-      destinationArn: map['destinationArn'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destinationArn: (() { final guardedValue = map['destinationArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetQueryLogConfigFilter>(guardedValue, (value) => GetQueryLogConfigFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      ownerId: map['ownerId'] as String,
-      region: map['region'] as String,
+      ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resolverQueryLogConfigId: (() { final guardedValue = map['resolverQueryLogConfigId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      shareStatus: map['shareStatus'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      shareStatus: (() { final guardedValue = map['shareStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

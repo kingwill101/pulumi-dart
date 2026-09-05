@@ -19,10 +19,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const example = new aws.bedrock.AgentAgentActionGroup("example", {
-///     actionGroupName: "example",
-///     agentId: "GGRRAED6JP",
-///     agentVersion: "DRAFT",
-///     skipResourceInUseCheck: true,
 ///     actionGroupExecutor: {
 ///         lambda: "arn:aws:lambda:us-west-2:123456789012:function:example-function",
 ///     },
@@ -31,6 +27,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///             input: "path/to/schema.yaml",
 ///         }).then(invoke => invoke.result),
 ///     },
+///     actionGroupName: "example",
+///     agentId: "GGRRAED6JP",
+///     agentVersion: "DRAFT",
+///     skipResourceInUseCheck: true,
 /// });
 /// ```
 /// ```python
@@ -39,16 +39,16 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import pulumi_std as std
 ///
 /// example = aws.bedrock.AgentAgentActionGroup("example",
-///     action_group_name="example",
-///     agent_id="GGRRAED6JP",
-///     agent_version="DRAFT",
-///     skip_resource_in_use_check=True,
 ///     action_group_executor={
 ///         "lambda_": "arn:aws:lambda:us-west-2:123456789012:function:example-function",
 ///     },
 ///     api_schema={
 ///         "payload": std.file(input="path/to/schema.yaml").result,
-///     })
+///     },
+///     action_group_name="example",
+///     agent_id="GGRRAED6JP",
+///     agent_version="DRAFT",
+///     skip_resource_in_use_check=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -61,10 +61,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentAgentActionGroup("example", new()
 ///     {
-///         ActionGroupName = "example",
-///         AgentId = "GGRRAED6JP",
-///         AgentVersion = "DRAFT",
-///         SkipResourceInUseCheck = true,
 ///         ActionGroupExecutor = new Aws.Bedrock.Inputs.AgentAgentActionGroupActionGroupExecutorArgs
 ///         {
 ///             Lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function",
@@ -76,6 +72,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                 Input = "path/to/schema.yaml",
 ///             }).Apply(invoke => invoke.Result),
 ///         },
+///         ActionGroupName = "example",
+///         AgentId = "GGRRAED6JP",
+///         AgentVersion = "DRAFT",
+///         SkipResourceInUseCheck = true,
 ///     });
 ///
 /// });
@@ -98,16 +98,16 @@ import 'agent_agent_action_group_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentAgentActionGroup(ctx, "example", &bedrock.AgentAgentActionGroupArgs{
-/// 			ActionGroupName:        pulumi.String("example"),
-/// 			AgentId:                pulumi.String("GGRRAED6JP"),
-/// 			AgentVersion:           pulumi.String("DRAFT"),
-/// 			SkipResourceInUseCheck: pulumi.Bool(true),
 /// 			ActionGroupExecutor: &bedrock.AgentAgentActionGroupActionGroupExecutorArgs{
 /// 				Lambda: pulumi.String("arn:aws:lambda:us-west-2:123456789012:function:example-function"),
 /// 			},
 /// 			ApiSchema: &bedrock.AgentAgentActionGroupApiSchemaArgs{
 /// 				Payload: pulumi.String(invokeFile.Result),
 /// 			},
+/// 			ActionGroupName:        pulumi.String("example"),
+/// 			AgentId:                pulumi.String("GGRRAED6JP"),
+/// 			AgentVersion:           pulumi.String("DRAFT"),
+/// 			SkipResourceInUseCheck: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -129,16 +129,16 @@ import 'agent_agent_action_group_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentagentactiongroup" "example" {
-///   action_group_name          = "example"
-///   agent_id                   = "GGRRAED6JP"
-///   agent_version              = "DRAFT"
-///   skip_resource_in_use_check = true
 ///   action_group_executor = {
 ///     lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function"
 ///   }
 ///   api_schema = {
 ///     payload = file("path/to/schema.yaml")
 ///   }
+///   action_group_name          = "example"
+///   agent_id                   = "GGRRAED6JP"
+///   agent_version              = "DRAFT"
+///   skip_resource_in_use_check = true
 /// }
 /// ```
 /// ```java
@@ -167,10 +167,6 @@ import 'agent_agent_action_group_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentAgentActionGroup("example", AgentAgentActionGroupArgs.builder()
-///             .actionGroupName("example")
-///             .agentId("GGRRAED6JP")
-///             .agentVersion("DRAFT")
-///             .skipResourceInUseCheck(true)
 ///             .actionGroupExecutor(AgentAgentActionGroupActionGroupExecutorArgs.builder()
 ///                 .lambda("arn:aws:lambda:us-west-2:123456789012:function:example-function")
 ///                 .build())
@@ -179,6 +175,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                     .input("path/to/schema.yaml")
 ///                     .build()).result())
 ///                 .build())
+///             .actionGroupName("example")
+///             .agentId("GGRRAED6JP")
+///             .agentVersion("DRAFT")
+///             .skipResourceInUseCheck(true)
 ///             .build());
 ///
 ///     }
@@ -189,10 +189,6 @@ import 'agent_agent_action_group_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentAgentActionGroup
 ///     properties:
-///       actionGroupName: example
-///       agentId: GGRRAED6JP
-///       agentVersion: DRAFT
-///       skipResourceInUseCheck: true
 ///       actionGroupExecutor:
 ///         lambda: arn:aws:lambda:us-west-2:123456789012:function:example-function
 ///       apiSchema:
@@ -202,6 +198,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///             arguments:
 ///               input: path/to/schema.yaml
 ///             return: result
+///       actionGroupName: example
+///       agentId: GGRRAED6JP
+///       agentVersion: DRAFT
+///       skipResourceInUseCheck: true
 /// ```
 ///
 ///
@@ -213,10 +213,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentAgentActionGroup("example", {
-///     actionGroupName: "example",
-///     agentId: "GGRRAED6JP",
-///     agentVersion: "DRAFT",
-///     skipResourceInUseCheck: true,
 ///     actionGroupExecutor: {
 ///         lambda: "arn:aws:lambda:us-west-2:123456789012:function:example-function",
 ///     },
@@ -226,6 +222,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///             s3ObjectKey: "path/to/schema.json",
 ///         },
 ///     },
+///     actionGroupName: "example",
+///     agentId: "GGRRAED6JP",
+///     agentVersion: "DRAFT",
+///     skipResourceInUseCheck: true,
 /// });
 /// ```
 /// ```python
@@ -233,10 +233,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentAgentActionGroup("example",
-///     action_group_name="example",
-///     agent_id="GGRRAED6JP",
-///     agent_version="DRAFT",
-///     skip_resource_in_use_check=True,
 ///     action_group_executor={
 ///         "lambda_": "arn:aws:lambda:us-west-2:123456789012:function:example-function",
 ///     },
@@ -245,7 +241,11 @@ import 'agent_agent_action_group_timeouts.dart';
 ///             "s3_bucket_name": "example-bucket",
 ///             "s3_object_key": "path/to/schema.json",
 ///         },
-///     })
+///     },
+///     action_group_name="example",
+///     agent_id="GGRRAED6JP",
+///     agent_version="DRAFT",
+///     skip_resource_in_use_check=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -257,10 +257,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentAgentActionGroup("example", new()
 ///     {
-///         ActionGroupName = "example",
-///         AgentId = "GGRRAED6JP",
-///         AgentVersion = "DRAFT",
-///         SkipResourceInUseCheck = true,
 ///         ActionGroupExecutor = new Aws.Bedrock.Inputs.AgentAgentActionGroupActionGroupExecutorArgs
 ///         {
 ///             Lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function",
@@ -273,6 +269,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                 S3ObjectKey = "path/to/schema.json",
 ///             },
 ///         },
+///         ActionGroupName = "example",
+///         AgentId = "GGRRAED6JP",
+///         AgentVersion = "DRAFT",
+///         SkipResourceInUseCheck = true,
 ///     });
 ///
 /// });
@@ -288,10 +288,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentAgentActionGroup(ctx, "example", &bedrock.AgentAgentActionGroupArgs{
-/// 			ActionGroupName:        pulumi.String("example"),
-/// 			AgentId:                pulumi.String("GGRRAED6JP"),
-/// 			AgentVersion:           pulumi.String("DRAFT"),
-/// 			SkipResourceInUseCheck: pulumi.Bool(true),
 /// 			ActionGroupExecutor: &bedrock.AgentAgentActionGroupActionGroupExecutorArgs{
 /// 				Lambda: pulumi.String("arn:aws:lambda:us-west-2:123456789012:function:example-function"),
 /// 			},
@@ -301,6 +297,10 @@ import 'agent_agent_action_group_timeouts.dart';
 /// 					S3ObjectKey:  pulumi.String("path/to/schema.json"),
 /// 				},
 /// 			},
+/// 			ActionGroupName:        pulumi.String("example"),
+/// 			AgentId:                pulumi.String("GGRRAED6JP"),
+/// 			AgentVersion:           pulumi.String("DRAFT"),
+/// 			SkipResourceInUseCheck: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -319,10 +319,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentagentactiongroup" "example" {
-///   action_group_name          = "example"
-///   agent_id                   = "GGRRAED6JP"
-///   agent_version              = "DRAFT"
-///   skip_resource_in_use_check = true
 ///   action_group_executor = {
 ///     lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function"
 ///   }
@@ -332,6 +328,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///       s3_object_key  = "path/to/schema.json"
 ///     }
 ///   }
+///   action_group_name          = "example"
+///   agent_id                   = "GGRRAED6JP"
+///   agent_version              = "DRAFT"
+///   skip_resource_in_use_check = true
 /// }
 /// ```
 /// ```java
@@ -359,10 +359,6 @@ import 'agent_agent_action_group_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentAgentActionGroup("example", AgentAgentActionGroupArgs.builder()
-///             .actionGroupName("example")
-///             .agentId("GGRRAED6JP")
-///             .agentVersion("DRAFT")
-///             .skipResourceInUseCheck(true)
 ///             .actionGroupExecutor(AgentAgentActionGroupActionGroupExecutorArgs.builder()
 ///                 .lambda("arn:aws:lambda:us-west-2:123456789012:function:example-function")
 ///                 .build())
@@ -372,6 +368,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                     .s3ObjectKey("path/to/schema.json")
 ///                     .build())
 ///                 .build())
+///             .actionGroupName("example")
+///             .agentId("GGRRAED6JP")
+///             .agentVersion("DRAFT")
+///             .skipResourceInUseCheck(true)
 ///             .build());
 ///
 ///     }
@@ -382,16 +382,16 @@ import 'agent_agent_action_group_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentAgentActionGroup
 ///     properties:
-///       actionGroupName: example
-///       agentId: GGRRAED6JP
-///       agentVersion: DRAFT
-///       skipResourceInUseCheck: true
 ///       actionGroupExecutor:
 ///         lambda: arn:aws:lambda:us-west-2:123456789012:function:example-function
 ///       apiSchema:
 ///         s3:
 ///           s3BucketName: example-bucket
 ///           s3ObjectKey: path/to/schema.json
+///       actionGroupName: example
+///       agentId: GGRRAED6JP
+///       agentVersion: DRAFT
+///       skipResourceInUseCheck: true
 /// ```
 ///
 ///
@@ -403,18 +403,12 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentAgentActionGroup("example", {
-///     actionGroupName: "example",
-///     agentId: "GGRRAED6JP",
-///     agentVersion: "DRAFT",
-///     skipResourceInUseCheck: true,
 ///     actionGroupExecutor: {
 ///         lambda: "arn:aws:lambda:us-west-2:123456789012:function:example-function",
 ///     },
 ///     functionSchema: {
 ///         memberFunctions: {
 ///             functions: [{
-///                 name: "example-function",
-///                 description: "Example function",
 ///                 parameters: [
 ///                     {
 ///                         mapBlockKey: "param1",
@@ -429,9 +423,15 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                         required: false,
 ///                     },
 ///                 ],
+///                 name: "example-function",
+///                 description: "Example function",
 ///             }],
 ///         },
 ///     },
+///     actionGroupName: "example",
+///     agentId: "GGRRAED6JP",
+///     agentVersion: "DRAFT",
+///     skipResourceInUseCheck: true,
 /// });
 /// ```
 /// ```python
@@ -439,18 +439,12 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentAgentActionGroup("example",
-///     action_group_name="example",
-///     agent_id="GGRRAED6JP",
-///     agent_version="DRAFT",
-///     skip_resource_in_use_check=True,
 ///     action_group_executor={
 ///         "lambda_": "arn:aws:lambda:us-west-2:123456789012:function:example-function",
 ///     },
 ///     function_schema={
 ///         "member_functions": {
 ///             "functions": [{
-///                 "name": "example-function",
-///                 "description": "Example function",
 ///                 "parameters": [
 ///                     {
 ///                         "map_block_key": "param1",
@@ -465,9 +459,15 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                         "required": False,
 ///                     },
 ///                 ],
+///                 "name": "example-function",
+///                 "description": "Example function",
 ///             }],
 ///         },
-///     })
+///     },
+///     action_group_name="example",
+///     agent_id="GGRRAED6JP",
+///     agent_version="DRAFT",
+///     skip_resource_in_use_check=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -479,10 +479,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentAgentActionGroup("example", new()
 ///     {
-///         ActionGroupName = "example",
-///         AgentId = "GGRRAED6JP",
-///         AgentVersion = "DRAFT",
-///         SkipResourceInUseCheck = true,
 ///         ActionGroupExecutor = new Aws.Bedrock.Inputs.AgentAgentActionGroupActionGroupExecutorArgs
 ///         {
 ///             Lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function",
@@ -495,8 +491,6 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                 {
 ///                     new Aws.Bedrock.Inputs.AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionArgs
 ///                     {
-///                         Name = "example-function",
-///                         Description = "Example function",
 ///                         Parameters = new[]
 ///                         {
 ///                             new Aws.Bedrock.Inputs.AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameterArgs
@@ -514,10 +508,16 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                                 Required = false,
 ///                             },
 ///                         },
+///                         Name = "example-function",
+///                         Description = "Example function",
 ///                     },
 ///                 },
 ///             },
 ///         },
+///         ActionGroupName = "example",
+///         AgentId = "GGRRAED6JP",
+///         AgentVersion = "DRAFT",
+///         SkipResourceInUseCheck = true,
 ///     });
 ///
 /// });
@@ -533,10 +533,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentAgentActionGroup(ctx, "example", &bedrock.AgentAgentActionGroupArgs{
-/// 			ActionGroupName:        pulumi.String("example"),
-/// 			AgentId:                pulumi.String("GGRRAED6JP"),
-/// 			AgentVersion:           pulumi.String("DRAFT"),
-/// 			SkipResourceInUseCheck: pulumi.Bool(true),
 /// 			ActionGroupExecutor: &bedrock.AgentAgentActionGroupActionGroupExecutorArgs{
 /// 				Lambda: pulumi.String("arn:aws:lambda:us-west-2:123456789012:function:example-function"),
 /// 			},
@@ -544,8 +540,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// 				MemberFunctions: &bedrock.AgentAgentActionGroupFunctionSchemaMemberFunctionsArgs{
 /// 					Functions: bedrock.AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionArray{
 /// 						&bedrock.AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionArgs{
-/// 							Name:        pulumi.String("example-function"),
-/// 							Description: pulumi.String("Example function"),
 /// 							Parameters: bedrock.AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameterArray{
 /// 								&bedrock.AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameterArgs{
 /// 									MapBlockKey: pulumi.String("param1"),
@@ -560,10 +554,16 @@ import 'agent_agent_action_group_timeouts.dart';
 /// 									Required:    pulumi.Bool(false),
 /// 								},
 /// 							},
+/// 							Name:        pulumi.String("example-function"),
+/// 							Description: pulumi.String("Example function"),
 /// 						},
 /// 					},
 /// 				},
 /// 			},
+/// 			ActionGroupName:        pulumi.String("example"),
+/// 			AgentId:                pulumi.String("GGRRAED6JP"),
+/// 			AgentVersion:           pulumi.String("DRAFT"),
+/// 			SkipResourceInUseCheck: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -582,18 +582,12 @@ import 'agent_agent_action_group_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentagentactiongroup" "example" {
-///   action_group_name          = "example"
-///   agent_id                   = "GGRRAED6JP"
-///   agent_version              = "DRAFT"
-///   skip_resource_in_use_check = true
 ///   action_group_executor = {
 ///     lambda = "arn:aws:lambda:us-west-2:123456789012:function:example-function"
 ///   }
 ///   function_schema = {
 ///     member_functions = {
 ///       functions = [{
-///         "name"        = "example-function"
-///         "description" = "Example function"
 ///         "parameters" = [{
 ///           "mapBlockKey" = "param1"
 ///           "type"        = "string"
@@ -605,9 +599,15 @@ import 'agent_agent_action_group_timeouts.dart';
 ///           "description" = "The second parameter"
 ///           "required"    = false
 ///         }]
+///         "name"        = "example-function"
+///         "description" = "Example function"
 ///       }]
 ///     }
 ///   }
+///   action_group_name          = "example"
+///   agent_id                   = "GGRRAED6JP"
+///   agent_version              = "DRAFT"
+///   skip_resource_in_use_check = true
 /// }
 /// ```
 /// ```java
@@ -637,18 +637,12 @@ import 'agent_agent_action_group_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentAgentActionGroup("example", AgentAgentActionGroupArgs.builder()
-///             .actionGroupName("example")
-///             .agentId("GGRRAED6JP")
-///             .agentVersion("DRAFT")
-///             .skipResourceInUseCheck(true)
 ///             .actionGroupExecutor(AgentAgentActionGroupActionGroupExecutorArgs.builder()
 ///                 .lambda("arn:aws:lambda:us-west-2:123456789012:function:example-function")
 ///                 .build())
 ///             .functionSchema(AgentAgentActionGroupFunctionSchemaArgs.builder()
 ///                 .memberFunctions(AgentAgentActionGroupFunctionSchemaMemberFunctionsArgs.builder()
 ///                     .functions(AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionArgs.builder()
-///                         .name("example-function")
-///                         .description("Example function")
 ///                         .parameters(
 ///                             AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameterArgs.builder()
 ///                                 .mapBlockKey("param1")
@@ -662,9 +656,15 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                                 .description("The second parameter")
 ///                                 .required(false)
 ///                                 .build())
+///                         .name("example-function")
+///                         .description("Example function")
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .actionGroupName("example")
+///             .agentId("GGRRAED6JP")
+///             .agentVersion("DRAFT")
+///             .skipResourceInUseCheck(true)
 ///             .build());
 ///
 ///     }
@@ -675,18 +675,12 @@ import 'agent_agent_action_group_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentAgentActionGroup
 ///     properties:
-///       actionGroupName: example
-///       agentId: GGRRAED6JP
-///       agentVersion: DRAFT
-///       skipResourceInUseCheck: true
 ///       actionGroupExecutor:
 ///         lambda: arn:aws:lambda:us-west-2:123456789012:function:example-function
 ///       functionSchema:
 ///         memberFunctions:
 ///           functions:
-///             - name: example-function
-///               description: Example function
-///               parameters:
+///             - parameters:
 ///                 - mapBlockKey: param1
 ///                   type: string
 ///                   description: The first parameter
@@ -695,6 +689,12 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                   type: integer
 ///                   description: The second parameter
 ///                   required: false
+///               name: example-function
+///               description: Example function
+///       actionGroupName: example
+///       agentId: GGRRAED6JP
+///       agentVersion: DRAFT
+///       skipResourceInUseCheck: true
 /// ```
 ///
 ///
@@ -707,10 +707,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const example = new aws.bedrock.AgentAgentActionGroup("example", {
-///     actionGroupName: "example",
-///     agentId: "GGRRAED6JP",
-///     agentVersion: "DRAFT",
-///     skipResourceInUseCheck: true,
 ///     actionGroupExecutor: {
 ///         customControl: "RETURN_CONTROL",
 ///     },
@@ -719,6 +715,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///             input: "path/to/schema.yaml",
 ///         }).then(invoke => invoke.result),
 ///     },
+///     actionGroupName: "example",
+///     agentId: "GGRRAED6JP",
+///     agentVersion: "DRAFT",
+///     skipResourceInUseCheck: true,
 /// });
 /// ```
 /// ```python
@@ -727,16 +727,16 @@ import 'agent_agent_action_group_timeouts.dart';
 /// import pulumi_std as std
 ///
 /// example = aws.bedrock.AgentAgentActionGroup("example",
-///     action_group_name="example",
-///     agent_id="GGRRAED6JP",
-///     agent_version="DRAFT",
-///     skip_resource_in_use_check=True,
 ///     action_group_executor={
 ///         "custom_control": "RETURN_CONTROL",
 ///     },
 ///     api_schema={
 ///         "payload": std.file(input="path/to/schema.yaml").result,
-///     })
+///     },
+///     action_group_name="example",
+///     agent_id="GGRRAED6JP",
+///     agent_version="DRAFT",
+///     skip_resource_in_use_check=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -749,10 +749,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentAgentActionGroup("example", new()
 ///     {
-///         ActionGroupName = "example",
-///         AgentId = "GGRRAED6JP",
-///         AgentVersion = "DRAFT",
-///         SkipResourceInUseCheck = true,
 ///         ActionGroupExecutor = new Aws.Bedrock.Inputs.AgentAgentActionGroupActionGroupExecutorArgs
 ///         {
 ///             CustomControl = "RETURN_CONTROL",
@@ -764,6 +760,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                 Input = "path/to/schema.yaml",
 ///             }).Apply(invoke => invoke.Result),
 ///         },
+///         ActionGroupName = "example",
+///         AgentId = "GGRRAED6JP",
+///         AgentVersion = "DRAFT",
+///         SkipResourceInUseCheck = true,
 ///     });
 ///
 /// });
@@ -786,16 +786,16 @@ import 'agent_agent_action_group_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentAgentActionGroup(ctx, "example", &bedrock.AgentAgentActionGroupArgs{
-/// 			ActionGroupName:        pulumi.String("example"),
-/// 			AgentId:                pulumi.String("GGRRAED6JP"),
-/// 			AgentVersion:           pulumi.String("DRAFT"),
-/// 			SkipResourceInUseCheck: pulumi.Bool(true),
 /// 			ActionGroupExecutor: &bedrock.AgentAgentActionGroupActionGroupExecutorArgs{
 /// 				CustomControl: pulumi.String("RETURN_CONTROL"),
 /// 			},
 /// 			ApiSchema: &bedrock.AgentAgentActionGroupApiSchemaArgs{
 /// 				Payload: pulumi.String(invokeFile.Result),
 /// 			},
+/// 			ActionGroupName:        pulumi.String("example"),
+/// 			AgentId:                pulumi.String("GGRRAED6JP"),
+/// 			AgentVersion:           pulumi.String("DRAFT"),
+/// 			SkipResourceInUseCheck: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -817,16 +817,16 @@ import 'agent_agent_action_group_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentagentactiongroup" "example" {
-///   action_group_name          = "example"
-///   agent_id                   = "GGRRAED6JP"
-///   agent_version              = "DRAFT"
-///   skip_resource_in_use_check = true
 ///   action_group_executor = {
 ///     custom_control = "RETURN_CONTROL"
 ///   }
 ///   api_schema = {
 ///     payload = file("path/to/schema.yaml")
 ///   }
+///   action_group_name          = "example"
+///   agent_id                   = "GGRRAED6JP"
+///   agent_version              = "DRAFT"
+///   skip_resource_in_use_check = true
 /// }
 /// ```
 /// ```java
@@ -855,10 +855,6 @@ import 'agent_agent_action_group_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentAgentActionGroup("example", AgentAgentActionGroupArgs.builder()
-///             .actionGroupName("example")
-///             .agentId("GGRRAED6JP")
-///             .agentVersion("DRAFT")
-///             .skipResourceInUseCheck(true)
 ///             .actionGroupExecutor(AgentAgentActionGroupActionGroupExecutorArgs.builder()
 ///                 .customControl("RETURN_CONTROL")
 ///                 .build())
@@ -867,6 +863,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///                     .input("path/to/schema.yaml")
 ///                     .build()).result())
 ///                 .build())
+///             .actionGroupName("example")
+///             .agentId("GGRRAED6JP")
+///             .agentVersion("DRAFT")
+///             .skipResourceInUseCheck(true)
 ///             .build());
 ///
 ///     }
@@ -877,10 +877,6 @@ import 'agent_agent_action_group_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentAgentActionGroup
 ///     properties:
-///       actionGroupName: example
-///       agentId: GGRRAED6JP
-///       agentVersion: DRAFT
-///       skipResourceInUseCheck: true
 ///       actionGroupExecutor:
 ///         customControl: RETURN_CONTROL
 ///       apiSchema:
@@ -890,6 +886,10 @@ import 'agent_agent_action_group_timeouts.dart';
 ///             arguments:
 ///               input: path/to/schema.yaml
 ///             return: result
+///       actionGroupName: example
+///       agentId: GGRRAED6JP
+///       agentVersion: DRAFT
+///       skipResourceInUseCheck: true
 /// ```
 ///
 ///
@@ -945,7 +945,7 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
           'aws:bedrock/agentAgentActionGroup:AgentAgentActionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     actionGroupExecutor = registerOutput<AgentAgentActionGroupActionGroupExecutor?>('actionGroupExecutor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupActionGroupExecutor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     actionGroupId = registerOutput<String>('actionGroupId');
@@ -968,11 +968,12 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentAgentActionGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentAgentActionGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -986,6 +987,31 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    actionGroupExecutor = registerOutput<AgentAgentActionGroupActionGroupExecutor?>('actionGroupExecutor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupActionGroupExecutor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    actionGroupId = registerOutput<String>('actionGroupId');
+    actionGroupName = registerOutput<String>('actionGroupName');
+    actionGroupState = registerOutput<String>('actionGroupState');
+    agentId = registerOutput<String>('agentId');
+    agentVersion = registerOutput<String>('agentVersion');
+    apiSchema = registerOutput<AgentAgentActionGroupApiSchema?>('apiSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupApiSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    functionSchema = registerOutput<AgentAgentActionGroupFunctionSchema?>('functionSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupFunctionSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parentActionGroupSignature = registerOutput<String?>('parentActionGroupSignature');
+    prepareAgent = registerOutput<bool>('prepareAgent');
+    region = registerOutput<String>('region');
+    skipResourceInUseCheck = registerOutput<bool>('skipResourceInUseCheck');
+    timeouts = registerOutput<AgentAgentActionGroupTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentAgentActionGroup] resource.
+  AgentAgentActionGroup.reference(String urn)
+    : super(
+        'aws:bedrock/agentAgentActionGroup:AgentAgentActionGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     actionGroupExecutor = registerOutput<AgentAgentActionGroupActionGroupExecutor?>('actionGroupExecutor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupActionGroupExecutor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     actionGroupId = registerOutput<String>('actionGroupId');
     actionGroupName = registerOutput<String>('actionGroupName');

@@ -6,9 +6,9 @@ import 'ingress_point_network_configuration_public_network_configuration.dart';
 
 class IngressPointNetworkConfiguration {
   /// Configuration for a private ingress point that uses a VPC endpoint. See `privateNetworkConfiguration` Block for details.
-  final pulumi.Input<IngressPointNetworkConfigurationPrivateNetworkConfiguration>? privateNetworkConfiguration;
+  final pulumi.Input<IngressPointNetworkConfigurationPrivateNetworkConfiguration?>? privateNetworkConfiguration;
   /// Configuration for a public ingress point. See `publicNetworkConfiguration` Block for details.
-  final pulumi.Input<IngressPointNetworkConfigurationPublicNetworkConfiguration>? publicNetworkConfiguration;
+  final pulumi.Input<IngressPointNetworkConfigurationPublicNetworkConfiguration?>? publicNetworkConfiguration;
 
   /// Creates a new [IngressPointNetworkConfiguration].
   /// [privateNetworkConfiguration] Configuration for a private ingress point that uses a VPC endpoint. See `privateNetworkConfiguration` Block for details.

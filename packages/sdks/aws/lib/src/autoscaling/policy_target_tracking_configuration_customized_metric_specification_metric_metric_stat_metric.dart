@@ -5,7 +5,7 @@ import 'policy_target_tracking_configuration_customized_metric_specification_met
 
 class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric {
   /// Dimensions of the metric.
-  final pulumi.Input<List<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimension>>? dimensions;
+  final pulumi.Input<List<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimension>?>? dimensions;
   /// Name of the metric.
   final pulumi.Input<String> metricName;
   /// Namespace of the metric.

@@ -6,11 +6,11 @@ import 'pipeline_trigger_all_git_configuration_pull_request_file_path.dart';
 
 class PipelineTriggerAllGitConfigurationPullRequest {
   /// The field that specifies to filter on branches for the pull request trigger configuration. A `branches` block is documented below.
-  final pulumi.Input<List<PipelineTriggerAllGitConfigurationPullRequestBranch>>? branches;
+  final pulumi.Input<List<PipelineTriggerAllGitConfigurationPullRequestBranch>?>? branches;
   /// A list that specifies which pull request events to filter on (opened, updated, closed) for the trigger configuration. Possible values are `OPEN`, `UPDATED ` and `CLOSED`.
-  final pulumi.Input<List<String>>? events;
+  final pulumi.Input<List<String>?>? events;
   /// The field that specifies to filter on file paths for the pull request trigger configuration. A `filePaths` block is documented below.
-  final pulumi.Input<List<PipelineTriggerAllGitConfigurationPullRequestFilePath>>? filePaths;
+  final pulumi.Input<List<PipelineTriggerAllGitConfigurationPullRequestFilePath>?>? filePaths;
 
   /// Creates a new [PipelineTriggerAllGitConfigurationPullRequest].
   /// [branches] The field that specifies to filter on branches for the pull request trigger configuration. A `branches` block is documented below.

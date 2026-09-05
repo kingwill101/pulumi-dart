@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccessPointPolicy resources.
 class AccessPointPolicyState {
   /// ARN of the access point that you want to associate with the specified policy.
-  final pulumi.Input<String>? accessPointArn;
+  final pulumi.Input<String?>? accessPointArn;
   /// Whether this access point currently has a policy that allows public access.
-  final pulumi.Input<bool>? hasPublicAccessPolicy;
+  final pulumi.Input<bool?>? hasPublicAccessPolicy;
   /// Policy that you want to apply to the specified access point.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AccessPointPolicyState].
   /// [accessPointArn] ARN of the access point that you want to associate with the specified policy.

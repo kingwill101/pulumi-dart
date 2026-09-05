@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_set_args.dart';
+import 'rule_set_rule.dart';
 import 'rule_set_state.dart';
 
 /// Manages an AWS SES Mail Manager Rule Set.
@@ -14,16 +15,16 @@ import 'rule_set_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.mailmanager.RuleSet("example", {
-///     name: "example",
 ///     rules: [{
-///         name: "add-header",
 ///         actions: [{
 ///             addHeader: {
 ///                 headerName: "X-Example",
 ///                 headerValue: "example",
 ///             },
 ///         }],
+///         name: "add-header",
 ///     }],
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -31,16 +32,16 @@ import 'rule_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.mailmanager.RuleSet("example",
-///     name="example",
 ///     rules=[{
-///         "name": "add-header",
 ///         "actions": [{
 ///             "add_header": {
 ///                 "header_name": "X-Example",
 ///                 "header_value": "example",
 ///             },
 ///         }],
-///     }])
+///         "name": "add-header",
+///     }],
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -52,12 +53,10 @@ import 'rule_set_state.dart';
 /// {
 ///     var example = new Aws.MailManager.RuleSet("example", new()
 ///     {
-///         Name = "example",
 ///         Rules = new[]
 ///         {
 ///             new Aws.MailManager.Inputs.RuleSetRuleArgs
 ///             {
-///                 Name = "add-header",
 ///                 Actions = new[]
 ///                 {
 ///                     new Aws.MailManager.Inputs.RuleSetRuleActionArgs
@@ -69,8 +68,10 @@ import 'rule_set_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "add-header",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -86,10 +87,8 @@ import 'rule_set_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := mailmanager.NewRuleSet(ctx, "example", &mailmanager.RuleSetArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Rules: mailmanager.RuleSetRuleArray{
 /// 				&mailmanager.RuleSetRuleArgs{
-/// 					Name: pulumi.String("add-header"),
 /// 					Actions: mailmanager.RuleSetRuleActionArray{
 /// 						&mailmanager.RuleSetRuleActionArgs{
 /// 							AddHeader: &mailmanager.RuleSetRuleActionAddHeaderArgs{
@@ -98,8 +97,10 @@ import 'rule_set_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("add-header"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -118,16 +119,16 @@ import 'rule_set_state.dart';
 /// }
 ///
 /// resource "aws_mailmanager_ruleset" "example" {
-///   name = "example"
 ///   rules {
-///     name = "add-header"
 ///     actions {
 ///       add_header = {
 ///         header_name  = "X-Example"
 ///         header_value = "example"
 ///       }
 ///     }
+///     name = "add-header"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -155,16 +156,16 @@ import 'rule_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RuleSet("example", RuleSetArgs.builder()
-///             .name("example")
 ///             .rules(RuleSetRuleArgs.builder()
-///                 .name("add-header")
 ///                 .actions(RuleSetRuleActionArgs.builder()
 ///                     .addHeader(RuleSetRuleActionAddHeaderArgs.builder()
 ///                         .headerName("X-Example")
 ///                         .headerValue("example")
 ///                         .build())
 ///                     .build())
+///                 .name("add-header")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -175,13 +176,13 @@ import 'rule_set_state.dart';
 ///   example:
 ///     type: aws:mailmanager:RuleSet
 ///     properties:
-///       name: example
 ///       rules:
-///         - name: add-header
-///           actions:
+///         - actions:
 ///             - addHeader:
 ///                 headerName: X-Example
 ///                 headerValue: example
+///           name: add-header
+///       name: example
 /// ```
 ///
 ///
@@ -218,7 +219,7 @@ class RuleSet extends pulumi.CustomResource {
   /// One or more rules that define filtering and action logic. Up to 40 rules are supported. See `rule` Block.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<RuleSetRule>?> rules;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -236,16 +237,16 @@ class RuleSet extends pulumi.CustomResource {
           'aws:mailmanager/ruleSet:RuleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');
     lastModificationDate = registerOutput<String>('lastModificationDate');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<RuleSetRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleSetRule>(guardedValue, (value) => RuleSetRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RuleSet] resource's state with the given [name] and [id].
@@ -253,11 +254,12 @@ class RuleSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuleSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RuleSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,8 +278,27 @@ class RuleSet extends pulumi.CustomResource {
     lastModificationDate = registerOutput<String>('lastModificationDate');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<RuleSetRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleSetRule>(guardedValue, (value) => RuleSetRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RuleSet] resource.
+  RuleSet.reference(String urn)
+    : super(
+        'aws:mailmanager/ruleSet:RuleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdDate = registerOutput<String>('createdDate');
+    lastModificationDate = registerOutput<String>('lastModificationDate');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<RuleSetRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleSetRule>(guardedValue, (value) => RuleSetRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

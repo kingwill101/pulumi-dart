@@ -10,7 +10,7 @@ class GetSamlProviderArgs {
   /// ARN assigned by AWS for the provider.
   final pulumi.Input<String> arn;
   /// Tags attached to the SAML provider.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetSamlProviderArgs].
   /// [arn] ARN assigned by AWS for the provider.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn {
   /// Description of the column that helps the query engine understand the contents of the column.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether to include or exclude the column during query generation. Valid values `INCLUDE`, `EXCLUDE`.
-  final pulumi.Input<String>? inclusion;
+  final pulumi.Input<String?>? inclusion;
   /// Name of the column for which the other fields in this object apply.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn].
   /// [description] Description of the column that helps the query engine understand the contents of the column.

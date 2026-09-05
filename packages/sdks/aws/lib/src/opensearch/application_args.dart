@@ -12,20 +12,20 @@ import 'application_timeouts.dart';
 /// {@macro pulumi_opensearch_application_application_args_doc}
 class ApplicationArgs {
   /// Configuration block(s) for OpenSearch application settings. See App Config below.
-  final pulumi.Input<List<ApplicationAppConfig>>? appConfigs;
+  final pulumi.Input<List<ApplicationAppConfig>?>? appConfigs;
   /// Configuration block(s) for data sources to link to the OpenSearch application. See Data Source below.
-  final pulumi.Input<List<ApplicationDataSource>>? dataSources;
+  final pulumi.Input<List<ApplicationDataSource>?>? dataSources;
   /// Configuration block for integrating AWS IAM Identity Center with the OpenSearch application. See IAM Identity Center Options below.
-  final pulumi.Input<ApplicationIamIdentityCenterOptions>? iamIdentityCenterOptions;
+  final pulumi.Input<ApplicationIamIdentityCenterOptions?>? iamIdentityCenterOptions;
   /// ARN of the KMS key used to encrypt the application's data at rest.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// The unique name of the OpenSearch application. Names must be unique within an AWS Region for each account. Must be between 3 and 30 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<ApplicationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<ApplicationTimeouts?>? timeouts;
 
   /// Creates a new [ApplicationArgs].
   /// [appConfigs] Configuration block(s) for OpenSearch application settings. See App Config below.

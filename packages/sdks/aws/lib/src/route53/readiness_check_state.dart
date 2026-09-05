@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ReadinessCheck resources.
 class ReadinessCheckState {
   /// ARN of the readiness_check
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Unique name describing the readiness check.
-  final pulumi.Input<String>? readinessCheckName;
+  final pulumi.Input<String?>? readinessCheckName;
   /// Name describing the resource set that will be monitored for readiness.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? resourceSetName;
+  final pulumi.Input<String?>? resourceSetName;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ReadinessCheckState].
   /// [arn] ARN of the readiness_check

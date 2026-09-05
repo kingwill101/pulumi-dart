@@ -5,7 +5,7 @@ import 'web_acl_rule_action_allow_custom_request_handling.dart';
 
 class WebAclRuleActionAllow {
   /// Custom request handling configuration. See Custom Request Handling below.
-  final pulumi.Input<WebAclRuleActionAllowCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<WebAclRuleActionAllowCustomRequestHandling?>? customRequestHandling;
 
   /// Creates a new [WebAclRuleActionAllow].
   /// [customRequestHandling] Custom request handling configuration. See Custom Request Handling below.

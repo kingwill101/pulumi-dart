@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ResourcePolicy resources.
 class ResourcePolicyState {
   /// IAM policy. The policy string in JSON must not contain newlines or blank lines.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? region;
+  /// ID or ARN of the service network or service for which the policy is created.
+  final pulumi.Input<String?>? resourceArn;
 
   /// Creates a new [ResourcePolicyState].
   /// [policy] IAM policy. The policy string in JSON must not contain newlines or blank lines.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceArn] ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
+  /// [resourceArn] ID or ARN of the service network or service for which the policy is created.
   const ResourcePolicyState({
     this.policy,
     this.region,

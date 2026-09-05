@@ -7,11 +7,11 @@ import 'algorithm_training_specification_supported_hyper_parameter_range_integer
 
 class AlgorithmTrainingSpecificationSupportedHyperParameterRange {
   /// Categorical range definition. See Categorical Parameter Range Specification.
-  final pulumi.Input<AlgorithmTrainingSpecificationSupportedHyperParameterRangeCategoricalParameterRangeSpecification>? categoricalParameterRangeSpecification;
+  final pulumi.Input<AlgorithmTrainingSpecificationSupportedHyperParameterRangeCategoricalParameterRangeSpecification?>? categoricalParameterRangeSpecification;
   /// Continuous range definition. See Continuous Parameter Range Specification.
-  final pulumi.Input<AlgorithmTrainingSpecificationSupportedHyperParameterRangeContinuousParameterRangeSpecification>? continuousParameterRangeSpecification;
+  final pulumi.Input<AlgorithmTrainingSpecificationSupportedHyperParameterRangeContinuousParameterRangeSpecification?>? continuousParameterRangeSpecification;
   /// Integer range definition. See Integer Parameter Range Specification.
-  final pulumi.Input<AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecification>? integerParameterRangeSpecification;
+  final pulumi.Input<AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecification?>? integerParameterRangeSpecification;
 
   /// Creates a new [AlgorithmTrainingSpecificationSupportedHyperParameterRange].
   /// [categoricalParameterRangeSpecification] Categorical range definition. See Categorical Parameter Range Specification.

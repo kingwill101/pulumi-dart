@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallEncryptionConfiguration {
-  /// The ID of the AWS Key Management Service (AWS KMS) customer managed key.
+  /// The ID of the KMS customer managed key.
   final pulumi.Input<String> keyId;
-  /// The type of the AWS Key Management Service (AWS KMS) key use by the firewall.
+  /// The type of the KMS key use by the firewall.
   final pulumi.Input<String> type;
 
   /// Creates a new [GetFirewallEncryptionConfiguration].
-  /// [keyId] The ID of the AWS Key Management Service (AWS KMS) customer managed key.
-  /// [type] The type of the AWS Key Management Service (AWS KMS) key use by the firewall.
+  /// [keyId] The ID of the KMS customer managed key.
+  /// [type] The type of the KMS key use by the firewall.
   const GetFirewallEncryptionConfiguration({
     required this.keyId,
     required this.type,

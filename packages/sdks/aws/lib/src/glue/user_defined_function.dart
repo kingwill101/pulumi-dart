@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_defined_function_args.dart';
+import 'user_defined_function_resource_uri.dart';
 import 'user_defined_function_state.dart';
 
 /// Provides a Glue User Defined Function Resource.
@@ -13,16 +14,16 @@ import 'user_defined_function_state.dart';
 ///
 /// const example = new aws.glue.CatalogDatabase("example", {name: "my_database"});
 /// const exampleUserDefinedFunction = new aws.glue.UserDefinedFunction("example", {
+///     resourceUris: [{
+///         resourceType: "ARCHIVE",
+///         uri: "uri",
+///     }],
 ///     name: "my_func",
 ///     catalogId: example.catalogId,
 ///     databaseName: example.name,
 ///     className: "class",
 ///     ownerName: "owner",
 ///     ownerType: "GROUP",
-///     resourceUris: [{
-///         resourceType: "ARCHIVE",
-///         uri: "uri",
-///     }],
 /// });
 /// ```
 /// ```python
@@ -31,16 +32,16 @@ import 'user_defined_function_state.dart';
 ///
 /// example = aws.glue.CatalogDatabase("example", name="my_database")
 /// example_user_defined_function = aws.glue.UserDefinedFunction("example",
+///     resource_uris=[{
+///         "resource_type": "ARCHIVE",
+///         "uri": "uri",
+///     }],
 ///     name="my_func",
 ///     catalog_id=example.catalog_id,
 ///     database_name=example.name,
 ///     class_name="class",
 ///     owner_name="owner",
-///     owner_type="GROUP",
-///     resource_uris=[{
-///         "resource_type": "ARCHIVE",
-///         "uri": "uri",
-///     }])
+///     owner_type="GROUP")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -57,12 +58,6 @@ import 'user_defined_function_state.dart';
 ///
 ///     var exampleUserDefinedFunction = new Aws.Glue.UserDefinedFunction("example", new()
 ///     {
-///         Name = "my_func",
-///         CatalogId = example.CatalogId,
-///         DatabaseName = example.Name,
-///         ClassName = "class",
-///         OwnerName = "owner",
-///         OwnerType = "GROUP",
 ///         ResourceUris = new[]
 ///         {
 ///             new Aws.Glue.Inputs.UserDefinedFunctionResourceUriArgs
@@ -71,6 +66,12 @@ import 'user_defined_function_state.dart';
 ///                 Uri = "uri",
 ///             },
 ///         },
+///         Name = "my_func",
+///         CatalogId = example.CatalogId,
+///         DatabaseName = example.Name,
+///         ClassName = "class",
+///         OwnerName = "owner",
+///         OwnerType = "GROUP",
 ///     });
 ///
 /// });
@@ -92,18 +93,18 @@ import 'user_defined_function_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = glue.NewUserDefinedFunction(ctx, "example", &glue.UserDefinedFunctionArgs{
-/// 			Name:         pulumi.String("my_func"),
-/// 			CatalogId:    example.CatalogId,
-/// 			DatabaseName: example.Name,
-/// 			ClassName:    pulumi.String("class"),
-/// 			OwnerName:    pulumi.String("owner"),
-/// 			OwnerType:    pulumi.String("GROUP"),
 /// 			ResourceUris: glue.UserDefinedFunctionResourceUriArray{
 /// 				&glue.UserDefinedFunctionResourceUriArgs{
 /// 					ResourceType: pulumi.String("ARCHIVE"),
 /// 					Uri:          pulumi.String("uri"),
 /// 				},
 /// 			},
+/// 			Name:         pulumi.String("my_func"),
+/// 			CatalogId:    example.CatalogId,
+/// 			DatabaseName: example.Name,
+/// 			ClassName:    pulumi.String("class"),
+/// 			OwnerName:    pulumi.String("owner"),
+/// 			OwnerType:    pulumi.String("GROUP"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -125,16 +126,16 @@ import 'user_defined_function_state.dart';
 ///   name = "my_database"
 /// }
 /// resource "aws_glue_userdefinedfunction" "example" {
+///   resource_uris {
+///     resource_type = "ARCHIVE"
+///     uri           = "uri"
+///   }
 ///   name          = "my_func"
 ///   catalog_id    = aws_glue_catalogdatabase.example.catalog_id
 ///   database_name = aws_glue_catalogdatabase.example.name
 ///   class_name    = "class"
 ///   owner_name    = "owner"
 ///   owner_type    = "GROUP"
-///   resource_uris {
-///     resource_type = "ARCHIVE"
-///     uri           = "uri"
-///   }
 /// }
 /// ```
 /// ```java
@@ -166,16 +167,16 @@ import 'user_defined_function_state.dart';
 ///             .build());
 ///
 ///         var exampleUserDefinedFunction = new UserDefinedFunction("exampleUserDefinedFunction", UserDefinedFunctionArgs.builder()
+///             .resourceUris(UserDefinedFunctionResourceUriArgs.builder()
+///                 .resourceType("ARCHIVE")
+///                 .uri("uri")
+///                 .build())
 ///             .name("my_func")
 ///             .catalogId(example.catalogId())
 ///             .databaseName(example.name())
 ///             .className("class")
 ///             .ownerName("owner")
 ///             .ownerType("GROUP")
-///             .resourceUris(UserDefinedFunctionResourceUriArgs.builder()
-///                 .resourceType("ARCHIVE")
-///                 .uri("uri")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -191,15 +192,15 @@ import 'user_defined_function_state.dart';
 ///     type: aws:glue:UserDefinedFunction
 ///     name: example
 ///     properties:
+///       resourceUris:
+///         - resourceType: ARCHIVE
+///           uri: uri
 ///       name: my_func
 ///       catalogId: ${example.catalogId}
 ///       databaseName: ${example.name}
 ///       className: class
 ///       ownerName: owner
 ///       ownerType: GROUP
-///       resourceUris:
-///         - resourceType: ARCHIVE
-///           uri: uri
 /// ```
 ///
 ///
@@ -230,7 +231,7 @@ class UserDefinedFunction extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The configuration block for Resource URIs. See resource uris below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceUris;
+  late final pulumi.Output<List<UserDefinedFunctionResourceUri>?> resourceUris;
 
   /// Creates a new [UserDefinedFunction].
   /// [name] The Pulumi resource name.
@@ -244,7 +245,7 @@ class UserDefinedFunction extends pulumi.CustomResource {
           'aws:glue/userDefinedFunction:UserDefinedFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String?>('catalogId');
@@ -255,7 +256,7 @@ class UserDefinedFunction extends pulumi.CustomResource {
     ownerName = registerOutput<String>('ownerName');
     ownerType = registerOutput<String>('ownerType');
     region = registerOutput<String>('region');
-    resourceUris = registerOutput<List<Map<String, dynamic>>?>('resourceUris');
+    resourceUris = registerOutput<List<UserDefinedFunctionResourceUri>?>('resourceUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(guardedValue, (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [UserDefinedFunction] resource's state with the given [name] and [id].
@@ -263,11 +264,12 @@ class UserDefinedFunction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserDefinedFunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserDefinedFunction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,6 +292,27 @@ class UserDefinedFunction extends pulumi.CustomResource {
     ownerName = registerOutput<String>('ownerName');
     ownerType = registerOutput<String>('ownerType');
     region = registerOutput<String>('region');
-    resourceUris = registerOutput<List<Map<String, dynamic>>?>('resourceUris');
+    resourceUris = registerOutput<List<UserDefinedFunctionResourceUri>?>('resourceUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(guardedValue, (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [UserDefinedFunction] resource.
+  UserDefinedFunction.reference(String urn)
+    : super(
+        'aws:glue/userDefinedFunction:UserDefinedFunction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    catalogId = registerOutput<String?>('catalogId');
+    className = registerOutput<String>('className');
+    createTime = registerOutput<String>('createTime');
+    databaseName = registerOutput<String>('databaseName');
+    this.name = registerOutput<String>('name');
+    ownerName = registerOutput<String>('ownerName');
+    ownerType = registerOutput<String>('ownerType');
+    region = registerOutput<String>('region');
+    resourceUris = registerOutput<List<UserDefinedFunctionResourceUri>?>('resourceUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(guardedValue, (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

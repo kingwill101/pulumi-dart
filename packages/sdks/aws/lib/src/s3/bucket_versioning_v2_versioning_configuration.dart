@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketVersioningV2VersioningConfiguration {
   /// Whether MFA delete is enabled in the bucket versioning configuration. Valid values: `Enabled` or `Disabled`.
-  final pulumi.Input<String>? mfaDelete;
+  final pulumi.Input<String?>? mfaDelete;
   /// Versioning state of the bucket. Valid values: `Enabled`, `Suspended`, or `Disabled`. `Disabled` should only be used when creating or importing resources that correspond to unversioned S3 buckets.
   final pulumi.Input<String> status;
 

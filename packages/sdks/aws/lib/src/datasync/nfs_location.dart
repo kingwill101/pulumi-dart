@@ -16,11 +16,11 @@ import 'nfs_location_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.datasync.NfsLocation("example", {
-///     serverHostname: "nfs.example.com",
-///     subdirectory: "/exported/path",
 ///     onPremConfig: {
 ///         agentArns: [exampleAwsDatasyncAgent.arn],
 ///     },
+///     serverHostname: "nfs.example.com",
+///     subdirectory: "/exported/path",
 /// });
 /// ```
 /// ```python
@@ -28,11 +28,11 @@ import 'nfs_location_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.datasync.NfsLocation("example",
-///     server_hostname="nfs.example.com",
-///     subdirectory="/exported/path",
 ///     on_prem_config={
 ///         "agent_arns": [example_aws_datasync_agent["arn"]],
-///     })
+///     },
+///     server_hostname="nfs.example.com",
+///     subdirectory="/exported/path")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,8 +44,6 @@ import 'nfs_location_state.dart';
 /// {
 ///     var example = new Aws.DataSync.NfsLocation("example", new()
 ///     {
-///         ServerHostname = "nfs.example.com",
-///         Subdirectory = "/exported/path",
 ///         OnPremConfig = new Aws.DataSync.Inputs.NfsLocationOnPremConfigArgs
 ///         {
 ///             AgentArns = new[]
@@ -53,6 +51,8 @@ import 'nfs_location_state.dart';
 ///                 exampleAwsDatasyncAgent.Arn,
 ///             },
 ///         },
+///         ServerHostname = "nfs.example.com",
+///         Subdirectory = "/exported/path",
 ///     });
 ///
 /// });
@@ -68,13 +68,13 @@ import 'nfs_location_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datasync.NewNfsLocation(ctx, "example", &datasync.NfsLocationArgs{
-/// 			ServerHostname: pulumi.String("nfs.example.com"),
-/// 			Subdirectory:   pulumi.String("/exported/path"),
 /// 			OnPremConfig: &datasync.NfsLocationOnPremConfigArgs{
 /// 				AgentArns: pulumi.StringArray{
 /// 					exampleAwsDatasyncAgent.Arn,
 /// 				},
 /// 			},
+/// 			ServerHostname: pulumi.String("nfs.example.com"),
+/// 			Subdirectory:   pulumi.String("/exported/path"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,11 +93,11 @@ import 'nfs_location_state.dart';
 /// }
 ///
 /// resource "aws_datasync_nfslocation" "example" {
-///   server_hostname = "nfs.example.com"
-///   subdirectory    = "/exported/path"
 ///   on_prem_config = {
 ///     agent_arns = [exampleAwsDatasyncAgent.arn]
 ///   }
+///   server_hostname = "nfs.example.com"
+///   subdirectory    = "/exported/path"
 /// }
 /// ```
 /// ```java
@@ -123,11 +123,11 @@ import 'nfs_location_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new NfsLocation("example", NfsLocationArgs.builder()
-///             .serverHostname("nfs.example.com")
-///             .subdirectory("/exported/path")
 ///             .onPremConfig(NfsLocationOnPremConfigArgs.builder()
 ///                 .agentArns(exampleAwsDatasyncAgent.arn())
 ///                 .build())
+///             .serverHostname("nfs.example.com")
+///             .subdirectory("/exported/path")
 ///             .build());
 ///
 ///     }
@@ -138,11 +138,11 @@ import 'nfs_location_state.dart';
 ///   example:
 ///     type: aws:datasync:NfsLocation
 ///     properties:
-///       serverHostname: nfs.example.com
-///       subdirectory: /exported/path
 ///       onPremConfig:
 ///         agentArns:
 ///           - ${exampleAwsDatasyncAgent.arn}
+///       serverHostname: nfs.example.com
+///       subdirectory: /exported/path
 /// ```
 ///
 ///
@@ -152,16 +152,16 @@ import 'nfs_location_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync NFS location.
+/// - `arn` (String) ARN of the DataSync NFS location.
 ///
 ///
-/// Using `pulumi import`, import `aws.datasync.NfsLocation` using the DataSync Task Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.NfsLocation` using the DataSync Task ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/nfsLocation:NfsLocation example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
 /// ```
 class NfsLocation extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the DataSync Location.
+  /// ARN of the DataSync Location.
   late final pulumi.Output<String> arn;
   /// Configuration block containing mount options used by DataSync to access the NFS Server.
   late final pulumi.Output<NfsLocationMountOptions?> mountOptions;
@@ -191,7 +191,7 @@ class NfsLocation extends pulumi.CustomResource {
           'aws:datasync/nfsLocation:NfsLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     mountOptions = registerOutput<NfsLocationMountOptions?>('mountOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsLocationMountOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -199,8 +199,8 @@ class NfsLocation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serverHostname = registerOutput<String>('serverHostname');
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 
@@ -209,11 +209,12 @@ class NfsLocation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NfsLocationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NfsLocation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,8 +234,28 @@ class NfsLocation extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     serverHostname = registerOutput<String>('serverHostname');
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [NfsLocation] resource.
+  NfsLocation.reference(String urn)
+    : super(
+        'aws:datasync/nfsLocation:NfsLocation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    mountOptions = registerOutput<NfsLocationMountOptions?>('mountOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsLocationMountOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onPremConfig = registerOutput<NfsLocationOnPremConfig>('onPremConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NfsLocationOnPremConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    serverHostname = registerOutput<String>('serverHostname');
+    subdirectory = registerOutput<String>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 }

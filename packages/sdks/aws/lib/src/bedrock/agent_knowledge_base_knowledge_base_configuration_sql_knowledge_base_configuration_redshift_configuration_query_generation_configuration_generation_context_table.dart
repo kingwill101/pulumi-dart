@@ -5,11 +5,11 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable {
   /// Information about a column in the table. See `column` block for details.
-  final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn>>? columns;
+  final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn>?>? columns;
   /// Description of the table that helps the query engine understand the contents of the table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether to include or exclude the table during query generation. Valid values `INCLUDE`, `EXCLUDE`.
-  final pulumi.Input<String>? inclusion;
+  final pulumi.Input<String?>? inclusion;
   /// Name of the table for which the other fields in this object apply.
   final pulumi.Input<String> name;
 

@@ -7,21 +7,21 @@ import 'labeling_job_human_task_config_ui_config.dart';
 
 class LabelingJobHumanTaskConfig {
   /// How labels are consolidated across human workers. Fields are documented below.
-  final pulumi.Input<LabelingJobHumanTaskConfigAnnotationConsolidationConfig>? annotationConsolidationConfig;
+  final pulumi.Input<LabelingJobHumanTaskConfigAnnotationConsolidationConfig?>? annotationConsolidationConfig;
   /// Maximum number of data objects that can be labeled by human workers at the same time.
-  final pulumi.Input<int>? maxConcurrentTaskCount;
+  final pulumi.Input<int?>? maxConcurrentTaskCount;
   /// Number of human workers that will label an object.
   final pulumi.Input<int> numberOfHumanWorkersPerDataObject;
   /// ARN of a Lambda function that is run before a data object is sent to a human worker.
-  final pulumi.Input<String>? preHumanTaskLambdaArn;
+  final pulumi.Input<String?>? preHumanTaskLambdaArn;
   /// Price to pay for each task performed by an Amazon Mechanical Turk worker. Fields are documented below.
-  final pulumi.Input<LabelingJobHumanTaskConfigPublicWorkforceTaskPrice>? publicWorkforceTaskPrice;
+  final pulumi.Input<LabelingJobHumanTaskConfigPublicWorkforceTaskPrice?>? publicWorkforceTaskPrice;
   /// length of time that a task remains available for labeling by human workers.
-  final pulumi.Input<int>? taskAvailabilityLifetimeInSeconds;
+  final pulumi.Input<int?>? taskAvailabilityLifetimeInSeconds;
   /// Description of the task.
   final pulumi.Input<String> taskDescription;
   /// Keywords used to describe the task.
-  final pulumi.Input<List<String>>? taskKeywords;
+  final pulumi.Input<List<String>?>? taskKeywords;
   /// Amount of time that a worker has to complete a task.
   final pulumi.Input<int> taskTimeLimitInSeconds;
   /// Title for the task.
@@ -79,14 +79,14 @@ class LabelingJobHumanTaskConfig {
   factory LabelingJobHumanTaskConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobHumanTaskConfig(
       annotationConsolidationConfig: (() { final guardedValue = map['annotationConsolidationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelingJobHumanTaskConfigAnnotationConsolidationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConcurrentTaskCount: (() { final guardedValue = map['maxConcurrentTaskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      numberOfHumanWorkersPerDataObject: pulumi.Input.fromValue(map['numberOfHumanWorkersPerDataObject'] as int),
+      maxConcurrentTaskCount: (() { final guardedValue = map['maxConcurrentTaskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfHumanWorkersPerDataObject: pulumi.Input.fromValue((map['numberOfHumanWorkersPerDataObject'] as num).toInt()),
       preHumanTaskLambdaArn: (() { final guardedValue = map['preHumanTaskLambdaArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicWorkforceTaskPrice: (() { final guardedValue = map['publicWorkforceTaskPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelingJobHumanTaskConfigPublicWorkforceTaskPrice.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      taskAvailabilityLifetimeInSeconds: (() { final guardedValue = map['taskAvailabilityLifetimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      taskAvailabilityLifetimeInSeconds: (() { final guardedValue = map['taskAvailabilityLifetimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       taskDescription: pulumi.Input.fromValue(map['taskDescription'] as String),
       taskKeywords: (() { final guardedValue = map['taskKeywords']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      taskTimeLimitInSeconds: pulumi.Input.fromValue(map['taskTimeLimitInSeconds'] as int),
+      taskTimeLimitInSeconds: pulumi.Input.fromValue((map['taskTimeLimitInSeconds'] as num).toInt()),
       taskTitle: pulumi.Input.fromValue(map['taskTitle'] as String),
       uiConfig: pulumi.Input.fromValue(LabelingJobHumanTaskConfigUiConfig.fromMap((map['uiConfig']! as Map).cast<String, dynamic>())),
       workteamArn: pulumi.Input.fromValue(map['workteamArn'] as String),

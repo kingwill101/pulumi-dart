@@ -6,9 +6,9 @@ import 'agentcore_gateway_target_target_configuration_mcp.dart';
 
 class AgentcoreGatewayTargetTargetConfiguration {
   /// HTTP target configuration for routing requests directly to an AgentCore Runtime agent. See `http` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationHttp>? http;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationHttp?>? http;
   /// Model Context Protocol (MCP) configuration. See `mcp` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcp>? mcp;
+  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcp?>? mcp;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfiguration].
   /// [http] HTTP target configuration for routing requests directly to an AgentCore Runtime agent. See `http` below.

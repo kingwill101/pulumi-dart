@@ -15,10 +15,10 @@ import 'ip_access_settings_association_state.dart';
 ///
 /// const example = new aws.workspacesweb.Portal("example", {displayName: "example"});
 /// const exampleIpAccessSettings = new aws.workspacesweb.IpAccessSettings("example", {
-///     displayName: "example",
 ///     ipRules: [{
 ///         ipRange: "10.0.0.0/16",
 ///     }],
+///     displayName: "example",
 /// });
 /// const exampleIpAccessSettingsAssociation = new aws.workspacesweb.IpAccessSettingsAssociation("example", {
 ///     ipAccessSettingsArn: exampleIpAccessSettings.ipAccessSettingsArn,
@@ -31,10 +31,10 @@ import 'ip_access_settings_association_state.dart';
 ///
 /// example = aws.workspacesweb.Portal("example", display_name="example")
 /// example_ip_access_settings = aws.workspacesweb.IpAccessSettings("example",
-///     display_name="example",
 ///     ip_rules=[{
 ///         "ip_range": "10.0.0.0/16",
-///     }])
+///     }],
+///     display_name="example")
 /// example_ip_access_settings_association = aws.workspacesweb.IpAccessSettingsAssociation("example",
 ///     ip_access_settings_arn=example_ip_access_settings.ip_access_settings_arn,
 ///     portal_arn=example.portal_arn)
@@ -54,7 +54,6 @@ import 'ip_access_settings_association_state.dart';
 ///
 ///     var exampleIpAccessSettings = new Aws.WorkSpacesWeb.IpAccessSettings("example", new()
 ///     {
-///         DisplayName = "example",
 ///         IpRules = new[]
 ///         {
 ///             new Aws.WorkSpacesWeb.Inputs.IpAccessSettingsIpRuleArgs
@@ -62,6 +61,7 @@ import 'ip_access_settings_association_state.dart';
 ///                 IpRange = "10.0.0.0/16",
 ///             },
 ///         },
+///         DisplayName = "example",
 ///     });
 ///
 ///     var exampleIpAccessSettingsAssociation = new Aws.WorkSpacesWeb.IpAccessSettingsAssociation("example", new()
@@ -89,12 +89,12 @@ import 'ip_access_settings_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleIpAccessSettings, err := workspacesweb.NewIpAccessSettings(ctx, "example", &workspacesweb.IpAccessSettingsArgs{
-/// 			DisplayName: pulumi.String("example"),
 /// 			IpRules: workspacesweb.IpAccessSettingsIpRuleArray{
 /// 				&workspacesweb.IpAccessSettingsIpRuleArgs{
 /// 					IpRange: pulumi.String("10.0.0.0/16"),
 /// 				},
 /// 			},
+/// 			DisplayName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -123,10 +123,10 @@ import 'ip_access_settings_association_state.dart';
 ///   display_name = "example"
 /// }
 /// resource "aws_workspacesweb_ipaccesssettings" "example" {
-///   display_name = "example"
 ///   ip_rules {
 ///     ip_range = "10.0.0.0/16"
 ///   }
+///   display_name = "example"
 /// }
 /// resource "aws_workspacesweb_ipaccesssettingsassociation" "example" {
 ///   ip_access_settings_arn = aws_workspacesweb_ipaccesssettings.example.ip_access_settings_arn
@@ -164,10 +164,10 @@ import 'ip_access_settings_association_state.dart';
 ///             .build());
 ///
 ///         var exampleIpAccessSettings = new IpAccessSettings("exampleIpAccessSettings", IpAccessSettingsArgs.builder()
-///             .displayName("example")
 ///             .ipRules(IpAccessSettingsIpRuleArgs.builder()
 ///                 .ipRange("10.0.0.0/16")
 ///                 .build())
+///             .displayName("example")
 ///             .build());
 ///
 ///         var exampleIpAccessSettingsAssociation = new IpAccessSettingsAssociation("exampleIpAccessSettingsAssociation", IpAccessSettingsAssociationArgs.builder()
@@ -188,9 +188,9 @@ import 'ip_access_settings_association_state.dart';
 ///     type: aws:workspacesweb:IpAccessSettings
 ///     name: example
 ///     properties:
-///       displayName: example
 ///       ipRules:
 ///         - ipRange: 10.0.0.0/16
+///       displayName: example
 ///   exampleIpAccessSettingsAssociation:
 ///     type: aws:workspacesweb:IpAccessSettingsAssociation
 ///     name: example
@@ -220,7 +220,7 @@ class IpAccessSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/ipAccessSettingsAssociation:IpAccessSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
     portalArn = registerOutput<String>('portalArn');
@@ -232,11 +232,12 @@ class IpAccessSettingsAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IpAccessSettingsAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IpAccessSettingsAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -250,6 +251,20 @@ class IpAccessSettingsAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [IpAccessSettingsAssociation] resource.
+  IpAccessSettingsAssociation.reference(String urn)
+    : super(
+        'aws:workspacesweb/ipAccessSettingsAssociation:IpAccessSettingsAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ipAccessSettingsArn = registerOutput<String>('ipAccessSettingsArn');
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');

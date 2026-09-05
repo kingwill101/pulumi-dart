@@ -5,7 +5,7 @@ import 'listener_rule_match_http_match_header_match_match.dart';
 
 class ListenerRuleMatchHttpMatchHeaderMatch {
   /// Whether the match is case sensitive. Default is `false`.
-  final pulumi.Input<bool>? caseSensitive;
+  final pulumi.Input<bool?>? caseSensitive;
   /// Header match type. See `match.http_match.header_matches.match` Block for details.
   final pulumi.Input<ListenerRuleMatchHttpMatchHeaderMatchMatch> match;
   /// Name of the header.

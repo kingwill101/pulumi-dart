@@ -28,10 +28,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///     acl: "private",
 /// });
 /// const versioningExample = new aws.s3.BucketVersioning("versioning_example", {
-///     bucket: example.id,
 ///     versioningConfiguration: {
 ///         status: "Enabled",
 ///     },
+///     bucket: example.id,
 /// });
 /// ```
 /// ```python
@@ -43,10 +43,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///     bucket=example.id,
 ///     acl="private")
 /// versioning_example = aws.s3.BucketVersioning("versioning_example",
-///     bucket=example.id,
 ///     versioning_configuration={
 ///         "status": "Enabled",
-///     })
+///     },
+///     bucket=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -69,11 +69,11 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///
 ///     var versioningExample = new Aws.S3.BucketVersioning("versioning_example", new()
 ///     {
-///         Bucket = example.Id,
 ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
 ///         {
 ///             Status = "Enabled",
 ///         },
+///         Bucket = example.Id,
 ///     });
 ///
 /// });
@@ -102,10 +102,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketVersioning(ctx, "versioning_example", &s3.BucketVersioningArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -131,10 +131,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///   acl    = "private"
 /// }
 /// resource "aws_s3_bucketversioning" "versioning_example" {
-///   bucket = aws_s3_bucket.example.id
 ///   versioning_configuration = {
 ///     status = "Enabled"
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// ```
 /// ```java
@@ -173,10 +173,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///             .build());
 ///
 ///         var versioningExample = new BucketVersioning("versioningExample", BucketVersioningArgs.builder()
-///             .bucket(example.id())
 ///             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
 ///                 .status("Enabled")
 ///                 .build())
+///             .bucket(example.id())
 ///             .build());
 ///
 ///     }
@@ -198,9 +198,9 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///     type: aws:s3:BucketVersioning
 ///     name: versioning_example
 ///     properties:
-///       bucket: ${example.id}
 ///       versioningConfiguration:
 ///         status: Enabled
+///       bucket: ${example.id}
 /// ```
 ///
 ///
@@ -217,10 +217,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///     acl: "private",
 /// });
 /// const versioningExample = new aws.s3.BucketVersioning("versioning_example", {
-///     bucket: example.id,
 ///     versioningConfiguration: {
 ///         status: "Disabled",
 ///     },
+///     bucket: example.id,
 /// });
 /// ```
 /// ```python
@@ -232,10 +232,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///     bucket=example.id,
 ///     acl="private")
 /// versioning_example = aws.s3.BucketVersioning("versioning_example",
-///     bucket=example.id,
 ///     versioning_configuration={
 ///         "status": "Disabled",
-///     })
+///     },
+///     bucket=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -258,11 +258,11 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///
 ///     var versioningExample = new Aws.S3.BucketVersioning("versioning_example", new()
 ///     {
-///         Bucket = example.Id,
 ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
 ///         {
 ///             Status = "Disabled",
 ///         },
+///         Bucket = example.Id,
 ///     });
 ///
 /// });
@@ -291,10 +291,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewBucketVersioning(ctx, "versioning_example", &s3.BucketVersioningArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Disabled"),
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -320,10 +320,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///   acl    = "private"
 /// }
 /// resource "aws_s3_bucketversioning" "versioning_example" {
-///   bucket = aws_s3_bucket.example.id
 ///   versioning_configuration = {
 ///     status = "Disabled"
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// ```
 /// ```java
@@ -362,10 +362,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///             .build());
 ///
 ///         var versioningExample = new BucketVersioning("versioningExample", BucketVersioningArgs.builder()
-///             .bucket(example.id())
 ///             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
 ///                 .status("Disabled")
 ///                 .build())
+///             .bucket(example.id())
 ///             .build());
 ///
 ///     }
@@ -387,9 +387,9 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///     type: aws:s3:BucketVersioning
 ///     name: versioning_example
 ///     properties:
-///       bucket: ${example.id}
 ///       versioningConfiguration:
 ///         status: Disabled
+///       bucket: ${example.id}
 /// ```
 ///
 ///
@@ -408,10 +408,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///
 /// const example = new aws.s3.Bucket("example", {bucket: "yotto"});
 /// const exampleBucketVersioning = new aws.s3.BucketVersioning("example", {
-///     bucket: example.id,
 ///     versioningConfiguration: {
 ///         status: "Enabled",
 ///     },
+///     bucket: example.id,
 /// });
 /// const exampleBucketObjectv2 = new aws.s3.BucketObjectv2("example", {
 ///     bucket: exampleBucketVersioning.id,
@@ -425,10 +425,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///
 /// example = aws.s3.Bucket("example", bucket="yotto")
 /// example_bucket_versioning = aws.s3.BucketVersioning("example",
-///     bucket=example.id,
 ///     versioning_configuration={
 ///         "status": "Enabled",
-///     })
+///     },
+///     bucket=example.id)
 /// example_bucket_objectv2 = aws.s3.BucketObjectv2("example",
 ///     bucket=example_bucket_versioning.id,
 ///     key="droeloe",
@@ -449,11 +449,11 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///
 ///     var exampleBucketVersioning = new Aws.S3.BucketVersioning("example", new()
 ///     {
-///         Bucket = example.Id,
 ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
 ///         {
 ///             Status = "Enabled",
 ///         },
+///         Bucket = example.Id,
 ///     });
 ///
 ///     var exampleBucketObjectv2 = new Aws.S3.BucketObjectv2("example", new()
@@ -482,10 +482,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 /// 			return err
 /// 		}
 /// 		exampleBucketVersioning, err := s3.NewBucketVersioning(ctx, "example", &s3.BucketVersioningArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 			VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
 /// 				Status: pulumi.String("Enabled"),
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -515,10 +515,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///   bucket = "yotto"
 /// }
 /// resource "aws_s3_bucketversioning" "example" {
-///   bucket = aws_s3_bucket.example.id
 ///   versioning_configuration = {
 ///     status = "Enabled"
 ///   }
+///   bucket = aws_s3_bucket.example.id
 /// }
 /// resource "aws_s3_bucketobjectv2" "example" {
 ///   bucket = aws_s3_bucketversioning.example.id
@@ -558,10 +558,10 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///             .build());
 ///
 ///         var exampleBucketVersioning = new BucketVersioning("exampleBucketVersioning", BucketVersioningArgs.builder()
-///             .bucket(example.id())
 ///             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
 ///                 .status("Enabled")
 ///                 .build())
+///             .bucket(example.id())
 ///             .build());
 ///
 ///         var exampleBucketObjectv2 = new BucketObjectv2("exampleBucketObjectv2", BucketObjectv2Args.builder()
@@ -583,9 +583,9 @@ import 'bucket_versioning_v2_versioning_configuration.dart';
 ///     type: aws:s3:BucketVersioning
 ///     name: example
 ///     properties:
-///       bucket: ${example.id}
 ///       versioningConfiguration:
 ///         status: Enabled
+///       bucket: ${example.id}
 ///   exampleBucketObjectv2:
 ///     type: aws:s3:BucketObjectv2
 ///     name: example
@@ -651,7 +651,7 @@ class BucketVersioningV2 extends pulumi.CustomResource {
           'aws:s3/bucketVersioningV2:BucketVersioningV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
@@ -665,11 +665,12 @@ class BucketVersioningV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketVersioningV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketVersioningV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -683,6 +684,22 @@ class BucketVersioningV2 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    mfa = registerOutput<String?>('mfa');
+    region = registerOutput<String>('region');
+    versioningConfiguration = registerOutput<BucketVersioningV2VersioningConfiguration>('versioningConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioningV2VersioningConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [BucketVersioningV2] resource.
+  BucketVersioningV2.reference(String urn)
+    : super(
+        'aws:s3/bucketVersioningV2:BucketVersioningV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     mfa = registerOutput<String?>('mfa');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_endpoint_args.dart';
+import 'event_endpoint_event_bus.dart';
 import 'event_endpoint_replication_config.dart';
 import 'event_endpoint_routing_config.dart';
 import 'event_endpoint_state.dart';
@@ -16,16 +17,6 @@ import 'event_endpoint_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const _this = new aws.cloudwatch.EventEndpoint("this", {
-///     name: "global-endpoint",
-///     roleArn: replication.arn,
-///     eventBuses: [
-///         {
-///             eventBusArn: primary.arn,
-///         },
-///         {
-///             eventBusArn: secondary.arn,
-///         },
-///     ],
 ///     replicationConfig: {
 ///         state: "DISABLED",
 ///     },
@@ -39,6 +30,16 @@ import 'event_endpoint_state.dart';
 ///             },
 ///         },
 ///     },
+///     eventBuses: [
+///         {
+///             eventBusArn: primary.arn,
+///         },
+///         {
+///             eventBusArn: secondary.arn,
+///         },
+///     ],
+///     name: "global-endpoint",
+///     roleArn: replication.arn,
 /// });
 /// ```
 /// ```python
@@ -46,16 +47,6 @@ import 'event_endpoint_state.dart';
 /// import pulumi_aws as aws
 ///
 /// this = aws.cloudwatch.EventEndpoint("this",
-///     name="global-endpoint",
-///     role_arn=replication["arn"],
-///     event_buses=[
-///         {
-///             "event_bus_arn": primary["arn"],
-///         },
-///         {
-///             "event_bus_arn": secondary["arn"],
-///         },
-///     ],
 ///     replication_config={
 ///         "state": "DISABLED",
 ///     },
@@ -68,7 +59,17 @@ import 'event_endpoint_state.dart';
 ///                 "route": "us-east-2",
 ///             },
 ///         },
-///     })
+///     },
+///     event_buses=[
+///         {
+///             "event_bus_arn": primary["arn"],
+///         },
+///         {
+///             "event_bus_arn": secondary["arn"],
+///         },
+///     ],
+///     name="global-endpoint",
+///     role_arn=replication["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -80,19 +81,6 @@ import 'event_endpoint_state.dart';
 /// {
 ///     var @this = new Aws.CloudWatch.EventEndpoint("this", new()
 ///     {
-///         Name = "global-endpoint",
-///         RoleArn = replication.Arn,
-///         EventBuses = new[]
-///         {
-///             new Aws.CloudWatch.Inputs.EventEndpointEventBusArgs
-///             {
-///                 EventBusArn = primary.Arn,
-///             },
-///             new Aws.CloudWatch.Inputs.EventEndpointEventBusArgs
-///             {
-///                 EventBusArn = secondary.Arn,
-///             },
-///         },
 ///         ReplicationConfig = new Aws.CloudWatch.Inputs.EventEndpointReplicationConfigArgs
 ///         {
 ///             State = "DISABLED",
@@ -111,6 +99,19 @@ import 'event_endpoint_state.dart';
 ///                 },
 ///             },
 ///         },
+///         EventBuses = new[]
+///         {
+///             new Aws.CloudWatch.Inputs.EventEndpointEventBusArgs
+///             {
+///                 EventBusArn = primary.Arn,
+///             },
+///             new Aws.CloudWatch.Inputs.EventEndpointEventBusArgs
+///             {
+///                 EventBusArn = secondary.Arn,
+///             },
+///         },
+///         Name = "global-endpoint",
+///         RoleArn = replication.Arn,
 ///     });
 ///
 /// });
@@ -126,16 +127,6 @@ import 'event_endpoint_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewEventEndpoint(ctx, "this", &cloudwatch.EventEndpointArgs{
-/// 			Name:    pulumi.String("global-endpoint"),
-/// 			RoleArn: pulumi.Any(replication.Arn),
-/// 			EventBuses: cloudwatch.EventEndpointEventBusArray{
-/// 				&cloudwatch.EventEndpointEventBusArgs{
-/// 					EventBusArn: pulumi.Any(primary.Arn),
-/// 				},
-/// 				&cloudwatch.EventEndpointEventBusArgs{
-/// 					EventBusArn: pulumi.Any(secondary.Arn),
-/// 				},
-/// 			},
 /// 			ReplicationConfig: &cloudwatch.EventEndpointReplicationConfigArgs{
 /// 				State: pulumi.String("DISABLED"),
 /// 			},
@@ -149,6 +140,16 @@ import 'event_endpoint_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			EventBuses: cloudwatch.EventEndpointEventBusArray{
+/// 				&cloudwatch.EventEndpointEventBusArgs{
+/// 					EventBusArn: pulumi.Any(primary.Arn),
+/// 				},
+/// 				&cloudwatch.EventEndpointEventBusArgs{
+/// 					EventBusArn: pulumi.Any(secondary.Arn),
+/// 				},
+/// 			},
+/// 			Name:    pulumi.String("global-endpoint"),
+/// 			RoleArn: pulumi.Any(replication.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -167,14 +168,6 @@ import 'event_endpoint_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_eventendpoint" "this" {
-///   name     = "global-endpoint"
-///   role_arn = replication.arn
-///   event_buses {
-///     event_bus_arn = primary.arn
-///   }
-///   event_buses {
-///     event_bus_arn = secondary.arn
-///   }
 ///   replication_config = {
 ///     state = "DISABLED"
 ///   }
@@ -188,6 +181,14 @@ import 'event_endpoint_state.dart';
 ///       }
 ///     }
 ///   }
+///   event_buses {
+///     event_bus_arn = primary.arn
+///   }
+///   event_buses {
+///     event_bus_arn = secondary.arn
+///   }
+///   name     = "global-endpoint"
+///   role_arn = replication.arn
 /// }
 /// ```
 /// ```java
@@ -198,12 +199,12 @@ import 'event_endpoint_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.cloudwatch.EventEndpoint;
 /// import com.pulumi.aws.cloudwatch.EventEndpointArgs;
-/// import com.pulumi.aws.cloudwatch.inputs.EventEndpointEventBusArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventEndpointReplicationConfigArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventEndpointRoutingConfigArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventEndpointRoutingConfigFailoverConfigArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventEndpointRoutingConfigFailoverConfigPrimaryArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventEndpointRoutingConfigFailoverConfigSecondaryArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.EventEndpointEventBusArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -218,15 +219,6 @@ import 'event_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var this_ = new EventEndpoint("this", EventEndpointArgs.builder()
-///             .name("global-endpoint")
-///             .roleArn(replication.arn())
-///             .eventBuses(
-///                 EventEndpointEventBusArgs.builder()
-///                     .eventBusArn(primary.arn())
-///                     .build(),
-///                 EventEndpointEventBusArgs.builder()
-///                     .eventBusArn(secondary.arn())
-///                     .build())
 ///             .replicationConfig(EventEndpointReplicationConfigArgs.builder()
 ///                 .state("DISABLED")
 ///                 .build())
@@ -240,6 +232,15 @@ import 'event_endpoint_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .eventBuses(
+///                 EventEndpointEventBusArgs.builder()
+///                     .eventBusArn(primary.arn())
+///                     .build(),
+///                 EventEndpointEventBusArgs.builder()
+///                     .eventBusArn(secondary.arn())
+///                     .build())
+///             .name("global-endpoint")
+///             .roleArn(replication.arn())
 ///             .build());
 ///
 ///     }
@@ -250,11 +251,6 @@ import 'event_endpoint_state.dart';
 ///   this:
 ///     type: aws:cloudwatch:EventEndpoint
 ///     properties:
-///       name: global-endpoint
-///       roleArn: ${replication.arn}
-///       eventBuses:
-///         - eventBusArn: ${primary.arn}
-///         - eventBusArn: ${secondary.arn}
 ///       replicationConfig:
 ///         state: DISABLED
 ///       routingConfig:
@@ -263,6 +259,11 @@ import 'event_endpoint_state.dart';
 ///             healthCheck: ${primaryAwsRoute53HealthCheck.arn}
 ///           secondary:
 ///             route: us-east-2
+///       eventBuses:
+///         - eventBusArn: ${primary.arn}
+///         - eventBusArn: ${secondary.arn}
+///       name: global-endpoint
+///       roleArn: ${replication.arn}
 /// ```
 ///
 ///
@@ -293,7 +294,7 @@ class EventEndpoint extends pulumi.CustomResource {
   /// The URL of the endpoint that was created.
   late final pulumi.Output<String> endpointUrl;
   /// The event buses to use. The names of the event buses must be identical in each Region. Exactly two event buses are required. Documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> eventBuses;
+  late final pulumi.Output<List<EventEndpointEventBus>> eventBuses;
   /// The name of the global endpoint.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -317,12 +318,12 @@ class EventEndpoint extends pulumi.CustomResource {
           'aws:cloudwatch/eventEndpoint:EventEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     endpointUrl = registerOutput<String>('endpointUrl');
-    eventBuses = registerOutput<List<Map<String, dynamic>>>('eventBuses');
+    eventBuses = registerOutput<List<EventEndpointEventBus>>('eventBuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventEndpointEventBus>(guardedValue, (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     replicationConfig = registerOutput<EventEndpointReplicationConfig?>('replicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventEndpointReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -335,11 +336,12 @@ class EventEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -356,7 +358,27 @@ class EventEndpoint extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     endpointUrl = registerOutput<String>('endpointUrl');
-    eventBuses = registerOutput<List<Map<String, dynamic>>>('eventBuses');
+    eventBuses = registerOutput<List<EventEndpointEventBus>>('eventBuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventEndpointEventBus>(guardedValue, (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    replicationConfig = registerOutput<EventEndpointReplicationConfig?>('replicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventEndpointReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roleArn = registerOutput<String?>('roleArn');
+    routingConfig = registerOutput<EventEndpointRoutingConfig>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventEndpointRoutingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EventEndpoint] resource.
+  EventEndpoint.reference(String urn)
+    : super(
+        'aws:cloudwatch/eventEndpoint:EventEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    endpointUrl = registerOutput<String>('endpointUrl');
+    eventBuses = registerOutput<List<EventEndpointEventBus>>('eventBuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventEndpointEventBus>(guardedValue, (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     replicationConfig = registerOutput<EventEndpointReplicationConfig?>('replicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventEndpointReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

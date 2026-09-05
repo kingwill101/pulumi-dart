@@ -6,13 +6,13 @@ import 'multi_region_access_point_routes_route.dart';
 /// Input properties used for looking up and filtering MultiRegionAccessPointRoutes resources.
 class MultiRegionAccessPointRoutesState {
   /// AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// ARN of the Multi-Region Access Point.
-  final pulumi.Input<String>? mrap;
+  final pulumi.Input<String?>? mrap;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Route configurations. At least one route must have a `trafficDialPercentage` of `100`. See `route` below.
-  final pulumi.Input<List<MultiRegionAccessPointRoutesRoute>>? routes;
+  final pulumi.Input<List<MultiRegionAccessPointRoutesRoute>?>? routes;
 
   /// Creates a new [MultiRegionAccessPointRoutesState].
   /// [accountId] AWS account ID for the owner of the Multi-Region Access Point. Defaults to automatically determined account ID of the Terraform AWS provider.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_delivery_configuration_args.dart';
+import 'log_delivery_configuration_log_configuration.dart';
 import 'log_delivery_configuration_state.dart';
 
 /// Manages an AWS Cognito IDP (Identity Provider) Log Delivery Configuration.
@@ -16,14 +17,14 @@ import 'log_delivery_configuration_state.dart';
 /// const example = new aws.cognito.UserPool("example", {name: "example"});
 /// const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {name: "example"});
 /// const exampleLogDeliveryConfiguration = new aws.cognito.LogDeliveryConfiguration("example", {
-///     userPoolId: example.id,
 ///     logConfigurations: [{
-///         eventSource: "userNotification",
-///         logLevel: "ERROR",
 ///         cloudWatchLogsConfiguration: {
 ///             logGroupArn: exampleLogGroup.arn,
 ///         },
+///         eventSource: "userNotification",
+///         logLevel: "ERROR",
 ///     }],
+///     userPoolId: example.id,
 /// });
 /// ```
 /// ```python
@@ -33,14 +34,14 @@ import 'log_delivery_configuration_state.dart';
 /// example = aws.cognito.UserPool("example", name="example")
 /// example_log_group = aws.cloudwatch.LogGroup("example", name="example")
 /// example_log_delivery_configuration = aws.cognito.LogDeliveryConfiguration("example",
-///     user_pool_id=example.id,
 ///     log_configurations=[{
-///         "event_source": "userNotification",
-///         "log_level": "ERROR",
 ///         "cloud_watch_logs_configuration": {
 ///             "log_group_arn": example_log_group.arn,
 ///         },
-///     }])
+///         "event_source": "userNotification",
+///         "log_level": "ERROR",
+///     }],
+///     user_pool_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -62,19 +63,19 @@ import 'log_delivery_configuration_state.dart';
 ///
 ///     var exampleLogDeliveryConfiguration = new Aws.Cognito.LogDeliveryConfiguration("example", new()
 ///     {
-///         UserPoolId = example.Id,
 ///         LogConfigurations = new[]
 ///         {
 ///             new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationArgs
 ///             {
-///                 EventSource = "userNotification",
-///                 LogLevel = "ERROR",
 ///                 CloudWatchLogsConfiguration = new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfigurationArgs
 ///                 {
 ///                     LogGroupArn = exampleLogGroup.Arn,
 ///                 },
+///                 EventSource = "userNotification",
+///                 LogLevel = "ERROR",
 ///             },
 ///         },
+///         UserPoolId = example.Id,
 ///     });
 ///
 /// });
@@ -103,16 +104,16 @@ import 'log_delivery_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewLogDeliveryConfiguration(ctx, "example", &cognito.LogDeliveryConfigurationArgs{
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			LogConfigurations: cognito.LogDeliveryConfigurationLogConfigurationArray{
 /// 				&cognito.LogDeliveryConfigurationLogConfigurationArgs{
-/// 					EventSource: pulumi.String("userNotification"),
-/// 					LogLevel:    pulumi.String("ERROR"),
 /// 					CloudWatchLogsConfiguration: &cognito.LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfigurationArgs{
 /// 						LogGroupArn: exampleLogGroup.Arn,
 /// 					},
+/// 					EventSource: pulumi.String("userNotification"),
+/// 					LogLevel:    pulumi.String("ERROR"),
 /// 				},
 /// 			},
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -137,14 +138,14 @@ import 'log_delivery_configuration_state.dart';
 ///   name = "example"
 /// }
 /// resource "aws_cognito_logdeliveryconfiguration" "example" {
-///   user_pool_id = aws_cognito_userpool.example.id
 ///   log_configurations {
-///     event_source = "userNotification"
-///     log_level    = "ERROR"
 ///     cloud_watch_logs_configuration = {
 ///       log_group_arn = aws_cloudwatch_loggroup.example.arn
 ///     }
+///     event_source = "userNotification"
+///     log_level    = "ERROR"
 ///   }
+///   user_pool_id = aws_cognito_userpool.example.id
 /// }
 /// ```
 /// ```java
@@ -183,14 +184,14 @@ import 'log_delivery_configuration_state.dart';
 ///             .build());
 ///
 ///         var exampleLogDeliveryConfiguration = new LogDeliveryConfiguration("exampleLogDeliveryConfiguration", LogDeliveryConfigurationArgs.builder()
-///             .userPoolId(example.id())
 ///             .logConfigurations(LogDeliveryConfigurationLogConfigurationArgs.builder()
-///                 .eventSource("userNotification")
-///                 .logLevel("ERROR")
 ///                 .cloudWatchLogsConfiguration(LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfigurationArgs.builder()
 ///                     .logGroupArn(exampleLogGroup.arn())
 ///                     .build())
+///                 .eventSource("userNotification")
+///                 .logLevel("ERROR")
 ///                 .build())
+///             .userPoolId(example.id())
 ///             .build());
 ///
 ///     }
@@ -211,12 +212,12 @@ import 'log_delivery_configuration_state.dart';
 ///     type: aws:cognito:LogDeliveryConfiguration
 ///     name: example
 ///     properties:
-///       userPoolId: ${example.id}
 ///       logConfigurations:
-///         - eventSource: userNotification
-///           logLevel: ERROR
-///           cloudWatchLogsConfiguration:
+///         - cloudWatchLogsConfiguration:
 ///             logGroupArn: ${exampleLogGroup.arn}
+///           eventSource: userNotification
+///           logLevel: ERROR
+///       userPoolId: ${example.id}
 /// ```
 ///
 ///
@@ -272,31 +273,31 @@ import 'log_delivery_configuration_state.dart';
 ///     }),
 /// });
 /// const exampleFirehoseDeliveryStream = new aws.kinesis.FirehoseDeliveryStream("example", {
-///     name: "example-stream",
-///     destination: "extended_s3",
 ///     extendedS3Configuration: {
 ///         roleArn: firehose.arn,
 ///         bucketArn: exampleBucket.arn,
 ///     },
+///     name: "example-stream",
+///     destination: "extended_s3",
 /// });
 /// const exampleLogDeliveryConfiguration = new aws.cognito.LogDeliveryConfiguration("example", {
-///     userPoolId: example.id,
 ///     logConfigurations: [
 ///         {
-///             eventSource: "userNotification",
-///             logLevel: "INFO",
 ///             cloudWatchLogsConfiguration: {
 ///                 logGroupArn: exampleLogGroup.arn,
 ///             },
+///             eventSource: "userNotification",
+///             logLevel: "INFO",
 ///         },
 ///         {
-///             eventSource: "userAuthEvents",
-///             logLevel: "INFO",
 ///             firehoseConfiguration: {
 ///                 streamArn: exampleFirehoseDeliveryStream.arn,
 ///             },
+///             eventSource: "userAuthEvents",
+///             logLevel: "INFO",
 ///         },
 ///     ],
+///     userPoolId: example.id,
 /// });
 /// ```
 /// ```python
@@ -345,30 +346,30 @@ import 'log_delivery_configuration_state.dart';
 ///         }],
 ///     }))
 /// example_firehose_delivery_stream = aws.kinesis.FirehoseDeliveryStream("example",
-///     name="example-stream",
-///     destination="extended_s3",
 ///     extended_s3_configuration={
 ///         "role_arn": firehose.arn,
 ///         "bucket_arn": example_bucket.arn,
-///     })
+///     },
+///     name="example-stream",
+///     destination="extended_s3")
 /// example_log_delivery_configuration = aws.cognito.LogDeliveryConfiguration("example",
-///     user_pool_id=example.id,
 ///     log_configurations=[
 ///         {
-///             "event_source": "userNotification",
-///             "log_level": "INFO",
 ///             "cloud_watch_logs_configuration": {
 ///                 "log_group_arn": example_log_group.arn,
 ///             },
+///             "event_source": "userNotification",
+///             "log_level": "INFO",
 ///         },
 ///         {
-///             "event_source": "userAuthEvents",
-///             "log_level": "INFO",
 ///             "firehose_configuration": {
 ///                 "stream_arn": example_firehose_delivery_stream.arn,
 ///             },
+///             "event_source": "userAuthEvents",
+///             "log_level": "INFO",
 ///         },
-///     ])
+///     ],
+///     user_pool_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -450,39 +451,39 @@ import 'log_delivery_configuration_state.dart';
 ///
 ///     var exampleFirehoseDeliveryStream = new Aws.Kinesis.FirehoseDeliveryStream("example", new()
 ///     {
-///         Name = "example-stream",
-///         Destination = "extended_s3",
 ///         ExtendedS3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs
 ///         {
 ///             RoleArn = firehose.Arn,
 ///             BucketArn = exampleBucket.Arn,
 ///         },
+///         Name = "example-stream",
+///         Destination = "extended_s3",
 ///     });
 ///
 ///     var exampleLogDeliveryConfiguration = new Aws.Cognito.LogDeliveryConfiguration("example", new()
 ///     {
-///         UserPoolId = example.Id,
 ///         LogConfigurations = new[]
 ///         {
 ///             new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationArgs
 ///             {
-///                 EventSource = "userNotification",
-///                 LogLevel = "INFO",
 ///                 CloudWatchLogsConfiguration = new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfigurationArgs
 ///                 {
 ///                     LogGroupArn = exampleLogGroup.Arn,
 ///                 },
+///                 EventSource = "userNotification",
+///                 LogLevel = "INFO",
 ///             },
 ///             new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationArgs
 ///             {
-///                 EventSource = "userAuthEvents",
-///                 LogLevel = "INFO",
 ///                 FirehoseConfiguration = new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationFirehoseConfigurationArgs
 ///                 {
 ///                     StreamArn = exampleFirehoseDeliveryStream.Arn,
 ///                 },
+///                 EventSource = "userAuthEvents",
+///                 LogLevel = "INFO",
 ///             },
 ///         },
+///         UserPoolId = example.Id,
 ///     });
 ///
 /// });
@@ -583,34 +584,34 @@ import 'log_delivery_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleFirehoseDeliveryStream, err := kinesis.NewFirehoseDeliveryStream(ctx, "example", &kinesis.FirehoseDeliveryStreamArgs{
-/// 			Name:        pulumi.String("example-stream"),
-/// 			Destination: pulumi.String("extended_s3"),
 /// 			ExtendedS3Configuration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationArgs{
 /// 				RoleArn:   firehose.Arn,
 /// 				BucketArn: exampleBucket.Arn,
 /// 			},
+/// 			Name:        pulumi.String("example-stream"),
+/// 			Destination: pulumi.String("extended_s3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewLogDeliveryConfiguration(ctx, "example", &cognito.LogDeliveryConfigurationArgs{
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			LogConfigurations: cognito.LogDeliveryConfigurationLogConfigurationArray{
 /// 				&cognito.LogDeliveryConfigurationLogConfigurationArgs{
-/// 					EventSource: pulumi.String("userNotification"),
-/// 					LogLevel:    pulumi.String("INFO"),
 /// 					CloudWatchLogsConfiguration: &cognito.LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfigurationArgs{
 /// 						LogGroupArn: exampleLogGroup.Arn,
 /// 					},
+/// 					EventSource: pulumi.String("userNotification"),
+/// 					LogLevel:    pulumi.String("INFO"),
 /// 				},
 /// 				&cognito.LogDeliveryConfigurationLogConfigurationArgs{
-/// 					EventSource: pulumi.String("userAuthEvents"),
-/// 					LogLevel:    pulumi.String("INFO"),
 /// 					FirehoseConfiguration: &cognito.LogDeliveryConfigurationLogConfigurationFirehoseConfigurationArgs{
 /// 						StreamArn: exampleFirehoseDeliveryStream.Arn,
 /// 					},
+/// 					EventSource: pulumi.String("userAuthEvents"),
+/// 					LogLevel:    pulumi.String("INFO"),
 /// 				},
 /// 			},
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -665,29 +666,29 @@ import 'log_delivery_configuration_state.dart';
 ///   })
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "example" {
-///   name        = "example-stream"
-///   destination = "extended_s3"
 ///   extended_s3_configuration = {
 ///     role_arn   = aws_iam_role.firehose.arn
 ///     bucket_arn = aws_s3_bucket.example.arn
 ///   }
+///   name        = "example-stream"
+///   destination = "extended_s3"
 /// }
 /// resource "aws_cognito_logdeliveryconfiguration" "example" {
-///   user_pool_id = aws_cognito_userpool.example.id
 ///   log_configurations {
-///     event_source = "userNotification"
-///     log_level    = "INFO"
 ///     cloud_watch_logs_configuration = {
 ///       log_group_arn = aws_cloudwatch_loggroup.example.arn
 ///     }
+///     event_source = "userNotification"
+///     log_level    = "INFO"
 ///   }
 ///   log_configurations {
-///     event_source = "userAuthEvents"
-///     log_level    = "INFO"
 ///     firehose_configuration = {
 ///       stream_arn = aws_kinesis_firehosedeliverystream.example.arn
 ///     }
+///     event_source = "userAuthEvents"
+///     log_level    = "INFO"
 ///   }
+///   user_pool_id = aws_cognito_userpool.example.id
 /// }
 /// ```
 /// ```java
@@ -782,31 +783,31 @@ import 'log_delivery_configuration_state.dart';
 ///             .build());
 ///
 ///         var exampleFirehoseDeliveryStream = new FirehoseDeliveryStream("exampleFirehoseDeliveryStream", FirehoseDeliveryStreamArgs.builder()
-///             .name("example-stream")
-///             .destination("extended_s3")
 ///             .extendedS3Configuration(FirehoseDeliveryStreamExtendedS3ConfigurationArgs.builder()
 ///                 .roleArn(firehose.arn())
 ///                 .bucketArn(exampleBucket.arn())
 ///                 .build())
+///             .name("example-stream")
+///             .destination("extended_s3")
 ///             .build());
 ///
 ///         var exampleLogDeliveryConfiguration = new LogDeliveryConfiguration("exampleLogDeliveryConfiguration", LogDeliveryConfigurationArgs.builder()
-///             .userPoolId(example.id())
 ///             .logConfigurations(
 ///                 LogDeliveryConfigurationLogConfigurationArgs.builder()
-///                     .eventSource("userNotification")
-///                     .logLevel("INFO")
 ///                     .cloudWatchLogsConfiguration(LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfigurationArgs.builder()
 ///                         .logGroupArn(exampleLogGroup.arn())
 ///                         .build())
+///                     .eventSource("userNotification")
+///                     .logLevel("INFO")
 ///                     .build(),
 ///                 LogDeliveryConfigurationLogConfigurationArgs.builder()
-///                     .eventSource("userAuthEvents")
-///                     .logLevel("INFO")
 ///                     .firehoseConfiguration(LogDeliveryConfigurationLogConfigurationFirehoseConfigurationArgs.builder()
 ///                         .streamArn(exampleFirehoseDeliveryStream.arn())
 ///                         .build())
+///                     .eventSource("userAuthEvents")
+///                     .logLevel("INFO")
 ///                     .build())
+///             .userPoolId(example.id())
 ///             .build());
 ///
 ///     }
@@ -867,25 +868,25 @@ import 'log_delivery_configuration_state.dart';
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: example
 ///     properties:
-///       name: example-stream
-///       destination: extended_s3
 ///       extendedS3Configuration:
 ///         roleArn: ${firehose.arn}
 ///         bucketArn: ${exampleBucket.arn}
+///       name: example-stream
+///       destination: extended_s3
 ///   exampleLogDeliveryConfiguration:
 ///     type: aws:cognito:LogDeliveryConfiguration
 ///     name: example
 ///     properties:
-///       userPoolId: ${example.id}
 ///       logConfigurations:
-///         - eventSource: userNotification
-///           logLevel: INFO
-///           cloudWatchLogsConfiguration:
+///         - cloudWatchLogsConfiguration:
 ///             logGroupArn: ${exampleLogGroup.arn}
-///         - eventSource: userAuthEvents
+///           eventSource: userNotification
 ///           logLevel: INFO
-///           firehoseConfiguration:
+///         - firehoseConfiguration:
 ///             streamArn: ${exampleFirehoseDeliveryStream.arn}
+///           eventSource: userAuthEvents
+///           logLevel: INFO
+///       userPoolId: ${example.id}
 /// ```
 ///
 ///
@@ -905,14 +906,14 @@ import 'log_delivery_configuration_state.dart';
 ///     forceDestroy: true,
 /// });
 /// const exampleLogDeliveryConfiguration = new aws.cognito.LogDeliveryConfiguration("example", {
-///     userPoolId: example.id,
 ///     logConfigurations: [{
-///         eventSource: "userAuthEvents",
-///         logLevel: "INFO",
 ///         s3Configuration: {
 ///             bucketArn: exampleBucket.arn,
 ///         },
+///         eventSource: "userAuthEvents",
+///         logLevel: "INFO",
 ///     }],
+///     userPoolId: example.id,
 /// });
 /// ```
 /// ```python
@@ -926,14 +927,14 @@ import 'log_delivery_configuration_state.dart';
 ///     bucket="example-bucket",
 ///     force_destroy=True)
 /// example_log_delivery_configuration = aws.cognito.LogDeliveryConfiguration("example",
-///     user_pool_id=example.id,
 ///     log_configurations=[{
-///         "event_source": "userAuthEvents",
-///         "log_level": "INFO",
 ///         "s3_configuration": {
 ///             "bucket_arn": example_bucket.arn,
 ///         },
-///     }])
+///         "event_source": "userAuthEvents",
+///         "log_level": "INFO",
+///     }],
+///     user_pool_id=example.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -957,19 +958,19 @@ import 'log_delivery_configuration_state.dart';
 ///
 ///     var exampleLogDeliveryConfiguration = new Aws.Cognito.LogDeliveryConfiguration("example", new()
 ///     {
-///         UserPoolId = example.Id,
 ///         LogConfigurations = new[]
 ///         {
 ///             new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationArgs
 ///             {
-///                 EventSource = "userAuthEvents",
-///                 LogLevel = "INFO",
 ///                 S3Configuration = new Aws.Cognito.Inputs.LogDeliveryConfigurationLogConfigurationS3ConfigurationArgs
 ///                 {
 ///                     BucketArn = exampleBucket.Arn,
 ///                 },
+///                 EventSource = "userAuthEvents",
+///                 LogLevel = "INFO",
 ///             },
 ///         },
+///         UserPoolId = example.Id,
 ///     });
 ///
 /// });
@@ -1000,16 +1001,16 @@ import 'log_delivery_configuration_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewLogDeliveryConfiguration(ctx, "example", &cognito.LogDeliveryConfigurationArgs{
-/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			LogConfigurations: cognito.LogDeliveryConfigurationLogConfigurationArray{
 /// 				&cognito.LogDeliveryConfigurationLogConfigurationArgs{
-/// 					EventSource: pulumi.String("userAuthEvents"),
-/// 					LogLevel:    pulumi.String("INFO"),
 /// 					S3Configuration: &cognito.LogDeliveryConfigurationLogConfigurationS3ConfigurationArgs{
 /// 						BucketArn: exampleBucket.Arn,
 /// 					},
+/// 					EventSource: pulumi.String("userAuthEvents"),
+/// 					LogLevel:    pulumi.String("INFO"),
 /// 				},
 /// 			},
+/// 			UserPoolId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1036,14 +1037,14 @@ import 'log_delivery_configuration_state.dart';
 ///   force_destroy = true
 /// }
 /// resource "aws_cognito_logdeliveryconfiguration" "example" {
-///   user_pool_id = aws_cognito_userpool.example.id
 ///   log_configurations {
-///     event_source = "userAuthEvents"
-///     log_level    = "INFO"
 ///     s3_configuration = {
 ///       bucket_arn = aws_s3_bucket.example.arn
 ///     }
+///     event_source = "userAuthEvents"
+///     log_level    = "INFO"
 ///   }
+///   user_pool_id = aws_cognito_userpool.example.id
 /// }
 /// ```
 /// ```java
@@ -1084,14 +1085,14 @@ import 'log_delivery_configuration_state.dart';
 ///             .build());
 ///
 ///         var exampleLogDeliveryConfiguration = new LogDeliveryConfiguration("exampleLogDeliveryConfiguration", LogDeliveryConfigurationArgs.builder()
-///             .userPoolId(example.id())
 ///             .logConfigurations(LogDeliveryConfigurationLogConfigurationArgs.builder()
-///                 .eventSource("userAuthEvents")
-///                 .logLevel("INFO")
 ///                 .s3Configuration(LogDeliveryConfigurationLogConfigurationS3ConfigurationArgs.builder()
 ///                     .bucketArn(exampleBucket.arn())
 ///                     .build())
+///                 .eventSource("userAuthEvents")
+///                 .logLevel("INFO")
 ///                 .build())
+///             .userPoolId(example.id())
 ///             .build());
 ///
 ///     }
@@ -1114,12 +1115,12 @@ import 'log_delivery_configuration_state.dart';
 ///     type: aws:cognito:LogDeliveryConfiguration
 ///     name: example
 ///     properties:
-///       userPoolId: ${example.id}
 ///       logConfigurations:
-///         - eventSource: userAuthEvents
-///           logLevel: INFO
-///           s3Configuration:
+///         - s3Configuration:
 ///             bucketArn: ${exampleBucket.arn}
+///           eventSource: userAuthEvents
+///           logLevel: INFO
+///       userPoolId: ${example.id}
 /// ```
 ///
 ///
@@ -1144,7 +1145,7 @@ import 'log_delivery_configuration_state.dart';
 /// ```
 class LogDeliveryConfiguration extends pulumi.CustomResource {
   /// Configuration block for log delivery. At least one configuration block is required. See Log Configurations below.
-  late final pulumi.Output<List<Map<String, dynamic>>> logConfigurations;
+  late final pulumi.Output<List<LogDeliveryConfigurationLogConfiguration>> logConfigurations;
   /// The AWS region.
   late final pulumi.Output<String> region;
   /// The ID of the user pool for which to configure log delivery.
@@ -1164,9 +1165,9 @@ class LogDeliveryConfiguration extends pulumi.CustomResource {
           'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    logConfigurations = registerOutput<List<Map<String, dynamic>>>('logConfigurations');
+    logConfigurations = registerOutput<List<LogDeliveryConfigurationLogConfiguration>>('logConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogDeliveryConfigurationLogConfiguration>(guardedValue, (value) => LogDeliveryConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     userPoolId = registerOutput<String>('userPoolId');
   }
@@ -1176,11 +1177,12 @@ class LogDeliveryConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogDeliveryConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogDeliveryConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1194,7 +1196,21 @@ class LogDeliveryConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    logConfigurations = registerOutput<List<Map<String, dynamic>>>('logConfigurations');
+    logConfigurations = registerOutput<List<LogDeliveryConfigurationLogConfiguration>>('logConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogDeliveryConfigurationLogConfiguration>(guardedValue, (value) => LogDeliveryConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    userPoolId = registerOutput<String>('userPoolId');
+  }
+
+  /// Creates a typed reference to an existing [LogDeliveryConfiguration] resource.
+  LogDeliveryConfiguration.reference(String urn)
+    : super(
+        'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    logConfigurations = registerOutput<List<LogDeliveryConfigurationLogConfiguration>>('logConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogDeliveryConfigurationLogConfiguration>(guardedValue, (value) => LogDeliveryConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     userPoolId = registerOutput<String>('userPoolId');
   }

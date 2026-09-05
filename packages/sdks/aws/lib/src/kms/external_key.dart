@@ -114,9 +114,9 @@ import 'external_key_state.dart';
 /// $ pulumi import aws:kms/externalKey:ExternalKey a arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
 /// ```
 class ExternalKey extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the key.
+  /// ARN of the key.
   late final pulumi.Output<String> arn;
-  /// Specifies whether to disable the policy lockout check performed when creating or updating the key's policy. Setting this value to `true` increases the risk that the key becomes unmanageable. For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the AWS Key Management Service Developer Guide. Defaults to `false`.
+  /// Whether to disable the policy lockout check performed when creating or updating the key's policy. Setting this value to `true` increases the risk that the key becomes unmanageable. For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the KMS Developer Guide. Defaults to `false`.
   late final pulumi.Output<bool?> bypassPolicyLockoutSafetyCheck;
   /// Duration in days after which the key is deleted after destruction of the resource. Must be between `7` and `30` days. Defaults to `30`.
   late final pulumi.Output<int?> deletionWindowInDays;
@@ -159,7 +159,8 @@ class ExternalKey extends pulumi.CustomResource {
           'aws:kms/externalKey:ExternalKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['keyMaterialBase64'],
         ) {
     arn = registerOutput<String>('arn');
     bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
@@ -167,15 +168,15 @@ class ExternalKey extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
     expirationModel = registerOutput<String>('expirationModel');
-    keyMaterialBase64 = registerOutput<String?>('keyMaterialBase64');
+    keyMaterialBase64 = registerOutput<String?>('keyMaterialBase64', isSecret: true);
     keySpec = registerOutput<String>('keySpec');
     keyState = registerOutput<String>('keyState');
     keyUsage = registerOutput<String>('keyUsage');
     multiRegion = registerOutput<bool>('multiRegion');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validTo = registerOutput<String?>('validTo');
   }
 
@@ -184,11 +185,12 @@ class ExternalKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExternalKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExternalKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -208,15 +210,43 @@ class ExternalKey extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
     expirationModel = registerOutput<String>('expirationModel');
-    keyMaterialBase64 = registerOutput<String?>('keyMaterialBase64');
+    keyMaterialBase64 = registerOutput<String?>('keyMaterialBase64', isSecret: true);
     keySpec = registerOutput<String>('keySpec');
     keyState = registerOutput<String>('keyState');
     keyUsage = registerOutput<String>('keyUsage');
     multiRegion = registerOutput<bool>('multiRegion');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validTo = registerOutput<String?>('validTo');
+  }
+
+  /// Creates a typed reference to an existing [ExternalKey] resource.
+  ExternalKey.reference(String urn)
+    : super(
+        'aws:kms/externalKey:ExternalKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['keyMaterialBase64'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    expirationModel = registerOutput<String>('expirationModel');
+    keyMaterialBase64 = registerOutput<String?>('keyMaterialBase64', isSecret: true);
+    keySpec = registerOutput<String>('keySpec');
+    keyState = registerOutput<String>('keyState');
+    keyUsage = registerOutput<String>('keyUsage');
+    multiRegion = registerOutput<bool>('multiRegion');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validTo = registerOutput<String?>('validTo');
   }
 }

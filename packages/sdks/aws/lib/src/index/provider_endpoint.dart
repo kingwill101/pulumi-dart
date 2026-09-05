@@ -4,645 +4,645 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderEndpoint {
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? accessanalyzer;
+  final pulumi.Input<String?>? accessanalyzer;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? account;
+  final pulumi.Input<String?>? account;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? accountaccess;
+  final pulumi.Input<String?>? accountaccess;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? acm;
+  final pulumi.Input<String?>? acm;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? acmpca;
+  final pulumi.Input<String?>? acmpca;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? agentregistry;
+  final pulumi.Input<String?>? agentregistry;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? amg;
+  final pulumi.Input<String?>? amg;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? amp;
+  final pulumi.Input<String?>? amp;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? amplify;
+  final pulumi.Input<String?>? amplify;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? apigateway;
+  final pulumi.Input<String?>? apigateway;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? apigatewayv2;
+  final pulumi.Input<String?>? apigatewayv2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? appautoscaling;
+  final pulumi.Input<String?>? appautoscaling;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? appconfig;
+  final pulumi.Input<String?>? appconfig;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? appfabric;
+  final pulumi.Input<String?>? appfabric;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? appflow;
+  final pulumi.Input<String?>? appflow;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? appintegrations;
+  final pulumi.Input<String?>? appintegrations;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? appintegrationsservice;
+  final pulumi.Input<String?>? appintegrationsservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? applicationautoscaling;
+  final pulumi.Input<String?>? applicationautoscaling;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? applicationinsights;
+  final pulumi.Input<String?>? applicationinsights;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? applicationsignals;
+  final pulumi.Input<String?>? applicationsignals;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? appmesh;
+  final pulumi.Input<String?>? appmesh;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? appregistry;
+  final pulumi.Input<String?>? appregistry;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? apprunner;
+  final pulumi.Input<String?>? apprunner;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? appstream;
+  final pulumi.Input<String?>? appstream;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? appsync;
+  final pulumi.Input<String?>? appsync;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? arcregionswitch;
+  final pulumi.Input<String?>? arcregionswitch;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? arczonalshift;
+  final pulumi.Input<String?>? arczonalshift;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? athena;
+  final pulumi.Input<String?>? athena;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? auditmanager;
+  final pulumi.Input<String?>? auditmanager;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? autoscaling;
+  final pulumi.Input<String?>? autoscaling;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? autoscalingplans;
+  final pulumi.Input<String?>? autoscalingplans;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? backup;
+  final pulumi.Input<String?>? backup;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? batch;
+  final pulumi.Input<String?>? batch;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? bcmdataexports;
+  final pulumi.Input<String?>? bcmdataexports;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? beanstalk;
+  final pulumi.Input<String?>? beanstalk;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? bedrock;
+  final pulumi.Input<String?>? bedrock;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? bedrockagent;
+  final pulumi.Input<String?>? bedrockagent;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? bedrockagentcore;
+  final pulumi.Input<String?>? bedrockagentcore;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? billing;
+  final pulumi.Input<String?>? billing;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? budgets;
+  final pulumi.Input<String?>? budgets;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ce;
+  final pulumi.Input<String?>? ce;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? chatbot;
+  final pulumi.Input<String?>? chatbot;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? chime;
+  final pulumi.Input<String?>? chime;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? chimesdkmediapipelines;
+  final pulumi.Input<String?>? chimesdkmediapipelines;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? chimesdkvoice;
+  final pulumi.Input<String?>? chimesdkvoice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cleanrooms;
+  final pulumi.Input<String?>? cleanrooms;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloud9;
+  final pulumi.Input<String?>? cloud9;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudcontrol;
+  final pulumi.Input<String?>? cloudcontrol;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudcontrolapi;
+  final pulumi.Input<String?>? cloudcontrolapi;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudformation;
+  final pulumi.Input<String?>? cloudformation;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudfront;
+  final pulumi.Input<String?>? cloudfront;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudfrontkeyvaluestore;
+  final pulumi.Input<String?>? cloudfrontkeyvaluestore;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudhsm;
+  final pulumi.Input<String?>? cloudhsm;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudhsmv2;
+  final pulumi.Input<String?>? cloudhsmv2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudsearch;
+  final pulumi.Input<String?>? cloudsearch;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudtrail;
+  final pulumi.Input<String?>? cloudtrail;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudwatch;
+  final pulumi.Input<String?>? cloudwatch;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudwatchevents;
+  final pulumi.Input<String?>? cloudwatchevents;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudwatchevidently;
+  final pulumi.Input<String?>? cloudwatchevidently;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudwatchlog;
+  final pulumi.Input<String?>? cloudwatchlog;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudwatchlogs;
+  final pulumi.Input<String?>? cloudwatchlogs;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudwatchobservabilityaccessmanager;
+  final pulumi.Input<String?>? cloudwatchobservabilityaccessmanager;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cloudwatchrum;
+  final pulumi.Input<String?>? cloudwatchrum;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codeartifact;
+  final pulumi.Input<String?>? codeartifact;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codebuild;
+  final pulumi.Input<String?>? codebuild;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codecatalyst;
+  final pulumi.Input<String?>? codecatalyst;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codecommit;
+  final pulumi.Input<String?>? codecommit;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codeconnections;
+  final pulumi.Input<String?>? codeconnections;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codedeploy;
+  final pulumi.Input<String?>? codedeploy;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codeguruprofiler;
+  final pulumi.Input<String?>? codeguruprofiler;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codegurureviewer;
+  final pulumi.Input<String?>? codegurureviewer;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codepipeline;
+  final pulumi.Input<String?>? codepipeline;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codestarconnections;
+  final pulumi.Input<String?>? codestarconnections;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? codestarnotifications;
+  final pulumi.Input<String?>? codestarnotifications;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cognitoidentity;
+  final pulumi.Input<String?>? cognitoidentity;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cognitoidentityprovider;
+  final pulumi.Input<String?>? cognitoidentityprovider;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cognitoidp;
+  final pulumi.Input<String?>? cognitoidp;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? comprehend;
+  final pulumi.Input<String?>? comprehend;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? computeoptimizer;
+  final pulumi.Input<String?>? computeoptimizer;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? config;
+  final pulumi.Input<String?>? config;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? configservice;
+  final pulumi.Input<String?>? configservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? connect;
+  final pulumi.Input<String?>? connect;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? connectcases;
+  final pulumi.Input<String?>? connectcases;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? controltower;
+  final pulumi.Input<String?>? controltower;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? costandusagereportservice;
+  final pulumi.Input<String?>? costandusagereportservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? costexplorer;
+  final pulumi.Input<String?>? costexplorer;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? costoptimizationhub;
+  final pulumi.Input<String?>? costoptimizationhub;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? cur;
+  final pulumi.Input<String?>? cur;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? customerprofiles;
+  final pulumi.Input<String?>? customerprofiles;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? databasemigration;
+  final pulumi.Input<String?>? databasemigration;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? databasemigrationservice;
+  final pulumi.Input<String?>? databasemigrationservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? databrew;
+  final pulumi.Input<String?>? databrew;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? dataexchange;
+  final pulumi.Input<String?>? dataexchange;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? datapipeline;
+  final pulumi.Input<String?>? datapipeline;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? datasync;
+  final pulumi.Input<String?>? datasync;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? datazone;
+  final pulumi.Input<String?>? datazone;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? dax;
+  final pulumi.Input<String?>? dax;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? deploy;
+  final pulumi.Input<String?>? deploy;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? detective;
+  final pulumi.Input<String?>? detective;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? devicefarm;
+  final pulumi.Input<String?>? devicefarm;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? devopsagent;
+  final pulumi.Input<String?>? devopsagent;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? devopsguru;
+  final pulumi.Input<String?>? devopsguru;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? directconnect;
+  final pulumi.Input<String?>? directconnect;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? directoryservice;
+  final pulumi.Input<String?>? directoryservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? directoryservicedata;
+  final pulumi.Input<String?>? directoryservicedata;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? dlm;
+  final pulumi.Input<String?>? dlm;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? dms;
+  final pulumi.Input<String?>? dms;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? docdb;
+  final pulumi.Input<String?>? docdb;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? docdbelastic;
+  final pulumi.Input<String?>? docdbelastic;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? drs;
+  final pulumi.Input<String?>? drs;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ds;
+  final pulumi.Input<String?>? ds;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? dsql;
+  final pulumi.Input<String?>? dsql;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? dynamodb;
+  final pulumi.Input<String?>? dynamodb;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ec2;
+  final pulumi.Input<String?>? ec2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ecr;
+  final pulumi.Input<String?>? ecr;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ecrpublic;
+  final pulumi.Input<String?>? ecrpublic;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ecs;
+  final pulumi.Input<String?>? ecs;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? efs;
+  final pulumi.Input<String?>? efs;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? eks;
+  final pulumi.Input<String?>? eks;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? elasticache;
+  final pulumi.Input<String?>? elasticache;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? elasticbeanstalk;
+  final pulumi.Input<String?>? elasticbeanstalk;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? elasticloadbalancing;
+  final pulumi.Input<String?>? elasticloadbalancing;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? elasticloadbalancingv2;
+  final pulumi.Input<String?>? elasticloadbalancingv2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? elasticsearch;
+  final pulumi.Input<String?>? elasticsearch;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? elasticsearchservice;
+  final pulumi.Input<String?>? elasticsearchservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? elastictranscoder;
+  final pulumi.Input<String?>? elastictranscoder;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? elb;
+  final pulumi.Input<String?>? elb;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? elbv2;
+  final pulumi.Input<String?>? elbv2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? emr;
+  final pulumi.Input<String?>? emr;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? emrcontainers;
+  final pulumi.Input<String?>? emrcontainers;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? emrserverless;
+  final pulumi.Input<String?>? emrserverless;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? es;
+  final pulumi.Input<String?>? es;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? eventbridge;
+  final pulumi.Input<String?>? eventbridge;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? events;
+  final pulumi.Input<String?>? events;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? evidently;
+  final pulumi.Input<String?>? evidently;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? evs;
+  final pulumi.Input<String?>? evs;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? finspace;
+  final pulumi.Input<String?>? finspace;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? firehose;
+  final pulumi.Input<String?>? firehose;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? fis;
+  final pulumi.Input<String?>? fis;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? fms;
+  final pulumi.Input<String?>? fms;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? fsx;
+  final pulumi.Input<String?>? fsx;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? gamelift;
+  final pulumi.Input<String?>? gamelift;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? glacier;
+  final pulumi.Input<String?>? glacier;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? globalaccelerator;
+  final pulumi.Input<String?>? globalaccelerator;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? glue;
+  final pulumi.Input<String?>? glue;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? gluedatabrew;
+  final pulumi.Input<String?>? gluedatabrew;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? grafana;
+  final pulumi.Input<String?>? grafana;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? greengrass;
+  final pulumi.Input<String?>? greengrass;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? groundstation;
+  final pulumi.Input<String?>? groundstation;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? guardduty;
+  final pulumi.Input<String?>? guardduty;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? healthlake;
+  final pulumi.Input<String?>? healthlake;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? iam;
+  final pulumi.Input<String?>? iam;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? identitystore;
+  final pulumi.Input<String?>? identitystore;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? imagebuilder;
+  final pulumi.Input<String?>? imagebuilder;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? inspector;
+  final pulumi.Input<String?>? inspector;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? inspector2;
+  final pulumi.Input<String?>? inspector2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? inspectorv2;
+  final pulumi.Input<String?>? inspectorv2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? interconnect;
+  final pulumi.Input<String?>? interconnect;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? internetmonitor;
+  final pulumi.Input<String?>? internetmonitor;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? invoicing;
+  final pulumi.Input<String?>? invoicing;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? iot;
+  final pulumi.Input<String?>? iot;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ivs;
+  final pulumi.Input<String?>? ivs;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ivschat;
+  final pulumi.Input<String?>? ivschat;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? kafka;
+  final pulumi.Input<String?>? kafka;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? kafkaconnect;
+  final pulumi.Input<String?>? kafkaconnect;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? kendra;
+  final pulumi.Input<String?>? kendra;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? keyspaces;
+  final pulumi.Input<String?>? keyspaces;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? kinesis;
+  final pulumi.Input<String?>? kinesis;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? kinesisanalytics;
+  final pulumi.Input<String?>? kinesisanalytics;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? kinesisanalyticsv2;
+  final pulumi.Input<String?>? kinesisanalyticsv2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? kinesisvideo;
+  final pulumi.Input<String?>? kinesisvideo;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? kms;
+  final pulumi.Input<String?>? kms;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lakeformation;
+  final pulumi.Input<String?>? lakeformation;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lambda;
+  final pulumi.Input<String?>? lambda;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lambdacore;
+  final pulumi.Input<String?>? lambdacore;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lambdamicrovms;
+  final pulumi.Input<String?>? lambdamicrovms;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? launchwizard;
+  final pulumi.Input<String?>? launchwizard;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lex;
+  final pulumi.Input<String?>? lex;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lexmodelbuilding;
+  final pulumi.Input<String?>? lexmodelbuilding;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lexmodelbuildingservice;
+  final pulumi.Input<String?>? lexmodelbuildingservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lexmodels;
+  final pulumi.Input<String?>? lexmodels;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lexmodelsv2;
+  final pulumi.Input<String?>? lexmodelsv2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lexv2models;
+  final pulumi.Input<String?>? lexv2models;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? licensemanager;
+  final pulumi.Input<String?>? licensemanager;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? lightsail;
+  final pulumi.Input<String?>? lightsail;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? locationservice;
+  final pulumi.Input<String?>? locationservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? logs;
+  final pulumi.Input<String?>? logs;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? m2;
+  final pulumi.Input<String?>? m2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? macie2;
+  final pulumi.Input<String?>? macie2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mailmanager;
+  final pulumi.Input<String?>? mailmanager;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? managedgrafana;
+  final pulumi.Input<String?>? managedgrafana;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mediaconnect;
+  final pulumi.Input<String?>? mediaconnect;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mediaconvert;
+  final pulumi.Input<String?>? mediaconvert;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? medialive;
+  final pulumi.Input<String?>? medialive;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mediapackage;
+  final pulumi.Input<String?>? mediapackage;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mediapackagev2;
+  final pulumi.Input<String?>? mediapackagev2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mediapackagevod;
+  final pulumi.Input<String?>? mediapackagevod;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mediastore;
+  final pulumi.Input<String?>? mediastore;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? memorydb;
+  final pulumi.Input<String?>? memorydb;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mgn;
+  final pulumi.Input<String?>? mgn;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mpa;
+  final pulumi.Input<String?>? mpa;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mq;
+  final pulumi.Input<String?>? mq;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? msk;
+  final pulumi.Input<String?>? msk;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mwaa;
+  final pulumi.Input<String?>? mwaa;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? mwaaserverless;
+  final pulumi.Input<String?>? mwaaserverless;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? neptune;
+  final pulumi.Input<String?>? neptune;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? neptunegraph;
+  final pulumi.Input<String?>? neptunegraph;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? networkfirewall;
+  final pulumi.Input<String?>? networkfirewall;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? networkflowmonitor;
+  final pulumi.Input<String?>? networkflowmonitor;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? networkmanager;
+  final pulumi.Input<String?>? networkmanager;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? networkmonitor;
+  final pulumi.Input<String?>? networkmonitor;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? notifications;
+  final pulumi.Input<String?>? notifications;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? notificationscontacts;
+  final pulumi.Input<String?>? notificationscontacts;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? oam;
+  final pulumi.Input<String?>? oam;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? observabilityadmin;
+  final pulumi.Input<String?>? observabilityadmin;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? odb;
+  final pulumi.Input<String?>? odb;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? opensearch;
+  final pulumi.Input<String?>? opensearch;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? opensearchingestion;
+  final pulumi.Input<String?>? opensearchingestion;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? opensearchserverless;
+  final pulumi.Input<String?>? opensearchserverless;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? opensearchservice;
+  final pulumi.Input<String?>? opensearchservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? organizations;
+  final pulumi.Input<String?>? organizations;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? osis;
+  final pulumi.Input<String?>? osis;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? outposts;
+  final pulumi.Input<String?>? outposts;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? paymentcryptography;
+  final pulumi.Input<String?>? paymentcryptography;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? pcaconnectorad;
+  final pulumi.Input<String?>? pcaconnectorad;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? pcs;
+  final pulumi.Input<String?>? pcs;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? pinpoint;
+  final pulumi.Input<String?>? pinpoint;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? pinpointsmsvoicev2;
+  final pulumi.Input<String?>? pinpointsmsvoicev2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? pipes;
+  final pulumi.Input<String?>? pipes;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? polly;
+  final pulumi.Input<String?>? polly;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? pricing;
+  final pulumi.Input<String?>? pricing;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? prometheus;
+  final pulumi.Input<String?>? prometheus;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? prometheusservice;
+  final pulumi.Input<String?>? prometheusservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? qbusiness;
+  final pulumi.Input<String?>? qbusiness;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? qldb;
+  final pulumi.Input<String?>? qldb;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? quicksight;
+  final pulumi.Input<String?>? quicksight;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ram;
+  final pulumi.Input<String?>? ram;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? rbin;
+  final pulumi.Input<String?>? rbin;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? rds;
+  final pulumi.Input<String?>? rds;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? rdsdata;
+  final pulumi.Input<String?>? rdsdata;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? rdsdataservice;
+  final pulumi.Input<String?>? rdsdataservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? recyclebin;
+  final pulumi.Input<String?>? recyclebin;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? redshift;
+  final pulumi.Input<String?>? redshift;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? redshiftdata;
+  final pulumi.Input<String?>? redshiftdata;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? redshiftdataapiservice;
+  final pulumi.Input<String?>? redshiftdataapiservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? redshiftserverless;
+  final pulumi.Input<String?>? redshiftserverless;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? rekognition;
+  final pulumi.Input<String?>? rekognition;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? resiliencehub;
+  final pulumi.Input<String?>? resiliencehub;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? resiliencehubv2;
+  final pulumi.Input<String?>? resiliencehubv2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? resourceexplorer2;
+  final pulumi.Input<String?>? resourceexplorer2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? resourcegroups;
+  final pulumi.Input<String?>? resourcegroups;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? resourcegroupstagging;
+  final pulumi.Input<String?>? resourcegroupstagging;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? resourcegroupstaggingapi;
+  final pulumi.Input<String?>? resourcegroupstaggingapi;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? rolesanywhere;
+  final pulumi.Input<String?>? rolesanywhere;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? route53;
+  final pulumi.Input<String?>? route53;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? route53domains;
+  final pulumi.Input<String?>? route53domains;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? route53profiles;
+  final pulumi.Input<String?>? route53profiles;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? route53recoverycontrolconfig;
+  final pulumi.Input<String?>? route53recoverycontrolconfig;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? route53recoveryreadiness;
+  final pulumi.Input<String?>? route53recoveryreadiness;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? route53resolver;
+  final pulumi.Input<String?>? route53resolver;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? rum;
+  final pulumi.Input<String?>? rum;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? s3;
+  final pulumi.Input<String?>? s3;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? s3api;
+  final pulumi.Input<String?>? s3api;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? s3control;
+  final pulumi.Input<String?>? s3control;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? s3files;
+  final pulumi.Input<String?>? s3files;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? s3outposts;
+  final pulumi.Input<String?>? s3outposts;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? s3tables;
+  final pulumi.Input<String?>? s3tables;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? s3vectors;
+  final pulumi.Input<String?>? s3vectors;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? sagemaker;
+  final pulumi.Input<String?>? sagemaker;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? savingsplans;
+  final pulumi.Input<String?>? savingsplans;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? scheduler;
+  final pulumi.Input<String?>? scheduler;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? schemas;
+  final pulumi.Input<String?>? schemas;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? secretsmanager;
+  final pulumi.Input<String?>? secretsmanager;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? securityhub;
+  final pulumi.Input<String?>? securityhub;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? securitylake;
+  final pulumi.Input<String?>? securitylake;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? serverlessapplicationrepository;
+  final pulumi.Input<String?>? serverlessapplicationrepository;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? serverlessapprepo;
+  final pulumi.Input<String?>? serverlessapprepo;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? serverlessrepo;
+  final pulumi.Input<String?>? serverlessrepo;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? servicecatalog;
+  final pulumi.Input<String?>? servicecatalog;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? servicecatalogappregistry;
+  final pulumi.Input<String?>? servicecatalogappregistry;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? servicediscovery;
+  final pulumi.Input<String?>? servicediscovery;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? servicequotas;
+  final pulumi.Input<String?>? servicequotas;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ses;
+  final pulumi.Input<String?>? ses;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? sesv2;
+  final pulumi.Input<String?>? sesv2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? sfn;
+  final pulumi.Input<String?>? sfn;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? shield;
+  final pulumi.Input<String?>? shield;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? signer;
+  final pulumi.Input<String?>? signer;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? sns;
+  final pulumi.Input<String?>? sns;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? sqs;
+  final pulumi.Input<String?>? sqs;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ssm;
+  final pulumi.Input<String?>? ssm;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ssmcontacts;
+  final pulumi.Input<String?>? ssmcontacts;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ssmincidents;
+  final pulumi.Input<String?>? ssmincidents;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ssmquicksetup;
+  final pulumi.Input<String?>? ssmquicksetup;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ssmsap;
+  final pulumi.Input<String?>? ssmsap;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? sso;
+  final pulumi.Input<String?>? sso;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? ssoadmin;
+  final pulumi.Input<String?>? ssoadmin;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? stepfunctions;
+  final pulumi.Input<String?>? stepfunctions;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? storagegateway;
+  final pulumi.Input<String?>? storagegateway;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? sts;
+  final pulumi.Input<String?>? sts;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? swf;
+  final pulumi.Input<String?>? swf;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? synthetics;
+  final pulumi.Input<String?>? synthetics;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? taxsettings;
+  final pulumi.Input<String?>? taxsettings;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? timestreaminfluxdb;
+  final pulumi.Input<String?>? timestreaminfluxdb;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? timestreamquery;
+  final pulumi.Input<String?>? timestreamquery;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? timestreamwrite;
+  final pulumi.Input<String?>? timestreamwrite;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? transcribe;
+  final pulumi.Input<String?>? transcribe;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? transcribeservice;
+  final pulumi.Input<String?>? transcribeservice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? transfer;
+  final pulumi.Input<String?>? transfer;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? uxc;
+  final pulumi.Input<String?>? uxc;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? verifiedpermissions;
+  final pulumi.Input<String?>? verifiedpermissions;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? vpclattice;
+  final pulumi.Input<String?>? vpclattice;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? waf;
+  final pulumi.Input<String?>? waf;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? wafregional;
+  final pulumi.Input<String?>? wafregional;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? wafv2;
+  final pulumi.Input<String?>? wafv2;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? wellarchitected;
+  final pulumi.Input<String?>? wellarchitected;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? workmail;
+  final pulumi.Input<String?>? workmail;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? workspaces;
+  final pulumi.Input<String?>? workspaces;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? workspacesweb;
+  final pulumi.Input<String?>? workspacesweb;
   /// Use this to override the default service endpoint URL
-  final pulumi.Input<String>? xray;
+  final pulumi.Input<String?>? xray;
 
   /// Creates a new [ProviderEndpoint].
   /// [accessanalyzer] Use this to override the default service endpoint URL

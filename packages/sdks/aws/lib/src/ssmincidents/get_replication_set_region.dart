@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReplicationSetRegion {
-  /// The ARN of the AWS Key Management Service (AWS KMS) encryption key.
+  /// ARN of the KMS encryption key.
   final pulumi.Input<String> kmsKeyArn;
   /// The name of the Region.
   final pulumi.Input<String> name;
@@ -14,7 +14,7 @@ class GetReplicationSetRegion {
   final pulumi.Input<String> statusMessage;
 
   /// Creates a new [GetReplicationSetRegion].
-  /// [kmsKeyArn] The ARN of the AWS Key Management Service (AWS KMS) encryption key.
+  /// [kmsKeyArn] ARN of the KMS encryption key.
   /// [name] The name of the Region.
   /// [status] The current status of the Region.
   /// [statusMessage] More information about the status of a Region.

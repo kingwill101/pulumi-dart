@@ -6,9 +6,9 @@ import 'classification_job_s3_job_definition_scoping_includes.dart';
 
 class ClassificationJobS3JobDefinitionScoping {
   /// The property- or tag-based conditions that determine which objects to exclude from the analysis. (documented below)
-  final pulumi.Input<ClassificationJobS3JobDefinitionScopingExcludes>? excludes;
+  final pulumi.Input<ClassificationJobS3JobDefinitionScopingExcludes?>? excludes;
   /// The property- or tag-based conditions that determine which objects to include in the analysis. (documented below)
-  final pulumi.Input<ClassificationJobS3JobDefinitionScopingIncludes>? includes;
+  final pulumi.Input<ClassificationJobS3JobDefinitionScopingIncludes?>? includes;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScoping].
   /// [excludes] The property- or tag-based conditions that determine which objects to exclude from the analysis. (documented below)

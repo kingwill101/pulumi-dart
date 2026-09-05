@@ -154,6 +154,8 @@ import 'account_state.dart';
 ///     name: "my_new_account",
 ///     email: "john@doe.org",
 ///     roleName: "myOrganizationRole",
+/// }, {
+///     ignoreChanges: ["roleName"],
 /// });
 /// ```
 /// ```python
@@ -163,7 +165,8 @@ import 'account_state.dart';
 /// account = aws.organizations.Account("account",
 ///     name="my_new_account",
 ///     email="john@doe.org",
-///     role_name="myOrganizationRole")
+///     role_name="myOrganizationRole",
+///     opts = pulumi.ResourceOptions(ignore_changes=["roleName"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -178,6 +181,12 @@ import 'account_state.dart';
 ///         Name = "my_new_account",
 ///         Email = "john@doe.org",
 ///         RoleName = "myOrganizationRole",
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "roleName",
+///         },
 ///     });
 ///
 /// });
@@ -196,7 +205,9 @@ import 'account_state.dart';
 /// 			Name:     pulumi.String("my_new_account"),
 /// 			Email:    pulumi.String("john@doe.org"),
 /// 			RoleName: pulumi.String("myOrganizationRole"),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"roleName",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -214,6 +225,9 @@ import 'account_state.dart';
 /// }
 ///
 /// resource "aws_organizations_account" "account" {
+///   lifecycle {
+///     ignore_changes = [roleName]
+///   }
 ///   name      = "my_new_account"
 ///   email     = "john@doe.org"
 ///   role_name = "myOrganizationRole"
@@ -227,6 +241,7 @@ import 'account_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.organizations.Account;
 /// import com.pulumi.aws.organizations.AccountArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -244,7 +259,9 @@ import 'account_state.dart';
 ///             .name("my_new_account")
 ///             .email("john@doe.org")
 ///             .roleName("myOrganizationRole")
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("roleName")
+///                 .build());
 ///
 ///     }
 /// }
@@ -257,6 +274,9 @@ import 'account_state.dart';
 ///       name: my_new_account
 ///       email: john@doe.org
 ///       roleName: myOrganizationRole
+///     options:
+///       ignoreChanges:
+///         - roleName
 /// ```
 class Account extends pulumi.CustomResource {
   /// ARN for this account.
@@ -304,7 +324,7 @@ class Account extends pulumi.CustomResource {
           'aws:organizations/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     closeOnDeletion = registerOutput<bool?>('closeOnDeletion');
@@ -319,8 +339,8 @@ class Account extends pulumi.CustomResource {
     roleName = registerOutput<String?>('roleName');
     state = registerOutput<String>('state');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -328,11 +348,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -359,7 +380,33 @@ class Account extends pulumi.CustomResource {
     roleName = registerOutput<String?>('roleName');
     this.state = registerOutput<String>('state');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'aws:organizations/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    closeOnDeletion = registerOutput<bool?>('closeOnDeletion');
+    createGovcloud = registerOutput<bool?>('createGovcloud');
+    email = registerOutput<String>('email');
+    govcloudId = registerOutput<String>('govcloudId');
+    iamUserAccessToBilling = registerOutput<String?>('iamUserAccessToBilling');
+    joinedMethod = registerOutput<String>('joinedMethod');
+    joinedTimestamp = registerOutput<String>('joinedTimestamp');
+    this.name = registerOutput<String>('name');
+    parentId = registerOutput<String>('parentId');
+    roleName = registerOutput<String?>('roleName');
+    state = registerOutput<String>('state');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

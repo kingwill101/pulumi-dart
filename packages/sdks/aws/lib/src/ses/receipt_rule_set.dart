@@ -131,7 +131,7 @@ class ReceiptRuleSet extends pulumi.CustomResource {
           'aws:ses/receiptRuleSet:ReceiptRuleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
@@ -143,11 +143,12 @@ class ReceiptRuleSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReceiptRuleSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReceiptRuleSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -161,6 +162,20 @@ class ReceiptRuleSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    ruleSetName = registerOutput<String>('ruleSetName');
+  }
+
+  /// Creates a typed reference to an existing [ReceiptRuleSet] resource.
+  ReceiptRuleSet.reference(String urn)
+    : super(
+        'aws:ses/receiptRuleSet:ReceiptRuleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
     ruleSetName = registerOutput<String>('ruleSetName');

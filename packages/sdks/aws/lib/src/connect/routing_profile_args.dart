@@ -18,14 +18,14 @@ class RoutingProfileArgs {
   /// One or more `mediaConcurrencies` blocks that specify the channels that agents can handle in the Contact Control Panel (CCP) for this Routing Profile. The `mediaConcurrencies` block is documented below.
   final pulumi.Input<List<RoutingProfileMediaConcurrency>> mediaConcurrencies;
   /// Specifies the name of the Routing Profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `queueConfigs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queueConfigs` block is documented below.
-  final pulumi.Input<List<RoutingProfileQueueConfig>>? queueConfigs;
+  final pulumi.Input<List<RoutingProfileQueueConfig>?>? queueConfigs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to apply to the Routing Profile. If configured with a provider
   /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RoutingProfileArgs].
   /// [defaultOutboundQueueId] Specifies the default outbound queue for the Routing Profile.

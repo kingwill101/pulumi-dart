@@ -11,15 +11,15 @@ import 'get_serverless_security_config_saml_option.dart';
 /// {@macro pulumi_opensearch_get_serverless_security_config_get_serverless_security_config_args_doc}
 class GetServerlessSecurityConfigArgs {
   /// IAM Federation options for the security configuration.
-  final pulumi.Input<List<GetServerlessSecurityConfigIamFederationOption>>? iamFederationOptions;
+  final pulumi.Input<List<GetServerlessSecurityConfigIamFederationOption>?>? iamFederationOptions;
   /// IAM Identity Center options for the security configuration.
-  final pulumi.Input<List<GetServerlessSecurityConfigIamIdentityCenterOption>>? iamIdentityCenterOptions;
+  final pulumi.Input<List<GetServerlessSecurityConfigIamIdentityCenterOption>?>? iamIdentityCenterOptions;
   /// Unique identifier of the security configuration.
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// SAML options for the security configuration.
-  final pulumi.Input<List<GetServerlessSecurityConfigSamlOption>>? samlOptions;
+  final pulumi.Input<List<GetServerlessSecurityConfigSamlOption>?>? samlOptions;
 
   /// Creates a new [GetServerlessSecurityConfigArgs].
   /// [iamFederationOptions] IAM Federation options for the security configuration.

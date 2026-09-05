@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleSetRuleActionInvokeLambda {
   /// Policy applied when the action fails.
-  final pulumi.Input<String>? actionFailurePolicy;
+  final pulumi.Input<String?>? actionFailurePolicy;
   /// ARN of the Lambda function.
   final pulumi.Input<String> functionArn;
   /// Lambda invocation type.
   final pulumi.Input<String> invocationType;
   /// Maximum retry time in minutes.
-  final pulumi.Input<int>? retryTimeMinutes;
+  final pulumi.Input<int?>? retryTimeMinutes;
   /// ARN of the IAM role used to invoke the function.
   final pulumi.Input<String> roleArn;
 
@@ -43,7 +43,7 @@ class RuleSetRuleActionInvokeLambda {
       actionFailurePolicy: (() { final guardedValue = map['actionFailurePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       functionArn: pulumi.Input.fromValue(map['functionArn'] as String),
       invocationType: pulumi.Input.fromValue(map['invocationType'] as String),
-      retryTimeMinutes: (() { final guardedValue = map['retryTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retryTimeMinutes: (() { final guardedValue = map['retryTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }

@@ -15,11 +15,11 @@ class ConnectionFunctionArgs {
   /// Name for the connection function. Must be 1-64 characters and can contain letters, numbers, hyphens, and underscores. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether to publish the function to the `LIVE` stage after creation or update. Defaults to `false`.
-  final pulumi.Input<bool>? publish;
+  final pulumi.Input<bool?>? publish;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConnectionFunctionArgs].
   /// [connectionFunctionCode] Code for the connection function. Maximum length is 40960 characters.

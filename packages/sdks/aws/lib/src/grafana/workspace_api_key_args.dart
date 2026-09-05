@@ -12,7 +12,7 @@ class WorkspaceApiKeyArgs {
   /// Specifies the permission level of the API key. Valid values are `VIEWER`, `EDITOR`, or `ADMIN`.
   final pulumi.Input<String> keyRole;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specifies the time in seconds until the API key expires. Keys can be valid for up to 30 days.
   final pulumi.Input<int> secondsToLive;
   /// The ID of the workspace that the API key is valid for.
@@ -47,7 +47,7 @@ class WorkspaceApiKeyArgs {
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       keyRole: pulumi.Input.fromValue(map['keyRole'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      secondsToLive: pulumi.Input.fromValue(map['secondsToLive'] as int),
+      secondsToLive: pulumi.Input.fromValue((map['secondsToLive'] as num).toInt()),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }

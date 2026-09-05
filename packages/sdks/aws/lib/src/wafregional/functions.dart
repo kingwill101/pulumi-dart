@@ -128,6 +128,17 @@ Future<GetIpsetResult> getIpset(
   return GetIpsetResult.fromMap(result);
 }
 
+pulumi.Output<GetIpsetResult> getIpsetOutput(
+  GetIpsetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:wafregional/getIpset:getIpset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpsetResult.fromMap);
+}
+
 /// `aws.wafregional.RateBasedRule` Retrieves a WAF Regional Rate Based Rule Resource Id.
 ///
 /// ## Example Usage
@@ -246,6 +257,17 @@ Future<GetRateBasedModResult> getRateBasedMod(
   return GetRateBasedModResult.fromMap(result);
 }
 
+pulumi.Output<GetRateBasedModResult> getRateBasedModOutput(
+  GetRateBasedModArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:wafregional/getRateBasedMod:getRateBasedMod',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRateBasedModResult.fromMap);
+}
+
 /// `aws.wafregional.Rule` Retrieves a WAF Regional Rule Resource Id.
 ///
 /// ## Example Usage
@@ -362,6 +384,17 @@ Future<GetRuleResult> getRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetRuleResult> getRuleOutput(
+  GetRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:wafregional/getRule:getRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuleResult.fromMap);
 }
 
 /// `aws.wafregional.getSubscribedRuleGroup` retrieves information about a Managed WAF Rule Group from AWS Marketplace for use in WAF Regional (needs to be subscribed to first).
@@ -610,6 +643,17 @@ Future<GetSubscribedRuleGroupResult> getSubscribedRuleGroup(
   return GetSubscribedRuleGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscribedRuleGroupResult> getSubscribedRuleGroupOutput(
+  GetSubscribedRuleGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:wafregional/getSubscribedRuleGroup:getSubscribedRuleGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscribedRuleGroupResult.fromMap);
+}
+
 /// `aws.wafregional.WebAcl` Retrieves a WAF Regional Web ACL Resource Id.
 ///
 /// ## Example Usage
@@ -726,4 +770,15 @@ Future<GetWebAclResult> getWebAcl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAclResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAclResult> getWebAclOutput(
+  GetWebAclArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:wafregional/getWebAcl:getWebAcl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAclResult.fromMap);
 }

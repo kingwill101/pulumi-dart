@@ -175,11 +175,12 @@ class AdmChannel extends pulumi.CustomResource {
           'aws:pinpoint/admChannel:AdmChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['clientId', 'clientSecret'],
         ) {
     applicationId = registerOutput<String>('applicationId');
-    clientId = registerOutput<String>('clientId');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientId = registerOutput<String>('clientId', isSecret: true);
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');
   }
@@ -189,11 +190,12 @@ class AdmChannel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AdmChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AdmChannel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -208,8 +210,25 @@ class AdmChannel extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     applicationId = registerOutput<String>('applicationId');
-    clientId = registerOutput<String>('clientId');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientId = registerOutput<String>('clientId', isSecret: true);
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
+    enabled = registerOutput<bool?>('enabled');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AdmChannel] resource.
+  AdmChannel.reference(String urn)
+    : super(
+        'aws:pinpoint/admChannel:AdmChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientId', 'clientSecret'],
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    clientId = registerOutput<String>('clientId', isSecret: true);
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');
   }

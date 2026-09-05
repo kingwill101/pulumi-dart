@@ -15,11 +15,11 @@ import 'device_fleet_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.DeviceFleet("example", {
-///     deviceFleetName: "example",
-///     roleArn: test.arn,
 ///     outputConfig: {
 ///         s3OutputLocation: `s3://${exampleAwsS3Bucket.bucket}/prefix/`,
 ///     },
+///     deviceFleetName: "example",
+///     roleArn: test.arn,
 /// });
 /// ```
 /// ```python
@@ -27,11 +27,11 @@ import 'device_fleet_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.DeviceFleet("example",
-///     device_fleet_name="example",
-///     role_arn=test["arn"],
 ///     output_config={
 ///         "s3_output_location": f"s3://{example_aws_s3_bucket['bucket']}/prefix/",
-///     })
+///     },
+///     device_fleet_name="example",
+///     role_arn=test["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,12 +43,12 @@ import 'device_fleet_state.dart';
 /// {
 ///     var example = new Aws.Sagemaker.DeviceFleet("example", new()
 ///     {
-///         DeviceFleetName = "example",
-///         RoleArn = test.Arn,
 ///         OutputConfig = new Aws.Sagemaker.Inputs.DeviceFleetOutputConfigArgs
 ///         {
 ///             S3OutputLocation = $"s3://{exampleAwsS3Bucket.Bucket}/prefix/",
 ///         },
+///         DeviceFleetName = "example",
+///         RoleArn = test.Arn,
 ///     });
 ///
 /// });
@@ -64,11 +64,11 @@ import 'device_fleet_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewDeviceFleet(ctx, "example", &sagemaker.DeviceFleetArgs{
-/// 			DeviceFleetName: pulumi.String("example"),
-/// 			RoleArn:         pulumi.Any(test.Arn),
 /// 			OutputConfig: &sagemaker.DeviceFleetOutputConfigArgs{
 /// 				S3OutputLocation: pulumi.Sprintf("s3://%v/prefix/", exampleAwsS3Bucket.Bucket),
 /// 			},
+/// 			DeviceFleetName: pulumi.String("example"),
+/// 			RoleArn:         pulumi.Any(test.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -87,11 +87,11 @@ import 'device_fleet_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_devicefleet" "example" {
-///   device_fleet_name = "example"
-///   role_arn          = test.arn
 ///   output_config = {
 ///     s3_output_location ="s3://${exampleAwsS3Bucket.bucket}/prefix/"
 ///   }
+///   device_fleet_name = "example"
+///   role_arn          = test.arn
 /// }
 /// ```
 /// ```java
@@ -117,11 +117,11 @@ import 'device_fleet_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DeviceFleet("example", DeviceFleetArgs.builder()
-///             .deviceFleetName("example")
-///             .roleArn(test.arn())
 ///             .outputConfig(DeviceFleetOutputConfigArgs.builder()
 ///                 .s3OutputLocation(String.format("s3://%s/prefix/", exampleAwsS3Bucket.bucket()))
 ///                 .build())
+///             .deviceFleetName("example")
+///             .roleArn(test.arn())
 ///             .build());
 ///
 ///     }
@@ -132,10 +132,10 @@ import 'device_fleet_state.dart';
 ///   example:
 ///     type: aws:sagemaker:DeviceFleet
 ///     properties:
-///       deviceFleetName: example
-///       roleArn: ${test.arn}
 ///       outputConfig:
 ///         s3OutputLocation: s3://${exampleAwsS3Bucket.bucket}/prefix/
+///       deviceFleetName: example
+///       roleArn: ${test.arn}
 /// ```
 ///
 ///
@@ -147,7 +147,7 @@ import 'device_fleet_state.dart';
 /// $ pulumi import aws:sagemaker/deviceFleet:DeviceFleet example my-fleet
 /// ```
 class DeviceFleet extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Device Fleet.
+  /// ARN assigned by AWS to this Device Fleet.
   late final pulumi.Output<String> arn;
   /// A description of the fleet.
   late final pulumi.Output<String?> description;
@@ -160,7 +160,7 @@ class DeviceFleet extends pulumi.CustomResource {
   late final pulumi.Output<DeviceFleetOutputConfig> outputConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) that has access to AWS Internet of Things (IoT).
+  /// ARN that has access to AWS Internet of Things (IoT).
   late final pulumi.Output<String> roleArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -179,7 +179,7 @@ class DeviceFleet extends pulumi.CustomResource {
           'aws:sagemaker/deviceFleet:DeviceFleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -189,8 +189,8 @@ class DeviceFleet extends pulumi.CustomResource {
     outputConfig = registerOutput<DeviceFleetOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceFleetOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DeviceFleet] resource's state with the given [name] and [id].
@@ -198,11 +198,12 @@ class DeviceFleet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeviceFleetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeviceFleet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -224,7 +225,28 @@ class DeviceFleet extends pulumi.CustomResource {
     outputConfig = registerOutput<DeviceFleetOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceFleetOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DeviceFleet] resource.
+  DeviceFleet.reference(String urn)
+    : super(
+        'aws:sagemaker/deviceFleet:DeviceFleet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    deviceFleetName = registerOutput<String>('deviceFleetName');
+    enableIotRoleAlias = registerOutput<bool?>('enableIotRoleAlias');
+    iotRoleAlias = registerOutput<String>('iotRoleAlias');
+    outputConfig = registerOutput<DeviceFleetOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceFleetOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

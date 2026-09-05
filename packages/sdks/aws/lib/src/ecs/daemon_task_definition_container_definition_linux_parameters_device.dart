@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DaemonTaskDefinitionContainerDefinitionLinuxParametersDevice {
   /// Path inside the container at which to expose the host device.
-  final pulumi.Input<String>? containerPath;
+  final pulumi.Input<String?>? containerPath;
   /// Path for the device on the host container instance.
   final pulumi.Input<String> hostPath;
   /// Explicit permissions to provide to the container for the device. Valid values: `read`, `write`, `mknod`.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
 
   /// Creates a new [DaemonTaskDefinitionContainerDefinitionLinuxParametersDevice].
   /// [containerPath] Path inside the container at which to expose the host device.

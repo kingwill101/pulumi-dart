@@ -5,7 +5,7 @@ import 'daemon_task_definition_volume_host.dart';
 
 class DaemonTaskDefinitionVolume {
   /// Configuration for a host volume. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionVolumeHost>>? hosts;
+  final pulumi.Input<List<DaemonTaskDefinitionVolumeHost>?>? hosts;
   /// Name of the volume. This name is referenced in the `sourceVolume` parameter of container definition in the `mountPoints` section.
   final pulumi.Input<String> name;
 

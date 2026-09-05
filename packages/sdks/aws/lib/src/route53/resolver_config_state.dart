@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ResolverConfig resources.
 class ResolverConfigState {
   /// Indicates whether or not the Resolver will create autodefined rules for reverse DNS lookups. Valid values: `ENABLE`, `DISABLE`.
-  final pulumi.Input<String>? autodefinedReverseFlag;
+  final pulumi.Input<String?>? autodefinedReverseFlag;
   /// The AWS account ID of the owner of the VPC that this resolver configuration applies to.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the VPC that the configuration is for.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [ResolverConfigState].
   /// [autodefinedReverseFlag] Indicates whether or not the Resolver will create autodefined rules for reverse DNS lookups. Valid values: `ENABLE`, `DISABLE`.

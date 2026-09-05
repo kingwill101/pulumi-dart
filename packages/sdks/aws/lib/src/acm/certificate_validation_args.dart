@@ -10,9 +10,9 @@ class CertificateValidationArgs {
   /// ARN of the certificate that is being validated.
   final pulumi.Input<String> certificateArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of FQDNs that implement the validation. Only valid for DNS validation method ACM certificates. If this is set, the resource can implement additional sanity checks and has an explicit dependency on the resource that is implementing the validation
-  final pulumi.Input<List<String>>? validationRecordFqdns;
+  final pulumi.Input<List<String>?>? validationRecordFqdns;
 
   /// Creates a new [CertificateValidationArgs].
   /// [certificateArn] ARN of the certificate that is being validated.

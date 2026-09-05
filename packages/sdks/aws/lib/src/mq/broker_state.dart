@@ -13,63 +13,63 @@ import 'broker_user.dart';
 /// Input properties used for looking up and filtering Broker resources.
 class BrokerState {
   /// Whether to apply broker modifications immediately. Default is `false`.
-  final pulumi.Input<bool>? applyImmediately;
+  final pulumi.Input<bool?>? applyImmediately;
   /// ARN of the broker.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Authentication strategy used to secure the broker. Valid values are `simple` and `ldap`. `ldap` is not supported for `engineType` `RabbitMQ`.
-  final pulumi.Input<String>? authenticationStrategy;
+  final pulumi.Input<String?>? authenticationStrategy;
   /// Whether to automatically upgrade to new minor versions of brokers as Amazon MQ makes releases available.
-  final pulumi.Input<bool>? autoMinorVersionUpgrade;
+  final pulumi.Input<bool?>? autoMinorVersionUpgrade;
   /// Name of the broker.
-  final pulumi.Input<String>? brokerName;
+  final pulumi.Input<String?>? brokerName;
   /// Configuration block for broker configuration. Applies to `engineType` of `ActiveMQ` and `RabbitMQ` only. Detailed below.
-  final pulumi.Input<BrokerConfiguration>? configuration;
+  final pulumi.Input<BrokerConfiguration?>? configuration;
   /// Whether this broker is part of a data replication pair. Valid values are `CRDR` and `NONE`.
-  final pulumi.Input<String>? dataReplicationMode;
+  final pulumi.Input<String?>? dataReplicationMode;
   /// ARN of the primary broker used to replicate data in a data replication pair. Required when `dataReplicationMode` is `CRDR`.
-  final pulumi.Input<String>? dataReplicationPrimaryBrokerArn;
+  final pulumi.Input<String?>? dataReplicationPrimaryBrokerArn;
   /// Deployment mode of the broker. Valid values are `SINGLE_INSTANCE`, `ACTIVE_STANDBY_MULTI_AZ`, and `CLUSTER_MULTI_AZ`. Default is `SINGLE_INSTANCE`.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<String?>? deploymentMode;
   /// Configuration block containing encryption options. Detailed below.
-  final pulumi.Input<BrokerEncryptionOptions>? encryptionOptions;
+  final pulumi.Input<BrokerEncryptionOptions?>? encryptionOptions;
   /// Type of broker engine. Valid values are `ActiveMQ` and `RabbitMQ`.
-  final pulumi.Input<String>? engineType;
+  final pulumi.Input<String?>? engineType;
   /// Version of the broker engine.
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// Broker's instance type. For example, `mq.t3.micro`, `mq.m5.large`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? hostInstanceType;
+  final pulumi.Input<String?>? hostInstanceType;
   /// List of information about allocated brokers (both active & standby).
-  final pulumi.Input<List<BrokerInstance>>? instances;
+  final pulumi.Input<List<BrokerInstance>?>? instances;
   /// Configuration block for the LDAP server used to authenticate and authorize connections. Not supported for `engineType` `RabbitMQ`. Detailed below.
-  final pulumi.Input<BrokerLdapServerMetadata>? ldapServerMetadata;
+  final pulumi.Input<BrokerLdapServerMetadata?>? ldapServerMetadata;
   /// Configuration block for the logging configuration. Detailed below.
-  final pulumi.Input<BrokerLogs>? logs;
+  final pulumi.Input<BrokerLogs?>? logs;
   /// Configuration block for the maintenance window start time. Detailed below.
-  final pulumi.Input<BrokerMaintenanceWindowStartTime>? maintenanceWindowStartTime;
+  final pulumi.Input<BrokerMaintenanceWindowStartTime?>? maintenanceWindowStartTime;
   /// Data replication mode that will be applied after reboot.
-  final pulumi.Input<String>? pendingDataReplicationMode;
+  final pulumi.Input<String?>? pendingDataReplicationMode;
   /// Whether to enable connections from applications outside of the VPC that hosts the broker's subnets.
-  final pulumi.Input<bool>? publiclyAccessible;
+  final pulumi.Input<bool?>? publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of [AWS RAM](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html) resource share ARNs that grant the broker access to shared resources for [private networking](https://aws.amazon.com/blogs/big-data/introducing-private-networking-for-amazon-mq-for-rabbitmq/). Applies to `engineType` of `RabbitMQ` only. Because Amazon MQ applies resource shares during a reboot, set `applyImmediately` to `true` for changes to take effect without waiting for the next maintenance window.
-  final pulumi.Input<List<String>>? resourceShareArns;
+  final pulumi.Input<List<String>?>? resourceShareArns;
   /// List of security group IDs assigned to the broker.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// List of resources shared with the broker via `resourceShareArns`. Only populated for `engineType` of `RabbitMQ`.
-  final pulumi.Input<List<BrokerSharedResource>>? sharedResources;
+  final pulumi.Input<List<BrokerSharedResource>?>? sharedResources;
   /// Storage type of the broker. For `engineType` `ActiveMQ`, valid values are `efs` and `ebs` (AWS-default is `efs`). For `engineType` `RabbitMQ`, only `ebs` is supported. When using `ebs`, only the `mq.m5` broker instance type family is supported.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
   /// List of subnet IDs in which to launch the broker. A `SINGLE_INSTANCE` deployment requires one subnet. An `ACTIVE_STANDBY_MULTI_AZ` deployment requires multiple subnets.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// Map of tags to assign to the broker. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Configuration block for broker users. For `engineType` of `RabbitMQ`, Amazon MQ does not return broker users preventing this resource from making user updates and drift detection. Detailed below.
-  final pulumi.Input<List<BrokerUser>>? users;
+  final pulumi.Input<List<BrokerUser>?>? users;
 
   /// Creates a new [BrokerState].
   /// [applyImmediately] Whether to apply broker modifications immediately. Default is `false`.

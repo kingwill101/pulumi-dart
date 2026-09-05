@@ -6,28 +6,28 @@ import 's3_table_integration_timeouts.dart';
 
 /// Input properties used for looking up and filtering S3TableIntegration resources.
 class S3TableIntegrationState {
-  /// Amazon Resource Name (ARN) of the S3 Table integration.
-  final pulumi.Input<String>? arn;
+  /// ARN of the S3 Table integration.
+  final pulumi.Input<String?>? arn;
   /// ARN of the S3 Table bucket where CloudWatch data is stored. AWS automatically creates a bucket named `_aws-cloudwatch_` if one does not already exist.
-  final pulumi.Input<String>? destinationTableBucketArn;
+  final pulumi.Input<String?>? destinationTableBucketArn;
   /// Encryption configuration block. Documented below.
-  final pulumi.Input<S3TableIntegrationEncryption>? encryption;
+  final pulumi.Input<S3TableIntegrationEncryption?>? encryption;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the IAM role that grants the S3 Table integration permissions to access necessary resources.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? region;
+  /// ARN of the IAM role that grants the S3 Table integration permissions to access necessary resources.
+  final pulumi.Input<String?>? roleArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<S3TableIntegrationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<S3TableIntegrationTimeouts?>? timeouts;
 
   /// Creates a new [S3TableIntegrationState].
-  /// [arn] Amazon Resource Name (ARN) of the S3 Table integration.
+  /// [arn] ARN of the S3 Table integration.
   /// [destinationTableBucketArn] ARN of the S3 Table bucket where CloudWatch data is stored. AWS automatically creates a bucket named `_aws-cloudwatch_` if one does not already exist.
   /// [encryption] Encryption configuration block. Documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] Amazon Resource Name (ARN) of the IAM role that grants the S3 Table integration permissions to access necessary resources.
+  /// [roleArn] ARN of the IAM role that grants the S3 Table integration permissions to access necessary resources.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.

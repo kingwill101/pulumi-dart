@@ -16,14 +16,14 @@ import 'instance_storage_config_storage_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.InstanceStorageConfig("example", {
-///     instanceId: exampleAwsConnectInstance.id,
-///     resourceType: "CONTACT_TRACE_RECORDS",
 ///     storageConfig: {
 ///         kinesisFirehoseConfig: {
 ///             firehoseArn: exampleAwsKinesisFirehoseDeliveryStream.arn,
 ///         },
 ///         storageType: "KINESIS_FIREHOSE",
 ///     },
+///     instanceId: exampleAwsConnectInstance.id,
+///     resourceType: "CONTACT_TRACE_RECORDS",
 /// });
 /// ```
 /// ```python
@@ -31,14 +31,14 @@ import 'instance_storage_config_storage_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.InstanceStorageConfig("example",
-///     instance_id=example_aws_connect_instance["id"],
-///     resource_type="CONTACT_TRACE_RECORDS",
 ///     storage_config={
 ///         "kinesis_firehose_config": {
 ///             "firehose_arn": example_aws_kinesis_firehose_delivery_stream["arn"],
 ///         },
 ///         "storage_type": "KINESIS_FIREHOSE",
-///     })
+///     },
+///     instance_id=example_aws_connect_instance["id"],
+///     resource_type="CONTACT_TRACE_RECORDS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,8 +50,6 @@ import 'instance_storage_config_storage_config.dart';
 /// {
 ///     var example = new Aws.Connect.InstanceStorageConfig("example", new()
 ///     {
-///         InstanceId = exampleAwsConnectInstance.Id,
-///         ResourceType = "CONTACT_TRACE_RECORDS",
 ///         StorageConfig = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigArgs
 ///         {
 ///             KinesisFirehoseConfig = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigKinesisFirehoseConfigArgs
@@ -60,6 +58,8 @@ import 'instance_storage_config_storage_config.dart';
 ///             },
 ///             StorageType = "KINESIS_FIREHOSE",
 ///         },
+///         InstanceId = exampleAwsConnectInstance.Id,
+///         ResourceType = "CONTACT_TRACE_RECORDS",
 ///     });
 ///
 /// });
@@ -75,14 +75,14 @@ import 'instance_storage_config_storage_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewInstanceStorageConfig(ctx, "example", &connect.InstanceStorageConfigArgs{
-/// 			InstanceId:   pulumi.Any(exampleAwsConnectInstance.Id),
-/// 			ResourceType: pulumi.String("CONTACT_TRACE_RECORDS"),
 /// 			StorageConfig: &connect.InstanceStorageConfigStorageConfigArgs{
 /// 				KinesisFirehoseConfig: &connect.InstanceStorageConfigStorageConfigKinesisFirehoseConfigArgs{
 /// 					FirehoseArn: pulumi.Any(exampleAwsKinesisFirehoseDeliveryStream.Arn),
 /// 				},
 /// 				StorageType: pulumi.String("KINESIS_FIREHOSE"),
 /// 			},
+/// 			InstanceId:   pulumi.Any(exampleAwsConnectInstance.Id),
+/// 			ResourceType: pulumi.String("CONTACT_TRACE_RECORDS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -101,14 +101,14 @@ import 'instance_storage_config_storage_config.dart';
 /// }
 ///
 /// resource "aws_connect_instancestorageconfig" "example" {
-///   instance_id   = exampleAwsConnectInstance.id
-///   resource_type = "CONTACT_TRACE_RECORDS"
 ///   storage_config = {
 ///     kinesis_firehose_config = {
 ///       firehose_arn = exampleAwsKinesisFirehoseDeliveryStream.arn
 ///     }
 ///     storage_type = "KINESIS_FIREHOSE"
 ///   }
+///   instance_id   = exampleAwsConnectInstance.id
+///   resource_type = "CONTACT_TRACE_RECORDS"
 /// }
 /// ```
 /// ```java
@@ -135,14 +135,14 @@ import 'instance_storage_config_storage_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new InstanceStorageConfig("example", InstanceStorageConfigArgs.builder()
-///             .instanceId(exampleAwsConnectInstance.id())
-///             .resourceType("CONTACT_TRACE_RECORDS")
 ///             .storageConfig(InstanceStorageConfigStorageConfigArgs.builder()
 ///                 .kinesisFirehoseConfig(InstanceStorageConfigStorageConfigKinesisFirehoseConfigArgs.builder()
 ///                     .firehoseArn(exampleAwsKinesisFirehoseDeliveryStream.arn())
 ///                     .build())
 ///                 .storageType("KINESIS_FIREHOSE")
 ///                 .build())
+///             .instanceId(exampleAwsConnectInstance.id())
+///             .resourceType("CONTACT_TRACE_RECORDS")
 ///             .build());
 ///
 ///     }
@@ -153,12 +153,12 @@ import 'instance_storage_config_storage_config.dart';
 ///   example:
 ///     type: aws:connect:InstanceStorageConfig
 ///     properties:
-///       instanceId: ${exampleAwsConnectInstance.id}
-///       resourceType: CONTACT_TRACE_RECORDS
 ///       storageConfig:
 ///         kinesisFirehoseConfig:
 ///           firehoseArn: ${exampleAwsKinesisFirehoseDeliveryStream.arn}
 ///         storageType: KINESIS_FIREHOSE
+///       instanceId: ${exampleAwsConnectInstance.id}
+///       resourceType: CONTACT_TRACE_RECORDS
 /// ```
 ///
 ///
@@ -170,14 +170,14 @@ import 'instance_storage_config_storage_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.InstanceStorageConfig("example", {
-///     instanceId: exampleAwsConnectInstance.id,
-///     resourceType: "CONTACT_TRACE_RECORDS",
 ///     storageConfig: {
 ///         kinesisStreamConfig: {
 ///             streamArn: exampleAwsKinesisStream.arn,
 ///         },
 ///         storageType: "KINESIS_STREAM",
 ///     },
+///     instanceId: exampleAwsConnectInstance.id,
+///     resourceType: "CONTACT_TRACE_RECORDS",
 /// });
 /// ```
 /// ```python
@@ -185,14 +185,14 @@ import 'instance_storage_config_storage_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.InstanceStorageConfig("example",
-///     instance_id=example_aws_connect_instance["id"],
-///     resource_type="CONTACT_TRACE_RECORDS",
 ///     storage_config={
 ///         "kinesis_stream_config": {
 ///             "stream_arn": example_aws_kinesis_stream["arn"],
 ///         },
 ///         "storage_type": "KINESIS_STREAM",
-///     })
+///     },
+///     instance_id=example_aws_connect_instance["id"],
+///     resource_type="CONTACT_TRACE_RECORDS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -204,8 +204,6 @@ import 'instance_storage_config_storage_config.dart';
 /// {
 ///     var example = new Aws.Connect.InstanceStorageConfig("example", new()
 ///     {
-///         InstanceId = exampleAwsConnectInstance.Id,
-///         ResourceType = "CONTACT_TRACE_RECORDS",
 ///         StorageConfig = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigArgs
 ///         {
 ///             KinesisStreamConfig = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigKinesisStreamConfigArgs
@@ -214,6 +212,8 @@ import 'instance_storage_config_storage_config.dart';
 ///             },
 ///             StorageType = "KINESIS_STREAM",
 ///         },
+///         InstanceId = exampleAwsConnectInstance.Id,
+///         ResourceType = "CONTACT_TRACE_RECORDS",
 ///     });
 ///
 /// });
@@ -229,14 +229,14 @@ import 'instance_storage_config_storage_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewInstanceStorageConfig(ctx, "example", &connect.InstanceStorageConfigArgs{
-/// 			InstanceId:   pulumi.Any(exampleAwsConnectInstance.Id),
-/// 			ResourceType: pulumi.String("CONTACT_TRACE_RECORDS"),
 /// 			StorageConfig: &connect.InstanceStorageConfigStorageConfigArgs{
 /// 				KinesisStreamConfig: &connect.InstanceStorageConfigStorageConfigKinesisStreamConfigArgs{
 /// 					StreamArn: pulumi.Any(exampleAwsKinesisStream.Arn),
 /// 				},
 /// 				StorageType: pulumi.String("KINESIS_STREAM"),
 /// 			},
+/// 			InstanceId:   pulumi.Any(exampleAwsConnectInstance.Id),
+/// 			ResourceType: pulumi.String("CONTACT_TRACE_RECORDS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -255,14 +255,14 @@ import 'instance_storage_config_storage_config.dart';
 /// }
 ///
 /// resource "aws_connect_instancestorageconfig" "example" {
-///   instance_id   = exampleAwsConnectInstance.id
-///   resource_type = "CONTACT_TRACE_RECORDS"
 ///   storage_config = {
 ///     kinesis_stream_config = {
 ///       stream_arn = exampleAwsKinesisStream.arn
 ///     }
 ///     storage_type = "KINESIS_STREAM"
 ///   }
+///   instance_id   = exampleAwsConnectInstance.id
+///   resource_type = "CONTACT_TRACE_RECORDS"
 /// }
 /// ```
 /// ```java
@@ -289,14 +289,14 @@ import 'instance_storage_config_storage_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new InstanceStorageConfig("example", InstanceStorageConfigArgs.builder()
-///             .instanceId(exampleAwsConnectInstance.id())
-///             .resourceType("CONTACT_TRACE_RECORDS")
 ///             .storageConfig(InstanceStorageConfigStorageConfigArgs.builder()
 ///                 .kinesisStreamConfig(InstanceStorageConfigStorageConfigKinesisStreamConfigArgs.builder()
 ///                     .streamArn(exampleAwsKinesisStream.arn())
 ///                     .build())
 ///                 .storageType("KINESIS_STREAM")
 ///                 .build())
+///             .instanceId(exampleAwsConnectInstance.id())
+///             .resourceType("CONTACT_TRACE_RECORDS")
 ///             .build());
 ///
 ///     }
@@ -307,12 +307,12 @@ import 'instance_storage_config_storage_config.dart';
 ///   example:
 ///     type: aws:connect:InstanceStorageConfig
 ///     properties:
-///       instanceId: ${exampleAwsConnectInstance.id}
-///       resourceType: CONTACT_TRACE_RECORDS
 ///       storageConfig:
 ///         kinesisStreamConfig:
 ///           streamArn: ${exampleAwsKinesisStream.arn}
 ///         storageType: KINESIS_STREAM
+///       instanceId: ${exampleAwsConnectInstance.id}
+///       resourceType: CONTACT_TRACE_RECORDS
 /// ```
 ///
 ///
@@ -324,19 +324,19 @@ import 'instance_storage_config_storage_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.InstanceStorageConfig("example", {
-///     instanceId: exampleAwsConnectInstance.id,
-///     resourceType: "MEDIA_STREAMS",
 ///     storageConfig: {
 ///         kinesisVideoStreamConfig: {
-///             prefix: "example",
-///             retentionPeriodHours: 3,
 ///             encryptionConfig: {
 ///                 encryptionType: "KMS",
 ///                 keyId: exampleAwsKmsKey.arn,
 ///             },
+///             prefix: "example",
+///             retentionPeriodHours: 3,
 ///         },
 ///         storageType: "KINESIS_VIDEO_STREAM",
 ///     },
+///     instanceId: exampleAwsConnectInstance.id,
+///     resourceType: "MEDIA_STREAMS",
 /// });
 /// ```
 /// ```python
@@ -344,19 +344,19 @@ import 'instance_storage_config_storage_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.InstanceStorageConfig("example",
-///     instance_id=example_aws_connect_instance["id"],
-///     resource_type="MEDIA_STREAMS",
 ///     storage_config={
 ///         "kinesis_video_stream_config": {
-///             "prefix": "example",
-///             "retention_period_hours": 3,
 ///             "encryption_config": {
 ///                 "encryption_type": "KMS",
 ///                 "key_id": example_aws_kms_key["arn"],
 ///             },
+///             "prefix": "example",
+///             "retention_period_hours": 3,
 ///         },
 ///         "storage_type": "KINESIS_VIDEO_STREAM",
-///     })
+///     },
+///     instance_id=example_aws_connect_instance["id"],
+///     resource_type="MEDIA_STREAMS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -368,22 +368,22 @@ import 'instance_storage_config_storage_config.dart';
 /// {
 ///     var example = new Aws.Connect.InstanceStorageConfig("example", new()
 ///     {
-///         InstanceId = exampleAwsConnectInstance.Id,
-///         ResourceType = "MEDIA_STREAMS",
 ///         StorageConfig = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigArgs
 ///         {
 ///             KinesisVideoStreamConfig = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigKinesisVideoStreamConfigArgs
 ///             {
-///                 Prefix = "example",
-///                 RetentionPeriodHours = 3,
 ///                 EncryptionConfig = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfigArgs
 ///                 {
 ///                     EncryptionType = "KMS",
 ///                     KeyId = exampleAwsKmsKey.Arn,
 ///                 },
+///                 Prefix = "example",
+///                 RetentionPeriodHours = 3,
 ///             },
 ///             StorageType = "KINESIS_VIDEO_STREAM",
 ///         },
+///         InstanceId = exampleAwsConnectInstance.Id,
+///         ResourceType = "MEDIA_STREAMS",
 ///     });
 ///
 /// });
@@ -399,19 +399,19 @@ import 'instance_storage_config_storage_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewInstanceStorageConfig(ctx, "example", &connect.InstanceStorageConfigArgs{
-/// 			InstanceId:   pulumi.Any(exampleAwsConnectInstance.Id),
-/// 			ResourceType: pulumi.String("MEDIA_STREAMS"),
 /// 			StorageConfig: &connect.InstanceStorageConfigStorageConfigArgs{
 /// 				KinesisVideoStreamConfig: &connect.InstanceStorageConfigStorageConfigKinesisVideoStreamConfigArgs{
-/// 					Prefix:               pulumi.String("example"),
-/// 					RetentionPeriodHours: pulumi.Int(3),
 /// 					EncryptionConfig: &connect.InstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfigArgs{
 /// 						EncryptionType: pulumi.String("KMS"),
 /// 						KeyId:          pulumi.Any(exampleAwsKmsKey.Arn),
 /// 					},
+/// 					Prefix:               pulumi.String("example"),
+/// 					RetentionPeriodHours: pulumi.Int(3),
 /// 				},
 /// 				StorageType: pulumi.String("KINESIS_VIDEO_STREAM"),
 /// 			},
+/// 			InstanceId:   pulumi.Any(exampleAwsConnectInstance.Id),
+/// 			ResourceType: pulumi.String("MEDIA_STREAMS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -430,19 +430,19 @@ import 'instance_storage_config_storage_config.dart';
 /// }
 ///
 /// resource "aws_connect_instancestorageconfig" "example" {
-///   instance_id   = exampleAwsConnectInstance.id
-///   resource_type = "MEDIA_STREAMS"
 ///   storage_config = {
 ///     kinesis_video_stream_config = {
-///       prefix                 = "example"
-///       retention_period_hours = 3
 ///       encryption_config = {
 ///         encryption_type = "KMS"
 ///         key_id          = exampleAwsKmsKey.arn
 ///       }
+///       prefix                 = "example"
+///       retention_period_hours = 3
 ///     }
 ///     storage_type = "KINESIS_VIDEO_STREAM"
 ///   }
+///   instance_id   = exampleAwsConnectInstance.id
+///   resource_type = "MEDIA_STREAMS"
 /// }
 /// ```
 /// ```java
@@ -470,19 +470,19 @@ import 'instance_storage_config_storage_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new InstanceStorageConfig("example", InstanceStorageConfigArgs.builder()
-///             .instanceId(exampleAwsConnectInstance.id())
-///             .resourceType("MEDIA_STREAMS")
 ///             .storageConfig(InstanceStorageConfigStorageConfigArgs.builder()
 ///                 .kinesisVideoStreamConfig(InstanceStorageConfigStorageConfigKinesisVideoStreamConfigArgs.builder()
-///                     .prefix("example")
-///                     .retentionPeriodHours(3)
 ///                     .encryptionConfig(InstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfigArgs.builder()
 ///                         .encryptionType("KMS")
 ///                         .keyId(exampleAwsKmsKey.arn())
 ///                         .build())
+///                     .prefix("example")
+///                     .retentionPeriodHours(3)
 ///                     .build())
 ///                 .storageType("KINESIS_VIDEO_STREAM")
 ///                 .build())
+///             .instanceId(exampleAwsConnectInstance.id())
+///             .resourceType("MEDIA_STREAMS")
 ///             .build());
 ///
 ///     }
@@ -493,16 +493,16 @@ import 'instance_storage_config_storage_config.dart';
 ///   example:
 ///     type: aws:connect:InstanceStorageConfig
 ///     properties:
-///       instanceId: ${exampleAwsConnectInstance.id}
-///       resourceType: MEDIA_STREAMS
 ///       storageConfig:
 ///         kinesisVideoStreamConfig:
-///           prefix: example
-///           retentionPeriodHours: 3
 ///           encryptionConfig:
 ///             encryptionType: KMS
 ///             keyId: ${exampleAwsKmsKey.arn}
+///           prefix: example
+///           retentionPeriodHours: 3
 ///         storageType: KINESIS_VIDEO_STREAM
+///       instanceId: ${exampleAwsConnectInstance.id}
+///       resourceType: MEDIA_STREAMS
 /// ```
 ///
 ///
@@ -514,8 +514,6 @@ import 'instance_storage_config_storage_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.InstanceStorageConfig("example", {
-///     instanceId: exampleAwsConnectInstance.id,
-///     resourceType: "CHAT_TRANSCRIPTS",
 ///     storageConfig: {
 ///         s3Config: {
 ///             bucketName: exampleAwsS3Bucket.id,
@@ -523,6 +521,8 @@ import 'instance_storage_config_storage_config.dart';
 ///         },
 ///         storageType: "S3",
 ///     },
+///     instanceId: exampleAwsConnectInstance.id,
+///     resourceType: "CHAT_TRANSCRIPTS",
 /// });
 /// ```
 /// ```python
@@ -530,15 +530,15 @@ import 'instance_storage_config_storage_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.InstanceStorageConfig("example",
-///     instance_id=example_aws_connect_instance["id"],
-///     resource_type="CHAT_TRANSCRIPTS",
 ///     storage_config={
 ///         "s3_config": {
 ///             "bucket_name": example_aws_s3_bucket["id"],
 ///             "bucket_prefix": "example",
 ///         },
 ///         "storage_type": "S3",
-///     })
+///     },
+///     instance_id=example_aws_connect_instance["id"],
+///     resource_type="CHAT_TRANSCRIPTS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -550,8 +550,6 @@ import 'instance_storage_config_storage_config.dart';
 /// {
 ///     var example = new Aws.Connect.InstanceStorageConfig("example", new()
 ///     {
-///         InstanceId = exampleAwsConnectInstance.Id,
-///         ResourceType = "CHAT_TRANSCRIPTS",
 ///         StorageConfig = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigArgs
 ///         {
 ///             S3Config = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigS3ConfigArgs
@@ -561,6 +559,8 @@ import 'instance_storage_config_storage_config.dart';
 ///             },
 ///             StorageType = "S3",
 ///         },
+///         InstanceId = exampleAwsConnectInstance.Id,
+///         ResourceType = "CHAT_TRANSCRIPTS",
 ///     });
 ///
 /// });
@@ -576,8 +576,6 @@ import 'instance_storage_config_storage_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewInstanceStorageConfig(ctx, "example", &connect.InstanceStorageConfigArgs{
-/// 			InstanceId:   pulumi.Any(exampleAwsConnectInstance.Id),
-/// 			ResourceType: pulumi.String("CHAT_TRANSCRIPTS"),
 /// 			StorageConfig: &connect.InstanceStorageConfigStorageConfigArgs{
 /// 				S3Config: &connect.InstanceStorageConfigStorageConfigS3ConfigArgs{
 /// 					BucketName:   pulumi.Any(exampleAwsS3Bucket.Id),
@@ -585,6 +583,8 @@ import 'instance_storage_config_storage_config.dart';
 /// 				},
 /// 				StorageType: pulumi.String("S3"),
 /// 			},
+/// 			InstanceId:   pulumi.Any(exampleAwsConnectInstance.Id),
+/// 			ResourceType: pulumi.String("CHAT_TRANSCRIPTS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -603,8 +603,6 @@ import 'instance_storage_config_storage_config.dart';
 /// }
 ///
 /// resource "aws_connect_instancestorageconfig" "example" {
-///   instance_id   = exampleAwsConnectInstance.id
-///   resource_type = "CHAT_TRANSCRIPTS"
 ///   storage_config = {
 ///     s3_config = {
 ///       bucket_name   = exampleAwsS3Bucket.id
@@ -612,6 +610,8 @@ import 'instance_storage_config_storage_config.dart';
 ///     }
 ///     storage_type = "S3"
 ///   }
+///   instance_id   = exampleAwsConnectInstance.id
+///   resource_type = "CHAT_TRANSCRIPTS"
 /// }
 /// ```
 /// ```java
@@ -638,8 +638,6 @@ import 'instance_storage_config_storage_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new InstanceStorageConfig("example", InstanceStorageConfigArgs.builder()
-///             .instanceId(exampleAwsConnectInstance.id())
-///             .resourceType("CHAT_TRANSCRIPTS")
 ///             .storageConfig(InstanceStorageConfigStorageConfigArgs.builder()
 ///                 .s3Config(InstanceStorageConfigStorageConfigS3ConfigArgs.builder()
 ///                     .bucketName(exampleAwsS3Bucket.id())
@@ -647,6 +645,8 @@ import 'instance_storage_config_storage_config.dart';
 ///                     .build())
 ///                 .storageType("S3")
 ///                 .build())
+///             .instanceId(exampleAwsConnectInstance.id())
+///             .resourceType("CHAT_TRANSCRIPTS")
 ///             .build());
 ///
 ///     }
@@ -657,13 +657,13 @@ import 'instance_storage_config_storage_config.dart';
 ///   example:
 ///     type: aws:connect:InstanceStorageConfig
 ///     properties:
-///       instanceId: ${exampleAwsConnectInstance.id}
-///       resourceType: CHAT_TRANSCRIPTS
 ///       storageConfig:
 ///         s3Config:
 ///           bucketName: ${exampleAwsS3Bucket.id}
 ///           bucketPrefix: example
 ///         storageType: S3
+///       instanceId: ${exampleAwsConnectInstance.id}
+///       resourceType: CHAT_TRANSCRIPTS
 /// ```
 ///
 ///
@@ -675,19 +675,19 @@ import 'instance_storage_config_storage_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.connect.InstanceStorageConfig("example", {
-///     instanceId: exampleAwsConnectInstance.id,
-///     resourceType: "CHAT_TRANSCRIPTS",
 ///     storageConfig: {
 ///         s3Config: {
-///             bucketName: exampleAwsS3Bucket.id,
-///             bucketPrefix: "example",
 ///             encryptionConfig: {
 ///                 encryptionType: "KMS",
 ///                 keyId: exampleAwsKmsKey.arn,
 ///             },
+///             bucketName: exampleAwsS3Bucket.id,
+///             bucketPrefix: "example",
 ///         },
 ///         storageType: "S3",
 ///     },
+///     instanceId: exampleAwsConnectInstance.id,
+///     resourceType: "CHAT_TRANSCRIPTS",
 /// });
 /// ```
 /// ```python
@@ -695,19 +695,19 @@ import 'instance_storage_config_storage_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.connect.InstanceStorageConfig("example",
-///     instance_id=example_aws_connect_instance["id"],
-///     resource_type="CHAT_TRANSCRIPTS",
 ///     storage_config={
 ///         "s3_config": {
-///             "bucket_name": example_aws_s3_bucket["id"],
-///             "bucket_prefix": "example",
 ///             "encryption_config": {
 ///                 "encryption_type": "KMS",
 ///                 "key_id": example_aws_kms_key["arn"],
 ///             },
+///             "bucket_name": example_aws_s3_bucket["id"],
+///             "bucket_prefix": "example",
 ///         },
 ///         "storage_type": "S3",
-///     })
+///     },
+///     instance_id=example_aws_connect_instance["id"],
+///     resource_type="CHAT_TRANSCRIPTS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -719,22 +719,22 @@ import 'instance_storage_config_storage_config.dart';
 /// {
 ///     var example = new Aws.Connect.InstanceStorageConfig("example", new()
 ///     {
-///         InstanceId = exampleAwsConnectInstance.Id,
-///         ResourceType = "CHAT_TRANSCRIPTS",
 ///         StorageConfig = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigArgs
 ///         {
 ///             S3Config = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigS3ConfigArgs
 ///             {
-///                 BucketName = exampleAwsS3Bucket.Id,
-///                 BucketPrefix = "example",
 ///                 EncryptionConfig = new Aws.Connect.Inputs.InstanceStorageConfigStorageConfigS3ConfigEncryptionConfigArgs
 ///                 {
 ///                     EncryptionType = "KMS",
 ///                     KeyId = exampleAwsKmsKey.Arn,
 ///                 },
+///                 BucketName = exampleAwsS3Bucket.Id,
+///                 BucketPrefix = "example",
 ///             },
 ///             StorageType = "S3",
 ///         },
+///         InstanceId = exampleAwsConnectInstance.Id,
+///         ResourceType = "CHAT_TRANSCRIPTS",
 ///     });
 ///
 /// });
@@ -750,19 +750,19 @@ import 'instance_storage_config_storage_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := connect.NewInstanceStorageConfig(ctx, "example", &connect.InstanceStorageConfigArgs{
-/// 			InstanceId:   pulumi.Any(exampleAwsConnectInstance.Id),
-/// 			ResourceType: pulumi.String("CHAT_TRANSCRIPTS"),
 /// 			StorageConfig: &connect.InstanceStorageConfigStorageConfigArgs{
 /// 				S3Config: &connect.InstanceStorageConfigStorageConfigS3ConfigArgs{
-/// 					BucketName:   pulumi.Any(exampleAwsS3Bucket.Id),
-/// 					BucketPrefix: pulumi.String("example"),
 /// 					EncryptionConfig: &connect.InstanceStorageConfigStorageConfigS3ConfigEncryptionConfigArgs{
 /// 						EncryptionType: pulumi.String("KMS"),
 /// 						KeyId:          pulumi.Any(exampleAwsKmsKey.Arn),
 /// 					},
+/// 					BucketName:   pulumi.Any(exampleAwsS3Bucket.Id),
+/// 					BucketPrefix: pulumi.String("example"),
 /// 				},
 /// 				StorageType: pulumi.String("S3"),
 /// 			},
+/// 			InstanceId:   pulumi.Any(exampleAwsConnectInstance.Id),
+/// 			ResourceType: pulumi.String("CHAT_TRANSCRIPTS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -781,19 +781,19 @@ import 'instance_storage_config_storage_config.dart';
 /// }
 ///
 /// resource "aws_connect_instancestorageconfig" "example" {
-///   instance_id   = exampleAwsConnectInstance.id
-///   resource_type = "CHAT_TRANSCRIPTS"
 ///   storage_config = {
 ///     s3_config = {
-///       bucket_name   = exampleAwsS3Bucket.id
-///       bucket_prefix = "example"
 ///       encryption_config = {
 ///         encryption_type = "KMS"
 ///         key_id          = exampleAwsKmsKey.arn
 ///       }
+///       bucket_name   = exampleAwsS3Bucket.id
+///       bucket_prefix = "example"
 ///     }
 ///     storage_type = "S3"
 ///   }
+///   instance_id   = exampleAwsConnectInstance.id
+///   resource_type = "CHAT_TRANSCRIPTS"
 /// }
 /// ```
 /// ```java
@@ -821,19 +821,19 @@ import 'instance_storage_config_storage_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new InstanceStorageConfig("example", InstanceStorageConfigArgs.builder()
-///             .instanceId(exampleAwsConnectInstance.id())
-///             .resourceType("CHAT_TRANSCRIPTS")
 ///             .storageConfig(InstanceStorageConfigStorageConfigArgs.builder()
 ///                 .s3Config(InstanceStorageConfigStorageConfigS3ConfigArgs.builder()
-///                     .bucketName(exampleAwsS3Bucket.id())
-///                     .bucketPrefix("example")
 ///                     .encryptionConfig(InstanceStorageConfigStorageConfigS3ConfigEncryptionConfigArgs.builder()
 ///                         .encryptionType("KMS")
 ///                         .keyId(exampleAwsKmsKey.arn())
 ///                         .build())
+///                     .bucketName(exampleAwsS3Bucket.id())
+///                     .bucketPrefix("example")
 ///                     .build())
 ///                 .storageType("S3")
 ///                 .build())
+///             .instanceId(exampleAwsConnectInstance.id())
+///             .resourceType("CHAT_TRANSCRIPTS")
 ///             .build());
 ///
 ///     }
@@ -844,16 +844,16 @@ import 'instance_storage_config_storage_config.dart';
 ///   example:
 ///     type: aws:connect:InstanceStorageConfig
 ///     properties:
-///       instanceId: ${exampleAwsConnectInstance.id}
-///       resourceType: CHAT_TRANSCRIPTS
 ///       storageConfig:
 ///         s3Config:
-///           bucketName: ${exampleAwsS3Bucket.id}
-///           bucketPrefix: example
 ///           encryptionConfig:
 ///             encryptionType: KMS
 ///             keyId: ${exampleAwsKmsKey.arn}
+///           bucketName: ${exampleAwsS3Bucket.id}
+///           bucketPrefix: example
 ///         storageType: S3
+///       instanceId: ${exampleAwsConnectInstance.id}
+///       resourceType: CHAT_TRANSCRIPTS
 /// ```
 ///
 ///
@@ -888,7 +888,7 @@ class InstanceStorageConfig extends pulumi.CustomResource {
           'aws:connect/instanceStorageConfig:InstanceStorageConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     associationId = registerOutput<String>('associationId');
     instanceId = registerOutput<String>('instanceId');
@@ -902,11 +902,12 @@ class InstanceStorageConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceStorageConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceStorageConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -920,6 +921,22 @@ class InstanceStorageConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    associationId = registerOutput<String>('associationId');
+    instanceId = registerOutput<String>('instanceId');
+    region = registerOutput<String>('region');
+    resourceType = registerOutput<String>('resourceType');
+    storageConfig = registerOutput<InstanceStorageConfigStorageConfig>('storageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceStorageConfigStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [InstanceStorageConfig] resource.
+  InstanceStorageConfig.reference(String urn)
+    : super(
+        'aws:connect/instanceStorageConfig:InstanceStorageConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     associationId = registerOutput<String>('associationId');
     instanceId = registerOutput<String>('instanceId');
     region = registerOutput<String>('region');

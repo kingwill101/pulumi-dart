@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_endpoint_args.dart';
+import 'vpc_endpoint_dns_entry.dart';
 import 'vpc_endpoint_dns_options.dart';
 import 'vpc_endpoint_state.dart';
+import 'vpc_endpoint_subnet_configuration.dart';
 
 /// Provides a VPC Endpoint resource.
 ///
@@ -542,9 +544,6 @@ import 'vpc_endpoint_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ec2 = new aws.ec2.VpcEndpoint("ec2", {
-///     vpcId: example.id,
-///     serviceName: "com.amazonaws.us-west-2.ec2",
-///     vpcEndpointType: "Interface",
 ///     subnetConfigurations: [
 ///         {
 ///             ipv4: "10.0.1.10",
@@ -555,6 +554,9 @@ import 'vpc_endpoint_state.dart';
 ///             subnetId: example2.id,
 ///         },
 ///     ],
+///     vpcId: example.id,
+///     serviceName: "com.amazonaws.us-west-2.ec2",
+///     vpcEndpointType: "Interface",
 ///     subnetIds: [
 ///         example1.id,
 ///         example2.id,
@@ -566,9 +568,6 @@ import 'vpc_endpoint_state.dart';
 /// import pulumi_aws as aws
 ///
 /// ec2 = aws.ec2.VpcEndpoint("ec2",
-///     vpc_id=example["id"],
-///     service_name="com.amazonaws.us-west-2.ec2",
-///     vpc_endpoint_type="Interface",
 ///     subnet_configurations=[
 ///         {
 ///             "ipv4": "10.0.1.10",
@@ -579,6 +578,9 @@ import 'vpc_endpoint_state.dart';
 ///             "subnet_id": example2["id"],
 ///         },
 ///     ],
+///     vpc_id=example["id"],
+///     service_name="com.amazonaws.us-west-2.ec2",
+///     vpc_endpoint_type="Interface",
 ///     subnet_ids=[
 ///         example1["id"],
 ///         example2["id"],
@@ -594,9 +596,6 @@ import 'vpc_endpoint_state.dart';
 /// {
 ///     var ec2 = new Aws.Ec2.VpcEndpoint("ec2", new()
 ///     {
-///         VpcId = example.Id,
-///         ServiceName = "com.amazonaws.us-west-2.ec2",
-///         VpcEndpointType = "Interface",
 ///         SubnetConfigurations = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.VpcEndpointSubnetConfigurationArgs
@@ -610,6 +609,9 @@ import 'vpc_endpoint_state.dart';
 ///                 SubnetId = example2.Id,
 ///             },
 ///         },
+///         VpcId = example.Id,
+///         ServiceName = "com.amazonaws.us-west-2.ec2",
+///         VpcEndpointType = "Interface",
 ///         SubnetIds = new[]
 ///         {
 ///             example1.Id,
@@ -630,9 +632,6 @@ import 'vpc_endpoint_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewVpcEndpoint(ctx, "ec2", &ec2.VpcEndpointArgs{
-/// 			VpcId:           pulumi.Any(example.Id),
-/// 			ServiceName:     pulumi.String("com.amazonaws.us-west-2.ec2"),
-/// 			VpcEndpointType: pulumi.String("Interface"),
 /// 			SubnetConfigurations: ec2.VpcEndpointSubnetConfigurationArray{
 /// 				&ec2.VpcEndpointSubnetConfigurationArgs{
 /// 					Ipv4:     pulumi.String("10.0.1.10"),
@@ -643,6 +642,9 @@ import 'vpc_endpoint_state.dart';
 /// 					SubnetId: pulumi.Any(example2.Id),
 /// 				},
 /// 			},
+/// 			VpcId:           pulumi.Any(example.Id),
+/// 			ServiceName:     pulumi.String("com.amazonaws.us-west-2.ec2"),
+/// 			VpcEndpointType: pulumi.String("Interface"),
 /// 			SubnetIds: pulumi.StringArray{
 /// 				example1.Id,
 /// 				example2.Id,
@@ -665,9 +667,6 @@ import 'vpc_endpoint_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpcendpoint" "ec2" {
-///   vpc_id            = example.id
-///   service_name      = "com.amazonaws.us-west-2.ec2"
-///   vpc_endpoint_type = "Interface"
 ///   subnet_configurations {
 ///     ipv4      = "10.0.1.10"
 ///     subnet_id = example1.id
@@ -676,7 +675,10 @@ import 'vpc_endpoint_state.dart';
 ///     ipv4      = "10.0.2.10"
 ///     subnet_id = example2.id
 ///   }
-///   subnet_ids = [example1.id, example2.id]
+///   vpc_id            = example.id
+///   service_name      = "com.amazonaws.us-west-2.ec2"
+///   vpc_endpoint_type = "Interface"
+///   subnet_ids        = [example1.id, example2.id]
 /// }
 /// ```
 /// ```java
@@ -702,9 +704,6 @@ import 'vpc_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var ec2 = new VpcEndpoint("ec2", VpcEndpointArgs.builder()
-///             .vpcId(example.id())
-///             .serviceName("com.amazonaws.us-west-2.ec2")
-///             .vpcEndpointType("Interface")
 ///             .subnetConfigurations(
 ///                 VpcEndpointSubnetConfigurationArgs.builder()
 ///                     .ipv4("10.0.1.10")
@@ -714,6 +713,9 @@ import 'vpc_endpoint_state.dart';
 ///                     .ipv4("10.0.2.10")
 ///                     .subnetId(example2.id())
 ///                     .build())
+///             .vpcId(example.id())
+///             .serviceName("com.amazonaws.us-west-2.ec2")
+///             .vpcEndpointType("Interface")
 ///             .subnetIds(
 ///                 example1.id(),
 ///                 example2.id())
@@ -727,14 +729,14 @@ import 'vpc_endpoint_state.dart';
 ///   ec2:
 ///     type: aws:ec2:VpcEndpoint
 ///     properties:
-///       vpcId: ${example.id}
-///       serviceName: com.amazonaws.us-west-2.ec2
-///       vpcEndpointType: Interface
 ///       subnetConfigurations:
 ///         - ipv4: 10.0.1.10
 ///           subnetId: ${example1.id}
 ///         - ipv4: 10.0.2.10
 ///           subnetId: ${example2.id}
+///       vpcId: ${example.id}
+///       serviceName: com.amazonaws.us-west-2.ec2
+///       vpcEndpointType: Interface
 ///       subnetIds:
 ///         - ${example1.id}
 ///         - ${example2.id}
@@ -1494,14 +1496,14 @@ import 'vpc_endpoint_state.dart';
 /// $ pulumi import aws:ec2/vpcEndpoint:VpcEndpoint example vpce-3ecf2a57
 /// ```
 class VpcEndpoint extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the VPC endpoint.
+  /// ARN of the VPC endpoint.
   late final pulumi.Output<String> arn;
   /// Accept the VPC endpoint (the VPC endpoint and service need to be in the same AWS account).
   late final pulumi.Output<bool?> autoAccept;
   /// The list of CIDR blocks for the exposed AWS service. Applicable for endpoints of type `Gateway`.
   late final pulumi.Output<List<String>> cidrBlocks;
   /// The DNS entries for the VPC Endpoint. Applicable for endpoints of type `Interface`. DNS blocks are documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> dnsEntries;
+  late final pulumi.Output<List<VpcEndpointDnsEntry>> dnsEntries;
   /// The DNS options for the endpoint. See dnsOptions below.
   late final pulumi.Output<VpcEndpointDnsOptions> dnsOptions;
   /// The IP address type for the endpoint. Valid values are `ipv4`, `dualstack`, and `ipv6`.
@@ -1537,7 +1539,7 @@ class VpcEndpoint extends pulumi.CustomResource {
   /// The state of the VPC endpoint.
   late final pulumi.Output<String> state;
   /// Subnet configuration for the endpoint, used to select specific IPv4 and/or IPv6 addresses to the endpoint. See subnetConfiguration below.
-  late final pulumi.Output<List<Map<String, dynamic>>> subnetConfigurations;
+  late final pulumi.Output<List<VpcEndpointSubnetConfiguration>> subnetConfigurations;
   /// The ID of one or more subnets in which to create a network interface for the endpoint. Applicable for endpoints of type `GatewayLoadBalancer` and `Interface`. Interface type endpoints cannot function without being assigned to a subnet.
   late final pulumi.Output<List<String>> subnetIds;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -1561,15 +1563,15 @@ class VpcEndpoint extends pulumi.CustomResource {
           'aws:ec2/vpcEndpoint:VpcEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoAccept = registerOutput<bool?>('autoAccept');
-    cidrBlocks = registerOutput<List<String>>('cidrBlocks');
-    dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    cidrBlocks = registerOutput<List<String>>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dnsEntries = registerOutput<List<VpcEndpointDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcEndpointDnsEntry>(guardedValue, (value) => VpcEndpointDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
     dnsOptions = registerOutput<VpcEndpointDnsOptions>('dnsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEndpointDnsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddressType = registerOutput<String>('ipAddressType');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerId = registerOutput<String>('ownerId');
     policy = registerOutput<String>('policy');
     prefixListId = registerOutput<String>('prefixListId');
@@ -1577,16 +1579,16 @@ class VpcEndpoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     requesterManaged = registerOutput<bool>('requesterManaged');
     resourceConfigurationArn = registerOutput<String?>('resourceConfigurationArn');
-    routeTableIds = registerOutput<List<String>>('routeTableIds');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    routeTableIds = registerOutput<List<String>>('routeTableIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serviceName = registerOutput<String?>('serviceName');
     serviceNetworkArn = registerOutput<String?>('serviceNetworkArn');
     serviceRegion = registerOutput<String>('serviceRegion');
     state = registerOutput<String>('state');
-    subnetConfigurations = registerOutput<List<Map<String, dynamic>>>('subnetConfigurations');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetConfigurations = registerOutput<List<VpcEndpointSubnetConfiguration>>('subnetConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcEndpointSubnetConfiguration>(guardedValue, (value) => VpcEndpointSubnetConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcEndpointType = registerOutput<String?>('vpcEndpointType');
     vpcId = registerOutput<String>('vpcId');
   }
@@ -1596,11 +1598,12 @@ class VpcEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1616,11 +1619,11 @@ class VpcEndpoint extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     autoAccept = registerOutput<bool?>('autoAccept');
-    cidrBlocks = registerOutput<List<String>>('cidrBlocks');
-    dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    cidrBlocks = registerOutput<List<String>>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dnsEntries = registerOutput<List<VpcEndpointDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcEndpointDnsEntry>(guardedValue, (value) => VpcEndpointDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
     dnsOptions = registerOutput<VpcEndpointDnsOptions>('dnsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEndpointDnsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddressType = registerOutput<String>('ipAddressType');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerId = registerOutput<String>('ownerId');
     policy = registerOutput<String>('policy');
     prefixListId = registerOutput<String>('prefixListId');
@@ -1628,16 +1631,53 @@ class VpcEndpoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     requesterManaged = registerOutput<bool>('requesterManaged');
     resourceConfigurationArn = registerOutput<String?>('resourceConfigurationArn');
-    routeTableIds = registerOutput<List<String>>('routeTableIds');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    routeTableIds = registerOutput<List<String>>('routeTableIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serviceName = registerOutput<String?>('serviceName');
     serviceNetworkArn = registerOutput<String?>('serviceNetworkArn');
     serviceRegion = registerOutput<String>('serviceRegion');
     this.state = registerOutput<String>('state');
-    subnetConfigurations = registerOutput<List<Map<String, dynamic>>>('subnetConfigurations');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetConfigurations = registerOutput<List<VpcEndpointSubnetConfiguration>>('subnetConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcEndpointSubnetConfiguration>(guardedValue, (value) => VpcEndpointSubnetConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcEndpointType = registerOutput<String?>('vpcEndpointType');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [VpcEndpoint] resource.
+  VpcEndpoint.reference(String urn)
+    : super(
+        'aws:ec2/vpcEndpoint:VpcEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoAccept = registerOutput<bool?>('autoAccept');
+    cidrBlocks = registerOutput<List<String>>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dnsEntries = registerOutput<List<VpcEndpointDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcEndpointDnsEntry>(guardedValue, (value) => VpcEndpointDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsOptions = registerOutput<VpcEndpointDnsOptions>('dnsOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcEndpointDnsOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipAddressType = registerOutput<String>('ipAddressType');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ownerId = registerOutput<String>('ownerId');
+    policy = registerOutput<String>('policy');
+    prefixListId = registerOutput<String>('prefixListId');
+    privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
+    region = registerOutput<String>('region');
+    requesterManaged = registerOutput<bool>('requesterManaged');
+    resourceConfigurationArn = registerOutput<String?>('resourceConfigurationArn');
+    routeTableIds = registerOutput<List<String>>('routeTableIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serviceName = registerOutput<String?>('serviceName');
+    serviceNetworkArn = registerOutput<String?>('serviceNetworkArn');
+    serviceRegion = registerOutput<String>('serviceRegion');
+    state = registerOutput<String>('state');
+    subnetConfigurations = registerOutput<List<VpcEndpointSubnetConfiguration>>('subnetConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcEndpointSubnetConfiguration>(guardedValue, (value) => VpcEndpointSubnetConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcEndpointType = registerOutput<String?>('vpcEndpointType');
     vpcId = registerOutput<String>('vpcId');
   }

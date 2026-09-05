@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SnapshotImportClientData {
   /// A user-defined comment about the disk upload.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// The time that the disk upload ends.
-  final pulumi.Input<String>? uploadEnd;
+  final pulumi.Input<String?>? uploadEnd;
   /// The size of the uploaded disk image, in GiB.
-  final pulumi.Input<double>? uploadSize;
+  final pulumi.Input<double?>? uploadSize;
   /// The time that the disk upload starts.
-  final pulumi.Input<String>? uploadStart;
+  final pulumi.Input<String?>? uploadStart;
 
   /// Creates a new [SnapshotImportClientData].
   /// [comment] A user-defined comment about the disk upload.
@@ -37,7 +37,7 @@ class SnapshotImportClientData {
     return SnapshotImportClientData(
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uploadEnd: (() { final guardedValue = map['uploadEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      uploadSize: (() { final guardedValue = map['uploadSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      uploadSize: (() { final guardedValue = map['uploadSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       uploadStart: (() { final guardedValue = map['uploadStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

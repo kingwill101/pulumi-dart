@@ -20,7 +20,7 @@ class GetV2PolicyAvailabilitySlo {
 
   factory GetV2PolicyAvailabilitySlo.fromMap(Map<String, dynamic> map) {
     return GetV2PolicyAvailabilitySlo(
-      target: pulumi.Input.fromValue(map['target'] as double),
+      target: pulumi.Input.fromValue((map['target'] as num).toDouble()),
     );
   }
 }

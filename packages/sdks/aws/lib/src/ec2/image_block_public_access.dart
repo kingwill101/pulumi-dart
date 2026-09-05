@@ -140,7 +140,7 @@ class ImageBlockPublicAccess extends pulumi.CustomResource {
           'aws:ec2/imageBlockPublicAccess:ImageBlockPublicAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
@@ -151,11 +151,12 @@ class ImageBlockPublicAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ImageBlockPublicAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ImageBlockPublicAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -171,5 +172,18 @@ class ImageBlockPublicAccess extends pulumi.CustomResource {
         ) {
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [ImageBlockPublicAccess] resource.
+  ImageBlockPublicAccess.reference(String urn)
+    : super(
+        'aws:ec2/imageBlockPublicAccess:ImageBlockPublicAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
   }
 }

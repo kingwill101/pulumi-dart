@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_window_task_args.dart';
 import 'maintenance_window_task_state.dart';
+import 'maintenance_window_task_target.dart';
 import 'maintenance_window_task_task_invocation_parameters.dart';
 
 /// Provides an SSM Maintenance Window Task resource
@@ -15,25 +16,25 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ssm.MaintenanceWindowTask("example", {
+///     taskInvocationParameters: {
+///         automationParameters: {
+///             parameters: [{
+///                 name: "InstanceId",
+///                 values: [exampleAwsInstance.id],
+///             }],
+///             documentVersion: "$LATEST",
+///         },
+///     },
+///     targets: [{
+///         key: "InstanceIds",
+///         values: [exampleAwsInstance.id],
+///     }],
 ///     maxConcurrency: "2",
 ///     maxErrors: "1",
 ///     priority: 1,
 ///     taskArn: "AWS-RestartEC2Instance",
 ///     taskType: "AUTOMATION",
 ///     windowId: exampleAwsSsmMaintenanceWindow.id,
-///     targets: [{
-///         key: "InstanceIds",
-///         values: [exampleAwsInstance.id],
-///     }],
-///     taskInvocationParameters: {
-///         automationParameters: {
-///             documentVersion: "$LATEST",
-///             parameters: [{
-///                 name: "InstanceId",
-///                 values: [exampleAwsInstance.id],
-///             }],
-///         },
-///     },
 /// });
 /// ```
 /// ```python
@@ -41,25 +42,25 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssm.MaintenanceWindowTask("example",
+///     task_invocation_parameters={
+///         "automation_parameters": {
+///             "parameters": [{
+///                 "name": "InstanceId",
+///                 "values": [example_aws_instance["id"]],
+///             }],
+///             "document_version": "$LATEST",
+///         },
+///     },
+///     targets=[{
+///         "key": "InstanceIds",
+///         "values": [example_aws_instance["id"]],
+///     }],
 ///     max_concurrency="2",
 ///     max_errors="1",
 ///     priority=1,
 ///     task_arn="AWS-RestartEC2Instance",
 ///     task_type="AUTOMATION",
-///     window_id=example_aws_ssm_maintenance_window["id"],
-///     targets=[{
-///         "key": "InstanceIds",
-///         "values": [example_aws_instance["id"]],
-///     }],
-///     task_invocation_parameters={
-///         "automation_parameters": {
-///             "document_version": "$LATEST",
-///             "parameters": [{
-///                 "name": "InstanceId",
-///                 "values": [example_aws_instance["id"]],
-///             }],
-///         },
-///     })
+///     window_id=example_aws_ssm_maintenance_window["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -71,28 +72,10 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// {
 ///     var example = new Aws.Ssm.MaintenanceWindowTask("example", new()
 ///     {
-///         MaxConcurrency = "2",
-///         MaxErrors = "1",
-///         Priority = 1,
-///         TaskArn = "AWS-RestartEC2Instance",
-///         TaskType = "AUTOMATION",
-///         WindowId = exampleAwsSsmMaintenanceWindow.Id,
-///         Targets = new[]
-///         {
-///             new Aws.Ssm.Inputs.MaintenanceWindowTaskTargetArgs
-///             {
-///                 Key = "InstanceIds",
-///                 Values = new[]
-///                 {
-///                     exampleAwsInstance.Id,
-///                 },
-///             },
-///         },
 ///         TaskInvocationParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersArgs
 ///         {
 ///             AutomationParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs
 ///             {
-///                 DocumentVersion = "$LATEST",
 ///                 Parameters = new[]
 ///                 {
 ///                     new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterArgs
@@ -104,8 +87,26 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 DocumentVersion = "$LATEST",
 ///             },
 ///         },
+///         Targets = new[]
+///         {
+///             new Aws.Ssm.Inputs.MaintenanceWindowTaskTargetArgs
+///             {
+///                 Key = "InstanceIds",
+///                 Values = new[]
+///                 {
+///                     exampleAwsInstance.Id,
+///                 },
+///             },
+///         },
+///         MaxConcurrency = "2",
+///         MaxErrors = "1",
+///         Priority = 1,
+///         TaskArn = "AWS-RestartEC2Instance",
+///         TaskType = "AUTOMATION",
+///         WindowId = exampleAwsSsmMaintenanceWindow.Id,
 ///     });
 ///
 /// });
@@ -121,23 +122,8 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
-/// 			MaxConcurrency: pulumi.String("2"),
-/// 			MaxErrors:      pulumi.String("1"),
-/// 			Priority:       pulumi.Int(1),
-/// 			TaskArn:        pulumi.String("AWS-RestartEC2Instance"),
-/// 			TaskType:       pulumi.String("AUTOMATION"),
-/// 			WindowId:       pulumi.Any(exampleAwsSsmMaintenanceWindow.Id),
-/// 			Targets: ssm.MaintenanceWindowTaskTargetArray{
-/// 				&ssm.MaintenanceWindowTaskTargetArgs{
-/// 					Key: pulumi.String("InstanceIds"),
-/// 					Values: pulumi.StringArray{
-/// 						exampleAwsInstance.Id,
-/// 					},
-/// 				},
-/// 			},
 /// 			TaskInvocationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersArgs{
 /// 				AutomationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs{
-/// 					DocumentVersion: pulumi.String("$LATEST"),
 /// 					Parameters: ssm.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterArray{
 /// 						&ssm.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterArgs{
 /// 							Name: pulumi.String("InstanceId"),
@@ -146,8 +132,23 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					DocumentVersion: pulumi.String("$LATEST"),
 /// 				},
 /// 			},
+/// 			Targets: ssm.MaintenanceWindowTaskTargetArray{
+/// 				&ssm.MaintenanceWindowTaskTargetArgs{
+/// 					Key: pulumi.String("InstanceIds"),
+/// 					Values: pulumi.StringArray{
+/// 						exampleAwsInstance.Id,
+/// 					},
+/// 				},
+/// 			},
+/// 			MaxConcurrency: pulumi.String("2"),
+/// 			MaxErrors:      pulumi.String("1"),
+/// 			Priority:       pulumi.Int(1),
+/// 			TaskArn:        pulumi.String("AWS-RestartEC2Instance"),
+/// 			TaskType:       pulumi.String("AUTOMATION"),
+/// 			WindowId:       pulumi.Any(exampleAwsSsmMaintenanceWindow.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -166,25 +167,25 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// }
 ///
 /// resource "aws_ssm_maintenancewindowtask" "example" {
+///   task_invocation_parameters = {
+///     automation_parameters = {
+///       parameters = [{
+///         "name"   = "InstanceId"
+///         "values" = [exampleAwsInstance.id]
+///       }]
+///       document_version = "$LATEST"
+///     }
+///   }
+///   targets {
+///     key    = "InstanceIds"
+///     values = [exampleAwsInstance.id]
+///   }
 ///   max_concurrency = 2
 ///   max_errors      = 1
 ///   priority        = 1
 ///   task_arn        = "AWS-RestartEC2Instance"
 ///   task_type       = "AUTOMATION"
 ///   window_id       = exampleAwsSsmMaintenanceWindow.id
-///   targets {
-///     key    = "InstanceIds"
-///     values = [exampleAwsInstance.id]
-///   }
-///   task_invocation_parameters = {
-///     automation_parameters = {
-///       document_version = "$LATEST"
-///       parameters = [{
-///         "name"   = "InstanceId"
-///         "values" = [exampleAwsInstance.id]
-///       }]
-///     }
-///   }
 /// }
 /// ```
 /// ```java
@@ -195,10 +196,10 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.MaintenanceWindowTask;
 /// import com.pulumi.aws.ssm.MaintenanceWindowTaskArgs;
-/// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTargetArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterArgs;
+/// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTargetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -213,25 +214,25 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MaintenanceWindowTask("example", MaintenanceWindowTaskArgs.builder()
+///             .taskInvocationParameters(MaintenanceWindowTaskTaskInvocationParametersArgs.builder()
+///                 .automationParameters(MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs.builder()
+///                     .parameters(MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterArgs.builder()
+///                         .name("InstanceId")
+///                         .values(exampleAwsInstance.id())
+///                         .build())
+///                     .documentVersion("$LATEST")
+///                     .build())
+///                 .build())
+///             .targets(MaintenanceWindowTaskTargetArgs.builder()
+///                 .key("InstanceIds")
+///                 .values(exampleAwsInstance.id())
+///                 .build())
 ///             .maxConcurrency("2")
 ///             .maxErrors("1")
 ///             .priority(1)
 ///             .taskArn("AWS-RestartEC2Instance")
 ///             .taskType("AUTOMATION")
 ///             .windowId(exampleAwsSsmMaintenanceWindow.id())
-///             .targets(MaintenanceWindowTaskTargetArgs.builder()
-///                 .key("InstanceIds")
-///                 .values(exampleAwsInstance.id())
-///                 .build())
-///             .taskInvocationParameters(MaintenanceWindowTaskTaskInvocationParametersArgs.builder()
-///                 .automationParameters(MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs.builder()
-///                     .documentVersion("$LATEST")
-///                     .parameters(MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterArgs.builder()
-///                         .name("InstanceId")
-///                         .values(exampleAwsInstance.id())
-///                         .build())
-///                     .build())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -242,23 +243,23 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///   example:
 ///     type: aws:ssm:MaintenanceWindowTask
 ///     properties:
+///       taskInvocationParameters:
+///         automationParameters:
+///           parameters:
+///             - name: InstanceId
+///               values:
+///                 - ${exampleAwsInstance.id}
+///           documentVersion: $LATEST
+///       targets:
+///         - key: InstanceIds
+///           values:
+///             - ${exampleAwsInstance.id}
 ///       maxConcurrency: 2
 ///       maxErrors: 1
 ///       priority: 1
 ///       taskArn: AWS-RestartEC2Instance
 ///       taskType: AUTOMATION
 ///       windowId: ${exampleAwsSsmMaintenanceWindow.id}
-///       targets:
-///         - key: InstanceIds
-///           values:
-///             - ${exampleAwsInstance.id}
-///       taskInvocationParameters:
-///         automationParameters:
-///           documentVersion: $LATEST
-///           parameters:
-///             - name: InstanceId
-///               values:
-///                 - ${exampleAwsInstance.id}
 /// ```
 ///
 ///
@@ -271,16 +272,6 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const example = new aws.ssm.MaintenanceWindowTask("example", {
-///     maxConcurrency: "2",
-///     maxErrors: "1",
-///     priority: 1,
-///     taskArn: exampleAwsLambdaFunction.arn,
-///     taskType: "LAMBDA",
-///     windowId: exampleAwsSsmMaintenanceWindow.id,
-///     targets: [{
-///         key: "InstanceIds",
-///         values: [exampleAwsInstance.id],
-///     }],
 ///     taskInvocationParameters: {
 ///         lambdaParameters: {
 ///             clientContext: std.base64encode({
@@ -289,6 +280,16 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///             payload: "{\"key1\":\"value1\"}",
 ///         },
 ///     },
+///     targets: [{
+///         key: "InstanceIds",
+///         values: [exampleAwsInstance.id],
+///     }],
+///     maxConcurrency: "2",
+///     maxErrors: "1",
+///     priority: 1,
+///     taskArn: exampleAwsLambdaFunction.arn,
+///     taskType: "LAMBDA",
+///     windowId: exampleAwsSsmMaintenanceWindow.id,
 /// });
 /// ```
 /// ```python
@@ -297,22 +298,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import pulumi_std as std
 ///
 /// example = aws.ssm.MaintenanceWindowTask("example",
-///     max_concurrency="2",
-///     max_errors="1",
-///     priority=1,
-///     task_arn=example_aws_lambda_function["arn"],
-///     task_type="LAMBDA",
-///     window_id=example_aws_ssm_maintenance_window["id"],
-///     targets=[{
-///         "key": "InstanceIds",
-///         "values": [example_aws_instance["id"]],
-///     }],
 ///     task_invocation_parameters={
 ///         "lambda_parameters": {
 ///             "client_context": std.base64encode(input="{\"key1\":\"value1\"}").result,
 ///             "payload": "{\"key1\":\"value1\"}",
 ///         },
-///     })
+///     },
+///     targets=[{
+///         "key": "InstanceIds",
+///         "values": [example_aws_instance["id"]],
+///     }],
+///     max_concurrency="2",
+///     max_errors="1",
+///     priority=1,
+///     task_arn=example_aws_lambda_function["arn"],
+///     task_type="LAMBDA",
+///     window_id=example_aws_ssm_maintenance_window["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -325,23 +326,6 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// {
 ///     var example = new Aws.Ssm.MaintenanceWindowTask("example", new()
 ///     {
-///         MaxConcurrency = "2",
-///         MaxErrors = "1",
-///         Priority = 1,
-///         TaskArn = exampleAwsLambdaFunction.Arn,
-///         TaskType = "LAMBDA",
-///         WindowId = exampleAwsSsmMaintenanceWindow.Id,
-///         Targets = new[]
-///         {
-///             new Aws.Ssm.Inputs.MaintenanceWindowTaskTargetArgs
-///             {
-///                 Key = "InstanceIds",
-///                 Values = new[]
-///                 {
-///                     exampleAwsInstance.Id,
-///                 },
-///             },
-///         },
 ///         TaskInvocationParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersArgs
 ///         {
 ///             LambdaParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersLambdaParametersArgs
@@ -353,6 +337,23 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                 Payload = "{\"key1\":\"value1\"}",
 ///             },
 ///         },
+///         Targets = new[]
+///         {
+///             new Aws.Ssm.Inputs.MaintenanceWindowTaskTargetArgs
+///             {
+///                 Key = "InstanceIds",
+///                 Values = new[]
+///                 {
+///                     exampleAwsInstance.Id,
+///                 },
+///             },
+///         },
+///         MaxConcurrency = "2",
+///         MaxErrors = "1",
+///         Priority = 1,
+///         TaskArn = exampleAwsLambdaFunction.Arn,
+///         TaskType = "LAMBDA",
+///         WindowId = exampleAwsSsmMaintenanceWindow.Id,
 ///     });
 ///
 /// });
@@ -375,12 +376,12 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
-/// 			MaxConcurrency: pulumi.String("2"),
-/// 			MaxErrors:      pulumi.String("1"),
-/// 			Priority:       pulumi.Int(1),
-/// 			TaskArn:        pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 			TaskType:       pulumi.String("LAMBDA"),
-/// 			WindowId:       pulumi.Any(exampleAwsSsmMaintenanceWindow.Id),
+/// 			TaskInvocationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersArgs{
+/// 				LambdaParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersLambdaParametersArgs{
+/// 					ClientContext: pulumi.String(invokeBase64encode.Result),
+/// 					Payload:       pulumi.String("{\"key1\":\"value1\"}"),
+/// 				},
+/// 			},
 /// 			Targets: ssm.MaintenanceWindowTaskTargetArray{
 /// 				&ssm.MaintenanceWindowTaskTargetArgs{
 /// 					Key: pulumi.String("InstanceIds"),
@@ -389,12 +390,12 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			TaskInvocationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersArgs{
-/// 				LambdaParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersLambdaParametersArgs{
-/// 					ClientContext: pulumi.String(invokeBase64encode.Result),
-/// 					Payload:       pulumi.String("{\"key1\":\"value1\"}"),
-/// 				},
-/// 			},
+/// 			MaxConcurrency: pulumi.String("2"),
+/// 			MaxErrors:      pulumi.String("1"),
+/// 			Priority:       pulumi.Int(1),
+/// 			TaskArn:        pulumi.Any(exampleAwsLambdaFunction.Arn),
+/// 			TaskType:       pulumi.String("LAMBDA"),
+/// 			WindowId:       pulumi.Any(exampleAwsSsmMaintenanceWindow.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -416,22 +417,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// }
 ///
 /// resource "aws_ssm_maintenancewindowtask" "example" {
-///   max_concurrency = 2
-///   max_errors      = 1
-///   priority        = 1
-///   task_arn        = exampleAwsLambdaFunction.arn
-///   task_type       = "LAMBDA"
-///   window_id       = exampleAwsSsmMaintenanceWindow.id
-///   targets {
-///     key    = "InstanceIds"
-///     values = [exampleAwsInstance.id]
-///   }
 ///   task_invocation_parameters = {
 ///     lambda_parameters = {
 ///       client_context = base64encode("{\"key1\":\"value1\"}")
 ///       payload        = "{\"key1\":\"value1\"}"
 ///     }
 ///   }
+///   targets {
+///     key    = "InstanceIds"
+///     values = [exampleAwsInstance.id]
+///   }
+///   max_concurrency = 2
+///   max_errors      = 1
+///   priority        = 1
+///   task_arn        = exampleAwsLambdaFunction.arn
+///   task_type       = "LAMBDA"
+///   window_id       = exampleAwsSsmMaintenanceWindow.id
 /// }
 /// ```
 /// ```java
@@ -442,9 +443,9 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.MaintenanceWindowTask;
 /// import com.pulumi.aws.ssm.MaintenanceWindowTaskArgs;
-/// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTargetArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersLambdaParametersArgs;
+/// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTargetArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
 /// import java.util.ArrayList;
@@ -461,16 +462,6 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MaintenanceWindowTask("example", MaintenanceWindowTaskArgs.builder()
-///             .maxConcurrency("2")
-///             .maxErrors("1")
-///             .priority(1)
-///             .taskArn(exampleAwsLambdaFunction.arn())
-///             .taskType("LAMBDA")
-///             .windowId(exampleAwsSsmMaintenanceWindow.id())
-///             .targets(MaintenanceWindowTaskTargetArgs.builder()
-///                 .key("InstanceIds")
-///                 .values(exampleAwsInstance.id())
-///                 .build())
 ///             .taskInvocationParameters(MaintenanceWindowTaskTaskInvocationParametersArgs.builder()
 ///                 .lambdaParameters(MaintenanceWindowTaskTaskInvocationParametersLambdaParametersArgs.builder()
 ///                     .clientContext(StdFunctions.base64encode(Base64encodeArgs.builder()
@@ -479,6 +470,16 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                     .payload("{\"key1\":\"value1\"}")
 ///                     .build())
 ///                 .build())
+///             .targets(MaintenanceWindowTaskTargetArgs.builder()
+///                 .key("InstanceIds")
+///                 .values(exampleAwsInstance.id())
+///                 .build())
+///             .maxConcurrency("2")
+///             .maxErrors("1")
+///             .priority(1)
+///             .taskArn(exampleAwsLambdaFunction.arn())
+///             .taskType("LAMBDA")
+///             .windowId(exampleAwsSsmMaintenanceWindow.id())
 ///             .build());
 ///
 ///     }
@@ -489,16 +490,6 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///   example:
 ///     type: aws:ssm:MaintenanceWindowTask
 ///     properties:
-///       maxConcurrency: 2
-///       maxErrors: 1
-///       priority: 1
-///       taskArn: ${exampleAwsLambdaFunction.arn}
-///       taskType: LAMBDA
-///       windowId: ${exampleAwsSsmMaintenanceWindow.id}
-///       targets:
-///         - key: InstanceIds
-///           values:
-///             - ${exampleAwsInstance.id}
 ///       taskInvocationParameters:
 ///         lambdaParameters:
 ///           clientContext:
@@ -508,6 +499,16 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                 input: '{"key1":"value1"}'
 ///               return: result
 ///           payload: '{"key1":"value1"}'
+///       targets:
+///         - key: InstanceIds
+///           values:
+///             - ${exampleAwsInstance.id}
+///       maxConcurrency: 2
+///       maxErrors: 1
+///       priority: 1
+///       taskArn: ${exampleAwsLambdaFunction.arn}
+///       taskType: LAMBDA
+///       windowId: ${exampleAwsSsmMaintenanceWindow.id}
 /// ```
 ///
 ///
@@ -519,22 +520,8 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ssm.MaintenanceWindowTask("example", {
-///     maxConcurrency: "2",
-///     maxErrors: "1",
-///     priority: 1,
-///     taskArn: "AWS-RunShellScript",
-///     taskType: "RUN_COMMAND",
-///     windowId: exampleAwsSsmMaintenanceWindow.id,
-///     targets: [{
-///         key: "InstanceIds",
-///         values: [exampleAwsInstance.id],
-///     }],
 ///     taskInvocationParameters: {
 ///         runCommandParameters: {
-///             outputS3Bucket: exampleAwsS3Bucket.id,
-///             outputS3KeyPrefix: "output",
-///             serviceRoleArn: exampleAwsIamRole.arn,
-///             timeoutSeconds: 600,
 ///             notificationConfig: {
 ///                 notificationArn: exampleAwsSnsTopic.arn,
 ///                 notificationEvents: ["All"],
@@ -544,8 +531,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                 name: "commands",
 ///                 values: ["date"],
 ///             }],
+///             outputS3Bucket: exampleAwsS3Bucket.id,
+///             outputS3KeyPrefix: "output",
+///             serviceRoleArn: exampleAwsIamRole.arn,
+///             timeoutSeconds: 600,
 ///         },
 ///     },
+///     targets: [{
+///         key: "InstanceIds",
+///         values: [exampleAwsInstance.id],
+///     }],
+///     maxConcurrency: "2",
+///     maxErrors: "1",
+///     priority: 1,
+///     taskArn: "AWS-RunShellScript",
+///     taskType: "RUN_COMMAND",
+///     windowId: exampleAwsSsmMaintenanceWindow.id,
 /// });
 /// ```
 /// ```python
@@ -553,22 +554,8 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssm.MaintenanceWindowTask("example",
-///     max_concurrency="2",
-///     max_errors="1",
-///     priority=1,
-///     task_arn="AWS-RunShellScript",
-///     task_type="RUN_COMMAND",
-///     window_id=example_aws_ssm_maintenance_window["id"],
-///     targets=[{
-///         "key": "InstanceIds",
-///         "values": [example_aws_instance["id"]],
-///     }],
 ///     task_invocation_parameters={
 ///         "run_command_parameters": {
-///             "output_s3_bucket": example_aws_s3_bucket["id"],
-///             "output_s3_key_prefix": "output",
-///             "service_role_arn": example_aws_iam_role["arn"],
-///             "timeout_seconds": 600,
 ///             "notification_config": {
 ///                 "notification_arn": example_aws_sns_topic["arn"],
 ///                 "notification_events": ["All"],
@@ -578,8 +565,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                 "name": "commands",
 ///                 "values": ["date"],
 ///             }],
+///             "output_s3_bucket": example_aws_s3_bucket["id"],
+///             "output_s3_key_prefix": "output",
+///             "service_role_arn": example_aws_iam_role["arn"],
+///             "timeout_seconds": 600,
 ///         },
-///     })
+///     },
+///     targets=[{
+///         "key": "InstanceIds",
+///         "values": [example_aws_instance["id"]],
+///     }],
+///     max_concurrency="2",
+///     max_errors="1",
+///     priority=1,
+///     task_arn="AWS-RunShellScript",
+///     task_type="RUN_COMMAND",
+///     window_id=example_aws_ssm_maintenance_window["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -591,31 +592,10 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// {
 ///     var example = new Aws.Ssm.MaintenanceWindowTask("example", new()
 ///     {
-///         MaxConcurrency = "2",
-///         MaxErrors = "1",
-///         Priority = 1,
-///         TaskArn = "AWS-RunShellScript",
-///         TaskType = "RUN_COMMAND",
-///         WindowId = exampleAwsSsmMaintenanceWindow.Id,
-///         Targets = new[]
-///         {
-///             new Aws.Ssm.Inputs.MaintenanceWindowTaskTargetArgs
-///             {
-///                 Key = "InstanceIds",
-///                 Values = new[]
-///                 {
-///                     exampleAwsInstance.Id,
-///                 },
-///             },
-///         },
 ///         TaskInvocationParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersArgs
 ///         {
 ///             RunCommandParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs
 ///             {
-///                 OutputS3Bucket = exampleAwsS3Bucket.Id,
-///                 OutputS3KeyPrefix = "output",
-///                 ServiceRoleArn = exampleAwsIamRole.Arn,
-///                 TimeoutSeconds = 600,
 ///                 NotificationConfig = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigArgs
 ///                 {
 ///                     NotificationArn = exampleAwsSnsTopic.Arn,
@@ -636,8 +616,29 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 OutputS3Bucket = exampleAwsS3Bucket.Id,
+///                 OutputS3KeyPrefix = "output",
+///                 ServiceRoleArn = exampleAwsIamRole.Arn,
+///                 TimeoutSeconds = 600,
 ///             },
 ///         },
+///         Targets = new[]
+///         {
+///             new Aws.Ssm.Inputs.MaintenanceWindowTaskTargetArgs
+///             {
+///                 Key = "InstanceIds",
+///                 Values = new[]
+///                 {
+///                     exampleAwsInstance.Id,
+///                 },
+///             },
+///         },
+///         MaxConcurrency = "2",
+///         MaxErrors = "1",
+///         Priority = 1,
+///         TaskArn = "AWS-RunShellScript",
+///         TaskType = "RUN_COMMAND",
+///         WindowId = exampleAwsSsmMaintenanceWindow.Id,
 ///     });
 ///
 /// });
@@ -653,26 +654,8 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
-/// 			MaxConcurrency: pulumi.String("2"),
-/// 			MaxErrors:      pulumi.String("1"),
-/// 			Priority:       pulumi.Int(1),
-/// 			TaskArn:        pulumi.String("AWS-RunShellScript"),
-/// 			TaskType:       pulumi.String("RUN_COMMAND"),
-/// 			WindowId:       pulumi.Any(exampleAwsSsmMaintenanceWindow.Id),
-/// 			Targets: ssm.MaintenanceWindowTaskTargetArray{
-/// 				&ssm.MaintenanceWindowTaskTargetArgs{
-/// 					Key: pulumi.String("InstanceIds"),
-/// 					Values: pulumi.StringArray{
-/// 						exampleAwsInstance.Id,
-/// 					},
-/// 				},
-/// 			},
 /// 			TaskInvocationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersArgs{
 /// 				RunCommandParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs{
-/// 					OutputS3Bucket:    pulumi.Any(exampleAwsS3Bucket.Id),
-/// 					OutputS3KeyPrefix: pulumi.String("output"),
-/// 					ServiceRoleArn:    pulumi.Any(exampleAwsIamRole.Arn),
-/// 					TimeoutSeconds:    pulumi.Int(600),
 /// 					NotificationConfig: &ssm.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigArgs{
 /// 						NotificationArn: pulumi.Any(exampleAwsSnsTopic.Arn),
 /// 						NotificationEvents: pulumi.StringArray{
@@ -688,8 +671,26 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					OutputS3Bucket:    pulumi.Any(exampleAwsS3Bucket.Id),
+/// 					OutputS3KeyPrefix: pulumi.String("output"),
+/// 					ServiceRoleArn:    pulumi.Any(exampleAwsIamRole.Arn),
+/// 					TimeoutSeconds:    pulumi.Int(600),
 /// 				},
 /// 			},
+/// 			Targets: ssm.MaintenanceWindowTaskTargetArray{
+/// 				&ssm.MaintenanceWindowTaskTargetArgs{
+/// 					Key: pulumi.String("InstanceIds"),
+/// 					Values: pulumi.StringArray{
+/// 						exampleAwsInstance.Id,
+/// 					},
+/// 				},
+/// 			},
+/// 			MaxConcurrency: pulumi.String("2"),
+/// 			MaxErrors:      pulumi.String("1"),
+/// 			Priority:       pulumi.Int(1),
+/// 			TaskArn:        pulumi.String("AWS-RunShellScript"),
+/// 			TaskType:       pulumi.String("RUN_COMMAND"),
+/// 			WindowId:       pulumi.Any(exampleAwsSsmMaintenanceWindow.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -708,22 +709,8 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// }
 ///
 /// resource "aws_ssm_maintenancewindowtask" "example" {
-///   max_concurrency = 2
-///   max_errors      = 1
-///   priority        = 1
-///   task_arn        = "AWS-RunShellScript"
-///   task_type       = "RUN_COMMAND"
-///   window_id       = exampleAwsSsmMaintenanceWindow.id
-///   targets {
-///     key    = "InstanceIds"
-///     values = [exampleAwsInstance.id]
-///   }
 ///   task_invocation_parameters = {
 ///     run_command_parameters = {
-///       output_s3_bucket     = exampleAwsS3Bucket.id
-///       output_s3_key_prefix = "output"
-///       service_role_arn     = exampleAwsIamRole.arn
-///       timeout_seconds      = 600
 ///       notification_config = {
 ///         notification_arn    = exampleAwsSnsTopic.arn
 ///         notification_events = ["All"]
@@ -733,8 +720,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///         "name"   = "commands"
 ///         "values" = ["date"]
 ///       }]
+///       output_s3_bucket     = exampleAwsS3Bucket.id
+///       output_s3_key_prefix = "output"
+///       service_role_arn     = exampleAwsIamRole.arn
+///       timeout_seconds      = 600
 ///     }
 ///   }
+///   targets {
+///     key    = "InstanceIds"
+///     values = [exampleAwsInstance.id]
+///   }
+///   max_concurrency = 2
+///   max_errors      = 1
+///   priority        = 1
+///   task_arn        = "AWS-RunShellScript"
+///   task_type       = "RUN_COMMAND"
+///   window_id       = exampleAwsSsmMaintenanceWindow.id
 /// }
 /// ```
 /// ```java
@@ -745,11 +746,11 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.MaintenanceWindowTask;
 /// import com.pulumi.aws.ssm.MaintenanceWindowTaskArgs;
-/// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTargetArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameterArgs;
+/// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTargetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -764,22 +765,8 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MaintenanceWindowTask("example", MaintenanceWindowTaskArgs.builder()
-///             .maxConcurrency("2")
-///             .maxErrors("1")
-///             .priority(1)
-///             .taskArn("AWS-RunShellScript")
-///             .taskType("RUN_COMMAND")
-///             .windowId(exampleAwsSsmMaintenanceWindow.id())
-///             .targets(MaintenanceWindowTaskTargetArgs.builder()
-///                 .key("InstanceIds")
-///                 .values(exampleAwsInstance.id())
-///                 .build())
 ///             .taskInvocationParameters(MaintenanceWindowTaskTaskInvocationParametersArgs.builder()
 ///                 .runCommandParameters(MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs.builder()
-///                     .outputS3Bucket(exampleAwsS3Bucket.id())
-///                     .outputS3KeyPrefix("output")
-///                     .serviceRoleArn(exampleAwsIamRole.arn())
-///                     .timeoutSeconds(600)
 ///                     .notificationConfig(MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigArgs.builder()
 ///                         .notificationArn(exampleAwsSnsTopic.arn())
 ///                         .notificationEvents("All")
@@ -789,8 +776,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                         .name("commands")
 ///                         .values("date")
 ///                         .build())
+///                     .outputS3Bucket(exampleAwsS3Bucket.id())
+///                     .outputS3KeyPrefix("output")
+///                     .serviceRoleArn(exampleAwsIamRole.arn())
+///                     .timeoutSeconds(600)
 ///                     .build())
 ///                 .build())
+///             .targets(MaintenanceWindowTaskTargetArgs.builder()
+///                 .key("InstanceIds")
+///                 .values(exampleAwsInstance.id())
+///                 .build())
+///             .maxConcurrency("2")
+///             .maxErrors("1")
+///             .priority(1)
+///             .taskArn("AWS-RunShellScript")
+///             .taskType("RUN_COMMAND")
+///             .windowId(exampleAwsSsmMaintenanceWindow.id())
 ///             .build());
 ///
 ///     }
@@ -801,22 +802,8 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///   example:
 ///     type: aws:ssm:MaintenanceWindowTask
 ///     properties:
-///       maxConcurrency: 2
-///       maxErrors: 1
-///       priority: 1
-///       taskArn: AWS-RunShellScript
-///       taskType: RUN_COMMAND
-///       windowId: ${exampleAwsSsmMaintenanceWindow.id}
-///       targets:
-///         - key: InstanceIds
-///           values:
-///             - ${exampleAwsInstance.id}
 ///       taskInvocationParameters:
 ///         runCommandParameters:
-///           outputS3Bucket: ${exampleAwsS3Bucket.id}
-///           outputS3KeyPrefix: output
-///           serviceRoleArn: ${exampleAwsIamRole.arn}
-///           timeoutSeconds: 600
 ///           notificationConfig:
 ///             notificationArn: ${exampleAwsSnsTopic.arn}
 ///             notificationEvents:
@@ -826,6 +813,20 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///             - name: commands
 ///               values:
 ///                 - date
+///           outputS3Bucket: ${exampleAwsS3Bucket.id}
+///           outputS3KeyPrefix: output
+///           serviceRoleArn: ${exampleAwsIamRole.arn}
+///           timeoutSeconds: 600
+///       targets:
+///         - key: InstanceIds
+///           values:
+///             - ${exampleAwsInstance.id}
+///       maxConcurrency: 2
+///       maxErrors: 1
+///       priority: 1
+///       taskArn: AWS-RunShellScript
+///       taskType: RUN_COMMAND
+///       windowId: ${exampleAwsSsmMaintenanceWindow.id}
 /// ```
 ///
 ///
@@ -837,22 +838,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ssm.MaintenanceWindowTask("example", {
-///     maxConcurrency: "2",
-///     maxErrors: "1",
-///     priority: 1,
-///     taskArn: exampleAwsSfnActivity.id,
-///     taskType: "STEP_FUNCTIONS",
-///     windowId: exampleAwsSsmMaintenanceWindow.id,
-///     targets: [{
-///         key: "InstanceIds",
-///         values: [exampleAwsInstance.id],
-///     }],
 ///     taskInvocationParameters: {
 ///         stepFunctionsParameters: {
 ///             input: "{\"key1\":\"value1\"}",
 ///             name: "example",
 ///         },
 ///     },
+///     targets: [{
+///         key: "InstanceIds",
+///         values: [exampleAwsInstance.id],
+///     }],
+///     maxConcurrency: "2",
+///     maxErrors: "1",
+///     priority: 1,
+///     taskArn: exampleAwsSfnActivity.id,
+///     taskType: "STEP_FUNCTIONS",
+///     windowId: exampleAwsSsmMaintenanceWindow.id,
 /// });
 /// ```
 /// ```python
@@ -860,22 +861,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ssm.MaintenanceWindowTask("example",
-///     max_concurrency="2",
-///     max_errors="1",
-///     priority=1,
-///     task_arn=example_aws_sfn_activity["id"],
-///     task_type="STEP_FUNCTIONS",
-///     window_id=example_aws_ssm_maintenance_window["id"],
-///     targets=[{
-///         "key": "InstanceIds",
-///         "values": [example_aws_instance["id"]],
-///     }],
 ///     task_invocation_parameters={
 ///         "step_functions_parameters": {
 ///             "input": "{\"key1\":\"value1\"}",
 ///             "name": "example",
 ///         },
-///     })
+///     },
+///     targets=[{
+///         "key": "InstanceIds",
+///         "values": [example_aws_instance["id"]],
+///     }],
+///     max_concurrency="2",
+///     max_errors="1",
+///     priority=1,
+///     task_arn=example_aws_sfn_activity["id"],
+///     task_type="STEP_FUNCTIONS",
+///     window_id=example_aws_ssm_maintenance_window["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -887,12 +888,14 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// {
 ///     var example = new Aws.Ssm.MaintenanceWindowTask("example", new()
 ///     {
-///         MaxConcurrency = "2",
-///         MaxErrors = "1",
-///         Priority = 1,
-///         TaskArn = exampleAwsSfnActivity.Id,
-///         TaskType = "STEP_FUNCTIONS",
-///         WindowId = exampleAwsSsmMaintenanceWindow.Id,
+///         TaskInvocationParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersArgs
+///         {
+///             StepFunctionsParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs
+///             {
+///                 Input = "{\"key1\":\"value1\"}",
+///                 Name = "example",
+///             },
+///         },
 ///         Targets = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.MaintenanceWindowTaskTargetArgs
@@ -904,14 +907,12 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///                 },
 ///             },
 ///         },
-///         TaskInvocationParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersArgs
-///         {
-///             StepFunctionsParameters = new Aws.Ssm.Inputs.MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs
-///             {
-///                 Input = "{\"key1\":\"value1\"}",
-///                 Name = "example",
-///             },
-///         },
+///         MaxConcurrency = "2",
+///         MaxErrors = "1",
+///         Priority = 1,
+///         TaskArn = exampleAwsSfnActivity.Id,
+///         TaskType = "STEP_FUNCTIONS",
+///         WindowId = exampleAwsSsmMaintenanceWindow.Id,
 ///     });
 ///
 /// });
@@ -927,12 +928,12 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
-/// 			MaxConcurrency: pulumi.String("2"),
-/// 			MaxErrors:      pulumi.String("1"),
-/// 			Priority:       pulumi.Int(1),
-/// 			TaskArn:        pulumi.Any(exampleAwsSfnActivity.Id),
-/// 			TaskType:       pulumi.String("STEP_FUNCTIONS"),
-/// 			WindowId:       pulumi.Any(exampleAwsSsmMaintenanceWindow.Id),
+/// 			TaskInvocationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersArgs{
+/// 				StepFunctionsParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs{
+/// 					Input: pulumi.String("{\"key1\":\"value1\"}"),
+/// 					Name:  pulumi.String("example"),
+/// 				},
+/// 			},
 /// 			Targets: ssm.MaintenanceWindowTaskTargetArray{
 /// 				&ssm.MaintenanceWindowTaskTargetArgs{
 /// 					Key: pulumi.String("InstanceIds"),
@@ -941,12 +942,12 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			TaskInvocationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersArgs{
-/// 				StepFunctionsParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs{
-/// 					Input: pulumi.String("{\"key1\":\"value1\"}"),
-/// 					Name:  pulumi.String("example"),
-/// 				},
-/// 			},
+/// 			MaxConcurrency: pulumi.String("2"),
+/// 			MaxErrors:      pulumi.String("1"),
+/// 			Priority:       pulumi.Int(1),
+/// 			TaskArn:        pulumi.Any(exampleAwsSfnActivity.Id),
+/// 			TaskType:       pulumi.String("STEP_FUNCTIONS"),
+/// 			WindowId:       pulumi.Any(exampleAwsSsmMaintenanceWindow.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -965,22 +966,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// }
 ///
 /// resource "aws_ssm_maintenancewindowtask" "example" {
-///   max_concurrency = 2
-///   max_errors      = 1
-///   priority        = 1
-///   task_arn        = exampleAwsSfnActivity.id
-///   task_type       = "STEP_FUNCTIONS"
-///   window_id       = exampleAwsSsmMaintenanceWindow.id
-///   targets {
-///     key    = "InstanceIds"
-///     values = [exampleAwsInstance.id]
-///   }
 ///   task_invocation_parameters = {
 ///     step_functions_parameters = {
 ///       input = "{\"key1\":\"value1\"}"
 ///       name  = "example"
 ///     }
 ///   }
+///   targets {
+///     key    = "InstanceIds"
+///     values = [exampleAwsInstance.id]
+///   }
+///   max_concurrency = 2
+///   max_errors      = 1
+///   priority        = 1
+///   task_arn        = exampleAwsSfnActivity.id
+///   task_type       = "STEP_FUNCTIONS"
+///   window_id       = exampleAwsSsmMaintenanceWindow.id
 /// }
 /// ```
 /// ```java
@@ -991,9 +992,9 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.MaintenanceWindowTask;
 /// import com.pulumi.aws.ssm.MaintenanceWindowTaskArgs;
-/// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTargetArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersArgs;
 /// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs;
+/// import com.pulumi.aws.ssm.inputs.MaintenanceWindowTaskTargetArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1008,22 +1009,22 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new MaintenanceWindowTask("example", MaintenanceWindowTaskArgs.builder()
-///             .maxConcurrency("2")
-///             .maxErrors("1")
-///             .priority(1)
-///             .taskArn(exampleAwsSfnActivity.id())
-///             .taskType("STEP_FUNCTIONS")
-///             .windowId(exampleAwsSsmMaintenanceWindow.id())
-///             .targets(MaintenanceWindowTaskTargetArgs.builder()
-///                 .key("InstanceIds")
-///                 .values(exampleAwsInstance.id())
-///                 .build())
 ///             .taskInvocationParameters(MaintenanceWindowTaskTaskInvocationParametersArgs.builder()
 ///                 .stepFunctionsParameters(MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs.builder()
 ///                     .input("{\"key1\":\"value1\"}")
 ///                     .name("example")
 ///                     .build())
 ///                 .build())
+///             .targets(MaintenanceWindowTaskTargetArgs.builder()
+///                 .key("InstanceIds")
+///                 .values(exampleAwsInstance.id())
+///                 .build())
+///             .maxConcurrency("2")
+///             .maxErrors("1")
+///             .priority(1)
+///             .taskArn(exampleAwsSfnActivity.id())
+///             .taskType("STEP_FUNCTIONS")
+///             .windowId(exampleAwsSsmMaintenanceWindow.id())
 ///             .build());
 ///
 ///     }
@@ -1034,20 +1035,20 @@ import 'maintenance_window_task_task_invocation_parameters.dart';
 ///   example:
 ///     type: aws:ssm:MaintenanceWindowTask
 ///     properties:
+///       taskInvocationParameters:
+///         stepFunctionsParameters:
+///           input: '{"key1":"value1"}'
+///           name: example
+///       targets:
+///         - key: InstanceIds
+///           values:
+///             - ${exampleAwsInstance.id}
 ///       maxConcurrency: 2
 ///       maxErrors: 1
 ///       priority: 1
 ///       taskArn: ${exampleAwsSfnActivity.id}
 ///       taskType: STEP_FUNCTIONS
 ///       windowId: ${exampleAwsSsmMaintenanceWindow.id}
-///       targets:
-///         - key: InstanceIds
-///           values:
-///             - ${exampleAwsInstance.id}
-///       taskInvocationParameters:
-///         stepFunctionsParameters:
-///           input: '{"key1":"value1"}'
-///           name: example
 /// ```
 ///
 ///
@@ -1091,7 +1092,7 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
   /// The role that should be assumed when executing the task. If a role is not provided, Systems Manager uses your account's service-linked role. If no service-linked role for Systems Manager exists in your account, it is created for you.
   late final pulumi.Output<String> serviceRoleArn;
   /// The targets (either instances or window target ids). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target ids are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targets;
+  late final pulumi.Output<List<MaintenanceWindowTaskTarget>?> targets;
   /// The ARN of the task to execute.
   late final pulumi.Output<String> taskArn;
   /// Configuration block with parameters for task execution.
@@ -1115,7 +1116,7 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
           'aws:ssm/maintenanceWindowTask:MaintenanceWindowTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cutoffBehavior = registerOutput<String?>('cutoffBehavior');
@@ -1126,7 +1127,7 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
     priority = registerOutput<int?>('priority');
     region = registerOutput<String>('region');
     serviceRoleArn = registerOutput<String>('serviceRoleArn');
-    targets = registerOutput<List<Map<String, dynamic>>?>('targets');
+    targets = registerOutput<List<MaintenanceWindowTaskTarget>?>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MaintenanceWindowTaskTarget>(guardedValue, (value) => MaintenanceWindowTaskTarget.fromMap((value as Map).cast<String, dynamic>())); });
     taskArn = registerOutput<String>('taskArn');
     taskInvocationParameters = registerOutput<MaintenanceWindowTaskTaskInvocationParameters?>('taskInvocationParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowTaskTaskInvocationParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     taskType = registerOutput<String>('taskType');
@@ -1139,11 +1140,12 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MaintenanceWindowTaskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MaintenanceWindowTask._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1166,7 +1168,33 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
     priority = registerOutput<int?>('priority');
     region = registerOutput<String>('region');
     serviceRoleArn = registerOutput<String>('serviceRoleArn');
-    targets = registerOutput<List<Map<String, dynamic>>?>('targets');
+    targets = registerOutput<List<MaintenanceWindowTaskTarget>?>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MaintenanceWindowTaskTarget>(guardedValue, (value) => MaintenanceWindowTaskTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    taskArn = registerOutput<String>('taskArn');
+    taskInvocationParameters = registerOutput<MaintenanceWindowTaskTaskInvocationParameters?>('taskInvocationParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowTaskTaskInvocationParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    taskType = registerOutput<String>('taskType');
+    windowId = registerOutput<String>('windowId');
+    windowTaskId = registerOutput<String>('windowTaskId');
+  }
+
+  /// Creates a typed reference to an existing [MaintenanceWindowTask] resource.
+  MaintenanceWindowTask.reference(String urn)
+    : super(
+        'aws:ssm/maintenanceWindowTask:MaintenanceWindowTask',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cutoffBehavior = registerOutput<String?>('cutoffBehavior');
+    description = registerOutput<String?>('description');
+    maxConcurrency = registerOutput<String>('maxConcurrency');
+    maxErrors = registerOutput<String>('maxErrors');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int?>('priority');
+    region = registerOutput<String>('region');
+    serviceRoleArn = registerOutput<String>('serviceRoleArn');
+    targets = registerOutput<List<MaintenanceWindowTaskTarget>?>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MaintenanceWindowTaskTarget>(guardedValue, (value) => MaintenanceWindowTaskTarget.fromMap((value as Map).cast<String, dynamic>())); });
     taskArn = registerOutput<String>('taskArn');
     taskInvocationParameters = registerOutput<MaintenanceWindowTaskTaskInvocationParameters?>('taskInvocationParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowTaskTaskInvocationParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     taskType = registerOutput<String>('taskType');

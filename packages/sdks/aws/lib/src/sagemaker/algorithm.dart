@@ -18,16 +18,16 @@ import 'algorithm_validation_specification.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.Algorithm("example", {
-///     algorithmName: "example-algorithm",
 ///     trainingSpecification: {
-///         supportedTrainingInstanceTypes: ["ml.m5.large"],
-///         trainingImage: "123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest",
 ///         trainingChannels: [{
 ///             name: "train",
 ///             supportedContentTypes: ["text/csv"],
 ///             supportedInputModes: ["File"],
 ///         }],
+///         supportedTrainingInstanceTypes: ["ml.m5.large"],
+///         trainingImage: "123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest",
 ///     },
+///     algorithmName: "example-algorithm",
 ///     tags: {
 ///         Environment: "test",
 ///     },
@@ -38,16 +38,16 @@ import 'algorithm_validation_specification.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.Algorithm("example",
-///     algorithm_name="example-algorithm",
 ///     training_specification={
-///         "supported_training_instance_types": ["ml.m5.large"],
-///         "training_image": "123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest",
 ///         "training_channels": [{
 ///             "name": "train",
 ///             "supported_content_types": ["text/csv"],
 ///             "supported_input_modes": ["File"],
 ///         }],
+///         "supported_training_instance_types": ["ml.m5.large"],
+///         "training_image": "123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest",
 ///     },
+///     algorithm_name="example-algorithm",
 ///     tags={
 ///         "Environment": "test",
 ///     })
@@ -62,14 +62,8 @@ import 'algorithm_validation_specification.dart';
 /// {
 ///     var example = new Aws.Sagemaker.Algorithm("example", new()
 ///     {
-///         AlgorithmName = "example-algorithm",
 ///         TrainingSpecification = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationArgs
 ///         {
-///             SupportedTrainingInstanceTypes = new[]
-///             {
-///                 "ml.m5.large",
-///             },
-///             TrainingImage = "123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest",
 ///             TrainingChannels = new[]
 ///             {
 ///                 new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationTrainingChannelArgs
@@ -85,7 +79,13 @@ import 'algorithm_validation_specification.dart';
 ///                     },
 ///                 },
 ///             },
+///             SupportedTrainingInstanceTypes = new[]
+///             {
+///                 "ml.m5.large",
+///             },
+///             TrainingImage = "123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest",
 ///         },
+///         AlgorithmName = "example-algorithm",
 ///         Tags =
 ///         {
 ///             { "Environment", "test" },
@@ -105,12 +105,7 @@ import 'algorithm_validation_specification.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewAlgorithm(ctx, "example", &sagemaker.AlgorithmArgs{
-/// 			AlgorithmName: pulumi.String("example-algorithm"),
 /// 			TrainingSpecification: &sagemaker.AlgorithmTrainingSpecificationArgs{
-/// 				SupportedTrainingInstanceTypes: pulumi.StringArray{
-/// 					pulumi.String("ml.m5.large"),
-/// 				},
-/// 				TrainingImage: pulumi.String("123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest"),
 /// 				TrainingChannels: sagemaker.AlgorithmTrainingSpecificationTrainingChannelArray{
 /// 					&sagemaker.AlgorithmTrainingSpecificationTrainingChannelArgs{
 /// 						Name: pulumi.String("train"),
@@ -122,7 +117,12 @@ import 'algorithm_validation_specification.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				SupportedTrainingInstanceTypes: pulumi.StringArray{
+/// 					pulumi.String("ml.m5.large"),
+/// 				},
+/// 				TrainingImage: pulumi.String("123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest"),
 /// 			},
+/// 			AlgorithmName: pulumi.String("example-algorithm"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("test"),
 /// 			},
@@ -144,16 +144,16 @@ import 'algorithm_validation_specification.dart';
 /// }
 ///
 /// resource "aws_sagemaker_algorithm" "example" {
-///   algorithm_name = "example-algorithm"
 ///   training_specification = {
-///     supported_training_instance_types = ["ml.m5.large"]
-///     training_image                    = "123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest"
 ///     training_channels = [{
 ///       "name"                  = "train"
 ///       "supportedContentTypes" = ["text/csv"]
 ///       "supportedInputModes"   = ["File"]
 ///     }]
+///     supported_training_instance_types = ["ml.m5.large"]
+///     training_image                    = "123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest"
 ///   }
+///   algorithm_name = "example-algorithm"
 ///   tags = {
 ///     "Environment" = "test"
 ///   }
@@ -183,16 +183,16 @@ import 'algorithm_validation_specification.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Algorithm("example", AlgorithmArgs.builder()
-///             .algorithmName("example-algorithm")
 ///             .trainingSpecification(AlgorithmTrainingSpecificationArgs.builder()
-///                 .supportedTrainingInstanceTypes("ml.m5.large")
-///                 .trainingImage("123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest")
 ///                 .trainingChannels(AlgorithmTrainingSpecificationTrainingChannelArgs.builder()
 ///                     .name("train")
 ///                     .supportedContentTypes("text/csv")
 ///                     .supportedInputModes("File")
 ///                     .build())
+///                 .supportedTrainingInstanceTypes("ml.m5.large")
+///                 .trainingImage("123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest")
 ///                 .build())
+///             .algorithmName("example-algorithm")
 ///             .tags(Map.of("Environment", "test"))
 ///             .build());
 ///
@@ -204,17 +204,17 @@ import 'algorithm_validation_specification.dart';
 ///   example:
 ///     type: aws:sagemaker:Algorithm
 ///     properties:
-///       algorithmName: example-algorithm
 ///       trainingSpecification:
-///         supportedTrainingInstanceTypes:
-///           - ml.m5.large
-///         trainingImage: 123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest
 ///         trainingChannels:
 ///           - name: train
 ///             supportedContentTypes:
 ///               - text/csv
 ///             supportedInputModes:
 ///               - File
+///         supportedTrainingInstanceTypes:
+///           - ml.m5.large
+///         trainingImage: 123456789012.dkr.ecr.us-west-2.amazonaws.com/example-training:latest
+///       algorithmName: example-algorithm
 ///       tags:
 ///         Environment: test
 /// ```
@@ -232,54 +232,41 @@ import 'algorithm_validation_specification.dart';
 ///     imageTag: "1",
 /// });
 /// const exampleAlgorithm = new aws.sagemaker.Algorithm("example", {
-///     algorithmName: "example-training-algorithm",
 ///     trainingSpecification: {
-///         supportedTrainingInstanceTypes: [
-///             "ml.m5.large",
-///             "ml.c5.xlarge",
-///         ],
-///         supportsDistributedTraining: true,
-///         trainingImage: example.then(example => example.registryPath),
 ///         metricDefinitions: [{
 ///             name: "train:loss",
 ///             regex: "loss=(.*?);",
 ///         }],
 ///         supportedHyperParameters: [
 ///             {
-///                 defaultValue: "0.5",
-///                 description: "Continuous learning rate",
-///                 isRequired: true,
-///                 isTunable: true,
-///                 name: "eta",
-///                 type: "Continuous",
 ///                 range: {
 ///                     continuousParameterRangeSpecification: {
 ///                         minValue: "0.1",
 ///                         maxValue: "0.9",
 ///                     },
 ///                 },
+///                 defaultValue: "0.5",
+///                 description: "Continuous learning rate",
+///                 isRequired: true,
+///                 isTunable: true,
+///                 name: "eta",
+///                 type: "Continuous",
 ///             },
 ///             {
-///                 defaultValue: "5",
-///                 description: "Maximum tree depth",
-///                 isRequired: false,
-///                 isTunable: true,
-///                 name: "max_depth",
-///                 type: "Integer",
 ///                 range: {
 ///                     integerParameterRangeSpecification: {
 ///                         minValue: "1",
 ///                         maxValue: "10",
 ///                     },
 ///                 },
+///                 defaultValue: "5",
+///                 description: "Maximum tree depth",
+///                 isRequired: false,
+///                 isTunable: true,
+///                 name: "max_depth",
+///                 type: "Integer",
 ///             },
 ///             {
-///                 defaultValue: "reg:squarederror",
-///                 description: "Objective function",
-///                 isRequired: false,
-///                 isTunable: false,
-///                 name: "objective",
-///                 type: "Categorical",
 ///                 range: {
 ///                     categoricalParameterRangeSpecification: {
 ///                         values: [
@@ -288,6 +275,12 @@ import 'algorithm_validation_specification.dart';
 ///                         ],
 ///                     },
 ///                 },
+///                 defaultValue: "reg:squarederror",
+///                 description: "Objective function",
+///                 isRequired: false,
+///                 isTunable: false,
+///                 name: "objective",
+///                 type: "Categorical",
 ///             },
 ///         ],
 ///         supportedTuningJobObjectiveMetrics: [{
@@ -312,7 +305,14 @@ import 'algorithm_validation_specification.dart';
 ///                 supportedInputModes: ["Pipe"],
 ///             },
 ///         ],
+///         supportedTrainingInstanceTypes: [
+///             "ml.m5.large",
+///             "ml.c5.xlarge",
+///         ],
+///         supportsDistributedTraining: true,
+///         trainingImage: example.then(example => example.registryPath),
 ///     },
+///     algorithmName: "example-training-algorithm",
 /// });
 /// ```
 /// ```python
@@ -322,54 +322,41 @@ import 'algorithm_validation_specification.dart';
 /// example = aws.sagemaker.get_prebuilt_ecr_image(repository_name="linear-learner",
 ///     image_tag="1")
 /// example_algorithm = aws.sagemaker.Algorithm("example",
-///     algorithm_name="example-training-algorithm",
 ///     training_specification={
-///         "supported_training_instance_types": [
-///             "ml.m5.large",
-///             "ml.c5.xlarge",
-///         ],
-///         "supports_distributed_training": True,
-///         "training_image": example.registry_path,
 ///         "metric_definitions": [{
 ///             "name": "train:loss",
 ///             "regex": "loss=(.*?);",
 ///         }],
 ///         "supported_hyper_parameters": [
 ///             {
-///                 "default_value": "0.5",
-///                 "description": "Continuous learning rate",
-///                 "is_required": True,
-///                 "is_tunable": True,
-///                 "name": "eta",
-///                 "type": "Continuous",
 ///                 "range": {
 ///                     "continuous_parameter_range_specification": {
 ///                         "min_value": "0.1",
 ///                         "max_value": "0.9",
 ///                     },
 ///                 },
+///                 "default_value": "0.5",
+///                 "description": "Continuous learning rate",
+///                 "is_required": True,
+///                 "is_tunable": True,
+///                 "name": "eta",
+///                 "type": "Continuous",
 ///             },
 ///             {
-///                 "default_value": "5",
-///                 "description": "Maximum tree depth",
-///                 "is_required": False,
-///                 "is_tunable": True,
-///                 "name": "max_depth",
-///                 "type": "Integer",
 ///                 "range": {
 ///                     "integer_parameter_range_specification": {
 ///                         "min_value": "1",
 ///                         "max_value": "10",
 ///                     },
 ///                 },
+///                 "default_value": "5",
+///                 "description": "Maximum tree depth",
+///                 "is_required": False,
+///                 "is_tunable": True,
+///                 "name": "max_depth",
+///                 "type": "Integer",
 ///             },
 ///             {
-///                 "default_value": "reg:squarederror",
-///                 "description": "Objective function",
-///                 "is_required": False,
-///                 "is_tunable": False,
-///                 "name": "objective",
-///                 "type": "Categorical",
 ///                 "range": {
 ///                     "categorical_parameter_range_specification": {
 ///                         "values": [
@@ -378,6 +365,12 @@ import 'algorithm_validation_specification.dart';
 ///                         ],
 ///                     },
 ///                 },
+///                 "default_value": "reg:squarederror",
+///                 "description": "Objective function",
+///                 "is_required": False,
+///                 "is_tunable": False,
+///                 "name": "objective",
+///                 "type": "Categorical",
 ///             },
 ///         ],
 ///         "supported_tuning_job_objective_metrics": [{
@@ -402,7 +395,14 @@ import 'algorithm_validation_specification.dart';
 ///                 "supported_input_modes": ["Pipe"],
 ///             },
 ///         ],
-///     })
+///         "supported_training_instance_types": [
+///             "ml.m5.large",
+///             "ml.c5.xlarge",
+///         ],
+///         "supports_distributed_training": True,
+///         "training_image": example.registry_path,
+///     },
+///     algorithm_name="example-training-algorithm")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -420,16 +420,8 @@ import 'algorithm_validation_specification.dart';
 ///
 ///     var exampleAlgorithm = new Aws.Sagemaker.Algorithm("example", new()
 ///     {
-///         AlgorithmName = "example-training-algorithm",
 ///         TrainingSpecification = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationArgs
 ///         {
-///             SupportedTrainingInstanceTypes = new[]
-///             {
-///                 "ml.m5.large",
-///                 "ml.c5.xlarge",
-///             },
-///             SupportsDistributedTraining = true,
-///             TrainingImage = example.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
 ///             MetricDefinitions = new[]
 ///             {
 ///                 new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationMetricDefinitionArgs
@@ -442,12 +434,6 @@ import 'algorithm_validation_specification.dart';
 ///             {
 ///                 new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterArgs
 ///                 {
-///                     DefaultValue = "0.5",
-///                     Description = "Continuous learning rate",
-///                     IsRequired = true,
-///                     IsTunable = true,
-///                     Name = "eta",
-///                     Type = "Continuous",
 ///                     Range = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs
 ///                     {
 ///                         ContinuousParameterRangeSpecification = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeContinuousParameterRangeSpecificationArgs
@@ -456,15 +442,15 @@ import 'algorithm_validation_specification.dart';
 ///                             MaxValue = "0.9",
 ///                         },
 ///                     },
+///                     DefaultValue = "0.5",
+///                     Description = "Continuous learning rate",
+///                     IsRequired = true,
+///                     IsTunable = true,
+///                     Name = "eta",
+///                     Type = "Continuous",
 ///                 },
 ///                 new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterArgs
 ///                 {
-///                     DefaultValue = "5",
-///                     Description = "Maximum tree depth",
-///                     IsRequired = false,
-///                     IsTunable = true,
-///                     Name = "max_depth",
-///                     Type = "Integer",
 ///                     Range = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs
 ///                     {
 ///                         IntegerParameterRangeSpecification = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecificationArgs
@@ -473,15 +459,15 @@ import 'algorithm_validation_specification.dart';
 ///                             MaxValue = "10",
 ///                         },
 ///                     },
+///                     DefaultValue = "5",
+///                     Description = "Maximum tree depth",
+///                     IsRequired = false,
+///                     IsTunable = true,
+///                     Name = "max_depth",
+///                     Type = "Integer",
 ///                 },
 ///                 new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterArgs
 ///                 {
-///                     DefaultValue = "reg:squarederror",
-///                     Description = "Objective function",
-///                     IsRequired = false,
-///                     IsTunable = false,
-///                     Name = "objective",
-///                     Type = "Categorical",
 ///                     Range = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs
 ///                     {
 ///                         CategoricalParameterRangeSpecification = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeCategoricalParameterRangeSpecificationArgs
@@ -493,6 +479,12 @@ import 'algorithm_validation_specification.dart';
 ///                             },
 ///                         },
 ///                     },
+///                     DefaultValue = "reg:squarederror",
+///                     Description = "Objective function",
+///                     IsRequired = false,
+///                     IsTunable = false,
+///                     Name = "objective",
+///                     Type = "Categorical",
 ///                 },
 ///             },
 ///             SupportedTuningJobObjectiveMetrics = new[]
@@ -537,7 +529,15 @@ import 'algorithm_validation_specification.dart';
 ///                     },
 ///                 },
 ///             },
+///             SupportedTrainingInstanceTypes = new[]
+///             {
+///                 "ml.m5.large",
+///                 "ml.c5.xlarge",
+///             },
+///             SupportsDistributedTraining = true,
+///             TrainingImage = example.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
 ///         },
+///         AlgorithmName = "example-training-algorithm",
 ///     });
 ///
 /// });
@@ -560,14 +560,7 @@ import 'algorithm_validation_specification.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sagemaker.NewAlgorithm(ctx, "example", &sagemaker.AlgorithmArgs{
-/// 			AlgorithmName: pulumi.String("example-training-algorithm"),
 /// 			TrainingSpecification: &sagemaker.AlgorithmTrainingSpecificationArgs{
-/// 				SupportedTrainingInstanceTypes: pulumi.StringArray{
-/// 					pulumi.String("ml.m5.large"),
-/// 					pulumi.String("ml.c5.xlarge"),
-/// 				},
-/// 				SupportsDistributedTraining: pulumi.Bool(true),
-/// 				TrainingImage:               pulumi.String(example.RegistryPath),
 /// 				MetricDefinitions: sagemaker.AlgorithmTrainingSpecificationMetricDefinitionArray{
 /// 					&sagemaker.AlgorithmTrainingSpecificationMetricDefinitionArgs{
 /// 						Name:  pulumi.String("train:loss"),
@@ -576,40 +569,34 @@ import 'algorithm_validation_specification.dart';
 /// 				},
 /// 				SupportedHyperParameters: sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterArray{
 /// 					&sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterArgs{
-/// 						DefaultValue: pulumi.String("0.5"),
-/// 						Description:  pulumi.String("Continuous learning rate"),
-/// 						IsRequired:   pulumi.Bool(true),
-/// 						IsTunable:    pulumi.Bool(true),
-/// 						Name:         pulumi.String("eta"),
-/// 						Type:         pulumi.String("Continuous"),
 /// 						Range: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs{
 /// 							ContinuousParameterRangeSpecification: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeContinuousParameterRangeSpecificationArgs{
 /// 								MinValue: pulumi.String("0.1"),
 /// 								MaxValue: pulumi.String("0.9"),
 /// 							},
 /// 						},
+/// 						DefaultValue: pulumi.String("0.5"),
+/// 						Description:  pulumi.String("Continuous learning rate"),
+/// 						IsRequired:   pulumi.Bool(true),
+/// 						IsTunable:    pulumi.Bool(true),
+/// 						Name:         pulumi.String("eta"),
+/// 						Type:         pulumi.String("Continuous"),
 /// 					},
 /// 					&sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterArgs{
-/// 						DefaultValue: pulumi.String("5"),
-/// 						Description:  pulumi.String("Maximum tree depth"),
-/// 						IsRequired:   pulumi.Bool(false),
-/// 						IsTunable:    pulumi.Bool(true),
-/// 						Name:         pulumi.String("max_depth"),
-/// 						Type:         pulumi.String("Integer"),
 /// 						Range: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs{
 /// 							IntegerParameterRangeSpecification: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecificationArgs{
 /// 								MinValue: pulumi.String("1"),
 /// 								MaxValue: pulumi.String("10"),
 /// 							},
 /// 						},
+/// 						DefaultValue: pulumi.String("5"),
+/// 						Description:  pulumi.String("Maximum tree depth"),
+/// 						IsRequired:   pulumi.Bool(false),
+/// 						IsTunable:    pulumi.Bool(true),
+/// 						Name:         pulumi.String("max_depth"),
+/// 						Type:         pulumi.String("Integer"),
 /// 					},
 /// 					&sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterArgs{
-/// 						DefaultValue: pulumi.String("reg:squarederror"),
-/// 						Description:  pulumi.String("Objective function"),
-/// 						IsRequired:   pulumi.Bool(false),
-/// 						IsTunable:    pulumi.Bool(false),
-/// 						Name:         pulumi.String("objective"),
-/// 						Type:         pulumi.String("Categorical"),
 /// 						Range: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs{
 /// 							CategoricalParameterRangeSpecification: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeCategoricalParameterRangeSpecificationArgs{
 /// 								Values: pulumi.StringArray{
@@ -618,6 +605,12 @@ import 'algorithm_validation_specification.dart';
 /// 								},
 /// 							},
 /// 						},
+/// 						DefaultValue: pulumi.String("reg:squarederror"),
+/// 						Description:  pulumi.String("Objective function"),
+/// 						IsRequired:   pulumi.Bool(false),
+/// 						IsTunable:    pulumi.Bool(false),
+/// 						Name:         pulumi.String("objective"),
+/// 						Type:         pulumi.String("Categorical"),
 /// 					},
 /// 				},
 /// 				SupportedTuningJobObjectiveMetrics: sagemaker.AlgorithmTrainingSpecificationSupportedTuningJobObjectiveMetricArray{
@@ -652,7 +645,14 @@ import 'algorithm_validation_specification.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				SupportedTrainingInstanceTypes: pulumi.StringArray{
+/// 					pulumi.String("ml.m5.large"),
+/// 					pulumi.String("ml.c5.xlarge"),
+/// 				},
+/// 				SupportsDistributedTraining: pulumi.Bool(true),
+/// 				TrainingImage:               pulumi.String(example.RegistryPath),
 /// 			},
+/// 			AlgorithmName: pulumi.String("example-training-algorithm"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -676,53 +676,49 @@ import 'algorithm_validation_specification.dart';
 /// }
 ///
 /// resource "aws_sagemaker_algorithm" "example" {
-///   algorithm_name = "example-training-algorithm"
 ///   training_specification = {
-///     supported_training_instance_types = ["ml.m5.large", "ml.c5.xlarge"]
-///     supports_distributed_training     = true
-///     training_image                    = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
 ///     metric_definitions = [{
 ///       "name"  = "train:loss"
 ///       "regex" = "loss=(.*?);"
 ///     }]
 ///     supported_hyper_parameters = [{
-///       "defaultValue" = "0.5"
-///       "description"  = "Continuous learning rate"
-///       "isRequired"   = true
-///       "isTunable"    = true
-///       "name"         = "eta"
-///       "type"         = "Continuous"
 ///       "range" = {
 ///         "continuousParameterRangeSpecification" = {
 ///           "minValue" = "0.1"
 ///           "maxValue" = "0.9"
 ///         }
 ///       }
-///       }, {
-///       "defaultValue" = "5"
-///       "description"  = "Maximum tree depth"
-///       "isRequired"   = false
+///       "defaultValue" = "0.5"
+///       "description"  = "Continuous learning rate"
+///       "isRequired"   = true
 ///       "isTunable"    = true
-///       "name"         = "max_depth"
-///       "type"         = "Integer"
+///       "name"         = "eta"
+///       "type"         = "Continuous"
+///       }, {
 ///       "range" = {
 ///         "integerParameterRangeSpecification" = {
 ///           "minValue" = "1"
 ///           "maxValue" = "10"
 ///         }
 ///       }
+///       "defaultValue" = "5"
+///       "description"  = "Maximum tree depth"
+///       "isRequired"   = false
+///       "isTunable"    = true
+///       "name"         = "max_depth"
+///       "type"         = "Integer"
 ///       }, {
+///       "range" = {
+///         "categoricalParameterRangeSpecification" = {
+///           "values" = ["reg:squarederror", "binary:logistic"]
+///         }
+///       }
 ///       "defaultValue" = "reg:squarederror"
 ///       "description"  = "Objective function"
 ///       "isRequired"   = false
 ///       "isTunable"    = false
 ///       "name"         = "objective"
 ///       "type"         = "Categorical"
-///       "range" = {
-///         "categoricalParameterRangeSpecification" = {
-///           "values" = ["reg:squarederror", "binary:logistic"]
-///         }
-///       }
 ///     }]
 ///     supported_tuning_job_objective_metrics = [{
 ///       "metricName" = "train:loss"
@@ -740,7 +736,11 @@ import 'algorithm_validation_specification.dart';
 ///       "supportedContentTypes" = ["application/json"]
 ///       "supportedInputModes"   = ["Pipe"]
 ///     }]
+///     supported_training_instance_types = ["ml.m5.large", "ml.c5.xlarge"]
+///     supports_distributed_training     = true
+///     training_image                    = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
 ///   }
+///   algorithm_name = "example-training-algorithm"
 /// }
 /// ```
 /// ```java
@@ -781,53 +781,41 @@ import 'algorithm_validation_specification.dart';
 ///             .build());
 ///
 ///         var exampleAlgorithm = new Algorithm("exampleAlgorithm", AlgorithmArgs.builder()
-///             .algorithmName("example-training-algorithm")
 ///             .trainingSpecification(AlgorithmTrainingSpecificationArgs.builder()
-///                 .supportedTrainingInstanceTypes(
-///                     "ml.m5.large",
-///                     "ml.c5.xlarge")
-///                 .supportsDistributedTraining(true)
-///                 .trainingImage(example.registryPath())
 ///                 .metricDefinitions(AlgorithmTrainingSpecificationMetricDefinitionArgs.builder()
 ///                     .name("train:loss")
 ///                     .regex("loss=(.*?);")
 ///                     .build())
 ///                 .supportedHyperParameters(
 ///                     AlgorithmTrainingSpecificationSupportedHyperParameterArgs.builder()
-///                         .defaultValue("0.5")
-///                         .description("Continuous learning rate")
-///                         .isRequired(true)
-///                         .isTunable(true)
-///                         .name("eta")
-///                         .type("Continuous")
 ///                         .range(AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs.builder()
 ///                             .continuousParameterRangeSpecification(AlgorithmTrainingSpecificationSupportedHyperParameterRangeContinuousParameterRangeSpecificationArgs.builder()
 ///                                 .minValue("0.1")
 ///                                 .maxValue("0.9")
 ///                                 .build())
 ///                             .build())
+///                         .defaultValue("0.5")
+///                         .description("Continuous learning rate")
+///                         .isRequired(true)
+///                         .isTunable(true)
+///                         .name("eta")
+///                         .type("Continuous")
 ///                         .build(),
 ///                     AlgorithmTrainingSpecificationSupportedHyperParameterArgs.builder()
-///                         .defaultValue("5")
-///                         .description("Maximum tree depth")
-///                         .isRequired(false)
-///                         .isTunable(true)
-///                         .name("max_depth")
-///                         .type("Integer")
 ///                         .range(AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs.builder()
 ///                             .integerParameterRangeSpecification(AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecificationArgs.builder()
 ///                                 .minValue("1")
 ///                                 .maxValue("10")
 ///                                 .build())
 ///                             .build())
+///                         .defaultValue("5")
+///                         .description("Maximum tree depth")
+///                         .isRequired(false)
+///                         .isTunable(true)
+///                         .name("max_depth")
+///                         .type("Integer")
 ///                         .build(),
 ///                     AlgorithmTrainingSpecificationSupportedHyperParameterArgs.builder()
-///                         .defaultValue("reg:squarederror")
-///                         .description("Objective function")
-///                         .isRequired(false)
-///                         .isTunable(false)
-///                         .name("objective")
-///                         .type("Categorical")
 ///                         .range(AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs.builder()
 ///                             .categoricalParameterRangeSpecification(AlgorithmTrainingSpecificationSupportedHyperParameterRangeCategoricalParameterRangeSpecificationArgs.builder()
 ///                                 .values(
@@ -835,6 +823,12 @@ import 'algorithm_validation_specification.dart';
 ///                                     "binary:logistic")
 ///                                 .build())
 ///                             .build())
+///                         .defaultValue("reg:squarederror")
+///                         .description("Objective function")
+///                         .isRequired(false)
+///                         .isTunable(false)
+///                         .name("objective")
+///                         .type("Categorical")
 ///                         .build())
 ///                 .supportedTuningJobObjectiveMetrics(AlgorithmTrainingSpecificationSupportedTuningJobObjectiveMetricArgs.builder()
 ///                     .metricName("train:loss")
@@ -856,7 +850,13 @@ import 'algorithm_validation_specification.dart';
 ///                         .supportedContentTypes("application/json")
 ///                         .supportedInputModes("Pipe")
 ///                         .build())
+///                 .supportedTrainingInstanceTypes(
+///                     "ml.m5.large",
+///                     "ml.c5.xlarge")
+///                 .supportsDistributedTraining(true)
+///                 .trainingImage(example.registryPath())
 ///                 .build())
+///             .algorithmName("example-training-algorithm")
 ///             .build());
 ///
 ///     }
@@ -868,48 +868,42 @@ import 'algorithm_validation_specification.dart';
 ///     type: aws:sagemaker:Algorithm
 ///     name: example
 ///     properties:
-///       algorithmName: example-training-algorithm
 ///       trainingSpecification:
-///         supportedTrainingInstanceTypes:
-///           - ml.m5.large
-///           - ml.c5.xlarge
-///         supportsDistributedTraining: true
-///         trainingImage: ${example.registryPath}
 ///         metricDefinitions:
 ///           - name: train:loss
 ///             regex: loss=(.*?);
 ///         supportedHyperParameters:
-///           - defaultValue: '0.5'
+///           - range:
+///               continuousParameterRangeSpecification:
+///                 minValue: '0.1'
+///                 maxValue: '0.9'
+///             defaultValue: '0.5'
 ///             description: Continuous learning rate
 ///             isRequired: true
 ///             isTunable: true
 ///             name: eta
 ///             type: Continuous
-///             range:
-///               continuousParameterRangeSpecification:
-///                 minValue: '0.1'
-///                 maxValue: '0.9'
-///           - defaultValue: '5'
+///           - range:
+///               integerParameterRangeSpecification:
+///                 minValue: '1'
+///                 maxValue: '10'
+///             defaultValue: '5'
 ///             description: Maximum tree depth
 ///             isRequired: false
 ///             isTunable: true
 ///             name: max_depth
 ///             type: Integer
-///             range:
-///               integerParameterRangeSpecification:
-///                 minValue: '1'
-///                 maxValue: '10'
-///           - defaultValue: reg:squarederror
+///           - range:
+///               categoricalParameterRangeSpecification:
+///                 values:
+///                   - reg:squarederror
+///                   - binary:logistic
+///             defaultValue: reg:squarederror
 ///             description: Objective function
 ///             isRequired: false
 ///             isTunable: false
 ///             name: objective
 ///             type: Categorical
-///             range:
-///               categoricalParameterRangeSpecification:
-///                 values:
-///                   - reg:squarederror
-///                   - binary:logistic
 ///         supportedTuningJobObjectiveMetrics:
 ///           - metricName: train:loss
 ///             type: Minimize
@@ -929,6 +923,12 @@ import 'algorithm_validation_specification.dart';
 ///               - application/json
 ///             supportedInputModes:
 ///               - Pipe
+///         supportedTrainingInstanceTypes:
+///           - ml.m5.large
+///           - ml.c5.xlarge
+///         supportsDistributedTraining: true
+///         trainingImage: ${example.registryPath}
+///       algorithmName: example-training-algorithm
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -951,22 +951,25 @@ import 'algorithm_validation_specification.dart';
 ///     imageTag: "1",
 /// });
 /// const exampleAlgorithm = new aws.sagemaker.Algorithm("example", {
-///     algorithmName: "example-inference-algorithm",
 ///     trainingSpecification: {
-///         supportedTrainingInstanceTypes: ["ml.m5.large"],
-///         trainingImage: example.then(example => example.registryPath),
 ///         trainingChannels: [{
 ///             name: "train",
 ///             supportedContentTypes: ["text/csv"],
 ///             supportedInputModes: ["File"],
 ///         }],
+///         supportedTrainingInstanceTypes: ["ml.m5.large"],
+///         trainingImage: example.then(example => example.registryPath),
 ///     },
 ///     inferenceSpecification: {
-///         supportedContentTypes: ["text/csv"],
-///         supportedRealtimeInferenceInstanceTypes: ["ml.m5.large"],
-///         supportedResponseMimeTypes: ["text/csv"],
-///         supportedTransformInstanceTypes: ["ml.m5.large"],
 ///         containers: [{
+///             baseModel: {
+///                 hubContentName: "basemodel",
+///                 hubContentVersion: "1.0.0",
+///                 recipeName: "recipe",
+///             },
+///             modelInput: {
+///                 dataInputConfig: "{}",
+///             },
 ///             containerHostname: "test-host",
 ///             environment: {
 ///                 TEST: "value",
@@ -976,16 +979,13 @@ import 'algorithm_validation_specification.dart';
 ///             image: example.then(example => example.registryPath),
 ///             isCheckpoint: true,
 ///             nearestModelName: "nearest-model",
-///             baseModel: {
-///                 hubContentName: "basemodel",
-///                 hubContentVersion: "1.0.0",
-///                 recipeName: "recipe",
-///             },
-///             modelInput: {
-///                 dataInputConfig: "{}",
-///             },
 ///         }],
+///         supportedContentTypes: ["text/csv"],
+///         supportedRealtimeInferenceInstanceTypes: ["ml.m5.large"],
+///         supportedResponseMimeTypes: ["text/csv"],
+///         supportedTransformInstanceTypes: ["ml.m5.large"],
 ///     },
+///     algorithmName: "example-inference-algorithm",
 /// });
 /// ```
 /// ```python
@@ -995,22 +995,25 @@ import 'algorithm_validation_specification.dart';
 /// example = aws.sagemaker.get_prebuilt_ecr_image(repository_name="linear-learner",
 ///     image_tag="1")
 /// example_algorithm = aws.sagemaker.Algorithm("example",
-///     algorithm_name="example-inference-algorithm",
 ///     training_specification={
-///         "supported_training_instance_types": ["ml.m5.large"],
-///         "training_image": example.registry_path,
 ///         "training_channels": [{
 ///             "name": "train",
 ///             "supported_content_types": ["text/csv"],
 ///             "supported_input_modes": ["File"],
 ///         }],
+///         "supported_training_instance_types": ["ml.m5.large"],
+///         "training_image": example.registry_path,
 ///     },
 ///     inference_specification={
-///         "supported_content_types": ["text/csv"],
-///         "supported_realtime_inference_instance_types": ["ml.m5.large"],
-///         "supported_response_mime_types": ["text/csv"],
-///         "supported_transform_instance_types": ["ml.m5.large"],
 ///         "containers": [{
+///             "base_model": {
+///                 "hub_content_name": "basemodel",
+///                 "hub_content_version": "1.0.0",
+///                 "recipe_name": "recipe",
+///             },
+///             "model_input": {
+///                 "data_input_config": "{}",
+///             },
 ///             "container_hostname": "test-host",
 ///             "environment": {
 ///                 "TEST": "value",
@@ -1020,16 +1023,13 @@ import 'algorithm_validation_specification.dart';
 ///             "image": example.registry_path,
 ///             "is_checkpoint": True,
 ///             "nearest_model_name": "nearest-model",
-///             "base_model": {
-///                 "hub_content_name": "basemodel",
-///                 "hub_content_version": "1.0.0",
-///                 "recipe_name": "recipe",
-///             },
-///             "model_input": {
-///                 "data_input_config": "{}",
-///             },
 ///         }],
-///     })
+///         "supported_content_types": ["text/csv"],
+///         "supported_realtime_inference_instance_types": ["ml.m5.large"],
+///         "supported_response_mime_types": ["text/csv"],
+///         "supported_transform_instance_types": ["ml.m5.large"],
+///     },
+///     algorithm_name="example-inference-algorithm")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1047,14 +1047,8 @@ import 'algorithm_validation_specification.dart';
 ///
 ///     var exampleAlgorithm = new Aws.Sagemaker.Algorithm("example", new()
 ///     {
-///         AlgorithmName = "example-inference-algorithm",
 ///         TrainingSpecification = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationArgs
 ///         {
-///             SupportedTrainingInstanceTypes = new[]
-///             {
-///                 "ml.m5.large",
-///             },
-///             TrainingImage = example.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
 ///             TrainingChannels = new[]
 ///             {
 ///                 new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationTrainingChannelArgs
@@ -1070,9 +1064,40 @@ import 'algorithm_validation_specification.dart';
 ///                     },
 ///                 },
 ///             },
+///             SupportedTrainingInstanceTypes = new[]
+///             {
+///                 "ml.m5.large",
+///             },
+///             TrainingImage = example.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
 ///         },
 ///         InferenceSpecification = new Aws.Sagemaker.Inputs.AlgorithmInferenceSpecificationArgs
 ///         {
+///             Containers = new[]
+///             {
+///                 new Aws.Sagemaker.Inputs.AlgorithmInferenceSpecificationContainerArgs
+///                 {
+///                     BaseModel = new Aws.Sagemaker.Inputs.AlgorithmInferenceSpecificationContainerBaseModelArgs
+///                     {
+///                         HubContentName = "basemodel",
+///                         HubContentVersion = "1.0.0",
+///                         RecipeName = "recipe",
+///                     },
+///                     ModelInput = new Aws.Sagemaker.Inputs.AlgorithmInferenceSpecificationContainerModelInputArgs
+///                     {
+///                         DataInputConfig = "{}",
+///                     },
+///                     ContainerHostname = "test-host",
+///                     Environment =
+///                     {
+///                         { "TEST", "value" },
+///                     },
+///                     Framework = "XGBOOST",
+///                     FrameworkVersion = "1.5-1",
+///                     Image = example.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
+///                     IsCheckpoint = true,
+///                     NearestModelName = "nearest-model",
+///                 },
+///             },
 ///             SupportedContentTypes = new[]
 ///             {
 ///                 "text/csv",
@@ -1089,33 +1114,8 @@ import 'algorithm_validation_specification.dart';
 ///             {
 ///                 "ml.m5.large",
 ///             },
-///             Containers = new[]
-///             {
-///                 new Aws.Sagemaker.Inputs.AlgorithmInferenceSpecificationContainerArgs
-///                 {
-///                     ContainerHostname = "test-host",
-///                     Environment =
-///                     {
-///                         { "TEST", "value" },
-///                     },
-///                     Framework = "XGBOOST",
-///                     FrameworkVersion = "1.5-1",
-///                     Image = example.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
-///                     IsCheckpoint = true,
-///                     NearestModelName = "nearest-model",
-///                     BaseModel = new Aws.Sagemaker.Inputs.AlgorithmInferenceSpecificationContainerBaseModelArgs
-///                     {
-///                         HubContentName = "basemodel",
-///                         HubContentVersion = "1.0.0",
-///                         RecipeName = "recipe",
-///                     },
-///                     ModelInput = new Aws.Sagemaker.Inputs.AlgorithmInferenceSpecificationContainerModelInputArgs
-///                     {
-///                         DataInputConfig = "{}",
-///                     },
-///                 },
-///             },
 ///         },
+///         AlgorithmName = "example-inference-algorithm",
 ///     });
 ///
 /// });
@@ -1138,12 +1138,7 @@ import 'algorithm_validation_specification.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sagemaker.NewAlgorithm(ctx, "example", &sagemaker.AlgorithmArgs{
-/// 			AlgorithmName: pulumi.String("example-inference-algorithm"),
 /// 			TrainingSpecification: &sagemaker.AlgorithmTrainingSpecificationArgs{
-/// 				SupportedTrainingInstanceTypes: pulumi.StringArray{
-/// 					pulumi.String("ml.m5.large"),
-/// 				},
-/// 				TrainingImage: pulumi.String(example.RegistryPath),
 /// 				TrainingChannels: sagemaker.AlgorithmTrainingSpecificationTrainingChannelArray{
 /// 					&sagemaker.AlgorithmTrainingSpecificationTrainingChannelArgs{
 /// 						Name: pulumi.String("train"),
@@ -1155,8 +1150,33 @@ import 'algorithm_validation_specification.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				SupportedTrainingInstanceTypes: pulumi.StringArray{
+/// 					pulumi.String("ml.m5.large"),
+/// 				},
+/// 				TrainingImage: pulumi.String(example.RegistryPath),
 /// 			},
 /// 			InferenceSpecification: &sagemaker.AlgorithmInferenceSpecificationArgs{
+/// 				Containers: sagemaker.AlgorithmInferenceSpecificationContainerArray{
+/// 					&sagemaker.AlgorithmInferenceSpecificationContainerArgs{
+/// 						BaseModel: &sagemaker.AlgorithmInferenceSpecificationContainerBaseModelArgs{
+/// 							HubContentName:    pulumi.String("basemodel"),
+/// 							HubContentVersion: pulumi.String("1.0.0"),
+/// 							RecipeName:        pulumi.String("recipe"),
+/// 						},
+/// 						ModelInput: &sagemaker.AlgorithmInferenceSpecificationContainerModelInputArgs{
+/// 							DataInputConfig: pulumi.String("{}"),
+/// 						},
+/// 						ContainerHostname: pulumi.String("test-host"),
+/// 						Environment: pulumi.StringMap{
+/// 							"TEST": pulumi.String("value"),
+/// 						},
+/// 						Framework:        pulumi.String("XGBOOST"),
+/// 						FrameworkVersion: pulumi.String("1.5-1"),
+/// 						Image:            pulumi.String(example.RegistryPath),
+/// 						IsCheckpoint:     pulumi.Bool(true),
+/// 						NearestModelName: pulumi.String("nearest-model"),
+/// 					},
+/// 				},
 /// 				SupportedContentTypes: pulumi.StringArray{
 /// 					pulumi.String("text/csv"),
 /// 				},
@@ -1169,28 +1189,8 @@ import 'algorithm_validation_specification.dart';
 /// 				SupportedTransformInstanceTypes: pulumi.StringArray{
 /// 					pulumi.String("ml.m5.large"),
 /// 				},
-/// 				Containers: sagemaker.AlgorithmInferenceSpecificationContainerArray{
-/// 					&sagemaker.AlgorithmInferenceSpecificationContainerArgs{
-/// 						ContainerHostname: pulumi.String("test-host"),
-/// 						Environment: pulumi.StringMap{
-/// 							"TEST": pulumi.String("value"),
-/// 						},
-/// 						Framework:        pulumi.String("XGBOOST"),
-/// 						FrameworkVersion: pulumi.String("1.5-1"),
-/// 						Image:            pulumi.String(example.RegistryPath),
-/// 						IsCheckpoint:     pulumi.Bool(true),
-/// 						NearestModelName: pulumi.String("nearest-model"),
-/// 						BaseModel: &sagemaker.AlgorithmInferenceSpecificationContainerBaseModelArgs{
-/// 							HubContentName:    pulumi.String("basemodel"),
-/// 							HubContentVersion: pulumi.String("1.0.0"),
-/// 							RecipeName:        pulumi.String("recipe"),
-/// 						},
-/// 						ModelInput: &sagemaker.AlgorithmInferenceSpecificationContainerModelInputArgs{
-/// 							DataInputConfig: pulumi.String("{}"),
-/// 						},
-/// 					},
-/// 				},
 /// 			},
+/// 			AlgorithmName: pulumi.String("example-inference-algorithm"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1214,22 +1214,25 @@ import 'algorithm_validation_specification.dart';
 /// }
 ///
 /// resource "aws_sagemaker_algorithm" "example" {
-///   algorithm_name = "example-inference-algorithm"
 ///   training_specification = {
-///     supported_training_instance_types = ["ml.m5.large"]
-///     training_image                    = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
 ///     training_channels = [{
 ///       "name"                  = "train"
 ///       "supportedContentTypes" = ["text/csv"]
 ///       "supportedInputModes"   = ["File"]
 ///     }]
+///     supported_training_instance_types = ["ml.m5.large"]
+///     training_image                    = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
 ///   }
 ///   inference_specification = {
-///     supported_content_types                     = ["text/csv"]
-///     supported_realtime_inference_instance_types = ["ml.m5.large"]
-///     supported_response_mime_types               = ["text/csv"]
-///     supported_transform_instance_types          = ["ml.m5.large"]
 ///     containers = [{
+///       "baseModel" = {
+///         "hubContentName"    = "basemodel"
+///         "hubContentVersion" = "1.0.0"
+///         "recipeName"        = "recipe"
+///       }
+///       "modelInput" = {
+///         "dataInputConfig" = "{}"
+///       }
 ///       "containerHostname" = "test-host"
 ///       "environment" = {
 ///         "TEST" = "value"
@@ -1239,16 +1242,13 @@ import 'algorithm_validation_specification.dart';
 ///       "image"            = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
 ///       "isCheckpoint"     = true
 ///       "nearestModelName" = "nearest-model"
-///       "baseModel" = {
-///         "hubContentName"    = "basemodel"
-///         "hubContentVersion" = "1.0.0"
-///         "recipeName"        = "recipe"
-///       }
-///       "modelInput" = {
-///         "dataInputConfig" = "{}"
-///       }
 ///     }]
+///     supported_content_types                     = ["text/csv"]
+///     supported_realtime_inference_instance_types = ["ml.m5.large"]
+///     supported_response_mime_types               = ["text/csv"]
+///     supported_transform_instance_types          = ["ml.m5.large"]
 ///   }
+///   algorithm_name = "example-inference-algorithm"
 /// }
 /// ```
 /// ```java
@@ -1286,29 +1286,17 @@ import 'algorithm_validation_specification.dart';
 ///             .build());
 ///
 ///         var exampleAlgorithm = new Algorithm("exampleAlgorithm", AlgorithmArgs.builder()
-///             .algorithmName("example-inference-algorithm")
 ///             .trainingSpecification(AlgorithmTrainingSpecificationArgs.builder()
-///                 .supportedTrainingInstanceTypes("ml.m5.large")
-///                 .trainingImage(example.registryPath())
 ///                 .trainingChannels(AlgorithmTrainingSpecificationTrainingChannelArgs.builder()
 ///                     .name("train")
 ///                     .supportedContentTypes("text/csv")
 ///                     .supportedInputModes("File")
 ///                     .build())
+///                 .supportedTrainingInstanceTypes("ml.m5.large")
+///                 .trainingImage(example.registryPath())
 ///                 .build())
 ///             .inferenceSpecification(AlgorithmInferenceSpecificationArgs.builder()
-///                 .supportedContentTypes("text/csv")
-///                 .supportedRealtimeInferenceInstanceTypes("ml.m5.large")
-///                 .supportedResponseMimeTypes("text/csv")
-///                 .supportedTransformInstanceTypes("ml.m5.large")
 ///                 .containers(AlgorithmInferenceSpecificationContainerArgs.builder()
-///                     .containerHostname("test-host")
-///                     .environment(Map.of("TEST", "value"))
-///                     .framework("XGBOOST")
-///                     .frameworkVersion("1.5-1")
-///                     .image(example.registryPath())
-///                     .isCheckpoint(true)
-///                     .nearestModelName("nearest-model")
 ///                     .baseModel(AlgorithmInferenceSpecificationContainerBaseModelArgs.builder()
 ///                         .hubContentName("basemodel")
 ///                         .hubContentVersion("1.0.0")
@@ -1317,8 +1305,20 @@ import 'algorithm_validation_specification.dart';
 ///                     .modelInput(AlgorithmInferenceSpecificationContainerModelInputArgs.builder()
 ///                         .dataInputConfig("{}")
 ///                         .build())
+///                     .containerHostname("test-host")
+///                     .environment(Map.of("TEST", "value"))
+///                     .framework("XGBOOST")
+///                     .frameworkVersion("1.5-1")
+///                     .image(example.registryPath())
+///                     .isCheckpoint(true)
+///                     .nearestModelName("nearest-model")
 ///                     .build())
+///                 .supportedContentTypes("text/csv")
+///                 .supportedRealtimeInferenceInstanceTypes("ml.m5.large")
+///                 .supportedResponseMimeTypes("text/csv")
+///                 .supportedTransformInstanceTypes("ml.m5.large")
 ///                 .build())
+///             .algorithmName("example-inference-algorithm")
 ///             .build());
 ///
 ///     }
@@ -1330,18 +1330,32 @@ import 'algorithm_validation_specification.dart';
 ///     type: aws:sagemaker:Algorithm
 ///     name: example
 ///     properties:
-///       algorithmName: example-inference-algorithm
 ///       trainingSpecification:
-///         supportedTrainingInstanceTypes:
-///           - ml.m5.large
-///         trainingImage: ${example.registryPath}
 ///         trainingChannels:
 ///           - name: train
 ///             supportedContentTypes:
 ///               - text/csv
 ///             supportedInputModes:
 ///               - File
+///         supportedTrainingInstanceTypes:
+///           - ml.m5.large
+///         trainingImage: ${example.registryPath}
 ///       inferenceSpecification:
+///         containers:
+///           - baseModel:
+///               hubContentName: basemodel
+///               hubContentVersion: 1.0.0
+///               recipeName: recipe
+///             modelInput:
+///               dataInputConfig: '{}'
+///             containerHostname: test-host
+///             environment:
+///               TEST: value
+///             framework: XGBOOST
+///             frameworkVersion: 1.5-1
+///             image: ${example.registryPath}
+///             isCheckpoint: true
+///             nearestModelName: nearest-model
 ///         supportedContentTypes:
 ///           - text/csv
 ///         supportedRealtimeInferenceInstanceTypes:
@@ -1350,21 +1364,7 @@ import 'algorithm_validation_specification.dart';
 ///           - text/csv
 ///         supportedTransformInstanceTypes:
 ///           - ml.m5.large
-///         containers:
-///           - containerHostname: test-host
-///             environment:
-///               TEST: value
-///             framework: XGBOOST
-///             frameworkVersion: 1.5-1
-///             image: ${example.registryPath}
-///             isCheckpoint: true
-///             nearestModelName: nearest-model
-///             baseModel:
-///               hubContentName: basemodel
-///               hubContentVersion: 1.0.0
-///               recipeName: recipe
-///             modelInput:
-///               dataInputConfig: '{}'
+///       algorithmName: example-inference-algorithm
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -1389,11 +1389,11 @@ import 'algorithm_validation_specification.dart';
 /// });
 /// const assumeRole = current.then(current => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: [`sagemaker.${current.dnsSuffix}`],
 ///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// }));
 /// const exampleRole = new aws.iam.Role("example", {
@@ -1444,51 +1444,48 @@ import 'algorithm_validation_specification.dart';
 /// `,
 /// });
 /// const exampleAlgorithm = new aws.sagemaker.Algorithm("example", {
-///     algorithmName: "example-validation-algorithm",
 ///     trainingSpecification: {
-///         trainingImage: example.then(example => example.registryPath),
-///         supportedTrainingInstanceTypes: ["ml.m5.large"],
 ///         supportedHyperParameters: [
 ///             {
-///                 defaultValue: "2",
-///                 description: "Feature dimension",
-///                 isRequired: true,
-///                 isTunable: false,
-///                 name: "feature_dim",
-///                 type: "Integer",
 ///                 range: {
 ///                     integerParameterRangeSpecification: {
 ///                         minValue: "2",
 ///                         maxValue: "2",
 ///                     },
 ///                 },
-///             },
-///             {
-///                 defaultValue: "4",
-///                 description: "Mini batch size",
+///                 defaultValue: "2",
+///                 description: "Feature dimension",
 ///                 isRequired: true,
 ///                 isTunable: false,
-///                 name: "mini_batch_size",
+///                 name: "feature_dim",
 ///                 type: "Integer",
+///             },
+///             {
 ///                 range: {
 ///                     integerParameterRangeSpecification: {
 ///                         minValue: "4",
 ///                         maxValue: "4",
 ///                     },
 ///                 },
+///                 defaultValue: "4",
+///                 description: "Mini batch size",
+///                 isRequired: true,
+///                 isTunable: false,
+///                 name: "mini_batch_size",
+///                 type: "Integer",
 ///             },
 ///             {
+///                 range: {
+///                     categoricalParameterRangeSpecification: {
+///                         values: ["binary_classifier"],
+///                     },
+///                 },
 ///                 defaultValue: "binary_classifier",
 ///                 description: "Predictor type",
 ///                 isRequired: true,
 ///                 isTunable: false,
 ///                 name: "predictor_type",
 ///                 type: "Categorical",
-///                 range: {
-///                     categoricalParameterRangeSpecification: {
-///                         values: ["binary_classifier"],
-///                     },
-///                 },
 ///             },
 ///         ],
 ///         trainingChannels: [{
@@ -1496,44 +1493,20 @@ import 'algorithm_validation_specification.dart';
 ///             supportedContentTypes: ["text/csv"],
 ///             supportedInputModes: ["File"],
 ///         }],
+///         trainingImage: example.then(example => example.registryPath),
+///         supportedTrainingInstanceTypes: ["ml.m5.large"],
 ///     },
 ///     inferenceSpecification: {
-///         supportedContentTypes: ["text/csv"],
-///         supportedResponseMimeTypes: ["text/csv"],
-///         supportedTransformInstanceTypes: ["ml.m5.large"],
 ///         containers: [{
 ///             image: example.then(example => example.registryPath),
 ///         }],
+///         supportedContentTypes: ["text/csv"],
+///         supportedResponseMimeTypes: ["text/csv"],
+///         supportedTransformInstanceTypes: ["ml.m5.large"],
 ///     },
 ///     validationSpecification: {
-///         validationRole: exampleRole.arn,
 ///         validationProfiles: {
-///             profileName: "validation-profile",
 ///             trainingJobDefinition: {
-///                 hyperParameters: {
-///                     feature_dim: "2",
-///                     mini_batch_size: "4",
-///                     predictor_type: "binary_classifier",
-///                 },
-///                 trainingInputMode: "File",
-///                 inputDataConfigs: [{
-///                     channelName: "train",
-///                     compressionType: "None",
-///                     contentType: "text/csv",
-///                     inputMode: "File",
-///                     recordWrapperType: "None",
-///                     shuffleConfig: {
-///                         seed: 1,
-///                     },
-///                     dataSource: {
-///                         s3DataSource: {
-///                             attributeNames: ["label"],
-///                             s3DataDistributionType: "ShardedByS3Key",
-///                             s3DataType: "S3Prefix",
-///                             s3Uri: pulumi.interpolate`s3://${exampleBucket.bucket}/algorithm/training/`,
-///                         },
-///                     },
-///                 }],
 ///                 outputDataConfig: {
 ///                     compressionType: "GZIP",
 ///                     s3OutputPath: pulumi.interpolate`s3://${exampleBucket.bucket}/algorithm/output`,
@@ -1549,24 +1522,42 @@ import 'algorithm_validation_specification.dart';
 ///                     maxRuntimeInSeconds: 1800,
 ///                     maxWaitTimeInSeconds: 3600,
 ///                 },
-///             },
-///             transformJobDefinition: {
-///                 batchStrategy: "MultiRecord",
-///                 environment: {
-///                     Te: "enabled",
-///                 },
-///                 maxConcurrentTransforms: 1,
-///                 maxPayloadInMb: 6,
-///                 transformInput: {
+///                 inputDataConfigs: [{
+///                     shuffleConfig: {
+///                         seed: 1,
+///                     },
+///                     dataSource: {
+///                         s3DataSource: {
+///                             attributeNames: ["label"],
+///                             s3DataDistributionType: "ShardedByS3Key",
+///                             s3DataType: "S3Prefix",
+///                             s3Uri: pulumi.interpolate`s3://${exampleBucket.bucket}/algorithm/training/`,
+///                         },
+///                     },
+///                     channelName: "train",
 ///                     compressionType: "None",
 ///                     contentType: "text/csv",
-///                     splitType: "Line",
+///                     inputMode: "File",
+///                     recordWrapperType: "None",
+///                 }],
+///                 hyperParameters: {
+///                     feature_dim: "2",
+///                     mini_batch_size: "4",
+///                     predictor_type: "binary_classifier",
+///                 },
+///                 trainingInputMode: "File",
+///             },
+///             transformJobDefinition: {
+///                 transformInput: {
 ///                     dataSource: {
 ///                         s3DataSource: {
 ///                             s3DataType: "S3Prefix",
 ///                             s3Uri: pulumi.interpolate`s3://${exampleBucket.bucket}/algorithm/transform/`,
 ///                         },
 ///                     },
+///                     compressionType: "None",
+///                     contentType: "text/csv",
+///                     splitType: "Line",
 ///                 },
 ///                 transformOutput: {
 ///                     accept: "text/csv",
@@ -1577,9 +1568,18 @@ import 'algorithm_validation_specification.dart';
 ///                     instanceCount: 1,
 ///                     instanceType: "ml.m5.large",
 ///                 },
+///                 batchStrategy: "MultiRecord",
+///                 environment: {
+///                     Te: "enabled",
+///                 },
+///                 maxConcurrentTransforms: 1,
+///                 maxPayloadInMb: 6,
 ///             },
+///             profileName: "validation-profile",
 ///         },
+///         validationRole: exampleRole.arn,
 ///     },
+///     algorithmName: "example-validation-algorithm",
 /// }, {
 ///     dependsOn: [
 ///         exampleRolePolicyAttachment,
@@ -1597,11 +1597,11 @@ import 'algorithm_validation_specification.dart';
 /// example = aws.sagemaker.get_prebuilt_ecr_image(repository_name="linear-learner",
 ///     image_tag="1")
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": [f"sagemaker.{current.dns_suffix}"],
 ///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
 ///     name="example-sagemaker-algorithm-role",
@@ -1643,51 +1643,48 @@ import 'algorithm_validation_specification.dart';
 /// 0.0,1.0
 /// """)
 /// example_algorithm = aws.sagemaker.Algorithm("example",
-///     algorithm_name="example-validation-algorithm",
 ///     training_specification={
-///         "training_image": example.registry_path,
-///         "supported_training_instance_types": ["ml.m5.large"],
 ///         "supported_hyper_parameters": [
 ///             {
-///                 "default_value": "2",
-///                 "description": "Feature dimension",
-///                 "is_required": True,
-///                 "is_tunable": False,
-///                 "name": "feature_dim",
-///                 "type": "Integer",
 ///                 "range": {
 ///                     "integer_parameter_range_specification": {
 ///                         "min_value": "2",
 ///                         "max_value": "2",
 ///                     },
 ///                 },
-///             },
-///             {
-///                 "default_value": "4",
-///                 "description": "Mini batch size",
+///                 "default_value": "2",
+///                 "description": "Feature dimension",
 ///                 "is_required": True,
 ///                 "is_tunable": False,
-///                 "name": "mini_batch_size",
+///                 "name": "feature_dim",
 ///                 "type": "Integer",
+///             },
+///             {
 ///                 "range": {
 ///                     "integer_parameter_range_specification": {
 ///                         "min_value": "4",
 ///                         "max_value": "4",
 ///                     },
 ///                 },
+///                 "default_value": "4",
+///                 "description": "Mini batch size",
+///                 "is_required": True,
+///                 "is_tunable": False,
+///                 "name": "mini_batch_size",
+///                 "type": "Integer",
 ///             },
 ///             {
+///                 "range": {
+///                     "categorical_parameter_range_specification": {
+///                         "values": ["binary_classifier"],
+///                     },
+///                 },
 ///                 "default_value": "binary_classifier",
 ///                 "description": "Predictor type",
 ///                 "is_required": True,
 ///                 "is_tunable": False,
 ///                 "name": "predictor_type",
 ///                 "type": "Categorical",
-///                 "range": {
-///                     "categorical_parameter_range_specification": {
-///                         "values": ["binary_classifier"],
-///                     },
-///                 },
 ///             },
 ///         ],
 ///         "training_channels": [{
@@ -1695,44 +1692,20 @@ import 'algorithm_validation_specification.dart';
 ///             "supported_content_types": ["text/csv"],
 ///             "supported_input_modes": ["File"],
 ///         }],
+///         "training_image": example.registry_path,
+///         "supported_training_instance_types": ["ml.m5.large"],
 ///     },
 ///     inference_specification={
-///         "supported_content_types": ["text/csv"],
-///         "supported_response_mime_types": ["text/csv"],
-///         "supported_transform_instance_types": ["ml.m5.large"],
 ///         "containers": [{
 ///             "image": example.registry_path,
 ///         }],
+///         "supported_content_types": ["text/csv"],
+///         "supported_response_mime_types": ["text/csv"],
+///         "supported_transform_instance_types": ["ml.m5.large"],
 ///     },
 ///     validation_specification={
-///         "validation_role": example_role.arn,
 ///         "validation_profiles": {
-///             "profile_name": "validation-profile",
 ///             "training_job_definition": {
-///                 "hyper_parameters": {
-///                     "feature_dim": "2",
-///                     "mini_batch_size": "4",
-///                     "predictor_type": "binary_classifier",
-///                 },
-///                 "training_input_mode": "File",
-///                 "input_data_configs": [{
-///                     "channel_name": "train",
-///                     "compression_type": "None",
-///                     "content_type": "text/csv",
-///                     "input_mode": "File",
-///                     "record_wrapper_type": "None",
-///                     "shuffle_config": {
-///                         "seed": 1,
-///                     },
-///                     "data_source": {
-///                         "s3_data_source": {
-///                             "attribute_names": ["label"],
-///                             "s3_data_distribution_type": "ShardedByS3Key",
-///                             "s3_data_type": "S3Prefix",
-///                             "s3_uri": example_bucket.bucket.apply(lambda bucket: f"s3://{bucket}/algorithm/training/"),
-///                         },
-///                     },
-///                 }],
 ///                 "output_data_config": {
 ///                     "compression_type": "GZIP",
 ///                     "s3_output_path": example_bucket.bucket.apply(lambda bucket: f"s3://{bucket}/algorithm/output"),
@@ -1748,24 +1721,42 @@ import 'algorithm_validation_specification.dart';
 ///                     "max_runtime_in_seconds": 1800,
 ///                     "max_wait_time_in_seconds": 3600,
 ///                 },
-///             },
-///             "transform_job_definition": {
-///                 "batch_strategy": "MultiRecord",
-///                 "environment": {
-///                     "Te": "enabled",
-///                 },
-///                 "max_concurrent_transforms": 1,
-///                 "max_payload_in_mb": 6,
-///                 "transform_input": {
+///                 "input_data_configs": [{
+///                     "shuffle_config": {
+///                         "seed": 1,
+///                     },
+///                     "data_source": {
+///                         "s3_data_source": {
+///                             "attribute_names": ["label"],
+///                             "s3_data_distribution_type": "ShardedByS3Key",
+///                             "s3_data_type": "S3Prefix",
+///                             "s3_uri": example_bucket.bucket.apply(lambda bucket: f"s3://{bucket}/algorithm/training/"),
+///                         },
+///                     },
+///                     "channel_name": "train",
 ///                     "compression_type": "None",
 ///                     "content_type": "text/csv",
-///                     "split_type": "Line",
+///                     "input_mode": "File",
+///                     "record_wrapper_type": "None",
+///                 }],
+///                 "hyper_parameters": {
+///                     "feature_dim": "2",
+///                     "mini_batch_size": "4",
+///                     "predictor_type": "binary_classifier",
+///                 },
+///                 "training_input_mode": "File",
+///             },
+///             "transform_job_definition": {
+///                 "transform_input": {
 ///                     "data_source": {
 ///                         "s3_data_source": {
 ///                             "s3_data_type": "S3Prefix",
 ///                             "s3_uri": example_bucket.bucket.apply(lambda bucket: f"s3://{bucket}/algorithm/transform/"),
 ///                         },
 ///                     },
+///                     "compression_type": "None",
+///                     "content_type": "text/csv",
+///                     "split_type": "Line",
 ///                 },
 ///                 "transform_output": {
 ///                     "accept": "text/csv",
@@ -1776,9 +1767,18 @@ import 'algorithm_validation_specification.dart';
 ///                     "instance_count": 1,
 ///                     "instance_type": "ml.m5.large",
 ///                 },
+///                 "batch_strategy": "MultiRecord",
+///                 "environment": {
+///                     "Te": "enabled",
+///                 },
+///                 "max_concurrent_transforms": 1,
+///                 "max_payload_in_mb": 6,
 ///             },
+///             "profile_name": "validation-profile",
 ///         },
+///         "validation_role": example_role.arn,
 ///     },
+///     algorithm_name="example-validation-algorithm",
 ///     opts = pulumi.ResourceOptions(depends_on=[
 ///             example_role_policy_attachment,
 ///             example_role_policy,
@@ -1808,10 +1808,6 @@ import 'algorithm_validation_specification.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -1822,6 +1818,10 @@ import 'algorithm_validation_specification.dart';
 ///                             $"sagemaker.{current.Apply(getPartitionResult => getPartitionResult.DnsSuffix)}",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -1896,24 +1896,12 @@ import 'algorithm_validation_specification.dart';
 ///
 ///     var exampleAlgorithm = new Aws.Sagemaker.Algorithm("example", new()
 ///     {
-///         AlgorithmName = "example-validation-algorithm",
 ///         TrainingSpecification = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationArgs
 ///         {
-///             TrainingImage = example.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
-///             SupportedTrainingInstanceTypes = new[]
-///             {
-///                 "ml.m5.large",
-///             },
 ///             SupportedHyperParameters = new[]
 ///             {
 ///                 new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterArgs
 ///                 {
-///                     DefaultValue = "2",
-///                     Description = "Feature dimension",
-///                     IsRequired = true,
-///                     IsTunable = false,
-///                     Name = "feature_dim",
-///                     Type = "Integer",
 ///                     Range = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs
 ///                     {
 ///                         IntegerParameterRangeSpecification = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecificationArgs
@@ -1922,15 +1910,15 @@ import 'algorithm_validation_specification.dart';
 ///                             MaxValue = "2",
 ///                         },
 ///                     },
+///                     DefaultValue = "2",
+///                     Description = "Feature dimension",
+///                     IsRequired = true,
+///                     IsTunable = false,
+///                     Name = "feature_dim",
+///                     Type = "Integer",
 ///                 },
 ///                 new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterArgs
 ///                 {
-///                     DefaultValue = "4",
-///                     Description = "Mini batch size",
-///                     IsRequired = true,
-///                     IsTunable = false,
-///                     Name = "mini_batch_size",
-///                     Type = "Integer",
 ///                     Range = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs
 ///                     {
 ///                         IntegerParameterRangeSpecification = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecificationArgs
@@ -1939,15 +1927,15 @@ import 'algorithm_validation_specification.dart';
 ///                             MaxValue = "4",
 ///                         },
 ///                     },
+///                     DefaultValue = "4",
+///                     Description = "Mini batch size",
+///                     IsRequired = true,
+///                     IsTunable = false,
+///                     Name = "mini_batch_size",
+///                     Type = "Integer",
 ///                 },
 ///                 new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterArgs
 ///                 {
-///                     DefaultValue = "binary_classifier",
-///                     Description = "Predictor type",
-///                     IsRequired = true,
-///                     IsTunable = false,
-///                     Name = "predictor_type",
-///                     Type = "Categorical",
 ///                     Range = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs
 ///                     {
 ///                         CategoricalParameterRangeSpecification = new Aws.Sagemaker.Inputs.AlgorithmTrainingSpecificationSupportedHyperParameterRangeCategoricalParameterRangeSpecificationArgs
@@ -1958,6 +1946,12 @@ import 'algorithm_validation_specification.dart';
 ///                             },
 ///                         },
 ///                     },
+///                     DefaultValue = "binary_classifier",
+///                     Description = "Predictor type",
+///                     IsRequired = true,
+///                     IsTunable = false,
+///                     Name = "predictor_type",
+///                     Type = "Categorical",
 ///                 },
 ///             },
 ///             TrainingChannels = new[]
@@ -1975,9 +1969,21 @@ import 'algorithm_validation_specification.dart';
 ///                     },
 ///                 },
 ///             },
+///             TrainingImage = example.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
+///             SupportedTrainingInstanceTypes = new[]
+///             {
+///                 "ml.m5.large",
+///             },
 ///         },
 ///         InferenceSpecification = new Aws.Sagemaker.Inputs.AlgorithmInferenceSpecificationArgs
 ///         {
+///             Containers = new[]
+///             {
+///                 new Aws.Sagemaker.Inputs.AlgorithmInferenceSpecificationContainerArgs
+///                 {
+///                     Image = example.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
+///                 },
+///             },
 ///             SupportedContentTypes = new[]
 ///             {
 ///                 "text/csv",
@@ -1990,57 +1996,13 @@ import 'algorithm_validation_specification.dart';
 ///             {
 ///                 "ml.m5.large",
 ///             },
-///             Containers = new[]
-///             {
-///                 new Aws.Sagemaker.Inputs.AlgorithmInferenceSpecificationContainerArgs
-///                 {
-///                     Image = example.Apply(getPrebuiltEcrImageResult => getPrebuiltEcrImageResult.RegistryPath),
-///                 },
-///             },
 ///         },
 ///         ValidationSpecification = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationArgs
 ///         {
-///             ValidationRole = exampleRole.Arn,
 ///             ValidationProfiles = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesArgs
 ///             {
-///                 ProfileName = "validation-profile",
 ///                 TrainingJobDefinition = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionArgs
 ///                 {
-///                     HyperParameters =
-///                     {
-///                         { "feature_dim", "2" },
-///                         { "mini_batch_size", "4" },
-///                         { "predictor_type", "binary_classifier" },
-///                     },
-///                     TrainingInputMode = "File",
-///                     InputDataConfigs = new[]
-///                     {
-///                         new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigArgs
-///                         {
-///                             ChannelName = "train",
-///                             CompressionType = "None",
-///                             ContentType = "text/csv",
-///                             InputMode = "File",
-///                             RecordWrapperType = "None",
-///                             ShuffleConfig = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfigArgs
-///                             {
-///                                 Seed = 1,
-///                             },
-///                             DataSource = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceArgs
-///                             {
-///                                 S3DataSource = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs
-///                                 {
-///                                     AttributeNames = new[]
-///                                     {
-///                                         "label",
-///                                     },
-///                                     S3DataDistributionType = "ShardedByS3Key",
-///                                     S3DataType = "S3Prefix",
-///                                     S3Uri = exampleBucket.BucketName.Apply(bucket => $"s3://{bucket}/algorithm/training/"),
-///                                 },
-///                             },
-///                         },
-///                     },
 ///                     OutputDataConfig = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionOutputDataConfigArgs
 ///                     {
 ///                         CompressionType = "GZIP",
@@ -2059,21 +2021,46 @@ import 'algorithm_validation_specification.dart';
 ///                         MaxRuntimeInSeconds = 1800,
 ///                         MaxWaitTimeInSeconds = 3600,
 ///                     },
+///                     InputDataConfigs = new[]
+///                     {
+///                         new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigArgs
+///                         {
+///                             ShuffleConfig = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfigArgs
+///                             {
+///                                 Seed = 1,
+///                             },
+///                             DataSource = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceArgs
+///                             {
+///                                 S3DataSource = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs
+///                                 {
+///                                     AttributeNames = new[]
+///                                     {
+///                                         "label",
+///                                     },
+///                                     S3DataDistributionType = "ShardedByS3Key",
+///                                     S3DataType = "S3Prefix",
+///                                     S3Uri = exampleBucket.BucketName.Apply(bucket => $"s3://{bucket}/algorithm/training/"),
+///                                 },
+///                             },
+///                             ChannelName = "train",
+///                             CompressionType = "None",
+///                             ContentType = "text/csv",
+///                             InputMode = "File",
+///                             RecordWrapperType = "None",
+///                         },
+///                     },
+///                     HyperParameters =
+///                     {
+///                         { "feature_dim", "2" },
+///                         { "mini_batch_size", "4" },
+///                         { "predictor_type", "binary_classifier" },
+///                     },
+///                     TrainingInputMode = "File",
 ///                 },
 ///                 TransformJobDefinition = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionArgs
 ///                 {
-///                     BatchStrategy = "MultiRecord",
-///                     Environment =
-///                     {
-///                         { "Te", "enabled" },
-///                     },
-///                     MaxConcurrentTransforms = 1,
-///                     MaxPayloadInMb = 6,
 ///                     TransformInput = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputArgs
 ///                     {
-///                         CompressionType = "None",
-///                         ContentType = "text/csv",
-///                         SplitType = "Line",
 ///                         DataSource = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputDataSourceArgs
 ///                         {
 ///                             S3DataSource = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputDataSourceS3DataSourceArgs
@@ -2082,6 +2069,9 @@ import 'algorithm_validation_specification.dart';
 ///                                 S3Uri = exampleBucket.BucketName.Apply(bucket => $"s3://{bucket}/algorithm/transform/"),
 ///                             },
 ///                         },
+///                         CompressionType = "None",
+///                         ContentType = "text/csv",
+///                         SplitType = "Line",
 ///                     },
 ///                     TransformOutput = new Aws.Sagemaker.Inputs.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformOutputArgs
 ///                     {
@@ -2094,9 +2084,19 @@ import 'algorithm_validation_specification.dart';
 ///                         InstanceCount = 1,
 ///                         InstanceType = "ml.m5.large",
 ///                     },
+///                     BatchStrategy = "MultiRecord",
+///                     Environment =
+///                     {
+///                         { "Te", "enabled" },
+///                     },
+///                     MaxConcurrentTransforms = 1,
+///                     MaxPayloadInMb = 6,
 ///                 },
+///                 ProfileName = "validation-profile",
 ///             },
+///             ValidationRole = exampleRole.Arn,
 ///         },
+///         AlgorithmName = "example-validation-algorithm",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -2139,9 +2139,6 @@ import 'algorithm_validation_specification.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -2149,6 +2146,9 @@ import 'algorithm_validation_specification.dart';
 /// 								fmt.Sprintf("sagemaker.%v", current.DnsSuffix),
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -2220,48 +2220,37 @@ import 'algorithm_validation_specification.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sagemaker.NewAlgorithm(ctx, "example", &sagemaker.AlgorithmArgs{
-/// 			AlgorithmName: pulumi.String("example-validation-algorithm"),
 /// 			TrainingSpecification: &sagemaker.AlgorithmTrainingSpecificationArgs{
-/// 				TrainingImage: pulumi.String(example.RegistryPath),
-/// 				SupportedTrainingInstanceTypes: pulumi.StringArray{
-/// 					pulumi.String("ml.m5.large"),
-/// 				},
 /// 				SupportedHyperParameters: sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterArray{
 /// 					&sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterArgs{
-/// 						DefaultValue: pulumi.String("2"),
-/// 						Description:  pulumi.String("Feature dimension"),
-/// 						IsRequired:   pulumi.Bool(true),
-/// 						IsTunable:    pulumi.Bool(false),
-/// 						Name:         pulumi.String("feature_dim"),
-/// 						Type:         pulumi.String("Integer"),
 /// 						Range: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs{
 /// 							IntegerParameterRangeSpecification: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecificationArgs{
 /// 								MinValue: pulumi.String("2"),
 /// 								MaxValue: pulumi.String("2"),
 /// 							},
 /// 						},
-/// 					},
-/// 					&sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterArgs{
-/// 						DefaultValue: pulumi.String("4"),
-/// 						Description:  pulumi.String("Mini batch size"),
+/// 						DefaultValue: pulumi.String("2"),
+/// 						Description:  pulumi.String("Feature dimension"),
 /// 						IsRequired:   pulumi.Bool(true),
 /// 						IsTunable:    pulumi.Bool(false),
-/// 						Name:         pulumi.String("mini_batch_size"),
+/// 						Name:         pulumi.String("feature_dim"),
 /// 						Type:         pulumi.String("Integer"),
+/// 					},
+/// 					&sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterArgs{
 /// 						Range: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs{
 /// 							IntegerParameterRangeSpecification: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecificationArgs{
 /// 								MinValue: pulumi.String("4"),
 /// 								MaxValue: pulumi.String("4"),
 /// 							},
 /// 						},
-/// 					},
-/// 					&sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterArgs{
-/// 						DefaultValue: pulumi.String("binary_classifier"),
-/// 						Description:  pulumi.String("Predictor type"),
+/// 						DefaultValue: pulumi.String("4"),
+/// 						Description:  pulumi.String("Mini batch size"),
 /// 						IsRequired:   pulumi.Bool(true),
 /// 						IsTunable:    pulumi.Bool(false),
-/// 						Name:         pulumi.String("predictor_type"),
-/// 						Type:         pulumi.String("Categorical"),
+/// 						Name:         pulumi.String("mini_batch_size"),
+/// 						Type:         pulumi.String("Integer"),
+/// 					},
+/// 					&sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterArgs{
 /// 						Range: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs{
 /// 							CategoricalParameterRangeSpecification: &sagemaker.AlgorithmTrainingSpecificationSupportedHyperParameterRangeCategoricalParameterRangeSpecificationArgs{
 /// 								Values: pulumi.StringArray{
@@ -2269,6 +2258,12 @@ import 'algorithm_validation_specification.dart';
 /// 								},
 /// 							},
 /// 						},
+/// 						DefaultValue: pulumi.String("binary_classifier"),
+/// 						Description:  pulumi.String("Predictor type"),
+/// 						IsRequired:   pulumi.Bool(true),
+/// 						IsTunable:    pulumi.Bool(false),
+/// 						Name:         pulumi.String("predictor_type"),
+/// 						Type:         pulumi.String("Categorical"),
 /// 					},
 /// 				},
 /// 				TrainingChannels: sagemaker.AlgorithmTrainingSpecificationTrainingChannelArray{
@@ -2282,8 +2277,17 @@ import 'algorithm_validation_specification.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				TrainingImage: pulumi.String(example.RegistryPath),
+/// 				SupportedTrainingInstanceTypes: pulumi.StringArray{
+/// 					pulumi.String("ml.m5.large"),
+/// 				},
 /// 			},
 /// 			InferenceSpecification: &sagemaker.AlgorithmInferenceSpecificationArgs{
+/// 				Containers: sagemaker.AlgorithmInferenceSpecificationContainerArray{
+/// 					&sagemaker.AlgorithmInferenceSpecificationContainerArgs{
+/// 						Image: pulumi.String(example.RegistryPath),
+/// 					},
+/// 				},
 /// 				SupportedContentTypes: pulumi.StringArray{
 /// 					pulumi.String("text/csv"),
 /// 				},
@@ -2293,47 +2297,10 @@ import 'algorithm_validation_specification.dart';
 /// 				SupportedTransformInstanceTypes: pulumi.StringArray{
 /// 					pulumi.String("ml.m5.large"),
 /// 				},
-/// 				Containers: sagemaker.AlgorithmInferenceSpecificationContainerArray{
-/// 					&sagemaker.AlgorithmInferenceSpecificationContainerArgs{
-/// 						Image: pulumi.String(example.RegistryPath),
-/// 					},
-/// 				},
 /// 			},
 /// 			ValidationSpecification: &sagemaker.AlgorithmValidationSpecificationArgs{
-/// 				ValidationRole: exampleRole.Arn,
 /// 				ValidationProfiles: &sagemaker.AlgorithmValidationSpecificationValidationProfilesArgs{
-/// 					ProfileName: pulumi.String("validation-profile"),
 /// 					TrainingJobDefinition: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionArgs{
-/// 						HyperParameters: pulumi.StringMap{
-/// 							"feature_dim":     pulumi.String("2"),
-/// 							"mini_batch_size": pulumi.String("4"),
-/// 							"predictor_type":  pulumi.String("binary_classifier"),
-/// 						},
-/// 						TrainingInputMode: pulumi.String("File"),
-/// 						InputDataConfigs: sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigArray{
-/// 							&sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigArgs{
-/// 								ChannelName:       pulumi.String("train"),
-/// 								CompressionType:   pulumi.String("None"),
-/// 								ContentType:       pulumi.String("text/csv"),
-/// 								InputMode:         pulumi.String("File"),
-/// 								RecordWrapperType: pulumi.String("None"),
-/// 								ShuffleConfig: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfigArgs{
-/// 									Seed: pulumi.Int(1),
-/// 								},
-/// 								DataSource: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceArgs{
-/// 									S3DataSource: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs{
-/// 										AttributeNames: pulumi.StringArray{
-/// 											pulumi.String("label"),
-/// 										},
-/// 										S3DataDistributionType: pulumi.String("ShardedByS3Key"),
-/// 										S3DataType:             pulumi.String("S3Prefix"),
-/// 										S3Uri: exampleBucket.Bucket.ApplyT(func(bucket string) (string, error) {
-/// 											return fmt.Sprintf("s3://%v/algorithm/training/", bucket), nil
-/// 										}).(pulumi.StringOutput),
-/// 									},
-/// 								},
-/// 							},
-/// 						},
 /// 						OutputDataConfig: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionOutputDataConfigArgs{
 /// 							CompressionType: pulumi.String("GZIP"),
 /// 							S3OutputPath: exampleBucket.Bucket.ApplyT(func(bucket string) (string, error) {
@@ -2351,18 +2318,39 @@ import 'algorithm_validation_specification.dart';
 /// 							MaxRuntimeInSeconds:     pulumi.Int(1800),
 /// 							MaxWaitTimeInSeconds:    pulumi.Int(3600),
 /// 						},
+/// 						InputDataConfigs: sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigArray{
+/// 							&sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigArgs{
+/// 								ShuffleConfig: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfigArgs{
+/// 									Seed: pulumi.Int(1),
+/// 								},
+/// 								DataSource: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceArgs{
+/// 									S3DataSource: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs{
+/// 										AttributeNames: pulumi.StringArray{
+/// 											pulumi.String("label"),
+/// 										},
+/// 										S3DataDistributionType: pulumi.String("ShardedByS3Key"),
+/// 										S3DataType:             pulumi.String("S3Prefix"),
+/// 										S3Uri: exampleBucket.Bucket.ApplyT(func(bucket string) (string, error) {
+/// 											return fmt.Sprintf("s3://%v/algorithm/training/", bucket), nil
+/// 										}).(pulumi.StringOutput),
+/// 									},
+/// 								},
+/// 								ChannelName:       pulumi.String("train"),
+/// 								CompressionType:   pulumi.String("None"),
+/// 								ContentType:       pulumi.String("text/csv"),
+/// 								InputMode:         pulumi.String("File"),
+/// 								RecordWrapperType: pulumi.String("None"),
+/// 							},
+/// 						},
+/// 						HyperParameters: pulumi.StringMap{
+/// 							"feature_dim":     pulumi.String("2"),
+/// 							"mini_batch_size": pulumi.String("4"),
+/// 							"predictor_type":  pulumi.String("binary_classifier"),
+/// 						},
+/// 						TrainingInputMode: pulumi.String("File"),
 /// 					},
 /// 					TransformJobDefinition: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionArgs{
-/// 						BatchStrategy: pulumi.String("MultiRecord"),
-/// 						Environment: pulumi.StringMap{
-/// 							"Te": pulumi.String("enabled"),
-/// 						},
-/// 						MaxConcurrentTransforms: pulumi.Int(1),
-/// 						MaxPayloadInMb:          pulumi.Int(6),
 /// 						TransformInput: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputArgs{
-/// 							CompressionType: pulumi.String("None"),
-/// 							ContentType:     pulumi.String("text/csv"),
-/// 							SplitType:       pulumi.String("Line"),
 /// 							DataSource: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputDataSourceArgs{
 /// 								S3DataSource: &sagemaker.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputDataSourceS3DataSourceArgs{
 /// 									S3DataType: pulumi.String("S3Prefix"),
@@ -2371,6 +2359,9 @@ import 'algorithm_validation_specification.dart';
 /// 									}).(pulumi.StringOutput),
 /// 								},
 /// 							},
+/// 							CompressionType: pulumi.String("None"),
+/// 							ContentType:     pulumi.String("text/csv"),
+/// 							SplitType:       pulumi.String("Line"),
 /// 						},
 /// 						TransformOutput: sagemaker.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformOutputArgs{
 /// 							Accept:       pulumi.String("text/csv"),
@@ -2383,9 +2374,18 @@ import 'algorithm_validation_specification.dart';
 /// 							InstanceCount: pulumi.Int(1),
 /// 							InstanceType:  pulumi.String("ml.m5.large"),
 /// 						},
+/// 						BatchStrategy: pulumi.String("MultiRecord"),
+/// 						Environment: pulumi.StringMap{
+/// 							"Te": pulumi.String("enabled"),
+/// 						},
+/// 						MaxConcurrentTransforms: pulumi.Int(1),
+/// 						MaxPayloadInMb:          pulumi.Int(6),
 /// 					},
+/// 					ProfileName: pulumi.String("validation-profile"),
 /// 				},
+/// 				ValidationRole: exampleRole.Arn,
 /// 			},
+/// 			AlgorithmName: pulumi.String("example-validation-algorithm"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleRolePolicyAttachment,
 /// 			exampleRolePolicy,
@@ -2416,11 +2416,11 @@ import 'algorithm_validation_specification.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["sagemaker.${data.aws_getpartition.current.dns_suffix}"]
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "s3Access" {
@@ -2458,93 +2458,66 @@ import 'algorithm_validation_specification.dart';
 ///   content = "1.0,0.0\n0.0,1.0\n"
 /// }
 /// resource "aws_sagemaker_algorithm" "example" {
-///   depends_on     = [aws_iam_rolepolicyattachment.example, aws_iam_rolepolicy.example, aws_s3_bucketobjectv2.training, aws_s3_bucketobjectv2.transform]
-///   algorithm_name = "example-validation-algorithm"
+///   depends_on = [aws_iam_rolepolicyattachment.example, aws_iam_rolepolicy.example, aws_s3_bucketobjectv2.training, aws_s3_bucketobjectv2.transform]
 ///   training_specification = {
-///     training_image                    = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
-///     supported_training_instance_types = ["ml.m5.large"]
 ///     supported_hyper_parameters = [{
-///       "defaultValue" = "2"
-///       "description"  = "Feature dimension"
-///       "isRequired"   = true
-///       "isTunable"    = false
-///       "name"         = "feature_dim"
-///       "type"         = "Integer"
 ///       "range" = {
 ///         "integerParameterRangeSpecification" = {
 ///           "minValue" = "2"
 ///           "maxValue" = "2"
 ///         }
 ///       }
-///       }, {
-///       "defaultValue" = "4"
-///       "description"  = "Mini batch size"
+///       "defaultValue" = "2"
+///       "description"  = "Feature dimension"
 ///       "isRequired"   = true
 ///       "isTunable"    = false
-///       "name"         = "mini_batch_size"
+///       "name"         = "feature_dim"
 ///       "type"         = "Integer"
+///       }, {
 ///       "range" = {
 ///         "integerParameterRangeSpecification" = {
 ///           "minValue" = "4"
 ///           "maxValue" = "4"
 ///         }
 ///       }
+///       "defaultValue" = "4"
+///       "description"  = "Mini batch size"
+///       "isRequired"   = true
+///       "isTunable"    = false
+///       "name"         = "mini_batch_size"
+///       "type"         = "Integer"
 ///       }, {
+///       "range" = {
+///         "categoricalParameterRangeSpecification" = {
+///           "values" = ["binary_classifier"]
+///         }
+///       }
 ///       "defaultValue" = "binary_classifier"
 ///       "description"  = "Predictor type"
 ///       "isRequired"   = true
 ///       "isTunable"    = false
 ///       "name"         = "predictor_type"
 ///       "type"         = "Categorical"
-///       "range" = {
-///         "categoricalParameterRangeSpecification" = {
-///           "values" = ["binary_classifier"]
-///         }
-///       }
 ///     }]
 ///     training_channels = [{
 ///       "name"                  = "train"
 ///       "supportedContentTypes" = ["text/csv"]
 ///       "supportedInputModes"   = ["File"]
 ///     }]
+///     training_image                    = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
+///     supported_training_instance_types = ["ml.m5.large"]
 ///   }
 ///   inference_specification = {
-///     supported_content_types            = ["text/csv"]
-///     supported_response_mime_types      = ["text/csv"]
-///     supported_transform_instance_types = ["ml.m5.large"]
 ///     containers = [{
 ///       "image" = data.aws_sagemaker_getprebuiltecrimage.example.registry_path
 ///     }]
+///     supported_content_types            = ["text/csv"]
+///     supported_response_mime_types      = ["text/csv"]
+///     supported_transform_instance_types = ["ml.m5.large"]
 ///   }
 ///   validation_specification = {
-///     validation_role = aws_iam_role.example.arn
 ///     validation_profiles = {
-///       profile_name = "validation-profile"
 ///       training_job_definition = {
-///         hyper_parameters = {
-///           "feature_dim"     = "2"
-///           "mini_batch_size" = "4"
-///           "predictor_type"  = "binary_classifier"
-///         }
-///         training_input_mode = "File"
-///         input_data_configs = [{
-///           "channelName"       = "train"
-///           "compressionType"   = "None"
-///           "contentType"       = "text/csv"
-///           "inputMode"         = "File"
-///           "recordWrapperType" = "None"
-///           "shuffleConfig" = {
-///             "seed" = 1
-///           }
-///           "dataSource" = {
-///             "s3DataSource" = {
-///               "attributeNames"         = ["label"]
-///               "s3DataDistributionType" = "ShardedByS3Key"
-///               "s3DataType"             = "S3Prefix"
-///               "s3Uri"                  ="s3://${aws_s3_bucket.example.bucket}/algorithm/training/"
-///             }
-///           }
-///         }]
 ///         output_data_config = {
 ///           compression_type = "GZIP"
 ///           s3_output_path   ="s3://${aws_s3_bucket.example.bucket}/algorithm/output"
@@ -2560,24 +2533,42 @@ import 'algorithm_validation_specification.dart';
 ///           max_runtime_in_seconds      = 1800
 ///           max_wait_time_in_seconds    = 3600
 ///         }
+///         input_data_configs = [{
+///           "shuffleConfig" = {
+///             "seed" = 1
+///           }
+///           "dataSource" = {
+///             "s3DataSource" = {
+///               "attributeNames"         = ["label"]
+///               "s3DataDistributionType" = "ShardedByS3Key"
+///               "s3DataType"             = "S3Prefix"
+///               "s3Uri"                  ="s3://${aws_s3_bucket.example.bucket}/algorithm/training/"
+///             }
+///           }
+///           "channelName"       = "train"
+///           "compressionType"   = "None"
+///           "contentType"       = "text/csv"
+///           "inputMode"         = "File"
+///           "recordWrapperType" = "None"
+///         }]
+///         hyper_parameters = {
+///           "feature_dim"     = "2"
+///           "mini_batch_size" = "4"
+///           "predictor_type"  = "binary_classifier"
+///         }
+///         training_input_mode = "File"
 ///       }
 ///       transform_job_definition = {
-///         batch_strategy = "MultiRecord"
-///         environment = {
-///           "Te" = "enabled"
-///         }
-///         max_concurrent_transforms = 1
-///         max_payload_in_mb         = 6
 ///         transform_input = {
-///           compression_type = "None"
-///           content_type     = "text/csv"
-///           split_type       = "Line"
 ///           data_source = {
 ///             s3_data_source = {
 ///               s3_data_type = "S3Prefix"
 ///               s3_uri       ="s3://${aws_s3_bucket.example.bucket}/algorithm/transform/"
 ///             }
 ///           }
+///           compression_type = "None"
+///           content_type     = "text/csv"
+///           split_type       = "Line"
 ///         }
 ///         transform_output = {
 ///           accept         = "text/csv"
@@ -2588,9 +2579,18 @@ import 'algorithm_validation_specification.dart';
 ///           instance_count = 1
 ///           instance_type  = "ml.m5.large"
 ///         }
+///         batch_strategy = "MultiRecord"
+///         environment = {
+///           "Te" = "enabled"
+///         }
+///         max_concurrent_transforms = 1
+///         max_payload_in_mb         = 6
 ///       }
+///       profile_name = "validation-profile"
 ///     }
+///     validation_role = aws_iam_role.example.arn
 ///   }
+///   algorithm_name = "example-validation-algorithm"
 /// }
 /// ```
 /// ```java
@@ -2630,13 +2630,13 @@ import 'algorithm_validation_specification.dart';
 /// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionArgs;
+/// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionOutputDataConfigArgs;
+/// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigArgs;
+/// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionStoppingConditionArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfigArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs;
-/// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionOutputDataConfigArgs;
-/// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigArgs;
-/// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionStoppingConditionArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputArgs;
 /// import com.pulumi.aws.sagemaker.inputs.AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputDataSourceArgs;
@@ -2667,11 +2667,11 @@ import 'algorithm_validation_specification.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers(String.format("sagemaker.%s", current.dnsSuffix()))
 ///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -2730,95 +2730,68 @@ import 'algorithm_validation_specification.dart';
 ///             .build());
 ///
 ///         var exampleAlgorithm = new Algorithm("exampleAlgorithm", AlgorithmArgs.builder()
-///             .algorithmName("example-validation-algorithm")
 ///             .trainingSpecification(AlgorithmTrainingSpecificationArgs.builder()
-///                 .trainingImage(example.registryPath())
-///                 .supportedTrainingInstanceTypes("ml.m5.large")
 ///                 .supportedHyperParameters(
 ///                     AlgorithmTrainingSpecificationSupportedHyperParameterArgs.builder()
-///                         .defaultValue("2")
-///                         .description("Feature dimension")
-///                         .isRequired(true)
-///                         .isTunable(false)
-///                         .name("feature_dim")
-///                         .type("Integer")
 ///                         .range(AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs.builder()
 ///                             .integerParameterRangeSpecification(AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecificationArgs.builder()
 ///                                 .minValue("2")
 ///                                 .maxValue("2")
 ///                                 .build())
 ///                             .build())
-///                         .build(),
-///                     AlgorithmTrainingSpecificationSupportedHyperParameterArgs.builder()
-///                         .defaultValue("4")
-///                         .description("Mini batch size")
+///                         .defaultValue("2")
+///                         .description("Feature dimension")
 ///                         .isRequired(true)
 ///                         .isTunable(false)
-///                         .name("mini_batch_size")
+///                         .name("feature_dim")
 ///                         .type("Integer")
+///                         .build(),
+///                     AlgorithmTrainingSpecificationSupportedHyperParameterArgs.builder()
 ///                         .range(AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs.builder()
 ///                             .integerParameterRangeSpecification(AlgorithmTrainingSpecificationSupportedHyperParameterRangeIntegerParameterRangeSpecificationArgs.builder()
 ///                                 .minValue("4")
 ///                                 .maxValue("4")
 ///                                 .build())
 ///                             .build())
+///                         .defaultValue("4")
+///                         .description("Mini batch size")
+///                         .isRequired(true)
+///                         .isTunable(false)
+///                         .name("mini_batch_size")
+///                         .type("Integer")
 ///                         .build(),
 ///                     AlgorithmTrainingSpecificationSupportedHyperParameterArgs.builder()
+///                         .range(AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs.builder()
+///                             .categoricalParameterRangeSpecification(AlgorithmTrainingSpecificationSupportedHyperParameterRangeCategoricalParameterRangeSpecificationArgs.builder()
+///                                 .values("binary_classifier")
+///                                 .build())
+///                             .build())
 ///                         .defaultValue("binary_classifier")
 ///                         .description("Predictor type")
 ///                         .isRequired(true)
 ///                         .isTunable(false)
 ///                         .name("predictor_type")
 ///                         .type("Categorical")
-///                         .range(AlgorithmTrainingSpecificationSupportedHyperParameterRangeArgs.builder()
-///                             .categoricalParameterRangeSpecification(AlgorithmTrainingSpecificationSupportedHyperParameterRangeCategoricalParameterRangeSpecificationArgs.builder()
-///                                 .values("binary_classifier")
-///                                 .build())
-///                             .build())
 ///                         .build())
 ///                 .trainingChannels(AlgorithmTrainingSpecificationTrainingChannelArgs.builder()
 ///                     .name("train")
 ///                     .supportedContentTypes("text/csv")
 ///                     .supportedInputModes("File")
 ///                     .build())
+///                 .trainingImage(example.registryPath())
+///                 .supportedTrainingInstanceTypes("ml.m5.large")
 ///                 .build())
 ///             .inferenceSpecification(AlgorithmInferenceSpecificationArgs.builder()
-///                 .supportedContentTypes("text/csv")
-///                 .supportedResponseMimeTypes("text/csv")
-///                 .supportedTransformInstanceTypes("ml.m5.large")
 ///                 .containers(AlgorithmInferenceSpecificationContainerArgs.builder()
 ///                     .image(example.registryPath())
 ///                     .build())
+///                 .supportedContentTypes("text/csv")
+///                 .supportedResponseMimeTypes("text/csv")
+///                 .supportedTransformInstanceTypes("ml.m5.large")
 ///                 .build())
 ///             .validationSpecification(AlgorithmValidationSpecificationArgs.builder()
-///                 .validationRole(exampleRole.arn())
 ///                 .validationProfiles(AlgorithmValidationSpecificationValidationProfilesArgs.builder()
-///                     .profileName("validation-profile")
 ///                     .trainingJobDefinition(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionArgs.builder()
-///                         .hyperParameters(Map.ofEntries(
-///                             Map.entry("feature_dim", "2"),
-///                             Map.entry("mini_batch_size", "4"),
-///                             Map.entry("predictor_type", "binary_classifier")
-///                         ))
-///                         .trainingInputMode("File")
-///                         .inputDataConfigs(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigArgs.builder()
-///                             .channelName("train")
-///                             .compressionType("None")
-///                             .contentType("text/csv")
-///                             .inputMode("File")
-///                             .recordWrapperType("None")
-///                             .shuffleConfig(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfigArgs.builder()
-///                                 .seed(1)
-///                                 .build())
-///                             .dataSource(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceArgs.builder()
-///                                 .s3DataSource(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs.builder()
-///                                     .attributeNames("label")
-///                                     .s3DataDistributionType("ShardedByS3Key")
-///                                     .s3DataType("S3Prefix")
-///                                     .s3Uri(exampleBucket.bucket().applyValue(_bucket -> String.format("s3://%s/algorithm/training/", _bucket)))
-///                                     .build())
-///                                 .build())
-///                             .build())
 ///                         .outputDataConfig(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionOutputDataConfigArgs.builder()
 ///                             .compressionType("GZIP")
 ///                             .s3OutputPath(exampleBucket.bucket().applyValue(_bucket -> String.format("s3://%s/algorithm/output", _bucket)))
@@ -2834,22 +2807,42 @@ import 'algorithm_validation_specification.dart';
 ///                             .maxRuntimeInSeconds(1800)
 ///                             .maxWaitTimeInSeconds(3600)
 ///                             .build())
-///                         .build())
-///                     .transformJobDefinition(AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionArgs.builder()
-///                         .batchStrategy("MultiRecord")
-///                         .environment(Map.of("Te", "enabled"))
-///                         .maxConcurrentTransforms(1)
-///                         .maxPayloadInMb(6)
-///                         .transformInput(AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputArgs.builder()
+///                         .inputDataConfigs(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigArgs.builder()
+///                             .shuffleConfig(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfigArgs.builder()
+///                                 .seed(1)
+///                                 .build())
+///                             .dataSource(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceArgs.builder()
+///                                 .s3DataSource(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigDataSourceS3DataSourceArgs.builder()
+///                                     .attributeNames("label")
+///                                     .s3DataDistributionType("ShardedByS3Key")
+///                                     .s3DataType("S3Prefix")
+///                                     .s3Uri(exampleBucket.bucket().applyValue(_bucket -> String.format("s3://%s/algorithm/training/", _bucket)))
+///                                     .build())
+///                                 .build())
+///                             .channelName("train")
 ///                             .compressionType("None")
 ///                             .contentType("text/csv")
-///                             .splitType("Line")
+///                             .inputMode("File")
+///                             .recordWrapperType("None")
+///                             .build())
+///                         .hyperParameters(Map.ofEntries(
+///                             Map.entry("feature_dim", "2"),
+///                             Map.entry("mini_batch_size", "4"),
+///                             Map.entry("predictor_type", "binary_classifier")
+///                         ))
+///                         .trainingInputMode("File")
+///                         .build())
+///                     .transformJobDefinition(AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionArgs.builder()
+///                         .transformInput(AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputArgs.builder()
 ///                             .dataSource(AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputDataSourceArgs.builder()
 ///                                 .s3DataSource(AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformInputDataSourceS3DataSourceArgs.builder()
 ///                                     .s3DataType("S3Prefix")
 ///                                     .s3Uri(exampleBucket.bucket().applyValue(_bucket -> String.format("s3://%s/algorithm/transform/", _bucket)))
 ///                                     .build())
 ///                                 .build())
+///                             .compressionType("None")
+///                             .contentType("text/csv")
+///                             .splitType("Line")
 ///                             .build())
 ///                         .transformOutput(AlgorithmValidationSpecificationValidationProfilesTransformJobDefinitionTransformOutputArgs.builder()
 ///                             .accept("text/csv")
@@ -2860,9 +2853,16 @@ import 'algorithm_validation_specification.dart';
 ///                             .instanceCount(1)
 ///                             .instanceType("ml.m5.large")
 ///                             .build())
+///                         .batchStrategy("MultiRecord")
+///                         .environment(Map.of("Te", "enabled"))
+///                         .maxConcurrentTransforms(1)
+///                         .maxPayloadInMb(6)
 ///                         .build())
+///                     .profileName("validation-profile")
 ///                     .build())
+///                 .validationRole(exampleRole.arn())
 ///                 .build())
+///             .algorithmName("example-validation-algorithm")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     exampleRolePolicyAttachment,
@@ -2922,82 +2922,59 @@ import 'algorithm_validation_specification.dart';
 ///     type: aws:sagemaker:Algorithm
 ///     name: example
 ///     properties:
-///       algorithmName: example-validation-algorithm
 ///       trainingSpecification:
-///         trainingImage: ${example.registryPath}
-///         supportedTrainingInstanceTypes:
-///           - ml.m5.large
 ///         supportedHyperParameters:
-///           - defaultValue: '2'
+///           - range:
+///               integerParameterRangeSpecification:
+///                 minValue: '2'
+///                 maxValue: '2'
+///             defaultValue: '2'
 ///             description: Feature dimension
 ///             isRequired: true
 ///             isTunable: false
 ///             name: feature_dim
 ///             type: Integer
-///             range:
+///           - range:
 ///               integerParameterRangeSpecification:
-///                 minValue: '2'
-///                 maxValue: '2'
-///           - defaultValue: '4'
+///                 minValue: '4'
+///                 maxValue: '4'
+///             defaultValue: '4'
 ///             description: Mini batch size
 ///             isRequired: true
 ///             isTunable: false
 ///             name: mini_batch_size
 ///             type: Integer
-///             range:
-///               integerParameterRangeSpecification:
-///                 minValue: '4'
-///                 maxValue: '4'
-///           - defaultValue: binary_classifier
+///           - range:
+///               categoricalParameterRangeSpecification:
+///                 values:
+///                   - binary_classifier
+///             defaultValue: binary_classifier
 ///             description: Predictor type
 ///             isRequired: true
 ///             isTunable: false
 ///             name: predictor_type
 ///             type: Categorical
-///             range:
-///               categoricalParameterRangeSpecification:
-///                 values:
-///                   - binary_classifier
 ///         trainingChannels:
 ///           - name: train
 ///             supportedContentTypes:
 ///               - text/csv
 ///             supportedInputModes:
 ///               - File
+///         trainingImage: ${example.registryPath}
+///         supportedTrainingInstanceTypes:
+///           - ml.m5.large
 ///       inferenceSpecification:
+///         containers:
+///           - image: ${example.registryPath}
 ///         supportedContentTypes:
 ///           - text/csv
 ///         supportedResponseMimeTypes:
 ///           - text/csv
 ///         supportedTransformInstanceTypes:
 ///           - ml.m5.large
-///         containers:
-///           - image: ${example.registryPath}
 ///       validationSpecification:
-///         validationRole: ${exampleRole.arn}
 ///         validationProfiles:
-///           profileName: validation-profile
 ///           trainingJobDefinition:
-///             hyperParameters:
-///               feature_dim: '2'
-///               mini_batch_size: '4'
-///               predictor_type: binary_classifier
-///             trainingInputMode: File
-///             inputDataConfigs:
-///               - channelName: train
-///                 compressionType: None
-///                 contentType: text/csv
-///                 inputMode: File
-///                 recordWrapperType: None
-///                 shuffleConfig:
-///                   seed: 1
-///                 dataSource:
-///                   s3DataSource:
-///                     attributeNames:
-///                       - label
-///                     s3DataDistributionType: ShardedByS3Key
-///                     s3DataType: S3Prefix
-///                     s3Uri: s3://${exampleBucket.bucket}/algorithm/training/
 ///             outputDataConfig:
 ///               compressionType: GZIP
 ///               s3OutputPath: s3://${exampleBucket.bucket}/algorithm/output
@@ -3010,20 +2987,35 @@ import 'algorithm_validation_specification.dart';
 ///               maxPendingTimeInSeconds: 7200
 ///               maxRuntimeInSeconds: 1800
 ///               maxWaitTimeInSeconds: 3600
+///             inputDataConfigs:
+///               - shuffleConfig:
+///                   seed: 1
+///                 dataSource:
+///                   s3DataSource:
+///                     attributeNames:
+///                       - label
+///                     s3DataDistributionType: ShardedByS3Key
+///                     s3DataType: S3Prefix
+///                     s3Uri: s3://${exampleBucket.bucket}/algorithm/training/
+///                 channelName: train
+///                 compressionType: None
+///                 contentType: text/csv
+///                 inputMode: File
+///                 recordWrapperType: None
+///             hyperParameters:
+///               feature_dim: '2'
+///               mini_batch_size: '4'
+///               predictor_type: binary_classifier
+///             trainingInputMode: File
 ///           transformJobDefinition:
-///             batchStrategy: MultiRecord
-///             environment:
-///               Te: enabled
-///             maxConcurrentTransforms: 1
-///             maxPayloadInMb: 6
 ///             transformInput:
-///               compressionType: None
-///               contentType: text/csv
-///               splitType: Line
 ///               dataSource:
 ///                 s3DataSource:
 ///                   s3DataType: S3Prefix
 ///                   s3Uri: s3://${exampleBucket.bucket}/algorithm/transform/
+///               compressionType: None
+///               contentType: text/csv
+///               splitType: Line
 ///             transformOutput:
 ///               accept: text/csv
 ///               assembleWith: Line
@@ -3031,6 +3023,14 @@ import 'algorithm_validation_specification.dart';
 ///             transformResources:
 ///               instanceCount: 1
 ///               instanceType: ml.m5.large
+///             batchStrategy: MultiRecord
+///             environment:
+///               Te: enabled
+///             maxConcurrentTransforms: 1
+///             maxPayloadInMb: 6
+///           profileName: validation-profile
+///         validationRole: ${exampleRole.arn}
+///       algorithmName: example-validation-algorithm
 ///     options:
 ///       dependsOn:
 ///         - ${exampleRolePolicyAttachment}
@@ -3053,12 +3053,12 @@ import 'algorithm_validation_specification.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - sagemaker.${current.dnsSuffix}
+///             actions:
+///               - sts:AssumeRole
 ///   s3Access:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
@@ -3136,7 +3136,7 @@ class Algorithm extends pulumi.CustomResource {
           'aws:sagemaker/algorithm:Algorithm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     algorithmDescription = registerOutput<String?>('algorithmDescription');
     algorithmName = registerOutput<String>('algorithmName');
@@ -3147,8 +3147,8 @@ class Algorithm extends pulumi.CustomResource {
     inferenceSpecification = registerOutput<AlgorithmInferenceSpecification?>('inferenceSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmInferenceSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     productId = registerOutput<String>('productId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AlgorithmTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trainingSpecification = registerOutput<AlgorithmTrainingSpecification>('trainingSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmTrainingSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     validationSpecification = registerOutput<AlgorithmValidationSpecification?>('validationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmValidationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -3159,11 +3159,12 @@ class Algorithm extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlgorithmState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Algorithm._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3186,8 +3187,33 @@ class Algorithm extends pulumi.CustomResource {
     inferenceSpecification = registerOutput<AlgorithmInferenceSpecification?>('inferenceSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmInferenceSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     productId = registerOutput<String>('productId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AlgorithmTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingSpecification = registerOutput<AlgorithmTrainingSpecification>('trainingSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmTrainingSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    validationSpecification = registerOutput<AlgorithmValidationSpecification?>('validationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmValidationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Algorithm] resource.
+  Algorithm.reference(String urn)
+    : super(
+        'aws:sagemaker/algorithm:Algorithm',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    algorithmDescription = registerOutput<String?>('algorithmDescription');
+    algorithmName = registerOutput<String>('algorithmName');
+    algorithmStatus = registerOutput<String>('algorithmStatus');
+    arn = registerOutput<String>('arn');
+    certifyForMarketplace = registerOutput<bool>('certifyForMarketplace');
+    creationTime = registerOutput<String>('creationTime');
+    inferenceSpecification = registerOutput<AlgorithmInferenceSpecification?>('inferenceSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmInferenceSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    productId = registerOutput<String>('productId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AlgorithmTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trainingSpecification = registerOutput<AlgorithmTrainingSpecification>('trainingSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmTrainingSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     validationSpecification = registerOutput<AlgorithmValidationSpecification?>('validationSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlgorithmValidationSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });

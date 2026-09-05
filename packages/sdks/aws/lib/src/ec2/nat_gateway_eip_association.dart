@@ -150,7 +150,7 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
           'aws:ec2/natGatewayEipAssociation:NatGatewayEipAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allocationId = registerOutput<String>('allocationId');
     associationId = registerOutput<String>('associationId');
@@ -164,11 +164,12 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NatGatewayEipAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NatGatewayEipAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -182,6 +183,22 @@ class NatGatewayEipAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allocationId = registerOutput<String>('allocationId');
+    associationId = registerOutput<String>('associationId');
+    natGatewayId = registerOutput<String>('natGatewayId');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<NatGatewayEipAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewayEipAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NatGatewayEipAssociation] resource.
+  NatGatewayEipAssociation.reference(String urn)
+    : super(
+        'aws:ec2/natGatewayEipAssociation:NatGatewayEipAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allocationId = registerOutput<String>('allocationId');
     associationId = registerOutput<String>('associationId');
     natGatewayId = registerOutput<String>('natGatewayId');

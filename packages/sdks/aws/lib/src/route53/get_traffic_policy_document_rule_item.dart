@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTrafficPolicyDocumentRuleItem {
-  final pulumi.Input<String>? endpointReference;
-  final pulumi.Input<String>? healthCheck;
+  final pulumi.Input<String?>? endpointReference;
+  final pulumi.Input<String?>? healthCheck;
 
   /// Creates a new [GetTrafficPolicyDocumentRuleItem].
   /// [endpointReference] Optional.

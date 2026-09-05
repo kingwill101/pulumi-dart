@@ -5,9 +5,9 @@ import 'channel_input_attachment_input_settings_network_input_settings_hls_input
 
 class ChannelInputAttachmentInputSettingsNetworkInputSettings {
   /// Specifies HLS input settings when the uri is for a HLS manifest. See HLS Input Settings for more details.
-  final pulumi.Input<ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings>? hlsInputSettings;
+  final pulumi.Input<ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings?>? hlsInputSettings;
   /// Check HTTPS server certificates.
-  final pulumi.Input<String>? serverValidation;
+  final pulumi.Input<String?>? serverValidation;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsNetworkInputSettings].
   /// [hlsInputSettings] Specifies HLS input settings when the uri is for a HLS manifest. See HLS Input Settings for more details.

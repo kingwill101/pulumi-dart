@@ -216,7 +216,7 @@ class Group extends pulumi.CustomResource {
           'aws:workmail/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     disabledDate = registerOutput<String>('disabledDate');
     email = registerOutput<String>('email');
@@ -234,11 +234,12 @@ class Group extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Group._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -261,5 +262,25 @@ class Group extends pulumi.CustomResource {
     organizationId = registerOutput<String>('organizationId');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'aws:workmail/group:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    disabledDate = registerOutput<String>('disabledDate');
+    email = registerOutput<String>('email');
+    enabledDate = registerOutput<String>('enabledDate');
+    groupId = registerOutput<String>('groupId');
+    hiddenFromGlobalAddressList = registerOutput<bool>('hiddenFromGlobalAddressList');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
   }
 }

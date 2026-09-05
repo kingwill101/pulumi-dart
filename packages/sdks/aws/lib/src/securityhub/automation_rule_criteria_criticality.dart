@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRuleCriteriaCriticality {
   /// The equal-to condition to be applied to a single field when querying for findings, provided as a String.
-  final pulumi.Input<double>? eq;
-  final pulumi.Input<double>? gt;
+  final pulumi.Input<double?>? eq;
+  final pulumi.Input<double?>? gt;
   /// The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  final pulumi.Input<double>? gte;
-  final pulumi.Input<double>? lt;
+  final pulumi.Input<double?>? gte;
+  final pulumi.Input<double?>? lt;
   /// The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  final pulumi.Input<double>? lte;
+  final pulumi.Input<double?>? lte;
 
   /// Creates a new [AutomationRuleCriteriaCriticality].
   /// [eq] The equal-to condition to be applied to a single field when querying for findings, provided as a String.
@@ -38,11 +38,11 @@ class AutomationRuleCriteriaCriticality {
 
   factory AutomationRuleCriteriaCriticality.fromMap(Map<String, dynamic> map) {
     return AutomationRuleCriteriaCriticality(
-      eq: (() { final guardedValue = map['eq']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      gt: (() { final guardedValue = map['gt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      gte: (() { final guardedValue = map['gte']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      lt: (() { final guardedValue = map['lt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      lte: (() { final guardedValue = map['lte']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      eq: (() { final guardedValue = map['eq']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      gt: (() { final guardedValue = map['gt']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      gte: (() { final guardedValue = map['gte']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      lt: (() { final guardedValue = map['lt']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      lte: (() { final guardedValue = map['lte']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

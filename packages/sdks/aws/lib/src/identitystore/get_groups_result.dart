@@ -6,33 +6,33 @@ import 'get_groups_group.dart';
 /// Result data returned by getGroups.
 class GetGroupsResult {
   /// List of Identity Store Groups
-  final List<GetGroupsGroup> groups;
-  final String identityStoreId;
-  final String region;
+  final List<GetGroupsGroup>? groups;
+  final String? identityStoreId;
+  final String? region;
 
   /// Creates a new [GetGroupsResult].
   /// [groups] List of Identity Store Groups
-  /// [identityStoreId] Required.
-  /// [region] Required.
+  /// [identityStoreId] Optional.
+  /// [region] Optional.
   const GetGroupsResult({
-    required this.groups,
-    required this.identityStoreId,
-    required this.region,
+    this.groups,
+    this.identityStoreId,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups': pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
-      'identityStoreId': identityStoreId,
-      'region': region,
+      'groups': ?(() { final guardedValue = groups; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'identityStoreId': ?identityStoreId,
+      'region': ?region,
     };
   }
 
   factory GetGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupsResult(
-      groups: pulumi.Input.decodeList<GetGroupsGroup>(map['groups']!, (value) => GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
-      identityStoreId: map['identityStoreId'] as String,
-      region: map['region'] as String,
+      groups: (() { final guardedValue = map['groups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupsGroup>(guardedValue, (value) => GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())); })(),
+      identityStoreId: (() { final guardedValue = map['identityStoreId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

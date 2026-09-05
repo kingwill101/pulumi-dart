@@ -1,6 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipeline_args.dart';
+import 'pipeline_artifact_store.dart';
+import 'pipeline_stage.dart';
 import 'pipeline_state.dart';
+import 'pipeline_trigger.dart';
+import 'pipeline_trigger_all.dart';
+import 'pipeline_variable.dart';
 
 /// Provides a CodePipeline.
 ///
@@ -18,11 +23,11 @@ import 'pipeline_state.dart';
 /// const codepipelineBucket = new aws.s3.Bucket("codepipeline_bucket", {bucket: "test-bucket"});
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["codepipeline.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -34,19 +39,16 @@ import 'pipeline_state.dart';
 ///     name: "alias/myKmsKey",
 /// });
 /// const codepipeline = new aws.codepipeline.Pipeline("codepipeline", {
-///     name: "tf-test-pipeline",
-///     roleArn: codepipelineRole.arn,
 ///     artifactStores: [{
-///         location: codepipelineBucket.bucket,
-///         type: "S3",
 ///         encryptionKey: {
 ///             id: s3kmskey.then(s3kmskey => s3kmskey.arn),
 ///             type: "KMS",
 ///         },
+///         location: codepipelineBucket.bucket,
+///         type: "S3",
 ///     }],
 ///     stages: [
 ///         {
-///             name: "Source",
 ///             actions: [{
 ///                 name: "Source",
 ///                 category: "Source",
@@ -60,9 +62,9 @@ import 'pipeline_state.dart';
 ///                     BranchName: "main",
 ///                 },
 ///             }],
+///             name: "Source",
 ///         },
 ///         {
-///             name: "Build",
 ///             actions: [{
 ///                 name: "Build",
 ///                 category: "Build",
@@ -75,9 +77,9 @@ import 'pipeline_state.dart';
 ///                     ProjectName: "test",
 ///                 },
 ///             }],
+///             name: "Build",
 ///         },
 ///         {
-///             name: "Deploy",
 ///             actions: [{
 ///                 name: "Deploy",
 ///                 category: "Deploy",
@@ -93,8 +95,11 @@ import 'pipeline_state.dart';
 ///                     TemplatePath: "build_output::sam-templated.yaml",
 ///                 },
 ///             }],
+///             name: "Deploy",
 ///         },
 ///     ],
+///     name: "tf-test-pipeline",
+///     roleArn: codepipelineRole.arn,
 /// });
 /// const codepipelineBucketPab = new aws.s3.BucketPublicAccessBlock("codepipeline_bucket_pab", {
 ///     bucket: codepipelineBucket.id,
@@ -149,11 +154,11 @@ import 'pipeline_state.dart';
 ///     provider_type="GitHub")
 /// codepipeline_bucket = aws.s3.Bucket("codepipeline_bucket", bucket="test-bucket")
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["codepipeline.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// codepipeline_role = aws.iam.Role("codepipeline_role",
@@ -161,19 +166,16 @@ import 'pipeline_state.dart';
 ///     assume_role_policy=assume_role.json)
 /// s3kmskey = aws.kms.get_alias(name="alias/myKmsKey")
 /// codepipeline = aws.codepipeline.Pipeline("codepipeline",
-///     name="tf-test-pipeline",
-///     role_arn=codepipeline_role.arn,
 ///     artifact_stores=[{
-///         "location": codepipeline_bucket.bucket,
-///         "type": "S3",
 ///         "encryption_key": {
 ///             "id": s3kmskey.arn,
 ///             "type": "KMS",
 ///         },
+///         "location": codepipeline_bucket.bucket,
+///         "type": "S3",
 ///     }],
 ///     stages=[
 ///         {
-///             "name": "Source",
 ///             "actions": [{
 ///                 "name": "Source",
 ///                 "category": "Source",
@@ -187,9 +189,9 @@ import 'pipeline_state.dart';
 ///                     "BranchName": "main",
 ///                 },
 ///             }],
+///             "name": "Source",
 ///         },
 ///         {
-///             "name": "Build",
 ///             "actions": [{
 ///                 "name": "Build",
 ///                 "category": "Build",
@@ -202,9 +204,9 @@ import 'pipeline_state.dart';
 ///                     "ProjectName": "test",
 ///                 },
 ///             }],
+///             "name": "Build",
 ///         },
 ///         {
-///             "name": "Deploy",
 ///             "actions": [{
 ///                 "name": "Deploy",
 ///                 "category": "Deploy",
@@ -220,8 +222,11 @@ import 'pipeline_state.dart';
 ///                     "TemplatePath": "build_output::sam-templated.yaml",
 ///                 },
 ///             }],
+///             "name": "Deploy",
 ///         },
-///     ])
+///     ],
+///     name="tf-test-pipeline",
+///     role_arn=codepipeline_role.arn)
 /// codepipeline_bucket_pab = aws.s3.BucketPublicAccessBlock("codepipeline_bucket_pab",
 ///     bucket=codepipeline_bucket.id,
 ///     block_public_acls=True,
@@ -287,7 +292,6 @@ import 'pipeline_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -299,6 +303,7 @@ import 'pipeline_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -320,26 +325,23 @@ import 'pipeline_state.dart';
 ///
 ///     var codepipeline = new Aws.CodePipeline.Pipeline("codepipeline", new()
 ///     {
-///         Name = "tf-test-pipeline",
-///         RoleArn = codepipelineRole.Arn,
 ///         ArtifactStores = new[]
 ///         {
 ///             new Aws.CodePipeline.Inputs.PipelineArtifactStoreArgs
 ///             {
-///                 Location = codepipelineBucket.BucketName,
-///                 Type = "S3",
 ///                 EncryptionKey = new Aws.CodePipeline.Inputs.PipelineArtifactStoreEncryptionKeyArgs
 ///                 {
 ///                     Id = s3kmskey.Apply(getAliasResult => getAliasResult.Arn),
 ///                     Type = "KMS",
 ///                 },
+///                 Location = codepipelineBucket.BucketName,
+///                 Type = "S3",
 ///             },
 ///         },
 ///         Stages = new[]
 ///         {
 ///             new Aws.CodePipeline.Inputs.PipelineStageArgs
 ///             {
-///                 Name = "Source",
 ///                 Actions = new[]
 ///                 {
 ///                     new Aws.CodePipeline.Inputs.PipelineStageActionArgs
@@ -361,10 +363,10 @@ import 'pipeline_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Source",
 ///             },
 ///             new Aws.CodePipeline.Inputs.PipelineStageArgs
 ///             {
-///                 Name = "Build",
 ///                 Actions = new[]
 ///                 {
 ///                     new Aws.CodePipeline.Inputs.PipelineStageActionArgs
@@ -388,10 +390,10 @@ import 'pipeline_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Build",
 ///             },
 ///             new Aws.CodePipeline.Inputs.PipelineStageArgs
 ///             {
-///                 Name = "Deploy",
 ///                 Actions = new[]
 ///                 {
 ///                     new Aws.CodePipeline.Inputs.PipelineStageActionArgs
@@ -415,8 +417,11 @@ import 'pipeline_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Deploy",
 ///             },
 ///         },
+///         Name = "tf-test-pipeline",
+///         RoleArn = codepipelineRole.Arn,
 ///     });
 ///
 ///     var codepipelineBucketPab = new Aws.S3.BucketPublicAccessBlock("codepipeline_bucket_pab", new()
@@ -518,7 +523,6 @@ import 'pipeline_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -527,6 +531,7 @@ import 'pipeline_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -550,21 +555,18 @@ import 'pipeline_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codepipeline.NewPipeline(ctx, "codepipeline", &codepipeline.PipelineArgs{
-/// 			Name:    pulumi.String("tf-test-pipeline"),
-/// 			RoleArn: codepipelineRole.Arn,
 /// 			ArtifactStores: codepipeline.PipelineArtifactStoreArray{
 /// 				&codepipeline.PipelineArtifactStoreArgs{
-/// 					Location: codepipelineBucket.Bucket,
-/// 					Type:     pulumi.String("S3"),
 /// 					EncryptionKey: &codepipeline.PipelineArtifactStoreEncryptionKeyArgs{
 /// 						Id:   pulumi.String(s3kmskey.Arn),
 /// 						Type: pulumi.String("KMS"),
 /// 					},
+/// 					Location: codepipelineBucket.Bucket,
+/// 					Type:     pulumi.String("S3"),
 /// 				},
 /// 			},
 /// 			Stages: codepipeline.PipelineStageArray{
 /// 				&codepipeline.PipelineStageArgs{
-/// 					Name: pulumi.String("Source"),
 /// 					Actions: codepipeline.PipelineStageActionArray{
 /// 						&codepipeline.PipelineStageActionArgs{
 /// 							Name:     pulumi.String("Source"),
@@ -582,9 +584,9 @@ import 'pipeline_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Source"),
 /// 				},
 /// 				&codepipeline.PipelineStageArgs{
-/// 					Name: pulumi.String("Build"),
 /// 					Actions: codepipeline.PipelineStageActionArray{
 /// 						&codepipeline.PipelineStageActionArgs{
 /// 							Name:     pulumi.String("Build"),
@@ -603,9 +605,9 @@ import 'pipeline_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Build"),
 /// 				},
 /// 				&codepipeline.PipelineStageArgs{
-/// 					Name: pulumi.String("Deploy"),
 /// 					Actions: codepipeline.PipelineStageActionArray{
 /// 						&codepipeline.PipelineStageActionArgs{
 /// 							Name:     pulumi.String("Deploy"),
@@ -625,8 +627,11 @@ import 'pipeline_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Deploy"),
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("tf-test-pipeline"),
+/// 			RoleArn: codepipelineRole.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -703,11 +708,11 @@ import 'pipeline_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["codepipeline.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -733,18 +738,15 @@ import 'pipeline_state.dart';
 /// }
 ///
 /// resource "aws_codepipeline_pipeline" "codepipeline" {
-///   name     = "tf-test-pipeline"
-///   role_arn = aws_iam_role.codepipeline_role.arn
 ///   artifact_stores {
-///     location = aws_s3_bucket.codepipeline_bucket.bucket
-///     type     = "S3"
 ///     encryption_key = {
 ///       id   = data.aws_kms_getalias.s3kmskey.arn
 ///       type = "KMS"
 ///     }
+///     location = aws_s3_bucket.codepipeline_bucket.bucket
+///     type     = "S3"
 ///   }
 ///   stages {
-///     name = "Source"
 ///     actions {
 ///       name             = "Source"
 ///       category         = "Source"
@@ -758,9 +760,9 @@ import 'pipeline_state.dart';
 ///         "BranchName"       = "main"
 ///       }
 ///     }
+///     name = "Source"
 ///   }
 ///   stages {
-///     name = "Build"
 ///     actions {
 ///       name             = "Build"
 ///       category         = "Build"
@@ -773,9 +775,9 @@ import 'pipeline_state.dart';
 ///         "ProjectName" = "test"
 ///       }
 ///     }
+///     name = "Build"
 ///   }
 ///   stages {
-///     name = "Deploy"
 ///     actions {
 ///       name            = "Deploy"
 ///       category        = "Deploy"
@@ -791,7 +793,10 @@ import 'pipeline_state.dart';
 ///         "TemplatePath"   = "build_output::sam-templated.yaml"
 ///       }
 ///     }
+///     name = "Deploy"
 ///   }
+///   name     = "tf-test-pipeline"
+///   role_arn = aws_iam_role.codepipeline_role.arn
 /// }
 /// resource "aws_codestarconnections_connection" "example" {
 ///   name          = "example-connection"
@@ -869,11 +874,11 @@ import 'pipeline_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("codepipeline.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -888,19 +893,16 @@ import 'pipeline_state.dart';
 ///             .build());
 ///
 ///         var codepipeline = new Pipeline("codepipeline", PipelineArgs.builder()
-///             .name("tf-test-pipeline")
-///             .roleArn(codepipelineRole.arn())
 ///             .artifactStores(PipelineArtifactStoreArgs.builder()
-///                 .location(codepipelineBucket.bucket())
-///                 .type("S3")
 ///                 .encryptionKey(PipelineArtifactStoreEncryptionKeyArgs.builder()
 ///                     .id(s3kmskey.arn())
 ///                     .type("KMS")
 ///                     .build())
+///                 .location(codepipelineBucket.bucket())
+///                 .type("S3")
 ///                 .build())
 ///             .stages(
 ///                 PipelineStageArgs.builder()
-///                     .name("Source")
 ///                     .actions(PipelineStageActionArgs.builder()
 ///                         .name("Source")
 ///                         .category("Source")
@@ -914,9 +916,9 @@ import 'pipeline_state.dart';
 ///                             Map.entry("BranchName", "main")
 ///                         ))
 ///                         .build())
+///                     .name("Source")
 ///                     .build(),
 ///                 PipelineStageArgs.builder()
-///                     .name("Build")
 ///                     .actions(PipelineStageActionArgs.builder()
 ///                         .name("Build")
 ///                         .category("Build")
@@ -927,9 +929,9 @@ import 'pipeline_state.dart';
 ///                         .version("1")
 ///                         .configuration(Map.of("ProjectName", "test"))
 ///                         .build())
+///                     .name("Build")
 ///                     .build(),
 ///                 PipelineStageArgs.builder()
-///                     .name("Deploy")
 ///                     .actions(PipelineStageActionArgs.builder()
 ///                         .name("Deploy")
 ///                         .category("Deploy")
@@ -945,7 +947,10 @@ import 'pipeline_state.dart';
 ///                             Map.entry("TemplatePath", "build_output::sam-templated.yaml")
 ///                         ))
 ///                         .build())
+///                     .name("Deploy")
 ///                     .build())
+///             .name("tf-test-pipeline")
+///             .roleArn(codepipelineRole.arn())
 ///             .build());
 ///
 ///         var codepipelineBucketPab = new BucketPublicAccessBlock("codepipelineBucketPab", BucketPublicAccessBlockArgs.builder()
@@ -998,17 +1003,14 @@ import 'pipeline_state.dart';
 ///   codepipeline:
 ///     type: aws:codepipeline:Pipeline
 ///     properties:
-///       name: tf-test-pipeline
-///       roleArn: ${codepipelineRole.arn}
 ///       artifactStores:
-///         - location: ${codepipelineBucket.bucket}
-///           type: S3
-///           encryptionKey:
+///         - encryptionKey:
 ///             id: ${s3kmskey.arn}
 ///             type: KMS
+///           location: ${codepipelineBucket.bucket}
+///           type: S3
 ///       stages:
-///         - name: Source
-///           actions:
+///         - actions:
 ///             - name: Source
 ///               category: Source
 ///               owner: AWS
@@ -1020,8 +1022,8 @@ import 'pipeline_state.dart';
 ///                 ConnectionArn: ${example.arn}
 ///                 FullRepositoryId: my-organization/example
 ///                 BranchName: main
-///         - name: Build
-///           actions:
+///           name: Source
+///         - actions:
 ///             - name: Build
 ///               category: Build
 ///               owner: AWS
@@ -1033,8 +1035,8 @@ import 'pipeline_state.dart';
 ///               version: '1'
 ///               configuration:
 ///                 ProjectName: test
-///         - name: Deploy
-///           actions:
+///           name: Build
+///         - actions:
 ///             - name: Deploy
 ///               category: Deploy
 ///               owner: AWS
@@ -1048,6 +1050,9 @@ import 'pipeline_state.dart';
 ///                 OutputFileName: CreateStackOutput.json
 ///                 StackName: MyStack
 ///                 TemplatePath: build_output::sam-templated.yaml
+///           name: Deploy
+///       name: tf-test-pipeline
+///       roleArn: ${codepipelineRole.arn}
 ///   example:
 ///     type: aws:codestarconnections:Connection
 ///     properties:
@@ -1086,11 +1091,11 @@ import 'pipeline_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - codepipeline.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   codepipelinePolicy:
@@ -1150,7 +1155,7 @@ class Pipeline extends pulumi.CustomResource {
   /// Codepipeline ARN.
   late final pulumi.Output<String> arn;
   /// One or more artifactStore blocks. Artifact stores are documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> artifactStores;
+  late final pulumi.Output<List<PipelineArtifactStore>> artifactStores;
   /// The method that the pipeline will use to handle multiple executions. The default mode is `SUPERSEDED`. For value values, refer to the [AWS documentation](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineDeclaration.html#CodePipeline-Type-PipelineDeclaration-executionMode).
   late final pulumi.Output<String?> executionMode;
   /// The name of the pipeline.
@@ -1159,22 +1164,22 @@ class Pipeline extends pulumi.CustomResource {
   late final pulumi.Output<String?> pipelineType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A service role Amazon Resource Name (ARN) that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
+  /// Service role ARN that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
   late final pulumi.Output<String> roleArn;
   /// A stage block. Stages are documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> stages;
+  late final pulumi.Output<List<PipelineStage>> stages;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A list of all triggers present on the pipeline, including default triggers added by AWS for `V2` pipelines which omit an explicit `trigger` definition.
-  late final pulumi.Output<List<Map<String, dynamic>>> triggerAlls;
+  late final pulumi.Output<List<PipelineTriggerAll>> triggerAlls;
   /// A trigger block. Valid only when `pipelineType` is `V2`. Triggers are documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> triggers;
+  late final pulumi.Output<List<PipelineTrigger>?> triggers;
   /// A pipeline-level variable block. Valid only when `pipelineType` is `V2`. Variable are documented below.
   ///
   /// **Note:** `QUEUED` or `PARALLEL` mode can only be used with V2 pipelines.
-  late final pulumi.Output<List<Map<String, dynamic>>?> variables;
+  late final pulumi.Output<List<PipelineVariable>?> variables;
 
   /// Creates a new [Pipeline].
   /// [name] The Pulumi resource name.
@@ -1188,21 +1193,21 @@ class Pipeline extends pulumi.CustomResource {
           'aws:codepipeline/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    artifactStores = registerOutput<List<Map<String, dynamic>>>('artifactStores');
+    artifactStores = registerOutput<List<PipelineArtifactStore>>('artifactStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineArtifactStore>(guardedValue, (value) => PipelineArtifactStore.fromMap((value as Map).cast<String, dynamic>())); });
     executionMode = registerOutput<String?>('executionMode');
     this.name = registerOutput<String>('name');
     pipelineType = registerOutput<String?>('pipelineType');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    stages = registerOutput<List<Map<String, dynamic>>>('stages');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    triggerAlls = registerOutput<List<Map<String, dynamic>>>('triggerAlls');
-    triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');
-    variables = registerOutput<List<Map<String, dynamic>>?>('variables');
+    stages = registerOutput<List<PipelineStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineStage>(guardedValue, (value) => PipelineStage.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    triggerAlls = registerOutput<List<PipelineTriggerAll>>('triggerAlls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineTriggerAll>(guardedValue, (value) => PipelineTriggerAll.fromMap((value as Map).cast<String, dynamic>())); });
+    triggers = registerOutput<List<PipelineTrigger>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineTrigger>(guardedValue, (value) => PipelineTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+    variables = registerOutput<List<PipelineVariable>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineVariable>(guardedValue, (value) => PipelineVariable.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Pipeline] resource's state with the given [name] and [id].
@@ -1210,11 +1215,12 @@ class Pipeline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PipelineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pipeline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1229,17 +1235,41 @@ class Pipeline extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    artifactStores = registerOutput<List<Map<String, dynamic>>>('artifactStores');
+    artifactStores = registerOutput<List<PipelineArtifactStore>>('artifactStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineArtifactStore>(guardedValue, (value) => PipelineArtifactStore.fromMap((value as Map).cast<String, dynamic>())); });
     executionMode = registerOutput<String?>('executionMode');
     this.name = registerOutput<String>('name');
     pipelineType = registerOutput<String?>('pipelineType');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    stages = registerOutput<List<Map<String, dynamic>>>('stages');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    triggerAlls = registerOutput<List<Map<String, dynamic>>>('triggerAlls');
-    triggers = registerOutput<List<Map<String, dynamic>>?>('triggers');
-    variables = registerOutput<List<Map<String, dynamic>>?>('variables');
+    stages = registerOutput<List<PipelineStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineStage>(guardedValue, (value) => PipelineStage.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    triggerAlls = registerOutput<List<PipelineTriggerAll>>('triggerAlls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineTriggerAll>(guardedValue, (value) => PipelineTriggerAll.fromMap((value as Map).cast<String, dynamic>())); });
+    triggers = registerOutput<List<PipelineTrigger>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineTrigger>(guardedValue, (value) => PipelineTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+    variables = registerOutput<List<PipelineVariable>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineVariable>(guardedValue, (value) => PipelineVariable.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Pipeline] resource.
+  Pipeline.reference(String urn)
+    : super(
+        'aws:codepipeline/pipeline:Pipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    artifactStores = registerOutput<List<PipelineArtifactStore>>('artifactStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineArtifactStore>(guardedValue, (value) => PipelineArtifactStore.fromMap((value as Map).cast<String, dynamic>())); });
+    executionMode = registerOutput<String?>('executionMode');
+    this.name = registerOutput<String>('name');
+    pipelineType = registerOutput<String?>('pipelineType');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    stages = registerOutput<List<PipelineStage>>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineStage>(guardedValue, (value) => PipelineStage.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    triggerAlls = registerOutput<List<PipelineTriggerAll>>('triggerAlls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineTriggerAll>(guardedValue, (value) => PipelineTriggerAll.fromMap((value as Map).cast<String, dynamic>())); });
+    triggers = registerOutput<List<PipelineTrigger>?>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineTrigger>(guardedValue, (value) => PipelineTrigger.fromMap((value as Map).cast<String, dynamic>())); });
+    variables = registerOutput<List<PipelineVariable>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineVariable>(guardedValue, (value) => PipelineVariable.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -290,9 +290,9 @@ class ClusterPeering extends pulumi.CustomResource {
           'aws:dsql/clusterPeering:ClusterPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    clusters = registerOutput<List<String>>('clusters');
+    clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
     timeouts = registerOutput<ClusterPeeringTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPeeringTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -304,11 +304,12 @@ class ClusterPeering extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterPeeringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterPeering._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -322,7 +323,23 @@ class ClusterPeering extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    clusters = registerOutput<List<String>>('clusters');
+    clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    identifier = registerOutput<String>('identifier');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<ClusterPeeringTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPeeringTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    witnessRegion = registerOutput<String>('witnessRegion');
+  }
+
+  /// Creates a typed reference to an existing [ClusterPeering] resource.
+  ClusterPeering.reference(String urn)
+    : super(
+        'aws:dsql/clusterPeering:ClusterPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusters = registerOutput<List<String>>('clusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     identifier = registerOutput<String>('identifier');
     region = registerOutput<String>('region');
     timeouts = registerOutput<ClusterPeeringTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPeeringTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

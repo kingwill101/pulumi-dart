@@ -18,33 +18,33 @@ import 'rule_group_rule_statement_xss_match_statement.dart';
 
 class RuleGroupRuleStatement {
   /// A logical rule statement used to combine other rule statements with AND logic. See AND Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementAndStatement>? andStatement;
+  final pulumi.Input<RuleGroupRuleStatementAndStatement?>? andStatement;
   /// Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See `asnMatchStatement` below for details.
-  final pulumi.Input<RuleGroupRuleStatementAsnMatchStatement>? asnMatchStatement;
+  final pulumi.Input<RuleGroupRuleStatementAsnMatchStatement?>? asnMatchStatement;
   /// A rule statement that defines a string match search for AWS WAF to apply to web requests. See Byte Match Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementByteMatchStatement>? byteMatchStatement;
+  final pulumi.Input<RuleGroupRuleStatementByteMatchStatement?>? byteMatchStatement;
   /// A rule statement used to identify web requests based on country of origin. See GEO Match Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementGeoMatchStatement>? geoMatchStatement;
+  final pulumi.Input<RuleGroupRuleStatementGeoMatchStatement?>? geoMatchStatement;
   /// A rule statement used to detect web requests coming from particular IP addresses or address ranges. See IP Set Reference Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementIpSetReferenceStatement>? ipSetReferenceStatement;
+  final pulumi.Input<RuleGroupRuleStatementIpSetReferenceStatement?>? ipSetReferenceStatement;
   /// A rule statement that defines a string match search against labels that have been added to the web request by rules that have already run in the web ACL. See Label Match Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementLabelMatchStatement>? labelMatchStatement;
+  final pulumi.Input<RuleGroupRuleStatementLabelMatchStatement?>? labelMatchStatement;
   /// A logical rule statement used to negate the results of another rule statement. See NOT Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementNotStatement>? notStatement;
+  final pulumi.Input<RuleGroupRuleStatementNotStatement?>? notStatement;
   /// A logical rule statement used to combine other rule statements with OR logic. See OR Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementOrStatement>? orStatement;
+  final pulumi.Input<RuleGroupRuleStatementOrStatement?>? orStatement;
   /// A rate-based rule tracks the rate of requests for each originating `IP address`, and triggers the rule action when the rate exceeds a limit that you specify on the number of requests in any `5-minute` time span. This statement can not be nested. See Rate Based Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementRateBasedStatement>? rateBasedStatement;
+  final pulumi.Input<RuleGroupRuleStatementRateBasedStatement?>? rateBasedStatement;
   /// A rule statement used to search web request components for a match against a single regular expression. See Regex Match Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementRegexMatchStatement>? regexMatchStatement;
+  final pulumi.Input<RuleGroupRuleStatementRegexMatchStatement?>? regexMatchStatement;
   /// A rule statement used to search web request components for matches with regular expressions. See Regex Pattern Set Reference Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatement>? regexPatternSetReferenceStatement;
+  final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatement?>? regexPatternSetReferenceStatement;
   /// A rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (&gt;) or less than (&lt;). See Size Constraint Statement below for more details.
-  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatement>? sizeConstraintStatement;
+  final pulumi.Input<RuleGroupRuleStatementSizeConstraintStatement?>? sizeConstraintStatement;
   /// An SQL injection match condition identifies the part of web requests, such as the URI or the query string, that you want AWS WAF to inspect. See SQL Injection Match Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementSqliMatchStatement>? sqliMatchStatement;
+  final pulumi.Input<RuleGroupRuleStatementSqliMatchStatement?>? sqliMatchStatement;
   /// A rule statement that defines a cross-site scripting (XSS) match search for AWS WAF to apply to web requests. See XSS Match Statement below for details.
-  final pulumi.Input<RuleGroupRuleStatementXssMatchStatement>? xssMatchStatement;
+  final pulumi.Input<RuleGroupRuleStatementXssMatchStatement?>? xssMatchStatement;
 
   /// Creates a new [RuleGroupRuleStatement].
   /// [andStatement] A logical rule statement used to combine other rule statements with AND logic. See AND Statement below for details.

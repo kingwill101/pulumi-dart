@@ -9,21 +9,21 @@ import 'game_session_queue_player_latency_policy.dart';
 /// {@macro pulumi_gamelift_game_session_queue_game_session_queue_args_doc}
 class GameSessionQueueArgs {
   /// Information to be added to all events that are related to this game session queue.
-  final pulumi.Input<String>? customEventData;
+  final pulumi.Input<String?>? customEventData;
   /// List of fleet/alias ARNs used by session queue for placing game sessions.
-  final pulumi.Input<List<String>>? destinations;
+  final pulumi.Input<List<String>?>? destinations;
   /// Name of the session queue.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An SNS topic ARN that is set up to receive game session placement notifications.
-  final pulumi.Input<String>? notificationTarget;
+  final pulumi.Input<String?>? notificationTarget;
   /// One or more policies used to choose fleet based on player latency. See below.
-  final pulumi.Input<List<GameSessionQueuePlayerLatencyPolicy>>? playerLatencyPolicies;
+  final pulumi.Input<List<GameSessionQueuePlayerLatencyPolicy>?>? playerLatencyPolicies;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Maximum time a game session request can remain in the queue.
-  final pulumi.Input<int>? timeoutInSeconds;
+  final pulumi.Input<int?>? timeoutInSeconds;
 
   /// Creates a new [GameSessionQueueArgs].
   /// [customEventData] Information to be added to all events that are related to this game session queue.
@@ -67,7 +67,7 @@ class GameSessionQueueArgs {
       playerLatencyPolicies: (() { final guardedValue = map['playerLatencyPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GameSessionQueuePlayerLatencyPolicy>(guardedValue, (value) => GameSessionQueuePlayerLatencyPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

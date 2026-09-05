@@ -7,7 +7,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferen
   /// ARN of the IP set to reference.
   final pulumi.Input<String> arn;
   /// Configuration for inspecting forwarded IP headers. See IP Set Forwarded IP Config below.
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatementIpSetForwardedIpConfig>? ipSetForwardedIpConfig;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatementIpSetForwardedIpConfig?>? ipSetForwardedIpConfig;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatement].
   /// [arn] ARN of the IP set to reference.

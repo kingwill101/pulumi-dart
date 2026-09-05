@@ -9,9 +9,9 @@ import 'size_constraint_set_size_constraint.dart';
 /// {@macro pulumi_waf_size_constraint_set_size_constraint_set_args_doc}
 class SizeConstraintSetArgs {
   /// Name or description of the Size Constraint Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Parts of web requests that you want to inspect the size of.
-  final pulumi.Input<List<SizeConstraintSetSizeConstraint>>? sizeConstraints;
+  final pulumi.Input<List<SizeConstraintSetSizeConstraint>?>? sizeConstraints;
 
   /// Creates a new [SizeConstraintSetArgs].
   /// [name] Name or description of the Size Constraint Set.

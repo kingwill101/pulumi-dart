@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReservedInstanceRecurringCharge {
-  final pulumi.Input<int>? recurringChargeAmount;
-  final pulumi.Input<String>? recurringChargeFrequency;
+  final pulumi.Input<int?>? recurringChargeAmount;
+  final pulumi.Input<String?>? recurringChargeFrequency;
 
   /// Creates a new [ReservedInstanceRecurringCharge].
   /// [recurringChargeAmount] Optional.
@@ -23,7 +23,7 @@ class ReservedInstanceRecurringCharge {
 
   factory ReservedInstanceRecurringCharge.fromMap(Map<String, dynamic> map) {
     return ReservedInstanceRecurringCharge(
-      recurringChargeAmount: (() { final guardedValue = map['recurringChargeAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recurringChargeAmount: (() { final guardedValue = map['recurringChargeAmount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       recurringChargeFrequency: (() { final guardedValue = map['recurringChargeFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

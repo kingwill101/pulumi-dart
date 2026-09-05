@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StackSetInstanceStackInstanceSummary {
   /// Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Organizational unit ID in which the stack is deployed.
-  final pulumi.Input<String>? organizationalUnitId;
+  final pulumi.Input<String?>? organizationalUnitId;
   /// Stack identifier.
-  final pulumi.Input<String>? stackId;
+  final pulumi.Input<String?>? stackId;
 
   /// Creates a new [StackSetInstanceStackInstanceSummary].
   /// [accountId] Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.

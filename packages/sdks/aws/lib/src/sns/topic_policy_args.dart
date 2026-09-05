@@ -10,9 +10,9 @@ class TopicPolicyArgs {
   /// The ARN of the SNS topic
   final pulumi.Input<String> arn;
   /// The fully-formed AWS policy as JSON.
-  final pulumi.Input<String> policy;
+  final pulumi.Input<dynamic> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [TopicPolicyArgs].
   /// [arn] The ARN of the SNS topic
@@ -35,7 +35,7 @@ class TopicPolicyArgs {
   factory TopicPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TopicPolicyArgs(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      policy: pulumi.Input.fromValue(map['policy'] as String),
+      policy: pulumi.Input.fromValue(map['policy']),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -136,6 +136,17 @@ Future<GetDomainResult> getDomain(
   return GetDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainResult> getDomainOutput(
+  GetDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:opensearch/getDomain:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainResult.fromMap);
+}
+
 /// Data source for managing an AWS OpenSearch Serverless Access Policy.
 ///
 /// ## Example Usage
@@ -263,6 +274,17 @@ Future<GetServerlessAccessPolicyResult> getServerlessAccessPolicy(
   return GetServerlessAccessPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServerlessAccessPolicyResult> getServerlessAccessPolicyOutput(
+  GetServerlessAccessPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:opensearch/getServerlessAccessPolicy:getServerlessAccessPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessAccessPolicyResult.fromMap);
+}
+
 /// Data source for managing an AWS OpenSearch Serverless Collection.
 ///
 /// ## Example Usage
@@ -381,6 +403,17 @@ Future<GetServerlessCollectionResult> getServerlessCollection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerlessCollectionResult.fromMap(result);
+}
+
+pulumi.Output<GetServerlessCollectionResult> getServerlessCollectionOutput(
+  GetServerlessCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:opensearch/getServerlessCollection:getServerlessCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessCollectionResult.fromMap);
 }
 
 /// Data source for managing an AWS OpenSearch Serverless Collection Group.
@@ -503,6 +536,17 @@ Future<GetServerlessCollectionGroupResult> getServerlessCollectionGroup(
   return GetServerlessCollectionGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetServerlessCollectionGroupResult> getServerlessCollectionGroupOutput(
+  GetServerlessCollectionGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:opensearch/getServerlessCollectionGroup:getServerlessCollectionGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessCollectionGroupResult.fromMap);
+}
+
 /// Data source for listing AWS OpenSearch Serverless Collection Groups.
 ///
 /// ## Example Usage
@@ -611,6 +655,17 @@ Future<GetServerlessCollectionGroupsResult> getServerlessCollectionGroups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerlessCollectionGroupsResult.fromMap(result);
+}
+
+pulumi.Output<GetServerlessCollectionGroupsResult> getServerlessCollectionGroupsOutput(
+  GetServerlessCollectionGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:opensearch/getServerlessCollectionGroups:getServerlessCollectionGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessCollectionGroupsResult.fromMap);
 }
 
 /// Data source for managing an AWS OpenSearch Serverless Lifecycle Policy.
@@ -740,6 +795,17 @@ Future<GetServerlessLifecyclePolicyResult> getServerlessLifecyclePolicy(
   return GetServerlessLifecyclePolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServerlessLifecyclePolicyResult> getServerlessLifecyclePolicyOutput(
+  GetServerlessLifecyclePolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:opensearch/getServerlessLifecyclePolicy:getServerlessLifecyclePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessLifecyclePolicyResult.fromMap);
+}
+
 /// Data source for managing an AWS OpenSearch Serverless Security Config.
 ///
 /// ## Example Usage
@@ -858,6 +924,17 @@ Future<GetServerlessSecurityConfigResult> getServerlessSecurityConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerlessSecurityConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetServerlessSecurityConfigResult> getServerlessSecurityConfigOutput(
+  GetServerlessSecurityConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:opensearch/getServerlessSecurityConfig:getServerlessSecurityConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessSecurityConfigResult.fromMap);
 }
 
 /// Use this data source to get information about an AWS OpenSearch Serverless Security Policy.
@@ -985,6 +1062,17 @@ Future<GetServerlessSecurityPolicyResult> getServerlessSecurityPolicy(
   return GetServerlessSecurityPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServerlessSecurityPolicyResult> getServerlessSecurityPolicyOutput(
+  GetServerlessSecurityPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:opensearch/getServerlessSecurityPolicy:getServerlessSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessSecurityPolicyResult.fromMap);
+}
+
 /// Data source for managing an AWS OpenSearch Serverless VPC Endpoint.
 ///
 /// ## Example Usage
@@ -1101,4 +1189,15 @@ Future<GetServerlessVpcEndpointResult> getServerlessVpcEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerlessVpcEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetServerlessVpcEndpointResult> getServerlessVpcEndpointOutput(
+  GetServerlessVpcEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:opensearch/getServerlessVpcEndpoint:getServerlessVpcEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessVpcEndpointResult.fromMap);
 }

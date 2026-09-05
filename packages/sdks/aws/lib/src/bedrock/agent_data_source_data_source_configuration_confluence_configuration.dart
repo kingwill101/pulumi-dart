@@ -5,8 +5,8 @@ import 'agent_data_source_data_source_configuration_confluence_configuration_cra
 import 'agent_data_source_data_source_configuration_confluence_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationConfluenceConfiguration {
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration>? crawlerConfiguration;
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration>? sourceConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration?>? crawlerConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration?>? sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationConfluenceConfiguration].
   /// [crawlerConfiguration] Optional.

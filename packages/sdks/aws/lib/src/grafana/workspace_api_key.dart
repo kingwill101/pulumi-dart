@@ -154,9 +154,10 @@ class WorkspaceApiKey extends pulumi.CustomResource {
           'aws:grafana/workspaceApiKey:WorkspaceApiKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['key'],
         ) {
-    key = registerOutput<String>('key');
+    key = registerOutput<String>('key', isSecret: true);
     keyName = registerOutput<String>('keyName');
     keyRole = registerOutput<String>('keyRole');
     region = registerOutput<String>('region');
@@ -169,11 +170,12 @@ class WorkspaceApiKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceApiKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceApiKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -187,7 +189,25 @@ class WorkspaceApiKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    key = registerOutput<String>('key');
+    key = registerOutput<String>('key', isSecret: true);
+    keyName = registerOutput<String>('keyName');
+    keyRole = registerOutput<String>('keyRole');
+    region = registerOutput<String>('region');
+    secondsToLive = registerOutput<int>('secondsToLive');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceApiKey] resource.
+  WorkspaceApiKey.reference(String urn)
+    : super(
+        'aws:grafana/workspaceApiKey:WorkspaceApiKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['key'],
+        isResourceReference: true,
+      ) {
+    key = registerOutput<String>('key', isSecret: true);
     keyName = registerOutput<String>('keyName');
     keyRole = registerOutput<String>('keyRole');
     region = registerOutput<String>('region');

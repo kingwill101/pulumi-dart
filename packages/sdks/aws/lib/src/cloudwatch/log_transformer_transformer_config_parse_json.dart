@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogTransformerTransformerConfigParseJson {
   /// Specifies the location to put the parsed key value pair into. If omitted, it will be placed under the root node.
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
   /// Specifies the path to the field in the log event that will be parsed. Defaults to `@message`.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [LogTransformerTransformerConfigParseJson].
   /// [destination] Specifies the location to put the parsed key value pair into. If omitted, it will be placed under the root node.

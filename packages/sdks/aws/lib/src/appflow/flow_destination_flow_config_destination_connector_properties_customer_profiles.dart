@@ -6,7 +6,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles {
   /// Unique name of the Amazon Connect Customer Profiles domain.
   final pulumi.Input<String> domainName;
   /// Object specified in the Amazon Connect Customer Profiles flow destination.
-  final pulumi.Input<String>? objectTypeName;
+  final pulumi.Input<String?>? objectTypeName;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles].
   /// [domainName] Unique name of the Amazon Connect Customer Profiles domain.

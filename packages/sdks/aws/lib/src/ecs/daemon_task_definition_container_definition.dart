@@ -17,63 +17,63 @@ import 'daemon_task_definition_container_definition_ulimit.dart';
 
 class DaemonTaskDefinitionContainerDefinition {
   /// Command that is passed to the container.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// Number of CPU units reserved for the container.
-  final pulumi.Input<int>? cpu;
+  final pulumi.Input<int?>? cpu;
   /// Dependencies defined for container startup and shutdown. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionDependsOn>>? dependsOns;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionDependsOn>?>? dependsOns;
   /// Entry point that is passed to the container.
-  final pulumi.Input<List<String>>? entryPoints;
+  final pulumi.Input<List<String>?>? entryPoints;
   /// List of files containing the environment variables to pass to a container. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionEnvironmentFile>>? environmentFiles;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionEnvironmentFile>?>? environmentFiles;
   /// Environment variables to pass to a container. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionEnvironment>>? environments;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionEnvironment>?>? environments;
   /// If the essential parameter of a container is marked as true, and that container fails or stops for any reason, all other containers that are part of the task are stopped.
-  final pulumi.Input<bool>? essential;
+  final pulumi.Input<bool?>? essential;
   /// FireLens configuration for the container. Detailed below.
-  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionFirelensConfiguration>? firelensConfiguration;
+  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionFirelensConfiguration?>? firelensConfiguration;
   /// Container health check command and associated configuration parameters for the container. Detailed below.
-  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionHealthCheck>? healthCheck;
+  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionHealthCheck?>? healthCheck;
   /// Image used to start a container.
   final pulumi.Input<String> image;
   /// When this parameter is true, you can deploy containerized applications that require stdin or a tty to be allocated.
-  final pulumi.Input<bool>? interactive;
+  final pulumi.Input<bool?>? interactive;
   /// Linux-specific modifications that are applied to the container. Detailed below.
-  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionLinuxParameters>? linuxParameters;
+  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionLinuxParameters?>? linuxParameters;
   /// Log configuration specification for the container. Detailed below.
-  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionLogConfiguration>? logConfiguration;
+  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionLogConfiguration?>? logConfiguration;
   /// Amount (in MiB) of memory to present to the container.
-  final pulumi.Input<int>? memory;
+  final pulumi.Input<int?>? memory;
   /// Soft limit (in MiB) of memory to reserve for the container.
-  final pulumi.Input<int>? memoryReservation;
+  final pulumi.Input<int?>? memoryReservation;
   /// Mount points for data volumes in your container. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionMountPoint>>? mountPoints;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionMountPoint>?>? mountPoints;
   /// Name of a container.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// When this parameter is true, the container is given elevated privileges on the host container instance.
-  final pulumi.Input<bool>? privileged;
+  final pulumi.Input<bool?>? privileged;
   /// When this parameter is true, a TTY is allocated.
-  final pulumi.Input<bool>? pseudoTerminal;
+  final pulumi.Input<bool?>? pseudoTerminal;
   /// When this parameter is true, the container is given read-only access to its root file system.
-  final pulumi.Input<bool>? readonlyRootFilesystem;
+  final pulumi.Input<bool?>? readonlyRootFilesystem;
   /// Private repository authentication credentials to use. Detailed below.
-  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionRepositoryCredentials>? repositoryCredentials;
+  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionRepositoryCredentials?>? repositoryCredentials;
   /// Restart policy for a container. Detailed below.
-  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionRestartPolicy>? restartPolicy;
+  final pulumi.Input<DaemonTaskDefinitionContainerDefinitionRestartPolicy?>? restartPolicy;
   /// Secrets to pass to the container. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionSecret>>? secrets;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionSecret>?>? secrets;
   /// Time duration (in seconds) to wait before giving up on resolving dependencies for a container.
-  final pulumi.Input<int>? startTimeout;
+  final pulumi.Input<int?>? startTimeout;
   /// Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own.
-  final pulumi.Input<int>? stopTimeout;
+  final pulumi.Input<int?>? stopTimeout;
   /// List of namespaced kernel parameters to set in the container. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionSystemControl>>? systemControls;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionSystemControl>?>? systemControls;
   /// List of ulimits to set in the container. Detailed below.
-  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionUlimit>>? ulimits;
+  final pulumi.Input<List<DaemonTaskDefinitionContainerDefinitionUlimit>?>? ulimits;
   /// User to use inside the container.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
   /// Working directory to run commands inside the container.
-  final pulumi.Input<String>? workingDirectory;
+  final pulumi.Input<String?>? workingDirectory;
 
   /// Creates a new [DaemonTaskDefinitionContainerDefinition].
   /// [commands] Command that is passed to the container.
@@ -174,7 +174,7 @@ class DaemonTaskDefinitionContainerDefinition {
   factory DaemonTaskDefinitionContainerDefinition.fromMap(Map<String, dynamic> map) {
     return DaemonTaskDefinitionContainerDefinition(
       commands: (() { final guardedValue = map['commands']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dependsOns: (() { final guardedValue = map['dependsOns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DaemonTaskDefinitionContainerDefinitionDependsOn>(guardedValue, (value) => DaemonTaskDefinitionContainerDefinitionDependsOn.fromMap((value as Map).cast<String, dynamic>()))); })(),
       entryPoints: (() { final guardedValue = map['entryPoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       environmentFiles: (() { final guardedValue = map['environmentFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DaemonTaskDefinitionContainerDefinitionEnvironmentFile>(guardedValue, (value) => DaemonTaskDefinitionContainerDefinitionEnvironmentFile.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -186,8 +186,8 @@ class DaemonTaskDefinitionContainerDefinition {
       interactive: (() { final guardedValue = map['interactive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       linuxParameters: (() { final guardedValue = map['linuxParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaemonTaskDefinitionContainerDefinitionLinuxParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logConfiguration: (() { final guardedValue = map['logConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaemonTaskDefinitionContainerDefinitionLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      memoryReservation: (() { final guardedValue = map['memoryReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      memoryReservation: (() { final guardedValue = map['memoryReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       mountPoints: (() { final guardedValue = map['mountPoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DaemonTaskDefinitionContainerDefinitionMountPoint>(guardedValue, (value) => DaemonTaskDefinitionContainerDefinitionMountPoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privileged: (() { final guardedValue = map['privileged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -196,8 +196,8 @@ class DaemonTaskDefinitionContainerDefinition {
       repositoryCredentials: (() { final guardedValue = map['repositoryCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaemonTaskDefinitionContainerDefinitionRepositoryCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       restartPolicy: (() { final guardedValue = map['restartPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaemonTaskDefinitionContainerDefinitionRestartPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DaemonTaskDefinitionContainerDefinitionSecret>(guardedValue, (value) => DaemonTaskDefinitionContainerDefinitionSecret.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      startTimeout: (() { final guardedValue = map['startTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      stopTimeout: (() { final guardedValue = map['stopTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startTimeout: (() { final guardedValue = map['startTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      stopTimeout: (() { final guardedValue = map['stopTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       systemControls: (() { final guardedValue = map['systemControls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DaemonTaskDefinitionContainerDefinitionSystemControl>(guardedValue, (value) => DaemonTaskDefinitionContainerDefinitionSystemControl.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ulimits: (() { final guardedValue = map['ulimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DaemonTaskDefinitionContainerDefinitionUlimit>(guardedValue, (value) => DaemonTaskDefinitionContainerDefinitionUlimit.fromMap((value as Map).cast<String, dynamic>()))); })(),
       user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

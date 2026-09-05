@@ -11,15 +11,15 @@ class HoursOfOperationArgs {
   /// One or more config blocks which define the configuration information for the hours of operation: day, start time, and end time . Config blocks are documented below.
   final pulumi.Input<List<HoursOfOperationConfig>> configs;
   /// Specifies the description of the Hours of Operation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the identifier of the hosting Amazon Connect Instance.
   final pulumi.Input<String> instanceId;
   /// Specifies the name of the Hours of Operation.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to apply to the Hours of Operation. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the time zone of the Hours of Operation.
   final pulumi.Input<String> timeZone;
 

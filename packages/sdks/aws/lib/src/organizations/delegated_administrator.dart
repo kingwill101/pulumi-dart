@@ -136,7 +136,7 @@ import 'delegated_administrator_state.dart';
 class DelegatedAdministrator extends pulumi.CustomResource {
   /// The account ID number of the member account in the organization to register as a delegated administrator.
   late final pulumi.Output<String> accountId;
-  /// The Amazon Resource Name (ARN) of the delegated administrator's account.
+  /// ARN of the delegated administrator's account.
   late final pulumi.Output<String> arn;
   /// The date when the account was made a delegated administrator.
   late final pulumi.Output<String> delegationEnabledDate;
@@ -165,7 +165,7 @@ class DelegatedAdministrator extends pulumi.CustomResource {
           'aws:organizations/delegatedAdministrator:DelegatedAdministrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
@@ -183,11 +183,12 @@ class DelegatedAdministrator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DelegatedAdministratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DelegatedAdministrator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,6 +202,26 @@ class DelegatedAdministrator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    arn = registerOutput<String>('arn');
+    delegationEnabledDate = registerOutput<String>('delegationEnabledDate');
+    email = registerOutput<String>('email');
+    joinedMethod = registerOutput<String>('joinedMethod');
+    joinedTimestamp = registerOutput<String>('joinedTimestamp');
+    this.name = registerOutput<String>('name');
+    servicePrincipal = registerOutput<String>('servicePrincipal');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [DelegatedAdministrator] resource.
+  DelegatedAdministrator.reference(String urn)
+    : super(
+        'aws:organizations/delegatedAdministrator:DelegatedAdministrator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
     delegationEnabledDate = registerOutput<String>('delegationEnabledDate');

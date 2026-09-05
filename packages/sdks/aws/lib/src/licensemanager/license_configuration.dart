@@ -212,19 +212,19 @@ class LicenseConfiguration extends pulumi.CustomResource {
           'aws:licensemanager/licenseConfiguration:LicenseConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     licenseCount = registerOutput<int?>('licenseCount');
     licenseCountHardLimit = registerOutput<bool?>('licenseCountHardLimit');
     licenseCountingType = registerOutput<String>('licenseCountingType');
-    licenseRules = registerOutput<List<String>?>('licenseRules');
+    licenseRules = registerOutput<List<String>?>('licenseRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LicenseConfiguration] resource's state with the given [name] and [id].
@@ -232,11 +232,12 @@ class LicenseConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LicenseConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LicenseConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -255,11 +256,33 @@ class LicenseConfiguration extends pulumi.CustomResource {
     licenseCount = registerOutput<int?>('licenseCount');
     licenseCountHardLimit = registerOutput<bool?>('licenseCountHardLimit');
     licenseCountingType = registerOutput<String>('licenseCountingType');
-    licenseRules = registerOutput<List<String>?>('licenseRules');
+    licenseRules = registerOutput<List<String>?>('licenseRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LicenseConfiguration] resource.
+  LicenseConfiguration.reference(String urn)
+    : super(
+        'aws:licensemanager/licenseConfiguration:LicenseConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    licenseCount = registerOutput<int?>('licenseCount');
+    licenseCountHardLimit = registerOutput<bool?>('licenseCountHardLimit');
+    licenseCountingType = registerOutput<String>('licenseCountingType');
+    licenseRules = registerOutput<List<String>?>('licenseRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

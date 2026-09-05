@@ -9,13 +9,13 @@ import 'partition_index_partition_index.dart';
 /// {@macro pulumi_glue_partition_index_partition_index_args_doc}
 class PartitionIndexArgs {
   /// The catalog ID where the table resides.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
   final pulumi.Input<String> databaseName;
   /// Configuration block for a partition index. See `partitionIndex` below.
   final pulumi.Input<PartitionIndexPartitionIndex> partitionIndex;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the table. For Hive compatibility, this must be entirely lowercase.
   final pulumi.Input<String> tableName;
 

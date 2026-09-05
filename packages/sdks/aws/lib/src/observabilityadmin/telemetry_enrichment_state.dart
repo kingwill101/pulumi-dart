@@ -6,10 +6,10 @@ import 'telemetry_enrichment_timeouts.dart';
 /// Input properties used for looking up and filtering TelemetryEnrichment resources.
 class TelemetryEnrichmentState {
   /// ARN of the AWS Resource Explorer managed view created for the telemetry enrichment feature.
-  final pulumi.Input<String>? awsResourceExplorerManagedViewArn;
+  final pulumi.Input<String?>? awsResourceExplorerManagedViewArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<TelemetryEnrichmentTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<TelemetryEnrichmentTimeouts?>? timeouts;
 
   /// Creates a new [TelemetryEnrichmentState].
   /// [awsResourceExplorerManagedViewArn] ARN of the AWS Resource Explorer managed view created for the telemetry enrichment feature.

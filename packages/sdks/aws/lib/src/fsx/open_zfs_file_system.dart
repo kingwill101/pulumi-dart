@@ -153,13 +153,16 @@ import 'open_zfs_file_system_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.fsx.OpenZfsFileSystem("example", {securityGroupIds: [exampleAwsSecurityGroup.id]});
+/// const example = new aws.fsx.OpenZfsFileSystem("example", {securityGroupIds: [exampleAwsSecurityGroup.id]}, {
+///     ignoreChanges: ["securityGroupIds"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.fsx.OpenZfsFileSystem("example", security_group_ids=[example_aws_security_group["id"]])
+/// example = aws.fsx.OpenZfsFileSystem("example", security_group_ids=[example_aws_security_group["id"]],
+/// opts = pulumi.ResourceOptions(ignore_changes=["securityGroupIds"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -174,6 +177,12 @@ import 'open_zfs_file_system_state.dart';
 ///         SecurityGroupIds = new[]
 ///         {
 ///             exampleAwsSecurityGroup.Id,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "securityGroupIds",
 ///         },
 ///     });
 ///
@@ -193,7 +202,9 @@ import 'open_zfs_file_system_state.dart';
 /// 			SecurityGroupIds: pulumi.StringArray{
 /// 				exampleAwsSecurityGroup.Id,
 /// 			},
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"securityGroupIds",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -211,6 +222,9 @@ import 'open_zfs_file_system_state.dart';
 /// }
 ///
 /// resource "aws_fsx_openzfsfilesystem" "example" {
+///   lifecycle {
+///     ignore_changes = [securityGroupIds]
+///   }
 ///   security_group_ids = [exampleAwsSecurityGroup.id]
 /// }
 /// ```
@@ -222,6 +236,7 @@ import 'open_zfs_file_system_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.fsx.OpenZfsFileSystem;
 /// import com.pulumi.aws.fsx.OpenZfsFileSystemArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -237,7 +252,9 @@ import 'open_zfs_file_system_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new OpenZfsFileSystem("example", OpenZfsFileSystemArgs.builder()
 ///             .securityGroupIds(exampleAwsSecurityGroup.id())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("securityGroupIds")
+///                 .build());
 ///
 ///     }
 /// }
@@ -249,9 +266,12 @@ import 'open_zfs_file_system_state.dart';
 ///     properties:
 ///       securityGroupIds:
 ///         - ${exampleAwsSecurityGroup.id}
+///     options:
+///       ignoreChanges:
+///         - securityGroupIds
 /// ```
 class OpenZfsFileSystem extends pulumi.CustomResource {
-  /// Amazon Resource Name of the file system.
+  /// ARN of the file system.
   late final pulumi.Output<String> arn;
   /// Number of days to retain automatic backups. Setting this to 0 disables automatic backups. You can retain automatic backups for a maximum of 90 days.
   late final pulumi.Output<int?> automaticBackupRetentionDays;
@@ -295,7 +315,7 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
   late final pulumi.Output<OpenZfsFileSystemRootVolumeConfiguration> rootVolumeConfiguration;
   /// Identifier of the root volume, e.g., `fsvol-12345678`
   late final pulumi.Output<String> rootVolumeId;
-  /// (Multi-AZ only) Specifies the route tables in which Amazon FSx creates the rules for routing traffic to the correct file server. You should specify all virtual private cloud (VPC) route tables associated with the subnets in which your clients are located. By default, Amazon FSx selects your VPC's default route table.
+  /// (Multi-AZ only) Specifies the route tables in which Amazon FSx creates the rules for routing traffic to the correct file server. You should specify all VPC route tables associated with the subnets in which your clients are located. By default, Amazon FSx selects your VPC's default route table.
   late final pulumi.Output<List<String>> routeTableIds;
   /// List of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
   late final pulumi.Output<List<String>?> securityGroupIds;
@@ -315,7 +335,7 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<int> throughputCapacity;
-  /// Identifier of the Virtual Private Cloud for the file system.
+  /// Identifier of the VPC for the file system.
   late final pulumi.Output<String> vpcId;
   /// Preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
   late final pulumi.Output<String> weeklyMaintenanceStartTime;
@@ -332,7 +352,7 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
           'aws:fsx/openZfsFileSystem:OpenZfsFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     automaticBackupRetentionDays = registerOutput<int?>('automaticBackupRetentionDays');
@@ -340,15 +360,15 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
     copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
     copyTagsToVolumes = registerOutput<bool?>('copyTagsToVolumes');
     dailyAutomaticBackupStartTime = registerOutput<String>('dailyAutomaticBackupStartTime');
-    deleteOptions = registerOutput<List<String>?>('deleteOptions');
+    deleteOptions = registerOutput<List<String>?>('deleteOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deploymentType = registerOutput<String>('deploymentType');
     diskIopsConfiguration = registerOutput<OpenZfsFileSystemDiskIopsConfiguration>('diskIopsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenZfsFileSystemDiskIopsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dnsName = registerOutput<String>('dnsName');
     endpointIpAddress = registerOutput<String>('endpointIpAddress');
     endpointIpAddressRange = registerOutput<String>('endpointIpAddressRange');
-    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     networkType = registerOutput<String>('networkType');
     ownerId = registerOutput<String>('ownerId');
     preferredSubnetId = registerOutput<String?>('preferredSubnetId');
@@ -356,14 +376,14 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootVolumeConfiguration = registerOutput<OpenZfsFileSystemRootVolumeConfiguration>('rootVolumeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenZfsFileSystemRootVolumeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rootVolumeId = registerOutput<String>('rootVolumeId');
-    routeTableIds = registerOutput<List<String>>('routeTableIds');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    routeTableIds = registerOutput<List<String>>('routeTableIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     storageCapacity = registerOutput<int?>('storageCapacity');
     storageType = registerOutput<String?>('storageType');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputCapacity = registerOutput<int>('throughputCapacity');
     vpcId = registerOutput<String>('vpcId');
     weeklyMaintenanceStartTime = registerOutput<String>('weeklyMaintenanceStartTime');
@@ -374,11 +394,12 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OpenZfsFileSystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OpenZfsFileSystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -398,15 +419,15 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
     copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
     copyTagsToVolumes = registerOutput<bool?>('copyTagsToVolumes');
     dailyAutomaticBackupStartTime = registerOutput<String>('dailyAutomaticBackupStartTime');
-    deleteOptions = registerOutput<List<String>?>('deleteOptions');
+    deleteOptions = registerOutput<List<String>?>('deleteOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deploymentType = registerOutput<String>('deploymentType');
     diskIopsConfiguration = registerOutput<OpenZfsFileSystemDiskIopsConfiguration>('diskIopsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenZfsFileSystemDiskIopsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dnsName = registerOutput<String>('dnsName');
     endpointIpAddress = registerOutput<String>('endpointIpAddress');
     endpointIpAddressRange = registerOutput<String>('endpointIpAddressRange');
-    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     networkType = registerOutput<String>('networkType');
     ownerId = registerOutput<String>('ownerId');
     preferredSubnetId = registerOutput<String?>('preferredSubnetId');
@@ -414,14 +435,58 @@ class OpenZfsFileSystem extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootVolumeConfiguration = registerOutput<OpenZfsFileSystemRootVolumeConfiguration>('rootVolumeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenZfsFileSystemRootVolumeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rootVolumeId = registerOutput<String>('rootVolumeId');
-    routeTableIds = registerOutput<List<String>>('routeTableIds');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    routeTableIds = registerOutput<List<String>>('routeTableIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
     storageCapacity = registerOutput<int?>('storageCapacity');
     storageType = registerOutput<String?>('storageType');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throughputCapacity = registerOutput<int>('throughputCapacity');
+    vpcId = registerOutput<String>('vpcId');
+    weeklyMaintenanceStartTime = registerOutput<String>('weeklyMaintenanceStartTime');
+  }
+
+  /// Creates a typed reference to an existing [OpenZfsFileSystem] resource.
+  OpenZfsFileSystem.reference(String urn)
+    : super(
+        'aws:fsx/openZfsFileSystem:OpenZfsFileSystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    automaticBackupRetentionDays = registerOutput<int?>('automaticBackupRetentionDays');
+    backupId = registerOutput<String?>('backupId');
+    copyTagsToBackups = registerOutput<bool?>('copyTagsToBackups');
+    copyTagsToVolumes = registerOutput<bool?>('copyTagsToVolumes');
+    dailyAutomaticBackupStartTime = registerOutput<String>('dailyAutomaticBackupStartTime');
+    deleteOptions = registerOutput<List<String>?>('deleteOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deploymentType = registerOutput<String>('deploymentType');
+    diskIopsConfiguration = registerOutput<OpenZfsFileSystemDiskIopsConfiguration>('diskIopsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenZfsFileSystemDiskIopsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsName = registerOutput<String>('dnsName');
+    endpointIpAddress = registerOutput<String>('endpointIpAddress');
+    endpointIpAddressRange = registerOutput<String>('endpointIpAddressRange');
+    finalBackupTags = registerOutput<Map<String, String>?>('finalBackupTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    networkType = registerOutput<String>('networkType');
+    ownerId = registerOutput<String>('ownerId');
+    preferredSubnetId = registerOutput<String?>('preferredSubnetId');
+    readCacheConfiguration = registerOutput<OpenZfsFileSystemReadCacheConfiguration?>('readCacheConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenZfsFileSystemReadCacheConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    rootVolumeConfiguration = registerOutput<OpenZfsFileSystemRootVolumeConfiguration>('rootVolumeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenZfsFileSystemRootVolumeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rootVolumeId = registerOutput<String>('rootVolumeId');
+    routeTableIds = registerOutput<List<String>>('routeTableIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    skipFinalBackup = registerOutput<bool?>('skipFinalBackup');
+    storageCapacity = registerOutput<int?>('storageCapacity');
+    storageType = registerOutput<String?>('storageType');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputCapacity = registerOutput<int>('throughputCapacity');
     vpcId = registerOutput<String>('vpcId');
     weeklyMaintenanceStartTime = registerOutput<String>('weeklyMaintenanceStartTime');

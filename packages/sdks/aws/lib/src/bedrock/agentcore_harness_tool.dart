@@ -5,9 +5,9 @@ import 'agentcore_harness_tool_config.dart';
 
 class AgentcoreHarnessTool {
   /// Tool-specific configuration. See `tool config` below.
-  final pulumi.Input<AgentcoreHarnessToolConfig>? config;
+  final pulumi.Input<AgentcoreHarnessToolConfig?>? config;
   /// Name of the tool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of tool. Valid values: `remoteMcp`, `agentcoreBrowser`, `agentcoreGateway`, `inlineFunction`, `agentcoreCodeInterpreter`.
   final pulumi.Input<String> type;
 

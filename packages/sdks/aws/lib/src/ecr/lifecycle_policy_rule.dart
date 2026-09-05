@@ -9,7 +9,7 @@ class LifecyclePolicyRule {
   /// The action to take when the rule is triggered.
   final pulumi.Input<LifecyclePolicyAction> action;
   /// A description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The priority of the rule, must be unique within the policy.
   final pulumi.Input<int> rulePriority;
   /// The selection criteria for the rule.
@@ -40,7 +40,7 @@ class LifecyclePolicyRule {
     return LifecyclePolicyRule(
       action: pulumi.Input.fromValue(LifecyclePolicyAction.fromMap((map['action']! as Map).cast<String, dynamic>())),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rulePriority: pulumi.Input.fromValue(map['rulePriority'] as int),
+      rulePriority: pulumi.Input.fromValue((map['rulePriority'] as num).toInt()),
       selection: pulumi.Input.fromValue(LifecyclePolicySelection.fromMap((map['selection']! as Map).cast<String, dynamic>())),
     );
   }

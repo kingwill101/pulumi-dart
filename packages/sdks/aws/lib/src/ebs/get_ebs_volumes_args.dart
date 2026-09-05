@@ -9,15 +9,15 @@ import 'get_ebs_volumes_filter.dart';
 /// {@macro pulumi_ebs_get_ebs_volumes_get_ebs_volumes_args_doc}
 class GetEbsVolumesArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetEbsVolumesFilter>>? filters;
+  final pulumi.Input<List<GetEbsVolumesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired volumes.
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetEbsVolumesArgs].
   /// [filters] Custom filter block as described below.

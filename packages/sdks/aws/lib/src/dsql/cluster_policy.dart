@@ -886,7 +886,7 @@ class ClusterPolicy extends pulumi.CustomResource {
           'aws:dsql/clusterPolicy:ClusterPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bypassPolicyLockoutSafetyCheck = registerOutput<bool>('bypassPolicyLockoutSafetyCheck');
     identifier = registerOutput<String>('identifier');
@@ -901,11 +901,12 @@ class ClusterPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -919,6 +920,23 @@ class ClusterPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bypassPolicyLockoutSafetyCheck = registerOutput<bool>('bypassPolicyLockoutSafetyCheck');
+    identifier = registerOutput<String>('identifier');
+    policy = registerOutput<String>('policy');
+    policyVersion = registerOutput<String>('policyVersion');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<ClusterPolicyTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPolicyTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ClusterPolicy] resource.
+  ClusterPolicy.reference(String urn)
+    : super(
+        'aws:dsql/clusterPolicy:ClusterPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bypassPolicyLockoutSafetyCheck = registerOutput<bool>('bypassPolicyLockoutSafetyCheck');
     identifier = registerOutput<String>('identifier');
     policy = registerOutput<String>('policy');

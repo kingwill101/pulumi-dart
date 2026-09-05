@@ -11,20 +11,20 @@ import 'ingress_point_timeouts.dart';
 /// {@macro pulumi_mailmanager_ingress_point_ingress_point_args_doc}
 class IngressPointArgs {
   /// Configuration used to authenticate with the ingress point. See `ingressPointConfiguration` Block for details.
-  final pulumi.Input<IngressPointIngressPointConfiguration>? ingressPointConfiguration;
+  final pulumi.Input<IngressPointIngressPointConfiguration?>? ingressPointConfiguration;
   /// Name of the ingress point.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration for the ingress point. See `networkConfiguration` Block for details. Changing this value forces a new resource.
-  final pulumi.Input<IngressPointNetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<IngressPointNetworkConfiguration?>? networkConfiguration;
   /// Region where this resource is managed.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the rule set applied to the ingress point.
   final pulumi.Input<String> ruleSetId;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<IngressPointTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<IngressPointTimeouts?>? timeouts;
   /// TLS policy for the ingress point. Valid values are `REQUIRED`, `OPTIONAL`, and `FIPS`.
-  final pulumi.Input<String>? tlsPolicy;
+  final pulumi.Input<String?>? tlsPolicy;
   /// Identifier of the traffic policy applied to the ingress point.
   final pulumi.Input<String> trafficPolicyId;
   /// Type of the ingress point. Valid values are `OPEN`, `AUTH`, and `MTLS`. Changing this value forces a new resource.

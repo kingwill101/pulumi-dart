@@ -16,12 +16,12 @@ import 'secret_policy_state.dart';
 /// const exampleSecret = new aws.secretsmanager.Secret("example", {name: "example"});
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "EnableAnotherAWSAccountToReadTheSecret",
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: ["arn:aws:iam::123456789012:root"],
 ///         }],
+///         sid: "EnableAnotherAWSAccountToReadTheSecret",
+///         effect: "Allow",
 ///         actions: ["secretsmanager:GetSecretValue"],
 ///         resources: ["*"],
 ///     }],
@@ -37,12 +37,12 @@ import 'secret_policy_state.dart';
 ///
 /// example_secret = aws.secretsmanager.Secret("example", name="example")
 /// example = aws.iam.get_policy_document(statements=[{
-///     "sid": "EnableAnotherAWSAccountToReadTheSecret",
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": ["arn:aws:iam::123456789012:root"],
 ///     }],
+///     "sid": "EnableAnotherAWSAccountToReadTheSecret",
+///     "effect": "Allow",
 ///     "actions": ["secretsmanager:GetSecretValue"],
 ///     "resources": ["*"],
 /// }])
@@ -69,8 +69,6 @@ import 'secret_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "EnableAnotherAWSAccountToReadTheSecret",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -82,6 +80,8 @@ import 'secret_policy_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "EnableAnotherAWSAccountToReadTheSecret",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "secretsmanager:GetSecretValue",
@@ -122,8 +122,6 @@ import 'secret_policy_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("EnableAnotherAWSAccountToReadTheSecret"),
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -132,6 +130,8 @@ import 'secret_policy_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("EnableAnotherAWSAccountToReadTheSecret"),
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"secretsmanager:GetSecretValue",
 /// 					},
@@ -166,12 +166,12 @@ import 'secret_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "EnableAnotherAWSAccountToReadTheSecret"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["arn:aws:iam::123456789012:root"]
 ///     }
+///     sid       = "EnableAnotherAWSAccountToReadTheSecret"
+///     effect    = "Allow"
 ///     actions   = ["secretsmanager:GetSecretValue"]
 ///     resources = ["*"]
 ///   }
@@ -218,12 +218,12 @@ import 'secret_policy_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("EnableAnotherAWSAccountToReadTheSecret")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers("arn:aws:iam::123456789012:root")
 ///                     .build())
+///                 .sid("EnableAnotherAWSAccountToReadTheSecret")
+///                 .effect("Allow")
 ///                 .actions("secretsmanager:GetSecretValue")
 ///                 .resources("*")
 ///                 .build())
@@ -256,12 +256,12 @@ import 'secret_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: EnableAnotherAWSAccountToReadTheSecret
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - arn:aws:iam::123456789012:root
+///             sid: EnableAnotherAWSAccountToReadTheSecret
+///             effect: Allow
 ///             actions:
 ///               - secretsmanager:GetSecretValue
 ///             resources:
@@ -275,10 +275,10 @@ import 'secret_policy_state.dart';
 ///
 /// #### Required
 ///
-/// - `secretArn` (String) Amazon Resource Name (ARN) of the Secrets Manager secret.
+/// - `secretArn` (String) ARN of the Secrets Manager secret.
 ///
 ///
-/// Using `pulumi import`, import `aws.secretsmanager.SecretPolicy` using the secret Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.secretsmanager.SecretPolicy` using the secret ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:secretsmanager/secretPolicy:SecretPolicy example arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456
@@ -307,7 +307,7 @@ class SecretPolicy extends pulumi.CustomResource {
           'aws:secretsmanager/secretPolicy:SecretPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
     policy = registerOutput<String>('policy');
@@ -320,11 +320,12 @@ class SecretPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecretPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecretPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -338,6 +339,21 @@ class SecretPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    secretArn = registerOutput<String>('secretArn');
+  }
+
+  /// Creates a typed reference to an existing [SecretPolicy] resource.
+  SecretPolicy.reference(String urn)
+    : super(
+        'aws:secretsmanager/secretPolicy:SecretPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

@@ -11,9 +11,9 @@ import 'monitoring_schedule_monitoring_schedule_config_monitoring_job_definition
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition {
   /// Baseline configuration used to validate that the data conforms to the specified constraints and statistics. Fields are documented below.
-  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline>? baseline;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline?>? baseline;
   /// Map of environment variables in the Docker container.
-  final pulumi.Input<Map<String, String>>? environment;
+  final pulumi.Input<Map<String, String>?>? environment;
   /// Configures the monitoring job to run a specified Docker container image. Fields are documented below.
   final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification> monitoringAppSpecification;
   /// Inputs for the monitoring job. Fields are documented below.
@@ -23,11 +23,11 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition {
   /// Identifies the resources, ML compute instances, and ML storage volumes to deploy for a monitoring job. Fields are documented below.
   final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources> monitoringResources;
   /// Networking options for the monitoring job. Fields are documented below.
-  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig>? networkConfig;
+  final pulumi.Input<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig?>? networkConfig;
   /// ARN of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf.
   final pulumi.Input<String> roleArn;
   /// How long the monitoring job is allowed to run. Fields are documented below.
-  final pulumi.Input<List<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition>>? stoppingConditions;
+  final pulumi.Input<List<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition>?>? stoppingConditions;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition].
   /// [baseline] Baseline configuration used to validate that the data conforms to the specified constraints and statistics. Fields are documented below.

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppProductionBranch {
   /// Branch name for the production branch.
-  final pulumi.Input<String>? branchName;
+  final pulumi.Input<String?>? branchName;
   /// Last deploy time of the production branch.
-  final pulumi.Input<String>? lastDeployTime;
+  final pulumi.Input<String?>? lastDeployTime;
   /// Status of the production branch.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Thumbnail URL for the production branch.
-  final pulumi.Input<String>? thumbnailUrl;
+  final pulumi.Input<String?>? thumbnailUrl;
 
   /// Creates a new [AppProductionBranch].
   /// [branchName] Branch name for the production branch.

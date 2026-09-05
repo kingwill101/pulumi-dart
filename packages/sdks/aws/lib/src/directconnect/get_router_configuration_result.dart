@@ -6,56 +6,56 @@ import 'get_router_configuration_router.dart';
 /// Result data returned by getRouterConfiguration.
 class GetRouterConfigurationResult {
   /// Instructions for configuring your router
-  final String customerRouterConfig;
+  final String? customerRouterConfig;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
   /// Router type identifier
-  final String routerTypeIdentifier;
+  final String? routerTypeIdentifier;
   /// Block of the router type details
-  final List<GetRouterConfigurationRouter> routers;
-  final String virtualInterfaceId;
-  final String virtualInterfaceName;
+  final List<GetRouterConfigurationRouter>? routers;
+  final String? virtualInterfaceId;
+  final String? virtualInterfaceName;
 
   /// Creates a new [GetRouterConfigurationResult].
   /// [customerRouterConfig] Instructions for configuring your router
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   /// [routerTypeIdentifier] Router type identifier
   /// [routers] Block of the router type details
-  /// [virtualInterfaceId] Required.
-  /// [virtualInterfaceName] Required.
+  /// [virtualInterfaceId] Optional.
+  /// [virtualInterfaceName] Optional.
   const GetRouterConfigurationResult({
-    required this.customerRouterConfig,
-    required this.id,
-    required this.region,
-    required this.routerTypeIdentifier,
-    required this.routers,
-    required this.virtualInterfaceId,
-    required this.virtualInterfaceName,
+    this.customerRouterConfig,
+    this.id,
+    this.region,
+    this.routerTypeIdentifier,
+    this.routers,
+    this.virtualInterfaceId,
+    this.virtualInterfaceName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerRouterConfig': customerRouterConfig,
-      'id': id,
-      'region': region,
-      'routerTypeIdentifier': routerTypeIdentifier,
-      'routers': pulumi.Input.encodeList<GetRouterConfigurationRouter, Map<String, dynamic>>(routers, (value) => value.toMap()),
-      'virtualInterfaceId': virtualInterfaceId,
-      'virtualInterfaceName': virtualInterfaceName,
+      'customerRouterConfig': ?customerRouterConfig,
+      'id': ?id,
+      'region': ?region,
+      'routerTypeIdentifier': ?routerTypeIdentifier,
+      'routers': ?(() { final guardedValue = routers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRouterConfigurationRouter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'virtualInterfaceId': ?virtualInterfaceId,
+      'virtualInterfaceName': ?virtualInterfaceName,
     };
   }
 
   factory GetRouterConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetRouterConfigurationResult(
-      customerRouterConfig: map['customerRouterConfig'] as String,
-      id: map['id'] as String,
-      region: map['region'] as String,
-      routerTypeIdentifier: map['routerTypeIdentifier'] as String,
-      routers: pulumi.Input.decodeList<GetRouterConfigurationRouter>(map['routers']!, (value) => GetRouterConfigurationRouter.fromMap((value as Map).cast<String, dynamic>())),
-      virtualInterfaceId: map['virtualInterfaceId'] as String,
-      virtualInterfaceName: map['virtualInterfaceName'] as String,
+      customerRouterConfig: (() { final guardedValue = map['customerRouterConfig']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      routerTypeIdentifier: (() { final guardedValue = map['routerTypeIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      routers: (() { final guardedValue = map['routers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRouterConfigurationRouter>(guardedValue, (value) => GetRouterConfigurationRouter.fromMap((value as Map).cast<String, dynamic>())); })(),
+      virtualInterfaceId: (() { final guardedValue = map['virtualInterfaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualInterfaceName: (() { final guardedValue = map['virtualInterfaceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -145,7 +145,7 @@ class MetricsDestination extends pulumi.CustomResource {
           'aws:rum/metricsDestination:MetricsDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appMonitorName = registerOutput<String>('appMonitorName');
     destination = registerOutput<String>('destination');
@@ -159,11 +159,12 @@ class MetricsDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MetricsDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MetricsDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -177,6 +178,22 @@ class MetricsDestination extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appMonitorName = registerOutput<String>('appMonitorName');
+    destination = registerOutput<String>('destination');
+    destinationArn = registerOutput<String?>('destinationArn');
+    iamRoleArn = registerOutput<String?>('iamRoleArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [MetricsDestination] resource.
+  MetricsDestination.reference(String urn)
+    : super(
+        'aws:rum/metricsDestination:MetricsDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appMonitorName = registerOutput<String>('appMonitorName');
     destination = registerOutput<String>('destination');
     destinationArn = registerOutput<String?>('destinationArn');

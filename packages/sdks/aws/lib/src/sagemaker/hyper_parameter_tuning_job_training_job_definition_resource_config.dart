@@ -6,21 +6,21 @@ import 'hyper_parameter_tuning_job_training_job_definition_resource_config_insta
 
 class HyperParameterTuningJobTrainingJobDefinitionResourceConfig {
   /// Number of instances.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// Instance group settings. See `instanceGroups`.
-  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstanceGroup>>? instanceGroups;
+  final pulumi.Input<List<HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstanceGroup>?>? instanceGroups;
   /// Placement settings. See `instancePlacementConfig`.
-  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfig>? instancePlacementConfig;
+  final pulumi.Input<HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfig?>? instancePlacementConfig;
   /// Instance type.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// Warm pool keep-alive period in seconds.
-  final pulumi.Input<int>? keepAlivePeriodInSeconds;
+  final pulumi.Input<int?>? keepAlivePeriodInSeconds;
   /// Training plan ARN.
-  final pulumi.Input<String>? trainingPlanArn;
+  final pulumi.Input<String?>? trainingPlanArn;
   /// KMS key ID for volume encryption.
-  final pulumi.Input<String>? volumeKmsKeyId;
+  final pulumi.Input<String?>? volumeKmsKeyId;
   /// Volume size in GB.
-  final pulumi.Input<int>? volumeSizeInGb;
+  final pulumi.Input<int?>? volumeSizeInGb;
 
   /// Creates a new [HyperParameterTuningJobTrainingJobDefinitionResourceConfig].
   /// [instanceCount] Number of instances.
@@ -57,14 +57,14 @@ class HyperParameterTuningJobTrainingJobDefinitionResourceConfig {
 
   factory HyperParameterTuningJobTrainingJobDefinitionResourceConfig.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobTrainingJobDefinitionResourceConfig(
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       instanceGroups: (() { final guardedValue = map['instanceGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstanceGroup>(guardedValue, (value) => HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstanceGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       instancePlacementConfig: (() { final guardedValue = map['instancePlacementConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keepAlivePeriodInSeconds: (() { final guardedValue = map['keepAlivePeriodInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      keepAlivePeriodInSeconds: (() { final guardedValue = map['keepAlivePeriodInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       trainingPlanArn: (() { final guardedValue = map['trainingPlanArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeKmsKeyId: (() { final guardedValue = map['volumeKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

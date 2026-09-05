@@ -6,14 +6,14 @@ import 'account_settings_timeouts.dart';
 /// Input properties used for looking up and filtering AccountSettings resources.
 class AccountSettingsState {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// The default namespace for this Amazon Web Services account. Currently, the default is `default`.
-  final pulumi.Input<String>? defaultNamespace;
+  final pulumi.Input<String?>? defaultNamespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A boolean value that determines whether or not an Amazon QuickSight account can be deleted. If `true`, it does not allow the account to be deleted and results in an error message if a user tries to make a DeleteAccountSubscription request. If `false`, it will allow the account to be deleted.
-  final pulumi.Input<bool>? terminationProtectionEnabled;
-  final pulumi.Input<AccountSettingsTimeouts>? timeouts;
+  final pulumi.Input<bool?>? terminationProtectionEnabled;
+  final pulumi.Input<AccountSettingsTimeouts?>? timeouts;
 
   /// Creates a new [AccountSettingsState].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.

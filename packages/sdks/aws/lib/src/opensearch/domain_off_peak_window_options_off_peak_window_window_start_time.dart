@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime {
   /// Starting hour of the 10-hour window for updates
-  final pulumi.Input<int>? hours;
+  final pulumi.Input<int?>? hours;
   /// Starting minute of the 10-hour window for updates
-  final pulumi.Input<int>? minutes;
+  final pulumi.Input<int?>? minutes;
 
   /// Creates a new [DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime].
   /// [hours] Starting hour of the 10-hour window for updates
@@ -25,8 +25,8 @@ class DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime {
 
   factory DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime.fromMap(Map<String, dynamic> map) {
     return DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime(
-      hours: (() { final guardedValue = map['hours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minutes: (() { final guardedValue = map['minutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hours: (() { final guardedValue = map['hours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minutes: (() { final guardedValue = map['minutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

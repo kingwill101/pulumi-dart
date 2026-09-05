@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobInfraCheckConfig {
   /// Whether to enable infrastructure health checks before training.
-  final pulumi.Input<bool>? enableInfraCheck;
+  final pulumi.Input<bool?>? enableInfraCheck;
 
   /// Creates a new [TrainingJobInfraCheckConfig].
   /// [enableInfraCheck] Whether to enable infrastructure health checks before training.

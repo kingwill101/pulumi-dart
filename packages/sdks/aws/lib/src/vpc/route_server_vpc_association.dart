@@ -3,7 +3,7 @@ import 'route_server_vpc_association_args.dart';
 import 'route_server_vpc_association_state.dart';
 import 'route_server_vpc_association_timeouts.dart';
 
-/// Provides a resource for managing association between VPC (Virtual Private Cloud) route server and a VPC.
+/// Provides a resource for managing association between VPC route server and a VPC.
 ///
 /// ## Example Usage
 ///
@@ -119,7 +119,7 @@ import 'route_server_vpc_association_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, to  to import VPC (Virtual Private Cloud) Route Server Association using the associated resource ID and VPC Id separated by a comma (,). For example:
+/// Using `pulumi import`, to  to import VPC Route Server Association using the associated resource ID and VPC Id separated by a comma (,). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpc/routeServerVpcAssociation:RouteServerVpcAssociation example rs-12345678,vpc-0f001273ec18911b1
@@ -147,7 +147,7 @@ class RouteServerVpcAssociation extends pulumi.CustomResource {
           'aws:vpc/routeServerVpcAssociation:RouteServerVpcAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');
@@ -160,11 +160,12 @@ class RouteServerVpcAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteServerVpcAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouteServerVpcAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -178,6 +179,21 @@ class RouteServerVpcAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    routeServerId = registerOutput<String>('routeServerId');
+    timeouts = registerOutput<RouteServerVpcAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerVpcAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [RouteServerVpcAssociation] resource.
+  RouteServerVpcAssociation.reference(String urn)
+    : super(
+        'aws:vpc/routeServerVpcAssociation:RouteServerVpcAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');
     timeouts = registerOutput<RouteServerVpcAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouteServerVpcAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

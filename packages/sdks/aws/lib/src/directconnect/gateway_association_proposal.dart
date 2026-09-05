@@ -170,9 +170,9 @@ class GatewayAssociationProposal extends pulumi.CustomResource {
           'aws:directconnect/gatewayAssociationProposal:GatewayAssociationProposal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    allowedPrefixes = registerOutput<List<String>>('allowedPrefixes');
+    allowedPrefixes = registerOutput<List<String>>('allowedPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     associatedGatewayId = registerOutput<String>('associatedGatewayId');
     associatedGatewayOwnerAccountId = registerOutput<String>('associatedGatewayOwnerAccountId');
     associatedGatewayType = registerOutput<String>('associatedGatewayType');
@@ -186,11 +186,12 @@ class GatewayAssociationProposal extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewayAssociationProposalState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GatewayAssociationProposal._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -204,7 +205,25 @@ class GatewayAssociationProposal extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedPrefixes = registerOutput<List<String>>('allowedPrefixes');
+    allowedPrefixes = registerOutput<List<String>>('allowedPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    associatedGatewayId = registerOutput<String>('associatedGatewayId');
+    associatedGatewayOwnerAccountId = registerOutput<String>('associatedGatewayOwnerAccountId');
+    associatedGatewayType = registerOutput<String>('associatedGatewayType');
+    dxGatewayId = registerOutput<String>('dxGatewayId');
+    dxGatewayOwnerAccountId = registerOutput<String>('dxGatewayOwnerAccountId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [GatewayAssociationProposal] resource.
+  GatewayAssociationProposal.reference(String urn)
+    : super(
+        'aws:directconnect/gatewayAssociationProposal:GatewayAssociationProposal',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedPrefixes = registerOutput<List<String>>('allowedPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     associatedGatewayId = registerOutput<String>('associatedGatewayId');
     associatedGatewayOwnerAccountId = registerOutput<String>('associatedGatewayOwnerAccountId');
     associatedGatewayType = registerOutput<String>('associatedGatewayType');

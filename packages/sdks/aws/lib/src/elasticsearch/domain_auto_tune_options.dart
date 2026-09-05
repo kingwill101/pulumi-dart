@@ -7,9 +7,9 @@ class DomainAutoTuneOptions {
   /// The Auto-Tune desired state for the domain. Valid values: `ENABLED` or `DISABLED`.
   final pulumi.Input<String> desiredState;
   /// Configuration block for Auto-Tune maintenance windows. Can be specified multiple times for each maintenance window. Detailed below.
-  final pulumi.Input<List<DomainAutoTuneOptionsMaintenanceSchedule>>? maintenanceSchedules;
+  final pulumi.Input<List<DomainAutoTuneOptionsMaintenanceSchedule>?>? maintenanceSchedules;
   /// Whether to roll back to default Auto-Tune settings when disabling Auto-Tune. Valid values: `DEFAULT_ROLLBACK` or `NO_ROLLBACK`.
-  final pulumi.Input<String>? rollbackOnDisable;
+  final pulumi.Input<String?>? rollbackOnDisable;
 
   /// Creates a new [DomainAutoTuneOptions].
   /// [desiredState] The Auto-Tune desired state for the domain. Valid values: `ENABLED` or `DISABLED`.

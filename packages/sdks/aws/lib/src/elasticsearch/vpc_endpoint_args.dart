@@ -8,15 +8,15 @@ import 'vpc_endpoint_vpc_options.dart';
 /// {@endtemplate}
 /// {@macro pulumi_elasticsearch_vpc_endpoint_vpc_endpoint_args_doc}
 class VpcEndpointArgs {
-  /// Specifies the Amazon Resource Name (ARN) of the domain to create the endpoint for
+  /// ARN of the domain to create the endpoint for
   final pulumi.Input<String> domainArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Options to specify the subnets and security groups for the endpoint.
   final pulumi.Input<VpcEndpointVpcOptions> vpcOptions;
 
   /// Creates a new [VpcEndpointArgs].
-  /// [domainArn] Specifies the Amazon Resource Name (ARN) of the domain to create the endpoint for
+  /// [domainArn] ARN of the domain to create the endpoint for
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcOptions] Options to specify the subnets and security groups for the endpoint.
   const VpcEndpointArgs({

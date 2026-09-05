@@ -8,7 +8,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
   final pulumi.Input<List<String>> flags;
   /// Set of flags to consider in the inspection. To inspect all flags, leave this empty.
   /// Valid values: `FIN`, `SYN`, `RST`, `PSH`, `ACK`, `URG`, `ECE`, `CWR`.
-  final pulumi.Input<List<String>>? masks;
+  final pulumi.Input<List<String>?>? masks;
 
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag].
   /// [flags] Set of flags to look for in a packet. This setting can only specify values that are also specified in `masks`.

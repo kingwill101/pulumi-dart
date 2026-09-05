@@ -8,7 +8,7 @@ class MultiRegionAccessPointDetails {
   /// Name of the Multi-Region Access Point.
   final pulumi.Input<String> name;
   /// Configuration block to manage the `PublicAccessBlock` configuration that you want to apply to this Multi-Region Access Point. You can enable the configuration options in any combination. See `publicAccessBlock` Block below.
-  final pulumi.Input<MultiRegionAccessPointDetailsPublicAccessBlock>? publicAccessBlock;
+  final pulumi.Input<MultiRegionAccessPointDetailsPublicAccessBlock?>? publicAccessBlock;
   /// Region configuration block to specify the bucket associated with the Multi-Region Access Point. See `region` Block below.
   final pulumi.Input<List<MultiRegionAccessPointDetailsRegion>> regions;
 

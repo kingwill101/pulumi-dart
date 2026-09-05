@@ -9,7 +9,7 @@ class EvaluationJobEvaluationConfigAutomatedCustomMetricConfigCustomMetricCustom
   /// Name for the custom metric. Must be unique in your AWS Region.
   final pulumi.Input<String> name;
   /// One or more items defining the rating scale for the custom metric. See `ratingScale` Block below.
-  final pulumi.Input<List<EvaluationJobEvaluationConfigAutomatedCustomMetricConfigCustomMetricCustomMetricDefinitionRatingScale>>? ratingScales;
+  final pulumi.Input<List<EvaluationJobEvaluationConfigAutomatedCustomMetricConfigCustomMetricCustomMetricDefinitionRatingScale>?>? ratingScales;
 
   /// Creates a new [EvaluationJobEvaluationConfigAutomatedCustomMetricConfigCustomMetricCustomMetricDefinition].
   /// [instructions] Prompt that instructs the evaluator model how to rate the model or RAG source under evaluation.

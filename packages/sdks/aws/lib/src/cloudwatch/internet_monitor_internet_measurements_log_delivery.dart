@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'internet_monitor_internet_measurements_log_delivery_s3_config.dart';
 
 class InternetMonitorInternetMeasurementsLogDelivery {
-  final pulumi.Input<InternetMonitorInternetMeasurementsLogDeliveryS3Config>? s3Config;
+  final pulumi.Input<InternetMonitorInternetMeasurementsLogDeliveryS3Config?>? s3Config;
 
   /// Creates a new [InternetMonitorInternetMeasurementsLogDelivery].
   /// [s3Config] Optional.

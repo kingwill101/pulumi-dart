@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecretRotationRotationRules {
   /// Number of days between automatic scheduled rotations of the secret. Either `automaticallyAfterDays` or `scheduleExpression` must be specified.
-  final pulumi.Input<int>? automaticallyAfterDays;
+  final pulumi.Input<int?>? automaticallyAfterDays;
   /// The length of the rotation window in hours. For example, `3h` for a three hour window.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// `cron()` or `rate()` expression that defines the schedule for rotating your secret. Either `automaticallyAfterDays` or `scheduleExpression` must be specified.
-  final pulumi.Input<String>? scheduleExpression;
+  final pulumi.Input<String?>? scheduleExpression;
 
   /// Creates a new [SecretRotationRotationRules].
   /// [automaticallyAfterDays] Number of days between automatic scheduled rotations of the secret. Either `automaticallyAfterDays` or `scheduleExpression` must be specified.
@@ -30,7 +30,7 @@ class SecretRotationRotationRules {
 
   factory SecretRotationRotationRules.fromMap(Map<String, dynamic> map) {
     return SecretRotationRotationRules(
-      automaticallyAfterDays: (() { final guardedValue = map['automaticallyAfterDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      automaticallyAfterDays: (() { final guardedValue = map['automaticallyAfterDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheduleExpression: (() { final guardedValue = map['scheduleExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

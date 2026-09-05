@@ -7,13 +7,13 @@ import 'v2models_intent_closing_setting_next_step.dart';
 
 class V2modelsIntentClosingSetting {
   /// Whether an intent's closing response is used. When this field is false, the closing response isn't sent to the user. If the active field isn't specified, the default is true.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// Configuration block for response that Amazon Lex sends to the user when the intent is complete. See `closingResponse`.
-  final pulumi.Input<V2modelsIntentClosingSettingClosingResponse>? closingResponse;
+  final pulumi.Input<V2modelsIntentClosingSettingClosingResponse?>? closingResponse;
   /// Configuration block for list of conditional branches associated with the intent's closing response. These branches are executed when the `nextStep` attribute is set to `EvalutateConditional`. See `conditional`.
-  final pulumi.Input<V2modelsIntentClosingSettingConditional>? conditional;
+  final pulumi.Input<V2modelsIntentClosingSettingConditional?>? conditional;
   /// Next step that the bot executes after playing the intent's closing response. See `nextStep`.
-  final pulumi.Input<V2modelsIntentClosingSettingNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentClosingSettingNextStep?>? nextStep;
 
   /// Creates a new [V2modelsIntentClosingSetting].
   /// [active] Whether an intent's closing response is used. When this field is false, the closing response isn't sent to the user. If the active field isn't specified, the default is true.

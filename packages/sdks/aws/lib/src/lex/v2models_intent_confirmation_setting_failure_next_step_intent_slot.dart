@@ -7,9 +7,9 @@ class V2modelsIntentConfirmationSettingFailureNextStepIntentSlot {
   /// Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
   final pulumi.Input<String> mapBlockKey;
   /// When the shape value is `List`, `values` contains a list of slot values. When the value is `Scalar`, `value` contains a single value.
-  final pulumi.Input<String>? shape;
+  final pulumi.Input<String?>? shape;
   /// Configuration block for the current value of the slot. See `value`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingFailureNextStepIntentSlotValue>? value;
+  final pulumi.Input<V2modelsIntentConfirmationSettingFailureNextStepIntentSlotValue?>? value;
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureNextStepIntentSlot].
   /// [mapBlockKey] Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.

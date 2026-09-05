@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailWordPolicyConfigManagedWordListsConfig {
   /// Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `NONE`.
-  final pulumi.Input<String>? inputAction;
+  final pulumi.Input<String?>? inputAction;
   /// Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
-  final pulumi.Input<bool>? inputEnabled;
+  final pulumi.Input<bool?>? inputEnabled;
   /// Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `NONE`.
-  final pulumi.Input<String>? outputAction;
+  final pulumi.Input<String?>? outputAction;
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
-  final pulumi.Input<bool>? outputEnabled;
+  final pulumi.Input<bool?>? outputEnabled;
   /// Options for managed words.
   final pulumi.Input<String> type;
 

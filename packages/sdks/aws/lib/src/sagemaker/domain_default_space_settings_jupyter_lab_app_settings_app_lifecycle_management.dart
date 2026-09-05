@@ -5,7 +5,7 @@ import 'domain_default_space_settings_jupyter_lab_app_settings_app_lifecycle_man
 
 class DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.
-  final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings>? idleSettings;
+  final pulumi.Input<DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings?>? idleSettings;
 
   /// Creates a new [DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idleSettings` Block below.

@@ -1,9 +1,12 @@
-enum ParameterType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ParameterType implements pulumi.PulumiEnum<String> {
   valueString("String"),
   valueStringList("StringList"),
   valueSecureString("SecureString");
 
   const ParameterType(this.wireValue);
+  @override
   final String wireValue;
 
   static ParameterType fromValue(String value) {

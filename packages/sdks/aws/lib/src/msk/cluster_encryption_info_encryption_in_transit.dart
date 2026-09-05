@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterEncryptionInfoEncryptionInTransit {
   /// Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`. Default value is `TLS`.
-  final pulumi.Input<String>? clientBroker;
+  final pulumi.Input<String?>? clientBroker;
   /// Whether data communication among broker nodes is encrypted. Default value: `true`.
-  final pulumi.Input<bool>? inCluster;
+  final pulumi.Input<bool?>? inCluster;
 
   /// Creates a new [ClusterEncryptionInfoEncryptionInTransit].
   /// [clientBroker] Encryption setting for data in transit between clients and brokers. Valid values: `TLS`, `TLS_PLAINTEXT`, and `PLAINTEXT`. Default value is `TLS`.

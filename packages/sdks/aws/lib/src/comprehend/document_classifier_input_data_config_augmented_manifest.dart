@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentClassifierInputDataConfigAugmentedManifest {
   /// Location of annotation files.
-  final pulumi.Input<String>? annotationDataS3Uri;
+  final pulumi.Input<String?>? annotationDataS3Uri;
   /// The JSON attribute that contains the annotations for the training documents.
   final pulumi.Input<List<String>> attributeNames;
   /// Type of augmented manifest.
   /// One of `PLAIN_TEXT_DOCUMENT` or `SEMI_STRUCTURED_DOCUMENT`.
-  final pulumi.Input<String>? documentType;
+  final pulumi.Input<String?>? documentType;
   /// Location of augmented manifest file.
   final pulumi.Input<String> s3Uri;
   /// Location of source PDF files.
-  final pulumi.Input<String>? sourceDocumentsS3Uri;
+  final pulumi.Input<String?>? sourceDocumentsS3Uri;
   /// Purpose of data in augmented manifest.
   /// One of `TRAIN` or `TEST`.
-  final pulumi.Input<String>? split;
+  final pulumi.Input<String?>? split;
 
   /// Creates a new [DocumentClassifierInputDataConfigAugmentedManifest].
   /// [annotationDataS3Uri] Location of annotation files.

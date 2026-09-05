@@ -10,9 +10,9 @@ class GetThesaurusArgs {
   /// Identifier of the index that contains the Thesaurus.
   final pulumi.Input<String> indexId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Metadata that helps organize the Thesaurus you create.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Identifier of the Thesaurus.
   final pulumi.Input<String> thesaurusId;
 

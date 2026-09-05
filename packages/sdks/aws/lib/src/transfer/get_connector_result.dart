@@ -8,87 +8,87 @@ import 'get_connector_sftp_config.dart';
 /// Result data returned by getConnector.
 class GetConnectorResult {
   /// ARN of the AWS Identity and Access Management role.
-  final String accessRole;
+  final String? accessRole;
   /// ARN of the Connector.
-  final String arn;
+  final String? arn;
   /// Structure containing the parameters for an AS2 connector object. Contains the following attributes:
-  final List<GetConnectorAs2Config> as2Configs;
+  final List<GetConnectorAs2Config>? as2Configs;
   /// Egress configuration for the connector. Contains the following attributes:
-  final List<GetConnectorEgressConfig> egressConfigs;
-  final String id;
+  final List<GetConnectorEgressConfig>? egressConfigs;
+  final String? id;
   /// ARN of the IAM role that allows a connector to turn on CLoudwatch logging for Amazon S3 events.
-  final String loggingRole;
-  final String region;
+  final String? loggingRole;
+  final String? region;
   /// Name of security policy.
-  final String securityPolicyName;
+  final String? securityPolicyName;
   /// List of egress Ip addresses.
-  final List<String> serviceManagedEgressIpAddresses;
+  final List<String>? serviceManagedEgressIpAddresses;
   /// Object containing the following attributes:
-  final List<GetConnectorSftpConfig> sftpConfigs;
+  final List<GetConnectorSftpConfig>? sftpConfigs;
   /// Map of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// URL of the partner's AS2 or SFTP endpoint.
-  final String url;
+  final String? url;
 
   /// Creates a new [GetConnectorResult].
   /// [accessRole] ARN of the AWS Identity and Access Management role.
   /// [arn] ARN of the Connector.
   /// [as2Configs] Structure containing the parameters for an AS2 connector object. Contains the following attributes:
   /// [egressConfigs] Egress configuration for the connector. Contains the following attributes:
-  /// [id] Required.
+  /// [id] Optional.
   /// [loggingRole] ARN of the IAM role that allows a connector to turn on CLoudwatch logging for Amazon S3 events.
-  /// [region] Required.
+  /// [region] Optional.
   /// [securityPolicyName] Name of security policy.
   /// [serviceManagedEgressIpAddresses] List of egress Ip addresses.
   /// [sftpConfigs] Object containing the following attributes:
   /// [tags] Map of tags assigned to the resource.
   /// [url] URL of the partner's AS2 or SFTP endpoint.
   const GetConnectorResult({
-    required this.accessRole,
-    required this.arn,
-    required this.as2Configs,
-    required this.egressConfigs,
-    required this.id,
-    required this.loggingRole,
-    required this.region,
-    required this.securityPolicyName,
-    required this.serviceManagedEgressIpAddresses,
-    required this.sftpConfigs,
-    required this.tags,
-    required this.url,
+    this.accessRole,
+    this.arn,
+    this.as2Configs,
+    this.egressConfigs,
+    this.id,
+    this.loggingRole,
+    this.region,
+    this.securityPolicyName,
+    this.serviceManagedEgressIpAddresses,
+    this.sftpConfigs,
+    this.tags,
+    this.url,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessRole': accessRole,
-      'arn': arn,
-      'as2Configs': pulumi.Input.encodeList<GetConnectorAs2Config, Map<String, dynamic>>(as2Configs, (value) => value.toMap()),
-      'egressConfigs': pulumi.Input.encodeList<GetConnectorEgressConfig, Map<String, dynamic>>(egressConfigs, (value) => value.toMap()),
-      'id': id,
-      'loggingRole': loggingRole,
-      'region': region,
-      'securityPolicyName': securityPolicyName,
-      'serviceManagedEgressIpAddresses': serviceManagedEgressIpAddresses,
-      'sftpConfigs': pulumi.Input.encodeList<GetConnectorSftpConfig, Map<String, dynamic>>(sftpConfigs, (value) => value.toMap()),
-      'tags': tags,
-      'url': url,
+      'accessRole': ?accessRole,
+      'arn': ?arn,
+      'as2Configs': ?(() { final guardedValue = as2Configs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConnectorAs2Config, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'egressConfigs': ?(() { final guardedValue = egressConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConnectorEgressConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'loggingRole': ?loggingRole,
+      'region': ?region,
+      'securityPolicyName': ?securityPolicyName,
+      'serviceManagedEgressIpAddresses': ?serviceManagedEgressIpAddresses,
+      'sftpConfigs': ?(() { final guardedValue = sftpConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetConnectorSftpConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
+      'url': ?url,
     };
   }
 
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorResult(
-      accessRole: map['accessRole'] as String,
-      arn: map['arn'] as String,
-      as2Configs: pulumi.Input.decodeList<GetConnectorAs2Config>(map['as2Configs']!, (value) => GetConnectorAs2Config.fromMap((value as Map).cast<String, dynamic>())),
-      egressConfigs: pulumi.Input.decodeList<GetConnectorEgressConfig>(map['egressConfigs']!, (value) => GetConnectorEgressConfig.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      loggingRole: map['loggingRole'] as String,
-      region: map['region'] as String,
-      securityPolicyName: map['securityPolicyName'] as String,
-      serviceManagedEgressIpAddresses: (map['serviceManagedEgressIpAddresses'] as List).cast<String>(),
-      sftpConfigs: pulumi.Input.decodeList<GetConnectorSftpConfig>(map['sftpConfigs']!, (value) => GetConnectorSftpConfig.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      url: map['url'] as String,
+      accessRole: (() { final guardedValue = map['accessRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      as2Configs: (() { final guardedValue = map['as2Configs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConnectorAs2Config>(guardedValue, (value) => GetConnectorAs2Config.fromMap((value as Map).cast<String, dynamic>())); })(),
+      egressConfigs: (() { final guardedValue = map['egressConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConnectorEgressConfig>(guardedValue, (value) => GetConnectorEgressConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      loggingRole: (() { final guardedValue = map['loggingRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityPolicyName: (() { final guardedValue = map['securityPolicyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceManagedEgressIpAddresses: (() { final guardedValue = map['serviceManagedEgressIpAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      sftpConfigs: (() { final guardedValue = map['sftpConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetConnectorSftpConfig>(guardedValue, (value) => GetConnectorSftpConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'pipe_source_parameters_filter_criteria_filter.dart';
 
 class PipeSourceParametersFilterCriteria {
   /// An array of up to 5 event patterns. Detailed below.
-  final pulumi.Input<List<PipeSourceParametersFilterCriteriaFilter>>? filters;
+  final pulumi.Input<List<PipeSourceParametersFilterCriteriaFilter>?>? filters;
 
   /// Creates a new [PipeSourceParametersFilterCriteria].
   /// [filters] An array of up to 5 event patterns. Detailed below.

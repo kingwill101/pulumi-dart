@@ -9,13 +9,13 @@ class CapabilityConfigurationArgoCd {
   /// AWS IAM Identity Center configuration. See `awsIdc` below.
   final pulumi.Input<CapabilityConfigurationArgoCdAwsIdc> awsIdc;
   /// Kubernetes namespace for ArgoCD.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Network access configuration. See `networkAccess` below.
-  final pulumi.Input<CapabilityConfigurationArgoCdNetworkAccess>? networkAccess;
+  final pulumi.Input<CapabilityConfigurationArgoCdNetworkAccess?>? networkAccess;
   /// RBAC role mappings. See `rbacRoleMapping` below.
-  final pulumi.Input<List<CapabilityConfigurationArgoCdRbacRoleMapping>>? rbacRoleMappings;
+  final pulumi.Input<List<CapabilityConfigurationArgoCdRbacRoleMapping>?>? rbacRoleMappings;
   /// URL of the Argo CD server.
-  final pulumi.Input<String>? serverUrl;
+  final pulumi.Input<String?>? serverUrl;
 
   /// Creates a new [CapabilityConfigurationArgoCd].
   /// [awsIdc] AWS IAM Identity Center configuration. See `awsIdc` below.

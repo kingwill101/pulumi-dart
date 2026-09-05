@@ -202,7 +202,7 @@ import 'model_card_timeouts.dart';
 class ModelCard extends pulumi.CustomResource {
   /// Content of the model card in [model card JSON schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema).
   late final pulumi.Output<String> content;
-  /// The Amazon Resource Name (ARN) of the model card.
+  /// ARN of the model card.
   late final pulumi.Output<String> modelCardArn;
   /// Name of the model card.
   late final pulumi.Output<String> modelCardName;
@@ -230,7 +230,7 @@ class ModelCard extends pulumi.CustomResource {
           'aws:sagemaker/modelCard:ModelCard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     content = registerOutput<String>('content');
     modelCardArn = registerOutput<String>('modelCardArn');
@@ -238,8 +238,8 @@ class ModelCard extends pulumi.CustomResource {
     modelCardStatus = registerOutput<String>('modelCardStatus');
     region = registerOutput<String>('region');
     securityConfig = registerOutput<ModelCardSecurityConfig?>('securityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardSecurityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ModelCardTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -248,11 +248,12 @@ class ModelCard extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ModelCardState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ModelCard._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -272,8 +273,28 @@ class ModelCard extends pulumi.CustomResource {
     modelCardStatus = registerOutput<String>('modelCardStatus');
     region = registerOutput<String>('region');
     securityConfig = registerOutput<ModelCardSecurityConfig?>('securityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardSecurityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ModelCardTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ModelCard] resource.
+  ModelCard.reference(String urn)
+    : super(
+        'aws:sagemaker/modelCard:ModelCard',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    content = registerOutput<String>('content');
+    modelCardArn = registerOutput<String>('modelCardArn');
+    modelCardName = registerOutput<String>('modelCardName');
+    modelCardStatus = registerOutput<String>('modelCardStatus');
+    region = registerOutput<String>('region');
+    securityConfig = registerOutput<ModelCardSecurityConfig?>('securityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardSecurityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ModelCardTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelCardTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

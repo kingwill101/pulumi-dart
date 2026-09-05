@@ -24,11 +24,11 @@ import 'compute_environment_update_policy.dart';
 ///
 /// const ec2AssumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["ec2.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -46,11 +46,11 @@ import 'compute_environment_update_policy.dart';
 /// });
 /// const batchAssumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["batch.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -63,13 +63,13 @@ import 'compute_environment_update_policy.dart';
 ///     policyArn: "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole",
 /// });
 /// const sample = new aws.ec2.SecurityGroup("sample", {
-///     name: "aws_batch_compute_environment_security_group",
 ///     egress: [{
 ///         fromPort: 0,
 ///         toPort: 0,
 ///         protocol: "-1",
 ///         cidrBlocks: ["0.0.0.0/0"],
 ///     }],
+///     name: "aws_batch_compute_environment_security_group",
 /// });
 /// const sampleVpc = new aws.ec2.Vpc("sample", {cidrBlock: "10.1.0.0/16"});
 /// const sampleSubnet = new aws.ec2.Subnet("sample", {
@@ -81,7 +81,6 @@ import 'compute_environment_update_policy.dart';
 ///     strategy: aws.ec2.PlacementStrategy.Cluster,
 /// });
 /// const sampleComputeEnvironment = new aws.batch.ComputeEnvironment("sample", {
-///     name: "sample",
 ///     computeResources: {
 ///         instanceRole: ecsInstanceRoleInstanceProfile.arn,
 ///         instanceTypes: ["c4.large"],
@@ -92,6 +91,7 @@ import 'compute_environment_update_policy.dart';
 ///         subnets: [sampleSubnet.id],
 ///         type: "EC2",
 ///     },
+///     name: "sample",
 ///     serviceRole: awsBatchServiceRole.arn,
 ///     type: "MANAGED",
 /// }, {
@@ -103,11 +103,11 @@ import 'compute_environment_update_policy.dart';
 /// import pulumi_aws as aws
 ///
 /// ec2_assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["ec2.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// ecs_instance_role = aws.iam.Role("ecs_instance_role",
@@ -120,11 +120,11 @@ import 'compute_environment_update_policy.dart';
 ///     name="ecs_instance_role",
 ///     role=ecs_instance_role.name)
 /// batch_assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["batch.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// aws_batch_service_role = aws.iam.Role("aws_batch_service_role",
@@ -134,13 +134,13 @@ import 'compute_environment_update_policy.dart';
 ///     role=aws_batch_service_role.name,
 ///     policy_arn="arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole")
 /// sample = aws.ec2.SecurityGroup("sample",
-///     name="aws_batch_compute_environment_security_group",
 ///     egress=[{
 ///         "from_port": 0,
 ///         "to_port": 0,
 ///         "protocol": "-1",
 ///         "cidr_blocks": ["0.0.0.0/0"],
-///     }])
+///     }],
+///     name="aws_batch_compute_environment_security_group")
 /// sample_vpc = aws.ec2.Vpc("sample", cidr_block="10.1.0.0/16")
 /// sample_subnet = aws.ec2.Subnet("sample",
 ///     vpc_id=sample_vpc.id,
@@ -149,7 +149,6 @@ import 'compute_environment_update_policy.dart';
 ///     name="sample",
 ///     strategy=aws.ec2.PlacementStrategy.CLUSTER)
 /// sample_compute_environment = aws.batch.ComputeEnvironment("sample",
-///     name="sample",
 ///     compute_resources={
 ///         "instance_role": ecs_instance_role_instance_profile.arn,
 ///         "instance_types": ["c4.large"],
@@ -160,6 +159,7 @@ import 'compute_environment_update_policy.dart';
 ///         "subnets": [sample_subnet.id],
 ///         "type": "EC2",
 ///     },
+///     name="sample",
 ///     service_role=aws_batch_service_role.arn,
 ///     type="MANAGED",
 ///     opts = pulumi.ResourceOptions(depends_on=[aws_batch_service_role_role_policy_attachment]))
@@ -178,7 +178,6 @@ import 'compute_environment_update_policy.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -190,6 +189,7 @@ import 'compute_environment_update_policy.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -222,7 +222,6 @@ import 'compute_environment_update_policy.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -234,6 +233,7 @@ import 'compute_environment_update_policy.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -256,7 +256,6 @@ import 'compute_environment_update_policy.dart';
 ///
 ///     var sample = new Aws.Ec2.SecurityGroup("sample", new()
 ///     {
-///         Name = "aws_batch_compute_environment_security_group",
 ///         Egress = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.SecurityGroupEgressArgs
@@ -270,6 +269,7 @@ import 'compute_environment_update_policy.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "aws_batch_compute_environment_security_group",
 ///     });
 ///
 ///     var sampleVpc = new Aws.Ec2.Vpc("sample", new()
@@ -291,7 +291,6 @@ import 'compute_environment_update_policy.dart';
 ///
 ///     var sampleComputeEnvironment = new Aws.Batch.ComputeEnvironment("sample", new()
 ///     {
-///         Name = "sample",
 ///         ComputeResources = new Aws.Batch.Inputs.ComputeEnvironmentComputeResourcesArgs
 ///         {
 ///             InstanceRole = ecsInstanceRoleInstanceProfile.Arn,
@@ -312,6 +311,7 @@ import 'compute_environment_update_policy.dart';
 ///             },
 ///             Type = "EC2",
 ///         },
+///         Name = "sample",
 ///         ServiceRole = awsBatchServiceRole.Arn,
 ///         Type = "MANAGED",
 ///     }, new CustomResourceOptions
@@ -339,7 +339,6 @@ import 'compute_environment_update_policy.dart';
 /// 		ec2AssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -348,6 +347,7 @@ import 'compute_environment_update_policy.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -381,7 +381,6 @@ import 'compute_environment_update_policy.dart';
 /// 		batchAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -390,6 +389,7 @@ import 'compute_environment_update_policy.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -414,7 +414,6 @@ import 'compute_environment_update_policy.dart';
 /// 			return err
 /// 		}
 /// 		sample, err := ec2.NewSecurityGroup(ctx, "sample", &ec2.SecurityGroupArgs{
-/// 			Name: pulumi.String("aws_batch_compute_environment_security_group"),
 /// 			Egress: ec2.SecurityGroupEgressArray{
 /// 				&ec2.SecurityGroupEgressArgs{
 /// 					FromPort: pulumi.Int(0),
@@ -425,6 +424,7 @@ import 'compute_environment_update_policy.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("aws_batch_compute_environment_security_group"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -450,7 +450,6 @@ import 'compute_environment_update_policy.dart';
 /// 			return err
 /// 		}
 /// 		_, err = batch.NewComputeEnvironment(ctx, "sample", &batch.ComputeEnvironmentArgs{
-/// 			Name: pulumi.String("sample"),
 /// 			ComputeResources: &batch.ComputeEnvironmentComputeResourcesArgs{
 /// 				InstanceRole: ecsInstanceRoleInstanceProfile.Arn,
 /// 				InstanceTypes: pulumi.StringArray{
@@ -467,6 +466,7 @@ import 'compute_environment_update_policy.dart';
 /// 				},
 /// 				Type: pulumi.String("EC2"),
 /// 			},
+/// 			Name:        pulumi.String("sample"),
 /// 			ServiceRole: awsBatchServiceRole.Arn,
 /// 			Type:        pulumi.String("MANAGED"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -490,21 +490,21 @@ import 'compute_environment_update_policy.dart';
 ///
 /// data "aws_iam_getpolicydocument" "ec2AssumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["ec2.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "batchAssumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["batch.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -530,13 +530,13 @@ import 'compute_environment_update_policy.dart';
 ///   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
 /// }
 /// resource "aws_ec2_securitygroup" "sample" {
-///   name = "aws_batch_compute_environment_security_group"
 ///   egress {
 ///     from_port   = 0
 ///     to_port     = 0
 ///     protocol    = "-1"
 ///     cidr_blocks = ["0.0.0.0/0"]
 ///   }
+///   name = "aws_batch_compute_environment_security_group"
 /// }
 /// resource "aws_ec2_vpc" "sample" {
 ///   cidr_block = "10.1.0.0/16"
@@ -551,7 +551,6 @@ import 'compute_environment_update_policy.dart';
 /// }
 /// resource "aws_batch_computeenvironment" "sample" {
 ///   depends_on = [aws_iam_rolepolicyattachment.aws_batch_service_role]
-///   name       = "sample"
 ///   compute_resources = {
 ///     instance_role      = aws_iam_instanceprofile.ecs_instance_role.arn
 ///     instance_types     = ["c4.large"]
@@ -562,6 +561,7 @@ import 'compute_environment_update_policy.dart';
 ///     subnets            = [aws_ec2_subnet.sample.id]
 ///     type               = "EC2"
 ///   }
+///   name         = "sample"
 ///   service_role = aws_iam_role.aws_batch_service_role.arn
 ///   type         = "MANAGED"
 /// }
@@ -610,11 +610,11 @@ import 'compute_environment_update_policy.dart';
 ///     public static void stack(Context ctx) {
 ///         final var ec2AssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("ec2.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -636,11 +636,11 @@ import 'compute_environment_update_policy.dart';
 ///
 ///         final var batchAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("batch.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -656,13 +656,13 @@ import 'compute_environment_update_policy.dart';
 ///             .build());
 ///
 ///         var sample = new SecurityGroup("sample", SecurityGroupArgs.builder()
-///             .name("aws_batch_compute_environment_security_group")
 ///             .egress(SecurityGroupEgressArgs.builder()
 ///                 .fromPort(0)
 ///                 .toPort(0)
 ///                 .protocol("-1")
 ///                 .cidrBlocks("0.0.0.0/0")
 ///                 .build())
+///             .name("aws_batch_compute_environment_security_group")
 ///             .build());
 ///
 ///         var sampleVpc = new Vpc("sampleVpc", VpcArgs.builder()
@@ -680,7 +680,6 @@ import 'compute_environment_update_policy.dart';
 ///             .build());
 ///
 ///         var sampleComputeEnvironment = new ComputeEnvironment("sampleComputeEnvironment", ComputeEnvironmentArgs.builder()
-///             .name("sample")
 ///             .computeResources(ComputeEnvironmentComputeResourcesArgs.builder()
 ///                 .instanceRole(ecsInstanceRoleInstanceProfile.arn())
 ///                 .instanceTypes("c4.large")
@@ -691,6 +690,7 @@ import 'compute_environment_update_policy.dart';
 ///                 .subnets(sampleSubnet.id())
 ///                 .type("EC2")
 ///                 .build())
+///             .name("sample")
 ///             .serviceRole(awsBatchServiceRole.arn())
 ///             .type("MANAGED")
 ///             .build(), CustomResourceOptions.builder()
@@ -735,13 +735,13 @@ import 'compute_environment_update_policy.dart';
 ///   sample:
 ///     type: aws:ec2:SecurityGroup
 ///     properties:
-///       name: aws_batch_compute_environment_security_group
 ///       egress:
 ///         - fromPort: 0
 ///           toPort: 0
 ///           protocol: '-1'
 ///           cidrBlocks:
 ///             - 0.0.0.0/0
+///       name: aws_batch_compute_environment_security_group
 ///   sampleVpc:
 ///     type: aws:ec2:Vpc
 ///     name: sample
@@ -763,7 +763,6 @@ import 'compute_environment_update_policy.dart';
 ///     type: aws:batch:ComputeEnvironment
 ///     name: sample
 ///     properties:
-///       name: sample
 ///       computeResources:
 ///         instanceRole: ${ecsInstanceRoleInstanceProfile.arn}
 ///         instanceTypes:
@@ -776,6 +775,7 @@ import 'compute_environment_update_policy.dart';
 ///         subnets:
 ///           - ${sampleSubnet.id}
 ///         type: EC2
+///       name: sample
 ///       serviceRole: ${awsBatchServiceRole.arn}
 ///       type: MANAGED
 ///     options:
@@ -787,11 +787,11 @@ import 'compute_environment_update_policy.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - ec2.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   batchAssumeRole:
@@ -799,11 +799,11 @@ import 'compute_environment_update_policy.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - batch.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -817,13 +817,13 @@ import 'compute_environment_update_policy.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const sample = new aws.batch.ComputeEnvironment("sample", {
-///     name: "sample",
 ///     computeResources: {
 ///         maxVcpus: 16,
 ///         securityGroupIds: [sampleAwsSecurityGroup.id],
 ///         subnets: [sampleAwsSubnet.id],
 ///         type: "FARGATE",
 ///     },
+///     name: "sample",
 ///     serviceRole: awsBatchServiceRoleAwsIamRole.arn,
 ///     type: "MANAGED",
 /// }, {
@@ -835,13 +835,13 @@ import 'compute_environment_update_policy.dart';
 /// import pulumi_aws as aws
 ///
 /// sample = aws.batch.ComputeEnvironment("sample",
-///     name="sample",
 ///     compute_resources={
 ///         "max_vcpus": 16,
 ///         "security_group_ids": [sample_aws_security_group["id"]],
 ///         "subnets": [sample_aws_subnet["id"]],
 ///         "type": "FARGATE",
 ///     },
+///     name="sample",
 ///     service_role=aws_batch_service_role_aws_iam_role["arn"],
 ///     type="MANAGED",
 ///     opts = pulumi.ResourceOptions(depends_on=[aws_batch_service_role]))
@@ -856,7 +856,6 @@ import 'compute_environment_update_policy.dart';
 /// {
 ///     var sample = new Aws.Batch.ComputeEnvironment("sample", new()
 ///     {
-///         Name = "sample",
 ///         ComputeResources = new Aws.Batch.Inputs.ComputeEnvironmentComputeResourcesArgs
 ///         {
 ///             MaxVcpus = 16,
@@ -870,6 +869,7 @@ import 'compute_environment_update_policy.dart';
 ///             },
 ///             Type = "FARGATE",
 ///         },
+///         Name = "sample",
 ///         ServiceRole = awsBatchServiceRoleAwsIamRole.Arn,
 ///         Type = "MANAGED",
 ///     }, new CustomResourceOptions
@@ -893,7 +893,6 @@ import 'compute_environment_update_policy.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := batch.NewComputeEnvironment(ctx, "sample", &batch.ComputeEnvironmentArgs{
-/// 			Name: pulumi.String("sample"),
 /// 			ComputeResources: &batch.ComputeEnvironmentComputeResourcesArgs{
 /// 				MaxVcpus: pulumi.Int(16),
 /// 				SecurityGroupIds: pulumi.StringArray{
@@ -904,6 +903,7 @@ import 'compute_environment_update_policy.dart';
 /// 				},
 /// 				Type: pulumi.String("FARGATE"),
 /// 			},
+/// 			Name:        pulumi.String("sample"),
 /// 			ServiceRole: pulumi.Any(awsBatchServiceRoleAwsIamRole.Arn),
 /// 			Type:        pulumi.String("MANAGED"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -927,13 +927,13 @@ import 'compute_environment_update_policy.dart';
 ///
 /// resource "aws_batch_computeenvironment" "sample" {
 ///   depends_on = [awsBatchServiceRole]
-///   name       = "sample"
 ///   compute_resources = {
 ///     max_vcpus          = 16
 ///     security_group_ids = [sampleAwsSecurityGroup.id]
 ///     subnets            = [sampleAwsSubnet.id]
 ///     type               = "FARGATE"
 ///   }
+///   name         = "sample"
 ///   service_role = awsBatchServiceRoleAwsIamRole.arn
 ///   type         = "MANAGED"
 /// }
@@ -962,13 +962,13 @@ import 'compute_environment_update_policy.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var sample = new ComputeEnvironment("sample", ComputeEnvironmentArgs.builder()
-///             .name("sample")
 ///             .computeResources(ComputeEnvironmentComputeResourcesArgs.builder()
 ///                 .maxVcpus(16)
 ///                 .securityGroupIds(sampleAwsSecurityGroup.id())
 ///                 .subnets(sampleAwsSubnet.id())
 ///                 .type("FARGATE")
 ///                 .build())
+///             .name("sample")
 ///             .serviceRole(awsBatchServiceRoleAwsIamRole.arn())
 ///             .type("MANAGED")
 ///             .build(), CustomResourceOptions.builder()
@@ -983,7 +983,6 @@ import 'compute_environment_update_policy.dart';
 ///   sample:
 ///     type: aws:batch:ComputeEnvironment
 ///     properties:
-///       name: sample
 ///       computeResources:
 ///         maxVcpus: 16
 ///         securityGroupIds:
@@ -991,6 +990,7 @@ import 'compute_environment_update_policy.dart';
 ///         subnets:
 ///           - ${sampleAwsSubnet.id}
 ///         type: FARGATE
+///       name: sample
 ///       serviceRole: ${awsBatchServiceRoleAwsIamRole.arn}
 ///       type: MANAGED
 ///     options:
@@ -1007,7 +1007,6 @@ import 'compute_environment_update_policy.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const sample = new aws.batch.ComputeEnvironment("sample", {
-///     name: "sample",
 ///     computeResources: {
 ///         allocationStrategy: "BEST_FIT_PROGRESSIVE",
 ///         instanceRole: ecsInstance.arn,
@@ -1022,6 +1021,7 @@ import 'compute_environment_update_policy.dart';
 ///         jobExecutionTimeoutMinutes: 30,
 ///         terminateJobsOnUpdate: false,
 ///     },
+///     name: "sample",
 ///     type: "MANAGED",
 /// });
 /// ```
@@ -1030,7 +1030,6 @@ import 'compute_environment_update_policy.dart';
 /// import pulumi_aws as aws
 ///
 /// sample = aws.batch.ComputeEnvironment("sample",
-///     name="sample",
 ///     compute_resources={
 ///         "allocation_strategy": "BEST_FIT_PROGRESSIVE",
 ///         "instance_role": ecs_instance["arn"],
@@ -1045,6 +1044,7 @@ import 'compute_environment_update_policy.dart';
 ///         "job_execution_timeout_minutes": 30,
 ///         "terminate_jobs_on_update": False,
 ///     },
+///     name="sample",
 ///     type="MANAGED")
 /// ```
 /// ```csharp
@@ -1057,7 +1057,6 @@ import 'compute_environment_update_policy.dart';
 /// {
 ///     var sample = new Aws.Batch.ComputeEnvironment("sample", new()
 ///     {
-///         Name = "sample",
 ///         ComputeResources = new Aws.Batch.Inputs.ComputeEnvironmentComputeResourcesArgs
 ///         {
 ///             AllocationStrategy = "BEST_FIT_PROGRESSIVE",
@@ -1083,6 +1082,7 @@ import 'compute_environment_update_policy.dart';
 ///             JobExecutionTimeoutMinutes = 30,
 ///             TerminateJobsOnUpdate = false,
 ///         },
+///         Name = "sample",
 ///         Type = "MANAGED",
 ///     });
 ///
@@ -1099,7 +1099,6 @@ import 'compute_environment_update_policy.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := batch.NewComputeEnvironment(ctx, "sample", &batch.ComputeEnvironmentArgs{
-/// 			Name: pulumi.String("sample"),
 /// 			ComputeResources: &batch.ComputeEnvironmentComputeResourcesArgs{
 /// 				AllocationStrategy: pulumi.String("BEST_FIT_PROGRESSIVE"),
 /// 				InstanceRole:       pulumi.Any(ecsInstance.Arn),
@@ -1120,6 +1119,7 @@ import 'compute_environment_update_policy.dart';
 /// 				JobExecutionTimeoutMinutes: pulumi.Int(30),
 /// 				TerminateJobsOnUpdate:      pulumi.Bool(false),
 /// 			},
+/// 			Name: pulumi.String("sample"),
 /// 			Type: pulumi.String("MANAGED"),
 /// 		})
 /// 		if err != nil {
@@ -1139,7 +1139,6 @@ import 'compute_environment_update_policy.dart';
 /// }
 ///
 /// resource "aws_batch_computeenvironment" "sample" {
-///   name = "sample"
 ///   compute_resources = {
 ///     allocation_strategy = "BEST_FIT_PROGRESSIVE"
 ///     instance_role       = ecsInstance.arn
@@ -1154,6 +1153,7 @@ import 'compute_environment_update_policy.dart';
 ///     job_execution_timeout_minutes = 30
 ///     terminate_jobs_on_update      = false
 ///   }
+///   name = "sample"
 ///   type = "MANAGED"
 /// }
 /// ```
@@ -1181,7 +1181,6 @@ import 'compute_environment_update_policy.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var sample = new ComputeEnvironment("sample", ComputeEnvironmentArgs.builder()
-///             .name("sample")
 ///             .computeResources(ComputeEnvironmentComputeResourcesArgs.builder()
 ///                 .allocationStrategy("BEST_FIT_PROGRESSIVE")
 ///                 .instanceRole(ecsInstance.arn())
@@ -1196,6 +1195,7 @@ import 'compute_environment_update_policy.dart';
 ///                 .jobExecutionTimeoutMinutes(30)
 ///                 .terminateJobsOnUpdate(false)
 ///                 .build())
+///             .name("sample")
 ///             .type("MANAGED")
 ///             .build());
 ///
@@ -1207,7 +1207,6 @@ import 'compute_environment_update_policy.dart';
 ///   sample:
 ///     type: aws:batch:ComputeEnvironment
 ///     properties:
-///       name: sample
 ///       computeResources:
 ///         allocationStrategy: BEST_FIT_PROGRESSIVE
 ///         instanceRole: ${ecsInstance.arn}
@@ -1223,6 +1222,7 @@ import 'compute_environment_update_policy.dart';
 ///       updatePolicy:
 ///         jobExecutionTimeoutMinutes: 30
 ///         terminateJobsOnUpdate: false
+///       name: sample
 ///       type: MANAGED
 /// ```
 ///
@@ -1233,7 +1233,7 @@ import 'compute_environment_update_policy.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the compute environment.
+/// - `arn` (String) ARN of the compute environment.
 ///
 ///
 /// Using `pulumi import`, import AWS Batch compute using the `name`. For example:
@@ -1242,11 +1242,11 @@ import 'compute_environment_update_policy.dart';
 /// $ pulumi import aws:batch/computeEnvironment:ComputeEnvironment sample sample
 /// ```
 class ComputeEnvironment extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the compute environment.
+  /// ARN of the compute environment.
   late final pulumi.Output<String> arn;
   /// Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments. See details below.
   late final pulumi.Output<ComputeEnvironmentComputeResources> computeResources;
-  /// The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster used by the compute environment.
+  /// ARN of the underlying Amazon ECS cluster used by the compute environment.
   late final pulumi.Output<String> ecsClusterArn;
   /// Details for the Amazon EKS cluster that supports the compute environment. See details below.
   late final pulumi.Output<ComputeEnvironmentEksConfiguration?> eksConfiguration;
@@ -1256,7 +1256,7 @@ class ComputeEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<String> namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
+  /// Full ARN of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
   late final pulumi.Output<String> serviceRole;
   /// The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
   late final pulumi.Output<String?> state;
@@ -1285,7 +1285,7 @@ class ComputeEnvironment extends pulumi.CustomResource {
           'aws:batch/computeEnvironment:ComputeEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeResources = registerOutput<ComputeEnvironmentComputeResources>('computeResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentComputeResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1298,8 +1298,8 @@ class ComputeEnvironment extends pulumi.CustomResource {
     state = registerOutput<String?>('state');
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     updatePolicy = registerOutput<ComputeEnvironmentUpdatePolicy>('updatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -1309,11 +1309,12 @@ class ComputeEnvironment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ComputeEnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ComputeEnvironment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1338,8 +1339,34 @@ class ComputeEnvironment extends pulumi.CustomResource {
     this.state = registerOutput<String?>('state');
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    updatePolicy = registerOutput<ComputeEnvironmentUpdatePolicy>('updatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ComputeEnvironment] resource.
+  ComputeEnvironment.reference(String urn)
+    : super(
+        'aws:batch/computeEnvironment:ComputeEnvironment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    computeResources = registerOutput<ComputeEnvironmentComputeResources>('computeResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentComputeResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ecsClusterArn = registerOutput<String>('ecsClusterArn');
+    eksConfiguration = registerOutput<ComputeEnvironmentEksConfiguration?>('eksConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentEksConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    serviceRole = registerOutput<String>('serviceRole');
+    state = registerOutput<String?>('state');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     updatePolicy = registerOutput<ComputeEnvironmentUpdatePolicy>('updatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

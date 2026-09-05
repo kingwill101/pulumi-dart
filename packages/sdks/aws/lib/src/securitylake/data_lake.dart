@@ -16,13 +16,11 @@ import 'data_lake_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.securitylake.DataLake("example", {
-///     metaStoreManagerRoleArn: metaStoreManager.arn,
 ///     configuration: {
-///         region: "eu-west-1",
-///         encryptionConfigurations: [{
-///             kmsKeyId: "S3_MANAGED_KEY",
-///         }],
 ///         lifecycleConfiguration: {
+///             expiration: {
+///                 days: 300,
+///             },
 ///             transitions: [
 ///                 {
 ///                     days: 31,
@@ -33,11 +31,13 @@ import 'data_lake_timeouts.dart';
 ///                     storageClass: "ONEZONE_IA",
 ///                 },
 ///             ],
-///             expiration: {
-///                 days: 300,
-///             },
 ///         },
+///         encryptionConfigurations: [{
+///             kmsKeyId: "S3_MANAGED_KEY",
+///         }],
+///         region: "eu-west-1",
 ///     },
+///     metaStoreManagerRoleArn: metaStoreManager.arn,
 /// });
 /// ```
 /// ```python
@@ -45,13 +45,11 @@ import 'data_lake_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.securitylake.DataLake("example",
-///     meta_store_manager_role_arn=meta_store_manager["arn"],
 ///     configuration={
-///         "region": "eu-west-1",
-///         "encryption_configurations": [{
-///             "kms_key_id": "S3_MANAGED_KEY",
-///         }],
 ///         "lifecycle_configuration": {
+///             "expiration": {
+///                 "days": 300,
+///             },
 ///             "transitions": [
 ///                 {
 ///                     "days": 31,
@@ -62,11 +60,13 @@ import 'data_lake_timeouts.dart';
 ///                     "storage_class": "ONEZONE_IA",
 ///                 },
 ///             ],
-///             "expiration": {
-///                 "days": 300,
-///             },
 ///         },
-///     })
+///         "encryption_configurations": [{
+///             "kms_key_id": "S3_MANAGED_KEY",
+///         }],
+///         "region": "eu-west-1",
+///     },
+///     meta_store_manager_role_arn=meta_store_manager["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -78,19 +78,14 @@ import 'data_lake_timeouts.dart';
 /// {
 ///     var example = new Aws.SecurityLake.DataLake("example", new()
 ///     {
-///         MetaStoreManagerRoleArn = metaStoreManager.Arn,
 ///         Configuration = new Aws.SecurityLake.Inputs.DataLakeConfigurationArgs
 ///         {
-///             Region = "eu-west-1",
-///             EncryptionConfigurations = new[]
-///             {
-///                 new Aws.SecurityLake.Inputs.DataLakeConfigurationEncryptionConfigurationArgs
-///                 {
-///                     KmsKeyId = "S3_MANAGED_KEY",
-///                 },
-///             },
 ///             LifecycleConfiguration = new Aws.SecurityLake.Inputs.DataLakeConfigurationLifecycleConfigurationArgs
 ///             {
+///                 Expiration = new Aws.SecurityLake.Inputs.DataLakeConfigurationLifecycleConfigurationExpirationArgs
+///                 {
+///                     Days = 300,
+///                 },
 ///                 Transitions = new[]
 ///                 {
 ///                     new Aws.SecurityLake.Inputs.DataLakeConfigurationLifecycleConfigurationTransitionArgs
@@ -104,12 +99,17 @@ import 'data_lake_timeouts.dart';
 ///                         StorageClass = "ONEZONE_IA",
 ///                     },
 ///                 },
-///                 Expiration = new Aws.SecurityLake.Inputs.DataLakeConfigurationLifecycleConfigurationExpirationArgs
+///             },
+///             EncryptionConfigurations = new[]
+///             {
+///                 new Aws.SecurityLake.Inputs.DataLakeConfigurationEncryptionConfigurationArgs
 ///                 {
-///                     Days = 300,
+///                     KmsKeyId = "S3_MANAGED_KEY",
 ///                 },
 ///             },
+///             Region = "eu-west-1",
 ///         },
+///         MetaStoreManagerRoleArn = metaStoreManager.Arn,
 ///     });
 ///
 /// });
@@ -125,15 +125,11 @@ import 'data_lake_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securitylake.NewDataLake(ctx, "example", &securitylake.DataLakeArgs{
-/// 			MetaStoreManagerRoleArn: pulumi.Any(metaStoreManager.Arn),
 /// 			Configuration: &securitylake.DataLakeConfigurationArgs{
-/// 				Region: pulumi.String("eu-west-1"),
-/// 				EncryptionConfigurations: securitylake.DataLakeConfigurationEncryptionConfigurationArray{
-/// 					&securitylake.DataLakeConfigurationEncryptionConfigurationArgs{
-/// 						KmsKeyId: pulumi.String("S3_MANAGED_KEY"),
-/// 					},
-/// 				},
 /// 				LifecycleConfiguration: &securitylake.DataLakeConfigurationLifecycleConfigurationArgs{
+/// 					Expiration: &securitylake.DataLakeConfigurationLifecycleConfigurationExpirationArgs{
+/// 						Days: pulumi.Int(300),
+/// 					},
 /// 					Transitions: securitylake.DataLakeConfigurationLifecycleConfigurationTransitionArray{
 /// 						&securitylake.DataLakeConfigurationLifecycleConfigurationTransitionArgs{
 /// 							Days:         pulumi.Int(31),
@@ -144,11 +140,15 @@ import 'data_lake_timeouts.dart';
 /// 							StorageClass: pulumi.String("ONEZONE_IA"),
 /// 						},
 /// 					},
-/// 					Expiration: &securitylake.DataLakeConfigurationLifecycleConfigurationExpirationArgs{
-/// 						Days: pulumi.Int(300),
+/// 				},
+/// 				EncryptionConfigurations: securitylake.DataLakeConfigurationEncryptionConfigurationArray{
+/// 					&securitylake.DataLakeConfigurationEncryptionConfigurationArgs{
+/// 						KmsKeyId: pulumi.String("S3_MANAGED_KEY"),
 /// 					},
 /// 				},
+/// 				Region: pulumi.String("eu-west-1"),
 /// 			},
+/// 			MetaStoreManagerRoleArn: pulumi.Any(metaStoreManager.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -167,13 +167,11 @@ import 'data_lake_timeouts.dart';
 /// }
 ///
 /// resource "aws_securitylake_datalake" "example" {
-///   meta_store_manager_role_arn = metaStoreManager.arn
 ///   configuration = {
-///     region = "eu-west-1"
-///     encryption_configurations = [{
-///       "kmsKeyId" = "S3_MANAGED_KEY"
-///     }]
 ///     lifecycle_configuration = {
+///       expiration = {
+///         days = 300
+///       }
 ///       transitions = [{
 ///         "days"         = 31
 ///         "storageClass" = "STANDARD_IA"
@@ -181,11 +179,13 @@ import 'data_lake_timeouts.dart';
 ///         "days"         = 80
 ///         "storageClass" = "ONEZONE_IA"
 ///       }]
-///       expiration = {
-///         days = 300
-///       }
 ///     }
+///     encryption_configurations = [{
+///       "kmsKeyId" = "S3_MANAGED_KEY"
+///     }]
+///     region = "eu-west-1"
 ///   }
+///   meta_store_manager_role_arn = metaStoreManager.arn
 /// }
 /// ```
 /// ```java
@@ -197,10 +197,10 @@ import 'data_lake_timeouts.dart';
 /// import com.pulumi.aws.securitylake.DataLake;
 /// import com.pulumi.aws.securitylake.DataLakeArgs;
 /// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationArgs;
-/// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationEncryptionConfigurationArgs;
 /// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationLifecycleConfigurationArgs;
-/// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationLifecycleConfigurationTransitionArgs;
 /// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationLifecycleConfigurationExpirationArgs;
+/// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationLifecycleConfigurationTransitionArgs;
+/// import com.pulumi.aws.securitylake.inputs.DataLakeConfigurationEncryptionConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -215,13 +215,11 @@ import 'data_lake_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DataLake("example", DataLakeArgs.builder()
-///             .metaStoreManagerRoleArn(metaStoreManager.arn())
 ///             .configuration(DataLakeConfigurationArgs.builder()
-///                 .region("eu-west-1")
-///                 .encryptionConfigurations(DataLakeConfigurationEncryptionConfigurationArgs.builder()
-///                     .kmsKeyId("S3_MANAGED_KEY")
-///                     .build())
 ///                 .lifecycleConfiguration(DataLakeConfigurationLifecycleConfigurationArgs.builder()
+///                     .expiration(DataLakeConfigurationLifecycleConfigurationExpirationArgs.builder()
+///                         .days(300)
+///                         .build())
 ///                     .transitions(
 ///                         DataLakeConfigurationLifecycleConfigurationTransitionArgs.builder()
 ///                             .days(31)
@@ -231,11 +229,13 @@ import 'data_lake_timeouts.dart';
 ///                             .days(80)
 ///                             .storageClass("ONEZONE_IA")
 ///                             .build())
-///                     .expiration(DataLakeConfigurationLifecycleConfigurationExpirationArgs.builder()
-///                         .days(300)
-///                         .build())
 ///                     .build())
+///                 .encryptionConfigurations(DataLakeConfigurationEncryptionConfigurationArgs.builder()
+///                     .kmsKeyId("S3_MANAGED_KEY")
+///                     .build())
+///                 .region("eu-west-1")
 ///                 .build())
+///             .metaStoreManagerRoleArn(metaStoreManager.arn())
 ///             .build());
 ///
 ///     }
@@ -246,19 +246,19 @@ import 'data_lake_timeouts.dart';
 ///   example:
 ///     type: aws:securitylake:DataLake
 ///     properties:
-///       metaStoreManagerRoleArn: ${metaStoreManager.arn}
 ///       configuration:
-///         region: eu-west-1
-///         encryptionConfigurations:
-///           - kmsKeyId: S3_MANAGED_KEY
 ///         lifecycleConfiguration:
+///           expiration:
+///             days: 300
 ///           transitions:
 ///             - days: 31
 ///               storageClass: STANDARD_IA
 ///             - days: 80
 ///               storageClass: ONEZONE_IA
-///           expiration:
-///             days: 300
+///         encryptionConfigurations:
+///           - kmsKeyId: S3_MANAGED_KEY
+///         region: eu-west-1
+///       metaStoreManagerRoleArn: ${metaStoreManager.arn}
 /// ```
 ///
 ///
@@ -270,13 +270,13 @@ import 'data_lake_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.securitylake.DataLake("example", {
-///     metaStoreManagerRoleArn: metaStoreManager.arn,
 ///     configuration: {
-///         region: "eu-west-1",
 ///         encryptionConfigurations: [{
 ///             kmsKeyId: "S3_MANAGED_KEY",
 ///         }],
+///         region: "eu-west-1",
 ///     },
+///     metaStoreManagerRoleArn: metaStoreManager.arn,
 /// });
 /// ```
 /// ```python
@@ -284,13 +284,13 @@ import 'data_lake_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.securitylake.DataLake("example",
-///     meta_store_manager_role_arn=meta_store_manager["arn"],
 ///     configuration={
-///         "region": "eu-west-1",
 ///         "encryption_configurations": [{
 ///             "kms_key_id": "S3_MANAGED_KEY",
 ///         }],
-///     })
+///         "region": "eu-west-1",
+///     },
+///     meta_store_manager_role_arn=meta_store_manager["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -302,10 +302,8 @@ import 'data_lake_timeouts.dart';
 /// {
 ///     var example = new Aws.SecurityLake.DataLake("example", new()
 ///     {
-///         MetaStoreManagerRoleArn = metaStoreManager.Arn,
 ///         Configuration = new Aws.SecurityLake.Inputs.DataLakeConfigurationArgs
 ///         {
-///             Region = "eu-west-1",
 ///             EncryptionConfigurations = new[]
 ///             {
 ///                 new Aws.SecurityLake.Inputs.DataLakeConfigurationEncryptionConfigurationArgs
@@ -313,7 +311,9 @@ import 'data_lake_timeouts.dart';
 ///                     KmsKeyId = "S3_MANAGED_KEY",
 ///                 },
 ///             },
+///             Region = "eu-west-1",
 ///         },
+///         MetaStoreManagerRoleArn = metaStoreManager.Arn,
 ///     });
 ///
 /// });
@@ -329,15 +329,15 @@ import 'data_lake_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securitylake.NewDataLake(ctx, "example", &securitylake.DataLakeArgs{
-/// 			MetaStoreManagerRoleArn: pulumi.Any(metaStoreManager.Arn),
 /// 			Configuration: &securitylake.DataLakeConfigurationArgs{
-/// 				Region: pulumi.String("eu-west-1"),
 /// 				EncryptionConfigurations: securitylake.DataLakeConfigurationEncryptionConfigurationArray{
 /// 					&securitylake.DataLakeConfigurationEncryptionConfigurationArgs{
 /// 						KmsKeyId: pulumi.String("S3_MANAGED_KEY"),
 /// 					},
 /// 				},
+/// 				Region: pulumi.String("eu-west-1"),
 /// 			},
+/// 			MetaStoreManagerRoleArn: pulumi.Any(metaStoreManager.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -356,13 +356,13 @@ import 'data_lake_timeouts.dart';
 /// }
 ///
 /// resource "aws_securitylake_datalake" "example" {
-///   meta_store_manager_role_arn = metaStoreManager.arn
 ///   configuration = {
-///     region = "eu-west-1"
 ///     encryption_configurations = [{
 ///       "kmsKeyId" = "S3_MANAGED_KEY"
 ///     }]
+///     region = "eu-west-1"
 ///   }
+///   meta_store_manager_role_arn = metaStoreManager.arn
 /// }
 /// ```
 /// ```java
@@ -389,13 +389,13 @@ import 'data_lake_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DataLake("example", DataLakeArgs.builder()
-///             .metaStoreManagerRoleArn(metaStoreManager.arn())
 ///             .configuration(DataLakeConfigurationArgs.builder()
-///                 .region("eu-west-1")
 ///                 .encryptionConfigurations(DataLakeConfigurationEncryptionConfigurationArgs.builder()
 ///                     .kmsKeyId("S3_MANAGED_KEY")
 ///                     .build())
+///                 .region("eu-west-1")
 ///                 .build())
+///             .metaStoreManagerRoleArn(metaStoreManager.arn())
 ///             .build());
 ///
 ///     }
@@ -406,11 +406,11 @@ import 'data_lake_timeouts.dart';
 ///   example:
 ///     type: aws:securitylake:DataLake
 ///     properties:
-///       metaStoreManagerRoleArn: ${metaStoreManager.arn}
 ///       configuration:
-///         region: eu-west-1
 ///         encryptionConfigurations:
 ///           - kmsKeyId: S3_MANAGED_KEY
+///         region: eu-west-1
+///       metaStoreManagerRoleArn: ${metaStoreManager.arn}
 /// ```
 ///
 ///
@@ -420,7 +420,7 @@ import 'data_lake_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Security Lake data lake.
+/// - `arn` (String) ARN of the Security Lake data lake.
 ///
 ///
 /// Using `pulumi import`, import Security Hub standards subscriptions using the standards subscription ARN. For example:
@@ -433,7 +433,7 @@ class DataLake extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Specify the Region or Regions that will contribute data to the rollup region.
   late final pulumi.Output<DataLakeConfiguration> configuration;
-  /// The Amazon Resource Name (ARN) used to create and update the AWS Glue table. This table contains partitions generated by the ingestion and normalization of AWS log sources and custom sources.
+  /// ARN used to create and update the AWS Glue table. This table contains partitions generated by the ingestion and normalization of AWS log sources and custom sources.
   late final pulumi.Output<String> metaStoreManagerRoleArn;
   /// The AWS Regions where Security Lake is automatically enabled.
   late final pulumi.Output<String> region;
@@ -457,15 +457,15 @@ class DataLake extends pulumi.CustomResource {
           'aws:securitylake/dataLake:DataLake',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<DataLakeConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataLakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metaStoreManagerRoleArn = registerOutput<String>('metaStoreManagerRoleArn');
     region = registerOutput<String>('region');
     s3BucketArn = registerOutput<String>('s3BucketArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<DataLakeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataLakeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -474,11 +474,12 @@ class DataLake extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataLakeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataLake._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -497,8 +498,27 @@ class DataLake extends pulumi.CustomResource {
     metaStoreManagerRoleArn = registerOutput<String>('metaStoreManagerRoleArn');
     region = registerOutput<String>('region');
     s3BucketArn = registerOutput<String>('s3BucketArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<DataLakeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataLakeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DataLake] resource.
+  DataLake.reference(String urn)
+    : super(
+        'aws:securitylake/dataLake:DataLake',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<DataLakeConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataLakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metaStoreManagerRoleArn = registerOutput<String>('metaStoreManagerRoleArn');
+    region = registerOutput<String>('region');
+    s3BucketArn = registerOutput<String>('s3BucketArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<DataLakeTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataLakeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

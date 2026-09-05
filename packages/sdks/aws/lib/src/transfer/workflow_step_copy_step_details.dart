@@ -5,13 +5,13 @@ import 'workflow_step_copy_step_details_destination_file_location.dart';
 
 class WorkflowStepCopyStepDetails {
   /// Location for the file being copied. Use `${Transfer:username}` in this field to parametrize the destination prefix by username. See `destinationFileLocation` Block below.
-  final pulumi.Input<WorkflowStepCopyStepDetailsDestinationFileLocation>? destinationFileLocation;
+  final pulumi.Input<WorkflowStepCopyStepDetailsDestinationFileLocation?>? destinationFileLocation;
   /// Name of the step, used as an identifier.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Flag that indicates whether or not to overwrite an existing file of the same name. The default is `FALSE`. Valid values are `TRUE` and `FALSE`.
-  final pulumi.Input<String>? overwriteExisting;
+  final pulumi.Input<String?>? overwriteExisting;
   /// File to use as input to the workflow step: either the output from the previous step, or the originally uploaded file for the workflow. Enter `${previous.file}` to use the previous file as the input. In this case, this workflow step uses the output file from the previous workflow step as input. This is the default value. Enter `${original.file}` to use the originally-uploaded file location as input for this step.
-  final pulumi.Input<String>? sourceFileLocation;
+  final pulumi.Input<String?>? sourceFileLocation;
 
   /// Creates a new [WorkflowStepCopyStepDetails].
   /// [destinationFileLocation] Location for the file being copied. Use `${Transfer:username}` in this field to parametrize the destination prefix by username. See `destinationFileLocation` Block below.

@@ -6,15 +6,15 @@ import 'method_settings_settings.dart';
 /// Input properties used for looking up and filtering MethodSettings resources.
 class MethodSettingsState {
   /// Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage. Ensure to trim any leading forward slashes in the path (e.g., `trimprefix(aws_api_gateway_resource.example.path, "/")`).
-  final pulumi.Input<String>? methodPath;
+  final pulumi.Input<String?>? methodPath;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the REST API
-  final pulumi.Input<String>? restApi;
+  final pulumi.Input<dynamic>? restApi;
   /// Settings block, see below.
-  final pulumi.Input<MethodSettingsSettings>? settings;
+  final pulumi.Input<MethodSettingsSettings?>? settings;
   /// Name of the stage
-  final pulumi.Input<String>? stageName;
+  final pulumi.Input<String?>? stageName;
 
   /// Creates a new [MethodSettingsState].
   /// [methodPath] Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage. Ensure to trim any leading forward slashes in the path (e.g., `trimprefix(aws_api_gateway_resource.example.path, "/")`).
@@ -44,7 +44,7 @@ class MethodSettingsState {
     return MethodSettingsState(
       methodPath: (() { final guardedValue = map['methodPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      restApi: (() { final guardedValue = map['restApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restApi: (() { final guardedValue = map['restApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MethodSettingsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       stageName: (() { final guardedValue = map['stageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

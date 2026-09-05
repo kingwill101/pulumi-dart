@@ -5,11 +5,11 @@ import 'daemon_deployment_configuration_alarms.dart';
 
 class DaemonDeploymentConfiguration {
   /// Alarm configuration for deployment monitoring. See Alarms below.
-  final pulumi.Input<DaemonDeploymentConfigurationAlarms>? alarms;
+  final pulumi.Input<DaemonDeploymentConfigurationAlarms?>? alarms;
   /// Time in minutes to wait before considering a deployment successful. Valid values are between 0 and 1440. Defaults to `0`.
-  final pulumi.Input<int>? bakeTimeInMinutes;
+  final pulumi.Input<int?>? bakeTimeInMinutes;
   /// Percentage of tasks to drain during deployment. Valid values are between 0.0 and 100.0.
-  final pulumi.Input<double>? drainPercent;
+  final pulumi.Input<double?>? drainPercent;
 
   /// Creates a new [DaemonDeploymentConfiguration].
   /// [alarms] Alarm configuration for deployment monitoring. See Alarms below.
@@ -32,8 +32,8 @@ class DaemonDeploymentConfiguration {
   factory DaemonDeploymentConfiguration.fromMap(Map<String, dynamic> map) {
     return DaemonDeploymentConfiguration(
       alarms: (() { final guardedValue = map['alarms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaemonDeploymentConfigurationAlarms.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      bakeTimeInMinutes: (() { final guardedValue = map['bakeTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      drainPercent: (() { final guardedValue = map['drainPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bakeTimeInMinutes: (() { final guardedValue = map['bakeTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      drainPercent: (() { final guardedValue = map['drainPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

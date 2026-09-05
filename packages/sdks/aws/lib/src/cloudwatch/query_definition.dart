@@ -199,10 +199,10 @@ class QueryDefinition extends pulumi.CustomResource {
           'aws:cloudwatch/queryDefinition:QueryDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    logGroupNames = registerOutput<List<String>?>('logGroupNames');
+    logGroupNames = registerOutput<List<String>?>('logGroupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     queryDefinitionId = registerOutput<String>('queryDefinitionId');
     queryString = registerOutput<String>('queryString');
@@ -214,11 +214,12 @@ class QueryDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueryDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QueryDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,7 +234,24 @@ class QueryDefinition extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    logGroupNames = registerOutput<List<String>?>('logGroupNames');
+    logGroupNames = registerOutput<List<String>?>('logGroupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    queryDefinitionId = registerOutput<String>('queryDefinitionId');
+    queryString = registerOutput<String>('queryString');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [QueryDefinition] resource.
+  QueryDefinition.reference(String urn)
+    : super(
+        'aws:cloudwatch/queryDefinition:QueryDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    logGroupNames = registerOutput<List<String>?>('logGroupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     queryDefinitionId = registerOutput<String>('queryDefinitionId');
     queryString = registerOutput<String>('queryString');

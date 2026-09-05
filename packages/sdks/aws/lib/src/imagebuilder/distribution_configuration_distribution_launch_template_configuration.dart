@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionConfigurationDistributionLaunchTemplateConfiguration {
   /// The account ID that this configuration applies to.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Indicates whether to set the specified Amazon EC2 launch template as the default launch template. Defaults to `true`.
-  final pulumi.Input<bool>? default_;
+  final pulumi.Input<bool?>? default_;
   /// The ID of the Amazon EC2 launch template to use.
   final pulumi.Input<String> launchTemplateId;
 

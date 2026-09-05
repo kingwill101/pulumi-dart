@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventConnectionInvocationConnectivityParametersResourceParameters {
-  final pulumi.Input<String>? resourceAssociationArn;
+  final pulumi.Input<String?>? resourceAssociationArn;
   /// ARN of the Amazon VPC Lattice resource configuration for the resource endpoint.
   final pulumi.Input<String> resourceConfigurationArn;
 

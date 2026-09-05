@@ -146,7 +146,7 @@ class ApplicationSnapshot extends pulumi.CustomResource {
           'aws:kinesisanalyticsv2/applicationSnapshot:ApplicationSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationName = registerOutput<String>('applicationName');
     applicationVersionId = registerOutput<int>('applicationVersionId');
@@ -160,11 +160,12 @@ class ApplicationSnapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationSnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationSnapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -178,6 +179,22 @@ class ApplicationSnapshot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationName = registerOutput<String>('applicationName');
+    applicationVersionId = registerOutput<int>('applicationVersionId');
+    region = registerOutput<String>('region');
+    snapshotCreationTimestamp = registerOutput<String>('snapshotCreationTimestamp');
+    snapshotName = registerOutput<String>('snapshotName');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationSnapshot] resource.
+  ApplicationSnapshot.reference(String urn)
+    : super(
+        'aws:kinesisanalyticsv2/applicationSnapshot:ApplicationSnapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationName = registerOutput<String>('applicationName');
     applicationVersionId = registerOutput<int>('applicationVersionId');
     region = registerOutput<String>('region');

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_elasticache_get_service_updates_get_service_updates_args_doc}
 class GetServiceUpdatesArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of one or more Service Update statuses. Elements must be one of `available`, `cancelled`, or `expired`.
-  final pulumi.Input<List<String>>? statuses;
+  final pulumi.Input<List<String>?>? statuses;
 
   /// Creates a new [GetServiceUpdatesArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

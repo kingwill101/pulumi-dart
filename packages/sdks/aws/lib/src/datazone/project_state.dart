@@ -7,30 +7,30 @@ import 'project_timeouts.dart';
 /// Input properties used for looking up and filtering Project resources.
 class ProjectState {
   /// Timestamp of when the project was made.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Creator of the project.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// Description of project.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Identifier of domain which the project is part of. Must follow the regex of `^dzd[-_][a-zA-Z0-9_-]{1,36}$`.
-  final pulumi.Input<String>? domainIdentifier;
+  final pulumi.Input<String?>? domainIdentifier;
   /// List of error messages if operation cannot be completed.
-  final pulumi.Input<List<ProjectFailureReason>>? failureReasons;
+  final pulumi.Input<List<ProjectFailureReason>?>? failureReasons;
   /// List of glossary terms that can be used in the project. The list cannot be empty or include over 20 values. Each value must follow the regex of `[a-zA-Z0-9_-]{1,36}$`.
-  final pulumi.Input<List<String>>? glossaryTerms;
+  final pulumi.Input<List<String>?>? glossaryTerms;
   /// Timestamp of when the project was last updated.
-  final pulumi.Input<String>? lastUpdatedAt;
+  final pulumi.Input<String?>? lastUpdatedAt;
   /// Name of the project. Must follow the regex of `^[\w -]+$`. and have a length of at most 64.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Enum that conveys state of project. Can be `ACTIVE`, `DELETING`, or `DELETE_FAILED`.
-  final pulumi.Input<String>? projectStatus;
+  final pulumi.Input<String?>? projectStatus;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Optional flag to delete all child entities within the project.
-  final pulumi.Input<bool>? skipDeletionCheck;
-  final pulumi.Input<ProjectTimeouts>? timeouts;
+  final pulumi.Input<bool?>? skipDeletionCheck;
+  final pulumi.Input<ProjectTimeouts?>? timeouts;
 
   /// Creates a new [ProjectState].
   /// [createdAt] Timestamp of when the project was made.

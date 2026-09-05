@@ -227,9 +227,9 @@ class AutoManagement extends pulumi.CustomResource {
           'aws:servicequotas/autoManagement:AutoManagement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    exclusionList = registerOutput<Map<String, List<String>>?>('exclusionList');
+    exclusionList = registerOutput<Map<String, List<String>>?>('exclusionList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     notificationArn = registerOutput<String?>('notificationArn');
     optInLevel = registerOutput<String>('optInLevel');
     optInType = registerOutput<String>('optInType');
@@ -241,11 +241,12 @@ class AutoManagement extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutoManagementState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutoManagement._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -259,7 +260,23 @@ class AutoManagement extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    exclusionList = registerOutput<Map<String, List<String>>?>('exclusionList');
+    exclusionList = registerOutput<Map<String, List<String>>?>('exclusionList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
+    notificationArn = registerOutput<String?>('notificationArn');
+    optInLevel = registerOutput<String>('optInLevel');
+    optInType = registerOutput<String>('optInType');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AutoManagement] resource.
+  AutoManagement.reference(String urn)
+    : super(
+        'aws:servicequotas/autoManagement:AutoManagement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    exclusionList = registerOutput<Map<String, List<String>>?>('exclusionList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     notificationArn = registerOutput<String?>('notificationArn');
     optInLevel = registerOutput<String>('optInLevel');
     optInType = registerOutput<String>('optInType');

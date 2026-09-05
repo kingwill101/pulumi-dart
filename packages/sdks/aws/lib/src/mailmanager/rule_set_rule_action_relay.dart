@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleSetRuleActionRelay {
   /// Policy applied when the action fails.
-  final pulumi.Input<String>? actionFailurePolicy;
+  final pulumi.Input<String?>? actionFailurePolicy;
   /// Whether to preserve or replace the original MAIL FROM address.
-  final pulumi.Input<String>? mailFrom;
+  final pulumi.Input<String?>? mailFrom;
   /// Identifier of the relay resource.
   final pulumi.Input<String> relay;
 

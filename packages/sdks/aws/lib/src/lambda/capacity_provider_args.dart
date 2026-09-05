@@ -13,30 +13,30 @@ import 'capacity_provider_vpc_config.dart';
 /// {@macro pulumi_lambda_capacity_provider_capacity_provider_args_doc}
 class CapacityProviderArgs {
   /// Configuration block for scaling policy settings. See Capacity Provider Scaling Config below.
-  final pulumi.Input<List<CapacityProviderCapacityProviderScalingConfig>>? capacityProviderScalingConfigs;
+  final pulumi.Input<List<CapacityProviderCapacityProviderScalingConfig>?>? capacityProviderScalingConfigs;
   /// Configuration block for instance requirements settings. See Instance Requirements below.
-  final pulumi.Input<List<CapacityProviderInstanceRequirement>>? instanceRequirements;
-  /// ARN of the AWS Key Management Service key used to encrypt the Capacity Provider.
-  final pulumi.Input<String>? kmsKeyArn;
-  /// The name of the Capacity Provider.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<List<CapacityProviderInstanceRequirement>?>? instanceRequirements;
+  /// ARN of the KMS key used to encrypt the Capacity Provider.
+  final pulumi.Input<String?>? kmsKeyArn;
+  /// Name of the Capacity Provider.
+  final pulumi.Input<String?>? name;
   /// Configuration block for permissions settings. See Permissions Config below.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<CapacityProviderPermissionsConfig> permissionsConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<CapacityProviderTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<CapacityProviderTimeouts?>? timeouts;
   /// Configuration block for VPC settings. See VPC Config below.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<CapacityProviderVpcConfig> vpcConfig;
 
   /// Creates a new [CapacityProviderArgs].
   /// [capacityProviderScalingConfigs] Configuration block for scaling policy settings. See Capacity Provider Scaling Config below.
   /// [instanceRequirements] Configuration block for instance requirements settings. See Instance Requirements below.
-  /// [kmsKeyArn] ARN of the AWS Key Management Service key used to encrypt the Capacity Provider.
-  /// [name] The name of the Capacity Provider.
+  /// [kmsKeyArn] ARN of the KMS key used to encrypt the Capacity Provider.
+  /// [name] Name of the Capacity Provider.
   /// [permissionsConfig] Configuration block for permissions settings. See Permissions Config below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

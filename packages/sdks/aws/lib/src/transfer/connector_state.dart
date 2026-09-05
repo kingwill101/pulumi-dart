@@ -8,28 +8,28 @@ import 'connector_sftp_config.dart';
 /// Input properties used for looking up and filtering Connector resources.
 class ConnectorState {
   /// IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
-  final pulumi.Input<String>? accessRole;
+  final pulumi.Input<String?>? accessRole;
   /// ARN of the connector.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `as2Config` Block below.
-  final pulumi.Input<ConnectorAs2Config>? as2Config;
+  final pulumi.Input<ConnectorAs2Config?>? as2Config;
   /// Unique identifier for the AS2 profile or SFTP Profile.
-  final pulumi.Input<String>? connectorId;
+  final pulumi.Input<String?>? connectorId;
   /// Egress configuration for the connector. When set, enables routing through customer VPCs using VPC Lattice for private connectivity. See `egressConfig` Block below.
-  final pulumi.Input<ConnectorEgressConfig>? egressConfig;
+  final pulumi.Input<ConnectorEgressConfig?>? egressConfig;
   /// IAM Role which is required for allowing the connector to turn on CloudWatch logging for Amazon S3 events.
-  final pulumi.Input<String>? loggingRole;
+  final pulumi.Input<String?>? loggingRole;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the security policy for the connector.
-  final pulumi.Input<String>? securityPolicyName;
+  final pulumi.Input<String?>? securityPolicyName;
   /// Either SFTP or AS2 is configured. Parameters to configure for the connector object. See `sftpConfig` Block below.
-  final pulumi.Input<ConnectorSftpConfig>? sftpConfig;
+  final pulumi.Input<ConnectorSftpConfig?>? sftpConfig;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ConnectorState].
   /// [accessRole] IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.

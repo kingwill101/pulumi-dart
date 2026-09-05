@@ -10,17 +10,17 @@ import 'agentcore_oauth2_credential_provider_oauth2_provider_config_slack_oauth2
 
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfig {
   /// Custom OAuth2 provider configuration. See `custom` below.
-  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig>? customOauth2ProviderConfig;
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig?>? customOauth2ProviderConfig;
   /// GitHub OAuth provider configuration. See `github` below.
-  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderConfig>? githubOauth2ProviderConfig;
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderConfig?>? githubOauth2ProviderConfig;
   /// Google OAuth provider configuration. See `google` below.
-  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderConfig>? googleOauth2ProviderConfig;
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderConfig?>? googleOauth2ProviderConfig;
   /// Microsoft OAuth provider configuration. See `microsoft` below.
-  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2ProviderConfig>? microsoftOauth2ProviderConfig;
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigMicrosoftOauth2ProviderConfig?>? microsoftOauth2ProviderConfig;
   /// Salesforce OAuth provider configuration. See `salesforce` below.
-  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfig>? salesforceOauth2ProviderConfig;
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfig?>? salesforceOauth2ProviderConfig;
   /// Slack OAuth provider configuration. See `slack` below.
-  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfig>? slackOauth2ProviderConfig;
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSlackOauth2ProviderConfig?>? slackOauth2ProviderConfig;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderOauth2ProviderConfig].
   /// [customOauth2ProviderConfig] Custom OAuth2 provider configuration. See `custom` below.

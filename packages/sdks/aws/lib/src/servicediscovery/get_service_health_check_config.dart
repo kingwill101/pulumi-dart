@@ -30,7 +30,7 @@ class GetServiceHealthCheckConfig {
 
   factory GetServiceHealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return GetServiceHealthCheckConfig(
-      failureThreshold: pulumi.Input.fromValue(map['failureThreshold'] as int),
+      failureThreshold: pulumi.Input.fromValue((map['failureThreshold'] as num).toInt()),
       resourcePath: pulumi.Input.fromValue(map['resourcePath'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria {
   /// Delimiter of the selection criteria being used.
-  final pulumi.Input<String>? delimiter;
+  final pulumi.Input<String?>? delimiter;
   /// Max depth of the selection criteria.
-  final pulumi.Input<int>? maxDepth;
+  final pulumi.Input<int?>? maxDepth;
   /// Minimum number of storage bytes percentage whose metrics will be selected.
-  final pulumi.Input<double>? minStorageBytesPercentage;
+  final pulumi.Input<double?>? minStorageBytesPercentage;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria].
   /// [delimiter] Delimiter of the selection criteria being used.
@@ -31,8 +31,8 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria(
       delimiter: (() { final guardedValue = map['delimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDepth: (() { final guardedValue = map['maxDepth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minStorageBytesPercentage: (() { final guardedValue = map['minStorageBytesPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxDepth: (() { final guardedValue = map['maxDepth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minStorageBytesPercentage: (() { final guardedValue = map['minStorageBytesPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -6,33 +6,33 @@ import 'get_secret_secret.dart';
 /// Result data returned by getSecret.
 class GetSecretResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
-  final List<GetSecretSecret> secrets;
+  final String? id;
+  final String? region;
+  final List<GetSecretSecret>? secrets;
 
   /// Creates a new [GetSecretResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
-  /// [secrets] Required.
+  /// [region] Optional.
+  /// [secrets] Optional.
   const GetSecretResult({
-    required this.id,
-    required this.region,
-    required this.secrets,
+    this.id,
+    this.region,
+    this.secrets,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'region': region,
-      'secrets': pulumi.Input.encodeList<GetSecretSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'id': ?id,
+      'region': ?region,
+      'secrets': ?(() { final guardedValue = secrets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecretSecret, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetSecretResult.fromMap(Map<String, dynamic> map) {
     return GetSecretResult(
-      id: map['id'] as String,
-      region: map['region'] as String,
-      secrets: pulumi.Input.decodeList<GetSecretSecret>(map['secrets']!, (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecretSecret>(guardedValue, (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'channel_encoder_settings_output_group_output_group_settings.dart';
 
 class ChannelEncoderSettingsOutputGroup {
   /// Custom output group name defined by the user.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Settings associated with the output group. See Output Group Settings for more details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettings> outputGroupSettings;
   /// List of outputs. See Outputs for more details.

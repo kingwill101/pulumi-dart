@@ -16,13 +16,13 @@ import 'baseline_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.controltower.Baseline("example", {
-///     baselineIdentifier: "arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2",
-///     baselineVersion: "4.0",
-///     targetIdentifier: test.arn,
 ///     parameters: {
 ///         key: "IdentityCenterEnabledBaselineArn",
 ///         value: "arn:aws:controltower:us-east-1:664418989480:enabledbaseline/XALULM96QHI525UOC",
 ///     },
+///     baselineIdentifier: "arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2",
+///     baselineVersion: "4.0",
+///     targetIdentifier: test.arn,
 /// });
 /// ```
 /// ```python
@@ -30,13 +30,13 @@ import 'baseline_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.controltower.Baseline("example",
-///     baseline_identifier="arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2",
-///     baseline_version="4.0",
-///     target_identifier=test["arn"],
 ///     parameters={
 ///         "key": "IdentityCenterEnabledBaselineArn",
 ///         "value": "arn:aws:controltower:us-east-1:664418989480:enabledbaseline/XALULM96QHI525UOC",
-///     })
+///     },
+///     baseline_identifier="arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2",
+///     baseline_version="4.0",
+///     target_identifier=test["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,14 +48,14 @@ import 'baseline_timeouts.dart';
 /// {
 ///     var example = new Aws.ControlTower.Baseline("example", new()
 ///     {
-///         BaselineIdentifier = "arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2",
-///         BaselineVersion = "4.0",
-///         TargetIdentifier = test.Arn,
 ///         Parameters = new Aws.ControlTower.Inputs.BaselineParametersArgs
 ///         {
 ///             Key = "IdentityCenterEnabledBaselineArn",
 ///             Value = "arn:aws:controltower:us-east-1:664418989480:enabledbaseline/XALULM96QHI525UOC",
 ///         },
+///         BaselineIdentifier = "arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2",
+///         BaselineVersion = "4.0",
+///         TargetIdentifier = test.Arn,
 ///     });
 ///
 /// });
@@ -71,13 +71,13 @@ import 'baseline_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := controltower.NewBaseline(ctx, "example", &controltower.BaselineArgs{
-/// 			BaselineIdentifier: pulumi.String("arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2"),
-/// 			BaselineVersion:    pulumi.String("4.0"),
-/// 			TargetIdentifier:   pulumi.Any(test.Arn),
 /// 			Parameters: &controltower.BaselineParametersArgs{
 /// 				Key:   pulumi.String("IdentityCenterEnabledBaselineArn"),
 /// 				Value: pulumi.String("arn:aws:controltower:us-east-1:664418989480:enabledbaseline/XALULM96QHI525UOC"),
 /// 			},
+/// 			BaselineIdentifier: pulumi.String("arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2"),
+/// 			BaselineVersion:    pulumi.String("4.0"),
+/// 			TargetIdentifier:   pulumi.Any(test.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -96,13 +96,13 @@ import 'baseline_timeouts.dart';
 /// }
 ///
 /// resource "aws_controltower_baseline" "example" {
-///   baseline_identifier = "arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2"
-///   baseline_version    = "4.0"
-///   target_identifier   = test.arn
 ///   parameters = {
 ///     key   = "IdentityCenterEnabledBaselineArn"
 ///     value = "arn:aws:controltower:us-east-1:664418989480:enabledbaseline/XALULM96QHI525UOC"
 ///   }
+///   baseline_identifier = "arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2"
+///   baseline_version    = "4.0"
+///   target_identifier   = test.arn
 /// }
 /// ```
 /// ```java
@@ -128,13 +128,13 @@ import 'baseline_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Baseline("example", BaselineArgs.builder()
-///             .baselineIdentifier("arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2")
-///             .baselineVersion("4.0")
-///             .targetIdentifier(test.arn())
 ///             .parameters(BaselineParametersArgs.builder()
 ///                 .key("IdentityCenterEnabledBaselineArn")
 ///                 .value("arn:aws:controltower:us-east-1:664418989480:enabledbaseline/XALULM96QHI525UOC")
 ///                 .build())
+///             .baselineIdentifier("arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2")
+///             .baselineVersion("4.0")
+///             .targetIdentifier(test.arn())
 ///             .build());
 ///
 ///     }
@@ -145,12 +145,12 @@ import 'baseline_timeouts.dart';
 ///   example:
 ///     type: aws:controltower:Baseline
 ///     properties:
-///       baselineIdentifier: arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2
-///       baselineVersion: '4.0'
-///       targetIdentifier: ${test.arn}
 ///       parameters:
 ///         key: IdentityCenterEnabledBaselineArn
 ///         value: arn:aws:controltower:us-east-1:664418989480:enabledbaseline/XALULM96QHI525UOC
+///       baselineIdentifier: arn:aws:controltower:us-east-1::baseline/17BSJV3IGJ2QSGA2
+///       baselineVersion: '4.0'
+///       targetIdentifier: ${test.arn}
 /// ```
 ///
 ///
@@ -195,7 +195,7 @@ class Baseline extends pulumi.CustomResource {
           'aws:controltower/baseline:Baseline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     baselineIdentifier = registerOutput<String>('baselineIdentifier');
@@ -203,8 +203,8 @@ class Baseline extends pulumi.CustomResource {
     operationIdentifier = registerOutput<String>('operationIdentifier');
     parameters = registerOutput<BaselineParameters?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BaselineParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetIdentifier = registerOutput<String>('targetIdentifier');
     timeouts = registerOutput<BaselineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BaselineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -214,11 +214,12 @@ class Baseline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BaselineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Baseline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -238,8 +239,29 @@ class Baseline extends pulumi.CustomResource {
     operationIdentifier = registerOutput<String>('operationIdentifier');
     parameters = registerOutput<BaselineParameters?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BaselineParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetIdentifier = registerOutput<String>('targetIdentifier');
+    timeouts = registerOutput<BaselineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BaselineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Baseline] resource.
+  Baseline.reference(String urn)
+    : super(
+        'aws:controltower/baseline:Baseline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    baselineIdentifier = registerOutput<String>('baselineIdentifier');
+    baselineVersion = registerOutput<String>('baselineVersion');
+    operationIdentifier = registerOutput<String>('operationIdentifier');
+    parameters = registerOutput<BaselineParameters?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BaselineParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetIdentifier = registerOutput<String>('targetIdentifier');
     timeouts = registerOutput<BaselineTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BaselineTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

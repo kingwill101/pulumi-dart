@@ -13,8 +13,8 @@ class EipDomainNameArgs {
   /// The domain name to modify for the IP address.
   final pulumi.Input<String> domainName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<EipDomainNameTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<EipDomainNameTimeouts?>? timeouts;
 
   /// Creates a new [EipDomainNameArgs].
   /// [allocationId] The allocation ID.

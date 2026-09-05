@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sdkvoice_sip_rule_args.dart';
 import 'sdkvoice_sip_rule_state.dart';
+import 'sdkvoice_sip_rule_target_application.dart';
 
 /// A SIP rule associates your SIP media application with a phone number or a Request URI hostname. You can associate a SIP rule with more than one SIP media application. Each application then runs only that rule.
 ///
@@ -14,14 +15,14 @@ import 'sdkvoice_sip_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.chime.SdkvoiceSipRule("example", {
-///     name: "example-sip-rule",
-///     triggerType: "RequestUriHostname",
-///     triggerValue: example_voice_connector.outboundHostName,
 ///     targetApplications: [{
 ///         priority: 1,
 ///         sipMediaApplicationId: example_sma.id,
 ///         awsRegion: "us-east-1",
 ///     }],
+///     name: "example-sip-rule",
+///     triggerType: "RequestUriHostname",
+///     triggerValue: example_voice_connector.outboundHostName,
 /// });
 /// ```
 /// ```python
@@ -29,14 +30,14 @@ import 'sdkvoice_sip_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.chime.SdkvoiceSipRule("example",
-///     name="example-sip-rule",
-///     trigger_type="RequestUriHostname",
-///     trigger_value=example_voice_connector["outboundHostName"],
 ///     target_applications=[{
 ///         "priority": 1,
 ///         "sip_media_application_id": example_sma["id"],
 ///         "aws_region": "us-east-1",
-///     }])
+///     }],
+///     name="example-sip-rule",
+///     trigger_type="RequestUriHostname",
+///     trigger_value=example_voice_connector["outboundHostName"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -48,9 +49,6 @@ import 'sdkvoice_sip_rule_state.dart';
 /// {
 ///     var example = new Aws.Chime.SdkvoiceSipRule("example", new()
 ///     {
-///         Name = "example-sip-rule",
-///         TriggerType = "RequestUriHostname",
-///         TriggerValue = example_voice_connector.OutboundHostName,
 ///         TargetApplications = new[]
 ///         {
 ///             new Aws.Chime.Inputs.SdkvoiceSipRuleTargetApplicationArgs
@@ -60,6 +58,9 @@ import 'sdkvoice_sip_rule_state.dart';
 ///                 AwsRegion = "us-east-1",
 ///             },
 ///         },
+///         Name = "example-sip-rule",
+///         TriggerType = "RequestUriHostname",
+///         TriggerValue = example_voice_connector.OutboundHostName,
 ///     });
 ///
 /// });
@@ -75,9 +76,6 @@ import 'sdkvoice_sip_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := chime.NewSdkvoiceSipRule(ctx, "example", &chime.SdkvoiceSipRuleArgs{
-/// 			Name:         pulumi.String("example-sip-rule"),
-/// 			TriggerType:  pulumi.String("RequestUriHostname"),
-/// 			TriggerValue: pulumi.Any(example_voice_connector.OutboundHostName),
 /// 			TargetApplications: chime.SdkvoiceSipRuleTargetApplicationArray{
 /// 				&chime.SdkvoiceSipRuleTargetApplicationArgs{
 /// 					Priority:              pulumi.Int(1),
@@ -85,6 +83,9 @@ import 'sdkvoice_sip_rule_state.dart';
 /// 					AwsRegion:             pulumi.String("us-east-1"),
 /// 				},
 /// 			},
+/// 			Name:         pulumi.String("example-sip-rule"),
+/// 			TriggerType:  pulumi.String("RequestUriHostname"),
+/// 			TriggerValue: pulumi.Any(example_voice_connector.OutboundHostName),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -103,14 +104,14 @@ import 'sdkvoice_sip_rule_state.dart';
 /// }
 ///
 /// resource "aws_chime_sdkvoicesiprule" "example" {
-///   name          = "example-sip-rule"
-///   trigger_type  = "RequestUriHostname"
-///   trigger_value = example-voice-connector.outboundHostName
 ///   target_applications {
 ///     priority                 = 1
 ///     sip_media_application_id = example-sma.id
 ///     aws_region               = "us-east-1"
 ///   }
+///   name          = "example-sip-rule"
+///   trigger_type  = "RequestUriHostname"
+///   trigger_value = example-voice-connector.outboundHostName
 /// }
 /// ```
 /// ```java
@@ -136,14 +137,14 @@ import 'sdkvoice_sip_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SdkvoiceSipRule("example", SdkvoiceSipRuleArgs.builder()
-///             .name("example-sip-rule")
-///             .triggerType("RequestUriHostname")
-///             .triggerValue(example_voice_connector.outboundHostName())
 ///             .targetApplications(SdkvoiceSipRuleTargetApplicationArgs.builder()
 ///                 .priority(1)
 ///                 .sipMediaApplicationId(example_sma.id())
 ///                 .awsRegion("us-east-1")
 ///                 .build())
+///             .name("example-sip-rule")
+///             .triggerType("RequestUriHostname")
+///             .triggerValue(example_voice_connector.outboundHostName())
 ///             .build());
 ///
 ///     }
@@ -154,13 +155,13 @@ import 'sdkvoice_sip_rule_state.dart';
 ///   example:
 ///     type: aws:chime:SdkvoiceSipRule
 ///     properties:
-///       name: example-sip-rule
-///       triggerType: RequestUriHostname
-///       triggerValue: ${["example-voice-connector"].outboundHostName}
 ///       targetApplications:
 ///         - priority: 1
 ///           sipMediaApplicationId: ${["example-sma"].id}
 ///           awsRegion: us-east-1
+///       name: example-sip-rule
+///       triggerType: RequestUriHostname
+///       triggerValue: ${["example-voice-connector"].outboundHostName}
 /// ```
 ///
 ///
@@ -179,7 +180,7 @@ class SdkvoiceSipRule extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used. See `targetApplications`.
-  late final pulumi.Output<List<Map<String, dynamic>>> targetApplications;
+  late final pulumi.Output<List<SdkvoiceSipRuleTargetApplication>> targetApplications;
   /// The type of trigger assigned to the SIP rule in `triggerValue`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.
   late final pulumi.Output<String> triggerType;
   /// If `triggerType` is `RequestUriHostname`, the value can be the outbound host name of an Amazon Chime Voice Connector. If `triggerType` is `ToPhoneNumber`, the value can be a customer-owned phone number in the E164 format. The Sip Media Application specified in the Sip Rule is triggered if the request URI in an incoming SIP request matches the `RequestUriHostname`, or if the "To" header in the incoming SIP request matches the `ToPhoneNumber` value.
@@ -199,12 +200,12 @@ class SdkvoiceSipRule extends pulumi.CustomResource {
           'aws:chime/sdkvoiceSipRule:SdkvoiceSipRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    targetApplications = registerOutput<List<Map<String, dynamic>>>('targetApplications');
+    targetApplications = registerOutput<List<SdkvoiceSipRuleTargetApplication>>('targetApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SdkvoiceSipRuleTargetApplication>(guardedValue, (value) => SdkvoiceSipRuleTargetApplication.fromMap((value as Map).cast<String, dynamic>())); });
     triggerType = registerOutput<String>('triggerType');
     triggerValue = registerOutput<String>('triggerValue');
   }
@@ -214,11 +215,12 @@ class SdkvoiceSipRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SdkvoiceSipRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SdkvoiceSipRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,7 +237,24 @@ class SdkvoiceSipRule extends pulumi.CustomResource {
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    targetApplications = registerOutput<List<Map<String, dynamic>>>('targetApplications');
+    targetApplications = registerOutput<List<SdkvoiceSipRuleTargetApplication>>('targetApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SdkvoiceSipRuleTargetApplication>(guardedValue, (value) => SdkvoiceSipRuleTargetApplication.fromMap((value as Map).cast<String, dynamic>())); });
+    triggerType = registerOutput<String>('triggerType');
+    triggerValue = registerOutput<String>('triggerValue');
+  }
+
+  /// Creates a typed reference to an existing [SdkvoiceSipRule] resource.
+  SdkvoiceSipRule.reference(String urn)
+    : super(
+        'aws:chime/sdkvoiceSipRule:SdkvoiceSipRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    disabled = registerOutput<bool?>('disabled');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    targetApplications = registerOutput<List<SdkvoiceSipRuleTargetApplication>>('targetApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SdkvoiceSipRuleTargetApplication>(guardedValue, (value) => SdkvoiceSipRuleTargetApplication.fromMap((value as Map).cast<String, dynamic>())); });
     triggerType = registerOutput<String>('triggerType');
     triggerValue = registerOutput<String>('triggerValue');
   }

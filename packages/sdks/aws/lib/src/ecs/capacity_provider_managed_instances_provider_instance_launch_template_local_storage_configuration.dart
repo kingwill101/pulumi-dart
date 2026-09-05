@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateLocalStorageConfiguration {
   /// Whether to use the local storage of the instance for Amazon ECS Managed Instances.
-  final pulumi.Input<bool>? useLocalStorage;
+  final pulumi.Input<bool?>? useLocalStorage;
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateLocalStorageConfiguration].
   /// [useLocalStorage] Whether to use the local storage of the instance for Amazon ECS Managed Instances.

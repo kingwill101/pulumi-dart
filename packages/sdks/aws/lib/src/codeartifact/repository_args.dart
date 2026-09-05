@@ -10,21 +10,21 @@ import 'repository_upstream.dart';
 /// {@macro pulumi_codeartifact_repository_repository_args_doc}
 class RepositoryArgs {
   /// The description of the repository.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The domain that contains the created repository.
   final pulumi.Input<String> domain;
   /// The account number of the AWS account that owns the domain.
-  final pulumi.Input<String>? domainOwner;
+  final pulumi.Input<String?>? domainOwner;
   /// An array of external connections associated with the repository. Only one external connection can be set per repository. see External Connections.
-  final pulumi.Input<RepositoryExternalConnections>? externalConnections;
+  final pulumi.Input<RepositoryExternalConnections?>? externalConnections;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the repository to create.
   final pulumi.Input<String> repository;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of upstream repositories to associate with the repository. The order of the upstream repositories in the list determines their priority order when AWS CodeArtifact looks for a requested package version. see Upstream
-  final pulumi.Input<List<RepositoryUpstream>>? upstreams;
+  final pulumi.Input<List<RepositoryUpstream>?>? upstreams;
 
   /// Creates a new [RepositoryArgs].
   /// [description] The description of the repository.

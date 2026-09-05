@@ -34,6 +34,17 @@ import 'job_state.dart';
 ///     }),
 /// });
 /// const etlJob = new aws.glue.Job("etl_job", {
+///     command: {
+///         scriptLocation: `s3://${glueScripts.bucket}/jobs/etl_job.py`,
+///         name: "glueetl",
+///         pythonVersion: "3",
+///     },
+///     notificationProperty: {
+///         notifyDelayAfter: 3,
+///     },
+///     executionProperty: {
+///         maxConcurrentRuns: 1,
+///     },
 ///     name: "example-etl-job",
 ///     description: "An example Glue ETL job",
 ///     roleArn: glueJobRole.arn,
@@ -44,14 +55,6 @@ import 'job_state.dart';
 ///     workerType: "G.1X",
 ///     connections: [example.name],
 ///     executionClass: "STANDARD",
-///     command: {
-///         scriptLocation: `s3://${glueScripts.bucket}/jobs/etl_job.py`,
-///         name: "glueetl",
-///         pythonVersion: "3",
-///     },
-///     notificationProperty: {
-///         notifyDelayAfter: 3,
-///     },
 ///     defaultArguments: {
 ///         "--job-language": "python",
 ///         "--continuous-log-logGroup": "/aws-glue/jobs",
@@ -59,9 +62,6 @@ import 'job_state.dart';
 ///         "--enable-continuous-log-filter": "true",
 ///         "--enable-metrics": "",
 ///         "--enable-auto-scaling": "true",
-///     },
-///     executionProperty: {
-///         maxConcurrentRuns: 1,
 ///     },
 ///     tags: {
 ///         ManagedBy: "AWS",
@@ -92,6 +92,17 @@ import 'job_state.dart';
 ///         }],
 ///     }))
 /// etl_job = aws.glue.Job("etl_job",
+///     command={
+///         "script_location": f"s3://{glue_scripts['bucket']}/jobs/etl_job.py",
+///         "name": "glueetl",
+///         "python_version": "3",
+///     },
+///     notification_property={
+///         "notify_delay_after": 3,
+///     },
+///     execution_property={
+///         "max_concurrent_runs": 1,
+///     },
 ///     name="example-etl-job",
 ///     description="An example Glue ETL job",
 ///     role_arn=glue_job_role.arn,
@@ -102,14 +113,6 @@ import 'job_state.dart';
 ///     worker_type="G.1X",
 ///     connections=[example["name"]],
 ///     execution_class="STANDARD",
-///     command={
-///         "script_location": f"s3://{glue_scripts['bucket']}/jobs/etl_job.py",
-///         "name": "glueetl",
-///         "python_version": "3",
-///     },
-///     notification_property={
-///         "notify_delay_after": 3,
-///     },
 ///     default_arguments={
 ///         "--job-language": "python",
 ///         "--continuous-log-logGroup": "/aws-glue/jobs",
@@ -117,9 +120,6 @@ import 'job_state.dart';
 ///         "--enable-continuous-log-filter": "true",
 ///         "--enable-metrics": "",
 ///         "--enable-auto-scaling": "true",
-///     },
-///     execution_property={
-///         "max_concurrent_runs": 1,
 ///     },
 ///     tags={
 ///         "ManagedBy": "AWS",
@@ -162,6 +162,20 @@ import 'job_state.dart';
 ///
 ///     var etlJob = new Aws.Glue.Job("etl_job", new()
 ///     {
+///         Command = new Aws.Glue.Inputs.JobCommandArgs
+///         {
+///             ScriptLocation = $"s3://{glueScripts.Bucket}/jobs/etl_job.py",
+///             Name = "glueetl",
+///             PythonVersion = "3",
+///         },
+///         NotificationProperty = new Aws.Glue.Inputs.JobNotificationPropertyArgs
+///         {
+///             NotifyDelayAfter = 3,
+///         },
+///         ExecutionProperty = new Aws.Glue.Inputs.JobExecutionPropertyArgs
+///         {
+///             MaxConcurrentRuns = 1,
+///         },
 ///         Name = "example-etl-job",
 ///         Description = "An example Glue ETL job",
 ///         RoleArn = glueJobRole.Arn,
@@ -175,16 +189,6 @@ import 'job_state.dart';
 ///             example.Name,
 ///         },
 ///         ExecutionClass = "STANDARD",
-///         Command = new Aws.Glue.Inputs.JobCommandArgs
-///         {
-///             ScriptLocation = $"s3://{glueScripts.Bucket}/jobs/etl_job.py",
-///             Name = "glueetl",
-///             PythonVersion = "3",
-///         },
-///         NotificationProperty = new Aws.Glue.Inputs.JobNotificationPropertyArgs
-///         {
-///             NotifyDelayAfter = 3,
-///         },
 ///         DefaultArguments =
 ///         {
 ///             { "--job-language", "python" },
@@ -193,10 +197,6 @@ import 'job_state.dart';
 ///             { "--enable-continuous-log-filter", "true" },
 ///             { "--enable-metrics", "" },
 ///             { "--enable-auto-scaling", "true" },
-///         },
-///         ExecutionProperty = new Aws.Glue.Inputs.JobExecutionPropertyArgs
-///         {
-///             MaxConcurrentRuns = 1,
 ///         },
 ///         Tags =
 ///         {
@@ -252,6 +252,17 @@ import 'job_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = glue.NewJob(ctx, "etl_job", &glue.JobArgs{
+/// 			Command: &glue.JobCommandArgs{
+/// 				ScriptLocation: pulumi.Sprintf("s3://%v/jobs/etl_job.py", glueScripts.Bucket),
+/// 				Name:           pulumi.String("glueetl"),
+/// 				PythonVersion:  pulumi.String("3"),
+/// 			},
+/// 			NotificationProperty: &glue.JobNotificationPropertyArgs{
+/// 				NotifyDelayAfter: pulumi.Int(3),
+/// 			},
+/// 			ExecutionProperty: &glue.JobExecutionPropertyArgs{
+/// 				MaxConcurrentRuns: pulumi.Int(1),
+/// 			},
 /// 			Name:            pulumi.String("example-etl-job"),
 /// 			Description:     pulumi.String("An example Glue ETL job"),
 /// 			RoleArn:         glueJobRole.Arn,
@@ -264,14 +275,6 @@ import 'job_state.dart';
 /// 				example.Name,
 /// 			},
 /// 			ExecutionClass: pulumi.String("STANDARD"),
-/// 			Command: &glue.JobCommandArgs{
-/// 				ScriptLocation: pulumi.Sprintf("s3://%v/jobs/etl_job.py", glueScripts.Bucket),
-/// 				Name:           pulumi.String("glueetl"),
-/// 				PythonVersion:  pulumi.String("3"),
-/// 			},
-/// 			NotificationProperty: &glue.JobNotificationPropertyArgs{
-/// 				NotifyDelayAfter: pulumi.Int(3),
-/// 			},
 /// 			DefaultArguments: pulumi.StringMap{
 /// 				"--job-language":                     pulumi.String("python"),
 /// 				"--continuous-log-logGroup":          pulumi.String("/aws-glue/jobs"),
@@ -279,9 +282,6 @@ import 'job_state.dart';
 /// 				"--enable-continuous-log-filter":     pulumi.String("true"),
 /// 				"--enable-metrics":                   pulumi.String(""),
 /// 				"--enable-auto-scaling":              pulumi.String("true"),
-/// 			},
-/// 			ExecutionProperty: &glue.JobExecutionPropertyArgs{
-/// 				MaxConcurrentRuns: pulumi.Int(1),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"ManagedBy": pulumi.String("AWS"),
@@ -312,6 +312,18 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "aws_glue_job" "etl_job" {
+///   command = {
+///     script_location ="s3://${glueScripts.bucket}/jobs/etl_job.py"
+///     name            = "glueetl"
+///     python_version  = "3"
+///   }
+///   notification_property = {
+///     notify_delay_after = 3
+///   }
+///   # delay in minutes
+///   execution_property = {
+///     max_concurrent_runs = 1
+///   }
 ///   name              = "example-etl-job"
 ///   description       = "An example Glue ETL job"
 ///   role_arn          = aws_iam_role.glue_job_role.arn
@@ -322,15 +334,6 @@ import 'job_state.dart';
 ///   worker_type       = "G.1X"
 ///   connections       = [example.name]
 ///   execution_class   = "STANDARD"
-///   command = {
-///     script_location ="s3://${glueScripts.bucket}/jobs/etl_job.py"
-///     name            = "glueetl"
-///     python_version  = "3"
-///   }
-///   notification_property = {
-///     notify_delay_after = 3
-///   }
-///   # delay in minutes
 ///   default_arguments = {
 ///     "--job-language"                     = "python"
 ///     "--continuous-log-logGroup"          = "/aws-glue/jobs"
@@ -338,9 +341,6 @@ import 'job_state.dart';
 ///     "--enable-continuous-log-filter"     = "true"
 ///     "--enable-metrics"                   = ""
 ///     "--enable-auto-scaling"              = "true"
-///   }
-///   execution_property = {
-///     max_concurrent_runs = 1
 ///   }
 ///   tags = {
 ///     "ManagedBy" = "AWS"
@@ -413,6 +413,17 @@ import 'job_state.dart';
 ///             .build());
 ///
 ///         var etlJob = new Job("etlJob", JobArgs.builder()
+///             .command(JobCommandArgs.builder()
+///                 .scriptLocation(String.format("s3://%s/jobs/etl_job.py", glueScripts.bucket()))
+///                 .name("glueetl")
+///                 .pythonVersion("3")
+///                 .build())
+///             .notificationProperty(JobNotificationPropertyArgs.builder()
+///                 .notifyDelayAfter(3)
+///                 .build())
+///             .executionProperty(JobExecutionPropertyArgs.builder()
+///                 .maxConcurrentRuns(1)
+///                 .build())
 ///             .name("example-etl-job")
 ///             .description("An example Glue ETL job")
 ///             .roleArn(glueJobRole.arn())
@@ -423,14 +434,6 @@ import 'job_state.dart';
 ///             .workerType("G.1X")
 ///             .connections(example.name())
 ///             .executionClass("STANDARD")
-///             .command(JobCommandArgs.builder()
-///                 .scriptLocation(String.format("s3://%s/jobs/etl_job.py", glueScripts.bucket()))
-///                 .name("glueetl")
-///                 .pythonVersion("3")
-///                 .build())
-///             .notificationProperty(JobNotificationPropertyArgs.builder()
-///                 .notifyDelayAfter(3)
-///                 .build())
 ///             .defaultArguments(Map.ofEntries(
 ///                 Map.entry("--job-language", "python"),
 ///                 Map.entry("--continuous-log-logGroup", "/aws-glue/jobs"),
@@ -439,9 +442,6 @@ import 'job_state.dart';
 ///                 Map.entry("--enable-metrics", ""),
 ///                 Map.entry("--enable-auto-scaling", "true")
 ///             ))
-///             .executionProperty(JobExecutionPropertyArgs.builder()
-///                 .maxConcurrentRuns(1)
-///                 .build())
 ///             .tags(Map.of("ManagedBy", "AWS"))
 ///             .build());
 ///
@@ -460,6 +460,14 @@ import 'job_state.dart';
 ///     type: aws:glue:Job
 ///     name: etl_job
 ///     properties:
+///       command:
+///         scriptLocation: s3://${glueScripts.bucket}/jobs/etl_job.py
+///         name: glueetl
+///         pythonVersion: '3'
+///       notificationProperty:
+///         notifyDelayAfter: 3
+///       executionProperty:
+///         maxConcurrentRuns: 1
 ///       name: example-etl-job
 ///       description: An example Glue ETL job
 ///       roleArn: ${glueJobRole.arn}
@@ -471,12 +479,6 @@ import 'job_state.dart';
 ///       connections:
 ///         - ${example.name}
 ///       executionClass: STANDARD
-///       command:
-///         scriptLocation: s3://${glueScripts.bucket}/jobs/etl_job.py
-///         name: glueetl
-///         pythonVersion: '3'
-///       notificationProperty:
-///         notifyDelayAfter: 3
 ///       defaultArguments:
 ///         --job-language: python
 ///         --continuous-log-logGroup: /aws-glue/jobs
@@ -484,8 +486,6 @@ import 'job_state.dart';
 ///         --enable-continuous-log-filter: 'true'
 ///         --enable-metrics: ""
 ///         --enable-auto-scaling: 'true'
-///       executionProperty:
-///         maxConcurrentRuns: 1
 ///       tags:
 ///         ManagedBy: AWS
 ///   # IAM role for Glue jobs
@@ -535,6 +535,14 @@ import 'job_state.dart';
 ///     }),
 /// });
 /// const pythonShellJob = new aws.glue.Job("python_shell_job", {
+///     command: {
+///         scriptLocation: `s3://${glueScripts.bucket}/jobs/shell_job.py`,
+///         name: "pythonshell",
+///         pythonVersion: "3.9",
+///     },
+///     executionProperty: {
+///         maxConcurrentRuns: 1,
+///     },
 ///     name: "example-python-shell-job",
 ///     description: "An example Python shell job",
 ///     roleArn: glueJobRole.arn,
@@ -542,19 +550,11 @@ import 'job_state.dart';
 ///     maxRetries: 0,
 ///     timeout: 2880,
 ///     connections: [example.name],
-///     command: {
-///         scriptLocation: `s3://${glueScripts.bucket}/jobs/shell_job.py`,
-///         name: "pythonshell",
-///         pythonVersion: "3.9",
-///     },
 ///     defaultArguments: {
 ///         "--job-language": "python",
 ///         "--continuous-log-logGroup": "/aws-glue/jobs",
 ///         "--enable-continuous-cloudwatch-log": "true",
 ///         "library-set": "analytics",
-///     },
-///     executionProperty: {
-///         maxConcurrentRuns: 1,
 ///     },
 ///     tags: {
 ///         ManagedBy: "AWS",
@@ -585,6 +585,14 @@ import 'job_state.dart';
 ///         }],
 ///     }))
 /// python_shell_job = aws.glue.Job("python_shell_job",
+///     command={
+///         "script_location": f"s3://{glue_scripts['bucket']}/jobs/shell_job.py",
+///         "name": "pythonshell",
+///         "python_version": "3.9",
+///     },
+///     execution_property={
+///         "max_concurrent_runs": 1,
+///     },
 ///     name="example-python-shell-job",
 ///     description="An example Python shell job",
 ///     role_arn=glue_job_role.arn,
@@ -592,19 +600,11 @@ import 'job_state.dart';
 ///     max_retries=0,
 ///     timeout=2880,
 ///     connections=[example["name"]],
-///     command={
-///         "script_location": f"s3://{glue_scripts['bucket']}/jobs/shell_job.py",
-///         "name": "pythonshell",
-///         "python_version": "3.9",
-///     },
 ///     default_arguments={
 ///         "--job-language": "python",
 ///         "--continuous-log-logGroup": "/aws-glue/jobs",
 ///         "--enable-continuous-cloudwatch-log": "true",
 ///         "library-set": "analytics",
-///     },
-///     execution_property={
-///         "max_concurrent_runs": 1,
 ///     },
 ///     tags={
 ///         "ManagedBy": "AWS",
@@ -647,6 +647,16 @@ import 'job_state.dart';
 ///
 ///     var pythonShellJob = new Aws.Glue.Job("python_shell_job", new()
 ///     {
+///         Command = new Aws.Glue.Inputs.JobCommandArgs
+///         {
+///             ScriptLocation = $"s3://{glueScripts.Bucket}/jobs/shell_job.py",
+///             Name = "pythonshell",
+///             PythonVersion = "3.9",
+///         },
+///         ExecutionProperty = new Aws.Glue.Inputs.JobExecutionPropertyArgs
+///         {
+///             MaxConcurrentRuns = 1,
+///         },
 ///         Name = "example-python-shell-job",
 ///         Description = "An example Python shell job",
 ///         RoleArn = glueJobRole.Arn,
@@ -657,22 +667,12 @@ import 'job_state.dart';
 ///         {
 ///             example.Name,
 ///         },
-///         Command = new Aws.Glue.Inputs.JobCommandArgs
-///         {
-///             ScriptLocation = $"s3://{glueScripts.Bucket}/jobs/shell_job.py",
-///             Name = "pythonshell",
-///             PythonVersion = "3.9",
-///         },
 ///         DefaultArguments =
 ///         {
 ///             { "--job-language", "python" },
 ///             { "--continuous-log-logGroup", "/aws-glue/jobs" },
 ///             { "--enable-continuous-cloudwatch-log", "true" },
 ///             { "library-set", "analytics" },
-///         },
-///         ExecutionProperty = new Aws.Glue.Inputs.JobExecutionPropertyArgs
-///         {
-///             MaxConcurrentRuns = 1,
 ///         },
 ///         Tags =
 ///         {
@@ -728,6 +728,14 @@ import 'job_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = glue.NewJob(ctx, "python_shell_job", &glue.JobArgs{
+/// 			Command: &glue.JobCommandArgs{
+/// 				ScriptLocation: pulumi.Sprintf("s3://%v/jobs/shell_job.py", glueScripts.Bucket),
+/// 				Name:           pulumi.String("pythonshell"),
+/// 				PythonVersion:  pulumi.String("3.9"),
+/// 			},
+/// 			ExecutionProperty: &glue.JobExecutionPropertyArgs{
+/// 				MaxConcurrentRuns: pulumi.Int(1),
+/// 			},
 /// 			Name:        pulumi.String("example-python-shell-job"),
 /// 			Description: pulumi.String("An example Python shell job"),
 /// 			RoleArn:     glueJobRole.Arn,
@@ -737,19 +745,11 @@ import 'job_state.dart';
 /// 			Connections: pulumi.StringArray{
 /// 				example.Name,
 /// 			},
-/// 			Command: &glue.JobCommandArgs{
-/// 				ScriptLocation: pulumi.Sprintf("s3://%v/jobs/shell_job.py", glueScripts.Bucket),
-/// 				Name:           pulumi.String("pythonshell"),
-/// 				PythonVersion:  pulumi.String("3.9"),
-/// 			},
 /// 			DefaultArguments: pulumi.StringMap{
 /// 				"--job-language":                     pulumi.String("python"),
 /// 				"--continuous-log-logGroup":          pulumi.String("/aws-glue/jobs"),
 /// 				"--enable-continuous-cloudwatch-log": pulumi.String("true"),
 /// 				"library-set":                        pulumi.String("analytics"),
-/// 			},
-/// 			ExecutionProperty: &glue.JobExecutionPropertyArgs{
-/// 				MaxConcurrentRuns: pulumi.Int(1),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"ManagedBy": pulumi.String("AWS"),
@@ -780,6 +780,14 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "aws_glue_job" "python_shell_job" {
+///   command = {
+///     script_location ="s3://${glueScripts.bucket}/jobs/shell_job.py"
+///     name            = "pythonshell"
+///     python_version  = "3.9"
+///   }
+///   execution_property = {
+///     max_concurrent_runs = 1
+///   }
 ///   name         = "example-python-shell-job"
 ///   description  = "An example Python shell job"
 ///   role_arn     = aws_iam_role.glue_job_role.arn
@@ -787,19 +795,11 @@ import 'job_state.dart';
 ///   max_retries  = 0
 ///   timeout      = 2880
 ///   connections  = [example.name]
-///   command = {
-///     script_location ="s3://${glueScripts.bucket}/jobs/shell_job.py"
-///     name            = "pythonshell"
-///     python_version  = "3.9"
-///   }
 ///   default_arguments = {
 ///     "--job-language"                     = "python"
 ///     "--continuous-log-logGroup"          = "/aws-glue/jobs"
 ///     "--enable-continuous-cloudwatch-log" = "true"
 ///     "library-set"                        = "analytics"
-///   }
-///   execution_property = {
-///     max_concurrent_runs = 1
 ///   }
 ///   tags = {
 ///     "ManagedBy" = "AWS"
@@ -871,6 +871,14 @@ import 'job_state.dart';
 ///             .build());
 ///
 ///         var pythonShellJob = new Job("pythonShellJob", JobArgs.builder()
+///             .command(JobCommandArgs.builder()
+///                 .scriptLocation(String.format("s3://%s/jobs/shell_job.py", glueScripts.bucket()))
+///                 .name("pythonshell")
+///                 .pythonVersion("3.9")
+///                 .build())
+///             .executionProperty(JobExecutionPropertyArgs.builder()
+///                 .maxConcurrentRuns(1)
+///                 .build())
 ///             .name("example-python-shell-job")
 ///             .description("An example Python shell job")
 ///             .roleArn(glueJobRole.arn())
@@ -878,20 +886,12 @@ import 'job_state.dart';
 ///             .maxRetries(0)
 ///             .timeout(2880)
 ///             .connections(example.name())
-///             .command(JobCommandArgs.builder()
-///                 .scriptLocation(String.format("s3://%s/jobs/shell_job.py", glueScripts.bucket()))
-///                 .name("pythonshell")
-///                 .pythonVersion("3.9")
-///                 .build())
 ///             .defaultArguments(Map.ofEntries(
 ///                 Map.entry("--job-language", "python"),
 ///                 Map.entry("--continuous-log-logGroup", "/aws-glue/jobs"),
 ///                 Map.entry("--enable-continuous-cloudwatch-log", "true"),
 ///                 Map.entry("library-set", "analytics")
 ///             ))
-///             .executionProperty(JobExecutionPropertyArgs.builder()
-///                 .maxConcurrentRuns(1)
-///                 .build())
 ///             .tags(Map.of("ManagedBy", "AWS"))
 ///             .build());
 ///
@@ -910,6 +910,12 @@ import 'job_state.dart';
 ///     type: aws:glue:Job
 ///     name: python_shell_job
 ///     properties:
+///       command:
+///         scriptLocation: s3://${glueScripts.bucket}/jobs/shell_job.py
+///         name: pythonshell
+///         pythonVersion: '3.9'
+///       executionProperty:
+///         maxConcurrentRuns: 1
 ///       name: example-python-shell-job
 ///       description: An example Python shell job
 ///       roleArn: ${glueJobRole.arn}
@@ -918,17 +924,11 @@ import 'job_state.dart';
 ///       timeout: 2880
 ///       connections:
 ///         - ${example.name}
-///       command:
-///         scriptLocation: s3://${glueScripts.bucket}/jobs/shell_job.py
-///         name: pythonshell
-///         pythonVersion: '3.9'
 ///       defaultArguments:
 ///         --job-language: python
 ///         --continuous-log-logGroup: /aws-glue/jobs
 ///         --enable-continuous-cloudwatch-log: 'true'
 ///         library-set: analytics
-///       executionProperty:
-///         maxConcurrentRuns: 1
 ///       tags:
 ///         ManagedBy: AWS
 ///   # IAM role for Glue jobs
@@ -964,16 +964,16 @@ import 'job_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Job("example", {
-///     name: "example",
-///     roleArn: exampleAwsIamRole.arn,
-///     glueVersion: "4.0",
-///     workerType: "Z.2X",
 ///     command: {
 ///         name: "glueray",
 ///         pythonVersion: "3.9",
 ///         runtime: "Ray2.4",
 ///         scriptLocation: `s3://${exampleAwsS3Bucket.bucket}/example.py`,
 ///     },
+///     name: "example",
+///     roleArn: exampleAwsIamRole.arn,
+///     glueVersion: "4.0",
+///     workerType: "Z.2X",
 /// });
 /// ```
 /// ```python
@@ -981,16 +981,16 @@ import 'job_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Job("example",
-///     name="example",
-///     role_arn=example_aws_iam_role["arn"],
-///     glue_version="4.0",
-///     worker_type="Z.2X",
 ///     command={
 ///         "name": "glueray",
 ///         "python_version": "3.9",
 ///         "runtime": "Ray2.4",
 ///         "script_location": f"s3://{example_aws_s3_bucket['bucket']}/example.py",
-///     })
+///     },
+///     name="example",
+///     role_arn=example_aws_iam_role["arn"],
+///     glue_version="4.0",
+///     worker_type="Z.2X")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1002,10 +1002,6 @@ import 'job_state.dart';
 /// {
 ///     var example = new Aws.Glue.Job("example", new()
 ///     {
-///         Name = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
-///         GlueVersion = "4.0",
-///         WorkerType = "Z.2X",
 ///         Command = new Aws.Glue.Inputs.JobCommandArgs
 ///         {
 ///             Name = "glueray",
@@ -1013,6 +1009,10 @@ import 'job_state.dart';
 ///             Runtime = "Ray2.4",
 ///             ScriptLocation = $"s3://{exampleAwsS3Bucket.Bucket}/example.py",
 ///         },
+///         Name = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         GlueVersion = "4.0",
+///         WorkerType = "Z.2X",
 ///     });
 ///
 /// });
@@ -1028,16 +1028,16 @@ import 'job_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewJob(ctx, "example", &glue.JobArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			RoleArn:     pulumi.Any(exampleAwsIamRole.Arn),
-/// 			GlueVersion: pulumi.String("4.0"),
-/// 			WorkerType:  pulumi.String("Z.2X"),
 /// 			Command: &glue.JobCommandArgs{
 /// 				Name:           pulumi.String("glueray"),
 /// 				PythonVersion:  pulumi.String("3.9"),
 /// 				Runtime:        pulumi.String("Ray2.4"),
 /// 				ScriptLocation: pulumi.Sprintf("s3://%v/example.py", exampleAwsS3Bucket.Bucket),
 /// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			RoleArn:     pulumi.Any(exampleAwsIamRole.Arn),
+/// 			GlueVersion: pulumi.String("4.0"),
+/// 			WorkerType:  pulumi.String("Z.2X"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1056,16 +1056,16 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "aws_glue_job" "example" {
-///   name         = "example"
-///   role_arn     = exampleAwsIamRole.arn
-///   glue_version = "4.0"
-///   worker_type  = "Z.2X"
 ///   command = {
 ///     name            = "glueray"
 ///     python_version  = "3.9"
 ///     runtime         = "Ray2.4"
 ///     script_location ="s3://${exampleAwsS3Bucket.bucket}/example.py"
 ///   }
+///   name         = "example"
+///   role_arn     = exampleAwsIamRole.arn
+///   glue_version = "4.0"
+///   worker_type  = "Z.2X"
 /// }
 /// ```
 /// ```java
@@ -1091,16 +1091,16 @@ import 'job_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Job("example", JobArgs.builder()
-///             .name("example")
-///             .roleArn(exampleAwsIamRole.arn())
-///             .glueVersion("4.0")
-///             .workerType("Z.2X")
 ///             .command(JobCommandArgs.builder()
 ///                 .name("glueray")
 ///                 .pythonVersion("3.9")
 ///                 .runtime("Ray2.4")
 ///                 .scriptLocation(String.format("s3://%s/example.py", exampleAwsS3Bucket.bucket()))
 ///                 .build())
+///             .name("example")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .glueVersion("4.0")
+///             .workerType("Z.2X")
 ///             .build());
 ///
 ///     }
@@ -1111,15 +1111,15 @@ import 'job_state.dart';
 ///   example:
 ///     type: aws:glue:Job
 ///     properties:
-///       name: example
-///       roleArn: ${exampleAwsIamRole.arn}
-///       glueVersion: '4.0'
-///       workerType: Z.2X
 ///       command:
 ///         name: glueray
 ///         pythonVersion: '3.9'
 ///         runtime: Ray2.4
 ///         scriptLocation: s3://${exampleAwsS3Bucket.bucket}/example.py
+///       name: example
+///       roleArn: ${exampleAwsIamRole.arn}
+///       glueVersion: '4.0'
+///       workerType: Z.2X
 /// ```
 ///
 ///
@@ -1131,11 +1131,11 @@ import 'job_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Job("example", {
-///     name: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     command: {
 ///         scriptLocation: `s3://${exampleAwsS3Bucket.bucket}/example.scala`,
 ///     },
+///     name: "example",
+///     roleArn: exampleAwsIamRole.arn,
 ///     defaultArguments: {
 ///         "--job-language": "scala",
 ///     },
@@ -1146,11 +1146,11 @@ import 'job_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Job("example",
-///     name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     command={
 ///         "script_location": f"s3://{example_aws_s3_bucket['bucket']}/example.scala",
 ///     },
+///     name="example",
+///     role_arn=example_aws_iam_role["arn"],
 ///     default_arguments={
 ///         "--job-language": "scala",
 ///     })
@@ -1165,12 +1165,12 @@ import 'job_state.dart';
 /// {
 ///     var example = new Aws.Glue.Job("example", new()
 ///     {
-///         Name = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         Command = new Aws.Glue.Inputs.JobCommandArgs
 ///         {
 ///             ScriptLocation = $"s3://{exampleAwsS3Bucket.Bucket}/example.scala",
 ///         },
+///         Name = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///         DefaultArguments =
 ///         {
 ///             { "--job-language", "scala" },
@@ -1190,11 +1190,11 @@ import 'job_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewJob(ctx, "example", &glue.JobArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Command: &glue.JobCommandArgs{
 /// 				ScriptLocation: pulumi.Sprintf("s3://%v/example.scala", exampleAwsS3Bucket.Bucket),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			DefaultArguments: pulumi.StringMap{
 /// 				"--job-language": pulumi.String("scala"),
 /// 			},
@@ -1216,11 +1216,11 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "aws_glue_job" "example" {
-///   name     = "example"
-///   role_arn = exampleAwsIamRole.arn
 ///   command = {
 ///     script_location ="s3://${exampleAwsS3Bucket.bucket}/example.scala"
 ///   }
+///   name     = "example"
+///   role_arn = exampleAwsIamRole.arn
 ///   default_arguments = {
 ///     "--job-language" = "scala"
 ///   }
@@ -1249,11 +1249,11 @@ import 'job_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Job("example", JobArgs.builder()
-///             .name("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .command(JobCommandArgs.builder()
 ///                 .scriptLocation(String.format("s3://%s/example.scala", exampleAwsS3Bucket.bucket()))
 ///                 .build())
+///             .name("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .defaultArguments(Map.of("--job-language", "scala"))
 ///             .build());
 ///
@@ -1265,10 +1265,10 @@ import 'job_state.dart';
 ///   example:
 ///     type: aws:glue:Job
 ///     properties:
-///       name: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       command:
 ///         scriptLocation: s3://${exampleAwsS3Bucket.bucket}/example.scala
+///       name: example
+///       roleArn: ${exampleAwsIamRole.arn}
 ///       defaultArguments:
 ///         --job-language: scala
 /// ```
@@ -1282,12 +1282,12 @@ import 'job_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Job("example", {
-///     name: "example streaming job",
-///     roleArn: exampleAwsIamRole.arn,
 ///     command: {
 ///         name: "gluestreaming",
 ///         scriptLocation: `s3://${exampleAwsS3Bucket.bucket}/example.script`,
 ///     },
+///     name: "example streaming job",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -1295,12 +1295,12 @@ import 'job_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Job("example",
-///     name="example streaming job",
-///     role_arn=example_aws_iam_role["arn"],
 ///     command={
 ///         "name": "gluestreaming",
 ///         "script_location": f"s3://{example_aws_s3_bucket['bucket']}/example.script",
-///     })
+///     },
+///     name="example streaming job",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1312,13 +1312,13 @@ import 'job_state.dart';
 /// {
 ///     var example = new Aws.Glue.Job("example", new()
 ///     {
-///         Name = "example streaming job",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         Command = new Aws.Glue.Inputs.JobCommandArgs
 ///         {
 ///             Name = "gluestreaming",
 ///             ScriptLocation = $"s3://{exampleAwsS3Bucket.Bucket}/example.script",
 ///         },
+///         Name = "example streaming job",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -1334,12 +1334,12 @@ import 'job_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewJob(ctx, "example", &glue.JobArgs{
-/// 			Name:    pulumi.String("example streaming job"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			Command: &glue.JobCommandArgs{
 /// 				Name:           pulumi.String("gluestreaming"),
 /// 				ScriptLocation: pulumi.Sprintf("s3://%v/example.script", exampleAwsS3Bucket.Bucket),
 /// 			},
+/// 			Name:    pulumi.String("example streaming job"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1358,12 +1358,12 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "aws_glue_job" "example" {
-///   name     = "example streaming job"
-///   role_arn = exampleAwsIamRole.arn
 ///   command = {
 ///     name            = "gluestreaming"
 ///     script_location ="s3://${exampleAwsS3Bucket.bucket}/example.script"
 ///   }
+///   name     = "example streaming job"
+///   role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1389,12 +1389,12 @@ import 'job_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Job("example", JobArgs.builder()
-///             .name("example streaming job")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .command(JobCommandArgs.builder()
 ///                 .name("gluestreaming")
 ///                 .scriptLocation(String.format("s3://%s/example.script", exampleAwsS3Bucket.bucket()))
 ///                 .build())
+///             .name("example streaming job")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1405,11 +1405,11 @@ import 'job_state.dart';
 ///   example:
 ///     type: aws:glue:Job
 ///     properties:
-///       name: example streaming job
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       command:
 ///         name: gluestreaming
 ///         scriptLocation: s3://${exampleAwsS3Bucket.bucket}/example.script
+///       name: example streaming job
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1606,7 +1606,7 @@ import 'job_state.dart';
 /// $ pulumi import aws:glue/job:Job example example
 /// ```
 class Job extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of Glue Job
+  /// ARN of Glue Job
   late final pulumi.Output<String> arn;
   /// The command of the job. Defined below.
   late final pulumi.Output<JobCommand> command;
@@ -1669,12 +1669,12 @@ class Job extends pulumi.CustomResource {
           'aws:glue/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     command = registerOutput<JobCommand>('command', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCommand.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connections = registerOutput<List<String>?>('connections');
-    defaultArguments = registerOutput<Map<String, String>?>('defaultArguments');
+    connections = registerOutput<List<String>?>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultArguments = registerOutput<Map<String, String>?>('defaultArguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String?>('description');
     executionClass = registerOutput<String?>('executionClass');
     executionProperty = registerOutput<JobExecutionProperty>('executionProperty', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobExecutionProperty.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1685,15 +1685,15 @@ class Job extends pulumi.CustomResource {
     maxCapacity = registerOutput<double>('maxCapacity');
     maxRetries = registerOutput<int?>('maxRetries');
     this.name = registerOutput<String>('name');
-    nonOverridableArguments = registerOutput<Map<String, String>?>('nonOverridableArguments');
+    nonOverridableArguments = registerOutput<Map<String, String>?>('nonOverridableArguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     notificationProperty = registerOutput<JobNotificationProperty>('notificationProperty', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobNotificationProperty.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     numberOfWorkers = registerOutput<int>('numberOfWorkers');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     securityConfiguration = registerOutput<String?>('securityConfiguration');
     sourceControlDetails = registerOutput<JobSourceControlDetails?>('sourceControlDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSourceControlDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeout = registerOutput<int>('timeout');
     workerType = registerOutput<String>('workerType');
   }
@@ -1703,11 +1703,12 @@ class Job extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Job._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1723,8 +1724,8 @@ class Job extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     command = registerOutput<JobCommand>('command', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCommand.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connections = registerOutput<List<String>?>('connections');
-    defaultArguments = registerOutput<Map<String, String>?>('defaultArguments');
+    connections = registerOutput<List<String>?>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultArguments = registerOutput<Map<String, String>?>('defaultArguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String?>('description');
     executionClass = registerOutput<String?>('executionClass');
     executionProperty = registerOutput<JobExecutionProperty>('executionProperty', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobExecutionProperty.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1735,15 +1736,51 @@ class Job extends pulumi.CustomResource {
     maxCapacity = registerOutput<double>('maxCapacity');
     maxRetries = registerOutput<int?>('maxRetries');
     this.name = registerOutput<String>('name');
-    nonOverridableArguments = registerOutput<Map<String, String>?>('nonOverridableArguments');
+    nonOverridableArguments = registerOutput<Map<String, String>?>('nonOverridableArguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     notificationProperty = registerOutput<JobNotificationProperty>('notificationProperty', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobNotificationProperty.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     numberOfWorkers = registerOutput<int>('numberOfWorkers');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     securityConfiguration = registerOutput<String?>('securityConfiguration');
     sourceControlDetails = registerOutput<JobSourceControlDetails?>('sourceControlDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSourceControlDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeout = registerOutput<int>('timeout');
+    workerType = registerOutput<String>('workerType');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'aws:glue/job:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    command = registerOutput<JobCommand>('command', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCommand.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connections = registerOutput<List<String>?>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultArguments = registerOutput<Map<String, String>?>('defaultArguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    description = registerOutput<String?>('description');
+    executionClass = registerOutput<String?>('executionClass');
+    executionProperty = registerOutput<JobExecutionProperty>('executionProperty', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobExecutionProperty.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    glueVersion = registerOutput<String>('glueVersion');
+    jobMode = registerOutput<String>('jobMode');
+    jobRunQueuingEnabled = registerOutput<bool?>('jobRunQueuingEnabled');
+    maintenanceWindow = registerOutput<String?>('maintenanceWindow');
+    maxCapacity = registerOutput<double>('maxCapacity');
+    maxRetries = registerOutput<int?>('maxRetries');
+    this.name = registerOutput<String>('name');
+    nonOverridableArguments = registerOutput<Map<String, String>?>('nonOverridableArguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    notificationProperty = registerOutput<JobNotificationProperty>('notificationProperty', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobNotificationProperty.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    numberOfWorkers = registerOutput<int>('numberOfWorkers');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    securityConfiguration = registerOutput<String?>('securityConfiguration');
+    sourceControlDetails = registerOutput<JobSourceControlDetails?>('sourceControlDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSourceControlDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeout = registerOutput<int>('timeout');
     workerType = registerOutput<String>('workerType');
   }

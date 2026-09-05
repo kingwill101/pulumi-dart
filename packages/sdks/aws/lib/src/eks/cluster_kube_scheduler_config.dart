@@ -5,7 +5,7 @@ import 'cluster_kube_scheduler_config_node_resources_fit.dart';
 
 class ClusterKubeSchedulerConfig {
   /// Configuration block for the NodeResourcesFit scheduler plugin. Detailed below.
-  final pulumi.Input<ClusterKubeSchedulerConfigNodeResourcesFit>? nodeResourcesFit;
+  final pulumi.Input<ClusterKubeSchedulerConfigNodeResourcesFit?>? nodeResourcesFit;
 
   /// Creates a new [ClusterKubeSchedulerConfig].
   /// [nodeResourcesFit] Configuration block for the NodeResourcesFit scheduler plugin. Detailed below.

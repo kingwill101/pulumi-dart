@@ -14,13 +14,13 @@ import 'prefix_list_association_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const prefixList = new aws.ec2.ManagedPrefixList("prefix_list", {
-///     name: "example",
-///     addressFamily: "IPv4",
-///     maxEntries: 5,
 ///     entries: [{
 ///         cidr: "10.0.0.0/8",
 ///         description: "Example CIDR",
 ///     }],
+///     name: "example",
+///     addressFamily: "IPv4",
+///     maxEntries: 5,
 /// });
 /// const plAssociation = new aws.networkmanager.PrefixListAssociation("pl_association", {
 ///     coreNetworkId: coreNetwork.id,
@@ -33,13 +33,13 @@ import 'prefix_list_association_state.dart';
 /// import pulumi_aws as aws
 ///
 /// prefix_list = aws.ec2.ManagedPrefixList("prefix_list",
-///     name="example",
-///     address_family="IPv4",
-///     max_entries=5,
 ///     entries=[{
 ///         "cidr": "10.0.0.0/8",
 ///         "description": "Example CIDR",
-///     }])
+///     }],
+///     name="example",
+///     address_family="IPv4",
+///     max_entries=5)
 /// pl_association = aws.networkmanager.PrefixListAssociation("pl_association",
 ///     core_network_id=core_network["id"],
 ///     prefix_list_arn=prefix_list.arn,
@@ -55,9 +55,6 @@ import 'prefix_list_association_state.dart';
 /// {
 ///     var prefixList = new Aws.Ec2.ManagedPrefixList("prefix_list", new()
 ///     {
-///         Name = "example",
-///         AddressFamily = "IPv4",
-///         MaxEntries = 5,
 ///         Entries = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.ManagedPrefixListEntryArgs
@@ -66,6 +63,9 @@ import 'prefix_list_association_state.dart';
 ///                 Description = "Example CIDR",
 ///             },
 ///         },
+///         Name = "example",
+///         AddressFamily = "IPv4",
+///         MaxEntries = 5,
 ///     });
 ///
 ///     var plAssociation = new Aws.NetworkManager.PrefixListAssociation("pl_association", new()
@@ -89,15 +89,15 @@ import 'prefix_list_association_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		prefixList, err := ec2.NewManagedPrefixList(ctx, "prefix_list", &ec2.ManagedPrefixListArgs{
-/// 			Name:          pulumi.String("example"),
-/// 			AddressFamily: pulumi.String("IPv4"),
-/// 			MaxEntries:    pulumi.Int(5),
 /// 			Entries: ec2.ManagedPrefixListEntryTypeArray{
 /// 				&ec2.ManagedPrefixListEntryTypeArgs{
 /// 					Cidr:        pulumi.String("10.0.0.0/8"),
 /// 					Description: pulumi.String("Example CIDR"),
 /// 				},
 /// 			},
+/// 			Name:          pulumi.String("example"),
+/// 			AddressFamily: pulumi.String("IPv4"),
+/// 			MaxEntries:    pulumi.Int(5),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -124,13 +124,13 @@ import 'prefix_list_association_state.dart';
 /// }
 ///
 /// resource "aws_ec2_managedprefixlist" "prefix_list" {
-///   name           = "example"
-///   address_family = "IPv4"
-///   max_entries    = 5
 ///   entries {
 ///     cidr        = "10.0.0.0/8"
 ///     description = "Example CIDR"
 ///   }
+///   name           = "example"
+///   address_family = "IPv4"
+///   max_entries    = 5
 /// }
 /// resource "aws_networkmanager_prefixlistassociation" "pl_association" {
 ///   core_network_id   = coreNetwork.id
@@ -163,13 +163,13 @@ import 'prefix_list_association_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var prefixList = new ManagedPrefixList("prefixList", ManagedPrefixListArgs.builder()
-///             .name("example")
-///             .addressFamily("IPv4")
-///             .maxEntries(5)
 ///             .entries(ManagedPrefixListEntryArgs.builder()
 ///                 .cidr("10.0.0.0/8")
 ///                 .description("Example CIDR")
 ///                 .build())
+///             .name("example")
+///             .addressFamily("IPv4")
+///             .maxEntries(5)
 ///             .build());
 ///
 ///         var plAssociation = new PrefixListAssociation("plAssociation", PrefixListAssociationArgs.builder()
@@ -187,12 +187,12 @@ import 'prefix_list_association_state.dart';
 ///     type: aws:ec2:ManagedPrefixList
 ///     name: prefix_list
 ///     properties:
-///       name: example
-///       addressFamily: IPv4
-///       maxEntries: 5
 ///       entries:
 ///         - cidr: 10.0.0.0/8
 ///           description: Example CIDR
+///       name: example
+///       addressFamily: IPv4
+///       maxEntries: 5
 ///   plAssociation:
 ///     type: aws:networkmanager:PrefixListAssociation
 ///     name: pl_association
@@ -242,7 +242,7 @@ class PrefixListAssociation extends pulumi.CustomResource {
           'aws:networkmanager/prefixListAssociation:PrefixListAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     coreNetworkId = registerOutput<String>('coreNetworkId');
     prefixListAlias = registerOutput<String>('prefixListAlias');
@@ -254,11 +254,12 @@ class PrefixListAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrefixListAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrefixListAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -272,6 +273,20 @@ class PrefixListAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    prefixListAlias = registerOutput<String>('prefixListAlias');
+    prefixListArn = registerOutput<String>('prefixListArn');
+  }
+
+  /// Creates a typed reference to an existing [PrefixListAssociation] resource.
+  PrefixListAssociation.reference(String urn)
+    : super(
+        'aws:networkmanager/prefixListAssociation:PrefixListAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     coreNetworkId = registerOutput<String>('coreNetworkId');
     prefixListAlias = registerOutput<String>('prefixListAlias');
     prefixListArn = registerOutput<String>('prefixListArn');

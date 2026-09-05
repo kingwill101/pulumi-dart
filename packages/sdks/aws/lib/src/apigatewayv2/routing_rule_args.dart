@@ -20,7 +20,7 @@ class RoutingRuleArgs {
   /// Order of rule evaluation. Priority is evaluated from the lowest value to the highest value. Rules can't have the same priority. Value must be between 1 and 1,000,000.
   final pulumi.Input<int> priority;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [RoutingRuleArgs].
   /// [actions] Configuration of resulting action based on matching routing rules condition. See below.
@@ -51,7 +51,7 @@ class RoutingRuleArgs {
       actions: pulumi.Input.fromValue(pulumi.Input.decodeList<RoutingRuleAction>(map['actions']!, (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>()))),
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<RoutingRuleCondition>(map['conditions']!, (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

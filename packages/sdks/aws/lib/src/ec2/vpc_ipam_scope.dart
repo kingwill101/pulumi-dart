@@ -193,7 +193,7 @@ import 'vpc_ipam_scope_state.dart';
 /// $ pulumi import aws:ec2/vpcIpamScope:VpcIpamScope example ipam-scope-0513c69f283d11dfb
 /// ```
 class VpcIpamScope extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the scope.
+  /// ARN of the scope.
   late final pulumi.Output<String> arn;
   /// A description for the scope you're creating.
   late final pulumi.Output<String?> description;
@@ -224,7 +224,7 @@ class VpcIpamScope extends pulumi.CustomResource {
           'aws:ec2/vpcIpamScope:VpcIpamScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -234,8 +234,8 @@ class VpcIpamScope extends pulumi.CustomResource {
     isDefault = registerOutput<bool>('isDefault');
     poolCount = registerOutput<int>('poolCount');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VpcIpamScope] resource's state with the given [name] and [id].
@@ -243,11 +243,12 @@ class VpcIpamScope extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcIpamScopeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcIpamScope._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -269,7 +270,28 @@ class VpcIpamScope extends pulumi.CustomResource {
     isDefault = registerOutput<bool>('isDefault');
     poolCount = registerOutput<int>('poolCount');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VpcIpamScope] resource.
+  VpcIpamScope.reference(String urn)
+    : super(
+        'aws:ec2/vpcIpamScope:VpcIpamScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    ipamArn = registerOutput<String>('ipamArn');
+    ipamId = registerOutput<String>('ipamId');
+    ipamScopeType = registerOutput<String>('ipamScopeType');
+    isDefault = registerOutput<bool>('isDefault');
+    poolCount = registerOutput<int>('poolCount');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

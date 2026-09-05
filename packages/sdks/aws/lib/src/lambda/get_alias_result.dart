@@ -4,62 +4,62 @@
 /// Result data returned by getAlias.
 class GetAliasResult {
   /// ARN identifying the Lambda function alias.
-  final String arn;
+  final String? arn;
   /// Description of the alias.
-  final String description;
-  final String functionName;
+  final String? description;
+  final String? functionName;
   /// Lambda function version which the alias uses.
-  final String functionVersion;
+  final String? functionVersion;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
-  final String invokeArn;
-  final String name;
-  final String region;
+  final String? invokeArn;
+  final String? name;
+  final String? region;
 
   /// Creates a new [GetAliasResult].
   /// [arn] ARN identifying the Lambda function alias.
   /// [description] Description of the alias.
-  /// [functionName] Required.
+  /// [functionName] Optional.
   /// [functionVersion] Lambda function version which the alias uses.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [invokeArn] ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
-  /// [name] Required.
-  /// [region] Required.
+  /// [name] Optional.
+  /// [region] Optional.
   const GetAliasResult({
-    required this.arn,
-    required this.description,
-    required this.functionName,
-    required this.functionVersion,
-    required this.id,
-    required this.invokeArn,
-    required this.name,
-    required this.region,
+    this.arn,
+    this.description,
+    this.functionName,
+    this.functionVersion,
+    this.id,
+    this.invokeArn,
+    this.name,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'description': description,
-      'functionName': functionName,
-      'functionVersion': functionVersion,
-      'id': id,
-      'invokeArn': invokeArn,
-      'name': name,
-      'region': region,
+      'arn': ?arn,
+      'description': ?description,
+      'functionName': ?functionName,
+      'functionVersion': ?functionVersion,
+      'id': ?id,
+      'invokeArn': ?invokeArn,
+      'name': ?name,
+      'region': ?region,
     };
   }
 
   factory GetAliasResult.fromMap(Map<String, dynamic> map) {
     return GetAliasResult(
-      arn: map['arn'] as String,
-      description: map['description'] as String,
-      functionName: map['functionName'] as String,
-      functionVersion: map['functionVersion'] as String,
-      id: map['id'] as String,
-      invokeArn: map['invokeArn'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      functionVersion: (() { final guardedValue = map['functionVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      invokeArn: (() { final guardedValue = map['invokeArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -130,7 +130,7 @@ import 'host_vpc_configuration.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeStar connections host.
+/// - `arn` (String) ARN of the CodeStar connections host.
 ///
 ///
 /// Using `pulumi import`, import CodeStar Host using the ARN. For example:
@@ -166,7 +166,7 @@ class Host extends pulumi.CustomResource {
           'aws:codestarconnections/host:Host',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
@@ -182,11 +182,12 @@ class Host extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Host._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -200,6 +201,24 @@ class Host extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    providerEndpoint = registerOutput<String>('providerEndpoint');
+    providerType = registerOutput<String>('providerType');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    vpcConfiguration = registerOutput<HostVpcConfiguration?>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Host] resource.
+  Host.reference(String urn)
+    : super(
+        'aws:codestarconnections/host:Host',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     providerEndpoint = registerOutput<String>('providerEndpoint');

@@ -3,7 +3,9 @@ import 'target_group_args.dart';
 import 'target_group_health_check.dart';
 import 'target_group_state.dart';
 import 'target_group_stickiness.dart';
+import 'target_group_target_failover.dart';
 import 'target_group_target_group_health.dart';
+import 'target_group_target_health_state.dart';
 
 /// Provides a Target Group resource for use with Load Balancer resources.
 ///
@@ -569,13 +571,13 @@ import 'target_group_target_group_health.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const tcp_example = new aws.lb.TargetGroup("tcp-example", {
+///     targetHealthStates: [{
+///         enableUnhealthyConnectionTermination: false,
+///     }],
 ///     name: "tf-example-lb-nlb-tg",
 ///     port: 25,
 ///     protocol: "TCP",
 ///     vpcId: main.id,
-///     targetHealthStates: [{
-///         enableUnhealthyConnectionTermination: false,
-///     }],
 /// });
 /// ```
 /// ```python
@@ -583,13 +585,13 @@ import 'target_group_target_group_health.dart';
 /// import pulumi_aws as aws
 ///
 /// tcp_example = aws.lb.TargetGroup("tcp-example",
+///     target_health_states=[{
+///         "enable_unhealthy_connection_termination": False,
+///     }],
 ///     name="tf-example-lb-nlb-tg",
 ///     port=25,
 ///     protocol="TCP",
-///     vpc_id=main["id"],
-///     target_health_states=[{
-///         "enable_unhealthy_connection_termination": False,
-///     }])
+///     vpc_id=main["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -601,10 +603,6 @@ import 'target_group_target_group_health.dart';
 /// {
 ///     var tcp_example = new Aws.LB.TargetGroup("tcp-example", new()
 ///     {
-///         Name = "tf-example-lb-nlb-tg",
-///         Port = 25,
-///         Protocol = "TCP",
-///         VpcId = main.Id,
 ///         TargetHealthStates = new[]
 ///         {
 ///             new Aws.LB.Inputs.TargetGroupTargetHealthStateArgs
@@ -612,6 +610,10 @@ import 'target_group_target_group_health.dart';
 ///                 EnableUnhealthyConnectionTermination = false,
 ///             },
 ///         },
+///         Name = "tf-example-lb-nlb-tg",
+///         Port = 25,
+///         Protocol = "TCP",
+///         VpcId = main.Id,
 ///     });
 ///
 /// });
@@ -627,15 +629,15 @@ import 'target_group_target_group_health.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lb.NewTargetGroup(ctx, "tcp-example", &lb.TargetGroupArgs{
-/// 			Name:     pulumi.String("tf-example-lb-nlb-tg"),
-/// 			Port:     pulumi.Int(25),
-/// 			Protocol: pulumi.String("TCP"),
-/// 			VpcId:    pulumi.Any(main.Id),
 /// 			TargetHealthStates: lb.TargetGroupTargetHealthStateArray{
 /// 				&lb.TargetGroupTargetHealthStateArgs{
 /// 					EnableUnhealthyConnectionTermination: pulumi.Bool(false),
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("tf-example-lb-nlb-tg"),
+/// 			Port:     pulumi.Int(25),
+/// 			Protocol: pulumi.String("TCP"),
+/// 			VpcId:    pulumi.Any(main.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -654,13 +656,13 @@ import 'target_group_target_group_health.dart';
 /// }
 ///
 /// resource "aws_lb_targetgroup" "tcp-example" {
+///   target_health_states {
+///     enable_unhealthy_connection_termination = false
+///   }
 ///   name     = "tf-example-lb-nlb-tg"
 ///   port     = 25
 ///   protocol = "TCP"
 ///   vpc_id   = main.id
-///   target_health_states {
-///     enable_unhealthy_connection_termination = false
-///   }
 /// }
 /// ```
 /// ```java
@@ -686,13 +688,13 @@ import 'target_group_target_group_health.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var tcp_example = new TargetGroup("tcp-example", TargetGroupArgs.builder()
+///             .targetHealthStates(TargetGroupTargetHealthStateArgs.builder()
+///                 .enableUnhealthyConnectionTermination(false)
+///                 .build())
 ///             .name("tf-example-lb-nlb-tg")
 ///             .port(25)
 ///             .protocol("TCP")
 ///             .vpcId(main.id())
-///             .targetHealthStates(TargetGroupTargetHealthStateArgs.builder()
-///                 .enableUnhealthyConnectionTermination(false)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -703,12 +705,12 @@ import 'target_group_target_group_health.dart';
 ///   tcp-example:
 ///     type: aws:lb:TargetGroup
 ///     properties:
+///       targetHealthStates:
+///         - enableUnhealthyConnectionTermination: false
 ///       name: tf-example-lb-nlb-tg
 ///       port: 25
 ///       protocol: TCP
 ///       vpcId: ${main.id}
-///       targetHealthStates:
-///         - enableUnhealthyConnectionTermination: false
 /// ```
 ///
 ///
@@ -720,10 +722,6 @@ import 'target_group_target_group_health.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const tcp_example = new aws.lb.TargetGroup("tcp-example", {
-///     name: "tf-example-lb-nlb-tg",
-///     port: 80,
-///     protocol: "TCP",
-///     vpcId: main.id,
 ///     targetGroupHealth: {
 ///         dnsFailover: {
 ///             minimumHealthyTargetsCount: "1",
@@ -734,6 +732,10 @@ import 'target_group_target_group_health.dart';
 ///             minimumHealthyTargetsPercentage: "off",
 ///         },
 ///     },
+///     name: "tf-example-lb-nlb-tg",
+///     port: 80,
+///     protocol: "TCP",
+///     vpcId: main.id,
 /// });
 /// ```
 /// ```python
@@ -741,10 +743,6 @@ import 'target_group_target_group_health.dart';
 /// import pulumi_aws as aws
 ///
 /// tcp_example = aws.lb.TargetGroup("tcp-example",
-///     name="tf-example-lb-nlb-tg",
-///     port=80,
-///     protocol="TCP",
-///     vpc_id=main["id"],
 ///     target_group_health={
 ///         "dns_failover": {
 ///             "minimum_healthy_targets_count": "1",
@@ -754,7 +752,11 @@ import 'target_group_target_group_health.dart';
 ///             "minimum_healthy_targets_count": 1,
 ///             "minimum_healthy_targets_percentage": "off",
 ///         },
-///     })
+///     },
+///     name="tf-example-lb-nlb-tg",
+///     port=80,
+///     protocol="TCP",
+///     vpc_id=main["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -766,10 +768,6 @@ import 'target_group_target_group_health.dart';
 /// {
 ///     var tcp_example = new Aws.LB.TargetGroup("tcp-example", new()
 ///     {
-///         Name = "tf-example-lb-nlb-tg",
-///         Port = 80,
-///         Protocol = "TCP",
-///         VpcId = main.Id,
 ///         TargetGroupHealth = new Aws.LB.Inputs.TargetGroupTargetGroupHealthArgs
 ///         {
 ///             DnsFailover = new Aws.LB.Inputs.TargetGroupTargetGroupHealthDnsFailoverArgs
@@ -783,6 +781,10 @@ import 'target_group_target_group_health.dart';
 ///                 MinimumHealthyTargetsPercentage = "off",
 ///             },
 ///         },
+///         Name = "tf-example-lb-nlb-tg",
+///         Port = 80,
+///         Protocol = "TCP",
+///         VpcId = main.Id,
 ///     });
 ///
 /// });
@@ -798,10 +800,6 @@ import 'target_group_target_group_health.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lb.NewTargetGroup(ctx, "tcp-example", &lb.TargetGroupArgs{
-/// 			Name:     pulumi.String("tf-example-lb-nlb-tg"),
-/// 			Port:     pulumi.Int(80),
-/// 			Protocol: pulumi.String("TCP"),
-/// 			VpcId:    pulumi.Any(main.Id),
 /// 			TargetGroupHealth: &lb.TargetGroupTargetGroupHealthArgs{
 /// 				DnsFailover: &lb.TargetGroupTargetGroupHealthDnsFailoverArgs{
 /// 					MinimumHealthyTargetsCount:      pulumi.String("1"),
@@ -812,6 +810,10 @@ import 'target_group_target_group_health.dart';
 /// 					MinimumHealthyTargetsPercentage: pulumi.String("off"),
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("tf-example-lb-nlb-tg"),
+/// 			Port:     pulumi.Int(80),
+/// 			Protocol: pulumi.String("TCP"),
+/// 			VpcId:    pulumi.Any(main.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -830,10 +832,6 @@ import 'target_group_target_group_health.dart';
 /// }
 ///
 /// resource "aws_lb_targetgroup" "tcp-example" {
-///   name     = "tf-example-lb-nlb-tg"
-///   port     = 80
-///   protocol = "TCP"
-///   vpc_id   = main.id
 ///   target_group_health = {
 ///     dns_failover = {
 ///       minimum_healthy_targets_count      = "1"
@@ -844,6 +842,10 @@ import 'target_group_target_group_health.dart';
 ///       minimum_healthy_targets_percentage = "off"
 ///     }
 ///   }
+///   name     = "tf-example-lb-nlb-tg"
+///   port     = 80
+///   protocol = "TCP"
+///   vpc_id   = main.id
 /// }
 /// ```
 /// ```java
@@ -871,10 +873,6 @@ import 'target_group_target_group_health.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var tcp_example = new TargetGroup("tcp-example", TargetGroupArgs.builder()
-///             .name("tf-example-lb-nlb-tg")
-///             .port(80)
-///             .protocol("TCP")
-///             .vpcId(main.id())
 ///             .targetGroupHealth(TargetGroupTargetGroupHealthArgs.builder()
 ///                 .dnsFailover(TargetGroupTargetGroupHealthDnsFailoverArgs.builder()
 ///                     .minimumHealthyTargetsCount("1")
@@ -885,6 +883,10 @@ import 'target_group_target_group_health.dart';
 ///                     .minimumHealthyTargetsPercentage("off")
 ///                     .build())
 ///                 .build())
+///             .name("tf-example-lb-nlb-tg")
+///             .port(80)
+///             .protocol("TCP")
+///             .vpcId(main.id())
 ///             .build());
 ///
 ///     }
@@ -895,10 +897,6 @@ import 'target_group_target_group_health.dart';
 ///   tcp-example:
 ///     type: aws:lb:TargetGroup
 ///     properties:
-///       name: tf-example-lb-nlb-tg
-///       port: 80
-///       protocol: TCP
-///       vpcId: ${main.id}
 ///       targetGroupHealth:
 ///         dnsFailover:
 ///           minimumHealthyTargetsCount: '1'
@@ -906,6 +904,10 @@ import 'target_group_target_group_health.dart';
 ///         unhealthyStateRouting:
 ///           minimumHealthyTargetsCount: '1'
 ///           minimumHealthyTargetsPercentage: off
+///       name: tf-example-lb-nlb-tg
+///       port: 80
+///       protocol: TCP
+///       vpcId: ${main.id}
 /// ```
 ///
 ///
@@ -915,7 +917,7 @@ import 'target_group_target_group_health.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the target group.
+/// - `arn` (String) ARN of the target group.
 ///
 ///
 /// Using `pulumi import`, import Target Groups using their ARN. For example:
@@ -976,18 +978,18 @@ class TargetGroup extends pulumi.CustomResource {
   /// Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `targetType` is `instance` or `ip`.
   late final pulumi.Output<int?> targetControlPort;
   /// Target failover block. Only applicable for Gateway Load Balancer target groups. See targetFailover for more information.
-  late final pulumi.Output<List<Map<String, dynamic>>> targetFailovers;
+  late final pulumi.Output<List<TargetGroupTargetFailover>> targetFailovers;
   /// Target health requirements block. See targetGroupHealth for more information.
   late final pulumi.Output<TargetGroupTargetGroupHealth> targetGroupHealth;
   /// Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See targetHealthState for more information.
-  late final pulumi.Output<List<Map<String, dynamic>>> targetHealthStates;
+  late final pulumi.Output<List<TargetGroupTargetHealthState>> targetHealthStates;
   /// Type of target that you must specify when registering targets with this target group.
   /// See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_CreateTargetGroup.html) for supported values.
   /// The default is `instance`.
   ///
   /// Note that you can't specify targets for a target group using both instance IDs and IP addresses.
   ///
-  /// If the target type is `ip`, specify IP addresses from the subnets of the virtual private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable IP addresses.
+  /// If the target type is `ip`, specify IP addresses from the subnets of the VPC for the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable IP addresses.
   ///
   /// Network Load Balancers do not support the `lambda` target type.
   ///
@@ -1008,7 +1010,7 @@ class TargetGroup extends pulumi.CustomResource {
           'aws:alb/targetGroup:TargetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     arnSuffix = registerOutput<String>('arnSuffix');
@@ -1017,7 +1019,7 @@ class TargetGroup extends pulumi.CustomResource {
     healthCheck = registerOutput<TargetGroupHealthCheck>('healthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddressType = registerOutput<String>('ipAddressType');
     lambdaMultiValueHeadersEnabled = registerOutput<bool?>('lambdaMultiValueHeadersEnabled');
-    loadBalancerArns = registerOutput<List<String>>('loadBalancerArns');
+    loadBalancerArns = registerOutput<List<String>>('loadBalancerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loadBalancingAlgorithmType = registerOutput<String>('loadBalancingAlgorithmType');
     loadBalancingAnomalyMitigation = registerOutput<String>('loadBalancingAnomalyMitigation');
     loadBalancingCrossZoneEnabled = registerOutput<String>('loadBalancingCrossZoneEnabled');
@@ -1031,12 +1033,12 @@ class TargetGroup extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     slowStart = registerOutput<int?>('slowStart');
     stickiness = registerOutput<TargetGroupStickiness>('stickiness', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupStickiness.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetControlPort = registerOutput<int?>('targetControlPort');
-    targetFailovers = registerOutput<List<Map<String, dynamic>>>('targetFailovers');
+    targetFailovers = registerOutput<List<TargetGroupTargetFailover>>('targetFailovers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetGroupTargetFailover>(guardedValue, (value) => TargetGroupTargetFailover.fromMap((value as Map).cast<String, dynamic>())); });
     targetGroupHealth = registerOutput<TargetGroupTargetGroupHealth>('targetGroupHealth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupTargetGroupHealth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    targetHealthStates = registerOutput<List<Map<String, dynamic>>>('targetHealthStates');
+    targetHealthStates = registerOutput<List<TargetGroupTargetHealthState>>('targetHealthStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetGroupTargetHealthState>(guardedValue, (value) => TargetGroupTargetHealthState.fromMap((value as Map).cast<String, dynamic>())); });
     targetType = registerOutput<String?>('targetType');
     vpcId = registerOutput<String?>('vpcId');
   }
@@ -1046,11 +1048,12 @@ class TargetGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TargetGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1071,7 +1074,7 @@ class TargetGroup extends pulumi.CustomResource {
     healthCheck = registerOutput<TargetGroupHealthCheck>('healthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddressType = registerOutput<String>('ipAddressType');
     lambdaMultiValueHeadersEnabled = registerOutput<bool?>('lambdaMultiValueHeadersEnabled');
-    loadBalancerArns = registerOutput<List<String>>('loadBalancerArns');
+    loadBalancerArns = registerOutput<List<String>>('loadBalancerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loadBalancingAlgorithmType = registerOutput<String>('loadBalancingAlgorithmType');
     loadBalancingAnomalyMitigation = registerOutput<String>('loadBalancingAnomalyMitigation');
     loadBalancingCrossZoneEnabled = registerOutput<String>('loadBalancingCrossZoneEnabled');
@@ -1085,12 +1088,52 @@ class TargetGroup extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     slowStart = registerOutput<int?>('slowStart');
     stickiness = registerOutput<TargetGroupStickiness>('stickiness', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupStickiness.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetControlPort = registerOutput<int?>('targetControlPort');
-    targetFailovers = registerOutput<List<Map<String, dynamic>>>('targetFailovers');
+    targetFailovers = registerOutput<List<TargetGroupTargetFailover>>('targetFailovers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetGroupTargetFailover>(guardedValue, (value) => TargetGroupTargetFailover.fromMap((value as Map).cast<String, dynamic>())); });
     targetGroupHealth = registerOutput<TargetGroupTargetGroupHealth>('targetGroupHealth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupTargetGroupHealth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    targetHealthStates = registerOutput<List<Map<String, dynamic>>>('targetHealthStates');
+    targetHealthStates = registerOutput<List<TargetGroupTargetHealthState>>('targetHealthStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetGroupTargetHealthState>(guardedValue, (value) => TargetGroupTargetHealthState.fromMap((value as Map).cast<String, dynamic>())); });
+    targetType = registerOutput<String?>('targetType');
+    vpcId = registerOutput<String?>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [TargetGroup] resource.
+  TargetGroup.reference(String urn)
+    : super(
+        'aws:alb/targetGroup:TargetGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    arnSuffix = registerOutput<String>('arnSuffix');
+    connectionTermination = registerOutput<bool>('connectionTermination');
+    deregistrationDelay = registerOutput<int?>('deregistrationDelay');
+    healthCheck = registerOutput<TargetGroupHealthCheck>('healthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipAddressType = registerOutput<String>('ipAddressType');
+    lambdaMultiValueHeadersEnabled = registerOutput<bool?>('lambdaMultiValueHeadersEnabled');
+    loadBalancerArns = registerOutput<List<String>>('loadBalancerArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loadBalancingAlgorithmType = registerOutput<String>('loadBalancingAlgorithmType');
+    loadBalancingAnomalyMitigation = registerOutput<String>('loadBalancingAnomalyMitigation');
+    loadBalancingCrossZoneEnabled = registerOutput<String>('loadBalancingCrossZoneEnabled');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    port = registerOutput<int?>('port');
+    preserveClientIp = registerOutput<String>('preserveClientIp');
+    protocol = registerOutput<String?>('protocol');
+    protocolVersion = registerOutput<String>('protocolVersion');
+    proxyProtocolV2 = registerOutput<bool?>('proxyProtocolV2');
+    region = registerOutput<String>('region');
+    slowStart = registerOutput<int?>('slowStart');
+    stickiness = registerOutput<TargetGroupStickiness>('stickiness', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupStickiness.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetControlPort = registerOutput<int?>('targetControlPort');
+    targetFailovers = registerOutput<List<TargetGroupTargetFailover>>('targetFailovers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetGroupTargetFailover>(guardedValue, (value) => TargetGroupTargetFailover.fromMap((value as Map).cast<String, dynamic>())); });
+    targetGroupHealth = registerOutput<TargetGroupTargetGroupHealth>('targetGroupHealth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupTargetGroupHealth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetHealthStates = registerOutput<List<TargetGroupTargetHealthState>>('targetHealthStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetGroupTargetHealthState>(guardedValue, (value) => TargetGroupTargetHealthState.fromMap((value as Map).cast<String, dynamic>())); });
     targetType = registerOutput<String?>('targetType');
     vpcId = registerOutput<String?>('vpcId');
   }

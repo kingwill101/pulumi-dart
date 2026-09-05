@@ -6,9 +6,9 @@ import 'ingestion_destination_destination_configuration_audit_log_destination_s3
 
 class IngestionDestinationDestinationConfigurationAuditLogDestination {
   /// Amazon Data Firehose delivery stream destination. See `destination_configuration.audit_log.destination.firehose_stream` Block below.
-  final pulumi.Input<IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream>? firehoseStream;
+  final pulumi.Input<IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream?>? firehoseStream;
   /// Amazon S3 bucket destination. See `destination_configuration.audit_log.destination.s3_bucket` Block below.
-  final pulumi.Input<IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket>? s3Bucket;
+  final pulumi.Input<IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket?>? s3Bucket;
 
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLogDestination].
   /// [firehoseStream] Amazon Data Firehose delivery stream destination. See `destination_configuration.audit_log.destination.firehose_stream` Block below.

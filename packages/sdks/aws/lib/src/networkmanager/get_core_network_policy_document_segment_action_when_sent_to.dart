@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo {
   /// A list of strings. The list of segments that the `send-via` `action` uses.
-  final pulumi.Input<List<String>>? segments;
+  final pulumi.Input<List<String>?>? segments;
 
   /// Creates a new [GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo].
   /// [segments] A list of strings. The list of segments that the `send-via` `action` uses.

@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReceiptRuleSnsAction {
-  /// The encoding to use for the email within the Amazon SNS notification. Default value is `UTF-8`.
-  final pulumi.Input<String>? encoding;
-  /// The position of the action in the receipt rule
+  /// Encoding to use for the email within the Amazon SNS notification. Default value is `UTF-8`.
+  final pulumi.Input<String?>? encoding;
+  /// Position of the action in the receipt rule.
   final pulumi.Input<int> position;
-  /// The ARN of an SNS topic to notify
+  /// ARN of an SNS topic to notify.
   final pulumi.Input<String> topicArn;
 
   /// Creates a new [ReceiptRuleSnsAction].
-  /// [encoding] The encoding to use for the email within the Amazon SNS notification. Default value is `UTF-8`.
-  /// [position] The position of the action in the receipt rule
-  /// [topicArn] The ARN of an SNS topic to notify
+  /// [encoding] Encoding to use for the email within the Amazon SNS notification. Default value is `UTF-8`.
+  /// [position] Position of the action in the receipt rule.
+  /// [topicArn] ARN of an SNS topic to notify.
   const ReceiptRuleSnsAction({
     this.encoding,
     required this.position,
@@ -31,7 +31,7 @@ class ReceiptRuleSnsAction {
   factory ReceiptRuleSnsAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleSnsAction(
       encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      position: pulumi.Input.fromValue(map['position'] as int),
+      position: pulumi.Input.fromValue((map['position'] as num).toInt()),
       topicArn: pulumi.Input.fromValue(map['topicArn'] as String),
     );
   }

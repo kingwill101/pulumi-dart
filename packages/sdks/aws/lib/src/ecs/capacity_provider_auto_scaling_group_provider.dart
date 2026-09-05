@@ -7,11 +7,11 @@ class CapacityProviderAutoScalingGroupProvider {
   /// ARN of the associated auto scaling group.
   final pulumi.Input<String> autoScalingGroupArn;
   /// Enables or disables a graceful shutdown of instances without disturbing workloads. Valid values are `ENABLED` and `DISABLED`. The default value is `ENABLED` when a capacity provider is created.
-  final pulumi.Input<String>? managedDraining;
+  final pulumi.Input<String?>? managedDraining;
   /// Configuration block defining the parameters of the auto scaling. Detailed below.
-  final pulumi.Input<CapacityProviderAutoScalingGroupProviderManagedScaling>? managedScaling;
+  final pulumi.Input<CapacityProviderAutoScalingGroupProviderManagedScaling?>? managedScaling;
   /// Enables or disables container-aware termination of instances in the auto scaling group when scale-in happens. Valid values are `ENABLED` and `DISABLED`.
-  final pulumi.Input<String>? managedTerminationProtection;
+  final pulumi.Input<String?>? managedTerminationProtection;
 
   /// Creates a new [CapacityProviderAutoScalingGroupProvider].
   /// [autoScalingGroupArn] ARN of the associated auto scaling group.

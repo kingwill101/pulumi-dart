@@ -277,11 +277,8 @@ import 'analyzer_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.accessanalyzer.Analyzer("example", {
-///     analyzerName: "example",
-///     type: "ORGANIZATION_UNUSED_ACCESS",
 ///     configuration: {
 ///         unusedAccess: {
-///             unusedAccessAge: 180,
 ///             analysisRule: {
 ///                 exclusions: [
 ///                     {
@@ -302,8 +299,11 @@ import 'analyzer_state.dart';
 ///                     },
 ///                 ],
 ///             },
+///             unusedAccessAge: 180,
 ///         },
 ///     },
+///     analyzerName: "example",
+///     type: "ORGANIZATION_UNUSED_ACCESS",
 /// });
 /// ```
 /// ```python
@@ -311,11 +311,8 @@ import 'analyzer_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.accessanalyzer.Analyzer("example",
-///     analyzer_name="example",
-///     type="ORGANIZATION_UNUSED_ACCESS",
 ///     configuration={
 ///         "unused_access": {
-///             "unused_access_age": 180,
 ///             "analysis_rule": {
 ///                 "exclusions": [
 ///                     {
@@ -336,8 +333,11 @@ import 'analyzer_state.dart';
 ///                     },
 ///                 ],
 ///             },
+///             "unused_access_age": 180,
 ///         },
-///     })
+///     },
+///     analyzer_name="example",
+///     type="ORGANIZATION_UNUSED_ACCESS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -349,13 +349,10 @@ import 'analyzer_state.dart';
 /// {
 ///     var example = new Aws.AccessAnalyzer.Analyzer("example", new()
 ///     {
-///         AnalyzerName = "example",
-///         Type = "ORGANIZATION_UNUSED_ACCESS",
 ///         Configuration = new Aws.AccessAnalyzer.Inputs.AnalyzerConfigurationArgs
 ///         {
 ///             UnusedAccess = new Aws.AccessAnalyzer.Inputs.AnalyzerConfigurationUnusedAccessArgs
 ///             {
-///                 UnusedAccessAge = 180,
 ///                 AnalysisRule = new Aws.AccessAnalyzer.Inputs.AnalyzerConfigurationUnusedAccessAnalysisRuleArgs
 ///                 {
 ///                     Exclusions = new[]
@@ -384,8 +381,11 @@ import 'analyzer_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 UnusedAccessAge = 180,
 ///             },
 ///         },
+///         AnalyzerName = "example",
+///         Type = "ORGANIZATION_UNUSED_ACCESS",
 ///     });
 ///
 /// });
@@ -401,11 +401,8 @@ import 'analyzer_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := accessanalyzer.NewAnalyzer(ctx, "example", &accessanalyzer.AnalyzerArgs{
-/// 			AnalyzerName: pulumi.String("example"),
-/// 			Type:         pulumi.String("ORGANIZATION_UNUSED_ACCESS"),
 /// 			Configuration: &accessanalyzer.AnalyzerConfigurationArgs{
 /// 				UnusedAccess: &accessanalyzer.AnalyzerConfigurationUnusedAccessArgs{
-/// 					UnusedAccessAge: pulumi.Int(180),
 /// 					AnalysisRule: &accessanalyzer.AnalyzerConfigurationUnusedAccessAnalysisRuleArgs{
 /// 						Exclusions: accessanalyzer.AnalyzerConfigurationUnusedAccessAnalysisRuleExclusionArray{
 /// 							&accessanalyzer.AnalyzerConfigurationUnusedAccessAnalysisRuleExclusionArgs{
@@ -426,8 +423,11 @@ import 'analyzer_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					UnusedAccessAge: pulumi.Int(180),
 /// 				},
 /// 			},
+/// 			AnalyzerName: pulumi.String("example"),
+/// 			Type:         pulumi.String("ORGANIZATION_UNUSED_ACCESS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -446,11 +446,8 @@ import 'analyzer_state.dart';
 /// }
 ///
 /// resource "aws_accessanalyzer_analyzer" "example" {
-///   analyzer_name = "example"
-///   type          = "ORGANIZATION_UNUSED_ACCESS"
 ///   configuration = {
 ///     unused_access = {
-///       unused_access_age = 180
 ///       analysis_rule = {
 ///         exclusions = [{
 ///           "accountIds" = ["123456789012", "234567890123"]
@@ -462,8 +459,11 @@ import 'analyzer_state.dart';
 ///           }]
 ///         }]
 ///       }
+///       unused_access_age = 180
 ///     }
 ///   }
+///   analyzer_name = "example"
+///   type          = "ORGANIZATION_UNUSED_ACCESS"
 /// }
 /// ```
 /// ```java
@@ -492,11 +492,8 @@ import 'analyzer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Analyzer("example", AnalyzerArgs.builder()
-///             .analyzerName("example")
-///             .type("ORGANIZATION_UNUSED_ACCESS")
 ///             .configuration(AnalyzerConfigurationArgs.builder()
 ///                 .unusedAccess(AnalyzerConfigurationUnusedAccessArgs.builder()
-///                     .unusedAccessAge(180)
 ///                     .analysisRule(AnalyzerConfigurationUnusedAccessAnalysisRuleArgs.builder()
 ///                         .exclusions(
 ///                             AnalyzerConfigurationUnusedAccessAnalysisRuleExclusionArgs.builder()
@@ -510,8 +507,11 @@ import 'analyzer_state.dart';
 ///                                     Map.of("key2", "value2"))
 ///                                 .build())
 ///                         .build())
+///                     .unusedAccessAge(180)
 ///                     .build())
 ///                 .build())
+///             .analyzerName("example")
+///             .type("ORGANIZATION_UNUSED_ACCESS")
 ///             .build());
 ///
 ///     }
@@ -522,11 +522,8 @@ import 'analyzer_state.dart';
 ///   example:
 ///     type: aws:accessanalyzer:Analyzer
 ///     properties:
-///       analyzerName: example
-///       type: ORGANIZATION_UNUSED_ACCESS
 ///       configuration:
 ///         unusedAccess:
-///           unusedAccessAge: 180
 ///           analysisRule:
 ///             exclusions:
 ///               - accountIds:
@@ -535,6 +532,9 @@ import 'analyzer_state.dart';
 ///               - resourceTags:
 ///                   - key1: value1
 ///                   - key2: value2
+///           unusedAccessAge: 180
+///       analyzerName: example
+///       type: ORGANIZATION_UNUSED_ACCESS
 /// ```
 ///
 ///
@@ -546,8 +546,6 @@ import 'analyzer_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.accessanalyzer.Analyzer("test", {
-///     analyzerName: "example",
-///     type: "ORGANIZATION_INTERNAL_ACCESS",
 ///     configuration: {
 ///         internalAccess: {
 ///             analysisRule: {
@@ -561,6 +559,8 @@ import 'analyzer_state.dart';
 ///             },
 ///         },
 ///     },
+///     analyzerName: "example",
+///     type: "ORGANIZATION_INTERNAL_ACCESS",
 /// });
 /// ```
 /// ```python
@@ -568,8 +568,6 @@ import 'analyzer_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.accessanalyzer.Analyzer("test",
-///     analyzer_name="example",
-///     type="ORGANIZATION_INTERNAL_ACCESS",
 ///     configuration={
 ///         "internal_access": {
 ///             "analysis_rule": {
@@ -582,7 +580,9 @@ import 'analyzer_state.dart';
 ///                 }],
 ///             },
 ///         },
-///     })
+///     },
+///     analyzer_name="example",
+///     type="ORGANIZATION_INTERNAL_ACCESS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -594,8 +594,6 @@ import 'analyzer_state.dart';
 /// {
 ///     var test = new Aws.AccessAnalyzer.Analyzer("test", new()
 ///     {
-///         AnalyzerName = "example",
-///         Type = "ORGANIZATION_INTERNAL_ACCESS",
 ///         Configuration = new Aws.AccessAnalyzer.Inputs.AnalyzerConfigurationArgs
 ///         {
 ///             InternalAccess = new Aws.AccessAnalyzer.Inputs.AnalyzerConfigurationInternalAccessArgs
@@ -617,6 +615,8 @@ import 'analyzer_state.dart';
 ///                 },
 ///             },
 ///         },
+///         AnalyzerName = "example",
+///         Type = "ORGANIZATION_INTERNAL_ACCESS",
 ///     });
 ///
 /// });
@@ -632,8 +632,6 @@ import 'analyzer_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := accessanalyzer.NewAnalyzer(ctx, "test", &accessanalyzer.AnalyzerArgs{
-/// 			AnalyzerName: pulumi.String("example"),
-/// 			Type:         pulumi.String("ORGANIZATION_INTERNAL_ACCESS"),
 /// 			Configuration: &accessanalyzer.AnalyzerConfigurationArgs{
 /// 				InternalAccess: &accessanalyzer.AnalyzerConfigurationInternalAccessArgs{
 /// 					AnalysisRule: &accessanalyzer.AnalyzerConfigurationInternalAccessAnalysisRuleArgs{
@@ -649,6 +647,8 @@ import 'analyzer_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			AnalyzerName: pulumi.String("example"),
+/// 			Type:         pulumi.String("ORGANIZATION_INTERNAL_ACCESS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -667,8 +667,6 @@ import 'analyzer_state.dart';
 /// }
 ///
 /// resource "aws_accessanalyzer_analyzer" "test" {
-///   analyzer_name = "example"
-///   type          = "ORGANIZATION_INTERNAL_ACCESS"
 ///   configuration = {
 ///     internal_access = {
 ///       analysis_rule = {
@@ -678,6 +676,8 @@ import 'analyzer_state.dart';
 ///       }
 ///     }
 ///   }
+///   analyzer_name = "example"
+///   type          = "ORGANIZATION_INTERNAL_ACCESS"
 /// }
 /// ```
 /// ```java
@@ -706,8 +706,6 @@ import 'analyzer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Analyzer("test", AnalyzerArgs.builder()
-///             .analyzerName("example")
-///             .type("ORGANIZATION_INTERNAL_ACCESS")
 ///             .configuration(AnalyzerConfigurationArgs.builder()
 ///                 .internalAccess(AnalyzerConfigurationInternalAccessArgs.builder()
 ///                     .analysisRule(AnalyzerConfigurationInternalAccessAnalysisRuleArgs.builder()
@@ -720,6 +718,8 @@ import 'analyzer_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .analyzerName("example")
+///             .type("ORGANIZATION_INTERNAL_ACCESS")
 ///             .build());
 ///
 ///     }
@@ -730,8 +730,6 @@ import 'analyzer_state.dart';
 ///   test:
 ///     type: aws:accessanalyzer:Analyzer
 ///     properties:
-///       analyzerName: example
-///       type: ORGANIZATION_INTERNAL_ACCESS
 ///       configuration:
 ///         internalAccess:
 ///           analysisRule:
@@ -740,6 +738,8 @@ import 'analyzer_state.dart';
 ///                   - AWS::S3::Bucket
 ///                   - AWS::RDS::DBSnapshot
 ///                   - AWS::DynamoDB::Table
+///       analyzerName: example
+///       type: ORGANIZATION_INTERNAL_ACCESS
 /// ```
 ///
 ///
@@ -751,8 +751,6 @@ import 'analyzer_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.accessanalyzer.Analyzer("test", {
-///     analyzerName: "example",
-///     type: "ORGANIZATION_INTERNAL_ACCESS",
 ///     configuration: {
 ///         internalAccess: {
 ///             analysisRule: {
@@ -763,6 +761,8 @@ import 'analyzer_state.dart';
 ///             },
 ///         },
 ///     },
+///     analyzerName: "example",
+///     type: "ORGANIZATION_INTERNAL_ACCESS",
 /// });
 /// ```
 /// ```python
@@ -770,8 +770,6 @@ import 'analyzer_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.accessanalyzer.Analyzer("test",
-///     analyzer_name="example",
-///     type="ORGANIZATION_INTERNAL_ACCESS",
 ///     configuration={
 ///         "internal_access": {
 ///             "analysis_rule": {
@@ -781,7 +779,9 @@ import 'analyzer_state.dart';
 ///                 }],
 ///             },
 ///         },
-///     })
+///     },
+///     analyzer_name="example",
+///     type="ORGANIZATION_INTERNAL_ACCESS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -793,8 +793,6 @@ import 'analyzer_state.dart';
 /// {
 ///     var test = new Aws.AccessAnalyzer.Analyzer("test", new()
 ///     {
-///         AnalyzerName = "example",
-///         Type = "ORGANIZATION_INTERNAL_ACCESS",
 ///         Configuration = new Aws.AccessAnalyzer.Inputs.AnalyzerConfigurationArgs
 ///         {
 ///             InternalAccess = new Aws.AccessAnalyzer.Inputs.AnalyzerConfigurationInternalAccessArgs
@@ -818,6 +816,8 @@ import 'analyzer_state.dart';
 ///                 },
 ///             },
 ///         },
+///         AnalyzerName = "example",
+///         Type = "ORGANIZATION_INTERNAL_ACCESS",
 ///     });
 ///
 /// });
@@ -833,8 +833,6 @@ import 'analyzer_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := accessanalyzer.NewAnalyzer(ctx, "test", &accessanalyzer.AnalyzerArgs{
-/// 			AnalyzerName: pulumi.String("example"),
-/// 			Type:         pulumi.String("ORGANIZATION_INTERNAL_ACCESS"),
 /// 			Configuration: &accessanalyzer.AnalyzerConfigurationArgs{
 /// 				InternalAccess: &accessanalyzer.AnalyzerConfigurationInternalAccessArgs{
 /// 					AnalysisRule: &accessanalyzer.AnalyzerConfigurationInternalAccessAnalysisRuleArgs{
@@ -851,6 +849,8 @@ import 'analyzer_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			AnalyzerName: pulumi.String("example"),
+/// 			Type:         pulumi.String("ORGANIZATION_INTERNAL_ACCESS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -869,8 +869,6 @@ import 'analyzer_state.dart';
 /// }
 ///
 /// resource "aws_accessanalyzer_analyzer" "test" {
-///   analyzer_name = "example"
-///   type          = "ORGANIZATION_INTERNAL_ACCESS"
 ///   configuration = {
 ///     internal_access = {
 ///       analysis_rule = {
@@ -881,6 +879,8 @@ import 'analyzer_state.dart';
 ///       }
 ///     }
 ///   }
+///   analyzer_name = "example"
+///   type          = "ORGANIZATION_INTERNAL_ACCESS"
 /// }
 /// ```
 /// ```java
@@ -909,8 +909,6 @@ import 'analyzer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Analyzer("test", AnalyzerArgs.builder()
-///             .analyzerName("example")
-///             .type("ORGANIZATION_INTERNAL_ACCESS")
 ///             .configuration(AnalyzerConfigurationArgs.builder()
 ///                 .internalAccess(AnalyzerConfigurationInternalAccessArgs.builder()
 ///                     .analysisRule(AnalyzerConfigurationInternalAccessAnalysisRuleArgs.builder()
@@ -921,6 +919,8 @@ import 'analyzer_state.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .analyzerName("example")
+///             .type("ORGANIZATION_INTERNAL_ACCESS")
 ///             .build());
 ///
 ///     }
@@ -931,8 +931,6 @@ import 'analyzer_state.dart';
 ///   test:
 ///     type: aws:accessanalyzer:Analyzer
 ///     properties:
-///       analyzerName: example
-///       type: ORGANIZATION_INTERNAL_ACCESS
 ///       configuration:
 ///         internalAccess:
 ///           analysisRule:
@@ -941,6 +939,8 @@ import 'analyzer_state.dart';
 ///                   - '123456789012'
 ///                 resourceArns:
 ///                   - arn:aws:s3:::my-example-bucket
+///       analyzerName: example
+///       type: ORGANIZATION_INTERNAL_ACCESS
 /// ```
 ///
 ///
@@ -981,14 +981,14 @@ class Analyzer extends pulumi.CustomResource {
           'aws:accessanalyzer/analyzer:Analyzer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     analyzerName = registerOutput<String>('analyzerName');
     arn = registerOutput<String>('arn');
     configuration = registerOutput<AnalyzerConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyzerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
   }
 
@@ -997,11 +997,12 @@ class Analyzer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnalyzerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Analyzer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1019,8 +1020,26 @@ class Analyzer extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<AnalyzerConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyzerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [Analyzer] resource.
+  Analyzer.reference(String urn)
+    : super(
+        'aws:accessanalyzer/analyzer:Analyzer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    analyzerName = registerOutput<String>('analyzerName');
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<AnalyzerConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyzerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
   }
 }

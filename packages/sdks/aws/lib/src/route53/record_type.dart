@@ -1,4 +1,6 @@
-enum RecordType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum RecordType implements pulumi.PulumiEnum<String> {
   valueA("A"),
   valueAAAA("AAAA"),
   valueCNAME("CNAME"),
@@ -13,6 +15,7 @@ enum RecordType {
   valueTXT("TXT");
 
   const RecordType(this.wireValue);
+  @override
   final String wireValue;
 
   static RecordType fromValue(String value) {

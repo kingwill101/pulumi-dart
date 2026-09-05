@@ -6,13 +6,13 @@ import 'parameter_group_parameter.dart';
 /// Input properties used for looking up and filtering ParameterGroup resources.
 class ParameterGroupState {
   /// A description of the parameter group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the parameter group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parameters of the parameter group.
-  final pulumi.Input<List<ParameterGroupParameter>>? parameters;
+  final pulumi.Input<List<ParameterGroupParameter>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ParameterGroupState].
   /// [description] A description of the parameter group.

@@ -179,7 +179,7 @@ class HostedConnection extends pulumi.CustomResource {
           'aws:directconnect/hostedConnection:HostedConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsDevice = registerOutput<String>('awsDevice');
     bandwidth = registerOutput<String>('bandwidth');
@@ -204,11 +204,12 @@ class HostedConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostedConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostedConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,6 +238,33 @@ class HostedConnection extends pulumi.CustomResource {
     providerName = registerOutput<String>('providerName');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+    vlan = registerOutput<int>('vlan');
+  }
+
+  /// Creates a typed reference to an existing [HostedConnection] resource.
+  HostedConnection.reference(String urn)
+    : super(
+        'aws:directconnect/hostedConnection:HostedConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    awsDevice = registerOutput<String>('awsDevice');
+    bandwidth = registerOutput<String>('bandwidth');
+    connectionId = registerOutput<String>('connectionId');
+    connectionRegion = registerOutput<String>('connectionRegion');
+    hasLogicalRedundancy = registerOutput<String>('hasLogicalRedundancy');
+    jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
+    lagId = registerOutput<String>('lagId');
+    loaIssueTime = registerOutput<String>('loaIssueTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    ownerAccountId = registerOutput<String>('ownerAccountId');
+    partnerName = registerOutput<String>('partnerName');
+    providerName = registerOutput<String>('providerName');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
     vlan = registerOutput<int>('vlan');
   }
 }

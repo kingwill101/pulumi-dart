@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_s3_control_get_access_points_get_access_points_args_doc}
 class GetAccessPointsArgs {
   /// AWS account ID for the account that owns the specified access points. If omitted, defaults to the caller's account ID.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Name of the bucket associated with the access points.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Unique identifier for the access points data source.
-  final pulumi.Input<String>? dataSourceId;
+  final pulumi.Input<String?>? dataSourceId;
   /// Type of the data source that the access points are attached to. To return all access points set this argument to `ALL`.
-  final pulumi.Input<String>? dataSourceType;
+  final pulumi.Input<String?>? dataSourceType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetAccessPointsArgs].
   /// [accountId] AWS account ID for the account that owns the specified access points. If omitted, defaults to the caller's account ID.

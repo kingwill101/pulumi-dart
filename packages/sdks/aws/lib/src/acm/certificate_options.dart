@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateOptions {
   /// Whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.
-  final pulumi.Input<String>? certificateTransparencyLoggingPreference;
+  final pulumi.Input<String?>? certificateTransparencyLoggingPreference;
   /// Whether the certificate can be exported. Valid values are `ENABLED` or `DISABLED` (default). **Note** Issuing an exportable certificate is subject to additional charges. See [AWS Certificate Manager pricing](https://aws.amazon.com/certificate-manager/pricing/) for more details.
-  final pulumi.Input<String>? export;
+  final pulumi.Input<String?>? export;
 
   /// Creates a new [CertificateOptions].
   /// [certificateTransparencyLoggingPreference] Whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.

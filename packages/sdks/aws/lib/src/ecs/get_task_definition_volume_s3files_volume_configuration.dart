@@ -38,7 +38,7 @@ class GetTaskDefinitionVolumeS3filesVolumeConfiguration {
       accessPointArn: pulumi.Input.fromValue(map['accessPointArn'] as String),
       fileSystemArn: pulumi.Input.fromValue(map['fileSystemArn'] as String),
       rootDirectory: pulumi.Input.fromValue(map['rootDirectory'] as String),
-      transitEncryptionPort: pulumi.Input.fromValue(map['transitEncryptionPort'] as int),
+      transitEncryptionPort: pulumi.Input.fromValue((map['transitEncryptionPort'] as num).toInt()),
     );
   }
 }

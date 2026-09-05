@@ -6,7 +6,7 @@ import 'policy_target_tracking_scaling_policy_configuration_customized_metric_sp
 class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat {
   final pulumi.Input<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric> metric;
   final pulumi.Input<String> stat;
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
 
   /// Creates a new [PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStat].
   /// [metric] Required.

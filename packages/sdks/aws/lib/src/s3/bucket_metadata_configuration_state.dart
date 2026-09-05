@@ -7,16 +7,16 @@ import 'bucket_metadata_configuration_timeouts.dart';
 /// Input properties used for looking up and filtering BucketMetadataConfiguration resources.
 class BucketMetadataConfigurationState {
   /// General purpose bucket that you want to create the metadata configuration for.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Account ID of the expected bucket owner.
-  final pulumi.Input<String>? expectedBucketOwner;
+  final pulumi.Input<String?>? expectedBucketOwner;
   /// Metadata configuration. See `metadataConfiguration` Block for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<BucketMetadataConfigurationMetadataConfiguration>? metadataConfiguration;
+  final pulumi.Input<BucketMetadataConfigurationMetadataConfiguration?>? metadataConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<BucketMetadataConfigurationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<BucketMetadataConfigurationTimeouts?>? timeouts;
 
   /// Creates a new [BucketMetadataConfigurationState].
   /// [bucket] General purpose bucket that you want to create the metadata configuration for.

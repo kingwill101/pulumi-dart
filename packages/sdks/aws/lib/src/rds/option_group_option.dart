@@ -5,17 +5,17 @@ import 'option_group_option_option_setting.dart';
 
 class OptionGroupOption {
   /// List of DB Security Groups for which the option is enabled.
-  final pulumi.Input<List<String>>? dbSecurityGroupMemberships;
+  final pulumi.Input<List<String>?>? dbSecurityGroupMemberships;
   /// Name of the option (e.g., MEMCACHED).
   final pulumi.Input<String> optionName;
   /// The option settings to apply. See `optionSettings` Block below for more details.
-  final pulumi.Input<List<OptionGroupOptionOptionSetting>>? optionSettings;
+  final pulumi.Input<List<OptionGroupOptionOptionSetting>?>? optionSettings;
   /// Port number when connecting to the option (e.g., 11211). Leaving out or removing `port` from your configuration does not remove or clear a port from the option in AWS. AWS may assign a default port. Not including `port` in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any port changes.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Version of the option (e.g., 13.1.0.0). Leaving out or removing `version` from your configuration does not remove or clear a version from the option in AWS. AWS may assign a default version. Not including `version` in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any version changes.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// List of VPC Security Groups for which the option is enabled.
-  final pulumi.Input<List<String>>? vpcSecurityGroupMemberships;
+  final pulumi.Input<List<String>?>? vpcSecurityGroupMemberships;
 
   /// Creates a new [OptionGroupOption].
   /// [dbSecurityGroupMemberships] List of DB Security Groups for which the option is enabled.
@@ -49,7 +49,7 @@ class OptionGroupOption {
       dbSecurityGroupMemberships: (() { final guardedValue = map['dbSecurityGroupMemberships']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       optionName: pulumi.Input.fromValue(map['optionName'] as String),
       optionSettings: (() { final guardedValue = map['optionSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OptionGroupOptionOptionSetting>(guardedValue, (value) => OptionGroupOptionOptionSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcSecurityGroupMemberships: (() { final guardedValue = map['vpcSecurityGroupMemberships']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

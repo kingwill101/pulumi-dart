@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LaunchConfigurationEbsBlockDevice {
   /// Whether the volume should be destroyed
   /// on instance termination (Default: `true`).
-  final pulumi.Input<bool>? deleteOnTermination;
+  final pulumi.Input<bool?>? deleteOnTermination;
   /// The name of the device to mount.
   final pulumi.Input<String> deviceName;
   /// Whether the volume should be encrypted or not. Defaults to `false`.
-  final pulumi.Input<bool>? encrypted;
+  final pulumi.Input<bool?>? encrypted;
   /// The amount of provisioned
   /// [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
   /// This must be set with a `volumeType` of `"io1"`.
-  final pulumi.Input<int>? iops;
+  final pulumi.Input<int?>? iops;
   /// Whether the device in the block device mapping of the AMI is suppressed.
-  final pulumi.Input<bool>? noDevice;
+  final pulumi.Input<bool?>? noDevice;
   /// The Snapshot ID to mount.
-  final pulumi.Input<String>? snapshotId;
+  final pulumi.Input<String?>? snapshotId;
   /// The throughput (MiBps) to provision for a `gp3` volume.
-  final pulumi.Input<int>? throughput;
+  final pulumi.Input<int?>? throughput;
   /// The size of the volume in gigabytes.
-  final pulumi.Input<int>? volumeSize;
+  final pulumi.Input<int?>? volumeSize;
   /// The type of volume. Can be `standard`, `gp2`, `gp3`, `st1`, `sc1` or `io1`.
-  final pulumi.Input<String>? volumeType;
+  final pulumi.Input<String?>? volumeType;
 
   /// Creates a new [LaunchConfigurationEbsBlockDevice].
   /// [deleteOnTermination] Whether the volume should be destroyed
@@ -66,11 +66,11 @@ class LaunchConfigurationEbsBlockDevice {
       deleteOnTermination: (() { final guardedValue = map['deleteOnTermination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       encrypted: (() { final guardedValue = map['encrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       noDevice: (() { final guardedValue = map['noDevice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       snapshotId: (() { final guardedValue = map['snapshotId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      volumeSize: (() { final guardedValue = map['volumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      volumeSize: (() { final guardedValue = map['volumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       volumeType: (() { final guardedValue = map['volumeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

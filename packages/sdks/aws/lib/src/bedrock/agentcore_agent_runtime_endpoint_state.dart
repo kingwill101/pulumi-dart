@@ -6,26 +6,26 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 /// Input properties used for looking up and filtering AgentcoreAgentRuntimeEndpoint resources.
 class AgentcoreAgentRuntimeEndpointState {
   /// ARN of the associated Agent Runtime.
-  final pulumi.Input<String>? agentRuntimeArn;
+  final pulumi.Input<String?>? agentRuntimeArn;
   /// ARN of the Agent Runtime Endpoint.
-  final pulumi.Input<String>? agentRuntimeEndpointArn;
+  final pulumi.Input<String?>? agentRuntimeEndpointArn;
   /// ID of the agent runtime this endpoint belongs to.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? agentRuntimeId;
+  final pulumi.Input<String?>? agentRuntimeId;
   /// Version of the agent runtime to use for this endpoint.
-  final pulumi.Input<String>? agentRuntimeVersion;
+  final pulumi.Input<String?>? agentRuntimeVersion;
   /// Description of the agent runtime endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the agent runtime endpoint.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AgentcoreAgentRuntimeEndpointTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AgentcoreAgentRuntimeEndpointTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreAgentRuntimeEndpointState].
   /// [agentRuntimeArn] ARN of the associated Agent Runtime.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironmentNetworkConfigurationNetworkModeConfig {
   /// Whether to require an S3 endpoint for the service in the VPC.
-  final pulumi.Input<bool>? requireServiceS3Endpoint;
+  final pulumi.Input<bool?>? requireServiceS3Endpoint;
   /// Security groups for the VPC.
   final pulumi.Input<List<String>> securityGroups;
   /// Subnets for the VPC.

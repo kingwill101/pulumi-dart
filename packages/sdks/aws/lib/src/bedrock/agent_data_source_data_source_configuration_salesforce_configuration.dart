@@ -5,8 +5,8 @@ import 'agent_data_source_data_source_configuration_salesforce_configuration_cra
 import 'agent_data_source_data_source_configuration_salesforce_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationSalesforceConfiguration {
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration>? crawlerConfiguration;
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationSalesforceConfigurationSourceConfiguration>? sourceConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration?>? crawlerConfiguration;
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationSalesforceConfigurationSourceConfiguration?>? sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSalesforceConfiguration].
   /// [crawlerConfiguration] Optional.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TelemetryRuleRuleDestinationConfigurationLogDeliveryParameters {
   /// List of log types that the source is sending.
-  final pulumi.Input<List<String>>? logTypes;
+  final pulumi.Input<List<String>?>? logTypes;
 
   /// Creates a new [TelemetryRuleRuleDestinationConfigurationLogDeliveryParameters].
   /// [logTypes] List of log types that the source is sending.

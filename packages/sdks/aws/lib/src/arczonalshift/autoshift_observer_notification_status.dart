@@ -139,7 +139,7 @@ class AutoshiftObserverNotificationStatus extends pulumi.CustomResource {
           'aws:arczonalshift/autoshiftObserverNotificationStatus:AutoshiftObserverNotificationStatus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
@@ -150,11 +150,12 @@ class AutoshiftObserverNotificationStatus extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutoshiftObserverNotificationStatusState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutoshiftObserverNotificationStatus._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -168,6 +169,19 @@ class AutoshiftObserverNotificationStatus extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [AutoshiftObserverNotificationStatus] resource.
+  AutoshiftObserverNotificationStatus.reference(String urn)
+    : super(
+        'aws:arczonalshift/autoshiftObserverNotificationStatus:AutoshiftObserverNotificationStatus',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
   }

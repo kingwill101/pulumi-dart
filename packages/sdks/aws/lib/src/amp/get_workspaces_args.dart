@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_amp_get_workspaces_get_workspaces_args_doc}
 class GetWorkspacesArgs {
   /// Limits results to workspaces with aliases that begin with this value.
-  final pulumi.Input<String>? aliasPrefix;
+  final pulumi.Input<String?>? aliasPrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetWorkspacesArgs].
   /// [aliasPrefix] Limits results to workspaces with aliases that begin with this value.

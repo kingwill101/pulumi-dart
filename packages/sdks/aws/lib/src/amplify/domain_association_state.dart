@@ -7,23 +7,23 @@ import 'domain_association_sub_domain.dart';
 /// Input properties used for looking up and filtering DomainAssociation resources.
 class DomainAssociationState {
   /// Unique ID for an Amplify app.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// ARN for the domain association.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The type of SSL/TLS certificate to use for your custom domain. If you don't specify a certificate type, Amplify uses the default certificate that it provisions and manages for you.
-  final pulumi.Input<DomainAssociationCertificateSettings>? certificateSettings;
+  final pulumi.Input<DomainAssociationCertificateSettings?>? certificateSettings;
   /// DNS records for certificate verification in a space-delimited format (`&lt;record&gt; CNAME &lt;target&gt;`).
-  final pulumi.Input<String>? certificateVerificationDnsRecord;
+  final pulumi.Input<String?>? certificateVerificationDnsRecord;
   /// Domain name for the domain association.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Enables the automated creation of subdomains for branches.
-  final pulumi.Input<bool>? enableAutoSubDomain;
+  final pulumi.Input<bool?>? enableAutoSubDomain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Setting for the subdomain. Documented below.
-  final pulumi.Input<List<DomainAssociationSubDomain>>? subDomains;
+  final pulumi.Input<List<DomainAssociationSubDomain>?>? subDomains;
   /// If enabled, the resource will wait for the domain association status to change to `PENDING_DEPLOYMENT` or `AVAILABLE`. Setting this to `false` will skip the process. Default: `true`.
-  final pulumi.Input<bool>? waitForVerification;
+  final pulumi.Input<bool?>? waitForVerification;
 
   /// Creates a new [DomainAssociationState].
   /// [appId] Unique ID for an Amplify app.

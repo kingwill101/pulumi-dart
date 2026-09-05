@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobDebugHookConfigCollectionConfiguration {
   /// Name of the tensor collection.
-  final pulumi.Input<String>? collectionName;
+  final pulumi.Input<String?>? collectionName;
   /// Map of parameters for the tensor collection.
-  final pulumi.Input<Map<String, String>>? collectionParameters;
+  final pulumi.Input<Map<String, String>?>? collectionParameters;
 
   /// Creates a new [TrainingJobDebugHookConfigCollectionConfiguration].
   /// [collectionName] Name of the tensor collection.

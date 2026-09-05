@@ -164,7 +164,7 @@ class DedicatedHost extends pulumi.CustomResource {
   late final pulumi.Output<String?> instanceFamily;
   /// Specifies the instance type to be supported by the Dedicated Hosts. If you specify an instance type, the Dedicated Hosts support instances of the specified instance type only. Exactly one of `instanceFamily` or `instanceType` must be specified.
   late final pulumi.Output<String?> instanceType;
-  /// The Amazon Resource Name (ARN) of the AWS Outpost on which to allocate the Dedicated Host.
+  /// ARN of the AWS Outpost on which to allocate the Dedicated Host.
   late final pulumi.Output<String?> outpostArn;
   /// The ID of the AWS account that owns the Dedicated Host.
   late final pulumi.Output<String> ownerId;
@@ -187,7 +187,7 @@ class DedicatedHost extends pulumi.CustomResource {
           'aws:ec2/dedicatedHost:DedicatedHost',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assetId = registerOutput<String>('assetId');
@@ -199,8 +199,8 @@ class DedicatedHost extends pulumi.CustomResource {
     outpostArn = registerOutput<String?>('outpostArn');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DedicatedHost] resource's state with the given [name] and [id].
@@ -208,11 +208,12 @@ class DedicatedHost extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DedicatedHostState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DedicatedHost._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -236,7 +237,30 @@ class DedicatedHost extends pulumi.CustomResource {
     outpostArn = registerOutput<String?>('outpostArn');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DedicatedHost] resource.
+  DedicatedHost.reference(String urn)
+    : super(
+        'aws:ec2/dedicatedHost:DedicatedHost',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    assetId = registerOutput<String>('assetId');
+    autoPlacement = registerOutput<String?>('autoPlacement');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    hostRecovery = registerOutput<String?>('hostRecovery');
+    instanceFamily = registerOutput<String?>('instanceFamily');
+    instanceType = registerOutput<String?>('instanceType');
+    outpostArn = registerOutput<String?>('outpostArn');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

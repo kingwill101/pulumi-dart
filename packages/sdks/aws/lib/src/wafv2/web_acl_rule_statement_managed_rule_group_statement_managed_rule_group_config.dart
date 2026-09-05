@@ -9,14 +9,14 @@ import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_c
 import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config_username_field.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig {
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet>? awsManagedRulesAcfpRuleSet;
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet>? awsManagedRulesAntiDdosRuleSet;
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet>? awsManagedRulesAtpRuleSet;
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet>? awsManagedRulesBotControlRuleSet;
-  final pulumi.Input<String>? loginPath;
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField>? passwordField;
-  final pulumi.Input<String>? payloadType;
-  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField>? usernameField;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet?>? awsManagedRulesAcfpRuleSet;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet?>? awsManagedRulesAntiDdosRuleSet;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet?>? awsManagedRulesAtpRuleSet;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet?>? awsManagedRulesBotControlRuleSet;
+  final pulumi.Input<String?>? loginPath;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField?>? passwordField;
+  final pulumi.Input<String?>? payloadType;
+  final pulumi.Input<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField?>? usernameField;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig].
   /// [awsManagedRulesAcfpRuleSet] Optional.

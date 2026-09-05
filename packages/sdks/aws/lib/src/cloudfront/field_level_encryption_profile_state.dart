@@ -6,17 +6,17 @@ import 'field_level_encryption_profile_encryption_entities.dart';
 /// Input properties used for looking up and filtering FieldLevelEncryptionProfile resources.
 class FieldLevelEncryptionProfileState {
   /// The Field Level Encryption Profile ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Internal value used by CloudFront to allow future updates to the Field Level Encryption Profile.
-  final pulumi.Input<String>? callerReference;
+  final pulumi.Input<String?>? callerReference;
   /// An optional comment about the Field Level Encryption Profile.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// The encryption entities config block for field-level encryption profiles that contains an attribute `items` which includes the encryption key and field pattern specifications.
-  final pulumi.Input<FieldLevelEncryptionProfileEncryptionEntities>? encryptionEntities;
+  final pulumi.Input<FieldLevelEncryptionProfileEncryptionEntities?>? encryptionEntities;
   /// The current version of the Field Level Encryption Profile. For example: `E2QWRUHAPOMQZL`.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The name of the Field Level Encryption Profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [FieldLevelEncryptionProfileState].
   /// [arn] The Field Level Encryption Profile ARN.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grant_args.dart';
+import 'grant_constraint.dart';
 import 'grant_state.dart';
 
 /// Provides a resource-based access control mechanism for a KMS customer master key.
@@ -14,7 +15,7 @@ import 'grant_state.dart';
 /// ```
 class Grant extends pulumi.CustomResource {
   /// A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see [Encryption Context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html).
-  late final pulumi.Output<List<Map<String, dynamic>>?> constraints;
+  late final pulumi.Output<List<GrantConstraint>?> constraints;
   /// A list of grant tokens to be used when creating the grant. See [Grant Tokens](https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token) for more information about grant tokens.
   late final pulumi.Output<List<String>?> grantCreationTokens;
   /// The unique identifier for the grant.
@@ -23,7 +24,7 @@ class Grant extends pulumi.CustomResource {
   late final pulumi.Output<String> grantToken;
   /// The principal that is given permission to perform the operations that the grant permits in ARN format. Note that due to eventual consistency issues around IAM principals, the providers's state may not always be refreshed to reflect what is true in AWS.
   late final pulumi.Output<String> granteePrincipal;
-  /// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
+  /// Unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the ARN of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
   late final pulumi.Output<String> keyId;
   /// A friendly name for identifying the grant.
   late final pulumi.Output<String> name;
@@ -49,16 +50,17 @@ class Grant extends pulumi.CustomResource {
           'aws:kms/grant:Grant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['grantToken'],
         ) {
-    constraints = registerOutput<List<Map<String, dynamic>>?>('constraints');
-    grantCreationTokens = registerOutput<List<String>?>('grantCreationTokens');
+    constraints = registerOutput<List<GrantConstraint>?>('constraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GrantConstraint>(guardedValue, (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>())); });
+    grantCreationTokens = registerOutput<List<String>?>('grantCreationTokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     grantId = registerOutput<String>('grantId');
-    grantToken = registerOutput<String>('grantToken');
+    grantToken = registerOutput<String>('grantToken', isSecret: true);
     granteePrincipal = registerOutput<String>('granteePrincipal');
     keyId = registerOutput<String>('keyId');
     this.name = registerOutput<String>('name');
-    operations = registerOutput<List<String>>('operations');
+    operations = registerOutput<List<String>>('operations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     retireOnDelete = registerOutput<bool?>('retireOnDelete');
     retiringPrincipal = registerOutput<String?>('retiringPrincipal');
@@ -69,11 +71,12 @@ class Grant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GrantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Grant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -87,14 +90,37 @@ class Grant extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    constraints = registerOutput<List<Map<String, dynamic>>?>('constraints');
-    grantCreationTokens = registerOutput<List<String>?>('grantCreationTokens');
+    constraints = registerOutput<List<GrantConstraint>?>('constraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GrantConstraint>(guardedValue, (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>())); });
+    grantCreationTokens = registerOutput<List<String>?>('grantCreationTokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     grantId = registerOutput<String>('grantId');
-    grantToken = registerOutput<String>('grantToken');
+    grantToken = registerOutput<String>('grantToken', isSecret: true);
     granteePrincipal = registerOutput<String>('granteePrincipal');
     keyId = registerOutput<String>('keyId');
     this.name = registerOutput<String>('name');
-    operations = registerOutput<List<String>>('operations');
+    operations = registerOutput<List<String>>('operations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    retireOnDelete = registerOutput<bool?>('retireOnDelete');
+    retiringPrincipal = registerOutput<String?>('retiringPrincipal');
+  }
+
+  /// Creates a typed reference to an existing [Grant] resource.
+  Grant.reference(String urn)
+    : super(
+        'aws:kms/grant:Grant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['grantToken'],
+        isResourceReference: true,
+      ) {
+    constraints = registerOutput<List<GrantConstraint>?>('constraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GrantConstraint>(guardedValue, (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>())); });
+    grantCreationTokens = registerOutput<List<String>?>('grantCreationTokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    grantId = registerOutput<String>('grantId');
+    grantToken = registerOutput<String>('grantToken', isSecret: true);
+    granteePrincipal = registerOutput<String>('granteePrincipal');
+    keyId = registerOutput<String>('keyId');
+    this.name = registerOutput<String>('name');
+    operations = registerOutput<List<String>>('operations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     retireOnDelete = registerOutput<bool?>('retireOnDelete');
     retiringPrincipal = registerOutput<String?>('retiringPrincipal');

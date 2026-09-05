@@ -155,7 +155,7 @@ class LogDeliveryDestinationPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logDeliveryDestinationPolicy:LogDeliveryDestinationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     deliveryDestinationName = registerOutput<String>('deliveryDestinationName');
     deliveryDestinationPolicy = registerOutput<String>('deliveryDestinationPolicy');
@@ -167,11 +167,12 @@ class LogDeliveryDestinationPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogDeliveryDestinationPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogDeliveryDestinationPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -185,6 +186,20 @@ class LogDeliveryDestinationPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deliveryDestinationName = registerOutput<String>('deliveryDestinationName');
+    deliveryDestinationPolicy = registerOutput<String>('deliveryDestinationPolicy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LogDeliveryDestinationPolicy] resource.
+  LogDeliveryDestinationPolicy.reference(String urn)
+    : super(
+        'aws:cloudwatch/logDeliveryDestinationPolicy:LogDeliveryDestinationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deliveryDestinationName = registerOutput<String>('deliveryDestinationName');
     deliveryDestinationPolicy = registerOutput<String>('deliveryDestinationPolicy');
     region = registerOutput<String>('region');

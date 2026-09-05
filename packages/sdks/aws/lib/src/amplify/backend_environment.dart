@@ -188,7 +188,7 @@ class BackendEnvironment extends pulumi.CustomResource {
           'aws:amplify/backendEnvironment:BackendEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');
@@ -203,11 +203,12 @@ class BackendEnvironment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackendEnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackendEnvironment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -221,6 +222,23 @@ class BackendEnvironment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appId = registerOutput<String>('appId');
+    arn = registerOutput<String>('arn');
+    deploymentArtifacts = registerOutput<String>('deploymentArtifacts');
+    environmentName = registerOutput<String>('environmentName');
+    region = registerOutput<String>('region');
+    stackName = registerOutput<String>('stackName');
+  }
+
+  /// Creates a typed reference to an existing [BackendEnvironment] resource.
+  BackendEnvironment.reference(String urn)
+    : super(
+        'aws:amplify/backendEnvironment:BackendEnvironment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');
     deploymentArtifacts = registerOutput<String>('deploymentArtifacts');

@@ -6,13 +6,13 @@ import 'experiment_template_experiment_report_configuration_outputs.dart';
 
 class ExperimentTemplateExperimentReportConfiguration {
   /// Data sources for the experiment report. See below.
-  final pulumi.Input<ExperimentTemplateExperimentReportConfigurationDataSources>? dataSources;
+  final pulumi.Input<ExperimentTemplateExperimentReportConfigurationDataSources?>? dataSources;
   /// Outputs for the experiment report. See below.
-  final pulumi.Input<ExperimentTemplateExperimentReportConfigurationOutputs>? outputs;
+  final pulumi.Input<ExperimentTemplateExperimentReportConfigurationOutputs?>? outputs;
   /// Duration of the post-experiment period. Defaults to `PT20M`.
-  final pulumi.Input<String>? postExperimentDuration;
+  final pulumi.Input<String?>? postExperimentDuration;
   /// Duration of the pre-experiment period. Defaults to `PT20M`.
-  final pulumi.Input<String>? preExperimentDuration;
+  final pulumi.Input<String?>? preExperimentDuration;
 
   /// Creates a new [ExperimentTemplateExperimentReportConfiguration].
   /// [dataSources] Data sources for the experiment report. See below.

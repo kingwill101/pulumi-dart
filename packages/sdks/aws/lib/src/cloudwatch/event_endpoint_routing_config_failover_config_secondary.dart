@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventEndpointRoutingConfigFailoverConfigSecondary {
   /// The name of the secondary Region.
-  final pulumi.Input<String>? route;
+  final pulumi.Input<String?>? route;
 
   /// Creates a new [EventEndpointRoutingConfigFailoverConfigSecondary].
   /// [route] The name of the secondary Region.

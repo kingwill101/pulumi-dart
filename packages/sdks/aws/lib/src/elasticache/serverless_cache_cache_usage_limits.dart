@@ -6,9 +6,9 @@ import 'serverless_cache_cache_usage_limits_ecpu_per_second.dart';
 
 class ServerlessCacheCacheUsageLimits {
   /// The maximum data storage limit in the cache, expressed in Gigabytes. See `dataStorage` Block for details.
-  final pulumi.Input<ServerlessCacheCacheUsageLimitsDataStorage>? dataStorage;
+  final pulumi.Input<ServerlessCacheCacheUsageLimitsDataStorage?>? dataStorage;
   /// The configuration for the number of ElastiCache Processing Units (ECPU) the cache can consume per second. See `ecpuPerSecond` Block for details.
-  final pulumi.Input<List<ServerlessCacheCacheUsageLimitsEcpuPerSecond>>? ecpuPerSeconds;
+  final pulumi.Input<List<ServerlessCacheCacheUsageLimitsEcpuPerSecond>?>? ecpuPerSeconds;
 
   /// Creates a new [ServerlessCacheCacheUsageLimits].
   /// [dataStorage] The maximum data storage limit in the cache, expressed in Gigabytes. See `dataStorage` Block for details.

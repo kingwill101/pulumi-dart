@@ -5,7 +5,7 @@ import 'user_pool_account_recovery_setting_recovery_mechanism.dart';
 
 class UserPoolAccountRecoverySetting {
   /// List of Account Recovery Options of the following structure:
-  final pulumi.Input<List<UserPoolAccountRecoverySettingRecoveryMechanism>>? recoveryMechanisms;
+  final pulumi.Input<List<UserPoolAccountRecoverySettingRecoveryMechanism>?>? recoveryMechanisms;
 
   /// Creates a new [UserPoolAccountRecoverySetting].
   /// [recoveryMechanisms] List of Account Recovery Options of the following structure:

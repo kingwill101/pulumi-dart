@@ -9,17 +9,17 @@ import 'get_user_alternate_identifier.dart';
 /// {@macro pulumi_identitystore_get_user_get_user_args_doc}
 class GetUserArgs {
   /// A unique identifier for a user or group that is not the primary identifier. Conflicts with `userId` and `filter`. Detailed below.
-  final pulumi.Input<GetUserAlternateIdentifier>? alternateIdentifier;
+  final pulumi.Input<GetUserAlternateIdentifier?>? alternateIdentifier;
   /// Identity Store ID associated with the Single Sign-On Instance.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> identityStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The identifier for a user in the Identity Store.
   ///
   /// &gt; Exactly one of the above arguments must be provided. Passing both `filter` and `userId` is allowed for backwards compatibility.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
 
   /// Creates a new [GetUserArgs].
   /// [alternateIdentifier] A unique identifier for a user or group that is not the primary identifier. Conflicts with `userId` and `filter`. Detailed below.

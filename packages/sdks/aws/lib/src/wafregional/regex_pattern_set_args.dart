@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_wafregional_regex_pattern_set_regex_pattern_set_args_doc}
 class RegexPatternSetArgs {
   /// The name or description of the Regex Pattern Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-  final pulumi.Input<List<String>>? regexPatternStrings;
+  final pulumi.Input<List<String>?>? regexPatternStrings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [RegexPatternSetArgs].
   /// [name] The name or description of the Regex Pattern Set.

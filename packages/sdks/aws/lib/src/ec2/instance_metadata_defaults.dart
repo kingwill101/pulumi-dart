@@ -142,7 +142,7 @@ class InstanceMetadataDefaults extends pulumi.CustomResource {
           'aws:ec2/instanceMetadataDefaults:InstanceMetadataDefaults',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     httpEndpoint = registerOutput<String>('httpEndpoint');
     httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
@@ -156,11 +156,12 @@ class InstanceMetadataDefaults extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceMetadataDefaultsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceMetadataDefaults._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -174,6 +175,22 @@ class InstanceMetadataDefaults extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    httpEndpoint = registerOutput<String>('httpEndpoint');
+    httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
+    httpTokens = registerOutput<String>('httpTokens');
+    instanceMetadataTags = registerOutput<String>('instanceMetadataTags');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [InstanceMetadataDefaults] resource.
+  InstanceMetadataDefaults.reference(String urn)
+    : super(
+        'aws:ec2/instanceMetadataDefaults:InstanceMetadataDefaults',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     httpEndpoint = registerOutput<String>('httpEndpoint');
     httpPutResponseHopLimit = registerOutput<int>('httpPutResponseHopLimit');
     httpTokens = registerOutput<String>('httpTokens');

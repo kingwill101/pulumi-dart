@@ -112,7 +112,7 @@ import 'geofence_collection_state.dart';
 /// $ pulumi import aws:location/geofenceCollection:GeofenceCollection example example
 /// ```
 class GeofenceCollection extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) for the geofence collection resource. Used when you need to specify a resource across all AWS.
+  /// ARN for the geofence collection resource. Used when you need to specify a resource across all AWS.
   late final pulumi.Output<String> collectionArn;
   /// The name of the geofence collection.
   ///
@@ -144,7 +144,7 @@ class GeofenceCollection extends pulumi.CustomResource {
           'aws:location/geofenceCollection:GeofenceCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     collectionArn = registerOutput<String>('collectionArn');
     collectionName = registerOutput<String>('collectionName');
@@ -152,8 +152,8 @@ class GeofenceCollection extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -162,11 +162,12 @@ class GeofenceCollection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GeofenceCollectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GeofenceCollection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -186,8 +187,28 @@ class GeofenceCollection extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [GeofenceCollection] resource.
+  GeofenceCollection.reference(String urn)
+    : super(
+        'aws:location/geofenceCollection:GeofenceCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    collectionArn = registerOutput<String>('collectionArn');
+    collectionName = registerOutput<String>('collectionName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

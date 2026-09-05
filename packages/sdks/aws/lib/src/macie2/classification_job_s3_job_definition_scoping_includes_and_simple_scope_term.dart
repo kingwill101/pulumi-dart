@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm {
   /// The operator to use in a condition. Valid values are: `EQ`, `GT`, `GTE`, `LT`, `LTE`, `NE`, `CONTAINS`, `STARTS_WITH`
-  final pulumi.Input<String>? comparator;
+  final pulumi.Input<String?>? comparator;
   /// The object property to use in the condition.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// An array that lists the values to use in the condition.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm].
   /// [comparator] The operator to use in a condition. Valid values are: `EQ`, `GT`, `GTE`, `LT`, `LTE`, `NE`, `CONTAINS`, `STARTS_WITH`

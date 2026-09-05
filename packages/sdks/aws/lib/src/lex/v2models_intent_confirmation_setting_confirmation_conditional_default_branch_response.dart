@@ -5,9 +5,9 @@ import 'v2models_intent_confirmation_setting_confirmation_conditional_default_br
 
 class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
-  final pulumi.Input<bool>? allowInterrupt;
+  final pulumi.Input<bool?>? allowInterrupt;
   /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `messageGroup`.
-  final pulumi.Input<List<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroup>>? messageGroups;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponseMessageGroup>?>? messageGroups;
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.

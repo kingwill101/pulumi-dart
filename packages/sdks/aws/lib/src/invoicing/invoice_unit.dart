@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'invoice_unit_args.dart';
+import 'invoice_unit_rule.dart';
 import 'invoice_unit_state.dart';
 import 'invoice_unit_timeouts.dart';
 
@@ -13,12 +14,12 @@ import 'invoice_unit_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.invoicing.InvoiceUnit("example", {
-///     name: "example-unit",
-///     description: "Example invoice unit",
-///     invoiceReceiver: "123456789012",
 ///     rules: [{
 ///         linkedAccounts: ["098765432109"],
 ///     }],
+///     name: "example-unit",
+///     description: "Example invoice unit",
+///     invoiceReceiver: "123456789012",
 ///     tags: {
 ///         Environment: "production",
 ///     },
@@ -29,12 +30,12 @@ import 'invoice_unit_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.invoicing.InvoiceUnit("example",
-///     name="example-unit",
-///     description="Example invoice unit",
-///     invoice_receiver="123456789012",
 ///     rules=[{
 ///         "linked_accounts": ["098765432109"],
 ///     }],
+///     name="example-unit",
+///     description="Example invoice unit",
+///     invoice_receiver="123456789012",
 ///     tags={
 ///         "Environment": "production",
 ///     })
@@ -49,9 +50,6 @@ import 'invoice_unit_timeouts.dart';
 /// {
 ///     var example = new Aws.Invoicing.InvoiceUnit("example", new()
 ///     {
-///         Name = "example-unit",
-///         Description = "Example invoice unit",
-///         InvoiceReceiver = "123456789012",
 ///         Rules = new[]
 ///         {
 ///             new Aws.Invoicing.Inputs.InvoiceUnitRuleArgs
@@ -62,6 +60,9 @@ import 'invoice_unit_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "example-unit",
+///         Description = "Example invoice unit",
+///         InvoiceReceiver = "123456789012",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -81,9 +82,6 @@ import 'invoice_unit_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := invoicing.NewInvoiceUnit(ctx, "example", &invoicing.InvoiceUnitArgs{
-/// 			Name:            pulumi.String("example-unit"),
-/// 			Description:     pulumi.String("Example invoice unit"),
-/// 			InvoiceReceiver: pulumi.String("123456789012"),
 /// 			Rules: invoicing.InvoiceUnitRuleArray{
 /// 				&invoicing.InvoiceUnitRuleArgs{
 /// 					LinkedAccounts: pulumi.StringArray{
@@ -91,6 +89,9 @@ import 'invoice_unit_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name:            pulumi.String("example-unit"),
+/// 			Description:     pulumi.String("Example invoice unit"),
+/// 			InvoiceReceiver: pulumi.String("123456789012"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 			},
@@ -112,12 +113,12 @@ import 'invoice_unit_timeouts.dart';
 /// }
 ///
 /// resource "aws_invoicing_invoiceunit" "example" {
-///   name             = "example-unit"
-///   description      = "Example invoice unit"
-///   invoice_receiver = "123456789012"
 ///   rules {
 ///     linked_accounts = ["098765432109"]
 ///   }
+///   name             = "example-unit"
+///   description      = "Example invoice unit"
+///   invoice_receiver = "123456789012"
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -146,12 +147,12 @@ import 'invoice_unit_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new InvoiceUnit("example", InvoiceUnitArgs.builder()
-///             .name("example-unit")
-///             .description("Example invoice unit")
-///             .invoiceReceiver("123456789012")
 ///             .rules(InvoiceUnitRuleArgs.builder()
 ///                 .linkedAccounts("098765432109")
 ///                 .build())
+///             .name("example-unit")
+///             .description("Example invoice unit")
+///             .invoiceReceiver("123456789012")
 ///             .tags(Map.of("Environment", "production"))
 ///             .build());
 ///
@@ -163,12 +164,12 @@ import 'invoice_unit_timeouts.dart';
 ///   example:
 ///     type: aws:invoicing:InvoiceUnit
 ///     properties:
-///       name: example-unit
-///       description: Example invoice unit
-///       invoiceReceiver: '123456789012'
 ///       rules:
 ///         - linkedAccounts:
 ///             - '098765432109'
+///       name: example-unit
+///       description: Example invoice unit
+///       invoiceReceiver: '123456789012'
 ///       tags:
 ///         Environment: production
 /// ```
@@ -180,7 +181,7 @@ import 'invoice_unit_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the invoice unit.
+/// - `arn` (String) ARN of the invoice unit.
 ///
 ///
 /// Using `pulumi import`, import Invoice Units using the ARN. For example:
@@ -204,7 +205,7 @@ class InvoiceUnit extends pulumi.CustomResource {
   /// Configuration block for invoice unit rules. See `rule` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<InvoiceUnitRule>?> rules;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -225,7 +226,7 @@ class InvoiceUnit extends pulumi.CustomResource {
           'aws:invoicing/invoiceUnit:InvoiceUnit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -233,9 +234,9 @@ class InvoiceUnit extends pulumi.CustomResource {
     lastModified = registerOutput<String>('lastModified');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<InvoiceUnitRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InvoiceUnitRule>(guardedValue, (value) => InvoiceUnitRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taxInheritanceDisabled = registerOutput<bool>('taxInheritanceDisabled');
     timeouts = registerOutput<InvoiceUnitTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvoiceUnitTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -245,11 +246,12 @@ class InvoiceUnit extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InvoiceUnitState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InvoiceUnit._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -269,9 +271,31 @@ class InvoiceUnit extends pulumi.CustomResource {
     lastModified = registerOutput<String>('lastModified');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rules = registerOutput<List<InvoiceUnitRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InvoiceUnitRule>(guardedValue, (value) => InvoiceUnitRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taxInheritanceDisabled = registerOutput<bool>('taxInheritanceDisabled');
+    timeouts = registerOutput<InvoiceUnitTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvoiceUnitTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [InvoiceUnit] resource.
+  InvoiceUnit.reference(String urn)
+    : super(
+        'aws:invoicing/invoiceUnit:InvoiceUnit',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    invoiceReceiver = registerOutput<String>('invoiceReceiver');
+    lastModified = registerOutput<String>('lastModified');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    rules = registerOutput<List<InvoiceUnitRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InvoiceUnitRule>(guardedValue, (value) => InvoiceUnitRule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taxInheritanceDisabled = registerOutput<bool>('taxInheritanceDisabled');
     timeouts = registerOutput<InvoiceUnitTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvoiceUnitTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

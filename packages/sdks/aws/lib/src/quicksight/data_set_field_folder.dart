@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetFieldFolder {
   /// An array of column names to add to the folder. A column can only be in one folder.
-  final pulumi.Input<List<String>>? columns;
+  final pulumi.Input<List<String>?>? columns;
   /// Field folder description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Key of the field folder map.
   final pulumi.Input<String> fieldFoldersId;
 

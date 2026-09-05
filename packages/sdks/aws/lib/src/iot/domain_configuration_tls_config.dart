@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainConfigurationTlsConfig {
   /// The security policy for a domain configuration.
-  final pulumi.Input<String>? securityPolicy;
+  final pulumi.Input<String?>? securityPolicy;
 
   /// Creates a new [DomainConfigurationTlsConfig].
   /// [securityPolicy] The security policy for a domain configuration.

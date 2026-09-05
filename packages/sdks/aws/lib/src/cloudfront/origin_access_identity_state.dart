@@ -5,26 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OriginAccessIdentity resources.
 class OriginAccessIdentityState {
   /// The origin access identity ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Internal value used by CloudFront to allow future
   /// updates to the origin access identity.
-  final pulumi.Input<String>? callerReference;
+  final pulumi.Input<String?>? callerReference;
   /// A shortcut to the full path for the
   /// origin access identity to use in CloudFront, see below.
-  final pulumi.Input<String>? cloudfrontAccessIdentityPath;
+  final pulumi.Input<String?>? cloudfrontAccessIdentityPath;
   /// An optional comment for the origin access identity.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// The current version of the origin access identity's information.
   /// For example: `E2QWRUHAPOMQZL`.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// A pre-generated ARN for use in S3 bucket policies (see below).
   /// Example: `arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity
   /// E2QWRUHAPOMQZL`.
-  final pulumi.Input<String>? iamArn;
+  final pulumi.Input<String?>? iamArn;
   /// The Amazon S3 canonical user ID for the origin
   /// access identity, which you use when giving the origin access identity read
   /// permission to an object in Amazon S3.
-  final pulumi.Input<String>? s3CanonicalUserId;
+  final pulumi.Input<String?>? s3CanonicalUserId;
 
   /// Creates a new [OriginAccessIdentityState].
   /// [arn] The origin access identity ARN.

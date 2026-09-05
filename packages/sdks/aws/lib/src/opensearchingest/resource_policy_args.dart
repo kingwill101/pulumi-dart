@@ -10,7 +10,7 @@ class ResourcePolicyArgs {
   /// JSON-formatted policy to attach to the resource.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the resource to attach the policy to.
   ///
   /// The following arguments are optional:

@@ -6,7 +6,7 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDelive
   /// S3 bucket name.
   final pulumi.Input<String> bucketName;
   /// S3 prefix.
-  final pulumi.Input<String>? keyPrefix;
+  final pulumi.Input<String?>? keyPrefix;
 
   /// Creates a new [InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config].
   /// [bucketName] S3 bucket name.

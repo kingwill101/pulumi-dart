@@ -178,7 +178,7 @@ class ResourceType extends pulumi.CustomResource {
   late final pulumi.Output<String> properties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the IAM Role to assume for operations.
+  /// ARN of the IAM Role to assume for operations.
   late final pulumi.Output<String?> roleArn;
   /// JSON string of the CloudFormation resource type schema which is used for plan time validation where possible. Automatically fetched if not provided. In large scale environments with multiple resources using the same `typeName`, it is recommended to fetch the schema once via the `aws.cloudformation.CloudFormationType` data source and use this argument to reduce `DescribeType` API operation throttling. This value is marked sensitive only to prevent large plan differences from showing.
   late final pulumi.Output<String> schema;
@@ -201,13 +201,14 @@ class ResourceType extends pulumi.CustomResource {
           'aws:cloudcontrol/resource:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['schema'],
         ) {
     desiredState = registerOutput<String>('desiredState');
     properties = registerOutput<String>('properties');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
-    schema = registerOutput<String>('schema');
+    schema = registerOutput<String>('schema', isSecret: true);
     typeName = registerOutput<String>('typeName');
     typeVersionId = registerOutput<String?>('typeVersionId');
   }
@@ -217,11 +218,12 @@ class ResourceType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -239,7 +241,26 @@ class ResourceType extends pulumi.CustomResource {
     properties = registerOutput<String>('properties');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String?>('roleArn');
-    schema = registerOutput<String>('schema');
+    schema = registerOutput<String>('schema', isSecret: true);
+    typeName = registerOutput<String>('typeName');
+    typeVersionId = registerOutput<String?>('typeVersionId');
+  }
+
+  /// Creates a typed reference to an existing [ResourceType] resource.
+  ResourceType.reference(String urn)
+    : super(
+        'aws:cloudcontrol/resource:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['schema'],
+        isResourceReference: true,
+      ) {
+    desiredState = registerOutput<String>('desiredState');
+    properties = registerOutput<String>('properties');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    schema = registerOutput<String>('schema', isSecret: true);
     typeName = registerOutput<String>('typeName');
     typeVersionId = registerOutput<String?>('typeVersionId');
   }

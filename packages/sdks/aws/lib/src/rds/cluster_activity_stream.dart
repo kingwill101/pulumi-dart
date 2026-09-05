@@ -342,7 +342,7 @@ class ClusterActivityStream extends pulumi.CustomResource {
   late final pulumi.Output<String> mode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the DB cluster.
+  /// ARN of the DB cluster.
   late final pulumi.Output<String> resourceArn;
 
   /// Creates a new [ClusterActivityStream].
@@ -357,7 +357,7 @@ class ClusterActivityStream extends pulumi.CustomResource {
           'aws:rds/clusterActivityStream:ClusterActivityStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     engineNativeAuditFieldsIncluded = registerOutput<bool?>('engineNativeAuditFieldsIncluded');
     kinesisStreamName = registerOutput<String>('kinesisStreamName');
@@ -372,11 +372,12 @@ class ClusterActivityStream extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterActivityStreamState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterActivityStream._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -390,6 +391,23 @@ class ClusterActivityStream extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    engineNativeAuditFieldsIncluded = registerOutput<bool?>('engineNativeAuditFieldsIncluded');
+    kinesisStreamName = registerOutput<String>('kinesisStreamName');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    mode = registerOutput<String>('mode');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+  }
+
+  /// Creates a typed reference to an existing [ClusterActivityStream] resource.
+  ClusterActivityStream.reference(String urn)
+    : super(
+        'aws:rds/clusterActivityStream:ClusterActivityStream',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     engineNativeAuditFieldsIncluded = registerOutput<bool?>('engineNativeAuditFieldsIncluded');
     kinesisStreamName = registerOutput<String>('kinesisStreamName');
     kmsKeyId = registerOutput<String>('kmsKeyId');

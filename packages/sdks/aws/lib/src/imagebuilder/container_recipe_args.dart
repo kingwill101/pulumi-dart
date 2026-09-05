@@ -15,25 +15,25 @@ class ContainerRecipeArgs {
   /// The type of the container to create. Valid values: `DOCKER`.
   final pulumi.Input<String> containerType;
   /// The description of the container recipe.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Dockerfile template used to build the image as an inline data blob.
-  final pulumi.Input<String>? dockerfileTemplateData;
+  final pulumi.Input<String?>? dockerfileTemplateData;
   /// The Amazon S3 URI for the Dockerfile that will be used to build the container image.
-  final pulumi.Input<String>? dockerfileTemplateUri;
+  final pulumi.Input<String?>? dockerfileTemplateUri;
   /// Configuration block used to configure an instance for building and testing container images. Detailed below.
-  final pulumi.Input<ContainerRecipeInstanceConfiguration>? instanceConfiguration;
+  final pulumi.Input<ContainerRecipeInstanceConfiguration?>? instanceConfiguration;
   /// The KMS key used to encrypt the container image.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// The name of the container recipe.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The base image for the container recipe.
   final pulumi.Input<String> parentImage;
   /// Specifies the operating system platform when you use a custom base image.
-  final pulumi.Input<String>? platformOverride;
+  final pulumi.Input<String?>? platformOverride;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags for the container recipe. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The destination repository for the container image. Detailed below.
   final pulumi.Input<ContainerRecipeTargetRepository> targetRepository;
   /// Version of the container recipe.
@@ -41,7 +41,7 @@ class ContainerRecipeArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> version;
   /// The working directory to be used during build and test workflows.
-  final pulumi.Input<String>? workingDirectory;
+  final pulumi.Input<String?>? workingDirectory;
 
   /// Creates a new [ContainerRecipeArgs].
   /// [components] Ordered configuration block(s) with components for the container recipe. Detailed below.

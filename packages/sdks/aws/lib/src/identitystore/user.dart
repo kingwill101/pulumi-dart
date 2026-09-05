@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_addresses.dart';
 import 'user_args.dart';
 import 'user_emails.dart';
+import 'user_external_id.dart';
 import 'user_name.dart';
 import 'user_phone_numbers.dart';
 import 'user_state.dart';
@@ -23,9 +24,6 @@ import 'user_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.identitystore.User("example", {
-///     identityStoreId: exampleAwsSsoadminInstances.identityStoreIds[0],
-///     displayName: "John Doe",
-///     userName: "johndoe",
 ///     name: {
 ///         givenName: "John",
 ///         familyName: "Doe",
@@ -33,6 +31,9 @@ import 'user_state.dart';
 ///     emails: {
 ///         value: "john@example.com",
 ///     },
+///     identityStoreId: exampleAwsSsoadminInstances.identityStoreIds[0],
+///     displayName: "John Doe",
+///     userName: "johndoe",
 /// });
 /// ```
 /// ```python
@@ -40,16 +41,16 @@ import 'user_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.identitystore.User("example",
-///     identity_store_id=example_aws_ssoadmin_instances["identityStoreIds"][0],
-///     display_name="John Doe",
-///     user_name="johndoe",
 ///     name={
 ///         "given_name": "John",
 ///         "family_name": "Doe",
 ///     },
 ///     emails={
 ///         "value": "john@example.com",
-///     })
+///     },
+///     identity_store_id=example_aws_ssoadmin_instances["identityStoreIds"][0],
+///     display_name="John Doe",
+///     user_name="johndoe")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -61,9 +62,6 @@ import 'user_state.dart';
 /// {
 ///     var example = new Aws.IdentityStore.User("example", new()
 ///     {
-///         IdentityStoreId = exampleAwsSsoadminInstances.IdentityStoreIds[0],
-///         DisplayName = "John Doe",
-///         UserName = "johndoe",
 ///         Name = new Aws.IdentityStore.Inputs.UserNameArgs
 ///         {
 ///             GivenName = "John",
@@ -73,6 +71,9 @@ import 'user_state.dart';
 ///         {
 ///             Value = "john@example.com",
 ///         },
+///         IdentityStoreId = exampleAwsSsoadminInstances.IdentityStoreIds[0],
+///         DisplayName = "John Doe",
+///         UserName = "johndoe",
 ///     });
 ///
 /// });
@@ -88,9 +89,6 @@ import 'user_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := identitystore.NewUser(ctx, "example", &identitystore.UserArgs{
-/// 			IdentityStoreId: pulumi.Any(exampleAwsSsoadminInstances.IdentityStoreIds[0]),
-/// 			DisplayName:     pulumi.String("John Doe"),
-/// 			UserName:        pulumi.String("johndoe"),
 /// 			Name: &identitystore.UserNameArgs{
 /// 				GivenName:  pulumi.String("John"),
 /// 				FamilyName: pulumi.String("Doe"),
@@ -98,6 +96,9 @@ import 'user_state.dart';
 /// 			Emails: &identitystore.UserEmailsArgs{
 /// 				Value: pulumi.String("john@example.com"),
 /// 			},
+/// 			IdentityStoreId: pulumi.Any(exampleAwsSsoadminInstances.IdentityStoreIds[0]),
+/// 			DisplayName:     pulumi.String("John Doe"),
+/// 			UserName:        pulumi.String("johndoe"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -116,9 +117,6 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "aws_identitystore_user" "example" {
-///   identity_store_id = exampleAwsSsoadminInstances.identityStoreIds[0]
-///   display_name      = "John Doe"
-///   user_name         = "johndoe"
 ///   name = {
 ///     given_name  = "John"
 ///     family_name = "Doe"
@@ -126,6 +124,9 @@ import 'user_state.dart';
 ///   emails = {
 ///     value = "john@example.com"
 ///   }
+///   identity_store_id = exampleAwsSsoadminInstances.identityStoreIds[0]
+///   display_name      = "John Doe"
+///   user_name         = "johndoe"
 /// }
 /// ```
 /// ```java
@@ -152,9 +153,6 @@ import 'user_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new User("example", UserArgs.builder()
-///             .identityStoreId(exampleAwsSsoadminInstances.identityStoreIds()[0])
-///             .displayName("John Doe")
-///             .userName("johndoe")
 ///             .name(UserNameArgs.builder()
 ///                 .givenName("John")
 ///                 .familyName("Doe")
@@ -162,6 +160,9 @@ import 'user_state.dart';
 ///             .emails(UserEmailsArgs.builder()
 ///                 .value("john@example.com")
 ///                 .build())
+///             .identityStoreId(exampleAwsSsoadminInstances.identityStoreIds()[0])
+///             .displayName("John Doe")
+///             .userName("johndoe")
 ///             .build());
 ///
 ///     }
@@ -172,14 +173,14 @@ import 'user_state.dart';
 ///   example:
 ///     type: aws:identitystore:User
 ///     properties:
-///       identityStoreId: ${exampleAwsSsoadminInstances.identityStoreIds[0]}
-///       displayName: John Doe
-///       userName: johndoe
 ///       name:
 ///         givenName: John
 ///         familyName: Doe
 ///       emails:
 ///         value: john@example.com
+///       identityStoreId: ${exampleAwsSsoadminInstances.identityStoreIds[0]}
+///       displayName: John Doe
+///       userName: johndoe
 /// ```
 ///
 ///
@@ -198,7 +199,7 @@ class User extends pulumi.CustomResource {
   /// Details about the user's email. At most 1 email is allowed. Detailed below.
   late final pulumi.Output<UserEmails?> emails;
   /// A list of identifiers issued to this resource by an external identity provider.
-  late final pulumi.Output<List<Map<String, dynamic>>> externalIds;
+  late final pulumi.Output<List<UserExternalId>> externalIds;
   /// The globally unique identifier for the identity store that this user is in.
   late final pulumi.Output<String> identityStoreId;
   /// The user's geographical region or location.
@@ -244,12 +245,12 @@ class User extends pulumi.CustomResource {
           'aws:identitystore/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addresses = registerOutput<UserAddresses?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     emails = registerOutput<UserEmails?>('emails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserEmails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    externalIds = registerOutput<List<Map<String, dynamic>>>('externalIds');
+    externalIds = registerOutput<List<UserExternalId>>('externalIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserExternalId>(guardedValue, (value) => UserExternalId.fromMap((value as Map).cast<String, dynamic>())); });
     identityStoreId = registerOutput<String>('identityStoreId');
     locale = registerOutput<String?>('locale');
     this.name = registerOutput<UserName>('name', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserName.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -271,11 +272,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -292,7 +294,36 @@ class User extends pulumi.CustomResource {
     addresses = registerOutput<UserAddresses?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     emails = registerOutput<UserEmails?>('emails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserEmails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    externalIds = registerOutput<List<Map<String, dynamic>>>('externalIds');
+    externalIds = registerOutput<List<UserExternalId>>('externalIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserExternalId>(guardedValue, (value) => UserExternalId.fromMap((value as Map).cast<String, dynamic>())); });
+    identityStoreId = registerOutput<String>('identityStoreId');
+    locale = registerOutput<String?>('locale');
+    this.name = registerOutput<UserName>('name', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserName.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nickname = registerOutput<String?>('nickname');
+    phoneNumbers = registerOutput<UserPhoneNumbers?>('phoneNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPhoneNumbers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preferredLanguage = registerOutput<String?>('preferredLanguage');
+    profileUrl = registerOutput<String?>('profileUrl');
+    region = registerOutput<String>('region');
+    timezone = registerOutput<String?>('timezone');
+    title = registerOutput<String?>('title');
+    userId = registerOutput<String>('userId');
+    userName = registerOutput<String>('userName');
+    userStatus = registerOutput<String>('userStatus');
+    userType = registerOutput<String?>('userType');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'aws:identitystore/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addresses = registerOutput<UserAddresses?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserAddresses.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    emails = registerOutput<UserEmails?>('emails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserEmails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    externalIds = registerOutput<List<UserExternalId>>('externalIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserExternalId>(guardedValue, (value) => UserExternalId.fromMap((value as Map).cast<String, dynamic>())); });
     identityStoreId = registerOutput<String>('identityStoreId');
     locale = registerOutput<String?>('locale');
     this.name = registerOutput<UserName>('name', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserName.fromMap((guardedValue as Map).cast<String, dynamic>()); });

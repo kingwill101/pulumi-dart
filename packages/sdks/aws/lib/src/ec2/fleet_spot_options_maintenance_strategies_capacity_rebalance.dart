@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetSpotOptionsMaintenanceStrategiesCapacityRebalance {
   /// The replacement strategy to use. Only available for fleets of `type` set to `maintain`. Valid values: `launch`.
-  final pulumi.Input<String>? replacementStrategy;
-  final pulumi.Input<int>? terminationDelay;
+  final pulumi.Input<String?>? replacementStrategy;
+  final pulumi.Input<int?>? terminationDelay;
 
   /// Creates a new [FleetSpotOptionsMaintenanceStrategiesCapacityRebalance].
   /// [replacementStrategy] The replacement strategy to use. Only available for fleets of `type` set to `maintain`. Valid values: `launch`.
@@ -25,7 +25,7 @@ class FleetSpotOptionsMaintenanceStrategiesCapacityRebalance {
   factory FleetSpotOptionsMaintenanceStrategiesCapacityRebalance.fromMap(Map<String, dynamic> map) {
     return FleetSpotOptionsMaintenanceStrategiesCapacityRebalance(
       replacementStrategy: (() { final guardedValue = map['replacementStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      terminationDelay: (() { final guardedValue = map['terminationDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      terminationDelay: (() { final guardedValue = map['terminationDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

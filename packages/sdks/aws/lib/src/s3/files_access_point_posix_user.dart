@@ -6,7 +6,7 @@ class FilesAccessPointPosixUser {
   /// POSIX group ID. Changing this value forces replacement.
   final pulumi.Input<int> gid;
   /// Set of secondary POSIX group IDs. Changing this value forces replacement.
-  final pulumi.Input<List<int>>? secondaryGids;
+  final pulumi.Input<List<int>?>? secondaryGids;
   /// POSIX user ID. Changing this value forces replacement.
   final pulumi.Input<int> uid;
 
@@ -30,9 +30,9 @@ class FilesAccessPointPosixUser {
 
   factory FilesAccessPointPosixUser.fromMap(Map<String, dynamic> map) {
     return FilesAccessPointPosixUser(
-      gid: pulumi.Input.fromValue(map['gid'] as int),
+      gid: pulumi.Input.fromValue((map['gid'] as num).toInt()),
       secondaryGids: (() { final guardedValue = map['secondaryGids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      uid: pulumi.Input.fromValue(map['uid'] as int),
+      uid: pulumi.Input.fromValue((map['uid'] as num).toInt()),
     );
   }
 }

@@ -7,27 +7,27 @@ import 'web_acl_rule.dart';
 
 /// Input properties used for looking up and filtering WebAcl resources.
 class WebAclState {
-  /// Amazon Resource Name (ARN) of the WAF Regional WebACL.
-  final pulumi.Input<String>? arn;
+  /// ARN of the WAF Regional WebACL.
+  final pulumi.Input<String?>? arn;
   /// The action that you want AWS WAF Regional to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
-  final pulumi.Input<WebAclDefaultAction>? defaultAction;
+  final pulumi.Input<WebAclDefaultAction?>? defaultAction;
   /// Configuration block to enable WAF logging. Detailed below.
-  final pulumi.Input<WebAclLoggingConfiguration>? loggingConfiguration;
+  final pulumi.Input<WebAclLoggingConfiguration?>? loggingConfiguration;
   /// The name or description for the Amazon CloudWatch metric of this web ACL.
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// The name or description of the web ACL.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of configuration blocks containing rules for the web ACL. Detailed below.
-  final pulumi.Input<List<WebAclRule>>? rules;
+  final pulumi.Input<List<WebAclRule>?>? rules;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [WebAclState].
-  /// [arn] Amazon Resource Name (ARN) of the WAF Regional WebACL.
+  /// [arn] ARN of the WAF Regional WebACL.
   /// [defaultAction] The action that you want AWS WAF Regional to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
   /// [loggingConfiguration] Configuration block to enable WAF logging. Detailed below.
   /// [metricName] The name or description for the Amazon CloudWatch metric of this web ACL.

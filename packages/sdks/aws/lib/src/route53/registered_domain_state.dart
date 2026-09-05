@@ -10,55 +10,55 @@ import 'registered_domain_tech_contact.dart';
 /// Input properties used for looking up and filtering RegisteredDomain resources.
 class RegisteredDomainState {
   /// Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.
-  final pulumi.Input<String>? abuseContactEmail;
+  final pulumi.Input<String?>? abuseContactEmail;
   /// Phone number for reporting abuse.
-  final pulumi.Input<String>? abuseContactPhone;
+  final pulumi.Input<String?>? abuseContactPhone;
   /// Details about the domain administrative contact. See Contact Blocks for more details.
-  final pulumi.Input<RegisteredDomainAdminContact>? adminContact;
+  final pulumi.Input<RegisteredDomainAdminContact?>? adminContact;
   /// Whether domain administrative contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? adminPrivacy;
+  final pulumi.Input<bool?>? adminPrivacy;
   /// Whether the domain registration is set to renew automatically. Default: `true`.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// Details about the domain billing contact. See Contact Blocks for more details.
-  final pulumi.Input<RegisteredDomainBillingContact>? billingContact;
+  final pulumi.Input<RegisteredDomainBillingContact?>? billingContact;
   /// Whether domain billing contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? billingPrivacy;
+  final pulumi.Input<bool?>? billingPrivacy;
   /// The date when the domain was created as found in the response to a WHOIS query.
-  final pulumi.Input<String>? creationDate;
+  final pulumi.Input<String?>? creationDate;
   /// The name of the registered domain.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The date when the registration for the domain is set to expire.
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// The list of nameservers for the domain. See `nameServer` Blocks for more details.
-  final pulumi.Input<List<RegisteredDomainNameServer>>? nameServers;
+  final pulumi.Input<List<RegisteredDomainNameServer>?>? nameServers;
   /// Details about the domain registrant. See Contact Blocks for more details.
-  final pulumi.Input<RegisteredDomainRegistrantContact>? registrantContact;
+  final pulumi.Input<RegisteredDomainRegistrantContact?>? registrantContact;
   /// Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? registrantPrivacy;
+  final pulumi.Input<bool?>? registrantPrivacy;
   /// Name of the registrar of the domain as identified in the registry.
-  final pulumi.Input<String>? registrarName;
+  final pulumi.Input<String?>? registrarName;
   /// Web address of the registrar.
-  final pulumi.Input<String>? registrarUrl;
+  final pulumi.Input<String?>? registrarUrl;
   /// Reseller of the domain.
-  final pulumi.Input<String>? reseller;
+  final pulumi.Input<String?>? reseller;
   /// List of [domain name status codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
-  final pulumi.Input<List<String>>? statusLists;
+  final pulumi.Input<List<String>?>? statusLists;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Details about the domain technical contact. See Contact Blocks for more details.
-  final pulumi.Input<RegisteredDomainTechContact>? techContact;
+  final pulumi.Input<RegisteredDomainTechContact?>? techContact;
   /// Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? techPrivacy;
+  final pulumi.Input<bool?>? techPrivacy;
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
   /// &gt; **NOTE:** You must specify the same privacy setting for `adminPrivacy`, `registrantPrivacy` and `techPrivacy`.
-  final pulumi.Input<bool>? transferLock;
+  final pulumi.Input<bool?>? transferLock;
   /// The last updated date of the domain as found in the response to a WHOIS query.
-  final pulumi.Input<String>? updatedDate;
+  final pulumi.Input<String?>? updatedDate;
   /// The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.
-  final pulumi.Input<String>? whoisServer;
+  final pulumi.Input<String?>? whoisServer;
 
   /// Creates a new [RegisteredDomainState].
   /// [abuseContactEmail] Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.

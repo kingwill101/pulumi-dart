@@ -9,22 +9,22 @@ import 'files_file_system_timeouts.dart';
 /// {@macro pulumi_s3_files_file_system_files_file_system_args_doc}
 class FilesFileSystemArgs {
   /// Set to `true` to acknowledge and accept any warnings related to the bucket configuration. If not specified, the operation may fail when such warnings are present. For example, warnings may be raised when creating a file system scoped to a prefix containing a large number of objects (approximately 12 million objects). See [the AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-files-synchronization.html#s3-files-sync-rename-move) for more details.
-  final pulumi.Input<bool>? acceptBucketWarning;
+  final pulumi.Input<bool?>? acceptBucketWarning;
   /// S3 bucket ARN. Changing this value forces replacement.
   final pulumi.Input<String> bucket;
   /// KMS key ID for encryption. Changing this value forces replacement.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// S3 bucket prefix. Changing this value forces replacement.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// IAM role ARN for S3 access. Changing this value forces replacement.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> roleArn;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<FilesFileSystemTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<FilesFileSystemTimeouts?>? timeouts;
 
   /// Creates a new [FilesFileSystemArgs].
   /// [acceptBucketWarning] Set to `true` to acknowledge and accept any warnings related to the bucket configuration. If not specified, the operation may fail when such warnings are present. For example, warnings may be raised when creating a file system scoped to a prefix containing a large number of objects (approximately 12 million objects). See [the AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-files-synchronization.html#s3-files-sync-rename-move) for more details.

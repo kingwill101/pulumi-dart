@@ -142,7 +142,7 @@ class MulticastGroupSource extends pulumi.CustomResource {
           'aws:ec2transitgateway/multicastGroupSource:MulticastGroupSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     groupIpAddress = registerOutput<String>('groupIpAddress');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
@@ -155,11 +155,12 @@ class MulticastGroupSource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MulticastGroupSourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MulticastGroupSource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -173,6 +174,21 @@ class MulticastGroupSource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    groupIpAddress = registerOutput<String>('groupIpAddress');
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    region = registerOutput<String>('region');
+    transitGatewayMulticastDomainId = registerOutput<String>('transitGatewayMulticastDomainId');
+  }
+
+  /// Creates a typed reference to an existing [MulticastGroupSource] resource.
+  MulticastGroupSource.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/multicastGroupSource:MulticastGroupSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     groupIpAddress = registerOutput<String>('groupIpAddress');
     networkInterfaceId = registerOutput<String>('networkInterfaceId');
     region = registerOutput<String>('region');

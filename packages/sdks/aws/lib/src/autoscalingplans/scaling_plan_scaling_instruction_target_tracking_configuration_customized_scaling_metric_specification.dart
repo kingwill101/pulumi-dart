@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification {
   /// Dimensions of the metric.
-  final pulumi.Input<Map<String, String>>? dimensions;
+  final pulumi.Input<Map<String, String>?>? dimensions;
   /// Name of the metric.
   final pulumi.Input<String> metricName;
   /// Namespace of the metric.
@@ -12,7 +12,7 @@ class ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingM
   /// Statistic of the metric. Valid values: `Average`, `Maximum`, `Minimum`, `SampleCount`, `Sum`.
   final pulumi.Input<String> statistic;
   /// Unit of the metric.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
 
   /// Creates a new [ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification].
   /// [dimensions] Dimensions of the metric.

@@ -200,7 +200,7 @@ class EnvironmentMembership extends pulumi.CustomResource {
   late final pulumi.Output<String> permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the environment member you want to add.
+  /// ARN of the environment member you want to add.
   late final pulumi.Output<String> userArn;
   /// The user ID in AWS Identity and Access Management (AWS IAM) of the environment member.
   late final pulumi.Output<String> userId;
@@ -217,7 +217,7 @@ class EnvironmentMembership extends pulumi.CustomResource {
           'aws:cloud9/environmentMembership:EnvironmentMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     environmentId = registerOutput<String>('environmentId');
     permissions = registerOutput<String>('permissions');
@@ -231,11 +231,12 @@ class EnvironmentMembership extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentMembershipState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentMembership._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -249,6 +250,22 @@ class EnvironmentMembership extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    environmentId = registerOutput<String>('environmentId');
+    permissions = registerOutput<String>('permissions');
+    region = registerOutput<String>('region');
+    userArn = registerOutput<String>('userArn');
+    userId = registerOutput<String>('userId');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentMembership] resource.
+  EnvironmentMembership.reference(String urn)
+    : super(
+        'aws:cloud9/environmentMembership:EnvironmentMembership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     environmentId = registerOutput<String>('environmentId');
     permissions = registerOutput<String>('permissions');
     region = registerOutput<String>('region');

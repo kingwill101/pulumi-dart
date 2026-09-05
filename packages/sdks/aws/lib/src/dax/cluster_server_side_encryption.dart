@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterServerSideEncryption {
   /// Whether to enable encryption at rest. Defaults to `false`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ClusterServerSideEncryption].
   /// [enabled] Whether to enable encryption at rest. Defaults to `false`.

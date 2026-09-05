@@ -5,7 +5,7 @@ import 'agent_data_source_vector_ingestion_configuration_chunking_configuration_
 
 class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration {
   /// Maximum number of tokens to include in a chunk. Must contain two `levelConfigurations`. See `levelConfigurations` for details.
-  final pulumi.Input<List<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration>>? levelConfigurations;
+  final pulumi.Input<List<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration>?>? levelConfigurations;
   /// The number of tokens to repeat across chunks in the same layer.
   final pulumi.Input<int> overlapTokens;
 
@@ -27,7 +27,7 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchic
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration(
       levelConfigurations: (() { final guardedValue = map['levelConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration>(guardedValue, (value) => AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      overlapTokens: pulumi.Input.fromValue(map['overlapTokens'] as int),
+      overlapTokens: pulumi.Input.fromValue((map['overlapTokens'] as num).toInt()),
     );
   }
 }

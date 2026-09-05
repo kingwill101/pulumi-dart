@@ -5,11 +5,11 @@ import 'channel_encoder_settings_output_group_output_output_settings_archive_out
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings {
   /// Settings specific to the container type of the file. See Container Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings>? containerSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings?>? containerSettings;
   /// Output file extension.
-  final pulumi.Input<String>? extension;
+  final pulumi.Input<String?>? extension;
   /// String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
-  final pulumi.Input<String>? nameModifier;
+  final pulumi.Input<String?>? nameModifier;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings].
   /// [containerSettings] Settings specific to the container type of the file. See Container Settings for more details.

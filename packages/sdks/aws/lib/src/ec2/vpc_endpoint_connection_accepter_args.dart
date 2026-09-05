@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_vpc_endpoint_connection_accepter_vpc_endpoint_connection_accepter_args_doc}
 class VpcEndpointConnectionAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// AWS VPC Endpoint ID.
   final pulumi.Input<String> vpcEndpointId;
   /// AWS VPC Endpoint Service ID.

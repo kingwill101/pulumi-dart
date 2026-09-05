@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatJson {
   /// Indicates if the file should be read as a JSON object per line.
-  final pulumi.Input<bool>? line;
+  final pulumi.Input<bool?>? line;
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatJson].
   /// [line] Indicates if the file should be read as a JSON object per line.

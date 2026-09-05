@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaimAuthorizingClaimMatchValueClaimMatchValue {
-  final pulumi.Input<String>? matchValueString;
-  final pulumi.Input<List<String>>? matchValueStringLists;
+  final pulumi.Input<String?>? matchValueString;
+  final pulumi.Input<List<String>?>? matchValueStringLists;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaimAuthorizingClaimMatchValueClaimMatchValue].
   /// [matchValueString] Optional.

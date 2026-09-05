@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RecordsExclusiveResourceRecordSetGeolocation {
   /// Two-letter continent code.
   /// See the [AWS documentation](http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html) for valid values.
-  final pulumi.Input<String>? continentCode;
+  final pulumi.Input<String?>? continentCode;
   /// Two-letter country code.
   /// See the ISO standard linked from the [AWS documentation](http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html) for valid values.
-  final pulumi.Input<String>? countryCode;
+  final pulumi.Input<String?>? countryCode;
   /// Subdivision code.
-  final pulumi.Input<String>? subdivisionCode;
+  final pulumi.Input<String?>? subdivisionCode;
 
   /// Creates a new [RecordsExclusiveResourceRecordSetGeolocation].
   /// [continentCode] Two-letter continent code.

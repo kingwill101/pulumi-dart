@@ -15,29 +15,29 @@ import 'pipe_target_parameters_step_function_state_machine_parameters.dart';
 
 class PipeTargetParameters {
   /// The parameters for using an AWS Batch job as a target. Detailed below.
-  final pulumi.Input<PipeTargetParametersBatchJobParameters>? batchJobParameters;
+  final pulumi.Input<PipeTargetParametersBatchJobParameters?>? batchJobParameters;
   /// The parameters for using an CloudWatch Logs log stream as a target. Detailed below.
-  final pulumi.Input<PipeTargetParametersCloudwatchLogsParameters>? cloudwatchLogsParameters;
+  final pulumi.Input<PipeTargetParametersCloudwatchLogsParameters?>? cloudwatchLogsParameters;
   /// The parameters for using an Amazon ECS task as a target. Detailed below.
-  final pulumi.Input<PipeTargetParametersEcsTaskParameters>? ecsTaskParameters;
+  final pulumi.Input<PipeTargetParametersEcsTaskParameters?>? ecsTaskParameters;
   /// The parameters for using an EventBridge event bus as a target. Detailed below.
-  final pulumi.Input<PipeTargetParametersEventbridgeEventBusParameters>? eventbridgeEventBusParameters;
+  final pulumi.Input<PipeTargetParametersEventbridgeEventBusParameters?>? eventbridgeEventBusParameters;
   /// These are custom parameter to be used when the target is an API Gateway REST APIs or EventBridge ApiDestinations. Detailed below.
-  final pulumi.Input<PipeTargetParametersHttpParameters>? httpParameters;
+  final pulumi.Input<PipeTargetParametersHttpParameters?>? httpParameters;
   /// Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the target. Maximum length of 8192 characters.
-  final pulumi.Input<String>? inputTemplate;
+  final pulumi.Input<String?>? inputTemplate;
   /// The parameters for using a Kinesis stream as a source. Detailed below.
-  final pulumi.Input<PipeTargetParametersKinesisStreamParameters>? kinesisStreamParameters;
+  final pulumi.Input<PipeTargetParametersKinesisStreamParameters?>? kinesisStreamParameters;
   /// The parameters for using a Lambda function as a target. Detailed below.
-  final pulumi.Input<PipeTargetParametersLambdaFunctionParameters>? lambdaFunctionParameters;
+  final pulumi.Input<PipeTargetParametersLambdaFunctionParameters?>? lambdaFunctionParameters;
   /// These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the Amazon Redshift Data API BatchExecuteStatement. Detailed below.
-  final pulumi.Input<PipeTargetParametersRedshiftDataParameters>? redshiftDataParameters;
+  final pulumi.Input<PipeTargetParametersRedshiftDataParameters?>? redshiftDataParameters;
   /// The parameters for using a SageMaker AI pipeline as a target. Detailed below.
-  final pulumi.Input<PipeTargetParametersSagemakerPipelineParameters>? sagemakerPipelineParameters;
+  final pulumi.Input<PipeTargetParametersSagemakerPipelineParameters?>? sagemakerPipelineParameters;
   /// The parameters for using a Amazon SQS stream as a target. Detailed below.
-  final pulumi.Input<PipeTargetParametersSqsQueueParameters>? sqsQueueParameters;
+  final pulumi.Input<PipeTargetParametersSqsQueueParameters?>? sqsQueueParameters;
   /// The parameters for using a Step Functions state machine as a target. Detailed below.
-  final pulumi.Input<PipeTargetParametersStepFunctionStateMachineParameters>? stepFunctionStateMachineParameters;
+  final pulumi.Input<PipeTargetParametersStepFunctionStateMachineParameters?>? stepFunctionStateMachineParameters;
 
   /// Creates a new [PipeTargetParameters].
   /// [batchJobParameters] The parameters for using an AWS Batch job as a target. Detailed below.

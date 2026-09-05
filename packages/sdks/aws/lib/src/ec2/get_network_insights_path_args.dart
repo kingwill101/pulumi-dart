@@ -13,13 +13,13 @@ class GetNetworkInsightsPathArgs {
   /// The arguments of this data source act as filters for querying the available
   /// Network Insights Paths. The given filters must match exactly one Network Insights Path
   /// whose data will be exported as attributes.
-  final pulumi.Input<List<GetNetworkInsightsPathFilter>>? filters;
+  final pulumi.Input<List<GetNetworkInsightsPathFilter>?>? filters;
   /// ID of the Network Insights Path to select.
-  final pulumi.Input<String>? networkInsightsPathId;
+  final pulumi.Input<String?>? networkInsightsPathId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetNetworkInsightsPathArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

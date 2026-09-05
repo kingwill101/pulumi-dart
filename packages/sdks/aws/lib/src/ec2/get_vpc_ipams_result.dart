@@ -9,27 +9,27 @@ class GetVpcIpamsResult {
   final List<GetVpcIpamsFilter>? filters;
   final List<String>? ipamIds;
   /// List of IPAM resources matching the provided arguments.
-  final List<GetVpcIpamsIpam> ipams;
-  final String region;
+  final List<GetVpcIpamsIpam>? ipams;
+  final String? region;
 
   /// Creates a new [GetVpcIpamsResult].
   /// [filters] Optional.
   /// [ipamIds] Optional.
   /// [ipams] List of IPAM resources matching the provided arguments.
-  /// [region] Required.
+  /// [region] Optional.
   const GetVpcIpamsResult({
     this.filters,
     this.ipamIds,
-    required this.ipams,
-    required this.region,
+    this.ipams,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpcIpamsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'ipamIds': ?ipamIds,
-      'ipams': pulumi.Input.encodeList<GetVpcIpamsIpam, Map<String, dynamic>>(ipams, (value) => value.toMap()),
-      'region': region,
+      'ipams': ?(() { final guardedValue = ipams; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetVpcIpamsIpam, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
     };
   }
 
@@ -37,8 +37,8 @@ class GetVpcIpamsResult {
     return GetVpcIpamsResult(
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpcIpamsFilter>(guardedValue, (value) => GetVpcIpamsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       ipamIds: (() { final guardedValue = map['ipamIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      ipams: pulumi.Input.decodeList<GetVpcIpamsIpam>(map['ipams']!, (value) => GetVpcIpamsIpam.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
+      ipams: (() { final guardedValue = map['ipams']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetVpcIpamsIpam>(guardedValue, (value) => GetVpcIpamsIpam.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

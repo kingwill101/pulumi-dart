@@ -6,7 +6,7 @@ class DaemonTaskDefinitionContainerDefinitionLinuxParametersTmpf {
   /// Absolute file path where the tmpfs volume is to be mounted.
   final pulumi.Input<String> containerPath;
   /// List of tmpfs volume mount options.
-  final pulumi.Input<List<String>>? mountOptions;
+  final pulumi.Input<List<String>?>? mountOptions;
   /// Maximum size (in MiB) of the tmpfs volume.
   final pulumi.Input<int> size;
 
@@ -32,7 +32,7 @@ class DaemonTaskDefinitionContainerDefinitionLinuxParametersTmpf {
     return DaemonTaskDefinitionContainerDefinitionLinuxParametersTmpf(
       containerPath: pulumi.Input.fromValue(map['containerPath'] as String),
       mountOptions: (() { final guardedValue = map['mountOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
     );
   }
 }

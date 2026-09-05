@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFunctionVpcConfig {
+  /// Whether IPv6 is allowed for dual-stack VPC.
   final pulumi.Input<bool> ipv6AllowedForDualStack;
   /// List of security group IDs associated with the Lambda function.
   final pulumi.Input<List<String>> securityGroupIds;
@@ -12,7 +13,7 @@ class GetFunctionVpcConfig {
   final pulumi.Input<String> vpcId;
 
   /// Creates a new [GetFunctionVpcConfig].
-  /// [ipv6AllowedForDualStack] Required.
+  /// [ipv6AllowedForDualStack] Whether IPv6 is allowed for dual-stack VPC.
   /// [securityGroupIds] List of security group IDs associated with the Lambda function.
   /// [subnetIds] List of subnet IDs associated with the Lambda function.
   /// [vpcId] ID of the VPC.

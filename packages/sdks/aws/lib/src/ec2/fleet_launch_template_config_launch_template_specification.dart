@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetLaunchTemplateConfigLaunchTemplateSpecification {
   /// The ID of the launch template.
-  final pulumi.Input<String>? launchTemplateId;
+  final pulumi.Input<String?>? launchTemplateId;
   /// The name of the launch template.
-  final pulumi.Input<String>? launchTemplateName;
+  final pulumi.Input<String?>? launchTemplateName;
   /// The launch template version number, `$Latest`, or `$Default.`
   final pulumi.Input<String> version;
 

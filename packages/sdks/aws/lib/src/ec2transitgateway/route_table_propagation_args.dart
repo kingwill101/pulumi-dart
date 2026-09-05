@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2transitgateway_route_table_propagation_route_table_propagation_args_doc}
 class RouteTablePropagationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of EC2 Transit Gateway Attachment.
   final pulumi.Input<String> transitGatewayAttachmentId;
   /// Identifier of EC2 Transit Gateway Route Table.

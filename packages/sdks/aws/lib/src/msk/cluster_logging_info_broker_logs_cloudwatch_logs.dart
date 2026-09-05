@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterLoggingInfoBrokerLogsCloudwatchLogs {
   final pulumi.Input<bool> enabled;
   /// Name of the Cloudwatch Log Group to deliver logs to.
-  final pulumi.Input<String>? logGroup;
+  final pulumi.Input<String?>? logGroup;
 
   /// Creates a new [ClusterLoggingInfoBrokerLogsCloudwatchLogs].
   /// [enabled] Required.

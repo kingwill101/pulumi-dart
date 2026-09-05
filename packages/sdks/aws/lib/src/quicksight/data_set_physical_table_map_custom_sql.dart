@@ -5,7 +5,7 @@ import 'data_set_physical_table_map_custom_sql_column.dart';
 
 class DataSetPhysicalTableMapCustomSql {
   /// Column schema from the SQL query result set. See columns.
-  final pulumi.Input<List<DataSetPhysicalTableMapCustomSqlColumn>>? columns;
+  final pulumi.Input<List<DataSetPhysicalTableMapCustomSqlColumn>?>? columns;
   /// ARN of the data source.
   final pulumi.Input<String> dataSourceArn;
   /// Display name for the SQL query result.

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'routing_rule_action.dart';
 import 'routing_rule_args.dart';
+import 'routing_rule_condition.dart';
 import 'routing_rule_state.dart';
 
 /// Resource for managing an AWS API Gateway V2 Routing Rule.
@@ -14,7 +16,13 @@ import 'routing_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.apigatewayv2.RoutingRule("example", {
-///     domainName: "test.example.com",
+///     actions: [{
+///         invokeApi: {
+///             apiId: "example-api-id",
+///             stage: "example-stage",
+///             stripBasePath: true,
+///         },
+///     }],
 ///     conditions: [{
 ///         matchHeaders: {
 ///             anyOf: {
@@ -29,13 +37,7 @@ import 'routing_rule_state.dart';
 ///             ],
 ///         },
 ///     }],
-///     actions: [{
-///         invokeApi: {
-///             apiId: "example-api-id",
-///             stage: "example-stage",
-///             stripBasePath: true,
-///         },
-///     }],
+///     domainName: "test.example.com",
 ///     priority: 1,
 /// });
 /// ```
@@ -44,7 +46,13 @@ import 'routing_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.apigatewayv2.RoutingRule("example",
-///     domain_name="test.example.com",
+///     actions=[{
+///         "invoke_api": {
+///             "api_id": "example-api-id",
+///             "stage": "example-stage",
+///             "strip_base_path": True,
+///         },
+///     }],
 ///     conditions=[{
 ///         "match_headers": {
 ///             "any_of": {
@@ -59,13 +67,7 @@ import 'routing_rule_state.dart';
 ///             ],
 ///         },
 ///     }],
-///     actions=[{
-///         "invoke_api": {
-///             "api_id": "example-api-id",
-///             "stage": "example-stage",
-///             "strip_base_path": True,
-///         },
-///     }],
+///     domain_name="test.example.com",
 ///     priority=1)
 /// ```
 /// ```csharp
@@ -78,7 +80,18 @@ import 'routing_rule_state.dart';
 /// {
 ///     var example = new Aws.ApiGatewayV2.RoutingRule("example", new()
 ///     {
-///         DomainName = "test.example.com",
+///         Actions = new[]
+///         {
+///             new Aws.ApiGatewayV2.Inputs.RoutingRuleActionArgs
+///             {
+///                 InvokeApi = new Aws.ApiGatewayV2.Inputs.RoutingRuleActionInvokeApiArgs
+///                 {
+///                     ApiId = "example-api-id",
+///                     Stage = "example-stage",
+///                     StripBasePath = true,
+///                 },
+///             },
+///         },
 ///         Conditions = new[]
 ///         {
 ///             new Aws.ApiGatewayV2.Inputs.RoutingRuleConditionArgs
@@ -101,18 +114,7 @@ import 'routing_rule_state.dart';
 ///                 },
 ///             },
 ///         },
-///         Actions = new[]
-///         {
-///             new Aws.ApiGatewayV2.Inputs.RoutingRuleActionArgs
-///             {
-///                 InvokeApi = new Aws.ApiGatewayV2.Inputs.RoutingRuleActionInvokeApiArgs
-///                 {
-///                     ApiId = "example-api-id",
-///                     Stage = "example-stage",
-///                     StripBasePath = true,
-///                 },
-///             },
-///         },
+///         DomainName = "test.example.com",
 ///         Priority = 1,
 ///     });
 ///
@@ -129,7 +131,15 @@ import 'routing_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apigatewayv2.NewRoutingRule(ctx, "example", &apigatewayv2.RoutingRuleArgs{
-/// 			DomainName: pulumi.String("test.example.com"),
+/// 			Actions: apigatewayv2.RoutingRuleActionArray{
+/// 				&apigatewayv2.RoutingRuleActionArgs{
+/// 					InvokeApi: &apigatewayv2.RoutingRuleActionInvokeApiArgs{
+/// 						ApiId:         pulumi.String("example-api-id"),
+/// 						Stage:         pulumi.String("example-stage"),
+/// 						StripBasePath: pulumi.Bool(true),
+/// 					},
+/// 				},
+/// 			},
 /// 			Conditions: apigatewayv2.RoutingRuleConditionArray{
 /// 				&apigatewayv2.RoutingRuleConditionArgs{
 /// 					MatchHeaders: &apigatewayv2.RoutingRuleConditionMatchHeadersArgs{
@@ -146,16 +156,8 @@ import 'routing_rule_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			Actions: apigatewayv2.RoutingRuleActionArray{
-/// 				&apigatewayv2.RoutingRuleActionArgs{
-/// 					InvokeApi: &apigatewayv2.RoutingRuleActionInvokeApiArgs{
-/// 						ApiId:         pulumi.String("example-api-id"),
-/// 						Stage:         pulumi.String("example-stage"),
-/// 						StripBasePath: pulumi.Bool(true),
-/// 					},
-/// 				},
-/// 			},
-/// 			Priority: pulumi.Int(1),
+/// 			DomainName: pulumi.String("test.example.com"),
+/// 			Priority:   pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -174,7 +176,13 @@ import 'routing_rule_state.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_routingrule" "example" {
-///   domain_name = "test.example.com"
+///   actions {
+///     invoke_api = {
+///       api_id          = "example-api-id"
+///       stage           = "example-stage"
+///       strip_base_path = true
+///     }
+///   }
 ///   conditions {
 ///     match_headers = {
 ///       any_of = {
@@ -186,14 +194,8 @@ import 'routing_rule_state.dart';
 ///       any_ofs = ["example-path", "another-path"]
 ///     }
 ///   }
-///   actions {
-///     invoke_api = {
-///       api_id          = "example-api-id"
-///       stage           = "example-stage"
-///       strip_base_path = true
-///     }
-///   }
-///   priority = 1
+///   domain_name = "test.example.com"
+///   priority    = 1
 /// }
 /// ```
 /// ```java
@@ -204,12 +206,12 @@ import 'routing_rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.apigatewayv2.RoutingRule;
 /// import com.pulumi.aws.apigatewayv2.RoutingRuleArgs;
+/// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleActionArgs;
+/// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleActionInvokeApiArgs;
 /// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleConditionArgs;
 /// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleConditionMatchHeadersArgs;
 /// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleConditionMatchHeadersAnyOfArgs;
 /// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleConditionMatchBasePathsArgs;
-/// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleActionArgs;
-/// import com.pulumi.aws.apigatewayv2.inputs.RoutingRuleActionInvokeApiArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -224,7 +226,13 @@ import 'routing_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RoutingRule("example", RoutingRuleArgs.builder()
-///             .domainName("test.example.com")
+///             .actions(RoutingRuleActionArgs.builder()
+///                 .invokeApi(RoutingRuleActionInvokeApiArgs.builder()
+///                     .apiId("example-api-id")
+///                     .stage("example-stage")
+///                     .stripBasePath(true)
+///                     .build())
+///                 .build())
 ///             .conditions(RoutingRuleConditionArgs.builder()
 ///                 .matchHeaders(RoutingRuleConditionMatchHeadersArgs.builder()
 ///                     .anyOf(RoutingRuleConditionMatchHeadersAnyOfArgs.builder()
@@ -238,13 +246,7 @@ import 'routing_rule_state.dart';
 ///                         "another-path")
 ///                     .build())
 ///                 .build())
-///             .actions(RoutingRuleActionArgs.builder()
-///                 .invokeApi(RoutingRuleActionInvokeApiArgs.builder()
-///                     .apiId("example-api-id")
-///                     .stage("example-stage")
-///                     .stripBasePath(true)
-///                     .build())
-///                 .build())
+///             .domainName("test.example.com")
 ///             .priority(1)
 ///             .build());
 ///
@@ -256,7 +258,11 @@ import 'routing_rule_state.dart';
 ///   example:
 ///     type: aws:apigatewayv2:RoutingRule
 ///     properties:
-///       domainName: test.example.com
+///       actions:
+///         - invokeApi:
+///             apiId: example-api-id
+///             stage: example-stage
+///             stripBasePath: true
 ///       conditions:
 ///         - matchHeaders:
 ///             anyOf:
@@ -266,11 +272,7 @@ import 'routing_rule_state.dart';
 ///             anyOfs:
 ///               - example-path
 ///               - another-path
-///       actions:
-///         - invokeApi:
-///             apiId: example-api-id
-///             stage: example-stage
-///             stripBasePath: true
+///       domainName: test.example.com
 ///       priority: 1
 /// ```
 ///
@@ -284,9 +286,9 @@ import 'routing_rule_state.dart';
 /// ```
 class RoutingRule extends pulumi.CustomResource {
   /// Configuration of resulting action based on matching routing rules condition. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> actions;
+  late final pulumi.Output<List<RoutingRuleAction>> actions;
   /// Conditions configuration. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<RoutingRuleCondition>> conditions;
   /// Domain name. Must be between 1 and 512 characters in length.
   ///
   /// The following arguments are optional:
@@ -312,10 +314,10 @@ class RoutingRule extends pulumi.CustomResource {
           'aws:apigatewayv2/routingRule:RoutingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    actions = registerOutput<List<RoutingRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleAction>(guardedValue, (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
+    conditions = registerOutput<List<RoutingRuleCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleCondition>(guardedValue, (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });
     domainName = registerOutput<String>('domainName');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');
@@ -328,11 +330,12 @@ class RoutingRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoutingRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoutingRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,8 +349,26 @@ class RoutingRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    actions = registerOutput<List<RoutingRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleAction>(guardedValue, (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
+    conditions = registerOutput<List<RoutingRuleCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleCondition>(guardedValue, (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    domainName = registerOutput<String>('domainName');
+    priority = registerOutput<int>('priority');
+    region = registerOutput<String>('region');
+    routingRuleArn = registerOutput<String>('routingRuleArn');
+    routingRuleId = registerOutput<String>('routingRuleId');
+  }
+
+  /// Creates a typed reference to an existing [RoutingRule] resource.
+  RoutingRule.reference(String urn)
+    : super(
+        'aws:apigatewayv2/routingRule:RoutingRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<RoutingRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleAction>(guardedValue, (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
+    conditions = registerOutput<List<RoutingRuleCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleCondition>(guardedValue, (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });
     domainName = registerOutput<String>('domainName');
     priority = registerOutput<int>('priority');
     region = registerOutput<String>('region');

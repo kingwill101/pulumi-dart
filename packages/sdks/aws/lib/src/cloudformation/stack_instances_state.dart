@@ -8,29 +8,29 @@ import 'stack_instances_stack_instance_summary.dart';
 /// Input properties used for looking up and filtering StackInstances resources.
 class StackInstancesState {
   /// Accounts where you want to create stack instances in the specified `regions`. You can specify either `accounts` or `deploymentTargets`, but not both.
-  final pulumi.Input<List<String>>? accounts;
+  final pulumi.Input<List<String>?>? accounts;
   /// Whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account. Valid values: `SELF` (default), `DELEGATED_ADMIN`.
-  final pulumi.Input<String>? callAs;
+  final pulumi.Input<String?>? callAs;
   /// AWS Organizations accounts for which to create stack instances in the `regions`. stack sets doesn't deploy stack instances to the organization management account, even if the organization management account is in your organization or in an OU in your organization. Drift detection is not possible for most of this argument. See deploymentTargets below.
-  final pulumi.Input<StackInstancesDeploymentTargets>? deploymentTargets;
+  final pulumi.Input<StackInstancesDeploymentTargets?>? deploymentTargets;
   /// Preferences for how AWS CloudFormation performs a stack set operation. See operationPreferences below.
-  final pulumi.Input<StackInstancesOperationPreferences>? operationPreferences;
+  final pulumi.Input<StackInstancesOperationPreferences?>? operationPreferences;
   /// Key-value map of input parameters to override from the stack set for these instances. This argument's drift detection is limited to the first account and region since each instance can have unique parameters.
-  final pulumi.Input<Map<String, String>>? parameterOverrides;
+  final pulumi.Input<Map<String, String>?>? parameterOverrides;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Regions where you want to create stack instances in the specified `accounts`.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// Whether to remove the stack instances from the stack set, but not delete the stacks. You can't reassociate a retained stack or add an existing, saved stack to a new stack set. To retain the stack, ensure `retainStacks = true` has been successfully applied _before_ an apply that would destroy the resource. Defaults to `false`.
-  final pulumi.Input<bool>? retainStacks;
+  final pulumi.Input<bool?>? retainStacks;
   /// List of stack instances created from an organizational unit deployment target. This may not always be set depending on whether CloudFormation returns summaries for your configuration. See `stackInstanceSummaries`.
-  final pulumi.Input<List<StackInstancesStackInstanceSummary>>? stackInstanceSummaries;
+  final pulumi.Input<List<StackInstancesStackInstanceSummary>?>? stackInstanceSummaries;
   /// Name or unique ID of the stack set that the stack instance is associated with.
-  final pulumi.Input<String>? stackSetId;
+  final pulumi.Input<String?>? stackSetId;
   /// Name of the stack set.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? stackSetName;
+  final pulumi.Input<String?>? stackSetName;
 
   /// Creates a new [StackInstancesState].
   /// [accounts] Accounts where you want to create stack instances in the specified `regions`. You can specify either `accounts` or `deploymentTargets`, but not both.

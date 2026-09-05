@@ -4,28 +4,28 @@
 /// Result data returned by getTables.
 class GetTablesResult {
   /// A list of all the DynamoDB table names found.
-  final List<String> names;
-  final String region;
+  final List<String>? names;
+  final String? region;
 
   /// Creates a new [GetTablesResult].
   /// [names] A list of all the DynamoDB table names found.
-  /// [region] Required.
+  /// [region] Optional.
   const GetTablesResult({
-    required this.names,
-    required this.region,
+    this.names,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'names': names,
-      'region': region,
+      'names': ?names,
+      'region': ?region,
     };
   }
 
   factory GetTablesResult.fromMap(Map<String, dynamic> map) {
     return GetTablesResult(
-      names: (map['names'] as List).cast<String>(),
-      region: map['region'] as String,
+      names: (() { final guardedValue = map['names']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

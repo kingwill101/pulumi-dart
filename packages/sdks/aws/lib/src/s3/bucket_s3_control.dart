@@ -125,13 +125,13 @@ import 'bucket_s3_control_state.dart';
 /// - `arn` (String) ARN of the bucket.
 ///
 ///
-/// Using `pulumi import`, import S3 Control Buckets using Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import S3 Control Buckets using ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:s3control/bucket:Bucket example arn:aws:s3-outposts:us-east-1:123456789012:outpost/op-12345678/bucket/example
 /// ```
 class BucketS3Control extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the bucket.
+  /// ARN of the bucket.
   late final pulumi.Output<String> arn;
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
@@ -160,7 +160,7 @@ class BucketS3Control extends pulumi.CustomResource {
           'aws:s3control/bucket:Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bucket = registerOutput<String>('bucket');
@@ -168,8 +168,8 @@ class BucketS3Control extends pulumi.CustomResource {
     outpostId = registerOutput<String>('outpostId');
     publicAccessBlockEnabled = registerOutput<bool>('publicAccessBlockEnabled');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [BucketS3Control] resource's state with the given [name] and [id].
@@ -177,11 +177,12 @@ class BucketS3Control extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketS3ControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketS3Control._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,7 +202,26 @@ class BucketS3Control extends pulumi.CustomResource {
     outpostId = registerOutput<String>('outpostId');
     publicAccessBlockEnabled = registerOutput<bool>('publicAccessBlockEnabled');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [BucketS3Control] resource.
+  BucketS3Control.reference(String urn)
+    : super(
+        'aws:s3control/bucket:Bucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bucket = registerOutput<String>('bucket');
+    creationDate = registerOutput<String>('creationDate');
+    outpostId = registerOutput<String>('outpostId');
+    publicAccessBlockEnabled = registerOutput<bool>('publicAccessBlockEnabled');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

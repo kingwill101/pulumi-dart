@@ -9,22 +9,22 @@ import 'resource_share_resource_share_configuration.dart';
 /// {@macro pulumi_ram_resource_share_resource_share_args_doc}
 class ResourceShareArgs {
   /// Whether principals outside your organization can be associated with a resource share.
-  final pulumi.Input<bool>? allowExternalPrincipals;
+  final pulumi.Input<bool?>? allowExternalPrincipals;
   /// Name of the resource share.
-  final pulumi.Input<String>? name;
-  /// Amazon Resource Names (ARNs) of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.
-  final pulumi.Input<List<String>>? permissionArns;
+  final pulumi.Input<String?>? name;
+  /// ARNs of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.
+  final pulumi.Input<List<String>?>? permissionArns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for the resource share. See `resourceShareConfiguration` Block for details.
-  final pulumi.Input<ResourceShareResourceShareConfiguration>? resourceShareConfiguration;
+  final pulumi.Input<ResourceShareResourceShareConfiguration?>? resourceShareConfiguration;
   /// Map of tags to assign to the resource share. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ResourceShareArgs].
   /// [allowExternalPrincipals] Whether principals outside your organization can be associated with a resource share.
   /// [name] Name of the resource share.
-  /// [permissionArns] Amazon Resource Names (ARNs) of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.
+  /// [permissionArns] ARNs of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceShareConfiguration] Configuration block for the resource share. See `resourceShareConfiguration` Block for details.
   /// [tags] Map of tags to assign to the resource share. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

@@ -6,14 +6,14 @@ import 'endpoint_service_private_dns_verification_timeouts.dart';
 /// Input properties used for looking up and filtering EndpointServicePrivateDnsVerification resources.
 class EndpointServicePrivateDnsVerificationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the endpoint service.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? serviceId;
-  final pulumi.Input<EndpointServicePrivateDnsVerificationTimeouts>? timeouts;
+  final pulumi.Input<String?>? serviceId;
+  final pulumi.Input<EndpointServicePrivateDnsVerificationTimeouts?>? timeouts;
   /// Whether to wait until the endpoint service returns a `Verified` status for the configured private DNS name.
-  final pulumi.Input<bool>? waitForVerification;
+  final pulumi.Input<bool?>? waitForVerification;
 
   /// Creates a new [EndpointServicePrivateDnsVerificationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

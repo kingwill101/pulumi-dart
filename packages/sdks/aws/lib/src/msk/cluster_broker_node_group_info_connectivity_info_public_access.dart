@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess {
   /// Public access type. Valid values: `DISABLED`, `SERVICE_PROVIDED_EIPS`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess].
   /// [type] Public access type. Valid values: `DISABLED`, `SERVICE_PROVIDED_EIPS`.

@@ -8,9 +8,9 @@ class WebAclRuleStatementRuleGroupReferenceStatement {
   /// ARN of the rule group to reference.
   final pulumi.Input<String> arn;
   /// Rules to exclude from the rule group. See Excluded Rule below.
-  final pulumi.Input<List<WebAclRuleStatementRuleGroupReferenceStatementExcludedRule>>? excludedRules;
+  final pulumi.Input<List<WebAclRuleStatementRuleGroupReferenceStatementExcludedRule>?>? excludedRules;
   /// Override actions for specific rules within the rule group. See Rule Action Override below.
-  final pulumi.Input<List<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride>>? ruleActionOverrides;
+  final pulumi.Input<List<WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride>?>? ruleActionOverrides;
 
   /// Creates a new [WebAclRuleStatementRuleGroupReferenceStatement].
   /// [arn] ARN of the rule group to reference.

@@ -15,11 +15,11 @@ import 'dev_endpoint_state.dart';
 ///
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["glue.amazonaws.com"],
 ///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const exampleRole = new aws.iam.Role("example", {
@@ -40,11 +40,11 @@ import 'dev_endpoint_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["glue.amazonaws.com"],
 ///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
 ///     name="AWSGlueServiceRole-foo",
@@ -70,10 +70,6 @@ import 'dev_endpoint_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -84,6 +80,10 @@ import 'dev_endpoint_state.dart';
 ///                             "glue.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -123,9 +123,6 @@ import 'dev_endpoint_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -133,6 +130,9 @@ import 'dev_endpoint_state.dart';
 /// 								"glue.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -176,11 +176,11 @@ import 'dev_endpoint_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["glue.amazonaws.com"]
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -228,11 +228,11 @@ import 'dev_endpoint_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("glue.amazonaws.com")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -279,12 +279,12 @@ import 'dev_endpoint_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - glue.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -361,9 +361,9 @@ class DevEndpoint extends pulumi.CustomResource {
           'aws:glue/devEndpoint:DevEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    arguments = registerOutput<Map<String, String>?>('arguments');
+    arguments = registerOutput<Map<String, String>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
     extraJarsS3Path = registerOutput<String?>('extraJarsS3Path');
@@ -376,15 +376,15 @@ class DevEndpoint extends pulumi.CustomResource {
     privateAddress = registerOutput<String>('privateAddress');
     publicAddress = registerOutput<String>('publicAddress');
     publicKey = registerOutput<String?>('publicKey');
-    publicKeys = registerOutput<List<String>?>('publicKeys');
+    publicKeys = registerOutput<List<String>?>('publicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     securityConfiguration = registerOutput<String?>('securityConfiguration');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
     workerType = registerOutput<String?>('workerType');
     yarnEndpointAddress = registerOutput<String>('yarnEndpointAddress');
@@ -396,11 +396,12 @@ class DevEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DevEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DevEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -414,7 +415,7 @@ class DevEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    arguments = registerOutput<Map<String, String>?>('arguments');
+    arguments = registerOutput<Map<String, String>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');
     extraJarsS3Path = registerOutput<String?>('extraJarsS3Path');
@@ -427,15 +428,52 @@ class DevEndpoint extends pulumi.CustomResource {
     privateAddress = registerOutput<String>('privateAddress');
     publicAddress = registerOutput<String>('publicAddress');
     publicKey = registerOutput<String?>('publicKey');
-    publicKeys = registerOutput<List<String>?>('publicKeys');
+    publicKeys = registerOutput<List<String>?>('publicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     securityConfiguration = registerOutput<String?>('securityConfiguration');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+    workerType = registerOutput<String?>('workerType');
+    yarnEndpointAddress = registerOutput<String>('yarnEndpointAddress');
+    zeppelinRemoteSparkInterpreterPort = registerOutput<int>('zeppelinRemoteSparkInterpreterPort');
+  }
+
+  /// Creates a typed reference to an existing [DevEndpoint] resource.
+  DevEndpoint.reference(String urn)
+    : super(
+        'aws:glue/devEndpoint:DevEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arguments = registerOutput<Map<String, String>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    extraJarsS3Path = registerOutput<String?>('extraJarsS3Path');
+    extraPythonLibsS3Path = registerOutput<String?>('extraPythonLibsS3Path');
+    failureReason = registerOutput<String>('failureReason');
+    glueVersion = registerOutput<String?>('glueVersion');
+    this.name = registerOutput<String>('name');
+    numberOfNodes = registerOutput<int?>('numberOfNodes');
+    numberOfWorkers = registerOutput<int?>('numberOfWorkers');
+    privateAddress = registerOutput<String>('privateAddress');
+    publicAddress = registerOutput<String>('publicAddress');
+    publicKey = registerOutput<String?>('publicKey');
+    publicKeys = registerOutput<List<String>?>('publicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    securityConfiguration = registerOutput<String?>('securityConfiguration');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    status = registerOutput<String>('status');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
     workerType = registerOutput<String?>('workerType');
     yarnEndpointAddress = registerOutput<String>('yarnEndpointAddress');

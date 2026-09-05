@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_traffic_mirror_target_traffic_mirror_target_args_doc}
 class TrafficMirrorTargetArgs {
   /// A description of the traffic mirror session.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The VPC Endpoint Id of the Gateway Load Balancer that is associated with the target.
-  final pulumi.Input<String>? gatewayLoadBalancerEndpointId;
+  final pulumi.Input<String?>? gatewayLoadBalancerEndpointId;
   /// The network interface ID that is associated with the target.
-  final pulumi.Input<String>? networkInterfaceId;
-  /// The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
-  final pulumi.Input<String>? networkLoadBalancerArn;
+  final pulumi.Input<String?>? networkInterfaceId;
+  /// ARN of the Network Load Balancer that is associated with the target.
+  final pulumi.Input<String?>? networkLoadBalancerArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// **NOTE:** Either `networkInterfaceId` or `networkLoadBalancerArn` should be specified and both should not be specified together
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [TrafficMirrorTargetArgs].
   /// [description] A description of the traffic mirror session.
   /// [gatewayLoadBalancerEndpointId] The VPC Endpoint Id of the Gateway Load Balancer that is associated with the target.
   /// [networkInterfaceId] The network interface ID that is associated with the target.
-  /// [networkLoadBalancerArn] The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
+  /// [networkLoadBalancerArn] ARN of the Network Load Balancer that is associated with the target.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const TrafficMirrorTargetArgs({

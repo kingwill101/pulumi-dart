@@ -10,9 +10,9 @@ class GetSubscribedRuleGroupArgs {
   /// Name of the WAF rule group.
   ///
   /// At least one of `name` or `metricName` must be configured.
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// Name of the WAF rule group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetSubscribedRuleGroupArgs].
   /// [metricName] Name of the WAF rule group.

@@ -5,7 +5,7 @@ import 'topic_rule_dynamodbv2_put_item.dart';
 
 class TopicRuleDynamodbv2 {
   /// Configuration block with DynamoDB Table to which the message will be written. Nested arguments below.
-  final pulumi.Input<TopicRuleDynamodbv2PutItem>? putItem;
+  final pulumi.Input<TopicRuleDynamodbv2PutItem?>? putItem;
   /// The ARN of the IAM role that grants access to the DynamoDB table.
   final pulumi.Input<String> roleArn;
 

@@ -103,7 +103,7 @@ class GetResolverFirewallRulesFirewallRule {
       action: pulumi.Input.fromValue(map['action'] as String),
       blockOverrideDnsType: pulumi.Input.fromValue(map['blockOverrideDnsType'] as String),
       blockOverrideDomain: pulumi.Input.fromValue(map['blockOverrideDomain'] as String),
-      blockOverrideTtl: pulumi.Input.fromValue(map['blockOverrideTtl'] as int),
+      blockOverrideTtl: pulumi.Input.fromValue((map['blockOverrideTtl'] as num).toInt()),
       blockResponse: pulumi.Input.fromValue(map['blockResponse'] as String),
       confidenceThreshold: pulumi.Input.fromValue(map['confidenceThreshold'] as String),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
@@ -115,7 +115,7 @@ class GetResolverFirewallRulesFirewallRule {
       firewallThreatProtectionId: pulumi.Input.fromValue(map['firewallThreatProtectionId'] as String),
       modificationTime: pulumi.Input.fromValue(map['modificationTime'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       qType: pulumi.Input.fromValue(map['qType'] as String),
     );
   }

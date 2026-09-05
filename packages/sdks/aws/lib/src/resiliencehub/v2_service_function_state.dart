@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering V2ServiceFunction resources.
 class V2ServiceFunctionState {
   /// Criticality level of the service function. Valid values: `PRIMARY`, `SUPPLEMENTAL`.
-  final pulumi.Input<String>? criticality;
+  final pulumi.Input<String?>? criticality;
   /// Description of the service function.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the service function.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the service this function belongs to. Changing this value requires creating a new resource.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? serviceArn;
+  final pulumi.Input<String?>? serviceArn;
   /// Unique identifier of the service function.
-  final pulumi.Input<String>? serviceFunctionId;
+  final pulumi.Input<String?>? serviceFunctionId;
 
   /// Creates a new [V2ServiceFunctionState].
   /// [criticality] Criticality level of the service function. Valid values: `PRIMARY`, `SUPPLEMENTAL`.

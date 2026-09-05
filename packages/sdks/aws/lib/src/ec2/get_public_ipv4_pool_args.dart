@@ -10,9 +10,9 @@ class GetPublicIpv4PoolArgs {
   /// AWS resource IDs of a public IPv4 pool (as a string) for which this data source will fetch detailed information.
   final pulumi.Input<String> poolId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Any tags for the address pool.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetPublicIpv4PoolArgs].
   /// [poolId] AWS resource IDs of a public IPv4 pool (as a string) for which this data source will fetch detailed information.

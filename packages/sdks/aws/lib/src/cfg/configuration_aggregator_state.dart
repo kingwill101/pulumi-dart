@@ -7,21 +7,21 @@ import 'configuration_aggregator_organization_aggregation_source.dart';
 /// Input properties used for looking up and filtering ConfigurationAggregator resources.
 class ConfigurationAggregatorState {
   /// The account(s) to aggregate config data from as documented below.
-  final pulumi.Input<ConfigurationAggregatorAccountAggregationSource>? accountAggregationSource;
+  final pulumi.Input<ConfigurationAggregatorAccountAggregationSource?>? accountAggregationSource;
   /// The ARN of the aggregator
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The name of the configuration aggregator.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The organization to aggregate config data from as documented below.
-  final pulumi.Input<ConfigurationAggregatorOrganizationAggregationSource>? organizationAggregationSource;
+  final pulumi.Input<ConfigurationAggregatorOrganizationAggregationSource?>? organizationAggregationSource;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// Either `accountAggregationSource` or `organizationAggregationSource` must be specified.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ConfigurationAggregatorState].
   /// [accountAggregationSource] The account(s) to aggregate config data from as documented below.

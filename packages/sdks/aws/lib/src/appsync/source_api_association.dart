@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'source_api_association_args.dart';
+import 'source_api_association_source_api_association_config.dart';
 import 'source_api_association_state.dart';
 import 'source_api_association_timeouts.dart';
 
@@ -147,7 +148,7 @@ class SourceApiAssociation extends pulumi.CustomResource {
   /// ARN of the source API. One of `sourceApiArn` or `sourceApiId` must be specified.
   late final pulumi.Output<String> sourceApiArn;
   /// Source API Association configuration. See `sourceApiAssociationConfig` Block for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> sourceApiAssociationConfigs;
+  late final pulumi.Output<List<SourceApiAssociationSourceApiAssociationConfig>> sourceApiAssociationConfigs;
   /// ID of the source API. One of `sourceApiArn` or `sourceApiId` must be specified.
   late final pulumi.Output<String> sourceApiId;
   late final pulumi.Output<SourceApiAssociationTimeouts?> timeouts;
@@ -164,7 +165,7 @@ class SourceApiAssociation extends pulumi.CustomResource {
           'aws:appsync/sourceApiAssociation:SourceApiAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associationId = registerOutput<String>('associationId');
@@ -173,7 +174,7 @@ class SourceApiAssociation extends pulumi.CustomResource {
     mergedApiId = registerOutput<String>('mergedApiId');
     region = registerOutput<String>('region');
     sourceApiArn = registerOutput<String>('sourceApiArn');
-    sourceApiAssociationConfigs = registerOutput<List<Map<String, dynamic>>>('sourceApiAssociationConfigs');
+    sourceApiAssociationConfigs = registerOutput<List<SourceApiAssociationSourceApiAssociationConfig>>('sourceApiAssociationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SourceApiAssociationSourceApiAssociationConfig>(guardedValue, (value) => SourceApiAssociationSourceApiAssociationConfig.fromMap((value as Map).cast<String, dynamic>())); });
     sourceApiId = registerOutput<String>('sourceApiId');
     timeouts = registerOutput<SourceApiAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceApiAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -183,11 +184,12 @@ class SourceApiAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SourceApiAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SourceApiAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -208,7 +210,28 @@ class SourceApiAssociation extends pulumi.CustomResource {
     mergedApiId = registerOutput<String>('mergedApiId');
     region = registerOutput<String>('region');
     sourceApiArn = registerOutput<String>('sourceApiArn');
-    sourceApiAssociationConfigs = registerOutput<List<Map<String, dynamic>>>('sourceApiAssociationConfigs');
+    sourceApiAssociationConfigs = registerOutput<List<SourceApiAssociationSourceApiAssociationConfig>>('sourceApiAssociationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SourceApiAssociationSourceApiAssociationConfig>(guardedValue, (value) => SourceApiAssociationSourceApiAssociationConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    sourceApiId = registerOutput<String>('sourceApiId');
+    timeouts = registerOutput<SourceApiAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceApiAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SourceApiAssociation] resource.
+  SourceApiAssociation.reference(String urn)
+    : super(
+        'aws:appsync/sourceApiAssociation:SourceApiAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    associationId = registerOutput<String>('associationId');
+    description = registerOutput<String?>('description');
+    mergedApiArn = registerOutput<String>('mergedApiArn');
+    mergedApiId = registerOutput<String>('mergedApiId');
+    region = registerOutput<String>('region');
+    sourceApiArn = registerOutput<String>('sourceApiArn');
+    sourceApiAssociationConfigs = registerOutput<List<SourceApiAssociationSourceApiAssociationConfig>>('sourceApiAssociationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SourceApiAssociationSourceApiAssociationConfig>(guardedValue, (value) => SourceApiAssociationSourceApiAssociationConfig.fromMap((value as Map).cast<String, dynamic>())); });
     sourceApiId = registerOutput<String>('sourceApiId');
     timeouts = registerOutput<SourceApiAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceApiAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

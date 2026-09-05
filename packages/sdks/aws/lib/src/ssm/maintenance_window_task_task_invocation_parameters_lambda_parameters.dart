@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MaintenanceWindowTaskTaskInvocationParametersLambdaParameters {
   /// Pass client-specific information to the Lambda function that you are invoking.
-  final pulumi.Input<String>? clientContext;
+  final pulumi.Input<String?>? clientContext;
   /// JSON to provide to your Lambda function as input.
-  final pulumi.Input<String>? payload;
+  final pulumi.Input<String?>? payload;
   /// Specify a Lambda function version or alias name.
-  final pulumi.Input<String>? qualifier;
+  final pulumi.Input<String?>? qualifier;
 
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParametersLambdaParameters].
   /// [clientContext] Pass client-specific information to the Lambda function that you are invoking.

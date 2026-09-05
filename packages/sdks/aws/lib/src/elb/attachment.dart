@@ -146,7 +146,7 @@ class Attachment extends pulumi.CustomResource {
           'aws:elb/attachment:Attachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     elb = registerOutput<String>('elb');
     instance = registerOutput<String>('instance');
@@ -158,11 +158,12 @@ class Attachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Attachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -176,6 +177,20 @@ class Attachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    elb = registerOutput<String>('elb');
+    instance = registerOutput<String>('instance');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Attachment] resource.
+  Attachment.reference(String urn)
+    : super(
+        'aws:elb/attachment:Attachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     elb = registerOutput<String>('elb');
     instance = registerOutput<String>('instance');
     region = registerOutput<String>('region');

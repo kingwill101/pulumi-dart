@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduled_query_args.dart';
 import 'scheduled_query_error_report_configuration.dart';
+import 'scheduled_query_last_run_summary.dart';
 import 'scheduled_query_notification_configuration.dart';
+import 'scheduled_query_recently_failed_run.dart';
 import 'scheduled_query_schedule_configuration.dart';
 import 'scheduled_query_state.dart';
 import 'scheduled_query_target_configuration.dart';
@@ -23,19 +25,6 @@ import 'scheduled_query_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.timestreamquery.ScheduledQuery("example", {
-///     executionRoleArn: exampleAwsIamRole.arn,
-///     name: exampleAwsTimestreamwriteTable.tableName,
-///     queryString: `SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
-/// \\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
-/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
-/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
-/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
-/// FROM exampledatabase.exampletable
-/// WHERE measure_name = 'metrics' AND time > ago(2h)
-/// GROUP BY region, hostname, az, BIN(time, 15s)
-/// ORDER BY binned_timestamp ASC
-/// LIMIT 5
-/// `,
 ///     errorReportConfiguration: {
 ///         s3Configuration: {
 ///             bucketName: exampleAwsS3Bucket.bucket,
@@ -51,25 +40,7 @@ import 'scheduled_query_timeouts.dart';
 ///     },
 ///     targetConfiguration: {
 ///         timestreamConfiguration: {
-///             databaseName: results.databaseName,
-///             tableName: resultsAwsTimestreamwriteTable.tableName,
-///             timeColumn: "binned_timestamp",
-///             dimensionMappings: [
-///                 {
-///                     dimensionValueType: "VARCHAR",
-///                     name: "az",
-///                 },
-///                 {
-///                     dimensionValueType: "VARCHAR",
-///                     name: "region",
-///                 },
-///                 {
-///                     dimensionValueType: "VARCHAR",
-///                     name: "hostname",
-///                 },
-///             ],
 ///             multiMeasureMappings: {
-///                 targetMultiMeasureName: "multi-metrics",
 ///                 multiMeasureAttributeMappings: [
 ///                     {
 ///                         measureValueType: "DOUBLE",
@@ -88,9 +59,40 @@ import 'scheduled_query_timeouts.dart';
 ///                         sourceColumn: "p99_cpu_utilization",
 ///                     },
 ///                 ],
+///                 targetMultiMeasureName: "multi-metrics",
 ///             },
+///             dimensionMappings: [
+///                 {
+///                     dimensionValueType: "VARCHAR",
+///                     name: "az",
+///                 },
+///                 {
+///                     dimensionValueType: "VARCHAR",
+///                     name: "region",
+///                 },
+///                 {
+///                     dimensionValueType: "VARCHAR",
+///                     name: "hostname",
+///                 },
+///             ],
+///             databaseName: results.databaseName,
+///             tableName: resultsAwsTimestreamwriteTable.tableName,
+///             timeColumn: "binned_timestamp",
 ///         },
 ///     },
+///     executionRoleArn: exampleAwsIamRole.arn,
+///     name: exampleAwsTimestreamwriteTable.tableName,
+///     queryString: `SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+/// `,
 /// });
 /// ```
 /// ```python
@@ -98,19 +100,6 @@ import 'scheduled_query_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.timestreamquery.ScheduledQuery("example",
-///     execution_role_arn=example_aws_iam_role["arn"],
-///     name=example_aws_timestreamwrite_table["tableName"],
-///     query_string="""SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
-/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
-/// FROM exampledatabase.exampletable
-/// WHERE measure_name = 'metrics' AND time > ago(2h)
-/// GROUP BY region, hostname, az, BIN(time, 15s)
-/// ORDER BY binned_timestamp ASC
-/// LIMIT 5
-/// """,
 ///     error_report_configuration={
 ///         "s3_configuration": {
 ///             "bucket_name": example_aws_s3_bucket["bucket"],
@@ -126,25 +115,7 @@ import 'scheduled_query_timeouts.dart';
 ///     },
 ///     target_configuration={
 ///         "timestream_configuration": {
-///             "database_name": results["databaseName"],
-///             "table_name": results_aws_timestreamwrite_table["tableName"],
-///             "time_column": "binned_timestamp",
-///             "dimension_mappings": [
-///                 {
-///                     "dimension_value_type": "VARCHAR",
-///                     "name": "az",
-///                 },
-///                 {
-///                     "dimension_value_type": "VARCHAR",
-///                     "name": "region",
-///                 },
-///                 {
-///                     "dimension_value_type": "VARCHAR",
-///                     "name": "hostname",
-///                 },
-///             ],
 ///             "multi_measure_mappings": {
-///                 "target_multi_measure_name": "multi-metrics",
 ///                 "multi_measure_attribute_mappings": [
 ///                     {
 ///                         "measure_value_type": "DOUBLE",
@@ -163,9 +134,40 @@ import 'scheduled_query_timeouts.dart';
 ///                         "source_column": "p99_cpu_utilization",
 ///                     },
 ///                 ],
+///                 "target_multi_measure_name": "multi-metrics",
 ///             },
+///             "dimension_mappings": [
+///                 {
+///                     "dimension_value_type": "VARCHAR",
+///                     "name": "az",
+///                 },
+///                 {
+///                     "dimension_value_type": "VARCHAR",
+///                     "name": "region",
+///                 },
+///                 {
+///                     "dimension_value_type": "VARCHAR",
+///                     "name": "hostname",
+///                 },
+///             ],
+///             "database_name": results["databaseName"],
+///             "table_name": results_aws_timestreamwrite_table["tableName"],
+///             "time_column": "binned_timestamp",
 ///         },
-///     })
+///     },
+///     execution_role_arn=example_aws_iam_role["arn"],
+///     name=example_aws_timestreamwrite_table["tableName"],
+///     query_string="""SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+/// """)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -177,19 +179,6 @@ import 'scheduled_query_timeouts.dart';
 /// {
 ///     var example = new Aws.TimestreamQuery.ScheduledQuery("example", new()
 ///     {
-///         ExecutionRoleArn = exampleAwsIamRole.Arn,
-///         Name = exampleAwsTimestreamwriteTable.TableName,
-///         QueryString = @"SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
-/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
-/// FROM exampledatabase.exampletable
-/// WHERE measure_name = 'metrics' AND time > ago(2h)
-/// GROUP BY region, hostname, az, BIN(time, 15s)
-/// ORDER BY binned_timestamp ASC
-/// LIMIT 5
-/// ",
 ///         ErrorReportConfiguration = new Aws.TimestreamQuery.Inputs.ScheduledQueryErrorReportConfigurationArgs
 ///         {
 ///             S3Configuration = new Aws.TimestreamQuery.Inputs.ScheduledQueryErrorReportConfigurationS3ConfigurationArgs
@@ -212,30 +201,8 @@ import 'scheduled_query_timeouts.dart';
 ///         {
 ///             TimestreamConfiguration = new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationArgs
 ///             {
-///                 DatabaseName = results.DatabaseName,
-///                 TableName = resultsAwsTimestreamwriteTable.TableName,
-///                 TimeColumn = "binned_timestamp",
-///                 DimensionMappings = new[]
-///                 {
-///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
-///                     {
-///                         DimensionValueType = "VARCHAR",
-///                         Name = "az",
-///                     },
-///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
-///                     {
-///                         DimensionValueType = "VARCHAR",
-///                         Name = "region",
-///                     },
-///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
-///                     {
-///                         DimensionValueType = "VARCHAR",
-///                         Name = "hostname",
-///                     },
-///                 },
 ///                 MultiMeasureMappings = new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsArgs
 ///                 {
-///                     TargetMultiMeasureName = "multi-metrics",
 ///                     MultiMeasureAttributeMappings = new[]
 ///                     {
 ///                         new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArgs
@@ -259,9 +226,44 @@ import 'scheduled_query_timeouts.dart';
 ///                             SourceColumn = "p99_cpu_utilization",
 ///                         },
 ///                     },
+///                     TargetMultiMeasureName = "multi-metrics",
 ///                 },
+///                 DimensionMappings = new[]
+///                 {
+///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
+///                     {
+///                         DimensionValueType = "VARCHAR",
+///                         Name = "az",
+///                     },
+///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
+///                     {
+///                         DimensionValueType = "VARCHAR",
+///                         Name = "region",
+///                     },
+///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
+///                     {
+///                         DimensionValueType = "VARCHAR",
+///                         Name = "hostname",
+///                     },
+///                 },
+///                 DatabaseName = results.DatabaseName,
+///                 TableName = resultsAwsTimestreamwriteTable.TableName,
+///                 TimeColumn = "binned_timestamp",
 ///             },
 ///         },
+///         ExecutionRoleArn = exampleAwsIamRole.Arn,
+///         Name = exampleAwsTimestreamwriteTable.TableName,
+///         QueryString = @"SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+/// ",
 ///     });
 ///
 /// });
@@ -277,19 +279,6 @@ import 'scheduled_query_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := timestreamquery.NewScheduledQuery(ctx, "example", &timestreamquery.ScheduledQueryArgs{
-/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Name:             pulumi.Any(exampleAwsTimestreamwriteTable.TableName),
-/// 			QueryString: pulumi.String(`SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
-/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
-/// FROM exampledatabase.exampletable
-/// WHERE measure_name = 'metrics' AND time > ago(2h)
-/// GROUP BY region, hostname, az, BIN(time, 15s)
-/// ORDER BY binned_timestamp ASC
-/// LIMIT 5
-/// `),
 /// 			ErrorReportConfiguration: &timestreamquery.ScheduledQueryErrorReportConfigurationArgs{
 /// 				S3Configuration: &timestreamquery.ScheduledQueryErrorReportConfigurationS3ConfigurationArgs{
 /// 					BucketName: pulumi.Any(exampleAwsS3Bucket.Bucket),
@@ -305,25 +294,7 @@ import 'scheduled_query_timeouts.dart';
 /// 			},
 /// 			TargetConfiguration: &timestreamquery.ScheduledQueryTargetConfigurationArgs{
 /// 				TimestreamConfiguration: &timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationArgs{
-/// 					DatabaseName: pulumi.Any(results.DatabaseName),
-/// 					TableName:    pulumi.Any(resultsAwsTimestreamwriteTable.TableName),
-/// 					TimeColumn:   pulumi.String("binned_timestamp"),
-/// 					DimensionMappings: timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArray{
-/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
-/// 							DimensionValueType: pulumi.String("VARCHAR"),
-/// 							Name:               pulumi.String("az"),
-/// 						},
-/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
-/// 							DimensionValueType: pulumi.String("VARCHAR"),
-/// 							Name:               pulumi.String("region"),
-/// 						},
-/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
-/// 							DimensionValueType: pulumi.String("VARCHAR"),
-/// 							Name:               pulumi.String("hostname"),
-/// 						},
-/// 					},
 /// 					MultiMeasureMappings: &timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsArgs{
-/// 						TargetMultiMeasureName: pulumi.String("multi-metrics"),
 /// 						MultiMeasureAttributeMappings: timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArray{
 /// 							&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArgs{
 /// 								MeasureValueType: pulumi.String("DOUBLE"),
@@ -342,9 +313,40 @@ import 'scheduled_query_timeouts.dart';
 /// 								SourceColumn:     pulumi.String("p99_cpu_utilization"),
 /// 							},
 /// 						},
+/// 						TargetMultiMeasureName: pulumi.String("multi-metrics"),
 /// 					},
+/// 					DimensionMappings: timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArray{
+/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
+/// 							DimensionValueType: pulumi.String("VARCHAR"),
+/// 							Name:               pulumi.String("az"),
+/// 						},
+/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
+/// 							DimensionValueType: pulumi.String("VARCHAR"),
+/// 							Name:               pulumi.String("region"),
+/// 						},
+/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
+/// 							DimensionValueType: pulumi.String("VARCHAR"),
+/// 							Name:               pulumi.String("hostname"),
+/// 						},
+/// 					},
+/// 					DatabaseName: pulumi.Any(results.DatabaseName),
+/// 					TableName:    pulumi.Any(resultsAwsTimestreamwriteTable.TableName),
+/// 					TimeColumn:   pulumi.String("binned_timestamp"),
 /// 				},
 /// 			},
+/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Name:             pulumi.Any(exampleAwsTimestreamwriteTable.TableName),
+/// 			QueryString: pulumi.String(`SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+/// `),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -363,9 +365,6 @@ import 'scheduled_query_timeouts.dart';
 /// }
 ///
 /// resource "aws_timestreamquery_scheduledquery" "example" {
-///   execution_role_arn = exampleAwsIamRole.arn
-///   name               = exampleAwsTimestreamwriteTable.tableName
-///   query_string       = "SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,\n\\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization\nFROM exampledatabase.exampletable\nWHERE measure_name = 'metrics' AND time > ago(2h)\nGROUP BY region, hostname, az, BIN(time, 15s)\nORDER BY binned_timestamp ASC\nLIMIT 5\n"
 ///   error_report_configuration = {
 ///     s3_configuration = {
 ///       bucket_name = exampleAwsS3Bucket.bucket
@@ -381,21 +380,7 @@ import 'scheduled_query_timeouts.dart';
 ///   }
 ///   target_configuration = {
 ///     timestream_configuration = {
-///       database_name = results.databaseName
-///       table_name    = resultsAwsTimestreamwriteTable.tableName
-///       time_column   = "binned_timestamp"
-///       dimension_mappings = [{
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "az"
-///         }, {
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "region"
-///         }, {
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "hostname"
-///       }]
 ///       multi_measure_mappings = {
-///         target_multi_measure_name = "multi-metrics"
 ///         multi_measure_attribute_mappings = [{
 ///           "measureValueType" = "DOUBLE"
 ///           "sourceColumn"     = "avg_cpu_utilization"
@@ -409,9 +394,26 @@ import 'scheduled_query_timeouts.dart';
 ///           "measureValueType" = "DOUBLE"
 ///           "sourceColumn"     = "p99_cpu_utilization"
 ///         }]
+///         target_multi_measure_name = "multi-metrics"
 ///       }
+///       dimension_mappings = [{
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "az"
+///         }, {
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "region"
+///         }, {
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "hostname"
+///       }]
+///       database_name = results.databaseName
+///       table_name    = resultsAwsTimestreamwriteTable.tableName
+///       time_column   = "binned_timestamp"
 ///     }
 ///   }
+///   execution_role_arn = exampleAwsIamRole.arn
+///   name               = exampleAwsTimestreamwriteTable.tableName
+///   query_string       = "SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,\n\\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization\nFROM exampledatabase.exampletable\nWHERE measure_name = 'metrics' AND time > ago(2h)\nGROUP BY region, hostname, az, BIN(time, 15s)\nORDER BY binned_timestamp ASC\nLIMIT 5\n"
 /// }
 /// ```
 /// ```java
@@ -429,9 +431,9 @@ import 'scheduled_query_timeouts.dart';
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryScheduleConfigurationArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationArgs;
-/// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArgs;
+/// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -446,20 +448,6 @@ import 'scheduled_query_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ScheduledQuery("example", ScheduledQueryArgs.builder()
-///             .executionRoleArn(exampleAwsIamRole.arn())
-///             .name(exampleAwsTimestreamwriteTable.tableName())
-///             .queryString("""
-/// SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
-/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
-/// FROM exampledatabase.exampletable
-/// WHERE measure_name = 'metrics' AND time > ago(2h)
-/// GROUP BY region, hostname, az, BIN(time, 15s)
-/// ORDER BY binned_timestamp ASC
-/// LIMIT 5
-///             """)
 ///             .errorReportConfiguration(ScheduledQueryErrorReportConfigurationArgs.builder()
 ///                 .s3Configuration(ScheduledQueryErrorReportConfigurationS3ConfigurationArgs.builder()
 ///                     .bucketName(exampleAwsS3Bucket.bucket())
@@ -475,24 +463,7 @@ import 'scheduled_query_timeouts.dart';
 ///                 .build())
 ///             .targetConfiguration(ScheduledQueryTargetConfigurationArgs.builder()
 ///                 .timestreamConfiguration(ScheduledQueryTargetConfigurationTimestreamConfigurationArgs.builder()
-///                     .databaseName(results.databaseName())
-///                     .tableName(resultsAwsTimestreamwriteTable.tableName())
-///                     .timeColumn("binned_timestamp")
-///                     .dimensionMappings(
-///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
-///                             .dimensionValueType("VARCHAR")
-///                             .name("az")
-///                             .build(),
-///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
-///                             .dimensionValueType("VARCHAR")
-///                             .name("region")
-///                             .build(),
-///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
-///                             .dimensionValueType("VARCHAR")
-///                             .name("hostname")
-///                             .build())
 ///                     .multiMeasureMappings(ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsArgs.builder()
-///                         .targetMultiMeasureName("multi-metrics")
 ///                         .multiMeasureAttributeMappings(
 ///                             ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArgs.builder()
 ///                                 .measureValueType("DOUBLE")
@@ -510,9 +481,40 @@ import 'scheduled_query_timeouts.dart';
 ///                                 .measureValueType("DOUBLE")
 ///                                 .sourceColumn("p99_cpu_utilization")
 ///                                 .build())
+///                         .targetMultiMeasureName("multi-metrics")
 ///                         .build())
+///                     .dimensionMappings(
+///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
+///                             .dimensionValueType("VARCHAR")
+///                             .name("az")
+///                             .build(),
+///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
+///                             .dimensionValueType("VARCHAR")
+///                             .name("region")
+///                             .build(),
+///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
+///                             .dimensionValueType("VARCHAR")
+///                             .name("hostname")
+///                             .build())
+///                     .databaseName(results.databaseName())
+///                     .tableName(resultsAwsTimestreamwriteTable.tableName())
+///                     .timeColumn("binned_timestamp")
 ///                     .build())
 ///                 .build())
+///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .name(exampleAwsTimestreamwriteTable.tableName())
+///             .queryString("""
+/// SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+///             """)
 ///             .build());
 ///
 ///     }
@@ -523,6 +525,37 @@ import 'scheduled_query_timeouts.dart';
 ///   example:
 ///     type: aws:timestreamquery:ScheduledQuery
 ///     properties:
+///       errorReportConfiguration:
+///         s3Configuration:
+///           bucketName: ${exampleAwsS3Bucket.bucket}
+///       notificationConfiguration:
+///         snsConfiguration:
+///           topicArn: ${exampleAwsSnsTopic.arn}
+///       scheduleConfiguration:
+///         scheduleExpression: rate(1 hour)
+///       targetConfiguration:
+///         timestreamConfiguration:
+///           multiMeasureMappings:
+///             multiMeasureAttributeMappings:
+///               - measureValueType: DOUBLE
+///                 sourceColumn: avg_cpu_utilization
+///               - measureValueType: DOUBLE
+///                 sourceColumn: p90_cpu_utilization
+///               - measureValueType: DOUBLE
+///                 sourceColumn: p95_cpu_utilization
+///               - measureValueType: DOUBLE
+///                 sourceColumn: p99_cpu_utilization
+///             targetMultiMeasureName: multi-metrics
+///           dimensionMappings:
+///             - dimensionValueType: VARCHAR
+///               name: az
+///             - dimensionValueType: VARCHAR
+///               name: region
+///             - dimensionValueType: VARCHAR
+///               name: hostname
+///           databaseName: ${results.databaseName}
+///           tableName: ${resultsAwsTimestreamwriteTable.tableName}
+///           timeColumn: binned_timestamp
 ///       executionRoleArn: ${exampleAwsIamRole.arn}
 ///       name: ${exampleAwsTimestreamwriteTable.tableName}
 ///       queryString: |
@@ -536,37 +569,6 @@ import 'scheduled_query_timeouts.dart';
 ///         GROUP BY region, hostname, az, BIN(time, 15s)
 ///         ORDER BY binned_timestamp ASC
 ///         LIMIT 5
-///       errorReportConfiguration:
-///         s3Configuration:
-///           bucketName: ${exampleAwsS3Bucket.bucket}
-///       notificationConfiguration:
-///         snsConfiguration:
-///           topicArn: ${exampleAwsSnsTopic.arn}
-///       scheduleConfiguration:
-///         scheduleExpression: rate(1 hour)
-///       targetConfiguration:
-///         timestreamConfiguration:
-///           databaseName: ${results.databaseName}
-///           tableName: ${resultsAwsTimestreamwriteTable.tableName}
-///           timeColumn: binned_timestamp
-///           dimensionMappings:
-///             - dimensionValueType: VARCHAR
-///               name: az
-///             - dimensionValueType: VARCHAR
-///               name: region
-///             - dimensionValueType: VARCHAR
-///               name: hostname
-///           multiMeasureMappings:
-///             targetMultiMeasureName: multi-metrics
-///             multiMeasureAttributeMappings:
-///               - measureValueType: DOUBLE
-///                 sourceColumn: avg_cpu_utilization
-///               - measureValueType: DOUBLE
-///                 sourceColumn: p90_cpu_utilization
-///               - measureValueType: DOUBLE
-///                 sourceColumn: p95_cpu_utilization
-///               - measureValueType: DOUBLE
-///                 sourceColumn: p99_cpu_utilization
 /// ```
 ///
 ///
@@ -656,8 +658,6 @@ import 'scheduled_query_timeouts.dart';
 /// });
 /// const testDatabase = new aws.timestreamwrite.Database("test", {databaseName: "exampledatabase"});
 /// const testTable = new aws.timestreamwrite.Table("test", {
-///     databaseName: testDatabase.databaseName,
-///     tableName: "exampletable",
 ///     magneticStoreWriteProperties: {
 ///         enableMagneticStoreWrites: true,
 ///     },
@@ -665,11 +665,11 @@ import 'scheduled_query_timeouts.dart';
 ///         magneticStoreRetentionPeriodInDays: 1,
 ///         memoryStoreRetentionPeriodInHours: 1,
 ///     },
+///     databaseName: testDatabase.databaseName,
+///     tableName: "exampletable",
 /// });
 /// const results = new aws.timestreamwrite.Database("results", {databaseName: "exampledatabase-results"});
 /// const resultsTable = new aws.timestreamwrite.Table("results", {
-///     databaseName: results.databaseName,
-///     tableName: "exampletable-results",
 ///     magneticStoreWriteProperties: {
 ///         enableMagneticStoreWrites: true,
 ///     },
@@ -677,6 +677,8 @@ import 'scheduled_query_timeouts.dart';
 ///         magneticStoreRetentionPeriodInDays: 1,
 ///         memoryStoreRetentionPeriodInHours: 1,
 ///     },
+///     databaseName: results.databaseName,
+///     tableName: "exampletable-results",
 /// });
 /// ```
 /// ```python
@@ -749,26 +751,26 @@ import 'scheduled_query_timeouts.dart';
 ///     }))
 /// test_database = aws.timestreamwrite.Database("test", database_name="exampledatabase")
 /// test_table = aws.timestreamwrite.Table("test",
-///     database_name=test_database.database_name,
-///     table_name="exampletable",
 ///     magnetic_store_write_properties={
 ///         "enable_magnetic_store_writes": True,
 ///     },
 ///     retention_properties={
 ///         "magnetic_store_retention_period_in_days": 1,
 ///         "memory_store_retention_period_in_hours": 1,
-///     })
+///     },
+///     database_name=test_database.database_name,
+///     table_name="exampletable")
 /// results = aws.timestreamwrite.Database("results", database_name="exampledatabase-results")
 /// results_table = aws.timestreamwrite.Table("results",
-///     database_name=results.database_name,
-///     table_name="exampletable-results",
 ///     magnetic_store_write_properties={
 ///         "enable_magnetic_store_writes": True,
 ///     },
 ///     retention_properties={
 ///         "magnetic_store_retention_period_in_days": 1,
 ///         "memory_store_retention_period_in_hours": 1,
-///     })
+///     },
+///     database_name=results.database_name,
+///     table_name="exampletable-results")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -895,8 +897,6 @@ import 'scheduled_query_timeouts.dart';
 ///
 ///     var testTable = new Aws.TimestreamWrite.Table("test", new()
 ///     {
-///         DatabaseName = testDatabase.DatabaseName,
-///         TableName = "exampletable",
 ///         MagneticStoreWriteProperties = new Aws.TimestreamWrite.Inputs.TableMagneticStoreWritePropertiesArgs
 ///         {
 ///             EnableMagneticStoreWrites = true,
@@ -906,6 +906,8 @@ import 'scheduled_query_timeouts.dart';
 ///             MagneticStoreRetentionPeriodInDays = 1,
 ///             MemoryStoreRetentionPeriodInHours = 1,
 ///         },
+///         DatabaseName = testDatabase.DatabaseName,
+///         TableName = "exampletable",
 ///     });
 ///
 ///     var results = new Aws.TimestreamWrite.Database("results", new()
@@ -915,8 +917,6 @@ import 'scheduled_query_timeouts.dart';
 ///
 ///     var resultsTable = new Aws.TimestreamWrite.Table("results", new()
 ///     {
-///         DatabaseName = results.DatabaseName,
-///         TableName = "exampletable-results",
 ///         MagneticStoreWriteProperties = new Aws.TimestreamWrite.Inputs.TableMagneticStoreWritePropertiesArgs
 ///         {
 ///             EnableMagneticStoreWrites = true,
@@ -926,6 +926,8 @@ import 'scheduled_query_timeouts.dart';
 ///             MagneticStoreRetentionPeriodInDays = 1,
 ///             MemoryStoreRetentionPeriodInHours = 1,
 ///         },
+///         DatabaseName = results.DatabaseName,
+///         TableName = "exampletable-results",
 ///     });
 ///
 /// });
@@ -1073,8 +1075,6 @@ import 'scheduled_query_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = timestreamwrite.NewTable(ctx, "test", &timestreamwrite.TableArgs{
-/// 			DatabaseName: testDatabase.DatabaseName,
-/// 			TableName:    pulumi.String("exampletable"),
 /// 			MagneticStoreWriteProperties: &timestreamwrite.TableMagneticStoreWritePropertiesArgs{
 /// 				EnableMagneticStoreWrites: pulumi.Bool(true),
 /// 			},
@@ -1082,6 +1082,8 @@ import 'scheduled_query_timeouts.dart';
 /// 				MagneticStoreRetentionPeriodInDays: pulumi.Int(1),
 /// 				MemoryStoreRetentionPeriodInHours:  pulumi.Int(1),
 /// 			},
+/// 			DatabaseName: testDatabase.DatabaseName,
+/// 			TableName:    pulumi.String("exampletable"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1093,8 +1095,6 @@ import 'scheduled_query_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = timestreamwrite.NewTable(ctx, "results", &timestreamwrite.TableArgs{
-/// 			DatabaseName: results.DatabaseName,
-/// 			TableName:    pulumi.String("exampletable-results"),
 /// 			MagneticStoreWriteProperties: &timestreamwrite.TableMagneticStoreWritePropertiesArgs{
 /// 				EnableMagneticStoreWrites: pulumi.Bool(true),
 /// 			},
@@ -1102,6 +1102,8 @@ import 'scheduled_query_timeouts.dart';
 /// 				MagneticStoreRetentionPeriodInDays: pulumi.Int(1),
 /// 				MemoryStoreRetentionPeriodInHours:  pulumi.Int(1),
 /// 			},
+/// 			DatabaseName: results.DatabaseName,
+/// 			TableName:    pulumi.String("exampletable-results"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1186,8 +1188,6 @@ import 'scheduled_query_timeouts.dart';
 ///   database_name = "exampledatabase"
 /// }
 /// resource "aws_timestreamwrite_table" "test" {
-///   database_name = aws_timestreamwrite_database.test.database_name
-///   table_name    = "exampletable"
 ///   magnetic_store_write_properties = {
 ///     enable_magnetic_store_writes = true
 ///   }
@@ -1195,13 +1195,13 @@ import 'scheduled_query_timeouts.dart';
 ///     magnetic_store_retention_period_in_days = 1
 ///     memory_store_retention_period_in_hours  = 1
 ///   }
+///   database_name = aws_timestreamwrite_database.test.database_name
+///   table_name    = "exampletable"
 /// }
 /// resource "aws_timestreamwrite_database" "results" {
 ///   database_name = "exampledatabase-results"
 /// }
 /// resource "aws_timestreamwrite_table" "results" {
-///   database_name = aws_timestreamwrite_database.results.database_name
-///   table_name    = "exampletable-results"
 ///   magnetic_store_write_properties = {
 ///     enable_magnetic_store_writes = true
 ///   }
@@ -1209,6 +1209,8 @@ import 'scheduled_query_timeouts.dart';
 ///     magnetic_store_retention_period_in_days = 1
 ///     memory_store_retention_period_in_hours  = 1
 ///   }
+///   database_name = aws_timestreamwrite_database.results.database_name
+///   table_name    = "exampletable-results"
 /// }
 /// ```
 /// ```java
@@ -1339,8 +1341,6 @@ import 'scheduled_query_timeouts.dart';
 ///             .build());
 ///
 ///         var testTable = new Table("testTable", TableArgs.builder()
-///             .databaseName(testDatabase.databaseName())
-///             .tableName("exampletable")
 ///             .magneticStoreWriteProperties(TableMagneticStoreWritePropertiesArgs.builder()
 ///                 .enableMagneticStoreWrites(true)
 ///                 .build())
@@ -1348,6 +1348,8 @@ import 'scheduled_query_timeouts.dart';
 ///                 .magneticStoreRetentionPeriodInDays(1)
 ///                 .memoryStoreRetentionPeriodInHours(1)
 ///                 .build())
+///             .databaseName(testDatabase.databaseName())
+///             .tableName("exampletable")
 ///             .build());
 ///
 ///         var results = new Database("results", DatabaseArgs.builder()
@@ -1355,8 +1357,6 @@ import 'scheduled_query_timeouts.dart';
 ///             .build());
 ///
 ///         var resultsTable = new Table("resultsTable", TableArgs.builder()
-///             .databaseName(results.databaseName())
-///             .tableName("exampletable-results")
 ///             .magneticStoreWriteProperties(TableMagneticStoreWritePropertiesArgs.builder()
 ///                 .enableMagneticStoreWrites(true)
 ///                 .build())
@@ -1364,6 +1364,8 @@ import 'scheduled_query_timeouts.dart';
 ///                 .magneticStoreRetentionPeriodInDays(1)
 ///                 .memoryStoreRetentionPeriodInHours(1)
 ///                 .build())
+///             .databaseName(results.databaseName())
+///             .tableName("exampletable-results")
 ///             .build());
 ///
 ///     }
@@ -1456,13 +1458,13 @@ import 'scheduled_query_timeouts.dart';
 ///     type: aws:timestreamwrite:Table
 ///     name: test
 ///     properties:
-///       databaseName: ${testDatabase.databaseName}
-///       tableName: exampletable
 ///       magneticStoreWriteProperties:
 ///         enableMagneticStoreWrites: true
 ///       retentionProperties:
 ///         magneticStoreRetentionPeriodInDays: 1
 ///         memoryStoreRetentionPeriodInHours: 1
+///       databaseName: ${testDatabase.databaseName}
+///       tableName: exampletable
 ///   results:
 ///     type: aws:timestreamwrite:Database
 ///     properties:
@@ -1471,13 +1473,13 @@ import 'scheduled_query_timeouts.dart';
 ///     type: aws:timestreamwrite:Table
 ///     name: results
 ///     properties:
-///       databaseName: ${results.databaseName}
-///       tableName: exampletable-results
 ///       magneticStoreWriteProperties:
 ///         enableMagneticStoreWrites: true
 ///       retentionProperties:
 ///         magneticStoreRetentionPeriodInDays: 1
 ///         memoryStoreRetentionPeriodInHours: 1
+///       databaseName: ${results.databaseName}
+///       tableName: exampletable-results
 /// ```
 ///
 ///
@@ -1493,19 +1495,6 @@ import 'scheduled_query_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.timestreamquery.ScheduledQuery("example", {
-///     executionRoleArn: exampleAwsIamRole.arn,
-///     name: exampleAwsTimestreamwriteTable.tableName,
-///     queryString: `SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
-/// \\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
-/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
-/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
-/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
-/// FROM exampledatabase.exampletable
-/// WHERE measure_name = 'metrics' AND time > ago(2h)
-/// GROUP BY region, hostname, az, BIN(time, 15s)
-/// ORDER BY binned_timestamp ASC
-/// LIMIT 5
-/// `,
 ///     errorReportConfiguration: {
 ///         s3Configuration: {
 ///             bucketName: exampleAwsS3Bucket.bucket,
@@ -1521,25 +1510,7 @@ import 'scheduled_query_timeouts.dart';
 ///     },
 ///     targetConfiguration: {
 ///         timestreamConfiguration: {
-///             databaseName: results.databaseName,
-///             tableName: resultsAwsTimestreamwriteTable.tableName,
-///             timeColumn: "binned_timestamp",
-///             dimensionMappings: [
-///                 {
-///                     dimensionValueType: "VARCHAR",
-///                     name: "az",
-///                 },
-///                 {
-///                     dimensionValueType: "VARCHAR",
-///                     name: "region",
-///                 },
-///                 {
-///                     dimensionValueType: "VARCHAR",
-///                     name: "hostname",
-///                 },
-///             ],
 ///             multiMeasureMappings: {
-///                 targetMultiMeasureName: "multi-metrics",
 ///                 multiMeasureAttributeMappings: [
 ///                     {
 ///                         measureValueType: "DOUBLE",
@@ -1558,9 +1529,40 @@ import 'scheduled_query_timeouts.dart';
 ///                         sourceColumn: "p99_cpu_utilization",
 ///                     },
 ///                 ],
+///                 targetMultiMeasureName: "multi-metrics",
 ///             },
+///             dimensionMappings: [
+///                 {
+///                     dimensionValueType: "VARCHAR",
+///                     name: "az",
+///                 },
+///                 {
+///                     dimensionValueType: "VARCHAR",
+///                     name: "region",
+///                 },
+///                 {
+///                     dimensionValueType: "VARCHAR",
+///                     name: "hostname",
+///                 },
+///             ],
+///             databaseName: results.databaseName,
+///             tableName: resultsAwsTimestreamwriteTable.tableName,
+///             timeColumn: "binned_timestamp",
 ///         },
 ///     },
+///     executionRoleArn: exampleAwsIamRole.arn,
+///     name: exampleAwsTimestreamwriteTable.tableName,
+///     queryString: `SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+/// `,
 /// });
 /// ```
 /// ```python
@@ -1568,19 +1570,6 @@ import 'scheduled_query_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.timestreamquery.ScheduledQuery("example",
-///     execution_role_arn=example_aws_iam_role["arn"],
-///     name=example_aws_timestreamwrite_table["tableName"],
-///     query_string="""SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
-/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
-/// FROM exampledatabase.exampletable
-/// WHERE measure_name = 'metrics' AND time > ago(2h)
-/// GROUP BY region, hostname, az, BIN(time, 15s)
-/// ORDER BY binned_timestamp ASC
-/// LIMIT 5
-/// """,
 ///     error_report_configuration={
 ///         "s3_configuration": {
 ///             "bucket_name": example_aws_s3_bucket["bucket"],
@@ -1596,25 +1585,7 @@ import 'scheduled_query_timeouts.dart';
 ///     },
 ///     target_configuration={
 ///         "timestream_configuration": {
-///             "database_name": results["databaseName"],
-///             "table_name": results_aws_timestreamwrite_table["tableName"],
-///             "time_column": "binned_timestamp",
-///             "dimension_mappings": [
-///                 {
-///                     "dimension_value_type": "VARCHAR",
-///                     "name": "az",
-///                 },
-///                 {
-///                     "dimension_value_type": "VARCHAR",
-///                     "name": "region",
-///                 },
-///                 {
-///                     "dimension_value_type": "VARCHAR",
-///                     "name": "hostname",
-///                 },
-///             ],
 ///             "multi_measure_mappings": {
-///                 "target_multi_measure_name": "multi-metrics",
 ///                 "multi_measure_attribute_mappings": [
 ///                     {
 ///                         "measure_value_type": "DOUBLE",
@@ -1633,9 +1604,40 @@ import 'scheduled_query_timeouts.dart';
 ///                         "source_column": "p99_cpu_utilization",
 ///                     },
 ///                 ],
+///                 "target_multi_measure_name": "multi-metrics",
 ///             },
+///             "dimension_mappings": [
+///                 {
+///                     "dimension_value_type": "VARCHAR",
+///                     "name": "az",
+///                 },
+///                 {
+///                     "dimension_value_type": "VARCHAR",
+///                     "name": "region",
+///                 },
+///                 {
+///                     "dimension_value_type": "VARCHAR",
+///                     "name": "hostname",
+///                 },
+///             ],
+///             "database_name": results["databaseName"],
+///             "table_name": results_aws_timestreamwrite_table["tableName"],
+///             "time_column": "binned_timestamp",
 ///         },
-///     })
+///     },
+///     execution_role_arn=example_aws_iam_role["arn"],
+///     name=example_aws_timestreamwrite_table["tableName"],
+///     query_string="""SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+/// """)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1647,19 +1649,6 @@ import 'scheduled_query_timeouts.dart';
 /// {
 ///     var example = new Aws.TimestreamQuery.ScheduledQuery("example", new()
 ///     {
-///         ExecutionRoleArn = exampleAwsIamRole.Arn,
-///         Name = exampleAwsTimestreamwriteTable.TableName,
-///         QueryString = @"SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
-/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
-/// FROM exampledatabase.exampletable
-/// WHERE measure_name = 'metrics' AND time > ago(2h)
-/// GROUP BY region, hostname, az, BIN(time, 15s)
-/// ORDER BY binned_timestamp ASC
-/// LIMIT 5
-/// ",
 ///         ErrorReportConfiguration = new Aws.TimestreamQuery.Inputs.ScheduledQueryErrorReportConfigurationArgs
 ///         {
 ///             S3Configuration = new Aws.TimestreamQuery.Inputs.ScheduledQueryErrorReportConfigurationS3ConfigurationArgs
@@ -1682,30 +1671,8 @@ import 'scheduled_query_timeouts.dart';
 ///         {
 ///             TimestreamConfiguration = new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationArgs
 ///             {
-///                 DatabaseName = results.DatabaseName,
-///                 TableName = resultsAwsTimestreamwriteTable.TableName,
-///                 TimeColumn = "binned_timestamp",
-///                 DimensionMappings = new[]
-///                 {
-///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
-///                     {
-///                         DimensionValueType = "VARCHAR",
-///                         Name = "az",
-///                     },
-///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
-///                     {
-///                         DimensionValueType = "VARCHAR",
-///                         Name = "region",
-///                     },
-///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
-///                     {
-///                         DimensionValueType = "VARCHAR",
-///                         Name = "hostname",
-///                     },
-///                 },
 ///                 MultiMeasureMappings = new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsArgs
 ///                 {
-///                     TargetMultiMeasureName = "multi-metrics",
 ///                     MultiMeasureAttributeMappings = new[]
 ///                     {
 ///                         new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArgs
@@ -1729,9 +1696,44 @@ import 'scheduled_query_timeouts.dart';
 ///                             SourceColumn = "p99_cpu_utilization",
 ///                         },
 ///                     },
+///                     TargetMultiMeasureName = "multi-metrics",
 ///                 },
+///                 DimensionMappings = new[]
+///                 {
+///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
+///                     {
+///                         DimensionValueType = "VARCHAR",
+///                         Name = "az",
+///                     },
+///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
+///                     {
+///                         DimensionValueType = "VARCHAR",
+///                         Name = "region",
+///                     },
+///                     new Aws.TimestreamQuery.Inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs
+///                     {
+///                         DimensionValueType = "VARCHAR",
+///                         Name = "hostname",
+///                     },
+///                 },
+///                 DatabaseName = results.DatabaseName,
+///                 TableName = resultsAwsTimestreamwriteTable.TableName,
+///                 TimeColumn = "binned_timestamp",
 ///             },
 ///         },
+///         ExecutionRoleArn = exampleAwsIamRole.Arn,
+///         Name = exampleAwsTimestreamwriteTable.TableName,
+///         QueryString = @"SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+/// ",
 ///     });
 ///
 /// });
@@ -1747,19 +1749,6 @@ import 'scheduled_query_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := timestreamquery.NewScheduledQuery(ctx, "example", &timestreamquery.ScheduledQueryArgs{
-/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Name:             pulumi.Any(exampleAwsTimestreamwriteTable.TableName),
-/// 			QueryString: pulumi.String(`SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
-/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
-/// FROM exampledatabase.exampletable
-/// WHERE measure_name = 'metrics' AND time > ago(2h)
-/// GROUP BY region, hostname, az, BIN(time, 15s)
-/// ORDER BY binned_timestamp ASC
-/// LIMIT 5
-/// `),
 /// 			ErrorReportConfiguration: &timestreamquery.ScheduledQueryErrorReportConfigurationArgs{
 /// 				S3Configuration: &timestreamquery.ScheduledQueryErrorReportConfigurationS3ConfigurationArgs{
 /// 					BucketName: pulumi.Any(exampleAwsS3Bucket.Bucket),
@@ -1775,25 +1764,7 @@ import 'scheduled_query_timeouts.dart';
 /// 			},
 /// 			TargetConfiguration: &timestreamquery.ScheduledQueryTargetConfigurationArgs{
 /// 				TimestreamConfiguration: &timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationArgs{
-/// 					DatabaseName: pulumi.Any(results.DatabaseName),
-/// 					TableName:    pulumi.Any(resultsAwsTimestreamwriteTable.TableName),
-/// 					TimeColumn:   pulumi.String("binned_timestamp"),
-/// 					DimensionMappings: timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArray{
-/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
-/// 							DimensionValueType: pulumi.String("VARCHAR"),
-/// 							Name:               pulumi.String("az"),
-/// 						},
-/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
-/// 							DimensionValueType: pulumi.String("VARCHAR"),
-/// 							Name:               pulumi.String("region"),
-/// 						},
-/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
-/// 							DimensionValueType: pulumi.String("VARCHAR"),
-/// 							Name:               pulumi.String("hostname"),
-/// 						},
-/// 					},
 /// 					MultiMeasureMappings: &timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsArgs{
-/// 						TargetMultiMeasureName: pulumi.String("multi-metrics"),
 /// 						MultiMeasureAttributeMappings: timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArray{
 /// 							&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArgs{
 /// 								MeasureValueType: pulumi.String("DOUBLE"),
@@ -1812,9 +1783,40 @@ import 'scheduled_query_timeouts.dart';
 /// 								SourceColumn:     pulumi.String("p99_cpu_utilization"),
 /// 							},
 /// 						},
+/// 						TargetMultiMeasureName: pulumi.String("multi-metrics"),
 /// 					},
+/// 					DimensionMappings: timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArray{
+/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
+/// 							DimensionValueType: pulumi.String("VARCHAR"),
+/// 							Name:               pulumi.String("az"),
+/// 						},
+/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
+/// 							DimensionValueType: pulumi.String("VARCHAR"),
+/// 							Name:               pulumi.String("region"),
+/// 						},
+/// 						&timestreamquery.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs{
+/// 							DimensionValueType: pulumi.String("VARCHAR"),
+/// 							Name:               pulumi.String("hostname"),
+/// 						},
+/// 					},
+/// 					DatabaseName: pulumi.Any(results.DatabaseName),
+/// 					TableName:    pulumi.Any(resultsAwsTimestreamwriteTable.TableName),
+/// 					TimeColumn:   pulumi.String("binned_timestamp"),
 /// 				},
 /// 			},
+/// 			ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Name:             pulumi.Any(exampleAwsTimestreamwriteTable.TableName),
+/// 			QueryString: pulumi.String(`SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+/// `),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1833,9 +1835,6 @@ import 'scheduled_query_timeouts.dart';
 /// }
 ///
 /// resource "aws_timestreamquery_scheduledquery" "example" {
-///   execution_role_arn = exampleAwsIamRole.arn
-///   name               = exampleAwsTimestreamwriteTable.tableName
-///   query_string       = "SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,\n\\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization\nFROM exampledatabase.exampletable\nWHERE measure_name = 'metrics' AND time > ago(2h)\nGROUP BY region, hostname, az, BIN(time, 15s)\nORDER BY binned_timestamp ASC\nLIMIT 5\n"
 ///   error_report_configuration = {
 ///     s3_configuration = {
 ///       bucket_name = exampleAwsS3Bucket.bucket
@@ -1851,21 +1850,7 @@ import 'scheduled_query_timeouts.dart';
 ///   }
 ///   target_configuration = {
 ///     timestream_configuration = {
-///       database_name = results.databaseName
-///       table_name    = resultsAwsTimestreamwriteTable.tableName
-///       time_column   = "binned_timestamp"
-///       dimension_mappings = [{
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "az"
-///         }, {
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "region"
-///         }, {
-///         "dimensionValueType" = "VARCHAR"
-///         "name"               = "hostname"
-///       }]
 ///       multi_measure_mappings = {
-///         target_multi_measure_name = "multi-metrics"
 ///         multi_measure_attribute_mappings = [{
 ///           "measureValueType" = "DOUBLE"
 ///           "sourceColumn"     = "avg_cpu_utilization"
@@ -1879,9 +1864,26 @@ import 'scheduled_query_timeouts.dart';
 ///           "measureValueType" = "DOUBLE"
 ///           "sourceColumn"     = "p99_cpu_utilization"
 ///         }]
+///         target_multi_measure_name = "multi-metrics"
 ///       }
+///       dimension_mappings = [{
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "az"
+///         }, {
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "region"
+///         }, {
+///         "dimensionValueType" = "VARCHAR"
+///         "name"               = "hostname"
+///       }]
+///       database_name = results.databaseName
+///       table_name    = resultsAwsTimestreamwriteTable.tableName
+///       time_column   = "binned_timestamp"
 ///     }
 ///   }
+///   execution_role_arn = exampleAwsIamRole.arn
+///   name               = exampleAwsTimestreamwriteTable.tableName
+///   query_string       = "SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,\n\\tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,\n\\tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization\nFROM exampledatabase.exampletable\nWHERE measure_name = 'metrics' AND time > ago(2h)\nGROUP BY region, hostname, az, BIN(time, 15s)\nORDER BY binned_timestamp ASC\nLIMIT 5\n"
 /// }
 /// ```
 /// ```java
@@ -1899,9 +1901,9 @@ import 'scheduled_query_timeouts.dart';
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryScheduleConfigurationArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationArgs;
-/// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsArgs;
 /// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArgs;
+/// import com.pulumi.aws.timestreamquery.inputs.ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1916,20 +1918,6 @@ import 'scheduled_query_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ScheduledQuery("example", ScheduledQueryArgs.builder()
-///             .executionRoleArn(exampleAwsIamRole.arn())
-///             .name(exampleAwsTimestreamwriteTable.tableName())
-///             .queryString("""
-/// SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
-/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
-/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
-/// FROM exampledatabase.exampletable
-/// WHERE measure_name = 'metrics' AND time > ago(2h)
-/// GROUP BY region, hostname, az, BIN(time, 15s)
-/// ORDER BY binned_timestamp ASC
-/// LIMIT 5
-///             """)
 ///             .errorReportConfiguration(ScheduledQueryErrorReportConfigurationArgs.builder()
 ///                 .s3Configuration(ScheduledQueryErrorReportConfigurationS3ConfigurationArgs.builder()
 ///                     .bucketName(exampleAwsS3Bucket.bucket())
@@ -1945,24 +1933,7 @@ import 'scheduled_query_timeouts.dart';
 ///                 .build())
 ///             .targetConfiguration(ScheduledQueryTargetConfigurationArgs.builder()
 ///                 .timestreamConfiguration(ScheduledQueryTargetConfigurationTimestreamConfigurationArgs.builder()
-///                     .databaseName(results.databaseName())
-///                     .tableName(resultsAwsTimestreamwriteTable.tableName())
-///                     .timeColumn("binned_timestamp")
-///                     .dimensionMappings(
-///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
-///                             .dimensionValueType("VARCHAR")
-///                             .name("az")
-///                             .build(),
-///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
-///                             .dimensionValueType("VARCHAR")
-///                             .name("region")
-///                             .build(),
-///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
-///                             .dimensionValueType("VARCHAR")
-///                             .name("hostname")
-///                             .build())
 ///                     .multiMeasureMappings(ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsArgs.builder()
-///                         .targetMultiMeasureName("multi-metrics")
 ///                         .multiMeasureAttributeMappings(
 ///                             ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMappingArgs.builder()
 ///                                 .measureValueType("DOUBLE")
@@ -1980,9 +1951,40 @@ import 'scheduled_query_timeouts.dart';
 ///                                 .measureValueType("DOUBLE")
 ///                                 .sourceColumn("p99_cpu_utilization")
 ///                                 .build())
+///                         .targetMultiMeasureName("multi-metrics")
 ///                         .build())
+///                     .dimensionMappings(
+///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
+///                             .dimensionValueType("VARCHAR")
+///                             .name("az")
+///                             .build(),
+///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
+///                             .dimensionValueType("VARCHAR")
+///                             .name("region")
+///                             .build(),
+///                         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMappingArgs.builder()
+///                             .dimensionValueType("VARCHAR")
+///                             .name("hostname")
+///                             .build())
+///                     .databaseName(results.databaseName())
+///                     .tableName(resultsAwsTimestreamwriteTable.tableName())
+///                     .timeColumn("binned_timestamp")
 ///                     .build())
 ///                 .build())
+///             .executionRoleArn(exampleAwsIamRole.arn())
+///             .name(exampleAwsTimestreamwriteTable.tableName())
+///             .queryString("""
+/// SELECT region, az, hostname, BIN(time, 15s) AS binned_timestamp,
+/// \tROUND(AVG(cpu_utilization), 2) AS avg_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.9), 2) AS p90_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.95), 2) AS p95_cpu_utilization,
+/// \tROUND(APPROX_PERCENTILE(cpu_utilization, 0.99), 2) AS p99_cpu_utilization
+/// FROM exampledatabase.exampletable
+/// WHERE measure_name = 'metrics' AND time > ago(2h)
+/// GROUP BY region, hostname, az, BIN(time, 15s)
+/// ORDER BY binned_timestamp ASC
+/// LIMIT 5
+///             """)
 ///             .build());
 ///
 ///     }
@@ -1993,6 +1995,37 @@ import 'scheduled_query_timeouts.dart';
 ///   example:
 ///     type: aws:timestreamquery:ScheduledQuery
 ///     properties:
+///       errorReportConfiguration:
+///         s3Configuration:
+///           bucketName: ${exampleAwsS3Bucket.bucket}
+///       notificationConfiguration:
+///         snsConfiguration:
+///           topicArn: ${exampleAwsSnsTopic.arn}
+///       scheduleConfiguration:
+///         scheduleExpression: rate(1 hour)
+///       targetConfiguration:
+///         timestreamConfiguration:
+///           multiMeasureMappings:
+///             multiMeasureAttributeMappings:
+///               - measureValueType: DOUBLE
+///                 sourceColumn: avg_cpu_utilization
+///               - measureValueType: DOUBLE
+///                 sourceColumn: p90_cpu_utilization
+///               - measureValueType: DOUBLE
+///                 sourceColumn: p95_cpu_utilization
+///               - measureValueType: DOUBLE
+///                 sourceColumn: p99_cpu_utilization
+///             targetMultiMeasureName: multi-metrics
+///           dimensionMappings:
+///             - dimensionValueType: VARCHAR
+///               name: az
+///             - dimensionValueType: VARCHAR
+///               name: region
+///             - dimensionValueType: VARCHAR
+///               name: hostname
+///           databaseName: ${results.databaseName}
+///           tableName: ${resultsAwsTimestreamwriteTable.tableName}
+///           timeColumn: binned_timestamp
 ///       executionRoleArn: ${exampleAwsIamRole.arn}
 ///       name: ${exampleAwsTimestreamwriteTable.tableName}
 ///       queryString: |
@@ -2006,37 +2039,6 @@ import 'scheduled_query_timeouts.dart';
 ///         GROUP BY region, hostname, az, BIN(time, 15s)
 ///         ORDER BY binned_timestamp ASC
 ///         LIMIT 5
-///       errorReportConfiguration:
-///         s3Configuration:
-///           bucketName: ${exampleAwsS3Bucket.bucket}
-///       notificationConfiguration:
-///         snsConfiguration:
-///           topicArn: ${exampleAwsSnsTopic.arn}
-///       scheduleConfiguration:
-///         scheduleExpression: rate(1 hour)
-///       targetConfiguration:
-///         timestreamConfiguration:
-///           databaseName: ${results.databaseName}
-///           tableName: ${resultsAwsTimestreamwriteTable.tableName}
-///           timeColumn: binned_timestamp
-///           dimensionMappings:
-///             - dimensionValueType: VARCHAR
-///               name: az
-///             - dimensionValueType: VARCHAR
-///               name: region
-///             - dimensionValueType: VARCHAR
-///               name: hostname
-///           multiMeasureMappings:
-///             targetMultiMeasureName: multi-metrics
-///             multiMeasureAttributeMappings:
-///               - measureValueType: DOUBLE
-///                 sourceColumn: avg_cpu_utilization
-///               - measureValueType: DOUBLE
-///                 sourceColumn: p90_cpu_utilization
-///               - measureValueType: DOUBLE
-///                 sourceColumn: p95_cpu_utilization
-///               - measureValueType: DOUBLE
-///                 sourceColumn: p99_cpu_utilization
 /// ```
 ///
 ///
@@ -2059,7 +2061,7 @@ class ScheduledQuery extends pulumi.CustomResource {
   /// Amazon KMS key used to encrypt the scheduled query resource, at-rest. If not specified, the scheduled query resource will be encrypted with a Timestream owned Amazon KMS key. To specify a KMS key, use the key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix the name with "alias/". If `errorReportConfiguration` uses `SSE_KMS` as the encryption type, the same `kmsKeyId` is used to encrypt the error report at rest.
   late final pulumi.Output<String?> kmsKeyId;
   /// Runtime summary for the last scheduled query run.
-  late final pulumi.Output<List<Map<String, dynamic>>?> lastRunSummaries;
+  late final pulumi.Output<List<ScheduledQueryLastRunSummary>?> lastRunSummaries;
   /// Name of the scheduled query.
   late final pulumi.Output<String> name;
   /// Next time the scheduled query is scheduled to run.
@@ -2071,7 +2073,7 @@ class ScheduledQuery extends pulumi.CustomResource {
   /// Query string to run. Parameter names can be specified in the query string using the `@` character followed by an identifier. The named parameter `@scheduled_runtime` is reserved and can be used in the query to get the time at which the query is scheduled to run. The timestamp calculated according to the `scheduleConfiguration` parameter, will be the value of `@scheduled_runtime` paramater for each query run. For example, consider an instance of a scheduled query executing on 2021-12-01 00:00:00. For this instance, the `@scheduled_runtime` parameter is initialized to the timestamp 2021-12-01 00:00:00 when invoking the query.
   late final pulumi.Output<String> queryString;
   /// Runtime summary for the last five failed scheduled query runs.
-  late final pulumi.Output<List<Map<String, dynamic>>?> recentlyFailedRuns;
+  late final pulumi.Output<List<ScheduledQueryRecentlyFailedRun>?> recentlyFailedRuns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block for schedule configuration for the query. See below.
@@ -2100,25 +2102,25 @@ class ScheduledQuery extends pulumi.CustomResource {
           'aws:timestreamquery/scheduledQuery:ScheduledQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     errorReportConfiguration = registerOutput<ScheduledQueryErrorReportConfiguration>('errorReportConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryErrorReportConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     executionRoleArn = registerOutput<String>('executionRoleArn');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
-    lastRunSummaries = registerOutput<List<Map<String, dynamic>>?>('lastRunSummaries');
+    lastRunSummaries = registerOutput<List<ScheduledQueryLastRunSummary>?>('lastRunSummaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledQueryLastRunSummary>(guardedValue, (value) => ScheduledQueryLastRunSummary.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     nextInvocationTime = registerOutput<String>('nextInvocationTime');
     notificationConfiguration = registerOutput<ScheduledQueryNotificationConfiguration>('notificationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     previousInvocationTime = registerOutput<String>('previousInvocationTime');
     queryString = registerOutput<String>('queryString');
-    recentlyFailedRuns = registerOutput<List<Map<String, dynamic>>?>('recentlyFailedRuns');
+    recentlyFailedRuns = registerOutput<List<ScheduledQueryRecentlyFailedRun>?>('recentlyFailedRuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledQueryRecentlyFailedRun>(guardedValue, (value) => ScheduledQueryRecentlyFailedRun.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     scheduleConfiguration = registerOutput<ScheduledQueryScheduleConfiguration>('scheduleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryScheduleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetConfiguration = registerOutput<ScheduledQueryTargetConfiguration>('targetConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryTargetConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<ScheduledQueryTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -2128,11 +2130,12 @@ class ScheduledQuery extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduledQueryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScheduledQuery._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2151,18 +2154,48 @@ class ScheduledQuery extends pulumi.CustomResource {
     errorReportConfiguration = registerOutput<ScheduledQueryErrorReportConfiguration>('errorReportConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryErrorReportConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     executionRoleArn = registerOutput<String>('executionRoleArn');
     kmsKeyId = registerOutput<String?>('kmsKeyId');
-    lastRunSummaries = registerOutput<List<Map<String, dynamic>>?>('lastRunSummaries');
+    lastRunSummaries = registerOutput<List<ScheduledQueryLastRunSummary>?>('lastRunSummaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledQueryLastRunSummary>(guardedValue, (value) => ScheduledQueryLastRunSummary.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     nextInvocationTime = registerOutput<String>('nextInvocationTime');
     notificationConfiguration = registerOutput<ScheduledQueryNotificationConfiguration>('notificationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     previousInvocationTime = registerOutput<String>('previousInvocationTime');
     queryString = registerOutput<String>('queryString');
-    recentlyFailedRuns = registerOutput<List<Map<String, dynamic>>?>('recentlyFailedRuns');
+    recentlyFailedRuns = registerOutput<List<ScheduledQueryRecentlyFailedRun>?>('recentlyFailedRuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledQueryRecentlyFailedRun>(guardedValue, (value) => ScheduledQueryRecentlyFailedRun.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     scheduleConfiguration = registerOutput<ScheduledQueryScheduleConfiguration>('scheduleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryScheduleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetConfiguration = registerOutput<ScheduledQueryTargetConfiguration>('targetConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryTargetConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeouts = registerOutput<ScheduledQueryTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ScheduledQuery] resource.
+  ScheduledQuery.reference(String urn)
+    : super(
+        'aws:timestreamquery/scheduledQuery:ScheduledQuery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationTime = registerOutput<String>('creationTime');
+    errorReportConfiguration = registerOutput<ScheduledQueryErrorReportConfiguration>('errorReportConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryErrorReportConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    lastRunSummaries = registerOutput<List<ScheduledQueryLastRunSummary>?>('lastRunSummaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledQueryLastRunSummary>(guardedValue, (value) => ScheduledQueryLastRunSummary.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    nextInvocationTime = registerOutput<String>('nextInvocationTime');
+    notificationConfiguration = registerOutput<ScheduledQueryNotificationConfiguration>('notificationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    previousInvocationTime = registerOutput<String>('previousInvocationTime');
+    queryString = registerOutput<String>('queryString');
+    recentlyFailedRuns = registerOutput<List<ScheduledQueryRecentlyFailedRun>?>('recentlyFailedRuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledQueryRecentlyFailedRun>(guardedValue, (value) => ScheduledQueryRecentlyFailedRun.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    scheduleConfiguration = registerOutput<ScheduledQueryScheduleConfiguration>('scheduleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryScheduleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetConfiguration = registerOutput<ScheduledQueryTargetConfiguration>('targetConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryTargetConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeouts = registerOutput<ScheduledQueryTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

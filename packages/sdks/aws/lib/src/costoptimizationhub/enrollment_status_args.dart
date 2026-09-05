@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_costoptimizationhub_enrollment_status_enrollment_status_args_doc}
 class EnrollmentStatusArgs {
   /// Flag to enroll member accounts of the organization if the account is the management account. No drift detection is currently supported for this argument. Default value is `false`.
-  final pulumi.Input<bool>? includeMemberAccounts;
+  final pulumi.Input<bool?>? includeMemberAccounts;
 
   /// Creates a new [EnrollmentStatusArgs].
   /// [includeMemberAccounts] Flag to enroll member accounts of the organization if the account is the management account. No drift detection is currently supported for this argument. Default value is `false`.

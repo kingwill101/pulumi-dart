@@ -23,8 +23,8 @@ class GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib {
 
   factory GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib(
-      max: pulumi.Input.fromValue(map['max'] as int),
-      min: pulumi.Input.fromValue(map['min'] as int),
+      max: pulumi.Input.fromValue((map['max'] as num).toInt()),
+      min: pulumi.Input.fromValue((map['min'] as num).toInt()),
     );
   }
 }

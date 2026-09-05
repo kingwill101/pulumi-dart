@@ -5,13 +5,13 @@ import 'telemetry_rule_rule_destination_configuration_waf_logging_parameters_red
 
 class TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedField {
   /// Redact the HTTP method from WAF logs. Set to an empty string to enable redaction.
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// Redact the entire query string from WAF logs. Set to an empty string to enable redaction.
-  final pulumi.Input<String>? queryString;
+  final pulumi.Input<String?>? queryString;
   /// Redact a specific header by name from WAF logs. See `singleHeader` below.
-  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedFieldSingleHeader>? singleHeader;
+  final pulumi.Input<TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedFieldSingleHeader?>? singleHeader;
   /// Redact the URI path from WAF logs. Set to an empty string to enable redaction.
-  final pulumi.Input<String>? uriPath;
+  final pulumi.Input<String?>? uriPath;
 
   /// Creates a new [TelemetryRuleRuleDestinationConfigurationWafLoggingParametersRedactedField].
   /// [method] Redact the HTTP method from WAF logs. Set to an empty string to enable redaction.

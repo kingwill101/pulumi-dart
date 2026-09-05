@@ -325,13 +325,13 @@ class HostedTransitVirtualInterfaceAcceptor extends pulumi.CustomResource {
           'aws:directconnect/hostedTransitVirtualInterfaceAcceptor:HostedTransitVirtualInterfaceAcceptor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dxGatewayId = registerOutput<String>('dxGatewayId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
   }
 
@@ -340,11 +340,12 @@ class HostedTransitVirtualInterfaceAcceptor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostedTransitVirtualInterfaceAcceptorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostedTransitVirtualInterfaceAcceptor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,8 +362,25 @@ class HostedTransitVirtualInterfaceAcceptor extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     dxGatewayId = registerOutput<String>('dxGatewayId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
+  }
+
+  /// Creates a typed reference to an existing [HostedTransitVirtualInterfaceAcceptor] resource.
+  HostedTransitVirtualInterfaceAcceptor.reference(String urn)
+    : super(
+        'aws:directconnect/hostedTransitVirtualInterfaceAcceptor:HostedTransitVirtualInterfaceAcceptor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dxGatewayId = registerOutput<String>('dxGatewayId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
   }
 }

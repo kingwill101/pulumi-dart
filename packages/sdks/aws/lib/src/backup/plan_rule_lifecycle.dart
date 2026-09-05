@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanRuleLifecycle {
   /// Specifies the number of days after creation that a recovery point is moved to cold storage.
-  final pulumi.Input<int>? coldStorageAfter;
+  final pulumi.Input<int?>? coldStorageAfter;
   /// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
-  final pulumi.Input<int>? deleteAfter;
+  final pulumi.Input<int?>? deleteAfter;
   /// This setting will instruct your backup plan to transition supported resources to archive (cold) storage tier in accordance with your lifecycle settings.
-  final pulumi.Input<bool>? optInToArchiveForSupportedResources;
+  final pulumi.Input<bool?>? optInToArchiveForSupportedResources;
 
   /// Creates a new [PlanRuleLifecycle].
   /// [coldStorageAfter] Specifies the number of days after creation that a recovery point is moved to cold storage.
@@ -30,8 +30,8 @@ class PlanRuleLifecycle {
 
   factory PlanRuleLifecycle.fromMap(Map<String, dynamic> map) {
     return PlanRuleLifecycle(
-      coldStorageAfter: (() { final guardedValue = map['coldStorageAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      deleteAfter: (() { final guardedValue = map['deleteAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      coldStorageAfter: (() { final guardedValue = map['coldStorageAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deleteAfter: (() { final guardedValue = map['deleteAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       optInToArchiveForSupportedResources: (() { final guardedValue = map['optInToArchiveForSupportedResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

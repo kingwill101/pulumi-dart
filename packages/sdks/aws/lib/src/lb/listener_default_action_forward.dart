@@ -6,7 +6,7 @@ import 'listener_default_action_forward_target_group.dart';
 
 class ListenerDefaultActionForward {
   /// Configuration block for target group stickiness for the rule. See below.
-  final pulumi.Input<ListenerDefaultActionForwardStickiness>? stickiness;
+  final pulumi.Input<ListenerDefaultActionForwardStickiness?>? stickiness;
   /// Set of 1-5 target group blocks. See below.
   ///
   /// The following arguments are optional:

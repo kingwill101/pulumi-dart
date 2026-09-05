@@ -46,10 +46,10 @@ class GetGroupMixedInstancesPolicyInstancesDistribution {
   factory GetGroupMixedInstancesPolicyInstancesDistribution.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyInstancesDistribution(
       onDemandAllocationStrategy: pulumi.Input.fromValue(map['onDemandAllocationStrategy'] as String),
-      onDemandBaseCapacity: pulumi.Input.fromValue(map['onDemandBaseCapacity'] as int),
-      onDemandPercentageAboveBaseCapacity: pulumi.Input.fromValue(map['onDemandPercentageAboveBaseCapacity'] as int),
+      onDemandBaseCapacity: pulumi.Input.fromValue((map['onDemandBaseCapacity'] as num).toInt()),
+      onDemandPercentageAboveBaseCapacity: pulumi.Input.fromValue((map['onDemandPercentageAboveBaseCapacity'] as num).toInt()),
       spotAllocationStrategy: pulumi.Input.fromValue(map['spotAllocationStrategy'] as String),
-      spotInstancePools: pulumi.Input.fromValue(map['spotInstancePools'] as int),
+      spotInstancePools: pulumi.Input.fromValue((map['spotInstancePools'] as num).toInt()),
       spotMaxPrice: pulumi.Input.fromValue(map['spotMaxPrice'] as String),
     );
   }

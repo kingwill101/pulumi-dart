@@ -25,8 +25,8 @@ class FilterFilterCriteriaPortRange {
 
   factory FilterFilterCriteriaPortRange.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaPortRange(
-      beginInclusive: pulumi.Input.fromValue(map['beginInclusive'] as int),
-      endInclusive: pulumi.Input.fromValue(map['endInclusive'] as int),
+      beginInclusive: pulumi.Input.fromValue((map['beginInclusive'] as num).toInt()),
+      endInclusive: pulumi.Input.fromValue((map['endInclusive'] as num).toInt()),
     );
   }
 }

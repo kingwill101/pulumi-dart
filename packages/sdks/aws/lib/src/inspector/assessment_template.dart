@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assessment_template_args.dart';
+import 'assessment_template_event_subscription.dart';
 import 'assessment_template_state.dart';
 
 /// Provides an Inspector Classic Assessment Template
@@ -12,6 +13,10 @@ import 'assessment_template_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.inspector.AssessmentTemplate("example", {
+///     eventSubscriptions: [{
+///         event: "ASSESSMENT_RUN_COMPLETED",
+///         topicArn: exampleAwsSnsTopic.arn,
+///     }],
 ///     name: "example",
 ///     targetArn: exampleAwsInspectorAssessmentTarget.arn,
 ///     duration: 3600,
@@ -21,10 +26,6 @@ import 'assessment_template_state.dart';
 ///         "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ",
 ///         "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD",
 ///     ],
-///     eventSubscriptions: [{
-///         event: "ASSESSMENT_RUN_COMPLETED",
-///         topicArn: exampleAwsSnsTopic.arn,
-///     }],
 /// });
 /// ```
 /// ```python
@@ -32,6 +33,10 @@ import 'assessment_template_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.inspector.AssessmentTemplate("example",
+///     event_subscriptions=[{
+///         "event": "ASSESSMENT_RUN_COMPLETED",
+///         "topic_arn": example_aws_sns_topic["arn"],
+///     }],
 ///     name="example",
 ///     target_arn=example_aws_inspector_assessment_target["arn"],
 ///     duration=3600,
@@ -40,11 +45,7 @@ import 'assessment_template_state.dart';
 ///         "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc",
 ///         "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ",
 ///         "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD",
-///     ],
-///     event_subscriptions=[{
-///         "event": "ASSESSMENT_RUN_COMPLETED",
-///         "topic_arn": example_aws_sns_topic["arn"],
-///     }])
+///     ])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -56,6 +57,14 @@ import 'assessment_template_state.dart';
 /// {
 ///     var example = new Aws.Inspector.AssessmentTemplate("example", new()
 ///     {
+///         EventSubscriptions = new[]
+///         {
+///             new Aws.Inspector.Inputs.AssessmentTemplateEventSubscriptionArgs
+///             {
+///                 Event = "ASSESSMENT_RUN_COMPLETED",
+///                 TopicArn = exampleAwsSnsTopic.Arn,
+///             },
+///         },
 ///         Name = "example",
 ///         TargetArn = exampleAwsInspectorAssessmentTarget.Arn,
 ///         Duration = 3600,
@@ -65,14 +74,6 @@ import 'assessment_template_state.dart';
 ///             "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc",
 ///             "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ",
 ///             "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD",
-///         },
-///         EventSubscriptions = new[]
-///         {
-///             new Aws.Inspector.Inputs.AssessmentTemplateEventSubscriptionArgs
-///             {
-///                 Event = "ASSESSMENT_RUN_COMPLETED",
-///                 TopicArn = exampleAwsSnsTopic.Arn,
-///             },
 ///         },
 ///     });
 ///
@@ -89,6 +90,12 @@ import 'assessment_template_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := inspector.NewAssessmentTemplate(ctx, "example", &inspector.AssessmentTemplateArgs{
+/// 			EventSubscriptions: inspector.AssessmentTemplateEventSubscriptionArray{
+/// 				&inspector.AssessmentTemplateEventSubscriptionArgs{
+/// 					Event:    pulumi.String("ASSESSMENT_RUN_COMPLETED"),
+/// 					TopicArn: pulumi.Any(exampleAwsSnsTopic.Arn),
+/// 				},
+/// 			},
 /// 			Name:      pulumi.String("example"),
 /// 			TargetArn: pulumi.Any(exampleAwsInspectorAssessmentTarget.Arn),
 /// 			Duration:  pulumi.Int(3600),
@@ -97,12 +104,6 @@ import 'assessment_template_state.dart';
 /// 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc"),
 /// 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ"),
 /// 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD"),
-/// 			},
-/// 			EventSubscriptions: inspector.AssessmentTemplateEventSubscriptionArray{
-/// 				&inspector.AssessmentTemplateEventSubscriptionArgs{
-/// 					Event:    pulumi.String("ASSESSMENT_RUN_COMPLETED"),
-/// 					TopicArn: pulumi.Any(exampleAwsSnsTopic.Arn),
-/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -122,14 +123,14 @@ import 'assessment_template_state.dart';
 /// }
 ///
 /// resource "aws_inspector_assessmenttemplate" "example" {
-///   name               = "example"
-///   target_arn         = exampleAwsInspectorAssessmentTarget.arn
-///   duration           = 3600
-///   rules_package_arns = ["arn:aws:inspector:us-west-2:758058086616:rulespackage/0-9hgA516p", "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc", "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ", "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD"]
 ///   event_subscriptions {
 ///     event     = "ASSESSMENT_RUN_COMPLETED"
 ///     topic_arn = exampleAwsSnsTopic.arn
 ///   }
+///   name               = "example"
+///   target_arn         = exampleAwsInspectorAssessmentTarget.arn
+///   duration           = 3600
+///   rules_package_arns = ["arn:aws:inspector:us-west-2:758058086616:rulespackage/0-9hgA516p", "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc", "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ", "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD"]
 /// }
 /// ```
 /// ```java
@@ -155,6 +156,10 @@ import 'assessment_template_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AssessmentTemplate("example", AssessmentTemplateArgs.builder()
+///             .eventSubscriptions(AssessmentTemplateEventSubscriptionArgs.builder()
+///                 .event("ASSESSMENT_RUN_COMPLETED")
+///                 .topicArn(exampleAwsSnsTopic.arn())
+///                 .build())
 ///             .name("example")
 ///             .targetArn(exampleAwsInspectorAssessmentTarget.arn())
 ///             .duration(3600)
@@ -163,10 +168,6 @@ import 'assessment_template_state.dart';
 ///                 "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc",
 ///                 "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ",
 ///                 "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD")
-///             .eventSubscriptions(AssessmentTemplateEventSubscriptionArgs.builder()
-///                 .event("ASSESSMENT_RUN_COMPLETED")
-///                 .topicArn(exampleAwsSnsTopic.arn())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -177,6 +178,9 @@ import 'assessment_template_state.dart';
 ///   example:
 ///     type: aws:inspector:AssessmentTemplate
 ///     properties:
+///       eventSubscriptions:
+///         - event: ASSESSMENT_RUN_COMPLETED
+///           topicArn: ${exampleAwsSnsTopic.arn}
 ///       name: example
 ///       targetArn: ${exampleAwsInspectorAssessmentTarget.arn}
 ///       duration: 3600
@@ -185,9 +189,6 @@ import 'assessment_template_state.dart';
 ///         - arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc
 ///         - arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ
 ///         - arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD
-///       eventSubscriptions:
-///         - event: ASSESSMENT_RUN_COMPLETED
-///           topicArn: ${exampleAwsSnsTopic.arn}
 /// ```
 ///
 ///
@@ -197,7 +198,7 @@ import 'assessment_template_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Inspector assessment template.
+/// - `arn` (String) ARN of the Inspector assessment template.
 ///
 ///
 /// Using `pulumi import`, import `aws.inspector.AssessmentTemplate` using the template assessment ARN. For example:
@@ -211,7 +212,7 @@ class AssessmentTemplate extends pulumi.CustomResource {
   /// The duration of the inspector run.
   late final pulumi.Output<int> duration;
   /// A block that enables sending notifications about a specified assessment template event to a designated SNS topic. See Event Subscriptions for details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> eventSubscriptions;
+  late final pulumi.Output<List<AssessmentTemplateEventSubscription>?> eventSubscriptions;
   /// The name of the assessment template.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -237,16 +238,16 @@ class AssessmentTemplate extends pulumi.CustomResource {
           'aws:inspector/assessmentTemplate:AssessmentTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     duration = registerOutput<int>('duration');
-    eventSubscriptions = registerOutput<List<Map<String, dynamic>>?>('eventSubscriptions');
+    eventSubscriptions = registerOutput<List<AssessmentTemplateEventSubscription>?>('eventSubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(guardedValue, (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rulesPackageArns = registerOutput<List<String>>('rulesPackageArns');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rulesPackageArns = registerOutput<List<String>>('rulesPackageArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
   }
 
@@ -255,11 +256,12 @@ class AssessmentTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssessmentTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssessmentTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -275,12 +277,32 @@ class AssessmentTemplate extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     duration = registerOutput<int>('duration');
-    eventSubscriptions = registerOutput<List<Map<String, dynamic>>?>('eventSubscriptions');
+    eventSubscriptions = registerOutput<List<AssessmentTemplateEventSubscription>?>('eventSubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(guardedValue, (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    rulesPackageArns = registerOutput<List<String>>('rulesPackageArns');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    rulesPackageArns = registerOutput<List<String>>('rulesPackageArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetArn = registerOutput<String>('targetArn');
+  }
+
+  /// Creates a typed reference to an existing [AssessmentTemplate] resource.
+  AssessmentTemplate.reference(String urn)
+    : super(
+        'aws:inspector/assessmentTemplate:AssessmentTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    duration = registerOutput<int>('duration');
+    eventSubscriptions = registerOutput<List<AssessmentTemplateEventSubscription>?>('eventSubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(guardedValue, (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    rulesPackageArns = registerOutput<List<String>>('rulesPackageArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
   }
 }

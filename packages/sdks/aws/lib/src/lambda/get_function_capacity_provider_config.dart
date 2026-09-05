@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_function_capacity_provider_config_lambda_managed_instances_capacity_provider_config.dart';
 
 class GetFunctionCapacityProviderConfig {
-  /// Configuration block for Lambda Managed Instances Capacity Provider.
+  /// Configuration block for Lambda Managed Instances Capacity Provider. See `lambdaManagedInstancesCapacityProviderConfig` below.
   final pulumi.Input<List<GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig>> lambdaManagedInstancesCapacityProviderConfigs;
 
   /// Creates a new [GetFunctionCapacityProviderConfig].
-  /// [lambdaManagedInstancesCapacityProviderConfigs] Configuration block for Lambda Managed Instances Capacity Provider.
+  /// [lambdaManagedInstancesCapacityProviderConfigs] Configuration block for Lambda Managed Instances Capacity Provider. See `lambdaManagedInstancesCapacityProviderConfig` below.
   const GetFunctionCapacityProviderConfig({
     required this.lambdaManagedInstancesCapacityProviderConfigs,
   });

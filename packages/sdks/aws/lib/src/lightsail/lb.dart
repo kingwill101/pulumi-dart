@@ -191,7 +191,7 @@ class Lb extends pulumi.CustomResource {
           'aws:lightsail/lb:Lb',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
@@ -201,11 +201,11 @@ class Lb extends pulumi.CustomResource {
     ipAddressType = registerOutput<String?>('ipAddressType');
     this.name = registerOutput<String>('name');
     protocol = registerOutput<String>('protocol');
-    publicPorts = registerOutput<List<int>>('publicPorts');
+    publicPorts = registerOutput<List<int>>('publicPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     region = registerOutput<String>('region');
     supportCode = registerOutput<String>('supportCode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Lb] resource's state with the given [name] and [id].
@@ -213,11 +213,12 @@ class Lb extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LbState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Lb._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -239,10 +240,34 @@ class Lb extends pulumi.CustomResource {
     ipAddressType = registerOutput<String?>('ipAddressType');
     this.name = registerOutput<String>('name');
     protocol = registerOutput<String>('protocol');
-    publicPorts = registerOutput<List<int>>('publicPorts');
+    publicPorts = registerOutput<List<int>>('publicPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     region = registerOutput<String>('region');
     supportCode = registerOutput<String>('supportCode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Lb] resource.
+  Lb.reference(String urn)
+    : super(
+        'aws:lightsail/lb:Lb',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    dnsName = registerOutput<String>('dnsName');
+    healthCheckPath = registerOutput<String?>('healthCheckPath');
+    instancePort = registerOutput<int>('instancePort');
+    ipAddressType = registerOutput<String?>('ipAddressType');
+    this.name = registerOutput<String>('name');
+    protocol = registerOutput<String>('protocol');
+    publicPorts = registerOutput<List<int>>('publicPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    region = registerOutput<String>('region');
+    supportCode = registerOutput<String>('supportCode');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

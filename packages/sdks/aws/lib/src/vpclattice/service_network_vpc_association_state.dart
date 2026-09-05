@@ -6,27 +6,27 @@ import 'service_network_vpc_association_dns_options.dart';
 /// Input properties used for looking up and filtering ServiceNetworkVpcAssociation resources.
 class ServiceNetworkVpcAssociationState {
   /// ARN of the Association.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Account that created the association.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// Configuration block for DNS option. See `dnsOptions` block below for details.
-  final pulumi.Input<ServiceNetworkVpcAssociationDnsOptions>? dnsOptions;
+  final pulumi.Input<ServiceNetworkVpcAssociationDnsOptions?>? dnsOptions;
   /// Boolean to indicate whether to enable private DNS for the VPC association. Defaults to `false`.
-  final pulumi.Input<bool>? privateDnsEnabled;
+  final pulumi.Input<bool?>? privateDnsEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// IDs of the security groups.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
-  final pulumi.Input<String>? serviceNetworkIdentifier;
+  final pulumi.Input<String?>? serviceNetworkIdentifier;
   /// Operations status. Valid Values are CREATE_IN_PROGRESS | ACTIVE | DELETE_IN_PROGRESS | CREATE_FAILED | DELETE_FAILED
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ID of the VPC.
-  final pulumi.Input<String>? vpcIdentifier;
+  final pulumi.Input<String?>? vpcIdentifier;
 
   /// Creates a new [ServiceNetworkVpcAssociationState].
   /// [arn] ARN of the Association.

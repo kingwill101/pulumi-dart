@@ -7,12 +7,12 @@ import 'channel_encoder_settings_output_group_output_output_settings_udp_output_
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings {
   /// UDP output buffering in milliseconds.
-  final pulumi.Input<int>? bufferMsec;
+  final pulumi.Input<int?>? bufferMsec;
   /// UDP container settings. See Container Settings for more details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings> containerSettings;
   /// Destination address and port number for RTP or UDP packets. See Destination for more details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination> destination;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings>? fecOutputSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings?>? fecOutputSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings].
   /// [bufferMsec] UDP output buffering in milliseconds.
@@ -37,7 +37,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings {
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings(
-      bufferMsec: (() { final guardedValue = map['bufferMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bufferMsec: (() { final guardedValue = map['bufferMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       containerSettings: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings.fromMap((map['containerSettings']! as Map).cast<String, dynamic>())),
       destination: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
       fecOutputSettings: (() { final guardedValue = map['fecOutputSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -19,7 +19,7 @@ class GetRouteSpecTcpRouteMatch {
 
   factory GetRouteSpecTcpRouteMatch.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecTcpRouteMatch(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

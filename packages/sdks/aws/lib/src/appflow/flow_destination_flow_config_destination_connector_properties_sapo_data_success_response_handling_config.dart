@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig {
-  final pulumi.Input<String>? bucketName;
-  final pulumi.Input<String>? bucketPrefix;
+  final pulumi.Input<String?>? bucketName;
+  final pulumi.Input<String?>? bucketPrefix;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig].
   /// [bucketName] Optional.

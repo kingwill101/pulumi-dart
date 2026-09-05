@@ -20,44 +20,44 @@ import 'publishing_destination_state.dart';
 /// const bucketPol = aws.iam.getPolicyDocumentOutput({
 ///     statements: [
 ///         {
+///             principals: [{
+///                 type: "Service",
+///                 identifiers: ["guardduty.amazonaws.com"],
+///             }],
 ///             sid: "Allow PutObject",
 ///             actions: ["s3:PutObject"],
 ///             resources: [pulumi.interpolate`${gdBucket.arn}/*`],
+///         },
+///         {
 ///             principals: [{
 ///                 type: "Service",
 ///                 identifiers: ["guardduty.amazonaws.com"],
 ///             }],
-///         },
-///         {
 ///             sid: "Allow GetBucketLocation",
 ///             actions: ["s3:GetBucketLocation"],
 ///             resources: [gdBucket.arn],
-///             principals: [{
-///                 type: "Service",
-///                 identifiers: ["guardduty.amazonaws.com"],
-///             }],
 ///         },
 ///     ],
 /// });
 /// const kmsPol = Promise.all([currentGetRegion, current]).then(([currentGetRegion, current]) => aws.iam.getPolicyDocument({
 ///     statements: [
 ///         {
-///             sid: "Allow GuardDuty to encrypt findings",
-///             actions: ["kms:GenerateDataKey"],
-///             resources: [`arn:aws:kms:${currentGetRegion.region}:${current.accountId}:key/*`],
 ///             principals: [{
 ///                 type: "Service",
 ///                 identifiers: ["guardduty.amazonaws.com"],
 ///             }],
+///             sid: "Allow GuardDuty to encrypt findings",
+///             actions: ["kms:GenerateDataKey"],
+///             resources: [`arn:aws:kms:${currentGetRegion.region}:${current.accountId}:key/*`],
 ///         },
 ///         {
-///             sid: "Allow all users to modify/delete key (test only)",
-///             actions: ["kms:*"],
-///             resources: [`arn:aws:kms:${currentGetRegion.region}:${current.accountId}:key/*`],
 ///             principals: [{
 ///                 type: "AWS",
 ///                 identifiers: [`arn:aws:iam::${current.accountId}:root`],
 ///             }],
+///             sid: "Allow all users to modify/delete key (test only)",
+///             actions: ["kms:*"],
+///             resources: [`arn:aws:kms:${currentGetRegion.region}:${current.accountId}:key/*`],
 ///         },
 ///     ],
 /// }));
@@ -94,42 +94,42 @@ import 'publishing_destination_state.dart';
 ///     force_destroy=True)
 /// bucket_pol = aws.iam.get_policy_document_output(statements=[
 ///     {
+///         "principals": [{
+///             "type": "Service",
+///             "identifiers": ["guardduty.amazonaws.com"],
+///         }],
 ///         "sid": "Allow PutObject",
 ///         "actions": ["s3:PutObject"],
 ///         "resources": [gd_bucket.arn.apply(lambda arn: f"{arn}/*")],
+///     },
+///     {
 ///         "principals": [{
 ///             "type": "Service",
 ///             "identifiers": ["guardduty.amazonaws.com"],
 ///         }],
-///     },
-///     {
 ///         "sid": "Allow GetBucketLocation",
 ///         "actions": ["s3:GetBucketLocation"],
 ///         "resources": [gd_bucket.arn],
-///         "principals": [{
-///             "type": "Service",
-///             "identifiers": ["guardduty.amazonaws.com"],
-///         }],
 ///     },
 /// ])
 /// kms_pol = aws.iam.get_policy_document(statements=[
 ///     {
-///         "sid": "Allow GuardDuty to encrypt findings",
-///         "actions": ["kms:GenerateDataKey"],
-///         "resources": [f"arn:aws:kms:{current_get_region.region}:{current.account_id}:key/*"],
 ///         "principals": [{
 ///             "type": "Service",
 ///             "identifiers": ["guardduty.amazonaws.com"],
 ///         }],
+///         "sid": "Allow GuardDuty to encrypt findings",
+///         "actions": ["kms:GenerateDataKey"],
+///         "resources": [f"arn:aws:kms:{current_get_region.region}:{current.account_id}:key/*"],
 ///     },
 ///     {
-///         "sid": "Allow all users to modify/delete key (test only)",
-///         "actions": ["kms:*"],
-///         "resources": [f"arn:aws:kms:{current_get_region.region}:{current.account_id}:key/*"],
 ///         "principals": [{
 ///             "type": "AWS",
 ///             "identifiers": [f"arn:aws:iam::{current.account_id}:root"],
 ///         }],
+///         "sid": "Allow all users to modify/delete key (test only)",
+///         "actions": ["kms:*"],
+///         "resources": [f"arn:aws:kms:{current_get_region.region}:{current.account_id}:key/*"],
 ///     },
 /// ])
 /// test_gd = aws.guardduty.Detector("test_gd", enable=True)
@@ -173,6 +173,17 @@ import 'publishing_destination_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
+///                 Principals = new[]
+///                 {
+///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+///                     {
+///                         Type = "Service",
+///                         Identifiers = new[]
+///                         {
+///                             "guardduty.amazonaws.com",
+///                         },
+///                     },
+///                 },
 ///                 Sid = "Allow PutObject",
 ///                 Actions = new[]
 ///                 {
@@ -182,6 +193,9 @@ import 'publishing_destination_state.dart';
 ///                 {
 ///                     $"{gdBucket.Arn}/*",
 ///                 },
+///             },
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+///             {
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -193,9 +207,6 @@ import 'publishing_destination_state.dart';
 ///                         },
 ///                     },
 ///                 },
-///             },
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-///             {
 ///                 Sid = "Allow GetBucketLocation",
 ///                 Actions = new[]
 ///                 {
@@ -204,17 +215,6 @@ import 'publishing_destination_state.dart';
 ///                 Resources = new[]
 ///                 {
 ///                     gdBucket.Arn,
-///                 },
-///                 Principals = new[]
-///                 {
-///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-///                     {
-///                         Type = "Service",
-///                         Identifiers = new[]
-///                         {
-///                             "guardduty.amazonaws.com",
-///                         },
-///                     },
 ///                 },
 ///             },
 ///         },
@@ -226,15 +226,6 @@ import 'publishing_destination_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "Allow GuardDuty to encrypt findings",
-///                 Actions = new[]
-///                 {
-///                     "kms:GenerateDataKey",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     $"arn:aws:kms:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:key/*",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -246,18 +237,18 @@ import 'publishing_destination_state.dart';
 ///                         },
 ///                     },
 ///                 },
-///             },
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-///             {
-///                 Sid = "Allow all users to modify/delete key (test only)",
+///                 Sid = "Allow GuardDuty to encrypt findings",
 ///                 Actions = new[]
 ///                 {
-///                     "kms:*",
+///                     "kms:GenerateDataKey",
 ///                 },
 ///                 Resources = new[]
 ///                 {
 ///                     $"arn:aws:kms:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:key/*",
 ///                 },
+///             },
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+///             {
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -268,6 +259,15 @@ import 'publishing_destination_state.dart';
 ///                             $"arn:aws:iam::{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:root",
 ///                         },
 ///                     },
+///                 },
+///                 Sid = "Allow all users to modify/delete key (test only)",
+///                 Actions = new[]
+///                 {
+///                     "kms:*",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"arn:aws:kms:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:key/*",
 ///                 },
 ///             },
 ///         },
@@ -346,6 +346,14 @@ import 'publishing_destination_state.dart';
 /// 		bucketPol := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
+/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+/// 							Type: pulumi.String("Service"),
+/// 							Identifiers: pulumi.StringArray{
+/// 								pulumi.String("guardduty.amazonaws.com"),
+/// 							},
+/// 						},
+/// 					},
 /// 					Sid: pulumi.String("Allow PutObject"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("s3:PutObject"),
@@ -355,6 +363,8 @@ import 'publishing_destination_state.dart';
 /// 							return fmt.Sprintf("%v/*", arn), nil
 /// 						}).(pulumi.StringOutput),
 /// 					},
+/// 				},
+/// 				&iam.GetPolicyDocumentStatementArgs{
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -363,8 +373,6 @@ import 'publishing_destination_state.dart';
 /// 							},
 /// 						},
 /// 					},
-/// 				},
-/// 				&iam.GetPolicyDocumentStatementArgs{
 /// 					Sid: pulumi.String("Allow GetBucketLocation"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("s3:GetBucketLocation"),
@@ -372,27 +380,12 @@ import 'publishing_destination_state.dart';
 /// 					Resources: pulumi.StringArray{
 /// 						gdBucket.Arn,
 /// 					},
-/// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-/// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-/// 							Type: pulumi.String("Service"),
-/// 							Identifiers: pulumi.StringArray{
-/// 								pulumi.String("guardduty.amazonaws.com"),
-/// 							},
-/// 						},
-/// 					},
 /// 				},
 /// 			},
 /// 		}, nil)
 /// 		kmsPol, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid: pulumi.StringRef("Allow GuardDuty to encrypt findings"),
-/// 					Actions: []string{
-/// 						"kms:GenerateDataKey",
-/// 					},
-/// 					Resources: []string{
-/// 						fmt.Sprintf("arn:aws:kms:%v:%v:key/*", currentGetRegion.Region, current.AccountId),
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -401,15 +394,15 @@ import 'publishing_destination_state.dart';
 /// 							},
 /// 						},
 /// 					},
-/// 				},
-/// 				{
-/// 					Sid: pulumi.StringRef("Allow all users to modify/delete key (test only)"),
+/// 					Sid: pulumi.StringRef("Allow GuardDuty to encrypt findings"),
 /// 					Actions: []string{
-/// 						"kms:*",
+/// 						"kms:GenerateDataKey",
 /// 					},
 /// 					Resources: []string{
 /// 						fmt.Sprintf("arn:aws:kms:%v:%v:key/*", currentGetRegion.Region, current.AccountId),
 /// 					},
+/// 				},
+/// 				{
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -417,6 +410,13 @@ import 'publishing_destination_state.dart';
 /// 								fmt.Sprintf("arn:aws:iam::%v:root", current.AccountId),
 /// 							},
 /// 						},
+/// 					},
+/// 					Sid: pulumi.StringRef("Allow all users to modify/delete key (test only)"),
+/// 					Actions: []string{
+/// 						"kms:*",
+/// 					},
+/// 					Resources: []string{
+/// 						fmt.Sprintf("arn:aws:kms:%v:%v:key/*", currentGetRegion.Region, current.AccountId),
 /// 					},
 /// 				},
 /// 			},
@@ -481,42 +481,42 @@ import 'publishing_destination_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "bucketPol" {
 ///   statements {
+///     principals {
+///       type        = "Service"
+///       identifiers = ["guardduty.amazonaws.com"]
+///     }
 ///     sid       = "Allow PutObject"
 ///     actions   = ["s3:PutObject"]
 ///     resources = ["${aws_s3_bucket.gd_bucket.arn}/*"]
+///   }
+///   statements {
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["guardduty.amazonaws.com"]
 ///     }
-///   }
-///   statements {
 ///     sid       = "Allow GetBucketLocation"
 ///     actions   = ["s3:GetBucketLocation"]
 ///     resources = [aws_s3_bucket.gd_bucket.arn]
-///     principals {
-///       type        = "Service"
-///       identifiers = ["guardduty.amazonaws.com"]
-///     }
 ///   }
 /// }
 /// data "aws_iam_getpolicydocument" "kmsPol" {
 ///   statements {
-///     sid       = "Allow GuardDuty to encrypt findings"
-///     actions   = ["kms:GenerateDataKey"]
-///     resources = ["arn:aws:kms:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:key/*"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["guardduty.amazonaws.com"]
 ///     }
+///     sid       = "Allow GuardDuty to encrypt findings"
+///     actions   = ["kms:GenerateDataKey"]
+///     resources = ["arn:aws:kms:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:key/*"]
 ///   }
 ///   statements {
-///     sid       = "Allow all users to modify/delete key (test only)"
-///     actions   = ["kms:*"]
-///     resources = ["arn:aws:kms:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:key/*"]
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
 ///     }
+///     sid       = "Allow all users to modify/delete key (test only)"
+///     actions   = ["kms:*"]
+///     resources = ["arn:aws:kms:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:key/*"]
 ///   }
 /// }
 ///
@@ -600,44 +600,44 @@ import 'publishing_destination_state.dart';
 ///         final var bucketPol = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
+///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+///                         .type("Service")
+///                         .identifiers("guardduty.amazonaws.com")
+///                         .build())
 ///                     .sid("Allow PutObject")
 ///                     .actions("s3:PutObject")
 ///                     .resources(gdBucket.arn().applyValue(_arn -> String.format("%s/*", _arn)))
+///                     .build(),
+///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("Service")
 ///                         .identifiers("guardduty.amazonaws.com")
 ///                         .build())
-///                     .build(),
-///                 GetPolicyDocumentStatementArgs.builder()
 ///                     .sid("Allow GetBucketLocation")
 ///                     .actions("s3:GetBucketLocation")
 ///                     .resources(gdBucket.arn())
-///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-///                         .type("Service")
-///                         .identifiers("guardduty.amazonaws.com")
-///                         .build())
 ///                     .build())
 ///             .build());
 ///
 ///         final var kmsPol = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .sid("Allow GuardDuty to encrypt findings")
-///                     .actions("kms:GenerateDataKey")
-///                     .resources(String.format("arn:aws:kms:%s:%s:key/*", currentGetRegion.region(),current.accountId()))
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("Service")
 ///                         .identifiers("guardduty.amazonaws.com")
 ///                         .build())
+///                     .sid("Allow GuardDuty to encrypt findings")
+///                     .actions("kms:GenerateDataKey")
+///                     .resources(String.format("arn:aws:kms:%s:%s:key/*", currentGetRegion.region(),current.accountId()))
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .sid("Allow all users to modify/delete key (test only)")
-///                     .actions("kms:*")
-///                     .resources(String.format("arn:aws:kms:%s:%s:key/*", currentGetRegion.region(),current.accountId()))
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("AWS")
 ///                         .identifiers(String.format("arn:aws:iam::%s:root", current.accountId()))
 ///                         .build())
+///                     .sid("Allow all users to modify/delete key (test only)")
+///                     .actions("kms:*")
+///                     .resources(String.format("arn:aws:kms:%s:%s:key/*", currentGetRegion.region(),current.accountId()))
 ///                     .build())
 ///             .build());
 ///
@@ -727,47 +727,47 @@ import 'publishing_destination_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: Allow PutObject
+///           - principals:
+///               - type: Service
+///                 identifiers:
+///                   - guardduty.amazonaws.com
+///             sid: Allow PutObject
 ///             actions:
 ///               - s3:PutObject
 ///             resources:
 ///               - ${gdBucket.arn}/*
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - guardduty.amazonaws.com
-///           - sid: Allow GetBucketLocation
+///             sid: Allow GetBucketLocation
 ///             actions:
 ///               - s3:GetBucketLocation
 ///             resources:
 ///               - ${gdBucket.arn}
-///             principals:
-///               - type: Service
-///                 identifiers:
-///                   - guardduty.amazonaws.com
 ///   kmsPol:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: Allow GuardDuty to encrypt findings
+///           - principals:
+///               - type: Service
+///                 identifiers:
+///                   - guardduty.amazonaws.com
+///             sid: Allow GuardDuty to encrypt findings
 ///             actions:
 ///               - kms:GenerateDataKey
 ///             resources:
 ///               - arn:aws:kms:${currentGetRegion.region}:${current.accountId}:key/*
-///             principals:
-///               - type: Service
+///           - principals:
+///               - type: AWS
 ///                 identifiers:
-///                   - guardduty.amazonaws.com
-///           - sid: Allow all users to modify/delete key (test only)
+///                   - arn:aws:iam::${current.accountId}:root
+///             sid: Allow all users to modify/delete key (test only)
 ///             actions:
 ///               - kms:*
 ///             resources:
 ///               - arn:aws:kms:${currentGetRegion.region}:${current.accountId}:key/*
-///             principals:
-///               - type: AWS
-///                 identifiers:
-///                   - arn:aws:iam::${current.accountId}:root
 /// ```
 ///
 ///
@@ -814,7 +814,7 @@ class PublishingDestination extends pulumi.CustomResource {
           'aws:guardduty/publishingDestination:PublishingDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationArn = registerOutput<String>('destinationArn');
@@ -823,8 +823,8 @@ class PublishingDestination extends pulumi.CustomResource {
     detectorId = registerOutput<String>('detectorId');
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [PublishingDestination] resource's state with the given [name] and [id].
@@ -832,11 +832,12 @@ class PublishingDestination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PublishingDestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PublishingDestination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -857,7 +858,27 @@ class PublishingDestination extends pulumi.CustomResource {
     detectorId = registerOutput<String>('detectorId');
     kmsKeyArn = registerOutput<String>('kmsKeyArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PublishingDestination] resource.
+  PublishingDestination.reference(String urn)
+    : super(
+        'aws:guardduty/publishingDestination:PublishingDestination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    destinationArn = registerOutput<String>('destinationArn');
+    destinationId = registerOutput<String>('destinationId');
+    destinationType = registerOutput<String?>('destinationType');
+    detectorId = registerOutput<String>('detectorId');
+    kmsKeyArn = registerOutput<String>('kmsKeyArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

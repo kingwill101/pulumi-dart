@@ -320,16 +320,16 @@ import 'connection_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Connection("example", {
+///     physicalConnectionRequirements: {
+///         availabilityZone: exampleAwsSubnet.availabilityZone,
+///         securityGroupIdLists: [exampleAwsSecurityGroup.id],
+///         subnetId: exampleAwsSubnet.id,
+///     },
 ///     name: "example",
 ///     connectionProperties: {
 ///         JDBC_CONNECTION_URL: `jdbc:mysql://${exampleAwsRdsCluster.endpoint}/exampledatabase`,
 ///         PASSWORD: "examplepassword",
 ///         USERNAME: "exampleusername",
-///     },
-///     physicalConnectionRequirements: {
-///         availabilityZone: exampleAwsSubnet.availabilityZone,
-///         securityGroupIdLists: [exampleAwsSecurityGroup.id],
-///         subnetId: exampleAwsSubnet.id,
 ///     },
 /// });
 /// ```
@@ -338,16 +338,16 @@ import 'connection_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Connection("example",
+///     physical_connection_requirements={
+///         "availability_zone": example_aws_subnet["availabilityZone"],
+///         "security_group_id_lists": [example_aws_security_group["id"]],
+///         "subnet_id": example_aws_subnet["id"],
+///     },
 ///     name="example",
 ///     connection_properties={
 ///         "JDBC_CONNECTION_URL": f"jdbc:mysql://{example_aws_rds_cluster['endpoint']}/exampledatabase",
 ///         "PASSWORD": "examplepassword",
 ///         "USERNAME": "exampleusername",
-///     },
-///     physical_connection_requirements={
-///         "availability_zone": example_aws_subnet["availabilityZone"],
-///         "security_group_id_lists": [example_aws_security_group["id"]],
-///         "subnet_id": example_aws_subnet["id"],
 ///     })
 /// ```
 /// ```csharp
@@ -360,13 +360,6 @@ import 'connection_state.dart';
 /// {
 ///     var example = new Aws.Glue.Connection("example", new()
 ///     {
-///         Name = "example",
-///         ConnectionProperties =
-///         {
-///             { "JDBC_CONNECTION_URL", $"jdbc:mysql://{exampleAwsRdsCluster.Endpoint}/exampledatabase" },
-///             { "PASSWORD", "examplepassword" },
-///             { "USERNAME", "exampleusername" },
-///         },
 ///         PhysicalConnectionRequirements = new Aws.Glue.Inputs.ConnectionPhysicalConnectionRequirementsArgs
 ///         {
 ///             AvailabilityZone = exampleAwsSubnet.AvailabilityZone,
@@ -375,6 +368,13 @@ import 'connection_state.dart';
 ///                 exampleAwsSecurityGroup.Id,
 ///             },
 ///             SubnetId = exampleAwsSubnet.Id,
+///         },
+///         Name = "example",
+///         ConnectionProperties =
+///         {
+///             { "JDBC_CONNECTION_URL", $"jdbc:mysql://{exampleAwsRdsCluster.Endpoint}/exampledatabase" },
+///             { "PASSWORD", "examplepassword" },
+///             { "USERNAME", "exampleusername" },
 ///         },
 ///     });
 ///
@@ -391,18 +391,18 @@ import 'connection_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewConnection(ctx, "example", &glue.ConnectionArgs{
-/// 			Name: pulumi.String("example"),
-/// 			ConnectionProperties: pulumi.StringMap{
-/// 				"JDBC_CONNECTION_URL": pulumi.Sprintf("jdbc:mysql://%v/exampledatabase", exampleAwsRdsCluster.Endpoint),
-/// 				"PASSWORD":            pulumi.String("examplepassword"),
-/// 				"USERNAME":            pulumi.String("exampleusername"),
-/// 			},
 /// 			PhysicalConnectionRequirements: &glue.ConnectionPhysicalConnectionRequirementsArgs{
 /// 				AvailabilityZone: pulumi.Any(exampleAwsSubnet.AvailabilityZone),
 /// 				SecurityGroupIdLists: pulumi.StringArray{
 /// 					exampleAwsSecurityGroup.Id,
 /// 				},
 /// 				SubnetId: pulumi.Any(exampleAwsSubnet.Id),
+/// 			},
+/// 			Name: pulumi.String("example"),
+/// 			ConnectionProperties: pulumi.StringMap{
+/// 				"JDBC_CONNECTION_URL": pulumi.Sprintf("jdbc:mysql://%v/exampledatabase", exampleAwsRdsCluster.Endpoint),
+/// 				"PASSWORD":            pulumi.String("examplepassword"),
+/// 				"USERNAME":            pulumi.String("exampleusername"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -422,16 +422,16 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_glue_connection" "example" {
+///   physical_connection_requirements = {
+///     availability_zone       = exampleAwsSubnet.availabilityZone
+///     security_group_id_lists = [exampleAwsSecurityGroup.id]
+///     subnet_id               = exampleAwsSubnet.id
+///   }
 ///   name = "example"
 ///   connection_properties = {
 ///     "JDBC_CONNECTION_URL" ="jdbc:mysql://${exampleAwsRdsCluster.endpoint}/exampledatabase"
 ///     "PASSWORD"            = "examplepassword"
 ///     "USERNAME"            = "exampleusername"
-///   }
-///   physical_connection_requirements = {
-///     availability_zone       = exampleAwsSubnet.availabilityZone
-///     security_group_id_lists = [exampleAwsSecurityGroup.id]
-///     subnet_id               = exampleAwsSubnet.id
 ///   }
 /// }
 /// ```
@@ -458,17 +458,17 @@ import 'connection_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Connection("example", ConnectionArgs.builder()
+///             .physicalConnectionRequirements(ConnectionPhysicalConnectionRequirementsArgs.builder()
+///                 .availabilityZone(exampleAwsSubnet.availabilityZone())
+///                 .securityGroupIdLists(exampleAwsSecurityGroup.id())
+///                 .subnetId(exampleAwsSubnet.id())
+///                 .build())
 ///             .name("example")
 ///             .connectionProperties(Map.ofEntries(
 ///                 Map.entry("JDBC_CONNECTION_URL", String.format("jdbc:mysql://%s/exampledatabase", exampleAwsRdsCluster.endpoint())),
 ///                 Map.entry("PASSWORD", "examplepassword"),
 ///                 Map.entry("USERNAME", "exampleusername")
 ///             ))
-///             .physicalConnectionRequirements(ConnectionPhysicalConnectionRequirementsArgs.builder()
-///                 .availabilityZone(exampleAwsSubnet.availabilityZone())
-///                 .securityGroupIdLists(exampleAwsSecurityGroup.id())
-///                 .subnetId(exampleAwsSubnet.id())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -479,16 +479,16 @@ import 'connection_state.dart';
 ///   example:
 ///     type: aws:glue:Connection
 ///     properties:
-///       name: example
-///       connectionProperties:
-///         JDBC_CONNECTION_URL: jdbc:mysql://${exampleAwsRdsCluster.endpoint}/exampledatabase
-///         PASSWORD: examplepassword
-///         USERNAME: exampleusername
 ///       physicalConnectionRequirements:
 ///         availabilityZone: ${exampleAwsSubnet.availabilityZone}
 ///         securityGroupIdLists:
 ///           - ${exampleAwsSecurityGroup.id}
 ///         subnetId: ${exampleAwsSubnet.id}
+///       name: example
+///       connectionProperties:
+///         JDBC_CONNECTION_URL: jdbc:mysql://${exampleAwsRdsCluster.endpoint}/exampledatabase
+///         PASSWORD: examplepassword
+///         USERNAME: exampleusername
 /// ```
 ///
 ///
@@ -2405,6 +2405,15 @@ import 'connection_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.Connection("example", {
+///     authenticationConfiguration: {
+///         authenticationType: "BASIC",
+///         secretArn: exampleAwsSecretsmanagerSecret.arn,
+///     },
+///     physicalConnectionRequirements: {
+///         availabilityZone: exampleAwsSubnet.availabilityZone,
+///         securityGroupIdLists: [exampleAwsSecurityGroup.id],
+///         subnetId: exampleAwsSubnet.id,
+///     },
 ///     name: "athenafederatedcatalog_mysql",
 ///     connectionType: "MYSQL",
 ///     athenaProperties: {
@@ -2416,15 +2425,6 @@ import 'connection_state.dart';
 ///         PORT: exampleAwsRdsCluster.port,
 ///         DATABASE: exampleAwsRdsCluster.databaseName,
 ///     },
-///     authenticationConfiguration: {
-///         authenticationType: "BASIC",
-///         secretArn: exampleAwsSecretsmanagerSecret.arn,
-///     },
-///     physicalConnectionRequirements: {
-///         availabilityZone: exampleAwsSubnet.availabilityZone,
-///         securityGroupIdLists: [exampleAwsSecurityGroup.id],
-///         subnetId: exampleAwsSubnet.id,
-///     },
 /// });
 /// ```
 /// ```python
@@ -2432,6 +2432,15 @@ import 'connection_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.Connection("example",
+///     authentication_configuration={
+///         "authentication_type": "BASIC",
+///         "secret_arn": example_aws_secretsmanager_secret["arn"],
+///     },
+///     physical_connection_requirements={
+///         "availability_zone": example_aws_subnet["availabilityZone"],
+///         "security_group_id_lists": [example_aws_security_group["id"]],
+///         "subnet_id": example_aws_subnet["id"],
+///     },
 ///     name="athenafederatedcatalog_mysql",
 ///     connection_type="MYSQL",
 ///     athena_properties={
@@ -2442,15 +2451,6 @@ import 'connection_state.dart';
 ///         "HOST": example_aws_rds_cluster["endpoint"],
 ///         "PORT": example_aws_rds_cluster["port"],
 ///         "DATABASE": example_aws_rds_cluster["databaseName"],
-///     },
-///     authentication_configuration={
-///         "authentication_type": "BASIC",
-///         "secret_arn": example_aws_secretsmanager_secret["arn"],
-///     },
-///     physical_connection_requirements={
-///         "availability_zone": example_aws_subnet["availabilityZone"],
-///         "security_group_id_lists": [example_aws_security_group["id"]],
-///         "subnet_id": example_aws_subnet["id"],
 ///     })
 /// ```
 /// ```csharp
@@ -2463,19 +2463,6 @@ import 'connection_state.dart';
 /// {
 ///     var example = new Aws.Glue.Connection("example", new()
 ///     {
-///         Name = "athenafederatedcatalog_mysql",
-///         ConnectionType = "MYSQL",
-///         AthenaProperties =
-///         {
-///             { "lambda_function_arn", "arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql" },
-///             { "spill_bucket", exampleAwsS3Bucket.Bucket },
-///         },
-///         ConnectionProperties =
-///         {
-///             { "HOST", exampleAwsRdsCluster.Endpoint },
-///             { "PORT", exampleAwsRdsCluster.Port },
-///             { "DATABASE", exampleAwsRdsCluster.DatabaseName },
-///         },
 ///         AuthenticationConfiguration = new Aws.Glue.Inputs.ConnectionAuthenticationConfigurationArgs
 ///         {
 ///             AuthenticationType = "BASIC",
@@ -2489,6 +2476,19 @@ import 'connection_state.dart';
 ///                 exampleAwsSecurityGroup.Id,
 ///             },
 ///             SubnetId = exampleAwsSubnet.Id,
+///         },
+///         Name = "athenafederatedcatalog_mysql",
+///         ConnectionType = "MYSQL",
+///         AthenaProperties =
+///         {
+///             { "lambda_function_arn", "arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql" },
+///             { "spill_bucket", exampleAwsS3Bucket.Bucket },
+///         },
+///         ConnectionProperties =
+///         {
+///             { "HOST", exampleAwsRdsCluster.Endpoint },
+///             { "PORT", exampleAwsRdsCluster.Port },
+///             { "DATABASE", exampleAwsRdsCluster.DatabaseName },
 ///         },
 ///     });
 ///
@@ -2505,17 +2505,6 @@ import 'connection_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewConnection(ctx, "example", &glue.ConnectionArgs{
-/// 			Name:           pulumi.String("athenafederatedcatalog_mysql"),
-/// 			ConnectionType: pulumi.String("MYSQL"),
-/// 			AthenaProperties: pulumi.StringMap{
-/// 				"lambda_function_arn": pulumi.String("arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql"),
-/// 				"spill_bucket":        pulumi.Any(exampleAwsS3Bucket.Bucket),
-/// 			},
-/// 			ConnectionProperties: pulumi.StringMap{
-/// 				"HOST":     pulumi.Any(exampleAwsRdsCluster.Endpoint),
-/// 				"PORT":     pulumi.Any(exampleAwsRdsCluster.Port),
-/// 				"DATABASE": pulumi.Any(exampleAwsRdsCluster.DatabaseName),
-/// 			},
 /// 			AuthenticationConfiguration: &glue.ConnectionAuthenticationConfigurationArgs{
 /// 				AuthenticationType: pulumi.String("BASIC"),
 /// 				SecretArn:          pulumi.Any(exampleAwsSecretsmanagerSecret.Arn),
@@ -2526,6 +2515,17 @@ import 'connection_state.dart';
 /// 					exampleAwsSecurityGroup.Id,
 /// 				},
 /// 				SubnetId: pulumi.Any(exampleAwsSubnet.Id),
+/// 			},
+/// 			Name:           pulumi.String("athenafederatedcatalog_mysql"),
+/// 			ConnectionType: pulumi.String("MYSQL"),
+/// 			AthenaProperties: pulumi.StringMap{
+/// 				"lambda_function_arn": pulumi.String("arn:aws:lambda:us-east-1:123456789012:function:athenafederatedcatalog_mysql"),
+/// 				"spill_bucket":        pulumi.Any(exampleAwsS3Bucket.Bucket),
+/// 			},
+/// 			ConnectionProperties: pulumi.StringMap{
+/// 				"HOST":     pulumi.Any(exampleAwsRdsCluster.Endpoint),
+/// 				"PORT":     pulumi.Any(exampleAwsRdsCluster.Port),
+/// 				"DATABASE": pulumi.Any(exampleAwsRdsCluster.DatabaseName),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -2545,6 +2545,15 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "aws_glue_connection" "example" {
+///   authentication_configuration = {
+///     authentication_type = "BASIC"
+///     secret_arn          = exampleAwsSecretsmanagerSecret.arn
+///   }
+///   physical_connection_requirements = {
+///     availability_zone       = exampleAwsSubnet.availabilityZone
+///     security_group_id_lists = [exampleAwsSecurityGroup.id]
+///     subnet_id               = exampleAwsSubnet.id
+///   }
 ///   name            = "athenafederatedcatalog_mysql"
 ///   connection_type = "MYSQL"
 ///   athena_properties = {
@@ -2555,15 +2564,6 @@ import 'connection_state.dart';
 ///     "HOST"     = exampleAwsRdsCluster.endpoint
 ///     "PORT"     = exampleAwsRdsCluster.port
 ///     "DATABASE" = exampleAwsRdsCluster.databaseName
-///   }
-///   authentication_configuration = {
-///     authentication_type = "BASIC"
-///     secret_arn          = exampleAwsSecretsmanagerSecret.arn
-///   }
-///   physical_connection_requirements = {
-///     availability_zone       = exampleAwsSubnet.availabilityZone
-///     security_group_id_lists = [exampleAwsSecurityGroup.id]
-///     subnet_id               = exampleAwsSubnet.id
 ///   }
 /// }
 /// ```
@@ -2591,6 +2591,15 @@ import 'connection_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Connection("example", ConnectionArgs.builder()
+///             .authenticationConfiguration(ConnectionAuthenticationConfigurationArgs.builder()
+///                 .authenticationType("BASIC")
+///                 .secretArn(exampleAwsSecretsmanagerSecret.arn())
+///                 .build())
+///             .physicalConnectionRequirements(ConnectionPhysicalConnectionRequirementsArgs.builder()
+///                 .availabilityZone(exampleAwsSubnet.availabilityZone())
+///                 .securityGroupIdLists(exampleAwsSecurityGroup.id())
+///                 .subnetId(exampleAwsSubnet.id())
+///                 .build())
 ///             .name("athenafederatedcatalog_mysql")
 ///             .connectionType("MYSQL")
 ///             .athenaProperties(Map.ofEntries(
@@ -2602,15 +2611,6 @@ import 'connection_state.dart';
 ///                 Map.entry("PORT", exampleAwsRdsCluster.port()),
 ///                 Map.entry("DATABASE", exampleAwsRdsCluster.databaseName())
 ///             ))
-///             .authenticationConfiguration(ConnectionAuthenticationConfigurationArgs.builder()
-///                 .authenticationType("BASIC")
-///                 .secretArn(exampleAwsSecretsmanagerSecret.arn())
-///                 .build())
-///             .physicalConnectionRequirements(ConnectionPhysicalConnectionRequirementsArgs.builder()
-///                 .availabilityZone(exampleAwsSubnet.availabilityZone())
-///                 .securityGroupIdLists(exampleAwsSecurityGroup.id())
-///                 .subnetId(exampleAwsSubnet.id())
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -2621,6 +2621,14 @@ import 'connection_state.dart';
 ///   example:
 ///     type: aws:glue:Connection
 ///     properties:
+///       authenticationConfiguration:
+///         authenticationType: BASIC
+///         secretArn: ${exampleAwsSecretsmanagerSecret.arn}
+///       physicalConnectionRequirements:
+///         availabilityZone: ${exampleAwsSubnet.availabilityZone}
+///         securityGroupIdLists:
+///           - ${exampleAwsSecurityGroup.id}
+///         subnetId: ${exampleAwsSubnet.id}
 ///       name: athenafederatedcatalog_mysql
 ///       connectionType: MYSQL
 ///       athenaProperties:
@@ -2630,14 +2638,6 @@ import 'connection_state.dart';
 ///         HOST: ${exampleAwsRdsCluster.endpoint}
 ///         PORT: ${exampleAwsRdsCluster.port}
 ///         DATABASE: ${exampleAwsRdsCluster.databaseName}
-///       authenticationConfiguration:
-///         authenticationType: BASIC
-///         secretArn: ${exampleAwsSecretsmanagerSecret.arn}
-///       physicalConnectionRequirements:
-///         availabilityZone: ${exampleAwsSubnet.availabilityZone}
-///         securityGroupIdLists:
-///           - ${exampleAwsSecurityGroup.id}
-///         subnetId: ${exampleAwsSubnet.id}
 /// ```
 ///
 ///
@@ -2690,21 +2690,22 @@ class Connection extends pulumi.CustomResource {
           'aws:glue/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['athenaProperties', 'connectionProperties'],
         ) {
     arn = registerOutput<String>('arn');
-    athenaProperties = registerOutput<Map<String, String>?>('athenaProperties');
+    athenaProperties = registerOutput<Map<String, String>?>('athenaProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     authenticationConfiguration = registerOutput<ConnectionAuthenticationConfiguration?>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     catalogId = registerOutput<String>('catalogId');
-    connectionProperties = registerOutput<Map<String, String>?>('connectionProperties');
+    connectionProperties = registerOutput<Map<String, String>?>('connectionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     connectionType = registerOutput<String?>('connectionType');
     description = registerOutput<String?>('description');
-    matchCriterias = registerOutput<List<String>?>('matchCriterias');
+    matchCriterias = registerOutput<List<String>?>('matchCriterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     physicalConnectionRequirements = registerOutput<ConnectionPhysicalConnectionRequirements?>('physicalConnectionRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionPhysicalConnectionRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Connection] resource's state with the given [name] and [id].
@@ -2712,11 +2713,12 @@ class Connection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2731,17 +2733,42 @@ class Connection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    athenaProperties = registerOutput<Map<String, String>?>('athenaProperties');
+    athenaProperties = registerOutput<Map<String, String>?>('athenaProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     authenticationConfiguration = registerOutput<ConnectionAuthenticationConfiguration?>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     catalogId = registerOutput<String>('catalogId');
-    connectionProperties = registerOutput<Map<String, String>?>('connectionProperties');
+    connectionProperties = registerOutput<Map<String, String>?>('connectionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     connectionType = registerOutput<String?>('connectionType');
     description = registerOutput<String?>('description');
-    matchCriterias = registerOutput<List<String>?>('matchCriterias');
+    matchCriterias = registerOutput<List<String>?>('matchCriterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     physicalConnectionRequirements = registerOutput<ConnectionPhysicalConnectionRequirements?>('physicalConnectionRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionPhysicalConnectionRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Connection] resource.
+  Connection.reference(String urn)
+    : super(
+        'aws:glue/connection:Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['athenaProperties', 'connectionProperties'],
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    athenaProperties = registerOutput<Map<String, String>?>('athenaProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    authenticationConfiguration = registerOutput<ConnectionAuthenticationConfiguration?>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    catalogId = registerOutput<String>('catalogId');
+    connectionProperties = registerOutput<Map<String, String>?>('connectionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    connectionType = registerOutput<String?>('connectionType');
+    description = registerOutput<String?>('description');
+    matchCriterias = registerOutput<List<String>?>('matchCriterias', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    physicalConnectionRequirements = registerOutput<ConnectionPhysicalConnectionRequirements?>('physicalConnectionRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionPhysicalConnectionRequirements.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

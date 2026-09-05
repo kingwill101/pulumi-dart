@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamSplunkConfigurationS3ConfigurationCloudwatchLoggingOptions {
   /// Enables or disables the logging. Defaults to `false`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The CloudWatch group name for logging. This value is required if `enabled` is true.
-  final pulumi.Input<String>? logGroupName;
+  final pulumi.Input<String?>? logGroupName;
   /// The CloudWatch log stream name for logging. This value is required if `enabled` is true.
-  final pulumi.Input<String>? logStreamName;
+  final pulumi.Input<String?>? logStreamName;
 
   /// Creates a new [FirehoseDeliveryStreamSplunkConfigurationS3ConfigurationCloudwatchLoggingOptions].
   /// [enabled] Enables or disables the logging. Defaults to `false`.

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Deployment resources.
 class DeploymentState {
   /// API identifier.
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// Whether the deployment was automatically released.
-  final pulumi.Input<bool>? autoDeployed;
+  final pulumi.Input<bool?>? autoDeployed;
   /// Description for the deployment resource. Must be less than or equal to 1024 characters in length.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
-  final pulumi.Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>?>? triggers;
 
   /// Creates a new [DeploymentState].
   /// [apiId] API identifier.

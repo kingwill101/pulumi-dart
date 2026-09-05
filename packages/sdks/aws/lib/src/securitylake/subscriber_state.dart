@@ -8,42 +8,42 @@ import 'subscriber_timeouts.dart';
 /// Input properties used for looking up and filtering Subscriber resources.
 class SubscriberState {
   /// The Amazon S3 or Lake Formation access type.
-  final pulumi.Input<String>? accessType;
+  final pulumi.Input<String?>? accessType;
   /// The ARN of the subscriber.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) which uniquely defines the AWS RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share.
-  final pulumi.Input<String>? resourceShareArn;
+  final pulumi.Input<String?>? region;
+  /// ARN which uniquely defines the AWS RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share.
+  final pulumi.Input<String?>? resourceShareArn;
   /// The name of the resource share.
-  final pulumi.Input<String>? resourceShareName;
+  final pulumi.Input<String?>? resourceShareName;
   /// The ARN of the IAM role to be used by the entity putting logs into your custom source partition.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// The ARN for the Amazon Security Lake Amazon S3 bucket.
-  final pulumi.Input<String>? s3BucketArn;
+  final pulumi.Input<String?>? s3BucketArn;
   /// The supported AWS services from which logs and events are collected. Security Lake supports log and event collection for natively supported AWS services. See `source` Blocks below.
-  final pulumi.Input<List<SubscriberSource>>? sources;
+  final pulumi.Input<List<SubscriberSource>?>? sources;
   /// The description for your subscriber account in Security Lake.
-  final pulumi.Input<String>? subscriberDescription;
+  final pulumi.Input<String?>? subscriberDescription;
   /// The subscriber endpoint to which exception messages are posted.
-  final pulumi.Input<String>? subscriberEndpoint;
+  final pulumi.Input<String?>? subscriberEndpoint;
   /// The AWS identity used to access your data. See `subscriberIdentity` Block below.
-  final pulumi.Input<SubscriberSubscriberIdentity>? subscriberIdentity;
+  final pulumi.Input<SubscriberSubscriberIdentity?>? subscriberIdentity;
   /// The name of your Security Lake subscriber account.
-  final pulumi.Input<String>? subscriberName;
+  final pulumi.Input<String?>? subscriberName;
   /// The subscriber status of the Amazon Security Lake subscriber account.
-  final pulumi.Input<String>? subscriberStatus;
+  final pulumi.Input<String?>? subscriberStatus;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<SubscriberTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<SubscriberTimeouts?>? timeouts;
 
   /// Creates a new [SubscriberState].
   /// [accessType] The Amazon S3 or Lake Formation access type.
   /// [arn] The ARN of the subscriber.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceShareArn] The Amazon Resource Name (ARN) which uniquely defines the AWS RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share.
+  /// [resourceShareArn] ARN which uniquely defines the AWS RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share.
   /// [resourceShareName] The name of the resource share.
   /// [roleArn] The ARN of the IAM role to be used by the entity putting logs into your custom source partition.
   /// [s3BucketArn] The ARN for the Amazon Security Lake Amazon S3 bucket.

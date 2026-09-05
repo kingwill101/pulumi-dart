@@ -6,28 +6,28 @@ import 'local_gateway_route_table_timeouts.dart';
 /// Input properties used for looking up and filtering LocalGatewayRouteTable resources.
 class LocalGatewayRouteTableState {
   /// ARN of the Local Gateway Route Table.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Identifier of the EC2 Local Gateway.
-  final pulumi.Input<String>? localGatewayId;
+  final pulumi.Input<String?>? localGatewayId;
   /// Identifier of the Local Gateway Route Table.
-  final pulumi.Input<String>? localGatewayRouteTableId;
+  final pulumi.Input<String?>? localGatewayRouteTableId;
   /// Mode of the Local Gateway Route Table. Valid values: `direct-vpc-routing`, `coip`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// ARN of the Outpost.
-  final pulumi.Input<String>? outpostArn;
+  final pulumi.Input<String?>? outpostArn;
   /// AWS account identifier that owns the Local Gateway Route Table.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// State of the Local Gateway Route Table.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<LocalGatewayRouteTableTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<LocalGatewayRouteTableTimeouts?>? timeouts;
 
   /// Creates a new [LocalGatewayRouteTableState].
   /// [arn] ARN of the Local Gateway Route Table.

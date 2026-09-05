@@ -6,28 +6,28 @@ import 'get_networks_odb_network.dart';
 /// Result data returned by getNetworks.
 class GetNetworksResult {
   /// List of odb networks returns basic information about odb networks.
-  final List<GetNetworksOdbNetwork> odbNetworks;
-  final String region;
+  final List<GetNetworksOdbNetwork>? odbNetworks;
+  final String? region;
 
   /// Creates a new [GetNetworksResult].
   /// [odbNetworks] List of odb networks returns basic information about odb networks.
-  /// [region] Required.
+  /// [region] Optional.
   const GetNetworksResult({
-    required this.odbNetworks,
-    required this.region,
+    this.odbNetworks,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'odbNetworks': pulumi.Input.encodeList<GetNetworksOdbNetwork, Map<String, dynamic>>(odbNetworks, (value) => value.toMap()),
-      'region': region,
+      'odbNetworks': ?(() { final guardedValue = odbNetworks; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworksOdbNetwork, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
     };
   }
 
   factory GetNetworksResult.fromMap(Map<String, dynamic> map) {
     return GetNetworksResult(
-      odbNetworks: pulumi.Input.decodeList<GetNetworksOdbNetwork>(map['odbNetworks']!, (value) => GetNetworksOdbNetwork.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
+      odbNetworks: (() { final guardedValue = map['odbNetworks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworksOdbNetwork>(guardedValue, (value) => GetNetworksOdbNetwork.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

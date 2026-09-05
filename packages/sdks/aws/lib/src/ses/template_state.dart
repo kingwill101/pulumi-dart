@@ -4,26 +4,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Template resources.
 class TemplateState {
-  /// The ARN of the SES template
-  final pulumi.Input<String>? arn;
-  /// The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-  final pulumi.Input<String>? html;
-  /// The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
-  final pulumi.Input<String>? name;
+  /// ARN of the SES template
+  final pulumi.Input<String?>? arn;
+  /// HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
+  final pulumi.Input<String?>? html;
+  /// Name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The subject line of the email.
-  final pulumi.Input<String>? subject;
-  /// The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? region;
+  /// Subject line of the email.
+  final pulumi.Input<String?>? subject;
+  /// Email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [TemplateState].
-  /// [arn] The ARN of the SES template
-  /// [html] The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
-  /// [name] The name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
+  /// [arn] ARN of the SES template
+  /// [html] HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
+  /// [name] Name of the template. Cannot exceed 64 characters. You will refer to this name when you send email.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [subject] The subject line of the email.
-  /// [text] The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
+  /// [subject] Subject line of the email.
+  /// [text] Email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
   const TemplateState({
     this.arn,
     this.html,

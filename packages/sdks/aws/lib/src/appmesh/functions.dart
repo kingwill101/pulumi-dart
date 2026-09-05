@@ -146,6 +146,17 @@ Future<GetGatewayRouteResult> getGatewayRoute(
   return GetGatewayRouteResult.fromMap(result);
 }
 
+pulumi.Output<GetGatewayRouteResult> getGatewayRouteOutput(
+  GetGatewayRouteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appmesh/getGatewayRoute:getGatewayRoute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayRouteResult.fromMap);
+}
+
 /// The App Mesh Mesh data source allows details of an App Mesh Mesh to be retrieved by its name and optionally the mesh_owner.
 ///
 /// ## Example Usage
@@ -392,6 +403,17 @@ Future<GetMeshResult> getMesh(
   return GetMeshResult.fromMap(result);
 }
 
+pulumi.Output<GetMeshResult> getMeshOutput(
+  GetMeshArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appmesh/getMesh:getMesh',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMeshResult.fromMap);
+}
+
 /// The App Mesh Route data source allows details of an App Mesh Route to be retrieved by its name, mesh_name, virtual_router_name, and optionally the mesh_owner.
 ///
 /// ## Example Usage
@@ -522,6 +544,17 @@ Future<GetRouteResult> getRoute(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteResult.fromMap(result);
+}
+
+pulumi.Output<GetRouteResult> getRouteOutput(
+  GetRouteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appmesh/getRoute:getRoute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteResult.fromMap);
 }
 
 /// Data source for managing an AWS App Mesh Virtual Gateway.
@@ -685,6 +718,17 @@ Future<GetVirtualGatewayResult> getVirtualGateway(
   return GetVirtualGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualGatewayResult> getVirtualGatewayOutput(
+  GetVirtualGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appmesh/getVirtualGateway:getVirtualGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualGatewayResult.fromMap);
+}
+
 /// Data source for managing an AWS App Mesh Virtual Node.
 ///
 /// ## Example Usage
@@ -810,6 +854,17 @@ Future<GetVirtualNodeResult> getVirtualNode(
   return GetVirtualNodeResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNodeResult> getVirtualNodeOutput(
+  GetVirtualNodeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appmesh/getVirtualNode:getVirtualNode',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNodeResult.fromMap);
+}
+
 /// The App Mesh Virtual Router data source allows details of an App Mesh Virtual Service to be retrieved by its name and mesh_name.
 ///
 /// ## Example Usage
@@ -933,6 +988,17 @@ Future<GetVirtualRouterResult> getVirtualRouter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualRouterResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualRouterResult> getVirtualRouterOutput(
+  GetVirtualRouterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appmesh/getVirtualRouter:getVirtualRouter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualRouterResult.fromMap);
 }
 
 /// The App Mesh Virtual Service data source allows details of an App Mesh Virtual Service to be retrieved by its name, mesh_name, and optionally the mesh_owner.
@@ -1193,4 +1259,15 @@ Future<GetVirtualServiceResult> getVirtualService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualServiceResult> getVirtualServiceOutput(
+  GetVirtualServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:appmesh/getVirtualService:getVirtualService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualServiceResult.fromMap);
 }

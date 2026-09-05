@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomDomainAssociationCertificateValidationRecord {
   /// Certificate CNAME record name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Record type, always `CNAME`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Certificate CNAME record value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CustomDomainAssociationCertificateValidationRecord].
   /// [name] Certificate CNAME record name.

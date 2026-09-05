@@ -174,13 +174,14 @@ class BucketAccessKey extends pulumi.CustomResource {
           'aws:lightsail/bucketAccessKey:BucketAccessKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['secretAccessKey'],
         ) {
     accessKeyId = registerOutput<String>('accessKeyId');
     bucketName = registerOutput<String>('bucketName');
     createdAt = registerOutput<String>('createdAt');
     region = registerOutput<String>('region');
-    secretAccessKey = registerOutput<String>('secretAccessKey');
+    secretAccessKey = registerOutput<String>('secretAccessKey', isSecret: true);
     status = registerOutput<String>('status');
   }
 
@@ -189,11 +190,12 @@ class BucketAccessKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketAccessKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketAccessKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -211,7 +213,25 @@ class BucketAccessKey extends pulumi.CustomResource {
     bucketName = registerOutput<String>('bucketName');
     createdAt = registerOutput<String>('createdAt');
     region = registerOutput<String>('region');
-    secretAccessKey = registerOutput<String>('secretAccessKey');
+    secretAccessKey = registerOutput<String>('secretAccessKey', isSecret: true);
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [BucketAccessKey] resource.
+  BucketAccessKey.reference(String urn)
+    : super(
+        'aws:lightsail/bucketAccessKey:BucketAccessKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secretAccessKey'],
+        isResourceReference: true,
+      ) {
+    accessKeyId = registerOutput<String>('accessKeyId');
+    bucketName = registerOutput<String>('bucketName');
+    createdAt = registerOutput<String>('createdAt');
+    region = registerOutput<String>('region');
+    secretAccessKey = registerOutput<String>('secretAccessKey', isSecret: true);
     status = registerOutput<String>('status');
   }
 }

@@ -24,7 +24,7 @@ class GetClusterVersionsClusterVersionControlPlaneComponentConfigKubeSchedulerCo
   factory GetClusterVersionsClusterVersionControlPlaneComponentConfigKubeSchedulerConfigNodeResourcesFitScoringStrategyDefaultValueResource.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsClusterVersionControlPlaneComponentConfigKubeSchedulerConfigNodeResourcesFitScoringStrategyDefaultValueResource(
       name: pulumi.Input.fromValue(map['name'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
     );
   }
 }

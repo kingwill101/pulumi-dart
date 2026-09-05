@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_rule_statement_rate_based_statement_custom_key_uri_path_text_transformation.dart';
 
 class WebAclRuleStatementRateBasedStatementCustomKeyUriPath {
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation>>? textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyUriPathTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyUriPath].
   /// [textTransformations] Optional.

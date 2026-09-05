@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'revision_assets_asset_create_s3_data_access_from_s3_bucket_asset_source.dart';
 
 class RevisionAssetsAssetCreateS3DataAccessFromS3Bucket {
-  final pulumi.Input<String>? accessPointAlias;
-  final pulumi.Input<String>? accessPointArn;
+  final pulumi.Input<String?>? accessPointAlias;
+  final pulumi.Input<String?>? accessPointArn;
   /// A block specifying the source bucket for the asset. This block supports the following:
-  final pulumi.Input<RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource>? assetSource;
+  final pulumi.Input<RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource?>? assetSource;
 
   /// Creates a new [RevisionAssetsAssetCreateS3DataAccessFromS3Bucket].
   /// [accessPointAlias] Optional.

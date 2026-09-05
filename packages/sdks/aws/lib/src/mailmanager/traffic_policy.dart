@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'traffic_policy_args.dart';
+import 'traffic_policy_policy_statement.dart';
 import 'traffic_policy_state.dart';
 
 /// Manages an SES Mail Manager Traffic Policy.
@@ -14,20 +15,20 @@ import 'traffic_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.mailmanager.TrafficPolicy("example", {
-///     defaultAction: "ALLOW",
-///     name: "example",
 ///     policyStatements: [{
-///         action: "DENY",
 ///         conditions: [{
 ///             ipExpression: {
-///                 operator: "CIDR_MATCHES",
-///                 values: ["192.0.2.0/24"],
 ///                 evaluate: {
 ///                     attribute: "SENDER_IP",
 ///                 },
+///                 operator: "CIDR_MATCHES",
+///                 values: ["192.0.2.0/24"],
 ///             },
 ///         }],
+///         action: "DENY",
 ///     }],
+///     defaultAction: "ALLOW",
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -35,20 +36,20 @@ import 'traffic_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.mailmanager.TrafficPolicy("example",
-///     default_action="ALLOW",
-///     name="example",
 ///     policy_statements=[{
-///         "action": "DENY",
 ///         "conditions": [{
 ///             "ip_expression": {
-///                 "operator": "CIDR_MATCHES",
-///                 "values": ["192.0.2.0/24"],
 ///                 "evaluate": {
 ///                     "attribute": "SENDER_IP",
 ///                 },
+///                 "operator": "CIDR_MATCHES",
+///                 "values": ["192.0.2.0/24"],
 ///             },
 ///         }],
-///     }])
+///         "action": "DENY",
+///     }],
+///     default_action="ALLOW",
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -60,33 +61,33 @@ import 'traffic_policy_state.dart';
 /// {
 ///     var example = new Aws.MailManager.TrafficPolicy("example", new()
 ///     {
-///         DefaultAction = "ALLOW",
-///         Name = "example",
 ///         PolicyStatements = new[]
 ///         {
 ///             new Aws.MailManager.Inputs.TrafficPolicyPolicyStatementArgs
 ///             {
-///                 Action = "DENY",
 ///                 Conditions = new[]
 ///                 {
 ///                     new Aws.MailManager.Inputs.TrafficPolicyPolicyStatementConditionArgs
 ///                     {
 ///                         IpExpression = new Aws.MailManager.Inputs.TrafficPolicyPolicyStatementConditionIpExpressionArgs
 ///                         {
+///                             Evaluate = new Aws.MailManager.Inputs.TrafficPolicyPolicyStatementConditionIpExpressionEvaluateArgs
+///                             {
+///                                 Attribute = "SENDER_IP",
+///                             },
 ///                             Operator = "CIDR_MATCHES",
 ///                             Values = new[]
 ///                             {
 ///                                 "192.0.2.0/24",
 ///                             },
-///                             Evaluate = new Aws.MailManager.Inputs.TrafficPolicyPolicyStatementConditionIpExpressionEvaluateArgs
-///                             {
-///                                 Attribute = "SENDER_IP",
-///                             },
 ///                         },
 ///                     },
 ///                 },
+///                 Action = "DENY",
 ///             },
 ///         },
+///         DefaultAction = "ALLOW",
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -102,26 +103,26 @@ import 'traffic_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := mailmanager.NewTrafficPolicy(ctx, "example", &mailmanager.TrafficPolicyArgs{
-/// 			DefaultAction: pulumi.String("ALLOW"),
-/// 			Name:          pulumi.String("example"),
 /// 			PolicyStatements: mailmanager.TrafficPolicyPolicyStatementArray{
 /// 				&mailmanager.TrafficPolicyPolicyStatementArgs{
-/// 					Action: pulumi.String("DENY"),
 /// 					Conditions: mailmanager.TrafficPolicyPolicyStatementConditionArray{
 /// 						&mailmanager.TrafficPolicyPolicyStatementConditionArgs{
 /// 							IpExpression: &mailmanager.TrafficPolicyPolicyStatementConditionIpExpressionArgs{
+/// 								Evaluate: &mailmanager.TrafficPolicyPolicyStatementConditionIpExpressionEvaluateArgs{
+/// 									Attribute: pulumi.String("SENDER_IP"),
+/// 								},
 /// 								Operator: pulumi.String("CIDR_MATCHES"),
 /// 								Values: pulumi.StringArray{
 /// 									pulumi.String("192.0.2.0/24"),
 /// 								},
-/// 								Evaluate: &mailmanager.TrafficPolicyPolicyStatementConditionIpExpressionEvaluateArgs{
-/// 									Attribute: pulumi.String("SENDER_IP"),
-/// 								},
 /// 							},
 /// 						},
 /// 					},
+/// 					Action: pulumi.String("DENY"),
 /// 				},
 /// 			},
+/// 			DefaultAction: pulumi.String("ALLOW"),
+/// 			Name:          pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -140,20 +141,20 @@ import 'traffic_policy_state.dart';
 /// }
 ///
 /// resource "aws_mailmanager_trafficpolicy" "example" {
-///   default_action = "ALLOW"
-///   name           = "example"
 ///   policy_statements {
-///     action = "DENY"
 ///     conditions {
 ///       ip_expression = {
-///         operator = "CIDR_MATCHES"
-///         values   = ["192.0.2.0/24"]
 ///         evaluate = {
 ///           attribute = "SENDER_IP"
 ///         }
+///         operator = "CIDR_MATCHES"
+///         values   = ["192.0.2.0/24"]
 ///       }
 ///     }
+///     action = "DENY"
 ///   }
+///   default_action = "ALLOW"
+///   name           = "example"
 /// }
 /// ```
 /// ```java
@@ -182,20 +183,20 @@ import 'traffic_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TrafficPolicy("example", TrafficPolicyArgs.builder()
-///             .defaultAction("ALLOW")
-///             .name("example")
 ///             .policyStatements(TrafficPolicyPolicyStatementArgs.builder()
-///                 .action("DENY")
 ///                 .conditions(TrafficPolicyPolicyStatementConditionArgs.builder()
 ///                     .ipExpression(TrafficPolicyPolicyStatementConditionIpExpressionArgs.builder()
-///                         .operator("CIDR_MATCHES")
-///                         .values("192.0.2.0/24")
 ///                         .evaluate(TrafficPolicyPolicyStatementConditionIpExpressionEvaluateArgs.builder()
 ///                             .attribute("SENDER_IP")
 ///                             .build())
+///                         .operator("CIDR_MATCHES")
+///                         .values("192.0.2.0/24")
 ///                         .build())
 ///                     .build())
+///                 .action("DENY")
 ///                 .build())
+///             .defaultAction("ALLOW")
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -206,17 +207,17 @@ import 'traffic_policy_state.dart';
 ///   example:
 ///     type: aws:mailmanager:TrafficPolicy
 ///     properties:
-///       defaultAction: ALLOW
-///       name: example
 ///       policyStatements:
-///         - action: DENY
-///           conditions:
+///         - conditions:
 ///             - ipExpression:
+///                 evaluate:
+///                   attribute: SENDER_IP
 ///                 operator: CIDR_MATCHES
 ///                 values:
 ///                   - 192.0.2.0/24
-///                 evaluate:
-///                   attribute: SENDER_IP
+///           action: DENY
+///       defaultAction: ALLOW
+///       name: example
 /// ```
 ///
 ///
@@ -255,7 +256,7 @@ class TrafficPolicy extends pulumi.CustomResource {
   /// Traffic policy statements. See `policyStatement` Block below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>?> policyStatements;
+  late final pulumi.Output<List<TrafficPolicyPolicyStatement>?> policyStatements;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -275,7 +276,7 @@ class TrafficPolicy extends pulumi.CustomResource {
           'aws:mailmanager/trafficPolicy:TrafficPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTimestamp = registerOutput<String>('createdTimestamp');
@@ -283,10 +284,10 @@ class TrafficPolicy extends pulumi.CustomResource {
     lastUpdatedTimestamp = registerOutput<String>('lastUpdatedTimestamp');
     maxMessageSizeBytes = registerOutput<int?>('maxMessageSizeBytes');
     this.name = registerOutput<String>('name');
-    policyStatements = registerOutput<List<Map<String, dynamic>>?>('policyStatements');
+    policyStatements = registerOutput<List<TrafficPolicyPolicyStatement>?>('policyStatements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficPolicyPolicyStatement>(guardedValue, (value) => TrafficPolicyPolicyStatement.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [TrafficPolicy] resource's state with the given [name] and [id].
@@ -294,11 +295,12 @@ class TrafficPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrafficPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrafficPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -318,9 +320,30 @@ class TrafficPolicy extends pulumi.CustomResource {
     lastUpdatedTimestamp = registerOutput<String>('lastUpdatedTimestamp');
     maxMessageSizeBytes = registerOutput<int?>('maxMessageSizeBytes');
     this.name = registerOutput<String>('name');
-    policyStatements = registerOutput<List<Map<String, dynamic>>?>('policyStatements');
+    policyStatements = registerOutput<List<TrafficPolicyPolicyStatement>?>('policyStatements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficPolicyPolicyStatement>(guardedValue, (value) => TrafficPolicyPolicyStatement.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [TrafficPolicy] resource.
+  TrafficPolicy.reference(String urn)
+    : super(
+        'aws:mailmanager/trafficPolicy:TrafficPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    defaultAction = registerOutput<String>('defaultAction');
+    lastUpdatedTimestamp = registerOutput<String>('lastUpdatedTimestamp');
+    maxMessageSizeBytes = registerOutput<int?>('maxMessageSizeBytes');
+    this.name = registerOutput<String>('name');
+    policyStatements = registerOutput<List<TrafficPolicyPolicyStatement>?>('policyStatements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficPolicyPolicyStatement>(guardedValue, (value) => TrafficPolicyPolicyStatement.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -143,7 +143,7 @@ import 'log_delivery_source_state.dart';
 /// $ pulumi import aws:cloudwatch/logDeliverySource:LogDeliverySource example example
 /// ```
 class LogDeliverySource extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the delivery source.
+  /// ARN of the delivery source.
   late final pulumi.Output<String> arn;
   /// The type of log that the source is sending. For Amazon Bedrock, the valid value is `APPLICATION_LOGS`. For Amazon Bedrock AgentCore, the valid values are `APPLICATION_LOGS`, `TRACES`, and `USAGE_LOGS`. For Amazon CloudFront, the valid value is `ACCESS_LOGS`. For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`. For IAM Identity Center, the valid value is `ERROR_LOGS`. For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`, `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and `WORKMAIL_MAILBOX_ACCESS_LOGS`. See [Enable logging from AWS services](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html) for the log types supported by each service.
   late final pulumi.Output<String> logType;
@@ -172,7 +172,7 @@ class LogDeliverySource extends pulumi.CustomResource {
           'aws:cloudwatch/logDeliverySource:LogDeliverySource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     logType = registerOutput<String>('logType');
@@ -180,8 +180,8 @@ class LogDeliverySource extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     service = registerOutput<String>('service');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LogDeliverySource] resource's state with the given [name] and [id].
@@ -189,11 +189,12 @@ class LogDeliverySource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogDeliverySourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogDeliverySource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -213,7 +214,26 @@ class LogDeliverySource extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
     service = registerOutput<String>('service');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LogDeliverySource] resource.
+  LogDeliverySource.reference(String urn)
+    : super(
+        'aws:cloudwatch/logDeliverySource:LogDeliverySource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    logType = registerOutput<String>('logType');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    service = registerOutput<String>('service');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

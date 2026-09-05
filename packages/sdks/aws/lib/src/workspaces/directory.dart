@@ -31,9 +31,6 @@ import 'directory_workspace_creation_properties.dart';
 ///     cidrBlock: "10.0.1.0/24",
 /// });
 /// const exampleDirectory = new aws.directoryservice.Directory("example", {
-///     name: "corp.example.com",
-///     password: "#S1ncerely",
-///     size: "Small",
 ///     vpcSettings: {
 ///         vpcId: exampleVpc.id,
 ///         subnetIds: [
@@ -41,14 +38,17 @@ import 'directory_workspace_creation_properties.dart';
 ///             exampleB.id,
 ///         ],
 ///     },
+///     name: "corp.example.com",
+///     password: "#S1ncerely",
+///     size: "Small",
 /// });
 /// const workspaces = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["workspaces.amazonaws.com"],
 ///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const workspacesDefault = new aws.iam.Role("workspaces_default", {
@@ -74,14 +74,6 @@ import 'directory_workspace_creation_properties.dart';
 ///     cidrBlock: "10.0.3.0/24",
 /// });
 /// const example = new aws.workspaces.Directory("example", {
-///     directoryId: exampleDirectory.id,
-///     subnetIds: [
-///         exampleC.id,
-///         exampleD.id,
-///     ],
-///     tags: {
-///         Example: "true",
-///     },
 ///     certificateBasedAuthProperties: {
 ///         certificateAuthorityArn: "arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012",
 ///         status: "ENABLED",
@@ -114,6 +106,14 @@ import 'directory_workspace_creation_properties.dart';
 ///         enableMaintenanceMode: true,
 ///         userEnabledAsLocalAdministrator: true,
 ///     },
+///     directoryId: exampleDirectory.id,
+///     subnetIds: [
+///         exampleC.id,
+///         exampleD.id,
+///     ],
+///     tags: {
+///         Example: "true",
+///     },
 /// }, {
 ///     dependsOn: [
 ///         workspacesDefaultServiceAccess,
@@ -135,22 +135,22 @@ import 'directory_workspace_creation_properties.dart';
 ///     availability_zone="us-east-1b",
 ///     cidr_block="10.0.1.0/24")
 /// example_directory = aws.directoryservice.Directory("example",
-///     name="corp.example.com",
-///     password="#S1ncerely",
-///     size="Small",
 ///     vpc_settings={
 ///         "vpc_id": example_vpc.id,
 ///         "subnet_ids": [
 ///             example_a.id,
 ///             example_b.id,
 ///         ],
-///     })
+///     },
+///     name="corp.example.com",
+///     password="#S1ncerely",
+///     size="Small")
 /// workspaces = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["workspaces.amazonaws.com"],
 ///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// workspaces_default = aws.iam.Role("workspaces_default",
 ///     name="workspaces_DefaultRole",
@@ -170,14 +170,6 @@ import 'directory_workspace_creation_properties.dart';
 ///     availability_zone="us-east-1d",
 ///     cidr_block="10.0.3.0/24")
 /// example = aws.workspaces.Directory("example",
-///     directory_id=example_directory.id,
-///     subnet_ids=[
-///         example_c.id,
-///         example_d.id,
-///     ],
-///     tags={
-///         "Example": "true",
-///     },
 ///     certificate_based_auth_properties={
 ///         "certificate_authority_arn": "arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012",
 ///         "status": "ENABLED",
@@ -209,6 +201,14 @@ import 'directory_workspace_creation_properties.dart';
 ///         "enable_internet_access": True,
 ///         "enable_maintenance_mode": True,
 ///         "user_enabled_as_local_administrator": True,
+///     },
+///     directory_id=example_directory.id,
+///     subnet_ids=[
+///         example_c.id,
+///         example_d.id,
+///     ],
+///     tags={
+///         "Example": "true",
 ///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[
 ///             workspaces_default_service_access,
@@ -244,9 +244,6 @@ import 'directory_workspace_creation_properties.dart';
 ///
 ///     var exampleDirectory = new Aws.DirectoryService.Directory("example", new()
 ///     {
-///         Name = "corp.example.com",
-///         Password = "#S1ncerely",
-///         Size = "Small",
 ///         VpcSettings = new Aws.DirectoryService.Inputs.DirectoryVpcSettingsArgs
 ///         {
 ///             VpcId = exampleVpc.Id,
@@ -256,6 +253,9 @@ import 'directory_workspace_creation_properties.dart';
 ///                 exampleB.Id,
 ///             },
 ///         },
+///         Name = "corp.example.com",
+///         Password = "#S1ncerely",
+///         Size = "Small",
 ///     });
 ///
 ///     var workspaces = Aws.Iam.GetPolicyDocument.Invoke(new()
@@ -264,10 +264,6 @@ import 'directory_workspace_creation_properties.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -278,6 +274,10 @@ import 'directory_workspace_creation_properties.dart';
 ///                             "workspaces.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -317,16 +317,6 @@ import 'directory_workspace_creation_properties.dart';
 ///
 ///     var example = new Aws.Workspaces.Directory("example", new()
 ///     {
-///         DirectoryId = exampleDirectory.Id,
-///         SubnetIds = new[]
-///         {
-///             exampleC.Id,
-///             exampleD.Id,
-///         },
-///         Tags =
-///         {
-///             { "Example", "true" },
-///         },
 ///         CertificateBasedAuthProperties = new Aws.Workspaces.Inputs.DirectoryCertificateBasedAuthPropertiesArgs
 ///         {
 ///             CertificateAuthorityArn = "arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012",
@@ -363,6 +353,16 @@ import 'directory_workspace_creation_properties.dart';
 ///             EnableInternetAccess = true,
 ///             EnableMaintenanceMode = true,
 ///             UserEnabledAsLocalAdministrator = true,
+///         },
+///         DirectoryId = exampleDirectory.Id,
+///         SubnetIds = new[]
+///         {
+///             exampleC.Id,
+///             exampleD.Id,
+///         },
+///         Tags =
+///         {
+///             { "Example", "true" },
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -411,9 +411,6 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		exampleDirectory, err := directoryservice.NewDirectory(ctx, "example", &directoryservice.DirectoryArgs{
-/// 			Name:     pulumi.String("corp.example.com"),
-/// 			Password: pulumi.String("#S1ncerely"),
-/// 			Size:     pulumi.String("Small"),
 /// 			VpcSettings: &directoryservice.DirectoryVpcSettingsArgs{
 /// 				VpcId: exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 				SubnetIds: pulumi.StringArray{
@@ -421,6 +418,9 @@ import 'directory_workspace_creation_properties.dart';
 /// 					exampleB.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("corp.example.com"),
+/// 			Password: pulumi.String("#S1ncerely"),
+/// 			Size:     pulumi.String("Small"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -428,9 +428,6 @@ import 'directory_workspace_creation_properties.dart';
 /// 		workspaces2, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -438,6 +435,9 @@ import 'directory_workspace_creation_properties.dart';
 /// 								"workspaces.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -483,14 +483,6 @@ import 'directory_workspace_creation_properties.dart';
 /// 			return err
 /// 		}
 /// 		_, err = workspaces.NewDirectory(ctx, "example", &workspaces.DirectoryArgs{
-/// 			DirectoryId: exampleDirectory.ID().ToIDOutput().ToStringOutput(),
-/// 			SubnetIds: pulumi.StringArray{
-/// 				exampleC.ID().ToIDOutput().ToStringOutput(),
-/// 				exampleD.ID().ToIDOutput().ToStringOutput(),
-/// 			},
-/// 			Tags: pulumi.StringMap{
-/// 				"Example": pulumi.String("true"),
-/// 			},
 /// 			CertificateBasedAuthProperties: &workspaces.DirectoryCertificateBasedAuthPropertiesArgs{
 /// 				CertificateAuthorityArn: pulumi.String("arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012"),
 /// 				Status:                  pulumi.String("ENABLED"),
@@ -523,6 +515,14 @@ import 'directory_workspace_creation_properties.dart';
 /// 				EnableMaintenanceMode:           pulumi.Bool(true),
 /// 				UserEnabledAsLocalAdministrator: pulumi.Bool(true),
 /// 			},
+/// 			DirectoryId: exampleDirectory.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetIds: pulumi.StringArray{
+/// 				exampleC.ID().ToIDOutput().ToStringOutput(),
+/// 				exampleD.ID().ToIDOutput().ToStringOutput(),
+/// 			},
+/// 			Tags: pulumi.StringMap{
+/// 				"Example": pulumi.String("true"),
+/// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			workspacesDefaultServiceAccess,
 /// 			workspacesDefaultSelfServiceAccess,
@@ -545,21 +545,16 @@ import 'directory_workspace_creation_properties.dart';
 ///
 /// data "aws_iam_getpolicydocument" "workspaces" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["workspaces.amazonaws.com"]
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
 /// resource "aws_workspaces_directory" "example" {
-///   depends_on   = [aws_iam_rolepolicyattachment.workspaces_default_service_access, aws_iam_rolepolicyattachment.workspaces_default_self_service_access]
-///   directory_id = aws_directoryservice_directory.example.id
-///   subnet_ids   = [aws_ec2_subnet.example_c.id, aws_ec2_subnet.example_d.id]
-///   tags = {
-///     "Example" = true
-///   }
+///   depends_on = [aws_iam_rolepolicyattachment.workspaces_default_service_access, aws_iam_rolepolicyattachment.workspaces_default_self_service_access]
 ///   certificate_based_auth_properties = {
 ///     certificate_authority_arn = "arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012"
 ///     status                    = "ENABLED"
@@ -592,15 +587,20 @@ import 'directory_workspace_creation_properties.dart';
 ///     enable_maintenance_mode             = true
 ///     user_enabled_as_local_administrator = true
 ///   }
+///   directory_id = aws_directoryservice_directory.example.id
+///   subnet_ids   = [aws_ec2_subnet.example_c.id, aws_ec2_subnet.example_d.id]
+///   tags = {
+///     "Example" = true
+///   }
 /// }
 /// resource "aws_directoryservice_directory" "example" {
-///   name     = "corp.example.com"
-///   password = "#S1ncerely"
-///   size     = "Small"
 ///   vpc_settings = {
 ///     vpc_id     = aws_ec2_vpc.example.id
 ///     subnet_ids = [aws_ec2_subnet.example_a.id, aws_ec2_subnet.example_b.id]
 ///   }
+///   name     = "corp.example.com"
+///   password = "#S1ncerely"
+///   size     = "Small"
 /// }
 /// resource "aws_iam_role" "workspaces_default" {
 ///   name               = "workspaces_DefaultRole"
@@ -693,24 +693,24 @@ import 'directory_workspace_creation_properties.dart';
 ///             .build());
 ///
 ///         var exampleDirectory = new com.pulumi.aws.directoryservice.Directory("exampleDirectory", com.pulumi.aws.directoryservice.DirectoryArgs.builder()
-///             .name("corp.example.com")
-///             .password("#S1ncerely")
-///             .size("Small")
 ///             .vpcSettings(DirectoryVpcSettingsArgs.builder()
 ///                 .vpcId(exampleVpc.id())
 ///                 .subnetIds(
 ///                     exampleA.id(),
 ///                     exampleB.id())
 ///                 .build())
+///             .name("corp.example.com")
+///             .password("#S1ncerely")
+///             .size("Small")
 ///             .build());
 ///
 ///         final var workspaces = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("workspaces.amazonaws.com")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -742,11 +742,6 @@ import 'directory_workspace_creation_properties.dart';
 ///             .build());
 ///
 ///         var example = new com.pulumi.aws.workspaces.Directory("example", com.pulumi.aws.workspaces.DirectoryArgs.builder()
-///             .directoryId(exampleDirectory.id())
-///             .subnetIds(
-///                 exampleC.id(),
-///                 exampleD.id())
-///             .tags(Map.of("Example", "true"))
 ///             .certificateBasedAuthProperties(DirectoryCertificateBasedAuthPropertiesArgs.builder()
 ///                 .certificateAuthorityArn("arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012")
 ///                 .status("ENABLED")
@@ -779,6 +774,11 @@ import 'directory_workspace_creation_properties.dart';
 ///                 .enableMaintenanceMode(true)
 ///                 .userEnabledAsLocalAdministrator(true)
 ///                 .build())
+///             .directoryId(exampleDirectory.id())
+///             .subnetIds(
+///                 exampleC.id(),
+///                 exampleD.id())
+///             .tags(Map.of("Example", "true"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     workspacesDefaultServiceAccess,
@@ -793,12 +793,6 @@ import 'directory_workspace_creation_properties.dart';
 ///   example:
 ///     type: aws:workspaces:Directory
 ///     properties:
-///       directoryId: ${exampleDirectory.id}
-///       subnetIds:
-///         - ${exampleC.id}
-///         - ${exampleD.id}
-///       tags:
-///         Example: true
 ///       certificateBasedAuthProperties:
 ///         certificateAuthorityArn: arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012
 ///         status: ENABLED
@@ -826,6 +820,12 @@ import 'directory_workspace_creation_properties.dart';
 ///         enableInternetAccess: true
 ///         enableMaintenanceMode: true
 ///         userEnabledAsLocalAdministrator: true
+///       directoryId: ${exampleDirectory.id}
+///       subnetIds:
+///         - ${exampleC.id}
+///         - ${exampleD.id}
+///       tags:
+///         Example: true
 ///     options:
 ///       dependsOn:
 ///         - ${workspacesDefaultServiceAccess}
@@ -834,14 +834,14 @@ import 'directory_workspace_creation_properties.dart';
 ///     type: aws:directoryservice:Directory
 ///     name: example
 ///     properties:
-///       name: corp.example.com
-///       password: '#S1ncerely'
-///       size: Small
 ///       vpcSettings:
 ///         vpcId: ${exampleVpc.id}
 ///         subnetIds:
 ///           - ${exampleA.id}
 ///           - ${exampleB.id}
+///       name: corp.example.com
+///       password: '#S1ncerely'
+///       size: Small
 ///   workspacesDefault:
 ///     type: aws:iam:Role
 ///     name: workspaces_default
@@ -899,12 +899,12 @@ import 'directory_workspace_creation_properties.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - workspaces.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -916,14 +916,6 @@ import 'directory_workspace_creation_properties.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.workspaces.Directory("example", {
-///     subnetIds: [
-///         exampleC.id,
-///         exampleD.id,
-///     ],
-///     workspaceType: "POOLS",
-///     workspaceDirectoryName: "Pool directory",
-///     workspaceDirectoryDescription: "WorkSpaces Pools directory",
-///     userIdentityType: "CUSTOMER_MANAGED",
 ///     activeDirectoryConfig: {
 ///         domainName: "example.internal",
 ///         serviceAccountSecretArn: exampleAwsSecretsmanagerSecret.arn,
@@ -948,6 +940,14 @@ import 'directory_workspace_creation_properties.dart';
 ///         userAccessUrl: "https://sso.example.com/",
 ///         status: "ENABLED",
 ///     },
+///     subnetIds: [
+///         exampleC.id,
+///         exampleD.id,
+///     ],
+///     workspaceType: "POOLS",
+///     workspaceDirectoryName: "Pool directory",
+///     workspaceDirectoryDescription: "WorkSpaces Pools directory",
+///     userIdentityType: "CUSTOMER_MANAGED",
 /// });
 /// ```
 /// ```python
@@ -955,14 +955,6 @@ import 'directory_workspace_creation_properties.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.workspaces.Directory("example",
-///     subnet_ids=[
-///         example_c["id"],
-///         example_d["id"],
-///     ],
-///     workspace_type="POOLS",
-///     workspace_directory_name="Pool directory",
-///     workspace_directory_description="WorkSpaces Pools directory",
-///     user_identity_type="CUSTOMER_MANAGED",
 ///     active_directory_config={
 ///         "domain_name": "example.internal",
 ///         "service_account_secret_arn": example_aws_secretsmanager_secret["arn"],
@@ -986,7 +978,15 @@ import 'directory_workspace_creation_properties.dart';
 ///         "relay_state_parameter_name": "RelayState",
 ///         "user_access_url": "https://sso.example.com/",
 ///         "status": "ENABLED",
-///     })
+///     },
+///     subnet_ids=[
+///         example_c["id"],
+///         example_d["id"],
+///     ],
+///     workspace_type="POOLS",
+///     workspace_directory_name="Pool directory",
+///     workspace_directory_description="WorkSpaces Pools directory",
+///     user_identity_type="CUSTOMER_MANAGED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -998,15 +998,6 @@ import 'directory_workspace_creation_properties.dart';
 /// {
 ///     var example = new Aws.Workspaces.Directory("example", new()
 ///     {
-///         SubnetIds = new[]
-///         {
-///             exampleC.Id,
-///             exampleD.Id,
-///         },
-///         WorkspaceType = "POOLS",
-///         WorkspaceDirectoryName = "Pool directory",
-///         WorkspaceDirectoryDescription = "WorkSpaces Pools directory",
-///         UserIdentityType = "CUSTOMER_MANAGED",
 ///         ActiveDirectoryConfig = new Aws.Workspaces.Inputs.DirectoryActiveDirectoryConfigArgs
 ///         {
 ///             DomainName = "example.internal",
@@ -1035,6 +1026,15 @@ import 'directory_workspace_creation_properties.dart';
 ///             UserAccessUrl = "https://sso.example.com/",
 ///             Status = "ENABLED",
 ///         },
+///         SubnetIds = new[]
+///         {
+///             exampleC.Id,
+///             exampleD.Id,
+///         },
+///         WorkspaceType = "POOLS",
+///         WorkspaceDirectoryName = "Pool directory",
+///         WorkspaceDirectoryDescription = "WorkSpaces Pools directory",
+///         UserIdentityType = "CUSTOMER_MANAGED",
 ///     });
 ///
 /// });
@@ -1050,14 +1050,6 @@ import 'directory_workspace_creation_properties.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workspaces.NewDirectory(ctx, "example", &workspaces.DirectoryArgs{
-/// 			SubnetIds: pulumi.StringArray{
-/// 				exampleC.Id,
-/// 				exampleD.Id,
-/// 			},
-/// 			WorkspaceType:                 pulumi.String("POOLS"),
-/// 			WorkspaceDirectoryName:        pulumi.String("Pool directory"),
-/// 			WorkspaceDirectoryDescription: pulumi.String("WorkSpaces Pools directory"),
-/// 			UserIdentityType:              pulumi.String("CUSTOMER_MANAGED"),
 /// 			ActiveDirectoryConfig: &workspaces.DirectoryActiveDirectoryConfigArgs{
 /// 				DomainName:              pulumi.String("example.internal"),
 /// 				ServiceAccountSecretArn: pulumi.Any(exampleAwsSecretsmanagerSecret.Arn),
@@ -1082,6 +1074,14 @@ import 'directory_workspace_creation_properties.dart';
 /// 				UserAccessUrl:           pulumi.String("https://sso.example.com/"),
 /// 				Status:                  pulumi.String("ENABLED"),
 /// 			},
+/// 			SubnetIds: pulumi.StringArray{
+/// 				exampleC.Id,
+/// 				exampleD.Id,
+/// 			},
+/// 			WorkspaceType:                 pulumi.String("POOLS"),
+/// 			WorkspaceDirectoryName:        pulumi.String("Pool directory"),
+/// 			WorkspaceDirectoryDescription: pulumi.String("WorkSpaces Pools directory"),
+/// 			UserIdentityType:              pulumi.String("CUSTOMER_MANAGED"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1100,11 +1100,6 @@ import 'directory_workspace_creation_properties.dart';
 /// }
 ///
 /// resource "aws_workspaces_directory" "example" {
-///   subnet_ids                      = [exampleC.id, exampleD.id]
-///   workspace_type                  = "POOLS"
-///   workspace_directory_name        = "Pool directory"
-///   workspace_directory_description = "WorkSpaces Pools directory"
-///   user_identity_type              = "CUSTOMER_MANAGED"
 ///   active_directory_config = {
 ///     domain_name                = "example.internal"
 ///     service_account_secret_arn = exampleAwsSecretsmanagerSecret.arn
@@ -1129,6 +1124,11 @@ import 'directory_workspace_creation_properties.dart';
 ///     user_access_url            = "https://sso.example.com/"
 ///     status                     = "ENABLED"
 ///   }
+///   subnet_ids                      = [exampleC.id, exampleD.id]
+///   workspace_type                  = "POOLS"
+///   workspace_directory_name        = "Pool directory"
+///   workspace_directory_description = "WorkSpaces Pools directory"
+///   user_identity_type              = "CUSTOMER_MANAGED"
 /// }
 /// ```
 /// ```java
@@ -1157,13 +1157,6 @@ import 'directory_workspace_creation_properties.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Directory("example", DirectoryArgs.builder()
-///             .subnetIds(
-///                 exampleC.id(),
-///                 exampleD.id())
-///             .workspaceType("POOLS")
-///             .workspaceDirectoryName("Pool directory")
-///             .workspaceDirectoryDescription("WorkSpaces Pools directory")
-///             .userIdentityType("CUSTOMER_MANAGED")
 ///             .activeDirectoryConfig(DirectoryActiveDirectoryConfigArgs.builder()
 ///                 .domainName("example.internal")
 ///                 .serviceAccountSecretArn(exampleAwsSecretsmanagerSecret.arn())
@@ -1188,6 +1181,13 @@ import 'directory_workspace_creation_properties.dart';
 ///                 .userAccessUrl("https://sso.example.com/")
 ///                 .status("ENABLED")
 ///                 .build())
+///             .subnetIds(
+///                 exampleC.id(),
+///                 exampleD.id())
+///             .workspaceType("POOLS")
+///             .workspaceDirectoryName("Pool directory")
+///             .workspaceDirectoryDescription("WorkSpaces Pools directory")
+///             .userIdentityType("CUSTOMER_MANAGED")
 ///             .build());
 ///
 ///     }
@@ -1198,13 +1198,6 @@ import 'directory_workspace_creation_properties.dart';
 ///   example:
 ///     type: aws:workspaces:Directory
 ///     properties:
-///       subnetIds:
-///         - ${exampleC.id}
-///         - ${exampleD.id}
-///       workspaceType: POOLS
-///       workspaceDirectoryName: Pool directory
-///       workspaceDirectoryDescription: WorkSpaces Pools directory
-///       userIdentityType: CUSTOMER_MANAGED
 ///       activeDirectoryConfig:
 ///         domainName: example.internal
 ///         serviceAccountSecretArn: ${exampleAwsSecretsmanagerSecret.arn}
@@ -1225,6 +1218,13 @@ import 'directory_workspace_creation_properties.dart';
 ///         relayStateParameterName: RelayState
 ///         userAccessUrl: https://sso.example.com/
 ///         status: ENABLED
+///       subnetIds:
+///         - ${exampleC.id}
+///         - ${exampleD.id}
+///       workspaceType: POOLS
+///       workspaceDirectoryName: Pool directory
+///       workspaceDirectoryDescription: WorkSpaces Pools directory
+///       userIdentityType: CUSTOMER_MANAGED
 /// ```
 ///
 ///
@@ -1371,6 +1371,567 @@ import 'directory_workspace_creation_properties.dart';
 /// ```
 ///
 ///
+/// ### VPC Endpoint Streaming
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const workspacesStreaming = new aws.ec2.SecurityGroup("workspaces_streaming", {
+///     name: "workspaces-streaming-endpoint",
+///     vpcId: exampleAwsVpc.id,
+/// });
+/// const current = aws.getRegion({});
+/// const workspaces = new aws.ec2.VpcEndpoint("workspaces", {
+///     vpcId: exampleAwsVpc.id,
+///     serviceName: current.then(current => `com.amazonaws.${current.region}.highlander`),
+///     vpcEndpointType: "Interface",
+///     subnetIds: [
+///         exampleA.id,
+///         exampleB.id,
+///     ],
+///     securityGroupIds: [workspacesStreaming.id],
+///     privateDnsEnabled: true,
+/// });
+/// const example = new aws.workspaces.Directory("example", {
+///     workspaceAccessProperties: {
+///         accessEndpointConfig: {
+///             accessEndpoints: [{
+///                 accessEndpointType: "STREAMING_WSP",
+///                 vpcEndpointId: workspaces.id,
+///             }],
+///             internetFallbackProtocols: ["PCOIP"],
+///         },
+///         deviceTypeWindows: "ALLOW",
+///     },
+///     directoryId: exampleAwsDirectoryServiceDirectory.id,
+/// });
+/// const workspacesStreamingTcp443 = new aws.vpc.SecurityGroupIngressRule("workspaces_streaming_tcp_443", {
+///     securityGroupId: workspacesStreaming.id,
+///     cidrIpv4: exampleAwsVpc.cidrBlock,
+///     fromPort: 443,
+///     toPort: 443,
+///     ipProtocol: "tcp",
+/// });
+/// const workspacesStreamingTcp4195 = new aws.vpc.SecurityGroupIngressRule("workspaces_streaming_tcp_4195", {
+///     securityGroupId: workspacesStreaming.id,
+///     cidrIpv4: exampleAwsVpc.cidrBlock,
+///     fromPort: 4195,
+///     toPort: 4195,
+///     ipProtocol: "tcp",
+/// });
+/// const workspacesStreamingUdp443 = new aws.vpc.SecurityGroupIngressRule("workspaces_streaming_udp_443", {
+///     securityGroupId: workspacesStreaming.id,
+///     cidrIpv4: exampleAwsVpc.cidrBlock,
+///     fromPort: 443,
+///     toPort: 443,
+///     ipProtocol: "udp",
+/// });
+/// const workspacesStreamingUdp4195 = new aws.vpc.SecurityGroupIngressRule("workspaces_streaming_udp_4195", {
+///     securityGroupId: workspacesStreaming.id,
+///     cidrIpv4: exampleAwsVpc.cidrBlock,
+///     fromPort: 4195,
+///     toPort: 4195,
+///     ipProtocol: "udp",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// workspaces_streaming = aws.ec2.SecurityGroup("workspaces_streaming",
+///     name="workspaces-streaming-endpoint",
+///     vpc_id=example_aws_vpc["id"])
+/// current = aws.get_region()
+/// workspaces = aws.ec2.VpcEndpoint("workspaces",
+///     vpc_id=example_aws_vpc["id"],
+///     service_name=f"com.amazonaws.{current.region}.highlander",
+///     vpc_endpoint_type="Interface",
+///     subnet_ids=[
+///         example_a["id"],
+///         example_b["id"],
+///     ],
+///     security_group_ids=[workspaces_streaming.id],
+///     private_dns_enabled=True)
+/// example = aws.workspaces.Directory("example",
+///     workspace_access_properties={
+///         "access_endpoint_config": {
+///             "access_endpoints": [{
+///                 "access_endpoint_type": "STREAMING_WSP",
+///                 "vpc_endpoint_id": workspaces.id,
+///             }],
+///             "internet_fallback_protocols": ["PCOIP"],
+///         },
+///         "device_type_windows": "ALLOW",
+///     },
+///     directory_id=example_aws_directory_service_directory["id"])
+/// workspaces_streaming_tcp443 = aws.vpc.SecurityGroupIngressRule("workspaces_streaming_tcp_443",
+///     security_group_id=workspaces_streaming.id,
+///     cidr_ipv4=example_aws_vpc["cidrBlock"],
+///     from_port=443,
+///     to_port=443,
+///     ip_protocol="tcp")
+/// workspaces_streaming_tcp4195 = aws.vpc.SecurityGroupIngressRule("workspaces_streaming_tcp_4195",
+///     security_group_id=workspaces_streaming.id,
+///     cidr_ipv4=example_aws_vpc["cidrBlock"],
+///     from_port=4195,
+///     to_port=4195,
+///     ip_protocol="tcp")
+/// workspaces_streaming_udp443 = aws.vpc.SecurityGroupIngressRule("workspaces_streaming_udp_443",
+///     security_group_id=workspaces_streaming.id,
+///     cidr_ipv4=example_aws_vpc["cidrBlock"],
+///     from_port=443,
+///     to_port=443,
+///     ip_protocol="udp")
+/// workspaces_streaming_udp4195 = aws.vpc.SecurityGroupIngressRule("workspaces_streaming_udp_4195",
+///     security_group_id=workspaces_streaming.id,
+///     cidr_ipv4=example_aws_vpc["cidrBlock"],
+///     from_port=4195,
+///     to_port=4195,
+///     ip_protocol="udp")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var workspacesStreaming = new Aws.Ec2.SecurityGroup("workspaces_streaming", new()
+///     {
+///         Name = "workspaces-streaming-endpoint",
+///         VpcId = exampleAwsVpc.Id,
+///     });
+///
+///     var current = Aws.GetRegion.Invoke();
+///
+///     var workspaces = new Aws.Ec2.VpcEndpoint("workspaces", new()
+///     {
+///         VpcId = exampleAwsVpc.Id,
+///         ServiceName = $"com.amazonaws.{current.Apply(getRegionResult => getRegionResult.Region)}.highlander",
+///         VpcEndpointType = "Interface",
+///         SubnetIds = new[]
+///         {
+///             exampleA.Id,
+///             exampleB.Id,
+///         },
+///         SecurityGroupIds = new[]
+///         {
+///             workspacesStreaming.Id,
+///         },
+///         PrivateDnsEnabled = true,
+///     });
+///
+///     var example = new Aws.Workspaces.Directory("example", new()
+///     {
+///         WorkspaceAccessProperties = new Aws.Workspaces.Inputs.DirectoryWorkspaceAccessPropertiesArgs
+///         {
+///             AccessEndpointConfig = new Aws.Workspaces.Inputs.DirectoryWorkspaceAccessPropertiesAccessEndpointConfigArgs
+///             {
+///                 AccessEndpoints = new[]
+///                 {
+///                     new Aws.Workspaces.Inputs.DirectoryWorkspaceAccessPropertiesAccessEndpointConfigAccessEndpointArgs
+///                     {
+///                         AccessEndpointType = "STREAMING_WSP",
+///                         VpcEndpointId = workspaces.Id,
+///                     },
+///                 },
+///                 InternetFallbackProtocols = new[]
+///                 {
+///                     "PCOIP",
+///                 },
+///             },
+///             DeviceTypeWindows = "ALLOW",
+///         },
+///         DirectoryId = exampleAwsDirectoryServiceDirectory.Id,
+///     });
+///
+///     var workspacesStreamingTcp443 = new Aws.Vpc.SecurityGroupIngressRule("workspaces_streaming_tcp_443", new()
+///     {
+///         SecurityGroupId = workspacesStreaming.Id,
+///         CidrIpv4 = exampleAwsVpc.CidrBlock,
+///         FromPort = 443,
+///         ToPort = 443,
+///         IpProtocol = "tcp",
+///     });
+///
+///     var workspacesStreamingTcp4195 = new Aws.Vpc.SecurityGroupIngressRule("workspaces_streaming_tcp_4195", new()
+///     {
+///         SecurityGroupId = workspacesStreaming.Id,
+///         CidrIpv4 = exampleAwsVpc.CidrBlock,
+///         FromPort = 4195,
+///         ToPort = 4195,
+///         IpProtocol = "tcp",
+///     });
+///
+///     var workspacesStreamingUdp443 = new Aws.Vpc.SecurityGroupIngressRule("workspaces_streaming_udp_443", new()
+///     {
+///         SecurityGroupId = workspacesStreaming.Id,
+///         CidrIpv4 = exampleAwsVpc.CidrBlock,
+///         FromPort = 443,
+///         ToPort = 443,
+///         IpProtocol = "udp",
+///     });
+///
+///     var workspacesStreamingUdp4195 = new Aws.Vpc.SecurityGroupIngressRule("workspaces_streaming_udp_4195", new()
+///     {
+///         SecurityGroupId = workspacesStreaming.Id,
+///         CidrIpv4 = exampleAwsVpc.CidrBlock,
+///         FromPort = 4195,
+///         ToPort = 4195,
+///         IpProtocol = "udp",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/vpc"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/workspaces"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		workspacesStreaming, err := ec2.NewSecurityGroup(ctx, "workspaces_streaming", &ec2.SecurityGroupArgs{
+/// 			Name:  pulumi.String("workspaces-streaming-endpoint"),
+/// 			VpcId: pulumi.Any(exampleAwsVpc.Id),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		current, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		workspaces2, err := ec2.NewVpcEndpoint(ctx, "workspaces", &ec2.VpcEndpointArgs{
+/// 			VpcId:           pulumi.Any(exampleAwsVpc.Id),
+/// 			ServiceName:     pulumi.Sprintf("com.amazonaws.%v.highlander", current.Region),
+/// 			VpcEndpointType: pulumi.String("Interface"),
+/// 			SubnetIds: pulumi.StringArray{
+/// 				exampleA.Id,
+/// 				exampleB.Id,
+/// 			},
+/// 			SecurityGroupIds: pulumi.StringArray{
+/// 				workspacesStreaming.ID().ToIDOutput().ToStringOutput(),
+/// 			},
+/// 			PrivateDnsEnabled: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = workspaces.NewDirectory(ctx, "example", &workspaces.DirectoryArgs{
+/// 			WorkspaceAccessProperties: &workspaces.DirectoryWorkspaceAccessPropertiesArgs{
+/// 				AccessEndpointConfig: &workspaces.DirectoryWorkspaceAccessPropertiesAccessEndpointConfigArgs{
+/// 					AccessEndpoints: workspaces.DirectoryWorkspaceAccessPropertiesAccessEndpointConfigAccessEndpointArray{
+/// 						&workspaces.DirectoryWorkspaceAccessPropertiesAccessEndpointConfigAccessEndpointArgs{
+/// 							AccessEndpointType: pulumi.String("STREAMING_WSP"),
+/// 							VpcEndpointId:      workspaces2.ID().ToIDOutput().ToStringOutput(),
+/// 						},
+/// 					},
+/// 					InternetFallbackProtocols: pulumi.StringArray{
+/// 						pulumi.String("PCOIP"),
+/// 					},
+/// 				},
+/// 				DeviceTypeWindows: pulumi.String("ALLOW"),
+/// 			},
+/// 			DirectoryId: pulumi.Any(exampleAwsDirectoryServiceDirectory.Id),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "workspaces_streaming_tcp_443", &vpc.SecurityGroupIngressRuleArgs{
+/// 			SecurityGroupId: workspacesStreaming.ID().ToIDOutput().ToStringOutput(),
+/// 			CidrIpv4:        pulumi.Any(exampleAwsVpc.CidrBlock),
+/// 			FromPort:        pulumi.Int(443),
+/// 			ToPort:          pulumi.Int(443),
+/// 			IpProtocol:      pulumi.String("tcp"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "workspaces_streaming_tcp_4195", &vpc.SecurityGroupIngressRuleArgs{
+/// 			SecurityGroupId: workspacesStreaming.ID().ToIDOutput().ToStringOutput(),
+/// 			CidrIpv4:        pulumi.Any(exampleAwsVpc.CidrBlock),
+/// 			FromPort:        pulumi.Int(4195),
+/// 			ToPort:          pulumi.Int(4195),
+/// 			IpProtocol:      pulumi.String("tcp"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "workspaces_streaming_udp_443", &vpc.SecurityGroupIngressRuleArgs{
+/// 			SecurityGroupId: workspacesStreaming.ID().ToIDOutput().ToStringOutput(),
+/// 			CidrIpv4:        pulumi.Any(exampleAwsVpc.CidrBlock),
+/// 			FromPort:        pulumi.Int(443),
+/// 			ToPort:          pulumi.Int(443),
+/// 			IpProtocol:      pulumi.String("udp"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vpc.NewSecurityGroupIngressRule(ctx, "workspaces_streaming_udp_4195", &vpc.SecurityGroupIngressRuleArgs{
+/// 			SecurityGroupId: workspacesStreaming.ID().ToIDOutput().ToStringOutput(),
+/// 			CidrIpv4:        pulumi.Any(exampleAwsVpc.CidrBlock),
+/// 			FromPort:        pulumi.Int(4195),
+/// 			ToPort:          pulumi.Int(4195),
+/// 			IpProtocol:      pulumi.String("udp"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_getregion" "current" {
+/// }
+///
+/// resource "aws_workspaces_directory" "example" {
+///   workspace_access_properties = {
+///     access_endpoint_config = {
+///       access_endpoints = [{
+///         "accessEndpointType" = "STREAMING_WSP"
+///         "vpcEndpointId"      = aws_ec2_vpcendpoint.workspaces.id
+///       }]
+///       internet_fallback_protocols = ["PCOIP"]
+///     }
+///     device_type_windows = "ALLOW"
+///   }
+///   directory_id = exampleAwsDirectoryServiceDirectory.id
+/// }
+/// resource "aws_ec2_vpcendpoint" "workspaces" {
+///   vpc_id              = exampleAwsVpc.id
+///   service_name        ="com.amazonaws.${data.aws_getregion.current.region}.highlander"
+///   vpc_endpoint_type   = "Interface"
+///   subnet_ids          = [exampleA.id, exampleB.id]
+///   security_group_ids  = [aws_ec2_securitygroup.workspaces_streaming.id]
+///   private_dns_enabled = true
+/// }
+/// resource "aws_ec2_securitygroup" "workspaces_streaming" {
+///   name   = "workspaces-streaming-endpoint"
+///   vpc_id = exampleAwsVpc.id
+/// }
+/// resource "aws_vpc_securitygroupingressrule" "workspaces_streaming_tcp_443" {
+///   security_group_id = aws_ec2_securitygroup.workspaces_streaming.id
+///   cidr_ipv4         = exampleAwsVpc.cidrBlock
+///   from_port         = 443
+///   to_port           = 443
+///   ip_protocol       = "tcp"
+/// }
+/// resource "aws_vpc_securitygroupingressrule" "workspaces_streaming_tcp_4195" {
+///   security_group_id = aws_ec2_securitygroup.workspaces_streaming.id
+///   cidr_ipv4         = exampleAwsVpc.cidrBlock
+///   from_port         = 4195
+///   to_port           = 4195
+///   ip_protocol       = "tcp"
+/// }
+/// resource "aws_vpc_securitygroupingressrule" "workspaces_streaming_udp_443" {
+///   security_group_id = aws_ec2_securitygroup.workspaces_streaming.id
+///   cidr_ipv4         = exampleAwsVpc.cidrBlock
+///   from_port         = 443
+///   to_port           = 443
+///   ip_protocol       = "udp"
+/// }
+/// resource "aws_vpc_securitygroupingressrule" "workspaces_streaming_udp_4195" {
+///   security_group_id = aws_ec2_securitygroup.workspaces_streaming.id
+///   cidr_ipv4         = exampleAwsVpc.cidrBlock
+///   from_port         = 4195
+///   to_port           = 4195
+///   ip_protocol       = "udp"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ec2.SecurityGroup;
+/// import com.pulumi.aws.ec2.SecurityGroupArgs;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetRegionArgs;
+/// import com.pulumi.aws.ec2.VpcEndpoint;
+/// import com.pulumi.aws.ec2.VpcEndpointArgs;
+/// import com.pulumi.aws.workspaces.Directory;
+/// import com.pulumi.aws.workspaces.DirectoryArgs;
+/// import com.pulumi.aws.workspaces.inputs.DirectoryWorkspaceAccessPropertiesArgs;
+/// import com.pulumi.aws.workspaces.inputs.DirectoryWorkspaceAccessPropertiesAccessEndpointConfigArgs;
+/// import com.pulumi.aws.workspaces.inputs.DirectoryWorkspaceAccessPropertiesAccessEndpointConfigAccessEndpointArgs;
+/// import com.pulumi.aws.vpc.SecurityGroupIngressRule;
+/// import com.pulumi.aws.vpc.SecurityGroupIngressRuleArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var workspacesStreaming = new SecurityGroup("workspacesStreaming", SecurityGroupArgs.builder()
+///             .name("workspaces-streaming-endpoint")
+///             .vpcId(exampleAwsVpc.id())
+///             .build());
+///
+///         final var current = AwsFunctions.getRegion(GetRegionArgs.builder()
+///             .build());
+///
+///         var workspaces = new VpcEndpoint("workspaces", VpcEndpointArgs.builder()
+///             .vpcId(exampleAwsVpc.id())
+///             .serviceName(String.format("com.amazonaws.%s.highlander", current.region()))
+///             .vpcEndpointType("Interface")
+///             .subnetIds(
+///                 exampleA.id(),
+///                 exampleB.id())
+///             .securityGroupIds(workspacesStreaming.id())
+///             .privateDnsEnabled(true)
+///             .build());
+///
+///         var example = new Directory("example", DirectoryArgs.builder()
+///             .workspaceAccessProperties(DirectoryWorkspaceAccessPropertiesArgs.builder()
+///                 .accessEndpointConfig(DirectoryWorkspaceAccessPropertiesAccessEndpointConfigArgs.builder()
+///                     .accessEndpoints(DirectoryWorkspaceAccessPropertiesAccessEndpointConfigAccessEndpointArgs.builder()
+///                         .accessEndpointType("STREAMING_WSP")
+///                         .vpcEndpointId(workspaces.id())
+///                         .build())
+///                     .internetFallbackProtocols("PCOIP")
+///                     .build())
+///                 .deviceTypeWindows("ALLOW")
+///                 .build())
+///             .directoryId(exampleAwsDirectoryServiceDirectory.id())
+///             .build());
+///
+///         var workspacesStreamingTcp443 = new SecurityGroupIngressRule("workspacesStreamingTcp443", SecurityGroupIngressRuleArgs.builder()
+///             .securityGroupId(workspacesStreaming.id())
+///             .cidrIpv4(exampleAwsVpc.cidrBlock())
+///             .fromPort(443)
+///             .toPort(443)
+///             .ipProtocol("tcp")
+///             .build());
+///
+///         var workspacesStreamingTcp4195 = new SecurityGroupIngressRule("workspacesStreamingTcp4195", SecurityGroupIngressRuleArgs.builder()
+///             .securityGroupId(workspacesStreaming.id())
+///             .cidrIpv4(exampleAwsVpc.cidrBlock())
+///             .fromPort(4195)
+///             .toPort(4195)
+///             .ipProtocol("tcp")
+///             .build());
+///
+///         var workspacesStreamingUdp443 = new SecurityGroupIngressRule("workspacesStreamingUdp443", SecurityGroupIngressRuleArgs.builder()
+///             .securityGroupId(workspacesStreaming.id())
+///             .cidrIpv4(exampleAwsVpc.cidrBlock())
+///             .fromPort(443)
+///             .toPort(443)
+///             .ipProtocol("udp")
+///             .build());
+///
+///         var workspacesStreamingUdp4195 = new SecurityGroupIngressRule("workspacesStreamingUdp4195", SecurityGroupIngressRuleArgs.builder()
+///             .securityGroupId(workspacesStreaming.id())
+///             .cidrIpv4(exampleAwsVpc.cidrBlock())
+///             .fromPort(4195)
+///             .toPort(4195)
+///             .ipProtocol("udp")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:workspaces:Directory
+///     properties:
+///       workspaceAccessProperties:
+///         accessEndpointConfig:
+///           accessEndpoints:
+///             - accessEndpointType: STREAMING_WSP
+///               vpcEndpointId: ${workspaces.id}
+///           internetFallbackProtocols:
+///             - PCOIP
+///         deviceTypeWindows: ALLOW
+///       directoryId: ${exampleAwsDirectoryServiceDirectory.id}
+///   workspaces:
+///     type: aws:ec2:VpcEndpoint
+///     properties:
+///       vpcId: ${exampleAwsVpc.id}
+///       serviceName: com.amazonaws.${current.region}.highlander
+///       vpcEndpointType: Interface
+///       subnetIds:
+///         - ${exampleA.id}
+///         - ${exampleB.id}
+///       securityGroupIds:
+///         - ${workspacesStreaming.id}
+///       privateDnsEnabled: true
+///   workspacesStreaming:
+///     type: aws:ec2:SecurityGroup
+///     name: workspaces_streaming
+///     properties:
+///       name: workspaces-streaming-endpoint
+///       vpcId: ${exampleAwsVpc.id}
+///   workspacesStreamingTcp443:
+///     type: aws:vpc:SecurityGroupIngressRule
+///     name: workspaces_streaming_tcp_443
+///     properties:
+///       securityGroupId: ${workspacesStreaming.id}
+///       cidrIpv4: ${exampleAwsVpc.cidrBlock}
+///       fromPort: 443
+///       toPort: 443
+///       ipProtocol: tcp
+///   workspacesStreamingTcp4195:
+///     type: aws:vpc:SecurityGroupIngressRule
+///     name: workspaces_streaming_tcp_4195
+///     properties:
+///       securityGroupId: ${workspacesStreaming.id}
+///       cidrIpv4: ${exampleAwsVpc.cidrBlock}
+///       fromPort: 4195
+///       toPort: 4195
+///       ipProtocol: tcp
+///   workspacesStreamingUdp443:
+///     type: aws:vpc:SecurityGroupIngressRule
+///     name: workspaces_streaming_udp_443
+///     properties:
+///       securityGroupId: ${workspacesStreaming.id}
+///       cidrIpv4: ${exampleAwsVpc.cidrBlock}
+///       fromPort: 443
+///       toPort: 443
+///       ipProtocol: udp
+///   workspacesStreamingUdp4195:
+///     type: aws:vpc:SecurityGroupIngressRule
+///     name: workspaces_streaming_udp_4195
+///     properties:
+///       securityGroupId: ${workspacesStreaming.id}
+///       cidrIpv4: ${exampleAwsVpc.cidrBlock}
+///       fromPort: 4195
+///       toPort: 4195
+///       ipProtocol: udp
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getRegion
+///       arguments: {}
+/// ```
+///
+///
 /// ## Import
 ///
 /// Using `pulumi import`, import Workspaces directory using the directory ID. For example:
@@ -1444,7 +2005,7 @@ class Directory extends pulumi.CustomResource {
           'aws:workspaces/directory:Directory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     activeDirectoryConfig = registerOutput<DirectoryActiveDirectoryConfig?>('activeDirectoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryActiveDirectoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     alias = registerOutput<String>('alias');
@@ -1453,16 +2014,16 @@ class Directory extends pulumi.CustomResource {
     directoryId = registerOutput<String>('directoryId');
     directoryName = registerOutput<String>('directoryName');
     directoryType = registerOutput<String>('directoryType');
-    dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses');
+    dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iamRoleId = registerOutput<String>('iamRoleId');
-    ipGroupIds = registerOutput<List<String>>('ipGroupIds');
+    ipGroupIds = registerOutput<List<String>>('ipGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     registrationCode = registerOutput<String>('registrationCode');
     samlProperties = registerOutput<DirectorySamlProperties>('samlProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectorySamlProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfServicePermissions = registerOutput<DirectorySelfServicePermissions>('selfServicePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectorySelfServicePermissions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancy = registerOutput<String>('tenancy');
     userIdentityType = registerOutput<String>('userIdentityType');
     workspaceAccessProperties = registerOutput<DirectoryWorkspaceAccessProperties>('workspaceAccessProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryWorkspaceAccessProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1478,11 +2039,12 @@ class Directory extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DirectoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Directory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1503,16 +2065,52 @@ class Directory extends pulumi.CustomResource {
     directoryId = registerOutput<String>('directoryId');
     directoryName = registerOutput<String>('directoryName');
     directoryType = registerOutput<String>('directoryType');
-    dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses');
+    dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iamRoleId = registerOutput<String>('iamRoleId');
-    ipGroupIds = registerOutput<List<String>>('ipGroupIds');
+    ipGroupIds = registerOutput<List<String>>('ipGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     registrationCode = registerOutput<String>('registrationCode');
     samlProperties = registerOutput<DirectorySamlProperties>('samlProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectorySamlProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfServicePermissions = registerOutput<DirectorySelfServicePermissions>('selfServicePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectorySelfServicePermissions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenancy = registerOutput<String>('tenancy');
+    userIdentityType = registerOutput<String>('userIdentityType');
+    workspaceAccessProperties = registerOutput<DirectoryWorkspaceAccessProperties>('workspaceAccessProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryWorkspaceAccessProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspaceCreationProperties = registerOutput<DirectoryWorkspaceCreationProperties>('workspaceCreationProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryWorkspaceCreationProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspaceDirectoryDescription = registerOutput<String?>('workspaceDirectoryDescription');
+    workspaceDirectoryName = registerOutput<String?>('workspaceDirectoryName');
+    workspaceSecurityGroupId = registerOutput<String>('workspaceSecurityGroupId');
+    workspaceType = registerOutput<String?>('workspaceType');
+  }
+
+  /// Creates a typed reference to an existing [Directory] resource.
+  Directory.reference(String urn)
+    : super(
+        'aws:workspaces/directory:Directory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeDirectoryConfig = registerOutput<DirectoryActiveDirectoryConfig?>('activeDirectoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryActiveDirectoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    alias = registerOutput<String>('alias');
+    certificateBasedAuthProperties = registerOutput<DirectoryCertificateBasedAuthProperties>('certificateBasedAuthProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryCertificateBasedAuthProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerUserName = registerOutput<String>('customerUserName');
+    directoryId = registerOutput<String>('directoryId');
+    directoryName = registerOutput<String>('directoryName');
+    directoryType = registerOutput<String>('directoryType');
+    dnsIpAddresses = registerOutput<List<String>>('dnsIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iamRoleId = registerOutput<String>('iamRoleId');
+    ipGroupIds = registerOutput<List<String>>('ipGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    registrationCode = registerOutput<String>('registrationCode');
+    samlProperties = registerOutput<DirectorySamlProperties>('samlProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectorySamlProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfServicePermissions = registerOutput<DirectorySelfServicePermissions>('selfServicePermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectorySelfServicePermissions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancy = registerOutput<String>('tenancy');
     userIdentityType = registerOutput<String>('userIdentityType');
     workspaceAccessProperties = registerOutput<DirectoryWorkspaceAccessProperties>('workspaceAccessProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryWorkspaceAccessProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -5,9 +5,9 @@ import 'permissions_boundary_attachment_permissions_boundary_customer_managed_po
 
 class PermissionsBoundaryAttachmentPermissionsBoundary {
   /// Specifies the name and path of a customer managed policy. See below.
-  final pulumi.Input<PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference>? customerManagedPolicyReference;
+  final pulumi.Input<PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference?>? customerManagedPolicyReference;
   /// AWS-managed IAM policy ARN to use as the permissions boundary.
-  final pulumi.Input<String>? managedPolicyArn;
+  final pulumi.Input<String?>? managedPolicyArn;
 
   /// Creates a new [PermissionsBoundaryAttachmentPermissionsBoundary].
   /// [customerManagedPolicyReference] Specifies the name and path of a customer managed policy. See below.

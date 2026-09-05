@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_set_args.dart';
+import 'ip_set_ip_set_descriptor.dart';
 import 'ip_set_state.dart';
 
 /// Provides a WAF IPSet Resource
@@ -12,7 +13,6 @@ import 'ip_set_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const ipset = new aws.waf.IpSet("ipset", {
-///     name: "tfIPSet",
 ///     ipSetDescriptors: [
 ///         {
 ///             type: "IPV4",
@@ -23,6 +23,7 @@ import 'ip_set_state.dart';
 ///             value: "10.16.16.0/16",
 ///         },
 ///     ],
+///     name: "tfIPSet",
 /// });
 /// ```
 /// ```python
@@ -30,7 +31,6 @@ import 'ip_set_state.dart';
 /// import pulumi_aws as aws
 ///
 /// ipset = aws.waf.IpSet("ipset",
-///     name="tfIPSet",
 ///     ip_set_descriptors=[
 ///         {
 ///             "type": "IPV4",
@@ -40,7 +40,8 @@ import 'ip_set_state.dart';
 ///             "type": "IPV4",
 ///             "value": "10.16.16.0/16",
 ///         },
-///     ])
+///     ],
+///     name="tfIPSet")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -52,7 +53,6 @@ import 'ip_set_state.dart';
 /// {
 ///     var ipset = new Aws.Waf.IpSet("ipset", new()
 ///     {
-///         Name = "tfIPSet",
 ///         IpSetDescriptors = new[]
 ///         {
 ///             new Aws.Waf.Inputs.IpSetIpSetDescriptorArgs
@@ -66,6 +66,7 @@ import 'ip_set_state.dart';
 ///                 Value = "10.16.16.0/16",
 ///             },
 ///         },
+///         Name = "tfIPSet",
 ///     });
 ///
 /// });
@@ -81,7 +82,6 @@ import 'ip_set_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := waf.NewIpSet(ctx, "ipset", &waf.IpSetArgs{
-/// 			Name: pulumi.String("tfIPSet"),
 /// 			IpSetDescriptors: waf.IpSetIpSetDescriptorArray{
 /// 				&waf.IpSetIpSetDescriptorArgs{
 /// 					Type:  pulumi.String("IPV4"),
@@ -92,6 +92,7 @@ import 'ip_set_state.dart';
 /// 					Value: pulumi.String("10.16.16.0/16"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("tfIPSet"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -110,7 +111,6 @@ import 'ip_set_state.dart';
 /// }
 ///
 /// resource "aws_waf_ipset" "ipset" {
-///   name = "tfIPSet"
 ///   ip_set_descriptors {
 ///     type  = "IPV4"
 ///     value = "192.0.7.0/24"
@@ -119,6 +119,7 @@ import 'ip_set_state.dart';
 ///     type  = "IPV4"
 ///     value = "10.16.16.0/16"
 ///   }
+///   name = "tfIPSet"
 /// }
 /// ```
 /// ```java
@@ -144,7 +145,6 @@ import 'ip_set_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var ipset = new IpSet("ipset", IpSetArgs.builder()
-///             .name("tfIPSet")
 ///             .ipSetDescriptors(
 ///                 IpSetIpSetDescriptorArgs.builder()
 ///                     .type("IPV4")
@@ -154,6 +154,7 @@ import 'ip_set_state.dart';
 ///                     .type("IPV4")
 ///                     .value("10.16.16.0/16")
 ///                     .build())
+///             .name("tfIPSet")
 ///             .build());
 ///
 ///     }
@@ -164,12 +165,12 @@ import 'ip_set_state.dart';
 ///   ipset:
 ///     type: aws:waf:IpSet
 ///     properties:
-///       name: tfIPSet
 ///       ipSetDescriptors:
 ///         - type: IPV4
 ///           value: 192.0.7.0/24
 ///         - type: IPV4
 ///           value: 10.16.16.0/16
+///       name: tfIPSet
 /// ```
 ///
 ///
@@ -184,7 +185,7 @@ class IpSet extends pulumi.CustomResource {
   /// The ARN of the WAF IPSet.
   late final pulumi.Output<String> arn;
   /// One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) from which web requests originate.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipSetDescriptors;
+  late final pulumi.Output<List<IpSetIpSetDescriptor>?> ipSetDescriptors;
   /// The name or description of the IPSet.
   late final pulumi.Output<String> name;
 
@@ -200,10 +201,10 @@ class IpSet extends pulumi.CustomResource {
           'aws:waf/ipSet:IpSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    ipSetDescriptors = registerOutput<List<Map<String, dynamic>>?>('ipSetDescriptors');
+    ipSetDescriptors = registerOutput<List<IpSetIpSetDescriptor>?>('ipSetDescriptors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpSetIpSetDescriptor>(guardedValue, (value) => IpSetIpSetDescriptor.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 
@@ -212,11 +213,12 @@ class IpSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IpSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IpSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -231,7 +233,21 @@ class IpSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    ipSetDescriptors = registerOutput<List<Map<String, dynamic>>?>('ipSetDescriptors');
+    ipSetDescriptors = registerOutput<List<IpSetIpSetDescriptor>?>('ipSetDescriptors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpSetIpSetDescriptor>(guardedValue, (value) => IpSetIpSetDescriptor.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [IpSet] resource.
+  IpSet.reference(String urn)
+    : super(
+        'aws:waf/ipSet:IpSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    ipSetDescriptors = registerOutput<List<IpSetIpSetDescriptor>?>('ipSetDescriptors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpSetIpSetDescriptor>(guardedValue, (value) => IpSetIpSetDescriptor.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 }

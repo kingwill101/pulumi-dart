@@ -10,42 +10,42 @@ import 'pool_timeouts.dart';
 /// Input properties used for looking up and filtering Pool resources.
 class PoolState {
   /// Application settings configuration for the WorkSpaces Pool. See `applicationSettings` Block below.
-  final pulumi.Input<List<PoolApplicationSetting>>? applicationSettings;
+  final pulumi.Input<List<PoolApplicationSetting>?>? applicationSettings;
   /// ID of the bundle for the WorkSpaces Pool.
-  final pulumi.Input<String>? bundleId;
+  final pulumi.Input<String?>? bundleId;
   /// Capacity configuration for the WorkSpaces Pool. See `capacity` below.
-  final pulumi.Input<PoolCapacity>? capacity;
+  final pulumi.Input<PoolCapacity?>? capacity;
   /// Capacity status of the WorkSpaces Pool. See `capacityStatus` Block below.
-  final pulumi.Input<List<PoolCapacityStatus>>? capacityStatuses;
+  final pulumi.Input<List<PoolCapacityStatus>?>? capacityStatuses;
   /// Date and time the WorkSpaces Pool was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Description of the WorkSpaces Pool.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ID of the directory for the WorkSpaces Pool.
-  final pulumi.Input<String>? directoryId;
+  final pulumi.Input<String?>? directoryId;
   /// ARN of the WorkSpaces Pool.
-  final pulumi.Input<String>? poolArn;
+  final pulumi.Input<String?>? poolArn;
   /// ID of the WorkSpaces Pool.
-  final pulumi.Input<String>? poolId;
+  final pulumi.Input<String?>? poolId;
   /// Name of the WorkSpaces Pool. This cannot be changed after creation.
-  final pulumi.Input<String>? poolName;
+  final pulumi.Input<String?>? poolName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Running mode of the WorkSpaces Pool. Valid values are `AUTO_STOP` and `ALWAYS_ON`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? runningMode;
+  final pulumi.Input<String?>? runningMode;
   /// S3 bucket where application settings are stored when `applicationSettings` is enabled.
-  final pulumi.Input<String>? s3BucketName;
+  final pulumi.Input<String?>? s3BucketName;
   /// Current state of the WorkSpaces Pool.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Timeout settings configuration for the WorkSpaces Pool. See `timeoutSettings` Block below.
-  final pulumi.Input<List<PoolTimeoutSetting>>? timeoutSettings;
-  final pulumi.Input<PoolTimeouts>? timeouts;
+  final pulumi.Input<List<PoolTimeoutSetting>?>? timeoutSettings;
+  final pulumi.Input<PoolTimeouts?>? timeouts;
 
   /// Creates a new [PoolState].
   /// [applicationSettings] Application settings configuration for the WorkSpaces Pool. See `applicationSettings` Block below.

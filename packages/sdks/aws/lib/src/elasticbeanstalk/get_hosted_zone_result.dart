@@ -4,28 +4,28 @@
 /// Result data returned by getHostedZone.
 class GetHostedZoneResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
 
   /// Creates a new [GetHostedZoneResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   const GetHostedZoneResult({
-    required this.id,
-    required this.region,
+    this.id,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'region': region,
+      'id': ?id,
+      'region': ?region,
     };
   }
 
   factory GetHostedZoneResult.fromMap(Map<String, dynamic> map) {
     return GetHostedZoneResult(
-      id: map['id'] as String,
-      region: map['region'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

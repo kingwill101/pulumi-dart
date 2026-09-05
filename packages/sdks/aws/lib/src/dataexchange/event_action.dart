@@ -238,7 +238,7 @@ class EventAction extends pulumi.CustomResource {
   /// Describes the action to take.
   /// Described in `action` Configuration Block below.
   late final pulumi.Output<EventActionAction> action;
-  /// Amazon Resource Name (ARN) of the event action.
+  /// ARN of the event action.
   late final pulumi.Output<String> arn;
   /// Date and time when the resource was created.
   late final pulumi.Output<String> createdAt;
@@ -262,7 +262,7 @@ class EventAction extends pulumi.CustomResource {
           'aws:dataexchange/eventAction:EventAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<EventActionAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventActionAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
@@ -277,11 +277,12 @@ class EventAction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventActionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventAction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -295,6 +296,23 @@ class EventAction extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<EventActionAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventActionAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    event = registerOutput<EventActionEvent>('event', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventActionEvent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [EventAction] resource.
+  EventAction.reference(String urn)
+    : super(
+        'aws:dataexchange/eventAction:EventAction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<EventActionAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventActionAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

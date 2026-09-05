@@ -6,14 +6,14 @@ import 'flow_destination_flow_config_destination_connector_properties_sapo_data_
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData {
   /// Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig>? errorHandlingConfig;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig?>? errorHandlingConfig;
   /// Name of the field that Amazon AppFlow uses as an ID when performing a write operation such as update or delete.
-  final pulumi.Input<List<String>>? idFieldNames;
+  final pulumi.Input<List<String>?>? idFieldNames;
   final pulumi.Input<String> objectPath;
   /// Settings that determine how Amazon AppFlow handles the success response it gets from the connector after placing data. See the `destination_flow_config.destination_connector_properties.sapo_data.success_response_handling_config` Block for details.
-  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig>? successResponseHandlingConfig;
+  final pulumi.Input<FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig?>? successResponseHandlingConfig;
   /// Type of write operation to be performed in Zendesk. When the value is `UPSERT`, `idFieldNames` is required. Valid values are `INSERT`, `UPSERT`, `UPDATE`, and `DELETE`.
-  final pulumi.Input<String>? writeOperationType;
+  final pulumi.Input<String?>? writeOperationType;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData].
   /// [errorHandlingConfig] Settings that determine how Amazon AppFlow handles an error when placing data in the destination. See the `destination_flow_config.destination_connector_properties.zendesk.error_handling_config` Block for details.

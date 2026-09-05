@@ -7,23 +7,23 @@ import 'zonal_autoshift_configuration_outcome_alarm.dart';
 /// Input properties used for looking up and filtering ZonalAutoshiftConfiguration resources.
 class ZonalAutoshiftConfigurationState {
   /// List of time windows during which practice runs are allowed, in the format `Day:HH:MM-Day:HH:MM` (e.g., `Mon:09:00-Mon:17:00`). Cannot be used together with `blockedWindows`.
-  final pulumi.Input<List<String>>? allowedWindows;
+  final pulumi.Input<List<String>?>? allowedWindows;
   /// List of dates when practice runs should not be started, in the format `YYYY-MM-DD`.
-  final pulumi.Input<List<String>>? blockedDates;
+  final pulumi.Input<List<String>?>? blockedDates;
   /// List of time windows during which practice runs should not be started, in the format `Day:HH:MM-Day:HH:MM` (e.g., `Mon:00:00-Mon:08:00`). Cannot be used together with `allowedWindows`.
-  final pulumi.Input<List<String>>? blockedWindows;
+  final pulumi.Input<List<String>?>? blockedWindows;
   /// List of CloudWatch alarms that can block practice runs when in alarm state. See `blockingAlarms` below.
-  final pulumi.Input<List<ZonalAutoshiftConfigurationBlockingAlarm>>? blockingAlarms;
+  final pulumi.Input<List<ZonalAutoshiftConfigurationBlockingAlarm>?>? blockingAlarms;
   /// List of CloudWatch alarms monitored during practice runs. See `outcomeAlarms` below.
-  final pulumi.Input<List<ZonalAutoshiftConfigurationOutcomeAlarm>>? outcomeAlarms;
+  final pulumi.Input<List<ZonalAutoshiftConfigurationOutcomeAlarm>?>? outcomeAlarms;
   /// AWS region where the resource is deployed.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of the managed resource to configure zonal autoshift for (e.g., an Application Load Balancer). Changing this creates a new resource.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? resourceArn;
   /// The status of zonal autoshift. Valid values: `ENABLED`, `DISABLED`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? zonalAutoshiftStatus;
+  final pulumi.Input<String?>? zonalAutoshiftStatus;
 
   /// Creates a new [ZonalAutoshiftConfigurationState].
   /// [allowedWindows] List of time windows during which practice runs are allowed, in the format `Day:HH:MM-Day:HH:MM` (e.g., `Mon:09:00-Mon:17:00`). Cannot be used together with `blockedWindows`.

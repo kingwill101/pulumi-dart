@@ -9,31 +9,31 @@ import 'channel_encoder_settings_caption_description_destination_settings_webvtt
 
 class ChannelEncoderSettingsCaptionDescriptionDestinationSettings {
   /// ARIB Destination Settings.
-  final pulumi.Input<Map<String, dynamic>>? aribDestinationSettings;
+  final pulumi.Input<Map<String, dynamic>?>? aribDestinationSettings;
   /// Burn In Destination Settings. See Burn In Destination Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings>? burnInDestinationSettings;
+  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings?>? burnInDestinationSettings;
   /// DVB Sub Destination Settings. See DVB Sub Destination Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings>? dvbSubDestinationSettings;
+  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings?>? dvbSubDestinationSettings;
   /// EBU TT D Destination Settings. See EBU TT D Destination Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings>? ebuTtDDestinationSettings;
+  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings?>? ebuTtDDestinationSettings;
   /// Embedded Destination Settings.
-  final pulumi.Input<Map<String, dynamic>>? embeddedDestinationSettings;
+  final pulumi.Input<Map<String, dynamic>?>? embeddedDestinationSettings;
   /// Embedded Plus SCTE20 Destination Settings.
-  final pulumi.Input<Map<String, dynamic>>? embeddedPlusScte20DestinationSettings;
+  final pulumi.Input<Map<String, dynamic>?>? embeddedPlusScte20DestinationSettings;
   /// RTMP Caption Info Destination Settings.
-  final pulumi.Input<Map<String, dynamic>>? rtmpCaptionInfoDestinationSettings;
+  final pulumi.Input<Map<String, dynamic>?>? rtmpCaptionInfoDestinationSettings;
   /// SCTE20 Plus Embedded Destination Settings.
-  final pulumi.Input<Map<String, dynamic>>? scte20PlusEmbeddedDestinationSettings;
+  final pulumi.Input<Map<String, dynamic>?>? scte20PlusEmbeddedDestinationSettings;
   /// SCTE27 Destination Settings.
-  final pulumi.Input<Map<String, dynamic>>? scte27DestinationSettings;
+  final pulumi.Input<Map<String, dynamic>?>? scte27DestinationSettings;
   /// SMPTE TT Destination Settings.
-  final pulumi.Input<Map<String, dynamic>>? smpteTtDestinationSettings;
+  final pulumi.Input<Map<String, dynamic>?>? smpteTtDestinationSettings;
   /// Teletext Destination Settings.
-  final pulumi.Input<Map<String, dynamic>>? teletextDestinationSettings;
+  final pulumi.Input<Map<String, dynamic>?>? teletextDestinationSettings;
   /// TTML Destination Settings. See TTML Destination Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings>? ttmlDestinationSettings;
+  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings?>? ttmlDestinationSettings;
   /// WebVTT Destination Settings. See WebVTT Destination Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings>? webvttDestinationSettings;
+  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings?>? webvttDestinationSettings;
 
   /// Creates a new [ChannelEncoderSettingsCaptionDescriptionDestinationSettings].
   /// [aribDestinationSettings] ARIB Destination Settings.

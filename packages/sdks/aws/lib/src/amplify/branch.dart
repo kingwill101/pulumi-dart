@@ -386,9 +386,6 @@ import 'branch_state.dart';
 /// // SNS Topic for Amplify notifications
 /// const amplifyAppMasterTopic = new aws.sns.Topic("amplify_app_master", {name: pulumi.interpolate`amplify-${app.id}_${master.branchName}`});
 /// const amplifyAppMasterEventTarget = new aws.cloudwatch.EventTarget("amplify_app_master", {
-///     rule: amplifyAppMasterEventRule.name,
-///     targetId: master.branchName,
-///     arn: amplifyAppMasterTopic.arn,
 ///     inputTransformer: {
 ///         inputPaths: {
 ///             jobId: "$.detail.jobId",
@@ -399,16 +396,19 @@ import 'branch_state.dart';
 ///         },
 ///         inputTemplate: "\"Build notification from the AWS Amplify Console for app: https://<branch>.<appId>.amplifyapp.com/. Your build status is <status>. Go to https://console.aws.amazon.com/amplify/home?region=<region>#<appId>/<branch>/<jobId> to view details on your build. \"",
 ///     },
+///     rule: amplifyAppMasterEventRule.name,
+///     targetId: master.branchName,
+///     arn: amplifyAppMasterTopic.arn,
 /// });
 /// const amplifyAppMaster = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         sid: pulumi.interpolate`Allow_Publish_Events ${master.arn}`,
-///         effect: "Allow",
-///         actions: ["SNS:Publish"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["events.amazonaws.com"],
 ///         }],
+///         sid: pulumi.interpolate`Allow_Publish_Events ${master.arn}`,
+///         effect: "Allow",
+///         actions: ["SNS:Publish"],
 ///         resources: [amplifyAppMasterTopic.arn],
 ///     }],
 /// });
@@ -452,9 +452,6 @@ import 'branch_state.dart';
 /// # SNS Topic for Amplify notifications
 /// amplify_app_master_topic = aws.sns.Topic("amplify_app_master", name=master.branch_name.apply(lambda branch_name: f"amplify-{app['id']}_{branch_name}"))
 /// amplify_app_master_event_target = aws.cloudwatch.EventTarget("amplify_app_master",
-///     rule=amplify_app_master_event_rule.name,
-///     target_id=master.branch_name,
-///     arn=amplify_app_master_topic.arn,
 ///     input_transformer={
 ///         "input_paths": {
 ///             "jobId": "$.detail.jobId",
@@ -464,15 +461,18 @@ import 'branch_state.dart';
 ///             "status": "$.detail.jobStatus",
 ///         },
 ///         "input_template": "\"Build notification from the AWS Amplify Console for app: https://<branch>.<appId>.amplifyapp.com/. Your build status is <status>. Go to https://console.aws.amazon.com/amplify/home?region=<region>#<appId>/<branch>/<jobId> to view details on your build. \"",
-///     })
+///     },
+///     rule=amplify_app_master_event_rule.name,
+///     target_id=master.branch_name,
+///     arn=amplify_app_master_topic.arn)
 /// amplify_app_master = aws.iam.get_policy_document_output(statements=[{
-///     "sid": master.arn.apply(lambda arn: f"Allow_Publish_Events {arn}"),
-///     "effect": "Allow",
-///     "actions": ["SNS:Publish"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["events.amazonaws.com"],
 ///     }],
+///     "sid": master.arn.apply(lambda arn: f"Allow_Publish_Events {arn}"),
+///     "effect": "Allow",
+///     "actions": ["SNS:Publish"],
 ///     "resources": [amplify_app_master_topic.arn],
 /// }])
 /// amplify_app_master_topic_policy = aws.sns.TopicPolicy("amplify_app_master",
@@ -547,9 +547,6 @@ import 'branch_state.dart';
 ///
 ///     var amplifyAppMasterEventTarget = new Aws.CloudWatch.EventTarget("amplify_app_master", new()
 ///     {
-///         Rule = amplifyAppMasterEventRule.Name,
-///         TargetId = master.BranchName,
-///         Arn = amplifyAppMasterTopic.Arn,
 ///         InputTransformer = new Aws.CloudWatch.Inputs.EventTargetInputTransformerArgs
 ///         {
 ///             InputPaths =
@@ -562,6 +559,9 @@ import 'branch_state.dart';
 ///             },
 ///             InputTemplate = "\"Build notification from the AWS Amplify Console for app: https://<branch>.<appId>.amplifyapp.com/. Your build status is <status>. Go to https://console.aws.amazon.com/amplify/home?region=<region>#<appId>/<branch>/<jobId> to view details on your build. \"",
 ///         },
+///         Rule = amplifyAppMasterEventRule.Name,
+///         TargetId = master.BranchName,
+///         Arn = amplifyAppMasterTopic.Arn,
 ///     });
 ///
 ///     var amplifyAppMaster = Aws.Iam.GetPolicyDocument.Invoke(new()
@@ -570,12 +570,6 @@ import 'branch_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = $"Allow_Publish_Events {master.Arn}",
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "SNS:Publish",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -586,6 +580,12 @@ import 'branch_state.dart';
 ///                             "events.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Sid = $"Allow_Publish_Events {master.Arn}",
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "SNS:Publish",
 ///                 },
 ///                 Resources = new[]
 ///                 {
@@ -693,9 +693,6 @@ import 'branch_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudwatch.NewEventTarget(ctx, "amplify_app_master", &cloudwatch.EventTargetArgs{
-/// 			Rule:     amplifyAppMasterEventRule.Name,
-/// 			TargetId: master.BranchName,
-/// 			Arn:      amplifyAppMasterTopic.Arn,
 /// 			InputTransformer: &cloudwatch.EventTargetInputTransformerArgs{
 /// 				InputPaths: pulumi.StringMap{
 /// 					"jobId":  pulumi.String("$.detail.jobId"),
@@ -706,6 +703,9 @@ import 'branch_state.dart';
 /// 				},
 /// 				InputTemplate: pulumi.String("\"Build notification from the AWS Amplify Console for app: https://<branch>.<appId>.amplifyapp.com/. Your build status is <status>. Go to https://console.aws.amazon.com/amplify/home?region=<region>#<appId>/<branch>/<jobId> to view details on your build. \""),
 /// 			},
+/// 			Rule:     amplifyAppMasterEventRule.Name,
+/// 			TargetId: master.BranchName,
+/// 			Arn:      amplifyAppMasterTopic.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -713,13 +713,6 @@ import 'branch_state.dart';
 /// 		amplifyAppMaster := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Sid: master.Arn.ApplyT(func(arn string) (string, error) {
-/// 						return fmt.Sprintf("Allow_Publish_Events %v", arn), nil
-/// 					}).(pulumi.StringOutput),
-/// 					Effect: pulumi.String("Allow"),
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("SNS:Publish"),
-/// 					},
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -727,6 +720,13 @@ import 'branch_state.dart';
 /// 								pulumi.String("events.amazonaws.com"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Sid: master.Arn.ApplyT(func(arn string) (string, error) {
+/// 						return fmt.Sprintf("Allow_Publish_Events %v", arn), nil
+/// 					}).(pulumi.StringOutput),
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SNS:Publish"),
 /// 					},
 /// 					Resources: pulumi.StringArray{
 /// 						amplifyAppMasterTopic.Arn,
@@ -764,13 +764,13 @@ import 'branch_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "amplifyAppMaster" {
 ///   statements {
-///     sid     ="Allow_Publish_Events ${aws_amplify_branch.master.arn}"
-///     effect  = "Allow"
-///     actions = ["SNS:Publish"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["events.amazonaws.com"]
 ///     }
+///     sid       ="Allow_Publish_Events ${aws_amplify_branch.master.arn}"
+///     effect    = "Allow"
+///     actions   = ["SNS:Publish"]
 ///     resources = [aws_sns_topic.amplify_app_master.arn]
 ///   }
 /// }
@@ -798,9 +798,6 @@ import 'branch_state.dart';
 ///   })
 /// }
 /// resource "aws_cloudwatch_eventtarget" "amplify_app_master" {
-///   rule      = aws_cloudwatch_eventrule.amplify_app_master.name
-///   target_id = aws_amplify_branch.master.branch_name
-///   arn       = aws_sns_topic.amplify_app_master.arn
 ///   input_transformer = {
 ///     input_paths = {
 ///       "jobId"  = "$.detail.jobId"
@@ -811,6 +808,9 @@ import 'branch_state.dart';
 ///     }
 ///     input_template = "\"Build notification from the AWS Amplify Console for app: https://<branch>.<appId>.amplifyapp.com/. Your build status is <status>. Go to https://console.aws.amazon.com/amplify/home?region=<region>#<appId>/<branch>/<jobId> to view details on your build. \""
 ///   }
+///   rule      = aws_cloudwatch_eventrule.amplify_app_master.name
+///   target_id = aws_amplify_branch.master.branch_name
+///   arn       = aws_sns_topic.amplify_app_master.arn
 /// }
 /// # SNS Topic for Amplify notifications
 /// resource "aws_sns_topic" "amplify_app_master" {
@@ -905,9 +905,6 @@ import 'branch_state.dart';
 ///             .build());
 ///
 ///         var amplifyAppMasterEventTarget = new EventTarget("amplifyAppMasterEventTarget", EventTargetArgs.builder()
-///             .rule(amplifyAppMasterEventRule.name())
-///             .targetId(master.branchName())
-///             .arn(amplifyAppMasterTopic.arn())
 ///             .inputTransformer(EventTargetInputTransformerArgs.builder()
 ///                 .inputPaths(Map.ofEntries(
 ///                     Map.entry("jobId", "$.detail.jobId"),
@@ -918,17 +915,20 @@ import 'branch_state.dart';
 ///                 ))
 ///                 .inputTemplate("\"Build notification from the AWS Amplify Console for app: https://<branch>.<appId>.amplifyapp.com/. Your build status is <status>. Go to https://console.aws.amazon.com/amplify/home?region=<region>#<appId>/<branch>/<jobId> to view details on your build. \"")
 ///                 .build())
+///             .rule(amplifyAppMasterEventRule.name())
+///             .targetId(master.branchName())
+///             .arn(amplifyAppMasterTopic.arn())
 ///             .build());
 ///
 ///         final var amplifyAppMaster = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid(master.arn().applyValue(_arn -> String.format("Allow_Publish_Events %s", _arn)))
-///                 .effect("Allow")
-///                 .actions("SNS:Publish")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("events.amazonaws.com")
 ///                     .build())
+///                 .sid(master.arn().applyValue(_arn -> String.format("Allow_Publish_Events %s", _arn)))
+///                 .effect("Allow")
+///                 .actions("SNS:Publish")
 ///                 .resources(amplifyAppMasterTopic.arn())
 ///                 .build())
 ///             .build());
@@ -985,9 +985,6 @@ import 'branch_state.dart';
 ///     type: aws:cloudwatch:EventTarget
 ///     name: amplify_app_master
 ///     properties:
-///       rule: ${amplifyAppMasterEventRule.name}
-///       targetId: ${master.branchName}
-///       arn: ${amplifyAppMasterTopic.arn}
 ///       inputTransformer:
 ///         inputPaths:
 ///           jobId: $.detail.jobId
@@ -996,6 +993,9 @@ import 'branch_state.dart';
 ///           branch: $.detail.branchName
 ///           status: $.detail.jobStatus
 ///         inputTemplate: '"Build notification from the AWS Amplify Console for app: https://<branch>.<appId>.amplifyapp.com/. Your build status is <status>. Go to https://console.aws.amazon.com/amplify/home?region=<region>#<appId>/<branch>/<jobId> to view details on your build. "'
+///       rule: ${amplifyAppMasterEventRule.name}
+///       targetId: ${master.branchName}
+///       arn: ${amplifyAppMasterTopic.arn}
 ///   # SNS Topic for Amplify notifications
 ///   amplifyAppMasterTopic:
 ///     type: aws:sns:Topic
@@ -1020,14 +1020,14 @@ import 'branch_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: Allow_Publish_Events ${master.arn}
-///             effect: Allow
-///             actions:
-///               - SNS:Publish
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - events.amazonaws.com
+///             sid: Allow_Publish_Events ${master.arn}
+///             effect: Allow
+///             actions:
+///               - SNS:Publish
 ///             resources:
 ///               - ${amplifyAppMasterTopic.arn}
 /// ```
@@ -1104,15 +1104,16 @@ class Branch extends pulumi.CustomResource {
           'aws:amplify/branch:Branch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['basicAuthCredentials'],
         ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');
-    associatedResources = registerOutput<List<String>>('associatedResources');
+    associatedResources = registerOutput<List<String>>('associatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backendEnvironmentArn = registerOutput<String?>('backendEnvironmentArn');
-    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
+    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials', isSecret: true);
     branchName = registerOutput<String>('branchName');
-    customDomains = registerOutput<List<String>>('customDomains');
+    customDomains = registerOutput<List<String>>('customDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     destinationBranch = registerOutput<String>('destinationBranch');
     displayName = registerOutput<String>('displayName');
@@ -1122,14 +1123,14 @@ class Branch extends pulumi.CustomResource {
     enablePerformanceMode = registerOutput<bool?>('enablePerformanceMode');
     enablePullRequestPreview = registerOutput<bool?>('enablePullRequestPreview');
     enableSkewProtection = registerOutput<bool?>('enableSkewProtection');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     framework = registerOutput<String?>('framework');
     pullRequestEnvironmentName = registerOutput<String?>('pullRequestEnvironmentName');
     region = registerOutput<String>('region');
     sourceBranch = registerOutput<String>('sourceBranch');
     stage = registerOutput<String?>('stage');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<String?>('ttl');
   }
 
@@ -1138,11 +1139,12 @@ class Branch extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BranchState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Branch._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1158,11 +1160,11 @@ class Branch extends pulumi.CustomResource {
         ) {
     appId = registerOutput<String>('appId');
     arn = registerOutput<String>('arn');
-    associatedResources = registerOutput<List<String>>('associatedResources');
+    associatedResources = registerOutput<List<String>>('associatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backendEnvironmentArn = registerOutput<String?>('backendEnvironmentArn');
-    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials');
+    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials', isSecret: true);
     branchName = registerOutput<String>('branchName');
-    customDomains = registerOutput<List<String>>('customDomains');
+    customDomains = registerOutput<List<String>>('customDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     destinationBranch = registerOutput<String>('destinationBranch');
     displayName = registerOutput<String>('displayName');
@@ -1172,14 +1174,51 @@ class Branch extends pulumi.CustomResource {
     enablePerformanceMode = registerOutput<bool?>('enablePerformanceMode');
     enablePullRequestPreview = registerOutput<bool?>('enablePullRequestPreview');
     enableSkewProtection = registerOutput<bool?>('enableSkewProtection');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     framework = registerOutput<String?>('framework');
     pullRequestEnvironmentName = registerOutput<String?>('pullRequestEnvironmentName');
     region = registerOutput<String>('region');
     sourceBranch = registerOutput<String>('sourceBranch');
     stage = registerOutput<String?>('stage');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ttl = registerOutput<String?>('ttl');
+  }
+
+  /// Creates a typed reference to an existing [Branch] resource.
+  Branch.reference(String urn)
+    : super(
+        'aws:amplify/branch:Branch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['basicAuthCredentials'],
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    arn = registerOutput<String>('arn');
+    associatedResources = registerOutput<List<String>>('associatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    backendEnvironmentArn = registerOutput<String?>('backendEnvironmentArn');
+    basicAuthCredentials = registerOutput<String?>('basicAuthCredentials', isSecret: true);
+    branchName = registerOutput<String>('branchName');
+    customDomains = registerOutput<List<String>>('customDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    destinationBranch = registerOutput<String>('destinationBranch');
+    displayName = registerOutput<String>('displayName');
+    enableAutoBuild = registerOutput<bool?>('enableAutoBuild');
+    enableBasicAuth = registerOutput<bool?>('enableBasicAuth');
+    enableNotification = registerOutput<bool?>('enableNotification');
+    enablePerformanceMode = registerOutput<bool?>('enablePerformanceMode');
+    enablePullRequestPreview = registerOutput<bool?>('enablePullRequestPreview');
+    enableSkewProtection = registerOutput<bool?>('enableSkewProtection');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    framework = registerOutput<String?>('framework');
+    pullRequestEnvironmentName = registerOutput<String?>('pullRequestEnvironmentName');
+    region = registerOutput<String>('region');
+    sourceBranch = registerOutput<String>('sourceBranch');
+    stage = registerOutput<String?>('stage');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<String?>('ttl');
   }
 }

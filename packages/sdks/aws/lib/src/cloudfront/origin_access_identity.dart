@@ -266,12 +266,12 @@ import 'origin_access_identity_state.dart';
 ///
 /// const s3Policy = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["s3:GetObject"],
-///         resources: [`${exampleAwsS3Bucket.arn}/*`],
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: [exampleAwsCloudfrontOriginAccessIdentity.iamArn],
 ///         }],
+///         actions: ["s3:GetObject"],
+///         resources: [`${exampleAwsS3Bucket.arn}/*`],
 ///     }],
 /// });
 /// const example = new aws.s3.BucketPolicy("example", {
@@ -284,12 +284,12 @@ import 'origin_access_identity_state.dart';
 /// import pulumi_aws as aws
 ///
 /// s3_policy = aws.iam.get_policy_document(statements=[{
-///     "actions": ["s3:GetObject"],
-///     "resources": [f"{example_aws_s3_bucket['arn']}/*"],
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": [example_aws_cloudfront_origin_access_identity["iamArn"]],
 ///     }],
+///     "actions": ["s3:GetObject"],
+///     "resources": [f"{example_aws_s3_bucket['arn']}/*"],
 /// }])
 /// example = aws.s3.BucketPolicy("example",
 ///     bucket=example_aws_s3_bucket["id"],
@@ -309,14 +309,6 @@ import 'origin_access_identity_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "s3:GetObject",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     $"{exampleAwsS3Bucket.Arn}/*",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -327,6 +319,14 @@ import 'origin_access_identity_state.dart';
 ///                             exampleAwsCloudfrontOriginAccessIdentity.IamArn,
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "s3:GetObject",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     $"{exampleAwsS3Bucket.Arn}/*",
 ///                 },
 ///             },
 ///         },
@@ -356,12 +356,6 @@ import 'origin_access_identity_state.dart';
 /// 		s3Policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"s3:GetObject",
-/// 					},
-/// 					Resources: []string{
-/// 						fmt.Sprintf("%v/*", exampleAwsS3Bucket.Arn),
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -369,6 +363,12 @@ import 'origin_access_identity_state.dart';
 /// 								exampleAwsCloudfrontOriginAccessIdentity.IamArn,
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"s3:GetObject",
+/// 					},
+/// 					Resources: []string{
+/// 						fmt.Sprintf("%v/*", exampleAwsS3Bucket.Arn),
 /// 					},
 /// 				},
 /// 			},
@@ -398,12 +398,12 @@ import 'origin_access_identity_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "s3Policy" {
 ///   statements {
-///     actions   = ["s3:GetObject"]
-///     resources = ["${exampleAwsS3Bucket.arn}/*"]
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [exampleAwsCloudfrontOriginAccessIdentity.iamArn]
 ///     }
+///     actions   = ["s3:GetObject"]
+///     resources = ["${exampleAwsS3Bucket.arn}/*"]
 ///   }
 /// }
 ///
@@ -439,12 +439,12 @@ import 'origin_access_identity_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var s3Policy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("s3:GetObject")
-///                 .resources(String.format("%s/*", exampleAwsS3Bucket.arn()))
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers(exampleAwsCloudfrontOriginAccessIdentity.iamArn())
 ///                     .build())
+///                 .actions("s3:GetObject")
+///                 .resources(String.format("%s/*", exampleAwsS3Bucket.arn()))
 ///                 .build())
 ///             .build());
 ///
@@ -469,14 +469,14 @@ import 'origin_access_identity_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - s3:GetObject
-///             resources:
-///               - ${exampleAwsS3Bucket.arn}/*
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - ${exampleAwsCloudfrontOriginAccessIdentity.iamArn}
+///             actions:
+///               - s3:GetObject
+///             resources:
+///               - ${exampleAwsS3Bucket.arn}/*
 /// ```
 ///
 ///
@@ -522,7 +522,7 @@ class OriginAccessIdentity extends pulumi.CustomResource {
           'aws:cloudfront/originAccessIdentity:OriginAccessIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');
@@ -538,11 +538,12 @@ class OriginAccessIdentity extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OriginAccessIdentityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OriginAccessIdentity._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -556,6 +557,24 @@ class OriginAccessIdentity extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    callerReference = registerOutput<String>('callerReference');
+    cloudfrontAccessIdentityPath = registerOutput<String>('cloudfrontAccessIdentityPath');
+    comment = registerOutput<String?>('comment');
+    etag = registerOutput<String>('etag');
+    iamArn = registerOutput<String>('iamArn');
+    s3CanonicalUserId = registerOutput<String>('s3CanonicalUserId');
+  }
+
+  /// Creates a typed reference to an existing [OriginAccessIdentity] resource.
+  OriginAccessIdentity.reference(String urn)
+    : super(
+        'aws:cloudfront/originAccessIdentity:OriginAccessIdentity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');
     cloudfrontAccessIdentityPath = registerOutput<String>('cloudfrontAccessIdentityPath');

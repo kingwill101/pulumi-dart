@@ -20,7 +20,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
 
   factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification(
-      startTimeoutMs: pulumi.Input.fromValue(map['startTimeoutMs'] as int),
+      startTimeoutMs: pulumi.Input.fromValue((map['startTimeoutMs'] as num).toInt()),
     );
   }
 }

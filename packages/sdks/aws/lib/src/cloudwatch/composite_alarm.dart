@@ -15,6 +15,11 @@ import 'composite_alarm_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudwatch.CompositeAlarm("example", {
+///     actionsSuppressor: {
+///         alarm: "suppressor-alarm",
+///         extensionPeriod: 10,
+///         waitPeriod: 20,
+///     },
 ///     alarmDescription: "This is a composite alarm!",
 ///     alarmName: "example-composite-alarm",
 ///     alarmActions: exampleAwsSnsTopic.arn,
@@ -22,11 +27,6 @@ import 'composite_alarm_state.dart';
 ///     alarmRule: `ALARM(${alpha.alarmName}) OR
 /// ALARM(${bravo.alarmName})
 /// `,
-///     actionsSuppressor: {
-///         alarm: "suppressor-alarm",
-///         extensionPeriod: 10,
-///         waitPeriod: 20,
-///     },
 /// });
 /// ```
 /// ```python
@@ -34,18 +34,18 @@ import 'composite_alarm_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudwatch.CompositeAlarm("example",
+///     actions_suppressor={
+///         "alarm": "suppressor-alarm",
+///         "extension_period": 10,
+///         "wait_period": 20,
+///     },
 ///     alarm_description="This is a composite alarm!",
 ///     alarm_name="example-composite-alarm",
 ///     alarm_actions=example_aws_sns_topic["arn"],
 ///     ok_actions=example_aws_sns_topic["arn"],
 ///     alarm_rule=f"""ALARM({alpha["alarmName"]}) OR
 /// ALARM({bravo["alarmName"]})
-/// """,
-///     actions_suppressor={
-///         "alarm": "suppressor-alarm",
-///         "extension_period": 10,
-///         "wait_period": 20,
-///     })
+/// """)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -57,6 +57,12 @@ import 'composite_alarm_state.dart';
 /// {
 ///     var example = new Aws.CloudWatch.CompositeAlarm("example", new()
 ///     {
+///         ActionsSuppressor = new Aws.CloudWatch.Inputs.CompositeAlarmActionsSuppressorArgs
+///         {
+///             Alarm = "suppressor-alarm",
+///             ExtensionPeriod = 10,
+///             WaitPeriod = 20,
+///         },
 ///         AlarmDescription = "This is a composite alarm!",
 ///         AlarmName = "example-composite-alarm",
 ///         AlarmActions = exampleAwsSnsTopic.Arn,
@@ -64,12 +70,6 @@ import 'composite_alarm_state.dart';
 ///         AlarmRule = @$"ALARM({alpha.AlarmName}) OR
 /// ALARM({bravo.AlarmName})
 /// ",
-///         ActionsSuppressor = new Aws.CloudWatch.Inputs.CompositeAlarmActionsSuppressorArgs
-///         {
-///             Alarm = "suppressor-alarm",
-///             ExtensionPeriod = 10,
-///             WaitPeriod = 20,
-///         },
 ///     });
 ///
 /// });
@@ -85,16 +85,16 @@ import 'composite_alarm_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewCompositeAlarm(ctx, "example", &cloudwatch.CompositeAlarmArgs{
-/// 			AlarmDescription: pulumi.String("This is a composite alarm!"),
-/// 			AlarmName:        pulumi.String("example-composite-alarm"),
-/// 			AlarmActions:     pulumi.Any(exampleAwsSnsTopic.Arn),
-/// 			OkActions:        pulumi.Any(exampleAwsSnsTopic.Arn),
-/// 			AlarmRule:        pulumi.Sprintf("ALARM(%v) OR\nALARM(%v)\n", alpha.AlarmName, bravo.AlarmName),
 /// 			ActionsSuppressor: &cloudwatch.CompositeAlarmActionsSuppressorArgs{
 /// 				Alarm:           pulumi.String("suppressor-alarm"),
 /// 				ExtensionPeriod: pulumi.Int(10),
 /// 				WaitPeriod:      pulumi.Int(20),
 /// 			},
+/// 			AlarmDescription: pulumi.String("This is a composite alarm!"),
+/// 			AlarmName:        pulumi.String("example-composite-alarm"),
+/// 			AlarmActions:     pulumi.Any(exampleAwsSnsTopic.Arn),
+/// 			OkActions:        pulumi.Any(exampleAwsSnsTopic.Arn),
+/// 			AlarmRule:        pulumi.Sprintf("ALARM(%v) OR\nALARM(%v)\n", alpha.AlarmName, bravo.AlarmName),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -113,6 +113,11 @@ import 'composite_alarm_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_compositealarm" "example" {
+///   actions_suppressor = {
+///     alarm            = "suppressor-alarm"
+///     extension_period = 10
+///     wait_period      = 20
+///   }
 ///   alarm_description = "This is a composite alarm!"
 ///   alarm_name        = "example-composite-alarm"
 ///   alarm_actions     = exampleAwsSnsTopic.arn
@@ -120,11 +125,6 @@ import 'composite_alarm_state.dart';
 ///   alarm_rule        ="ALARM(${alpha.alarmName}) OR
 /// ALARM(${bravo.alarmName})
 /// "
-///   actions_suppressor = {
-///     alarm            = "suppressor-alarm"
-///     extension_period = 10
-///     wait_period      = 20
-///   }
 /// }
 /// ```
 /// ```java
@@ -150,6 +150,11 @@ import 'composite_alarm_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new CompositeAlarm("example", CompositeAlarmArgs.builder()
+///             .actionsSuppressor(CompositeAlarmActionsSuppressorArgs.builder()
+///                 .alarm("suppressor-alarm")
+///                 .extensionPeriod(10)
+///                 .waitPeriod(20)
+///                 .build())
 ///             .alarmDescription("This is a composite alarm!")
 ///             .alarmName("example-composite-alarm")
 ///             .alarmActions(exampleAwsSnsTopic.arn())
@@ -158,11 +163,6 @@ import 'composite_alarm_state.dart';
 /// ALARM(%s) OR
 /// ALARM(%s)
 /// ", alpha.alarmName(),bravo.alarmName()))
-///             .actionsSuppressor(CompositeAlarmActionsSuppressorArgs.builder()
-///                 .alarm("suppressor-alarm")
-///                 .extensionPeriod(10)
-///                 .waitPeriod(20)
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -173,6 +173,10 @@ import 'composite_alarm_state.dart';
 ///   example:
 ///     type: aws:cloudwatch:CompositeAlarm
 ///     properties:
+///       actionsSuppressor:
+///         alarm: suppressor-alarm
+///         extensionPeriod: 10
+///         waitPeriod: 20
 ///       alarmDescription: This is a composite alarm!
 ///       alarmName: example-composite-alarm
 ///       alarmActions: ${exampleAwsSnsTopic.arn}
@@ -180,10 +184,6 @@ import 'composite_alarm_state.dart';
 ///       alarmRule: |
 ///         ALARM(${alpha.alarmName}) OR
 ///         ALARM(${bravo.alarmName})
-///       actionsSuppressor:
-///         alarm: suppressor-alarm
-///         extensionPeriod: 10
-///         waitPeriod: 20
 /// ```
 ///
 ///
@@ -244,20 +244,20 @@ class CompositeAlarm extends pulumi.CustomResource {
           'aws:cloudwatch/compositeAlarm:CompositeAlarm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
     actionsSuppressor = registerOutput<CompositeAlarmActionsSuppressor?>('actionsSuppressor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CompositeAlarmActionsSuppressor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    alarmActions = registerOutput<List<String>?>('alarmActions');
+    alarmActions = registerOutput<List<String>?>('alarmActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     alarmDescription = registerOutput<String?>('alarmDescription');
     alarmName = registerOutput<String>('alarmName');
     alarmRule = registerOutput<String>('alarmRule');
     arn = registerOutput<String>('arn');
-    insufficientDataActions = registerOutput<List<String>?>('insufficientDataActions');
-    okActions = registerOutput<List<String>?>('okActions');
+    insufficientDataActions = registerOutput<List<String>?>('insufficientDataActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    okActions = registerOutput<List<String>?>('okActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [CompositeAlarm] resource's state with the given [name] and [id].
@@ -265,11 +265,12 @@ class CompositeAlarm extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CompositeAlarmState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CompositeAlarm._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -285,15 +286,38 @@ class CompositeAlarm extends pulumi.CustomResource {
         ) {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
     actionsSuppressor = registerOutput<CompositeAlarmActionsSuppressor?>('actionsSuppressor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CompositeAlarmActionsSuppressor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    alarmActions = registerOutput<List<String>?>('alarmActions');
+    alarmActions = registerOutput<List<String>?>('alarmActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     alarmDescription = registerOutput<String?>('alarmDescription');
     alarmName = registerOutput<String>('alarmName');
     alarmRule = registerOutput<String>('alarmRule');
     arn = registerOutput<String>('arn');
-    insufficientDataActions = registerOutput<List<String>?>('insufficientDataActions');
-    okActions = registerOutput<List<String>?>('okActions');
+    insufficientDataActions = registerOutput<List<String>?>('insufficientDataActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    okActions = registerOutput<List<String>?>('okActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CompositeAlarm] resource.
+  CompositeAlarm.reference(String urn)
+    : super(
+        'aws:cloudwatch/compositeAlarm:CompositeAlarm',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionsEnabled = registerOutput<bool?>('actionsEnabled');
+    actionsSuppressor = registerOutput<CompositeAlarmActionsSuppressor?>('actionsSuppressor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CompositeAlarmActionsSuppressor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    alarmActions = registerOutput<List<String>?>('alarmActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    alarmDescription = registerOutput<String?>('alarmDescription');
+    alarmName = registerOutput<String>('alarmName');
+    alarmRule = registerOutput<String>('alarmRule');
+    arn = registerOutput<String>('arn');
+    insufficientDataActions = registerOutput<List<String>?>('insufficientDataActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    okActions = registerOutput<List<String>?>('okActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

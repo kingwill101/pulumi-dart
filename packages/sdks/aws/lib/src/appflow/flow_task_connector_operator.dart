@@ -3,22 +3,22 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowTaskConnectorOperator {
-  final pulumi.Input<String>? amplitude;
-  final pulumi.Input<String>? customConnector;
-  final pulumi.Input<String>? datadog;
-  final pulumi.Input<String>? dynatrace;
-  final pulumi.Input<String>? googleAnalytics;
-  final pulumi.Input<String>? inforNexus;
-  final pulumi.Input<String>? marketo;
-  final pulumi.Input<String>? s3;
-  final pulumi.Input<String>? salesforce;
-  final pulumi.Input<String>? sapoData;
-  final pulumi.Input<String>? serviceNow;
-  final pulumi.Input<String>? singular;
-  final pulumi.Input<String>? slack;
-  final pulumi.Input<String>? trendmicro;
-  final pulumi.Input<String>? veeva;
-  final pulumi.Input<String>? zendesk;
+  final pulumi.Input<String?>? amplitude;
+  final pulumi.Input<String?>? customConnector;
+  final pulumi.Input<String?>? datadog;
+  final pulumi.Input<String?>? dynatrace;
+  final pulumi.Input<String?>? googleAnalytics;
+  final pulumi.Input<String?>? inforNexus;
+  final pulumi.Input<String?>? marketo;
+  final pulumi.Input<String?>? s3;
+  final pulumi.Input<String?>? salesforce;
+  final pulumi.Input<String?>? sapoData;
+  final pulumi.Input<String?>? serviceNow;
+  final pulumi.Input<String?>? singular;
+  final pulumi.Input<String?>? slack;
+  final pulumi.Input<String?>? trendmicro;
+  final pulumi.Input<String?>? veeva;
+  final pulumi.Input<String?>? zendesk;
 
   /// Creates a new [FlowTaskConnectorOperator].
   /// [amplitude] Optional.

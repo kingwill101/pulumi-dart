@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securityhub_get_enabled_standards_get_enabled_standards_args_doc}
 class GetEnabledStandardsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of the standards subscription ARNs for the standards to retrieve.
-  final pulumi.Input<List<String>>? standardsSubscriptionArns;
+  final pulumi.Input<List<String>?>? standardsSubscriptionArns;
 
   /// Creates a new [GetEnabledStandardsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

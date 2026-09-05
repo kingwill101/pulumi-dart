@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobExperimentConfig {
   /// Name of the SageMaker AI Experiment to associate with.
-  final pulumi.Input<String>? experimentName;
+  final pulumi.Input<String?>? experimentName;
   /// Name of the Experiment Run to associate with.
-  final pulumi.Input<String>? runName;
+  final pulumi.Input<String?>? runName;
   /// Display name for the trial component.
-  final pulumi.Input<String>? trialComponentDisplayName;
+  final pulumi.Input<String?>? trialComponentDisplayName;
   /// Name of the SageMaker AI Trial to associate with.
-  final pulumi.Input<String>? trialName;
+  final pulumi.Input<String?>? trialName;
 
   /// Creates a new [TrainingJobExperimentConfig].
   /// [experimentName] Name of the SageMaker AI Experiment to associate with.

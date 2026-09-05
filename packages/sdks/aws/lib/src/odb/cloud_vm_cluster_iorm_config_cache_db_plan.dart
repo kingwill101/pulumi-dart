@@ -32,7 +32,7 @@ class CloudVmClusterIormConfigCacheDbPlan {
     return CloudVmClusterIormConfigCacheDbPlan(
       dbName: pulumi.Input.fromValue(map['dbName'] as String),
       flashCacheLimit: pulumi.Input.fromValue(map['flashCacheLimit'] as String),
-      share: pulumi.Input.fromValue(map['share'] as int),
+      share: pulumi.Input.fromValue((map['share'] as num).toInt()),
     );
   }
 }

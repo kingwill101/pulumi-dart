@@ -6,7 +6,7 @@ import 'rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_st
 
 class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions {
   /// Set of configuration blocks containing custom action definitions that are available for use by the set of `stateless rule`. See Custom Action below for details.
-  final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction>>? customActions;
+  final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction>?>? customActions;
   /// Set of configuration blocks containing the stateless rules for use in the stateless rule group. See Stateless Rule below for details.
   final pulumi.Input<List<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule>> statelessRules;
 

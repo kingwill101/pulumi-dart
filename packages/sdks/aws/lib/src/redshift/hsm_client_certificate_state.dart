@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering HsmClientCertificate resources.
 class HsmClientCertificateState {
-  /// Amazon Resource Name (ARN) of the Hsm Client Certificate.
-  final pulumi.Input<String>? arn;
+  /// ARN of the Hsm Client Certificate.
+  final pulumi.Input<String?>? arn;
   /// The identifier of the HSM client certificate.
-  final pulumi.Input<String>? hsmClientCertificateIdentifier;
+  final pulumi.Input<String?>? hsmClientCertificateIdentifier;
   /// The public key that the Amazon Redshift cluster will use to connect to the HSM. You must register the public key in the HSM.
-  final pulumi.Input<String>? hsmClientCertificatePublicKey;
+  final pulumi.Input<String?>? hsmClientCertificatePublicKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [HsmClientCertificateState].
-  /// [arn] Amazon Resource Name (ARN) of the Hsm Client Certificate.
+  /// [arn] ARN of the Hsm Client Certificate.
   /// [hsmClientCertificateIdentifier] The identifier of the HSM client certificate.
   /// [hsmClientCertificatePublicKey] The public key that the Amazon Redshift cluster will use to connect to the HSM. You must register the public key in the HSM.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

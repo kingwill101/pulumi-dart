@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2models_bot_args.dart';
+import 'v2models_bot_data_privacy.dart';
+import 'v2models_bot_member.dart';
 import 'v2models_bot_state.dart';
 import 'v2models_bot_timeouts.dart';
 
@@ -32,11 +34,11 @@ import 'v2models_bot_timeouts.dart';
 ///     },
 /// });
 /// const example = new aws.lex.V2modelsBot("example", {
-///     name: "example",
-///     description: "Example description",
 ///     dataPrivacies: [{
 ///         childDirected: false,
 ///     }],
+///     name: "example",
+///     description: "Example description",
 ///     idleSessionTtlInSeconds: 60,
 ///     roleArn: exampleRole.arn,
 ///     type: "Bot",
@@ -67,11 +69,11 @@ import 'v2models_bot_timeouts.dart';
 ///         "created_by": "aws",
 ///     })
 /// example = aws.lex.V2modelsBot("example",
-///     name="example",
-///     description="Example description",
 ///     data_privacies=[{
 ///         "child_directed": False,
 ///     }],
+///     name="example",
+///     description="Example description",
 ///     idle_session_ttl_in_seconds=60,
 ///     role_arn=example_role.arn,
 ///     type="Bot",
@@ -116,8 +118,6 @@ import 'v2models_bot_timeouts.dart';
 ///
 ///     var example = new Aws.Lex.V2modelsBot("example", new()
 ///     {
-///         Name = "example",
-///         Description = "Example description",
 ///         DataPrivacies = new[]
 ///         {
 ///             new Aws.Lex.Inputs.V2modelsBotDataPrivacyArgs
@@ -125,6 +125,8 @@ import 'v2models_bot_timeouts.dart';
 ///                 ChildDirected = false,
 ///             },
 ///         },
+///         Name = "example",
+///         Description = "Example description",
 ///         IdleSessionTtlInSeconds = 60,
 ///         RoleArn = exampleRole.Arn,
 ///         Type = "Bot",
@@ -177,13 +179,13 @@ import 'v2models_bot_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lex.NewV2modelsBot(ctx, "example", &lex.V2modelsBotArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Description: pulumi.String("Example description"),
 /// 			DataPrivacies: lex.V2modelsBotDataPrivacyArray{
 /// 				&lex.V2modelsBotDataPrivacyArgs{
 /// 					ChildDirected: pulumi.Bool(false),
 /// 				},
 /// 			},
+/// 			Name:                    pulumi.String("example"),
+/// 			Description:             pulumi.String("Example description"),
 /// 			IdleSessionTtlInSeconds: pulumi.Int(60),
 /// 			RoleArn:                 exampleRole.Arn,
 /// 			Type:                    pulumi.String("Bot"),
@@ -208,11 +210,11 @@ import 'v2models_bot_timeouts.dart';
 /// }
 ///
 /// resource "aws_lex_v2modelsbot" "example" {
-///   name        = "example"
-///   description = "Example description"
 ///   data_privacies {
 ///     child_directed = false
 ///   }
+///   name                        = "example"
+///   description                 = "Example description"
 ///   idle_session_ttl_in_seconds = 60
 ///   role_arn                    = aws_iam_role.example.arn
 ///   type                        = "Bot"
@@ -281,11 +283,11 @@ import 'v2models_bot_timeouts.dart';
 ///             .build());
 ///
 ///         var example = new V2modelsBot("example", V2modelsBotArgs.builder()
-///             .name("example")
-///             .description("Example description")
 ///             .dataPrivacies(V2modelsBotDataPrivacyArgs.builder()
 ///                 .childDirected(false)
 ///                 .build())
+///             .name("example")
+///             .description("Example description")
 ///             .idleSessionTtlInSeconds(60)
 ///             .roleArn(exampleRole.arn())
 ///             .type("Bot")
@@ -300,10 +302,10 @@ import 'v2models_bot_timeouts.dart';
 ///   example:
 ///     type: aws:lex:V2modelsBot
 ///     properties:
-///       name: example
-///       description: Example description
 ///       dataPrivacies:
 ///         - childDirected: false
+///       name: example
+///       description: Example description
 ///       idleSessionTtlInSeconds: 60
 ///       roleArn: ${exampleRole.arn}
 ///       type: Bot
@@ -338,13 +340,13 @@ import 'v2models_bot_timeouts.dart';
 class V2modelsBot extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Provides information on additional privacy protections Amazon Lex should use with the bot's data. See `dataPrivacy`
-  late final pulumi.Output<List<Map<String, dynamic>>> dataPrivacies;
+  late final pulumi.Output<List<V2modelsBotDataPrivacy>> dataPrivacies;
   /// Description of the bot. It appears in lists to help you identify a particular bot.
   late final pulumi.Output<String?> description;
   /// Time, in seconds, that Amazon Lex should keep information about a user's conversation with the bot. You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.
   late final pulumi.Output<int> idleSessionTtlInSeconds;
   /// List of bot members in a network to be created. See `botMembers`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> members;
+  late final pulumi.Output<List<V2modelsBotMember>?> members;
   /// Name of the bot. The bot name must be unique in the account that creates the bot. Type String. Length Constraints: Minimum length of 1. Maximum length of 100.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -374,19 +376,19 @@ class V2modelsBot extends pulumi.CustomResource {
           'aws:lex/v2modelsBot:V2modelsBot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    dataPrivacies = registerOutput<List<Map<String, dynamic>>>('dataPrivacies');
+    dataPrivacies = registerOutput<List<V2modelsBotDataPrivacy>>('dataPrivacies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsBotDataPrivacy>(guardedValue, (value) => V2modelsBotDataPrivacy.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     idleSessionTtlInSeconds = registerOutput<int>('idleSessionTtlInSeconds');
-    members = registerOutput<List<Map<String, dynamic>>?>('members');
+    members = registerOutput<List<V2modelsBotMember>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsBotMember>(guardedValue, (value) => V2modelsBotMember.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    testBotAliasTags = registerOutput<Map<String, String>?>('testBotAliasTags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    testBotAliasTags = registerOutput<Map<String, String>?>('testBotAliasTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<V2modelsBotTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsBotTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
@@ -396,11 +398,12 @@ class V2modelsBot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2modelsBotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2modelsBot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -415,16 +418,40 @@ class V2modelsBot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    dataPrivacies = registerOutput<List<Map<String, dynamic>>>('dataPrivacies');
+    dataPrivacies = registerOutput<List<V2modelsBotDataPrivacy>>('dataPrivacies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsBotDataPrivacy>(guardedValue, (value) => V2modelsBotDataPrivacy.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     idleSessionTtlInSeconds = registerOutput<int>('idleSessionTtlInSeconds');
-    members = registerOutput<List<Map<String, dynamic>>?>('members');
+    members = registerOutput<List<V2modelsBotMember>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsBotMember>(guardedValue, (value) => V2modelsBotMember.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    testBotAliasTags = registerOutput<Map<String, String>?>('testBotAliasTags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    testBotAliasTags = registerOutput<Map<String, String>?>('testBotAliasTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<V2modelsBotTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsBotTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [V2modelsBot] resource.
+  V2modelsBot.reference(String urn)
+    : super(
+        'aws:lex/v2modelsBot:V2modelsBot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dataPrivacies = registerOutput<List<V2modelsBotDataPrivacy>>('dataPrivacies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsBotDataPrivacy>(guardedValue, (value) => V2modelsBotDataPrivacy.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    idleSessionTtlInSeconds = registerOutput<int>('idleSessionTtlInSeconds');
+    members = registerOutput<List<V2modelsBotMember>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsBotMember>(guardedValue, (value) => V2modelsBotMember.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    testBotAliasTags = registerOutput<Map<String, String>?>('testBotAliasTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<V2modelsBotTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2modelsBotTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

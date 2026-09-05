@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration {
   /// Enables or disables the Secrets Manager configuration.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The ARN of the role the stream assumes.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// The ARN of the Secrets Manager secret. This value is required if `enabled` is true.
-  final pulumi.Input<String>? secretArn;
+  final pulumi.Input<String?>? secretArn;
 
   /// Creates a new [FirehoseDeliveryStreamSnowflakeConfigurationSecretsManagerConfiguration].
   /// [enabled] Enables or disables the Secrets Manager configuration.

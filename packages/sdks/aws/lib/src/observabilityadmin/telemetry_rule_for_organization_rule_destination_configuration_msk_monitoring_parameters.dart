@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TelemetryRuleForOrganizationRuleDestinationConfigurationMskMonitoringParameters {
   /// Level of enhanced monitoring for the MSK cluster. Valid values: `DEFAULT`, `PER_BROKER`, `PER_TOPIC_PER_BROKER`, `PER_TOPIC_PER_PARTITION`.
-  final pulumi.Input<String>? enhancedMonitoring;
+  final pulumi.Input<String?>? enhancedMonitoring;
 
   /// Creates a new [TelemetryRuleForOrganizationRuleDestinationConfigurationMskMonitoringParameters].
   /// [enhancedMonitoring] Level of enhanced monitoring for the MSK cluster. Valid values: `DEFAULT`, `PER_BROKER`, `PER_TOPIC_PER_BROKER`, `PER_TOPIC_PER_PARTITION`.

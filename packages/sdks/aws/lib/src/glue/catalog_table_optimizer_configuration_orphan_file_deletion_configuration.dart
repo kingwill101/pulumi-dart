@@ -5,7 +5,7 @@ import 'catalog_table_optimizer_configuration_orphan_file_deletion_configuration
 
 class CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration {
   /// The configuration for an Iceberg orphan file deletion optimizer.
-  final pulumi.Input<CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration>? icebergConfiguration;
+  final pulumi.Input<CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration?>? icebergConfiguration;
 
   /// Creates a new [CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration].
   /// [icebergConfiguration] The configuration for an Iceberg orphan file deletion optimizer.

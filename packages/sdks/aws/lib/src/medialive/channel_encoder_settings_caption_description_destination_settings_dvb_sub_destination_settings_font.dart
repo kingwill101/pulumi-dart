@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettingsFont {
   /// Key used to extract the password from EC2 Parameter store.
-  final pulumi.Input<String>? passwordParam;
+  final pulumi.Input<String?>? passwordParam;
   /// Path to a file accessible to the live stream.
   final pulumi.Input<String> uri;
   /// Username to be used.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettingsFont].
   /// [passwordParam] Key used to extract the password from EC2 Parameter store.

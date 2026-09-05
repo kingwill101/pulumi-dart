@@ -5,47 +5,47 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LayerVersion resources.
 class LayerVersionState {
   /// ARN of the Lambda Layer with version.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
   final pulumi.Input<dynamic>? code;
   /// Base64-encoded representation of raw SHA-256 sum of the zip file.
-  final pulumi.Input<String>? codeSha256;
+  final pulumi.Input<String?>? codeSha256;
   /// List of [Architectures](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleArchitectures) this layer is compatible with. Currently `x8664` and `arm64` can be specified.
-  final pulumi.Input<List<String>>? compatibleArchitectures;
+  final pulumi.Input<List<String>?>? compatibleArchitectures;
   /// List of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-CompatibleRuntimes) this layer is compatible with. Up to 15 runtimes can be specified.
-  final pulumi.Input<List<String>>? compatibleRuntimes;
+  final pulumi.Input<List<String>?>? compatibleRuntimes;
   /// Date this resource was created.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// Description of what your Lambda Layer does.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ARN of the Lambda Layer without version.
-  final pulumi.Input<String>? layerArn;
+  final pulumi.Input<String?>? layerArn;
   /// Unique name for your Lambda Layer.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? layerName;
+  final pulumi.Input<String?>? layerName;
   /// License info for your Lambda Layer. See [License Info](https://docs.aws.amazon.com/lambda/latest/dg/API_PublishLayerVersion.html#SSS-PublishLayerVersion-request-LicenseInfo).
-  final pulumi.Input<String>? licenseInfo;
+  final pulumi.Input<String?>? licenseInfo;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.
-  final pulumi.Input<String>? s3Bucket;
+  final pulumi.Input<String?>? s3Bucket;
   /// S3 key of an object containing the function's deployment package. Conflicts with `filename`.
-  final pulumi.Input<String>? s3Key;
+  final pulumi.Input<String?>? s3Key;
   /// Object version containing the function's deployment package. Conflicts with `filename`.
-  final pulumi.Input<String>? s3ObjectVersion;
+  final pulumi.Input<String?>? s3ObjectVersion;
   /// ARN of a signing job.
-  final pulumi.Input<String>? signingJobArn;
+  final pulumi.Input<String?>? signingJobArn;
   /// ARN for a signing profile version.
-  final pulumi.Input<String>? signingProfileVersionArn;
+  final pulumi.Input<String?>? signingProfileVersionArn;
   /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleArchitectures`, `compatibleRuntimes`, `description`, `filename`, `layerName`, `licenseInfo`, `s3Bucket`, `s3Key`, `s3ObjectVersion`, or `sourceCodeHash` forces deletion of the existing layer version and creation of a new layer version.
-  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<bool?>? skipDestroy;
   /// Virtual attribute used to trigger replacement when source code changes. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3Key`. The usual way to set this is `filebase64sha256("file.zip")` or `base64sha256(file("file.zip"))`, where "file.zip" is the local filename of the lambda layer source archive.
-  final pulumi.Input<String>? sourceCodeHash;
+  final pulumi.Input<String?>? sourceCodeHash;
   /// Size in bytes of the function .zip file.
-  final pulumi.Input<int>? sourceCodeSize;
+  final pulumi.Input<int?>? sourceCodeSize;
   /// Lambda Layer version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [LayerVersionState].
   /// [arn] ARN of the Lambda Layer with version.
@@ -136,7 +136,7 @@ class LayerVersionState {
       signingProfileVersionArn: (() { final guardedValue = map['signingProfileVersionArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sourceCodeHash: (() { final guardedValue = map['sourceCodeHash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sourceCodeSize: (() { final guardedValue = map['sourceCodeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sourceCodeSize: (() { final guardedValue = map['sourceCodeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

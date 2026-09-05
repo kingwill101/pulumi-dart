@@ -5,7 +5,7 @@ import 'web_acl_rule_action_block_custom_response.dart';
 
 class WebAclRuleActionBlock {
   /// Custom response configuration. See Custom Response below.
-  final pulumi.Input<WebAclRuleActionBlockCustomResponse>? customResponse;
+  final pulumi.Input<WebAclRuleActionBlockCustomResponse?>? customResponse;
 
   /// Creates a new [WebAclRuleActionBlock].
   /// [customResponse] Custom response configuration. See Custom Response below.

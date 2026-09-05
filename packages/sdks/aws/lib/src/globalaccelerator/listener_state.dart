@@ -5,20 +5,20 @@ import 'listener_port_range.dart';
 
 /// Input properties used for looking up and filtering Listener resources.
 class ListenerState {
-  /// The Amazon Resource Name (ARN) of your accelerator.
-  final pulumi.Input<String>? acceleratorArn;
-  /// The Amazon Resource Name (ARN) of the listener.
-  final pulumi.Input<String>? arn;
+  /// ARN of your accelerator.
+  final pulumi.Input<String?>? acceleratorArn;
+  /// ARN of the listener.
+  final pulumi.Input<String?>? arn;
   /// Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
-  final pulumi.Input<String>? clientAffinity;
+  final pulumi.Input<String?>? clientAffinity;
   /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
-  final pulumi.Input<List<ListenerPortRange>>? portRanges;
+  final pulumi.Input<List<ListenerPortRange>?>? portRanges;
   /// The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [ListenerState].
-  /// [acceleratorArn] The Amazon Resource Name (ARN) of your accelerator.
-  /// [arn] The Amazon Resource Name (ARN) of the listener.
+  /// [acceleratorArn] ARN of your accelerator.
+  /// [arn] ARN of the listener.
   /// [clientAffinity] Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
   /// [portRanges] The list of port ranges for the connections from clients to the accelerator. Fields documented below.
   /// [protocol] The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.

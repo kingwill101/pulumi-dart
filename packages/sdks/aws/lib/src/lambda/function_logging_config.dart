@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionLoggingConfig {
   /// Detail level of application logs. Valid values: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`.
-  final pulumi.Input<String>? applicationLogLevel;
+  final pulumi.Input<String?>? applicationLogLevel;
   /// Log format. Valid values: `Text`, `JSON`.
   final pulumi.Input<String> logFormat;
   /// CloudWatch log group where logs are sent.
-  final pulumi.Input<String>? logGroup;
+  final pulumi.Input<String?>? logGroup;
   /// Detail level of Lambda platform logs. Valid values: `DEBUG`, `INFO`, `WARN`.
-  final pulumi.Input<String>? systemLogLevel;
+  final pulumi.Input<String?>? systemLogLevel;
 
   /// Creates a new [FunctionLoggingConfig].
   /// [applicationLogLevel] Detail level of application logs. Valid values: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`.

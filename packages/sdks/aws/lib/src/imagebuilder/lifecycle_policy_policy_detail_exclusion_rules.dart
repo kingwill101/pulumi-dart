@@ -5,9 +5,9 @@ import 'lifecycle_policy_policy_detail_exclusion_rules_amis.dart';
 
 class LifecyclePolicyPolicyDetailExclusionRules {
   /// Lists configuration values that apply to AMIs that Image Builder should exclude from the lifecycle action. Detailed below.
-  final pulumi.Input<LifecyclePolicyPolicyDetailExclusionRulesAmis>? amis;
+  final pulumi.Input<LifecyclePolicyPolicyDetailExclusionRulesAmis?>? amis;
   /// Contains a list of tags that Image Builder uses to skip lifecycle actions for Image Builder image resources that have them.
-  final pulumi.Input<Map<String, String>>? tagMap;
+  final pulumi.Input<Map<String, String>?>? tagMap;
 
   /// Creates a new [LifecyclePolicyPolicyDetailExclusionRules].
   /// [amis] Lists configuration values that apply to AMIs that Image Builder should exclude from the lifecycle action. Detailed below.

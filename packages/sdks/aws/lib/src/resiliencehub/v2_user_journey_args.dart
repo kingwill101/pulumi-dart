@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_resiliencehub_v2_user_journey_v2_user_journey_args_doc}
 class V2UserJourneyArgs {
   /// Description of the user journey.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the user journey.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ARN of the resilience policy to associate with this user journey.
-  final pulumi.Input<String>? policyArn;
+  final pulumi.Input<String?>? policyArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the system this user journey belongs to. Changing this value requires creating a new resource.
   ///
   /// The following arguments are optional:

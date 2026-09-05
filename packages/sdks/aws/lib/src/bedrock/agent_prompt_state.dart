@@ -5,37 +5,37 @@ import 'agent_prompt_variant.dart';
 
 /// Input properties used for looking up and filtering AgentPrompt resources.
 class AgentPromptState {
-  /// Amazon Resource Name (ARN) of the prompt.
-  final pulumi.Input<String>? arn;
+  /// ARN of the prompt.
+  final pulumi.Input<String?>? arn;
   /// Time at which the prompt was created.
-  final pulumi.Input<String>? createdAt;
-  /// Amazon Resource Name (ARN) of the KMS key that you encrypted the prompt with.
-  final pulumi.Input<String>? customerEncryptionKeyArn;
+  final pulumi.Input<String?>? createdAt;
+  /// ARN of the KMS key that you encrypted the prompt with.
+  final pulumi.Input<String?>? customerEncryptionKeyArn;
   /// Name of the default variant for your prompt.
-  final pulumi.Input<String>? defaultVariant;
+  final pulumi.Input<String?>? defaultVariant;
   /// Description of the prompt.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the prompt.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Time at which the prompt was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// A list of objects, each containing details about a variant of the prompt. See Variant for more information.
-  final pulumi.Input<List<AgentPromptVariant>>? variants;
+  final pulumi.Input<List<AgentPromptVariant>?>? variants;
   /// Version of the prompt. When you create a prompt, the version created is the `DRAFT` version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AgentPromptState].
-  /// [arn] Amazon Resource Name (ARN) of the prompt.
+  /// [arn] ARN of the prompt.
   /// [createdAt] Time at which the prompt was created.
-  /// [customerEncryptionKeyArn] Amazon Resource Name (ARN) of the KMS key that you encrypted the prompt with.
+  /// [customerEncryptionKeyArn] ARN of the KMS key that you encrypted the prompt with.
   /// [defaultVariant] Name of the default variant for your prompt.
   /// [description] Description of the prompt.
   /// [name] Name of the prompt.

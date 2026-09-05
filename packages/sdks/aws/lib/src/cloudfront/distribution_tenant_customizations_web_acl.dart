@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionTenantCustomizationsWebAcl {
   /// Action to take for the web ACL. Valid values: `allow`, `block`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// ARN of the distribution tenant.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
 
   /// Creates a new [DistributionTenantCustomizationsWebAcl].
   /// [action] Action to take for the web ACL. Valid values: `allow`, `block`.

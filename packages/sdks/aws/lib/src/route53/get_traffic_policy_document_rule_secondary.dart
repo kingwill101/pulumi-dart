@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTrafficPolicyDocumentRuleSecondary {
-  final pulumi.Input<String>? endpointReference;
-  final pulumi.Input<bool>? evaluateTargetHealth;
-  final pulumi.Input<String>? healthCheck;
-  final pulumi.Input<String>? ruleReference;
+  final pulumi.Input<String?>? endpointReference;
+  final pulumi.Input<bool?>? evaluateTargetHealth;
+  final pulumi.Input<String?>? healthCheck;
+  final pulumi.Input<String?>? ruleReference;
 
   /// Creates a new [GetTrafficPolicyDocumentRuleSecondary].
   /// [endpointReference] Optional.

@@ -5,7 +5,7 @@ import 'multitenant_distribution_tenant_config_parameter_definition.dart';
 
 class MultitenantDistributionTenantConfig {
   /// One or more parameter definitions for the tenant configuration. See Parameter Definition below.
-  final pulumi.Input<List<MultitenantDistributionTenantConfigParameterDefinition>>? parameterDefinitions;
+  final pulumi.Input<List<MultitenantDistributionTenantConfigParameterDefinition>?>? parameterDefinitions;
 
   /// Creates a new [MultitenantDistributionTenantConfig].
   /// [parameterDefinitions] One or more parameter definitions for the tenant configuration. See Parameter Definition below.

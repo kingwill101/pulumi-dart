@@ -9,11 +9,11 @@ import 'alias_routing_configuration.dart';
 /// {@macro pulumi_sfn_alias_alias_args_doc}
 class AliasArgs {
   /// Description of the alias.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name for the alias you are creating.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The StateMachine alias' route configuration settings. Fields documented below
   final pulumi.Input<List<AliasRoutingConfiguration>> routingConfigurations;
 

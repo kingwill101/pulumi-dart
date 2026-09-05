@@ -5,7 +5,7 @@ import 'cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
   /// Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.
-  final pulumi.Input<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication>? clientAuthentication;
+  final pulumi.Input<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication?>? clientAuthentication;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity].
   /// [clientAuthentication] Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.

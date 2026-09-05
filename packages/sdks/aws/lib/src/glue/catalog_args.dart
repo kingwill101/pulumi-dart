@@ -14,30 +14,30 @@ import 'catalog_timeouts.dart';
 /// {@macro pulumi_glue_catalog_catalog_args_doc}
 class CatalogArgs {
   /// Whether third-party engines can access data in Amazon S3 locations that are registered with Lake Formation. Valid values are `True` and `False`.
-  final pulumi.Input<String>? allowFullTableExternalDataAccess;
+  final pulumi.Input<String?>? allowFullTableExternalDataAccess;
   /// Configuration block of properties for the catalog. See `catalogProperties` below.
-  final pulumi.Input<CatalogCatalogProperties>? catalogProperties;
+  final pulumi.Input<CatalogCatalogProperties?>? catalogProperties;
   /// List of default permissions on databases for principals. See `createDatabaseDefaultPermissions` below.
-  final pulumi.Input<List<CatalogCreateDatabaseDefaultPermission>>? createDatabaseDefaultPermissions;
+  final pulumi.Input<List<CatalogCreateDatabaseDefaultPermission>?>? createDatabaseDefaultPermissions;
   /// List of default permissions on tables for principals. See `createTableDefaultPermissions` below.
-  final pulumi.Input<List<CatalogCreateTableDefaultPermission>>? createTableDefaultPermissions;
+  final pulumi.Input<List<CatalogCreateTableDefaultPermission>?>? createTableDefaultPermissions;
   /// Description of the catalog.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block for a federated catalog. See `federatedCatalog` below.
-  final pulumi.Input<CatalogFederatedCatalog>? federatedCatalog;
+  final pulumi.Input<CatalogFederatedCatalog?>? federatedCatalog;
   /// Name of the catalog.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether to overwrite existing Lake Formation permissions on child resources with the default permissions. Valid values are `Accept` and `Deny`.
-  final pulumi.Input<String>? overwriteChildResourcePermissionsWithDefault;
+  final pulumi.Input<String?>? overwriteChildResourcePermissionsWithDefault;
   /// Map of key-value pairs that define parameters and properties of the catalog.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration block for a target Redshift catalog. See `targetRedshiftCatalog` below.
-  final pulumi.Input<CatalogTargetRedshiftCatalog>? targetRedshiftCatalog;
-  final pulumi.Input<CatalogTimeouts>? timeouts;
+  final pulumi.Input<CatalogTargetRedshiftCatalog?>? targetRedshiftCatalog;
+  final pulumi.Input<CatalogTimeouts?>? timeouts;
 
   /// Creates a new [CatalogArgs].
   /// [allowFullTableExternalDataAccess] Whether third-party engines can access data in Amazon S3 locations that are registered with Lake Formation. Valid values are `True` and `False`.

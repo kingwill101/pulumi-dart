@@ -7,25 +7,25 @@ import 'report_plan_report_setting.dart';
 /// Input properties used for looking up and filtering ReportPlan resources.
 class ReportPlanState {
   /// ARN of the backup report plan.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Date and time that a report plan is created, in Unix format and Coordinated Universal Time (UTC).
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Deployment status of a report plan. The statuses are: `CREATE_IN_PROGRESS` | `UPDATE_IN_PROGRESS` | `DELETE_IN_PROGRESS` | `COMPLETED`.
-  final pulumi.Input<String>? deploymentStatus;
+  final pulumi.Input<String?>? deploymentStatus;
   /// Description of the report plan with a maximum of 1,024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Unique name of the report plan. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
-  final pulumi.Input<ReportPlanReportDeliveryChannel>? reportDeliveryChannel;
+  final pulumi.Input<ReportPlanReportDeliveryChannel?>? reportDeliveryChannel;
   /// Object that identifies the report template for the report. Reports are built using a report template. Detailed below.
-  final pulumi.Input<ReportPlanReportSetting>? reportSetting;
+  final pulumi.Input<ReportPlanReportSetting?>? reportSetting;
   /// Metadata that you can assign to help organize the report plans you create. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ReportPlanState].
   /// [arn] ARN of the backup report plan.

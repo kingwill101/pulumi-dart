@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_set_args.dart';
+import 'resource_set_resource_set.dart';
 import 'resource_set_state.dart';
 import 'resource_set_timeouts.dart';
 
@@ -153,7 +154,7 @@ class ResourceSet extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Details about the resource set to be created or updated. See `resourceSet` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceSets;
+  late final pulumi.Output<List<ResourceSetResourceSet>?> resourceSets;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -171,13 +172,13 @@ class ResourceSet extends pulumi.CustomResource {
           'aws:fms/resourceSet:ResourceSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
-    resourceSets = registerOutput<List<Map<String, dynamic>>?>('resourceSets');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    resourceSets = registerOutput<List<ResourceSetResourceSet>?>('resourceSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceSetResourceSet>(guardedValue, (value) => ResourceSetResourceSet.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ResourceSetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -186,11 +187,12 @@ class ResourceSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -206,9 +208,26 @@ class ResourceSet extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');
-    resourceSets = registerOutput<List<Map<String, dynamic>>?>('resourceSets');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    resourceSets = registerOutput<List<ResourceSetResourceSet>?>('resourceSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceSetResourceSet>(guardedValue, (value) => ResourceSetResourceSet.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ResourceSetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ResourceSet] resource.
+  ResourceSet.reference(String urn)
+    : super(
+        'aws:fms/resourceSet:ResourceSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    resourceSets = registerOutput<List<ResourceSetResourceSet>?>('resourceSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceSetResourceSet>(guardedValue, (value) => ResourceSetResourceSet.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ResourceSetTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSetTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

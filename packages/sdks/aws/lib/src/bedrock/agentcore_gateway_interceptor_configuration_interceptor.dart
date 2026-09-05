@@ -5,7 +5,7 @@ import 'agentcore_gateway_interceptor_configuration_interceptor_lambda.dart';
 
 class AgentcoreGatewayInterceptorConfigurationInterceptor {
   /// Lambda function configuration for the interceptor. See `lambda` below.
-  final pulumi.Input<AgentcoreGatewayInterceptorConfigurationInterceptorLambda>? lambda;
+  final pulumi.Input<AgentcoreGatewayInterceptorConfigurationInterceptorLambda?>? lambda;
 
   /// Creates a new [AgentcoreGatewayInterceptorConfigurationInterceptor].
   /// [lambda] Lambda function configuration for the interceptor. See `lambda` below.

@@ -9,15 +9,15 @@ import 'event_connection_auth_parameters_oauth.dart';
 
 class EventConnectionAuthParameters {
   /// Parameters used for API_KEY authorization. An API key to include in the header for each authentication request. A maximum of 1 are allowed. Conflicts with `basic` and `oauth`. Documented below.
-  final pulumi.Input<EventConnectionAuthParametersApiKey>? apiKey;
+  final pulumi.Input<EventConnectionAuthParametersApiKey?>? apiKey;
   /// Parameters used for BASIC authorization. A maximum of 1 are allowed. Conflicts with `apiKey` and `oauth`. Documented below.
-  final pulumi.Input<EventConnectionAuthParametersBasic>? basic;
+  final pulumi.Input<EventConnectionAuthParametersBasic?>? basic;
   /// Parameters used for `oauth` with private API. Documented below.
-  final pulumi.Input<EventConnectionAuthParametersConnectivityParameters>? connectivityParameters;
+  final pulumi.Input<EventConnectionAuthParametersConnectivityParameters?>? connectivityParameters;
   /// Invocation Http Parameters are additional credentials used to sign each Invocation of the ApiDestination created from this Connection. If the ApiDestination Rule Target has additional HttpParameters, the values will be merged together, with the Connection Invocation Http Parameters taking precedence. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
-  final pulumi.Input<EventConnectionAuthParametersInvocationHttpParameters>? invocationHttpParameters;
+  final pulumi.Input<EventConnectionAuthParametersInvocationHttpParameters?>? invocationHttpParameters;
   /// Parameters used for OAUTH_CLIENT_CREDENTIALS authorization. A maximum of 1 are allowed. Conflicts with `basic` and `apiKey`. Documented below.
-  final pulumi.Input<EventConnectionAuthParametersOauth>? oauth;
+  final pulumi.Input<EventConnectionAuthParametersOauth?>? oauth;
 
   /// Creates a new [EventConnectionAuthParameters].
   /// [apiKey] Parameters used for API_KEY authorization. An API key to include in the header for each authentication request. A maximum of 1 are allowed. Conflicts with `basic` and `oauth`. Documented below.

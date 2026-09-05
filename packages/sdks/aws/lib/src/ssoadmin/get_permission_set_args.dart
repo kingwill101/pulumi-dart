@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ssoadmin_get_permission_set_get_permission_set_args_doc}
 class GetPermissionSetArgs {
   /// ARN of the permission set.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ARN of the SSO Instance associated with the permission set.
   final pulumi.Input<String> instanceArn;
   /// Name of the SSO Permission Set.
   ///
   /// &gt; **NOTE:** Either `arn` or `name` must be configured.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetPermissionSetArgs].
   /// [arn] ARN of the permission set.

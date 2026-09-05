@@ -22,54 +22,54 @@ class ProjectArgs {
   final pulumi.Input<ProjectArtifacts> artifacts;
   /// Specify a maximum number of additional automatic retries after a failed build.
   /// The default is 0.
-  final pulumi.Input<int>? autoRetryLimit;
+  final pulumi.Input<int?>? autoRetryLimit;
   /// Generates a publicly-accessible URL for the projects build badge. Available as
   /// `badgeUrl` attribute when enabled.
-  final pulumi.Input<bool>? badgeEnabled;
+  final pulumi.Input<bool?>? badgeEnabled;
   /// Defines the batch build options for the project.
-  final pulumi.Input<ProjectBuildBatchConfig>? buildBatchConfig;
+  final pulumi.Input<ProjectBuildBatchConfig?>? buildBatchConfig;
   /// Number of minutes, from 5 to 2160 (36 hours), for AWS CodeBuild to wait until timing out
   /// any related build that does not get marked as completed. The default is 60 minutes. The `buildTimeout` property is
   /// not available on the `Lambda` compute type.
-  final pulumi.Input<int>? buildTimeout;
+  final pulumi.Input<int?>? buildTimeout;
   /// Configuration block. Detailed below.
-  final pulumi.Input<ProjectCache>? cache;
+  final pulumi.Input<ProjectCache?>? cache;
   /// Specify a maximum number of concurrent builds for the project. The value
   /// specified must be greater than 0 and less than the account concurrent running builds limit.
-  final pulumi.Input<int>? concurrentBuildLimit;
+  final pulumi.Input<int?>? concurrentBuildLimit;
   /// Short description of the project.
-  final pulumi.Input<String>? description;
-  /// AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting
+  final pulumi.Input<String?>? description;
+  /// KMS customer master key (CMK) to be used for encrypting
   /// the build project's build output artifacts.
-  final pulumi.Input<String>? encryptionKey;
+  final pulumi.Input<String?>? encryptionKey;
   /// Configuration block. Detailed below.
   final pulumi.Input<ProjectEnvironment> environment;
   /// A set of file system locations to mount inside the build. File system locations
   /// are documented below.
-  final pulumi.Input<List<ProjectFileSystemLocation>>? fileSystemLocations;
+  final pulumi.Input<List<ProjectFileSystemLocation>?>? fileSystemLocations;
   /// Configuration block. Detailed below.
-  final pulumi.Input<ProjectLogsConfig>? logsConfig;
+  final pulumi.Input<ProjectLogsConfig?>? logsConfig;
   /// Project's name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the visibility of the project's builds. Possible values are: `PUBLIC_READ`
   /// and `PRIVATE`. Default value is `PRIVATE`.
-  final pulumi.Input<String>? projectVisibility;
+  final pulumi.Input<String?>? projectVisibility;
   /// Number of minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it
   /// times out. The default is 8 hours. The `queuedTimeout` property is not available on the `Lambda` compute type.
-  final pulumi.Input<int>? queuedTimeout;
+  final pulumi.Input<int?>? queuedTimeout;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of the IAM role that enables CodeBuild to access the CloudWatch Logs and
   /// Amazon S3 artifacts for the project's builds in order to display them publicly. Only applicable if
   /// `projectVisibility` is `PUBLIC_READ`.
-  final pulumi.Input<String>? resourceAccessRole;
+  final pulumi.Input<String?>? resourceAccessRole;
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<ProjectSecondaryArtifact>>? secondaryArtifacts;
+  final pulumi.Input<List<ProjectSecondaryArtifact>?>? secondaryArtifacts;
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<ProjectSecondarySourceVersion>>? secondarySourceVersions;
+  final pulumi.Input<List<ProjectSecondarySourceVersion>?>? secondarySourceVersions;
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<ProjectSecondarySource>>? secondarySources;
-  /// Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that
+  final pulumi.Input<List<ProjectSecondarySource>?>? secondarySources;
+  /// ARN of the AWS Identity and Access Management (IAM) role that
   /// enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
   final pulumi.Input<String> serviceRole;
   /// Configuration block. Detailed below.
@@ -78,13 +78,13 @@ class ProjectArgs {
   final pulumi.Input<ProjectSource> source;
   /// Version of the build input to be built for this project. If not specified, the latest
   /// version is used.
-  final pulumi.Input<String>? sourceVersion;
+  final pulumi.Input<String?>? sourceVersion;
   /// Map of tags to assign to the resource. If configured with a provider
   /// `defaultTags` configuration block
   /// present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration block. Detailed below.
-  final pulumi.Input<ProjectVpcConfig>? vpcConfig;
+  final pulumi.Input<ProjectVpcConfig?>? vpcConfig;
 
   /// Creates a new [ProjectArgs].
   /// [artifacts] Configuration block. Detailed below.
@@ -95,7 +95,7 @@ class ProjectArgs {
   /// [cache] Configuration block. Detailed below.
   /// [concurrentBuildLimit] Specify a maximum number of concurrent builds for the project. The value
   /// [description] Short description of the project.
-  /// [encryptionKey] AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting
+  /// [encryptionKey] KMS customer master key (CMK) to be used for encrypting
   /// [environment] Configuration block. Detailed below.
   /// [fileSystemLocations] A set of file system locations to mount inside the build. File system locations
   /// [logsConfig] Configuration block. Detailed below.
@@ -107,7 +107,7 @@ class ProjectArgs {
   /// [secondaryArtifacts] Configuration block. Detailed below.
   /// [secondarySourceVersions] Configuration block. Detailed below.
   /// [secondarySources] Configuration block. Detailed below.
-  /// [serviceRole] Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that
+  /// [serviceRole] ARN of the AWS Identity and Access Management (IAM) role that
   /// [source] Configuration block. Detailed below.
   /// [sourceVersion] Version of the build input to be built for this project. If not specified, the latest
   /// [tags] Map of tags to assign to the resource. If configured with a provider
@@ -173,12 +173,12 @@ class ProjectArgs {
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
       artifacts: pulumi.Input.fromValue(ProjectArtifacts.fromMap((map['artifacts']! as Map).cast<String, dynamic>())),
-      autoRetryLimit: (() { final guardedValue = map['autoRetryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      autoRetryLimit: (() { final guardedValue = map['autoRetryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       badgeEnabled: (() { final guardedValue = map['badgeEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       buildBatchConfig: (() { final guardedValue = map['buildBatchConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectBuildBatchConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      buildTimeout: (() { final guardedValue = map['buildTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      buildTimeout: (() { final guardedValue = map['buildTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       cache: (() { final guardedValue = map['cache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectCache.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      concurrentBuildLimit: (() { final guardedValue = map['concurrentBuildLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      concurrentBuildLimit: (() { final guardedValue = map['concurrentBuildLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptionKey: (() { final guardedValue = map['encryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: pulumi.Input.fromValue(ProjectEnvironment.fromMap((map['environment']! as Map).cast<String, dynamic>())),
@@ -186,7 +186,7 @@ class ProjectArgs {
       logsConfig: (() { final guardedValue = map['logsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectVisibility: (() { final guardedValue = map['projectVisibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queuedTimeout: (() { final guardedValue = map['queuedTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      queuedTimeout: (() { final guardedValue = map['queuedTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceAccessRole: (() { final guardedValue = map['resourceAccessRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secondaryArtifacts: (() { final guardedValue = map['secondaryArtifacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ProjectSecondaryArtifact>(guardedValue, (value) => ProjectSecondaryArtifact.fromMap((value as Map).cast<String, dynamic>()))); })(),

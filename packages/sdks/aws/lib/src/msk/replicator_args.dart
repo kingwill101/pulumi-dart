@@ -11,13 +11,13 @@ import 'replicator_replication_info_list.dart';
 /// {@macro pulumi_msk_replicator_replicator_args_doc}
 class ReplicatorArgs {
   /// A summary description of the replicator.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of Kafka clusters which are targets of the replicator.
   final pulumi.Input<List<ReplicatorKafkaCluster>> kafkaClusters;
   /// Configuration block for delivering replicator logs to customer destinations. Detailed below.
-  final pulumi.Input<ReplicatorLogDelivery>? logDelivery;
+  final pulumi.Input<ReplicatorLogDelivery?>? logDelivery;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.
   final pulumi.Input<ReplicatorReplicationInfoList> replicationInfoList;
   /// The name of the replicator.
@@ -25,7 +25,7 @@ class ReplicatorArgs {
   /// The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
   final pulumi.Input<String> serviceExecutionRoleArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ReplicatorArgs].
   /// [description] A summary description of the replicator.

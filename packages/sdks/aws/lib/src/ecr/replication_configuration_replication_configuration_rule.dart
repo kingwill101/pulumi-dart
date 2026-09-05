@@ -8,7 +8,7 @@ class ReplicationConfigurationReplicationConfigurationRule {
   /// the details of a replication destination. A maximum of 25 are allowed per `rule`. See Destination.
   final pulumi.Input<List<ReplicationConfigurationReplicationConfigurationRuleDestination>> destinations;
   /// filters for a replication rule. See Repository Filter.
-  final pulumi.Input<List<ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter>>? repositoryFilters;
+  final pulumi.Input<List<ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter>?>? repositoryFilters;
 
   /// Creates a new [ReplicationConfigurationReplicationConfigurationRule].
   /// [destinations] the details of a replication destination. A maximum of 25 are allowed per `rule`. See Destination.

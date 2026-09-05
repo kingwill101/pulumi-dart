@@ -10,7 +10,7 @@ class AlgorithmValidationSpecificationValidationProfiles {
   /// Training job definition used during validation. See Training Job Definition.
   final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinition> trainingJobDefinition;
   /// Transform job definition used during validation. See Transform Job Definition.
-  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTransformJobDefinition>? transformJobDefinition;
+  final pulumi.Input<AlgorithmValidationSpecificationValidationProfilesTransformJobDefinition?>? transformJobDefinition;
 
   /// Creates a new [AlgorithmValidationSpecificationValidationProfiles].
   /// [profileName] Profile name.

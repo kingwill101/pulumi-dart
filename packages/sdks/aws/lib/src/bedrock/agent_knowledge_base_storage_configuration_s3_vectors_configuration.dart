@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration {
   /// ARN of the S3 Vectors index. Conflicts with `indexName` and `vectorBucketArn`.
-  final pulumi.Input<String>? indexArn;
+  final pulumi.Input<String?>? indexArn;
   /// Name of the S3 Vectors index. Must be specified with `vectorBucketArn`. Conflicts with `indexArn`.
-  final pulumi.Input<String>? indexName;
+  final pulumi.Input<String?>? indexName;
   /// ARN of the S3 Vectors vector bucket. Must be specified with `indexName`. Conflicts with `indexArn`.
-  final pulumi.Input<String>? vectorBucketArn;
+  final pulumi.Input<String?>? vectorBucketArn;
 
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration].
   /// [indexArn] ARN of the S3 Vectors index. Conflicts with `indexName` and `vectorBucketArn`.

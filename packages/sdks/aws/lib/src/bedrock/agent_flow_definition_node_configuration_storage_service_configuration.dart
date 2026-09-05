@@ -5,7 +5,7 @@ import 'agent_flow_definition_node_configuration_storage_service_configuration_s
 
 class AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration {
   /// Contains configurations for the service to use for storing the input into the node. See Storage S3 Service Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3>? s3;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationStorageServiceConfigurationS3?>? s3;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration].
   /// [s3] Contains configurations for the service to use for storing the input into the node. See Storage S3 Service Configuration for more information.

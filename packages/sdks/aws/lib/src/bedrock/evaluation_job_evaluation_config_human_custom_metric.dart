@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EvaluationJobEvaluationConfigHumanCustomMetric {
   /// Description of the metric.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the metric.
   final pulumi.Input<String> name;
   /// How the metric is rated. Valid values: `ThumbsUpDown`, `IndividualLikertScale`, `ComparisonLikertScale`, `ComparisonChoice`, `ComparisonRank`.

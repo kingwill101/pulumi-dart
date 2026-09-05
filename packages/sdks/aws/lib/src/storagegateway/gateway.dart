@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_args.dart';
+import 'gateway_gateway_network_interface.dart';
 import 'gateway_maintenance_start_time.dart';
 import 'gateway_smb_active_directory_settings.dart';
 import 'gateway_state.dart';
@@ -209,15 +210,15 @@ import 'gateway_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.storagegateway.Gateway("example", {
-///     gatewayIpAddress: "1.2.3.4",
-///     gatewayName: "example",
-///     gatewayTimezone: "GMT",
-///     gatewayType: "FILE_FSX_SMB",
 ///     smbActiveDirectorySettings: {
 ///         domainName: "corp.example.com",
 ///         password: "avoid-plaintext-passwords",
 ///         username: "Admin",
 ///     },
+///     gatewayIpAddress: "1.2.3.4",
+///     gatewayName: "example",
+///     gatewayTimezone: "GMT",
+///     gatewayType: "FILE_FSX_SMB",
 /// });
 /// ```
 /// ```python
@@ -225,15 +226,15 @@ import 'gateway_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.storagegateway.Gateway("example",
-///     gateway_ip_address="1.2.3.4",
-///     gateway_name="example",
-///     gateway_timezone="GMT",
-///     gateway_type="FILE_FSX_SMB",
 ///     smb_active_directory_settings={
 ///         "domain_name": "corp.example.com",
 ///         "password": "avoid-plaintext-passwords",
 ///         "username": "Admin",
-///     })
+///     },
+///     gateway_ip_address="1.2.3.4",
+///     gateway_name="example",
+///     gateway_timezone="GMT",
+///     gateway_type="FILE_FSX_SMB")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -245,16 +246,16 @@ import 'gateway_state.dart';
 /// {
 ///     var example = new Aws.StorageGateway.Gateway("example", new()
 ///     {
-///         GatewayIpAddress = "1.2.3.4",
-///         GatewayName = "example",
-///         GatewayTimezone = "GMT",
-///         GatewayType = "FILE_FSX_SMB",
 ///         SmbActiveDirectorySettings = new Aws.StorageGateway.Inputs.GatewaySmbActiveDirectorySettingsArgs
 ///         {
 ///             DomainName = "corp.example.com",
 ///             Password = "avoid-plaintext-passwords",
 ///             Username = "Admin",
 ///         },
+///         GatewayIpAddress = "1.2.3.4",
+///         GatewayName = "example",
+///         GatewayTimezone = "GMT",
+///         GatewayType = "FILE_FSX_SMB",
 ///     });
 ///
 /// });
@@ -270,15 +271,15 @@ import 'gateway_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
-/// 			GatewayIpAddress: pulumi.String("1.2.3.4"),
-/// 			GatewayName:      pulumi.String("example"),
-/// 			GatewayTimezone:  pulumi.String("GMT"),
-/// 			GatewayType:      pulumi.String("FILE_FSX_SMB"),
 /// 			SmbActiveDirectorySettings: &storagegateway.GatewaySmbActiveDirectorySettingsArgs{
 /// 				DomainName: pulumi.String("corp.example.com"),
 /// 				Password:   pulumi.String("avoid-plaintext-passwords"),
 /// 				Username:   pulumi.String("Admin"),
 /// 			},
+/// 			GatewayIpAddress: pulumi.String("1.2.3.4"),
+/// 			GatewayName:      pulumi.String("example"),
+/// 			GatewayTimezone:  pulumi.String("GMT"),
+/// 			GatewayType:      pulumi.String("FILE_FSX_SMB"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -297,15 +298,15 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "aws_storagegateway_gateway" "example" {
-///   gateway_ip_address = "1.2.3.4"
-///   gateway_name       = "example"
-///   gateway_timezone   = "GMT"
-///   gateway_type       = "FILE_FSX_SMB"
 ///   smb_active_directory_settings = {
 ///     domain_name = "corp.example.com"
 ///     password    = "avoid-plaintext-passwords"
 ///     username    = "Admin"
 ///   }
+///   gateway_ip_address = "1.2.3.4"
+///   gateway_name       = "example"
+///   gateway_timezone   = "GMT"
+///   gateway_type       = "FILE_FSX_SMB"
 /// }
 /// ```
 /// ```java
@@ -331,15 +332,15 @@ import 'gateway_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Gateway("example", GatewayArgs.builder()
-///             .gatewayIpAddress("1.2.3.4")
-///             .gatewayName("example")
-///             .gatewayTimezone("GMT")
-///             .gatewayType("FILE_FSX_SMB")
 ///             .smbActiveDirectorySettings(GatewaySmbActiveDirectorySettingsArgs.builder()
 ///                 .domainName("corp.example.com")
 ///                 .password("avoid-plaintext-passwords")
 ///                 .username("Admin")
 ///                 .build())
+///             .gatewayIpAddress("1.2.3.4")
+///             .gatewayName("example")
+///             .gatewayTimezone("GMT")
+///             .gatewayType("FILE_FSX_SMB")
 ///             .build());
 ///
 ///     }
@@ -350,14 +351,14 @@ import 'gateway_state.dart';
 ///   example:
 ///     type: aws:storagegateway:Gateway
 ///     properties:
-///       gatewayIpAddress: 1.2.3.4
-///       gatewayName: example
-///       gatewayTimezone: GMT
-///       gatewayType: FILE_FSX_SMB
 ///       smbActiveDirectorySettings:
 ///         domainName: corp.example.com
 ///         password: avoid-plaintext-passwords
 ///         username: Admin
+///       gatewayIpAddress: 1.2.3.4
+///       gatewayName: example
+///       gatewayTimezone: GMT
+///       gatewayType: FILE_FSX_SMB
 /// ```
 ///
 ///
@@ -873,7 +874,7 @@ import 'gateway_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.storagegateway.Gateway` using the gateway Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.storagegateway.Gateway` using the gateway ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:storagegateway/gateway:Gateway example arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678
@@ -886,13 +887,16 @@ import 'gateway_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.storagegateway.Gateway("example", {gatewayIpAddress: sgw.privateIp});
+/// const example = new aws.storagegateway.Gateway("example", {gatewayIpAddress: sgw.privateIp}, {
+///     ignoreChanges: ["gatewayIpAddress"],
+/// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.storagegateway.Gateway("example", gateway_ip_address=sgw["privateIp"])
+/// example = aws.storagegateway.Gateway("example", gateway_ip_address=sgw["privateIp"],
+/// opts = pulumi.ResourceOptions(ignore_changes=["gatewayIpAddress"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -905,6 +909,12 @@ import 'gateway_state.dart';
 ///     var example = new Aws.StorageGateway.Gateway("example", new()
 ///     {
 ///         GatewayIpAddress = sgw.PrivateIp,
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "gatewayIpAddress",
+///         },
 ///     });
 ///
 /// });
@@ -921,7 +931,9 @@ import 'gateway_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
 /// 			GatewayIpAddress: pulumi.Any(sgw.PrivateIp),
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"gatewayIpAddress",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -939,6 +951,9 @@ import 'gateway_state.dart';
 /// }
 ///
 /// resource "aws_storagegateway_gateway" "example" {
+///   lifecycle {
+///     ignore_changes = [gatewayIpAddress]
+///   }
 ///   gateway_ip_address = sgw.privateIp
 /// }
 /// ```
@@ -950,6 +965,7 @@ import 'gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.storagegateway.Gateway;
 /// import com.pulumi.aws.storagegateway.GatewayArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -965,7 +981,9 @@ import 'gateway_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new Gateway("example", GatewayArgs.builder()
 ///             .gatewayIpAddress(sgw.privateIp())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("gatewayIpAddress")
+///                 .build());
 ///
 ///     }
 /// }
@@ -976,17 +994,20 @@ import 'gateway_state.dart';
 ///     type: aws:storagegateway:Gateway
 ///     properties:
 ///       gatewayIpAddress: ${sgw.privateIp}
+///     options:
+///       ignoreChanges:
+///         - gatewayIpAddress
 /// ```
 class Gateway extends pulumi.CustomResource {
   /// Gateway activation key during resource creation. Conflicts with `gatewayIpAddress`. Additional information is available in the [Storage Gateway User Guide](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html).
   late final pulumi.Output<String> activationKey;
-  /// Amazon Resource Name (ARN) of the gateway.
+  /// ARN of the gateway.
   late final pulumi.Output<String> arn;
   /// The average download bandwidth rate limit in bits per second. This is supported for the `CACHED`, `STORED`, and `VTL` gateway types.
   late final pulumi.Output<int?> averageDownloadRateLimitInBitsPerSec;
   /// The average upload bandwidth rate limit in bits per second. This is supported for the `CACHED`, `STORED`, and `VTL` gateway types.
   late final pulumi.Output<int?> averageUploadRateLimitInBitsPerSec;
-  /// The Amazon Resource Name (ARN) of the Amazon CloudWatch log group to use to monitor and log events in the gateway.
+  /// ARN of the Amazon CloudWatch log group to use to monitor and log events in the gateway.
   late final pulumi.Output<String?> cloudwatchLogGroupArn;
   /// The ID of the Amazon EC2 instance that was used to launch the gateway.
   late final pulumi.Output<String> ec2InstanceId;
@@ -999,12 +1020,12 @@ class Gateway extends pulumi.CustomResource {
   /// Name of the gateway.
   late final pulumi.Output<String> gatewayName;
   /// An array that contains descriptions of the gateway network interfaces. See Gateway Network Interface.
-  late final pulumi.Output<List<Map<String, dynamic>>> gatewayNetworkInterfaces;
+  late final pulumi.Output<List<GatewayGatewayNetworkInterface>> gatewayNetworkInterfaces;
   /// Time zone for the gateway. The time zone is of the format "GMT", "GMT-hr:mm", or "GMT+hr:mm". For example, `GMT-4:00` indicates the time is 4 hours behind GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.
   late final pulumi.Output<String> gatewayTimezone;
   /// Type of the gateway. The default value is `STORED`. Valid values: `CACHED`, `FILE_FSX_SMB`, `FILE_S3`, `STORED`, `VTL`.
   late final pulumi.Output<String?> gatewayType;
-  /// VPC endpoint address to be used when activating your gateway. This should be used when your instance is in a private subnet. Requires HTTP access from client computer running this provider. More info on what ports are required by your VPC Endpoint Security group in [Activating a Gateway in a Virtual Private Cloud](https://docs.aws.amazon.com/storagegateway/latest/userguide/gateway-private-link.html).
+  /// VPC endpoint address to be used when activating your gateway. This should be used when your instance is in a private subnet. Requires HTTP access from client computer running Pulumi. More info on what ports are required by your VPC Endpoint Security group in [Activating a Gateway in a VPC](https://docs.aws.amazon.com/storagegateway/latest/userguide/gateway-private-link.html).
   late final pulumi.Output<String?> gatewayVpcEndpoint;
   /// The type of hypervisor environment used by the host.
   late final pulumi.Output<String> hostEnvironment;
@@ -1043,7 +1064,8 @@ class Gateway extends pulumi.CustomResource {
           'aws:storagegateway/gateway:Gateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['smbGuestPassword'],
         ) {
     activationKey = registerOutput<String>('activationKey');
     arn = registerOutput<String>('arn');
@@ -1055,7 +1077,7 @@ class Gateway extends pulumi.CustomResource {
     gatewayId = registerOutput<String>('gatewayId');
     gatewayIpAddress = registerOutput<String>('gatewayIpAddress');
     gatewayName = registerOutput<String>('gatewayName');
-    gatewayNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>('gatewayNetworkInterfaces');
+    gatewayNetworkInterfaces = registerOutput<List<GatewayGatewayNetworkInterface>>('gatewayNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GatewayGatewayNetworkInterface>(guardedValue, (value) => GatewayGatewayNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     gatewayTimezone = registerOutput<String>('gatewayTimezone');
     gatewayType = registerOutput<String?>('gatewayType');
     gatewayVpcEndpoint = registerOutput<String?>('gatewayVpcEndpoint');
@@ -1065,10 +1087,10 @@ class Gateway extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     smbActiveDirectorySettings = registerOutput<GatewaySmbActiveDirectorySettings?>('smbActiveDirectorySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewaySmbActiveDirectorySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     smbFileShareVisibility = registerOutput<bool?>('smbFileShareVisibility');
-    smbGuestPassword = registerOutput<String?>('smbGuestPassword');
+    smbGuestPassword = registerOutput<String?>('smbGuestPassword', isSecret: true);
     smbSecurityStrategy = registerOutput<String>('smbSecurityStrategy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tapeDriveType = registerOutput<String?>('tapeDriveType');
   }
 
@@ -1077,11 +1099,12 @@ class Gateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Gateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1105,7 +1128,7 @@ class Gateway extends pulumi.CustomResource {
     gatewayId = registerOutput<String>('gatewayId');
     gatewayIpAddress = registerOutput<String>('gatewayIpAddress');
     gatewayName = registerOutput<String>('gatewayName');
-    gatewayNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>('gatewayNetworkInterfaces');
+    gatewayNetworkInterfaces = registerOutput<List<GatewayGatewayNetworkInterface>>('gatewayNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GatewayGatewayNetworkInterface>(guardedValue, (value) => GatewayGatewayNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     gatewayTimezone = registerOutput<String>('gatewayTimezone');
     gatewayType = registerOutput<String?>('gatewayType');
     gatewayVpcEndpoint = registerOutput<String?>('gatewayVpcEndpoint');
@@ -1115,10 +1138,47 @@ class Gateway extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     smbActiveDirectorySettings = registerOutput<GatewaySmbActiveDirectorySettings?>('smbActiveDirectorySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewaySmbActiveDirectorySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     smbFileShareVisibility = registerOutput<bool?>('smbFileShareVisibility');
-    smbGuestPassword = registerOutput<String?>('smbGuestPassword');
+    smbGuestPassword = registerOutput<String?>('smbGuestPassword', isSecret: true);
     smbSecurityStrategy = registerOutput<String>('smbSecurityStrategy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tapeDriveType = registerOutput<String?>('tapeDriveType');
+  }
+
+  /// Creates a typed reference to an existing [Gateway] resource.
+  Gateway.reference(String urn)
+    : super(
+        'aws:storagegateway/gateway:Gateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['smbGuestPassword'],
+        isResourceReference: true,
+      ) {
+    activationKey = registerOutput<String>('activationKey');
+    arn = registerOutput<String>('arn');
+    averageDownloadRateLimitInBitsPerSec = registerOutput<int?>('averageDownloadRateLimitInBitsPerSec');
+    averageUploadRateLimitInBitsPerSec = registerOutput<int?>('averageUploadRateLimitInBitsPerSec');
+    cloudwatchLogGroupArn = registerOutput<String?>('cloudwatchLogGroupArn');
+    ec2InstanceId = registerOutput<String>('ec2InstanceId');
+    endpointType = registerOutput<String>('endpointType');
+    gatewayId = registerOutput<String>('gatewayId');
+    gatewayIpAddress = registerOutput<String>('gatewayIpAddress');
+    gatewayName = registerOutput<String>('gatewayName');
+    gatewayNetworkInterfaces = registerOutput<List<GatewayGatewayNetworkInterface>>('gatewayNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GatewayGatewayNetworkInterface>(guardedValue, (value) => GatewayGatewayNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    gatewayTimezone = registerOutput<String>('gatewayTimezone');
+    gatewayType = registerOutput<String?>('gatewayType');
+    gatewayVpcEndpoint = registerOutput<String?>('gatewayVpcEndpoint');
+    hostEnvironment = registerOutput<String>('hostEnvironment');
+    maintenanceStartTime = registerOutput<GatewayMaintenanceStartTime>('maintenanceStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayMaintenanceStartTime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mediumChangerType = registerOutput<String?>('mediumChangerType');
+    region = registerOutput<String>('region');
+    smbActiveDirectorySettings = registerOutput<GatewaySmbActiveDirectorySettings?>('smbActiveDirectorySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewaySmbActiveDirectorySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    smbFileShareVisibility = registerOutput<bool?>('smbFileShareVisibility');
+    smbGuestPassword = registerOutput<String?>('smbGuestPassword', isSecret: true);
+    smbSecurityStrategy = registerOutput<String>('smbSecurityStrategy');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tapeDriveType = registerOutput<String?>('tapeDriveType');
   }
 }

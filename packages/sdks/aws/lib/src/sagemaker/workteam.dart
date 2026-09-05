@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workteam_args.dart';
+import 'workteam_member_definition.dart';
 import 'workteam_notification_configuration.dart';
 import 'workteam_state.dart';
 import 'workteam_worker_access_configuration.dart';
@@ -16,9 +17,6 @@ import 'workteam_worker_access_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.Workteam("example", {
-///     workteamName: "example",
-///     workforceName: exampleAwsSagemakerWorkforce.id,
-///     description: "example",
 ///     memberDefinitions: [{
 ///         cognitoMemberDefinition: {
 ///             clientId: exampleAwsCognitoUserPoolClient.id,
@@ -26,6 +24,9 @@ import 'workteam_worker_access_configuration.dart';
 ///             userGroup: exampleAwsCognitoUserGroup.name,
 ///         },
 ///     }],
+///     workteamName: "example",
+///     workforceName: exampleAwsSagemakerWorkforce.id,
+///     description: "example",
 /// });
 /// ```
 /// ```python
@@ -33,16 +34,16 @@ import 'workteam_worker_access_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.Workteam("example",
-///     workteam_name="example",
-///     workforce_name=example_aws_sagemaker_workforce["id"],
-///     description="example",
 ///     member_definitions=[{
 ///         "cognito_member_definition": {
 ///             "client_id": example_aws_cognito_user_pool_client["id"],
 ///             "user_pool": example_aws_cognito_user_pool_domain["userPoolId"],
 ///             "user_group": example_aws_cognito_user_group["name"],
 ///         },
-///     }])
+///     }],
+///     workteam_name="example",
+///     workforce_name=example_aws_sagemaker_workforce["id"],
+///     description="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -54,9 +55,6 @@ import 'workteam_worker_access_configuration.dart';
 /// {
 ///     var example = new Aws.Sagemaker.Workteam("example", new()
 ///     {
-///         WorkteamName = "example",
-///         WorkforceName = exampleAwsSagemakerWorkforce.Id,
-///         Description = "example",
 ///         MemberDefinitions = new[]
 ///         {
 ///             new Aws.Sagemaker.Inputs.WorkteamMemberDefinitionArgs
@@ -69,6 +67,9 @@ import 'workteam_worker_access_configuration.dart';
 ///                 },
 ///             },
 ///         },
+///         WorkteamName = "example",
+///         WorkforceName = exampleAwsSagemakerWorkforce.Id,
+///         Description = "example",
 ///     });
 ///
 /// });
@@ -84,9 +85,6 @@ import 'workteam_worker_access_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewWorkteam(ctx, "example", &sagemaker.WorkteamArgs{
-/// 			WorkteamName:  pulumi.String("example"),
-/// 			WorkforceName: pulumi.Any(exampleAwsSagemakerWorkforce.Id),
-/// 			Description:   pulumi.String("example"),
 /// 			MemberDefinitions: sagemaker.WorkteamMemberDefinitionArray{
 /// 				&sagemaker.WorkteamMemberDefinitionArgs{
 /// 					CognitoMemberDefinition: &sagemaker.WorkteamMemberDefinitionCognitoMemberDefinitionArgs{
@@ -96,6 +94,9 @@ import 'workteam_worker_access_configuration.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			WorkteamName:  pulumi.String("example"),
+/// 			WorkforceName: pulumi.Any(exampleAwsSagemakerWorkforce.Id),
+/// 			Description:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -114,9 +115,6 @@ import 'workteam_worker_access_configuration.dart';
 /// }
 ///
 /// resource "aws_sagemaker_workteam" "example" {
-///   workteam_name  = "example"
-///   workforce_name = exampleAwsSagemakerWorkforce.id
-///   description    = "example"
 ///   member_definitions {
 ///     cognito_member_definition = {
 ///       client_id  = exampleAwsCognitoUserPoolClient.id
@@ -124,6 +122,9 @@ import 'workteam_worker_access_configuration.dart';
 ///       user_group = exampleAwsCognitoUserGroup.name
 ///     }
 ///   }
+///   workteam_name  = "example"
+///   workforce_name = exampleAwsSagemakerWorkforce.id
+///   description    = "example"
 /// }
 /// ```
 /// ```java
@@ -150,9 +151,6 @@ import 'workteam_worker_access_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Workteam("example", WorkteamArgs.builder()
-///             .workteamName("example")
-///             .workforceName(exampleAwsSagemakerWorkforce.id())
-///             .description("example")
 ///             .memberDefinitions(WorkteamMemberDefinitionArgs.builder()
 ///                 .cognitoMemberDefinition(WorkteamMemberDefinitionCognitoMemberDefinitionArgs.builder()
 ///                     .clientId(exampleAwsCognitoUserPoolClient.id())
@@ -160,6 +158,9 @@ import 'workteam_worker_access_configuration.dart';
 ///                     .userGroup(exampleAwsCognitoUserGroup.name())
 ///                     .build())
 ///                 .build())
+///             .workteamName("example")
+///             .workforceName(exampleAwsSagemakerWorkforce.id())
+///             .description("example")
 ///             .build());
 ///
 ///     }
@@ -170,14 +171,14 @@ import 'workteam_worker_access_configuration.dart';
 ///   example:
 ///     type: aws:sagemaker:Workteam
 ///     properties:
-///       workteamName: example
-///       workforceName: ${exampleAwsSagemakerWorkforce.id}
-///       description: example
 ///       memberDefinitions:
 ///         - cognitoMemberDefinition:
 ///             clientId: ${exampleAwsCognitoUserPoolClient.id}
 ///             userPool: ${exampleAwsCognitoUserPoolDomain.userPoolId}
 ///             userGroup: ${exampleAwsCognitoUserGroup.name}
+///       workteamName: example
+///       workforceName: ${exampleAwsSagemakerWorkforce.id}
+///       description: example
 /// ```
 ///
 ///
@@ -189,14 +190,14 @@ import 'workteam_worker_access_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.Workteam("example", {
-///     workteamName: "example",
-///     workforceName: exampleAwsSagemakerWorkforce.id,
-///     description: "example",
 ///     memberDefinitions: [{
 ///         oidcMemberDefinition: {
 ///             groups: ["example"],
 ///         },
 ///     }],
+///     workteamName: "example",
+///     workforceName: exampleAwsSagemakerWorkforce.id,
+///     description: "example",
 /// });
 /// ```
 /// ```python
@@ -204,14 +205,14 @@ import 'workteam_worker_access_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.Workteam("example",
-///     workteam_name="example",
-///     workforce_name=example_aws_sagemaker_workforce["id"],
-///     description="example",
 ///     member_definitions=[{
 ///         "oidc_member_definition": {
 ///             "groups": ["example"],
 ///         },
-///     }])
+///     }],
+///     workteam_name="example",
+///     workforce_name=example_aws_sagemaker_workforce["id"],
+///     description="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -223,9 +224,6 @@ import 'workteam_worker_access_configuration.dart';
 /// {
 ///     var example = new Aws.Sagemaker.Workteam("example", new()
 ///     {
-///         WorkteamName = "example",
-///         WorkforceName = exampleAwsSagemakerWorkforce.Id,
-///         Description = "example",
 ///         MemberDefinitions = new[]
 ///         {
 ///             new Aws.Sagemaker.Inputs.WorkteamMemberDefinitionArgs
@@ -239,6 +237,9 @@ import 'workteam_worker_access_configuration.dart';
 ///                 },
 ///             },
 ///         },
+///         WorkteamName = "example",
+///         WorkforceName = exampleAwsSagemakerWorkforce.Id,
+///         Description = "example",
 ///     });
 ///
 /// });
@@ -254,9 +255,6 @@ import 'workteam_worker_access_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewWorkteam(ctx, "example", &sagemaker.WorkteamArgs{
-/// 			WorkteamName:  pulumi.String("example"),
-/// 			WorkforceName: pulumi.Any(exampleAwsSagemakerWorkforce.Id),
-/// 			Description:   pulumi.String("example"),
 /// 			MemberDefinitions: sagemaker.WorkteamMemberDefinitionArray{
 /// 				&sagemaker.WorkteamMemberDefinitionArgs{
 /// 					OidcMemberDefinition: &sagemaker.WorkteamMemberDefinitionOidcMemberDefinitionArgs{
@@ -266,6 +264,9 @@ import 'workteam_worker_access_configuration.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			WorkteamName:  pulumi.String("example"),
+/// 			WorkforceName: pulumi.Any(exampleAwsSagemakerWorkforce.Id),
+/// 			Description:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -284,14 +285,14 @@ import 'workteam_worker_access_configuration.dart';
 /// }
 ///
 /// resource "aws_sagemaker_workteam" "example" {
-///   workteam_name  = "example"
-///   workforce_name = exampleAwsSagemakerWorkforce.id
-///   description    = "example"
 ///   member_definitions {
 ///     oidc_member_definition = {
 ///       groups = ["example"]
 ///     }
 ///   }
+///   workteam_name  = "example"
+///   workforce_name = exampleAwsSagemakerWorkforce.id
+///   description    = "example"
 /// }
 /// ```
 /// ```java
@@ -318,14 +319,14 @@ import 'workteam_worker_access_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Workteam("example", WorkteamArgs.builder()
-///             .workteamName("example")
-///             .workforceName(exampleAwsSagemakerWorkforce.id())
-///             .description("example")
 ///             .memberDefinitions(WorkteamMemberDefinitionArgs.builder()
 ///                 .oidcMemberDefinition(WorkteamMemberDefinitionOidcMemberDefinitionArgs.builder()
 ///                     .groups("example")
 ///                     .build())
 ///                 .build())
+///             .workteamName("example")
+///             .workforceName(exampleAwsSagemakerWorkforce.id())
+///             .description("example")
 ///             .build());
 ///
 ///     }
@@ -336,13 +337,13 @@ import 'workteam_worker_access_configuration.dart';
 ///   example:
 ///     type: aws:sagemaker:Workteam
 ///     properties:
-///       workteamName: example
-///       workforceName: ${exampleAwsSagemakerWorkforce.id}
-///       description: example
 ///       memberDefinitions:
 ///         - oidcMemberDefinition:
 ///             groups:
 ///               - example
+///       workteamName: example
+///       workforceName: ${exampleAwsSagemakerWorkforce.id}
+///       description: example
 /// ```
 ///
 ///
@@ -354,12 +355,12 @@ import 'workteam_worker_access_configuration.dart';
 /// $ pulumi import aws:sagemaker/workteam:Workteam example example
 /// ```
 class Workteam extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Workteam.
+  /// ARN assigned by AWS to this Workteam.
   late final pulumi.Output<String> arn;
   /// A description of the work team.
   late final pulumi.Output<String> description;
   /// A list of Member Definitions that contains objects that identify the workers that make up the work team. Workforces can be created using Amazon Cognito or your own OIDC Identity Provider (IdP). For private workforces created using Amazon Cognito use `cognitoMemberDefinition`. For workforces created using your own OIDC identity provider (IdP) use `oidcMemberDefinition`. Do not provide input for both of these parameters in a single request. see Member Definition details below.
-  late final pulumi.Output<List<Map<String, dynamic>>> memberDefinitions;
+  late final pulumi.Output<List<WorkteamMemberDefinition>> memberDefinitions;
   /// Configures notification of workers regarding available or expiring work items. see Notification Configuration details below.
   late final pulumi.Output<WorkteamNotificationConfiguration?> notificationConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -389,16 +390,16 @@ class Workteam extends pulumi.CustomResource {
           'aws:sagemaker/workteam:Workteam',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
-    memberDefinitions = registerOutput<List<Map<String, dynamic>>>('memberDefinitions');
+    memberDefinitions = registerOutput<List<WorkteamMemberDefinition>>('memberDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkteamMemberDefinition>(guardedValue, (value) => WorkteamMemberDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     notificationConfiguration = registerOutput<WorkteamNotificationConfiguration?>('notificationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkteamNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     subdomain = registerOutput<String>('subdomain');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workerAccessConfiguration = registerOutput<WorkteamWorkerAccessConfiguration>('workerAccessConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkteamWorkerAccessConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workforceName = registerOutput<String?>('workforceName');
     workteamName = registerOutput<String>('workteamName');
@@ -409,11 +410,12 @@ class Workteam extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkteamState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workteam._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -429,12 +431,34 @@ class Workteam extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
-    memberDefinitions = registerOutput<List<Map<String, dynamic>>>('memberDefinitions');
+    memberDefinitions = registerOutput<List<WorkteamMemberDefinition>>('memberDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkteamMemberDefinition>(guardedValue, (value) => WorkteamMemberDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     notificationConfiguration = registerOutput<WorkteamNotificationConfiguration?>('notificationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkteamNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     subdomain = registerOutput<String>('subdomain');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workerAccessConfiguration = registerOutput<WorkteamWorkerAccessConfiguration>('workerAccessConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkteamWorkerAccessConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workforceName = registerOutput<String?>('workforceName');
+    workteamName = registerOutput<String>('workteamName');
+  }
+
+  /// Creates a typed reference to an existing [Workteam] resource.
+  Workteam.reference(String urn)
+    : super(
+        'aws:sagemaker/workteam:Workteam',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    memberDefinitions = registerOutput<List<WorkteamMemberDefinition>>('memberDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkteamMemberDefinition>(guardedValue, (value) => WorkteamMemberDefinition.fromMap((value as Map).cast<String, dynamic>())); });
+    notificationConfiguration = registerOutput<WorkteamNotificationConfiguration?>('notificationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkteamNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    subdomain = registerOutput<String>('subdomain');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workerAccessConfiguration = registerOutput<WorkteamWorkerAccessConfiguration>('workerAccessConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkteamWorkerAccessConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workforceName = registerOutput<String?>('workforceName');
     workteamName = registerOutput<String>('workteamName');

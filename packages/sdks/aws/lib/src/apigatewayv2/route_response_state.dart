@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RouteResponse resources.
 class RouteResponseState {
   /// API identifier.
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// [Model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-  final pulumi.Input<String>? modelSelectionExpression;
+  final pulumi.Input<String?>? modelSelectionExpression;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Response models for the route response.
-  final pulumi.Input<Map<String, String>>? responseModels;
+  final pulumi.Input<Map<String, String>?>? responseModels;
   /// Identifier of the `aws.apigatewayv2.Route`.
-  final pulumi.Input<String>? routeId;
+  final pulumi.Input<String?>? routeId;
   /// Route response key.
-  final pulumi.Input<String>? routeResponseKey;
+  final pulumi.Input<String?>? routeResponseKey;
 
   /// Creates a new [RouteResponseState].
   /// [apiId] API identifier.

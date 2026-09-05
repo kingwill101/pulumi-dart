@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_network_service_association_args.dart';
+import 'service_network_service_association_dns_entry.dart';
 import 'service_network_service_association_state.dart';
 
 /// Resource for managing an AWS VPC Lattice Service Network Service Association.
@@ -131,7 +132,7 @@ class ServiceNetworkServiceAssociation extends pulumi.CustomResource {
   /// Custom domain name of the service.
   late final pulumi.Output<String> customDomainName;
   /// DNS name of the service.
-  late final pulumi.Output<List<Map<String, dynamic>>> dnsEntries;
+  late final pulumi.Output<List<ServiceNetworkServiceAssociationDnsEntry>> dnsEntries;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// ID or Amazon Resource Identifier (ARN) of the service.
@@ -157,18 +158,18 @@ class ServiceNetworkServiceAssociation extends pulumi.CustomResource {
           'aws:vpclattice/serviceNetworkServiceAssociation:ServiceNetworkServiceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdBy = registerOutput<String>('createdBy');
     customDomainName = registerOutput<String>('customDomainName');
-    dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    dnsEntries = registerOutput<List<ServiceNetworkServiceAssociationDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceNetworkServiceAssociationDnsEntry>(guardedValue, (value) => ServiceNetworkServiceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     serviceIdentifier = registerOutput<String>('serviceIdentifier');
     serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ServiceNetworkServiceAssociation] resource's state with the given [name] and [id].
@@ -176,11 +177,12 @@ class ServiceNetworkServiceAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceNetworkServiceAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceNetworkServiceAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -197,12 +199,33 @@ class ServiceNetworkServiceAssociation extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     createdBy = registerOutput<String>('createdBy');
     customDomainName = registerOutput<String>('customDomainName');
-    dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    dnsEntries = registerOutput<List<ServiceNetworkServiceAssociationDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceNetworkServiceAssociationDnsEntry>(guardedValue, (value) => ServiceNetworkServiceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     serviceIdentifier = registerOutput<String>('serviceIdentifier');
     serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ServiceNetworkServiceAssociation] resource.
+  ServiceNetworkServiceAssociation.reference(String urn)
+    : super(
+        'aws:vpclattice/serviceNetworkServiceAssociation:ServiceNetworkServiceAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdBy = registerOutput<String>('createdBy');
+    customDomainName = registerOutput<String>('customDomainName');
+    dnsEntries = registerOutput<List<ServiceNetworkServiceAssociationDnsEntry>>('dnsEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceNetworkServiceAssociationDnsEntry>(guardedValue, (value) => ServiceNetworkServiceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    serviceIdentifier = registerOutput<String>('serviceIdentifier');
+    serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -7,11 +7,11 @@ import 'resource_configuration_resource_configuration_definition_ip_resource.dar
 
 class ResourceConfigurationResourceConfigurationDefinition {
   /// Resource DNS Configuration. See `arnResource` Block for details.
-  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinitionArnResource>? arnResource;
+  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinitionArnResource?>? arnResource;
   /// Resource DNS Configuration. See `dnsResource` Block for details.
-  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinitionDnsResource>? dnsResource;
+  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinitionDnsResource?>? dnsResource;
   /// Resource DNS Configuration. See `ipResource` Block for details.
-  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinitionIpResource>? ipResource;
+  final pulumi.Input<ResourceConfigurationResourceConfigurationDefinitionIpResource?>? ipResource;
 
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinition].
   /// [arnResource] Resource DNS Configuration. See `arnResource` Block for details.

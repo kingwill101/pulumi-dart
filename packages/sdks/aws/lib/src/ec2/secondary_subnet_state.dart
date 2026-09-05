@@ -7,32 +7,32 @@ import 'secondary_subnet_timeouts.dart';
 /// Input properties used for looking up and filtering SecondarySubnet resources.
 class SecondarySubnetState {
   /// ARN of the secondary subnet.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Availability Zone for the secondary subnet. Cannot be specified with `availabilityZoneId`.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// ID of the Availability Zone for the secondary subnet. This option is preferred over `availabilityZone` as it provides a consistent identifier across AWS accounts. Cannot be specified with `availabilityZone`.
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// IPv4 CIDR block for the secondary subnet. The CIDR block size must be between `/12` and `/28`.
-  final pulumi.Input<String>? ipv4CidrBlock;
+  final pulumi.Input<String?>? ipv4CidrBlock;
   /// A list of IPv4 CIDR block associations for the secondary network.
-  final pulumi.Input<List<SecondarySubnetIpv4CidrBlockAssociation>>? ipv4CidrBlockAssociations;
+  final pulumi.Input<List<SecondarySubnetIpv4CidrBlockAssociation>?>? ipv4CidrBlockAssociations;
   /// ID of the AWS account that owns the secondary subnet.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ID of the secondary network in which to create the secondary subnet.
-  final pulumi.Input<String>? secondaryNetworkId;
+  final pulumi.Input<String?>? secondaryNetworkId;
   /// Type of the secondary network (e.g., `rdma`).
-  final pulumi.Input<String>? secondaryNetworkType;
+  final pulumi.Input<String?>? secondaryNetworkType;
   /// ID of the secondary subnet.
-  final pulumi.Input<String>? secondarySubnetId;
+  final pulumi.Input<String?>? secondarySubnetId;
   /// State of the IPv4 CIDR block association.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<SecondarySubnetTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<SecondarySubnetTimeouts?>? timeouts;
 
   /// Creates a new [SecondarySubnetState].
   /// [arn] ARN of the secondary subnet.

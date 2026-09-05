@@ -5,9 +5,9 @@ import 'v2models_intent_confirmation_setting_confirmation_next_step_intent_slot.
 
 class V2modelsIntentConfirmationSettingConfirmationNextStepIntent {
   /// Name of the intent.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration block for all of the slot value overrides for the intent. The name of the slot maps to the value of the slot. Slots that are not included in the map aren't overridden. See `slot`.
-  final pulumi.Input<List<V2modelsIntentConfirmationSettingConfirmationNextStepIntentSlot>>? slots;
+  final pulumi.Input<List<V2modelsIntentConfirmationSettingConfirmationNextStepIntentSlot>?>? slots;
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationNextStepIntent].
   /// [name] Name of the intent.

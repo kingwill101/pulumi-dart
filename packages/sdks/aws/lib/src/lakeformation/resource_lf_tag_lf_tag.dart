@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceLfTagLfTag {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Key name for an existing LF-tag.
   final pulumi.Input<String> key;
   /// Value from the possible values for the LF-tag.

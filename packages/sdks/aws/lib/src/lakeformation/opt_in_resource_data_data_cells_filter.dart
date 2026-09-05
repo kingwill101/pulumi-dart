@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OptInResourceDataDataCellsFilter {
   /// Database in the Glue Data Catalog.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Name of the data cells filter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the catalog to which the table belongs.
-  final pulumi.Input<String>? tableCatalogId;
+  final pulumi.Input<String?>? tableCatalogId;
   /// Name of the table.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [OptInResourceDataDataCellsFilter].
   /// [databaseName] Database in the Glue Data Catalog.

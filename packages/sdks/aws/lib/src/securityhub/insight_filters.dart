@@ -97,191 +97,191 @@ import 'insight_filters_workflow_status.dart';
 
 class InsightFilters {
   /// AWS account ID that a finding is generated in. See String_Filter below for more details.
-  final pulumi.Input<List<InsightFiltersAwsAccountId>>? awsAccountIds;
+  final pulumi.Input<List<InsightFiltersAwsAccountId>?>? awsAccountIds;
   /// The name of the AWS account in which a finding is generated. See String_Filter below for more details.
-  final pulumi.Input<List<InsightFiltersAwsAccountName>>? awsAccountNames;
+  final pulumi.Input<List<InsightFiltersAwsAccountName>?>? awsAccountNames;
   /// The name of the findings provider (company) that owns the solution (product) that generates findings. See String_Filter below for more details.
-  final pulumi.Input<List<InsightFiltersCompanyName>>? companyNames;
+  final pulumi.Input<List<InsightFiltersCompanyName>?>? companyNames;
   /// The unique identifier of a standard in which a control is enabled. See String_Filter below for more details.
-  final pulumi.Input<List<InsightFiltersComplianceAssociatedStandardsId>>? complianceAssociatedStandardsIds;
+  final pulumi.Input<List<InsightFiltersComplianceAssociatedStandardsId>?>? complianceAssociatedStandardsIds;
   /// The unique identifier of a control across standards. See String_Filter below for more details.
-  final pulumi.Input<List<InsightFiltersComplianceSecurityControlId>>? complianceSecurityControlIds;
+  final pulumi.Input<List<InsightFiltersComplianceSecurityControlId>?>? complianceSecurityControlIds;
   /// The unique identifier of a control across standards. See String_Filter below for more details.
-  final pulumi.Input<List<InsightFiltersComplianceSecurityControlParametersName>>? complianceSecurityControlParametersNames;
+  final pulumi.Input<List<InsightFiltersComplianceSecurityControlParametersName>?>? complianceSecurityControlParametersNames;
   /// The current value of a security control parameter. See String_Filter below for more details.
-  final pulumi.Input<List<InsightFiltersComplianceSecurityControlParametersValue>>? complianceSecurityControlParametersValues;
+  final pulumi.Input<List<InsightFiltersComplianceSecurityControlParametersValue>?>? complianceSecurityControlParametersValues;
   /// Exclusive to findings that are generated as the result of a check run against a specific rule in a supported standard, such as CIS AWS Foundations. Contains security standard-related finding details. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersComplianceStatus>>? complianceStatuses;
+  final pulumi.Input<List<InsightFiltersComplianceStatus>?>? complianceStatuses;
   /// A finding's confidence. Confidence is defined as the likelihood that a finding accurately identifies the behavior or issue that it was intended to identify. Confidence is scored on a 0-100 basis using a ratio scale, where 0 means zero percent confidence and 100 means 100 percent confidence. See Number Filter below for more details.
-  final pulumi.Input<List<InsightFiltersConfidence>>? confidences;
+  final pulumi.Input<List<InsightFiltersConfidence>?>? confidences;
   /// An ISO8601-formatted timestamp that indicates when the security-findings provider captured the potential security issue that a finding captured. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersCreatedAt>>? createdAts;
+  final pulumi.Input<List<InsightFiltersCreatedAt>?>? createdAts;
   /// The level of importance assigned to the resources associated with the finding. A score of 0 means that the underlying resources have no criticality, and a score of 100 is reserved for the most critical resources. See Number Filter below for more details.
-  final pulumi.Input<List<InsightFiltersCriticality>>? criticalities;
+  final pulumi.Input<List<InsightFiltersCriticality>?>? criticalities;
   /// A finding's description. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersDescription>>? descriptions;
+  final pulumi.Input<List<InsightFiltersDescription>?>? descriptions;
   /// The finding provider value for the finding confidence. Confidence is defined as the likelihood that a finding accurately identifies the behavior or issue that it was intended to identify. Confidence is scored on a 0-100 basis using a ratio scale, where 0 means zero percent confidence and 100 means 100 percent confidence. See Number Filter below for more details.
-  final pulumi.Input<List<InsightFiltersFindingProviderFieldsConfidence>>? findingProviderFieldsConfidences;
+  final pulumi.Input<List<InsightFiltersFindingProviderFieldsConfidence>?>? findingProviderFieldsConfidences;
   /// The finding provider value for the level of importance assigned to the resources associated with the findings. A score of 0 means that the underlying resources have no criticality, and a score of 100 is reserved for the most critical resources. See Number Filter below for more details.
-  final pulumi.Input<List<InsightFiltersFindingProviderFieldsCriticality>>? findingProviderFieldsCriticalities;
+  final pulumi.Input<List<InsightFiltersFindingProviderFieldsCriticality>?>? findingProviderFieldsCriticalities;
   /// The finding identifier of a related finding that is identified by the finding provider. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersFindingProviderFieldsRelatedFindingsId>>? findingProviderFieldsRelatedFindingsIds;
+  final pulumi.Input<List<InsightFiltersFindingProviderFieldsRelatedFindingsId>?>? findingProviderFieldsRelatedFindingsIds;
   /// The ARN of the solution that generated a related finding that is identified by the finding provider. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersFindingProviderFieldsRelatedFindingsProductArn>>? findingProviderFieldsRelatedFindingsProductArns;
+  final pulumi.Input<List<InsightFiltersFindingProviderFieldsRelatedFindingsProductArn>?>? findingProviderFieldsRelatedFindingsProductArns;
   /// The finding provider value for the severity label. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersFindingProviderFieldsSeverityLabel>>? findingProviderFieldsSeverityLabels;
+  final pulumi.Input<List<InsightFiltersFindingProviderFieldsSeverityLabel>?>? findingProviderFieldsSeverityLabels;
   /// The finding provider's original value for the severity. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersFindingProviderFieldsSeverityOriginal>>? findingProviderFieldsSeverityOriginals;
+  final pulumi.Input<List<InsightFiltersFindingProviderFieldsSeverityOriginal>?>? findingProviderFieldsSeverityOriginals;
   /// One or more finding types that the finding provider assigned to the finding. Uses the format of `namespace/category/classifier` that classify a finding. Valid namespace values include: `Software and Configuration Checks`, `TTPs`, `Effects`, `Unusual Behaviors`, and `Sensitive Data Identifications`. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersFindingProviderFieldsType>>? findingProviderFieldsTypes;
+  final pulumi.Input<List<InsightFiltersFindingProviderFieldsType>?>? findingProviderFieldsTypes;
   /// An ISO8601-formatted timestamp that indicates when the security-findings provider first observed the potential security issue that a finding captured. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersFirstObservedAt>>? firstObservedAts;
+  final pulumi.Input<List<InsightFiltersFirstObservedAt>?>? firstObservedAts;
   /// The identifier for the solution-specific component (a discrete unit of logic) that generated a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersGeneratorId>>? generatorIds;
+  final pulumi.Input<List<InsightFiltersGeneratorId>?>? generatorIds;
   /// The security findings provider-specific identifier for a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersId>>? ids;
+  final pulumi.Input<List<InsightFiltersId>?>? ids;
   /// A keyword for a finding. See Keyword Filter below for more details.
-  final pulumi.Input<List<InsightFiltersKeyword>>? keywords;
+  final pulumi.Input<List<InsightFiltersKeyword>?>? keywords;
   /// An ISO8601-formatted timestamp that indicates when the security-findings provider most recently observed the potential security issue that a finding captured. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersLastObservedAt>>? lastObservedAts;
+  final pulumi.Input<List<InsightFiltersLastObservedAt>?>? lastObservedAts;
   /// The name of the malware that was observed. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersMalwareName>>? malwareNames;
+  final pulumi.Input<List<InsightFiltersMalwareName>?>? malwareNames;
   /// The filesystem path of the malware that was observed. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersMalwarePath>>? malwarePaths;
+  final pulumi.Input<List<InsightFiltersMalwarePath>?>? malwarePaths;
   /// The state of the malware that was observed. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersMalwareState>>? malwareStates;
+  final pulumi.Input<List<InsightFiltersMalwareState>?>? malwareStates;
   /// The type of the malware that was observed. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersMalwareType>>? malwareTypes;
+  final pulumi.Input<List<InsightFiltersMalwareType>?>? malwareTypes;
   /// The destination domain of network-related information about a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkDestinationDomain>>? networkDestinationDomains;
+  final pulumi.Input<List<InsightFiltersNetworkDestinationDomain>?>? networkDestinationDomains;
   /// The destination IPv4 address of network-related information about a finding. See Ip Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkDestinationIpv4>>? networkDestinationIpv4s;
+  final pulumi.Input<List<InsightFiltersNetworkDestinationIpv4>?>? networkDestinationIpv4s;
   /// The destination IPv6 address of network-related information about a finding. See Ip Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkDestinationIpv6>>? networkDestinationIpv6s;
+  final pulumi.Input<List<InsightFiltersNetworkDestinationIpv6>?>? networkDestinationIpv6s;
   /// The destination port of network-related information about a finding. See Number Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkDestinationPort>>? networkDestinationPorts;
+  final pulumi.Input<List<InsightFiltersNetworkDestinationPort>?>? networkDestinationPorts;
   /// Indicates the direction of network traffic associated with a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkDirection>>? networkDirections;
+  final pulumi.Input<List<InsightFiltersNetworkDirection>?>? networkDirections;
   /// The protocol of network-related information about a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkProtocol>>? networkProtocols;
+  final pulumi.Input<List<InsightFiltersNetworkProtocol>?>? networkProtocols;
   /// The source domain of network-related information about a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkSourceDomain>>? networkSourceDomains;
+  final pulumi.Input<List<InsightFiltersNetworkSourceDomain>?>? networkSourceDomains;
   /// The source IPv4 address of network-related information about a finding. See Ip Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkSourceIpv4>>? networkSourceIpv4s;
+  final pulumi.Input<List<InsightFiltersNetworkSourceIpv4>?>? networkSourceIpv4s;
   /// The source IPv6 address of network-related information about a finding. See Ip Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkSourceIpv6>>? networkSourceIpv6s;
+  final pulumi.Input<List<InsightFiltersNetworkSourceIpv6>?>? networkSourceIpv6s;
   /// The source media access control (MAC) address of network-related information about a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkSourceMac>>? networkSourceMacs;
+  final pulumi.Input<List<InsightFiltersNetworkSourceMac>?>? networkSourceMacs;
   /// The source port of network-related information about a finding. See Number Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNetworkSourcePort>>? networkSourcePorts;
+  final pulumi.Input<List<InsightFiltersNetworkSourcePort>?>? networkSourcePorts;
   /// The text of a note. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNoteText>>? noteTexts;
+  final pulumi.Input<List<InsightFiltersNoteText>?>? noteTexts;
   /// The timestamp of when the note was updated. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNoteUpdatedAt>>? noteUpdatedAts;
+  final pulumi.Input<List<InsightFiltersNoteUpdatedAt>?>? noteUpdatedAts;
   /// The principal that created a note. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersNoteUpdatedBy>>? noteUpdatedBies;
+  final pulumi.Input<List<InsightFiltersNoteUpdatedBy>?>? noteUpdatedBies;
   /// The date/time that the process was launched. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersProcessLaunchedAt>>? processLaunchedAts;
+  final pulumi.Input<List<InsightFiltersProcessLaunchedAt>?>? processLaunchedAts;
   /// The name of the process. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersProcessName>>? processNames;
+  final pulumi.Input<List<InsightFiltersProcessName>?>? processNames;
   /// The parent process ID. See Number Filter below for more details.
-  final pulumi.Input<List<InsightFiltersProcessParentPid>>? processParentPids;
+  final pulumi.Input<List<InsightFiltersProcessParentPid>?>? processParentPids;
   /// The path to the process executable. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersProcessPath>>? processPaths;
+  final pulumi.Input<List<InsightFiltersProcessPath>?>? processPaths;
   /// The process ID. See Number Filter below for more details.
-  final pulumi.Input<List<InsightFiltersProcessPid>>? processPids;
+  final pulumi.Input<List<InsightFiltersProcessPid>?>? processPids;
   /// The date/time that the process was terminated. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersProcessTerminatedAt>>? processTerminatedAts;
+  final pulumi.Input<List<InsightFiltersProcessTerminatedAt>?>? processTerminatedAts;
   /// The ARN generated by Security Hub that uniquely identifies a third-party company (security findings provider) after this provider's product (solution that generates findings) is registered with Security Hub. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersProductArn>>? productArns;
+  final pulumi.Input<List<InsightFiltersProductArn>?>? productArns;
   /// A data type where security-findings providers can include additional solution-specific details that aren't part of the defined `AwsSecurityFinding` format. See Map Filter below for more details.
-  final pulumi.Input<List<InsightFiltersProductField>>? productFields;
+  final pulumi.Input<List<InsightFiltersProductField>?>? productFields;
   /// The name of the solution (product) that generates findings. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersProductName>>? productNames;
+  final pulumi.Input<List<InsightFiltersProductName>?>? productNames;
   /// The recommendation of what to do about the issue described in a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersRecommendationText>>? recommendationTexts;
+  final pulumi.Input<List<InsightFiltersRecommendationText>?>? recommendationTexts;
   /// The updated record state for the finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersRecordState>>? recordStates;
+  final pulumi.Input<List<InsightFiltersRecordState>?>? recordStates;
   /// The solution-generated identifier for a related finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersRelatedFindingsId>>? relatedFindingsIds;
+  final pulumi.Input<List<InsightFiltersRelatedFindingsId>?>? relatedFindingsIds;
   /// The ARN of the solution that generated a related finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersRelatedFindingsProductArn>>? relatedFindingsProductArns;
+  final pulumi.Input<List<InsightFiltersRelatedFindingsProductArn>?>? relatedFindingsProductArns;
   /// The IAM profile ARN of the instance. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn>>? resourceAwsEc2InstanceIamInstanceProfileArns;
-  /// The Amazon Machine Image (AMI) ID of the instance. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceImageId>>? resourceAwsEc2InstanceImageIds;
+  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn>?>? resourceAwsEc2InstanceIamInstanceProfileArns;
+  /// AMI ID of the instance. See String Filter below for more details.
+  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceImageId>?>? resourceAwsEc2InstanceImageIds;
   /// The IPv4 addresses associated with the instance. See Ip Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceIpv4Address>>? resourceAwsEc2InstanceIpv4Addresses;
+  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceIpv4Address>?>? resourceAwsEc2InstanceIpv4Addresses;
   /// The IPv6 addresses associated with the instance. See Ip Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceIpv6Address>>? resourceAwsEc2InstanceIpv6Addresses;
+  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceIpv6Address>?>? resourceAwsEc2InstanceIpv6Addresses;
   /// The key name associated with the instance. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceKeyName>>? resourceAwsEc2InstanceKeyNames;
+  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceKeyName>?>? resourceAwsEc2InstanceKeyNames;
   /// The date and time the instance was launched. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceLaunchedAt>>? resourceAwsEc2InstanceLaunchedAts;
+  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceLaunchedAt>?>? resourceAwsEc2InstanceLaunchedAts;
   /// The identifier of the subnet that the instance was launched in. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceSubnetId>>? resourceAwsEc2InstanceSubnetIds;
+  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceSubnetId>?>? resourceAwsEc2InstanceSubnetIds;
   /// The instance type of the instance. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceType>>? resourceAwsEc2InstanceTypes;
+  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceType>?>? resourceAwsEc2InstanceTypes;
   /// The identifier of the VPC that the instance was launched in. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceVpcId>>? resourceAwsEc2InstanceVpcIds;
+  final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceVpcId>?>? resourceAwsEc2InstanceVpcIds;
   /// The creation date/time of the IAM access key related to a finding. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsIamAccessKeyCreatedAt>>? resourceAwsIamAccessKeyCreatedAts;
+  final pulumi.Input<List<InsightFiltersResourceAwsIamAccessKeyCreatedAt>?>? resourceAwsIamAccessKeyCreatedAts;
   /// The status of the IAM access key related to a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsIamAccessKeyStatus>>? resourceAwsIamAccessKeyStatuses;
+  final pulumi.Input<List<InsightFiltersResourceAwsIamAccessKeyStatus>?>? resourceAwsIamAccessKeyStatuses;
   /// The user associated with the IAM access key related to a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsIamAccessKeyUserName>>? resourceAwsIamAccessKeyUserNames;
+  final pulumi.Input<List<InsightFiltersResourceAwsIamAccessKeyUserName>?>? resourceAwsIamAccessKeyUserNames;
   /// The canonical user ID of the owner of the S3 bucket. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsS3BucketOwnerId>>? resourceAwsS3BucketOwnerIds;
+  final pulumi.Input<List<InsightFiltersResourceAwsS3BucketOwnerId>?>? resourceAwsS3BucketOwnerIds;
   /// The display name of the owner of the S3 bucket. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceAwsS3BucketOwnerName>>? resourceAwsS3BucketOwnerNames;
+  final pulumi.Input<List<InsightFiltersResourceAwsS3BucketOwnerName>?>? resourceAwsS3BucketOwnerNames;
   /// The identifier of the image related to a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceContainerImageId>>? resourceContainerImageIds;
+  final pulumi.Input<List<InsightFiltersResourceContainerImageId>?>? resourceContainerImageIds;
   /// The name of the image related to a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceContainerImageName>>? resourceContainerImageNames;
+  final pulumi.Input<List<InsightFiltersResourceContainerImageName>?>? resourceContainerImageNames;
   /// The date/time that the container was started. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceContainerLaunchedAt>>? resourceContainerLaunchedAts;
+  final pulumi.Input<List<InsightFiltersResourceContainerLaunchedAt>?>? resourceContainerLaunchedAts;
   /// The name of the container related to a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceContainerName>>? resourceContainerNames;
+  final pulumi.Input<List<InsightFiltersResourceContainerName>?>? resourceContainerNames;
   /// The details of a resource that doesn't have a specific subfield for the resource type defined. See Map Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceDetailsOther>>? resourceDetailsOthers;
+  final pulumi.Input<List<InsightFiltersResourceDetailsOther>?>? resourceDetailsOthers;
   /// The canonical identifier for the given resource type. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceId>>? resourceIds;
+  final pulumi.Input<List<InsightFiltersResourceId>?>? resourceIds;
   /// The canonical AWS partition name that the Region is assigned to. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourcePartition>>? resourcePartitions;
+  final pulumi.Input<List<InsightFiltersResourcePartition>?>? resourcePartitions;
   /// The canonical AWS external Region name where this resource is located. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceRegion>>? resourceRegions;
+  final pulumi.Input<List<InsightFiltersResourceRegion>?>? resourceRegions;
   /// A list of AWS tags associated with a resource at the time the finding was processed. See Map Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceTag>>? resourceTags;
+  final pulumi.Input<List<InsightFiltersResourceTag>?>? resourceTags;
   /// Specifies the type of the resource that details are provided for. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersResourceType>>? resourceTypes;
+  final pulumi.Input<List<InsightFiltersResourceType>?>? resourceTypes;
   /// The label of a finding's severity. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersSeverityLabel>>? severityLabels;
+  final pulumi.Input<List<InsightFiltersSeverityLabel>?>? severityLabels;
   /// A URL that links to a page about the current finding in the security-findings provider's solution. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersSourceUrl>>? sourceUrls;
+  final pulumi.Input<List<InsightFiltersSourceUrl>?>? sourceUrls;
   /// The category of a threat intelligence indicator. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorCategory>>? threatIntelIndicatorCategories;
+  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorCategory>?>? threatIntelIndicatorCategories;
   /// The date/time of the last observation of a threat intelligence indicator. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorLastObservedAt>>? threatIntelIndicatorLastObservedAts;
+  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorLastObservedAt>?>? threatIntelIndicatorLastObservedAts;
   /// The URL for more details from the source of the threat intelligence. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorSourceUrl>>? threatIntelIndicatorSourceUrls;
+  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorSourceUrl>?>? threatIntelIndicatorSourceUrls;
   /// The source of the threat intelligence. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorSource>>? threatIntelIndicatorSources;
+  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorSource>?>? threatIntelIndicatorSources;
   /// The type of a threat intelligence indicator. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorType>>? threatIntelIndicatorTypes;
+  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorType>?>? threatIntelIndicatorTypes;
   /// The value of a threat intelligence indicator. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorValue>>? threatIntelIndicatorValues;
+  final pulumi.Input<List<InsightFiltersThreatIntelIndicatorValue>?>? threatIntelIndicatorValues;
   /// A finding's title. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersTitle>>? titles;
+  final pulumi.Input<List<InsightFiltersTitle>?>? titles;
   /// A finding type in the format of `namespace/category/classifier` that classifies a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersType>>? types;
+  final pulumi.Input<List<InsightFiltersType>?>? types;
   /// An ISO8601-formatted timestamp that indicates when the security-findings provider last updated the finding record. See Date Filter below for more details.
-  final pulumi.Input<List<InsightFiltersUpdatedAt>>? updatedAts;
+  final pulumi.Input<List<InsightFiltersUpdatedAt>?>? updatedAts;
   /// A list of name/value string pairs associated with the finding. These are custom, user-defined fields added to a finding. See Map Filter below for more details.
-  final pulumi.Input<List<InsightFiltersUserDefinedValue>>? userDefinedValues;
+  final pulumi.Input<List<InsightFiltersUserDefinedValue>?>? userDefinedValues;
   /// The veracity of a finding. See String Filter below for more details.
-  final pulumi.Input<List<InsightFiltersVerificationState>>? verificationStates;
+  final pulumi.Input<List<InsightFiltersVerificationState>?>? verificationStates;
   /// The status of the investigation into a finding. See Workflow Status Filter below for more details.
-  final pulumi.Input<List<InsightFiltersWorkflowStatus>>? workflowStatuses;
+  final pulumi.Input<List<InsightFiltersWorkflowStatus>?>? workflowStatuses;
 
   /// Creates a new [InsightFilters].
   /// [awsAccountIds] AWS account ID that a finding is generated in. See String_Filter below for more details.
@@ -340,7 +340,7 @@ class InsightFilters {
   /// [relatedFindingsIds] The solution-generated identifier for a related finding. See String Filter below for more details.
   /// [relatedFindingsProductArns] The ARN of the solution that generated a related finding. See String Filter below for more details.
   /// [resourceAwsEc2InstanceIamInstanceProfileArns] The IAM profile ARN of the instance. See String Filter below for more details.
-  /// [resourceAwsEc2InstanceImageIds] The Amazon Machine Image (AMI) ID of the instance. See String Filter below for more details.
+  /// [resourceAwsEc2InstanceImageIds] AMI ID of the instance. See String Filter below for more details.
   /// [resourceAwsEc2InstanceIpv4Addresses] The IPv4 addresses associated with the instance. See Ip Filter below for more details.
   /// [resourceAwsEc2InstanceIpv6Addresses] The IPv6 addresses associated with the instance. See Ip Filter below for more details.
   /// [resourceAwsEc2InstanceKeyNames] The key name associated with the instance. See String Filter below for more details.

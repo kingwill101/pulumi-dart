@@ -5,7 +5,7 @@ import 'vpn_connection_tunnel1_log_options_cloudwatch_log_options.dart';
 
 class VpnConnectionTunnel1LogOptions {
   /// Options for sending VPN tunnel logs to CloudWatch. See CloudWatch Log Options below for more details.
-  final pulumi.Input<VpnConnectionTunnel1LogOptionsCloudwatchLogOptions>? cloudwatchLogOptions;
+  final pulumi.Input<VpnConnectionTunnel1LogOptionsCloudwatchLogOptions?>? cloudwatchLogOptions;
 
   /// Creates a new [VpnConnectionTunnel1LogOptions].
   /// [cloudwatchLogOptions] Options for sending VPN tunnel logs to CloudWatch. See CloudWatch Log Options below for more details.

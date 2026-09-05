@@ -5,7 +5,7 @@ import 'application_application_configuration_application_code_configuration_cod
 
 class ApplicationApplicationConfigurationApplicationCodeConfiguration {
   /// The location and type of the application code.
-  final pulumi.Input<ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent>? codeContent;
+  final pulumi.Input<ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent?>? codeContent;
   /// Specifies whether the code content is in text or zip format. Valid values: `PLAINTEXT`, `ZIPFILE`.
   final pulumi.Input<String> codeContentType;
 

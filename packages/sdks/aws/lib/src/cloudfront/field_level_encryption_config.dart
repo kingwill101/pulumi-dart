@@ -14,25 +14,25 @@ import 'field_level_encryption_config_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.cloudfront.FieldLevelEncryptionConfig("test", {
-///     comment: "test comment",
 ///     contentTypeProfileConfig: {
-///         forwardWhenContentTypeIsUnknown: true,
 ///         contentTypeProfiles: {
 ///             items: [{
 ///                 contentType: "application/x-www-form-urlencoded",
 ///                 format: "URLEncoded",
 ///             }],
 ///         },
+///         forwardWhenContentTypeIsUnknown: true,
 ///     },
 ///     queryArgProfileConfig: {
-///         forwardWhenQueryArgProfileIsUnknown: true,
 ///         queryArgProfiles: {
 ///             items: [{
 ///                 profileId: testAwsCloudfrontFieldLevelEncryptionProfile.id,
 ///                 queryArg: "Arg1",
 ///             }],
 ///         },
+///         forwardWhenQueryArgProfileIsUnknown: true,
 ///     },
+///     comment: "test comment",
 /// });
 /// ```
 /// ```python
@@ -40,25 +40,25 @@ import 'field_level_encryption_config_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.cloudfront.FieldLevelEncryptionConfig("test",
-///     comment="test comment",
 ///     content_type_profile_config={
-///         "forward_when_content_type_is_unknown": True,
 ///         "content_type_profiles": {
 ///             "items": [{
 ///                 "content_type": "application/x-www-form-urlencoded",
 ///                 "format": "URLEncoded",
 ///             }],
 ///         },
+///         "forward_when_content_type_is_unknown": True,
 ///     },
 ///     query_arg_profile_config={
-///         "forward_when_query_arg_profile_is_unknown": True,
 ///         "query_arg_profiles": {
 ///             "items": [{
 ///                 "profile_id": test_aws_cloudfront_field_level_encryption_profile["id"],
 ///                 "query_arg": "Arg1",
 ///             }],
 ///         },
-///     })
+///         "forward_when_query_arg_profile_is_unknown": True,
+///     },
+///     comment="test comment")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -70,10 +70,8 @@ import 'field_level_encryption_config_state.dart';
 /// {
 ///     var test = new Aws.CloudFront.FieldLevelEncryptionConfig("test", new()
 ///     {
-///         Comment = "test comment",
 ///         ContentTypeProfileConfig = new Aws.CloudFront.Inputs.FieldLevelEncryptionConfigContentTypeProfileConfigArgs
 ///         {
-///             ForwardWhenContentTypeIsUnknown = true,
 ///             ContentTypeProfiles = new Aws.CloudFront.Inputs.FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesArgs
 ///             {
 ///                 Items = new[]
@@ -85,10 +83,10 @@ import 'field_level_encryption_config_state.dart';
 ///                     },
 ///                 },
 ///             },
+///             ForwardWhenContentTypeIsUnknown = true,
 ///         },
 ///         QueryArgProfileConfig = new Aws.CloudFront.Inputs.FieldLevelEncryptionConfigQueryArgProfileConfigArgs
 ///         {
-///             ForwardWhenQueryArgProfileIsUnknown = true,
 ///             QueryArgProfiles = new Aws.CloudFront.Inputs.FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesArgs
 ///             {
 ///                 Items = new[]
@@ -100,7 +98,9 @@ import 'field_level_encryption_config_state.dart';
 ///                     },
 ///                 },
 ///             },
+///             ForwardWhenQueryArgProfileIsUnknown = true,
 ///         },
+///         Comment = "test comment",
 ///     });
 ///
 /// });
@@ -116,9 +116,7 @@ import 'field_level_encryption_config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewFieldLevelEncryptionConfig(ctx, "test", &cloudfront.FieldLevelEncryptionConfigArgs{
-/// 			Comment: pulumi.String("test comment"),
 /// 			ContentTypeProfileConfig: &cloudfront.FieldLevelEncryptionConfigContentTypeProfileConfigArgs{
-/// 				ForwardWhenContentTypeIsUnknown: pulumi.Bool(true),
 /// 				ContentTypeProfiles: &cloudfront.FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesArgs{
 /// 					Items: cloudfront.FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItemArray{
 /// 						&cloudfront.FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItemArgs{
@@ -127,9 +125,9 @@ import 'field_level_encryption_config_state.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				ForwardWhenContentTypeIsUnknown: pulumi.Bool(true),
 /// 			},
 /// 			QueryArgProfileConfig: &cloudfront.FieldLevelEncryptionConfigQueryArgProfileConfigArgs{
-/// 				ForwardWhenQueryArgProfileIsUnknown: pulumi.Bool(true),
 /// 				QueryArgProfiles: &cloudfront.FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesArgs{
 /// 					Items: cloudfront.FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemArray{
 /// 						&cloudfront.FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemArgs{
@@ -138,7 +136,9 @@ import 'field_level_encryption_config_state.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				ForwardWhenQueryArgProfileIsUnknown: pulumi.Bool(true),
 /// 			},
+/// 			Comment: pulumi.String("test comment"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -157,25 +157,25 @@ import 'field_level_encryption_config_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_fieldlevelencryptionconfig" "test" {
-///   comment = "test comment"
 ///   content_type_profile_config = {
-///     forward_when_content_type_is_unknown = true
 ///     content_type_profiles = {
 ///       items = [{
 ///         "contentType" = "application/x-www-form-urlencoded"
 ///         "format"      = "URLEncoded"
 ///       }]
 ///     }
+///     forward_when_content_type_is_unknown = true
 ///   }
 ///   query_arg_profile_config = {
-///     forward_when_query_arg_profile_is_unknown = true
 ///     query_arg_profiles = {
 ///       items = [{
 ///         "profileId" = testAwsCloudfrontFieldLevelEncryptionProfile.id
 ///         "queryArg"  = "Arg1"
 ///       }]
 ///     }
+///     forward_when_query_arg_profile_is_unknown = true
 ///   }
+///   comment = "test comment"
 /// }
 /// ```
 /// ```java
@@ -206,25 +206,25 @@ import 'field_level_encryption_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new FieldLevelEncryptionConfig("test", FieldLevelEncryptionConfigArgs.builder()
-///             .comment("test comment")
 ///             .contentTypeProfileConfig(FieldLevelEncryptionConfigContentTypeProfileConfigArgs.builder()
-///                 .forwardWhenContentTypeIsUnknown(true)
 ///                 .contentTypeProfiles(FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesArgs.builder()
 ///                     .items(FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItemArgs.builder()
 ///                         .contentType("application/x-www-form-urlencoded")
 ///                         .format("URLEncoded")
 ///                         .build())
 ///                     .build())
+///                 .forwardWhenContentTypeIsUnknown(true)
 ///                 .build())
 ///             .queryArgProfileConfig(FieldLevelEncryptionConfigQueryArgProfileConfigArgs.builder()
-///                 .forwardWhenQueryArgProfileIsUnknown(true)
 ///                 .queryArgProfiles(FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesArgs.builder()
 ///                     .items(FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemArgs.builder()
 ///                         .profileId(testAwsCloudfrontFieldLevelEncryptionProfile.id())
 ///                         .queryArg("Arg1")
 ///                         .build())
 ///                     .build())
+///                 .forwardWhenQueryArgProfileIsUnknown(true)
 ///                 .build())
+///             .comment("test comment")
 ///             .build());
 ///
 ///     }
@@ -235,19 +235,19 @@ import 'field_level_encryption_config_state.dart';
 ///   test:
 ///     type: aws:cloudfront:FieldLevelEncryptionConfig
 ///     properties:
-///       comment: test comment
 ///       contentTypeProfileConfig:
-///         forwardWhenContentTypeIsUnknown: true
 ///         contentTypeProfiles:
 ///           items:
 ///             - contentType: application/x-www-form-urlencoded
 ///               format: URLEncoded
+///         forwardWhenContentTypeIsUnknown: true
 ///       queryArgProfileConfig:
-///         forwardWhenQueryArgProfileIsUnknown: true
 ///         queryArgProfiles:
 ///           items:
 ///             - profileId: ${testAwsCloudfrontFieldLevelEncryptionProfile.id}
 ///               queryArg: Arg1
+///         forwardWhenQueryArgProfileIsUnknown: true
+///       comment: test comment
 /// ```
 ///
 ///
@@ -284,7 +284,7 @@ class FieldLevelEncryptionConfig extends pulumi.CustomResource {
           'aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');
@@ -299,11 +299,12 @@ class FieldLevelEncryptionConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FieldLevelEncryptionConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FieldLevelEncryptionConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -317,6 +318,23 @@ class FieldLevelEncryptionConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    callerReference = registerOutput<String>('callerReference');
+    comment = registerOutput<String?>('comment');
+    contentTypeProfileConfig = registerOutput<FieldLevelEncryptionConfigContentTypeProfileConfig>('contentTypeProfileConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    queryArgProfileConfig = registerOutput<FieldLevelEncryptionConfigQueryArgProfileConfig>('queryArgProfileConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FieldLevelEncryptionConfig] resource.
+  FieldLevelEncryptionConfig.reference(String urn)
+    : super(
+        'aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');
     comment = registerOutput<String?>('comment');

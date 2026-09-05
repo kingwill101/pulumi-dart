@@ -8,53 +8,53 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_rds_get_orderable_db_instance_get_orderable_db_instance_args_doc}
 class GetOrderableDbInstanceArgs {
   /// Availability zone group.
-  final pulumi.Input<String>? availabilityZoneGroup;
+  final pulumi.Input<String?>? availabilityZoneGroup;
   /// DB engine. Engine values include `aurora`, `aurora-mysql`, `aurora-postgresql`, `docdb`, `mariadb`, `mysql`, `neptune`, `oracle-ee`, `oracle-se`, `oracle-se1`, `oracle-se2`, `postgres`, `sqlserver-ee`, `sqlserver-ex`, `sqlserver-se`, and `sqlserver-web`.
   final pulumi.Input<String> engine;
   /// When set to `true`, the data source attempts to return the most recent version matching the other criteria you provide. You must use `engineLatestVersion` with `preferredInstanceClasses` and/or `preferredEngineVersions`. Using `engineLatestVersion` will avoid `multiple RDS DB Instance Classes` errors. If you use `engineLatestVersion` with `preferredInstanceClasses`, the data source returns the latest version for the _first_ matching instance class (instance class priority). **Note:** The data source uses a best-effort approach at selecting the latest version but due to the complexity of version identifiers across engines, using `engineLatestVersion` may _not_ return the latest version in every situation.
-  final pulumi.Input<bool>? engineLatestVersion;
+  final pulumi.Input<bool?>? engineLatestVersion;
   /// Version of the DB engine. If none is provided, the data source tries to use the AWS-defined default version that matches any other criteria.
-  final pulumi.Input<String>? engineVersion;
+  final pulumi.Input<String?>? engineVersion;
   /// DB instance class. Examples of classes are `db.m3.2xlarge`, `db.t2.small`, and `db.m3.medium`.
-  final pulumi.Input<String>? instanceClass;
+  final pulumi.Input<String?>? instanceClass;
   /// License model. Examples of license models are `general-public-license`, `bring-your-own-license`, and `amazon-license`.
-  final pulumi.Input<String>? licenseModel;
+  final pulumi.Input<String?>? licenseModel;
   /// Ordered list of preferred RDS DB instance engine versions. When `engineLatestVersion` is not set, the data source will return the first match in this list that matches any other criteria. If the data source finds no preferred matches or multiple matches without `engineLatestVersion`, it returns an error. **CAUTION:** We don't recommend using `preferredEngineVersions` without `preferredInstanceClasses` since the data source returns an arbitrary `instanceClass` based on the first one AWS returns that matches the engine version and any other criteria.
-  final pulumi.Input<List<String>>? preferredEngineVersions;
+  final pulumi.Input<List<String>?>? preferredEngineVersions;
   /// Ordered list of preferred RDS DB instance classes. The data source will return the first match in this list that matches any other criteria. If the data source finds no preferred matches or multiple matches without `engineLatestVersion`, it returns an error. If you use `preferredInstanceClasses` without `preferredEngineVersions` or `engineLatestVersion`, the data source returns an arbitrary `engineVersion` based on the first one AWS returns matching the instance class and any other criteria.
-  final pulumi.Input<List<String>>? preferredInstanceClasses;
+  final pulumi.Input<List<String>?>? preferredInstanceClasses;
   /// Whether a DB instance can have a read replica.
-  final pulumi.Input<bool>? readReplicaCapable;
+  final pulumi.Input<bool?>? readReplicaCapable;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Storage types. Examples of storage types are `standard`, `io1`, `gp2`, and `aurora`.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
   /// Use to limit results to engine modes such as `provisioned`.
-  final pulumi.Input<List<String>>? supportedEngineModes;
+  final pulumi.Input<List<String>?>? supportedEngineModes;
   /// Use to limit results to network types `IPV4` or `DUAL`.
-  final pulumi.Input<List<String>>? supportedNetworkTypes;
+  final pulumi.Input<List<String>?>? supportedNetworkTypes;
   /// Whether to limit results to instances that support clusters.
-  final pulumi.Input<bool>? supportsClusters;
+  final pulumi.Input<bool?>? supportsClusters;
   /// Enable this to ensure a DB instance supports Enhanced Monitoring at intervals from 1 to 60 seconds.
-  final pulumi.Input<bool>? supportsEnhancedMonitoring;
+  final pulumi.Input<bool?>? supportsEnhancedMonitoring;
   /// Enable this to ensure a DB instance supports Aurora global databases with a specific combination of other DB engine attributes.
-  final pulumi.Input<bool>? supportsGlobalDatabases;
+  final pulumi.Input<bool?>? supportsGlobalDatabases;
   /// Enable this to ensure a DB instance supports IAM database authentication.
-  final pulumi.Input<bool>? supportsIamDatabaseAuthentication;
+  final pulumi.Input<bool?>? supportsIamDatabaseAuthentication;
   /// Enable this to ensure a DB instance supports provisioned IOPS.
-  final pulumi.Input<bool>? supportsIops;
+  final pulumi.Input<bool?>? supportsIops;
   /// Enable this to ensure a DB instance supports Kerberos Authentication.
-  final pulumi.Input<bool>? supportsKerberosAuthentication;
+  final pulumi.Input<bool?>? supportsKerberosAuthentication;
   /// Whether to limit results to instances that are multi-AZ capable.
-  final pulumi.Input<bool>? supportsMultiAz;
+  final pulumi.Input<bool?>? supportsMultiAz;
   /// Enable this to ensure a DB instance supports Performance Insights.
-  final pulumi.Input<bool>? supportsPerformanceInsights;
+  final pulumi.Input<bool?>? supportsPerformanceInsights;
   /// Enable this to ensure Amazon RDS can automatically scale storage for DB instances that use the specified DB instance class.
-  final pulumi.Input<bool>? supportsStorageAutoscaling;
+  final pulumi.Input<bool?>? supportsStorageAutoscaling;
   /// Enable this to ensure a DB instance supports encrypted storage.
-  final pulumi.Input<bool>? supportsStorageEncryption;
+  final pulumi.Input<bool?>? supportsStorageEncryption;
   /// Boolean that indicates whether to show only VPC or non-VPC offerings.
-  final pulumi.Input<bool>? vpc;
+  final pulumi.Input<bool?>? vpc;
 
   /// Creates a new [GetOrderableDbInstanceArgs].
   /// [availabilityZoneGroup] Availability zone group.

@@ -7,7 +7,7 @@ class FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem 
   final pulumi.Input<String> contentType;
   /// The format for a field-level encryption content type-profile mapping. Valid value is `URLEncoded`.
   final pulumi.Input<String> format;
-  final pulumi.Input<String>? profileId;
+  final pulumi.Input<String?>? profileId;
 
   /// Creates a new [FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem].
   /// [contentType] he content type for a field-level encryption content type-profile mapping. Valid value is `application/x-www-form-urlencoded`.

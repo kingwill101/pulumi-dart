@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PartitionIndexPartitionIndex {
   /// Name of the partition index.
-  final pulumi.Input<String>? indexName;
-  final pulumi.Input<String>? indexStatus;
+  final pulumi.Input<String?>? indexName;
+  final pulumi.Input<String?>? indexStatus;
   /// Keys for the partition index.
-  final pulumi.Input<List<String>>? keys;
+  final pulumi.Input<List<String>?>? keys;
 
   /// Creates a new [PartitionIndexPartitionIndex].
   /// [indexName] Name of the partition index.

@@ -5,21 +5,21 @@ import 'code_repository_git_config.dart';
 
 /// Input properties used for looking up and filtering CodeRepository resources.
 class CodeRepositoryState {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Code Repository.
-  final pulumi.Input<String>? arn;
+  /// ARN assigned by AWS to this Code Repository.
+  final pulumi.Input<String?>? arn;
   /// The name of the Code Repository (must be unique).
-  final pulumi.Input<String>? codeRepositoryName;
+  final pulumi.Input<String?>? codeRepositoryName;
   /// Specifies details about the repository. see Git Config details below.
-  final pulumi.Input<CodeRepositoryGitConfig>? gitConfig;
+  final pulumi.Input<CodeRepositoryGitConfig?>? gitConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CodeRepositoryState].
-  /// [arn] The Amazon Resource Name (ARN) assigned by AWS to this Code Repository.
+  /// [arn] ARN assigned by AWS to this Code Repository.
   /// [codeRepositoryName] The name of the Code Repository (must be unique).
   /// [gitConfig] Specifies details about the repository. see Git Config details below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

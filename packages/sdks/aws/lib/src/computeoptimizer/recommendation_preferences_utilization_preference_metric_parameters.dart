@@ -6,7 +6,7 @@ class RecommendationPreferencesUtilizationPreferenceMetricParameters {
   /// The headroom value in percentage used for the specified metric parameter. Valid values: `PERCENT_30`, `PERCENT_20`, `PERCENT_10`, `PERCENT_0`.
   final pulumi.Input<String> headroom;
   /// The threshold value used for the specified metric parameter. You can only specify the threshold value for CPU utilization. Valid values: `P90`, `P95`, `P99_5`.
-  final pulumi.Input<String>? threshold;
+  final pulumi.Input<String?>? threshold;
 
   /// Creates a new [RecommendationPreferencesUtilizationPreferenceMetricParameters].
   /// [headroom] The headroom value in percentage used for the specified metric parameter. Valid values: `PERCENT_30`, `PERCENT_20`, `PERCENT_10`, `PERCENT_0`.

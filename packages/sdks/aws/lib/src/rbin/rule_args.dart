@@ -12,22 +12,22 @@ import 'rule_retention_period.dart';
 /// {@macro pulumi_rbin_rule_rule_args_doc}
 class RuleArgs {
   /// Retention rule description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Exclusion tags to use to identify resources that are to be excluded, or ignored, by a Region-level retention rule. See `excludeResourceTags` below.
-  final pulumi.Input<List<RuleExcludeResourceTag>>? excludeResourceTags;
+  final pulumi.Input<List<RuleExcludeResourceTag>?>? excludeResourceTags;
   /// Information about the retention rule lock configuration. See `lockConfiguration` below.
-  final pulumi.Input<RuleLockConfiguration>? lockConfiguration;
+  final pulumi.Input<RuleLockConfiguration?>? lockConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource tags to use to identify resources that are to be retained by a tag-level retention rule. See `resourceTags` below.
-  final pulumi.Input<List<RuleResourceTag>>? resourceTags;
+  final pulumi.Input<List<RuleResourceTag>?>? resourceTags;
   /// Resource type to be retained by the retention rule. Valid values are `EBS_SNAPSHOT` and `EC2_IMAGE`.
   final pulumi.Input<String> resourceType;
   /// Information about the retention period for which the retention rule is to retain resources. See `retentionPeriod` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<RuleRetentionPeriod> retentionPeriod;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RuleArgs].
   /// [description] Retention rule description.

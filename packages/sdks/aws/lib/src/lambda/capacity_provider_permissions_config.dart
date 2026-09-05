@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapacityProviderPermissionsConfig {
-  /// The ARN of the IAM role that allows Lambda to manage the Capacity Provider.
+  /// ARN of the IAM role that allows Lambda to manage the Capacity Provider.
   final pulumi.Input<String> capacityProviderOperatorRoleArn;
 
   /// Creates a new [CapacityProviderPermissionsConfig].
-  /// [capacityProviderOperatorRoleArn] The ARN of the IAM role that allows Lambda to manage the Capacity Provider.
+  /// [capacityProviderOperatorRoleArn] ARN of the IAM role that allows Lambda to manage the Capacity Provider.
   const CapacityProviderPermissionsConfig({
     required this.capacityProviderOperatorRoleArn,
   });

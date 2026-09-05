@@ -5,21 +5,21 @@ import 'email_template_email_template.dart';
 
 /// Input properties used for looking up and filtering EmailTemplate resources.
 class EmailTemplateState {
-  /// Amazon Resource Name (ARN) of the message template.
-  final pulumi.Input<String>? arn;
+  /// ARN of the message template.
+  final pulumi.Input<String?>? arn;
   /// Content and settings for a message template that can be used in messages that are sent through the email channel. See below.
-  final pulumi.Input<List<EmailTemplateEmailTemplate>>? emailTemplates;
+  final pulumi.Input<List<EmailTemplateEmailTemplate>?>? emailTemplates;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
 
   /// Creates a new [EmailTemplateState].
-  /// [arn] Amazon Resource Name (ARN) of the message template.
+  /// [arn] ARN of the message template.
   /// [emailTemplates] Content and settings for a message template that can be used in messages that are sent through the email channel. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

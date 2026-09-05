@@ -7,15 +7,15 @@ import 'service_service_connect_configuration_service.dart';
 
 class ServiceServiceConnectConfiguration {
   /// Configuration for Service Connect access logs. See below.
-  final pulumi.Input<ServiceServiceConnectConfigurationAccessLogConfiguration>? accessLogConfiguration;
+  final pulumi.Input<ServiceServiceConnectConfigurationAccessLogConfiguration?>? accessLogConfiguration;
   /// Whether to use Service Connect with this service.
   final pulumi.Input<bool> enabled;
   /// Log configuration for the container. See below.
-  final pulumi.Input<ServiceServiceConnectConfigurationLogConfiguration>? logConfiguration;
+  final pulumi.Input<ServiceServiceConnectConfigurationLogConfiguration?>? logConfiguration;
   /// Namespace name or ARN of the `aws.servicediscovery.HttpNamespace` for use with Service Connect.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// List of Service Connect service objects. See below.
-  final pulumi.Input<List<ServiceServiceConnectConfigurationService>>? services;
+  final pulumi.Input<List<ServiceServiceConnectConfigurationService>?>? services;
 
   /// Creates a new [ServiceServiceConnectConfiguration].
   /// [accessLogConfiguration] Configuration for Service Connect access logs. See below.

@@ -4,6 +4,7 @@ import 'canary_artifact_config.dart';
 import 'canary_run_config.dart';
 import 'canary_schedule.dart';
 import 'canary_state.dart';
+import 'canary_timeline.dart';
 import 'canary_vpc_config.dart';
 
 /// Provides a Synthetics Canary resource.
@@ -18,15 +19,15 @@ import 'canary_vpc_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const some = new aws.synthetics.Canary("some", {
+///     schedule: {
+///         expression: "rate(0 minute)",
+///     },
 ///     name: "some-canary",
 ///     artifactS3Location: "s3://some-bucket/",
 ///     executionRoleArn: "some-role",
 ///     handler: "exports.handler",
 ///     zipFile: "test-fixtures/lambdatest.zip",
 ///     runtimeVersion: "syn-1.0",
-///     schedule: {
-///         expression: "rate(0 minute)",
-///     },
 /// });
 /// ```
 /// ```python
@@ -34,15 +35,15 @@ import 'canary_vpc_config.dart';
 /// import pulumi_aws as aws
 ///
 /// some = aws.synthetics.Canary("some",
+///     schedule={
+///         "expression": "rate(0 minute)",
+///     },
 ///     name="some-canary",
 ///     artifact_s3_location="s3://some-bucket/",
 ///     execution_role_arn="some-role",
 ///     handler="exports.handler",
 ///     zip_file="test-fixtures/lambdatest.zip",
-///     runtime_version="syn-1.0",
-///     schedule={
-///         "expression": "rate(0 minute)",
-///     })
+///     runtime_version="syn-1.0")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -54,16 +55,16 @@ import 'canary_vpc_config.dart';
 /// {
 ///     var some = new Aws.Synthetics.Canary("some", new()
 ///     {
+///         Schedule = new Aws.Synthetics.Inputs.CanaryScheduleArgs
+///         {
+///             Expression = "rate(0 minute)",
+///         },
 ///         Name = "some-canary",
 ///         ArtifactS3Location = "s3://some-bucket/",
 ///         ExecutionRoleArn = "some-role",
 ///         Handler = "exports.handler",
 ///         ZipFile = "test-fixtures/lambdatest.zip",
 ///         RuntimeVersion = "syn-1.0",
-///         Schedule = new Aws.Synthetics.Inputs.CanaryScheduleArgs
-///         {
-///             Expression = "rate(0 minute)",
-///         },
 ///     });
 ///
 /// });
@@ -79,15 +80,15 @@ import 'canary_vpc_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := synthetics.NewCanary(ctx, "some", &synthetics.CanaryArgs{
+/// 			Schedule: &synthetics.CanaryScheduleArgs{
+/// 				Expression: pulumi.String("rate(0 minute)"),
+/// 			},
 /// 			Name:               pulumi.String("some-canary"),
 /// 			ArtifactS3Location: pulumi.String("s3://some-bucket/"),
 /// 			ExecutionRoleArn:   pulumi.String("some-role"),
 /// 			Handler:            pulumi.String("exports.handler"),
 /// 			ZipFile:            pulumi.String("test-fixtures/lambdatest.zip"),
 /// 			RuntimeVersion:     pulumi.String("syn-1.0"),
-/// 			Schedule: &synthetics.CanaryScheduleArgs{
-/// 				Expression: pulumi.String("rate(0 minute)"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -106,15 +107,15 @@ import 'canary_vpc_config.dart';
 /// }
 ///
 /// resource "aws_synthetics_canary" "some" {
+///   schedule = {
+///     expression = "rate(0 minute)"
+///   }
 ///   name                 = "some-canary"
 ///   artifact_s3_location = "s3://some-bucket/"
 ///   execution_role_arn   = "some-role"
 ///   handler              = "exports.handler"
 ///   zip_file             = "test-fixtures/lambdatest.zip"
 ///   runtime_version      = "syn-1.0"
-///   schedule = {
-///     expression = "rate(0 minute)"
-///   }
 /// }
 /// ```
 /// ```java
@@ -140,15 +141,15 @@ import 'canary_vpc_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var some = new Canary("some", CanaryArgs.builder()
+///             .schedule(CanaryScheduleArgs.builder()
+///                 .expression("rate(0 minute)")
+///                 .build())
 ///             .name("some-canary")
 ///             .artifactS3Location("s3://some-bucket/")
 ///             .executionRoleArn("some-role")
 ///             .handler("exports.handler")
 ///             .zipFile("test-fixtures/lambdatest.zip")
 ///             .runtimeVersion("syn-1.0")
-///             .schedule(CanaryScheduleArgs.builder()
-///                 .expression("rate(0 minute)")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -159,14 +160,14 @@ import 'canary_vpc_config.dart';
 ///   some:
 ///     type: aws:synthetics:Canary
 ///     properties:
+///       schedule:
+///         expression: rate(0 minute)
 ///       name: some-canary
 ///       artifactS3Location: s3://some-bucket/
 ///       executionRoleArn: some-role
 ///       handler: exports.handler
 ///       zipFile: test-fixtures/lambdatest.zip
 ///       runtimeVersion: syn-1.0
-///       schedule:
-///         expression: rate(0 minute)
 /// ```
 ///
 ///
@@ -178,7 +179,7 @@ import 'canary_vpc_config.dart';
 /// $ pulumi import aws:synthetics/canary:Canary some some-canary
 /// ```
 class Canary extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Canary.
+  /// ARN of the Canary.
   late final pulumi.Output<String> arn;
   /// configuration for canary artifacts, including the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3. See Artifact Config.
   late final pulumi.Output<CanaryArtifactConfig?> artifactConfig;
@@ -225,7 +226,7 @@ class Canary extends pulumi.CustomResource {
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Structure that contains information about when the canary was created, modified, and most recently run. see Timeline.
-  late final pulumi.Output<List<Map<String, dynamic>>> timelines;
+  late final pulumi.Output<List<CanaryTimeline>> timelines;
   /// Configuration block. Detailed below.
   late final pulumi.Output<CanaryVpcConfig?> vpcConfig;
   /// ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3Bucket`, `s3Key`, and `s3Version`.**
@@ -243,7 +244,7 @@ class Canary extends pulumi.CustomResource {
           'aws:synthetics/canary:Canary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     artifactConfig = registerOutput<CanaryArtifactConfig?>('artifactConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryArtifactConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -265,9 +266,9 @@ class Canary extends pulumi.CustomResource {
     startCanary = registerOutput<bool?>('startCanary');
     status = registerOutput<String>('status');
     successRetentionPeriod = registerOutput<int?>('successRetentionPeriod');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timelines = registerOutput<List<Map<String, dynamic>>>('timelines');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timelines = registerOutput<List<CanaryTimeline>>('timelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CanaryTimeline>(guardedValue, (value) => CanaryTimeline.fromMap((value as Map).cast<String, dynamic>())); });
     vpcConfig = registerOutput<CanaryVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zipFile = registerOutput<String?>('zipFile');
   }
@@ -277,11 +278,12 @@ class Canary extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CanaryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Canary._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -315,9 +317,45 @@ class Canary extends pulumi.CustomResource {
     startCanary = registerOutput<bool?>('startCanary');
     status = registerOutput<String>('status');
     successRetentionPeriod = registerOutput<int?>('successRetentionPeriod');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    timelines = registerOutput<List<Map<String, dynamic>>>('timelines');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timelines = registerOutput<List<CanaryTimeline>>('timelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CanaryTimeline>(guardedValue, (value) => CanaryTimeline.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcConfig = registerOutput<CanaryVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zipFile = registerOutput<String?>('zipFile');
+  }
+
+  /// Creates a typed reference to an existing [Canary] resource.
+  Canary.reference(String urn)
+    : super(
+        'aws:synthetics/canary:Canary',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    artifactConfig = registerOutput<CanaryArtifactConfig?>('artifactConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryArtifactConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    artifactS3Location = registerOutput<String>('artifactS3Location');
+    deleteLambda = registerOutput<bool?>('deleteLambda');
+    engineArn = registerOutput<String>('engineArn');
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    failureRetentionPeriod = registerOutput<int?>('failureRetentionPeriod');
+    handler = registerOutput<String>('handler');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    runConfig = registerOutput<CanaryRunConfig>('runConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryRunConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runtimeVersion = registerOutput<String>('runtimeVersion');
+    s3Bucket = registerOutput<String?>('s3Bucket');
+    s3Key = registerOutput<String?>('s3Key');
+    s3Version = registerOutput<String?>('s3Version');
+    schedule = registerOutput<CanarySchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanarySchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceLocationArn = registerOutput<String>('sourceLocationArn');
+    startCanary = registerOutput<bool?>('startCanary');
+    status = registerOutput<String>('status');
+    successRetentionPeriod = registerOutput<int?>('successRetentionPeriod');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timelines = registerOutput<List<CanaryTimeline>>('timelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CanaryTimeline>(guardedValue, (value) => CanaryTimeline.fromMap((value as Map).cast<String, dynamic>())); });
     vpcConfig = registerOutput<CanaryVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zipFile = registerOutput<String?>('zipFile');
   }

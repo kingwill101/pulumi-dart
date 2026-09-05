@@ -114,6 +114,17 @@ Future<GetDefaultScraperConfigurationResult> getDefaultScraperConfiguration(
   return GetDefaultScraperConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetDefaultScraperConfigurationResult> getDefaultScraperConfigurationOutput(
+  GetDefaultScraperConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:amp/getDefaultScraperConfiguration:getDefaultScraperConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefaultScraperConfigurationResult.fromMap);
+}
+
 /// Provides an Amazon Managed Prometheus workspace data source.
 ///
 /// ## Example Usage
@@ -232,6 +243,17 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:amp/getWorkspace:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }
 
 /// Provides the aliases, ARNs, and workspace IDs of Amazon Prometheus workspaces.
@@ -446,4 +468,15 @@ Future<GetWorkspacesResult> getWorkspaces(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspacesResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspacesResult> getWorkspacesOutput(
+  GetWorkspacesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:amp/getWorkspaces:getWorkspaces',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspacesResult.fromMap);
 }

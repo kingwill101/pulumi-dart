@@ -5,26 +5,26 @@ import 'get_distribution_configuration_distribution.dart';
 
 /// Result data returned by getDistributionConfiguration.
 class GetDistributionConfigurationResult {
-  final String arn;
+  final String? arn;
   /// Date the distribution configuration was created.
-  final String dateCreated;
+  final String? dateCreated;
   /// Date the distribution configuration was updated.
-  final String dateUpdated;
+  final String? dateUpdated;
   /// Description of the container distribution configuration.
-  final String description;
+  final String? description;
   /// Set of distributions.
-  final List<GetDistributionConfigurationDistribution> distributions;
+  final List<GetDistributionConfigurationDistribution>? distributions;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Name of the distribution configuration.
-  final String name;
+  final String? name;
   /// AWS Region of distribution.
-  final String region;
+  final String? region;
   /// Key-value map of resource tags for the distribution configuration.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetDistributionConfigurationResult].
-  /// [arn] Required.
+  /// [arn] Optional.
   /// [dateCreated] Date the distribution configuration was created.
   /// [dateUpdated] Date the distribution configuration was updated.
   /// [description] Description of the container distribution configuration.
@@ -34,42 +34,42 @@ class GetDistributionConfigurationResult {
   /// [region] AWS Region of distribution.
   /// [tags] Key-value map of resource tags for the distribution configuration.
   const GetDistributionConfigurationResult({
-    required this.arn,
-    required this.dateCreated,
-    required this.dateUpdated,
-    required this.description,
-    required this.distributions,
-    required this.id,
-    required this.name,
-    required this.region,
-    required this.tags,
+    this.arn,
+    this.dateCreated,
+    this.dateUpdated,
+    this.description,
+    this.distributions,
+    this.id,
+    this.name,
+    this.region,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'dateCreated': dateCreated,
-      'dateUpdated': dateUpdated,
-      'description': description,
-      'distributions': pulumi.Input.encodeList<GetDistributionConfigurationDistribution, Map<String, dynamic>>(distributions, (value) => value.toMap()),
-      'id': id,
-      'name': name,
-      'region': region,
-      'tags': tags,
+      'arn': ?arn,
+      'dateCreated': ?dateCreated,
+      'dateUpdated': ?dateUpdated,
+      'description': ?description,
+      'distributions': ?(() { final guardedValue = distributions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDistributionConfigurationDistribution, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+      'tags': ?tags,
     };
   }
 
   factory GetDistributionConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationResult(
-      arn: map['arn'] as String,
-      dateCreated: map['dateCreated'] as String,
-      dateUpdated: map['dateUpdated'] as String,
-      description: map['description'] as String,
-      distributions: pulumi.Input.decodeList<GetDistributionConfigurationDistribution>(map['distributions']!, (value) => GetDistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dateCreated: (() { final guardedValue = map['dateCreated']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dateUpdated: (() { final guardedValue = map['dateUpdated']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      distributions: (() { final guardedValue = map['distributions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDistributionConfigurationDistribution>(guardedValue, (value) => GetDistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

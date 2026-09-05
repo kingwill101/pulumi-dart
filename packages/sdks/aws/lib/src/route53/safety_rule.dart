@@ -13,15 +13,15 @@ import 'safety_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.route53recoverycontrol.SafetyRule("example", {
-///     assertedControls: [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn],
-///     controlPanelArn: "arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8",
-///     name: "daisyguttridge",
-///     waitPeriodMs: 5000,
 ///     ruleConfig: {
 ///         inverted: false,
 ///         threshold: 1,
 ///         type: "ATLEAST",
 ///     },
+///     assertedControls: [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn],
+///     controlPanelArn: "arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8",
+///     name: "daisyguttridge",
+///     waitPeriodMs: 5000,
 /// });
 /// ```
 /// ```python
@@ -29,15 +29,15 @@ import 'safety_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.route53recoverycontrol.SafetyRule("example",
-///     asserted_controls=[example_aws_route53recoverycontrolconfig_routing_control["arn"]],
-///     control_panel_arn="arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8",
-///     name="daisyguttridge",
-///     wait_period_ms=5000,
 ///     rule_config={
 ///         "inverted": False,
 ///         "threshold": 1,
 ///         "type": "ATLEAST",
-///     })
+///     },
+///     asserted_controls=[example_aws_route53recoverycontrolconfig_routing_control["arn"]],
+///     control_panel_arn="arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8",
+///     name="daisyguttridge",
+///     wait_period_ms=5000)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -49,6 +49,12 @@ import 'safety_rule_state.dart';
 /// {
 ///     var example = new Aws.Route53RecoveryControl.SafetyRule("example", new()
 ///     {
+///         RuleConfig = new Aws.Route53RecoveryControl.Inputs.SafetyRuleRuleConfigArgs
+///         {
+///             Inverted = false,
+///             Threshold = 1,
+///             Type = "ATLEAST",
+///         },
 ///         AssertedControls = new[]
 ///         {
 ///             exampleAwsRoute53recoverycontrolconfigRoutingControl.Arn,
@@ -56,12 +62,6 @@ import 'safety_rule_state.dart';
 ///         ControlPanelArn = "arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8",
 ///         Name = "daisyguttridge",
 ///         WaitPeriodMs = 5000,
-///         RuleConfig = new Aws.Route53RecoveryControl.Inputs.SafetyRuleRuleConfigArgs
-///         {
-///             Inverted = false,
-///             Threshold = 1,
-///             Type = "ATLEAST",
-///         },
 ///     });
 ///
 /// });
@@ -77,17 +77,17 @@ import 'safety_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := route53recoverycontrol.NewSafetyRule(ctx, "example", &route53recoverycontrol.SafetyRuleArgs{
+/// 			RuleConfig: &route53recoverycontrol.SafetyRuleRuleConfigArgs{
+/// 				Inverted:  pulumi.Bool(false),
+/// 				Threshold: pulumi.Int(1),
+/// 				Type:      pulumi.String("ATLEAST"),
+/// 			},
 /// 			AssertedControls: pulumi.StringArray{
 /// 				exampleAwsRoute53recoverycontrolconfigRoutingControl.Arn,
 /// 			},
 /// 			ControlPanelArn: pulumi.String("arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8"),
 /// 			Name:            pulumi.String("daisyguttridge"),
 /// 			WaitPeriodMs:    pulumi.Int(5000),
-/// 			RuleConfig: &route53recoverycontrol.SafetyRuleRuleConfigArgs{
-/// 				Inverted:  pulumi.Bool(false),
-/// 				Threshold: pulumi.Int(1),
-/// 				Type:      pulumi.String("ATLEAST"),
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -106,15 +106,15 @@ import 'safety_rule_state.dart';
 /// }
 ///
 /// resource "aws_route53recoverycontrol_safetyrule" "example" {
-///   asserted_controls = [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn]
-///   control_panel_arn = "arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8"
-///   name              = "daisyguttridge"
-///   wait_period_ms    = 5000
 ///   rule_config = {
 ///     inverted  = false
 ///     threshold = 1
 ///     type      = "ATLEAST"
 ///   }
+///   asserted_controls = [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn]
+///   control_panel_arn = "arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8"
+///   name              = "daisyguttridge"
+///   wait_period_ms    = 5000
 /// }
 /// ```
 /// ```java
@@ -140,15 +140,15 @@ import 'safety_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SafetyRule("example", SafetyRuleArgs.builder()
-///             .assertedControls(exampleAwsRoute53recoverycontrolconfigRoutingControl.arn())
-///             .controlPanelArn("arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8")
-///             .name("daisyguttridge")
-///             .waitPeriodMs(5000)
 ///             .ruleConfig(SafetyRuleRuleConfigArgs.builder()
 ///                 .inverted(false)
 ///                 .threshold(1)
 ///                 .type("ATLEAST")
 ///                 .build())
+///             .assertedControls(exampleAwsRoute53recoverycontrolconfigRoutingControl.arn())
+///             .controlPanelArn("arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8")
+///             .name("daisyguttridge")
+///             .waitPeriodMs(5000)
 ///             .build());
 ///
 ///     }
@@ -159,15 +159,15 @@ import 'safety_rule_state.dart';
 ///   example:
 ///     type: aws:route53recoverycontrol:SafetyRule
 ///     properties:
+///       ruleConfig:
+///         inverted: false
+///         threshold: 1
+///         type: ATLEAST
 ///       assertedControls:
 ///         - ${exampleAwsRoute53recoverycontrolconfigRoutingControl.arn}
 ///       controlPanelArn: arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8
 ///       name: daisyguttridge
 ///       waitPeriodMs: 5000
-///       ruleConfig:
-///         inverted: false
-///         threshold: 1
-///         type: ATLEAST
 /// ```
 ///
 ///
@@ -177,16 +177,16 @@ import 'safety_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.route53recoverycontrol.SafetyRule("example", {
-///     name: "i_o",
-///     controlPanelArn: "arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8",
-///     waitPeriodMs: 5000,
-///     gatingControls: [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn],
-///     targetControls: [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn],
 ///     ruleConfig: {
 ///         inverted: false,
 ///         threshold: 1,
 ///         type: "ATLEAST",
 ///     },
+///     name: "i_o",
+///     controlPanelArn: "arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8",
+///     waitPeriodMs: 5000,
+///     gatingControls: [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn],
+///     targetControls: [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn],
 /// });
 /// ```
 /// ```python
@@ -194,16 +194,16 @@ import 'safety_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.route53recoverycontrol.SafetyRule("example",
-///     name="i_o",
-///     control_panel_arn="arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8",
-///     wait_period_ms=5000,
-///     gating_controls=[example_aws_route53recoverycontrolconfig_routing_control["arn"]],
-///     target_controls=[example_aws_route53recoverycontrolconfig_routing_control["arn"]],
 ///     rule_config={
 ///         "inverted": False,
 ///         "threshold": 1,
 ///         "type": "ATLEAST",
-///     })
+///     },
+///     name="i_o",
+///     control_panel_arn="arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8",
+///     wait_period_ms=5000,
+///     gating_controls=[example_aws_route53recoverycontrolconfig_routing_control["arn"]],
+///     target_controls=[example_aws_route53recoverycontrolconfig_routing_control["arn"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -215,6 +215,12 @@ import 'safety_rule_state.dart';
 /// {
 ///     var example = new Aws.Route53RecoveryControl.SafetyRule("example", new()
 ///     {
+///         RuleConfig = new Aws.Route53RecoveryControl.Inputs.SafetyRuleRuleConfigArgs
+///         {
+///             Inverted = false,
+///             Threshold = 1,
+///             Type = "ATLEAST",
+///         },
 ///         Name = "i_o",
 ///         ControlPanelArn = "arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8",
 ///         WaitPeriodMs = 5000,
@@ -226,12 +232,6 @@ import 'safety_rule_state.dart';
 ///         {
 ///             exampleAwsRoute53recoverycontrolconfigRoutingControl.Arn,
 ///         },
-///         RuleConfig = new Aws.Route53RecoveryControl.Inputs.SafetyRuleRuleConfigArgs
-///         {
-///             Inverted = false,
-///             Threshold = 1,
-///             Type = "ATLEAST",
-///         },
 ///     });
 ///
 /// });
@@ -247,6 +247,11 @@ import 'safety_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := route53recoverycontrol.NewSafetyRule(ctx, "example", &route53recoverycontrol.SafetyRuleArgs{
+/// 			RuleConfig: &route53recoverycontrol.SafetyRuleRuleConfigArgs{
+/// 				Inverted:  pulumi.Bool(false),
+/// 				Threshold: pulumi.Int(1),
+/// 				Type:      pulumi.String("ATLEAST"),
+/// 			},
 /// 			Name:            pulumi.String("i_o"),
 /// 			ControlPanelArn: pulumi.String("arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8"),
 /// 			WaitPeriodMs:    pulumi.Int(5000),
@@ -255,11 +260,6 @@ import 'safety_rule_state.dart';
 /// 			},
 /// 			TargetControls: pulumi.StringArray{
 /// 				exampleAwsRoute53recoverycontrolconfigRoutingControl.Arn,
-/// 			},
-/// 			RuleConfig: &route53recoverycontrol.SafetyRuleRuleConfigArgs{
-/// 				Inverted:  pulumi.Bool(false),
-/// 				Threshold: pulumi.Int(1),
-/// 				Type:      pulumi.String("ATLEAST"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -279,16 +279,16 @@ import 'safety_rule_state.dart';
 /// }
 ///
 /// resource "aws_route53recoverycontrol_safetyrule" "example" {
-///   name              = "i_o"
-///   control_panel_arn = "arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8"
-///   wait_period_ms    = 5000
-///   gating_controls   = [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn]
-///   target_controls   = [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn]
 ///   rule_config = {
 ///     inverted  = false
 ///     threshold = 1
 ///     type      = "ATLEAST"
 ///   }
+///   name              = "i_o"
+///   control_panel_arn = "arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8"
+///   wait_period_ms    = 5000
+///   gating_controls   = [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn]
+///   target_controls   = [exampleAwsRoute53recoverycontrolconfigRoutingControl.arn]
 /// }
 /// ```
 /// ```java
@@ -314,16 +314,16 @@ import 'safety_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SafetyRule("example", SafetyRuleArgs.builder()
-///             .name("i_o")
-///             .controlPanelArn("arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8")
-///             .waitPeriodMs(5000)
-///             .gatingControls(exampleAwsRoute53recoverycontrolconfigRoutingControl.arn())
-///             .targetControls(exampleAwsRoute53recoverycontrolconfigRoutingControl.arn())
 ///             .ruleConfig(SafetyRuleRuleConfigArgs.builder()
 ///                 .inverted(false)
 ///                 .threshold(1)
 ///                 .type("ATLEAST")
 ///                 .build())
+///             .name("i_o")
+///             .controlPanelArn("arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8")
+///             .waitPeriodMs(5000)
+///             .gatingControls(exampleAwsRoute53recoverycontrolconfigRoutingControl.arn())
+///             .targetControls(exampleAwsRoute53recoverycontrolconfigRoutingControl.arn())
 ///             .build());
 ///
 ///     }
@@ -334,6 +334,10 @@ import 'safety_rule_state.dart';
 ///   example:
 ///     type: aws:route53recoverycontrol:SafetyRule
 ///     properties:
+///       ruleConfig:
+///         inverted: false
+///         threshold: 1
+///         type: ATLEAST
 ///       name: i_o
 ///       controlPanelArn: arn:aws:route53-recovery-control::313517334327:controlpanel/abd5fbfc052d4844a082dbf400f61da8
 ///       waitPeriodMs: 5000
@@ -341,10 +345,6 @@ import 'safety_rule_state.dart';
 ///         - ${exampleAwsRoute53recoverycontrolconfigRoutingControl.arn}
 ///       targetControls:
 ///         - ${exampleAwsRoute53recoverycontrolconfigRoutingControl.arn}
-///       ruleConfig:
-///         inverted: false
-///         threshold: 1
-///         type: ATLEAST
 /// ```
 ///
 ///
@@ -393,18 +393,18 @@ class SafetyRule extends pulumi.CustomResource {
           'aws:route53recoverycontrol/safetyRule:SafetyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    assertedControls = registerOutput<List<String>?>('assertedControls');
+    assertedControls = registerOutput<List<String>?>('assertedControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     controlPanelArn = registerOutput<String>('controlPanelArn');
-    gatingControls = registerOutput<List<String>?>('gatingControls');
+    gatingControls = registerOutput<List<String>?>('gatingControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     ruleConfig = registerOutput<SafetyRuleRuleConfig>('ruleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SafetyRuleRuleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targetControls = registerOutput<List<String>?>('targetControls');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetControls = registerOutput<List<String>?>('targetControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     waitPeriodMs = registerOutput<int>('waitPeriodMs');
   }
 
@@ -413,11 +413,12 @@ class SafetyRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SafetyRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SafetyRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -432,15 +433,37 @@ class SafetyRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    assertedControls = registerOutput<List<String>?>('assertedControls');
+    assertedControls = registerOutput<List<String>?>('assertedControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     controlPanelArn = registerOutput<String>('controlPanelArn');
-    gatingControls = registerOutput<List<String>?>('gatingControls');
+    gatingControls = registerOutput<List<String>?>('gatingControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     ruleConfig = registerOutput<SafetyRuleRuleConfig>('ruleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SafetyRuleRuleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    targetControls = registerOutput<List<String>?>('targetControls');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetControls = registerOutput<List<String>?>('targetControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    waitPeriodMs = registerOutput<int>('waitPeriodMs');
+  }
+
+  /// Creates a typed reference to an existing [SafetyRule] resource.
+  SafetyRule.reference(String urn)
+    : super(
+        'aws:route53recoverycontrol/safetyRule:SafetyRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    assertedControls = registerOutput<List<String>?>('assertedControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    controlPanelArn = registerOutput<String>('controlPanelArn');
+    gatingControls = registerOutput<List<String>?>('gatingControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    ruleConfig = registerOutput<SafetyRuleRuleConfig>('ruleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SafetyRuleRuleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetControls = registerOutput<List<String>?>('targetControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     waitPeriodMs = registerOutput<int>('waitPeriodMs');
   }
 }

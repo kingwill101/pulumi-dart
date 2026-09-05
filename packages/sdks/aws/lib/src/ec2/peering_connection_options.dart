@@ -32,10 +32,10 @@ import 'peering_connection_options_state.dart';
 ///     autoAccept: true,
 /// });
 /// const fooPeeringConnectionOptions = new aws.ec2.PeeringConnectionOptions("foo", {
-///     vpcPeeringConnectionId: fooVpcPeeringConnection.id,
 ///     accepter: {
 ///         allowRemoteVpcDnsResolution: true,
 ///     },
+///     vpcPeeringConnectionId: fooVpcPeeringConnection.id,
 /// });
 /// ```
 /// ```python
@@ -49,10 +49,10 @@ import 'peering_connection_options_state.dart';
 ///     peer_vpc_id=bar.id,
 ///     auto_accept=True)
 /// foo_peering_connection_options = aws.ec2.PeeringConnectionOptions("foo",
-///     vpc_peering_connection_id=foo_vpc_peering_connection.id,
 ///     accepter={
 ///         "allow_remote_vpc_dns_resolution": True,
-///     })
+///     },
+///     vpc_peering_connection_id=foo_vpc_peering_connection.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -81,11 +81,11 @@ import 'peering_connection_options_state.dart';
 ///
 ///     var fooPeeringConnectionOptions = new Aws.Ec2.PeeringConnectionOptions("foo", new()
 ///     {
-///         VpcPeeringConnectionId = fooVpcPeeringConnection.Id,
 ///         Accepter = new Aws.Ec2.Inputs.PeeringConnectionOptionsAccepterArgs
 ///         {
 ///             AllowRemoteVpcDnsResolution = true,
 ///         },
+///         VpcPeeringConnectionId = fooVpcPeeringConnection.Id,
 ///     });
 ///
 /// });
@@ -121,10 +121,10 @@ import 'peering_connection_options_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewPeeringConnectionOptions(ctx, "foo", &ec2.PeeringConnectionOptionsArgs{
-/// 			VpcPeeringConnectionId: fooVpcPeeringConnection.ID().ToIDOutput().ToStringOutput(),
 /// 			Accepter: &ec2.PeeringConnectionOptionsAccepterArgs{
 /// 				AllowRemoteVpcDnsResolution: pulumi.Bool(true),
 /// 			},
+/// 			VpcPeeringConnectionId: fooVpcPeeringConnection.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -154,10 +154,10 @@ import 'peering_connection_options_state.dart';
 ///   auto_accept = true
 /// }
 /// resource "aws_ec2_peeringconnectionoptions" "foo" {
-///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnection.foo.id
 ///   accepter = {
 ///     allow_remote_vpc_dns_resolution = true
 ///   }
+///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnection.foo.id
 /// }
 /// ```
 /// ```java
@@ -201,10 +201,10 @@ import 'peering_connection_options_state.dart';
 ///             .build());
 ///
 ///         var fooPeeringConnectionOptions = new PeeringConnectionOptions("fooPeeringConnectionOptions", PeeringConnectionOptionsArgs.builder()
-///             .vpcPeeringConnectionId(fooVpcPeeringConnection.id())
 ///             .accepter(PeeringConnectionOptionsAccepterArgs.builder()
 ///                 .allowRemoteVpcDnsResolution(true)
 ///                 .build())
+///             .vpcPeeringConnectionId(fooVpcPeeringConnection.id())
 ///             .build());
 ///
 ///     }
@@ -231,9 +231,9 @@ import 'peering_connection_options_state.dart';
 ///     type: aws:ec2:PeeringConnectionOptions
 ///     name: foo
 ///     properties:
-///       vpcPeeringConnectionId: ${fooVpcPeeringConnection.id}
 ///       accepter:
 ///         allowRemoteVpcDnsResolution: true
+///       vpcPeeringConnectionId: ${fooVpcPeeringConnection.id}
 /// ```
 ///
 ///
@@ -274,16 +274,16 @@ import 'peering_connection_options_state.dart';
 ///     },
 /// });
 /// const requester = new aws.ec2.PeeringConnectionOptions("requester", {
-///     vpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.id,
 ///     requester: {
 ///         allowRemoteVpcDnsResolution: true,
 ///     },
+///     vpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.id,
 /// });
 /// const accepter = new aws.ec2.PeeringConnectionOptions("accepter", {
-///     vpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.id,
 ///     accepter: {
 ///         allowRemoteVpcDnsResolution: true,
 ///     },
+///     vpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.id,
 /// });
 /// ```
 /// ```python
@@ -316,15 +316,15 @@ import 'peering_connection_options_state.dart';
 ///         "Side": "Accepter",
 ///     })
 /// requester = aws.ec2.PeeringConnectionOptions("requester",
-///     vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id,
 ///     requester={
 ///         "allow_remote_vpc_dns_resolution": True,
-///     })
+///     },
+///     vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id)
 /// accepter = aws.ec2.PeeringConnectionOptions("accepter",
-///     vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id,
 ///     accepter={
 ///         "allow_remote_vpc_dns_resolution": True,
-///     })
+///     },
+///     vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -376,20 +376,20 @@ import 'peering_connection_options_state.dart';
 ///
 ///     var requester = new Aws.Ec2.PeeringConnectionOptions("requester", new()
 ///     {
-///         VpcPeeringConnectionId = peerVpcPeeringConnectionAccepter.Id,
 ///         Requester = new Aws.Ec2.Inputs.PeeringConnectionOptionsRequesterArgs
 ///         {
 ///             AllowRemoteVpcDnsResolution = true,
 ///         },
+///         VpcPeeringConnectionId = peerVpcPeeringConnectionAccepter.Id,
 ///     });
 ///
 ///     var accepter = new Aws.Ec2.PeeringConnectionOptions("accepter", new()
 ///     {
-///         VpcPeeringConnectionId = peerVpcPeeringConnectionAccepter.Id,
 ///         Accepter = new Aws.Ec2.Inputs.PeeringConnectionOptionsAccepterArgs
 ///         {
 ///             AllowRemoteVpcDnsResolution = true,
 ///         },
+///         VpcPeeringConnectionId = peerVpcPeeringConnectionAccepter.Id,
 ///     });
 ///
 /// });
@@ -450,19 +450,19 @@ import 'peering_connection_options_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewPeeringConnectionOptions(ctx, "requester", &ec2.PeeringConnectionOptionsArgs{
-/// 			VpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.ID().ToIDOutput().ToStringOutput(),
 /// 			Requester: &ec2.PeeringConnectionOptionsRequesterArgs{
 /// 				AllowRemoteVpcDnsResolution: pulumi.Bool(true),
 /// 			},
+/// 			VpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewPeeringConnectionOptions(ctx, "accepter", &ec2.PeeringConnectionOptionsArgs{
-/// 			VpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.ID().ToIDOutput().ToStringOutput(),
 /// 			Accepter: &ec2.PeeringConnectionOptionsAccepterArgs{
 /// 				AllowRemoteVpcDnsResolution: pulumi.Bool(true),
 /// 			},
+/// 			VpcPeeringConnectionId: peerVpcPeeringConnectionAccepter.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -512,16 +512,16 @@ import 'peering_connection_options_state.dart';
 ///   }
 /// }
 /// resource "aws_ec2_peeringconnectionoptions" "requester" {
-///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnectionaccepter.peer.id
 ///   requester = {
 ///     allow_remote_vpc_dns_resolution = true
 ///   }
+///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnectionaccepter.peer.id
 /// }
 /// resource "aws_ec2_peeringconnectionoptions" "accepter" {
-///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnectionaccepter.peer.id
 ///   accepter = {
 ///     allow_remote_vpc_dns_resolution = true
 ///   }
+///   vpc_peering_connection_id = aws_ec2_vpcpeeringconnectionaccepter.peer.id
 /// }
 /// ```
 /// ```java
@@ -587,17 +587,17 @@ import 'peering_connection_options_state.dart';
 ///             .build());
 ///
 ///         var requester = new PeeringConnectionOptions("requester", PeeringConnectionOptionsArgs.builder()
-///             .vpcPeeringConnectionId(peerVpcPeeringConnectionAccepter.id())
 ///             .requester(PeeringConnectionOptionsRequesterArgs.builder()
 ///                 .allowRemoteVpcDnsResolution(true)
 ///                 .build())
+///             .vpcPeeringConnectionId(peerVpcPeeringConnectionAccepter.id())
 ///             .build());
 ///
 ///         var accepter = new PeeringConnectionOptions("accepter", PeeringConnectionOptionsArgs.builder()
-///             .vpcPeeringConnectionId(peerVpcPeeringConnectionAccepter.id())
 ///             .accepter(PeeringConnectionOptionsAccepterArgs.builder()
 ///                 .allowRemoteVpcDnsResolution(true)
 ///                 .build())
+///             .vpcPeeringConnectionId(peerVpcPeeringConnectionAccepter.id())
 ///             .build());
 ///
 ///     }
@@ -641,15 +641,15 @@ import 'peering_connection_options_state.dart';
 ///   requester:
 ///     type: aws:ec2:PeeringConnectionOptions
 ///     properties:
-///       vpcPeeringConnectionId: ${peerVpcPeeringConnectionAccepter.id}
 ///       requester:
 ///         allowRemoteVpcDnsResolution: true
+///       vpcPeeringConnectionId: ${peerVpcPeeringConnectionAccepter.id}
 ///   accepter:
 ///     type: aws:ec2:PeeringConnectionOptions
 ///     properties:
-///       vpcPeeringConnectionId: ${peerVpcPeeringConnectionAccepter.id}
 ///       accepter:
 ///         allowRemoteVpcDnsResolution: true
+///       vpcPeeringConnectionId: ${peerVpcPeeringConnectionAccepter.id}
 /// variables:
 ///   peer:
 ///     fn::invoke:
@@ -687,7 +687,7 @@ class PeeringConnectionOptions extends pulumi.CustomResource {
           'aws:ec2/peeringConnectionOptions:PeeringConnectionOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accepter = registerOutput<PeeringConnectionOptionsAccepter>('accepter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringConnectionOptionsAccepter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
@@ -700,11 +700,12 @@ class PeeringConnectionOptions extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PeeringConnectionOptionsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PeeringConnectionOptions._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -718,6 +719,21 @@ class PeeringConnectionOptions extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accepter = registerOutput<PeeringConnectionOptionsAccepter>('accepter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringConnectionOptionsAccepter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    requester = registerOutput<PeeringConnectionOptionsRequester>('requester', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringConnectionOptionsRequester.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcPeeringConnectionId = registerOutput<String>('vpcPeeringConnectionId');
+  }
+
+  /// Creates a typed reference to an existing [PeeringConnectionOptions] resource.
+  PeeringConnectionOptions.reference(String urn)
+    : super(
+        'aws:ec2/peeringConnectionOptions:PeeringConnectionOptions',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accepter = registerOutput<PeeringConnectionOptionsAccepter>('accepter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringConnectionOptionsAccepter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     requester = registerOutput<PeeringConnectionOptionsRequester>('requester', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringConnectionOptionsRequester.fromMap((guardedValue as Map).cast<String, dynamic>()); });

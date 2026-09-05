@@ -8,17 +8,17 @@ class UserPoolSchema {
   /// Attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
   final pulumi.Input<String> attributeDataType;
   /// Whether the attribute type is developer only.
-  final pulumi.Input<bool>? developerOnlyAttribute;
+  final pulumi.Input<bool?>? developerOnlyAttribute;
   /// Whether the attribute can be changed once it has been created.
-  final pulumi.Input<bool>? mutable;
+  final pulumi.Input<bool?>? mutable;
   /// Name of the attribute.
   final pulumi.Input<String> name;
   /// Configuration block for the constraints for an attribute of the number type. Detailed below.
-  final pulumi.Input<UserPoolSchemaNumberAttributeConstraints>? numberAttributeConstraints;
+  final pulumi.Input<UserPoolSchemaNumberAttributeConstraints?>? numberAttributeConstraints;
   /// Whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   /// Constraints for an attribute of the string type. Detailed below.
-  final pulumi.Input<UserPoolSchemaStringAttributeConstraints>? stringAttributeConstraints;
+  final pulumi.Input<UserPoolSchemaStringAttributeConstraints?>? stringAttributeConstraints;
 
   /// Creates a new [UserPoolSchema].
   /// [attributeDataType] Attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.

@@ -217,7 +217,7 @@ class LbStickinessPolicy extends pulumi.CustomResource {
           'aws:lightsail/lbStickinessPolicy:LbStickinessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cookieDuration = registerOutput<int>('cookieDuration');
     enabled = registerOutput<bool>('enabled');
@@ -230,11 +230,12 @@ class LbStickinessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LbStickinessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LbStickinessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -248,6 +249,21 @@ class LbStickinessPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cookieDuration = registerOutput<int>('cookieDuration');
+    enabled = registerOutput<bool>('enabled');
+    lbName = registerOutput<String>('lbName');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LbStickinessPolicy] resource.
+  LbStickinessPolicy.reference(String urn)
+    : super(
+        'aws:lightsail/lbStickinessPolicy:LbStickinessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cookieDuration = registerOutput<int>('cookieDuration');
     enabled = registerOutput<bool>('enabled');
     lbName = registerOutput<String>('lbName');

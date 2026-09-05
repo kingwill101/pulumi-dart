@@ -6,31 +6,31 @@ import 'map_configuration.dart';
 /// Input properties used for looking up and filtering Map resources.
 class MapState {
   /// Configuration block with the map style selected from an available data provider. Detailed below.
-  final pulumi.Input<MapConfiguration>? configuration;
+  final pulumi.Input<MapConfiguration?>? configuration;
   /// The timestamp for when the map resource was created in ISO 8601 format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// An optional description for the map resource.
-  final pulumi.Input<String>? description;
-  /// The Amazon Resource Name (ARN) for the map resource. Used to specify a resource across all AWS.
-  final pulumi.Input<String>? mapArn;
+  final pulumi.Input<String?>? description;
+  /// ARN for the map resource. Used to specify a resource across all AWS.
+  final pulumi.Input<String?>? mapArn;
   /// The name for the map resource.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? mapName;
+  final pulumi.Input<String?>? mapName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the map. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The timestamp for when the map resource was last updated in ISO 8601 format.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [MapState].
   /// [configuration] Configuration block with the map style selected from an available data provider. Detailed below.
   /// [createTime] The timestamp for when the map resource was created in ISO 8601 format.
   /// [description] An optional description for the map resource.
-  /// [mapArn] The Amazon Resource Name (ARN) for the map resource. Used to specify a resource across all AWS.
+  /// [mapArn] ARN for the map resource. Used to specify a resource across all AWS.
   /// [mapName] The name for the map resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value tags for the map. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

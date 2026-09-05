@@ -130,6 +130,17 @@ Future<GetAclResult> getAcl(
   return GetAclResult.fromMap(result);
 }
 
+pulumi.Output<GetAclResult> getAclOutput(
+  GetAclArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:memorydb/getAcl:getAcl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAclResult.fromMap);
+}
+
 /// Provides information about a MemoryDB Cluster.
 ///
 /// ## Example Usage
@@ -246,6 +257,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:memorydb/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Provides information about a MemoryDB Parameter Group.
@@ -366,6 +388,17 @@ Future<GetParameterGroupResult> getParameterGroup(
   return GetParameterGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetParameterGroupResult> getParameterGroupOutput(
+  GetParameterGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:memorydb/getParameterGroup:getParameterGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetParameterGroupResult.fromMap);
+}
+
 /// Provides information about a MemoryDB Snapshot.
 ///
 /// ## Example Usage
@@ -482,6 +515,17 @@ Future<GetSnapshotResult> getSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:memorydb/getSnapshot:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
 }
 
 /// Provides information about a MemoryDB Subnet Group.
@@ -602,6 +646,17 @@ Future<GetSubnetGroupResult> getSubnetGroup(
   return GetSubnetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetSubnetGroupResult> getSubnetGroupOutput(
+  GetSubnetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:memorydb/getSubnetGroup:getSubnetGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetGroupResult.fromMap);
+}
+
 /// Provides information about a MemoryDB User.
 ///
 /// ## Example Usage
@@ -718,4 +773,15 @@ Future<GetUserResult> getUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserResult.fromMap(result);
+}
+
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:memorydb/getUser:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
 }

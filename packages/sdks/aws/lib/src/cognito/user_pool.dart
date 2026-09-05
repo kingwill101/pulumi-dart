@@ -7,6 +7,7 @@ import 'user_pool_email_configuration.dart';
 import 'user_pool_email_mfa_configuration.dart';
 import 'user_pool_lambda_config.dart';
 import 'user_pool_password_policy.dart';
+import 'user_pool_schema.dart';
 import 'user_pool_sign_in_policy.dart';
 import 'user_pool_sms_configuration.dart';
 import 'user_pool_software_token_mfa_configuration.dart';
@@ -129,8 +130,6 @@ import 'user_pool_web_authn_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cognito.UserPool("example", {
-///     mfaConfiguration: "ON",
-///     smsAuthenticationMessage: "Your code is {####}",
 ///     smsConfiguration: {
 ///         externalId: "example",
 ///         snsCallerArn: exampleAwsIamRole.arn,
@@ -139,6 +138,8 @@ import 'user_pool_web_authn_configuration.dart';
 ///     softwareTokenMfaConfiguration: {
 ///         enabled: true,
 ///     },
+///     mfaConfiguration: "ON",
+///     smsAuthenticationMessage: "Your code is {####}",
 /// });
 /// ```
 /// ```python
@@ -146,8 +147,6 @@ import 'user_pool_web_authn_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cognito.UserPool("example",
-///     mfa_configuration="ON",
-///     sms_authentication_message="Your code is {####}",
 ///     sms_configuration={
 ///         "external_id": "example",
 ///         "sns_caller_arn": example_aws_iam_role["arn"],
@@ -155,7 +154,9 @@ import 'user_pool_web_authn_configuration.dart';
 ///     },
 ///     software_token_mfa_configuration={
 ///         "enabled": True,
-///     })
+///     },
+///     mfa_configuration="ON",
+///     sms_authentication_message="Your code is {####}")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -167,8 +168,6 @@ import 'user_pool_web_authn_configuration.dart';
 /// {
 ///     var example = new Aws.Cognito.UserPool("example", new()
 ///     {
-///         MfaConfiguration = "ON",
-///         SmsAuthenticationMessage = "Your code is {####}",
 ///         SmsConfiguration = new Aws.Cognito.Inputs.UserPoolSmsConfigurationArgs
 ///         {
 ///             ExternalId = "example",
@@ -179,6 +178,8 @@ import 'user_pool_web_authn_configuration.dart';
 ///         {
 ///             Enabled = true,
 ///         },
+///         MfaConfiguration = "ON",
+///         SmsAuthenticationMessage = "Your code is {####}",
 ///     });
 ///
 /// });
@@ -194,8 +195,6 @@ import 'user_pool_web_authn_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cognito.NewUserPool(ctx, "example", &cognito.UserPoolArgs{
-/// 			MfaConfiguration:         pulumi.String("ON"),
-/// 			SmsAuthenticationMessage: pulumi.String("Your code is {####}"),
 /// 			SmsConfiguration: &cognito.UserPoolSmsConfigurationArgs{
 /// 				ExternalId:   pulumi.String("example"),
 /// 				SnsCallerArn: pulumi.Any(exampleAwsIamRole.Arn),
@@ -204,6 +203,8 @@ import 'user_pool_web_authn_configuration.dart';
 /// 			SoftwareTokenMfaConfiguration: &cognito.UserPoolSoftwareTokenMfaConfigurationArgs{
 /// 				Enabled: pulumi.Bool(true),
 /// 			},
+/// 			MfaConfiguration:         pulumi.String("ON"),
+/// 			SmsAuthenticationMessage: pulumi.String("Your code is {####}"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -222,8 +223,6 @@ import 'user_pool_web_authn_configuration.dart';
 /// }
 ///
 /// resource "aws_cognito_userpool" "example" {
-///   mfa_configuration          = "ON"
-///   sms_authentication_message = "Your code is {####}"
 ///   sms_configuration = {
 ///     external_id    = "example"
 ///     sns_caller_arn = exampleAwsIamRole.arn
@@ -232,6 +231,8 @@ import 'user_pool_web_authn_configuration.dart';
 ///   software_token_mfa_configuration = {
 ///     enabled = true
 ///   }
+///   mfa_configuration          = "ON"
+///   sms_authentication_message = "Your code is {####}"
 /// }
 /// ```
 /// ```java
@@ -258,8 +259,6 @@ import 'user_pool_web_authn_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserPool("example", UserPoolArgs.builder()
-///             .mfaConfiguration("ON")
-///             .smsAuthenticationMessage("Your code is {####}")
 ///             .smsConfiguration(UserPoolSmsConfigurationArgs.builder()
 ///                 .externalId("example")
 ///                 .snsCallerArn(exampleAwsIamRole.arn())
@@ -268,6 +267,8 @@ import 'user_pool_web_authn_configuration.dart';
 ///             .softwareTokenMfaConfiguration(UserPoolSoftwareTokenMfaConfigurationArgs.builder()
 ///                 .enabled(true)
 ///                 .build())
+///             .mfaConfiguration("ON")
+///             .smsAuthenticationMessage("Your code is {####}")
 ///             .build());
 ///
 ///     }
@@ -278,14 +279,14 @@ import 'user_pool_web_authn_configuration.dart';
 ///   example:
 ///     type: aws:cognito:UserPool
 ///     properties:
-///       mfaConfiguration: ON
-///       smsAuthenticationMessage: Your code is {####}
 ///       smsConfiguration:
 ///         externalId: example
 ///         snsCallerArn: ${exampleAwsIamRole.arn}
 ///         snsRegion: us-east-1
 ///       softwareTokenMfaConfiguration:
 ///         enabled: true
+///       mfaConfiguration: ON
+///       smsAuthenticationMessage: Your code is {####}
 /// ```
 ///
 ///
@@ -297,7 +298,6 @@ import 'user_pool_web_authn_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.cognito.UserPool("test", {
-///     name: "mypool",
 ///     accountRecoverySetting: {
 ///         recoveryMechanisms: [
 ///             {
@@ -310,6 +310,7 @@ import 'user_pool_web_authn_configuration.dart';
 ///             },
 ///         ],
 ///     },
+///     name: "mypool",
 /// });
 /// ```
 /// ```python
@@ -317,7 +318,6 @@ import 'user_pool_web_authn_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.cognito.UserPool("test",
-///     name="mypool",
 ///     account_recovery_setting={
 ///         "recovery_mechanisms": [
 ///             {
@@ -329,7 +329,8 @@ import 'user_pool_web_authn_configuration.dart';
 ///                 "priority": 2,
 ///             },
 ///         ],
-///     })
+///     },
+///     name="mypool")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -341,7 +342,6 @@ import 'user_pool_web_authn_configuration.dart';
 /// {
 ///     var test = new Aws.Cognito.UserPool("test", new()
 ///     {
-///         Name = "mypool",
 ///         AccountRecoverySetting = new Aws.Cognito.Inputs.UserPoolAccountRecoverySettingArgs
 ///         {
 ///             RecoveryMechanisms = new[]
@@ -358,6 +358,7 @@ import 'user_pool_web_authn_configuration.dart';
 ///                 },
 ///             },
 ///         },
+///         Name = "mypool",
 ///     });
 ///
 /// });
@@ -373,7 +374,6 @@ import 'user_pool_web_authn_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cognito.NewUserPool(ctx, "test", &cognito.UserPoolArgs{
-/// 			Name: pulumi.String("mypool"),
 /// 			AccountRecoverySetting: &cognito.UserPoolAccountRecoverySettingArgs{
 /// 				RecoveryMechanisms: cognito.UserPoolAccountRecoverySettingRecoveryMechanismArray{
 /// 					&cognito.UserPoolAccountRecoverySettingRecoveryMechanismArgs{
@@ -386,6 +386,7 @@ import 'user_pool_web_authn_configuration.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("mypool"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -404,7 +405,6 @@ import 'user_pool_web_authn_configuration.dart';
 /// }
 ///
 /// resource "aws_cognito_userpool" "test" {
-///   name = "mypool"
 ///   account_recovery_setting = {
 ///     recovery_mechanisms = [{
 ///       "name"     = "verified_email"
@@ -414,6 +414,7 @@ import 'user_pool_web_authn_configuration.dart';
 ///       "priority" = 2
 ///     }]
 ///   }
+///   name = "mypool"
 /// }
 /// ```
 /// ```java
@@ -440,7 +441,6 @@ import 'user_pool_web_authn_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new UserPool("test", UserPoolArgs.builder()
-///             .name("mypool")
 ///             .accountRecoverySetting(UserPoolAccountRecoverySettingArgs.builder()
 ///                 .recoveryMechanisms(
 ///                     UserPoolAccountRecoverySettingRecoveryMechanismArgs.builder()
@@ -452,6 +452,7 @@ import 'user_pool_web_authn_configuration.dart';
 ///                         .priority(2)
 ///                         .build())
 ///                 .build())
+///             .name("mypool")
 ///             .build());
 ///
 ///     }
@@ -462,13 +463,13 @@ import 'user_pool_web_authn_configuration.dart';
 ///   test:
 ///     type: aws:cognito:UserPool
 ///     properties:
-///       name: mypool
 ///       accountRecoverySetting:
 ///         recoveryMechanisms:
 ///           - name: verified_email
 ///             priority: 1
 ///           - name: verified_phone_number
 ///             priority: 2
+///       name: mypool
 /// ```
 ///
 ///
@@ -525,7 +526,7 @@ class UserPool extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block for the schema attributes of a user pool. Detailed below. Schema attributes from the [standard attribute set](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#cognito-user-pools-standard-attributes) only need to be specified if they are different from the default configuration. Attributes can be added, but not modified or removed. Maximum of 50 attributes.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schemas;
+  late final pulumi.Output<List<UserPoolSchema>?> schemas;
   /// Configuration block for information about the user pool sign in policy. Detailed below.
   late final pulumi.Output<UserPoolSignInPolicy> signInPolicy;
   /// String representing the SMS authentication message. The Message must contain the `{####}` placeholder, which will be replaced with the code.
@@ -567,13 +568,13 @@ class UserPool extends pulumi.CustomResource {
           'aws:cognito/userPool:UserPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountRecoverySetting = registerOutput<UserPoolAccountRecoverySetting?>('accountRecoverySetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolAccountRecoverySetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     adminCreateUserConfig = registerOutput<UserPoolAdminCreateUserConfig>('adminCreateUserConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolAdminCreateUserConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    aliasAttributes = registerOutput<List<String>?>('aliasAttributes');
+    aliasAttributes = registerOutput<List<String>?>('aliasAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
-    autoVerifiedAttributes = registerOutput<List<String>?>('autoVerifiedAttributes');
+    autoVerifiedAttributes = registerOutput<List<String>?>('autoVerifiedAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     creationDate = registerOutput<String>('creationDate');
     customDomain = registerOutput<String>('customDomain');
     deletionProtection = registerOutput<String?>('deletionProtection');
@@ -591,18 +592,18 @@ class UserPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     passwordPolicy = registerOutput<UserPoolPasswordPolicy>('passwordPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolPasswordPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    schemas = registerOutput<List<Map<String, dynamic>>?>('schemas');
+    schemas = registerOutput<List<UserPoolSchema>?>('schemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserPoolSchema>(guardedValue, (value) => UserPoolSchema.fromMap((value as Map).cast<String, dynamic>())); });
     signInPolicy = registerOutput<UserPoolSignInPolicy>('signInPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolSignInPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     smsAuthenticationMessage = registerOutput<String?>('smsAuthenticationMessage');
     smsConfiguration = registerOutput<UserPoolSmsConfiguration>('smsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolSmsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     smsVerificationMessage = registerOutput<String>('smsVerificationMessage');
     softwareTokenMfaConfiguration = registerOutput<UserPoolSoftwareTokenMfaConfiguration?>('softwareTokenMfaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolSoftwareTokenMfaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userAttributeUpdateSettings = registerOutput<UserPoolUserAttributeUpdateSettings?>('userAttributeUpdateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolUserAttributeUpdateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolAddOns = registerOutput<UserPoolUserPoolAddOns?>('userPoolAddOns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolUserPoolAddOns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolTier = registerOutput<String>('userPoolTier');
-    usernameAttributes = registerOutput<List<String>?>('usernameAttributes');
+    usernameAttributes = registerOutput<List<String>?>('usernameAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     usernameConfiguration = registerOutput<UserPoolUsernameConfiguration>('usernameConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolUsernameConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     verificationMessageTemplate = registerOutput<UserPoolVerificationMessageTemplate>('verificationMessageTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolVerificationMessageTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webAuthnConfiguration = registerOutput<UserPoolWebAuthnConfiguration?>('webAuthnConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolWebAuthnConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -613,11 +614,12 @@ class UserPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -633,9 +635,9 @@ class UserPool extends pulumi.CustomResource {
         ) {
     accountRecoverySetting = registerOutput<UserPoolAccountRecoverySetting?>('accountRecoverySetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolAccountRecoverySetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     adminCreateUserConfig = registerOutput<UserPoolAdminCreateUserConfig>('adminCreateUserConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolAdminCreateUserConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    aliasAttributes = registerOutput<List<String>?>('aliasAttributes');
+    aliasAttributes = registerOutput<List<String>?>('aliasAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
-    autoVerifiedAttributes = registerOutput<List<String>?>('autoVerifiedAttributes');
+    autoVerifiedAttributes = registerOutput<List<String>?>('autoVerifiedAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     creationDate = registerOutput<String>('creationDate');
     customDomain = registerOutput<String>('customDomain');
     deletionProtection = registerOutput<String?>('deletionProtection');
@@ -653,18 +655,66 @@ class UserPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     passwordPolicy = registerOutput<UserPoolPasswordPolicy>('passwordPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolPasswordPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    schemas = registerOutput<List<Map<String, dynamic>>?>('schemas');
+    schemas = registerOutput<List<UserPoolSchema>?>('schemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserPoolSchema>(guardedValue, (value) => UserPoolSchema.fromMap((value as Map).cast<String, dynamic>())); });
     signInPolicy = registerOutput<UserPoolSignInPolicy>('signInPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolSignInPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     smsAuthenticationMessage = registerOutput<String?>('smsAuthenticationMessage');
     smsConfiguration = registerOutput<UserPoolSmsConfiguration>('smsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolSmsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     smsVerificationMessage = registerOutput<String>('smsVerificationMessage');
     softwareTokenMfaConfiguration = registerOutput<UserPoolSoftwareTokenMfaConfiguration?>('softwareTokenMfaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolSoftwareTokenMfaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userAttributeUpdateSettings = registerOutput<UserPoolUserAttributeUpdateSettings?>('userAttributeUpdateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolUserAttributeUpdateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolAddOns = registerOutput<UserPoolUserPoolAddOns?>('userPoolAddOns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolUserPoolAddOns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     userPoolTier = registerOutput<String>('userPoolTier');
-    usernameAttributes = registerOutput<List<String>?>('usernameAttributes');
+    usernameAttributes = registerOutput<List<String>?>('usernameAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    usernameConfiguration = registerOutput<UserPoolUsernameConfiguration>('usernameConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolUsernameConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    verificationMessageTemplate = registerOutput<UserPoolVerificationMessageTemplate>('verificationMessageTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolVerificationMessageTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webAuthnConfiguration = registerOutput<UserPoolWebAuthnConfiguration?>('webAuthnConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolWebAuthnConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [UserPool] resource.
+  UserPool.reference(String urn)
+    : super(
+        'aws:cognito/userPool:UserPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountRecoverySetting = registerOutput<UserPoolAccountRecoverySetting?>('accountRecoverySetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolAccountRecoverySetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    adminCreateUserConfig = registerOutput<UserPoolAdminCreateUserConfig>('adminCreateUserConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolAdminCreateUserConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    aliasAttributes = registerOutput<List<String>?>('aliasAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    autoVerifiedAttributes = registerOutput<List<String>?>('autoVerifiedAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    creationDate = registerOutput<String>('creationDate');
+    customDomain = registerOutput<String>('customDomain');
+    deletionProtection = registerOutput<String?>('deletionProtection');
+    deviceConfiguration = registerOutput<UserPoolDeviceConfiguration?>('deviceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolDeviceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domain = registerOutput<String>('domain');
+    emailConfiguration = registerOutput<UserPoolEmailConfiguration?>('emailConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolEmailConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    emailMfaConfiguration = registerOutput<UserPoolEmailMfaConfiguration?>('emailMfaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolEmailMfaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    emailVerificationMessage = registerOutput<String>('emailVerificationMessage');
+    emailVerificationSubject = registerOutput<String>('emailVerificationSubject');
+    endpoint = registerOutput<String>('endpoint');
+    estimatedNumberOfUsers = registerOutput<int>('estimatedNumberOfUsers');
+    lambdaConfig = registerOutput<UserPoolLambdaConfig?>('lambdaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolLambdaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    mfaConfiguration = registerOutput<String?>('mfaConfiguration');
+    this.name = registerOutput<String>('name');
+    passwordPolicy = registerOutput<UserPoolPasswordPolicy>('passwordPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolPasswordPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    schemas = registerOutput<List<UserPoolSchema>?>('schemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserPoolSchema>(guardedValue, (value) => UserPoolSchema.fromMap((value as Map).cast<String, dynamic>())); });
+    signInPolicy = registerOutput<UserPoolSignInPolicy>('signInPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolSignInPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    smsAuthenticationMessage = registerOutput<String?>('smsAuthenticationMessage');
+    smsConfiguration = registerOutput<UserPoolSmsConfiguration>('smsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolSmsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    smsVerificationMessage = registerOutput<String>('smsVerificationMessage');
+    softwareTokenMfaConfiguration = registerOutput<UserPoolSoftwareTokenMfaConfiguration?>('softwareTokenMfaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolSoftwareTokenMfaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userAttributeUpdateSettings = registerOutput<UserPoolUserAttributeUpdateSettings?>('userAttributeUpdateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolUserAttributeUpdateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userPoolAddOns = registerOutput<UserPoolUserPoolAddOns?>('userPoolAddOns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolUserPoolAddOns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userPoolTier = registerOutput<String>('userPoolTier');
+    usernameAttributes = registerOutput<List<String>?>('usernameAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     usernameConfiguration = registerOutput<UserPoolUsernameConfiguration>('usernameConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolUsernameConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     verificationMessageTemplate = registerOutput<UserPoolVerificationMessageTemplate>('verificationMessageTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolVerificationMessageTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webAuthnConfiguration = registerOutput<UserPoolWebAuthnConfiguration?>('webAuthnConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolWebAuthnConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

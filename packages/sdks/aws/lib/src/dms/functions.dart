@@ -130,6 +130,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:dms/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Data source for managing an AWS DMS (Database Migration) Endpoint.
 ///
 /// ## Example Usage
@@ -250,6 +261,17 @@ Future<GetEndpointResult> getEndpoint(
   return GetEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetEndpointResult> getEndpointOutput(
+  GetEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:dms/getEndpoint:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointResult.fromMap);
+}
+
 /// Data source for managing an AWS DMS (Database Migration) Replication Instance.
 ///
 /// ## Example Usage
@@ -366,6 +388,17 @@ Future<GetReplicationInstanceResult> getReplicationInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationInstanceResult> getReplicationInstanceOutput(
+  GetReplicationInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:dms/getReplicationInstance:getReplicationInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationInstanceResult.fromMap);
 }
 
 /// Data source for managing an AWS DMS (Database Migration) Replication Subnet Group.
@@ -488,6 +521,17 @@ Future<GetReplicationSubnetGroupResult> getReplicationSubnetGroup(
   return GetReplicationSubnetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicationSubnetGroupResult> getReplicationSubnetGroupOutput(
+  GetReplicationSubnetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:dms/getReplicationSubnetGroup:getReplicationSubnetGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationSubnetGroupResult.fromMap);
+}
+
 /// Data source for managing an AWS DMS (Database Migration) Replication Task.
 ///
 /// ## Example Usage
@@ -606,4 +650,15 @@ Future<GetReplicationTaskResult> getReplicationTask(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationTaskResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationTaskResult> getReplicationTaskOutput(
+  GetReplicationTaskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:dms/getReplicationTask:getReplicationTask',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationTaskResult.fromMap);
 }

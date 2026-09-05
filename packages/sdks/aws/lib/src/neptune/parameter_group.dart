@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_group_args.dart';
+import 'parameter_group_parameter.dart';
 import 'parameter_group_state.dart';
 
 /// Manages a Neptune Parameter Group
@@ -12,12 +13,12 @@ import 'parameter_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.neptune.ParameterGroup("example", {
-///     family: "neptune1",
-///     name: "example",
 ///     parameters: [{
 ///         name: "neptune_query_timeout",
 ///         value: "25",
 ///     }],
+///     family: "neptune1",
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -25,12 +26,12 @@ import 'parameter_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.neptune.ParameterGroup("example",
-///     family="neptune1",
-///     name="example",
 ///     parameters=[{
 ///         "name": "neptune_query_timeout",
 ///         "value": "25",
-///     }])
+///     }],
+///     family="neptune1",
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -42,8 +43,6 @@ import 'parameter_group_state.dart';
 /// {
 ///     var example = new Aws.Neptune.ParameterGroup("example", new()
 ///     {
-///         Family = "neptune1",
-///         Name = "example",
 ///         Parameters = new[]
 ///         {
 ///             new Aws.Neptune.Inputs.ParameterGroupParameterArgs
@@ -52,6 +51,8 @@ import 'parameter_group_state.dart';
 ///                 Value = "25",
 ///             },
 ///         },
+///         Family = "neptune1",
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -67,14 +68,14 @@ import 'parameter_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := neptune.NewParameterGroup(ctx, "example", &neptune.ParameterGroupArgs{
-/// 			Family: pulumi.String("neptune1"),
-/// 			Name:   pulumi.String("example"),
 /// 			Parameters: neptune.ParameterGroupParameterArray{
 /// 				&neptune.ParameterGroupParameterArgs{
 /// 					Name:  pulumi.String("neptune_query_timeout"),
 /// 					Value: pulumi.String("25"),
 /// 				},
 /// 			},
+/// 			Family: pulumi.String("neptune1"),
+/// 			Name:   pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,12 +94,12 @@ import 'parameter_group_state.dart';
 /// }
 ///
 /// resource "aws_neptune_parametergroup" "example" {
-///   family = "neptune1"
-///   name   = "example"
 ///   parameters {
 ///     name  = "neptune_query_timeout"
 ///     value = "25"
 ///   }
+///   family = "neptune1"
+///   name   = "example"
 /// }
 /// ```
 /// ```java
@@ -124,12 +125,12 @@ import 'parameter_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ParameterGroup("example", ParameterGroupArgs.builder()
-///             .family("neptune1")
-///             .name("example")
 ///             .parameters(ParameterGroupParameterArgs.builder()
 ///                 .name("neptune_query_timeout")
 ///                 .value("25")
 ///                 .build())
+///             .family("neptune1")
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -140,11 +141,11 @@ import 'parameter_group_state.dart';
 ///   example:
 ///     type: aws:neptune:ParameterGroup
 ///     properties:
-///       family: neptune1
-///       name: example
 ///       parameters:
 ///         - name: neptune_query_timeout
 ///           value: '25'
+///       family: neptune1
+///       name: example
 /// ```
 ///
 ///
@@ -156,7 +157,7 @@ import 'parameter_group_state.dart';
 /// $ pulumi import aws:neptune/parameterGroup:ParameterGroup some_pg some-pg
 /// ```
 class ParameterGroup extends pulumi.CustomResource {
-  /// The Neptune parameter group Amazon Resource Name (ARN).
+  /// Neptune parameter group ARN.
   late final pulumi.Output<String> arn;
   /// The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String?> description;
@@ -167,7 +168,7 @@ class ParameterGroup extends pulumi.CustomResource {
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
   /// A list of Neptune parameters to apply.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<ParameterGroupParameter>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -187,17 +188,17 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:neptune/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
     family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ParameterGroup] resource's state with the given [name] and [id].
@@ -205,11 +206,12 @@ class ParameterGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ParameterGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ParameterGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -228,9 +230,29 @@ class ParameterGroup extends pulumi.CustomResource {
     family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ParameterGroup] resource.
+  ParameterGroup.reference(String urn)
+    : super(
+        'aws:neptune/parameterGroup:ParameterGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    family = registerOutput<String>('family');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    parameters = registerOutput<List<ParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

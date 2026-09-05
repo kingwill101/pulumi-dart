@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LicenseConfiguration resources.
 class LicenseConfigurationState {
   /// The license configuration ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Description of the license configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Number of licenses managed by the license configuration.
-  final pulumi.Input<int>? licenseCount;
+  final pulumi.Input<int?>? licenseCount;
   /// Sets the number of available licenses as a hard limit.
-  final pulumi.Input<bool>? licenseCountHardLimit;
+  final pulumi.Input<bool?>? licenseCountHardLimit;
   /// Dimension to use to track license inventory. Specify either `vCPU`, `Instance`, `Core` or `Socket`.
-  final pulumi.Input<String>? licenseCountingType;
+  final pulumi.Input<String?>? licenseCountingType;
   /// Array of configured License Manager rules.
-  final pulumi.Input<List<String>>? licenseRules;
+  final pulumi.Input<List<String>?>? licenseRules;
   /// Name of the license configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Account ID of the owner of the license configuration.
-  final pulumi.Input<String>? ownerAccountId;
+  final pulumi.Input<String?>? ownerAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [LicenseConfigurationState].
   /// [arn] The license configuration ARN.
@@ -73,7 +73,7 @@ class LicenseConfigurationState {
     return LicenseConfigurationState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      licenseCount: (() { final guardedValue = map['licenseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      licenseCount: (() { final guardedValue = map['licenseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       licenseCountHardLimit: (() { final guardedValue = map['licenseCountHardLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       licenseCountingType: (() { final guardedValue = map['licenseCountingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       licenseRules: (() { final guardedValue = map['licenseRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

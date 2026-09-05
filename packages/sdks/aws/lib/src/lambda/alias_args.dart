@@ -9,7 +9,7 @@ import 'alias_routing_config.dart';
 /// {@macro pulumi_lambda_alias_alias_args_doc}
 class AliasArgs {
   /// Description of the alias.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name or ARN of the Lambda function.
   final pulumi.Input<String> functionName;
   /// Lambda function version for which you are creating the alias. Pattern: `(\$LATEST|[0-9]+)`.
@@ -17,11 +17,11 @@ class AliasArgs {
   /// Name for the alias. Pattern: `(?!^[0-9]+$)([a-zA-Z0-9-_]+)`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Lambda alias' route configuration settings. See below.
-  final pulumi.Input<AliasRoutingConfig>? routingConfig;
+  final pulumi.Input<AliasRoutingConfig?>? routingConfig;
 
   /// Creates a new [AliasArgs].
   /// [description] Description of the alias.

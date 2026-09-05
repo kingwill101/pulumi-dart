@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_lb_get_hosted_zone_id_get_hosted_zone_id_args_doc}
 class GetHostedZoneIdArgs {
   /// Type of load balancer to create. Possible values are `application` or `network`. The default value is `application`.
-  final pulumi.Input<String>? loadBalancerType;
+  final pulumi.Input<String?>? loadBalancerType;
   /// Name of the Region whose AWS ELB HostedZoneId is desired. Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetHostedZoneIdArgs].
   /// [loadBalancerType] Type of load balancer to create. Possible values are `application` or `network`. The default value is `application`.

@@ -50,19 +50,20 @@ class Certificate extends pulumi.CustomResource {
           'aws:transfer/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['certificate', 'certificateChain', 'privateKey'],
         ) {
     activeDate = registerOutput<String>('activeDate');
     arn = registerOutput<String>('arn');
-    certificate = registerOutput<String>('certificate');
-    certificateChain = registerOutput<String?>('certificateChain');
+    certificate = registerOutput<String>('certificate', isSecret: true);
+    certificateChain = registerOutput<String?>('certificateChain', isSecret: true);
     certificateId = registerOutput<String>('certificateId');
     description = registerOutput<String?>('description');
     inactiveDate = registerOutput<String>('inactiveDate');
-    privateKey = registerOutput<String?>('privateKey');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     usage = registerOutput<String>('usage');
   }
 
@@ -71,11 +72,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -91,15 +93,39 @@ class Certificate extends pulumi.CustomResource {
         ) {
     activeDate = registerOutput<String>('activeDate');
     arn = registerOutput<String>('arn');
-    certificate = registerOutput<String>('certificate');
-    certificateChain = registerOutput<String?>('certificateChain');
+    certificate = registerOutput<String>('certificate', isSecret: true);
+    certificateChain = registerOutput<String?>('certificateChain', isSecret: true);
     certificateId = registerOutput<String>('certificateId');
     description = registerOutput<String?>('description');
     inactiveDate = registerOutput<String>('inactiveDate');
-    privateKey = registerOutput<String?>('privateKey');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    usage = registerOutput<String>('usage');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'aws:transfer/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['certificate', 'certificateChain', 'privateKey'],
+        isResourceReference: true,
+      ) {
+    activeDate = registerOutput<String>('activeDate');
+    arn = registerOutput<String>('arn');
+    certificate = registerOutput<String>('certificate', isSecret: true);
+    certificateChain = registerOutput<String?>('certificateChain', isSecret: true);
+    certificateId = registerOutput<String>('certificateId');
+    description = registerOutput<String?>('description');
+    inactiveDate = registerOutput<String>('inactiveDate');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     usage = registerOutput<String>('usage');
   }
 }

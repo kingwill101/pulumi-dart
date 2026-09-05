@@ -119,3 +119,14 @@ Future<GetLedgerResult> getLedger(
   );
   return GetLedgerResult.fromMap(result);
 }
+
+pulumi.Output<GetLedgerResult> getLedgerOutput(
+  GetLedgerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:qldb/getLedger:getLedger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLedgerResult.fromMap);
+}

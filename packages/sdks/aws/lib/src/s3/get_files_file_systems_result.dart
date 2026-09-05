@@ -7,27 +7,27 @@ import 'get_files_file_systems_file_system.dart';
 class GetFilesFileSystemsResult {
   /// List of file systems. See `fileSystems` below.
   final List<GetFilesFileSystemsFileSystem>? fileSystems;
-  final String region;
+  final String? region;
 
   /// Creates a new [GetFilesFileSystemsResult].
   /// [fileSystems] List of file systems. See `fileSystems` below.
-  /// [region] Required.
+  /// [region] Optional.
   const GetFilesFileSystemsResult({
     this.fileSystems,
-    required this.region,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fileSystems': ?(() { final guardedValue = fileSystems; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFilesFileSystemsFileSystem, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'region': region,
+      'region': ?region,
     };
   }
 
   factory GetFilesFileSystemsResult.fromMap(Map<String, dynamic> map) {
     return GetFilesFileSystemsResult(
       fileSystems: (() { final guardedValue = map['fileSystems']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFilesFileSystemsFileSystem>(guardedValue, (value) => GetFilesFileSystemsFileSystem.fromMap((value as Map).cast<String, dynamic>())); })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

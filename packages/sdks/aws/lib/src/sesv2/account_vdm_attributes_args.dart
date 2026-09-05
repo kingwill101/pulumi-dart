@@ -9,22 +9,22 @@ import 'account_vdm_attributes_guardian_attributes.dart';
 /// {@endtemplate}
 /// {@macro pulumi_sesv2_account_vdm_attributes_account_vdm_attributes_args_doc}
 class AccountVdmAttributesArgs {
-  /// Specifies additional settings for your VDM configuration as applicable to the Dashboard.
-  final pulumi.Input<AccountVdmAttributesDashboardAttributes>? dashboardAttributes;
-  /// Specifies additional settings for your VDM configuration as applicable to the Guardian.
-  final pulumi.Input<AccountVdmAttributesGuardianAttributes>? guardianAttributes;
+  /// Additional settings for your VDM configuration as applicable to the Dashboard.
+  final pulumi.Input<AccountVdmAttributesDashboardAttributes?>? dashboardAttributes;
+  /// Additional settings for your VDM configuration as applicable to the Guardian.
+  final pulumi.Input<AccountVdmAttributesGuardianAttributes?>? guardianAttributes;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Specifies the status of your VDM configuration. Valid values: `ENABLED`, `DISABLED`.
+  final pulumi.Input<String?>? region;
+  /// Status of your VDM configuration. Valid values: `ENABLED`, `DISABLED`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> vdmEnabled;
 
   /// Creates a new [AccountVdmAttributesArgs].
-  /// [dashboardAttributes] Specifies additional settings for your VDM configuration as applicable to the Dashboard.
-  /// [guardianAttributes] Specifies additional settings for your VDM configuration as applicable to the Guardian.
+  /// [dashboardAttributes] Additional settings for your VDM configuration as applicable to the Dashboard.
+  /// [guardianAttributes] Additional settings for your VDM configuration as applicable to the Guardian.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [vdmEnabled] Specifies the status of your VDM configuration. Valid values: `ENABLED`, `DISABLED`.
+  /// [vdmEnabled] Status of your VDM configuration. Valid values: `ENABLED`, `DISABLED`.
   const AccountVdmAttributesArgs({
     this.dashboardAttributes,
     this.guardianAttributes,

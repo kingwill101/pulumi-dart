@@ -1,5 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'network_insights_analysis_alternate_path_hint.dart';
 import 'network_insights_analysis_args.dart';
+import 'network_insights_analysis_explanation.dart';
+import 'network_insights_analysis_forward_path_component.dart';
+import 'network_insights_analysis_return_path_component.dart';
 import 'network_insights_analysis_state.dart';
 
 /// Provides a Network Insights Analysis resource. Part of the "Reachability Analyzer" service in the AWS VPC console.
@@ -156,15 +160,15 @@ import 'network_insights_analysis_state.dart';
 /// ```
 class NetworkInsightsAnalysis extends pulumi.CustomResource {
   /// Potential intermediate components of a feasible path. Described below.
-  late final pulumi.Output<List<Map<String, dynamic>>> alternatePathHints;
+  late final pulumi.Output<List<NetworkInsightsAnalysisAlternatePathHint>> alternatePathHints;
   /// ARN of the Network Insights Analysis.
   late final pulumi.Output<String> arn;
   /// Explanation codes for an unreachable path. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Explanation.html) for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> explanations;
+  late final pulumi.Output<List<NetworkInsightsAnalysisExplanation>> explanations;
   /// A list of ARNs for resources the path must traverse.
   late final pulumi.Output<List<String>?> filterInArns;
   /// The components in the path from source to destination. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PathComponent.html) for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> forwardPathComponents;
+  late final pulumi.Output<List<NetworkInsightsAnalysisForwardPathComponent>> forwardPathComponents;
   /// ID of the Network Insights Path to run an analysis on.
   ///
   /// The following arguments are optional:
@@ -174,7 +178,7 @@ class NetworkInsightsAnalysis extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The components in the path from destination to source. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PathComponent.html) for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> returnPathComponents;
+  late final pulumi.Output<List<NetworkInsightsAnalysisReturnPathComponent>> returnPathComponents;
   /// The date/time the analysis was started.
   late final pulumi.Output<String> startDate;
   /// The status of the analysis. `succeeded` means the analysis was completed, not that a path was found, for that see `pathFound`.
@@ -202,22 +206,22 @@ class NetworkInsightsAnalysis extends pulumi.CustomResource {
           'aws:ec2/networkInsightsAnalysis:NetworkInsightsAnalysis',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    alternatePathHints = registerOutput<List<Map<String, dynamic>>>('alternatePathHints');
+    alternatePathHints = registerOutput<List<NetworkInsightsAnalysisAlternatePathHint>>('alternatePathHints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisAlternatePathHint>(guardedValue, (value) => NetworkInsightsAnalysisAlternatePathHint.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
-    explanations = registerOutput<List<Map<String, dynamic>>>('explanations');
-    filterInArns = registerOutput<List<String>?>('filterInArns');
-    forwardPathComponents = registerOutput<List<Map<String, dynamic>>>('forwardPathComponents');
+    explanations = registerOutput<List<NetworkInsightsAnalysisExplanation>>('explanations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisExplanation>(guardedValue, (value) => NetworkInsightsAnalysisExplanation.fromMap((value as Map).cast<String, dynamic>())); });
+    filterInArns = registerOutput<List<String>?>('filterInArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    forwardPathComponents = registerOutput<List<NetworkInsightsAnalysisForwardPathComponent>>('forwardPathComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponent>(guardedValue, (value) => NetworkInsightsAnalysisForwardPathComponent.fromMap((value as Map).cast<String, dynamic>())); });
     networkInsightsPathId = registerOutput<String>('networkInsightsPathId');
     pathFound = registerOutput<bool>('pathFound');
     region = registerOutput<String>('region');
-    returnPathComponents = registerOutput<List<Map<String, dynamic>>>('returnPathComponents');
+    returnPathComponents = registerOutput<List<NetworkInsightsAnalysisReturnPathComponent>>('returnPathComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponent>(guardedValue, (value) => NetworkInsightsAnalysisReturnPathComponent.fromMap((value as Map).cast<String, dynamic>())); });
     startDate = registerOutput<String>('startDate');
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     waitForCompletion = registerOutput<bool?>('waitForCompletion');
     warningMessage = registerOutput<String>('warningMessage');
   }
@@ -227,11 +231,12 @@ class NetworkInsightsAnalysis extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkInsightsAnalysisState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInsightsAnalysis._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -245,20 +250,47 @@ class NetworkInsightsAnalysis extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    alternatePathHints = registerOutput<List<Map<String, dynamic>>>('alternatePathHints');
+    alternatePathHints = registerOutput<List<NetworkInsightsAnalysisAlternatePathHint>>('alternatePathHints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisAlternatePathHint>(guardedValue, (value) => NetworkInsightsAnalysisAlternatePathHint.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
-    explanations = registerOutput<List<Map<String, dynamic>>>('explanations');
-    filterInArns = registerOutput<List<String>?>('filterInArns');
-    forwardPathComponents = registerOutput<List<Map<String, dynamic>>>('forwardPathComponents');
+    explanations = registerOutput<List<NetworkInsightsAnalysisExplanation>>('explanations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisExplanation>(guardedValue, (value) => NetworkInsightsAnalysisExplanation.fromMap((value as Map).cast<String, dynamic>())); });
+    filterInArns = registerOutput<List<String>?>('filterInArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    forwardPathComponents = registerOutput<List<NetworkInsightsAnalysisForwardPathComponent>>('forwardPathComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponent>(guardedValue, (value) => NetworkInsightsAnalysisForwardPathComponent.fromMap((value as Map).cast<String, dynamic>())); });
     networkInsightsPathId = registerOutput<String>('networkInsightsPathId');
     pathFound = registerOutput<bool>('pathFound');
     region = registerOutput<String>('region');
-    returnPathComponents = registerOutput<List<Map<String, dynamic>>>('returnPathComponents');
+    returnPathComponents = registerOutput<List<NetworkInsightsAnalysisReturnPathComponent>>('returnPathComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponent>(guardedValue, (value) => NetworkInsightsAnalysisReturnPathComponent.fromMap((value as Map).cast<String, dynamic>())); });
     startDate = registerOutput<String>('startDate');
     status = registerOutput<String>('status');
     statusMessage = registerOutput<String>('statusMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    waitForCompletion = registerOutput<bool?>('waitForCompletion');
+    warningMessage = registerOutput<String>('warningMessage');
+  }
+
+  /// Creates a typed reference to an existing [NetworkInsightsAnalysis] resource.
+  NetworkInsightsAnalysis.reference(String urn)
+    : super(
+        'aws:ec2/networkInsightsAnalysis:NetworkInsightsAnalysis',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alternatePathHints = registerOutput<List<NetworkInsightsAnalysisAlternatePathHint>>('alternatePathHints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisAlternatePathHint>(guardedValue, (value) => NetworkInsightsAnalysisAlternatePathHint.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    explanations = registerOutput<List<NetworkInsightsAnalysisExplanation>>('explanations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisExplanation>(guardedValue, (value) => NetworkInsightsAnalysisExplanation.fromMap((value as Map).cast<String, dynamic>())); });
+    filterInArns = registerOutput<List<String>?>('filterInArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    forwardPathComponents = registerOutput<List<NetworkInsightsAnalysisForwardPathComponent>>('forwardPathComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponent>(guardedValue, (value) => NetworkInsightsAnalysisForwardPathComponent.fromMap((value as Map).cast<String, dynamic>())); });
+    networkInsightsPathId = registerOutput<String>('networkInsightsPathId');
+    pathFound = registerOutput<bool>('pathFound');
+    region = registerOutput<String>('region');
+    returnPathComponents = registerOutput<List<NetworkInsightsAnalysisReturnPathComponent>>('returnPathComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponent>(guardedValue, (value) => NetworkInsightsAnalysisReturnPathComponent.fromMap((value as Map).cast<String, dynamic>())); });
+    startDate = registerOutput<String>('startDate');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     waitForCompletion = registerOutput<bool?>('waitForCompletion');
     warningMessage = registerOutput<String>('warningMessage');
   }

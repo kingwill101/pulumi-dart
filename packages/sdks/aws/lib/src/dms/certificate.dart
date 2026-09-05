@@ -148,7 +148,7 @@ import 'certificate_state.dart';
 /// $ pulumi import aws:dms/certificate:Certificate test test-dms-certificate-tf
 /// ```
 class Certificate extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) for the certificate.
+  /// ARN for the certificate.
   late final pulumi.Output<String> certificateArn;
   /// The certificate identifier.
   late final pulumi.Output<String> certificateId;
@@ -175,15 +175,16 @@ class Certificate extends pulumi.CustomResource {
           'aws:dms/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['certificatePem', 'certificateWallet'],
         ) {
     certificateArn = registerOutput<String>('certificateArn');
     certificateId = registerOutput<String>('certificateId');
-    certificatePem = registerOutput<String?>('certificatePem');
-    certificateWallet = registerOutput<String?>('certificateWallet');
+    certificatePem = registerOutput<String?>('certificatePem', isSecret: true);
+    certificateWallet = registerOutput<String?>('certificateWallet', isSecret: true);
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Certificate] resource's state with the given [name] and [id].
@@ -191,11 +192,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -211,10 +213,29 @@ class Certificate extends pulumi.CustomResource {
         ) {
     certificateArn = registerOutput<String>('certificateArn');
     certificateId = registerOutput<String>('certificateId');
-    certificatePem = registerOutput<String?>('certificatePem');
-    certificateWallet = registerOutput<String?>('certificateWallet');
+    certificatePem = registerOutput<String?>('certificatePem', isSecret: true);
+    certificateWallet = registerOutput<String?>('certificateWallet', isSecret: true);
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'aws:dms/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['certificatePem', 'certificateWallet'],
+        isResourceReference: true,
+      ) {
+    certificateArn = registerOutput<String>('certificateArn');
+    certificateId = registerOutput<String>('certificateId');
+    certificatePem = registerOutput<String?>('certificatePem', isSecret: true);
+    certificateWallet = registerOutput<String?>('certificateWallet', isSecret: true);
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

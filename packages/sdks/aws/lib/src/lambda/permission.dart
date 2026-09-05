@@ -951,11 +951,11 @@ import 'permission_state.dart';
 /// const _default = new aws.cloudwatch.LogGroup("default", {name: "/default"});
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["lambda.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -991,11 +991,11 @@ import 'permission_state.dart';
 ///
 /// default = aws.cloudwatch.LogGroup("default", name="/default")
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["lambda.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// default_role = aws.iam.Role("default",
@@ -1038,7 +1038,6 @@ import 'permission_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -1050,6 +1049,7 @@ import 'permission_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -1120,7 +1120,6 @@ import 'permission_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -1129,6 +1128,7 @@ import 'permission_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -1192,11 +1192,11 @@ import 'permission_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["lambda.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -1270,11 +1270,11 @@ import 'permission_state.dart';
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("lambda.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -1357,11 +1357,11 @@ import 'permission_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - lambda.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 /// ```
@@ -1593,7 +1593,7 @@ class Permission extends pulumi.CustomResource {
           'aws:lambda/permission:Permission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     eventSourceToken = registerOutput<String?>('eventSourceToken');
@@ -1615,11 +1615,12 @@ class Permission extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PermissionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Permission._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1633,6 +1634,30 @@ class Permission extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String>('action');
+    eventSourceToken = registerOutput<String?>('eventSourceToken');
+    function = registerOutput<String>('function');
+    functionUrlAuthType = registerOutput<String?>('functionUrlAuthType');
+    invokedViaFunctionUrl = registerOutput<bool?>('invokedViaFunctionUrl');
+    principal = registerOutput<String>('principal');
+    principalOrgId = registerOutput<String?>('principalOrgId');
+    qualifier = registerOutput<String?>('qualifier');
+    region = registerOutput<String>('region');
+    sourceAccount = registerOutput<String?>('sourceAccount');
+    sourceArn = registerOutput<String?>('sourceArn');
+    statementId = registerOutput<String>('statementId');
+    statementIdPrefix = registerOutput<String>('statementIdPrefix');
+  }
+
+  /// Creates a typed reference to an existing [Permission] resource.
+  Permission.reference(String urn)
+    : super(
+        'aws:lambda/permission:Permission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String>('action');
     eventSourceToken = registerOutput<String?>('eventSourceToken');
     function = registerOutput<String>('function');

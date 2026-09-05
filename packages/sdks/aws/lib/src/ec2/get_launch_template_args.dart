@@ -9,15 +9,15 @@ import 'get_launch_template_filter.dart';
 /// {@macro pulumi_ec2_get_launch_template_get_launch_template_args_doc}
 class GetLaunchTemplateArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetLaunchTemplateFilter>>? filters;
+  final pulumi.Input<List<GetLaunchTemplateFilter>?>? filters;
   /// ID of the specific launch template to retrieve.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the launch template.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match a pair on the desired Launch Template.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetLaunchTemplateArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

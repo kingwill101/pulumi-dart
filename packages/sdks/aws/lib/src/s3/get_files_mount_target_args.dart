@@ -12,7 +12,7 @@ class GetFilesMountTargetArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> id;
   /// Region where this data source will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetFilesMountTargetArgs].
   /// [id] Mount target ID.

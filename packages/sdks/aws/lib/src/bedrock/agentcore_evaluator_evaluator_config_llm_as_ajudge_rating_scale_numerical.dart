@@ -32,7 +32,7 @@ class AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleNumerical {
     return AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeRatingScaleNumerical(
       definition: pulumi.Input.fromValue(map['definition'] as String),
       label: pulumi.Input.fromValue(map['label'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

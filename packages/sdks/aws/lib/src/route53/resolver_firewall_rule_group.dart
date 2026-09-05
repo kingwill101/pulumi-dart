@@ -112,7 +112,7 @@ import 'resolver_firewall_rule_group_state.dart';
 /// $ pulumi import aws:route53/resolverFirewallRuleGroup:ResolverFirewallRuleGroup example rslvr-frg-0123456789abcdef
 /// ```
 class ResolverFirewallRuleGroup extends pulumi.CustomResource {
-  /// The ARN (Amazon Resource Name) of the rule group.
+  /// ARN of the rule group.
   late final pulumi.Output<String> arn;
   /// A name that lets you identify the rule group, to manage and use it.
   late final pulumi.Output<String> name;
@@ -139,15 +139,15 @@ class ResolverFirewallRuleGroup extends pulumi.CustomResource {
           'aws:route53/resolverFirewallRuleGroup:ResolverFirewallRuleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     shareStatus = registerOutput<String>('shareStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ResolverFirewallRuleGroup] resource's state with the given [name] and [id].
@@ -155,11 +155,12 @@ class ResolverFirewallRuleGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverFirewallRuleGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverFirewallRuleGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -178,7 +179,25 @@ class ResolverFirewallRuleGroup extends pulumi.CustomResource {
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     shareStatus = registerOutput<String>('shareStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResolverFirewallRuleGroup] resource.
+  ResolverFirewallRuleGroup.reference(String urn)
+    : super(
+        'aws:route53/resolverFirewallRuleGroup:ResolverFirewallRuleGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    shareStatus = registerOutput<String>('shareStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

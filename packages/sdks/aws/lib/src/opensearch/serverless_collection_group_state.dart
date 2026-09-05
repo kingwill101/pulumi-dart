@@ -5,31 +5,31 @@ import 'serverless_collection_group_capacity_limit.dart';
 
 /// Input properties used for looking up and filtering ServerlessCollectionGroup resources.
 class ServerlessCollectionGroupState {
-  /// Amazon Resource Name (ARN) of the collection group.
-  final pulumi.Input<String>? arn;
+  /// ARN of the collection group.
+  final pulumi.Input<String?>? arn;
   /// Configuration block for the collection group's indexing and search capacity limits. See `capacityLimits` below for details.
-  final pulumi.Input<List<ServerlessCollectionGroupCapacityLimit>>? capacityLimits;
+  final pulumi.Input<List<ServerlessCollectionGroupCapacityLimit>?>? capacityLimits;
   /// Date the collection group was created.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// Description of the collection group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Generation of Amazon OpenSearch Serverless for the collection group. Valid values are `CLASSIC` and `NEXTGEN`. Default value is `CLASSIC`.
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// Name of the collection group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Indicates whether standby replicas should be used for collections in this group. Valid values are `ENABLED` and `DISABLED`. If `generation` is set to `NEXTGEN`, this argument must be set to `ENABLED`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? standbyReplicas;
+  final pulumi.Input<String?>? standbyReplicas;
   /// A map of tags to assign to the collection group. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ServerlessCollectionGroupState].
-  /// [arn] Amazon Resource Name (ARN) of the collection group.
+  /// [arn] ARN of the collection group.
   /// [capacityLimits] Configuration block for the collection group's indexing and search capacity limits. See `capacityLimits` below for details.
   /// [createdDate] Date the collection group was created.
   /// [description] Description of the collection group.

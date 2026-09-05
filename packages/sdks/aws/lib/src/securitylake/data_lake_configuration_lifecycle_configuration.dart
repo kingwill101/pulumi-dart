@@ -6,9 +6,9 @@ import 'data_lake_configuration_lifecycle_configuration_transition.dart';
 
 class DataLakeConfigurationLifecycleConfiguration {
   /// Provides data expiration details of Amazon Security Lake object.
-  final pulumi.Input<DataLakeConfigurationLifecycleConfigurationExpiration>? expiration;
+  final pulumi.Input<DataLakeConfigurationLifecycleConfigurationExpiration?>? expiration;
   /// Provides data storage transition details of Amazon Security Lake object.
-  final pulumi.Input<List<DataLakeConfigurationLifecycleConfigurationTransition>>? transitions;
+  final pulumi.Input<List<DataLakeConfigurationLifecycleConfigurationTransition>?>? transitions;
 
   /// Creates a new [DataLakeConfigurationLifecycleConfiguration].
   /// [expiration] Provides data expiration details of Amazon Security Lake object.

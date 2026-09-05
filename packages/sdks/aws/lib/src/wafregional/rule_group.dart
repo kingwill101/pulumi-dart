@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'rule_group_activated_rule.dart';
 import 'rule_group_args.dart';
 import 'rule_group_state.dart';
 
@@ -16,8 +17,6 @@ import 'rule_group_state.dart';
 ///     metricName: "example",
 /// });
 /// const exampleRuleGroup = new aws.wafregional.RuleGroup("example", {
-///     name: "example",
-///     metricName: "example",
 ///     activatedRules: [{
 ///         action: {
 ///             type: "COUNT",
@@ -25,6 +24,8 @@ import 'rule_group_state.dart';
 ///         priority: 50,
 ///         ruleId: example.id,
 ///     }],
+///     name: "example",
+///     metricName: "example",
 /// });
 /// ```
 /// ```python
@@ -35,15 +36,15 @@ import 'rule_group_state.dart';
 ///     name="example",
 ///     metric_name="example")
 /// example_rule_group = aws.wafregional.RuleGroup("example",
-///     name="example",
-///     metric_name="example",
 ///     activated_rules=[{
 ///         "action": {
 ///             "type": "COUNT",
 ///         },
 ///         "priority": 50,
 ///         "rule_id": example.id,
-///     }])
+///     }],
+///     name="example",
+///     metric_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -61,8 +62,6 @@ import 'rule_group_state.dart';
 ///
 ///     var exampleRuleGroup = new Aws.WafRegional.RuleGroup("example", new()
 ///     {
-///         Name = "example",
-///         MetricName = "example",
 ///         ActivatedRules = new[]
 ///         {
 ///             new Aws.WafRegional.Inputs.RuleGroupActivatedRuleArgs
@@ -75,6 +74,8 @@ import 'rule_group_state.dart';
 ///                 RuleId = example.Id,
 ///             },
 ///         },
+///         Name = "example",
+///         MetricName = "example",
 ///     });
 ///
 /// });
@@ -97,8 +98,6 @@ import 'rule_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = wafregional.NewRuleGroup(ctx, "example", &wafregional.RuleGroupArgs{
-/// 			Name:       pulumi.String("example"),
-/// 			MetricName: pulumi.String("example"),
 /// 			ActivatedRules: wafregional.RuleGroupActivatedRuleArray{
 /// 				&wafregional.RuleGroupActivatedRuleArgs{
 /// 					Action: &wafregional.RuleGroupActivatedRuleActionArgs{
@@ -108,6 +107,8 @@ import 'rule_group_state.dart';
 /// 					RuleId:   example.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
+/// 			Name:       pulumi.String("example"),
+/// 			MetricName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -130,8 +131,6 @@ import 'rule_group_state.dart';
 ///   metric_name = "example"
 /// }
 /// resource "aws_wafregional_rulegroup" "example" {
-///   name        = "example"
-///   metric_name = "example"
 ///   activated_rules {
 ///     action = {
 ///       type = "COUNT"
@@ -139,6 +138,8 @@ import 'rule_group_state.dart';
 ///     priority = 50
 ///     rule_id  = aws_wafregional_rule.example.id
 ///   }
+///   name        = "example"
+///   metric_name = "example"
 /// }
 /// ```
 /// ```java
@@ -172,8 +173,6 @@ import 'rule_group_state.dart';
 ///             .build());
 ///
 ///         var exampleRuleGroup = new RuleGroup("exampleRuleGroup", RuleGroupArgs.builder()
-///             .name("example")
-///             .metricName("example")
 ///             .activatedRules(RuleGroupActivatedRuleArgs.builder()
 ///                 .action(RuleGroupActivatedRuleActionArgs.builder()
 ///                     .type("COUNT")
@@ -181,6 +180,8 @@ import 'rule_group_state.dart';
 ///                 .priority(50)
 ///                 .ruleId(example.id())
 ///                 .build())
+///             .name("example")
+///             .metricName("example")
 ///             .build());
 ///
 ///     }
@@ -197,13 +198,13 @@ import 'rule_group_state.dart';
 ///     type: aws:wafregional:RuleGroup
 ///     name: example
 ///     properties:
-///       name: example
-///       metricName: example
 ///       activatedRules:
 ///         - action:
 ///             type: COUNT
 ///           priority: 50
 ///           ruleId: ${example.id}
+///       name: example
+///       metricName: example
 /// ```
 ///
 ///
@@ -216,7 +217,7 @@ import 'rule_group_state.dart';
 /// ```
 class RuleGroup extends pulumi.CustomResource {
   /// A list of activated rules, see below
-  late final pulumi.Output<List<Map<String, dynamic>>?> activatedRules;
+  late final pulumi.Output<List<RuleGroupActivatedRule>?> activatedRules;
   /// The ARN of the WAF Regional Rule Group.
   late final pulumi.Output<String> arn;
   /// A friendly name for the metrics from the rule group
@@ -242,15 +243,15 @@ class RuleGroup extends pulumi.CustomResource {
           'aws:wafregional/ruleGroup:RuleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    activatedRules = registerOutput<List<Map<String, dynamic>>?>('activatedRules');
+    activatedRules = registerOutput<List<RuleGroupActivatedRule>?>('activatedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleGroupActivatedRule>(guardedValue, (value) => RuleGroupActivatedRule.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RuleGroup] resource's state with the given [name] and [id].
@@ -258,11 +259,12 @@ class RuleGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuleGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RuleGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,12 +278,30 @@ class RuleGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    activatedRules = registerOutput<List<Map<String, dynamic>>?>('activatedRules');
+    activatedRules = registerOutput<List<RuleGroupActivatedRule>?>('activatedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleGroupActivatedRule>(guardedValue, (value) => RuleGroupActivatedRule.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RuleGroup] resource.
+  RuleGroup.reference(String urn)
+    : super(
+        'aws:wafregional/ruleGroup:RuleGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activatedRules = registerOutput<List<RuleGroupActivatedRule>?>('activatedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleGroupActivatedRule>(guardedValue, (value) => RuleGroupActivatedRule.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    metricName = registerOutput<String>('metricName');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

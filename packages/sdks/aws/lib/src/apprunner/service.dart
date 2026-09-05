@@ -20,7 +20,6 @@ import 'service_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.apprunner.Service("example", {
-///     serviceName: "example",
 ///     sourceConfiguration: {
 ///         authenticationConfiguration: {
 ///             connectionArn: exampleAwsApprunnerConnection.arn,
@@ -35,11 +34,11 @@ import 'service_state.dart';
 ///                 },
 ///                 configurationSource: "API",
 ///             },
-///             repositoryUrl: "https://github.com/example/my-example-python-app",
 ///             sourceCodeVersion: {
 ///                 type: "BRANCH",
 ///                 value: "main",
 ///             },
+///             repositoryUrl: "https://github.com/example/my-example-python-app",
 ///         },
 ///     },
 ///     networkConfiguration: {
@@ -48,6 +47,7 @@ import 'service_state.dart';
 ///             vpcConnectorArn: connector.arn,
 ///         },
 ///     },
+///     serviceName: "example",
 ///     tags: {
 ///         Name: "example-apprunner-service",
 ///     },
@@ -58,7 +58,6 @@ import 'service_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.apprunner.Service("example",
-///     service_name="example",
 ///     source_configuration={
 ///         "authentication_configuration": {
 ///             "connection_arn": example_aws_apprunner_connection["arn"],
@@ -73,11 +72,11 @@ import 'service_state.dart';
 ///                 },
 ///                 "configuration_source": "API",
 ///             },
-///             "repository_url": "https://github.com/example/my-example-python-app",
 ///             "source_code_version": {
 ///                 "type": "BRANCH",
 ///                 "value": "main",
 ///             },
+///             "repository_url": "https://github.com/example/my-example-python-app",
 ///         },
 ///     },
 ///     network_configuration={
@@ -86,6 +85,7 @@ import 'service_state.dart';
 ///             "vpc_connector_arn": connector["arn"],
 ///         },
 ///     },
+///     service_name="example",
 ///     tags={
 ///         "Name": "example-apprunner-service",
 ///     })
@@ -100,7 +100,6 @@ import 'service_state.dart';
 /// {
 ///     var example = new Aws.AppRunner.Service("example", new()
 ///     {
-///         ServiceName = "example",
 ///         SourceConfiguration = new Aws.AppRunner.Inputs.ServiceSourceConfigurationArgs
 ///         {
 ///             AuthenticationConfiguration = new Aws.AppRunner.Inputs.ServiceSourceConfigurationAuthenticationConfigurationArgs
@@ -120,12 +119,12 @@ import 'service_state.dart';
 ///                     },
 ///                     ConfigurationSource = "API",
 ///                 },
-///                 RepositoryUrl = "https://github.com/example/my-example-python-app",
 ///                 SourceCodeVersion = new Aws.AppRunner.Inputs.ServiceSourceConfigurationCodeRepositorySourceCodeVersionArgs
 ///                 {
 ///                     Type = "BRANCH",
 ///                     Value = "main",
 ///                 },
+///                 RepositoryUrl = "https://github.com/example/my-example-python-app",
 ///             },
 ///         },
 ///         NetworkConfiguration = new Aws.AppRunner.Inputs.ServiceNetworkConfigurationArgs
@@ -136,6 +135,7 @@ import 'service_state.dart';
 ///                 VpcConnectorArn = connector.Arn,
 ///             },
 ///         },
+///         ServiceName = "example",
 ///         Tags =
 ///         {
 ///             { "Name", "example-apprunner-service" },
@@ -155,7 +155,6 @@ import 'service_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apprunner.NewService(ctx, "example", &apprunner.ServiceArgs{
-/// 			ServiceName: pulumi.String("example"),
 /// 			SourceConfiguration: &apprunner.ServiceSourceConfigurationArgs{
 /// 				AuthenticationConfiguration: &apprunner.ServiceSourceConfigurationAuthenticationConfigurationArgs{
 /// 					ConnectionArn: pulumi.Any(exampleAwsApprunnerConnection.Arn),
@@ -170,11 +169,11 @@ import 'service_state.dart';
 /// 						},
 /// 						ConfigurationSource: pulumi.String("API"),
 /// 					},
-/// 					RepositoryUrl: pulumi.String("https://github.com/example/my-example-python-app"),
 /// 					SourceCodeVersion: &apprunner.ServiceSourceConfigurationCodeRepositorySourceCodeVersionArgs{
 /// 						Type:  pulumi.String("BRANCH"),
 /// 						Value: pulumi.String("main"),
 /// 					},
+/// 					RepositoryUrl: pulumi.String("https://github.com/example/my-example-python-app"),
 /// 				},
 /// 			},
 /// 			NetworkConfiguration: &apprunner.ServiceNetworkConfigurationArgs{
@@ -183,6 +182,7 @@ import 'service_state.dart';
 /// 					VpcConnectorArn: pulumi.Any(connector.Arn),
 /// 				},
 /// 			},
+/// 			ServiceName: pulumi.String("example"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-apprunner-service"),
 /// 			},
@@ -204,7 +204,6 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "aws_apprunner_service" "example" {
-///   service_name = "example"
 ///   source_configuration = {
 ///     authentication_configuration = {
 ///       connection_arn = exampleAwsApprunnerConnection.arn
@@ -219,11 +218,11 @@ import 'service_state.dart';
 ///         }
 ///         configuration_source = "API"
 ///       }
-///       repository_url = "https://github.com/example/my-example-python-app"
 ///       source_code_version = {
 ///         type  = "BRANCH"
 ///         value = "main"
 ///       }
+///       repository_url = "https://github.com/example/my-example-python-app"
 ///     }
 ///   }
 ///   network_configuration = {
@@ -232,6 +231,7 @@ import 'service_state.dart';
 ///       vpc_connector_arn = connector.arn
 ///     }
 ///   }
+///   service_name = "example"
 ///   tags = {
 ///     "Name" = "example-apprunner-service"
 ///   }
@@ -267,7 +267,6 @@ import 'service_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Service("example", ServiceArgs.builder()
-///             .serviceName("example")
 ///             .sourceConfiguration(ServiceSourceConfigurationArgs.builder()
 ///                 .authenticationConfiguration(ServiceSourceConfigurationAuthenticationConfigurationArgs.builder()
 ///                     .connectionArn(exampleAwsApprunnerConnection.arn())
@@ -282,11 +281,11 @@ import 'service_state.dart';
 ///                             .build())
 ///                         .configurationSource("API")
 ///                         .build())
-///                     .repositoryUrl("https://github.com/example/my-example-python-app")
 ///                     .sourceCodeVersion(ServiceSourceConfigurationCodeRepositorySourceCodeVersionArgs.builder()
 ///                         .type("BRANCH")
 ///                         .value("main")
 ///                         .build())
+///                     .repositoryUrl("https://github.com/example/my-example-python-app")
 ///                     .build())
 ///                 .build())
 ///             .networkConfiguration(ServiceNetworkConfigurationArgs.builder()
@@ -295,6 +294,7 @@ import 'service_state.dart';
 ///                     .vpcConnectorArn(connector.arn())
 ///                     .build())
 ///                 .build())
+///             .serviceName("example")
 ///             .tags(Map.of("Name", "example-apprunner-service"))
 ///             .build());
 ///
@@ -306,7 +306,6 @@ import 'service_state.dart';
 ///   example:
 ///     type: aws:apprunner:Service
 ///     properties:
-///       serviceName: example
 ///       sourceConfiguration:
 ///         authenticationConfiguration:
 ///           connectionArn: ${exampleAwsApprunnerConnection.arn}
@@ -318,14 +317,15 @@ import 'service_state.dart';
 ///               runtime: PYTHON_3
 ///               startCommand: python runapp.py
 ///             configurationSource: API
-///           repositoryUrl: https://github.com/example/my-example-python-app
 ///           sourceCodeVersion:
 ///             type: BRANCH
 ///             value: main
+///           repositoryUrl: https://github.com/example/my-example-python-app
 ///       networkConfiguration:
 ///         egressConfiguration:
 ///           egressType: VPC
 ///           vpcConnectorArn: ${connector.arn}
+///       serviceName: example
 ///       tags:
 ///         Name: example-apprunner-service
 /// ```
@@ -339,7 +339,6 @@ import 'service_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.apprunner.Service("example", {
-///     serviceName: "example",
 ///     sourceConfiguration: {
 ///         imageRepository: {
 ///             imageConfiguration: {
@@ -350,6 +349,7 @@ import 'service_state.dart';
 ///         },
 ///         autoDeploymentsEnabled: false,
 ///     },
+///     serviceName: "example",
 ///     tags: {
 ///         Name: "example-apprunner-service",
 ///     },
@@ -360,7 +360,6 @@ import 'service_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.apprunner.Service("example",
-///     service_name="example",
 ///     source_configuration={
 ///         "image_repository": {
 ///             "image_configuration": {
@@ -371,6 +370,7 @@ import 'service_state.dart';
 ///         },
 ///         "auto_deployments_enabled": False,
 ///     },
+///     service_name="example",
 ///     tags={
 ///         "Name": "example-apprunner-service",
 ///     })
@@ -385,7 +385,6 @@ import 'service_state.dart';
 /// {
 ///     var example = new Aws.AppRunner.Service("example", new()
 ///     {
-///         ServiceName = "example",
 ///         SourceConfiguration = new Aws.AppRunner.Inputs.ServiceSourceConfigurationArgs
 ///         {
 ///             ImageRepository = new Aws.AppRunner.Inputs.ServiceSourceConfigurationImageRepositoryArgs
@@ -399,6 +398,7 @@ import 'service_state.dart';
 ///             },
 ///             AutoDeploymentsEnabled = false,
 ///         },
+///         ServiceName = "example",
 ///         Tags =
 ///         {
 ///             { "Name", "example-apprunner-service" },
@@ -418,7 +418,6 @@ import 'service_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apprunner.NewService(ctx, "example", &apprunner.ServiceArgs{
-/// 			ServiceName: pulumi.String("example"),
 /// 			SourceConfiguration: &apprunner.ServiceSourceConfigurationArgs{
 /// 				ImageRepository: &apprunner.ServiceSourceConfigurationImageRepositoryArgs{
 /// 					ImageConfiguration: &apprunner.ServiceSourceConfigurationImageRepositoryImageConfigurationArgs{
@@ -429,6 +428,7 @@ import 'service_state.dart';
 /// 				},
 /// 				AutoDeploymentsEnabled: pulumi.Bool(false),
 /// 			},
+/// 			ServiceName: pulumi.String("example"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-apprunner-service"),
 /// 			},
@@ -450,7 +450,6 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "aws_apprunner_service" "example" {
-///   service_name = "example"
 ///   source_configuration = {
 ///     image_repository = {
 ///       image_configuration = {
@@ -461,6 +460,7 @@ import 'service_state.dart';
 ///     }
 ///     auto_deployments_enabled = false
 ///   }
+///   service_name = "example"
 ///   tags = {
 ///     "Name" = "example-apprunner-service"
 ///   }
@@ -491,7 +491,6 @@ import 'service_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Service("example", ServiceArgs.builder()
-///             .serviceName("example")
 ///             .sourceConfiguration(ServiceSourceConfigurationArgs.builder()
 ///                 .imageRepository(ServiceSourceConfigurationImageRepositoryArgs.builder()
 ///                     .imageConfiguration(ServiceSourceConfigurationImageRepositoryImageConfigurationArgs.builder()
@@ -502,6 +501,7 @@ import 'service_state.dart';
 ///                     .build())
 ///                 .autoDeploymentsEnabled(false)
 ///                 .build())
+///             .serviceName("example")
 ///             .tags(Map.of("Name", "example-apprunner-service"))
 ///             .build());
 ///
@@ -513,7 +513,6 @@ import 'service_state.dart';
 ///   example:
 ///     type: aws:apprunner:Service
 ///     properties:
-///       serviceName: example
 ///       sourceConfiguration:
 ///         imageRepository:
 ///           imageConfiguration:
@@ -521,6 +520,7 @@ import 'service_state.dart';
 ///           imageIdentifier: public.ecr.aws/aws-containers/hello-app-runner:latest
 ///           imageRepositoryType: ECR_PUBLIC
 ///         autoDeploymentsEnabled: false
+///       serviceName: example
 ///       tags:
 ///         Name: example-apprunner-service
 /// ```
@@ -534,13 +534,12 @@ import 'service_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleObservabilityConfiguration = new aws.apprunner.ObservabilityConfiguration("example", {
-///     observabilityConfigurationName: "example",
 ///     traceConfiguration: {
 ///         vendor: "AWSXRAY",
 ///     },
+///     observabilityConfigurationName: "example",
 /// });
 /// const example = new aws.apprunner.Service("example", {
-///     serviceName: "example",
 ///     observabilityConfiguration: {
 ///         observabilityConfigurationArn: exampleObservabilityConfiguration.arn,
 ///         observabilityEnabled: true,
@@ -555,6 +554,7 @@ import 'service_state.dart';
 ///         },
 ///         autoDeploymentsEnabled: false,
 ///     },
+///     serviceName: "example",
 ///     tags: {
 ///         Name: "example-apprunner-service",
 ///     },
@@ -565,12 +565,11 @@ import 'service_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_observability_configuration = aws.apprunner.ObservabilityConfiguration("example",
-///     observability_configuration_name="example",
 ///     trace_configuration={
 ///         "vendor": "AWSXRAY",
-///     })
+///     },
+///     observability_configuration_name="example")
 /// example = aws.apprunner.Service("example",
-///     service_name="example",
 ///     observability_configuration={
 ///         "observability_configuration_arn": example_observability_configuration.arn,
 ///         "observability_enabled": True,
@@ -585,6 +584,7 @@ import 'service_state.dart';
 ///         },
 ///         "auto_deployments_enabled": False,
 ///     },
+///     service_name="example",
 ///     tags={
 ///         "Name": "example-apprunner-service",
 ///     })
@@ -599,16 +599,15 @@ import 'service_state.dart';
 /// {
 ///     var exampleObservabilityConfiguration = new Aws.AppRunner.ObservabilityConfiguration("example", new()
 ///     {
-///         ObservabilityConfigurationName = "example",
 ///         TraceConfiguration = new Aws.AppRunner.Inputs.ObservabilityConfigurationTraceConfigurationArgs
 ///         {
 ///             Vendor = "AWSXRAY",
 ///         },
+///         ObservabilityConfigurationName = "example",
 ///     });
 ///
 ///     var example = new Aws.AppRunner.Service("example", new()
 ///     {
-///         ServiceName = "example",
 ///         ObservabilityConfiguration = new Aws.AppRunner.Inputs.ServiceObservabilityConfigurationArgs
 ///         {
 ///             ObservabilityConfigurationArn = exampleObservabilityConfiguration.Arn,
@@ -627,6 +626,7 @@ import 'service_state.dart';
 ///             },
 ///             AutoDeploymentsEnabled = false,
 ///         },
+///         ServiceName = "example",
 ///         Tags =
 ///         {
 ///             { "Name", "example-apprunner-service" },
@@ -646,16 +646,15 @@ import 'service_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleObservabilityConfiguration, err := apprunner.NewObservabilityConfiguration(ctx, "example", &apprunner.ObservabilityConfigurationArgs{
-/// 			ObservabilityConfigurationName: pulumi.String("example"),
 /// 			TraceConfiguration: &apprunner.ObservabilityConfigurationTraceConfigurationArgs{
 /// 				Vendor: pulumi.String("AWSXRAY"),
 /// 			},
+/// 			ObservabilityConfigurationName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apprunner.NewService(ctx, "example", &apprunner.ServiceArgs{
-/// 			ServiceName: pulumi.String("example"),
 /// 			ObservabilityConfiguration: &apprunner.ServiceObservabilityConfigurationArgs{
 /// 				ObservabilityConfigurationArn: exampleObservabilityConfiguration.Arn,
 /// 				ObservabilityEnabled:          pulumi.Bool(true),
@@ -670,6 +669,7 @@ import 'service_state.dart';
 /// 				},
 /// 				AutoDeploymentsEnabled: pulumi.Bool(false),
 /// 			},
+/// 			ServiceName: pulumi.String("example"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example-apprunner-service"),
 /// 			},
@@ -691,7 +691,6 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "aws_apprunner_service" "example" {
-///   service_name = "example"
 ///   observability_configuration = {
 ///     observability_configuration_arn = aws_apprunner_observabilityconfiguration.example.arn
 ///     observability_enabled           = true
@@ -706,15 +705,16 @@ import 'service_state.dart';
 ///     }
 ///     auto_deployments_enabled = false
 ///   }
+///   service_name = "example"
 ///   tags = {
 ///     "Name" = "example-apprunner-service"
 ///   }
 /// }
 /// resource "aws_apprunner_observabilityconfiguration" "example" {
-///   observability_configuration_name = "example"
 ///   trace_configuration = {
 ///     vendor = "AWSXRAY"
 ///   }
+///   observability_configuration_name = "example"
 /// }
 /// ```
 /// ```java
@@ -746,14 +746,13 @@ import 'service_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleObservabilityConfiguration = new ObservabilityConfiguration("exampleObservabilityConfiguration", ObservabilityConfigurationArgs.builder()
-///             .observabilityConfigurationName("example")
 ///             .traceConfiguration(ObservabilityConfigurationTraceConfigurationArgs.builder()
 ///                 .vendor("AWSXRAY")
 ///                 .build())
+///             .observabilityConfigurationName("example")
 ///             .build());
 ///
 ///         var example = new Service("example", ServiceArgs.builder()
-///             .serviceName("example")
 ///             .observabilityConfiguration(ServiceObservabilityConfigurationArgs.builder()
 ///                 .observabilityConfigurationArn(exampleObservabilityConfiguration.arn())
 ///                 .observabilityEnabled(true)
@@ -768,6 +767,7 @@ import 'service_state.dart';
 ///                     .build())
 ///                 .autoDeploymentsEnabled(false)
 ///                 .build())
+///             .serviceName("example")
 ///             .tags(Map.of("Name", "example-apprunner-service"))
 ///             .build());
 ///
@@ -779,7 +779,6 @@ import 'service_state.dart';
 ///   example:
 ///     type: aws:apprunner:Service
 ///     properties:
-///       serviceName: example
 ///       observabilityConfiguration:
 ///         observabilityConfigurationArn: ${exampleObservabilityConfiguration.arn}
 ///         observabilityEnabled: true
@@ -790,15 +789,16 @@ import 'service_state.dart';
 ///           imageIdentifier: public.ecr.aws/aws-containers/hello-app-runner:latest
 ///           imageRepositoryType: ECR_PUBLIC
 ///         autoDeploymentsEnabled: false
+///       serviceName: example
 ///       tags:
 ///         Name: example-apprunner-service
 ///   exampleObservabilityConfiguration:
 ///     type: aws:apprunner:ObservabilityConfiguration
 ///     name: example
 ///     properties:
-///       observabilityConfigurationName: example
 ///       traceConfiguration:
 ///         vendor: AWSXRAY
+///       observabilityConfigurationName: example
 /// ```
 ///
 ///
@@ -808,7 +808,7 @@ import 'service_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the App Runner service.
+/// - `arn` (String) ARN of the App Runner service.
 ///
 ///
 /// Using `pulumi import`, import App Runner Services using the `arn`. For example:
@@ -860,7 +860,7 @@ class Service extends pulumi.CustomResource {
           'aws:apprunner/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingConfigurationArn = registerOutput<String>('autoScalingConfigurationArn');
@@ -875,8 +875,8 @@ class Service extends pulumi.CustomResource {
     serviceUrl = registerOutput<String>('serviceUrl');
     sourceConfiguration = registerOutput<ServiceSourceConfiguration>('sourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -884,11 +884,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -915,7 +916,33 @@ class Service extends pulumi.CustomResource {
     serviceUrl = registerOutput<String>('serviceUrl');
     sourceConfiguration = registerOutput<ServiceSourceConfiguration>('sourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'aws:apprunner/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoScalingConfigurationArn = registerOutput<String>('autoScalingConfigurationArn');
+    encryptionConfiguration = registerOutput<ServiceEncryptionConfiguration?>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthCheckConfiguration = registerOutput<ServiceHealthCheckConfiguration>('healthCheckConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceHealthCheckConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceConfiguration = registerOutput<ServiceInstanceConfiguration>('instanceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceInstanceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkConfiguration = registerOutput<ServiceNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    observabilityConfiguration = registerOutput<ServiceObservabilityConfiguration?>('observabilityConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceObservabilityConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    serviceId = registerOutput<String>('serviceId');
+    serviceName = registerOutput<String>('serviceName');
+    serviceUrl = registerOutput<String>('serviceUrl');
+    sourceConfiguration = registerOutput<ServiceSourceConfiguration>('sourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -10,13 +10,13 @@ class PipelineStage {
   /// The action(s) to include in the stage. Defined as an `action` block below
   final pulumi.Input<List<PipelineStageAction>> actions;
   /// The method to use when a stage allows entry. For example, configuring this field for conditions will allow entry to the stage when the conditions are met.
-  final pulumi.Input<PipelineStageBeforeEntry>? beforeEntry;
+  final pulumi.Input<PipelineStageBeforeEntry?>? beforeEntry;
   /// The name of the stage.
   final pulumi.Input<String> name;
   /// The method to use when a stage has not completed successfully. For example, configuring this field for rollback will roll back a failed stage automatically to the last successful pipeline execution in the stage.
-  final pulumi.Input<PipelineStageOnFailure>? onFailure;
+  final pulumi.Input<PipelineStageOnFailure?>? onFailure;
   /// The method to use when a stage has succeeded. For example, configuring this field for conditions will allow the stage to succeed when the conditions are met.
-  final pulumi.Input<PipelineStageOnSuccess>? onSuccess;
+  final pulumi.Input<PipelineStageOnSuccess?>? onSuccess;
 
   /// Creates a new [PipelineStage].
   /// [actions] The action(s) to include in the stage. Defined as an `action` block below

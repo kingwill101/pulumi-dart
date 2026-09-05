@@ -11,21 +11,21 @@ import 'get_listener_rule_condition_source_ip.dart';
 class GetListenerRuleCondition {
   /// Host header patterns to match.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleConditionHostHeader>>? hostHeaders;
+  final pulumi.Input<List<GetListenerRuleConditionHostHeader>?>? hostHeaders;
   /// HTTP header and values to match.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleConditionHttpHeader>>? httpHeaders;
+  final pulumi.Input<List<GetListenerRuleConditionHttpHeader>?>? httpHeaders;
   /// Contains a single attribute `values`, which contains a set of HTTP request methods.
-  final pulumi.Input<List<GetListenerRuleConditionHttpRequestMethod>>? httpRequestMethods;
+  final pulumi.Input<List<GetListenerRuleConditionHttpRequestMethod>?>? httpRequestMethods;
   /// Path patterns to compare against the request URL.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleConditionPathPattern>>? pathPatterns;
+  final pulumi.Input<List<GetListenerRuleConditionPathPattern>?>? pathPatterns;
   /// Query string parameters to match.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleConditionQueryString>>? queryStrings;
+  final pulumi.Input<List<GetListenerRuleConditionQueryString>?>? queryStrings;
   /// Source IP address to match.
   /// Detailed below.
-  final pulumi.Input<List<GetListenerRuleConditionSourceIp>>? sourceIps;
+  final pulumi.Input<List<GetListenerRuleConditionSourceIp>?>? sourceIps;
 
   /// Creates a new [GetListenerRuleCondition].
   /// [hostHeaders] Host header patterns to match.

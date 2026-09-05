@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OntapStorageVirtualMachineEndpointIscsi {
   /// Domain Name Service (DNS) name for the storage virtual machine. You can mount your storage virtual machine using its DNS name.
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// IP addresses of the storage virtual machine endpoint.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
 
   /// Creates a new [OntapStorageVirtualMachineEndpointIscsi].
   /// [dnsName] Domain Name Service (DNS) name for the storage virtual machine. You can mount your storage virtual machine using its DNS name.

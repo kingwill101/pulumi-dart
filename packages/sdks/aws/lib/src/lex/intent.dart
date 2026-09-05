@@ -6,6 +6,7 @@ import 'intent_dialog_code_hook.dart';
 import 'intent_follow_up_prompt.dart';
 import 'intent_fulfillment_activity.dart';
 import 'intent_rejection_statement.dart';
+import 'intent_slot.dart';
 import 'intent_state.dart';
 
 /// Provides an Amazon Lex Intent resource. For more information see
@@ -20,15 +21,12 @@ import 'intent_state.dart';
 ///
 /// const orderFlowersIntent = new aws.lex.Intent("order_flowers_intent", {
 ///     confirmationPrompt: {
-///         maxAttempts: 2,
 ///         messages: [{
 ///             content: "Okay, your {FlowerType} will be ready for pickup by {PickupTime} on {PickupDate}.  Does this sound okay?",
 ///             contentType: "PlainText",
 ///         }],
+///         maxAttempts: 2,
 ///     },
-///     createVersion: false,
-///     name: "OrderFlowers",
-///     description: "Intent to order a bouquet of flowers for pick up",
 ///     fulfillmentActivity: {
 ///         type: "ReturnIntent",
 ///     },
@@ -38,12 +36,15 @@ import 'intent_state.dart';
 ///             contentType: "PlainText",
 ///         }],
 ///     },
-///     sampleUtterances: [
-///         "I would like to order some flowers",
-///         "I would like to pick up flowers",
-///     ],
 ///     slots: [
 ///         {
+///             valueElicitationPrompt: {
+///                 messages: [{
+///                     content: "What type of flowers would you like to order?",
+///                     contentType: "PlainText",
+///                 }],
+///                 maxAttempts: 2,
+///             },
 ///             description: "The type of flowers to pick up",
 ///             name: "FlowerType",
 ///             priority: 1,
@@ -51,15 +52,15 @@ import 'intent_state.dart';
 ///             slotConstraint: "Required",
 ///             slotType: "FlowerTypes",
 ///             slotTypeVersion: "$$LATEST",
-///             valueElicitationPrompt: {
-///                 maxAttempts: 2,
-///                 messages: [{
-///                     content: "What type of flowers would you like to order?",
-///                     contentType: "PlainText",
-///                 }],
-///             },
 ///         },
 ///         {
+///             valueElicitationPrompt: {
+///                 messages: [{
+///                     content: "What day do you want the {FlowerType} to be picked up?",
+///                     contentType: "PlainText",
+///                 }],
+///                 maxAttempts: 2,
+///             },
 ///             description: "The date to pick up the flowers",
 ///             name: "PickupDate",
 ///             priority: 2,
@@ -67,15 +68,15 @@ import 'intent_state.dart';
 ///             slotConstraint: "Required",
 ///             slotType: "AMAZON.DATE",
 ///             slotTypeVersion: "$$LATEST",
-///             valueElicitationPrompt: {
-///                 maxAttempts: 2,
-///                 messages: [{
-///                     content: "What day do you want the {FlowerType} to be picked up?",
-///                     contentType: "PlainText",
-///                 }],
-///             },
 ///         },
 ///         {
+///             valueElicitationPrompt: {
+///                 messages: [{
+///                     content: "Pick up the {FlowerType} at what time on {PickupDate}?",
+///                     contentType: "PlainText",
+///                 }],
+///                 maxAttempts: 2,
+///             },
 ///             description: "The time to pick up the flowers",
 ///             name: "PickupTime",
 ///             priority: 3,
@@ -83,14 +84,14 @@ import 'intent_state.dart';
 ///             slotConstraint: "Required",
 ///             slotType: "AMAZON.TIME",
 ///             slotTypeVersion: "$$LATEST",
-///             valueElicitationPrompt: {
-///                 maxAttempts: 2,
-///                 messages: [{
-///                     content: "Pick up the {FlowerType} at what time on {PickupDate}?",
-///                     contentType: "PlainText",
-///                 }],
-///             },
 ///         },
+///     ],
+///     createVersion: false,
+///     name: "OrderFlowers",
+///     description: "Intent to order a bouquet of flowers for pick up",
+///     sampleUtterances: [
+///         "I would like to order some flowers",
+///         "I would like to pick up flowers",
 ///     ],
 /// });
 /// ```
@@ -100,15 +101,12 @@ import 'intent_state.dart';
 ///
 /// order_flowers_intent = aws.lex.Intent("order_flowers_intent",
 ///     confirmation_prompt={
-///         "max_attempts": 2,
 ///         "messages": [{
 ///             "content": "Okay, your {FlowerType} will be ready for pickup by {PickupTime} on {PickupDate}.  Does this sound okay?",
 ///             "content_type": "PlainText",
 ///         }],
+///         "max_attempts": 2,
 ///     },
-///     create_version=False,
-///     name="OrderFlowers",
-///     description="Intent to order a bouquet of flowers for pick up",
 ///     fulfillment_activity={
 ///         "type": "ReturnIntent",
 ///     },
@@ -118,12 +116,15 @@ import 'intent_state.dart';
 ///             "content_type": "PlainText",
 ///         }],
 ///     },
-///     sample_utterances=[
-///         "I would like to order some flowers",
-///         "I would like to pick up flowers",
-///     ],
 ///     slots=[
 ///         {
+///             "value_elicitation_prompt": {
+///                 "messages": [{
+///                     "content": "What type of flowers would you like to order?",
+///                     "content_type": "PlainText",
+///                 }],
+///                 "max_attempts": 2,
+///             },
 ///             "description": "The type of flowers to pick up",
 ///             "name": "FlowerType",
 ///             "priority": 1,
@@ -131,15 +132,15 @@ import 'intent_state.dart';
 ///             "slot_constraint": "Required",
 ///             "slot_type": "FlowerTypes",
 ///             "slot_type_version": "$$LATEST",
-///             "value_elicitation_prompt": {
-///                 "max_attempts": 2,
-///                 "messages": [{
-///                     "content": "What type of flowers would you like to order?",
-///                     "content_type": "PlainText",
-///                 }],
-///             },
 ///         },
 ///         {
+///             "value_elicitation_prompt": {
+///                 "messages": [{
+///                     "content": "What day do you want the {FlowerType} to be picked up?",
+///                     "content_type": "PlainText",
+///                 }],
+///                 "max_attempts": 2,
+///             },
 ///             "description": "The date to pick up the flowers",
 ///             "name": "PickupDate",
 ///             "priority": 2,
@@ -147,15 +148,15 @@ import 'intent_state.dart';
 ///             "slot_constraint": "Required",
 ///             "slot_type": "AMAZON.DATE",
 ///             "slot_type_version": "$$LATEST",
-///             "value_elicitation_prompt": {
-///                 "max_attempts": 2,
-///                 "messages": [{
-///                     "content": "What day do you want the {FlowerType} to be picked up?",
-///                     "content_type": "PlainText",
-///                 }],
-///             },
 ///         },
 ///         {
+///             "value_elicitation_prompt": {
+///                 "messages": [{
+///                     "content": "Pick up the {FlowerType} at what time on {PickupDate}?",
+///                     "content_type": "PlainText",
+///                 }],
+///                 "max_attempts": 2,
+///             },
 ///             "description": "The time to pick up the flowers",
 ///             "name": "PickupTime",
 ///             "priority": 3,
@@ -163,14 +164,14 @@ import 'intent_state.dart';
 ///             "slot_constraint": "Required",
 ///             "slot_type": "AMAZON.TIME",
 ///             "slot_type_version": "$$LATEST",
-///             "value_elicitation_prompt": {
-///                 "max_attempts": 2,
-///                 "messages": [{
-///                     "content": "Pick up the {FlowerType} at what time on {PickupDate}?",
-///                     "content_type": "PlainText",
-///                 }],
-///             },
 ///         },
+///     ],
+///     create_version=False,
+///     name="OrderFlowers",
+///     description="Intent to order a bouquet of flowers for pick up",
+///     sample_utterances=[
+///         "I would like to order some flowers",
+///         "I would like to pick up flowers",
 ///     ])
 /// ```
 /// ```csharp
@@ -185,7 +186,6 @@ import 'intent_state.dart';
 ///     {
 ///         ConfirmationPrompt = new Aws.Lex.Inputs.IntentConfirmationPromptArgs
 ///         {
-///             MaxAttempts = 2,
 ///             Messages = new[]
 ///             {
 ///                 new Aws.Lex.Inputs.IntentConfirmationPromptMessageArgs
@@ -194,10 +194,8 @@ import 'intent_state.dart';
 ///                     ContentType = "PlainText",
 ///                 },
 ///             },
+///             MaxAttempts = 2,
 ///         },
-///         CreateVersion = false,
-///         Name = "OrderFlowers",
-///         Description = "Intent to order a bouquet of flowers for pick up",
 ///         FulfillmentActivity = new Aws.Lex.Inputs.IntentFulfillmentActivityArgs
 ///         {
 ///             Type = "ReturnIntent",
@@ -213,15 +211,22 @@ import 'intent_state.dart';
 ///                 },
 ///             },
 ///         },
-///         SampleUtterances = new[]
-///         {
-///             "I would like to order some flowers",
-///             "I would like to pick up flowers",
-///         },
 ///         Slots = new[]
 ///         {
 ///             new Aws.Lex.Inputs.IntentSlotArgs
 ///             {
+///                 ValueElicitationPrompt = new Aws.Lex.Inputs.IntentSlotValueElicitationPromptArgs
+///                 {
+///                     Messages = new[]
+///                     {
+///                         new Aws.Lex.Inputs.IntentSlotValueElicitationPromptMessageArgs
+///                         {
+///                             Content = "What type of flowers would you like to order?",
+///                             ContentType = "PlainText",
+///                         },
+///                     },
+///                     MaxAttempts = 2,
+///                 },
 ///                 Description = "The type of flowers to pick up",
 ///                 Name = "FlowerType",
 ///                 Priority = 1,
@@ -232,21 +237,21 @@ import 'intent_state.dart';
 ///                 SlotConstraint = "Required",
 ///                 SlotType = "FlowerTypes",
 ///                 SlotTypeVersion = "$$LATEST",
+///             },
+///             new Aws.Lex.Inputs.IntentSlotArgs
+///             {
 ///                 ValueElicitationPrompt = new Aws.Lex.Inputs.IntentSlotValueElicitationPromptArgs
 ///                 {
-///                     MaxAttempts = 2,
 ///                     Messages = new[]
 ///                     {
 ///                         new Aws.Lex.Inputs.IntentSlotValueElicitationPromptMessageArgs
 ///                         {
-///                             Content = "What type of flowers would you like to order?",
+///                             Content = "What day do you want the {FlowerType} to be picked up?",
 ///                             ContentType = "PlainText",
 ///                         },
 ///                     },
+///                     MaxAttempts = 2,
 ///                 },
-///             },
-///             new Aws.Lex.Inputs.IntentSlotArgs
-///             {
 ///                 Description = "The date to pick up the flowers",
 ///                 Name = "PickupDate",
 ///                 Priority = 2,
@@ -257,21 +262,21 @@ import 'intent_state.dart';
 ///                 SlotConstraint = "Required",
 ///                 SlotType = "AMAZON.DATE",
 ///                 SlotTypeVersion = "$$LATEST",
+///             },
+///             new Aws.Lex.Inputs.IntentSlotArgs
+///             {
 ///                 ValueElicitationPrompt = new Aws.Lex.Inputs.IntentSlotValueElicitationPromptArgs
 ///                 {
-///                     MaxAttempts = 2,
 ///                     Messages = new[]
 ///                     {
 ///                         new Aws.Lex.Inputs.IntentSlotValueElicitationPromptMessageArgs
 ///                         {
-///                             Content = "What day do you want the {FlowerType} to be picked up?",
+///                             Content = "Pick up the {FlowerType} at what time on {PickupDate}?",
 ///                             ContentType = "PlainText",
 ///                         },
 ///                     },
+///                     MaxAttempts = 2,
 ///                 },
-///             },
-///             new Aws.Lex.Inputs.IntentSlotArgs
-///             {
 ///                 Description = "The time to pick up the flowers",
 ///                 Name = "PickupTime",
 ///                 Priority = 3,
@@ -282,19 +287,15 @@ import 'intent_state.dart';
 ///                 SlotConstraint = "Required",
 ///                 SlotType = "AMAZON.TIME",
 ///                 SlotTypeVersion = "$$LATEST",
-///                 ValueElicitationPrompt = new Aws.Lex.Inputs.IntentSlotValueElicitationPromptArgs
-///                 {
-///                     MaxAttempts = 2,
-///                     Messages = new[]
-///                     {
-///                         new Aws.Lex.Inputs.IntentSlotValueElicitationPromptMessageArgs
-///                         {
-///                             Content = "Pick up the {FlowerType} at what time on {PickupDate}?",
-///                             ContentType = "PlainText",
-///                         },
-///                     },
-///                 },
 ///             },
+///         },
+///         CreateVersion = false,
+///         Name = "OrderFlowers",
+///         Description = "Intent to order a bouquet of flowers for pick up",
+///         SampleUtterances = new[]
+///         {
+///             "I would like to order some flowers",
+///             "I would like to pick up flowers",
 ///         },
 ///     });
 ///
@@ -312,17 +313,14 @@ import 'intent_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lex.NewIntent(ctx, "order_flowers_intent", &lex.IntentArgs{
 /// 			ConfirmationPrompt: &lex.IntentConfirmationPromptArgs{
-/// 				MaxAttempts: pulumi.Int(2),
 /// 				Messages: lex.IntentConfirmationPromptMessageArray{
 /// 					&lex.IntentConfirmationPromptMessageArgs{
 /// 						Content:     pulumi.String("Okay, your {FlowerType} will be ready for pickup by {PickupTime} on {PickupDate}.  Does this sound okay?"),
 /// 						ContentType: pulumi.String("PlainText"),
 /// 					},
 /// 				},
+/// 				MaxAttempts: pulumi.Int(2),
 /// 			},
-/// 			CreateVersion: pulumi.Bool(false),
-/// 			Name:          pulumi.String("OrderFlowers"),
-/// 			Description:   pulumi.String("Intent to order a bouquet of flowers for pick up"),
 /// 			FulfillmentActivity: &lex.IntentFulfillmentActivityArgs{
 /// 				Type: pulumi.String("ReturnIntent"),
 /// 			},
@@ -334,12 +332,17 @@ import 'intent_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			SampleUtterances: pulumi.StringArray{
-/// 				pulumi.String("I would like to order some flowers"),
-/// 				pulumi.String("I would like to pick up flowers"),
-/// 			},
 /// 			Slots: lex.IntentSlotArray{
 /// 				&lex.IntentSlotArgs{
+/// 					ValueElicitationPrompt: &lex.IntentSlotValueElicitationPromptArgs{
+/// 						Messages: lex.IntentSlotValueElicitationPromptMessageArray{
+/// 							&lex.IntentSlotValueElicitationPromptMessageArgs{
+/// 								Content:     pulumi.String("What type of flowers would you like to order?"),
+/// 								ContentType: pulumi.String("PlainText"),
+/// 							},
+/// 						},
+/// 						MaxAttempts: pulumi.Int(2),
+/// 					},
 /// 					Description: pulumi.String("The type of flowers to pick up"),
 /// 					Name:        pulumi.String("FlowerType"),
 /// 					Priority:    pulumi.Int(1),
@@ -349,17 +352,17 @@ import 'intent_state.dart';
 /// 					SlotConstraint:  pulumi.String("Required"),
 /// 					SlotType:        pulumi.String("FlowerTypes"),
 /// 					SlotTypeVersion: pulumi.String("$$LATEST"),
+/// 				},
+/// 				&lex.IntentSlotArgs{
 /// 					ValueElicitationPrompt: &lex.IntentSlotValueElicitationPromptArgs{
-/// 						MaxAttempts: pulumi.Int(2),
 /// 						Messages: lex.IntentSlotValueElicitationPromptMessageArray{
 /// 							&lex.IntentSlotValueElicitationPromptMessageArgs{
-/// 								Content:     pulumi.String("What type of flowers would you like to order?"),
+/// 								Content:     pulumi.String("What day do you want the {FlowerType} to be picked up?"),
 /// 								ContentType: pulumi.String("PlainText"),
 /// 							},
 /// 						},
+/// 						MaxAttempts: pulumi.Int(2),
 /// 					},
-/// 				},
-/// 				&lex.IntentSlotArgs{
 /// 					Description: pulumi.String("The date to pick up the flowers"),
 /// 					Name:        pulumi.String("PickupDate"),
 /// 					Priority:    pulumi.Int(2),
@@ -369,17 +372,17 @@ import 'intent_state.dart';
 /// 					SlotConstraint:  pulumi.String("Required"),
 /// 					SlotType:        pulumi.String("AMAZON.DATE"),
 /// 					SlotTypeVersion: pulumi.String("$$LATEST"),
+/// 				},
+/// 				&lex.IntentSlotArgs{
 /// 					ValueElicitationPrompt: &lex.IntentSlotValueElicitationPromptArgs{
-/// 						MaxAttempts: pulumi.Int(2),
 /// 						Messages: lex.IntentSlotValueElicitationPromptMessageArray{
 /// 							&lex.IntentSlotValueElicitationPromptMessageArgs{
-/// 								Content:     pulumi.String("What day do you want the {FlowerType} to be picked up?"),
+/// 								Content:     pulumi.String("Pick up the {FlowerType} at what time on {PickupDate}?"),
 /// 								ContentType: pulumi.String("PlainText"),
 /// 							},
 /// 						},
+/// 						MaxAttempts: pulumi.Int(2),
 /// 					},
-/// 				},
-/// 				&lex.IntentSlotArgs{
 /// 					Description: pulumi.String("The time to pick up the flowers"),
 /// 					Name:        pulumi.String("PickupTime"),
 /// 					Priority:    pulumi.Int(3),
@@ -389,16 +392,14 @@ import 'intent_state.dart';
 /// 					SlotConstraint:  pulumi.String("Required"),
 /// 					SlotType:        pulumi.String("AMAZON.TIME"),
 /// 					SlotTypeVersion: pulumi.String("$$LATEST"),
-/// 					ValueElicitationPrompt: &lex.IntentSlotValueElicitationPromptArgs{
-/// 						MaxAttempts: pulumi.Int(2),
-/// 						Messages: lex.IntentSlotValueElicitationPromptMessageArray{
-/// 							&lex.IntentSlotValueElicitationPromptMessageArgs{
-/// 								Content:     pulumi.String("Pick up the {FlowerType} at what time on {PickupDate}?"),
-/// 								ContentType: pulumi.String("PlainText"),
-/// 							},
-/// 						},
-/// 					},
 /// 				},
+/// 			},
+/// 			CreateVersion: pulumi.Bool(false),
+/// 			Name:          pulumi.String("OrderFlowers"),
+/// 			Description:   pulumi.String("Intent to order a bouquet of flowers for pick up"),
+/// 			SampleUtterances: pulumi.StringArray{
+/// 				pulumi.String("I would like to order some flowers"),
+/// 				pulumi.String("I would like to pick up flowers"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -419,15 +420,12 @@ import 'intent_state.dart';
 ///
 /// resource "aws_lex_intent" "order_flowers_intent" {
 ///   confirmation_prompt = {
-///     max_attempts = 2
 ///     messages = [{
 ///       "content"     = "Okay, your {FlowerType} will be ready for pickup by {PickupTime} on {PickupDate}.  Does this sound okay?"
 ///       "contentType" = "PlainText"
 ///     }]
+///     max_attempts = 2
 ///   }
-///   create_version = false
-///   name           = "OrderFlowers"
-///   description    = "Intent to order a bouquet of flowers for pick up"
 ///   fulfillment_activity = {
 ///     type = "ReturnIntent"
 ///   }
@@ -437,8 +435,14 @@ import 'intent_state.dart';
 ///       "contentType" = "PlainText"
 ///     }]
 ///   }
-///   sample_utterances = ["I would like to order some flowers", "I would like to pick up flowers"]
 ///   slots {
+///     value_elicitation_prompt = {
+///       messages = [{
+///         "content"     = "What type of flowers would you like to order?"
+///         "contentType" = "PlainText"
+///       }]
+///       max_attempts = 2
+///     }
 ///     description       = "The type of flowers to pick up"
 ///     name              = "FlowerType"
 ///     priority          = 1
@@ -446,15 +450,15 @@ import 'intent_state.dart';
 ///     slot_constraint   = "Required"
 ///     slot_type         = "FlowerTypes"
 ///     slot_type_version = "$$LATEST"
-///     value_elicitation_prompt = {
-///       max_attempts = 2
-///       messages = [{
-///         "content"     = "What type of flowers would you like to order?"
-///         "contentType" = "PlainText"
-///       }]
-///     }
 ///   }
 ///   slots {
+///     value_elicitation_prompt = {
+///       messages = [{
+///         "content"     = "What day do you want the {FlowerType} to be picked up?"
+///         "contentType" = "PlainText"
+///       }]
+///       max_attempts = 2
+///     }
 ///     description       = "The date to pick up the flowers"
 ///     name              = "PickupDate"
 ///     priority          = 2
@@ -462,15 +466,15 @@ import 'intent_state.dart';
 ///     slot_constraint   = "Required"
 ///     slot_type         = "AMAZON.DATE"
 ///     slot_type_version = "$$LATEST"
-///     value_elicitation_prompt = {
-///       max_attempts = 2
-///       messages = [{
-///         "content"     = "What day do you want the {FlowerType} to be picked up?"
-///         "contentType" = "PlainText"
-///       }]
-///     }
 ///   }
 ///   slots {
+///     value_elicitation_prompt = {
+///       messages = [{
+///         "content"     = "Pick up the {FlowerType} at what time on {PickupDate}?"
+///         "contentType" = "PlainText"
+///       }]
+///       max_attempts = 2
+///     }
 ///     description       = "The time to pick up the flowers"
 ///     name              = "PickupTime"
 ///     priority          = 3
@@ -478,14 +482,11 @@ import 'intent_state.dart';
 ///     slot_constraint   = "Required"
 ///     slot_type         = "AMAZON.TIME"
 ///     slot_type_version = "$$LATEST"
-///     value_elicitation_prompt = {
-///       max_attempts = 2
-///       messages = [{
-///         "content"     = "Pick up the {FlowerType} at what time on {PickupDate}?"
-///         "contentType" = "PlainText"
-///       }]
-///     }
 ///   }
+///   create_version    = false
+///   name              = "OrderFlowers"
+///   description       = "Intent to order a bouquet of flowers for pick up"
+///   sample_utterances = ["I would like to order some flowers", "I would like to pick up flowers"]
 /// }
 /// ```
 /// ```java
@@ -519,15 +520,12 @@ import 'intent_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var orderFlowersIntent = new Intent("orderFlowersIntent", IntentArgs.builder()
 ///             .confirmationPrompt(IntentConfirmationPromptArgs.builder()
-///                 .maxAttempts(2)
 ///                 .messages(IntentConfirmationPromptMessageArgs.builder()
 ///                     .content("Okay, your {FlowerType} will be ready for pickup by {PickupTime} on {PickupDate}.  Does this sound okay?")
 ///                     .contentType("PlainText")
 ///                     .build())
+///                 .maxAttempts(2)
 ///                 .build())
-///             .createVersion(false)
-///             .name("OrderFlowers")
-///             .description("Intent to order a bouquet of flowers for pick up")
 ///             .fulfillmentActivity(IntentFulfillmentActivityArgs.builder()
 ///                 .type("ReturnIntent")
 ///                 .build())
@@ -537,11 +535,15 @@ import 'intent_state.dart';
 ///                     .contentType("PlainText")
 ///                     .build())
 ///                 .build())
-///             .sampleUtterances(
-///                 "I would like to order some flowers",
-///                 "I would like to pick up flowers")
 ///             .slots(
 ///                 IntentSlotArgs.builder()
+///                     .valueElicitationPrompt(IntentSlotValueElicitationPromptArgs.builder()
+///                         .messages(IntentSlotValueElicitationPromptMessageArgs.builder()
+///                             .content("What type of flowers would you like to order?")
+///                             .contentType("PlainText")
+///                             .build())
+///                         .maxAttempts(2)
+///                         .build())
 ///                     .description("The type of flowers to pick up")
 ///                     .name("FlowerType")
 ///                     .priority(1)
@@ -549,15 +551,15 @@ import 'intent_state.dart';
 ///                     .slotConstraint("Required")
 ///                     .slotType("FlowerTypes")
 ///                     .slotTypeVersion("$$LATEST")
-///                     .valueElicitationPrompt(IntentSlotValueElicitationPromptArgs.builder()
-///                         .maxAttempts(2)
-///                         .messages(IntentSlotValueElicitationPromptMessageArgs.builder()
-///                             .content("What type of flowers would you like to order?")
-///                             .contentType("PlainText")
-///                             .build())
-///                         .build())
 ///                     .build(),
 ///                 IntentSlotArgs.builder()
+///                     .valueElicitationPrompt(IntentSlotValueElicitationPromptArgs.builder()
+///                         .messages(IntentSlotValueElicitationPromptMessageArgs.builder()
+///                             .content("What day do you want the {FlowerType} to be picked up?")
+///                             .contentType("PlainText")
+///                             .build())
+///                         .maxAttempts(2)
+///                         .build())
 ///                     .description("The date to pick up the flowers")
 ///                     .name("PickupDate")
 ///                     .priority(2)
@@ -565,15 +567,15 @@ import 'intent_state.dart';
 ///                     .slotConstraint("Required")
 ///                     .slotType("AMAZON.DATE")
 ///                     .slotTypeVersion("$$LATEST")
-///                     .valueElicitationPrompt(IntentSlotValueElicitationPromptArgs.builder()
-///                         .maxAttempts(2)
-///                         .messages(IntentSlotValueElicitationPromptMessageArgs.builder()
-///                             .content("What day do you want the {FlowerType} to be picked up?")
-///                             .contentType("PlainText")
-///                             .build())
-///                         .build())
 ///                     .build(),
 ///                 IntentSlotArgs.builder()
+///                     .valueElicitationPrompt(IntentSlotValueElicitationPromptArgs.builder()
+///                         .messages(IntentSlotValueElicitationPromptMessageArgs.builder()
+///                             .content("Pick up the {FlowerType} at what time on {PickupDate}?")
+///                             .contentType("PlainText")
+///                             .build())
+///                         .maxAttempts(2)
+///                         .build())
 ///                     .description("The time to pick up the flowers")
 ///                     .name("PickupTime")
 ///                     .priority(3)
@@ -581,14 +583,13 @@ import 'intent_state.dart';
 ///                     .slotConstraint("Required")
 ///                     .slotType("AMAZON.TIME")
 ///                     .slotTypeVersion("$$LATEST")
-///                     .valueElicitationPrompt(IntentSlotValueElicitationPromptArgs.builder()
-///                         .maxAttempts(2)
-///                         .messages(IntentSlotValueElicitationPromptMessageArgs.builder()
-///                             .content("Pick up the {FlowerType} at what time on {PickupDate}?")
-///                             .contentType("PlainText")
-///                             .build())
-///                         .build())
 ///                     .build())
+///             .createVersion(false)
+///             .name("OrderFlowers")
+///             .description("Intent to order a bouquet of flowers for pick up")
+///             .sampleUtterances(
+///                 "I would like to order some flowers",
+///                 "I would like to pick up flowers")
 ///             .build());
 ///
 ///     }
@@ -601,24 +602,23 @@ import 'intent_state.dart';
 ///     name: order_flowers_intent
 ///     properties:
 ///       confirmationPrompt:
-///         maxAttempts: 2
 ///         messages:
 ///           - content: Okay, your {FlowerType} will be ready for pickup by {PickupTime} on {PickupDate}.  Does this sound okay?
 ///             contentType: PlainText
-///       createVersion: false
-///       name: OrderFlowers
-///       description: Intent to order a bouquet of flowers for pick up
+///         maxAttempts: 2
 ///       fulfillmentActivity:
 ///         type: ReturnIntent
 ///       rejectionStatement:
 ///         messages:
 ///           - content: Okay, I will not place your order.
 ///             contentType: PlainText
-///       sampleUtterances:
-///         - I would like to order some flowers
-///         - I would like to pick up flowers
 ///       slots:
-///         - description: The type of flowers to pick up
+///         - valueElicitationPrompt:
+///             messages:
+///               - content: What type of flowers would you like to order?
+///                 contentType: PlainText
+///             maxAttempts: 2
+///           description: The type of flowers to pick up
 ///           name: FlowerType
 ///           priority: 1
 ///           sampleUtterances:
@@ -626,12 +626,12 @@ import 'intent_state.dart';
 ///           slotConstraint: Required
 ///           slotType: FlowerTypes
 ///           slotTypeVersion: $$LATEST
-///           valueElicitationPrompt:
-///             maxAttempts: 2
+///         - valueElicitationPrompt:
 ///             messages:
-///               - content: What type of flowers would you like to order?
+///               - content: What day do you want the {FlowerType} to be picked up?
 ///                 contentType: PlainText
-///         - description: The date to pick up the flowers
+///             maxAttempts: 2
+///           description: The date to pick up the flowers
 ///           name: PickupDate
 ///           priority: 2
 ///           sampleUtterances:
@@ -639,12 +639,12 @@ import 'intent_state.dart';
 ///           slotConstraint: Required
 ///           slotType: AMAZON.DATE
 ///           slotTypeVersion: $$LATEST
-///           valueElicitationPrompt:
-///             maxAttempts: 2
+///         - valueElicitationPrompt:
 ///             messages:
-///               - content: What day do you want the {FlowerType} to be picked up?
+///               - content: Pick up the {FlowerType} at what time on {PickupDate}?
 ///                 contentType: PlainText
-///         - description: The time to pick up the flowers
+///             maxAttempts: 2
+///           description: The time to pick up the flowers
 ///           name: PickupTime
 ///           priority: 3
 ///           sampleUtterances:
@@ -652,11 +652,12 @@ import 'intent_state.dart';
 ///           slotConstraint: Required
 ///           slotType: AMAZON.TIME
 ///           slotTypeVersion: $$LATEST
-///           valueElicitationPrompt:
-///             maxAttempts: 2
-///             messages:
-///               - content: Pick up the {FlowerType} at what time on {PickupDate}?
-///                 contentType: PlainText
+///       createVersion: false
+///       name: OrderFlowers
+///       description: Intent to order a bouquet of flowers for pick up
+///       sampleUtterances:
+///         - I would like to order some flowers
+///         - I would like to pick up flowers
 /// ```
 ///
 ///
@@ -724,7 +725,7 @@ class Intent extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> sampleUtterances;
   /// An list of intent slots. At runtime, Amazon Lex elicits required slot values
   /// from the user using prompts defined in the slots. Attributes are documented under slot.
-  late final pulumi.Output<List<Map<String, dynamic>>?> slots;
+  late final pulumi.Output<List<IntentSlot>?> slots;
   /// The version of the bot.
   late final pulumi.Output<String> version;
 
@@ -740,7 +741,7 @@ class Intent extends pulumi.CustomResource {
           'aws:lex/intent:Intent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     checksum = registerOutput<String>('checksum');
@@ -757,8 +758,8 @@ class Intent extends pulumi.CustomResource {
     parentIntentSignature = registerOutput<String?>('parentIntentSignature');
     region = registerOutput<String>('region');
     rejectionStatement = registerOutput<IntentRejectionStatement?>('rejectionStatement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntentRejectionStatement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sampleUtterances = registerOutput<List<String>?>('sampleUtterances');
-    slots = registerOutput<List<Map<String, dynamic>>?>('slots');
+    sampleUtterances = registerOutput<List<String>?>('sampleUtterances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    slots = registerOutput<List<IntentSlot>?>('slots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntentSlot>(guardedValue, (value) => IntentSlot.fromMap((value as Map).cast<String, dynamic>())); });
     version = registerOutput<String>('version');
   }
 
@@ -767,11 +768,12 @@ class Intent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Intent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -800,8 +802,37 @@ class Intent extends pulumi.CustomResource {
     parentIntentSignature = registerOutput<String?>('parentIntentSignature');
     region = registerOutput<String>('region');
     rejectionStatement = registerOutput<IntentRejectionStatement?>('rejectionStatement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntentRejectionStatement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sampleUtterances = registerOutput<List<String>?>('sampleUtterances');
-    slots = registerOutput<List<Map<String, dynamic>>?>('slots');
+    sampleUtterances = registerOutput<List<String>?>('sampleUtterances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    slots = registerOutput<List<IntentSlot>?>('slots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntentSlot>(guardedValue, (value) => IntentSlot.fromMap((value as Map).cast<String, dynamic>())); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Intent] resource.
+  Intent.reference(String urn)
+    : super(
+        'aws:lex/intent:Intent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    checksum = registerOutput<String>('checksum');
+    conclusionStatement = registerOutput<IntentConclusionStatement?>('conclusionStatement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntentConclusionStatement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    confirmationPrompt = registerOutput<IntentConfirmationPrompt?>('confirmationPrompt', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntentConfirmationPrompt.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createVersion = registerOutput<bool?>('createVersion');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    dialogCodeHook = registerOutput<IntentDialogCodeHook?>('dialogCodeHook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntentDialogCodeHook.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    followUpPrompt = registerOutput<IntentFollowUpPrompt?>('followUpPrompt', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntentFollowUpPrompt.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fulfillmentActivity = registerOutput<IntentFulfillmentActivity>('fulfillmentActivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntentFulfillmentActivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastUpdatedDate = registerOutput<String>('lastUpdatedDate');
+    this.name = registerOutput<String>('name');
+    parentIntentSignature = registerOutput<String?>('parentIntentSignature');
+    region = registerOutput<String>('region');
+    rejectionStatement = registerOutput<IntentRejectionStatement?>('rejectionStatement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntentRejectionStatement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sampleUtterances = registerOutput<List<String>?>('sampleUtterances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    slots = registerOutput<List<IntentSlot>?>('slots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntentSlot>(guardedValue, (value) => IntentSlot.fromMap((value as Map).cast<String, dynamic>())); });
     version = registerOutput<String>('version');
   }
 }

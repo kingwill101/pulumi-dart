@@ -7,24 +7,24 @@ import 'agentcore_policy_timeouts.dart';
 /// Input properties used for looking up and filtering AgentcorePolicy resources.
 class AgentcorePolicyState {
   /// Policy definition. See `definition` Block for details.
-  final pulumi.Input<AgentcorePolicyDefinition>? definition;
+  final pulumi.Input<AgentcorePolicyDefinition?>? definition;
   /// Description of the policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the policy. Must be 1-48 characters and match the pattern `^[A-Za-z][A-Za-z0-9_]*$`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ARN of the Policy.
-  final pulumi.Input<String>? policyArn;
+  final pulumi.Input<String?>? policyArn;
   /// Identifier of the Policy Engine that owns this policy. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? policyEngineId;
+  final pulumi.Input<String?>? policyEngineId;
   /// Identifier of the Policy.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<AgentcorePolicyTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<AgentcorePolicyTimeouts?>? timeouts;
   /// Controls whether validation findings cause policy creation or update to fail. Valid values: `FAIL_ON_ANY_FINDINGS`, `IGNORE_ALL_FINDINGS`. Defaults to `FAIL_ON_ANY_FINDINGS`.
-  final pulumi.Input<String>? validationMode;
+  final pulumi.Input<String?>? validationMode;
 
   /// Creates a new [AgentcorePolicyState].
   /// [definition] Policy definition. See `definition` Block for details.

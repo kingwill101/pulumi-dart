@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationSetEventDestinationEventDestinationEventBridgeDestination {
-  /// The Amazon Resource Name (ARN) of the Amazon EventBridge bus to publish email events to. Only the default bus is supported.
+  /// ARN of the Amazon EventBridge bus to publish email events to. Only the default bus is supported.
   final pulumi.Input<String> eventBusArn;
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestinationEventBridgeDestination].
-  /// [eventBusArn] The Amazon Resource Name (ARN) of the Amazon EventBridge bus to publish email events to. Only the default bus is supported.
+  /// [eventBusArn] ARN of the Amazon EventBridge bus to publish email events to. Only the default bus is supported.
   const ConfigurationSetEventDestinationEventDestinationEventBridgeDestination({
     required this.eventBusArn,
   });

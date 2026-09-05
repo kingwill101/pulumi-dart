@@ -5,7 +5,7 @@ import 'rule_set_rule_condition_boolean_expression_evaluate.dart';
 
 class RuleSetRuleConditionBooleanExpression {
   /// Operand evaluated by the expression. Exactly one of `analysis`, `attribute`, or `isInAddressList` must be configured.
-  final pulumi.Input<RuleSetRuleConditionBooleanExpressionEvaluate>? evaluate;
+  final pulumi.Input<RuleSetRuleConditionBooleanExpressionEvaluate?>? evaluate;
   /// Boolean matching operator. Valid values are `IS_TRUE` and `IS_FALSE`.
   final pulumi.Input<String> operator;
 

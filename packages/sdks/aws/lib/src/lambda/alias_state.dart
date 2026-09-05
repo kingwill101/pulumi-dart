@@ -6,23 +6,23 @@ import 'alias_routing_config.dart';
 /// Input properties used for looking up and filtering Alias resources.
 class AliasState {
   /// ARN identifying your Lambda function alias.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Description of the alias.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name or ARN of the Lambda function.
-  final pulumi.Input<String>? functionName;
+  final pulumi.Input<String?>? functionName;
   /// Lambda function version for which you are creating the alias. Pattern: `(\$LATEST|[0-9]+)`.
-  final pulumi.Input<String>? functionVersion;
+  final pulumi.Input<String?>? functionVersion;
   /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
-  final pulumi.Input<String>? invokeArn;
+  final pulumi.Input<String?>? invokeArn;
   /// Name for the alias. Pattern: `(?!^[0-9]+$)([a-zA-Z0-9-_]+)`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Lambda alias' route configuration settings. See below.
-  final pulumi.Input<AliasRoutingConfig>? routingConfig;
+  final pulumi.Input<AliasRoutingConfig?>? routingConfig;
 
   /// Creates a new [AliasState].
   /// [arn] ARN identifying your Lambda function alias.

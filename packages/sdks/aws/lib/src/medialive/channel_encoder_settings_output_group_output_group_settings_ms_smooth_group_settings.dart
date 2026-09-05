@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_group_settings_ms_smooth_group_settings_destination.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings {
-  final pulumi.Input<String>? acquisitionPointId;
-  final pulumi.Input<String>? audioOnlyTimecodeControl;
+  final pulumi.Input<String?>? acquisitionPointId;
+  final pulumi.Input<String?>? audioOnlyTimecodeControl;
   /// Setting to allow self signed or verified RTMP certificates.
-  final pulumi.Input<String>? certificateMode;
+  final pulumi.Input<String?>? certificateMode;
   /// Number of seconds to wait before retrying connection to the flash media server if the connection is lost.
-  final pulumi.Input<int>? connectionRetryInterval;
+  final pulumi.Input<int?>? connectionRetryInterval;
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination> destination;
-  final pulumi.Input<String>? eventId;
-  final pulumi.Input<String>? eventIdMode;
-  final pulumi.Input<String>? eventStopBehavior;
-  final pulumi.Input<int>? filecacheDuration;
-  final pulumi.Input<int>? fragmentLength;
-  final pulumi.Input<String>? inputLossAction;
+  final pulumi.Input<String?>? eventId;
+  final pulumi.Input<String?>? eventIdMode;
+  final pulumi.Input<String?>? eventStopBehavior;
+  final pulumi.Input<int?>? filecacheDuration;
+  final pulumi.Input<int?>? fragmentLength;
+  final pulumi.Input<String?>? inputLossAction;
   /// Number of retry attempts.
-  final pulumi.Input<int>? numRetries;
+  final pulumi.Input<int?>? numRetries;
   /// Number of seconds to wait until a restart is initiated.
-  final pulumi.Input<int>? restartDelay;
-  final pulumi.Input<String>? segmentationMode;
-  final pulumi.Input<int>? sendDelayMs;
-  final pulumi.Input<String>? sparseTrackType;
-  final pulumi.Input<String>? streamManifestBehavior;
-  final pulumi.Input<String>? timestampOffset;
-  final pulumi.Input<String>? timestampOffsetMode;
+  final pulumi.Input<int?>? restartDelay;
+  final pulumi.Input<String?>? segmentationMode;
+  final pulumi.Input<int?>? sendDelayMs;
+  final pulumi.Input<String?>? sparseTrackType;
+  final pulumi.Input<String?>? streamManifestBehavior;
+  final pulumi.Input<String?>? timestampOffset;
+  final pulumi.Input<String?>? timestampOffsetMode;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings].
   /// [acquisitionPointId] Optional.
@@ -99,18 +99,18 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings 
       acquisitionPointId: (() { final guardedValue = map['acquisitionPointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       audioOnlyTimecodeControl: (() { final guardedValue = map['audioOnlyTimecodeControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       certificateMode: (() { final guardedValue = map['certificateMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      connectionRetryInterval: (() { final guardedValue = map['connectionRetryInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      connectionRetryInterval: (() { final guardedValue = map['connectionRetryInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       destination: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
       eventId: (() { final guardedValue = map['eventId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventIdMode: (() { final guardedValue = map['eventIdMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventStopBehavior: (() { final guardedValue = map['eventStopBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      filecacheDuration: (() { final guardedValue = map['filecacheDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      fragmentLength: (() { final guardedValue = map['fragmentLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      filecacheDuration: (() { final guardedValue = map['filecacheDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      fragmentLength: (() { final guardedValue = map['fragmentLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       inputLossAction: (() { final guardedValue = map['inputLossAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numRetries: (() { final guardedValue = map['numRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      restartDelay: (() { final guardedValue = map['restartDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numRetries: (() { final guardedValue = map['numRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      restartDelay: (() { final guardedValue = map['restartDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       segmentationMode: (() { final guardedValue = map['segmentationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sendDelayMs: (() { final guardedValue = map['sendDelayMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sendDelayMs: (() { final guardedValue = map['sendDelayMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sparseTrackType: (() { final guardedValue = map['sparseTrackType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       streamManifestBehavior: (() { final guardedValue = map['streamManifestBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timestampOffset: (() { final guardedValue = map['timestampOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigateway_deployment_deployment_args_doc}
 class DeploymentArgs {
   /// Description of the deployment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// REST API identifier.
-  final pulumi.Input<String> restApi;
+  final pulumi.Input<dynamic> restApi;
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
-  final pulumi.Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>?>? triggers;
   /// Map to set on the related stage.
-  final pulumi.Input<Map<String, String>>? variables;
+  final pulumi.Input<Map<String, String>?>? variables;
 
   /// Creates a new [DeploymentArgs].
   /// [description] Description of the deployment.
@@ -46,7 +46,7 @@ class DeploymentArgs {
     return DeploymentArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      restApi: pulumi.Input.fromValue(map['restApi'] as String),
+      restApi: pulumi.Input.fromValue(map['restApi']),
       triggers: (() { final guardedValue = map['triggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       variables: (() { final guardedValue = map['variables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

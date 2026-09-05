@@ -10,17 +10,17 @@ import 'policy_predictive_scaling_configuration_metric_specification_predefined_
 
 class PolicyPredictiveScalingConfigurationMetricSpecification {
   /// Customized capacity metric specification. The field is only valid when you use `customizedLoadMetricSpecification`
-  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification>? customizedCapacityMetricSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification?>? customizedCapacityMetricSpecification;
   /// Customized load metric specification.
-  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification>? customizedLoadMetricSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecification?>? customizedLoadMetricSpecification;
   /// Customized scaling metric specification.
-  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification>? customizedScalingMetricSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification?>? customizedScalingMetricSpecification;
   /// Predefined load metric specification.
-  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification>? predefinedLoadMetricSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification?>? predefinedLoadMetricSpecification;
   /// Metric pair specification from which Amazon EC2 Auto Scaling determines the appropriate scaling metric and load metric to use.
-  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification>? predefinedMetricPairSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification?>? predefinedMetricPairSpecification;
   /// Predefined scaling metric specification.
-  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification>? predefinedScalingMetricSpecification;
+  final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification?>? predefinedScalingMetricSpecification;
   /// Target value for the metric.
   final pulumi.Input<double> targetValue;
 
@@ -62,7 +62,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecification {
       predefinedLoadMetricSpecification: (() { final guardedValue = map['predefinedLoadMetricSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       predefinedMetricPairSpecification: (() { final guardedValue = map['predefinedMetricPairSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       predefinedScalingMetricSpecification: (() { final guardedValue = map['predefinedScalingMetricSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      targetValue: pulumi.Input.fromValue(map['targetValue'] as double),
+      targetValue: pulumi.Input.fromValue((map['targetValue'] as num).toDouble()),
     );
   }
 }

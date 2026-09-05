@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VpcEndpointRouteTableAssociation resources.
 class VpcEndpointRouteTableAssociationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
-  final pulumi.Input<String>? routeTableId;
+  final pulumi.Input<String?>? routeTableId;
   /// Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<String?>? vpcEndpointId;
 
   /// Creates a new [VpcEndpointRouteTableAssociationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

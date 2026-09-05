@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSpecHttp2RouteMatchPath {
   /// Exact query parameter to match on.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// Regex used to match the path.
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
 
   /// Creates a new [RouteSpecHttp2RouteMatchPath].
   /// [exact] Exact query parameter to match on.

@@ -15,7 +15,6 @@ import 'logging_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.LoggingConfiguration("example", {
-///     firewallArn: exampleAwsNetworkfirewallFirewall.arn,
 ///     loggingConfiguration: {
 ///         logDestinationConfigs: [{
 ///             logDestination: {
@@ -26,6 +25,7 @@ import 'logging_configuration_state.dart';
 ///             logType: "FLOW",
 ///         }],
 ///     },
+///     firewallArn: exampleAwsNetworkfirewallFirewall.arn,
 /// });
 /// ```
 /// ```python
@@ -33,7 +33,6 @@ import 'logging_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.LoggingConfiguration("example",
-///     firewall_arn=example_aws_networkfirewall_firewall["arn"],
 ///     logging_configuration={
 ///         "log_destination_configs": [{
 ///             "log_destination": {
@@ -43,7 +42,8 @@ import 'logging_configuration_state.dart';
 ///             "log_destination_type": "S3",
 ///             "log_type": "FLOW",
 ///         }],
-///     })
+///     },
+///     firewall_arn=example_aws_networkfirewall_firewall["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -55,7 +55,6 @@ import 'logging_configuration_state.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.LoggingConfiguration("example", new()
 ///     {
-///         FirewallArn = exampleAwsNetworkfirewallFirewall.Arn,
 ///         LoggingConfig = new Aws.NetworkFirewall.Inputs.LoggingConfigurationLoggingConfigurationArgs
 ///         {
 ///             LogDestinationConfigs = new[]
@@ -72,6 +71,7 @@ import 'logging_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
+///         FirewallArn = exampleAwsNetworkfirewallFirewall.Arn,
 ///     });
 ///
 /// });
@@ -87,7 +87,6 @@ import 'logging_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewLoggingConfiguration(ctx, "example", &networkfirewall.LoggingConfigurationArgs{
-/// 			FirewallArn: pulumi.Any(exampleAwsNetworkfirewallFirewall.Arn),
 /// 			LoggingConfiguration: &networkfirewall.LoggingConfigurationLoggingConfigurationArgs{
 /// 				LogDestinationConfigs: networkfirewall.LoggingConfigurationLoggingConfigurationLogDestinationConfigArray{
 /// 					&networkfirewall.LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs{
@@ -100,6 +99,7 @@ import 'logging_configuration_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			FirewallArn: pulumi.Any(exampleAwsNetworkfirewallFirewall.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -118,7 +118,6 @@ import 'logging_configuration_state.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_loggingconfiguration" "example" {
-///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
 ///   logging_configuration = {
 ///     log_destination_configs = [{
 ///       "logDestination" = {
@@ -129,6 +128,7 @@ import 'logging_configuration_state.dart';
 ///       "logType"            = "FLOW"
 ///     }]
 ///   }
+///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
 /// }
 /// ```
 /// ```java
@@ -155,7 +155,6 @@ import 'logging_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LoggingConfiguration("example", LoggingConfigurationArgs.builder()
-///             .firewallArn(exampleAwsNetworkfirewallFirewall.arn())
 ///             .loggingConfiguration(LoggingConfigurationLoggingConfigurationArgs.builder()
 ///                 .logDestinationConfigs(LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs.builder()
 ///                     .logDestination(Map.ofEntries(
@@ -166,6 +165,7 @@ import 'logging_configuration_state.dart';
 ///                     .logType("FLOW")
 ///                     .build())
 ///                 .build())
+///             .firewallArn(exampleAwsNetworkfirewallFirewall.arn())
 ///             .build());
 ///
 ///     }
@@ -176,7 +176,6 @@ import 'logging_configuration_state.dart';
 ///   example:
 ///     type: aws:networkfirewall:LoggingConfiguration
 ///     properties:
-///       firewallArn: ${exampleAwsNetworkfirewallFirewall.arn}
 ///       loggingConfiguration:
 ///         logDestinationConfigs:
 ///           - logDestination:
@@ -184,6 +183,7 @@ import 'logging_configuration_state.dart';
 ///               prefix: example
 ///             logDestinationType: S3
 ///             logType: FLOW
+///       firewallArn: ${exampleAwsNetworkfirewallFirewall.arn}
 /// ```
 ///
 ///
@@ -195,7 +195,6 @@ import 'logging_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.LoggingConfiguration("example", {
-///     firewallArn: exampleAwsNetworkfirewallFirewall.arn,
 ///     loggingConfiguration: {
 ///         logDestinationConfigs: [{
 ///             logDestination: {
@@ -205,6 +204,7 @@ import 'logging_configuration_state.dart';
 ///             logType: "ALERT",
 ///         }],
 ///     },
+///     firewallArn: exampleAwsNetworkfirewallFirewall.arn,
 /// });
 /// ```
 /// ```python
@@ -212,7 +212,6 @@ import 'logging_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.LoggingConfiguration("example",
-///     firewall_arn=example_aws_networkfirewall_firewall["arn"],
 ///     logging_configuration={
 ///         "log_destination_configs": [{
 ///             "log_destination": {
@@ -221,7 +220,8 @@ import 'logging_configuration_state.dart';
 ///             "log_destination_type": "CloudWatchLogs",
 ///             "log_type": "ALERT",
 ///         }],
-///     })
+///     },
+///     firewall_arn=example_aws_networkfirewall_firewall["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -233,7 +233,6 @@ import 'logging_configuration_state.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.LoggingConfiguration("example", new()
 ///     {
-///         FirewallArn = exampleAwsNetworkfirewallFirewall.Arn,
 ///         LoggingConfig = new Aws.NetworkFirewall.Inputs.LoggingConfigurationLoggingConfigurationArgs
 ///         {
 ///             LogDestinationConfigs = new[]
@@ -249,6 +248,7 @@ import 'logging_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
+///         FirewallArn = exampleAwsNetworkfirewallFirewall.Arn,
 ///     });
 ///
 /// });
@@ -264,7 +264,6 @@ import 'logging_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewLoggingConfiguration(ctx, "example", &networkfirewall.LoggingConfigurationArgs{
-/// 			FirewallArn: pulumi.Any(exampleAwsNetworkfirewallFirewall.Arn),
 /// 			LoggingConfiguration: &networkfirewall.LoggingConfigurationLoggingConfigurationArgs{
 /// 				LogDestinationConfigs: networkfirewall.LoggingConfigurationLoggingConfigurationLogDestinationConfigArray{
 /// 					&networkfirewall.LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs{
@@ -276,6 +275,7 @@ import 'logging_configuration_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			FirewallArn: pulumi.Any(exampleAwsNetworkfirewallFirewall.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -294,7 +294,6 @@ import 'logging_configuration_state.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_loggingconfiguration" "example" {
-///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
 ///   logging_configuration = {
 ///     log_destination_configs = [{
 ///       "logDestination" = {
@@ -304,6 +303,7 @@ import 'logging_configuration_state.dart';
 ///       "logType"            = "ALERT"
 ///     }]
 ///   }
+///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
 /// }
 /// ```
 /// ```java
@@ -330,7 +330,6 @@ import 'logging_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LoggingConfiguration("example", LoggingConfigurationArgs.builder()
-///             .firewallArn(exampleAwsNetworkfirewallFirewall.arn())
 ///             .loggingConfiguration(LoggingConfigurationLoggingConfigurationArgs.builder()
 ///                 .logDestinationConfigs(LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs.builder()
 ///                     .logDestination(Map.of("logGroup", exampleAwsCloudwatchLogGroup.name()))
@@ -338,6 +337,7 @@ import 'logging_configuration_state.dart';
 ///                     .logType("ALERT")
 ///                     .build())
 ///                 .build())
+///             .firewallArn(exampleAwsNetworkfirewallFirewall.arn())
 ///             .build());
 ///
 ///     }
@@ -348,13 +348,13 @@ import 'logging_configuration_state.dart';
 ///   example:
 ///     type: aws:networkfirewall:LoggingConfiguration
 ///     properties:
-///       firewallArn: ${exampleAwsNetworkfirewallFirewall.arn}
 ///       loggingConfiguration:
 ///         logDestinationConfigs:
 ///           - logDestination:
 ///               logGroup: ${exampleAwsCloudwatchLogGroup.name}
 ///             logDestinationType: CloudWatchLogs
 ///             logType: ALERT
+///       firewallArn: ${exampleAwsNetworkfirewallFirewall.arn}
 /// ```
 ///
 ///
@@ -366,7 +366,6 @@ import 'logging_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.LoggingConfiguration("example", {
-///     firewallArn: exampleAwsNetworkfirewallFirewall.arn,
 ///     loggingConfiguration: {
 ///         logDestinationConfigs: [{
 ///             logDestination: {
@@ -376,6 +375,7 @@ import 'logging_configuration_state.dart';
 ///             logType: "TLS",
 ///         }],
 ///     },
+///     firewallArn: exampleAwsNetworkfirewallFirewall.arn,
 /// });
 /// ```
 /// ```python
@@ -383,7 +383,6 @@ import 'logging_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.LoggingConfiguration("example",
-///     firewall_arn=example_aws_networkfirewall_firewall["arn"],
 ///     logging_configuration={
 ///         "log_destination_configs": [{
 ///             "log_destination": {
@@ -392,7 +391,8 @@ import 'logging_configuration_state.dart';
 ///             "log_destination_type": "KinesisDataFirehose",
 ///             "log_type": "TLS",
 ///         }],
-///     })
+///     },
+///     firewall_arn=example_aws_networkfirewall_firewall["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -404,7 +404,6 @@ import 'logging_configuration_state.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.LoggingConfiguration("example", new()
 ///     {
-///         FirewallArn = exampleAwsNetworkfirewallFirewall.Arn,
 ///         LoggingConfig = new Aws.NetworkFirewall.Inputs.LoggingConfigurationLoggingConfigurationArgs
 ///         {
 ///             LogDestinationConfigs = new[]
@@ -420,6 +419,7 @@ import 'logging_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
+///         FirewallArn = exampleAwsNetworkfirewallFirewall.Arn,
 ///     });
 ///
 /// });
@@ -435,7 +435,6 @@ import 'logging_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewLoggingConfiguration(ctx, "example", &networkfirewall.LoggingConfigurationArgs{
-/// 			FirewallArn: pulumi.Any(exampleAwsNetworkfirewallFirewall.Arn),
 /// 			LoggingConfiguration: &networkfirewall.LoggingConfigurationLoggingConfigurationArgs{
 /// 				LogDestinationConfigs: networkfirewall.LoggingConfigurationLoggingConfigurationLogDestinationConfigArray{
 /// 					&networkfirewall.LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs{
@@ -447,6 +446,7 @@ import 'logging_configuration_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			FirewallArn: pulumi.Any(exampleAwsNetworkfirewallFirewall.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -465,7 +465,6 @@ import 'logging_configuration_state.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_loggingconfiguration" "example" {
-///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
 ///   logging_configuration = {
 ///     log_destination_configs = [{
 ///       "logDestination" = {
@@ -475,6 +474,7 @@ import 'logging_configuration_state.dart';
 ///       "logType"            = "TLS"
 ///     }]
 ///   }
+///   firewall_arn = exampleAwsNetworkfirewallFirewall.arn
 /// }
 /// ```
 /// ```java
@@ -501,7 +501,6 @@ import 'logging_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LoggingConfiguration("example", LoggingConfigurationArgs.builder()
-///             .firewallArn(exampleAwsNetworkfirewallFirewall.arn())
 ///             .loggingConfiguration(LoggingConfigurationLoggingConfigurationArgs.builder()
 ///                 .logDestinationConfigs(LoggingConfigurationLoggingConfigurationLogDestinationConfigArgs.builder()
 ///                     .logDestination(Map.of("deliveryStream", exampleAwsKinesisFirehoseDeliveryStream.name()))
@@ -509,6 +508,7 @@ import 'logging_configuration_state.dart';
 ///                     .logType("TLS")
 ///                     .build())
 ///                 .build())
+///             .firewallArn(exampleAwsNetworkfirewallFirewall.arn())
 ///             .build());
 ///
 ///     }
@@ -519,13 +519,13 @@ import 'logging_configuration_state.dart';
 ///   example:
 ///     type: aws:networkfirewall:LoggingConfiguration
 ///     properties:
-///       firewallArn: ${exampleAwsNetworkfirewallFirewall.arn}
 ///       loggingConfiguration:
 ///         logDestinationConfigs:
 ///           - logDestination:
 ///               deliveryStream: ${exampleAwsKinesisFirehoseDeliveryStream.name}
 ///             logDestinationType: KinesisDataFirehose
 ///             logType: TLS
+///       firewallArn: ${exampleAwsNetworkfirewallFirewall.arn}
 /// ```
 ///
 ///
@@ -539,7 +539,7 @@ import 'logging_configuration_state.dart';
 class LoggingConfiguration extends pulumi.CustomResource {
   /// Whether to enable the detailed firewall monitoring dashboard on the firewall. Defaults to `false`.
   late final pulumi.Output<bool> enableMonitoringDashboard;
-  /// The Amazon Resource Name (ARN) of the Network Firewall firewall.
+  /// ARN of the Network Firewall firewall.
   late final pulumi.Output<String> firewallArn;
   /// A configuration block describing how AWS Network Firewall performs logging for a firewall. See Logging Configuration below for details.
   late final pulumi.Output<LoggingConfigurationLoggingConfiguration> loggingConfiguration;
@@ -558,7 +558,7 @@ class LoggingConfiguration extends pulumi.CustomResource {
           'aws:networkfirewall/loggingConfiguration:LoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     enableMonitoringDashboard = registerOutput<bool>('enableMonitoringDashboard');
     firewallArn = registerOutput<String>('firewallArn');
@@ -571,11 +571,12 @@ class LoggingConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoggingConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoggingConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -589,6 +590,21 @@ class LoggingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enableMonitoringDashboard = registerOutput<bool>('enableMonitoringDashboard');
+    firewallArn = registerOutput<String>('firewallArn');
+    loggingConfiguration = registerOutput<LoggingConfigurationLoggingConfiguration>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingConfigurationLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LoggingConfiguration] resource.
+  LoggingConfiguration.reference(String urn)
+    : super(
+        'aws:networkfirewall/loggingConfiguration:LoggingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enableMonitoringDashboard = registerOutput<bool>('enableMonitoringDashboard');
     firewallArn = registerOutput<String>('firewallArn');
     loggingConfiguration = registerOutput<LoggingConfigurationLoggingConfiguration>('loggingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingConfigurationLoggingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

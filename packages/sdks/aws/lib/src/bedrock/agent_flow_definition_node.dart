@@ -7,13 +7,13 @@ import 'agent_flow_definition_node_output.dart';
 
 class AgentFlowDefinitionNode {
   /// Contains configurations for the node. See Node Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfiguration>? configuration;
+  final pulumi.Input<AgentFlowDefinitionNodeConfiguration?>? configuration;
   /// A list of objects containing information about an input into the node. See Node Input for more information.
-  final pulumi.Input<List<AgentFlowDefinitionNodeInput>>? inputs;
+  final pulumi.Input<List<AgentFlowDefinitionNodeInput>?>? inputs;
   /// A name for the node.
   final pulumi.Input<String> name;
   /// A list of objects containing information about an output from the node. See Node Output for more information.
-  final pulumi.Input<List<AgentFlowDefinitionNodeOutput>>? outputs;
+  final pulumi.Input<List<AgentFlowDefinitionNodeOutput>?>? outputs;
   /// Type of node. This value must match the name of the key you provide in `configuration`. Valid values: `Agent`, `Collector`, `Condition`, `InlineCode`, `Input`, `Iterator`, `KnowledgeBase`, `LambdaFunction`, `Lex`, `Output`, `Prompt`, `Retrieval`, `Storage`
   final pulumi.Input<String> type;
 

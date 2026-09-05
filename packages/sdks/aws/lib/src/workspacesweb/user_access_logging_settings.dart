@@ -348,13 +348,13 @@ class UserAccessLoggingSettings extends pulumi.CustomResource {
           'aws:workspacesweb/userAccessLoggingSettings:UserAccessLoggingSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kinesisStreamArn = registerOutput<String>('kinesisStreamArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userAccessLoggingSettingsArn = registerOutput<String>('userAccessLoggingSettingsArn');
   }
 
@@ -363,11 +363,12 @@ class UserAccessLoggingSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserAccessLoggingSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserAccessLoggingSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -381,11 +382,28 @@ class UserAccessLoggingSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kinesisStreamArn = registerOutput<String>('kinesisStreamArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userAccessLoggingSettingsArn = registerOutput<String>('userAccessLoggingSettingsArn');
+  }
+
+  /// Creates a typed reference to an existing [UserAccessLoggingSettings] resource.
+  UserAccessLoggingSettings.reference(String urn)
+    : super(
+        'aws:workspacesweb/userAccessLoggingSettings:UserAccessLoggingSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kinesisStreamArn = registerOutput<String>('kinesisStreamArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userAccessLoggingSettingsArn = registerOutput<String>('userAccessLoggingSettingsArn');
   }
 }

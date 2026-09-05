@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_window_target_args.dart';
 import 'maintenance_window_target_state.dart';
+import 'maintenance_window_target_target.dart';
 
 /// Provides an SSM Maintenance Window Target resource
 ///
@@ -20,14 +21,14 @@ import 'maintenance_window_target_state.dart';
 ///     cutoff: 1,
 /// });
 /// const target1 = new aws.ssm.MaintenanceWindowTarget("target1", {
-///     windowId: window.id,
-///     name: "maintenance-window-target",
-///     description: "This is a maintenance window target",
-///     resourceType: "INSTANCE",
 ///     targets: [{
 ///         key: "tag:Name",
 ///         values: ["acceptance_test"],
 ///     }],
+///     windowId: window.id,
+///     name: "maintenance-window-target",
+///     description: "This is a maintenance window target",
+///     resourceType: "INSTANCE",
 /// });
 /// ```
 /// ```python
@@ -40,14 +41,14 @@ import 'maintenance_window_target_state.dart';
 ///     duration=3,
 ///     cutoff=1)
 /// target1 = aws.ssm.MaintenanceWindowTarget("target1",
-///     window_id=window.id,
-///     name="maintenance-window-target",
-///     description="This is a maintenance window target",
-///     resource_type="INSTANCE",
 ///     targets=[{
 ///         "key": "tag:Name",
 ///         "values": ["acceptance_test"],
-///     }])
+///     }],
+///     window_id=window.id,
+///     name="maintenance-window-target",
+///     description="This is a maintenance window target",
+///     resource_type="INSTANCE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -67,10 +68,6 @@ import 'maintenance_window_target_state.dart';
 ///
 ///     var target1 = new Aws.Ssm.MaintenanceWindowTarget("target1", new()
 ///     {
-///         WindowId = window.Id,
-///         Name = "maintenance-window-target",
-///         Description = "This is a maintenance window target",
-///         ResourceType = "INSTANCE",
 ///         Targets = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.MaintenanceWindowTargetTargetArgs
@@ -82,6 +79,10 @@ import 'maintenance_window_target_state.dart';
 ///                 },
 ///             },
 ///         },
+///         WindowId = window.Id,
+///         Name = "maintenance-window-target",
+///         Description = "This is a maintenance window target",
+///         ResourceType = "INSTANCE",
 ///     });
 ///
 /// });
@@ -106,10 +107,6 @@ import 'maintenance_window_target_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssm.NewMaintenanceWindowTarget(ctx, "target1", &ssm.MaintenanceWindowTargetArgs{
-/// 			WindowId:     window.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:         pulumi.String("maintenance-window-target"),
-/// 			Description:  pulumi.String("This is a maintenance window target"),
-/// 			ResourceType: pulumi.String("INSTANCE"),
 /// 			Targets: ssm.MaintenanceWindowTargetTargetArray{
 /// 				&ssm.MaintenanceWindowTargetTargetArgs{
 /// 					Key: pulumi.String("tag:Name"),
@@ -118,6 +115,10 @@ import 'maintenance_window_target_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			WindowId:     window.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:         pulumi.String("maintenance-window-target"),
+/// 			Description:  pulumi.String("This is a maintenance window target"),
+/// 			ResourceType: pulumi.String("INSTANCE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -142,14 +143,14 @@ import 'maintenance_window_target_state.dart';
 ///   cutoff   = 1
 /// }
 /// resource "aws_ssm_maintenancewindowtarget" "target1" {
-///   window_id     = aws_ssm_maintenancewindow.window.id
-///   name          = "maintenance-window-target"
-///   description   = "This is a maintenance window target"
-///   resource_type = "INSTANCE"
 ///   targets {
 ///     key    = "tag:Name"
 ///     values = ["acceptance_test"]
 ///   }
+///   window_id     = aws_ssm_maintenancewindow.window.id
+///   name          = "maintenance-window-target"
+///   description   = "This is a maintenance window target"
+///   resource_type = "INSTANCE"
 /// }
 /// ```
 /// ```java
@@ -184,14 +185,14 @@ import 'maintenance_window_target_state.dart';
 ///             .build());
 ///
 ///         var target1 = new MaintenanceWindowTarget("target1", MaintenanceWindowTargetArgs.builder()
-///             .windowId(window.id())
-///             .name("maintenance-window-target")
-///             .description("This is a maintenance window target")
-///             .resourceType("INSTANCE")
 ///             .targets(MaintenanceWindowTargetTargetArgs.builder()
 ///                 .key("tag:Name")
 ///                 .values("acceptance_test")
 ///                 .build())
+///             .windowId(window.id())
+///             .name("maintenance-window-target")
+///             .description("This is a maintenance window target")
+///             .resourceType("INSTANCE")
 ///             .build());
 ///
 ///     }
@@ -209,14 +210,14 @@ import 'maintenance_window_target_state.dart';
 ///   target1:
 ///     type: aws:ssm:MaintenanceWindowTarget
 ///     properties:
-///       windowId: ${window.id}
-///       name: maintenance-window-target
-///       description: This is a maintenance window target
-///       resourceType: INSTANCE
 ///       targets:
 ///         - key: tag:Name
 ///           values:
 ///             - acceptance_test
+///       windowId: ${window.id}
+///       name: maintenance-window-target
+///       description: This is a maintenance window target
+///       resourceType: INSTANCE
 /// ```
 ///
 ///
@@ -234,14 +235,14 @@ import 'maintenance_window_target_state.dart';
 ///     cutoff: 1,
 /// });
 /// const target1 = new aws.ssm.MaintenanceWindowTarget("target1", {
-///     windowId: window.id,
-///     name: "maintenance-window-target",
-///     description: "This is a maintenance window target",
-///     resourceType: "RESOURCE_GROUP",
 ///     targets: [{
 ///         key: "resource-groups:ResourceTypeFilters",
 ///         values: ["AWS::EC2::Instance"],
 ///     }],
+///     windowId: window.id,
+///     name: "maintenance-window-target",
+///     description: "This is a maintenance window target",
+///     resourceType: "RESOURCE_GROUP",
 /// });
 /// ```
 /// ```python
@@ -254,14 +255,14 @@ import 'maintenance_window_target_state.dart';
 ///     duration=3,
 ///     cutoff=1)
 /// target1 = aws.ssm.MaintenanceWindowTarget("target1",
-///     window_id=window.id,
-///     name="maintenance-window-target",
-///     description="This is a maintenance window target",
-///     resource_type="RESOURCE_GROUP",
 ///     targets=[{
 ///         "key": "resource-groups:ResourceTypeFilters",
 ///         "values": ["AWS::EC2::Instance"],
-///     }])
+///     }],
+///     window_id=window.id,
+///     name="maintenance-window-target",
+///     description="This is a maintenance window target",
+///     resource_type="RESOURCE_GROUP")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -281,10 +282,6 @@ import 'maintenance_window_target_state.dart';
 ///
 ///     var target1 = new Aws.Ssm.MaintenanceWindowTarget("target1", new()
 ///     {
-///         WindowId = window.Id,
-///         Name = "maintenance-window-target",
-///         Description = "This is a maintenance window target",
-///         ResourceType = "RESOURCE_GROUP",
 ///         Targets = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.MaintenanceWindowTargetTargetArgs
@@ -296,6 +293,10 @@ import 'maintenance_window_target_state.dart';
 ///                 },
 ///             },
 ///         },
+///         WindowId = window.Id,
+///         Name = "maintenance-window-target",
+///         Description = "This is a maintenance window target",
+///         ResourceType = "RESOURCE_GROUP",
 ///     });
 ///
 /// });
@@ -320,10 +321,6 @@ import 'maintenance_window_target_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = ssm.NewMaintenanceWindowTarget(ctx, "target1", &ssm.MaintenanceWindowTargetArgs{
-/// 			WindowId:     window.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:         pulumi.String("maintenance-window-target"),
-/// 			Description:  pulumi.String("This is a maintenance window target"),
-/// 			ResourceType: pulumi.String("RESOURCE_GROUP"),
 /// 			Targets: ssm.MaintenanceWindowTargetTargetArray{
 /// 				&ssm.MaintenanceWindowTargetTargetArgs{
 /// 					Key: pulumi.String("resource-groups:ResourceTypeFilters"),
@@ -332,6 +329,10 @@ import 'maintenance_window_target_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			WindowId:     window.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:         pulumi.String("maintenance-window-target"),
+/// 			Description:  pulumi.String("This is a maintenance window target"),
+/// 			ResourceType: pulumi.String("RESOURCE_GROUP"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -356,14 +357,14 @@ import 'maintenance_window_target_state.dart';
 ///   cutoff   = 1
 /// }
 /// resource "aws_ssm_maintenancewindowtarget" "target1" {
-///   window_id     = aws_ssm_maintenancewindow.window.id
-///   name          = "maintenance-window-target"
-///   description   = "This is a maintenance window target"
-///   resource_type = "RESOURCE_GROUP"
 ///   targets {
 ///     key    = "resource-groups:ResourceTypeFilters"
 ///     values = ["AWS::EC2::Instance"]
 ///   }
+///   window_id     = aws_ssm_maintenancewindow.window.id
+///   name          = "maintenance-window-target"
+///   description   = "This is a maintenance window target"
+///   resource_type = "RESOURCE_GROUP"
 /// }
 /// ```
 /// ```java
@@ -398,14 +399,14 @@ import 'maintenance_window_target_state.dart';
 ///             .build());
 ///
 ///         var target1 = new MaintenanceWindowTarget("target1", MaintenanceWindowTargetArgs.builder()
-///             .windowId(window.id())
-///             .name("maintenance-window-target")
-///             .description("This is a maintenance window target")
-///             .resourceType("RESOURCE_GROUP")
 ///             .targets(MaintenanceWindowTargetTargetArgs.builder()
 ///                 .key("resource-groups:ResourceTypeFilters")
 ///                 .values("AWS::EC2::Instance")
 ///                 .build())
+///             .windowId(window.id())
+///             .name("maintenance-window-target")
+///             .description("This is a maintenance window target")
+///             .resourceType("RESOURCE_GROUP")
 ///             .build());
 ///
 ///     }
@@ -423,14 +424,14 @@ import 'maintenance_window_target_state.dart';
 ///   target1:
 ///     type: aws:ssm:MaintenanceWindowTarget
 ///     properties:
-///       windowId: ${window.id}
-///       name: maintenance-window-target
-///       description: This is a maintenance window target
-///       resourceType: RESOURCE_GROUP
 ///       targets:
 ///         - key: resource-groups:ResourceTypeFilters
 ///           values:
 ///             - AWS::EC2::Instance
+///       windowId: ${window.id}
+///       name: maintenance-window-target
+///       description: This is a maintenance window target
+///       resourceType: RESOURCE_GROUP
 /// ```
 ///
 ///
@@ -467,7 +468,7 @@ class MaintenanceWindowTarget extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceType;
   /// The targets to register with the maintenance window. In other words, the instances to run commands on when the maintenance window runs. You can specify targets using instance IDs, resource group names, or tags that have been applied to instances. For more information about these examples formats see
   /// (https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html)
-  late final pulumi.Output<List<Map<String, dynamic>>> targets;
+  late final pulumi.Output<List<MaintenanceWindowTargetTarget>> targets;
   /// The Id of the maintenance window to register the target with.
   late final pulumi.Output<String> windowId;
 
@@ -483,14 +484,14 @@ class MaintenanceWindowTarget extends pulumi.CustomResource {
           'aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     ownerInformation = registerOutput<String?>('ownerInformation');
     region = registerOutput<String>('region');
     resourceType = registerOutput<String>('resourceType');
-    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    targets = registerOutput<List<MaintenanceWindowTargetTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MaintenanceWindowTargetTarget>(guardedValue, (value) => MaintenanceWindowTargetTarget.fromMap((value as Map).cast<String, dynamic>())); });
     windowId = registerOutput<String>('windowId');
   }
 
@@ -499,11 +500,12 @@ class MaintenanceWindowTarget extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MaintenanceWindowTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MaintenanceWindowTarget._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -522,7 +524,25 @@ class MaintenanceWindowTarget extends pulumi.CustomResource {
     ownerInformation = registerOutput<String?>('ownerInformation');
     region = registerOutput<String>('region');
     resourceType = registerOutput<String>('resourceType');
-    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    targets = registerOutput<List<MaintenanceWindowTargetTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MaintenanceWindowTargetTarget>(guardedValue, (value) => MaintenanceWindowTargetTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    windowId = registerOutput<String>('windowId');
+  }
+
+  /// Creates a typed reference to an existing [MaintenanceWindowTarget] resource.
+  MaintenanceWindowTarget.reference(String urn)
+    : super(
+        'aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    ownerInformation = registerOutput<String?>('ownerInformation');
+    region = registerOutput<String>('region');
+    resourceType = registerOutput<String>('resourceType');
+    targets = registerOutput<List<MaintenanceWindowTargetTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MaintenanceWindowTargetTarget>(guardedValue, (value) => MaintenanceWindowTargetTarget.fromMap((value as Map).cast<String, dynamic>())); });
     windowId = registerOutput<String>('windowId');
   }
 }

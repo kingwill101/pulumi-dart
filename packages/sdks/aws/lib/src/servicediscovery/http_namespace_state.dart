@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering HttpNamespace resources.
 class HttpNamespaceState {
   /// The ARN that Amazon Route 53 assigns to the namespace when you create it.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The description that you specify for the namespace when you create it.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of an HTTP namespace.
-  final pulumi.Input<String>? httpName;
+  final pulumi.Input<String?>? httpName;
   /// The name of the http namespace.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the namespace. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [HttpNamespaceState].
   /// [arn] The ARN that Amazon Route 53 assigns to the namespace when you create it.

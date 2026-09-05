@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
+import 'cluster_node.dart';
 import 'cluster_server_side_encryption.dart';
 import 'cluster_state.dart';
 
@@ -156,7 +157,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> configurationEndpoint;
   /// Description for the cluster
   late final pulumi.Output<String?> description;
-  /// A valid Amazon Resource Name (ARN) that identifies
+  /// Valid ARN that identifies
   /// an IAM role. At runtime, DAX will assume this role and use the role's
   /// permissions to access DynamoDB on your behalf
   late final pulumi.Output<String> iamRoleArn;
@@ -171,8 +172,8 @@ class Cluster extends pulumi.CustomResource {
   /// List of node objects including `id`, `address`, `port` and
   /// `availabilityZone`. Referenceable e.g., as
   /// `${aws_dax_cluster.test.nodes.0.address}`
-  late final pulumi.Output<List<Map<String, dynamic>>> nodes;
-  /// An Amazon Resource Name (ARN) of an
+  late final pulumi.Output<List<ClusterNode>> nodes;
+  /// ARN of an
   /// SNS topic to send DAX notifications to. Example:
   /// `arn:aws:sns:us-east-1:012345678999:my_sns_topic`
   late final pulumi.Output<String?> notificationTopicArn;
@@ -212,10 +213,10 @@ class Cluster extends pulumi.CustomResource {
           'aws:dax/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>?>('availabilityZones');
+    availabilityZones = registerOutput<List<String>?>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterAddress = registerOutput<String>('clusterAddress');
     clusterEndpointEncryptionType = registerOutput<String?>('clusterEndpointEncryptionType');
     clusterName = registerOutput<String>('clusterName');
@@ -224,17 +225,17 @@ class Cluster extends pulumi.CustomResource {
     iamRoleArn = registerOutput<String>('iamRoleArn');
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
     nodeType = registerOutput<String>('nodeType');
-    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    nodes = registerOutput<List<ClusterNode>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNode>(guardedValue, (value) => ClusterNode.fromMap((value as Map).cast<String, dynamic>())); });
     notificationTopicArn = registerOutput<String?>('notificationTopicArn');
     parameterGroupName = registerOutput<String>('parameterGroupName');
     port = registerOutput<int>('port');
     region = registerOutput<String>('region');
     replicationFactor = registerOutput<int>('replicationFactor');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serverSideEncryption = registerOutput<ClusterServerSideEncryption?>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subnetGroupName = registerOutput<String>('subnetGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -242,11 +243,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -261,7 +263,7 @@ class Cluster extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>?>('availabilityZones');
+    availabilityZones = registerOutput<List<String>?>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterAddress = registerOutput<String>('clusterAddress');
     clusterEndpointEncryptionType = registerOutput<String?>('clusterEndpointEncryptionType');
     clusterName = registerOutput<String>('clusterName');
@@ -270,16 +272,48 @@ class Cluster extends pulumi.CustomResource {
     iamRoleArn = registerOutput<String>('iamRoleArn');
     maintenanceWindow = registerOutput<String>('maintenanceWindow');
     nodeType = registerOutput<String>('nodeType');
-    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    nodes = registerOutput<List<ClusterNode>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNode>(guardedValue, (value) => ClusterNode.fromMap((value as Map).cast<String, dynamic>())); });
     notificationTopicArn = registerOutput<String?>('notificationTopicArn');
     parameterGroupName = registerOutput<String>('parameterGroupName');
     port = registerOutput<int>('port');
     region = registerOutput<String>('region');
     replicationFactor = registerOutput<int>('replicationFactor');
-    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serverSideEncryption = registerOutput<ClusterServerSideEncryption?>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subnetGroupName = registerOutput<String>('subnetGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:dax/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZones = registerOutput<List<String>?>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clusterAddress = registerOutput<String>('clusterAddress');
+    clusterEndpointEncryptionType = registerOutput<String?>('clusterEndpointEncryptionType');
+    clusterName = registerOutput<String>('clusterName');
+    configurationEndpoint = registerOutput<String>('configurationEndpoint');
+    description = registerOutput<String?>('description');
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    maintenanceWindow = registerOutput<String>('maintenanceWindow');
+    nodeType = registerOutput<String>('nodeType');
+    nodes = registerOutput<List<ClusterNode>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNode>(guardedValue, (value) => ClusterNode.fromMap((value as Map).cast<String, dynamic>())); });
+    notificationTopicArn = registerOutput<String?>('notificationTopicArn');
+    parameterGroupName = registerOutput<String>('parameterGroupName');
+    port = registerOutput<int>('port');
+    region = registerOutput<String>('region');
+    replicationFactor = registerOutput<int>('replicationFactor');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serverSideEncryption = registerOutput<ClusterServerSideEncryption?>('serverSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnetGroupName = registerOutput<String>('subnetGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

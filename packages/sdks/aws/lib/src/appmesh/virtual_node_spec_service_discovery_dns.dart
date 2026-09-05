@@ -6,9 +6,9 @@ class VirtualNodeSpecServiceDiscoveryDns {
   /// DNS host name for your virtual node.
   final pulumi.Input<String> hostname;
   /// Preferred IP version that this virtual node uses. Valid values: `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, `IPv6_ONLY`.
-  final pulumi.Input<String>? ipPreference;
+  final pulumi.Input<String?>? ipPreference;
   /// DNS response type for the virtual node. Valid values: `LOADBALANCER`, `ENDPOINTS`.
-  final pulumi.Input<String>? responseType;
+  final pulumi.Input<String?>? responseType;
 
   /// Creates a new [VirtualNodeSpecServiceDiscoveryDns].
   /// [hostname] DNS host name for your virtual node.

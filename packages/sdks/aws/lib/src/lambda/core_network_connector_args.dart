@@ -12,14 +12,14 @@ class CoreNetworkConnectorArgs {
   /// Network configuration of the connector. See `configuration` Block below.
   final pulumi.Input<CoreNetworkConnectorConfiguration> configuration;
   /// Name of the network connector, unique within the account and Region. Changing this forces a new resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ARN of the IAM role that the network connector service assumes to manage elastic network interfaces in your VPC.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> operatorRole;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<CoreNetworkConnectorTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<CoreNetworkConnectorTimeouts?>? timeouts;
 
   /// Creates a new [CoreNetworkConnectorArgs].
   /// [configuration] Network configuration of the connector. See `configuration` Block below.

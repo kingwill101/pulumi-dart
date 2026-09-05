@@ -6,25 +6,25 @@ import 'link_bandwidth.dart';
 /// Input properties used for looking up and filtering Link resources.
 class LinkState {
   /// Link ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Upload speed and download speed in Mbps. See below.
-  final pulumi.Input<LinkBandwidth>? bandwidth;
+  final pulumi.Input<LinkBandwidth?>? bandwidth;
   /// Description of the link.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ID of the global network.
-  final pulumi.Input<String>? globalNetworkId;
+  final pulumi.Input<String?>? globalNetworkId;
   /// Provider of the link.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
   /// ID of the site.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? siteId;
+  final pulumi.Input<String?>? siteId;
   /// Key-value tags for the link. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Type of the link.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [LinkState].
   /// [arn] Link ARN.

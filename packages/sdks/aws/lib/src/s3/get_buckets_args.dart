@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_s3_get_buckets_get_buckets_args_doc}
 class GetBucketsArgs {
   /// Limits the response to buckets that are located in the specified AWS Region. The AWS Region must be expressed according to the AWS Region code.
-  final pulumi.Input<String>? bucketRegion;
+  final pulumi.Input<String?>? bucketRegion;
   /// Maximum number of buckets returned. Unlike the AWS API parameter, this is a provider-level total cap.
-  final pulumi.Input<int>? maxBuckets;
+  final pulumi.Input<int?>? maxBuckets;
   /// Limits the response to bucket names that begin with the specified bucket name prefix.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetBucketsArgs].
   /// [bucketRegion] Limits the response to buckets that are located in the specified AWS Region. The AWS Region must be expressed according to the AWS Region code.
@@ -40,7 +40,7 @@ class GetBucketsArgs {
   factory GetBucketsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketsArgs(
       bucketRegion: (() { final guardedValue = map['bucketRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxBuckets: (() { final guardedValue = map['maxBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxBuckets: (() { final guardedValue = map['maxBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

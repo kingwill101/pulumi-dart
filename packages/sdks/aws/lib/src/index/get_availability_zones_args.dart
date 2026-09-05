@@ -9,17 +9,17 @@ import 'get_availability_zones_filter.dart';
 /// {@macro pulumi_index_get_availability_zones_get_availability_zones_args_doc}
 class GetAvailabilityZonesArgs {
   /// Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
-  final pulumi.Input<bool>? allAvailabilityZones;
+  final pulumi.Input<bool?>? allAvailabilityZones;
   /// List of Availability Zone names to exclude.
-  final pulumi.Input<List<String>>? excludeNames;
+  final pulumi.Input<List<String>?>? excludeNames;
   /// List of Availability Zone IDs to exclude.
-  final pulumi.Input<List<String>>? excludeZoneIds;
+  final pulumi.Input<List<String>?>? excludeZoneIds;
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetAvailabilityZonesFilter>>? filters;
+  final pulumi.Input<List<GetAvailabilityZonesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Allows to filter list of Availability Zones based on their current state. Can be either `"available"`, `"information"`, `"impaired"` or `"unavailable"`. By default the list includes a complete set of Availability Zones to which the underlying AWS account has access, regardless of their state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [GetAvailabilityZonesArgs].
   /// [allAvailabilityZones] Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.

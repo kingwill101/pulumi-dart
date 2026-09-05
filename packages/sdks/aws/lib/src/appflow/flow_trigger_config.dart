@@ -5,7 +5,7 @@ import 'flow_trigger_config_trigger_properties.dart';
 
 class FlowTriggerConfig {
   /// Configuration details of a schedule-triggered flow as defined by the user. Currently, these settings only apply to the `Scheduled` trigger type. See the `trigger_config.trigger_properties` Block for details.
-  final pulumi.Input<FlowTriggerConfigTriggerProperties>? triggerProperties;
+  final pulumi.Input<FlowTriggerConfigTriggerProperties?>? triggerProperties;
   /// Type of flow trigger. Valid values are `Scheduled`, `Event`, and `OnDemand`.
   final pulumi.Input<String> triggerType;
 

@@ -5,7 +5,7 @@ import 'agent_flow_definition_node_configuration_storage_service_configuration.d
 
 class AgentFlowDefinitionNodeConfigurationStorage {
   /// Contains configurations for a Storage node in your flow. Stores an input in an Amazon S3 location. See Storage Service Configuration for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration>? serviceConfiguration;
+  final pulumi.Input<AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration?>? serviceConfiguration;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationStorage].
   /// [serviceConfiguration] Contains configurations for a Storage node in your flow. Stores an input in an Amazon S3 location. See Storage Service Configuration for more information.

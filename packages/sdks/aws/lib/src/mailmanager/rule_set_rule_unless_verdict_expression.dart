@@ -5,7 +5,7 @@ import 'rule_set_rule_unless_verdict_expression_evaluate.dart';
 
 class RuleSetRuleUnlessVerdictExpression {
   /// Left-hand operand of the expression. Exactly one of `analysis` or `attribute` must be configured.
-  final pulumi.Input<RuleSetRuleUnlessVerdictExpressionEvaluate>? evaluate;
+  final pulumi.Input<RuleSetRuleUnlessVerdictExpressionEvaluate?>? evaluate;
   /// Verdict matching operator. Valid values are `EQUALS` and `NOT_EQUALS`.
   final pulumi.Input<String> operator;
   /// List of verdict values. Valid values are `PASS`, `FAIL`, `GRAY`, and `PROCESSING_FAILED`. Between 1 and 10 values are supported.

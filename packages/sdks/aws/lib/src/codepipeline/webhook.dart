@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'webhook_args.dart';
 import 'webhook_authentication_configuration.dart';
+import 'webhook_filter.dart';
 import 'webhook_state.dart';
 
 /// Provides a CodePipeline Webhook.
@@ -14,19 +15,16 @@ import 'webhook_state.dart';
 /// import * as github from "@pulumi/github";
 ///
 /// const bar = new aws.codepipeline.Pipeline("bar", {
-///     name: "tf-test-pipeline",
-///     roleArn: barAwsIamRole.arn,
 ///     artifactStores: [{
-///         location: barAwsS3Bucket.bucket,
-///         type: "S3",
 ///         encryptionKey: {
 ///             id: s3kmskey.arn,
 ///             type: "KMS",
 ///         },
+///         location: barAwsS3Bucket.bucket,
+///         type: "S3",
 ///     }],
 ///     stages: [
 ///         {
-///             name: "Source",
 ///             actions: [{
 ///                 name: "Source",
 ///                 category: "Source",
@@ -40,9 +38,9 @@ import 'webhook_state.dart';
 ///                     Branch: "master",
 ///                 },
 ///             }],
+///             name: "Source",
 ///         },
 ///         {
-///             name: "Build",
 ///             actions: [{
 ///                 name: "Build",
 ///                 category: "Build",
@@ -54,15 +52,14 @@ import 'webhook_state.dart';
 ///                     ProjectName: "test",
 ///                 },
 ///             }],
+///             name: "Build",
 ///         },
 ///     ],
+///     name: "tf-test-pipeline",
+///     roleArn: barAwsIamRole.arn,
 /// });
 /// const webhookSecret = "super-secret";
 /// const barWebhook = new aws.codepipeline.Webhook("bar", {
-///     name: "test-webhook-github-bar",
-///     authentication: "GITHUB_HMAC",
-///     targetAction: "Source",
-///     targetPipeline: bar.name,
 ///     authenticationConfiguration: {
 ///         secretToken: webhookSecret,
 ///     },
@@ -70,17 +67,21 @@ import 'webhook_state.dart';
 ///         jsonPath: "$.ref",
 ///         matchEquals: "refs/heads/{Branch}",
 ///     }],
+///     name: "test-webhook-github-bar",
+///     authentication: "GITHUB_HMAC",
+///     targetAction: "Source",
+///     targetPipeline: bar.name,
 /// });
 /// // Wire the CodePipeline webhook into a GitHub repository.
 /// const barRepositoryWebhook = new github.RepositoryWebhook("bar", {
-///     repository: repo.name,
-///     name: "web",
 ///     configuration: [{
 ///         url: barWebhook.url,
 ///         contentType: "json",
 ///         insecureSsl: true,
 ///         secret: webhookSecret,
 ///     }],
+///     repository: repo.name,
+///     name: "web",
 ///     events: ["push"],
 /// });
 /// ```
@@ -90,19 +91,16 @@ import 'webhook_state.dart';
 /// import pulumi_github as github
 ///
 /// bar = aws.codepipeline.Pipeline("bar",
-///     name="tf-test-pipeline",
-///     role_arn=bar_aws_iam_role["arn"],
 ///     artifact_stores=[{
-///         "location": bar_aws_s3_bucket["bucket"],
-///         "type": "S3",
 ///         "encryption_key": {
 ///             "id": s3kmskey["arn"],
 ///             "type": "KMS",
 ///         },
+///         "location": bar_aws_s3_bucket["bucket"],
+///         "type": "S3",
 ///     }],
 ///     stages=[
 ///         {
-///             "name": "Source",
 ///             "actions": [{
 ///                 "name": "Source",
 ///                 "category": "Source",
@@ -116,9 +114,9 @@ import 'webhook_state.dart';
 ///                     "Branch": "master",
 ///                 },
 ///             }],
+///             "name": "Source",
 ///         },
 ///         {
-///             "name": "Build",
 ///             "actions": [{
 ///                 "name": "Build",
 ///                 "category": "Build",
@@ -130,31 +128,34 @@ import 'webhook_state.dart';
 ///                     "ProjectName": "test",
 ///                 },
 ///             }],
+///             "name": "Build",
 ///         },
-///     ])
+///     ],
+///     name="tf-test-pipeline",
+///     role_arn=bar_aws_iam_role["arn"])
 /// webhook_secret = "super-secret"
 /// bar_webhook = aws.codepipeline.Webhook("bar",
-///     name="test-webhook-github-bar",
-///     authentication="GITHUB_HMAC",
-///     target_action="Source",
-///     target_pipeline=bar.name,
 ///     authentication_configuration={
 ///         "secret_token": webhook_secret,
 ///     },
 ///     filters=[{
 ///         "json_path": "$.ref",
 ///         "match_equals": "refs/heads/{Branch}",
-///     }])
+///     }],
+///     name="test-webhook-github-bar",
+///     authentication="GITHUB_HMAC",
+///     target_action="Source",
+///     target_pipeline=bar.name)
 /// # Wire the CodePipeline webhook into a GitHub repository.
 /// bar_repository_webhook = github.RepositoryWebhook("bar",
-///     repository=repo["name"],
-///     name="web",
 ///     configuration=[{
 ///         "url": bar_webhook.url,
 ///         "contentType": "json",
 ///         "insecureSsl": True,
 ///         "secret": webhook_secret,
 ///     }],
+///     repository=repo["name"],
+///     name="web",
 ///     events=["push"])
 /// ```
 /// ```csharp
@@ -168,26 +169,23 @@ import 'webhook_state.dart';
 /// {
 ///     var bar = new Aws.CodePipeline.Pipeline("bar", new()
 ///     {
-///         Name = "tf-test-pipeline",
-///         RoleArn = barAwsIamRole.Arn,
 ///         ArtifactStores = new[]
 ///         {
 ///             new Aws.CodePipeline.Inputs.PipelineArtifactStoreArgs
 ///             {
-///                 Location = barAwsS3Bucket.Bucket,
-///                 Type = "S3",
 ///                 EncryptionKey = new Aws.CodePipeline.Inputs.PipelineArtifactStoreEncryptionKeyArgs
 ///                 {
 ///                     Id = s3kmskey.Arn,
 ///                     Type = "KMS",
 ///                 },
+///                 Location = barAwsS3Bucket.Bucket,
+///                 Type = "S3",
 ///             },
 ///         },
 ///         Stages = new[]
 ///         {
 ///             new Aws.CodePipeline.Inputs.PipelineStageArgs
 ///             {
-///                 Name = "Source",
 ///                 Actions = new[]
 ///                 {
 ///                     new Aws.CodePipeline.Inputs.PipelineStageActionArgs
@@ -209,10 +207,10 @@ import 'webhook_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Source",
 ///             },
 ///             new Aws.CodePipeline.Inputs.PipelineStageArgs
 ///             {
-///                 Name = "Build",
 ///                 Actions = new[]
 ///                 {
 ///                     new Aws.CodePipeline.Inputs.PipelineStageActionArgs
@@ -232,18 +230,17 @@ import 'webhook_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Name = "Build",
 ///             },
 ///         },
+///         Name = "tf-test-pipeline",
+///         RoleArn = barAwsIamRole.Arn,
 ///     });
 ///
 ///     var webhookSecret = "super-secret";
 ///
 ///     var barWebhook = new Aws.CodePipeline.Webhook("bar", new()
 ///     {
-///         Name = "test-webhook-github-bar",
-///         Authentication = "GITHUB_HMAC",
-///         TargetAction = "Source",
-///         TargetPipeline = bar.Name,
 ///         AuthenticationConfiguration = new Aws.CodePipeline.Inputs.WebhookAuthenticationConfigurationArgs
 ///         {
 ///             SecretToken = webhookSecret,
@@ -256,13 +253,15 @@ import 'webhook_state.dart';
 ///                 MatchEquals = "refs/heads/{Branch}",
 ///             },
 ///         },
+///         Name = "test-webhook-github-bar",
+///         Authentication = "GITHUB_HMAC",
+///         TargetAction = "Source",
+///         TargetPipeline = bar.Name,
 ///     });
 ///
 ///     // Wire the CodePipeline webhook into a GitHub repository.
 ///     var barRepositoryWebhook = new Github.RepositoryWebhook("bar", new()
 ///     {
-///         Repository = repo.Name,
-///         Name = "web",
 ///         Configuration = new[]
 ///         {
 ///
@@ -273,6 +272,8 @@ import 'webhook_state.dart';
 ///                 { "secret", webhookSecret },
 ///             },
 ///         },
+///         Repository = repo.Name,
+///         Name = "web",
 ///         Events = new[]
 ///         {
 ///             "push",
@@ -293,21 +294,18 @@ import 'webhook_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		bar, err := codepipeline.NewPipeline(ctx, "bar", &codepipeline.PipelineArgs{
-/// 			Name:    pulumi.String("tf-test-pipeline"),
-/// 			RoleArn: pulumi.Any(barAwsIamRole.Arn),
 /// 			ArtifactStores: codepipeline.PipelineArtifactStoreArray{
 /// 				&codepipeline.PipelineArtifactStoreArgs{
-/// 					Location: pulumi.Any(barAwsS3Bucket.Bucket),
-/// 					Type:     pulumi.String("S3"),
 /// 					EncryptionKey: &codepipeline.PipelineArtifactStoreEncryptionKeyArgs{
 /// 						Id:   pulumi.Any(s3kmskey.Arn),
 /// 						Type: pulumi.String("KMS"),
 /// 					},
+/// 					Location: pulumi.Any(barAwsS3Bucket.Bucket),
+/// 					Type:     pulumi.String("S3"),
 /// 				},
 /// 			},
 /// 			Stages: codepipeline.PipelineStageArray{
 /// 				&codepipeline.PipelineStageArgs{
-/// 					Name: pulumi.String("Source"),
 /// 					Actions: codepipeline.PipelineStageActionArray{
 /// 						&codepipeline.PipelineStageActionArgs{
 /// 							Name:     pulumi.String("Source"),
@@ -325,9 +323,9 @@ import 'webhook_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Source"),
 /// 				},
 /// 				&codepipeline.PipelineStageArgs{
-/// 					Name: pulumi.String("Build"),
 /// 					Actions: codepipeline.PipelineStageActionArray{
 /// 						&codepipeline.PipelineStageActionArgs{
 /// 							Name:     pulumi.String("Build"),
@@ -343,18 +341,17 @@ import 'webhook_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("Build"),
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("tf-test-pipeline"),
+/// 			RoleArn: pulumi.Any(barAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		webhookSecret := "super-secret"
 /// 		barWebhook, err := codepipeline.NewWebhook(ctx, "bar", &codepipeline.WebhookArgs{
-/// 			Name:           pulumi.String("test-webhook-github-bar"),
-/// 			Authentication: pulumi.String("GITHUB_HMAC"),
-/// 			TargetAction:   pulumi.String("Source"),
-/// 			TargetPipeline: bar.Name,
 /// 			AuthenticationConfiguration: &codepipeline.WebhookAuthenticationConfigurationArgs{
 /// 				SecretToken: pulumi.String(webhookSecret),
 /// 			},
@@ -364,14 +361,16 @@ import 'webhook_state.dart';
 /// 					MatchEquals: pulumi.String("refs/heads/{Branch}"),
 /// 				},
 /// 			},
+/// 			Name:           pulumi.String("test-webhook-github-bar"),
+/// 			Authentication: pulumi.String("GITHUB_HMAC"),
+/// 			TargetAction:   pulumi.String("Source"),
+/// 			TargetPipeline: bar.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Wire the CodePipeline webhook into a GitHub repository.
 /// 		_, err = github.NewRepositoryWebhook(ctx, "bar", &github.RepositoryWebhookArgs{
-/// 			Repository: pulumi.Any(repo.Name),
-/// 			Name:       "web",
 /// 			Configuration: github.RepositoryWebhookConfigurationArgs{
 /// 				map[string]interface{}{
 /// 					"url":         barWebhook.Url,
@@ -380,6 +379,8 @@ import 'webhook_state.dart';
 /// 					"secret":      webhookSecret,
 /// 				},
 /// 			},
+/// 			Repository: pulumi.Any(repo.Name),
+/// 			Name:       "web",
 /// 			Events: pulumi.StringArray{
 /// 				pulumi.String("push"),
 /// 			},
@@ -404,18 +405,15 @@ import 'webhook_state.dart';
 /// }
 ///
 /// resource "aws_codepipeline_pipeline" "bar" {
-///   name     = "tf-test-pipeline"
-///   role_arn = barAwsIamRole.arn
 ///   artifact_stores {
-///     location = barAwsS3Bucket.bucket
-///     type     = "S3"
 ///     encryption_key = {
 ///       id   = s3kmskey.arn
 ///       type = "KMS"
 ///     }
+///     location = barAwsS3Bucket.bucket
+///     type     = "S3"
 ///   }
 ///   stages {
-///     name = "Source"
 ///     actions {
 ///       name             = "Source"
 ///       category         = "Source"
@@ -429,9 +427,9 @@ import 'webhook_state.dart';
 ///         "Branch" = "master"
 ///       }
 ///     }
+///     name = "Source"
 ///   }
 ///   stages {
-///     name = "Build"
 ///     actions {
 ///       name            = "Build"
 ///       category        = "Build"
@@ -443,13 +441,12 @@ import 'webhook_state.dart';
 ///         "ProjectName" = "test"
 ///       }
 ///     }
+///     name = "Build"
 ///   }
+///   name     = "tf-test-pipeline"
+///   role_arn = barAwsIamRole.arn
 /// }
 /// resource "aws_codepipeline_webhook" "bar" {
-///   name            = "test-webhook-github-bar"
-///   authentication  = "GITHUB_HMAC"
-///   target_action   = "Source"
-///   target_pipeline = aws_codepipeline_pipeline.bar.name
 ///   authentication_configuration = {
 ///     secret_token = local.webhookSecret
 ///   }
@@ -457,18 +454,22 @@ import 'webhook_state.dart';
 ///     json_path    = "$.ref"
 ///     match_equals = "refs/heads/{Branch}"
 ///   }
+///   name            = "test-webhook-github-bar"
+///   authentication  = "GITHUB_HMAC"
+///   target_action   = "Source"
+///   target_pipeline = aws_codepipeline_pipeline.bar.name
 /// }
 /// # Wire the CodePipeline webhook into a GitHub repository.
 /// resource "github_repositorywebhook" "bar" {
-///   repository = repo.name
-///   name       = "web"
 ///   configuration = [{
 ///     "url"         = aws_codepipeline_webhook.bar.url
 ///     "contentType" = "json"
 ///     "insecureSsl" = true
 ///     "secret"      = local.webhookSecret
 ///   }]
-///   events = ["push"]
+///   repository = repo.name
+///   name       = "web"
+///   events     = ["push"]
 /// }
 /// locals {
 ///   webhookSecret = "super-secret"
@@ -506,19 +507,16 @@ import 'webhook_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var bar = new Pipeline("bar", PipelineArgs.builder()
-///             .name("tf-test-pipeline")
-///             .roleArn(barAwsIamRole.arn())
 ///             .artifactStores(PipelineArtifactStoreArgs.builder()
-///                 .location(barAwsS3Bucket.bucket())
-///                 .type("S3")
 ///                 .encryptionKey(PipelineArtifactStoreEncryptionKeyArgs.builder()
 ///                     .id(s3kmskey.arn())
 ///                     .type("KMS")
 ///                     .build())
+///                 .location(barAwsS3Bucket.bucket())
+///                 .type("S3")
 ///                 .build())
 ///             .stages(
 ///                 PipelineStageArgs.builder()
-///                     .name("Source")
 ///                     .actions(PipelineStageActionArgs.builder()
 ///                         .name("Source")
 ///                         .category("Source")
@@ -532,9 +530,9 @@ import 'webhook_state.dart';
 ///                             Map.entry("Branch", "master")
 ///                         ))
 ///                         .build())
+///                     .name("Source")
 ///                     .build(),
 ///                 PipelineStageArgs.builder()
-///                     .name("Build")
 ///                     .actions(PipelineStageActionArgs.builder()
 ///                         .name("Build")
 ///                         .category("Build")
@@ -544,16 +542,15 @@ import 'webhook_state.dart';
 ///                         .version("1")
 ///                         .configuration(Map.of("ProjectName", "test"))
 ///                         .build())
+///                     .name("Build")
 ///                     .build())
+///             .name("tf-test-pipeline")
+///             .roleArn(barAwsIamRole.arn())
 ///             .build());
 ///
 ///         final var webhookSecret = "super-secret";
 ///
 ///         var barWebhook = new Webhook("barWebhook", WebhookArgs.builder()
-///             .name("test-webhook-github-bar")
-///             .authentication("GITHUB_HMAC")
-///             .targetAction("Source")
-///             .targetPipeline(bar.name())
 ///             .authenticationConfiguration(WebhookAuthenticationConfigurationArgs.builder()
 ///                 .secretToken(webhookSecret)
 ///                 .build())
@@ -561,18 +558,22 @@ import 'webhook_state.dart';
 ///                 .jsonPath("$.ref")
 ///                 .matchEquals("refs/heads/{Branch}")
 ///                 .build())
+///             .name("test-webhook-github-bar")
+///             .authentication("GITHUB_HMAC")
+///             .targetAction("Source")
+///             .targetPipeline(bar.name())
 ///             .build());
 ///
 ///         // Wire the CodePipeline webhook into a GitHub repository.
 ///         var barRepositoryWebhook = new RepositoryWebhook("barRepositoryWebhook", RepositoryWebhookArgs.builder()
-///             .repository(repo.name())
-///             .name("web")
 ///             .configuration(com.pulumi.github.inputs.RepositoryWebhookConfigurationArgs.builder()
 ///                 .url(barWebhook.url())
 ///                 .contentType("json")
 ///                 .insecureSsl(true)
 ///                 .secret(webhookSecret)
 ///                 .build())
+///             .repository(repo.name())
+///             .name("web")
 ///             .events("push")
 ///             .build());
 ///
@@ -584,17 +585,14 @@ import 'webhook_state.dart';
 ///   bar:
 ///     type: aws:codepipeline:Pipeline
 ///     properties:
-///       name: tf-test-pipeline
-///       roleArn: ${barAwsIamRole.arn}
 ///       artifactStores:
-///         - location: ${barAwsS3Bucket.bucket}
-///           type: S3
-///           encryptionKey:
+///         - encryptionKey:
 ///             id: ${s3kmskey.arn}
 ///             type: KMS
+///           location: ${barAwsS3Bucket.bucket}
+///           type: S3
 ///       stages:
-///         - name: Source
-///           actions:
+///         - actions:
 ///             - name: Source
 ///               category: Source
 ///               owner: ThirdParty
@@ -606,8 +604,8 @@ import 'webhook_state.dart';
 ///                 Owner: my-organization
 ///                 Repo: test
 ///                 Branch: master
-///         - name: Build
-///           actions:
+///           name: Source
+///         - actions:
 ///             - name: Build
 ///               category: Build
 ///               owner: AWS
@@ -617,31 +615,34 @@ import 'webhook_state.dart';
 ///               version: '1'
 ///               configuration:
 ///                 ProjectName: test
+///           name: Build
+///       name: tf-test-pipeline
+///       roleArn: ${barAwsIamRole.arn}
 ///   barWebhook:
 ///     type: aws:codepipeline:Webhook
 ///     name: bar
 ///     properties:
-///       name: test-webhook-github-bar
-///       authentication: GITHUB_HMAC
-///       targetAction: Source
-///       targetPipeline: ${bar.name}
 ///       authenticationConfiguration:
 ///         secretToken: ${webhookSecret}
 ///       filters:
 ///         - jsonPath: $.ref
 ///           matchEquals: refs/heads/{Branch}
+///       name: test-webhook-github-bar
+///       authentication: GITHUB_HMAC
+///       targetAction: Source
+///       targetPipeline: ${bar.name}
 ///   # Wire the CodePipeline webhook into a GitHub repository.
 ///   barRepositoryWebhook:
 ///     type: github:RepositoryWebhook
 ///     name: bar
 ///     properties:
-///       repository: ${repo.name}
-///       name: web
 ///       configuration:
 ///         - url: ${barWebhook.url}
 ///           contentType: json
 ///           insecureSsl: true
 ///           secret: ${webhookSecret}
+///       repository: ${repo.name}
+///       name: web
 ///       events:
 ///         - push
 /// variables:
@@ -655,7 +656,7 @@ import 'webhook_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodePipeline webhook.
+/// - `arn` (String) ARN of the CodePipeline webhook.
 ///
 ///
 /// Using `pulumi import`, import CodePipeline Webhooks using their ARN. For example:
@@ -671,7 +672,7 @@ class Webhook extends pulumi.CustomResource {
   /// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
   late final pulumi.Output<WebhookAuthenticationConfiguration?> authenticationConfiguration;
   /// One or more `filter` blocks. Filter blocks are documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> filters;
+  late final pulumi.Output<List<WebhookFilter>> filters;
   /// The name of the webhook.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -699,16 +700,16 @@ class Webhook extends pulumi.CustomResource {
           'aws:codepipeline/webhook:Webhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authentication = registerOutput<String>('authentication');
     authenticationConfiguration = registerOutput<WebhookAuthenticationConfiguration?>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    filters = registerOutput<List<Map<String, dynamic>>>('filters');
+    filters = registerOutput<List<WebhookFilter>>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookFilter>(guardedValue, (value) => WebhookFilter.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetAction = registerOutput<String>('targetAction');
     targetPipeline = registerOutput<String>('targetPipeline');
     url = registerOutput<String>('url');
@@ -719,11 +720,12 @@ class Webhook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebhookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Webhook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -740,11 +742,33 @@ class Webhook extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     authentication = registerOutput<String>('authentication');
     authenticationConfiguration = registerOutput<WebhookAuthenticationConfiguration?>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    filters = registerOutput<List<Map<String, dynamic>>>('filters');
+    filters = registerOutput<List<WebhookFilter>>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookFilter>(guardedValue, (value) => WebhookFilter.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetAction = registerOutput<String>('targetAction');
+    targetPipeline = registerOutput<String>('targetPipeline');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Webhook] resource.
+  Webhook.reference(String urn)
+    : super(
+        'aws:codepipeline/webhook:Webhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    authentication = registerOutput<String>('authentication');
+    authenticationConfiguration = registerOutput<WebhookAuthenticationConfiguration?>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    filters = registerOutput<List<WebhookFilter>>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookFilter>(guardedValue, (value) => WebhookFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetAction = registerOutput<String>('targetAction');
     targetPipeline = registerOutput<String>('targetPipeline');
     url = registerOutput<String>('url');

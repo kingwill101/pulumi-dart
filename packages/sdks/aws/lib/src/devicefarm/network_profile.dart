@@ -149,7 +149,7 @@ import 'network_profile_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Device Farm network profile.
+/// - `arn` (String) ARN of the Device Farm network profile.
 ///
 ///
 /// Using `pulumi import`, import DeviceFarm Network Profiles using their ARN. For example:
@@ -158,7 +158,7 @@ import 'network_profile_state.dart';
 /// $ pulumi import aws:devicefarm/networkProfile:NetworkProfile example arn:aws:devicefarm:us-west-2:123456789012:networkprofile:4fa784c7-ccb4-4dbf-ba4f-02198320daa1
 /// ```
 class NetworkProfile extends pulumi.CustomResource {
-  /// The Amazon Resource Name of this network profile.
+  /// ARN of this network profile.
   late final pulumi.Output<String> arn;
   /// The description of the network profile.
   late final pulumi.Output<String?> description;
@@ -203,7 +203,7 @@ class NetworkProfile extends pulumi.CustomResource {
           'aws:devicefarm/networkProfile:NetworkProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -214,8 +214,8 @@ class NetworkProfile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     projectArn = registerOutput<String>('projectArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     uplinkBandwidthBits = registerOutput<int?>('uplinkBandwidthBits');
     uplinkDelayMs = registerOutput<int?>('uplinkDelayMs');
@@ -228,11 +228,12 @@ class NetworkProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -255,8 +256,35 @@ class NetworkProfile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     projectArn = registerOutput<String>('projectArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String?>('type');
+    uplinkBandwidthBits = registerOutput<int?>('uplinkBandwidthBits');
+    uplinkDelayMs = registerOutput<int?>('uplinkDelayMs');
+    uplinkJitterMs = registerOutput<int?>('uplinkJitterMs');
+    uplinkLossPercent = registerOutput<int?>('uplinkLossPercent');
+  }
+
+  /// Creates a typed reference to an existing [NetworkProfile] resource.
+  NetworkProfile.reference(String urn)
+    : super(
+        'aws:devicefarm/networkProfile:NetworkProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    downlinkBandwidthBits = registerOutput<int?>('downlinkBandwidthBits');
+    downlinkDelayMs = registerOutput<int?>('downlinkDelayMs');
+    downlinkJitterMs = registerOutput<int?>('downlinkJitterMs');
+    downlinkLossPercent = registerOutput<int?>('downlinkLossPercent');
+    this.name = registerOutput<String>('name');
+    projectArn = registerOutput<String>('projectArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
     uplinkBandwidthBits = registerOutput<int?>('uplinkBandwidthBits');
     uplinkDelayMs = registerOutput<int?>('uplinkDelayMs');

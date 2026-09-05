@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class S3TableIntegrationEncryption {
   /// ARN of the KMS key to use for encryption. Required when `sseAlgorithm` is `aws:kms`.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Server-side encryption algorithm. Valid values: `AES256`, `aws:kms`.
   final pulumi.Input<String> sseAlgorithm;
 

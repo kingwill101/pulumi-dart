@@ -6,13 +6,13 @@ import 'network_insights_path_filter_at_destination_source_port_range.dart';
 
 class NetworkInsightsPathFilterAtDestination {
   /// The destination IPv4 address.
-  final pulumi.Input<String>? destinationAddress;
+  final pulumi.Input<String?>? destinationAddress;
   /// The destination port range. See below for details.
-  final pulumi.Input<NetworkInsightsPathFilterAtDestinationDestinationPortRange>? destinationPortRange;
+  final pulumi.Input<NetworkInsightsPathFilterAtDestinationDestinationPortRange?>? destinationPortRange;
   /// IP address of the source resource.
-  final pulumi.Input<String>? sourceAddress;
+  final pulumi.Input<String?>? sourceAddress;
   /// The source port range. See below for details.
-  final pulumi.Input<NetworkInsightsPathFilterAtDestinationSourcePortRange>? sourcePortRange;
+  final pulumi.Input<NetworkInsightsPathFilterAtDestinationSourcePortRange?>? sourcePortRange;
 
   /// Creates a new [NetworkInsightsPathFilterAtDestination].
   /// [destinationAddress] The destination IPv4 address.

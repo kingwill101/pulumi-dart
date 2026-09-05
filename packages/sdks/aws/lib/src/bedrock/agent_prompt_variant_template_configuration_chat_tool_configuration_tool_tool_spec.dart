@@ -5,9 +5,9 @@ import 'agent_prompt_variant_template_configuration_chat_tool_configuration_tool
 
 class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec {
   /// Description of the prompt.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The input schema of the tool. See Tool Input Schema for more information.
-  final pulumi.Input<AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema>? inputSchema;
+  final pulumi.Input<AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema?>? inputSchema;
   /// Name of the prompt.
   ///
   /// The following arguments are optional:

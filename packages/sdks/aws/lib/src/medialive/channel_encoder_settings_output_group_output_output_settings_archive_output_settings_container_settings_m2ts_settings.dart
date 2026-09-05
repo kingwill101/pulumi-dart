@@ -6,54 +6,54 @@ import 'channel_encoder_settings_output_group_output_output_settings_archive_out
 import 'channel_encoder_settings_output_group_output_output_settings_archive_output_settings_container_settings_m2ts_settings_dvb_tdt_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings {
-  final pulumi.Input<String>? absentInputAudioBehavior;
-  final pulumi.Input<String>? arib;
-  final pulumi.Input<String>? aribCaptionsPid;
-  final pulumi.Input<String>? aribCaptionsPidControl;
-  final pulumi.Input<String>? audioBufferModel;
-  final pulumi.Input<int>? audioFramesPerPes;
-  final pulumi.Input<String>? audioPids;
-  final pulumi.Input<String>? audioStreamType;
-  final pulumi.Input<int>? bitrate;
-  final pulumi.Input<String>? bufferModel;
-  final pulumi.Input<String>? ccDescriptor;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings>? dvbNitSettings;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings>? dvbSdtSettings;
-  final pulumi.Input<String>? dvbSubPids;
-  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings>? dvbTdtSettings;
-  final pulumi.Input<String>? dvbTeletextPid;
-  final pulumi.Input<String>? ebif;
-  final pulumi.Input<String>? ebpAudioInterval;
-  final pulumi.Input<int>? ebpLookaheadMs;
-  final pulumi.Input<String>? ebpPlacement;
-  final pulumi.Input<String>? ecmPid;
-  final pulumi.Input<String>? esRateInPes;
-  final pulumi.Input<String>? etvPlatformPid;
-  final pulumi.Input<String>? etvSignalPid;
-  final pulumi.Input<double>? fragmentTime;
-  final pulumi.Input<String>? klv;
-  final pulumi.Input<String>? klvDataPids;
-  final pulumi.Input<String>? nielsenId3Behavior;
-  final pulumi.Input<double>? nullPacketBitrate;
-  final pulumi.Input<int>? patInterval;
-  final pulumi.Input<String>? pcrControl;
-  final pulumi.Input<int>? pcrPeriod;
-  final pulumi.Input<String>? pcrPid;
-  final pulumi.Input<int>? pmtInterval;
-  final pulumi.Input<String>? pmtPid;
-  final pulumi.Input<int>? programNum;
-  final pulumi.Input<String>? rateMode;
-  final pulumi.Input<String>? scte27Pids;
-  final pulumi.Input<String>? scte35Control;
+  final pulumi.Input<String?>? absentInputAudioBehavior;
+  final pulumi.Input<String?>? arib;
+  final pulumi.Input<String?>? aribCaptionsPid;
+  final pulumi.Input<String?>? aribCaptionsPidControl;
+  final pulumi.Input<String?>? audioBufferModel;
+  final pulumi.Input<int?>? audioFramesPerPes;
+  final pulumi.Input<String?>? audioPids;
+  final pulumi.Input<String?>? audioStreamType;
+  final pulumi.Input<int?>? bitrate;
+  final pulumi.Input<String?>? bufferModel;
+  final pulumi.Input<String?>? ccDescriptor;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings?>? dvbNitSettings;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings?>? dvbSdtSettings;
+  final pulumi.Input<String?>? dvbSubPids;
+  final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings?>? dvbTdtSettings;
+  final pulumi.Input<String?>? dvbTeletextPid;
+  final pulumi.Input<String?>? ebif;
+  final pulumi.Input<String?>? ebpAudioInterval;
+  final pulumi.Input<int?>? ebpLookaheadMs;
+  final pulumi.Input<String?>? ebpPlacement;
+  final pulumi.Input<String?>? ecmPid;
+  final pulumi.Input<String?>? esRateInPes;
+  final pulumi.Input<String?>? etvPlatformPid;
+  final pulumi.Input<String?>? etvSignalPid;
+  final pulumi.Input<double?>? fragmentTime;
+  final pulumi.Input<String?>? klv;
+  final pulumi.Input<String?>? klvDataPids;
+  final pulumi.Input<String?>? nielsenId3Behavior;
+  final pulumi.Input<double?>? nullPacketBitrate;
+  final pulumi.Input<int?>? patInterval;
+  final pulumi.Input<String?>? pcrControl;
+  final pulumi.Input<int?>? pcrPeriod;
+  final pulumi.Input<String?>? pcrPid;
+  final pulumi.Input<int?>? pmtInterval;
+  final pulumi.Input<String?>? pmtPid;
+  final pulumi.Input<int?>? programNum;
+  final pulumi.Input<String?>? rateMode;
+  final pulumi.Input<String?>? scte27Pids;
+  final pulumi.Input<String?>? scte35Control;
   /// PID from which to read SCTE-35 messages.
-  final pulumi.Input<String>? scte35Pid;
-  final pulumi.Input<String>? segmentationMarkers;
-  final pulumi.Input<String>? segmentationStyle;
-  final pulumi.Input<double>? segmentationTime;
-  final pulumi.Input<String>? timedMetadataBehavior;
-  final pulumi.Input<String>? timedMetadataPid;
-  final pulumi.Input<int>? transportStreamId;
-  final pulumi.Input<String>? videoPid;
+  final pulumi.Input<String?>? scte35Pid;
+  final pulumi.Input<String?>? segmentationMarkers;
+  final pulumi.Input<String?>? segmentationStyle;
+  final pulumi.Input<double?>? segmentationTime;
+  final pulumi.Input<String?>? timedMetadataBehavior;
+  final pulumi.Input<String?>? timedMetadataPid;
+  final pulumi.Input<int?>? transportStreamId;
+  final pulumi.Input<String?>? videoPid;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings].
   /// [absentInputAudioBehavior] Optional.
@@ -212,10 +212,10 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
       aribCaptionsPid: (() { final guardedValue = map['aribCaptionsPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       aribCaptionsPidControl: (() { final guardedValue = map['aribCaptionsPidControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       audioBufferModel: (() { final guardedValue = map['audioBufferModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      audioFramesPerPes: (() { final guardedValue = map['audioFramesPerPes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      audioFramesPerPes: (() { final guardedValue = map['audioFramesPerPes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       audioPids: (() { final guardedValue = map['audioPids']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       audioStreamType: (() { final guardedValue = map['audioStreamType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bitrate: (() { final guardedValue = map['bitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bitrate: (() { final guardedValue = map['bitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       bufferModel: (() { final guardedValue = map['bufferModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ccDescriptor: (() { final guardedValue = map['ccDescriptor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dvbNitSettings: (() { final guardedValue = map['dvbNitSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -225,34 +225,34 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
       dvbTeletextPid: (() { final guardedValue = map['dvbTeletextPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ebif: (() { final guardedValue = map['ebif']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ebpAudioInterval: (() { final guardedValue = map['ebpAudioInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ebpLookaheadMs: (() { final guardedValue = map['ebpLookaheadMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ebpLookaheadMs: (() { final guardedValue = map['ebpLookaheadMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ebpPlacement: (() { final guardedValue = map['ebpPlacement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ecmPid: (() { final guardedValue = map['ecmPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       esRateInPes: (() { final guardedValue = map['esRateInPes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etvPlatformPid: (() { final guardedValue = map['etvPlatformPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etvSignalPid: (() { final guardedValue = map['etvSignalPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fragmentTime: (() { final guardedValue = map['fragmentTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      fragmentTime: (() { final guardedValue = map['fragmentTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       klv: (() { final guardedValue = map['klv']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       klvDataPids: (() { final guardedValue = map['klvDataPids']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nielsenId3Behavior: (() { final guardedValue = map['nielsenId3Behavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nullPacketBitrate: (() { final guardedValue = map['nullPacketBitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      patInterval: (() { final guardedValue = map['patInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nullPacketBitrate: (() { final guardedValue = map['nullPacketBitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      patInterval: (() { final guardedValue = map['patInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       pcrControl: (() { final guardedValue = map['pcrControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pcrPeriod: (() { final guardedValue = map['pcrPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pcrPeriod: (() { final guardedValue = map['pcrPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       pcrPid: (() { final guardedValue = map['pcrPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pmtInterval: (() { final guardedValue = map['pmtInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pmtInterval: (() { final guardedValue = map['pmtInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       pmtPid: (() { final guardedValue = map['pmtPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      programNum: (() { final guardedValue = map['programNum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      programNum: (() { final guardedValue = map['programNum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       rateMode: (() { final guardedValue = map['rateMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scte27Pids: (() { final guardedValue = map['scte27Pids']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scte35Control: (() { final guardedValue = map['scte35Control']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scte35Pid: (() { final guardedValue = map['scte35Pid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       segmentationMarkers: (() { final guardedValue = map['segmentationMarkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       segmentationStyle: (() { final guardedValue = map['segmentationStyle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      segmentationTime: (() { final guardedValue = map['segmentationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      segmentationTime: (() { final guardedValue = map['segmentationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       timedMetadataBehavior: (() { final guardedValue = map['timedMetadataBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timedMetadataPid: (() { final guardedValue = map['timedMetadataPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transportStreamId: (() { final guardedValue = map['transportStreamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      transportStreamId: (() { final guardedValue = map['transportStreamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       videoPid: (() { final guardedValue = map['videoPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

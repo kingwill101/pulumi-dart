@@ -121,3 +121,14 @@ Future<GetTopicResult> getTopic(
   );
   return GetTopicResult.fromMap(result);
 }
+
+pulumi.Output<GetTopicResult> getTopicOutput(
+  GetTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sns/getTopic:getTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicResult.fromMap);
+}

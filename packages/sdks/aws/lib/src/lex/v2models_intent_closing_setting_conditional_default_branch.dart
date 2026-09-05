@@ -6,9 +6,9 @@ import 'v2models_intent_closing_setting_conditional_default_branch_response.dart
 
 class V2modelsIntentClosingSettingConditionalDefaultBranch {
   /// Configuration block for the next step in the conversation. See `nextStep`.
-  final pulumi.Input<V2modelsIntentClosingSettingConditionalDefaultBranchNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalDefaultBranchNextStep?>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final pulumi.Input<V2modelsIntentClosingSettingConditionalDefaultBranchResponse>? response;
+  final pulumi.Input<V2modelsIntentClosingSettingConditionalDefaultBranchResponse?>? response;
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `nextStep`.

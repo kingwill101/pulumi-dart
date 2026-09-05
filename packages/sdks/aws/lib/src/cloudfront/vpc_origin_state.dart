@@ -7,18 +7,18 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 /// Input properties used for looking up and filtering VpcOrigin resources.
 class VpcOriginState {
   /// The VPC origin ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The current version of the origin.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<VpcOriginTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<VpcOriginTimeouts?>? timeouts;
   /// The VPC origin endpoint configuration.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<VpcOriginVpcOriginEndpointConfig>? vpcOriginEndpointConfig;
+  final pulumi.Input<VpcOriginVpcOriginEndpointConfig?>? vpcOriginEndpointConfig;
 
   /// Creates a new [VpcOriginState].
   /// [arn] The VPC origin ARN.

@@ -14,39 +14,39 @@ class WorkspaceArgs {
   /// The authentication providers for the workspace. Valid values are `AWS_SSO`, `SAML`, or both.
   final pulumi.Input<List<String>> authenticationProviders;
   /// The configuration string for the workspace that you create. For more information about the format and configuration options available, see [Working in your Grafana workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
-  final pulumi.Input<String>? configuration;
+  final pulumi.Input<String?>? configuration;
   /// The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `TWINMAKER`, `XRAY`
-  final pulumi.Input<List<String>>? dataSources;
+  final pulumi.Input<List<String>?>? dataSources;
   /// The workspace description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the version of Grafana to support in the new workspace. Supported values are `9.4`, `10.4` and `12.4`. If not specified, defaults to the latest version.
-  final pulumi.Input<String>? grafanaVersion;
+  final pulumi.Input<String?>? grafanaVersion;
   /// The ARN of the AWS KMS key for encrypting workspace data.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// The Grafana workspace name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration for network access to your workspace.See Network Access Control below.
-  final pulumi.Input<WorkspaceNetworkAccessControl>? networkAccessControl;
+  final pulumi.Input<WorkspaceNetworkAccessControl?>? networkAccessControl;
   /// The notification destinations. If a data source is specified here, Amazon Managed Grafana will create IAM roles and permissions needed to use these destinations. Must be set to `SNS`.
-  final pulumi.Input<List<String>>? notificationDestinations;
+  final pulumi.Input<List<String>?>? notificationDestinations;
   /// The role name that the workspace uses to access resources through Amazon Organizations.
-  final pulumi.Input<String>? organizationRoleName;
+  final pulumi.Input<String?>? organizationRoleName;
   /// The Amazon Organizations organizational units that the workspace is authorized to use data sources from.
-  final pulumi.Input<List<String>>? organizationalUnits;
+  final pulumi.Input<List<String>?>? organizationalUnits;
   /// The permission type of the workspace. If `SERVICE_MANAGED` is specified, the IAM roles and IAM policy attachments are generated automatically. If `CUSTOMER_MANAGED` is specified, the IAM roles and IAM policy attachments will not be created.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> permissionType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The IAM role ARN that the workspace assumes.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace.
-  final pulumi.Input<String>? stackSetName;
+  final pulumi.Input<String?>? stackSetName;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to. See VPC Configuration below.
-  final pulumi.Input<WorkspaceVpcConfiguration>? vpcConfiguration;
+  final pulumi.Input<WorkspaceVpcConfiguration?>? vpcConfiguration;
 
   /// Creates a new [WorkspaceArgs].
   /// [accountAccessType] The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`. If `ORGANIZATION` is specified, then `organizationalUnits` must also be present.

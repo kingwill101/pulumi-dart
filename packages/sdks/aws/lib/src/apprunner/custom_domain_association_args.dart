@@ -10,9 +10,9 @@ class CustomDomainAssociationArgs {
   /// Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
   final pulumi.Input<String> domainName;
   /// Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
-  final pulumi.Input<bool>? enableWwwSubdomain;
+  final pulumi.Input<bool?>? enableWwwSubdomain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the App Runner service.
   final pulumi.Input<String> serviceArn;
 

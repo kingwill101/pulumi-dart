@@ -151,7 +151,7 @@ class SnapshotCopy extends pulumi.CustomResource {
           'aws:redshift/snapshotCopy:SnapshotCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     destinationRegion = registerOutput<String>('destinationRegion');
@@ -166,11 +166,12 @@ class SnapshotCopy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotCopyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SnapshotCopy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -184,6 +185,23 @@ class SnapshotCopy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    destinationRegion = registerOutput<String>('destinationRegion');
+    manualSnapshotRetentionPeriod = registerOutput<int>('manualSnapshotRetentionPeriod');
+    region = registerOutput<String>('region');
+    retentionPeriod = registerOutput<int>('retentionPeriod');
+    snapshotCopyGrantName = registerOutput<String?>('snapshotCopyGrantName');
+  }
+
+  /// Creates a typed reference to an existing [SnapshotCopy] resource.
+  SnapshotCopy.reference(String urn)
+    : super(
+        'aws:redshift/snapshotCopy:SnapshotCopy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     destinationRegion = registerOutput<String>('destinationRegion');
     manualSnapshotRetentionPeriod = registerOutput<int>('manualSnapshotRetentionPeriod');

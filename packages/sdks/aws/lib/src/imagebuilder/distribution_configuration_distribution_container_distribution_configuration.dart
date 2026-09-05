@@ -5,9 +5,9 @@ import 'distribution_configuration_distribution_container_distribution_configura
 
 class DistributionConfigurationDistributionContainerDistributionConfiguration {
   /// Set of tags that are attached to the container distribution configuration.
-  final pulumi.Input<List<String>>? containerTags;
+  final pulumi.Input<List<String>?>? containerTags;
   /// Description of the container distribution configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block with the destination repository for the container distribution configuration.
   final pulumi.Input<DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository> targetRepository;
 

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionDefaultCacheBehaviorGrpcConfig {
   /// Whether the distribution is enabled to accept end user requests for content.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DistributionDefaultCacheBehaviorGrpcConfig].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.

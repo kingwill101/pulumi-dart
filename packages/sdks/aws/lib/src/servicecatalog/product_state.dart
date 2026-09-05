@@ -6,41 +6,41 @@ import 'product_provisioning_artifact_parameters.dart';
 /// Input properties used for looking up and filtering Product resources.
 class ProductState {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  final pulumi.Input<String>? acceptLanguage;
+  final pulumi.Input<String?>? acceptLanguage;
   /// ARN of the product.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Time when the product was created.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// Description of the product.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Distributor (i.e., vendor) of the product.
-  final pulumi.Input<String>? distributor;
+  final pulumi.Input<String?>? distributor;
   /// Whether the product has a default path. If the product does not have a default path, call `ListLaunchPaths` to disambiguate between paths.  Otherwise, `ListLaunchPaths` is not required, and the output of ProductViewSummary can be used directly with `DescribeProvisioningParameters`.
-  final pulumi.Input<bool>? hasDefaultPath;
+  final pulumi.Input<bool?>? hasDefaultPath;
   /// Name of the product.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Owner of the product.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Configuration block for provisioning artifact (i.e., version) parameters. See `provisioningArtifactParameters` Block for details.
-  final pulumi.Input<ProductProvisioningArtifactParameters>? provisioningArtifactParameters;
+  final pulumi.Input<ProductProvisioningArtifactParameters?>? provisioningArtifactParameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Status of the product.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Support information about the product.
-  final pulumi.Input<String>? supportDescription;
+  final pulumi.Input<String?>? supportDescription;
   /// Contact email for product support.
-  final pulumi.Input<String>? supportEmail;
+  final pulumi.Input<String?>? supportEmail;
   /// Contact URL for product support.
-  final pulumi.Input<String>? supportUrl;
+  final pulumi.Input<String?>? supportUrl;
   /// Tags to apply to the product. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Type of product. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_CreateProduct.html#API_CreateProduct_RequestSyntax) for valid list of values.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ProductState].
   /// [acceptLanguage] Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.

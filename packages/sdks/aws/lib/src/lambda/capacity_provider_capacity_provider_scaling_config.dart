@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capacity_provider_capacity_provider_scaling_config_scaling_policy.dart';
 
 class CapacityProviderCapacityProviderScalingConfig {
-  /// The maximum number of VCPUs for the Capacity Provider.
+  /// Maximum number of VCPUs for the Capacity Provider.
   final pulumi.Input<int> maxVcpuCount;
-  /// The scaling mode for the Capacity Provider. Valid values are `"Auto"` and `"Manual"`. Defaults to `"Auto"`.
+  /// Scaling mode for the Capacity Provider. Valid values are `"Auto"` and `"Manual"`. Defaults to `"Auto"`.
   final pulumi.Input<String> scalingMode;
   /// List of scaling policies. Only required if `scalingMode` is set to `"Manual"`. See Scaling Policies below.
   final pulumi.Input<List<CapacityProviderCapacityProviderScalingConfigScalingPolicy>> scalingPolicies;
 
   /// Creates a new [CapacityProviderCapacityProviderScalingConfig].
-  /// [maxVcpuCount] The maximum number of VCPUs for the Capacity Provider.
-  /// [scalingMode] The scaling mode for the Capacity Provider. Valid values are `"Auto"` and `"Manual"`. Defaults to `"Auto"`.
+  /// [maxVcpuCount] Maximum number of VCPUs for the Capacity Provider.
+  /// [scalingMode] Scaling mode for the Capacity Provider. Valid values are `"Auto"` and `"Manual"`. Defaults to `"Auto"`.
   /// [scalingPolicies] List of scaling policies. Only required if `scalingMode` is set to `"Manual"`. See Scaling Policies below.
   const CapacityProviderCapacityProviderScalingConfig({
     required this.maxVcpuCount,
@@ -31,7 +31,7 @@ class CapacityProviderCapacityProviderScalingConfig {
 
   factory CapacityProviderCapacityProviderScalingConfig.fromMap(Map<String, dynamic> map) {
     return CapacityProviderCapacityProviderScalingConfig(
-      maxVcpuCount: pulumi.Input.fromValue(map['maxVcpuCount'] as int),
+      maxVcpuCount: pulumi.Input.fromValue((map['maxVcpuCount'] as num).toInt()),
       scalingMode: pulumi.Input.fromValue(map['scalingMode'] as String),
       scalingPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<CapacityProviderCapacityProviderScalingConfigScalingPolicy>(map['scalingPolicies']!, (value) => CapacityProviderCapacityProviderScalingConfigScalingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
     );

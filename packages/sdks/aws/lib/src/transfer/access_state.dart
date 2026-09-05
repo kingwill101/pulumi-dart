@@ -7,23 +7,23 @@ import 'access_posix_profile.dart';
 /// Input properties used for looking up and filtering Access resources.
 class AccessState {
   /// SID of a group in the directory connected to the Transfer Server (e.g., `S-1-1-12-1234567890-123456789-1234567890-1234`)
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// Landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
-  final pulumi.Input<String>? homeDirectory;
+  final pulumi.Input<String?>? homeDirectory;
   /// Logical directory mappings that specify what S3 paths and keys should be visible to your user and how you want to make them visible. See `homeDirectoryMappings` Block below.
-  final pulumi.Input<List<AccessHomeDirectoryMapping>>? homeDirectoryMappings;
+  final pulumi.Input<List<AccessHomeDirectoryMapping>?>? homeDirectoryMappings;
   /// Type of landing directory (folder) you mapped for your users' home directory. Valid values are `PATH` and `LOGICAL`.
-  final pulumi.Input<String>? homeDirectoryType;
+  final pulumi.Input<String?>? homeDirectoryType;
   /// IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// Full POSIX identity, including user ID (Uid), group ID (Gid), and any secondary groups IDs (SecondaryGids), that controls your users' access to your Amazon EFS file systems. See `posixProfile` Block below.
-  final pulumi.Input<AccessPosixProfile>? posixProfile;
+  final pulumi.Input<AccessPosixProfile?>? posixProfile;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? region;
+  /// ARN of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
+  final pulumi.Input<String?>? role;
   /// Server ID of the Transfer Server (e.g., `s-12345678`)
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
 
   /// Creates a new [AccessState].
   /// [externalId] SID of a group in the directory connected to the Transfer Server (e.g., `S-1-1-12-1234567890-123456789-1234567890-1234`)
@@ -33,7 +33,7 @@ class AccessState {
   /// [policy] IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
   /// [posixProfile] Full POSIX identity, including user ID (Uid), group ID (Gid), and any secondary groups IDs (SecondaryGids), that controls your users' access to your Amazon EFS file systems. See `posixProfile` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [role] Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
+  /// [role] ARN of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
   /// [serverId] Server ID of the Transfer Server (e.g., `s-12345678`)
   const AccessState({
     this.externalId,

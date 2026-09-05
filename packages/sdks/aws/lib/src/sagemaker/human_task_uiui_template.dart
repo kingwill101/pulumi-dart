@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HumanTaskUIUiTemplate {
   /// The content of the Liquid template for the worker user interface.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The SHA-256 digest of the contents of the template.
-  final pulumi.Input<String>? contentSha256;
+  final pulumi.Input<String?>? contentSha256;
   /// The URL for the user interface template.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [HumanTaskUIUiTemplate].
   /// [content] The content of the Liquid template for the worker user interface.

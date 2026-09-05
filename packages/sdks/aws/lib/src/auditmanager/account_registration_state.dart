@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccountRegistration resources.
 class AccountRegistrationState {
   /// Identifier for the delegated administrator account.
-  final pulumi.Input<String>? delegatedAdminAccount;
+  final pulumi.Input<String?>? delegatedAdminAccount;
   /// Flag to deregister AuditManager in the account upon destruction. Defaults to `false` (ie. AuditManager will remain active in the account, even if this resource is removed).
-  final pulumi.Input<bool>? deregisterOnDestroy;
+  final pulumi.Input<bool?>? deregisterOnDestroy;
   /// KMS key identifier.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Status of the account registration request.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AccountRegistrationState].
   /// [delegatedAdminAccount] Identifier for the delegated administrator account.

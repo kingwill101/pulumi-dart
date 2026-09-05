@@ -10,7 +10,7 @@ class GetResourceTagsArgs {
   /// ID of the resource with the tags to list. See details below.
   final pulumi.Input<String> resourceId;
   /// Map of key=value pairs for each tag set on the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetResourceTagsArgs].
   /// [resourceId] ID of the resource with the tags to list. See details below.

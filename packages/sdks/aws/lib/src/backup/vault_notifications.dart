@@ -13,17 +13,17 @@ import 'vault_notifications_state.dart';
 ///
 /// const testTopic = new aws.sns.Topic("test", {name: "backup-vault-events"});
 /// const test = aws.iam.getPolicyDocumentOutput({
-///     policyId: "__default_policy_ID",
 ///     statements: [{
-///         actions: ["SNS:Publish"],
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["backup.amazonaws.com"],
 ///         }],
+///         actions: ["SNS:Publish"],
+///         effect: "Allow",
 ///         resources: [testTopic.arn],
 ///         sid: "__default_statement_ID",
 ///     }],
+///     policyId: "__default_policy_ID",
 /// });
 /// const testTopicPolicy = new aws.sns.TopicPolicy("test", {
 ///     arn: testTopic.arn,
@@ -43,17 +43,17 @@ import 'vault_notifications_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test_topic = aws.sns.Topic("test", name="backup-vault-events")
-/// test = aws.iam.get_policy_document_output(policy_id="__default_policy_ID",
-///     statements=[{
-///         "actions": ["SNS:Publish"],
-///         "effect": "Allow",
+/// test = aws.iam.get_policy_document_output(statements=[{
 ///         "principals": [{
 ///             "type": "Service",
 ///             "identifiers": ["backup.amazonaws.com"],
 ///         }],
+///         "actions": ["SNS:Publish"],
+///         "effect": "Allow",
 ///         "resources": [test_topic.arn],
 ///         "sid": "__default_statement_ID",
-///     }])
+///     }],
+///     policy_id="__default_policy_ID")
 /// test_topic_policy = aws.sns.TopicPolicy("test",
 ///     arn=test_topic.arn,
 ///     policy=test.json)
@@ -80,16 +80,10 @@ import 'vault_notifications_state.dart';
 ///
 ///     var test = Aws.Iam.GetPolicyDocument.Invoke(new()
 ///     {
-///         PolicyId = "__default_policy_ID",
 ///         Statements = new[]
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "SNS:Publish",
-///                 },
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -101,6 +95,11 @@ import 'vault_notifications_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Actions = new[]
+///                 {
+///                     "SNS:Publish",
+///                 },
+///                 Effect = "Allow",
 ///                 Resources = new[]
 ///                 {
 ///                     testTopic.Arn,
@@ -108,6 +107,7 @@ import 'vault_notifications_state.dart';
 ///                 Sid = "__default_statement_ID",
 ///             },
 ///         },
+///         PolicyId = "__default_policy_ID",
 ///     });
 ///
 ///     var testTopicPolicy = new Aws.Sns.TopicPolicy("test", new()
@@ -148,13 +148,8 @@ import 'vault_notifications_state.dart';
 /// 			return err
 /// 		}
 /// 		test := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
-/// 			PolicyId: pulumi.String("__default_policy_ID"),
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("SNS:Publish"),
-/// 					},
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -163,12 +158,17 @@ import 'vault_notifications_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("SNS:Publish"),
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Resources: pulumi.StringArray{
 /// 						testTopic.Arn,
 /// 					},
 /// 					Sid: pulumi.String("__default_statement_ID"),
 /// 				},
 /// 			},
+/// 			PolicyId: pulumi.String("__default_policy_ID"),
 /// 		}, nil)
 /// 		_, err = sns.NewTopicPolicy(ctx, "test", &sns.TopicPolicyArgs{
 /// 			Arn:    testTopic.Arn,
@@ -202,17 +202,17 @@ import 'vault_notifications_state.dart';
 /// }
 ///
 /// data "aws_iam_getpolicydocument" "test" {
-///   policy_id = "__default_policy_ID"
 ///   statements {
-///     actions = ["SNS:Publish"]
-///     effect  = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["backup.amazonaws.com"]
 ///     }
+///     actions   = ["SNS:Publish"]
+///     effect    = "Allow"
 ///     resources = [aws_sns_topic.test.arn]
 ///     sid       = "__default_statement_ID"
 ///   }
+///   policy_id = "__default_policy_ID"
 /// }
 ///
 /// resource "aws_sns_topic" "test" {
@@ -262,17 +262,17 @@ import 'vault_notifications_state.dart';
 ///             .build());
 ///
 ///         final var test = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-///             .policyId("__default_policy_ID")
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("SNS:Publish")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("backup.amazonaws.com")
 ///                     .build())
+///                 .actions("SNS:Publish")
+///                 .effect("Allow")
 ///                 .resources(testTopic.arn())
 ///                 .sid("__default_statement_ID")
 ///                 .build())
+///             .policyId("__default_policy_ID")
 ///             .build());
 ///
 ///         var testTopicPolicy = new TopicPolicy("testTopicPolicy", TopicPolicyArgs.builder()
@@ -318,18 +318,18 @@ import 'vault_notifications_state.dart';
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
-///         policyId: __default_policy_ID
 ///         statements:
-///           - actions:
-///               - SNS:Publish
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - backup.amazonaws.com
+///             actions:
+///               - SNS:Publish
+///             effect: Allow
 ///             resources:
 ///               - ${testTopic.arn}
 ///             sid: __default_statement_ID
+///         policyId: __default_policy_ID
 /// ```
 ///
 ///
@@ -349,7 +349,7 @@ class VaultNotifications extends pulumi.CustomResource {
   late final pulumi.Output<String> backupVaultName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events
+  /// ARN that specifies the topic for a backup vault’s events
   late final pulumi.Output<String> snsTopicArn;
 
   /// Creates a new [VaultNotifications].
@@ -364,10 +364,10 @@ class VaultNotifications extends pulumi.CustomResource {
           'aws:backup/vaultNotifications:VaultNotifications',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
-    backupVaultEvents = registerOutput<List<String>>('backupVaultEvents');
+    backupVaultEvents = registerOutput<List<String>>('backupVaultEvents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backupVaultName = registerOutput<String>('backupVaultName');
     region = registerOutput<String>('region');
     snsTopicArn = registerOutput<String>('snsTopicArn');
@@ -378,11 +378,12 @@ class VaultNotifications extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VaultNotificationsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VaultNotifications._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -397,7 +398,23 @@ class VaultNotifications extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
-    backupVaultEvents = registerOutput<List<String>>('backupVaultEvents');
+    backupVaultEvents = registerOutput<List<String>>('backupVaultEvents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    backupVaultName = registerOutput<String>('backupVaultName');
+    region = registerOutput<String>('region');
+    snsTopicArn = registerOutput<String>('snsTopicArn');
+  }
+
+  /// Creates a typed reference to an existing [VaultNotifications] resource.
+  VaultNotifications.reference(String urn)
+    : super(
+        'aws:backup/vaultNotifications:VaultNotifications',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupVaultArn = registerOutput<String>('backupVaultArn');
+    backupVaultEvents = registerOutput<List<String>>('backupVaultEvents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backupVaultName = registerOutput<String>('backupVaultName');
     region = registerOutput<String>('region');
     snsTopicArn = registerOutput<String>('snsTopicArn');

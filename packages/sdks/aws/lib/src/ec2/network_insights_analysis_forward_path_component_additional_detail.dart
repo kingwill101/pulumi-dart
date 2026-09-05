@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_insights_analysis_forward_path_component_additional_detail_component.dart';
 
 class NetworkInsightsAnalysisForwardPathComponentAdditionalDetail {
-  final pulumi.Input<String>? additionalDetailType;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent>>? components;
+  final pulumi.Input<String?>? additionalDetailType;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent>?>? components;
 
   /// Creates a new [NetworkInsightsAnalysisForwardPathComponentAdditionalDetail].
   /// [additionalDetailType] Optional.

@@ -10,13 +10,13 @@ class GetVirtualServiceArgs {
   /// Name of the service mesh in which the virtual service exists.
   final pulumi.Input<String> meshName;
   /// AWS account ID of the service mesh's owner.
-  final pulumi.Input<String>? meshOwner;
+  final pulumi.Input<String?>? meshOwner;
   /// Name of the virtual service.
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVirtualServiceArgs].
   /// [meshName] Name of the service mesh in which the virtual service exists.

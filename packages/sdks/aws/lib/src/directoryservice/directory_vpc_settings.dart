@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryVpcSettings {
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs).
   final pulumi.Input<List<String>> subnetIds;
   /// The identifier of the VPC that the directory is in.

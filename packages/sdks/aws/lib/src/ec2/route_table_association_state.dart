@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RouteTableAssociation resources.
 class RouteTableAssociationState {
   /// The gateway ID to create an association. Conflicts with `subnetId`.
-  final pulumi.Input<String>? gatewayId;
+  final pulumi.Input<String?>? gatewayId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the routing table to associate with.
   ///
   /// &gt; **NOTE:** Please note that one of either `subnetId` or `gatewayId` is required.
-  final pulumi.Input<String>? routeTableId;
+  final pulumi.Input<String?>? routeTableId;
   /// The subnet ID to create an association. Conflicts with `gatewayId`.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [RouteTableAssociationState].
   /// [gatewayId] The gateway ID to create an association. Conflicts with `subnetId`.

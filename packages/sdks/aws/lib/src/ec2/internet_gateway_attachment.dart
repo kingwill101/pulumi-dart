@@ -184,7 +184,7 @@ class InternetGatewayAttachment extends pulumi.CustomResource {
           'aws:ec2/internetGatewayAttachment:InternetGatewayAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     internetGatewayId = registerOutput<String>('internetGatewayId');
     region = registerOutput<String>('region');
@@ -196,11 +196,12 @@ class InternetGatewayAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InternetGatewayAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InternetGatewayAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -214,6 +215,20 @@ class InternetGatewayAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    internetGatewayId = registerOutput<String>('internetGatewayId');
+    region = registerOutput<String>('region');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [InternetGatewayAttachment] resource.
+  InternetGatewayAttachment.reference(String urn)
+    : super(
+        'aws:ec2/internetGatewayAttachment:InternetGatewayAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     internetGatewayId = registerOutput<String>('internetGatewayId');
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');

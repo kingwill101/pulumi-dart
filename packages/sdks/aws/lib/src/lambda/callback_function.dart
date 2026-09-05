@@ -305,7 +305,7 @@ class CallbackFunction extends pulumi.CustomResource {
   late final pulumi.Output<String?> imageUri;
   /// ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`.
   late final pulumi.Output<String?> invokeArn;
-  /// ARN of the AWS Key Management Service key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
+  /// ARN of the KMS key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
   late final pulumi.Output<String?> kmsKeyArn;
   /// Date this resource was last modified.
   late final pulumi.Output<String?> lastModified;
@@ -363,7 +363,7 @@ class CallbackFunction extends pulumi.CustomResource {
   late final pulumi.Output<String?> sourceCodeHash;
   /// Size in bytes of the function .zip file.
   late final pulumi.Output<int?> sourceCodeSize;
-  /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `imageUri`.
+  /// ARN of the KMS key used to encrypt the function's `.zip` deployment package. Conflicts with `imageUri`.
   late final pulumi.Output<String?> sourceKmsKeyArn;
   /// Key-value map of tags for the Lambda function. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -394,9 +394,9 @@ class CallbackFunction extends pulumi.CustomResource {
           'aws:lambda/callbackFunction:CallbackFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    architectures = registerOutput<List<String>?>('architectures');
+    architectures = registerOutput<List<String>?>('architectures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String?>('arn');
     capacityProviderConfig = registerOutput<FunctionCapacityProviderConfig?>('capacityProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionCapacityProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     code = registerOutput<dynamic>('code');
@@ -414,7 +414,7 @@ class CallbackFunction extends pulumi.CustomResource {
     invokeArn = registerOutput<String?>('invokeArn');
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     lastModified = registerOutput<String?>('lastModified');
-    layers = registerOutput<List<String>?>('layers');
+    layers = registerOutput<List<String>?>('layers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loggingConfig = registerOutput<FunctionLoggingConfig?>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memorySize = registerOutput<int?>('memorySize');
     this.name = registerOutput<String?>('name');
@@ -425,7 +425,7 @@ class CallbackFunction extends pulumi.CustomResource {
     qualifiedInvokeArn = registerOutput<String?>('qualifiedInvokeArn');
     region = registerOutput<String?>('region');
     replaceSecurityGroupsOnDestroy = registerOutput<bool?>('replaceSecurityGroupsOnDestroy');
-    replacementSecurityGroupIds = registerOutput<List<String>?>('replacementSecurityGroupIds');
+    replacementSecurityGroupIds = registerOutput<List<String>?>('replacementSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     reservedConcurrentExecutions = registerOutput<int?>('reservedConcurrentExecutions');
     responseStreamingInvokeArn = registerOutput<String?>('responseStreamingInvokeArn');
     role = registerOutput<String?>('role');
@@ -441,8 +441,72 @@ class CallbackFunction extends pulumi.CustomResource {
     sourceCodeHash = registerOutput<String?>('sourceCodeHash');
     sourceCodeSize = registerOutput<int?>('sourceCodeSize');
     sourceKmsKeyArn = registerOutput<String?>('sourceKmsKeyArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>?>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>?>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenancyConfig = registerOutput<FunctionTenancyConfig?>('tenancyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTenancyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeout = registerOutput<int?>('timeout');
+    tracingConfig = registerOutput<FunctionTracingConfig?>('tracingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTracingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useResourceTimeoutForPropagation = registerOutput<bool?>('useResourceTimeoutForPropagation');
+    version = registerOutput<String?>('version');
+    vpcConfig = registerOutput<FunctionVpcConfig?>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CallbackFunction] resource.
+  CallbackFunction.reference(String urn)
+    : super(
+        'aws:lambda/callbackFunction:CallbackFunction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    architectures = registerOutput<List<String>?>('architectures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String?>('arn');
+    capacityProviderConfig = registerOutput<FunctionCapacityProviderConfig?>('capacityProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionCapacityProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    code = registerOutput<dynamic>('code');
+    codeSha256 = registerOutput<String?>('codeSha256');
+    codeSigningConfigArn = registerOutput<String?>('codeSigningConfigArn');
+    deadLetterConfig = registerOutput<FunctionDeadLetterConfig?>('deadLetterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionDeadLetterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    durableConfig = registerOutput<FunctionDurableConfig?>('durableConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionDurableConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environment = registerOutput<FunctionEnvironment?>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ephemeralStorage = registerOutput<FunctionEphemeralStorage?>('ephemeralStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEphemeralStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileSystemConfig = registerOutput<FunctionFileSystemConfig?>('fileSystemConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionFileSystemConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    handler = registerOutput<String?>('handler');
+    imageConfig = registerOutput<FunctionImageConfig?>('imageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionImageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageUri = registerOutput<String?>('imageUri');
+    invokeArn = registerOutput<String?>('invokeArn');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    lastModified = registerOutput<String?>('lastModified');
+    layers = registerOutput<List<String>?>('layers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loggingConfig = registerOutput<FunctionLoggingConfig?>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    memorySize = registerOutput<int?>('memorySize');
+    this.name = registerOutput<String?>('name');
+    packageType = registerOutput<String?>('packageType');
+    publish = registerOutput<bool?>('publish');
+    publishTo = registerOutput<String?>('publishTo');
+    qualifiedArn = registerOutput<String?>('qualifiedArn');
+    qualifiedInvokeArn = registerOutput<String?>('qualifiedInvokeArn');
+    region = registerOutput<String?>('region');
+    replaceSecurityGroupsOnDestroy = registerOutput<bool?>('replaceSecurityGroupsOnDestroy');
+    replacementSecurityGroupIds = registerOutput<List<String>?>('replacementSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    reservedConcurrentExecutions = registerOutput<int?>('reservedConcurrentExecutions');
+    responseStreamingInvokeArn = registerOutput<String?>('responseStreamingInvokeArn');
+    role = registerOutput<String?>('role');
+    roleInstance = registerOutput<String?>('roleInstance');
+    runtime = registerOutput<String?>('runtime');
+    s3Bucket = registerOutput<String?>('s3Bucket');
+    s3Key = registerOutput<String?>('s3Key');
+    s3ObjectVersion = registerOutput<String?>('s3ObjectVersion');
+    signingJobArn = registerOutput<String?>('signingJobArn');
+    signingProfileVersionArn = registerOutput<String?>('signingProfileVersionArn');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    snapStart = registerOutput<FunctionSnapStart?>('snapStart', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionSnapStart.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceCodeHash = registerOutput<String?>('sourceCodeHash');
+    sourceCodeSize = registerOutput<int?>('sourceCodeSize');
+    sourceKmsKeyArn = registerOutput<String?>('sourceKmsKeyArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>?>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenancyConfig = registerOutput<FunctionTenancyConfig?>('tenancyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTenancyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<int?>('timeout');
     tracingConfig = registerOutput<FunctionTracingConfig?>('tracingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionTracingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

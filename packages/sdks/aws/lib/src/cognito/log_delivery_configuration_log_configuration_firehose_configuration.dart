@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogDeliveryConfigurationLogConfigurationFirehoseConfiguration {
   /// The ARN of the Kinesis Data Firehose delivery stream to which the logs should be delivered.
-  final pulumi.Input<String>? streamArn;
+  final pulumi.Input<String?>? streamArn;
 
   /// Creates a new [LogDeliveryConfigurationLogConfigurationFirehoseConfiguration].
   /// [streamArn] The ARN of the Kinesis Data Firehose delivery stream to which the logs should be delivered.

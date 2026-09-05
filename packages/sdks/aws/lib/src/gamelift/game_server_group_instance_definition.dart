@@ -9,7 +9,7 @@ class GameServerGroupInstanceDefinition {
   /// to the total capacity of a game server group.
   /// Instance weights are used by GameLift FleetIQ to calculate the instance type's cost per unit hour and better identify
   /// the most cost-effective options.
-  final pulumi.Input<String>? weightedCapacity;
+  final pulumi.Input<String?>? weightedCapacity;
 
   /// Creates a new [GameServerGroupInstanceDefinition].
   /// [instanceType] An EC2 instance type.

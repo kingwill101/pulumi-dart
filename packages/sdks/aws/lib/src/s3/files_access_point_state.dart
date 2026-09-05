@@ -8,28 +8,28 @@ import 'files_access_point_timeouts.dart';
 /// Input properties used for looking up and filtering FilesAccessPoint resources.
 class FilesAccessPointState {
   /// ARN of the access point.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// File system ID. Changing this value forces replacement.
-  final pulumi.Input<String>? fileSystemId;
+  final pulumi.Input<String?>? fileSystemId;
   /// Access point name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// AWS account ID of the owner.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// POSIX user configuration. See `posixUser` below. Changing this value forces replacement.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<List<FilesAccessPointPosixUser>>? posixUsers;
+  final pulumi.Input<List<FilesAccessPointPosixUser>?>? posixUsers;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Root directory configuration. See `rootDirectory` below. Changing this value forces replacement.
-  final pulumi.Input<List<FilesAccessPointRootDirectory>>? rootDirectories;
+  final pulumi.Input<List<FilesAccessPointRootDirectory>?>? rootDirectories;
   /// Access point status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<FilesAccessPointTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<FilesAccessPointTimeouts?>? timeouts;
 
   /// Creates a new [FilesAccessPointState].
   /// [arn] ARN of the access point.

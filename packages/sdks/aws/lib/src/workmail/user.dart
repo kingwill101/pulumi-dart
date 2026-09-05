@@ -262,7 +262,8 @@ class User extends pulumi.CustomResource {
           'aws:workmail/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     city = registerOutput<String?>('city');
     company = registerOutput<String?>('company');
@@ -284,7 +285,7 @@ class User extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     office = registerOutput<String?>('office');
     organizationId = registerOutput<String>('organizationId');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
     street = registerOutput<String?>('street');
@@ -299,11 +300,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -337,9 +339,49 @@ class User extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     office = registerOutput<String?>('office');
     organizationId = registerOutput<String>('organizationId');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+    street = registerOutput<String?>('street');
+    telephone = registerOutput<String?>('telephone');
+    userId = registerOutput<String>('userId');
+    userRole = registerOutput<String>('userRole');
+    zipCode = registerOutput<String?>('zipCode');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'aws:workmail/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    city = registerOutput<String?>('city');
+    company = registerOutput<String?>('company');
+    country = registerOutput<String?>('country');
+    department = registerOutput<String?>('department');
+    disabledDate = registerOutput<String>('disabledDate');
+    displayName = registerOutput<String>('displayName');
+    email = registerOutput<String>('email');
+    enabledDate = registerOutput<String>('enabledDate');
+    firstName = registerOutput<String?>('firstName');
+    hiddenFromGlobalAddressList = registerOutput<bool>('hiddenFromGlobalAddressList');
+    identityProviderIdentityStoreId = registerOutput<String>('identityProviderIdentityStoreId');
+    identityProviderUserId = registerOutput<String?>('identityProviderUserId');
+    initials = registerOutput<String?>('initials');
+    jobTitle = registerOutput<String?>('jobTitle');
+    lastName = registerOutput<String?>('lastName');
+    mailboxDeprovisionedDate = registerOutput<String>('mailboxDeprovisionedDate');
+    mailboxProvisionedDate = registerOutput<String>('mailboxProvisionedDate');
+    this.name = registerOutput<String>('name');
+    office = registerOutput<String?>('office');
+    organizationId = registerOutput<String>('organizationId');
+    password = registerOutput<String?>('password', isSecret: true);
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
     street = registerOutput<String?>('street');
     telephone = registerOutput<String?>('telephone');
     userId = registerOutput<String>('userId');

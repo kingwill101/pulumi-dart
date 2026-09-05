@@ -530,11 +530,11 @@ import 'protection_group_state.dart';
 class ProtectionGroup extends pulumi.CustomResource {
   /// Defines how AWS Shield combines resource data for the group in order to detect, mitigate, and report events.
   late final pulumi.Output<String> aggregation;
-  /// The Amazon Resource Names (ARNs) of the resources to include in the protection group. You must set this when you set `pattern` to ARBITRARY and you must not set it for any other `pattern` setting.
+  /// ARNs of the resources to include in the protection group. You must set this when you set `pattern` to ARBITRARY and you must not set it for any other `pattern` setting.
   late final pulumi.Output<List<String>?> members;
   /// The criteria to use to choose the protected resources for inclusion in the group.
   late final pulumi.Output<String> pattern;
-  /// The ARN (Amazon Resource Name) of the protection group.
+  /// ARN of the protection group.
   late final pulumi.Output<String> protectionGroupArn;
   /// The name of the protection group.
   late final pulumi.Output<String> protectionGroupId;
@@ -557,16 +557,16 @@ class ProtectionGroup extends pulumi.CustomResource {
           'aws:shield/protectionGroup:ProtectionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     aggregation = registerOutput<String>('aggregation');
-    members = registerOutput<List<String>?>('members');
+    members = registerOutput<List<String>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     pattern = registerOutput<String>('pattern');
     protectionGroupArn = registerOutput<String>('protectionGroupArn');
     protectionGroupId = registerOutput<String>('protectionGroupId');
     resourceType = registerOutput<String?>('resourceType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ProtectionGroup] resource's state with the given [name] and [id].
@@ -574,11 +574,12 @@ class ProtectionGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProtectionGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProtectionGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -593,12 +594,31 @@ class ProtectionGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     aggregation = registerOutput<String>('aggregation');
-    members = registerOutput<List<String>?>('members');
+    members = registerOutput<List<String>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     pattern = registerOutput<String>('pattern');
     protectionGroupArn = registerOutput<String>('protectionGroupArn');
     protectionGroupId = registerOutput<String>('protectionGroupId');
     resourceType = registerOutput<String?>('resourceType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ProtectionGroup] resource.
+  ProtectionGroup.reference(String urn)
+    : super(
+        'aws:shield/protectionGroup:ProtectionGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregation = registerOutput<String>('aggregation');
+    members = registerOutput<List<String>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    pattern = registerOutput<String>('pattern');
+    protectionGroupArn = registerOutput<String>('protectionGroupArn');
+    protectionGroupId = registerOutput<String>('protectionGroupId');
+    resourceType = registerOutput<String?>('resourceType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

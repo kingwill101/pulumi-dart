@@ -214,7 +214,7 @@ class LogIndexPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logIndexPolicy:LogIndexPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     logGroupName = registerOutput<String>('logGroupName');
     policyDocument = registerOutput<String>('policyDocument');
@@ -226,11 +226,12 @@ class LogIndexPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogIndexPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogIndexPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -244,6 +245,20 @@ class LogIndexPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    logGroupName = registerOutput<String>('logGroupName');
+    policyDocument = registerOutput<String>('policyDocument');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LogIndexPolicy] resource.
+  LogIndexPolicy.reference(String urn)
+    : super(
+        'aws:cloudwatch/logIndexPolicy:LogIndexPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     logGroupName = registerOutput<String>('logGroupName');
     policyDocument = registerOutput<String>('policyDocument');
     region = registerOutput<String>('region');

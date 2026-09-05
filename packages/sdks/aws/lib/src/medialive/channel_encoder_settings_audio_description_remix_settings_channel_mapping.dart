@@ -25,7 +25,7 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping {
   factory ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping(
       inputChannelLevels: pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel>(map['inputChannelLevels']!, (value) => ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel.fromMap((value as Map).cast<String, dynamic>()))),
-      outputChannel: pulumi.Input.fromValue(map['outputChannel'] as int),
+      outputChannel: pulumi.Input.fromValue((map['outputChannel'] as num).toInt()),
     );
   }
 }

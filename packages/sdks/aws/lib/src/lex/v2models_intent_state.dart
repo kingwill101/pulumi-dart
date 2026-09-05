@@ -17,50 +17,50 @@ import 'v2models_intent_timeouts.dart';
 /// Input properties used for looking up and filtering V2modelsIntent resources.
 class V2modelsIntentState {
   /// Identifier of the bot associated with this intent.
-  final pulumi.Input<String>? botId;
+  final pulumi.Input<String?>? botId;
   /// Version of the bot associated with this intent.
-  final pulumi.Input<String>? botVersion;
+  final pulumi.Input<String?>? botVersion;
   /// Configuration block for the response that Amazon Lex sends to the user when the intent is closed. See `closingSetting`.
-  final pulumi.Input<V2modelsIntentClosingSetting>? closingSetting;
+  final pulumi.Input<V2modelsIntentClosingSetting?>? closingSetting;
   /// Configuration block for prompts that Amazon Lex sends to the user to confirm the completion of an intent. If the user answers "no," the settings contain a statement that is sent to the user to end the intent. If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default configurations for `Initial` and `Retry1` `promptAttemptsSpecification`s. This will cause Terraform to report differences. Use the `confirmationSetting` configuration above in the Basic Usage example to avoid differences resulting from AWS default configuration. See `confirmationSetting`.
-  final pulumi.Input<V2modelsIntentConfirmationSetting>? confirmationSetting;
+  final pulumi.Input<V2modelsIntentConfirmationSetting?>? confirmationSetting;
   /// Timestamp of the date and time that the intent was created.
-  final pulumi.Input<String>? creationDateTime;
+  final pulumi.Input<String?>? creationDateTime;
   /// Description of the intent. Use the description to help identify the intent in lists.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block for invoking the alias Lambda function for each user input. You can invoke this Lambda function to personalize user interaction. See `dialogCodeHook`.
-  final pulumi.Input<V2modelsIntentDialogCodeHook>? dialogCodeHook;
+  final pulumi.Input<V2modelsIntentDialogCodeHook?>? dialogCodeHook;
   /// Configuration block for invoking the alias Lambda function when the intent is ready for fulfillment. You can invoke this function to complete the bot's transaction with the user. See `fulfillmentCodeHook`.
-  final pulumi.Input<V2modelsIntentFulfillmentCodeHook>? fulfillmentCodeHook;
+  final pulumi.Input<V2modelsIntentFulfillmentCodeHook?>? fulfillmentCodeHook;
   /// Configuration block for the response that is sent to the user at the beginning of a conversation, before eliciting slot values. See `initialResponseSetting`.
-  final pulumi.Input<V2modelsIntentInitialResponseSetting>? initialResponseSetting;
+  final pulumi.Input<V2modelsIntentInitialResponseSetting?>? initialResponseSetting;
   /// Configuration blocks for contexts that must be active for this intent to be considered by Amazon Lex. When an intent has an input context list, Amazon Lex only considers using the intent in an interaction with the user when the specified contexts are included in the active context list for the session. If the contexts are not active, then Amazon Lex will not use the intent. A context can be automatically activated using the outputContexts property or it can be set at runtime. See `inputContext`.
-  final pulumi.Input<List<V2modelsIntentInputContext>>? inputContexts;
+  final pulumi.Input<List<V2modelsIntentInputContext>?>? inputContexts;
   /// Unique identifier for the intent.
-  final pulumi.Input<String>? intentId;
+  final pulumi.Input<String?>? intentId;
   /// Configuration block for information required to use the AMAZON.KendraSearchIntent intent to connect to an Amazon Kendra index. The AMAZON.KendraSearchIntent intent is called when Amazon Lex can't determine another intent to invoke. Cannot be used with `qnaIntentConfiguration`. See `kendraConfiguration`.
-  final pulumi.Input<V2modelsIntentKendraConfiguration>? kendraConfiguration;
+  final pulumi.Input<V2modelsIntentKendraConfiguration?>? kendraConfiguration;
   /// Timestamp of the last time that the intent was modified.
-  final pulumi.Input<String>? lastUpdatedDateTime;
+  final pulumi.Input<String?>? lastUpdatedDateTime;
   /// Identifier of the language and locale where this intent is used. All of the bots, slot types, and slots used by the intent must have the same locale.
-  final pulumi.Input<String>? localeId;
+  final pulumi.Input<String?>? localeId;
   /// Name of the intent. Intent names must be unique in the locale that contains the intent and cannot match the name of any built-in intent.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration blocks for contexts that the intent activates when it is fulfilled. You can use an output context to indicate the intents that Amazon Lex should consider for the next turn of the conversation with a customer. When you use the outputContextsList property, all of the contexts specified in the list are activated when the intent is fulfilled. You can set up to 10 output contexts. You can also set the number of conversation turns that the context should be active, or the length of time that the context should be active. See `outputContext`.
-  final pulumi.Input<List<V2modelsIntentOutputContext>>? outputContexts;
+  final pulumi.Input<List<V2modelsIntentOutputContext>?>? outputContexts;
   /// Identifier for the built-in intent to base this intent on.
-  final pulumi.Input<String>? parentIntentSignature;
+  final pulumi.Input<String?>? parentIntentSignature;
   /// Configuration block for QnA intent settings. This is used when `parentIntentSignature` is set to `AMAZON.QnAIntent`. Cannot be used with `kendraConfiguration`. See `qnaIntentConfiguration`.
-  final pulumi.Input<V2modelsIntentQnaIntentConfiguration>? qnaIntentConfiguration;
+  final pulumi.Input<V2modelsIntentQnaIntentConfiguration?>? qnaIntentConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for strings that a user might say to signal the intent. See `sampleUtterance`.
-  final pulumi.Input<List<V2modelsIntentSampleUtterance>>? sampleUtterances;
+  final pulumi.Input<List<V2modelsIntentSampleUtterance>?>? sampleUtterances;
   /// Configuration block for a new list of slots and their priorities that are contained by the intent. This is ignored on create and only valid for updates. See `slotPriority`.
-  final pulumi.Input<List<V2modelsIntentSlotPriority>>? slotPriorities;
-  final pulumi.Input<V2modelsIntentTimeouts>? timeouts;
+  final pulumi.Input<List<V2modelsIntentSlotPriority>?>? slotPriorities;
+  final pulumi.Input<V2modelsIntentTimeouts?>? timeouts;
 
   /// Creates a new [V2modelsIntentState].
   /// [botId] Identifier of the bot associated with this intent.

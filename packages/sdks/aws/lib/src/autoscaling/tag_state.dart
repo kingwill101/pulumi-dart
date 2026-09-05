@@ -6,11 +6,11 @@ import 'tag_tag.dart';
 /// Input properties used for looking up and filtering Tag resources.
 class TagState {
   /// Name of the Autoscaling Group to apply the tag to.
-  final pulumi.Input<String>? autoscalingGroupName;
+  final pulumi.Input<String?>? autoscalingGroupName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tag to create. The `tag` block is documented below.
-  final pulumi.Input<TagTag>? tag;
+  final pulumi.Input<TagTag?>? tag;
 
   /// Creates a new [TagState].
   /// [autoscalingGroupName] Name of the Autoscaling Group to apply the tag to.

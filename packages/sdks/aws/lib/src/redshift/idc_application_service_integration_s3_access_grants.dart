@@ -5,7 +5,7 @@ import 'idc_application_service_integration_s3_access_grants_read_write_access.d
 
 class IdcApplicationServiceIntegrationS3AccessGrants {
   /// S3 Access grants integration scope.
-  final pulumi.Input<IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess>? readWriteAccess;
+  final pulumi.Input<IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess?>? readWriteAccess;
 
   /// Creates a new [IdcApplicationServiceIntegrationS3AccessGrants].
   /// [readWriteAccess] S3 Access grants integration scope.

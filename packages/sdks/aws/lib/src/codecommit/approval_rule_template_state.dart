@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApprovalRuleTemplate resources.
 class ApprovalRuleTemplateState {
   /// The ID of the approval rule template
-  final pulumi.Input<String>? approvalRuleTemplateId;
+  final pulumi.Input<String?>? approvalRuleTemplateId;
   /// The content of the approval rule template. Maximum of 3000 characters.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The date the approval rule template was created, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  final pulumi.Input<String>? creationDate;
+  final pulumi.Input<String?>? creationDate;
   /// The description of the approval rule template. Maximum of 1000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The date the approval rule template was most recently changed, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  final pulumi.Input<String>? lastModifiedDate;
-  /// The Amazon Resource Name (ARN) of the user who made the most recent changes to the approval rule template.
-  final pulumi.Input<String>? lastModifiedUser;
+  final pulumi.Input<String?>? lastModifiedDate;
+  /// ARN of the user who made the most recent changes to the approval rule template.
+  final pulumi.Input<String?>? lastModifiedUser;
   /// The name for the approval rule template. Maximum of 100 characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The SHA-256 hash signature for the content of the approval rule template.
-  final pulumi.Input<String>? ruleContentSha256;
+  final pulumi.Input<String?>? ruleContentSha256;
 
   /// Creates a new [ApprovalRuleTemplateState].
   /// [approvalRuleTemplateId] The ID of the approval rule template
@@ -29,7 +29,7 @@ class ApprovalRuleTemplateState {
   /// [creationDate] The date the approval rule template was created, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   /// [description] The description of the approval rule template. Maximum of 1000 characters.
   /// [lastModifiedDate] The date the approval rule template was most recently changed, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  /// [lastModifiedUser] The Amazon Resource Name (ARN) of the user who made the most recent changes to the approval rule template.
+  /// [lastModifiedUser] ARN of the user who made the most recent changes to the approval rule template.
   /// [name] The name for the approval rule template. Maximum of 100 characters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleContentSha256] The SHA-256 hash signature for the content of the approval rule template.

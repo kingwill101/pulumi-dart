@@ -112,7 +112,7 @@ import 'revision_state.dart';
 /// $ pulumi import aws:dataexchange/revision:Revision example 4fa784c7-ccb4-4dbf-ba4f-02198320daa1:4fa784c7-ccb4-4dbf-ba4f-02198320daa1
 /// ```
 class Revision extends pulumi.CustomResource {
-  /// The Amazon Resource Name of this data set.
+  /// ARN of this data set.
   late final pulumi.Output<String> arn;
   /// An optional comment about the revision.
   late final pulumi.Output<String?> comment;
@@ -139,15 +139,15 @@ class Revision extends pulumi.CustomResource {
           'aws:dataexchange/revision:Revision',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
     dataSetId = registerOutput<String>('dataSetId');
     region = registerOutput<String>('region');
     revisionId = registerOutput<String>('revisionId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Revision] resource's state with the given [name] and [id].
@@ -155,11 +155,12 @@ class Revision extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RevisionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Revision._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -178,7 +179,25 @@ class Revision extends pulumi.CustomResource {
     dataSetId = registerOutput<String>('dataSetId');
     region = registerOutput<String>('region');
     revisionId = registerOutput<String>('revisionId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Revision] resource.
+  Revision.reference(String urn)
+    : super(
+        'aws:dataexchange/revision:Revision',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    comment = registerOutput<String?>('comment');
+    dataSetId = registerOutput<String>('dataSetId');
+    region = registerOutput<String>('region');
+    revisionId = registerOutput<String>('revisionId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

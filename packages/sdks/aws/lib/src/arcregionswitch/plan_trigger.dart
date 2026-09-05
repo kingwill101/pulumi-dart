@@ -7,9 +7,9 @@ class PlanTrigger {
   /// Action to trigger. Valid values: `activate`, `deactivate`.
   final pulumi.Input<String> action;
   /// Conditions that must be met. See `conditions` Block for details.
-  final pulumi.Input<List<PlanTriggerCondition>>? conditions;
+  final pulumi.Input<List<PlanTriggerCondition>?>? conditions;
   /// Description of the trigger.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Minimum delay in minutes between executions.
   final pulumi.Input<int> minDelayMinutesBetweenExecutions;
   /// Target region for the trigger.
@@ -44,7 +44,7 @@ class PlanTrigger {
       action: pulumi.Input.fromValue(map['action'] as String),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanTriggerCondition>(guardedValue, (value) => PlanTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minDelayMinutesBetweenExecutions: pulumi.Input.fromValue(map['minDelayMinutesBetweenExecutions'] as int),
+      minDelayMinutesBetweenExecutions: pulumi.Input.fromValue((map['minDelayMinutesBetweenExecutions'] as num).toInt()),
       targetRegion: pulumi.Input.fromValue(map['targetRegion'] as String),
     );
   }

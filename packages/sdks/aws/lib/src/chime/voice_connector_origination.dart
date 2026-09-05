@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'voice_connector_origination_args.dart';
+import 'voice_connector_origination_route.dart';
 import 'voice_connector_origination_state.dart';
 
 /// Enable origination settings to control inbound calling to your SIP infrastructure.
@@ -16,8 +17,6 @@ import 'voice_connector_origination_state.dart';
 ///     requireEncryption: true,
 /// });
 /// const defaultVoiceConnectorOrigination = new aws.chime.VoiceConnectorOrigination("default", {
-///     disabled: false,
-///     voiceConnectorId: _default.id,
 ///     routes: [
 ///         {
 ///             host: "127.0.0.1",
@@ -34,6 +33,8 @@ import 'voice_connector_origination_state.dart';
 ///             weight: 10,
 ///         },
 ///     ],
+///     disabled: false,
+///     voiceConnectorId: _default.id,
 /// });
 /// ```
 /// ```python
@@ -44,8 +45,6 @@ import 'voice_connector_origination_state.dart';
 ///     name="test",
 ///     require_encryption=True)
 /// default_voice_connector_origination = aws.chime.VoiceConnectorOrigination("default",
-///     disabled=False,
-///     voice_connector_id=default.id,
 ///     routes=[
 ///         {
 ///             "host": "127.0.0.1",
@@ -61,7 +60,9 @@ import 'voice_connector_origination_state.dart';
 ///             "priority": 2,
 ///             "weight": 10,
 ///         },
-///     ])
+///     ],
+///     disabled=False,
+///     voice_connector_id=default.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -79,8 +80,6 @@ import 'voice_connector_origination_state.dart';
 ///
 ///     var defaultVoiceConnectorOrigination = new Aws.Chime.VoiceConnectorOrigination("default", new()
 ///     {
-///         Disabled = false,
-///         VoiceConnectorId = @default.Id,
 ///         Routes = new[]
 ///         {
 ///             new Aws.Chime.Inputs.VoiceConnectorOriginationRouteArgs
@@ -100,6 +99,8 @@ import 'voice_connector_origination_state.dart';
 ///                 Weight = 10,
 ///             },
 ///         },
+///         Disabled = false,
+///         VoiceConnectorId = @default.Id,
 ///     });
 ///
 /// });
@@ -122,8 +123,6 @@ import 'voice_connector_origination_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = chime.NewVoiceConnectorOrigination(ctx, "default", &chime.VoiceConnectorOriginationArgs{
-/// 			Disabled:         pulumi.Bool(false),
-/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Routes: chime.VoiceConnectorOriginationRouteArray{
 /// 				&chime.VoiceConnectorOriginationRouteArgs{
 /// 					Host:     pulumi.String("127.0.0.1"),
@@ -140,6 +139,8 @@ import 'voice_connector_origination_state.dart';
 /// 					Weight:   pulumi.Int(10),
 /// 				},
 /// 			},
+/// 			Disabled:         pulumi.Bool(false),
+/// 			VoiceConnectorId: _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -162,8 +163,6 @@ import 'voice_connector_origination_state.dart';
 ///   require_encryption = true
 /// }
 /// resource "aws_chime_voiceconnectororigination" "default" {
-///   disabled           = false
-///   voice_connector_id = aws_chime_voiceconnector.default.id
 ///   routes {
 ///     host     = "127.0.0.1"
 ///     port     = 8081
@@ -178,6 +177,8 @@ import 'voice_connector_origination_state.dart';
 ///     priority = 2
 ///     weight   = 10
 ///   }
+///   disabled           = false
+///   voice_connector_id = aws_chime_voiceconnector.default.id
 /// }
 /// ```
 /// ```java
@@ -210,8 +211,6 @@ import 'voice_connector_origination_state.dart';
 ///             .build());
 ///
 ///         var defaultVoiceConnectorOrigination = new VoiceConnectorOrigination("defaultVoiceConnectorOrigination", VoiceConnectorOriginationArgs.builder()
-///             .disabled(false)
-///             .voiceConnectorId(default_.id())
 ///             .routes(
 ///                 VoiceConnectorOriginationRouteArgs.builder()
 ///                     .host("127.0.0.1")
@@ -227,6 +226,8 @@ import 'voice_connector_origination_state.dart';
 ///                     .priority(2)
 ///                     .weight(10)
 ///                     .build())
+///             .disabled(false)
+///             .voiceConnectorId(default_.id())
 ///             .build());
 ///
 ///     }
@@ -243,8 +244,6 @@ import 'voice_connector_origination_state.dart';
 ///     type: aws:chime:VoiceConnectorOrigination
 ///     name: default
 ///     properties:
-///       disabled: false
-///       voiceConnectorId: ${default.id}
 ///       routes:
 ///         - host: 127.0.0.1
 ///           port: 8081
@@ -256,6 +255,8 @@ import 'voice_connector_origination_state.dart';
 ///           protocol: TCP
 ///           priority: 2
 ///           weight: 10
+///       disabled: false
+///       voiceConnectorId: ${default.id}
 /// ```
 ///
 ///
@@ -272,7 +273,7 @@ class VoiceConnectorOrigination extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Set of call distribution properties defined for your SIP hosts. See route below for more details. Minimum of 1. Maximum of 20.
-  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+  late final pulumi.Output<List<VoiceConnectorOriginationRoute>> routes;
   /// The Amazon Chime Voice Connector ID.
   late final pulumi.Output<String> voiceConnectorId;
 
@@ -288,11 +289,11 @@ class VoiceConnectorOrigination extends pulumi.CustomResource {
           'aws:chime/voiceConnectorOrigination:VoiceConnectorOrigination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     disabled = registerOutput<bool?>('disabled');
     region = registerOutput<String>('region');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    routes = registerOutput<List<VoiceConnectorOriginationRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(guardedValue, (value) => VoiceConnectorOriginationRoute.fromMap((value as Map).cast<String, dynamic>())); });
     voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 
@@ -301,11 +302,12 @@ class VoiceConnectorOrigination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VoiceConnectorOriginationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VoiceConnectorOrigination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -321,7 +323,22 @@ class VoiceConnectorOrigination extends pulumi.CustomResource {
         ) {
     disabled = registerOutput<bool?>('disabled');
     region = registerOutput<String>('region');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    routes = registerOutput<List<VoiceConnectorOriginationRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(guardedValue, (value) => VoiceConnectorOriginationRoute.fromMap((value as Map).cast<String, dynamic>())); });
+    voiceConnectorId = registerOutput<String>('voiceConnectorId');
+  }
+
+  /// Creates a typed reference to an existing [VoiceConnectorOrigination] resource.
+  VoiceConnectorOrigination.reference(String urn)
+    : super(
+        'aws:chime/voiceConnectorOrigination:VoiceConnectorOrigination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    disabled = registerOutput<bool?>('disabled');
+    region = registerOutput<String>('region');
+    routes = registerOutput<List<VoiceConnectorOriginationRoute>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceConnectorOriginationRoute>(guardedValue, (value) => VoiceConnectorOriginationRoute.fromMap((value as Map).cast<String, dynamic>())); });
     voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 }

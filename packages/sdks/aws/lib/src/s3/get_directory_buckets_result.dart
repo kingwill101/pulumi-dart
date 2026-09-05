@@ -4,39 +4,39 @@
 /// Result data returned by getDirectoryBuckets.
 class GetDirectoryBucketsResult {
   /// Bucket ARNs.
-  final List<String> arns;
+  final List<String>? arns;
   /// Buckets names.
-  final List<String> buckets;
-  final String id;
-  final String region;
+  final List<String>? buckets;
+  final String? id;
+  final String? region;
 
   /// Creates a new [GetDirectoryBucketsResult].
   /// [arns] Bucket ARNs.
   /// [buckets] Buckets names.
-  /// [id] Required.
-  /// [region] Required.
+  /// [id] Optional.
+  /// [region] Optional.
   const GetDirectoryBucketsResult({
-    required this.arns,
-    required this.buckets,
-    required this.id,
-    required this.region,
+    this.arns,
+    this.buckets,
+    this.id,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arns': arns,
-      'buckets': buckets,
-      'id': id,
-      'region': region,
+      'arns': ?arns,
+      'buckets': ?buckets,
+      'id': ?id,
+      'region': ?region,
     };
   }
 
   factory GetDirectoryBucketsResult.fromMap(Map<String, dynamic> map) {
     return GetDirectoryBucketsResult(
-      arns: (map['arns'] as List).cast<String>(),
-      buckets: (map['buckets'] as List).cast<String>(),
-      id: map['id'] as String,
-      region: map['region'] as String,
+      arns: (() { final guardedValue = map['arns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      buckets: (() { final guardedValue = map['buckets']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

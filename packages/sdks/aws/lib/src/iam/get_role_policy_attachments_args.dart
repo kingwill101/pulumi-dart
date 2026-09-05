@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_get_role_policy_attachments_get_role_policy_attachments_args_doc}
 class GetRolePolicyAttachmentsArgs {
   /// Path prefix for filtering the results.
-  final pulumi.Input<String>? pathPrefix;
+  final pulumi.Input<String?>? pathPrefix;
   /// Name of the IAM role.
   ///
   /// The following arguments are optional:

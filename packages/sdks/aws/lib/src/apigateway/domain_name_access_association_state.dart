@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DomainNameAccessAssociation resources.
 class DomainNameAccessAssociationState {
   /// Identifier of the domain name access association source. For a `VPCE`, the value is the VPC endpoint ID.
-  final pulumi.Input<String>? accessAssociationSource;
+  final pulumi.Input<String?>? accessAssociationSource;
   /// Type of the domain name access association source. Valid values are `VPCE`.
-  final pulumi.Input<String>? accessAssociationSourceType;
+  final pulumi.Input<String?>? accessAssociationSourceType;
   /// ARN of the domain name access association.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// ARN of the domain name.
-  final pulumi.Input<String>? domainNameArn;
+  final pulumi.Input<String?>? domainNameArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [DomainNameAccessAssociationState].
   /// [accessAssociationSource] Identifier of the domain name access association source. For a `VPCE`, the value is the VPC endpoint ID.

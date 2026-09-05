@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_wafregional_web_acl_association_web_acl_association_args_doc}
 class WebAclAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
   final pulumi.Input<String> resourceArn;
   /// The ID of the WAF Regional WebACL to create an association.

@@ -5,24 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Constraint resources.
 class ConstraintState {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  final pulumi.Input<String>? acceptLanguage;
+  final pulumi.Input<String?>? acceptLanguage;
   /// Description of the constraint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Owner of the constraint.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Constraint parameters in JSON format. The syntax depends on the constraint type. See details below.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
   /// Portfolio identifier.
-  final pulumi.Input<String>? portfolioId;
+  final pulumi.Input<String?>? portfolioId;
   /// Product identifier.
-  final pulumi.Input<String>? productId;
+  final pulumi.Input<String?>? productId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<String?>? status;
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ConstraintState].
   /// [acceptLanguage] Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.

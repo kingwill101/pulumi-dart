@@ -7,18 +7,18 @@ import 'agentcore_registry_timeouts.dart';
 
 /// Input properties used for looking up and filtering AgentcoreRegistry resources.
 class AgentcoreRegistryState {
-  final pulumi.Input<List<AgentcoreRegistryApprovalConfiguration>>? approvalConfigurations;
-  final pulumi.Input<AgentcoreRegistryAuthorizerConfiguration>? authorizerConfiguration;
-  final pulumi.Input<String>? authorizerType;
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<List<AgentcoreRegistryApprovalConfiguration>?>? approvalConfigurations;
+  final pulumi.Input<AgentcoreRegistryAuthorizerConfiguration?>? authorizerConfiguration;
+  final pulumi.Input<String?>? authorizerType;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the registry.
-  final pulumi.Input<String>? registryArn;
+  final pulumi.Input<String?>? registryArn;
   /// Unique identifier of the registry.
-  final pulumi.Input<String>? registryId;
-  final pulumi.Input<AgentcoreRegistryTimeouts>? timeouts;
+  final pulumi.Input<String?>? registryId;
+  final pulumi.Input<AgentcoreRegistryTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreRegistryState].
   /// [approvalConfigurations] Optional.

@@ -7,52 +7,52 @@ import 'get_bucket_notification_topic.dart';
 
 /// Result data returned by getBucketNotification.
 class GetBucketNotificationResult {
-  final String bucket;
+  final String? bucket;
   /// Whether Amazon EventBridge notifications are enabled on this bucket.
-  final bool eventbridge;
+  final bool? eventbridge;
   /// List of Lambda function notification configurations. See `lambdaFunction` below.
-  final List<GetBucketNotificationLambdaFunction> lambdaFunctions;
+  final List<GetBucketNotificationLambdaFunction>? lambdaFunctions;
   /// List of SQS queue notification configurations. See `queue` below.
-  final List<GetBucketNotificationQueue> queues;
-  final String region;
+  final List<GetBucketNotificationQueue>? queues;
+  final String? region;
   /// List of SNS topic notification configurations. See `topic` below.
-  final List<GetBucketNotificationTopic> topics;
+  final List<GetBucketNotificationTopic>? topics;
 
   /// Creates a new [GetBucketNotificationResult].
-  /// [bucket] Required.
+  /// [bucket] Optional.
   /// [eventbridge] Whether Amazon EventBridge notifications are enabled on this bucket.
   /// [lambdaFunctions] List of Lambda function notification configurations. See `lambdaFunction` below.
   /// [queues] List of SQS queue notification configurations. See `queue` below.
-  /// [region] Required.
+  /// [region] Optional.
   /// [topics] List of SNS topic notification configurations. See `topic` below.
   const GetBucketNotificationResult({
-    required this.bucket,
-    required this.eventbridge,
-    required this.lambdaFunctions,
-    required this.queues,
-    required this.region,
-    required this.topics,
+    this.bucket,
+    this.eventbridge,
+    this.lambdaFunctions,
+    this.queues,
+    this.region,
+    this.topics,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bucket': bucket,
-      'eventbridge': eventbridge,
-      'lambdaFunctions': pulumi.Input.encodeList<GetBucketNotificationLambdaFunction, Map<String, dynamic>>(lambdaFunctions, (value) => value.toMap()),
-      'queues': pulumi.Input.encodeList<GetBucketNotificationQueue, Map<String, dynamic>>(queues, (value) => value.toMap()),
-      'region': region,
-      'topics': pulumi.Input.encodeList<GetBucketNotificationTopic, Map<String, dynamic>>(topics, (value) => value.toMap()),
+      'bucket': ?bucket,
+      'eventbridge': ?eventbridge,
+      'lambdaFunctions': ?(() { final guardedValue = lambdaFunctions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetBucketNotificationLambdaFunction, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'queues': ?(() { final guardedValue = queues; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetBucketNotificationQueue, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
+      'topics': ?(() { final guardedValue = topics; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetBucketNotificationTopic, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetBucketNotificationResult.fromMap(Map<String, dynamic> map) {
     return GetBucketNotificationResult(
-      bucket: map['bucket'] as String,
-      eventbridge: map['eventbridge'] as bool,
-      lambdaFunctions: pulumi.Input.decodeList<GetBucketNotificationLambdaFunction>(map['lambdaFunctions']!, (value) => GetBucketNotificationLambdaFunction.fromMap((value as Map).cast<String, dynamic>())),
-      queues: pulumi.Input.decodeList<GetBucketNotificationQueue>(map['queues']!, (value) => GetBucketNotificationQueue.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
-      topics: pulumi.Input.decodeList<GetBucketNotificationTopic>(map['topics']!, (value) => GetBucketNotificationTopic.fromMap((value as Map).cast<String, dynamic>())),
+      bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eventbridge: (() { final guardedValue = map['eventbridge']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      lambdaFunctions: (() { final guardedValue = map['lambdaFunctions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBucketNotificationLambdaFunction>(guardedValue, (value) => GetBucketNotificationLambdaFunction.fromMap((value as Map).cast<String, dynamic>())); })(),
+      queues: (() { final guardedValue = map['queues']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBucketNotificationQueue>(guardedValue, (value) => GetBucketNotificationQueue.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      topics: (() { final guardedValue = map['topics']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBucketNotificationTopic>(guardedValue, (value) => GetBucketNotificationTopic.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -12,12 +12,12 @@ import 'signing_profile_permission_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const prodSp = new aws.signer.SigningProfile("prod_sp", {
-///     platformId: "AWSLambda-SHA384-ECDSA",
-///     namePrefix: "prod_sp_",
 ///     signatureValidityPeriod: {
 ///         value: 5,
 ///         type: "YEARS",
 ///     },
+///     platformId: "AWSLambda-SHA384-ECDSA",
+///     namePrefix: "prod_sp_",
 ///     tags: {
 ///         tag1: "value1",
 ///         tag2: "value2",
@@ -47,12 +47,12 @@ import 'signing_profile_permission_state.dart';
 /// import pulumi_aws as aws
 ///
 /// prod_sp = aws.signer.SigningProfile("prod_sp",
-///     platform_id="AWSLambda-SHA384-ECDSA",
-///     name_prefix="prod_sp_",
 ///     signature_validity_period={
 ///         "value": 5,
 ///         "type": "YEARS",
 ///     },
+///     platform_id="AWSLambda-SHA384-ECDSA",
+///     name_prefix="prod_sp_",
 ///     tags={
 ///         "tag1": "value1",
 ///         "tag2": "value2",
@@ -83,13 +83,13 @@ import 'signing_profile_permission_state.dart';
 /// {
 ///     var prodSp = new Aws.Signer.SigningProfile("prod_sp", new()
 ///     {
-///         PlatformId = "AWSLambda-SHA384-ECDSA",
-///         NamePrefix = "prod_sp_",
 ///         SignatureValidityPeriod = new Aws.Signer.Inputs.SigningProfileSignatureValidityPeriodArgs
 ///         {
 ///             Value = 5,
 ///             Type = "YEARS",
 ///         },
+///         PlatformId = "AWSLambda-SHA384-ECDSA",
+///         NamePrefix = "prod_sp_",
 ///         Tags =
 ///         {
 ///             { "tag1", "value1" },
@@ -134,12 +134,12 @@ import 'signing_profile_permission_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		prodSp, err := signer.NewSigningProfile(ctx, "prod_sp", &signer.SigningProfileArgs{
-/// 			PlatformId: pulumi.String("AWSLambda-SHA384-ECDSA"),
-/// 			NamePrefix: pulumi.String("prod_sp_"),
 /// 			SignatureValidityPeriod: &signer.SigningProfileSignatureValidityPeriodArgs{
 /// 				Value: pulumi.Int(5),
 /// 				Type:  pulumi.String("YEARS"),
 /// 			},
+/// 			PlatformId: pulumi.String("AWSLambda-SHA384-ECDSA"),
+/// 			NamePrefix: pulumi.String("prod_sp_"),
 /// 			Tags: pulumi.StringMap{
 /// 				"tag1": pulumi.String("value1"),
 /// 				"tag2": pulumi.String("value2"),
@@ -189,12 +189,12 @@ import 'signing_profile_permission_state.dart';
 /// }
 ///
 /// resource "aws_signer_signingprofile" "prod_sp" {
-///   platform_id = "AWSLambda-SHA384-ECDSA"
-///   name_prefix = "prod_sp_"
 ///   signature_validity_period = {
 ///     value = 5
 ///     type  = "YEARS"
 ///   }
+///   platform_id = "AWSLambda-SHA384-ECDSA"
+///   name_prefix = "prod_sp_"
 ///   tags = {
 ///     "tag1" = "value1"
 ///     "tag2" = "value2"
@@ -244,12 +244,12 @@ import 'signing_profile_permission_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var prodSp = new SigningProfile("prodSp", SigningProfileArgs.builder()
-///             .platformId("AWSLambda-SHA384-ECDSA")
-///             .namePrefix("prod_sp_")
 ///             .signatureValidityPeriod(SigningProfileSignatureValidityPeriodArgs.builder()
 ///                 .value(5)
 ///                 .type("YEARS")
 ///                 .build())
+///             .platformId("AWSLambda-SHA384-ECDSA")
+///             .namePrefix("prod_sp_")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("tag1", "value1"),
 ///                 Map.entry("tag2", "value2")
@@ -286,11 +286,11 @@ import 'signing_profile_permission_state.dart';
 ///     type: aws:signer:SigningProfile
 ///     name: prod_sp
 ///     properties:
-///       platformId: AWSLambda-SHA384-ECDSA
-///       namePrefix: prod_sp_
 ///       signatureValidityPeriod:
 ///         value: 5
 ///         type: YEARS
+///       platformId: AWSLambda-SHA384-ECDSA
+///       namePrefix: prod_sp_
 ///       tags:
 ///         tag1: value1
 ///         tag2: value2
@@ -356,7 +356,7 @@ class SigningProfilePermission extends pulumi.CustomResource {
           'aws:signer/signingProfilePermission:SigningProfilePermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     principal = registerOutput<String>('principal');
@@ -372,11 +372,12 @@ class SigningProfilePermission extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SigningProfilePermissionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SigningProfilePermission._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -390,6 +391,24 @@ class SigningProfilePermission extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String>('action');
+    principal = registerOutput<String>('principal');
+    profileName = registerOutput<String>('profileName');
+    profileVersion = registerOutput<String>('profileVersion');
+    region = registerOutput<String>('region');
+    statementId = registerOutput<String>('statementId');
+    statementIdPrefix = registerOutput<String>('statementIdPrefix');
+  }
+
+  /// Creates a typed reference to an existing [SigningProfilePermission] resource.
+  SigningProfilePermission.reference(String urn)
+    : super(
+        'aws:signer/signingProfilePermission:SigningProfilePermission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String>('action');
     principal = registerOutput<String>('principal');
     profileName = registerOutput<String>('profileName');

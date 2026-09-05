@@ -6,13 +6,13 @@ import 'flow_source_flow_config_source_connector_properties.dart';
 
 class FlowSourceFlowConfig {
   /// API version that the source connector uses.
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Name of the connector profile. Must be unique for each connector profile in the AWS account.
-  final pulumi.Input<String>? connectorProfileName;
+  final pulumi.Input<String?>? connectorProfileName;
   /// Type of connector, such as Salesforce, Amplitude, and so on. Valid values are `Salesforce`, `Singular`, `Slack`, `Redshift`, `S3`, `Marketo`, `Googleanalytics`, `Zendesk`, `Servicenow`, `Datadog`, `Trendmicro`, `Snowflake`, `Dynatrace`, `Infornexus`, `Amplitude`, `Veeva`, `EventBridge`, `LookoutMetrics`, `Upsolver`, `Honeycode`, `CustomerProfiles`, `SAPOData`, and `CustomConnector`.
   final pulumi.Input<String> connectorType;
   /// Configuration for a scheduled incremental data pull. When a valid configuration is provided, the specified fields are used when querying for the incremental data pull. See the `source_flow_config.incremental_pull_config` Block for details.
-  final pulumi.Input<FlowSourceFlowConfigIncrementalPullConfig>? incrementalPullConfig;
+  final pulumi.Input<FlowSourceFlowConfigIncrementalPullConfig?>? incrementalPullConfig;
   /// Information required to query a particular source connector. See the `source_flow_config.source_connector_properties` Block for details.
   final pulumi.Input<FlowSourceFlowConfigSourceConnectorProperties> sourceConnectorProperties;
 

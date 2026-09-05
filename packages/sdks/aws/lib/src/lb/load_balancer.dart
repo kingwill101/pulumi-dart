@@ -6,6 +6,7 @@ import 'load_balancer_health_check_logs.dart';
 import 'load_balancer_ipam_pools.dart';
 import 'load_balancer_minimum_load_balancer_capacity.dart';
 import 'load_balancer_state.dart';
+import 'load_balancer_subnet_mapping.dart';
 
 /// Provides a Load Balancer resource.
 ///
@@ -21,17 +22,17 @@ import 'load_balancer_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.lb.LoadBalancer("test", {
+///     accessLogs: {
+///         bucket: lbLogs.id,
+///         prefix: "test-lb",
+///         enabled: true,
+///     },
 ///     name: "test-lb-tf",
 ///     internal: false,
 ///     loadBalancerType: "application",
 ///     securityGroups: [lbSg.id],
 ///     subnets: .map(subnet => (subnet.id)),
 ///     enableDeletionProtection: true,
-///     accessLogs: {
-///         bucket: lbLogs.id,
-///         prefix: "test-lb",
-///         enabled: true,
-///     },
 ///     tags: {
 ///         Environment: "production",
 ///     },
@@ -42,17 +43,17 @@ import 'load_balancer_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.lb.LoadBalancer("test",
+///     access_logs={
+///         "bucket": lb_logs["id"],
+///         "prefix": "test-lb",
+///         "enabled": True,
+///     },
 ///     name="test-lb-tf",
 ///     internal=False,
 ///     load_balancer_type="application",
 ///     security_groups=[lb_sg["id"]],
 ///     subnets=[subnet["id"] for subnet in public],
 ///     enable_deletion_protection=True,
-///     access_logs={
-///         "bucket": lb_logs["id"],
-///         "prefix": "test-lb",
-///         "enabled": True,
-///     },
 ///     tags={
 ///         "Environment": "production",
 ///     })
@@ -67,6 +68,12 @@ import 'load_balancer_state.dart';
 /// {
 ///     var test = new Aws.LB.LoadBalancer("test", new()
 ///     {
+///         AccessLogs = new Aws.LB.Inputs.LoadBalancerAccessLogsArgs
+///         {
+///             Bucket = lbLogs.Id,
+///             Prefix = "test-lb",
+///             Enabled = true,
+///         },
 ///         Name = "test-lb-tf",
 ///         Internal = false,
 ///         LoadBalancerType = "application",
@@ -79,12 +86,6 @@ import 'load_balancer_state.dart';
 ///             return subnet.Id;
 ///         }).ToList(),
 ///         EnableDeletionProtection = true,
-///         AccessLogs = new Aws.LB.Inputs.LoadBalancerAccessLogsArgs
-///         {
-///             Bucket = lbLogs.Id,
-///             Prefix = "test-lb",
-///             Enabled = true,
-///         },
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -103,17 +104,17 @@ import 'load_balancer_state.dart';
 /// }
 ///
 /// resource "aws_lb_loadbalancer" "test" {
+///   access_logs = {
+///     bucket  = lbLogs.id
+///     prefix  = "test-lb"
+///     enabled = true
+///   }
 ///   name                       = "test-lb-tf"
 ///   internal                   = false
 ///   load_balancer_type         = "application"
 ///   security_groups            = [lbSg.id]
 ///   subnets                    = [for subnet in public : subnet.id]
 ///   enable_deletion_protection = true
-///   access_logs = {
-///     bucket  = lbLogs.id
-///     prefix  = "test-lb"
-///     enabled = true
-///   }
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -209,18 +210,18 @@ import 'load_balancer_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lb.LoadBalancer("example", {
-///     name: "example",
-///     loadBalancerType: "network",
 ///     subnetMappings: [
 ///         {
-///             subnetId: example1AwsSubnet.id,
-///             allocationId: example1.id,
+///             subnetId: example1.id,
+///             allocationId: example1AwsEip.id,
 ///         },
 ///         {
-///             subnetId: example2AwsSubnet.id,
-///             allocationId: example2.id,
+///             subnetId: example2.id,
+///             allocationId: example2AwsEip.id,
 ///         },
 ///     ],
+///     name: "example",
+///     loadBalancerType: "network",
 /// });
 /// ```
 /// ```python
@@ -228,18 +229,18 @@ import 'load_balancer_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lb.LoadBalancer("example",
-///     name="example",
-///     load_balancer_type="network",
 ///     subnet_mappings=[
 ///         {
-///             "subnet_id": example1_aws_subnet["id"],
-///             "allocation_id": example1["id"],
+///             "subnet_id": example1["id"],
+///             "allocation_id": example1_aws_eip["id"],
 ///         },
 ///         {
-///             "subnet_id": example2_aws_subnet["id"],
-///             "allocation_id": example2["id"],
+///             "subnet_id": example2["id"],
+///             "allocation_id": example2_aws_eip["id"],
 ///         },
-///     ])
+///     ],
+///     name="example",
+///     load_balancer_type="network")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -251,21 +252,21 @@ import 'load_balancer_state.dart';
 /// {
 ///     var example = new Aws.LB.LoadBalancer("example", new()
 ///     {
-///         Name = "example",
-///         LoadBalancerType = "network",
 ///         SubnetMappings = new[]
 ///         {
 ///             new Aws.LB.Inputs.LoadBalancerSubnetMappingArgs
 ///             {
-///                 SubnetId = example1AwsSubnet.Id,
-///                 AllocationId = example1.Id,
+///                 SubnetId = example1.Id,
+///                 AllocationId = example1AwsEip.Id,
 ///             },
 ///             new Aws.LB.Inputs.LoadBalancerSubnetMappingArgs
 ///             {
-///                 SubnetId = example2AwsSubnet.Id,
-///                 AllocationId = example2.Id,
+///                 SubnetId = example2.Id,
+///                 AllocationId = example2AwsEip.Id,
 ///             },
 ///         },
+///         Name = "example",
+///         LoadBalancerType = "network",
 ///     });
 ///
 /// });
@@ -281,18 +282,18 @@ import 'load_balancer_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lb.NewLoadBalancer(ctx, "example", &lb.LoadBalancerArgs{
-/// 			Name:             pulumi.String("example"),
-/// 			LoadBalancerType: pulumi.String("network"),
 /// 			SubnetMappings: lb.LoadBalancerSubnetMappingArray{
 /// 				&lb.LoadBalancerSubnetMappingArgs{
-/// 					SubnetId:     pulumi.Any(example1AwsSubnet.Id),
-/// 					AllocationId: pulumi.Any(example1.Id),
+/// 					SubnetId:     pulumi.Any(example1.Id),
+/// 					AllocationId: pulumi.Any(example1AwsEip.Id),
 /// 				},
 /// 				&lb.LoadBalancerSubnetMappingArgs{
-/// 					SubnetId:     pulumi.Any(example2AwsSubnet.Id),
-/// 					AllocationId: pulumi.Any(example2.Id),
+/// 					SubnetId:     pulumi.Any(example2.Id),
+/// 					AllocationId: pulumi.Any(example2AwsEip.Id),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example"),
+/// 			LoadBalancerType: pulumi.String("network"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -311,16 +312,16 @@ import 'load_balancer_state.dart';
 /// }
 ///
 /// resource "aws_lb_loadbalancer" "example" {
+///   subnet_mappings {
+///     subnet_id     = example1.id
+///     allocation_id = example1AwsEip.id
+///   }
+///   subnet_mappings {
+///     subnet_id     = example2.id
+///     allocation_id = example2AwsEip.id
+///   }
 ///   name               = "example"
 ///   load_balancer_type = "network"
-///   subnet_mappings {
-///     subnet_id     = example1AwsSubnet.id
-///     allocation_id = example1.id
-///   }
-///   subnet_mappings {
-///     subnet_id     = example2AwsSubnet.id
-///     allocation_id = example2.id
-///   }
 /// }
 /// ```
 /// ```java
@@ -346,17 +347,17 @@ import 'load_balancer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LoadBalancer("example", LoadBalancerArgs.builder()
-///             .name("example")
-///             .loadBalancerType("network")
 ///             .subnetMappings(
 ///                 LoadBalancerSubnetMappingArgs.builder()
-///                     .subnetId(example1AwsSubnet.id())
-///                     .allocationId(example1.id())
+///                     .subnetId(example1.id())
+///                     .allocationId(example1AwsEip.id())
 ///                     .build(),
 ///                 LoadBalancerSubnetMappingArgs.builder()
-///                     .subnetId(example2AwsSubnet.id())
-///                     .allocationId(example2.id())
+///                     .subnetId(example2.id())
+///                     .allocationId(example2AwsEip.id())
 ///                     .build())
+///             .name("example")
+///             .loadBalancerType("network")
 ///             .build());
 ///
 ///     }
@@ -367,13 +368,13 @@ import 'load_balancer_state.dart';
 ///   example:
 ///     type: aws:lb:LoadBalancer
 ///     properties:
+///       subnetMappings:
+///         - subnetId: ${example1.id}
+///           allocationId: ${example1AwsEip.id}
+///         - subnetId: ${example2.id}
+///           allocationId: ${example2AwsEip.id}
 ///       name: example
 ///       loadBalancerType: network
-///       subnetMappings:
-///         - subnetId: ${example1AwsSubnet.id}
-///           allocationId: ${example1.id}
-///         - subnetId: ${example2AwsSubnet.id}
-///           allocationId: ${example2.id}
 /// ```
 ///
 ///
@@ -385,8 +386,6 @@ import 'load_balancer_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.lb.LoadBalancer("example", {
-///     name: "example",
-///     loadBalancerType: "network",
 ///     subnetMappings: [
 ///         {
 ///             subnetId: example1.id,
@@ -397,6 +396,8 @@ import 'load_balancer_state.dart';
 ///             privateIpv4Address: "10.0.2.15",
 ///         },
 ///     ],
+///     name: "example",
+///     loadBalancerType: "network",
 /// });
 /// ```
 /// ```python
@@ -404,8 +405,6 @@ import 'load_balancer_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.lb.LoadBalancer("example",
-///     name="example",
-///     load_balancer_type="network",
 ///     subnet_mappings=[
 ///         {
 ///             "subnet_id": example1["id"],
@@ -415,7 +414,9 @@ import 'load_balancer_state.dart';
 ///             "subnet_id": example2["id"],
 ///             "private_ipv4_address": "10.0.2.15",
 ///         },
-///     ])
+///     ],
+///     name="example",
+///     load_balancer_type="network")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -427,8 +428,6 @@ import 'load_balancer_state.dart';
 /// {
 ///     var example = new Aws.LB.LoadBalancer("example", new()
 ///     {
-///         Name = "example",
-///         LoadBalancerType = "network",
 ///         SubnetMappings = new[]
 ///         {
 ///             new Aws.LB.Inputs.LoadBalancerSubnetMappingArgs
@@ -442,6 +441,8 @@ import 'load_balancer_state.dart';
 ///                 PrivateIpv4Address = "10.0.2.15",
 ///             },
 ///         },
+///         Name = "example",
+///         LoadBalancerType = "network",
 ///     });
 ///
 /// });
@@ -457,8 +458,6 @@ import 'load_balancer_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := lb.NewLoadBalancer(ctx, "example", &lb.LoadBalancerArgs{
-/// 			Name:             pulumi.String("example"),
-/// 			LoadBalancerType: pulumi.String("network"),
 /// 			SubnetMappings: lb.LoadBalancerSubnetMappingArray{
 /// 				&lb.LoadBalancerSubnetMappingArgs{
 /// 					SubnetId:           pulumi.Any(example1.Id),
@@ -469,6 +468,8 @@ import 'load_balancer_state.dart';
 /// 					PrivateIpv4Address: pulumi.String("10.0.2.15"),
 /// 				},
 /// 			},
+/// 			Name:             pulumi.String("example"),
+/// 			LoadBalancerType: pulumi.String("network"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -487,8 +488,6 @@ import 'load_balancer_state.dart';
 /// }
 ///
 /// resource "aws_lb_loadbalancer" "example" {
-///   name               = "example"
-///   load_balancer_type = "network"
 ///   subnet_mappings {
 ///     subnet_id            = example1.id
 ///     private_ipv4_address = "10.0.1.15"
@@ -497,6 +496,8 @@ import 'load_balancer_state.dart';
 ///     subnet_id            = example2.id
 ///     private_ipv4_address = "10.0.2.15"
 ///   }
+///   name               = "example"
+///   load_balancer_type = "network"
 /// }
 /// ```
 /// ```java
@@ -522,8 +523,6 @@ import 'load_balancer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LoadBalancer("example", LoadBalancerArgs.builder()
-///             .name("example")
-///             .loadBalancerType("network")
 ///             .subnetMappings(
 ///                 LoadBalancerSubnetMappingArgs.builder()
 ///                     .subnetId(example1.id())
@@ -533,6 +532,8 @@ import 'load_balancer_state.dart';
 ///                     .subnetId(example2.id())
 ///                     .privateIpv4Address("10.0.2.15")
 ///                     .build())
+///             .name("example")
+///             .loadBalancerType("network")
 ///             .build());
 ///
 ///     }
@@ -543,13 +544,13 @@ import 'load_balancer_state.dart';
 ///   example:
 ///     type: aws:lb:LoadBalancer
 ///     properties:
-///       name: example
-///       loadBalancerType: network
 ///       subnetMappings:
 ///         - subnetId: ${example1.id}
 ///           privateIpv4Address: 10.0.1.15
 ///         - subnetId: ${example2.id}
 ///           privateIpv4Address: 10.0.2.15
+///       name: example
+///       loadBalancerType: network
 /// ```
 ///
 ///
@@ -559,7 +560,7 @@ import 'load_balancer_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the load balancer.
+/// - `arn` (String) ARN of the load balancer.
 ///
 ///
 /// Using `pulumi import`, import LBs using their ARN. For example:
@@ -634,7 +635,7 @@ class LoadBalancer extends pulumi.CustomResource {
   /// List of security group IDs to assign to the LB. Only valid for Load Balancers of type `application` or `network`. For load balancers of type `network` security groups cannot be added if none are currently present, and cannot all be removed once added. If either of these conditions are met, this will force a recreation of the resource.
   late final pulumi.Output<List<String>> securityGroups;
   /// Subnet mapping block. See below. For Load Balancers of type `network` subnet mappings can only be added.
-  late final pulumi.Output<List<Map<String, dynamic>>> subnetMappings;
+  late final pulumi.Output<List<LoadBalancerSubnetMapping>> subnetMappings;
   /// List of subnet IDs to attach to the LB. For Load Balancers of type `network` subnets can only be added (see [Availability Zones](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#availability-zones)), deleting a subnet for load balancers of type `network` will force a recreation of the resource.
   late final pulumi.Output<List<String>> subnets;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -663,7 +664,7 @@ class LoadBalancer extends pulumi.CustomResource {
           'aws:lb/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
@@ -696,11 +697,11 @@ class LoadBalancer extends pulumi.CustomResource {
     preserveHostHeader = registerOutput<bool?>('preserveHostHeader');
     region = registerOutput<String>('region');
     secondaryIpsAutoAssignedPerSubnet = registerOutput<int>('secondaryIpsAutoAssignedPerSubnet');
-    securityGroups = registerOutput<List<String>>('securityGroups');
-    subnetMappings = registerOutput<List<Map<String, dynamic>>>('subnetMappings');
-    subnets = registerOutput<List<String>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetMappings = registerOutput<List<LoadBalancerSubnetMapping>>('subnetMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerSubnetMapping>(guardedValue, (value) => LoadBalancerSubnetMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
     xffHeaderProcessingMode = registerOutput<String?>('xffHeaderProcessingMode');
     zoneId = registerOutput<String>('zoneId');
@@ -711,11 +712,12 @@ class LoadBalancer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoadBalancerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoadBalancer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -760,11 +762,61 @@ class LoadBalancer extends pulumi.CustomResource {
     preserveHostHeader = registerOutput<bool?>('preserveHostHeader');
     region = registerOutput<String>('region');
     secondaryIpsAutoAssignedPerSubnet = registerOutput<int>('secondaryIpsAutoAssignedPerSubnet');
-    securityGroups = registerOutput<List<String>>('securityGroups');
-    subnetMappings = registerOutput<List<Map<String, dynamic>>>('subnetMappings');
-    subnets = registerOutput<List<String>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetMappings = registerOutput<List<LoadBalancerSubnetMapping>>('subnetMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerSubnetMapping>(guardedValue, (value) => LoadBalancerSubnetMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+    xffHeaderProcessingMode = registerOutput<String?>('xffHeaderProcessingMode');
+    zoneId = registerOutput<String>('zoneId');
+  }
+
+  /// Creates a typed reference to an existing [LoadBalancer] resource.
+  LoadBalancer.reference(String urn)
+    : super(
+        'aws:lb/loadBalancer:LoadBalancer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    arnSuffix = registerOutput<String>('arnSuffix');
+    clientKeepAlive = registerOutput<int?>('clientKeepAlive');
+    connectionLogs = registerOutput<LoadBalancerConnectionLogs?>('connectionLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerConnectionLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerOwnedIpv4Pool = registerOutput<String?>('customerOwnedIpv4Pool');
+    desyncMitigationMode = registerOutput<String?>('desyncMitigationMode');
+    dnsName = registerOutput<String>('dnsName');
+    dnsRecordClientRoutingPolicy = registerOutput<String?>('dnsRecordClientRoutingPolicy');
+    dropInvalidHeaderFields = registerOutput<bool?>('dropInvalidHeaderFields');
+    enableCrossZoneLoadBalancing = registerOutput<bool?>('enableCrossZoneLoadBalancing');
+    enableDeletionProtection = registerOutput<bool?>('enableDeletionProtection');
+    enableHttp2 = registerOutput<bool?>('enableHttp2');
+    enablePrefixForIpv6SourceNat = registerOutput<String>('enablePrefixForIpv6SourceNat');
+    enableTlsVersionAndCipherSuiteHeaders = registerOutput<bool?>('enableTlsVersionAndCipherSuiteHeaders');
+    enableWafFailOpen = registerOutput<bool?>('enableWafFailOpen');
+    enableXffClientPort = registerOutput<bool?>('enableXffClientPort');
+    enableZonalShift = registerOutput<bool?>('enableZonalShift');
+    enforceSecurityGroupInboundRulesOnPrivateLinkTraffic = registerOutput<String>('enforceSecurityGroupInboundRulesOnPrivateLinkTraffic');
+    healthCheckLogs = registerOutput<LoadBalancerHealthCheckLogs?>('healthCheckLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerHealthCheckLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    idleTimeout = registerOutput<int?>('idleTimeout');
+    internal = registerOutput<bool>('internal');
+    ipAddressType = registerOutput<String>('ipAddressType');
+    ipamPools = registerOutput<LoadBalancerIpamPools?>('ipamPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerIpamPools.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loadBalancerType = registerOutput<String?>('loadBalancerType');
+    minimumLoadBalancerCapacity = registerOutput<LoadBalancerMinimumLoadBalancerCapacity?>('minimumLoadBalancerCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerMinimumLoadBalancerCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    preserveHostHeader = registerOutput<bool?>('preserveHostHeader');
+    region = registerOutput<String>('region');
+    secondaryIpsAutoAssignedPerSubnet = registerOutput<int>('secondaryIpsAutoAssignedPerSubnet');
+    securityGroups = registerOutput<List<String>>('securityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetMappings = registerOutput<List<LoadBalancerSubnetMapping>>('subnetMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerSubnetMapping>(guardedValue, (value) => LoadBalancerSubnetMapping.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<String>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
     xffHeaderProcessingMode = registerOutput<String?>('xffHeaderProcessingMode');
     zoneId = registerOutput<String>('zoneId');

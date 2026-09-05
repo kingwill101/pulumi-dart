@@ -223,7 +223,7 @@ class Member extends pulumi.CustomResource {
           'aws:guardduty/member:Member',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     detectorId = registerOutput<String>('detectorId');
@@ -240,11 +240,12 @@ class Member extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Member._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -258,6 +259,25 @@ class Member extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    detectorId = registerOutput<String>('detectorId');
+    disableEmailNotification = registerOutput<bool?>('disableEmailNotification');
+    email = registerOutput<String>('email');
+    invitationMessage = registerOutput<String?>('invitationMessage');
+    invite = registerOutput<bool?>('invite');
+    region = registerOutput<String>('region');
+    relationshipStatus = registerOutput<String>('relationshipStatus');
+  }
+
+  /// Creates a typed reference to an existing [Member] resource.
+  Member.reference(String urn)
+    : super(
+        'aws:guardduty/member:Member',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     detectorId = registerOutput<String>('detectorId');
     disableEmailNotification = registerOutput<bool?>('disableEmailNotification');

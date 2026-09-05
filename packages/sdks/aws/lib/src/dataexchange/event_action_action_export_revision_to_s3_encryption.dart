@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventActionActionExportRevisionToS3Encryption {
   /// ARN of the KMS key used for encryption.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Type of server-side encryption.
   /// Valid values are `aws:kms` or `aws:s3`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EventActionActionExportRevisionToS3Encryption].
   /// [kmsKeyArn] ARN of the KMS key used for encryption.

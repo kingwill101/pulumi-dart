@@ -12,12 +12,12 @@ class PipelineEndpointArgs {
   /// ARN of the pipeline to create the endpoint for.
   final pulumi.Input<String> pipelineArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<PipelineEndpointTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<PipelineEndpointTimeouts?>? timeouts;
   /// VPC options for the pipeline endpoint. See `vpcOptions` Block below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<PipelineEndpointVpcOptions>? vpcOptions;
+  final pulumi.Input<PipelineEndpointVpcOptions?>? vpcOptions;
 
   /// Creates a new [PipelineEndpointArgs].
   /// [pipelineArn] ARN of the pipeline to create the endpoint for.

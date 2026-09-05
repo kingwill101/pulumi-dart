@@ -14,11 +14,11 @@ import 'scheduled_action_target_action.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["scheduler.redshift.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -46,14 +46,14 @@ import 'scheduled_action_target_action.dart';
 ///     role: exampleRole.name,
 /// });
 /// const exampleScheduledAction = new aws.redshift.ScheduledAction("example", {
-///     name: "tf-redshift-scheduled-action",
-///     schedule: "cron(00 23 * * ? *)",
-///     iamRole: exampleRole.arn,
 ///     targetAction: {
 ///         pauseCluster: {
 ///             clusterIdentifier: "tf-redshift001",
 ///         },
 ///     },
+///     name: "tf-redshift-scheduled-action",
+///     schedule: "cron(00 23 * * ? *)",
+///     iamRole: exampleRole.arn,
 /// });
 /// ```
 /// ```python
@@ -61,11 +61,11 @@ import 'scheduled_action_target_action.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["scheduler.redshift.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
@@ -87,14 +87,14 @@ import 'scheduled_action_target_action.dart';
 ///     policy_arn=example_policy.arn,
 ///     role=example_role.name)
 /// example_scheduled_action = aws.redshift.ScheduledAction("example",
-///     name="tf-redshift-scheduled-action",
-///     schedule="cron(00 23 * * ? *)",
-///     iam_role=example_role.arn,
 ///     target_action={
 ///         "pause_cluster": {
 ///             "cluster_identifier": "tf-redshift001",
 ///         },
-///     })
+///     },
+///     name="tf-redshift-scheduled-action",
+///     schedule="cron(00 23 * * ? *)",
+///     iam_role=example_role.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -110,7 +110,6 @@ import 'scheduled_action_target_action.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -122,6 +121,7 @@ import 'scheduled_action_target_action.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -171,9 +171,6 @@ import 'scheduled_action_target_action.dart';
 ///
 ///     var exampleScheduledAction = new Aws.RedShift.ScheduledAction("example", new()
 ///     {
-///         Name = "tf-redshift-scheduled-action",
-///         Schedule = "cron(00 23 * * ? *)",
-///         IamRole = exampleRole.Arn,
 ///         TargetAction = new Aws.RedShift.Inputs.ScheduledActionTargetActionArgs
 ///         {
 ///             PauseCluster = new Aws.RedShift.Inputs.ScheduledActionTargetActionPauseClusterArgs
@@ -181,6 +178,9 @@ import 'scheduled_action_target_action.dart';
 ///                 ClusterIdentifier = "tf-redshift001",
 ///             },
 ///         },
+///         Name = "tf-redshift-scheduled-action",
+///         Schedule = "cron(00 23 * * ? *)",
+///         IamRole = exampleRole.Arn,
 ///     });
 ///
 /// });
@@ -199,7 +199,6 @@ import 'scheduled_action_target_action.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -208,6 +207,7 @@ import 'scheduled_action_target_action.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -257,14 +257,14 @@ import 'scheduled_action_target_action.dart';
 /// 			return err
 /// 		}
 /// 		_, err = redshift.NewScheduledAction(ctx, "example", &redshift.ScheduledActionArgs{
-/// 			Name:     pulumi.String("tf-redshift-scheduled-action"),
-/// 			Schedule: pulumi.String("cron(00 23 * * ? *)"),
-/// 			IamRole:  exampleRole.Arn,
 /// 			TargetAction: &redshift.ScheduledActionTargetActionArgs{
 /// 				PauseCluster: &redshift.ScheduledActionTargetActionPauseClusterArgs{
 /// 					ClusterIdentifier: pulumi.String("tf-redshift001"),
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("tf-redshift-scheduled-action"),
+/// 			Schedule: pulumi.String("cron(00 23 * * ? *)"),
+/// 			IamRole:  exampleRole.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -284,11 +284,11 @@ import 'scheduled_action_target_action.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["scheduler.redshift.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -313,14 +313,14 @@ import 'scheduled_action_target_action.dart';
 ///   role       = aws_iam_role.example.name
 /// }
 /// resource "aws_redshift_scheduledaction" "example" {
-///   name     = "tf-redshift-scheduled-action"
-///   schedule = "cron(00 23 * * ? *)"
-///   iam_role = aws_iam_role.example.arn
 ///   target_action = {
 ///     pause_cluster = {
 ///       cluster_identifier = "tf-redshift001"
 ///     }
 ///   }
+///   name     = "tf-redshift-scheduled-action"
+///   schedule = "cron(00 23 * * ? *)"
+///   iam_role = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -358,11 +358,11 @@ import 'scheduled_action_target_action.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("scheduler.redshift.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -394,14 +394,14 @@ import 'scheduled_action_target_action.dart';
 ///             .build());
 ///
 ///         var exampleScheduledAction = new ScheduledAction("exampleScheduledAction", ScheduledActionArgs.builder()
-///             .name("tf-redshift-scheduled-action")
-///             .schedule("cron(00 23 * * ? *)")
-///             .iamRole(exampleRole.arn())
 ///             .targetAction(ScheduledActionTargetActionArgs.builder()
 ///                 .pauseCluster(ScheduledActionTargetActionPauseClusterArgs.builder()
 ///                     .clusterIdentifier("tf-redshift001")
 ///                     .build())
 ///                 .build())
+///             .name("tf-redshift-scheduled-action")
+///             .schedule("cron(00 23 * * ? *)")
+///             .iamRole(exampleRole.arn())
 ///             .build());
 ///
 ///     }
@@ -431,23 +431,23 @@ import 'scheduled_action_target_action.dart';
 ///     type: aws:redshift:ScheduledAction
 ///     name: example
 ///     properties:
-///       name: tf-redshift-scheduled-action
-///       schedule: cron(00 23 * * ? *)
-///       iamRole: ${exampleRole.arn}
 ///       targetAction:
 ///         pauseCluster:
 ///           clusterIdentifier: tf-redshift001
+///       name: tf-redshift-scheduled-action
+///       schedule: cron(00 23 * * ? *)
+///       iamRole: ${exampleRole.arn}
 /// variables:
 ///   assumeRole:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - scheduler.redshift.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   example:
@@ -473,9 +473,6 @@ import 'scheduled_action_target_action.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.redshift.ScheduledAction("example", {
-///     name: "tf-redshift-scheduled-action",
-///     schedule: "cron(00 23 * * ? *)",
-///     iamRole: exampleAwsIamRole.arn,
 ///     targetAction: {
 ///         resizeCluster: {
 ///             clusterIdentifier: "tf-redshift001",
@@ -484,6 +481,9 @@ import 'scheduled_action_target_action.dart';
 ///             numberOfNodes: 2,
 ///         },
 ///     },
+///     name: "tf-redshift-scheduled-action",
+///     schedule: "cron(00 23 * * ? *)",
+///     iamRole: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -491,9 +491,6 @@ import 'scheduled_action_target_action.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.redshift.ScheduledAction("example",
-///     name="tf-redshift-scheduled-action",
-///     schedule="cron(00 23 * * ? *)",
-///     iam_role=example_aws_iam_role["arn"],
 ///     target_action={
 ///         "resize_cluster": {
 ///             "cluster_identifier": "tf-redshift001",
@@ -501,7 +498,10 @@ import 'scheduled_action_target_action.dart';
 ///             "node_type": "dc1.large",
 ///             "number_of_nodes": 2,
 ///         },
-///     })
+///     },
+///     name="tf-redshift-scheduled-action",
+///     schedule="cron(00 23 * * ? *)",
+///     iam_role=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -513,9 +513,6 @@ import 'scheduled_action_target_action.dart';
 /// {
 ///     var example = new Aws.RedShift.ScheduledAction("example", new()
 ///     {
-///         Name = "tf-redshift-scheduled-action",
-///         Schedule = "cron(00 23 * * ? *)",
-///         IamRole = exampleAwsIamRole.Arn,
 ///         TargetAction = new Aws.RedShift.Inputs.ScheduledActionTargetActionArgs
 ///         {
 ///             ResizeCluster = new Aws.RedShift.Inputs.ScheduledActionTargetActionResizeClusterArgs
@@ -526,6 +523,9 @@ import 'scheduled_action_target_action.dart';
 ///                 NumberOfNodes = 2,
 ///             },
 ///         },
+///         Name = "tf-redshift-scheduled-action",
+///         Schedule = "cron(00 23 * * ? *)",
+///         IamRole = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -541,9 +541,6 @@ import 'scheduled_action_target_action.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := redshift.NewScheduledAction(ctx, "example", &redshift.ScheduledActionArgs{
-/// 			Name:     pulumi.String("tf-redshift-scheduled-action"),
-/// 			Schedule: pulumi.String("cron(00 23 * * ? *)"),
-/// 			IamRole:  pulumi.Any(exampleAwsIamRole.Arn),
 /// 			TargetAction: &redshift.ScheduledActionTargetActionArgs{
 /// 				ResizeCluster: &redshift.ScheduledActionTargetActionResizeClusterArgs{
 /// 					ClusterIdentifier: pulumi.String("tf-redshift001"),
@@ -552,6 +549,9 @@ import 'scheduled_action_target_action.dart';
 /// 					NumberOfNodes:     pulumi.Int(2),
 /// 				},
 /// 			},
+/// 			Name:     pulumi.String("tf-redshift-scheduled-action"),
+/// 			Schedule: pulumi.String("cron(00 23 * * ? *)"),
+/// 			IamRole:  pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -570,9 +570,6 @@ import 'scheduled_action_target_action.dart';
 /// }
 ///
 /// resource "aws_redshift_scheduledaction" "example" {
-///   name     = "tf-redshift-scheduled-action"
-///   schedule = "cron(00 23 * * ? *)"
-///   iam_role = exampleAwsIamRole.arn
 ///   target_action = {
 ///     resize_cluster = {
 ///       cluster_identifier = "tf-redshift001"
@@ -581,6 +578,9 @@ import 'scheduled_action_target_action.dart';
 ///       number_of_nodes    = 2
 ///     }
 ///   }
+///   name     = "tf-redshift-scheduled-action"
+///   schedule = "cron(00 23 * * ? *)"
+///   iam_role = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -607,9 +607,6 @@ import 'scheduled_action_target_action.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ScheduledAction("example", ScheduledActionArgs.builder()
-///             .name("tf-redshift-scheduled-action")
-///             .schedule("cron(00 23 * * ? *)")
-///             .iamRole(exampleAwsIamRole.arn())
 ///             .targetAction(ScheduledActionTargetActionArgs.builder()
 ///                 .resizeCluster(ScheduledActionTargetActionResizeClusterArgs.builder()
 ///                     .clusterIdentifier("tf-redshift001")
@@ -618,6 +615,9 @@ import 'scheduled_action_target_action.dart';
 ///                     .numberOfNodes(2)
 ///                     .build())
 ///                 .build())
+///             .name("tf-redshift-scheduled-action")
+///             .schedule("cron(00 23 * * ? *)")
+///             .iamRole(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -628,15 +628,15 @@ import 'scheduled_action_target_action.dart';
 ///   example:
 ///     type: aws:redshift:ScheduledAction
 ///     properties:
-///       name: tf-redshift-scheduled-action
-///       schedule: cron(00 23 * * ? *)
-///       iamRole: ${exampleAwsIamRole.arn}
 ///       targetAction:
 ///         resizeCluster:
 ///           clusterIdentifier: tf-redshift001
 ///           clusterType: multi-node
 ///           nodeType: dc1.large
 ///           numberOfNodes: 2
+///       name: tf-redshift-scheduled-action
+///       schedule: cron(00 23 * * ? *)
+///       iamRole: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -679,7 +679,7 @@ class ScheduledAction extends pulumi.CustomResource {
           'aws:redshift/scheduledAction:ScheduledAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     enable = registerOutput<bool?>('enable');
@@ -697,11 +697,12 @@ class ScheduledAction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduledActionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScheduledAction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -715,6 +716,26 @@ class ScheduledAction extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    enable = registerOutput<bool?>('enable');
+    endTime = registerOutput<String?>('endTime');
+    iamRole = registerOutput<String>('iamRole');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    schedule = registerOutput<String>('schedule');
+    startTime = registerOutput<String?>('startTime');
+    targetAction = registerOutput<ScheduledActionTargetAction>('targetAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledActionTargetAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ScheduledAction] resource.
+  ScheduledAction.reference(String urn)
+    : super(
+        'aws:redshift/scheduledAction:ScheduledAction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     enable = registerOutput<bool?>('enable');
     endTime = registerOutput<String?>('endTime');

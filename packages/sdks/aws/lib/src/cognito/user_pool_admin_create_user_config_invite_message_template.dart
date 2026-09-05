@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolAdminCreateUserConfigInviteMessageTemplate {
   /// Message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
-  final pulumi.Input<String>? emailMessage;
+  final pulumi.Input<String?>? emailMessage;
   /// Subject line for email messages.
-  final pulumi.Input<String>? emailSubject;
+  final pulumi.Input<String?>? emailSubject;
   /// Message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
-  final pulumi.Input<String>? smsMessage;
+  final pulumi.Input<String?>? smsMessage;
 
   /// Creates a new [UserPoolAdminCreateUserConfigInviteMessageTemplate].
   /// [emailMessage] Message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.

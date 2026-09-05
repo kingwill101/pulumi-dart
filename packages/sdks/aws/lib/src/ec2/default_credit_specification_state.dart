@@ -6,12 +6,12 @@ import 'default_credit_specification_timeouts.dart';
 /// Input properties used for looking up and filtering DefaultCreditSpecification resources.
 class DefaultCreditSpecificationState {
   /// Credit option for CPU usage of the instance family. Valid values: `standard`, `unlimited`.
-  final pulumi.Input<String>? cpuCredits;
+  final pulumi.Input<String?>? cpuCredits;
   /// Instance family. Valid values are `t2`, `t3`, `t3a`, `t4g`.
-  final pulumi.Input<String>? instanceFamily;
+  final pulumi.Input<String?>? instanceFamily;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<DefaultCreditSpecificationTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<DefaultCreditSpecificationTimeouts?>? timeouts;
 
   /// Creates a new [DefaultCreditSpecificationState].
   /// [cpuCredits] Credit option for CPU usage of the instance family. Valid values: `standard`, `unlimited`.

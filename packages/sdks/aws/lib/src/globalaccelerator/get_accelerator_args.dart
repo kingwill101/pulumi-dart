@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_globalaccelerator_get_accelerator_get_accelerator_args_doc}
 class GetAcceleratorArgs {
   /// Full ARN of the Global Accelerator.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Unique name of the Global Accelerator.
   ///
   /// &gt; **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetAcceleratorArgs].
   /// [arn] Full ARN of the Global Accelerator.

@@ -6,9 +6,9 @@ import 'virtual_node_spec_service_discovery_dns.dart';
 
 class VirtualNodeSpecServiceDiscovery {
   /// Any AWS Cloud Map information for the virtual node. See `spec.service_discovery.aws_cloud_map` Block for details.
-  final pulumi.Input<VirtualNodeSpecServiceDiscoveryAwsCloudMap>? awsCloudMap;
+  final pulumi.Input<VirtualNodeSpecServiceDiscoveryAwsCloudMap?>? awsCloudMap;
   /// DNS service name for the virtual node. See `spec.service_discovery.dns` Block for details.
-  final pulumi.Input<VirtualNodeSpecServiceDiscoveryDns>? dns;
+  final pulumi.Input<VirtualNodeSpecServiceDiscoveryDns?>? dns;
 
   /// Creates a new [VirtualNodeSpecServiceDiscovery].
   /// [awsCloudMap] Any AWS Cloud Map information for the virtual node. See `spec.service_discovery.aws_cloud_map` Block for details.

@@ -6,7 +6,7 @@ class PolicyTargetTrackingConfigurationPredefinedMetricSpecification {
   /// Metric type.
   final pulumi.Input<String> predefinedMetricType;
   /// Identifies the resource associated with the metric type.
-  final pulumi.Input<String>? resourceLabel;
+  final pulumi.Input<String?>? resourceLabel;
 
   /// Creates a new [PolicyTargetTrackingConfigurationPredefinedMetricSpecification].
   /// [predefinedMetricType] Metric type.

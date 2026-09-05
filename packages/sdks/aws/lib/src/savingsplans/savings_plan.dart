@@ -5,9 +5,9 @@ import 'savings_plan_timeouts.dart';
 
 /// Provides an AWS Savings Plan resource.
 ///
-/// &gt; **WARNING:** Savings Plans represent a financial commitment. Once a Savings Plan becomes active, it **cannot be cancelled or deleted**. Only Savings Plans in the `queued` state (scheduled for future purchase) can be deleted. Use this resource with caution.
+/// &gt; Savings Plans represent a financial commitment. Once a Savings Plan becomes active, it **cannot be cancelled or deleted**. Only Savings Plans in the `queued` state (scheduled for future purchase) can be deleted. Use this resource with caution.
 ///
-/// &gt; **Note:** Importing an active Savings Plan will add it to your Terraform state, but destroying it will only remove it from state - the actual Savings Plan will continue until its term ends.
+/// &gt; Importing an active Savings Plan will add it to your Terraform state, but destroying it will only remove it from state - the actual Savings Plan will continue until its term ends.
 ///
 /// ## Example Usage
 ///
@@ -305,8 +305,8 @@ class SavingsPlan extends pulumi.CustomResource {
   late final pulumi.Output<String> paymentOption;
   /// The product types.
   late final pulumi.Output<List<String>> productTypes;
-  /// The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
-  late final pulumi.Output<String?> purchaseTime;
+  /// The time at which to purchase the Savings Plan, in UTC format (`YYYY-MM-DDTHH:MM:SSZ`). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
+  late final pulumi.Output<String> purchaseTime;
   /// The recurring payment amount.
   late final pulumi.Output<String> recurringPaymentAmount;
   /// The AWS Region.
@@ -332,8 +332,8 @@ class SavingsPlan extends pulumi.CustomResource {
   /// The duration of the term, in seconds.
   late final pulumi.Output<int> termDurationInSeconds;
   late final pulumi.Output<SavingsPlanTimeouts?> timeouts;
-  /// The up-front payment amount.
-  late final pulumi.Output<String?> upfrontPaymentAmount;
+  /// The up-front payment amount. Required for offerings with an `All Upfront` or `Partial Upfront` payment option. Must be omitted for `No Upfront` offerings.
+  late final pulumi.Output<String> upfrontPaymentAmount;
 
   /// Creates a new [SavingsPlan].
   /// [name] The Pulumi resource name.
@@ -347,7 +347,7 @@ class SavingsPlan extends pulumi.CustomResource {
           'aws:savingsplans/savingsPlan:SavingsPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     commitment = registerOutput<String>('commitment');
     currency = registerOutput<String>('currency');
@@ -356,8 +356,8 @@ class SavingsPlan extends pulumi.CustomResource {
     end = registerOutput<String>('end');
     offeringId = registerOutput<String>('offeringId');
     paymentOption = registerOutput<String>('paymentOption');
-    productTypes = registerOutput<List<String>>('productTypes');
-    purchaseTime = registerOutput<String?>('purchaseTime');
+    productTypes = registerOutput<List<String>>('productTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    purchaseTime = registerOutput<String>('purchaseTime');
     recurringPaymentAmount = registerOutput<String>('recurringPaymentAmount');
     region = registerOutput<String>('region');
     returnableUntil = registerOutput<String>('returnableUntil');
@@ -367,11 +367,11 @@ class SavingsPlan extends pulumi.CustomResource {
     savingsPlanType = registerOutput<String>('savingsPlanType');
     start = registerOutput<String>('start');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     termDurationInSeconds = registerOutput<int>('termDurationInSeconds');
     timeouts = registerOutput<SavingsPlanTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SavingsPlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    upfrontPaymentAmount = registerOutput<String?>('upfrontPaymentAmount');
+    upfrontPaymentAmount = registerOutput<String>('upfrontPaymentAmount');
   }
 
   /// Gets an existing [SavingsPlan] resource's state with the given [name] and [id].
@@ -379,11 +379,12 @@ class SavingsPlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SavingsPlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SavingsPlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -404,8 +405,8 @@ class SavingsPlan extends pulumi.CustomResource {
     end = registerOutput<String>('end');
     offeringId = registerOutput<String>('offeringId');
     paymentOption = registerOutput<String>('paymentOption');
-    productTypes = registerOutput<List<String>>('productTypes');
-    purchaseTime = registerOutput<String?>('purchaseTime');
+    productTypes = registerOutput<List<String>>('productTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    purchaseTime = registerOutput<String>('purchaseTime');
     recurringPaymentAmount = registerOutput<String>('recurringPaymentAmount');
     region = registerOutput<String>('region');
     returnableUntil = registerOutput<String>('returnableUntil');
@@ -415,10 +416,44 @@ class SavingsPlan extends pulumi.CustomResource {
     savingsPlanType = registerOutput<String>('savingsPlanType');
     start = registerOutput<String>('start');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     termDurationInSeconds = registerOutput<int>('termDurationInSeconds');
     timeouts = registerOutput<SavingsPlanTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SavingsPlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    upfrontPaymentAmount = registerOutput<String?>('upfrontPaymentAmount');
+    upfrontPaymentAmount = registerOutput<String>('upfrontPaymentAmount');
+  }
+
+  /// Creates a typed reference to an existing [SavingsPlan] resource.
+  SavingsPlan.reference(String urn)
+    : super(
+        'aws:savingsplans/savingsPlan:SavingsPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    commitment = registerOutput<String>('commitment');
+    currency = registerOutput<String>('currency');
+    description = registerOutput<String>('description');
+    ec2InstanceFamily = registerOutput<String>('ec2InstanceFamily');
+    end = registerOutput<String>('end');
+    offeringId = registerOutput<String>('offeringId');
+    paymentOption = registerOutput<String>('paymentOption');
+    productTypes = registerOutput<List<String>>('productTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    purchaseTime = registerOutput<String>('purchaseTime');
+    recurringPaymentAmount = registerOutput<String>('recurringPaymentAmount');
+    region = registerOutput<String>('region');
+    returnableUntil = registerOutput<String>('returnableUntil');
+    savingsPlanArn = registerOutput<String>('savingsPlanArn');
+    savingsPlanId = registerOutput<String>('savingsPlanId');
+    savingsPlanOfferingId = registerOutput<String>('savingsPlanOfferingId');
+    savingsPlanType = registerOutput<String>('savingsPlanType');
+    start = registerOutput<String>('start');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    termDurationInSeconds = registerOutput<int>('termDurationInSeconds');
+    timeouts = registerOutput<SavingsPlanTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SavingsPlanTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    upfrontPaymentAmount = registerOutput<String>('upfrontPaymentAmount');
   }
 }

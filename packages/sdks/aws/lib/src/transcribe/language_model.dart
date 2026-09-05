@@ -18,11 +18,11 @@ import 'language_model_state.dart';
 ///
 /// const example = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["transcribe.amazonaws.com"],
 ///         }],
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const exampleRole = new aws.iam.Role("example", {
@@ -54,12 +54,12 @@ import 'language_model_state.dart';
 ///     source: new pulumi.asset.FileAsset("test1.txt"),
 /// });
 /// const exampleLanguageModel = new aws.transcribe.LanguageModel("example", {
-///     modelName: "example",
-///     baseModelName: "NarrowBand",
 ///     inputDataConfig: {
 ///         dataAccessRoleArn: exampleRole.arn,
 ///         s3Uri: pulumi.interpolate`s3://${exampleBucket.id}/transcribe/`,
 ///     },
+///     modelName: "example",
+///     baseModelName: "NarrowBand",
 ///     languageCode: "en-US",
 ///     tags: {
 ///         ENVIRONMENT: "development",
@@ -72,11 +72,11 @@ import 'language_model_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.iam.get_policy_document(statements=[{
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["transcribe.amazonaws.com"],
 ///     }],
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example_role = aws.iam.Role("example",
 ///     name="example",
@@ -103,12 +103,12 @@ import 'language_model_state.dart';
 ///     key="transcribe/test1.txt",
 ///     source=pulumi.FileAsset("test1.txt"))
 /// example_language_model = aws.transcribe.LanguageModel("example",
-///     model_name="example",
-///     base_model_name="NarrowBand",
 ///     input_data_config={
 ///         "data_access_role_arn": example_role.arn,
 ///         "s3_uri": example_bucket.id.apply(lambda id: f"s3://{id}/transcribe/"),
 ///     },
+///     model_name="example",
+///     base_model_name="NarrowBand",
 ///     language_code="en-US",
 ///     tags={
 ///         "ENVIRONMENT": "development",
@@ -129,10 +129,6 @@ import 'language_model_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -143,6 +139,10 @@ import 'language_model_state.dart';
 ///                             "transcribe.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -195,13 +195,13 @@ import 'language_model_state.dart';
 ///
 ///     var exampleLanguageModel = new Aws.Transcribe.LanguageModel("example", new()
 ///     {
-///         ModelName = "example",
-///         BaseModelName = "NarrowBand",
 ///         InputDataConfig = new Aws.Transcribe.Inputs.LanguageModelInputDataConfigArgs
 ///         {
 ///             DataAccessRoleArn = exampleRole.Arn,
 ///             S3Uri = exampleBucket.Id.Apply(id => $"s3://{id}/transcribe/"),
 ///         },
+///         ModelName = "example",
+///         BaseModelName = "NarrowBand",
 ///         LanguageCode = "en-US",
 ///         Tags =
 ///         {
@@ -229,9 +229,6 @@ import 'language_model_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -239,6 +236,9 @@ import 'language_model_state.dart';
 /// 								"transcribe.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -296,15 +296,15 @@ import 'language_model_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = transcribe.NewLanguageModel(ctx, "example", &transcribe.LanguageModelArgs{
-/// 			ModelName:     pulumi.String("example"),
-/// 			BaseModelName: pulumi.String("NarrowBand"),
 /// 			InputDataConfig: &transcribe.LanguageModelInputDataConfigArgs{
 /// 				DataAccessRoleArn: exampleRole.Arn,
 /// 				S3Uri: exampleBucket.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 					return fmt.Sprintf("s3://%v/transcribe/", id), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
-/// 			LanguageCode: pulumi.String("en-US"),
+/// 			ModelName:     pulumi.String("example"),
+/// 			BaseModelName: pulumi.String("NarrowBand"),
+/// 			LanguageCode:  pulumi.String("en-US"),
 /// 			Tags: pulumi.StringMap{
 /// 				"ENVIRONMENT": pulumi.String("development"),
 /// 			},
@@ -327,11 +327,11 @@ import 'language_model_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["transcribe.amazonaws.com"]
 ///     }
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -361,13 +361,13 @@ import 'language_model_state.dart';
 ///   source = fileAsset("test1.txt")
 /// }
 /// resource "aws_transcribe_languagemodel" "example" {
-///   model_name      = "example"
-///   base_model_name = "NarrowBand"
 ///   input_data_config = {
 ///     data_access_role_arn = aws_iam_role.example.arn
 ///     s3_uri               ="s3://${aws_s3_bucket.example.id}/transcribe/"
 ///   }
-///   language_code = "en-US"
+///   model_name      = "example"
+///   base_model_name = "NarrowBand"
+///   language_code   = "en-US"
 ///   tags = {
 ///     "ENVIRONMENT" = "development"
 ///   }
@@ -411,11 +411,11 @@ import 'language_model_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("transcribe.amazonaws.com")
 ///                     .build())
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -453,12 +453,12 @@ import 'language_model_state.dart';
 ///             .build());
 ///
 ///         var exampleLanguageModel = new LanguageModel("exampleLanguageModel", LanguageModelArgs.builder()
-///             .modelName("example")
-///             .baseModelName("NarrowBand")
 ///             .inputDataConfig(LanguageModelInputDataConfigArgs.builder()
 ///                 .dataAccessRoleArn(exampleRole.arn())
 ///                 .s3Uri(exampleBucket.id().applyValue(_id -> String.format("s3://%s/transcribe/", _id)))
 ///                 .build())
+///             .modelName("example")
+///             .baseModelName("NarrowBand")
 ///             .languageCode("en-US")
 ///             .tags(Map.of("ENVIRONMENT", "development"))
 ///             .build());
@@ -507,11 +507,11 @@ import 'language_model_state.dart';
 ///     type: aws:transcribe:LanguageModel
 ///     name: example
 ///     properties:
-///       modelName: example
-///       baseModelName: NarrowBand
 ///       inputDataConfig:
 ///         dataAccessRoleArn: ${exampleRole.arn}
 ///         s3Uri: s3://${exampleBucket.id}/transcribe/
+///       modelName: example
+///       baseModelName: NarrowBand
 ///       languageCode: en-US
 ///       tags:
 ///         ENVIRONMENT: development
@@ -521,12 +521,12 @@ import 'language_model_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - transcribe.amazonaws.com
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -568,7 +568,7 @@ class LanguageModel extends pulumi.CustomResource {
           'aws:transcribe/languageModel:LanguageModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     baseModelName = registerOutput<String>('baseModelName');
@@ -576,8 +576,8 @@ class LanguageModel extends pulumi.CustomResource {
     languageCode = registerOutput<String>('languageCode');
     modelName = registerOutput<String>('modelName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LanguageModel] resource's state with the given [name] and [id].
@@ -585,11 +585,12 @@ class LanguageModel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LanguageModelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LanguageModel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -609,7 +610,26 @@ class LanguageModel extends pulumi.CustomResource {
     languageCode = registerOutput<String>('languageCode');
     modelName = registerOutput<String>('modelName');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LanguageModel] resource.
+  LanguageModel.reference(String urn)
+    : super(
+        'aws:transcribe/languageModel:LanguageModel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    baseModelName = registerOutput<String>('baseModelName');
+    inputDataConfig = registerOutput<LanguageModelInputDataConfig>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageModelInputDataConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageCode = registerOutput<String>('languageCode');
+    modelName = registerOutput<String>('modelName');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

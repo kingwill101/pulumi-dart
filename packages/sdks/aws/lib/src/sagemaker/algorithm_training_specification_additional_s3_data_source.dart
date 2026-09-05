@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlgorithmTrainingSpecificationAdditionalS3DataSource {
   /// Compression type for the data. Allowed values are: `None` and `Gzip`.
-  final pulumi.Input<String>? compressionType;
+  final pulumi.Input<String?>? compressionType;
   /// ETag of the S3 object.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Type of additional S3 data.
   final pulumi.Input<String> s3DataType;
   /// S3 or HTTPS URI for the additional data.

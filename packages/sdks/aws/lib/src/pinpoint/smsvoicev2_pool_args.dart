@@ -9,32 +9,32 @@ import 'smsvoicev2_pool_timeouts.dart';
 /// {@macro pulumi_pinpoint_smsvoicev2_pool_smsvoicev2_pool_args_doc}
 class Smsvoicev2PoolArgs {
   /// Whether deletion protection is enabled. When `true`, the pool cannot be deleted.
-  final pulumi.Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// Two-character code, in ISO 3166-1 alpha-2 format, for the country or region of the pool. Cannot be changed after creation.
-  final pulumi.Input<String>? isoCountryCode;
+  final pulumi.Input<String?>? isoCountryCode;
   /// Type of message. Valid values are `TRANSACTIONAL` and `PROMOTIONAL`. Cannot be changed after creation.
   final pulumi.Input<String> messageType;
   /// Name of the opt-out list associated with the pool.
-  final pulumi.Input<String>? optOutListName;
+  final pulumi.Input<String?>? optOutListName;
   /// Set of origination identity ARNs (phone number ARNs or sender ID ARNs) associated with the pool. At least one identity is required at creation.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<String>> originationIdentities;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-options.html#cli-configure-options-region). Defaults to the region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether the pool relies on self-managed opt-out handling. When `false`, AWS auto-replies to HELP/STOP requests and manages the opt-out list.
-  final pulumi.Input<bool>? selfManagedOptOutsEnabled;
+  final pulumi.Input<bool?>? selfManagedOptOutsEnabled;
   /// Whether shared routes are enabled for the pool. When `true`, messages may use shared phone numbers or sender IDs in countries that allow it.
-  final pulumi.Input<bool>? sharedRoutesEnabled;
+  final pulumi.Input<bool?>? sharedRoutesEnabled;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Smsvoicev2PoolTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Smsvoicev2PoolTimeouts?>? timeouts;
   /// Destination for incoming messages. Specify an ARN to receive incoming messages, or `connect.[region].amazonaws.com` (with `[region]` replaced by the AWS Region of the Amazon Connect instance) to set Amazon Connect as the inbound destination.
-  final pulumi.Input<String>? twoWayChannelArn;
+  final pulumi.Input<String?>? twoWayChannelArn;
   /// ARN of the IAM role that End User Messaging SMS assumes to publish inbound messages to the two-way channel.
-  final pulumi.Input<String>? twoWayChannelRole;
+  final pulumi.Input<String?>? twoWayChannelRole;
   /// Whether inbound message reception is enabled for the pool. When `true`, `twoWayChannelArn` must be set.
-  final pulumi.Input<bool>? twoWayEnabled;
+  final pulumi.Input<bool?>? twoWayEnabled;
 
   /// Creates a new [Smsvoicev2PoolArgs].
   /// [deletionProtectionEnabled] Whether deletion protection is enabled. When `true`, the pool cannot be deleted.

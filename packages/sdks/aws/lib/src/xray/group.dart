@@ -13,12 +13,12 @@ import 'group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.xray.Group("example", {
-///     groupName: "example",
-///     filterExpression: "responsetime > 5",
 ///     insightsConfiguration: {
 ///         insightsEnabled: true,
 ///         notificationsEnabled: true,
 ///     },
+///     groupName: "example",
+///     filterExpression: "responsetime > 5",
 /// });
 /// ```
 /// ```python
@@ -26,12 +26,12 @@ import 'group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.xray.Group("example",
-///     group_name="example",
-///     filter_expression="responsetime > 5",
 ///     insights_configuration={
 ///         "insights_enabled": True,
 ///         "notifications_enabled": True,
-///     })
+///     },
+///     group_name="example",
+///     filter_expression="responsetime > 5")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,13 +43,13 @@ import 'group_state.dart';
 /// {
 ///     var example = new Aws.Xray.Group("example", new()
 ///     {
-///         GroupName = "example",
-///         FilterExpression = "responsetime > 5",
 ///         InsightsConfiguration = new Aws.Xray.Inputs.GroupInsightsConfigurationArgs
 ///         {
 ///             InsightsEnabled = true,
 ///             NotificationsEnabled = true,
 ///         },
+///         GroupName = "example",
+///         FilterExpression = "responsetime > 5",
 ///     });
 ///
 /// });
@@ -65,12 +65,12 @@ import 'group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := xray.NewGroup(ctx, "example", &xray.GroupArgs{
-/// 			GroupName:        pulumi.String("example"),
-/// 			FilterExpression: pulumi.String("responsetime > 5"),
 /// 			InsightsConfiguration: &xray.GroupInsightsConfigurationArgs{
 /// 				InsightsEnabled:      pulumi.Bool(true),
 /// 				NotificationsEnabled: pulumi.Bool(true),
 /// 			},
+/// 			GroupName:        pulumi.String("example"),
+/// 			FilterExpression: pulumi.String("responsetime > 5"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -89,12 +89,12 @@ import 'group_state.dart';
 /// }
 ///
 /// resource "aws_xray_group" "example" {
-///   group_name        = "example"
-///   filter_expression = "responsetime > 5"
 ///   insights_configuration = {
 ///     insights_enabled      = true
 ///     notifications_enabled = true
 ///   }
+///   group_name        = "example"
+///   filter_expression = "responsetime > 5"
 /// }
 /// ```
 /// ```java
@@ -120,12 +120,12 @@ import 'group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Group("example", GroupArgs.builder()
-///             .groupName("example")
-///             .filterExpression("responsetime > 5")
 ///             .insightsConfiguration(GroupInsightsConfigurationArgs.builder()
 ///                 .insightsEnabled(true)
 ///                 .notificationsEnabled(true)
 ///                 .build())
+///             .groupName("example")
+///             .filterExpression("responsetime > 5")
 ///             .build());
 ///
 ///     }
@@ -136,11 +136,11 @@ import 'group_state.dart';
 ///   example:
 ///     type: aws:xray:Group
 ///     properties:
-///       groupName: example
-///       filterExpression: responsetime > 5
 ///       insightsConfiguration:
 ///         insightsEnabled: true
 ///         notificationsEnabled: true
+///       groupName: example
+///       filterExpression: responsetime > 5
 /// ```
 ///
 ///
@@ -150,7 +150,7 @@ import 'group_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the X-Ray group.
+/// - `arn` (String) ARN of the X-Ray group.
 ///
 ///
 /// Using `pulumi import`, import XRay Groups using the ARN. For example:
@@ -186,15 +186,15 @@ class Group extends pulumi.CustomResource {
           'aws:xray/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     filterExpression = registerOutput<String>('filterExpression');
     groupName = registerOutput<String>('groupName');
     insightsConfiguration = registerOutput<GroupInsightsConfiguration>('insightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
@@ -202,11 +202,12 @@ class Group extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Group._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -225,7 +226,25 @@ class Group extends pulumi.CustomResource {
     groupName = registerOutput<String>('groupName');
     insightsConfiguration = registerOutput<GroupInsightsConfiguration>('insightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'aws:xray/group:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    filterExpression = registerOutput<String>('filterExpression');
+    groupName = registerOutput<String>('groupName');
+    insightsConfiguration = registerOutput<GroupInsightsConfiguration>('insightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

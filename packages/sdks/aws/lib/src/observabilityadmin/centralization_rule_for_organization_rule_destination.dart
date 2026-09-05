@@ -8,9 +8,9 @@ class CentralizationRuleForOrganizationRuleDestination {
   /// AWS account ID where telemetry will be centralized.
   final pulumi.Input<String> account;
   /// Configuration block for destination logs settings. See `destinationLogsConfiguration` below.
-  final pulumi.Input<CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration>? destinationLogsConfiguration;
+  final pulumi.Input<CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration?>? destinationLogsConfiguration;
   /// Configuration block for destination metrics settings. See `destinationMetricsConfiguration` below.
-  final pulumi.Input<CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfiguration>? destinationMetricsConfiguration;
+  final pulumi.Input<CentralizationRuleForOrganizationRuleDestinationDestinationMetricsConfiguration?>? destinationMetricsConfiguration;
   /// AWS region where telemetry will be centralized.
   final pulumi.Input<String> region;
 

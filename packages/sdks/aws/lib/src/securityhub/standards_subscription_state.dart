@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering StandardsSubscription resources.
 class StandardsSubscriptionState {
   /// The ARN of a resource that represents your subscription to a supported standard.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of a standard - see below.
   ///
   /// Currently available standards (remember to replace `${var.partition}` and `${var.region}` as appropriate):
@@ -23,7 +23,7 @@ class StandardsSubscriptionState {
   /// | NIST SP 800-171 Rev. 2                   | `arn:${var.partition}:securityhub:${var.region}::standards/nist-800-171/v/2.0.0`                             |
   /// | PCI DSS  v3.2.1                          | `arn:${var.partition}:securityhub:${var.region}::standards/pci-dss/v/3.2.1`                                  |
   /// | PCI DSS  v4.0.1                          | `arn:${var.partition}:securityhub:${var.region}::standards/pci-dss/v/4.0.1`                                  |
-  final pulumi.Input<String>? standardsArn;
+  final pulumi.Input<String?>? standardsArn;
 
   /// Creates a new [StandardsSubscriptionState].
   /// [arn] The ARN of a resource that represents your subscription to a supported standard.

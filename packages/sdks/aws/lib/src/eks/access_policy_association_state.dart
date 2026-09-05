@@ -6,19 +6,19 @@ import 'access_policy_association_access_scope.dart';
 /// Input properties used for looking up and filtering AccessPolicyAssociation resources.
 class AccessPolicyAssociationState {
   /// The configuration block to determine the scope of the access. See `accessScope` Block below.
-  final pulumi.Input<AccessPolicyAssociationAccessScope>? accessScope;
+  final pulumi.Input<AccessPolicyAssociationAccessScope?>? accessScope;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the policy was associated.
-  final pulumi.Input<String>? associatedAt;
+  final pulumi.Input<String?>? associatedAt;
   /// Name of the EKS Cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the policy was updated.
-  final pulumi.Input<String>? modifiedAt;
+  final pulumi.Input<String?>? modifiedAt;
   /// The ARN of the access policy that you're associating.
-  final pulumi.Input<String>? policyArn;
+  final pulumi.Input<String?>? policyArn;
   /// The IAM Principal ARN which requires Authentication access to the EKS cluster.
-  final pulumi.Input<String>? principalArn;
+  final pulumi.Input<String?>? principalArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AccessPolicyAssociationState].
   /// [accessScope] The configuration block to determine the scope of the access. See `accessScope` Block below.

@@ -119,3 +119,14 @@ Future<GetNamedQueryResult> getNamedQuery(
   );
   return GetNamedQueryResult.fromMap(result);
 }
+
+pulumi.Output<GetNamedQueryResult> getNamedQueryOutput(
+  GetNamedQueryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:athena/getNamedQuery:getNamedQuery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamedQueryResult.fromMap);
+}

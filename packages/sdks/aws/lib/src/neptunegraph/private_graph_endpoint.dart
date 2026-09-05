@@ -44,15 +44,15 @@ import 'private_graph_endpoint_timeouts.dart';
 /// });
 /// // Security Group for Neptune Graph
 /// const exampleSecurityGroup = new aws.ec2.SecurityGroup("example", {
-///     namePrefix: "neptune-graph-sg",
-///     description: "Security group for Neptune Graph",
-///     vpcId: example.id,
 ///     ingress: [{
 ///         fromPort: 8182,
 ///         toPort: 8182,
 ///         protocol: "tcp",
 ///         cidrBlocks: ["10.0.0.0/16"],
 ///     }],
+///     namePrefix: "neptune-graph-sg",
+///     description: "Security group for Neptune Graph",
+///     vpcId: example.id,
 ///     tags: {
 ///         Name: "neptune-graph-sg",
 ///     },
@@ -102,15 +102,15 @@ import 'private_graph_endpoint_timeouts.dart';
 ///     })
 /// # Security Group for Neptune Graph
 /// example_security_group = aws.ec2.SecurityGroup("example",
-///     name_prefix="neptune-graph-sg",
-///     description="Security group for Neptune Graph",
-///     vpc_id=example.id,
 ///     ingress=[{
 ///         "from_port": 8182,
 ///         "to_port": 8182,
 ///         "protocol": "tcp",
 ///         "cidr_blocks": ["10.0.0.0/16"],
 ///     }],
+///     name_prefix="neptune-graph-sg",
+///     description="Security group for Neptune Graph",
+///     vpc_id=example.id,
 ///     tags={
 ///         "Name": "neptune-graph-sg",
 ///     })
@@ -175,9 +175,6 @@ import 'private_graph_endpoint_timeouts.dart';
 ///     // Security Group for Neptune Graph
 ///     var exampleSecurityGroup = new Aws.Ec2.SecurityGroup("example", new()
 ///     {
-///         NamePrefix = "neptune-graph-sg",
-///         Description = "Security group for Neptune Graph",
-///         VpcId = example.Id,
 ///         Ingress = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.SecurityGroupIngressArgs
@@ -191,6 +188,9 @@ import 'private_graph_endpoint_timeouts.dart';
 ///                 },
 ///             },
 ///         },
+///         NamePrefix = "neptune-graph-sg",
+///         Description = "Security group for Neptune Graph",
+///         VpcId = example.Id,
 ///         Tags =
 ///         {
 ///             { "Name", "neptune-graph-sg" },
@@ -274,9 +274,6 @@ import 'private_graph_endpoint_timeouts.dart';
 /// 		}
 /// 		// Security Group for Neptune Graph
 /// 		exampleSecurityGroup, err := ec2.NewSecurityGroup(ctx, "example", &ec2.SecurityGroupArgs{
-/// 			NamePrefix:  pulumi.String("neptune-graph-sg"),
-/// 			Description: pulumi.String("Security group for Neptune Graph"),
-/// 			VpcId:       example.ID().ToIDOutput().ToStringOutput(),
 /// 			Ingress: ec2.SecurityGroupIngressArray{
 /// 				&ec2.SecurityGroupIngressArgs{
 /// 					FromPort: pulumi.Int(8182),
@@ -287,6 +284,9 @@ import 'private_graph_endpoint_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			NamePrefix:  pulumi.String("neptune-graph-sg"),
+/// 			Description: pulumi.String("Security group for Neptune Graph"),
+/// 			VpcId:       example.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("neptune-graph-sg"),
 /// 			},
@@ -360,15 +360,15 @@ import 'private_graph_endpoint_timeouts.dart';
 /// }
 /// # Security Group for Neptune Graph
 /// resource "aws_ec2_securitygroup" "example" {
-///   name_prefix = "neptune-graph-sg"
-///   description = "Security group for Neptune Graph"
-///   vpc_id      = aws_ec2_vpc.example.id
 ///   ingress {
 ///     from_port   = 8182
 ///     to_port     = 8182
 ///     protocol    = "tcp"
 ///     cidr_blocks = ["10.0.0.0/16"]
 ///   }
+///   name_prefix = "neptune-graph-sg"
+///   description = "Security group for Neptune Graph"
+///   vpc_id      = aws_ec2_vpc.example.id
 ///   tags = {
 ///     "Name" = "neptune-graph-sg"
 ///   }
@@ -445,15 +445,15 @@ import 'private_graph_endpoint_timeouts.dart';
 ///
 ///         // Security Group for Neptune Graph
 ///         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
-///             .namePrefix("neptune-graph-sg")
-///             .description("Security group for Neptune Graph")
-///             .vpcId(example.id())
 ///             .ingress(SecurityGroupIngressArgs.builder()
 ///                 .fromPort(8182)
 ///                 .toPort(8182)
 ///                 .protocol("tcp")
 ///                 .cidrBlocks("10.0.0.0/16")
 ///                 .build())
+///             .namePrefix("neptune-graph-sg")
+///             .description("Security group for Neptune Graph")
+///             .vpcId(example.id())
 ///             .tags(Map.of("Name", "neptune-graph-sg"))
 ///             .build());
 ///
@@ -508,15 +508,15 @@ import 'private_graph_endpoint_timeouts.dart';
 ///     type: aws:ec2:SecurityGroup
 ///     name: example
 ///     properties:
-///       namePrefix: neptune-graph-sg
-///       description: Security group for Neptune Graph
-///       vpcId: ${example.id}
 ///       ingress:
 ///         - fromPort: 8182
 ///           toPort: 8182
 ///           protocol: tcp
 ///           cidrBlocks:
 ///             - 10.0.0.0/16
+///       namePrefix: neptune-graph-sg
+///       description: Security group for Neptune Graph
+///       vpcId: ${example.id}
 ///       tags:
 ///         Name: neptune-graph-sg
 ///   # Example Graph resource
@@ -597,16 +597,16 @@ class PrivateGraphEndpoint extends pulumi.CustomResource {
           'aws:neptunegraph/privateGraphEndpoint:PrivateGraphEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     graphIdentifier = registerOutput<String>('graphIdentifier');
     privateGraphEndpointIdentifier = registerOutput<String>('privateGraphEndpointIdentifier');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>?>('subnetIds');
+    subnetIds = registerOutput<List<String>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     timeouts = registerOutput<PrivateGraphEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateGraphEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcEndpointId = registerOutput<String>('vpcEndpointId');
     vpcId = registerOutput<String>('vpcId');
-    vpcSecurityGroupIds = registerOutput<List<String>?>('vpcSecurityGroupIds');
+    vpcSecurityGroupIds = registerOutput<List<String>?>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [PrivateGraphEndpoint] resource's state with the given [name] and [id].
@@ -614,11 +614,12 @@ class PrivateGraphEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateGraphEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateGraphEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -635,10 +636,29 @@ class PrivateGraphEndpoint extends pulumi.CustomResource {
     graphIdentifier = registerOutput<String>('graphIdentifier');
     privateGraphEndpointIdentifier = registerOutput<String>('privateGraphEndpointIdentifier');
     region = registerOutput<String>('region');
-    subnetIds = registerOutput<List<String>?>('subnetIds');
+    subnetIds = registerOutput<List<String>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     timeouts = registerOutput<PrivateGraphEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateGraphEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcEndpointId = registerOutput<String>('vpcEndpointId');
     vpcId = registerOutput<String>('vpcId');
-    vpcSecurityGroupIds = registerOutput<List<String>?>('vpcSecurityGroupIds');
+    vpcSecurityGroupIds = registerOutput<List<String>?>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PrivateGraphEndpoint] resource.
+  PrivateGraphEndpoint.reference(String urn)
+    : super(
+        'aws:neptunegraph/privateGraphEndpoint:PrivateGraphEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    graphIdentifier = registerOutput<String>('graphIdentifier');
+    privateGraphEndpointIdentifier = registerOutput<String>('privateGraphEndpointIdentifier');
+    region = registerOutput<String>('region');
+    subnetIds = registerOutput<List<String>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    timeouts = registerOutput<PrivateGraphEndpointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateGraphEndpointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcEndpointId = registerOutput<String>('vpcEndpointId');
+    vpcId = registerOutput<String>('vpcId');
+    vpcSecurityGroupIds = registerOutput<List<String>?>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

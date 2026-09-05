@@ -5,11 +5,11 @@ import 'channel_input_attachment_automatic_input_failover_settings_failover_cond
 
 class ChannelInputAttachmentAutomaticInputFailoverSettings {
   /// This clear time defines the requirement a recovered input must meet to be considered healthy. The input must have no failover conditions for this length of time. Enter a time in milliseconds. This value is particularly important if the input\_preference for the failover pair is set to PRIMARY\_INPUT\_PREFERRED, because after this time, MediaLive will switch back to the primary input.
-  final pulumi.Input<int>? errorClearTimeMsec;
+  final pulumi.Input<int?>? errorClearTimeMsec;
   /// A list of failover conditions. If any of these conditions occur, MediaLive will perform a failover to the other input. See Failover Condition Block for more details.
-  final pulumi.Input<List<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition>>? failoverConditions;
+  final pulumi.Input<List<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition>?>? failoverConditions;
   /// Input preference when deciding which input to make active when a previously failed input has recovered.
-  final pulumi.Input<String>? inputPreference;
+  final pulumi.Input<String?>? inputPreference;
   /// The input ID of the secondary input in the automatic input failover pair.
   final pulumi.Input<String> secondaryInputId;
 
@@ -36,7 +36,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettings {
 
   factory ChannelInputAttachmentAutomaticInputFailoverSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettings(
-      errorClearTimeMsec: (() { final guardedValue = map['errorClearTimeMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      errorClearTimeMsec: (() { final guardedValue = map['errorClearTimeMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       failoverConditions: (() { final guardedValue = map['failoverConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition>(guardedValue, (value) => ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       inputPreference: (() { final guardedValue = map['inputPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secondaryInputId: pulumi.Input.fromValue(map['secondaryInputId'] as String),

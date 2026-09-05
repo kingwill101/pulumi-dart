@@ -7,28 +7,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cloudfront_function_function_args_doc}
 class FunctionArgs {
-  /// Source code of the function
+  /// Source code of the function. Must be between 1 and 40960 bytes.
   final pulumi.Input<String> code;
-  /// Comment.
-  final pulumi.Input<String>? comment;
+  /// Comment. Must not exceed 128 characters.
+  final pulumi.Input<String?>? comment;
   /// List of `aws.cloudfront.KeyValueStore` ARNs to be associated to the function. AWS limits associations to one key value store per function.
-  final pulumi.Input<List<String>>? keyValueStoreAssociations;
-  /// Unique name for your CloudFront Function.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<List<String>?>? keyValueStoreAssociations;
+  /// Unique name for your CloudFront Function. Valid names contain only alphanumeric characters, hyphens, and underscores, and must be between 1 and 64 characters.
+  final pulumi.Input<String?>? name;
   /// Whether to publish creation/change as Live CloudFront Function Version. Defaults to `true`.
-  final pulumi.Input<bool>? publish;
+  final pulumi.Input<bool?>? publish;
   /// Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> runtime;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FunctionArgs].
-  /// [code] Source code of the function
-  /// [comment] Comment.
+  /// [code] Source code of the function. Must be between 1 and 40960 bytes.
+  /// [comment] Comment. Must not exceed 128 characters.
   /// [keyValueStoreAssociations] List of `aws.cloudfront.KeyValueStore` ARNs to be associated to the function. AWS limits associations to one key value store per function.
-  /// [name] Unique name for your CloudFront Function.
+  /// [name] Unique name for your CloudFront Function. Valid names contain only alphanumeric characters, hyphens, and underscores, and must be between 1 and 64 characters.
   /// [publish] Whether to publish creation/change as Live CloudFront Function Version. Defaults to `true`.
   /// [runtime] Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

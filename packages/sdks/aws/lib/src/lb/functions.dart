@@ -25,14 +25,14 @@ import 'get_trust_store_result.dart';
 ///
 /// const main = aws.lb.getHostedZoneId({});
 /// const www = new aws.route53.Record("www", {
-///     zoneId: primary.zoneId,
-///     name: "example.com",
-///     type: aws.route53.RecordType.A,
 ///     aliases: [{
 ///         name: mainAwsLb.dnsName,
 ///         zoneId: main.then(main => main.id),
 ///         evaluateTargetHealth: true,
 ///     }],
+///     zoneId: primary.zoneId,
+///     name: "example.com",
+///     type: aws.route53.RecordType.A,
 /// });
 /// ```
 /// ```python
@@ -41,14 +41,14 @@ import 'get_trust_store_result.dart';
 ///
 /// main = aws.lb.get_hosted_zone_id()
 /// www = aws.route53.Record("www",
-///     zone_id=primary["zoneId"],
-///     name="example.com",
-///     type=aws.route53.RecordType.A,
 ///     aliases=[{
 ///         "name": main_aws_lb["dnsName"],
 ///         "zone_id": main.id,
 ///         "evaluate_target_health": True,
-///     }])
+///     }],
+///     zone_id=primary["zoneId"],
+///     name="example.com",
+///     type=aws.route53.RecordType.A)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -62,9 +62,6 @@ import 'get_trust_store_result.dart';
 ///
 ///     var www = new Aws.Route53.Record("www", new()
 ///     {
-///         ZoneId = primary.ZoneId,
-///         Name = "example.com",
-///         Type = Aws.Route53.RecordType.A,
 ///         Aliases = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordAliasArgs
@@ -74,6 +71,9 @@ import 'get_trust_store_result.dart';
 ///                 EvaluateTargetHealth = true,
 ///             },
 ///         },
+///         ZoneId = primary.ZoneId,
+///         Name = "example.com",
+///         Type = Aws.Route53.RecordType.A,
 ///     });
 ///
 /// });
@@ -94,9 +94,6 @@ import 'get_trust_store_result.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewRecord(ctx, "www", &route53.RecordArgs{
-/// 			ZoneId: pulumi.Any(primary.ZoneId),
-/// 			Name:   pulumi.String("example.com"),
-/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 			Aliases: route53.RecordAliasArray{
 /// 				&route53.RecordAliasArgs{
 /// 					Name:                 pulumi.Any(mainAwsLb.DnsName),
@@ -104,6 +101,9 @@ import 'get_trust_store_result.dart';
 /// 					EvaluateTargetHealth: pulumi.Bool(true),
 /// 				},
 /// 			},
+/// 			ZoneId: pulumi.Any(primary.ZoneId),
+/// 			Name:   pulumi.String("example.com"),
+/// 			Type:   pulumi.String(route53.RecordTypeA),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -125,14 +125,14 @@ import 'get_trust_store_result.dart';
 /// }
 ///
 /// resource "aws_route53_record" "www" {
-///   zone_id = primary.zoneId
-///   name    = "example.com"
-///   type    = "A"
 ///   aliases {
 ///     name                   = mainAwsLb.dnsName
 ///     zone_id                = data.aws_lb_gethostedzoneid.main.id
 ///     evaluate_target_health = true
 ///   }
+///   zone_id = primary.zoneId
+///   name    = "example.com"
+///   type    = "A"
 /// }
 /// ```
 /// ```java
@@ -163,14 +163,14 @@ import 'get_trust_store_result.dart';
 ///             .build());
 ///
 ///         var www = new Record("www", RecordArgs.builder()
-///             .zoneId(primary.zoneId())
-///             .name("example.com")
-///             .type("A")
 ///             .aliases(RecordAliasArgs.builder()
 ///                 .name(mainAwsLb.dnsName())
 ///                 .zoneId(main.id())
 ///                 .evaluateTargetHealth(true)
 ///                 .build())
+///             .zoneId(primary.zoneId())
+///             .name("example.com")
+///             .type("A")
 ///             .build());
 ///
 ///     }
@@ -181,13 +181,13 @@ import 'get_trust_store_result.dart';
 ///   www:
 ///     type: aws:route53:Record
 ///     properties:
-///       zoneId: ${primary.zoneId}
-///       name: example.com
-///       type: A
 ///       aliases:
 ///         - name: ${mainAwsLb.dnsName}
 ///           zoneId: ${main.id}
 ///           evaluateTargetHealth: true
+///       zoneId: ${primary.zoneId}
+///       name: example.com
+///       type: A
 /// variables:
 ///   main:
 ///     fn::invoke:
@@ -207,6 +207,17 @@ Future<GetHostedZoneIdResult> getHostedZoneId(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHostedZoneIdResult.fromMap(result);
+}
+
+pulumi.Output<GetHostedZoneIdResult> getHostedZoneIdOutput(
+  GetHostedZoneIdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lb/getHostedZoneId:getHostedZoneId',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostedZoneIdResult.fromMap);
 }
 
 /// Use this data source to get a list of Load Balancer ARNs matching the specified criteria. Useful for passing to other
@@ -340,6 +351,17 @@ Future<GetLbsResult> getLbs(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLbsResult.fromMap(result);
+}
+
+pulumi.Output<GetLbsResult> getLbsOutput(
+  GetLbsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lb/getLbs:getLbs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLbsResult.fromMap);
 }
 
 /// &gt; **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
@@ -551,6 +573,17 @@ Future<GetListenerResult> getListener(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetListenerResult.fromMap(result);
+}
+
+pulumi.Output<GetListenerResult> getListenerOutput(
+  GetListenerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lb/getListener:getListener',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetListenerResult.fromMap);
 }
 
 /// Provides information about an AWS Elastic Load Balancing Listener Rule.
@@ -829,6 +862,17 @@ Future<GetListenerRuleResult> getListenerRule(
   return GetListenerRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetListenerRuleResult> getListenerRuleOutput(
+  GetListenerRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lb/getListenerRule:getListenerRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetListenerRuleResult.fromMap);
+}
+
 /// &gt; **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
 ///
 /// Provides information about a Load Balancer.
@@ -1000,6 +1044,17 @@ Future<GetLoadBalancerResult> getLoadBalancer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancerResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
+  GetLoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lb/getLoadBalancer:getLoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerResult.fromMap);
 }
 
 /// &gt; **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
@@ -1175,6 +1230,17 @@ Future<GetTargetGroupResult> getTargetGroup(
   return GetTargetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetGroupResult> getTargetGroupOutput(
+  GetTargetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lb/getTargetGroup:getTargetGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetGroupResult.fromMap);
+}
+
 /// Provides information about a Load Balancer Trust Store.
 ///
 /// This data source can prove useful when a module accepts an LB Trust Store as an
@@ -1344,4 +1410,15 @@ Future<GetTrustStoreResult> getTrustStore(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrustStoreResult.fromMap(result);
+}
+
+pulumi.Output<GetTrustStoreResult> getTrustStoreOutput(
+  GetTrustStoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:lb/getTrustStore:getTrustStore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrustStoreResult.fromMap);
 }

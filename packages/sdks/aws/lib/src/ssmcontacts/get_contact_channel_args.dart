@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ssmcontacts_get_contact_channel_get_contact_channel_args_doc}
 class GetContactChannelArgs {
-  /// Amazon Resource Name (ARN) of the contact channel.
+  /// ARN of the contact channel.
   final pulumi.Input<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetContactChannelArgs].
-  /// [arn] Amazon Resource Name (ARN) of the contact channel.
+  /// [arn] ARN of the contact channel.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetContactChannelArgs({
     required this.arn,

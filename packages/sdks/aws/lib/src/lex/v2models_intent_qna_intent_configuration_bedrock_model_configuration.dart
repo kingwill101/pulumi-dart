@@ -5,13 +5,13 @@ import 'v2models_intent_qna_intent_configuration_bedrock_model_configuration_gua
 
 class V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration {
   /// Custom prompt to use for the Bedrock model.
-  final pulumi.Input<String>? customPrompt;
+  final pulumi.Input<String?>? customPrompt;
   /// Configuration block for the guardrail to use with the Bedrock model. See `guardrail`.
-  final pulumi.Input<V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail>? guardrail;
+  final pulumi.Input<V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail?>? guardrail;
   /// ARN of the Bedrock model to use.
   final pulumi.Input<String> modelArn;
   /// Whether to enable tracing for the Bedrock model. Valid values are `ENABLED` and `DISABLED`.
-  final pulumi.Input<String>? traceStatus;
+  final pulumi.Input<String?>? traceStatus;
 
   /// Creates a new [V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration].
   /// [customPrompt] Custom prompt to use for the Bedrock model.

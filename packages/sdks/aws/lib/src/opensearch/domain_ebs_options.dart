@@ -6,13 +6,13 @@ class DomainEbsOptions {
   /// Whether EBS volumes are attached to data nodes in the domain.
   final pulumi.Input<bool> ebsEnabled;
   /// Baseline input/output (I/O) performance of EBS volumes attached to data nodes. Applicable only for the GP3 and Provisioned IOPS EBS volume types.
-  final pulumi.Input<int>? iops;
+  final pulumi.Input<int?>? iops;
   /// Specifies the throughput (in MiB/s) of the EBS volumes attached to data nodes. Applicable only for the gp3 volume type.
-  final pulumi.Input<int>? throughput;
+  final pulumi.Input<int?>? throughput;
   /// Size of EBS volumes attached to data nodes (in GiB).
-  final pulumi.Input<int>? volumeSize;
+  final pulumi.Input<int?>? volumeSize;
   /// Type of EBS volumes attached to data nodes.
-  final pulumi.Input<String>? volumeType;
+  final pulumi.Input<String?>? volumeType;
 
   /// Creates a new [DomainEbsOptions].
   /// [ebsEnabled] Whether EBS volumes are attached to data nodes in the domain.
@@ -41,9 +41,9 @@ class DomainEbsOptions {
   factory DomainEbsOptions.fromMap(Map<String, dynamic> map) {
     return DomainEbsOptions(
       ebsEnabled: pulumi.Input.fromValue(map['ebsEnabled'] as bool),
-      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      volumeSize: (() { final guardedValue = map['volumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      volumeSize: (() { final guardedValue = map['volumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       volumeType: (() { final guardedValue = map['volumeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

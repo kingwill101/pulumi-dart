@@ -5,7 +5,7 @@ import 'scheduled_query_last_run_summary_error_report_location_s3_report_locatio
 
 class ScheduledQueryLastRunSummaryErrorReportLocation {
   /// S3 location where error reports are written.
-  final pulumi.Input<List<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>>? s3ReportLocations;
+  final pulumi.Input<List<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>?>? s3ReportLocations;
 
   /// Creates a new [ScheduledQueryLastRunSummaryErrorReportLocation].
   /// [s3ReportLocations] S3 location where error reports are written.

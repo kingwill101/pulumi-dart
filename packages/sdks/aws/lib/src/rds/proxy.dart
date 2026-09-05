@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'proxy_args.dart';
+import 'proxy_auth.dart';
 import 'proxy_state.dart';
 
 /// Provides an RDS DB proxy resource. For additional information, see the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html).
@@ -16,6 +17,12 @@ import 'proxy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.rds.Proxy("example", {
+///     auths: [{
+///         authScheme: "SECRETS",
+///         description: "example",
+///         iamAuth: "DISABLED",
+///         secretArn: exampleAwsSecretsmanagerSecret.arn,
+///     }],
 ///     name: "example",
 ///     debugLogging: false,
 ///     engineFamily: "MYSQL",
@@ -24,12 +31,6 @@ import 'proxy_state.dart';
 ///     roleArn: exampleAwsIamRole.arn,
 ///     vpcSecurityGroupIds: [exampleAwsSecurityGroup.id],
 ///     vpcSubnetIds: [exampleAwsSubnet.id],
-///     auths: [{
-///         authScheme: "SECRETS",
-///         description: "example",
-///         iamAuth: "DISABLED",
-///         secretArn: exampleAwsSecretsmanagerSecret.arn,
-///     }],
 ///     tags: {
 ///         Name: "example",
 ///         Key: "value",
@@ -41,6 +42,12 @@ import 'proxy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.rds.Proxy("example",
+///     auths=[{
+///         "auth_scheme": "SECRETS",
+///         "description": "example",
+///         "iam_auth": "DISABLED",
+///         "secret_arn": example_aws_secretsmanager_secret["arn"],
+///     }],
 ///     name="example",
 ///     debug_logging=False,
 ///     engine_family="MYSQL",
@@ -49,12 +56,6 @@ import 'proxy_state.dart';
 ///     role_arn=example_aws_iam_role["arn"],
 ///     vpc_security_group_ids=[example_aws_security_group["id"]],
 ///     vpc_subnet_ids=[example_aws_subnet["id"]],
-///     auths=[{
-///         "auth_scheme": "SECRETS",
-///         "description": "example",
-///         "iam_auth": "DISABLED",
-///         "secret_arn": example_aws_secretsmanager_secret["arn"],
-///     }],
 ///     tags={
 ///         "Name": "example",
 ///         "Key": "value",
@@ -70,6 +71,16 @@ import 'proxy_state.dart';
 /// {
 ///     var example = new Aws.Rds.Proxy("example", new()
 ///     {
+///         Auths = new[]
+///         {
+///             new Aws.Rds.Inputs.ProxyAuthArgs
+///             {
+///                 AuthScheme = "SECRETS",
+///                 Description = "example",
+///                 IamAuth = "DISABLED",
+///                 SecretArn = exampleAwsSecretsmanagerSecret.Arn,
+///             },
+///         },
 ///         Name = "example",
 ///         DebugLogging = false,
 ///         EngineFamily = "MYSQL",
@@ -83,16 +94,6 @@ import 'proxy_state.dart';
 ///         VpcSubnetIds = new[]
 ///         {
 ///             exampleAwsSubnet.Id,
-///         },
-///         Auths = new[]
-///         {
-///             new Aws.Rds.Inputs.ProxyAuthArgs
-///             {
-///                 AuthScheme = "SECRETS",
-///                 Description = "example",
-///                 IamAuth = "DISABLED",
-///                 SecretArn = exampleAwsSecretsmanagerSecret.Arn,
-///             },
 ///         },
 ///         Tags =
 ///         {
@@ -114,6 +115,14 @@ import 'proxy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := rds.NewProxy(ctx, "example", &rds.ProxyArgs{
+/// 			Auths: rds.ProxyAuthArray{
+/// 				&rds.ProxyAuthArgs{
+/// 					AuthScheme:  pulumi.String("SECRETS"),
+/// 					Description: pulumi.String("example"),
+/// 					IamAuth:     pulumi.String("DISABLED"),
+/// 					SecretArn:   pulumi.Any(exampleAwsSecretsmanagerSecret.Arn),
+/// 				},
+/// 			},
 /// 			Name:              pulumi.String("example"),
 /// 			DebugLogging:      pulumi.Bool(false),
 /// 			EngineFamily:      pulumi.String("MYSQL"),
@@ -125,14 +134,6 @@ import 'proxy_state.dart';
 /// 			},
 /// 			VpcSubnetIds: pulumi.StringArray{
 /// 				exampleAwsSubnet.Id,
-/// 			},
-/// 			Auths: rds.ProxyAuthArray{
-/// 				&rds.ProxyAuthArgs{
-/// 					AuthScheme:  pulumi.String("SECRETS"),
-/// 					Description: pulumi.String("example"),
-/// 					IamAuth:     pulumi.String("DISABLED"),
-/// 					SecretArn:   pulumi.Any(exampleAwsSecretsmanagerSecret.Arn),
-/// 				},
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("example"),
@@ -156,6 +157,12 @@ import 'proxy_state.dart';
 /// }
 ///
 /// resource "aws_rds_proxy" "example" {
+///   auths {
+///     auth_scheme = "SECRETS"
+///     description = "example"
+///     iam_auth    = "DISABLED"
+///     secret_arn  = exampleAwsSecretsmanagerSecret.arn
+///   }
 ///   name                   = "example"
 ///   debug_logging          = false
 ///   engine_family          = "MYSQL"
@@ -164,12 +171,6 @@ import 'proxy_state.dart';
 ///   role_arn               = exampleAwsIamRole.arn
 ///   vpc_security_group_ids = [exampleAwsSecurityGroup.id]
 ///   vpc_subnet_ids         = [exampleAwsSubnet.id]
-///   auths {
-///     auth_scheme = "SECRETS"
-///     description = "example"
-///     iam_auth    = "DISABLED"
-///     secret_arn  = exampleAwsSecretsmanagerSecret.arn
-///   }
 ///   tags = {
 ///     "Name" = "example"
 ///     "Key"  = "value"
@@ -199,6 +200,12 @@ import 'proxy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Proxy("example", ProxyArgs.builder()
+///             .auths(ProxyAuthArgs.builder()
+///                 .authScheme("SECRETS")
+///                 .description("example")
+///                 .iamAuth("DISABLED")
+///                 .secretArn(exampleAwsSecretsmanagerSecret.arn())
+///                 .build())
 ///             .name("example")
 ///             .debugLogging(false)
 ///             .engineFamily("MYSQL")
@@ -207,12 +214,6 @@ import 'proxy_state.dart';
 ///             .roleArn(exampleAwsIamRole.arn())
 ///             .vpcSecurityGroupIds(exampleAwsSecurityGroup.id())
 ///             .vpcSubnetIds(exampleAwsSubnet.id())
-///             .auths(ProxyAuthArgs.builder()
-///                 .authScheme("SECRETS")
-///                 .description("example")
-///                 .iamAuth("DISABLED")
-///                 .secretArn(exampleAwsSecretsmanagerSecret.arn())
-///                 .build())
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "example"),
 ///                 Map.entry("Key", "value")
@@ -227,6 +228,11 @@ import 'proxy_state.dart';
 ///   example:
 ///     type: aws:rds:Proxy
 ///     properties:
+///       auths:
+///         - authScheme: SECRETS
+///           description: example
+///           iamAuth: DISABLED
+///           secretArn: ${exampleAwsSecretsmanagerSecret.arn}
 ///       name: example
 ///       debugLogging: false
 ///       engineFamily: MYSQL
@@ -237,11 +243,6 @@ import 'proxy_state.dart';
 ///         - ${exampleAwsSecurityGroup.id}
 ///       vpcSubnetIds:
 ///         - ${exampleAwsSubnet.id}
-///       auths:
-///         - authScheme: SECRETS
-///           description: example
-///           iamAuth: DISABLED
-///           secretArn: ${exampleAwsSecretsmanagerSecret.arn}
 ///       tags:
 ///         Name: example
 ///         Key: value
@@ -261,12 +262,12 @@ import 'proxy_state.dart';
 /// import * as std from "@pulumi/std";
 ///
 /// const available = aws.getAvailabilityZones({
-///     excludeZoneIds: ["use1-az3"],
-///     state: "available",
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["opt-in-not-required"],
 ///     }],
+///     excludeZoneIds: ["use1-az3"],
+///     state: "available",
 /// });
 /// const example = new aws.ec2.Vpc("example", {cidrBlock: "10.0.0.0/16"});
 /// const exampleSubnet: aws.ec2.Subnet[] = [];
@@ -292,12 +293,12 @@ import 'proxy_state.dart';
 /// import pulumi_aws as aws
 /// import pulumi_std as std
 ///
-/// available = aws.get_availability_zones(exclude_zone_ids=["use1-az3"],
-///     state="available",
-///     filters=[{
+/// available = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["opt-in-not-required"],
-///     }])
+///     }],
+///     exclude_zone_ids=["use1-az3"],
+///     state="available")
 /// example = aws.ec2.Vpc("example", cidr_block="10.0.0.0/16")
 /// example_subnet: list[aws.ec2.Subnet] = []
 /// for example_subnet_range in [{"value": i} for i in range(0, 5)]:
@@ -322,11 +323,6 @@ import 'proxy_state.dart';
 /// {
 ///     var available = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         ExcludeZoneIds = new[]
-///         {
-///             "use1-az3",
-///         },
-///         State = "available",
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -338,6 +334,11 @@ import 'proxy_state.dart';
 ///                 },
 ///             },
 ///         },
+///         ExcludeZoneIds = new[]
+///         {
+///             "use1-az3",
+///         },
+///         State = "available",
 ///     });
 ///
 ///     var example = new Aws.Ec2.Vpc("example", new()
@@ -388,10 +389,6 @@ import 'proxy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// 			ExcludeZoneIds: []string{
-/// 				"use1-az3",
-/// 			},
-/// 			State: pulumi.StringRef("available"),
 /// 			Filters: []aws.GetAvailabilityZonesFilter{
 /// 				{
 /// 					Name: "opt-in-status",
@@ -400,6 +397,10 @@ import 'proxy_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			ExcludeZoneIds: []string{
+/// 				"use1-az3",
+/// 			},
+/// 			State: pulumi.StringRef("available"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -454,12 +455,12 @@ import 'proxy_state.dart';
 /// }
 ///
 /// data "aws_getavailabilityzones" "available" {
-///   exclude_zone_ids = ["use1-az3"]
-///   state            = "available"
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["opt-in-not-required"]
 ///   }
+///   exclude_zone_ids = ["use1-az3"]
+///   state            = "available"
 /// }
 ///
 /// resource "aws_ec2_vpc" "example" {
@@ -508,12 +509,12 @@ import 'proxy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var available = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .excludeZoneIds("use1-az3")
-///             .state("available")
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("opt-in-not-required")
 ///                 .build())
+///             .excludeZoneIds("use1-az3")
+///             .state("available")
 ///             .build());
 ///
 ///         var example = new Vpc("example", VpcArgs.builder()
@@ -553,6 +554,8 @@ import 'proxy_state.dart';
 /// const example = new aws.rds.Proxy("example", {
 ///     name: "example",
 ///     vpcSubnetIds: [exampleAwsSubnet.id],
+/// }, {
+///     ignoreChanges: ["vpcSubnetIds"],
 /// });
 /// ```
 /// ```python
@@ -561,7 +564,8 @@ import 'proxy_state.dart';
 ///
 /// example = aws.rds.Proxy("example",
 ///     name="example",
-///     vpc_subnet_ids=[example_aws_subnet["id"]])
+///     vpc_subnet_ids=[example_aws_subnet["id"]],
+///     opts = pulumi.ResourceOptions(ignore_changes=["vpcSubnetIds"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -577,6 +581,12 @@ import 'proxy_state.dart';
 ///         VpcSubnetIds = new[]
 ///         {
 ///             exampleAwsSubnet.Id,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "vpcSubnetIds",
 ///         },
 ///     });
 ///
@@ -597,7 +607,9 @@ import 'proxy_state.dart';
 /// 			VpcSubnetIds: pulumi.StringArray{
 /// 				exampleAwsSubnet.Id,
 /// 			},
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"vpcSubnetIds",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -615,6 +627,9 @@ import 'proxy_state.dart';
 /// }
 ///
 /// resource "aws_rds_proxy" "example" {
+///   lifecycle {
+///     ignore_changes = [vpcSubnetIds]
+///   }
 ///   name           = "example"
 ///   vpc_subnet_ids = [exampleAwsSubnet.id]
 /// }
@@ -627,6 +642,7 @@ import 'proxy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.rds.Proxy;
 /// import com.pulumi.aws.rds.ProxyArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -643,7 +659,9 @@ import 'proxy_state.dart';
 ///         var example = new Proxy("example", ProxyArgs.builder()
 ///             .name("example")
 ///             .vpcSubnetIds(exampleAwsSubnet.id())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("vpcSubnetIds")
+///                 .build());
 ///
 ///     }
 /// }
@@ -656,6 +674,9 @@ import 'proxy_state.dart';
 ///       name: example
 ///       vpcSubnetIds:
 ///         - ${exampleAwsSubnet.id}
+///     options:
+///       ignoreChanges:
+///         - vpcSubnetIds
 /// ```
 ///
 ///
@@ -667,10 +688,10 @@ import 'proxy_state.dart';
 /// $ pulumi import aws:rds/proxy:Proxy example example
 /// ```
 class Proxy extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) for the proxy.
+  /// ARN for the proxy.
   late final pulumi.Output<String> arn;
   /// Configuration block(s) with authorization mechanisms to connect to the associated instances or clusters. Required when `defaultAuthScheme` is `NONE` or unspecified. See the `auth` block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> auths;
+  late final pulumi.Output<List<ProxyAuth>?> auths;
   /// Whether the proxy includes detailed information about SQL statements in its logs. This information helps you to debug issues involving SQL behavior or the performance and scalability of the proxy connections. The debug information includes the text of SQL statements that you submit through the proxy. Thus, only enable this setting when needed for debugging, and only when you have security measures in place to safeguard any sensitive information that appears in the logs.
   late final pulumi.Output<bool?> debugLogging;
   /// Default authentication scheme that the proxy uses for client connections to the proxy and connections from the proxy to the underlying database. Valid values are `NONE` and `IAM_AUTH`. Defaults to `NONE`.
@@ -687,9 +708,9 @@ class Proxy extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Whether Transport Layer Security (TLS) encryption is required for connections to the proxy. Enabling this setting enforces encrypted TLS connections to the proxy.
+  /// Whether TLS encryption is required for connections to the proxy. Enabling this setting enforces encrypted TLS connections to the proxy.
   late final pulumi.Output<bool?> requireTls;
-  /// Amazon Resource Name (ARN) of the IAM role that the proxy uses to access secrets in AWS Secrets Manager.
+  /// ARN of the IAM role that the proxy uses to access secrets in AWS Secrets Manager.
   late final pulumi.Output<String> roleArn;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -714,10 +735,10 @@ class Proxy extends pulumi.CustomResource {
           'aws:rds/proxy:Proxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    auths = registerOutput<List<Map<String, dynamic>>?>('auths');
+    auths = registerOutput<List<ProxyAuth>?>('auths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProxyAuth>(guardedValue, (value) => ProxyAuth.fromMap((value as Map).cast<String, dynamic>())); });
     debugLogging = registerOutput<bool?>('debugLogging');
     defaultAuthScheme = registerOutput<String>('defaultAuthScheme');
     endpoint = registerOutput<String>('endpoint');
@@ -728,11 +749,11 @@ class Proxy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     requireTls = registerOutput<bool?>('requireTls');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetConnectionNetworkType = registerOutput<String>('targetConnectionNetworkType');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
-    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Proxy] resource's state with the given [name] and [id].
@@ -740,11 +761,12 @@ class Proxy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProxyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Proxy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -759,7 +781,7 @@ class Proxy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    auths = registerOutput<List<Map<String, dynamic>>?>('auths');
+    auths = registerOutput<List<ProxyAuth>?>('auths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProxyAuth>(guardedValue, (value) => ProxyAuth.fromMap((value as Map).cast<String, dynamic>())); });
     debugLogging = registerOutput<bool?>('debugLogging');
     defaultAuthScheme = registerOutput<String>('defaultAuthScheme');
     endpoint = registerOutput<String>('endpoint');
@@ -770,10 +792,38 @@ class Proxy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     requireTls = registerOutput<bool?>('requireTls');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetConnectionNetworkType = registerOutput<String>('targetConnectionNetworkType');
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
-    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Proxy] resource.
+  Proxy.reference(String urn)
+    : super(
+        'aws:rds/proxy:Proxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    auths = registerOutput<List<ProxyAuth>?>('auths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProxyAuth>(guardedValue, (value) => ProxyAuth.fromMap((value as Map).cast<String, dynamic>())); });
+    debugLogging = registerOutput<bool?>('debugLogging');
+    defaultAuthScheme = registerOutput<String>('defaultAuthScheme');
+    endpoint = registerOutput<String>('endpoint');
+    endpointNetworkType = registerOutput<String>('endpointNetworkType');
+    engineFamily = registerOutput<String>('engineFamily');
+    idleClientTimeout = registerOutput<int>('idleClientTimeout');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    requireTls = registerOutput<bool?>('requireTls');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetConnectionNetworkType = registerOutput<String>('targetConnectionNetworkType');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcSubnetIds = registerOutput<List<String>>('vpcSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

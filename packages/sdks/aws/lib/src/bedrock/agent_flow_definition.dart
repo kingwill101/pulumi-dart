@@ -6,9 +6,9 @@ import 'agent_flow_definition_node.dart';
 
 class AgentFlowDefinition {
   /// A list of connection definitions in the flow. See Connection for more information.
-  final pulumi.Input<List<AgentFlowDefinitionConnection>>? connections;
+  final pulumi.Input<List<AgentFlowDefinitionConnection>?>? connections;
   /// A list of node definitions in the flow. See Node for more information.
-  final pulumi.Input<List<AgentFlowDefinitionNode>>? nodes;
+  final pulumi.Input<List<AgentFlowDefinitionNode>?>? nodes;
 
   /// Creates a new [AgentFlowDefinition].
   /// [connections] A list of connection definitions in the flow. See Connection for more information.

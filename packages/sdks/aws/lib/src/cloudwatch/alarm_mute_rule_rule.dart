@@ -5,7 +5,7 @@ import 'alarm_mute_rule_rule_schedule.dart';
 
 class AlarmMuteRuleRule {
   /// Schedule for the mute rule. See `schedule` block below for details.
-  final pulumi.Input<AlarmMuteRuleRuleSchedule>? schedule;
+  final pulumi.Input<AlarmMuteRuleRuleSchedule?>? schedule;
 
   /// Creates a new [AlarmMuteRuleRule].
   /// [schedule] Schedule for the mute rule. See `schedule` block below for details.

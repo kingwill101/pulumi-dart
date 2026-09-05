@@ -8,12 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_globalaccelerator_get_custom_routing_accelerator_get_custom_routing_accelerator_args_doc}
 class GetCustomRoutingAcceleratorArgs {
   /// Full ARN of the custom routing accelerator.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Unique name of the custom routing accelerator.
   ///
   /// &gt; **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetCustomRoutingAcceleratorArgs].
   /// [arn] Full ARN of the custom routing accelerator.

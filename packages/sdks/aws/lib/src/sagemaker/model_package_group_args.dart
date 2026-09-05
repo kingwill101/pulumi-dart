@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sagemaker_model_package_group_model_package_group_args_doc}
 class ModelPackageGroupArgs {
   /// A description for the model group.
-  final pulumi.Input<String>? modelPackageGroupDescription;
+  final pulumi.Input<String?>? modelPackageGroupDescription;
   /// The name of the model group.
   final pulumi.Input<String> modelPackageGroupName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ModelPackageGroupArgs].
   /// [modelPackageGroupDescription] A description for the model group.

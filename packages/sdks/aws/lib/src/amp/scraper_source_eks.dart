@@ -6,7 +6,7 @@ class ScraperSourceEks {
   /// ARN of the source EKS cluster.
   final pulumi.Input<String> clusterArn;
   /// List of the security group IDs for the Amazon EKS cluster VPC configuration.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// List of subnet IDs. Must be in at least two different availability zones.
   final pulumi.Input<List<String>> subnetIds;
 

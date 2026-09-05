@@ -13,15 +13,15 @@ import 'data_integration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appintegrations.DataIntegration("example", {
-///     name: "example",
-///     description: "example",
-///     kmsKey: test.arn,
-///     sourceUri: "Salesforce://AppFlow/example",
 ///     scheduleConfig: {
 ///         firstExecutionFrom: "1439788442681",
 ///         object: "Account",
 ///         scheduleExpression: "rate(1 hour)",
 ///     },
+///     name: "example",
+///     description: "example",
+///     kmsKey: test.arn,
+///     sourceUri: "Salesforce://AppFlow/example",
 ///     tags: {
 ///         Key1: "Value1",
 ///     },
@@ -32,15 +32,15 @@ import 'data_integration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appintegrations.DataIntegration("example",
-///     name="example",
-///     description="example",
-///     kms_key=test["arn"],
-///     source_uri="Salesforce://AppFlow/example",
 ///     schedule_config={
 ///         "first_execution_from": "1439788442681",
 ///         "object": "Account",
 ///         "schedule_expression": "rate(1 hour)",
 ///     },
+///     name="example",
+///     description="example",
+///     kms_key=test["arn"],
+///     source_uri="Salesforce://AppFlow/example",
 ///     tags={
 ///         "Key1": "Value1",
 ///     })
@@ -55,16 +55,16 @@ import 'data_integration_state.dart';
 /// {
 ///     var example = new Aws.AppIntegrations.DataIntegration("example", new()
 ///     {
-///         Name = "example",
-///         Description = "example",
-///         KmsKey = test.Arn,
-///         SourceUri = "Salesforce://AppFlow/example",
 ///         ScheduleConfig = new Aws.AppIntegrations.Inputs.DataIntegrationScheduleConfigArgs
 ///         {
 ///             FirstExecutionFrom = "1439788442681",
 ///             Object = "Account",
 ///             ScheduleExpression = "rate(1 hour)",
 ///         },
+///         Name = "example",
+///         Description = "example",
+///         KmsKey = test.Arn,
+///         SourceUri = "Salesforce://AppFlow/example",
 ///         Tags =
 ///         {
 ///             { "Key1", "Value1" },
@@ -84,15 +84,15 @@ import 'data_integration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appintegrations.NewDataIntegration(ctx, "example", &appintegrations.DataIntegrationArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Description: pulumi.String("example"),
-/// 			KmsKey:      pulumi.Any(test.Arn),
-/// 			SourceUri:   pulumi.String("Salesforce://AppFlow/example"),
 /// 			ScheduleConfig: &appintegrations.DataIntegrationScheduleConfigArgs{
 /// 				FirstExecutionFrom: pulumi.String("1439788442681"),
 /// 				Object:             pulumi.String("Account"),
 /// 				ScheduleExpression: pulumi.String("rate(1 hour)"),
 /// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			Description: pulumi.String("example"),
+/// 			KmsKey:      pulumi.Any(test.Arn),
+/// 			SourceUri:   pulumi.String("Salesforce://AppFlow/example"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Key1": pulumi.String("Value1"),
 /// 			},
@@ -114,15 +114,15 @@ import 'data_integration_state.dart';
 /// }
 ///
 /// resource "aws_appintegrations_dataintegration" "example" {
-///   name        = "example"
-///   description = "example"
-///   kms_key     = test.arn
-///   source_uri  = "Salesforce://AppFlow/example"
 ///   schedule_config = {
 ///     first_execution_from = "1439788442681"
 ///     object               = "Account"
 ///     schedule_expression  = "rate(1 hour)"
 ///   }
+///   name        = "example"
+///   description = "example"
+///   kms_key     = test.arn
+///   source_uri  = "Salesforce://AppFlow/example"
 ///   tags = {
 ///     "Key1" = "Value1"
 ///   }
@@ -151,15 +151,15 @@ import 'data_integration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new DataIntegration("example", DataIntegrationArgs.builder()
-///             .name("example")
-///             .description("example")
-///             .kmsKey(test.arn())
-///             .sourceUri("Salesforce://AppFlow/example")
 ///             .scheduleConfig(DataIntegrationScheduleConfigArgs.builder()
 ///                 .firstExecutionFrom("1439788442681")
 ///                 .object("Account")
 ///                 .scheduleExpression("rate(1 hour)")
 ///                 .build())
+///             .name("example")
+///             .description("example")
+///             .kmsKey(test.arn())
+///             .sourceUri("Salesforce://AppFlow/example")
 ///             .tags(Map.of("Key1", "Value1"))
 ///             .build());
 ///
@@ -171,14 +171,14 @@ import 'data_integration_state.dart';
 ///   example:
 ///     type: aws:appintegrations:DataIntegration
 ///     properties:
-///       name: example
-///       description: example
-///       kmsKey: ${test.arn}
-///       sourceUri: Salesforce://AppFlow/example
 ///       scheduleConfig:
 ///         firstExecutionFrom: '1439788442681'
 ///         object: Account
 ///         scheduleExpression: rate(1 hour)
+///       name: example
+///       description: example
+///       kmsKey: ${test.arn}
+///       sourceUri: Salesforce://AppFlow/example
 ///       tags:
 ///         Key1: Value1
 /// ```
@@ -192,11 +192,11 @@ import 'data_integration_state.dart';
 /// $ pulumi import aws:appintegrations/dataIntegration:DataIntegration example 12345678-1234-1234-1234-123456789123
 /// ```
 class DataIntegration extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the Data Integration.
+  /// ARN of the Data Integration.
   late final pulumi.Output<String> arn;
   /// Description of the Data Integration.
   late final pulumi.Output<String?> description;
-  /// KMS key Amazon Resource Name (ARN) for the Data Integration.
+  /// KMS key ARN for the Data Integration.
   late final pulumi.Output<String> kmsKey;
   /// Name of the Data Integration.
   late final pulumi.Output<String> name;
@@ -223,7 +223,7 @@ class DataIntegration extends pulumi.CustomResource {
           'aws:appintegrations/dataIntegration:DataIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -232,8 +232,8 @@ class DataIntegration extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scheduleConfig = registerOutput<DataIntegrationScheduleConfig>('scheduleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataIntegrationScheduleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceUri = registerOutput<String>('sourceUri');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DataIntegration] resource's state with the given [name] and [id].
@@ -241,11 +241,12 @@ class DataIntegration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataIntegrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataIntegration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -266,7 +267,27 @@ class DataIntegration extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     scheduleConfig = registerOutput<DataIntegrationScheduleConfig>('scheduleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataIntegrationScheduleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceUri = registerOutput<String>('sourceUri');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataIntegration] resource.
+  DataIntegration.reference(String urn)
+    : super(
+        'aws:appintegrations/dataIntegration:DataIntegration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    kmsKey = registerOutput<String>('kmsKey');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    scheduleConfig = registerOutput<DataIntegrationScheduleConfig>('scheduleConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataIntegrationScheduleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceUri = registerOutput<String>('sourceUri');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

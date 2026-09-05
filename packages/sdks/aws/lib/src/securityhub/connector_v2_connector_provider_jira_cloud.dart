@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorV2ConnectorProviderJiraCloud {
   /// Status of the authorization between Jira Cloud and the service.
-  final pulumi.Input<String>? authStatus;
+  final pulumi.Input<String?>? authStatus;
   /// URL to provide to customers for OAuth auth code flow.
-  final pulumi.Input<String>? authUrl;
+  final pulumi.Input<String?>? authUrl;
   /// Cloud ID of the Jira Cloud.
-  final pulumi.Input<String>? cloudId;
+  final pulumi.Input<String?>? cloudId;
   /// URL domain of the Jira Cloud instance.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// Jira Cloud project key.
   final pulumi.Input<String> projectKey;
 

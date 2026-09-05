@@ -49,9 +49,9 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter(
       devices: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice>(map['devices']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice.fromMap((value as Map).cast<String, dynamic>()))),
       initProcessEnabled: pulumi.Input.fromValue(map['initProcessEnabled'] as bool),
-      maxSwap: pulumi.Input.fromValue(map['maxSwap'] as int),
-      sharedMemorySize: pulumi.Input.fromValue(map['sharedMemorySize'] as int),
-      swappiness: pulumi.Input.fromValue(map['swappiness'] as int),
+      maxSwap: pulumi.Input.fromValue((map['maxSwap'] as num).toInt()),
+      sharedMemorySize: pulumi.Input.fromValue((map['sharedMemorySize'] as num).toInt()),
+      swappiness: pulumi.Input.fromValue((map['swappiness'] as num).toInt()),
       tmpfs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf>(map['tmpfs']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

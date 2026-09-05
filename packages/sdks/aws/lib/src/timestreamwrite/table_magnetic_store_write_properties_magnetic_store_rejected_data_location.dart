@@ -5,7 +5,7 @@ import 'table_magnetic_store_write_properties_magnetic_store_rejected_data_locat
 
 class TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation {
   /// Configuration of an S3 location to write error reports for records rejected, asynchronously, during magnetic store writes. See S3 Configuration below for more details.
-  final pulumi.Input<TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration>? s3Configuration;
+  final pulumi.Input<TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration?>? s3Configuration;
 
   /// Creates a new [TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation].
   /// [s3Configuration] Configuration of an S3 location to write error reports for records rejected, asynchronously, during magnetic store writes. See S3 Configuration below for more details.

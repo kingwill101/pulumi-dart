@@ -5,7 +5,7 @@ import 'bucket_v2_replication_configuration_rule_source_selection_criteria_sse_k
 
 class BucketV2ReplicationConfigurationRuleSourceSelectionCriteria {
   /// Match SSE-KMS encrypted objects. See `sseKmsEncryptedObjects` Block below for details. If specified, `replicaKmsKeyId` in `destination` must be specified as well.
-  final pulumi.Input<List<BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject>>? sseKmsEncryptedObjects;
+  final pulumi.Input<List<BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject>?>? sseKmsEncryptedObjects;
 
   /// Creates a new [BucketV2ReplicationConfigurationRuleSourceSelectionCriteria].
   /// [sseKmsEncryptedObjects] Match SSE-KMS encrypted objects. See `sseKmsEncryptedObjects` Block below for details. If specified, `replicaKmsKeyId` in `destination` must be specified as well.

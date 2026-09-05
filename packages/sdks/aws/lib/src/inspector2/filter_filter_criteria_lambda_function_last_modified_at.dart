@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FilterFilterCriteriaLambdaFunctionLastModifiedAt {
   /// (Required) The end of the port range, inclusive.
-  final pulumi.Input<String>? endInclusive;
+  final pulumi.Input<String?>? endInclusive;
   /// (Optional) Start of the date range in RFC 3339 format, inclusive. Set the timezone to UTC.
-  final pulumi.Input<String>? startInclusive;
+  final pulumi.Input<String?>? startInclusive;
 
   /// Creates a new [FilterFilterCriteriaLambdaFunctionLastModifiedAt].
   /// [endInclusive] (Required) The end of the port range, inclusive.

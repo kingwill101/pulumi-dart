@@ -6,29 +6,29 @@ import 'endpoint_network_interface.dart';
 /// Input properties used for looking up and filtering Endpoint resources.
 class EndpointState {
   /// Type of access for the network connectivity. Valid values are `Private` or `CustomerOwnedIp`.
-  final pulumi.Input<String>? accessType;
-  /// Amazon Resource Name (ARN) of the endpoint.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? accessType;
+  /// ARN of the endpoint.
+  final pulumi.Input<String?>? arn;
   /// VPC CIDR block of the endpoint.
-  final pulumi.Input<String>? cidrBlock;
+  final pulumi.Input<String?>? cidrBlock;
   /// UTC creation time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).
-  final pulumi.Input<String>? customerOwnedIpv4Pool;
+  final pulumi.Input<String?>? customerOwnedIpv4Pool;
   /// Set of nested attributes for associated Elastic Network Interfaces (ENIs).
-  final pulumi.Input<List<EndpointNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<EndpointNetworkInterface>?>? networkInterfaces;
   /// Identifier of the Outpost to contain this endpoint.
-  final pulumi.Input<String>? outpostId;
+  final pulumi.Input<String?>? outpostId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Identifier of the EC2 Security Group.
-  final pulumi.Input<String>? securityGroupId;
+  final pulumi.Input<String?>? securityGroupId;
   /// Identifier of the EC2 Subnet.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [EndpointState].
   /// [accessType] Type of access for the network connectivity. Valid values are `Private` or `CustomerOwnedIp`.
-  /// [arn] Amazon Resource Name (ARN) of the endpoint.
+  /// [arn] ARN of the endpoint.
   /// [cidrBlock] VPC CIDR block of the endpoint.
   /// [creationTime] UTC creation time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   /// [customerOwnedIpv4Pool] ID of a Customer Owned IP Pool. For more on customer owned IP addresses see the [User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/local-rack.html#local-gateway-subnet).

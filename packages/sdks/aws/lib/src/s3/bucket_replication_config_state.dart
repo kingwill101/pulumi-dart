@@ -6,15 +6,15 @@ import 'bucket_replication_config_rule.dart';
 /// Input properties used for looking up and filtering BucketReplicationConfig resources.
 class BucketReplicationConfigState {
   /// Name of the source S3 bucket you want Amazon S3 to monitor.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN of the IAM role for Amazon S3 to assume when replicating the objects.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// List of configuration blocks describing the rules managing the replication. See below.
-  final pulumi.Input<List<BucketReplicationConfigRule>>? rules;
+  final pulumi.Input<List<BucketReplicationConfigRule>?>? rules;
   /// Token to allow replication to be enabled on an Object Lock-enabled bucket. You must contact AWS support for the bucket's "Object Lock token". For more details, see [Using S3 Object Lock with replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-managing.html#object-lock-managing-replication).
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
 
   /// Creates a new [BucketReplicationConfigState].
   /// [bucket] Name of the source S3 bucket you want Amazon S3 to monitor.

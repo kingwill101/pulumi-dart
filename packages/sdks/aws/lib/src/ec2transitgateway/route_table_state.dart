@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering RouteTable resources.
 class RouteTableState {
-  /// EC2 Transit Gateway Route Table Amazon Resource Name (ARN).
-  final pulumi.Input<String>? arn;
+  /// EC2 Transit Gateway Route Table ARN.
+  final pulumi.Input<String?>? arn;
   /// Boolean whether this is the default association route table for the EC2 Transit Gateway.
-  final pulumi.Input<bool>? defaultAssociationRouteTable;
+  final pulumi.Input<bool?>? defaultAssociationRouteTable;
   /// Boolean whether this is the default propagation route table for the EC2 Transit Gateway.
-  final pulumi.Input<bool>? defaultPropagationRouteTable;
+  final pulumi.Input<bool?>? defaultPropagationRouteTable;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value tags for the EC2 Transit Gateway Route Table. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Identifier of EC2 Transit Gateway.
-  final pulumi.Input<String>? transitGatewayId;
+  final pulumi.Input<String?>? transitGatewayId;
 
   /// Creates a new [RouteTableState].
-  /// [arn] EC2 Transit Gateway Route Table Amazon Resource Name (ARN).
+  /// [arn] EC2 Transit Gateway Route Table ARN.
   /// [defaultAssociationRouteTable] Boolean whether this is the default association route table for the EC2 Transit Gateway.
   /// [defaultPropagationRouteTable] Boolean whether this is the default propagation route table for the EC2 Transit Gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

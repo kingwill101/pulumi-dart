@@ -223,7 +223,7 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
           'aws:ssm/defaultPatchBaseline:DefaultPatchBaseline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     baselineId = registerOutput<String>('baselineId');
     operatingSystem = registerOutput<String>('operatingSystem');
@@ -235,11 +235,12 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultPatchBaselineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultPatchBaseline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -253,6 +254,20 @@ class DefaultPatchBaseline extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    baselineId = registerOutput<String>('baselineId');
+    operatingSystem = registerOutput<String>('operatingSystem');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [DefaultPatchBaseline] resource.
+  DefaultPatchBaseline.reference(String urn)
+    : super(
+        'aws:ssm/defaultPatchBaseline:DefaultPatchBaseline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     baselineId = registerOutput<String>('baselineId');
     operatingSystem = registerOutput<String>('operatingSystem');
     region = registerOutput<String>('region');

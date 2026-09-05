@@ -35,7 +35,7 @@ class NodeGroupNodeRepairConfigNodeRepairConfigOverride {
 
   factory NodeGroupNodeRepairConfigNodeRepairConfigOverride.fromMap(Map<String, dynamic> map) {
     return NodeGroupNodeRepairConfigNodeRepairConfigOverride(
-      minRepairWaitTimeMins: pulumi.Input.fromValue(map['minRepairWaitTimeMins'] as int),
+      minRepairWaitTimeMins: pulumi.Input.fromValue((map['minRepairWaitTimeMins'] as num).toInt()),
       nodeMonitoringCondition: pulumi.Input.fromValue(map['nodeMonitoringCondition'] as String),
       nodeUnhealthyReason: pulumi.Input.fromValue(map['nodeUnhealthyReason'] as String),
       repairAction: pulumi.Input.fromValue(map['repairAction'] as String),

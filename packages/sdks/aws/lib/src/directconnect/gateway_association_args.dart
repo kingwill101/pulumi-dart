@@ -12,20 +12,20 @@ class GatewayAssociationArgs {
   /// &gt; **NOTE:** `dxGatewayId` and `associatedGatewayId` must be specified for single account Direct Connect gateway associations.
   ///
   /// &gt; **NOTE:** If the `associatedGatewayId` is in another region, an alias in a new provider block for that region should be specified.
-  final pulumi.Input<List<String>>? allowedPrefixes;
+  final pulumi.Input<List<String>?>? allowedPrefixes;
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
   /// Used for single account Direct Connect gateway associations.
-  final pulumi.Input<String>? associatedGatewayId;
+  final pulumi.Input<String?>? associatedGatewayId;
   /// The ID of the AWS account that owns the VGW or transit gateway with which to associate the Direct Connect gateway.
   /// Used for cross-account Direct Connect gateway associations.
-  final pulumi.Input<String>? associatedGatewayOwnerAccountId;
+  final pulumi.Input<String?>? associatedGatewayOwnerAccountId;
   /// The ID of the Direct Connect gateway.
   final pulumi.Input<String> dxGatewayId;
   /// The ID of the Direct Connect gateway association proposal.
   /// Used for cross-account Direct Connect gateway associations.
-  final pulumi.Input<String>? proposalId;
+  final pulumi.Input<String?>? proposalId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GatewayAssociationArgs].
   /// [allowedPrefixes] VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.

@@ -150,7 +150,7 @@ class ThingGroupMembership extends pulumi.CustomResource {
           'aws:iot/thingGroupMembership:ThingGroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     overrideDynamicGroup = registerOutput<bool?>('overrideDynamicGroup');
     region = registerOutput<String>('region');
@@ -163,11 +163,12 @@ class ThingGroupMembership extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ThingGroupMembershipState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ThingGroupMembership._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -181,6 +182,21 @@ class ThingGroupMembership extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    overrideDynamicGroup = registerOutput<bool?>('overrideDynamicGroup');
+    region = registerOutput<String>('region');
+    thingGroupName = registerOutput<String>('thingGroupName');
+    thingName = registerOutput<String>('thingName');
+  }
+
+  /// Creates a typed reference to an existing [ThingGroupMembership] resource.
+  ThingGroupMembership.reference(String urn)
+    : super(
+        'aws:iot/thingGroupMembership:ThingGroupMembership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     overrideDynamicGroup = registerOutput<bool?>('overrideDynamicGroup');
     region = registerOutput<String>('region');
     thingGroupName = registerOutput<String>('thingGroupName');

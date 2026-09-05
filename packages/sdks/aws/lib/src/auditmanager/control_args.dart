@@ -9,23 +9,23 @@ import 'control_control_mapping_source.dart';
 /// {@macro pulumi_auditmanager_control_control_args_doc}
 class ControlArgs {
   /// Recommended actions to carry out if the control isn't fulfilled.
-  final pulumi.Input<String>? actionPlanInstructions;
+  final pulumi.Input<String?>? actionPlanInstructions;
   /// Title of the action plan for remediating the control.
-  final pulumi.Input<String>? actionPlanTitle;
+  final pulumi.Input<String?>? actionPlanTitle;
   /// Data mapping sources. See `controlMappingSources` below.
-  final pulumi.Input<List<ControlControlMappingSource>>? controlMappingSources;
+  final pulumi.Input<List<ControlControlMappingSource>?>? controlMappingSources;
   /// Description of the control.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the control.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the control. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Steps to follow to determine if the control is satisfied.
-  final pulumi.Input<String>? testingInformation;
+  final pulumi.Input<String?>? testingInformation;
 
   /// Creates a new [ControlArgs].
   /// [actionPlanInstructions] Recommended actions to carry out if the control isn't fulfilled.

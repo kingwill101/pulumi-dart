@@ -12,9 +12,9 @@ class WebhookArgs {
   /// Name for a branch that is part of the Amplify app.
   final pulumi.Input<String> branchName;
   /// Description for a webhook.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [WebhookArgs].
   /// [appId] Unique ID for an Amplify app.

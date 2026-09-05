@@ -602,13 +602,13 @@ class LayerVersion extends pulumi.CustomResource {
           'aws:lambda/layerVersion:LayerVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     code = registerOutput<dynamic>('code');
     codeSha256 = registerOutput<String>('codeSha256');
-    compatibleArchitectures = registerOutput<List<String>?>('compatibleArchitectures');
-    compatibleRuntimes = registerOutput<List<String>?>('compatibleRuntimes');
+    compatibleArchitectures = registerOutput<List<String>?>('compatibleArchitectures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    compatibleRuntimes = registerOutput<List<String>?>('compatibleRuntimes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
     layerArn = registerOutput<String>('layerArn');
@@ -631,11 +631,12 @@ class LayerVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LayerVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LayerVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -652,8 +653,39 @@ class LayerVersion extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     code = registerOutput<dynamic>('code');
     codeSha256 = registerOutput<String>('codeSha256');
-    compatibleArchitectures = registerOutput<List<String>?>('compatibleArchitectures');
-    compatibleRuntimes = registerOutput<List<String>?>('compatibleRuntimes');
+    compatibleArchitectures = registerOutput<List<String>?>('compatibleArchitectures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    compatibleRuntimes = registerOutput<List<String>?>('compatibleRuntimes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    layerArn = registerOutput<String>('layerArn');
+    layerName = registerOutput<String>('layerName');
+    licenseInfo = registerOutput<String?>('licenseInfo');
+    region = registerOutput<String>('region');
+    s3Bucket = registerOutput<String?>('s3Bucket');
+    s3Key = registerOutput<String?>('s3Key');
+    s3ObjectVersion = registerOutput<String?>('s3ObjectVersion');
+    signingJobArn = registerOutput<String>('signingJobArn');
+    signingProfileVersionArn = registerOutput<String>('signingProfileVersionArn');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    sourceCodeHash = registerOutput<String>('sourceCodeHash');
+    sourceCodeSize = registerOutput<int>('sourceCodeSize');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [LayerVersion] resource.
+  LayerVersion.reference(String urn)
+    : super(
+        'aws:lambda/layerVersion:LayerVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    code = registerOutput<dynamic>('code');
+    codeSha256 = registerOutput<String>('codeSha256');
+    compatibleArchitectures = registerOutput<List<String>?>('compatibleArchitectures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    compatibleRuntimes = registerOutput<List<String>?>('compatibleRuntimes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
     layerArn = registerOutput<String>('layerArn');

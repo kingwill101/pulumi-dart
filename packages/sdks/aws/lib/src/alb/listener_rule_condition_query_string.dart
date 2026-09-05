@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListenerRuleConditionQueryString {
   /// Query string key pattern to match.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Query string value pattern to match.
   final pulumi.Input<String> value;
 

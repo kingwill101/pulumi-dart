@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'voice_connector_group_args.dart';
+import 'voice_connector_group_connector.dart';
 import 'voice_connector_group_state.dart';
 
 /// Creates an Amazon Chime Voice Connector group under the administrator's AWS account. You can associate Amazon Chime Voice Connectors with the Amazon Chime Voice Connector group by including VoiceConnectorItems in the request.
@@ -24,7 +25,6 @@ import 'voice_connector_group_state.dart';
 ///     awsRegion: "us-west-2",
 /// });
 /// const group = new aws.chime.VoiceConnectorGroup("group", {
-///     name: "test-group",
 ///     connectors: [
 ///         {
 ///             voiceConnectorId: vc1.id,
@@ -35,6 +35,7 @@ import 'voice_connector_group_state.dart';
 ///             priority: 3,
 ///         },
 ///     ],
+///     name: "test-group",
 /// });
 /// ```
 /// ```python
@@ -50,7 +51,6 @@ import 'voice_connector_group_state.dart';
 ///     require_encryption=True,
 ///     aws_region="us-west-2")
 /// group = aws.chime.VoiceConnectorGroup("group",
-///     name="test-group",
 ///     connectors=[
 ///         {
 ///             "voice_connector_id": vc1.id,
@@ -60,7 +60,8 @@ import 'voice_connector_group_state.dart';
 ///             "voice_connector_id": vc2.id,
 ///             "priority": 3,
 ///         },
-///     ])
+///     ],
+///     name="test-group")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -86,7 +87,6 @@ import 'voice_connector_group_state.dart';
 ///
 ///     var @group = new Aws.Chime.VoiceConnectorGroup("group", new()
 ///     {
-///         Name = "test-group",
 ///         Connectors = new[]
 ///         {
 ///             new Aws.Chime.Inputs.VoiceConnectorGroupConnectorArgs
@@ -100,6 +100,7 @@ import 'voice_connector_group_state.dart';
 ///                 Priority = 3,
 ///             },
 ///         },
+///         Name = "test-group",
 ///     });
 ///
 /// });
@@ -131,7 +132,6 @@ import 'voice_connector_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = chime.NewVoiceConnectorGroup(ctx, "group", &chime.VoiceConnectorGroupArgs{
-/// 			Name: pulumi.String("test-group"),
 /// 			Connectors: chime.VoiceConnectorGroupConnectorArray{
 /// 				&chime.VoiceConnectorGroupConnectorArgs{
 /// 					VoiceConnectorId: vc1.ID().ToIDOutput().ToStringOutput(),
@@ -142,6 +142,7 @@ import 'voice_connector_group_state.dart';
 /// 					Priority:         pulumi.Int(3),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("test-group"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -170,7 +171,6 @@ import 'voice_connector_group_state.dart';
 ///   aws_region         = "us-west-2"
 /// }
 /// resource "aws_chime_voiceconnectorgroup" "group" {
-///   name = "test-group"
 ///   connectors {
 ///     voice_connector_id = aws_chime_voiceconnector.vc1.id
 ///     priority           = 1
@@ -179,6 +179,7 @@ import 'voice_connector_group_state.dart';
 ///     voice_connector_id = aws_chime_voiceconnector.vc2.id
 ///     priority           = 3
 ///   }
+///   name = "test-group"
 /// }
 /// ```
 /// ```java
@@ -218,7 +219,6 @@ import 'voice_connector_group_state.dart';
 ///             .build());
 ///
 ///         var group = new VoiceConnectorGroup("group", VoiceConnectorGroupArgs.builder()
-///             .name("test-group")
 ///             .connectors(
 ///                 VoiceConnectorGroupConnectorArgs.builder()
 ///                     .voiceConnectorId(vc1.id())
@@ -228,6 +228,7 @@ import 'voice_connector_group_state.dart';
 ///                     .voiceConnectorId(vc2.id())
 ///                     .priority(3)
 ///                     .build())
+///             .name("test-group")
 ///             .build());
 ///
 ///     }
@@ -250,12 +251,12 @@ import 'voice_connector_group_state.dart';
 ///   group:
 ///     type: aws:chime:VoiceConnectorGroup
 ///     properties:
-///       name: test-group
 ///       connectors:
 ///         - voiceConnectorId: ${vc1.id}
 ///           priority: 1
 ///         - voiceConnectorId: ${vc2.id}
 ///           priority: 3
+///       name: test-group
 /// ```
 ///
 ///
@@ -268,7 +269,7 @@ import 'voice_connector_group_state.dart';
 /// ```
 class VoiceConnectorGroup extends pulumi.CustomResource {
   /// The Amazon Chime Voice Connectors to route inbound calls to.
-  late final pulumi.Output<List<Map<String, dynamic>>?> connectors;
+  late final pulumi.Output<List<VoiceConnectorGroupConnector>?> connectors;
   /// The name of the Amazon Chime Voice Connector group.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -286,9 +287,9 @@ class VoiceConnectorGroup extends pulumi.CustomResource {
           'aws:chime/voiceConnectorGroup:VoiceConnectorGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    connectors = registerOutput<List<Map<String, dynamic>>?>('connectors');
+    connectors = registerOutput<List<VoiceConnectorGroupConnector>?>('connectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceConnectorGroupConnector>(guardedValue, (value) => VoiceConnectorGroupConnector.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
   }
@@ -298,11 +299,12 @@ class VoiceConnectorGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VoiceConnectorGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VoiceConnectorGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -316,7 +318,21 @@ class VoiceConnectorGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    connectors = registerOutput<List<Map<String, dynamic>>?>('connectors');
+    connectors = registerOutput<List<VoiceConnectorGroupConnector>?>('connectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceConnectorGroupConnector>(guardedValue, (value) => VoiceConnectorGroupConnector.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [VoiceConnectorGroup] resource.
+  VoiceConnectorGroup.reference(String urn)
+    : super(
+        'aws:chime/voiceConnectorGroup:VoiceConnectorGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectors = registerOutput<List<VoiceConnectorGroupConnector>?>('connectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceConnectorGroupConnector>(guardedValue, (value) => VoiceConnectorGroupConnector.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
   }

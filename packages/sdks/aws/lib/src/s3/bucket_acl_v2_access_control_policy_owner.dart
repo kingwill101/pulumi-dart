@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketAclV2AccessControlPolicyOwner {
   /// Display name of the owner.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// ID of the owner.
   final pulumi.Input<String> id;
 

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_table_args.dart';
+import 'global_table_replica.dart';
 import 'global_table_state.dart';
 
 /// Manages [DynamoDB Global Tables V1 (version 2017.11.29)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html). These are layered on top of existing DynamoDB Tables.
@@ -16,31 +17,30 @@ import 'global_table_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const us_east_1 = new aws.dynamodb.Table("us-east-1", {
+///     attributes: [{
+///         name: "myAttribute",
+///         type: "S",
+///     }],
 ///     hashKey: "myAttribute",
 ///     name: "myTable",
 ///     streamEnabled: true,
 ///     streamViewType: "NEW_AND_OLD_IMAGES",
 ///     readCapacity: 1,
 ///     writeCapacity: 1,
-///     attributes: [{
-///         name: "myAttribute",
-///         type: "S",
-///     }],
 /// });
 /// const us_west_2 = new aws.dynamodb.Table("us-west-2", {
+///     attributes: [{
+///         name: "myAttribute",
+///         type: "S",
+///     }],
 ///     hashKey: "myAttribute",
 ///     name: "myTable",
 ///     streamEnabled: true,
 ///     streamViewType: "NEW_AND_OLD_IMAGES",
 ///     readCapacity: 1,
 ///     writeCapacity: 1,
-///     attributes: [{
-///         name: "myAttribute",
-///         type: "S",
-///     }],
 /// });
 /// const myTable = new aws.dynamodb.GlobalTable("myTable", {
-///     name: "myTable",
 ///     replicas: [
 ///         {
 ///             regionName: "us-east-1",
@@ -49,6 +49,7 @@ import 'global_table_state.dart';
 ///             regionName: "us-west-2",
 ///         },
 ///     ],
+///     name: "myTable",
 /// }, {
 ///     dependsOn: [
 ///         us_east_1,
@@ -61,29 +62,28 @@ import 'global_table_state.dart';
 /// import pulumi_aws as aws
 ///
 /// us_east_1 = aws.dynamodb.Table("us-east-1",
+///     attributes=[{
+///         "name": "myAttribute",
+///         "type": "S",
+///     }],
 ///     hash_key="myAttribute",
 ///     name="myTable",
 ///     stream_enabled=True,
 ///     stream_view_type="NEW_AND_OLD_IMAGES",
 ///     read_capacity=1,
-///     write_capacity=1,
-///     attributes=[{
-///         "name": "myAttribute",
-///         "type": "S",
-///     }])
+///     write_capacity=1)
 /// us_west_2 = aws.dynamodb.Table("us-west-2",
+///     attributes=[{
+///         "name": "myAttribute",
+///         "type": "S",
+///     }],
 ///     hash_key="myAttribute",
 ///     name="myTable",
 ///     stream_enabled=True,
 ///     stream_view_type="NEW_AND_OLD_IMAGES",
 ///     read_capacity=1,
-///     write_capacity=1,
-///     attributes=[{
-///         "name": "myAttribute",
-///         "type": "S",
-///     }])
+///     write_capacity=1)
 /// my_table = aws.dynamodb.GlobalTable("myTable",
-///     name="myTable",
 ///     replicas=[
 ///         {
 ///             "region_name": "us-east-1",
@@ -92,6 +92,7 @@ import 'global_table_state.dart';
 ///             "region_name": "us-west-2",
 ///         },
 ///     ],
+///     name="myTable",
 ///     opts = pulumi.ResourceOptions(depends_on=[
 ///             us_east_1,
 ///             us_west_2,
@@ -107,12 +108,6 @@ import 'global_table_state.dart';
 /// {
 ///     var us_east_1 = new Aws.DynamoDB.Table("us-east-1", new()
 ///     {
-///         HashKey = "myAttribute",
-///         Name = "myTable",
-///         StreamEnabled = true,
-///         StreamViewType = "NEW_AND_OLD_IMAGES",
-///         ReadCapacity = 1,
-///         WriteCapacity = 1,
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -121,16 +116,16 @@ import 'global_table_state.dart';
 ///                 Type = "S",
 ///             },
 ///         },
+///         HashKey = "myAttribute",
+///         Name = "myTable",
+///         StreamEnabled = true,
+///         StreamViewType = "NEW_AND_OLD_IMAGES",
+///         ReadCapacity = 1,
+///         WriteCapacity = 1,
 ///     });
 ///
 ///     var us_west_2 = new Aws.DynamoDB.Table("us-west-2", new()
 ///     {
-///         HashKey = "myAttribute",
-///         Name = "myTable",
-///         StreamEnabled = true,
-///         StreamViewType = "NEW_AND_OLD_IMAGES",
-///         ReadCapacity = 1,
-///         WriteCapacity = 1,
 ///         Attributes = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.TableAttributeArgs
@@ -139,11 +134,16 @@ import 'global_table_state.dart';
 ///                 Type = "S",
 ///             },
 ///         },
+///         HashKey = "myAttribute",
+///         Name = "myTable",
+///         StreamEnabled = true,
+///         StreamViewType = "NEW_AND_OLD_IMAGES",
+///         ReadCapacity = 1,
+///         WriteCapacity = 1,
 ///     });
 ///
 ///     var myTable = new Aws.DynamoDB.GlobalTable("myTable", new()
 ///     {
-///         Name = "myTable",
 ///         Replicas = new[]
 ///         {
 ///             new Aws.DynamoDB.Inputs.GlobalTableReplicaArgs
@@ -155,6 +155,7 @@ import 'global_table_state.dart';
 ///                 RegionName = "us-west-2",
 ///             },
 ///         },
+///         Name = "myTable",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -177,41 +178,40 @@ import 'global_table_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		us_east_1, err := dynamodb.NewTable(ctx, "us-east-1", &dynamodb.TableArgs{
-/// 			HashKey:        pulumi.String("myAttribute"),
-/// 			Name:           pulumi.String("myTable"),
-/// 			StreamEnabled:  pulumi.Bool(true),
-/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
-/// 			ReadCapacity:   pulumi.Int(1),
-/// 			WriteCapacity:  pulumi.Int(1),
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("myAttribute"),
 /// 					Type: pulumi.String("S"),
 /// 				},
 /// 			},
+/// 			HashKey:        pulumi.String("myAttribute"),
+/// 			Name:           pulumi.String("myTable"),
+/// 			StreamEnabled:  pulumi.Bool(true),
+/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
+/// 			ReadCapacity:   pulumi.Int(1),
+/// 			WriteCapacity:  pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		us_west_2, err := dynamodb.NewTable(ctx, "us-west-2", &dynamodb.TableArgs{
-/// 			HashKey:        pulumi.String("myAttribute"),
-/// 			Name:           pulumi.String("myTable"),
-/// 			StreamEnabled:  pulumi.Bool(true),
-/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
-/// 			ReadCapacity:   pulumi.Int(1),
-/// 			WriteCapacity:  pulumi.Int(1),
 /// 			Attributes: dynamodb.TableAttributeArray{
 /// 				&dynamodb.TableAttributeArgs{
 /// 					Name: pulumi.String("myAttribute"),
 /// 					Type: pulumi.String("S"),
 /// 				},
 /// 			},
+/// 			HashKey:        pulumi.String("myAttribute"),
+/// 			Name:           pulumi.String("myTable"),
+/// 			StreamEnabled:  pulumi.Bool(true),
+/// 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
+/// 			ReadCapacity:   pulumi.Int(1),
+/// 			WriteCapacity:  pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = dynamodb.NewGlobalTable(ctx, "myTable", &dynamodb.GlobalTableArgs{
-/// 			Name: pulumi.String("myTable"),
 /// 			Replicas: dynamodb.GlobalTableReplicaArray{
 /// 				&dynamodb.GlobalTableReplicaArgs{
 /// 					RegionName: pulumi.String("us-east-1"),
@@ -220,6 +220,7 @@ import 'global_table_state.dart';
 /// 					RegionName: pulumi.String("us-west-2"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("myTable"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			us_east_1,
 /// 			us_west_2,
@@ -241,38 +242,38 @@ import 'global_table_state.dart';
 /// }
 ///
 /// resource "aws_dynamodb_table" "us-east-1" {
+///   attributes {
+///     name = "myAttribute"
+///     type = "S"
+///   }
 ///   hash_key         = "myAttribute"
 ///   name             = "myTable"
 ///   stream_enabled   = true
 ///   stream_view_type = "NEW_AND_OLD_IMAGES"
 ///   read_capacity    = 1
 ///   write_capacity   = 1
-///   attributes {
-///     name = "myAttribute"
-///     type = "S"
-///   }
 /// }
 /// resource "aws_dynamodb_table" "us-west-2" {
+///   attributes {
+///     name = "myAttribute"
+///     type = "S"
+///   }
 ///   hash_key         = "myAttribute"
 ///   name             = "myTable"
 ///   stream_enabled   = true
 ///   stream_view_type = "NEW_AND_OLD_IMAGES"
 ///   read_capacity    = 1
 ///   write_capacity   = 1
-///   attributes {
-///     name = "myAttribute"
-///     type = "S"
-///   }
 /// }
 /// resource "aws_dynamodb_globaltable" "myTable" {
 ///   depends_on = [aws_dynamodb_table.us-east-1, aws_dynamodb_table.us-west-2]
-///   name       = "myTable"
 ///   replicas {
 ///     region_name = "us-east-1"
 ///   }
 ///   replicas {
 ///     region_name = "us-west-2"
 ///   }
+///   name = "myTable"
 /// }
 /// ```
 /// ```java
@@ -302,33 +303,32 @@ import 'global_table_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var us_east_1 = new Table("us-east-1", TableArgs.builder()
+///             .attributes(TableAttributeArgs.builder()
+///                 .name("myAttribute")
+///                 .type("S")
+///                 .build())
 ///             .hashKey("myAttribute")
 ///             .name("myTable")
 ///             .streamEnabled(true)
 ///             .streamViewType("NEW_AND_OLD_IMAGES")
 ///             .readCapacity(1)
 ///             .writeCapacity(1)
-///             .attributes(TableAttributeArgs.builder()
-///                 .name("myAttribute")
-///                 .type("S")
-///                 .build())
 ///             .build());
 ///
 ///         var us_west_2 = new Table("us-west-2", TableArgs.builder()
+///             .attributes(TableAttributeArgs.builder()
+///                 .name("myAttribute")
+///                 .type("S")
+///                 .build())
 ///             .hashKey("myAttribute")
 ///             .name("myTable")
 ///             .streamEnabled(true)
 ///             .streamViewType("NEW_AND_OLD_IMAGES")
 ///             .readCapacity(1)
 ///             .writeCapacity(1)
-///             .attributes(TableAttributeArgs.builder()
-///                 .name("myAttribute")
-///                 .type("S")
-///                 .build())
 ///             .build());
 ///
 ///         var myTable = new GlobalTable("myTable", GlobalTableArgs.builder()
-///             .name("myTable")
 ///             .replicas(
 ///                 GlobalTableReplicaArgs.builder()
 ///                     .regionName("us-east-1")
@@ -336,6 +336,7 @@ import 'global_table_state.dart';
 ///                 GlobalTableReplicaArgs.builder()
 ///                     .regionName("us-west-2")
 ///                     .build())
+///             .name("myTable")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     us_east_1,
@@ -350,34 +351,34 @@ import 'global_table_state.dart';
 ///   us-east-1:
 ///     type: aws:dynamodb:Table
 ///     properties:
+///       attributes:
+///         - name: myAttribute
+///           type: S
 ///       hashKey: myAttribute
 ///       name: myTable
 ///       streamEnabled: true
 ///       streamViewType: NEW_AND_OLD_IMAGES
 ///       readCapacity: 1
 ///       writeCapacity: 1
-///       attributes:
-///         - name: myAttribute
-///           type: S
 ///   us-west-2:
 ///     type: aws:dynamodb:Table
 ///     properties:
+///       attributes:
+///         - name: myAttribute
+///           type: S
 ///       hashKey: myAttribute
 ///       name: myTable
 ///       streamEnabled: true
 ///       streamViewType: NEW_AND_OLD_IMAGES
 ///       readCapacity: 1
 ///       writeCapacity: 1
-///       attributes:
-///         - name: myAttribute
-///           type: S
 ///   myTable:
 ///     type: aws:dynamodb:GlobalTable
 ///     properties:
-///       name: myTable
 ///       replicas:
 ///         - regionName: us-east-1
 ///         - regionName: us-west-2
+///       name: myTable
 ///     options:
 ///       dependsOn:
 ///         - ${["us-east-1"]}
@@ -400,7 +401,7 @@ class GlobalTable extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Underlying DynamoDB Table. At least 1 replica must be defined. See below.
-  late final pulumi.Output<List<Map<String, dynamic>>> replicas;
+  late final pulumi.Output<List<GlobalTableReplica>> replicas;
 
   /// Creates a new [GlobalTable].
   /// [name] The Pulumi resource name.
@@ -414,12 +415,12 @@ class GlobalTable extends pulumi.CustomResource {
           'aws:dynamodb/globalTable:GlobalTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    replicas = registerOutput<List<GlobalTableReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalTableReplica>(guardedValue, (value) => GlobalTableReplica.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [GlobalTable] resource's state with the given [name] and [id].
@@ -427,11 +428,12 @@ class GlobalTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -448,6 +450,21 @@ class GlobalTable extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    replicas = registerOutput<List<GlobalTableReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalTableReplica>(guardedValue, (value) => GlobalTableReplica.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [GlobalTable] resource.
+  GlobalTable.reference(String urn)
+    : super(
+        'aws:dynamodb/globalTable:GlobalTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    replicas = registerOutput<List<GlobalTableReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalTableReplica>(guardedValue, (value) => GlobalTableReplica.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -5,7 +5,7 @@ import 'traffic_policy_policy_statement_condition_string_expression_evaluate.dar
 
 class TrafficPolicyPolicyStatementConditionStringExpression {
   /// Operand evaluated by the expression. See `policy_statement.condition.string_expression.evaluate` Block below.
-  final pulumi.Input<TrafficPolicyPolicyStatementConditionStringExpressionEvaluate>? evaluate;
+  final pulumi.Input<TrafficPolicyPolicyStatementConditionStringExpressionEvaluate?>? evaluate;
   /// String operator used for the comparison.
   final pulumi.Input<String> operator;
   /// Strings used for the comparison.

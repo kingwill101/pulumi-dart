@@ -12,7 +12,7 @@ class GetSiteArgs {
   /// ID of the specific site to retrieve.
   final pulumi.Input<String> siteId;
   /// Key-value tags for the Site.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetSiteArgs].
   /// [globalNetworkId] ID of the Global Network of the site to retrieve.

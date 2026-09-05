@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devicefarm_instance_profile_instance_profile_args_doc}
 class InstanceProfileArgs {
   /// The description of the instance profile.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An array of strings that specifies the list of app packages that should not be cleaned up from the device after a test run.
-  final pulumi.Input<List<String>>? excludeAppPackagesFromCleanups;
+  final pulumi.Input<List<String>?>? excludeAppPackagesFromCleanups;
   /// The name for the instance profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// When set to `true`, Device Farm removes app packages after a test run. The default value is `false` for private devices.
-  final pulumi.Input<bool>? packageCleanup;
+  final pulumi.Input<bool?>? packageCleanup;
   /// When set to `true`, Device Farm reboots the instance after a test run. The default value is `true`.
-  final pulumi.Input<bool>? rebootAfterUse;
+  final pulumi.Input<bool?>? rebootAfterUse;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InstanceProfileArgs].
   /// [description] The description of the instance profile.

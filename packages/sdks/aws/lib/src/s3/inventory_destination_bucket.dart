@@ -5,17 +5,17 @@ import 'inventory_destination_bucket_encryption.dart';
 
 class InventoryDestinationBucket {
   /// ID of the account that owns the destination bucket. Recommended to be set to prevent problems if the destination bucket ownership changes.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// Amazon S3 bucket ARN of the destination. Only general purpose buckets are supported.
   final pulumi.Input<String> bucketArn;
   /// Type of server-side encryption to use to encrypt the inventory. See `encryption` Block below.
-  final pulumi.Input<InventoryDestinationBucketEncryption>? encryption;
+  final pulumi.Input<InventoryDestinationBucketEncryption?>? encryption;
   /// Output format of the inventory results. Valid values: `CSV`, [`ORC`](https://orc.apache.org/), [`Parquet`](https://parquet.apache.org/).
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> format;
   /// Prefix that is prepended to all inventory results.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [InventoryDestinationBucket].
   /// [accountId] ID of the account that owns the destination bucket. Recommended to be set to prevent problems if the destination bucket ownership changes.

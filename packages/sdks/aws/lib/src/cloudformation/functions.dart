@@ -131,6 +131,17 @@ Future<GetCloudFormationTypeResult> getCloudFormationType(
   return GetCloudFormationTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudFormationTypeResult> getCloudFormationTypeOutput(
+  GetCloudFormationTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudformation/getCloudFormationType:getCloudFormationType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudFormationTypeResult.fromMap);
+}
+
 /// The CloudFormation Export data source allows access to stack
 /// exports specified in the [Output](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html) section of the Cloudformation Template using the optional Export Property.
 ///
@@ -296,6 +307,17 @@ Future<GetExportResult> getExport(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExportResult.fromMap(result);
+}
+
+pulumi.Output<GetExportResult> getExportOutput(
+  GetExportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudformation/getExport:getExport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExportResult.fromMap);
 }
 
 /// The CloudFormation Stack data source allows access to stack
@@ -480,4 +502,15 @@ Future<GetStackResult> getStack(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStackResult.fromMap(result);
+}
+
+pulumi.Output<GetStackResult> getStackOutput(
+  GetStackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:cloudformation/getStack:getStack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStackResult.fromMap);
 }

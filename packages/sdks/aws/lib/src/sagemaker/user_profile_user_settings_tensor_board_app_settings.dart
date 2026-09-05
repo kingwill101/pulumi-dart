@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_profile_user_settings_tensor_board_app_settings_default_resource_spec.dart';
 
 class UserProfileUserSettingsTensorBoardAppSettings {
-  /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  final pulumi.Input<UserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec>? defaultResourceSpec;
+  /// Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  final pulumi.Input<UserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec?>? defaultResourceSpec;
 
   /// Creates a new [UserProfileUserSettingsTensorBoardAppSettings].
-  /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
+  /// [defaultResourceSpec] Default instance type and the ARN of the SageMaker AI image created on the instance. see Default Resource Spec below.
   const UserProfileUserSettingsTensorBoardAppSettings({
     this.defaultResourceSpec,
   });

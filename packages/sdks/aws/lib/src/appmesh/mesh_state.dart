@@ -6,25 +6,25 @@ import 'mesh_spec.dart';
 /// Input properties used for looking up and filtering Mesh resources.
 class MeshState {
   /// ARN of the service mesh.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Creation date of the service mesh.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// Last update date of the service mesh.
-  final pulumi.Input<String>? lastUpdatedDate;
+  final pulumi.Input<String?>? lastUpdatedDate;
   /// AWS account ID of the service mesh's owner.
-  final pulumi.Input<String>? meshOwner;
+  final pulumi.Input<String?>? meshOwner;
   /// Name to use for the service mesh. Must be between 1 and 255 characters in length.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource owner's AWS account ID.
-  final pulumi.Input<String>? resourceOwner;
+  final pulumi.Input<String?>? resourceOwner;
   /// Service mesh specification to apply. See `spec` Block for details.
-  final pulumi.Input<MeshSpec>? spec;
+  final pulumi.Input<MeshSpec?>? spec;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [MeshState].
   /// [arn] ARN of the service mesh.

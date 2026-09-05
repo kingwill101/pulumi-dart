@@ -224,7 +224,7 @@ class ApprovalRuleTemplate extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The date the approval rule template was most recently changed, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> lastModifiedDate;
-  /// The Amazon Resource Name (ARN) of the user who made the most recent changes to the approval rule template.
+  /// ARN of the user who made the most recent changes to the approval rule template.
   late final pulumi.Output<String> lastModifiedUser;
   /// The name for the approval rule template. Maximum of 100 characters.
   late final pulumi.Output<String> name;
@@ -245,7 +245,7 @@ class ApprovalRuleTemplate extends pulumi.CustomResource {
           'aws:codecommit/approvalRuleTemplate:ApprovalRuleTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     approvalRuleTemplateId = registerOutput<String>('approvalRuleTemplateId');
     content = registerOutput<String>('content');
@@ -263,11 +263,12 @@ class ApprovalRuleTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApprovalRuleTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApprovalRuleTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -281,6 +282,26 @@ class ApprovalRuleTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    approvalRuleTemplateId = registerOutput<String>('approvalRuleTemplateId');
+    content = registerOutput<String>('content');
+    creationDate = registerOutput<String>('creationDate');
+    description = registerOutput<String?>('description');
+    lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    lastModifiedUser = registerOutput<String>('lastModifiedUser');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    ruleContentSha256 = registerOutput<String>('ruleContentSha256');
+  }
+
+  /// Creates a typed reference to an existing [ApprovalRuleTemplate] resource.
+  ApprovalRuleTemplate.reference(String urn)
+    : super(
+        'aws:codecommit/approvalRuleTemplate:ApprovalRuleTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     approvalRuleTemplateId = registerOutput<String>('approvalRuleTemplateId');
     content = registerOutput<String>('content');
     creationDate = registerOutput<String>('creationDate');

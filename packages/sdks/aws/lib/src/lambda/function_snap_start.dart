@@ -6,7 +6,7 @@ class FunctionSnapStart {
   /// When to apply snap start optimization. Valid value: `PublishedVersions`.
   final pulumi.Input<String> applyOn;
   /// Optimization status of the snap start configuration. Valid values are `On` and `Off`.
-  final pulumi.Input<String>? optimizationStatus;
+  final pulumi.Input<String?>? optimizationStatus;
 
   /// Creates a new [FunctionSnapStart].
   /// [applyOn] When to apply snap start optimization. Valid value: `PublishedVersions`.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis {
   /// ARN of the table which is queried with the largest time range.
-  final pulumi.Input<String>? tableArn;
+  final pulumi.Input<String?>? tableArn;
   /// Maximum duration in nanoseconds between the start and end of the query.
-  final pulumi.Input<int>? value;
+  final pulumi.Input<int?>? value;
 
   /// Creates a new [ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis].
   /// [tableArn] ARN of the table which is queried with the largest time range.
@@ -26,7 +26,7 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxi
   factory ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis(
       tableArn: (() { final guardedValue = map['tableArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

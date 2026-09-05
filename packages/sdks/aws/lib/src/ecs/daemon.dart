@@ -146,18 +146,18 @@ import 'daemon_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ecs.Daemon("example", {
-///     name: "example-daemon",
-///     clusterArn: exampleAwsEcsCluster.arn,
-///     daemonTaskDefinitionArn: exampleAwsEcsDaemonTaskDefinition.arn,
-///     capacityProviderArns: [exampleAwsEcsCapacityProvider.arn],
 ///     deploymentConfiguration: {
-///         drainPercent: 50,
-///         bakeTimeInMinutes: 10,
 ///         alarms: {
 ///             alarmNames: ["example-alarm"],
 ///             enable: true,
 ///         },
+///         drainPercent: 50,
+///         bakeTimeInMinutes: 10,
 ///     },
+///     name: "example-daemon",
+///     clusterArn: exampleAwsEcsCluster.arn,
+///     daemonTaskDefinitionArn: exampleAwsEcsDaemonTaskDefinition.arn,
+///     capacityProviderArns: [exampleAwsEcsCapacityProvider.arn],
 /// });
 /// ```
 /// ```python
@@ -165,18 +165,18 @@ import 'daemon_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ecs.Daemon("example",
-///     name="example-daemon",
-///     cluster_arn=example_aws_ecs_cluster["arn"],
-///     daemon_task_definition_arn=example_aws_ecs_daemon_task_definition["arn"],
-///     capacity_provider_arns=[example_aws_ecs_capacity_provider["arn"]],
 ///     deployment_configuration={
-///         "drain_percent": float(50),
-///         "bake_time_in_minutes": 10,
 ///         "alarms": {
 ///             "alarm_names": ["example-alarm"],
 ///             "enable": True,
 ///         },
-///     })
+///         "drain_percent": float(50),
+///         "bake_time_in_minutes": 10,
+///     },
+///     name="example-daemon",
+///     cluster_arn=example_aws_ecs_cluster["arn"],
+///     daemon_task_definition_arn=example_aws_ecs_daemon_task_definition["arn"],
+///     capacity_provider_arns=[example_aws_ecs_capacity_provider["arn"]])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -188,17 +188,8 @@ import 'daemon_timeouts.dart';
 /// {
 ///     var example = new Aws.Ecs.Daemon("example", new()
 ///     {
-///         Name = "example-daemon",
-///         ClusterArn = exampleAwsEcsCluster.Arn,
-///         DaemonTaskDefinitionArn = exampleAwsEcsDaemonTaskDefinition.Arn,
-///         CapacityProviderArns = new[]
-///         {
-///             exampleAwsEcsCapacityProvider.Arn,
-///         },
 ///         DeploymentConfiguration = new Aws.Ecs.Inputs.DaemonDeploymentConfigurationArgs
 ///         {
-///             DrainPercent = 50,
-///             BakeTimeInMinutes = 10,
 ///             Alarms = new Aws.Ecs.Inputs.DaemonDeploymentConfigurationAlarmsArgs
 ///             {
 ///                 AlarmNames = new[]
@@ -207,6 +198,15 @@ import 'daemon_timeouts.dart';
 ///                 },
 ///                 Enable = true,
 ///             },
+///             DrainPercent = 50,
+///             BakeTimeInMinutes = 10,
+///         },
+///         Name = "example-daemon",
+///         ClusterArn = exampleAwsEcsCluster.Arn,
+///         DaemonTaskDefinitionArn = exampleAwsEcsDaemonTaskDefinition.Arn,
+///         CapacityProviderArns = new[]
+///         {
+///             exampleAwsEcsCapacityProvider.Arn,
 ///         },
 ///     });
 ///
@@ -223,21 +223,21 @@ import 'daemon_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ecs.NewDaemon(ctx, "example", &ecs.DaemonArgs{
-/// 			Name:                    pulumi.String("example-daemon"),
-/// 			ClusterArn:              pulumi.Any(exampleAwsEcsCluster.Arn),
-/// 			DaemonTaskDefinitionArn: pulumi.Any(exampleAwsEcsDaemonTaskDefinition.Arn),
-/// 			CapacityProviderArns: pulumi.StringArray{
-/// 				exampleAwsEcsCapacityProvider.Arn,
-/// 			},
 /// 			DeploymentConfiguration: &ecs.DaemonDeploymentConfigurationArgs{
-/// 				DrainPercent:      pulumi.Float64(50),
-/// 				BakeTimeInMinutes: pulumi.Int(10),
 /// 				Alarms: &ecs.DaemonDeploymentConfigurationAlarmsArgs{
 /// 					AlarmNames: pulumi.StringArray{
 /// 						pulumi.String("example-alarm"),
 /// 					},
 /// 					Enable: pulumi.Bool(true),
 /// 				},
+/// 				DrainPercent:      pulumi.Float64(50),
+/// 				BakeTimeInMinutes: pulumi.Int(10),
+/// 			},
+/// 			Name:                    pulumi.String("example-daemon"),
+/// 			ClusterArn:              pulumi.Any(exampleAwsEcsCluster.Arn),
+/// 			DaemonTaskDefinitionArn: pulumi.Any(exampleAwsEcsDaemonTaskDefinition.Arn),
+/// 			CapacityProviderArns: pulumi.StringArray{
+/// 				exampleAwsEcsCapacityProvider.Arn,
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -257,18 +257,18 @@ import 'daemon_timeouts.dart';
 /// }
 ///
 /// resource "aws_ecs_daemon" "example" {
-///   name                       = "example-daemon"
-///   cluster_arn                = exampleAwsEcsCluster.arn
-///   daemon_task_definition_arn = exampleAwsEcsDaemonTaskDefinition.arn
-///   capacity_provider_arns     = [exampleAwsEcsCapacityProvider.arn]
 ///   deployment_configuration = {
-///     drain_percent        = 50
-///     bake_time_in_minutes = 10
 ///     alarms = {
 ///       alarm_names = ["example-alarm"]
 ///       enable      = true
 ///     }
+///     drain_percent        = 50
+///     bake_time_in_minutes = 10
 ///   }
+///   name                       = "example-daemon"
+///   cluster_arn                = exampleAwsEcsCluster.arn
+///   daemon_task_definition_arn = exampleAwsEcsDaemonTaskDefinition.arn
+///   capacity_provider_arns     = [exampleAwsEcsCapacityProvider.arn]
 /// }
 /// ```
 /// ```java
@@ -295,18 +295,18 @@ import 'daemon_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Daemon("example", DaemonArgs.builder()
-///             .name("example-daemon")
-///             .clusterArn(exampleAwsEcsCluster.arn())
-///             .daemonTaskDefinitionArn(exampleAwsEcsDaemonTaskDefinition.arn())
-///             .capacityProviderArns(exampleAwsEcsCapacityProvider.arn())
 ///             .deploymentConfiguration(DaemonDeploymentConfigurationArgs.builder()
-///                 .drainPercent(50.0)
-///                 .bakeTimeInMinutes(10)
 ///                 .alarms(DaemonDeploymentConfigurationAlarmsArgs.builder()
 ///                     .alarmNames("example-alarm")
 ///                     .enable(true)
 ///                     .build())
+///                 .drainPercent(50.0)
+///                 .bakeTimeInMinutes(10)
 ///                 .build())
+///             .name("example-daemon")
+///             .clusterArn(exampleAwsEcsCluster.arn())
+///             .daemonTaskDefinitionArn(exampleAwsEcsDaemonTaskDefinition.arn())
+///             .capacityProviderArns(exampleAwsEcsCapacityProvider.arn())
 ///             .build());
 ///
 ///     }
@@ -317,18 +317,18 @@ import 'daemon_timeouts.dart';
 ///   example:
 ///     type: aws:ecs:Daemon
 ///     properties:
+///       deploymentConfiguration:
+///         alarms:
+///           alarmNames:
+///             - example-alarm
+///           enable: true
+///         drainPercent: 50
+///         bakeTimeInMinutes: 10
 ///       name: example-daemon
 ///       clusterArn: ${exampleAwsEcsCluster.arn}
 ///       daemonTaskDefinitionArn: ${exampleAwsEcsDaemonTaskDefinition.arn}
 ///       capacityProviderArns:
 ///         - ${exampleAwsEcsCapacityProvider.arn}
-///       deploymentConfiguration:
-///         drainPercent: 50
-///         bakeTimeInMinutes: 10
-///         alarms:
-///           alarmNames:
-///             - example-alarm
-///           enable: true
 /// ```
 ///
 ///
@@ -547,10 +547,10 @@ class Daemon extends pulumi.CustomResource {
           'aws:ecs/daemon:Daemon',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    capacityProviderArns = registerOutput<List<String>>('capacityProviderArns');
+    capacityProviderArns = registerOutput<List<String>>('capacityProviderArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterArn = registerOutput<String>('clusterArn');
     daemonTaskDefinitionArn = registerOutput<String>('daemonTaskDefinitionArn');
     deploymentArn = registerOutput<String>('deploymentArn');
@@ -561,8 +561,8 @@ class Daemon extends pulumi.CustomResource {
     propagateTags = registerOutput<String?>('propagateTags');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<DaemonTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaemonTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -571,11 +571,12 @@ class Daemon extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DaemonState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Daemon._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -590,7 +591,7 @@ class Daemon extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    capacityProviderArns = registerOutput<List<String>>('capacityProviderArns');
+    capacityProviderArns = registerOutput<List<String>>('capacityProviderArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterArn = registerOutput<String>('clusterArn');
     daemonTaskDefinitionArn = registerOutput<String>('daemonTaskDefinitionArn');
     deploymentArn = registerOutput<String>('deploymentArn');
@@ -601,8 +602,34 @@ class Daemon extends pulumi.CustomResource {
     propagateTags = registerOutput<String?>('propagateTags');
     region = registerOutput<String>('region');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<DaemonTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaemonTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Daemon] resource.
+  Daemon.reference(String urn)
+    : super(
+        'aws:ecs/daemon:Daemon',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    capacityProviderArns = registerOutput<List<String>>('capacityProviderArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clusterArn = registerOutput<String>('clusterArn');
+    daemonTaskDefinitionArn = registerOutput<String>('daemonTaskDefinitionArn');
+    deploymentArn = registerOutput<String>('deploymentArn');
+    deploymentConfiguration = registerOutput<DaemonDeploymentConfiguration?>('deploymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaemonDeploymentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableEcsManagedTags = registerOutput<bool?>('enableEcsManagedTags');
+    enableExecuteCommand = registerOutput<bool?>('enableExecuteCommand');
+    this.name = registerOutput<String>('name');
+    propagateTags = registerOutput<String?>('propagateTags');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<DaemonTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaemonTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

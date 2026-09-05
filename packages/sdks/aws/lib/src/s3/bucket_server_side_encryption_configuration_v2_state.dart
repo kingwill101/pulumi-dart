@@ -6,13 +6,13 @@ import 'bucket_server_side_encryption_configuration_v2_rule.dart';
 /// Input properties used for looking up and filtering BucketServerSideEncryptionConfigurationV2 resources.
 class BucketServerSideEncryptionConfigurationV2State {
   /// ID (name) of the bucket.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Account ID of the expected bucket owner.
-  final pulumi.Input<String>? expectedBucketOwner;
+  final pulumi.Input<String?>? expectedBucketOwner;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of server-side encryption configuration rules. See below. Currently, only a single rule is supported.
-  final pulumi.Input<List<BucketServerSideEncryptionConfigurationV2Rule>>? rules;
+  final pulumi.Input<List<BucketServerSideEncryptionConfigurationV2Rule>?>? rules;
 
   /// Creates a new [BucketServerSideEncryptionConfigurationV2State].
   /// [bucket] ID (name) of the bucket.

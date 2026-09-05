@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatorLogDeliveryReplicatorLogDeliveryFirehose {
   /// Name of the Firehose delivery stream. Required if `enabled` is `true`. If `enabled` is `false`, this value must not be set.
-  final pulumi.Input<String>? deliveryStream;
+  final pulumi.Input<String?>? deliveryStream;
   /// Boolean whether to enable log delivery to Firehose.
   final pulumi.Input<bool> enabled;
 

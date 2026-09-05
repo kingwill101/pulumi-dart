@@ -9,7 +9,7 @@ class GetImageRecipeBlockDeviceMappingEb {
   final pulumi.Input<String> encrypted;
   /// Number of Input/Output (I/O) operations per second to provision for an `io1` or `io2` volume.
   final pulumi.Input<int> iops;
-  /// ARN of the Key Management Service (KMS) Key for encryption.
+  /// ARN of the KMS Key for encryption.
   final pulumi.Input<String> kmsKeyId;
   /// Identifier of the EC2 Volume Snapshot.
   final pulumi.Input<String> snapshotId;
@@ -24,7 +24,7 @@ class GetImageRecipeBlockDeviceMappingEb {
   /// [deleteOnTermination] Whether to delete the volume on termination. Defaults to unset, which is the value inherited from the parent image.
   /// [encrypted] Whether to encrypt the volume. Defaults to unset, which is the value inherited from the parent image.
   /// [iops] Number of Input/Output (I/O) operations per second to provision for an `io1` or `io2` volume.
-  /// [kmsKeyId] ARN of the Key Management Service (KMS) Key for encryption.
+  /// [kmsKeyId] ARN of the KMS Key for encryption.
   /// [snapshotId] Identifier of the EC2 Volume Snapshot.
   /// [throughput] For GP3 volumes only. The throughput in MiB/s that the volume supports.
   /// [volumeSize] Size of the volume, in GiB.
@@ -57,11 +57,11 @@ class GetImageRecipeBlockDeviceMappingEb {
     return GetImageRecipeBlockDeviceMappingEb(
       deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as String),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as String),
-      iops: pulumi.Input.fromValue(map['iops'] as int),
+      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
       kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
       snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
-      throughput: pulumi.Input.fromValue(map['throughput'] as int),
-      volumeSize: pulumi.Input.fromValue(map['volumeSize'] as int),
+      throughput: pulumi.Input.fromValue((map['throughput'] as num).toInt()),
+      volumeSize: pulumi.Input.fromValue((map['volumeSize'] as num).toInt()),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

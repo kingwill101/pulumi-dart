@@ -11,7 +11,7 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfo {
   /// Configuration blocks for a target group within a target group pair (documented below).
   final pulumi.Input<List<DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup>> targetGroups;
   /// Configuration block for the test traffic route (documented below).
-  final pulumi.Input<DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute>? testTrafficRoute;
+  final pulumi.Input<DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute?>? testTrafficRoute;
 
   /// Creates a new [DeploymentGroupLoadBalancerInfoTargetGroupPairInfo].
   /// [prodTrafficRoute] Configuration block for the production traffic route (documented below).

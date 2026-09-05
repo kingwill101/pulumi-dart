@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings {
   /// The frequency at which to capture frames for inclusion in the output.
-  final pulumi.Input<int>? captureInterval;
+  final pulumi.Input<int?>? captureInterval;
   /// Unit for the frame capture interval.
-  final pulumi.Input<String>? captureIntervalUnits;
+  final pulumi.Input<String?>? captureIntervalUnits;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings].
   /// [captureInterval] The frequency at which to capture frames for inclusion in the output.
@@ -25,7 +25,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings {
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings(
-      captureInterval: (() { final guardedValue = map['captureInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      captureInterval: (() { final guardedValue = map['captureInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       captureIntervalUnits: (() { final guardedValue = map['captureIntervalUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -4,13 +4,13 @@
 /// Result data returned by getResolverRules.
 class GetResolverRulesResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? nameRegex;
   final String? ownerId;
-  final String region;
+  final String? region;
   final String? resolverEndpointId;
   /// IDs of the matched resolver rules.
-  final List<String> resolverRuleIds;
+  final List<String>? resolverRuleIds;
   final String? ruleType;
   final String? shareStatus;
 
@@ -18,30 +18,30 @@ class GetResolverRulesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [nameRegex] Optional.
   /// [ownerId] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   /// [resolverEndpointId] Optional.
   /// [resolverRuleIds] IDs of the matched resolver rules.
   /// [ruleType] Optional.
   /// [shareStatus] Optional.
   const GetResolverRulesResult({
-    required this.id,
+    this.id,
     this.nameRegex,
     this.ownerId,
-    required this.region,
+    this.region,
     this.resolverEndpointId,
-    required this.resolverRuleIds,
+    this.resolverRuleIds,
     this.ruleType,
     this.shareStatus,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'nameRegex': ?nameRegex,
       'ownerId': ?ownerId,
-      'region': region,
+      'region': ?region,
       'resolverEndpointId': ?resolverEndpointId,
-      'resolverRuleIds': resolverRuleIds,
+      'resolverRuleIds': ?resolverRuleIds,
       'ruleType': ?ruleType,
       'shareStatus': ?shareStatus,
     };
@@ -49,12 +49,12 @@ class GetResolverRulesResult {
 
   factory GetResolverRulesResult.fromMap(Map<String, dynamic> map) {
     return GetResolverRulesResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resolverEndpointId: (() { final guardedValue = map['resolverEndpointId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      resolverRuleIds: (map['resolverRuleIds'] as List).cast<String>(),
+      resolverRuleIds: (() { final guardedValue = map['resolverRuleIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       ruleType: (() { final guardedValue = map['ruleType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       shareStatus: (() { final guardedValue = map['shareStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

@@ -8,47 +8,47 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_route_route_args_doc}
 class RouteArgs {
   /// Identifier of a carrier gateway. This attribute can only be used when the VPC contains a subnet which is associated with a Wavelength Zone.
-  final pulumi.Input<String>? carrierGatewayId;
-  /// The Amazon Resource Name (ARN) of a core network.
-  final pulumi.Input<String>? coreNetworkArn;
+  final pulumi.Input<String?>? carrierGatewayId;
+  /// ARN of a core network.
+  final pulumi.Input<String?>? coreNetworkArn;
   /// The destination CIDR block.
-  final pulumi.Input<String>? destinationCidrBlock;
+  final pulumi.Input<String?>? destinationCidrBlock;
   /// The destination IPv6 CIDR block.
-  final pulumi.Input<String>? destinationIpv6CidrBlock;
+  final pulumi.Input<String?>? destinationIpv6CidrBlock;
   /// The ID of a managed prefix list destination.
   ///
   /// One of the following target arguments must be supplied:
-  final pulumi.Input<String>? destinationPrefixListId;
+  final pulumi.Input<String?>? destinationPrefixListId;
   /// Identifier of a VPC Egress Only Internet Gateway.
-  final pulumi.Input<String>? egressOnlyGatewayId;
+  final pulumi.Input<String?>? egressOnlyGatewayId;
   /// Identifier of a VPC internet gateway or a virtual private gateway. Specify `local` when updating a previously imported local route.
-  final pulumi.Input<String>? gatewayId;
+  final pulumi.Input<String?>? gatewayId;
   /// Identifier of a Outpost local gateway.
-  final pulumi.Input<String>? localGatewayId;
+  final pulumi.Input<String?>? localGatewayId;
   /// Identifier of a VPC NAT gateway.
-  final pulumi.Input<String>? natGatewayId;
+  final pulumi.Input<String?>? natGatewayId;
   /// Identifier of an EC2 network interface.
-  final pulumi.Input<String>? networkInterfaceId;
-  /// The Amazon Resource Name (ARN) of an ODB network.
-  final pulumi.Input<String>? odbNetworkArn;
+  final pulumi.Input<String?>? networkInterfaceId;
+  /// ARN of an ODB network.
+  final pulumi.Input<String?>? odbNetworkArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the routing table.
   ///
   /// One of the following destination arguments must be supplied:
   final pulumi.Input<String> routeTableId;
   /// Identifier of an EC2 Transit Gateway.
-  final pulumi.Input<String>? transitGatewayId;
+  final pulumi.Input<String?>? transitGatewayId;
   /// Identifier of a VPC Endpoint.
-  final pulumi.Input<String>? vpcEndpointId;
+  final pulumi.Input<String?>? vpcEndpointId;
   /// Identifier of a VPC peering connection.
   ///
   /// Note that the default route, mapping the VPC's CIDR block to "local", is created implicitly and cannot be specified.
-  final pulumi.Input<String>? vpcPeeringConnectionId;
+  final pulumi.Input<String?>? vpcPeeringConnectionId;
 
   /// Creates a new [RouteArgs].
   /// [carrierGatewayId] Identifier of a carrier gateway. This attribute can only be used when the VPC contains a subnet which is associated with a Wavelength Zone.
-  /// [coreNetworkArn] The Amazon Resource Name (ARN) of a core network.
+  /// [coreNetworkArn] ARN of a core network.
   /// [destinationCidrBlock] The destination CIDR block.
   /// [destinationIpv6CidrBlock] The destination IPv6 CIDR block.
   /// [destinationPrefixListId] The ID of a managed prefix list destination.
@@ -57,7 +57,7 @@ class RouteArgs {
   /// [localGatewayId] Identifier of a Outpost local gateway.
   /// [natGatewayId] Identifier of a VPC NAT gateway.
   /// [networkInterfaceId] Identifier of an EC2 network interface.
-  /// [odbNetworkArn] The Amazon Resource Name (ARN) of an ODB network.
+  /// [odbNetworkArn] ARN of an ODB network.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routeTableId] The ID of the routing table.
   /// [transitGatewayId] Identifier of an EC2 Transit Gateway.

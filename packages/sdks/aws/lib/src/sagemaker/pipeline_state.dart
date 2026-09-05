@@ -6,31 +6,31 @@ import 'pipeline_pipeline_definition_s3_location.dart';
 
 /// Input properties used for looking up and filtering Pipeline resources.
 class PipelineState {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Pipeline.
-  final pulumi.Input<String>? arn;
+  /// ARN assigned by AWS to this Pipeline.
+  final pulumi.Input<String?>? arn;
   /// This is the configuration that controls the parallelism of the pipeline. If specified, it applies to all runs of this pipeline by default. see Parallelism Configuration details below.
-  final pulumi.Input<PipelineParallelismConfiguration>? parallelismConfiguration;
+  final pulumi.Input<PipelineParallelismConfiguration?>? parallelismConfiguration;
   /// The [JSON pipeline definition](https://aws-sagemaker-mlops.github.io/sagemaker-model-building-pipeline-definition-JSON-schema/) of the pipeline.
-  final pulumi.Input<String>? pipelineDefinition;
+  final pulumi.Input<String?>? pipelineDefinition;
   /// The location of the pipeline definition stored in Amazon S3. If specified, SageMaker AI will retrieve the pipeline definition from this location. see Pipeline Definition S3 Location details below.
-  final pulumi.Input<PipelinePipelineDefinitionS3Location>? pipelineDefinitionS3Location;
+  final pulumi.Input<PipelinePipelineDefinitionS3Location?>? pipelineDefinitionS3Location;
   /// A description of the pipeline.
-  final pulumi.Input<String>? pipelineDescription;
+  final pulumi.Input<String?>? pipelineDescription;
   /// The display name of the pipeline.
-  final pulumi.Input<String>? pipelineDisplayName;
+  final pulumi.Input<String?>? pipelineDisplayName;
   /// The name of the pipeline.
-  final pulumi.Input<String>? pipelineName;
+  final pulumi.Input<String?>? pipelineName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of the IAM role the pipeline will execute as.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [PipelineState].
-  /// [arn] The Amazon Resource Name (ARN) assigned by AWS to this Pipeline.
+  /// [arn] ARN assigned by AWS to this Pipeline.
   /// [parallelismConfiguration] This is the configuration that controls the parallelism of the pipeline. If specified, it applies to all runs of this pipeline by default. see Parallelism Configuration details below.
   /// [pipelineDefinition] The [JSON pipeline definition](https://aws-sagemaker-mlops.github.io/sagemaker-model-building-pipeline-definition-JSON-schema/) of the pipeline.
   /// [pipelineDefinitionS3Location] The location of the pipeline definition stored in Amazon S3. If specified, SageMaker AI will retrieve the pipeline definition from this location. see Pipeline Definition S3 Location details below.

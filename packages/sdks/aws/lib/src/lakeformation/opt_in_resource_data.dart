@@ -13,23 +13,23 @@ import 'opt_in_resource_data_table_with_columns.dart';
 
 class OptInResourceData {
   /// Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment. See `catalog` Block for more details.
-  final pulumi.Input<List<OptInResourceDataCatalog>>? catalogs;
+  final pulumi.Input<List<OptInResourceDataCatalog>?>? catalogs;
   /// Data cell filter. See `dataCellsFilter` Block for more details.
-  final pulumi.Input<List<OptInResourceDataDataCellsFilter>>? dataCellsFilters;
+  final pulumi.Input<List<OptInResourceDataDataCellsFilter>?>? dataCellsFilters;
   /// Location of an Amazon S3 path where permissions are granted or revoked. See `dataLocation` Block for more details.
-  final pulumi.Input<List<OptInResourceDataDataLocation>>? dataLocations;
+  final pulumi.Input<List<OptInResourceDataDataLocation>?>? dataLocations;
   /// Database for the resource. Unique to the Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database permissions to a principal. See `database` Block for more details.
-  final pulumi.Input<OptInResourceDataDatabase>? database;
+  final pulumi.Input<OptInResourceDataDatabase?>? database;
   /// LF-tag key and values attached to a resource.
-  final pulumi.Input<OptInResourceDataLfTag>? lfTag;
+  final pulumi.Input<OptInResourceDataLfTag?>? lfTag;
   /// Logical expression composed of one or more LF-Tag key:value pairs. See `lfTagExpression` Block for more details.
-  final pulumi.Input<List<OptInResourceDataLfTagExpression>>? lfTagExpressions;
+  final pulumi.Input<List<OptInResourceDataLfTagExpression>?>? lfTagExpressions;
   /// List of LF-Tag conditions or saved LF-Tag expressions that define a resource's LF-Tag policy. See `lfTagPolicy` Block for more details.
-  final pulumi.Input<List<OptInResourceDataLfTagPolicy>>? lfTagPolicies;
+  final pulumi.Input<List<OptInResourceDataLfTagPolicy>?>? lfTagPolicies;
   /// Table for the resource. A table is a metadata definition that represents your data. You can Grant and Revoke table privileges to a principal. See `table` Block for more details.
-  final pulumi.Input<OptInResourceDataTable>? table;
+  final pulumi.Input<OptInResourceDataTable?>? table;
   /// Table with columns for the resource. A principal with permissions to this resource can select metadata from the columns of a table in the Data Catalog and the underlying data in Amazon S3. See `tableWithColumns` Block for more details.
-  final pulumi.Input<OptInResourceDataTableWithColumns>? tableWithColumns;
+  final pulumi.Input<OptInResourceDataTableWithColumns?>? tableWithColumns;
 
   /// Creates a new [OptInResourceData].
   /// [catalogs] Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment. See `catalog` Block for more details.

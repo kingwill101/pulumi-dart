@@ -301,7 +301,7 @@ class NotificationConfiguration extends pulumi.CustomResource {
   /// aggregate notifications for 12 hours), `SHORT` (aggregate notifications for 5 minutes), `NONE` (don't aggregate
   /// notifications). Default: `NONE`.
   late final pulumi.Output<String> aggregationDuration;
-  /// Amazon Resource Name (ARN) of the NotificationConfiguration.
+  /// ARN of the NotificationConfiguration.
   late final pulumi.Output<String> arn;
   /// Description of the NotificationConfiguration. Length constraints: Minimum length of 0,
   /// maximum length of 256.
@@ -331,14 +331,14 @@ class NotificationConfiguration extends pulumi.CustomResource {
           'aws:notifications/notificationConfiguration:NotificationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     aggregationDuration = registerOutput<String>('aggregationDuration');
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NotificationConfiguration] resource's state with the given [name] and [id].
@@ -346,11 +346,12 @@ class NotificationConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotificationConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NotificationConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,7 +369,24 @@ class NotificationConfiguration extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NotificationConfiguration] resource.
+  NotificationConfiguration.reference(String urn)
+    : super(
+        'aws:notifications/notificationConfiguration:NotificationConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregationDuration = registerOutput<String>('aggregationDuration');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

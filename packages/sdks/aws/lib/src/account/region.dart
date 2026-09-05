@@ -143,7 +143,7 @@ class Region extends pulumi.CustomResource {
           'aws:account/region:Region',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     enabled = registerOutput<bool>('enabled');
@@ -156,11 +156,12 @@ class Region extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Region._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -174,6 +175,21 @@ class Region extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String?>('accountId');
+    enabled = registerOutput<bool>('enabled');
+    optStatus = registerOutput<String>('optStatus');
+    regionName = registerOutput<String>('regionName');
+  }
+
+  /// Creates a typed reference to an existing [Region] resource.
+  Region.reference(String urn)
+    : super(
+        'aws:account/region:Region',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String?>('accountId');
     enabled = registerOutput<bool>('enabled');
     optStatus = registerOutput<String>('optStatus');

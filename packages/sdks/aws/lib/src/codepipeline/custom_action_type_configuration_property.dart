@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomActionTypeConfigurationProperty {
   /// The description of the action configuration property.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the configuration property is a key.
   final pulumi.Input<bool> key;
   /// The name of the action configuration property.
   final pulumi.Input<String> name;
   /// Indicates that the property will be used in conjunction with PollForJobs.
-  final pulumi.Input<bool>? queryable;
+  final pulumi.Input<bool?>? queryable;
   /// Whether the configuration property is a required value.
   final pulumi.Input<bool> required;
   /// Whether the configuration property is secret.
   final pulumi.Input<bool> secret;
   /// The type of the configuration property. Valid values: `String`, `Number`, `Boolean`
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [CustomActionTypeConfigurationProperty].
   /// [description] The description of the action configuration property.

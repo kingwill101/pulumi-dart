@@ -9,16 +9,16 @@ import 'event_permission_condition.dart';
 /// {@macro pulumi_cloudwatch_event_permission_event_permission_args_doc}
 class EventPermissionArgs {
   /// The action that you are enabling the other account to perform. Defaults to `events:PutEvents`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Configuration block to limit the event bus permissions you are granting to only accounts that fulfill the condition. Specified below.
-  final pulumi.Input<EventPermissionCondition>? condition;
+  final pulumi.Input<EventPermissionCondition?>? condition;
   /// The name of the event bus to set the permissions on.
   /// If you omit this, the permissions are set on the `default` event bus.
-  final pulumi.Input<String>? eventBusName;
+  final pulumi.Input<String?>? eventBusName;
   /// The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify `*` to permit any account to put events to your default event bus, optionally limited by `condition`.
   final pulumi.Input<String> principal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// An identifier string for the external account that you are granting permissions to.
   final pulumi.Input<String> statementId;
 

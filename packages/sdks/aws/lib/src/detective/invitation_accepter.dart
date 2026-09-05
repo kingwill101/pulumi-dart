@@ -213,7 +213,7 @@ class InvitationAccepter extends pulumi.CustomResource {
           'aws:detective/invitationAccepter:InvitationAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     graphArn = registerOutput<String>('graphArn');
     region = registerOutput<String>('region');
@@ -224,11 +224,12 @@ class InvitationAccepter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InvitationAccepterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InvitationAccepter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -242,6 +243,19 @@ class InvitationAccepter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    graphArn = registerOutput<String>('graphArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [InvitationAccepter] resource.
+  InvitationAccepter.reference(String urn)
+    : super(
+        'aws:detective/invitationAccepter:InvitationAccepter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     graphArn = registerOutput<String>('graphArn');
     region = registerOutput<String>('region');
   }

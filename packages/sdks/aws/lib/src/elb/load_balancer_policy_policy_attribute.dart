@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerPolicyPolicyAttribute {
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [LoadBalancerPolicyPolicyAttribute].
   /// [name] Optional.

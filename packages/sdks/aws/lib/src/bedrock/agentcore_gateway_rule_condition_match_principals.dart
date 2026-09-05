@@ -5,7 +5,7 @@ import 'agentcore_gateway_rule_condition_match_principals_any_of.dart';
 
 class AgentcoreGatewayRuleConditionMatchPrincipals {
   /// Between 1 and 100 principal entry blocks.
-  final pulumi.Input<List<AgentcoreGatewayRuleConditionMatchPrincipalsAnyOf>>? anyOfs;
+  final pulumi.Input<List<AgentcoreGatewayRuleConditionMatchPrincipalsAnyOf>?>? anyOfs;
 
   /// Creates a new [AgentcoreGatewayRuleConditionMatchPrincipals].
   /// [anyOfs] Between 1 and 100 principal entry blocks.

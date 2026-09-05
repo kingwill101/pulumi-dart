@@ -7,12 +7,12 @@ class IntentDialogCodeHook {
   /// to invoke your Lambda function. For more information, see
   /// [Using Lambda Functions](https://docs.aws.amazon.com/lex/latest/dg/using-lambda.html). Must be less than or equal to 5 characters in length.
   final pulumi.Input<String> messageVersion;
-  /// The Amazon Resource Name (ARN) of the Lambda function.
+  /// ARN of the Lambda function.
   final pulumi.Input<String> uri;
 
   /// Creates a new [IntentDialogCodeHook].
   /// [messageVersion] The version of the request-response that you want Amazon Lex to use
-  /// [uri] The Amazon Resource Name (ARN) of the Lambda function.
+  /// [uri] ARN of the Lambda function.
   const IntentDialogCodeHook({
     required this.messageVersion,
     required this.uri,

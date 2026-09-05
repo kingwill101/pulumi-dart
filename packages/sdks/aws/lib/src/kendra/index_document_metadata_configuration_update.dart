@@ -8,9 +8,9 @@ class IndexDocumentMetadataConfigurationUpdate {
   /// The name of the index field. Minimum length of 1. Maximum length of 30.
   final pulumi.Input<String> name;
   /// A block that provides manual tuning parameters to determine how the field affects the search results. Detailed below
-  final pulumi.Input<IndexDocumentMetadataConfigurationUpdateRelevance>? relevance;
+  final pulumi.Input<IndexDocumentMetadataConfigurationUpdateRelevance?>? relevance;
   /// A block that provides information about how the field is used during a search. Documented below. Detailed below
-  final pulumi.Input<IndexDocumentMetadataConfigurationUpdateSearch>? search;
+  final pulumi.Input<IndexDocumentMetadataConfigurationUpdateSearch?>? search;
   /// The data type of the index field. Valid values are `STRING_VALUE`, `STRING_LIST_VALUE`, `LONG_VALUE`, `DATE_VALUE`.
   final pulumi.Input<String> type;
 

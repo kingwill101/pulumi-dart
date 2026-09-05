@@ -184,7 +184,7 @@ import 'keyvaluestore_key_state.dart';
 class KeyvaluestoreKey extends pulumi.CustomResource {
   /// Key to put.
   late final pulumi.Output<String> key;
-  /// Amazon Resource Name (ARN) of the Key Value Store.
+  /// ARN of the Key Value Store.
   late final pulumi.Output<String> keyValueStoreArn;
   /// Total size of the Key Value Store in bytes.
   late final pulumi.Output<int> totalSizeInBytes;
@@ -203,7 +203,7 @@ class KeyvaluestoreKey extends pulumi.CustomResource {
           'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     key = registerOutput<String>('key');
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
@@ -216,11 +216,12 @@ class KeyvaluestoreKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyvaluestoreKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyvaluestoreKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -234,6 +235,21 @@ class KeyvaluestoreKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    key = registerOutput<String>('key');
+    keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
+    totalSizeInBytes = registerOutput<int>('totalSizeInBytes');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [KeyvaluestoreKey] resource.
+  KeyvaluestoreKey.reference(String urn)
+    : super(
+        'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     key = registerOutput<String>('key');
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
     totalSizeInBytes = registerOutput<int>('totalSizeInBytes');

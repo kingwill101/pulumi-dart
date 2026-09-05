@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_caller_identity_get_caller_identity_args_doc}
 class GetCallerIdentityArgs {
   /// Account ID number of the account that owns or contains the calling entity.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [GetCallerIdentityArgs].
   /// [id] Account ID number of the account that owns or contains the calling entity.

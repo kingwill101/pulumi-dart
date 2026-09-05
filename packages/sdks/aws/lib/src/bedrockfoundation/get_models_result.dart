@@ -10,10 +10,10 @@ class GetModelsResult {
   final String? byOutputModality;
   final String? byProvider;
   /// AWS region.
-  final String id;
+  final String? id;
   /// List of model summary objects. See `modelSummaries`.
-  final List<GetModelsModelSummary> modelSummaries;
-  final String region;
+  final List<GetModelsModelSummary>? modelSummaries;
+  final String? region;
 
   /// Creates a new [GetModelsResult].
   /// [byCustomizationType] Optional.
@@ -22,15 +22,15 @@ class GetModelsResult {
   /// [byProvider] Optional.
   /// [id] AWS region.
   /// [modelSummaries] List of model summary objects. See `modelSummaries`.
-  /// [region] Required.
+  /// [region] Optional.
   const GetModelsResult({
     this.byCustomizationType,
     this.byInferenceType,
     this.byOutputModality,
     this.byProvider,
-    required this.id,
-    required this.modelSummaries,
-    required this.region,
+    this.id,
+    this.modelSummaries,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
@@ -39,9 +39,9 @@ class GetModelsResult {
       'byInferenceType': ?byInferenceType,
       'byOutputModality': ?byOutputModality,
       'byProvider': ?byProvider,
-      'id': id,
-      'modelSummaries': pulumi.Input.encodeList<GetModelsModelSummary, Map<String, dynamic>>(modelSummaries, (value) => value.toMap()),
-      'region': region,
+      'id': ?id,
+      'modelSummaries': ?(() { final guardedValue = modelSummaries; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetModelsModelSummary, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'region': ?region,
     };
   }
 
@@ -51,9 +51,9 @@ class GetModelsResult {
       byInferenceType: (() { final guardedValue = map['byInferenceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       byOutputModality: (() { final guardedValue = map['byOutputModality']; if (guardedValue == null) return null; return guardedValue as String; })(),
       byProvider: (() { final guardedValue = map['byProvider']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      modelSummaries: pulumi.Input.decodeList<GetModelsModelSummary>(map['modelSummaries']!, (value) => GetModelsModelSummary.fromMap((value as Map).cast<String, dynamic>())),
-      region: map['region'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      modelSummaries: (() { final guardedValue = map['modelSummaries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetModelsModelSummary>(guardedValue, (value) => GetModelsModelSummary.fromMap((value as Map).cast<String, dynamic>())); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -14,25 +14,25 @@ import 'service_source_configuration.dart';
 /// {@macro pulumi_apprunner_service_service_args_doc}
 class ServiceArgs {
   /// ARN of an App Runner automatic scaling configuration resource that you want to associate with your service. If not provided, App Runner associates the latest revision of a default auto scaling configuration.
-  final pulumi.Input<String>? autoScalingConfigurationArn;
+  final pulumi.Input<String?>? autoScalingConfigurationArn;
   /// Custom encryption key that App Runner uses to encrypt the copy of your source repository that it maintains and your service logs. By default, App Runner uses an AWS managed CMK. See `encryptionConfiguration` below.
-  final pulumi.Input<ServiceEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<ServiceEncryptionConfiguration?>? encryptionConfiguration;
   /// Settings of the health check that AWS App Runner performs to monitor the health of your service. See `healthCheckConfiguration` below.
-  final pulumi.Input<ServiceHealthCheckConfiguration>? healthCheckConfiguration;
+  final pulumi.Input<ServiceHealthCheckConfiguration?>? healthCheckConfiguration;
   /// Runtime configuration of instances (scaling units) of the App Runner service. See `instanceConfiguration` below.
-  final pulumi.Input<ServiceInstanceConfiguration>? instanceConfiguration;
+  final pulumi.Input<ServiceInstanceConfiguration?>? instanceConfiguration;
   /// Configuration settings related to network traffic of the web application that the App Runner service runs. See `networkConfiguration` below.
-  final pulumi.Input<ServiceNetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<ServiceNetworkConfiguration?>? networkConfiguration;
   /// Observability configuration of your service. See `observabilityConfiguration` below.
-  final pulumi.Input<ServiceObservabilityConfiguration>? observabilityConfiguration;
+  final pulumi.Input<ServiceObservabilityConfiguration?>? observabilityConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the service.
   final pulumi.Input<String> serviceName;
   /// Source to deploy to the App Runner service. Can be a code or an image repository. See `sourceConfiguration` below.
   final pulumi.Input<ServiceSourceConfiguration> sourceConfiguration;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceArgs].
   /// [autoScalingConfigurationArn] ARN of an App Runner automatic scaling configuration resource that you want to associate with your service. If not provided, App Runner associates the latest revision of a default auto scaling configuration.

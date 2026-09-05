@@ -5,7 +5,7 @@ import 'listener_default_action_jwt_validation_additional_claim.dart';
 
 class ListenerDefaultActionJwtValidation {
   /// Repeatable configuration block for additional claims to validate.
-  final pulumi.Input<List<ListenerDefaultActionJwtValidationAdditionalClaim>>? additionalClaims;
+  final pulumi.Input<List<ListenerDefaultActionJwtValidationAdditionalClaim>?>? additionalClaims;
   /// Issuer of the JWT.
   final pulumi.Input<String> issuer;
   /// JSON Web Key Set (JWKS) endpoint. This endpoint contains JSON Web Keys (JWK) that are used to validate signatures from the provider. This must be a full URL, including the HTTPS protocol, the domain, and the path.

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InfrastructureConfigurationPlacement {
   /// Availability Zone where your build and test instances will launch.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// ID of the Dedicated Host on which build and test instances run. Conflicts with `hostResourceGroupArn`.
-  final pulumi.Input<String>? hostId;
+  final pulumi.Input<String?>? hostId;
   /// ARN of the host resource group in which to launch build and test instances. Conflicts with `hostId`.
-  final pulumi.Input<String>? hostResourceGroupArn;
+  final pulumi.Input<String?>? hostResourceGroupArn;
   /// Placement tenancy of the instance. Valid values: `default`, `dedicated` and `host`.
-  final pulumi.Input<String>? tenancy;
+  final pulumi.Input<String?>? tenancy;
 
   /// Creates a new [InfrastructureConfigurationPlacement].
   /// [availabilityZone] Availability Zone where your build and test instances will launch.

@@ -203,7 +203,6 @@ import 'standards_control_association_state.dart';
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
-/// import * as std from "@pulumi/std";
 ///
 /// export = async () => {
 ///     const example = new aws.securityhub.Account("example", {});
@@ -211,11 +210,9 @@ import 'standards_control_association_state.dart';
 ///         securityControlId: "IAM.1",
 ///     });
 ///     const iam1StandardsControlAssociation: aws.securityhub.StandardsControlAssociation[] = [];
-///     for (const range of std.toset({
-///         input: iam1.standardsControlAssociations.map(__item => __item.standardsArn),
-///     }).result.map((v, k) => ({key: k, value: v}))) {
+///     for (const range of Object.entries(.reduce((__obj, entry) => ({ ...__obj, [entry]: entry }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
 ///         iam1StandardsControlAssociation.push(new aws.securityhub.StandardsControlAssociation(`iam_1-${range.key}`, {
-///             standardsArn: String(range.key),
+///             standardsArn: range.key,
 ///             securityControlId: iam1.securityControlId,
 ///             associationStatus: "DISABLED",
 ///             updatedReason: "Not needed",
@@ -227,14 +224,13 @@ import 'standards_control_association_state.dart';
 /// import pulumi
 /// from typing import Any
 /// import pulumi_aws as aws
-/// import pulumi_std as std
 ///
 /// example = aws.securityhub.Account("example")
 /// iam1 = aws.securityhub.get_standards_control_associations(security_control_id="IAM.1")
 /// iam1_standards_control_association: list[aws.securityhub.StandardsControlAssociation] = []
-/// for iam1_standards_control_association_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.standards_arn for __item in iam1.standards_control_associations]).result)]:
+/// for iam1_standards_control_association_range in [{"key": k, "value": v} for [k, v] in enumerate({entry: entry for entry in [__item.standards_arn for __item in iam1.standards_control_associations]})]:
 ///     iam1_standards_control_association.append(aws.securityhub.StandardsControlAssociation(f"iam_1-{iam1_standards_control_association_range['key']}",
-///         standards_arn=str(iam1_standards_control_association_range["key"]),
+///         standards_arn=iam1_standards_control_association_range["key"],
 ///         security_control_id=iam1.security_control_id,
 ///         association_status="DISABLED",
 ///         updated_reason="Not needed"))
@@ -245,7 +241,6 @@ import 'standards_control_association_state.dart';
 /// using System.Threading.Tasks;
 /// using Pulumi;
 /// using Aws = Pulumi.Aws;
-/// using Std = Pulumi.Std;
 ///
 /// return await Deployment.RunAsync(async() =>
 /// {
@@ -257,7 +252,7 @@ import 'standards_control_association_state.dart';
 ///     });
 ///
 ///     var iam1StandardsControlAssociation = new List<Aws.SecurityHub.StandardsControlAssociation>();
-///     foreach (var range in )
+///     foreach (var range in .Select(pair => new { pair.Key, pair.Value }))
 ///     {
 ///         iam1StandardsControlAssociation.Add(new Aws.SecurityHub.StandardsControlAssociation($"iam_1-{range.Key}", new()
 ///         {
@@ -276,7 +271,6 @@ import 'standards_control_association_state.dart';
 /// 	"fmt"
 ///
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/securityhub"
-/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 /// func main() {
@@ -291,12 +285,14 @@ import 'standards_control_association_state.dart';
 /// if err != nil {
 /// return err
 /// }
+/// forResult0 := map[string]*string{}
+/// for _, entry := range %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:10,28-77) {
+/// forResult0[entry] = entry
+/// }
 /// var iam1StandardsControlAssociation []*securityhub.StandardsControlAssociation
-/// for key0, _ := range []interface{}(std.Toset(ctx, &std.TosetArgs{
-/// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:11,15-64),
-/// }, nil).Result) {
+/// for key0, _ := range forResult0 {
 /// __res, err := securityhub.NewStandardsControlAssociation(ctx, fmt.Sprintf("iam_1-%v", key0), &securityhub.StandardsControlAssociationArgs{
-/// StandardsArn: pulumi.Int(key0),
+/// StandardsArn: pulumi.String(key0),
 /// SecurityControlId: pulumi.String(iam1.SecurityControlId),
 /// AssociationStatus: pulumi.String("DISABLED"),
 /// UpdatedReason: pulumi.String("Not needed"),
@@ -316,9 +312,6 @@ import 'standards_control_association_state.dart';
 ///     aws = {
 ///       source = "pulumi/aws"
 ///     }
-///     std = {
-///       source = "pulumi/std"
-///     }
 ///   }
 /// }
 ///
@@ -329,56 +322,11 @@ import 'standards_control_association_state.dart';
 /// resource "aws_securityhub_account" "example" {
 /// }
 /// resource "aws_securityhub_standardscontrolassociation" "iam_1" {
-///   for_each            = toset(data.aws_securityhub_getstandardscontrolassociations.iam1.standards_control_associations[*].standards_arn)
+///   for_each            = {for entry in data.aws_securityhub_getstandardscontrolassociations.iam1.standards_control_associations[*].standards_arn : entry => entry}
 ///   standards_arn       = each.key
 ///   security_control_id = data.aws_securityhub_getstandardscontrolassociations.iam1.security_control_id
 ///   association_status  = "DISABLED"
 ///   updated_reason      = "Not needed"
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.securityhub.Account;
-/// import com.pulumi.aws.securityhub.SecurityhubFunctions;
-/// import com.pulumi.aws.securityhub.inputs.GetStandardsControlAssociationsArgs;
-/// import com.pulumi.aws.securityhub.StandardsControlAssociation;
-/// import com.pulumi.aws.securityhub.StandardsControlAssociationArgs;
-/// import com.pulumi.codegen.internal.KeyedValue;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var example = new Account("example");
-///
-///         final var iam1 = SecurityhubFunctions.getStandardsControlAssociations(GetStandardsControlAssociationsArgs.builder()
-///             .securityControlId("IAM.1")
-///             .build());
-///
-///         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
-///             .input(iam1.standardsControlAssociations().stream().map(element -> element.standardsArn()).collect(toList()))
-///             .build()).result())) {
-///             new StandardsControlAssociation("iam1StandardsControlAssociation-" + range.key(), StandardsControlAssociationArgs.builder()
-///                 .standardsArn(range.key())
-///                 .securityControlId(iam1.securityControlId())
-///                 .associationStatus("DISABLED")
-///                 .updatedReason("Not needed")
-///                 .build());
-///         }
-///
-///     }
 /// }
 /// ```
 /// ```yaml
@@ -430,7 +378,7 @@ class StandardsControlAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The unique identifier for the security control whose enablement status you want to update.
   late final pulumi.Output<String> securityControlId;
-  /// The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
+  /// ARN of the standard in which you want to update the control's enablement status.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> standardsArn;
@@ -449,7 +397,7 @@ class StandardsControlAssociation extends pulumi.CustomResource {
           'aws:securityhub/standardsControlAssociation:StandardsControlAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     associationStatus = registerOutput<String>('associationStatus');
     region = registerOutput<String>('region');
@@ -463,11 +411,12 @@ class StandardsControlAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StandardsControlAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StandardsControlAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -481,6 +430,22 @@ class StandardsControlAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    associationStatus = registerOutput<String>('associationStatus');
+    region = registerOutput<String>('region');
+    securityControlId = registerOutput<String>('securityControlId');
+    standardsArn = registerOutput<String>('standardsArn');
+    updatedReason = registerOutput<String?>('updatedReason');
+  }
+
+  /// Creates a typed reference to an existing [StandardsControlAssociation] resource.
+  StandardsControlAssociation.reference(String urn)
+    : super(
+        'aws:securityhub/standardsControlAssociation:StandardsControlAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     associationStatus = registerOutput<String>('associationStatus');
     region = registerOutput<String>('region');
     securityControlId = registerOutput<String>('securityControlId');

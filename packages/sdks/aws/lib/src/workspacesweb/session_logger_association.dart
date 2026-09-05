@@ -20,11 +20,11 @@ import 'session_logger_association_state.dart';
 /// });
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["workspaces-web.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["s3:PutObject"],
 ///         resources: [pulumi.interpolate`${exampleBucket.arn}/*`],
 ///     }],
@@ -34,7 +34,6 @@ import 'session_logger_association_state.dart';
 ///     policy: example.json,
 /// });
 /// const exampleSessionLogger = new aws.workspacesweb.SessionLogger("example", {
-///     displayName: "example",
 ///     eventFilter: {
 ///         all: {}[0],
 ///     },
@@ -45,6 +44,7 @@ import 'session_logger_association_state.dart';
 ///             logFileFormat: "Json",
 ///         },
 ///     },
+///     displayName: "example",
 /// }, {
 ///     dependsOn: [exampleBucketPolicy],
 /// });
@@ -62,11 +62,11 @@ import 'session_logger_association_state.dart';
 ///     bucket="example-session-logs",
 ///     force_destroy=True)
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["workspaces-web.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["s3:PutObject"],
 ///     "resources": [example_bucket.arn.apply(lambda arn: f"{arn}/*")],
 /// }])
@@ -74,7 +74,6 @@ import 'session_logger_association_state.dart';
 ///     bucket=example_bucket.id,
 ///     policy=example.json)
 /// example_session_logger = aws.workspacesweb.SessionLogger("example",
-///     display_name="example",
 ///     event_filter={
 ///         "all": {}[0],
 ///     },
@@ -85,6 +84,7 @@ import 'session_logger_association_state.dart';
 ///             "log_file_format": "Json",
 ///         },
 ///     },
+///     display_name="example",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_bucket_policy]))
 /// example_session_logger_association = aws.workspacesweb.SessionLoggerAssociation("example",
 ///     portal_arn=example_portal.portal_arn,
@@ -115,7 +115,6 @@ import 'session_logger_association_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -127,6 +126,7 @@ import 'session_logger_association_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "s3:PutObject",
@@ -147,7 +147,6 @@ import 'session_logger_association_state.dart';
 ///
 ///     var exampleSessionLogger = new Aws.WorkSpacesWeb.SessionLogger("example", new()
 ///     {
-///         DisplayName = "example",
 ///         EventFilter = new Aws.WorkSpacesWeb.Inputs.SessionLoggerEventFilterArgs
 ///         {
 ///             All = null[0],
@@ -161,6 +160,7 @@ import 'session_logger_association_state.dart';
 ///                 LogFileFormat = "Json",
 ///             },
 ///         },
+///         DisplayName = "example",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -207,7 +207,6 @@ import 'session_logger_association_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -216,6 +215,7 @@ import 'session_logger_association_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("s3:PutObject"),
 /// 					},
@@ -235,7 +235,6 @@ import 'session_logger_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleSessionLogger, err := workspacesweb.NewSessionLogger(ctx, "example", &workspacesweb.SessionLoggerArgs{
-/// 			DisplayName: pulumi.String("example"),
 /// 			EventFilter: &workspacesweb.SessionLoggerEventFilterArgs{
 /// 				All: map[string]interface{}{}[0],
 /// 			},
@@ -246,6 +245,7 @@ import 'session_logger_association_state.dart';
 /// 					LogFileFormat:   pulumi.String("Json"),
 /// 				},
 /// 			},
+/// 			DisplayName: pulumi.String("example"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketPolicy,
 /// 		}))
@@ -274,11 +274,11 @@ import 'session_logger_association_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["workspaces-web.amazonaws.com"]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["s3:PutObject"]
 ///     resources = ["${aws_s3_bucket.example.arn}/*"]
 ///   }
@@ -296,8 +296,7 @@ import 'session_logger_association_state.dart';
 ///   policy = data.aws_iam_getpolicydocument.example.json
 /// }
 /// resource "aws_workspacesweb_sessionlogger" "example" {
-///   depends_on   = [aws_s3_bucketpolicy.example]
-///   display_name = "example"
+///   depends_on = [aws_s3_bucketpolicy.example]
 ///   event_filter = {
 ///     all = {}[0]
 ///   }
@@ -308,6 +307,7 @@ import 'session_logger_association_state.dart';
 ///       log_file_format  = "Json"
 ///     }
 ///   }
+///   display_name = "example"
 /// }
 /// resource "aws_workspacesweb_sessionloggerassociation" "example" {
 ///   portal_arn         = aws_workspacesweb_portal.example.portal_arn
@@ -362,11 +362,11 @@ import 'session_logger_association_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("workspaces-web.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("s3:PutObject")
 ///                 .resources(exampleBucket.arn().applyValue(_arn -> String.format("%s/*", _arn)))
 ///                 .build())
@@ -378,7 +378,6 @@ import 'session_logger_association_state.dart';
 ///             .build());
 ///
 ///         var exampleSessionLogger = new SessionLogger("exampleSessionLogger", SessionLoggerArgs.builder()
-///             .displayName("example")
 ///             .eventFilter(SessionLoggerEventFilterArgs.builder()
 ///                 .all(com.pulumi.aws.workspacesweb.inputs.SessionLoggerEventFilterAllArgs.builder()
 ///                     .build()[0])
@@ -390,6 +389,7 @@ import 'session_logger_association_state.dart';
 ///                     .logFileFormat("Json")
 ///                     .build())
 ///                 .build())
+///             .displayName("example")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleBucketPolicy)
 ///                 .build());
@@ -433,7 +433,7 @@ class SessionLoggerAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/sessionLoggerAssociation:SessionLoggerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
@@ -445,11 +445,12 @@ class SessionLoggerAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SessionLoggerAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SessionLoggerAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -463,6 +464,20 @@ class SessionLoggerAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+    sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
+  }
+
+  /// Creates a typed reference to an existing [SessionLoggerAssociation] resource.
+  SessionLoggerAssociation.reference(String urn)
+    : super(
+        'aws:workspacesweb/sessionLoggerAssociation:SessionLoggerAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
     sessionLoggerArn = registerOutput<String>('sessionLoggerArn');

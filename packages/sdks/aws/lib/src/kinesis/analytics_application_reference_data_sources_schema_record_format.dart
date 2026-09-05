@@ -6,9 +6,9 @@ import 'analytics_application_reference_data_sources_schema_record_format_mappin
 class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat {
   /// The Mapping Information for the record format.
   /// See Mapping Parameters below for more details.
-  final pulumi.Input<AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters>? mappingParameters;
+  final pulumi.Input<AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters?>? mappingParameters;
   /// The type of Record Format. Can be `CSV` or `JSON`.
-  final pulumi.Input<String>? recordFormatType;
+  final pulumi.Input<String?>? recordFormatType;
 
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat].
   /// [mappingParameters] The Mapping Information for the record format.

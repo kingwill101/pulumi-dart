@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_opensearch_get_serverless_collection_get_serverless_collection_args_doc}
 class GetServerlessCollectionArgs {
   /// ID of the collection.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the collection.
   ///
   /// &gt; Exactly one of `id` or `name` is required.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetServerlessCollectionArgs].
   /// [id] ID of the collection.

@@ -6,11 +6,11 @@ import 'voice_connector_termination_credentials_credential.dart';
 /// Input properties used for looking up and filtering VoiceConnectorTerminationCredentials resources.
 class VoiceConnectorTerminationCredentialsState {
   /// List of termination SIP credentials.
-  final pulumi.Input<List<VoiceConnectorTerminationCredentialsCredential>>? credentials;
+  final pulumi.Input<List<VoiceConnectorTerminationCredentialsCredential>?>? credentials;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Amazon Chime Voice Connector ID.
-  final pulumi.Input<String>? voiceConnectorId;
+  final pulumi.Input<String?>? voiceConnectorId;
 
   /// Creates a new [VoiceConnectorTerminationCredentialsState].
   /// [credentials] List of termination SIP credentials.

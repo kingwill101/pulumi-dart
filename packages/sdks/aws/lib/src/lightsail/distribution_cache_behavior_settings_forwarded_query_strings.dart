@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionCacheBehaviorSettingsForwardedQueryStrings {
   /// Whether the distribution forwards and caches based on query strings.
-  final pulumi.Input<bool>? option;
+  final pulumi.Input<bool?>? option;
   /// Specific query strings that the distribution forwards to the origin.
-  final pulumi.Input<List<String>>? queryStringsAllowedLists;
+  final pulumi.Input<List<String>?>? queryStringsAllowedLists;
 
   /// Creates a new [DistributionCacheBehaviorSettingsForwardedQueryStrings].
   /// [option] Whether the distribution forwards and caches based on query strings.

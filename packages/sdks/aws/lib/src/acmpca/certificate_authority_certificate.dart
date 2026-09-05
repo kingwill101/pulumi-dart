@@ -14,25 +14,25 @@ import 'certificate_authority_certificate_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleCertificateAuthority = new aws.acmpca.CertificateAuthority("example", {
-///     type: "ROOT",
 ///     certificateAuthorityConfiguration: {
-///         keyAlgorithm: "RSA_4096",
-///         signingAlgorithm: "SHA512WITHRSA",
 ///         subject: {
 ///             commonName: "example.com",
 ///         },
+///         keyAlgorithm: "RSA_4096",
+///         signingAlgorithm: "SHA512WITHRSA",
 ///     },
+///     type: "ROOT",
 /// });
 /// const current = aws.getPartition({});
 /// const exampleCertificate = new aws.acmpca.Certificate("example", {
-///     certificateAuthorityArn: exampleCertificateAuthority.arn,
-///     certificateSigningRequest: exampleCertificateAuthority.certificateSigningRequest,
-///     signingAlgorithm: "SHA512WITHRSA",
-///     templateArn: current.then(current => `arn:${current.partition}:acm-pca:::template/RootCACertificate/V1`),
 ///     validity: {
 ///         type: "YEARS",
 ///         value: "1",
 ///     },
+///     certificateAuthorityArn: exampleCertificateAuthority.arn,
+///     certificateSigningRequest: exampleCertificateAuthority.certificateSigningRequest,
+///     signingAlgorithm: "SHA512WITHRSA",
+///     templateArn: current.then(current => `arn:${current.partition}:acm-pca:::template/RootCACertificate/V1`),
 /// });
 /// const example = new aws.acmpca.CertificateAuthorityCertificate("example", {
 ///     certificateAuthorityArn: exampleCertificateAuthority.arn,
@@ -45,24 +45,24 @@ import 'certificate_authority_certificate_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_certificate_authority = aws.acmpca.CertificateAuthority("example",
-///     type="ROOT",
 ///     certificate_authority_configuration={
-///         "key_algorithm": "RSA_4096",
-///         "signing_algorithm": "SHA512WITHRSA",
 ///         "subject": {
 ///             "common_name": "example.com",
 ///         },
-///     })
+///         "key_algorithm": "RSA_4096",
+///         "signing_algorithm": "SHA512WITHRSA",
+///     },
+///     type="ROOT")
 /// current = aws.get_partition()
 /// example_certificate = aws.acmpca.Certificate("example",
-///     certificate_authority_arn=example_certificate_authority.arn,
-///     certificate_signing_request=example_certificate_authority.certificate_signing_request,
-///     signing_algorithm="SHA512WITHRSA",
-///     template_arn=f"arn:{current.partition}:acm-pca:::template/RootCACertificate/V1",
 ///     validity={
 ///         "type": "YEARS",
 ///         "value": "1",
-///     })
+///     },
+///     certificate_authority_arn=example_certificate_authority.arn,
+///     certificate_signing_request=example_certificate_authority.certificate_signing_request,
+///     signing_algorithm="SHA512WITHRSA",
+///     template_arn=f"arn:{current.partition}:acm-pca:::template/RootCACertificate/V1")
 /// example = aws.acmpca.CertificateAuthorityCertificate("example",
 ///     certificate_authority_arn=example_certificate_authority.arn,
 ///     certificate=example_certificate.certificate,
@@ -78,31 +78,31 @@ import 'certificate_authority_certificate_state.dart';
 /// {
 ///     var exampleCertificateAuthority = new Aws.Acmpca.CertificateAuthority("example", new()
 ///     {
-///         Type = "ROOT",
 ///         CertificateAuthorityConfiguration = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs
 ///         {
-///             KeyAlgorithm = "RSA_4096",
-///             SigningAlgorithm = "SHA512WITHRSA",
 ///             Subject = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs
 ///             {
 ///                 CommonName = "example.com",
 ///             },
+///             KeyAlgorithm = "RSA_4096",
+///             SigningAlgorithm = "SHA512WITHRSA",
 ///         },
+///         Type = "ROOT",
 ///     });
 ///
 ///     var current = Aws.GetPartition.Invoke();
 ///
 ///     var exampleCertificate = new Aws.Acmpca.Certificate("example", new()
 ///     {
-///         CertificateAuthorityArn = exampleCertificateAuthority.Arn,
-///         CertificateSigningRequest = exampleCertificateAuthority.CertificateSigningRequest,
-///         SigningAlgorithm = "SHA512WITHRSA",
-///         TemplateArn = $"arn:{current.Apply(getPartitionResult => getPartitionResult.Partition)}:acm-pca:::template/RootCACertificate/V1",
 ///         Validity = new Aws.Acmpca.Inputs.CertificateValidityArgs
 ///         {
 ///             Type = "YEARS",
 ///             Value = "1",
 ///         },
+///         CertificateAuthorityArn = exampleCertificateAuthority.Arn,
+///         CertificateSigningRequest = exampleCertificateAuthority.CertificateSigningRequest,
+///         SigningAlgorithm = "SHA512WITHRSA",
+///         TemplateArn = $"arn:{current.Apply(getPartitionResult => getPartitionResult.Partition)}:acm-pca:::template/RootCACertificate/V1",
 ///     });
 ///
 ///     var example = new Aws.Acmpca.CertificateAuthorityCertificate("example", new()
@@ -126,14 +126,14 @@ import 'certificate_authority_certificate_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleCertificateAuthority, err := acmpca.NewCertificateAuthority(ctx, "example", &acmpca.CertificateAuthorityArgs{
-/// 			Type: pulumi.String("ROOT"),
 /// 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
-/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
-/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 				Subject: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs{
 /// 					CommonName: pulumi.String("example.com"),
 /// 				},
+/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
+/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 			},
+/// 			Type: pulumi.String("ROOT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -143,14 +143,14 @@ import 'certificate_authority_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleCertificate, err := acmpca.NewCertificate(ctx, "example", &acmpca.CertificateArgs{
-/// 			CertificateAuthorityArn:   exampleCertificateAuthority.Arn,
-/// 			CertificateSigningRequest: exampleCertificateAuthority.CertificateSigningRequest,
-/// 			SigningAlgorithm:          pulumi.String("SHA512WITHRSA"),
-/// 			TemplateArn:               pulumi.Sprintf("arn:%v:acm-pca:::template/RootCACertificate/V1", current.Partition),
 /// 			Validity: &acmpca.CertificateValidityArgs{
 /// 				Type:  pulumi.String("YEARS"),
 /// 				Value: pulumi.String("1"),
 /// 			},
+/// 			CertificateAuthorityArn:   exampleCertificateAuthority.Arn,
+/// 			CertificateSigningRequest: exampleCertificateAuthority.CertificateSigningRequest,
+/// 			SigningAlgorithm:          pulumi.String("SHA512WITHRSA"),
+/// 			TemplateArn:               pulumi.Sprintf("arn:%v:acm-pca:::template/RootCACertificate/V1", current.Partition),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -185,24 +185,24 @@ import 'certificate_authority_certificate_state.dart';
 ///   certificate_chain         = aws_acmpca_certificate.example.certificate_chain
 /// }
 /// resource "aws_acmpca_certificate" "example" {
-///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
-///   certificate_signing_request = aws_acmpca_certificateauthority.example.certificate_signing_request
-///   signing_algorithm           = "SHA512WITHRSA"
-///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/RootCACertificate/V1"
 ///   validity = {
 ///     type  = "YEARS"
 ///     value = 1
 ///   }
+///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
+///   certificate_signing_request = aws_acmpca_certificateauthority.example.certificate_signing_request
+///   signing_algorithm           = "SHA512WITHRSA"
+///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/RootCACertificate/V1"
 /// }
 /// resource "aws_acmpca_certificateauthority" "example" {
-///   type = "ROOT"
 ///   certificate_authority_configuration = {
-///     key_algorithm     = "RSA_4096"
-///     signing_algorithm = "SHA512WITHRSA"
 ///     subject = {
 ///       common_name = "example.com"
 ///     }
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
 ///   }
+///   type = "ROOT"
 /// }
 /// ```
 /// ```java
@@ -236,28 +236,28 @@ import 'certificate_authority_certificate_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleCertificateAuthority = new CertificateAuthority("exampleCertificateAuthority", CertificateAuthorityArgs.builder()
-///             .type("ROOT")
 ///             .certificateAuthorityConfiguration(CertificateAuthorityCertificateAuthorityConfigurationArgs.builder()
-///                 .keyAlgorithm("RSA_4096")
-///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .subject(CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs.builder()
 ///                     .commonName("example.com")
 ///                     .build())
+///                 .keyAlgorithm("RSA_4096")
+///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .build())
+///             .type("ROOT")
 ///             .build());
 ///
 ///         final var current = AwsFunctions.getPartition(GetPartitionArgs.builder()
 ///             .build());
 ///
 ///         var exampleCertificate = new Certificate("exampleCertificate", CertificateArgs.builder()
-///             .certificateAuthorityArn(exampleCertificateAuthority.arn())
-///             .certificateSigningRequest(exampleCertificateAuthority.certificateSigningRequest())
-///             .signingAlgorithm("SHA512WITHRSA")
-///             .templateArn(String.format("arn:%s:acm-pca:::template/RootCACertificate/V1", current.partition()))
 ///             .validity(CertificateValidityArgs.builder()
 ///                 .type("YEARS")
 ///                 .value("1")
 ///                 .build())
+///             .certificateAuthorityArn(exampleCertificateAuthority.arn())
+///             .certificateSigningRequest(exampleCertificateAuthority.certificateSigningRequest())
+///             .signingAlgorithm("SHA512WITHRSA")
+///             .templateArn(String.format("arn:%s:acm-pca:::template/RootCACertificate/V1", current.partition()))
 ///             .build());
 ///
 ///         var example = new CertificateAuthorityCertificate("example", CertificateAuthorityCertificateArgs.builder()
@@ -281,23 +281,23 @@ import 'certificate_authority_certificate_state.dart';
 ///     type: aws:acmpca:Certificate
 ///     name: example
 ///     properties:
+///       validity:
+///         type: YEARS
+///         value: 1
 ///       certificateAuthorityArn: ${exampleCertificateAuthority.arn}
 ///       certificateSigningRequest: ${exampleCertificateAuthority.certificateSigningRequest}
 ///       signingAlgorithm: SHA512WITHRSA
 ///       templateArn: arn:${current.partition}:acm-pca:::template/RootCACertificate/V1
-///       validity:
-///         type: YEARS
-///         value: 1
 ///   exampleCertificateAuthority:
 ///     type: aws:acmpca:CertificateAuthority
 ///     name: example
 ///     properties:
-///       type: ROOT
 ///       certificateAuthorityConfiguration:
-///         keyAlgorithm: RSA_4096
-///         signingAlgorithm: SHA512WITHRSA
 ///         subject:
 ///           commonName: example.com
+///         keyAlgorithm: RSA_4096
+///         signingAlgorithm: SHA512WITHRSA
+///       type: ROOT
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -316,26 +316,26 @@ import 'certificate_authority_certificate_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const subordinateCertificateAuthority = new aws.acmpca.CertificateAuthority("subordinate", {
-///     type: "SUBORDINATE",
 ///     certificateAuthorityConfiguration: {
-///         keyAlgorithm: "RSA_2048",
-///         signingAlgorithm: "SHA512WITHRSA",
 ///         subject: {
 ///             commonName: "sub.example.com",
 ///         },
+///         keyAlgorithm: "RSA_2048",
+///         signingAlgorithm: "SHA512WITHRSA",
 ///     },
+///     type: "SUBORDINATE",
 /// });
 /// const root = new aws.acmpca.CertificateAuthority("root", {});
 /// const current = aws.getPartition({});
 /// const subordinateCertificate = new aws.acmpca.Certificate("subordinate", {
-///     certificateAuthorityArn: root.arn,
-///     certificateSigningRequest: subordinateCertificateAuthority.certificateSigningRequest,
-///     signingAlgorithm: "SHA512WITHRSA",
-///     templateArn: current.then(current => `arn:${current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1`),
 ///     validity: {
 ///         type: "YEARS",
 ///         value: "1",
 ///     },
+///     certificateAuthorityArn: root.arn,
+///     certificateSigningRequest: subordinateCertificateAuthority.certificateSigningRequest,
+///     signingAlgorithm: "SHA512WITHRSA",
+///     templateArn: current.then(current => `arn:${current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1`),
 /// });
 /// const subordinate = new aws.acmpca.CertificateAuthorityCertificate("subordinate", {
 ///     certificateAuthorityArn: subordinateCertificateAuthority.arn,
@@ -350,25 +350,25 @@ import 'certificate_authority_certificate_state.dart';
 /// import pulumi_aws as aws
 ///
 /// subordinate_certificate_authority = aws.acmpca.CertificateAuthority("subordinate",
-///     type="SUBORDINATE",
 ///     certificate_authority_configuration={
-///         "key_algorithm": "RSA_2048",
-///         "signing_algorithm": "SHA512WITHRSA",
 ///         "subject": {
 ///             "common_name": "sub.example.com",
 ///         },
-///     })
+///         "key_algorithm": "RSA_2048",
+///         "signing_algorithm": "SHA512WITHRSA",
+///     },
+///     type="SUBORDINATE")
 /// root = aws.acmpca.CertificateAuthority("root")
 /// current = aws.get_partition()
 /// subordinate_certificate = aws.acmpca.Certificate("subordinate",
-///     certificate_authority_arn=root.arn,
-///     certificate_signing_request=subordinate_certificate_authority.certificate_signing_request,
-///     signing_algorithm="SHA512WITHRSA",
-///     template_arn=f"arn:{current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1",
 ///     validity={
 ///         "type": "YEARS",
 ///         "value": "1",
-///     })
+///     },
+///     certificate_authority_arn=root.arn,
+///     certificate_signing_request=subordinate_certificate_authority.certificate_signing_request,
+///     signing_algorithm="SHA512WITHRSA",
+///     template_arn=f"arn:{current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1")
 /// subordinate = aws.acmpca.CertificateAuthorityCertificate("subordinate",
 ///     certificate_authority_arn=subordinate_certificate_authority.arn,
 ///     certificate=subordinate_certificate.certificate,
@@ -386,16 +386,16 @@ import 'certificate_authority_certificate_state.dart';
 /// {
 ///     var subordinateCertificateAuthority = new Aws.Acmpca.CertificateAuthority("subordinate", new()
 ///     {
-///         Type = "SUBORDINATE",
 ///         CertificateAuthorityConfiguration = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs
 ///         {
-///             KeyAlgorithm = "RSA_2048",
-///             SigningAlgorithm = "SHA512WITHRSA",
 ///             Subject = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs
 ///             {
 ///                 CommonName = "sub.example.com",
 ///             },
+///             KeyAlgorithm = "RSA_2048",
+///             SigningAlgorithm = "SHA512WITHRSA",
 ///         },
+///         Type = "SUBORDINATE",
 ///     });
 ///
 ///     var root = new Aws.Acmpca.CertificateAuthority("root");
@@ -404,15 +404,15 @@ import 'certificate_authority_certificate_state.dart';
 ///
 ///     var subordinateCertificate = new Aws.Acmpca.Certificate("subordinate", new()
 ///     {
-///         CertificateAuthorityArn = root.Arn,
-///         CertificateSigningRequest = subordinateCertificateAuthority.CertificateSigningRequest,
-///         SigningAlgorithm = "SHA512WITHRSA",
-///         TemplateArn = $"arn:{current.Apply(getPartitionResult => getPartitionResult.Partition)}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1",
 ///         Validity = new Aws.Acmpca.Inputs.CertificateValidityArgs
 ///         {
 ///             Type = "YEARS",
 ///             Value = "1",
 ///         },
+///         CertificateAuthorityArn = root.Arn,
+///         CertificateSigningRequest = subordinateCertificateAuthority.CertificateSigningRequest,
+///         SigningAlgorithm = "SHA512WITHRSA",
+///         TemplateArn = $"arn:{current.Apply(getPartitionResult => getPartitionResult.Partition)}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1",
 ///     });
 ///
 ///     var subordinate = new Aws.Acmpca.CertificateAuthorityCertificate("subordinate", new()
@@ -440,14 +440,14 @@ import 'certificate_authority_certificate_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		subordinateCertificateAuthority, err := acmpca.NewCertificateAuthority(ctx, "subordinate", &acmpca.CertificateAuthorityArgs{
-/// 			Type: pulumi.String("SUBORDINATE"),
 /// 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
-/// 				KeyAlgorithm:     pulumi.String("RSA_2048"),
-/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 				Subject: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs{
 /// 					CommonName: pulumi.String("sub.example.com"),
 /// 				},
+/// 				KeyAlgorithm:     pulumi.String("RSA_2048"),
+/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 			},
+/// 			Type: pulumi.String("SUBORDINATE"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -461,14 +461,14 @@ import 'certificate_authority_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		subordinateCertificate, err := acmpca.NewCertificate(ctx, "subordinate", &acmpca.CertificateArgs{
-/// 			CertificateAuthorityArn:   root.Arn,
-/// 			CertificateSigningRequest: subordinateCertificateAuthority.CertificateSigningRequest,
-/// 			SigningAlgorithm:          pulumi.String("SHA512WITHRSA"),
-/// 			TemplateArn:               pulumi.Sprintf("arn:%v:acm-pca:::template/SubordinateCACertificate_PathLen0/V1", current.Partition),
 /// 			Validity: &acmpca.CertificateValidityArgs{
 /// 				Type:  pulumi.String("YEARS"),
 /// 				Value: pulumi.String("1"),
 /// 			},
+/// 			CertificateAuthorityArn:   root.Arn,
+/// 			CertificateSigningRequest: subordinateCertificateAuthority.CertificateSigningRequest,
+/// 			SigningAlgorithm:          pulumi.String("SHA512WITHRSA"),
+/// 			TemplateArn:               pulumi.Sprintf("arn:%v:acm-pca:::template/SubordinateCACertificate_PathLen0/V1", current.Partition),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -511,24 +511,24 @@ import 'certificate_authority_certificate_state.dart';
 ///   certificate_chain         = aws_acmpca_certificate.subordinate.certificate_chain
 /// }
 /// resource "aws_acmpca_certificate" "subordinate" {
-///   certificate_authority_arn   = aws_acmpca_certificateauthority.root.arn
-///   certificate_signing_request = aws_acmpca_certificateauthority.subordinate.certificate_signing_request
-///   signing_algorithm           = "SHA512WITHRSA"
-///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1"
 ///   validity = {
 ///     type  = "YEARS"
 ///     value = 1
 ///   }
+///   certificate_authority_arn   = aws_acmpca_certificateauthority.root.arn
+///   certificate_signing_request = aws_acmpca_certificateauthority.subordinate.certificate_signing_request
+///   signing_algorithm           = "SHA512WITHRSA"
+///   template_arn                ="arn:${data.aws_getpartition.current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1"
 /// }
 /// resource "aws_acmpca_certificateauthority" "subordinate" {
-///   type = "SUBORDINATE"
 ///   certificate_authority_configuration = {
-///     key_algorithm     = "RSA_2048"
-///     signing_algorithm = "SHA512WITHRSA"
 ///     subject = {
 ///       common_name = "sub.example.com"
 ///     }
+///     key_algorithm     = "RSA_2048"
+///     signing_algorithm = "SHA512WITHRSA"
 ///   }
+///   type = "SUBORDINATE"
 /// }
 /// resource "aws_acmpca_certificateauthority" "root" {
 /// }
@@ -568,14 +568,14 @@ import 'certificate_authority_certificate_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var subordinateCertificateAuthority = new CertificateAuthority("subordinateCertificateAuthority", CertificateAuthorityArgs.builder()
-///             .type("SUBORDINATE")
 ///             .certificateAuthorityConfiguration(CertificateAuthorityCertificateAuthorityConfigurationArgs.builder()
-///                 .keyAlgorithm("RSA_2048")
-///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .subject(CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs.builder()
 ///                     .commonName("sub.example.com")
 ///                     .build())
+///                 .keyAlgorithm("RSA_2048")
+///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .build())
+///             .type("SUBORDINATE")
 ///             .build());
 ///
 ///         var root = new CertificateAuthority("root");
@@ -584,14 +584,14 @@ import 'certificate_authority_certificate_state.dart';
 ///             .build());
 ///
 ///         var subordinateCertificate = new Certificate("subordinateCertificate", CertificateArgs.builder()
-///             .certificateAuthorityArn(root.arn())
-///             .certificateSigningRequest(subordinateCertificateAuthority.certificateSigningRequest())
-///             .signingAlgorithm("SHA512WITHRSA")
-///             .templateArn(String.format("arn:%s:acm-pca:::template/SubordinateCACertificate_PathLen0/V1", current.partition()))
 ///             .validity(CertificateValidityArgs.builder()
 ///                 .type("YEARS")
 ///                 .value("1")
 ///                 .build())
+///             .certificateAuthorityArn(root.arn())
+///             .certificateSigningRequest(subordinateCertificateAuthority.certificateSigningRequest())
+///             .signingAlgorithm("SHA512WITHRSA")
+///             .templateArn(String.format("arn:%s:acm-pca:::template/SubordinateCACertificate_PathLen0/V1", current.partition()))
 ///             .build());
 ///
 ///         var subordinate = new CertificateAuthorityCertificate("subordinate", CertificateAuthorityCertificateArgs.builder()
@@ -619,23 +619,23 @@ import 'certificate_authority_certificate_state.dart';
 ///     type: aws:acmpca:Certificate
 ///     name: subordinate
 ///     properties:
+///       validity:
+///         type: YEARS
+///         value: 1
 ///       certificateAuthorityArn: ${root.arn}
 ///       certificateSigningRequest: ${subordinateCertificateAuthority.certificateSigningRequest}
 ///       signingAlgorithm: SHA512WITHRSA
 ///       templateArn: arn:${current.partition}:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
-///       validity:
-///         type: YEARS
-///         value: 1
 ///   subordinateCertificateAuthority:
 ///     type: aws:acmpca:CertificateAuthority
 ///     name: subordinate
 ///     properties:
-///       type: SUBORDINATE
 ///       certificateAuthorityConfiguration:
-///         keyAlgorithm: RSA_2048
-///         signingAlgorithm: SHA512WITHRSA
 ///         subject:
 ///           commonName: sub.example.com
+///         keyAlgorithm: RSA_2048
+///         signingAlgorithm: SHA512WITHRSA
+///       type: SUBORDINATE
 ///   root:
 ///     type: aws:acmpca:CertificateAuthority
 ///   rootCertificateAuthorityCertificate:
@@ -672,7 +672,7 @@ class CertificateAuthorityCertificate extends pulumi.CustomResource {
           'aws:acmpca/certificateAuthorityCertificate:CertificateAuthorityCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     certificate = registerOutput<String>('certificate');
     certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
@@ -685,11 +685,12 @@ class CertificateAuthorityCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateAuthorityCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateAuthorityCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -703,6 +704,21 @@ class CertificateAuthorityCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificate = registerOutput<String>('certificate');
+    certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
+    certificateChain = registerOutput<String?>('certificateChain');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [CertificateAuthorityCertificate] resource.
+  CertificateAuthorityCertificate.reference(String urn)
+    : super(
+        'aws:acmpca/certificateAuthorityCertificate:CertificateAuthorityCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificate = registerOutput<String>('certificate');
     certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
     certificateChain = registerOutput<String?>('certificateChain');

@@ -5,31 +5,31 @@ import 'media_insights_pipeline_configuration_element_amazon_transcribe_call_ana
 
 class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfiguration {
   /// Filter for category events to be delivered to insights target.
-  final pulumi.Input<List<String>>? callAnalyticsStreamCategories;
+  final pulumi.Input<List<String>?>? callAnalyticsStreamCategories;
   /// Labels all personally identifiable information (PII) identified in Utterance events.
-  final pulumi.Input<String>? contentIdentificationType;
+  final pulumi.Input<String?>? contentIdentificationType;
   /// Redacts all personally identifiable information (PII) identified in Utterance events.
-  final pulumi.Input<String>? contentRedactionType;
+  final pulumi.Input<String?>? contentRedactionType;
   /// Enables partial result stabilization in Utterance events.
-  final pulumi.Input<bool>? enablePartialResultsStabilization;
+  final pulumi.Input<bool?>? enablePartialResultsStabilization;
   /// Filters partial Utterance events from delivery to the insights target.
-  final pulumi.Input<bool>? filterPartialResults;
+  final pulumi.Input<bool?>? filterPartialResults;
   /// Language code for the transcription model.
   final pulumi.Input<String> languageCode;
   /// Name of custom language model for transcription.
-  final pulumi.Input<String>? languageModelName;
+  final pulumi.Input<String?>? languageModelName;
   /// Level of stability to use when partial results stabilization is enabled.
-  final pulumi.Input<String>? partialResultsStability;
+  final pulumi.Input<String?>? partialResultsStability;
   /// Types of personally identifiable information (PII) to redact from an Utterance event.
-  final pulumi.Input<String>? piiEntityTypes;
+  final pulumi.Input<String?>? piiEntityTypes;
   /// Settings for post call analytics.
-  final pulumi.Input<MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings>? postCallAnalyticsSettings;
+  final pulumi.Input<MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings?>? postCallAnalyticsSettings;
   /// Method for applying a vocabulary filter to Utterance events.
-  final pulumi.Input<String>? vocabularyFilterMethod;
+  final pulumi.Input<String?>? vocabularyFilterMethod;
   /// Name of the custom vocabulary filter to use when processing Utterance events.
-  final pulumi.Input<String>? vocabularyFilterName;
+  final pulumi.Input<String?>? vocabularyFilterName;
   /// Name of the custom vocabulary to use when processing Utterance events.
-  final pulumi.Input<String>? vocabularyName;
+  final pulumi.Input<String?>? vocabularyName;
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfiguration].
   /// [callAnalyticsStreamCategories] Filter for category events to be delivered to insights target.

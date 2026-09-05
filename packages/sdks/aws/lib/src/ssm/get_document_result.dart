@@ -4,17 +4,17 @@
 /// Result data returned by getDocument.
 class GetDocumentResult {
   /// ARN of the document. If the document is an AWS managed document, this value will be set to the name of the document instead.
-  final String arn;
+  final String? arn;
   /// The content for the SSM document in JSON or YAML format.
-  final String content;
+  final String? content;
   final String? documentFormat;
   /// The type of the document.
-  final String documentType;
+  final String? documentType;
   final String? documentVersion;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String region;
+  final String? id;
+  final String? name;
+  final String? region;
 
   /// Creates a new [GetDocumentResult].
   /// [arn] ARN of the document. If the document is an AWS managed document, this value will be set to the name of the document instead.
@@ -23,42 +23,42 @@ class GetDocumentResult {
   /// [documentType] The type of the document.
   /// [documentVersion] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [region] Required.
+  /// [name] Optional.
+  /// [region] Optional.
   const GetDocumentResult({
-    required this.arn,
-    required this.content,
+    this.arn,
+    this.content,
     this.documentFormat,
-    required this.documentType,
+    this.documentType,
     this.documentVersion,
-    required this.id,
-    required this.name,
-    required this.region,
+    this.id,
+    this.name,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'content': content,
+      'arn': ?arn,
+      'content': ?content,
       'documentFormat': ?documentFormat,
-      'documentType': documentType,
+      'documentType': ?documentType,
       'documentVersion': ?documentVersion,
-      'id': id,
-      'name': name,
-      'region': region,
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
     };
   }
 
   factory GetDocumentResult.fromMap(Map<String, dynamic> map) {
     return GetDocumentResult(
-      arn: map['arn'] as String,
-      content: map['content'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return guardedValue as String; })(),
       documentFormat: (() { final guardedValue = map['documentFormat']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      documentType: map['documentType'] as String,
+      documentType: (() { final guardedValue = map['documentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       documentVersion: (() { final guardedValue = map['documentVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

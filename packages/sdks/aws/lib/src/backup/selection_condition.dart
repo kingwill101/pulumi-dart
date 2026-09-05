@@ -8,13 +8,13 @@ import 'selection_condition_string_not_like.dart';
 
 class SelectionCondition {
   /// Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching". See below for details.
-  final pulumi.Input<List<SelectionConditionStringEqual>>? stringEquals;
+  final pulumi.Input<List<SelectionConditionStringEqual>?>? stringEquals;
   /// Filters the values of your tagged resources for matching tag values with the use of a wildcard character (`*`) anywhere in the string. For example, `prod*` or `*rod*` matches the tag value `production`. See below for details.
-  final pulumi.Input<List<SelectionConditionStringLike>>? stringLikes;
+  final pulumi.Input<List<SelectionConditionStringLike>?>? stringLikes;
   /// Filters the values of your tagged resources for only those resources that you tagged that do not have the same value. Also called "negated matching". See below for details.
-  final pulumi.Input<List<SelectionConditionStringNotEqual>>? stringNotEquals;
+  final pulumi.Input<List<SelectionConditionStringNotEqual>?>? stringNotEquals;
   /// Filters the values of your tagged resources for non-matching tag values with the use of a wildcard character (`*`) anywhere in the string. See below for details.
-  final pulumi.Input<List<SelectionConditionStringNotLike>>? stringNotLikes;
+  final pulumi.Input<List<SelectionConditionStringNotLike>?>? stringNotLikes;
 
   /// Creates a new [SelectionCondition].
   /// [stringEquals] Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching". See below for details.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicecatalog_tag_option_resource_association_tag_option_resource_association_args_doc}
 class TagOptionResourceAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource identifier.
   final pulumi.Input<String> resourceId;
   /// Tag Option identifier.

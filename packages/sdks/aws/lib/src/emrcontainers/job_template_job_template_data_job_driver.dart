@@ -6,9 +6,9 @@ import 'job_template_job_template_data_job_driver_spark_submit_job_driver.dart';
 
 class JobTemplateJobTemplateDataJobDriver {
   /// The job driver for job type.
-  final pulumi.Input<JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver>? sparkSqlJobDriver;
+  final pulumi.Input<JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver?>? sparkSqlJobDriver;
   /// The job driver parameters specified for spark submit.
-  final pulumi.Input<JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver>? sparkSubmitJobDriver;
+  final pulumi.Input<JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver?>? sparkSubmitJobDriver;
 
   /// Creates a new [JobTemplateJobTemplateDataJobDriver].
   /// [sparkSqlJobDriver] The job driver for job type.

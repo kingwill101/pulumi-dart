@@ -654,7 +654,7 @@ class PullTimeUpdateExclusion extends pulumi.CustomResource {
           'aws:ecr/pullTimeUpdateExclusion:PullTimeUpdateExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');
@@ -665,11 +665,12 @@ class PullTimeUpdateExclusion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PullTimeUpdateExclusionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PullTimeUpdateExclusion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -683,6 +684,19 @@ class PullTimeUpdateExclusion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    principalArn = registerOutput<String>('principalArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [PullTimeUpdateExclusion] resource.
+  PullTimeUpdateExclusion.reference(String urn)
+    : super(
+        'aws:ecr/pullTimeUpdateExclusion:PullTimeUpdateExclusion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');
   }

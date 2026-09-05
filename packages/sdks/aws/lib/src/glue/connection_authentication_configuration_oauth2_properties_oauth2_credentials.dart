@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionAuthenticationConfigurationOauth2PropertiesOauth2Credentials {
   /// OAuth2 access token.
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// JWT token.
-  final pulumi.Input<String>? jwtToken;
+  final pulumi.Input<String?>? jwtToken;
   /// OAuth2 refresh token.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
   /// Client secret for user-managed client application.
-  final pulumi.Input<String>? userManagedClientApplicationClientSecret;
+  final pulumi.Input<String?>? userManagedClientApplicationClientSecret;
 
   /// Creates a new [ConnectionAuthenticationConfigurationOauth2PropertiesOauth2Credentials].
   /// [accessToken] OAuth2 access token.

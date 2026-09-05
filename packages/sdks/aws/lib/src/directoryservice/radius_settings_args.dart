@@ -22,11 +22,11 @@ class RadiusSettingsArgs {
   /// The amount of time, in seconds, to wait for the RADIUS server to respond. Minimum value of `1`. Maximum value of `50`.
   final pulumi.Input<int> radiusTimeout;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Required for enabling RADIUS on the directory.
   final pulumi.Input<String> sharedSecret;
   /// Not currently used.
-  final pulumi.Input<bool>? useSameUsername;
+  final pulumi.Input<bool?>? useSameUsername;
 
   /// Creates a new [RadiusSettingsArgs].
   /// [authenticationProtocol] The protocol specified for your RADIUS endpoints. Valid values: `PAP`, `CHAP`, `MS-CHAPv1`, `MS-CHAPv2`.
@@ -72,10 +72,10 @@ class RadiusSettingsArgs {
       authenticationProtocol: pulumi.Input.fromValue(map['authenticationProtocol'] as String),
       directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
       displayLabel: pulumi.Input.fromValue(map['displayLabel'] as String),
-      radiusPort: pulumi.Input.fromValue(map['radiusPort'] as int),
-      radiusRetries: pulumi.Input.fromValue(map['radiusRetries'] as int),
+      radiusPort: pulumi.Input.fromValue((map['radiusPort'] as num).toInt()),
+      radiusRetries: pulumi.Input.fromValue((map['radiusRetries'] as num).toInt()),
       radiusServers: pulumi.Input.fromValue((map['radiusServers'] as List).cast<String>()),
-      radiusTimeout: pulumi.Input.fromValue(map['radiusTimeout'] as int),
+      radiusTimeout: pulumi.Input.fromValue((map['radiusTimeout'] as num).toInt()),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sharedSecret: pulumi.Input.fromValue(map['sharedSecret'] as String),
       useSameUsername: (() { final guardedValue = map['useSameUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

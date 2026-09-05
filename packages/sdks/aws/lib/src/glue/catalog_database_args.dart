@@ -11,25 +11,25 @@ import 'catalog_database_target_database.dart';
 /// {@macro pulumi_glue_catalog_database_catalog_database_args_doc}
 class CatalogDatabaseArgs {
   /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// Creates a set of default permissions on the table for principals. See `createTableDefaultPermission` below.
-  final pulumi.Input<List<CatalogDatabaseCreateTableDefaultPermission>>? createTableDefaultPermissions;
+  final pulumi.Input<List<CatalogDatabaseCreateTableDefaultPermission>?>? createTableDefaultPermissions;
   /// Description of the database.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federatedDatabase` below.
-  final pulumi.Input<CatalogDatabaseFederatedDatabase>? federatedDatabase;
+  final pulumi.Input<CatalogDatabaseFederatedDatabase?>? federatedDatabase;
   /// Location of the database (for example, an HDFS path).
-  final pulumi.Input<String>? locationUri;
+  final pulumi.Input<String?>? locationUri;
   /// Name of the database. The acceptable characters are lowercase letters, numbers, and the underscore character.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of key-value pairs that define parameters and properties of the database.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration block for a target database for resource linking. See `targetDatabase` below.
-  final pulumi.Input<CatalogDatabaseTargetDatabase>? targetDatabase;
+  final pulumi.Input<CatalogDatabaseTargetDatabase?>? targetDatabase;
 
   /// Creates a new [CatalogDatabaseArgs].
   /// [catalogId] ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.

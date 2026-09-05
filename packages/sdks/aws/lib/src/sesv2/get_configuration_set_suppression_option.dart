@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetConfigurationSetSuppressionOption {
-  /// A list that contains the reasons that email addresses are automatically added to the suppression list for your account.
+  /// List that contains the reasons that email addresses are automatically added to the suppression list for your account.
   final pulumi.Input<List<String>> suppressedReasons;
 
   /// Creates a new [GetConfigurationSetSuppressionOption].
-  /// [suppressedReasons] A list that contains the reasons that email addresses are automatically added to the suppression list for your account.
+  /// [suppressedReasons] List that contains the reasons that email addresses are automatically added to the suppression list for your account.
   const GetConfigurationSetSuppressionOption({
     required this.suppressedReasons,
   });

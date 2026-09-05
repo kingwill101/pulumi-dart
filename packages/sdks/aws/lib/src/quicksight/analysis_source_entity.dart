@@ -5,7 +5,7 @@ import 'analysis_source_entity_source_template.dart';
 
 class AnalysisSourceEntity {
   /// The source template. See source_template.
-  final pulumi.Input<AnalysisSourceEntitySourceTemplate>? sourceTemplate;
+  final pulumi.Input<AnalysisSourceEntitySourceTemplate?>? sourceTemplate;
 
   /// Creates a new [AnalysisSourceEntity].
   /// [sourceTemplate] The source template. See source_template.

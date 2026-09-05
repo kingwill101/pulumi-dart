@@ -7,7 +7,7 @@ class TriggerPredicate {
   /// A list of the conditions that determine when the trigger will fire. See Conditions.
   final pulumi.Input<List<TriggerPredicateCondition>> conditions;
   /// How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
-  final pulumi.Input<String>? logical;
+  final pulumi.Input<String?>? logical;
 
   /// Creates a new [TriggerPredicate].
   /// [conditions] A list of the conditions that determine when the trigger will fire. See Conditions.

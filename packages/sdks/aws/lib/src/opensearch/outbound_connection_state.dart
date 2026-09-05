@@ -8,21 +8,21 @@ import 'outbound_connection_remote_domain_info.dart';
 /// Input properties used for looking up and filtering OutboundConnection resources.
 class OutboundConnectionState {
   /// Accepts the connection.
-  final pulumi.Input<bool>? acceptConnection;
+  final pulumi.Input<bool?>? acceptConnection;
   /// Specifies the connection alias that will be used by the customer for this connection.
-  final pulumi.Input<String>? connectionAlias;
+  final pulumi.Input<String?>? connectionAlias;
   /// Specifies the connection mode. Accepted values are `DIRECT` or `VPC_ENDPOINT`.
-  final pulumi.Input<String>? connectionMode;
+  final pulumi.Input<String?>? connectionMode;
   /// Configuration block for the outbound connection.
-  final pulumi.Input<OutboundConnectionConnectionProperties>? connectionProperties;
+  final pulumi.Input<OutboundConnectionConnectionProperties?>? connectionProperties;
   /// Status of the connection request.
-  final pulumi.Input<String>? connectionStatus;
+  final pulumi.Input<String?>? connectionStatus;
   /// Configuration block for the local Opensearch domain.
-  final pulumi.Input<OutboundConnectionLocalDomainInfo>? localDomainInfo;
+  final pulumi.Input<OutboundConnectionLocalDomainInfo?>? localDomainInfo;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration block for the remote Opensearch domain.
-  final pulumi.Input<OutboundConnectionRemoteDomainInfo>? remoteDomainInfo;
+  final pulumi.Input<OutboundConnectionRemoteDomainInfo?>? remoteDomainInfo;
 
   /// Creates a new [OutboundConnectionState].
   /// [acceptConnection] Accepts the connection.

@@ -159,14 +159,14 @@ import 'user_pool_domain_state.dart';
 ///     name: "example.com",
 /// });
 /// const auth_cognito_A = new aws.route53.Record("auth-cognito-A", {
-///     name: main.domain,
-///     type: aws.route53.RecordType.A,
-///     zoneId: example.then(example => example.zoneId),
 ///     aliases: [{
 ///         evaluateTargetHealth: false,
 ///         name: main.cloudfrontDistribution,
 ///         zoneId: main.cloudfrontDistributionZoneId,
 ///     }],
+///     name: main.domain,
+///     type: aws.route53.RecordType.A,
+///     zoneId: example.then(example => example.zoneId),
 /// });
 /// ```
 /// ```python
@@ -180,14 +180,14 @@ import 'user_pool_domain_state.dart';
 ///     user_pool_id=example_user_pool.id)
 /// example = aws.route53.get_zone(name="example.com")
 /// auth_cognito__a = aws.route53.Record("auth-cognito-A",
-///     name=main.domain,
-///     type=aws.route53.RecordType.A,
-///     zone_id=example.zone_id,
 ///     aliases=[{
 ///         "evaluate_target_health": False,
 ///         "name": main.cloudfront_distribution,
 ///         "zone_id": main.cloudfront_distribution_zone_id,
-///     }])
+///     }],
+///     name=main.domain,
+///     type=aws.route53.RecordType.A,
+///     zone_id=example.zone_id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -216,9 +216,6 @@ import 'user_pool_domain_state.dart';
 ///
 ///     var auth_cognito_A = new Aws.Route53.Record("auth-cognito-A", new()
 ///     {
-///         Name = main.Domain,
-///         Type = Aws.Route53.RecordType.A,
-///         ZoneId = example.Apply(getZoneResult => getZoneResult.ZoneId),
 ///         Aliases = new[]
 ///         {
 ///             new Aws.Route53.Inputs.RecordAliasArgs
@@ -228,6 +225,9 @@ import 'user_pool_domain_state.dart';
 ///                 ZoneId = main.CloudfrontDistributionZoneId,
 ///             },
 ///         },
+///         Name = main.Domain,
+///         Type = Aws.Route53.RecordType.A,
+///         ZoneId = example.Apply(getZoneResult => getZoneResult.ZoneId),
 ///     });
 ///
 /// });
@@ -264,9 +264,6 @@ import 'user_pool_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = route53.NewRecord(ctx, "auth-cognito-A", &route53.RecordArgs{
-/// 			Name:   main.Domain,
-/// 			Type:   pulumi.String(route53.RecordTypeA),
-/// 			ZoneId: pulumi.String(example.ZoneId),
 /// 			Aliases: route53.RecordAliasArray{
 /// 				&route53.RecordAliasArgs{
 /// 					EvaluateTargetHealth: pulumi.Bool(false),
@@ -274,6 +271,9 @@ import 'user_pool_domain_state.dart';
 /// 					ZoneId:               main.CloudfrontDistributionZoneId,
 /// 				},
 /// 			},
+/// 			Name:   main.Domain,
+/// 			Type:   pulumi.String(route53.RecordTypeA),
+/// 			ZoneId: pulumi.String(example.ZoneId),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -304,14 +304,14 @@ import 'user_pool_domain_state.dart';
 ///   name = "example-pool"
 /// }
 /// resource "aws_route53_record" "auth-cognito-A" {
-///   name    = aws_cognito_userpooldomain.main.domain
-///   type    = "A"
-///   zone_id = data.aws_route53_getzone.example.zone_id
 ///   aliases {
 ///     evaluate_target_health = false
 ///     name                   = aws_cognito_userpooldomain.main.cloudfront_distribution
 ///     zone_id                = aws_cognito_userpooldomain.main.cloudfront_distribution_zone_id
 ///   }
+///   name    = aws_cognito_userpooldomain.main.domain
+///   type    = "A"
+///   zone_id = data.aws_route53_getzone.example.zone_id
 /// }
 /// ```
 /// ```java
@@ -357,14 +357,14 @@ import 'user_pool_domain_state.dart';
 ///             .build());
 ///
 ///         var auth_cognito_A = new Record("auth-cognito-A", RecordArgs.builder()
-///             .name(main.domain())
-///             .type("A")
-///             .zoneId(example.zoneId())
 ///             .aliases(RecordAliasArgs.builder()
 ///                 .evaluateTargetHealth(false)
 ///                 .name(main.cloudfrontDistribution())
 ///                 .zoneId(main.cloudfrontDistributionZoneId())
 ///                 .build())
+///             .name(main.domain())
+///             .type("A")
+///             .zoneId(example.zoneId())
 ///             .build());
 ///
 ///     }
@@ -386,13 +386,13 @@ import 'user_pool_domain_state.dart';
 ///   auth-cognito-A:
 ///     type: aws:route53:Record
 ///     properties:
-///       name: ${main.domain}
-///       type: A
-///       zoneId: ${example.zoneId}
 ///       aliases:
 ///         - evaluateTargetHealth: false
 ///           name: ${main.cloudfrontDistribution}
 ///           zoneId: ${main.cloudfrontDistributionZoneId}
+///       name: ${main.domain}
+///       type: A
+///       zoneId: ${example.zoneId}
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -445,7 +445,7 @@ class UserPoolDomain extends pulumi.CustomResource {
           'aws:cognito/userPoolDomain:UserPoolDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     certificateArn = registerOutput<String?>('certificateArn');
@@ -465,11 +465,12 @@ class UserPoolDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserPoolDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserPoolDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -483,6 +484,28 @@ class UserPoolDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsAccountId = registerOutput<String>('awsAccountId');
+    certificateArn = registerOutput<String?>('certificateArn');
+    cloudfrontDistribution = registerOutput<String>('cloudfrontDistribution');
+    cloudfrontDistributionArn = registerOutput<String>('cloudfrontDistributionArn');
+    cloudfrontDistributionZoneId = registerOutput<String>('cloudfrontDistributionZoneId');
+    domain = registerOutput<String>('domain');
+    managedLoginVersion = registerOutput<int>('managedLoginVersion');
+    region = registerOutput<String>('region');
+    s3Bucket = registerOutput<String>('s3Bucket');
+    userPoolId = registerOutput<String>('userPoolId');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [UserPoolDomain] resource.
+  UserPoolDomain.reference(String urn)
+    : super(
+        'aws:cognito/userPoolDomain:UserPoolDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     certificateArn = registerOutput<String?>('certificateArn');
     cloudfrontDistribution = registerOutput<String>('cloudfrontDistribution');

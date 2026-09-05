@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'framework_args.dart';
+import 'framework_control_set.dart';
 import 'framework_state.dart';
 
 /// Resource for managing an AWS Audit Manager Framework.
@@ -14,9 +15,7 @@ import 'framework_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.auditmanager.Framework("test", {
-///     name: "example",
 ///     controlSets: [{
-///         name: "example",
 ///         controls: [
 ///             {
 ///                 id: test1.id,
@@ -25,7 +24,9 @@ import 'framework_state.dart';
 ///                 id: test2.id,
 ///             },
 ///         ],
+///         name: "example",
 ///     }],
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -33,9 +34,7 @@ import 'framework_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.auditmanager.Framework("test",
-///     name="example",
 ///     control_sets=[{
-///         "name": "example",
 ///         "controls": [
 ///             {
 ///                 "id": test1["id"],
@@ -44,7 +43,9 @@ import 'framework_state.dart';
 ///                 "id": test2["id"],
 ///             },
 ///         ],
-///     }])
+///         "name": "example",
+///     }],
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -56,12 +57,10 @@ import 'framework_state.dart';
 /// {
 ///     var test = new Aws.Auditmanager.Framework("test", new()
 ///     {
-///         Name = "example",
 ///         ControlSets = new[]
 ///         {
 ///             new Aws.Auditmanager.Inputs.FrameworkControlSetArgs
 ///             {
-///                 Name = "example",
 ///                 Controls = new[]
 ///                 {
 ///                     new Aws.Auditmanager.Inputs.FrameworkControlSetControlArgs
@@ -73,8 +72,10 @@ import 'framework_state.dart';
 ///                         Id = test2.Id,
 ///                     },
 ///                 },
+///                 Name = "example",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -90,10 +91,8 @@ import 'framework_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := auditmanager.NewFramework(ctx, "test", &auditmanager.FrameworkArgs{
-/// 			Name: pulumi.String("example"),
 /// 			ControlSets: auditmanager.FrameworkControlSetArray{
 /// 				&auditmanager.FrameworkControlSetArgs{
-/// 					Name: pulumi.String("example"),
 /// 					Controls: auditmanager.FrameworkControlSetControlArray{
 /// 						&auditmanager.FrameworkControlSetControlArgs{
 /// 							Id: pulumi.Any(test1.Id),
@@ -102,8 +101,10 @@ import 'framework_state.dart';
 /// 							Id: pulumi.Any(test2.Id),
 /// 						},
 /// 					},
+/// 					Name: pulumi.String("example"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -122,16 +123,16 @@ import 'framework_state.dart';
 /// }
 ///
 /// resource "aws_auditmanager_framework" "test" {
-///   name = "example"
 ///   control_sets {
-///     name = "example"
 ///     controls {
 ///       id = test1.id
 ///     }
 ///     controls {
 ///       id = test2.id
 ///     }
+///     name = "example"
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -158,9 +159,7 @@ import 'framework_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Framework("test", FrameworkArgs.builder()
-///             .name("example")
 ///             .controlSets(FrameworkControlSetArgs.builder()
-///                 .name("example")
 ///                 .controls(
 ///                     FrameworkControlSetControlArgs.builder()
 ///                         .id(test1.id())
@@ -168,7 +167,9 @@ import 'framework_state.dart';
 ///                     FrameworkControlSetControlArgs.builder()
 ///                         .id(test2.id())
 ///                         .build())
+///                 .name("example")
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -179,12 +180,12 @@ import 'framework_state.dart';
 ///   test:
 ///     type: aws:auditmanager:Framework
 ///     properties:
-///       name: example
 ///       controlSets:
-///         - name: example
-///           controls:
+///         - controls:
 ///             - id: ${test1.id}
 ///             - id: ${test2.id}
+///           name: example
+///       name: example
 /// ```
 ///
 ///
@@ -208,7 +209,7 @@ import 'framework_state.dart';
 /// $ pulumi import aws:auditmanager/framework:Framework example abc123-de45
 /// ```
 class Framework extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the framework.
+  /// ARN of the framework.
   /// * `control_sets[*].id` - Unique identifier for the framework control set.
   late final pulumi.Output<String> arn;
   /// Compliance type that the new custom framework supports, such as `CIS` or `HIPAA`.
@@ -216,7 +217,7 @@ class Framework extends pulumi.CustomResource {
   /// Configuration block(s) for the control sets that are associated with the framework. See `controlSets` Block below for details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>?> controlSets;
+  late final pulumi.Output<List<FrameworkControlSet>?> controlSets;
   /// Description of the framework.
   late final pulumi.Output<String?> description;
   /// Framework type, such as a custom framework or a standard framework.
@@ -241,17 +242,17 @@ class Framework extends pulumi.CustomResource {
           'aws:auditmanager/framework:Framework',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     complianceType = registerOutput<String?>('complianceType');
-    controlSets = registerOutput<List<Map<String, dynamic>>?>('controlSets');
+    controlSets = registerOutput<List<FrameworkControlSet>?>('controlSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkControlSet>(guardedValue, (value) => FrameworkControlSet.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     frameworkType = registerOutput<String>('frameworkType');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Framework] resource's state with the given [name] and [id].
@@ -259,11 +260,12 @@ class Framework extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrameworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Framework._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -279,12 +281,32 @@ class Framework extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     complianceType = registerOutput<String?>('complianceType');
-    controlSets = registerOutput<List<Map<String, dynamic>>?>('controlSets');
+    controlSets = registerOutput<List<FrameworkControlSet>?>('controlSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkControlSet>(guardedValue, (value) => FrameworkControlSet.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     frameworkType = registerOutput<String>('frameworkType');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Framework] resource.
+  Framework.reference(String urn)
+    : super(
+        'aws:auditmanager/framework:Framework',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    complianceType = registerOutput<String?>('complianceType');
+    controlSets = registerOutput<List<FrameworkControlSet>?>('controlSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkControlSet>(guardedValue, (value) => FrameworkControlSet.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    frameworkType = registerOutput<String>('frameworkType');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

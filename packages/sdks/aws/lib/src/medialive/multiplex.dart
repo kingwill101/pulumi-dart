@@ -18,17 +18,17 @@ import 'multiplex_state.dart';
 ///     state: "available",
 /// });
 /// const example = new aws.medialive.Multiplex("example", {
-///     name: "example-multiplex-changed",
-///     availabilityZones: [
-///         available.then(available => available.names?.[0]),
-///         available.then(available => available.names?.[1]),
-///     ],
 ///     multiplexSettings: {
 ///         transportStreamBitrate: 1000000,
 ///         transportStreamId: 1,
 ///         transportStreamReservedBitrate: 1,
 ///         maximumVideoBufferDelayMilliseconds: 1000,
 ///     },
+///     name: "example-multiplex-changed",
+///     availabilityZones: [
+///         available.then(available => available.names?.[0]),
+///         available.then(available => available.names?.[1]),
+///     ],
 ///     startMultiplex: true,
 ///     tags: {
 ///         tag1: "value1",
@@ -41,17 +41,17 @@ import 'multiplex_state.dart';
 ///
 /// available = aws.get_availability_zones(state="available")
 /// example = aws.medialive.Multiplex("example",
-///     name="example-multiplex-changed",
-///     availability_zones=[
-///         available.names[0],
-///         available.names[1],
-///     ],
 ///     multiplex_settings={
 ///         "transport_stream_bitrate": 1000000,
 ///         "transport_stream_id": 1,
 ///         "transport_stream_reserved_bitrate": 1,
 ///         "maximum_video_buffer_delay_milliseconds": 1000,
 ///     },
+///     name="example-multiplex-changed",
+///     availability_zones=[
+///         available.names[0],
+///         available.names[1],
+///     ],
 ///     start_multiplex=True,
 ///     tags={
 ///         "tag1": "value1",
@@ -72,18 +72,18 @@ import 'multiplex_state.dart';
 ///
 ///     var example = new Aws.MediaLive.Multiplex("example", new()
 ///     {
-///         Name = "example-multiplex-changed",
-///         AvailabilityZones = new[]
-///         {
-///             available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[0]),
-///             available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[1]),
-///         },
 ///         MultiplexSettings = new Aws.MediaLive.Inputs.MultiplexMultiplexSettingsArgs
 ///         {
 ///             TransportStreamBitrate = 1000000,
 ///             TransportStreamId = 1,
 ///             TransportStreamReservedBitrate = 1,
 ///             MaximumVideoBufferDelayMilliseconds = 1000,
+///         },
+///         Name = "example-multiplex-changed",
+///         AvailabilityZones = new[]
+///         {
+///             available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[0]),
+///             available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.Names[1]),
 ///         },
 ///         StartMultiplex = true,
 ///         Tags =
@@ -112,16 +112,16 @@ import 'multiplex_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = medialive.NewMultiplex(ctx, "example", &medialive.MultiplexArgs{
-/// 			Name: pulumi.String("example-multiplex-changed"),
-/// 			AvailabilityZones: pulumi.StringArray{
-/// 				pulumi.String(available.Names[0]),
-/// 				pulumi.String(available.Names[1]),
-/// 			},
 /// 			MultiplexSettings: &medialive.MultiplexMultiplexSettingsArgs{
 /// 				TransportStreamBitrate:              pulumi.Int(1000000),
 /// 				TransportStreamId:                   pulumi.Int(1),
 /// 				TransportStreamReservedBitrate:      pulumi.Int(1),
 /// 				MaximumVideoBufferDelayMilliseconds: pulumi.Int(1000),
+/// 			},
+/// 			Name: pulumi.String("example-multiplex-changed"),
+/// 			AvailabilityZones: pulumi.StringArray{
+/// 				pulumi.String(available.Names[0]),
+/// 				pulumi.String(available.Names[1]),
 /// 			},
 /// 			StartMultiplex: pulumi.Bool(true),
 /// 			Tags: pulumi.StringMap{
@@ -149,15 +149,15 @@ import 'multiplex_state.dart';
 /// }
 ///
 /// resource "aws_medialive_multiplex" "example" {
-///   name               = "example-multiplex-changed"
-///   availability_zones = [data.aws_getavailabilityzones.available.names[0], data.aws_getavailabilityzones.available.names[1]]
 ///   multiplex_settings = {
 ///     transport_stream_bitrate                = 1000000
 ///     transport_stream_id                     = 1
 ///     transport_stream_reserved_bitrate       = 1
 ///     maximum_video_buffer_delay_milliseconds = 1000
 ///   }
-///   start_multiplex = true
+///   name               = "example-multiplex-changed"
+///   availability_zones = [data.aws_getavailabilityzones.available.names[0], data.aws_getavailabilityzones.available.names[1]]
+///   start_multiplex    = true
 ///   tags = {
 ///     "tag1" = "value1"
 ///   }
@@ -192,16 +192,16 @@ import 'multiplex_state.dart';
 ///             .build());
 ///
 ///         var example = new Multiplex("example", MultiplexArgs.builder()
-///             .name("example-multiplex-changed")
-///             .availabilityZones(
-///                 available.names()[0],
-///                 available.names()[1])
 ///             .multiplexSettings(MultiplexMultiplexSettingsArgs.builder()
 ///                 .transportStreamBitrate(1000000)
 ///                 .transportStreamId(1)
 ///                 .transportStreamReservedBitrate(1)
 ///                 .maximumVideoBufferDelayMilliseconds(1000)
 ///                 .build())
+///             .name("example-multiplex-changed")
+///             .availabilityZones(
+///                 available.names()[0],
+///                 available.names()[1])
 ///             .startMultiplex(true)
 ///             .tags(Map.of("tag1", "value1"))
 ///             .build());
@@ -214,15 +214,15 @@ import 'multiplex_state.dart';
 ///   example:
 ///     type: aws:medialive:Multiplex
 ///     properties:
-///       name: example-multiplex-changed
-///       availabilityZones:
-///         - ${available.names[0]}
-///         - ${available.names[1]}
 ///       multiplexSettings:
 ///         transportStreamBitrate: 1e+06
 ///         transportStreamId: 1
 ///         transportStreamReservedBitrate: 1
 ///         maximumVideoBufferDelayMilliseconds: 1000
+///       name: example-multiplex-changed
+///       availabilityZones:
+///         - ${available.names[0]}
+///         - ${available.names[1]}
 ///       startMultiplex: true
 ///       tags:
 ///         tag1: value1
@@ -285,16 +285,16 @@ class Multiplex extends pulumi.CustomResource {
           'aws:medialive/multiplex:Multiplex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     multiplexSettings = registerOutput<MultiplexMultiplexSettings?>('multiplexSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexMultiplexSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     startMultiplex = registerOutput<bool?>('startMultiplex');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Multiplex] resource's state with the given [name] and [id].
@@ -302,11 +302,12 @@ class Multiplex extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MultiplexState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Multiplex._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -321,12 +322,31 @@ class Multiplex extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     multiplexSettings = registerOutput<MultiplexMultiplexSettings?>('multiplexSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexMultiplexSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     startMultiplex = registerOutput<bool?>('startMultiplex');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Multiplex] resource.
+  Multiplex.reference(String urn)
+    : super(
+        'aws:medialive/multiplex:Multiplex',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    multiplexSettings = registerOutput<MultiplexMultiplexSettings?>('multiplexSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexMultiplexSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    startMultiplex = registerOutput<bool?>('startMultiplex');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

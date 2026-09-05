@@ -306,13 +306,13 @@ class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
           'aws:directconnect/hostedPrivateVirtualInterfaceAccepter:HostedPrivateVirtualInterfaceAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dxGatewayId = registerOutput<String?>('dxGatewayId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
     vpnGatewayId = registerOutput<String?>('vpnGatewayId');
   }
@@ -322,11 +322,12 @@ class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostedPrivateVirtualInterfaceAccepterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostedPrivateVirtualInterfaceAccepter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -343,8 +344,26 @@ class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     dxGatewayId = registerOutput<String?>('dxGatewayId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
+    vpnGatewayId = registerOutput<String?>('vpnGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [HostedPrivateVirtualInterfaceAccepter] resource.
+  HostedPrivateVirtualInterfaceAccepter.reference(String urn)
+    : super(
+        'aws:directconnect/hostedPrivateVirtualInterfaceAccepter:HostedPrivateVirtualInterfaceAccepter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    dxGatewayId = registerOutput<String?>('dxGatewayId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualInterfaceId = registerOutput<String>('virtualInterfaceId');
     vpnGatewayId = registerOutput<String?>('vpnGatewayId');
   }

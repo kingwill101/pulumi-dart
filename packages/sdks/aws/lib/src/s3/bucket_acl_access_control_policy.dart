@@ -6,7 +6,7 @@ import 'bucket_acl_access_control_policy_owner.dart';
 
 class BucketAclAccessControlPolicy {
   /// Set of `grant` configuration blocks. See below.
-  final pulumi.Input<List<BucketAclAccessControlPolicyGrant>>? grants;
+  final pulumi.Input<List<BucketAclAccessControlPolicyGrant>?>? grants;
   /// Configuration block for the bucket owner's display name and ID. See below.
   final pulumi.Input<BucketAclAccessControlPolicyOwner> owner;
 

@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tls_inspection_configuration_args.dart';
+import 'tls_inspection_configuration_certificate.dart';
+import 'tls_inspection_configuration_certificate_authority.dart';
+import 'tls_inspection_configuration_encryption_configuration.dart';
 import 'tls_inspection_configuration_state.dart';
 import 'tls_inspection_configuration_timeouts.dart';
 import 'tls_inspection_configuration_tls_inspection_configuration.dart';
@@ -18,19 +21,9 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.TlsInspectionConfiguration("example", {
-///     name: "example",
-///     description: "example",
-///     encryptionConfigurations: [{
-///         keyId: "AWS_OWNED_KMS_KEY",
-///         type: "AWS_OWNED_KMS_KEY",
-///     }],
 ///     tlsInspectionConfiguration: {
 ///         serverCertificateConfiguration: {
-///             serverCertificates: [{
-///                 resourceArn: example1.arn,
-///             }],
 ///             scopes: [{
-///                 protocols: [6],
 ///                 destinationPorts: [{
 ///                     fromPort: 443,
 ///                     toPort: 443,
@@ -45,9 +38,19 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                 sources: [{
 ///                     addressDefinition: "0.0.0.0/0",
 ///                 }],
+///                 protocols: [6],
+///             }],
+///             serverCertificates: [{
+///                 resourceArn: example1.arn,
 ///             }],
 ///         },
 ///     },
+///     encryptionConfigurations: [{
+///         keyId: "AWS_OWNED_KMS_KEY",
+///         type: "AWS_OWNED_KMS_KEY",
+///     }],
+///     name: "example",
+///     description: "example",
 /// });
 /// ```
 /// ```python
@@ -55,19 +58,9 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.TlsInspectionConfiguration("example",
-///     name="example",
-///     description="example",
-///     encryption_configurations=[{
-///         "key_id": "AWS_OWNED_KMS_KEY",
-///         "type": "AWS_OWNED_KMS_KEY",
-///     }],
 ///     tls_inspection_configuration={
 ///         "server_certificate_configuration": {
-///             "server_certificates": [{
-///                 "resource_arn": example1["arn"],
-///             }],
 ///             "scopes": [{
-///                 "protocols": [6],
 ///                 "destination_ports": [{
 ///                     "from_port": 443,
 ///                     "to_port": 443,
@@ -82,9 +75,19 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                 "sources": [{
 ///                     "address_definition": "0.0.0.0/0",
 ///                 }],
+///                 "protocols": [6],
+///             }],
+///             "server_certificates": [{
+///                 "resource_arn": example1["arn"],
 ///             }],
 ///         },
-///     })
+///     },
+///     encryption_configurations=[{
+///         "key_id": "AWS_OWNED_KMS_KEY",
+///         "type": "AWS_OWNED_KMS_KEY",
+///     }],
+///     name="example",
+///     description="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -96,35 +99,14 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.TlsInspectionConfiguration("example", new()
 ///     {
-///         Name = "example",
-///         Description = "example",
-///         EncryptionConfigurations = new[]
-///         {
-///             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationEncryptionConfigurationArgs
-///             {
-///                 KeyId = "AWS_OWNED_KMS_KEY",
-///                 Type = "AWS_OWNED_KMS_KEY",
-///             },
-///         },
 ///         TlsInspectionConfig = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs
 ///         {
 ///             ServerCertificateConfiguration = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs
 ///             {
-///                 ServerCertificates = new[]
-///                 {
-///                     new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs
-///                     {
-///                         ResourceArn = example1.Arn,
-///                     },
-///                 },
 ///                 Scopes = new[]
 ///                 {
 ///                     new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs
 ///                     {
-///                         Protocols = new[]
-///                         {
-///                             6,
-///                         },
 ///                         DestinationPorts = new[]
 ///                         {
 ///                             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs
@@ -155,10 +137,31 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                                 AddressDefinition = "0.0.0.0/0",
 ///                             },
 ///                         },
+///                         Protocols = new[]
+///                         {
+///                             6,
+///                         },
+///                     },
+///                 },
+///                 ServerCertificates = new[]
+///                 {
+///                     new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs
+///                     {
+///                         ResourceArn = example1.Arn,
 ///                     },
 ///                 },
 ///             },
 ///         },
+///         EncryptionConfigurations = new[]
+///         {
+///             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationEncryptionConfigurationArgs
+///             {
+///                 KeyId = "AWS_OWNED_KMS_KEY",
+///                 Type = "AWS_OWNED_KMS_KEY",
+///             },
+///         },
+///         Name = "example",
+///         Description = "example",
 ///     });
 ///
 /// });
@@ -174,26 +177,10 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewTlsInspectionConfiguration(ctx, "example", &networkfirewall.TlsInspectionConfigurationArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Description: pulumi.String("example"),
-/// 			EncryptionConfigurations: networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArray{
-/// 				&networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArgs{
-/// 					KeyId: pulumi.String("AWS_OWNED_KMS_KEY"),
-/// 					Type:  pulumi.String("AWS_OWNED_KMS_KEY"),
-/// 				},
-/// 			},
 /// 			TlsInspectionConfiguration: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationArgs{
 /// 				ServerCertificateConfiguration: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs{
-/// 					ServerCertificates: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArray{
-/// 						&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs{
-/// 							ResourceArn: pulumi.Any(example1.Arn),
-/// 						},
-/// 					},
 /// 					Scopes: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArray{
 /// 						&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs{
-/// 							Protocols: pulumi.IntArray{
-/// 								pulumi.Int(6),
-/// 							},
 /// 							DestinationPorts: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArray{
 /// 								&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs{
 /// 									FromPort: pulumi.Int(443),
@@ -216,10 +203,26 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 									AddressDefinition: pulumi.String("0.0.0.0/0"),
 /// 								},
 /// 							},
+/// 							Protocols: pulumi.IntArray{
+/// 								pulumi.Int(6),
+/// 							},
+/// 						},
+/// 					},
+/// 					ServerCertificates: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArray{
+/// 						&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs{
+/// 							ResourceArn: pulumi.Any(example1.Arn),
 /// 						},
 /// 					},
 /// 				},
 /// 			},
+/// 			EncryptionConfigurations: networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArray{
+/// 				&networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArgs{
+/// 					KeyId: pulumi.String("AWS_OWNED_KMS_KEY"),
+/// 					Type:  pulumi.String("AWS_OWNED_KMS_KEY"),
+/// 				},
+/// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			Description: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -238,19 +241,9 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
-///   name        = "example"
-///   description = "example"
-///   encryption_configurations {
-///     key_id = "AWS_OWNED_KMS_KEY"
-///     type   = "AWS_OWNED_KMS_KEY"
-///   }
 ///   tls_inspection_configuration = {
 ///     server_certificate_configuration = {
-///       server_certificates = [{
-///         "resourceArn" = example1.arn
-///       }]
 ///       scopes = [{
-///         "protocols" = [6]
 ///         "destinationPorts" = [{
 ///           "fromPort" = 443
 ///           "toPort"   = 443
@@ -265,9 +258,19 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///         "sources" = [{
 ///           "addressDefinition" = "0.0.0.0/0"
 ///         }]
+///         "protocols" = [6]
+///       }]
+///       server_certificates = [{
+///         "resourceArn" = example1.arn
 ///       }]
 ///     }
 ///   }
+///   encryption_configurations {
+///     key_id = "AWS_OWNED_KMS_KEY"
+///     type   = "AWS_OWNED_KMS_KEY"
+///   }
+///   name        = "example"
+///   description = "example"
 /// }
 /// ```
 /// ```java
@@ -278,15 +281,15 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfiguration;
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfigurationArgs;
-/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs;
-/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePortArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -301,19 +304,9 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TlsInspectionConfiguration("example", TlsInspectionConfigurationArgs.builder()
-///             .name("example")
-///             .description("example")
-///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
-///                 .keyId("AWS_OWNED_KMS_KEY")
-///                 .type("AWS_OWNED_KMS_KEY")
-///                 .build())
 ///             .tlsInspectionConfiguration(TlsInspectionConfigurationTlsInspectionConfigurationArgs.builder()
 ///                 .serverCertificateConfiguration(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs.builder()
-///                     .serverCertificates(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs.builder()
-///                         .resourceArn(example1.arn())
-///                         .build())
 ///                     .scopes(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs.builder()
-///                         .protocols(6)
 ///                         .destinationPorts(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs.builder()
 ///                             .fromPort(443)
 ///                             .toPort(443)
@@ -328,9 +321,19 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                         .sources(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs.builder()
 ///                             .addressDefinition("0.0.0.0/0")
 ///                             .build())
+///                         .protocols(6)
+///                         .build())
+///                     .serverCertificates(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs.builder()
+///                         .resourceArn(example1.arn())
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
+///                 .keyId("AWS_OWNED_KMS_KEY")
+///                 .type("AWS_OWNED_KMS_KEY")
+///                 .build())
+///             .name("example")
+///             .description("example")
 ///             .build());
 ///
 ///     }
@@ -341,19 +344,10 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///   example:
 ///     type: aws:networkfirewall:TlsInspectionConfiguration
 ///     properties:
-///       name: example
-///       description: example
-///       encryptionConfigurations:
-///         - keyId: AWS_OWNED_KMS_KEY
-///           type: AWS_OWNED_KMS_KEY
 ///       tlsInspectionConfiguration:
 ///         serverCertificateConfiguration:
-///           serverCertificates:
-///             - resourceArn: ${example1.arn}
 ///           scopes:
-///             - protocols:
-///                 - 6
-///               destinationPorts:
+///             - destinationPorts:
 ///                 - fromPort: 443
 ///                   toPort: 443
 ///               destinations:
@@ -363,6 +357,15 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                   toPort: 65535
 ///               sources:
 ///                 - addressDefinition: 0.0.0.0/0
+///               protocols:
+///                 - 6
+///           serverCertificates:
+///             - resourceArn: ${example1.arn}
+///       encryptionConfigurations:
+///         - keyId: AWS_OWNED_KMS_KEY
+///           type: AWS_OWNED_KMS_KEY
+///       name: example
+///       description: example
 /// ```
 ///
 ///
@@ -374,21 +377,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.TlsInspectionConfiguration("example", {
-///     name: "example",
-///     description: "example",
-///     encryptionConfigurations: [{
-///         keyId: "AWS_OWNED_KMS_KEY",
-///         type: "AWS_OWNED_KMS_KEY",
-///     }],
 ///     tlsInspectionConfiguration: {
 ///         serverCertificateConfiguration: {
-///             certificateAuthorityArn: example1.arn,
 ///             checkCertificateRevocationStatus: {
 ///                 revokedStatusAction: "REJECT",
 ///                 unknownStatusAction: "PASS",
 ///             },
 ///             scopes: [{
-///                 protocols: [6],
 ///                 destinationPorts: [{
 ///                     fromPort: 443,
 ///                     toPort: 443,
@@ -403,9 +398,17 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                 sources: [{
 ///                     addressDefinition: "0.0.0.0/0",
 ///                 }],
+///                 protocols: [6],
 ///             }],
+///             certificateAuthorityArn: example1.arn,
 ///         },
 ///     },
+///     encryptionConfigurations: [{
+///         keyId: "AWS_OWNED_KMS_KEY",
+///         type: "AWS_OWNED_KMS_KEY",
+///     }],
+///     name: "example",
+///     description: "example",
 /// });
 /// ```
 /// ```python
@@ -413,21 +416,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.TlsInspectionConfiguration("example",
-///     name="example",
-///     description="example",
-///     encryption_configurations=[{
-///         "key_id": "AWS_OWNED_KMS_KEY",
-///         "type": "AWS_OWNED_KMS_KEY",
-///     }],
 ///     tls_inspection_configuration={
 ///         "server_certificate_configuration": {
-///             "certificate_authority_arn": example1["arn"],
 ///             "check_certificate_revocation_status": {
 ///                 "revoked_status_action": "REJECT",
 ///                 "unknown_status_action": "PASS",
 ///             },
 ///             "scopes": [{
-///                 "protocols": [6],
 ///                 "destination_ports": [{
 ///                     "from_port": 443,
 ///                     "to_port": 443,
@@ -442,9 +437,17 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                 "sources": [{
 ///                     "address_definition": "0.0.0.0/0",
 ///                 }],
+///                 "protocols": [6],
 ///             }],
+///             "certificate_authority_arn": example1["arn"],
 ///         },
-///     })
+///     },
+///     encryption_configurations=[{
+///         "key_id": "AWS_OWNED_KMS_KEY",
+///         "type": "AWS_OWNED_KMS_KEY",
+///     }],
+///     name="example",
+///     description="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -456,21 +459,10 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.TlsInspectionConfiguration("example", new()
 ///     {
-///         Name = "example",
-///         Description = "example",
-///         EncryptionConfigurations = new[]
-///         {
-///             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationEncryptionConfigurationArgs
-///             {
-///                 KeyId = "AWS_OWNED_KMS_KEY",
-///                 Type = "AWS_OWNED_KMS_KEY",
-///             },
-///         },
 ///         TlsInspectionConfig = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs
 ///         {
 ///             ServerCertificateConfiguration = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs
 ///             {
-///                 CertificateAuthorityArn = example1.Arn,
 ///                 CheckCertificateRevocationStatus = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatusArgs
 ///                 {
 ///                     RevokedStatusAction = "REJECT",
@@ -480,10 +472,6 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                 {
 ///                     new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs
 ///                     {
-///                         Protocols = new[]
-///                         {
-///                             6,
-///                         },
 ///                         DestinationPorts = new[]
 ///                         {
 ///                             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs
@@ -514,10 +502,25 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                                 AddressDefinition = "0.0.0.0/0",
 ///                             },
 ///                         },
+///                         Protocols = new[]
+///                         {
+///                             6,
+///                         },
 ///                     },
 ///                 },
+///                 CertificateAuthorityArn = example1.Arn,
 ///             },
 ///         },
+///         EncryptionConfigurations = new[]
+///         {
+///             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationEncryptionConfigurationArgs
+///             {
+///                 KeyId = "AWS_OWNED_KMS_KEY",
+///                 Type = "AWS_OWNED_KMS_KEY",
+///             },
+///         },
+///         Name = "example",
+///         Description = "example",
 ///     });
 ///
 /// });
@@ -533,26 +536,14 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewTlsInspectionConfiguration(ctx, "example", &networkfirewall.TlsInspectionConfigurationArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Description: pulumi.String("example"),
-/// 			EncryptionConfigurations: networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArray{
-/// 				&networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArgs{
-/// 					KeyId: pulumi.String("AWS_OWNED_KMS_KEY"),
-/// 					Type:  pulumi.String("AWS_OWNED_KMS_KEY"),
-/// 				},
-/// 			},
 /// 			TlsInspectionConfiguration: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationArgs{
 /// 				ServerCertificateConfiguration: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs{
-/// 					CertificateAuthorityArn: pulumi.Any(example1.Arn),
 /// 					CheckCertificateRevocationStatus: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatusArgs{
 /// 						RevokedStatusAction: pulumi.String("REJECT"),
 /// 						UnknownStatusAction: pulumi.String("PASS"),
 /// 					},
 /// 					Scopes: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArray{
 /// 						&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs{
-/// 							Protocols: pulumi.IntArray{
-/// 								pulumi.Int(6),
-/// 							},
 /// 							DestinationPorts: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArray{
 /// 								&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs{
 /// 									FromPort: pulumi.Int(443),
@@ -575,10 +566,22 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 									AddressDefinition: pulumi.String("0.0.0.0/0"),
 /// 								},
 /// 							},
+/// 							Protocols: pulumi.IntArray{
+/// 								pulumi.Int(6),
+/// 							},
 /// 						},
 /// 					},
+/// 					CertificateAuthorityArn: pulumi.Any(example1.Arn),
 /// 				},
 /// 			},
+/// 			EncryptionConfigurations: networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArray{
+/// 				&networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArgs{
+/// 					KeyId: pulumi.String("AWS_OWNED_KMS_KEY"),
+/// 					Type:  pulumi.String("AWS_OWNED_KMS_KEY"),
+/// 				},
+/// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			Description: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -597,21 +600,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
-///   name        = "example"
-///   description = "example"
-///   encryption_configurations {
-///     key_id = "AWS_OWNED_KMS_KEY"
-///     type   = "AWS_OWNED_KMS_KEY"
-///   }
 ///   tls_inspection_configuration = {
 ///     server_certificate_configuration = {
-///       certificate_authority_arn = example1.arn
 ///       check_certificate_revocation_status = {
 ///         revoked_status_action = "REJECT"
 ///         unknown_status_action = "PASS"
 ///       }
 ///       scopes = [{
-///         "protocols" = [6]
 ///         "destinationPorts" = [{
 ///           "fromPort" = 443
 ///           "toPort"   = 443
@@ -626,9 +621,17 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///         "sources" = [{
 ///           "addressDefinition" = "0.0.0.0/0"
 ///         }]
+///         "protocols" = [6]
 ///       }]
+///       certificate_authority_arn = example1.arn
 ///     }
 ///   }
+///   encryption_configurations {
+///     key_id = "AWS_OWNED_KMS_KEY"
+///     type   = "AWS_OWNED_KMS_KEY"
+///   }
+///   name        = "example"
+///   description = "example"
 /// }
 /// ```
 /// ```java
@@ -639,7 +642,6 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfiguration;
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfigurationArgs;
-/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatusArgs;
@@ -648,6 +650,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePortArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -662,21 +665,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TlsInspectionConfiguration("example", TlsInspectionConfigurationArgs.builder()
-///             .name("example")
-///             .description("example")
-///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
-///                 .keyId("AWS_OWNED_KMS_KEY")
-///                 .type("AWS_OWNED_KMS_KEY")
-///                 .build())
 ///             .tlsInspectionConfiguration(TlsInspectionConfigurationTlsInspectionConfigurationArgs.builder()
 ///                 .serverCertificateConfiguration(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs.builder()
-///                     .certificateAuthorityArn(example1.arn())
 ///                     .checkCertificateRevocationStatus(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatusArgs.builder()
 ///                         .revokedStatusAction("REJECT")
 ///                         .unknownStatusAction("PASS")
 ///                         .build())
 ///                     .scopes(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs.builder()
-///                         .protocols(6)
 ///                         .destinationPorts(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs.builder()
 ///                             .fromPort(443)
 ///                             .toPort(443)
@@ -691,9 +686,17 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                         .sources(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs.builder()
 ///                             .addressDefinition("0.0.0.0/0")
 ///                             .build())
+///                         .protocols(6)
 ///                         .build())
+///                     .certificateAuthorityArn(example1.arn())
 ///                     .build())
 ///                 .build())
+///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
+///                 .keyId("AWS_OWNED_KMS_KEY")
+///                 .type("AWS_OWNED_KMS_KEY")
+///                 .build())
+///             .name("example")
+///             .description("example")
 ///             .build());
 ///
 ///     }
@@ -704,21 +707,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///   example:
 ///     type: aws:networkfirewall:TlsInspectionConfiguration
 ///     properties:
-///       name: example
-///       description: example
-///       encryptionConfigurations:
-///         - keyId: AWS_OWNED_KMS_KEY
-///           type: AWS_OWNED_KMS_KEY
 ///       tlsInspectionConfiguration:
 ///         serverCertificateConfiguration:
-///           certificateAuthorityArn: ${example1.arn}
 ///           checkCertificateRevocationStatus:
 ///             revokedStatusAction: REJECT
 ///             unknownStatusAction: PASS
 ///           scopes:
-///             - protocols:
-///                 - 6
-///               destinationPorts:
+///             - destinationPorts:
 ///                 - fromPort: 443
 ///                   toPort: 443
 ///               destinations:
@@ -728,6 +723,14 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                   toPort: 65535
 ///               sources:
 ///                 - addressDefinition: 0.0.0.0/0
+///               protocols:
+///                 - 6
+///           certificateAuthorityArn: ${example1.arn}
+///       encryptionConfigurations:
+///         - keyId: AWS_OWNED_KMS_KEY
+///           type: AWS_OWNED_KMS_KEY
+///       name: example
+///       description: example
 /// ```
 ///
 ///
@@ -743,19 +746,9 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///     deletionWindowInDays: 7,
 /// });
 /// const exampleTlsInspectionConfiguration = new aws.networkfirewall.TlsInspectionConfiguration("example", {
-///     name: "example",
-///     description: "example",
-///     encryptionConfigurations: [{
-///         keyId: example.arn,
-///         type: "CUSTOMER_KMS",
-///     }],
 ///     tlsInspectionConfiguration: {
 ///         serverCertificateConfiguration: {
-///             serverCertificates: [{
-///                 resourceArn: example1.arn,
-///             }],
 ///             scopes: [{
-///                 protocols: [6],
 ///                 destinationPorts: [{
 ///                     fromPort: 443,
 ///                     toPort: 443,
@@ -770,9 +763,19 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                 sources: [{
 ///                     addressDefinition: "0.0.0.0/0",
 ///                 }],
+///                 protocols: [6],
+///             }],
+///             serverCertificates: [{
+///                 resourceArn: example1.arn,
 ///             }],
 ///         },
 ///     },
+///     encryptionConfigurations: [{
+///         keyId: example.arn,
+///         type: "CUSTOMER_KMS",
+///     }],
+///     name: "example",
+///     description: "example",
 /// });
 /// ```
 /// ```python
@@ -783,19 +786,9 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///     description="example",
 ///     deletion_window_in_days=7)
 /// example_tls_inspection_configuration = aws.networkfirewall.TlsInspectionConfiguration("example",
-///     name="example",
-///     description="example",
-///     encryption_configurations=[{
-///         "key_id": example.arn,
-///         "type": "CUSTOMER_KMS",
-///     }],
 ///     tls_inspection_configuration={
 ///         "server_certificate_configuration": {
-///             "server_certificates": [{
-///                 "resource_arn": example1["arn"],
-///             }],
 ///             "scopes": [{
-///                 "protocols": [6],
 ///                 "destination_ports": [{
 ///                     "from_port": 443,
 ///                     "to_port": 443,
@@ -810,9 +803,19 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                 "sources": [{
 ///                     "address_definition": "0.0.0.0/0",
 ///                 }],
+///                 "protocols": [6],
+///             }],
+///             "server_certificates": [{
+///                 "resource_arn": example1["arn"],
 ///             }],
 ///         },
-///     })
+///     },
+///     encryption_configurations=[{
+///         "key_id": example.arn,
+///         "type": "CUSTOMER_KMS",
+///     }],
+///     name="example",
+///     description="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -830,35 +833,14 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///
 ///     var exampleTlsInspectionConfiguration = new Aws.NetworkFirewall.TlsInspectionConfiguration("example", new()
 ///     {
-///         Name = "example",
-///         Description = "example",
-///         EncryptionConfigurations = new[]
-///         {
-///             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationEncryptionConfigurationArgs
-///             {
-///                 KeyId = example.Arn,
-///                 Type = "CUSTOMER_KMS",
-///             },
-///         },
 ///         TlsInspectionConfig = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs
 ///         {
 ///             ServerCertificateConfiguration = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs
 ///             {
-///                 ServerCertificates = new[]
-///                 {
-///                     new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs
-///                     {
-///                         ResourceArn = example1.Arn,
-///                     },
-///                 },
 ///                 Scopes = new[]
 ///                 {
 ///                     new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs
 ///                     {
-///                         Protocols = new[]
-///                         {
-///                             6,
-///                         },
 ///                         DestinationPorts = new[]
 ///                         {
 ///                             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs
@@ -889,10 +871,31 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                                 AddressDefinition = "0.0.0.0/0",
 ///                             },
 ///                         },
+///                         Protocols = new[]
+///                         {
+///                             6,
+///                         },
+///                     },
+///                 },
+///                 ServerCertificates = new[]
+///                 {
+///                     new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs
+///                     {
+///                         ResourceArn = example1.Arn,
 ///                     },
 ///                 },
 ///             },
 ///         },
+///         EncryptionConfigurations = new[]
+///         {
+///             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationEncryptionConfigurationArgs
+///             {
+///                 KeyId = example.Arn,
+///                 Type = "CUSTOMER_KMS",
+///             },
+///         },
+///         Name = "example",
+///         Description = "example",
 ///     });
 ///
 /// });
@@ -916,26 +919,10 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkfirewall.NewTlsInspectionConfiguration(ctx, "example", &networkfirewall.TlsInspectionConfigurationArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Description: pulumi.String("example"),
-/// 			EncryptionConfigurations: networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArray{
-/// 				&networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArgs{
-/// 					KeyId: example.Arn,
-/// 					Type:  pulumi.String("CUSTOMER_KMS"),
-/// 				},
-/// 			},
 /// 			TlsInspectionConfiguration: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationArgs{
 /// 				ServerCertificateConfiguration: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs{
-/// 					ServerCertificates: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArray{
-/// 						&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs{
-/// 							ResourceArn: pulumi.Any(example1.Arn),
-/// 						},
-/// 					},
 /// 					Scopes: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArray{
 /// 						&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs{
-/// 							Protocols: pulumi.IntArray{
-/// 								pulumi.Int(6),
-/// 							},
 /// 							DestinationPorts: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArray{
 /// 								&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs{
 /// 									FromPort: pulumi.Int(443),
@@ -958,10 +945,26 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 									AddressDefinition: pulumi.String("0.0.0.0/0"),
 /// 								},
 /// 							},
+/// 							Protocols: pulumi.IntArray{
+/// 								pulumi.Int(6),
+/// 							},
+/// 						},
+/// 					},
+/// 					ServerCertificates: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArray{
+/// 						&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs{
+/// 							ResourceArn: pulumi.Any(example1.Arn),
 /// 						},
 /// 					},
 /// 				},
 /// 			},
+/// 			EncryptionConfigurations: networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArray{
+/// 				&networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArgs{
+/// 					KeyId: example.Arn,
+/// 					Type:  pulumi.String("CUSTOMER_KMS"),
+/// 				},
+/// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			Description: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -984,19 +987,9 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///   deletion_window_in_days = 7
 /// }
 /// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
-///   name        = "example"
-///   description = "example"
-///   encryption_configurations {
-///     key_id = aws_kms_key.example.arn
-///     type   = "CUSTOMER_KMS"
-///   }
 ///   tls_inspection_configuration = {
 ///     server_certificate_configuration = {
-///       server_certificates = [{
-///         "resourceArn" = example1.arn
-///       }]
 ///       scopes = [{
-///         "protocols" = [6]
 ///         "destinationPorts" = [{
 ///           "fromPort" = 443
 ///           "toPort"   = 443
@@ -1011,9 +1004,19 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///         "sources" = [{
 ///           "addressDefinition" = "0.0.0.0/0"
 ///         }]
+///         "protocols" = [6]
+///       }]
+///       server_certificates = [{
+///         "resourceArn" = example1.arn
 ///       }]
 ///     }
 ///   }
+///   encryption_configurations {
+///     key_id = aws_kms_key.example.arn
+///     type   = "CUSTOMER_KMS"
+///   }
+///   name        = "example"
+///   description = "example"
 /// }
 /// ```
 /// ```java
@@ -1026,15 +1029,15 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfiguration;
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfigurationArgs;
-/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs;
-/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePortArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1054,19 +1057,9 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///             .build());
 ///
 ///         var exampleTlsInspectionConfiguration = new TlsInspectionConfiguration("exampleTlsInspectionConfiguration", TlsInspectionConfigurationArgs.builder()
-///             .name("example")
-///             .description("example")
-///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
-///                 .keyId(example.arn())
-///                 .type("CUSTOMER_KMS")
-///                 .build())
 ///             .tlsInspectionConfiguration(TlsInspectionConfigurationTlsInspectionConfigurationArgs.builder()
 ///                 .serverCertificateConfiguration(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs.builder()
-///                     .serverCertificates(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs.builder()
-///                         .resourceArn(example1.arn())
-///                         .build())
 ///                     .scopes(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs.builder()
-///                         .protocols(6)
 ///                         .destinationPorts(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs.builder()
 ///                             .fromPort(443)
 ///                             .toPort(443)
@@ -1081,9 +1074,19 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                         .sources(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs.builder()
 ///                             .addressDefinition("0.0.0.0/0")
 ///                             .build())
+///                         .protocols(6)
+///                         .build())
+///                     .serverCertificates(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs.builder()
+///                         .resourceArn(example1.arn())
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
+///                 .keyId(example.arn())
+///                 .type("CUSTOMER_KMS")
+///                 .build())
+///             .name("example")
+///             .description("example")
 ///             .build());
 ///
 ///     }
@@ -1100,19 +1103,10 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///     type: aws:networkfirewall:TlsInspectionConfiguration
 ///     name: example
 ///     properties:
-///       name: example
-///       description: example
-///       encryptionConfigurations:
-///         - keyId: ${example.arn}
-///           type: CUSTOMER_KMS
 ///       tlsInspectionConfiguration:
 ///         serverCertificateConfiguration:
-///           serverCertificates:
-///             - resourceArn: ${example1.arn}
 ///           scopes:
-///             - protocols:
-///                 - 6
-///               destinationPorts:
+///             - destinationPorts:
 ///                 - fromPort: 443
 ///                   toPort: 443
 ///               destinations:
@@ -1122,6 +1116,15 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                   toPort: 65535
 ///               sources:
 ///                 - addressDefinition: 0.0.0.0/0
+///               protocols:
+///                 - 6
+///           serverCertificates:
+///             - resourceArn: ${example1.arn}
+///       encryptionConfigurations:
+///         - keyId: ${example.arn}
+///           type: CUSTOMER_KMS
+///       name: example
+///       description: example
 /// ```
 ///
 ///
@@ -1137,38 +1140,38 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///     deletionWindowInDays: 7,
 /// });
 /// const exampleTlsInspectionConfiguration = new aws.networkfirewall.TlsInspectionConfiguration("example", {
-///     name: "example",
-///     description: "example",
-///     encryptionConfigurations: [{
-///         keyId: example.arn,
-///         type: "CUSTOMER_KMS",
-///     }],
 ///     tlsInspectionConfiguration: {
 ///         serverCertificateConfigurations: [{
-///             certificateAuthorityArn: example1.arn,
 ///             checkCertificateRevocationStatus: [{
 ///                 revokedStatusAction: "REJECT",
 ///                 unknownStatusAction: "PASS",
 ///             }],
 ///             scope: [{
-///                 protocols: [6],
+///                 destination: [{
+///                     addressDefinition: "0.0.0.0/0",
+///                 }],
 ///                 destinationPorts: [{
 ///                     fromPort: 443,
 ///                     toPort: 443,
 ///                 }],
-///                 destination: [{
+///                 source: [{
 ///                     addressDefinition: "0.0.0.0/0",
 ///                 }],
 ///                 sourcePorts: [{
 ///                     fromPort: 0,
 ///                     toPort: 65535,
 ///                 }],
-///                 source: [{
-///                     addressDefinition: "0.0.0.0/0",
-///                 }],
+///                 protocols: [6],
 ///             }],
+///             certificateAuthorityArn: example1.arn,
 ///         }],
 ///     },
+///     encryptionConfigurations: [{
+///         keyId: example.arn,
+///         type: "CUSTOMER_KMS",
+///     }],
+///     name: "example",
+///     description: "example",
 /// });
 /// ```
 /// ```python
@@ -1179,38 +1182,38 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///     description="example",
 ///     deletion_window_in_days=7)
 /// example_tls_inspection_configuration = aws.networkfirewall.TlsInspectionConfiguration("example",
-///     name="example",
-///     description="example",
-///     encryption_configurations=[{
-///         "key_id": example.arn,
-///         "type": "CUSTOMER_KMS",
-///     }],
 ///     tls_inspection_configuration={
 ///         "server_certificate_configurations": [{
-///             "certificateAuthorityArn": example1["arn"],
 ///             "checkCertificateRevocationStatus": [{
 ///                 "revokedStatusAction": "REJECT",
 ///                 "unknownStatusAction": "PASS",
 ///             }],
 ///             "scope": [{
-///                 "protocols": [6],
+///                 "destination": [{
+///                     "addressDefinition": "0.0.0.0/0",
+///                 }],
 ///                 "destinationPorts": [{
 ///                     "fromPort": 443,
 ///                     "toPort": 443,
 ///                 }],
-///                 "destination": [{
+///                 "source": [{
 ///                     "addressDefinition": "0.0.0.0/0",
 ///                 }],
 ///                 "sourcePorts": [{
 ///                     "fromPort": 0,
 ///                     "toPort": 65535,
 ///                 }],
-///                 "source": [{
-///                     "addressDefinition": "0.0.0.0/0",
-///                 }],
+///                 "protocols": [6],
 ///             }],
+///             "certificateAuthorityArn": example1["arn"],
 ///         }],
-///     })
+///     },
+///     encryption_configurations=[{
+///         "key_id": example.arn,
+///         "type": "CUSTOMER_KMS",
+///     }],
+///     name="example",
+///     description="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1228,23 +1231,12 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///
 ///     var exampleTlsInspectionConfiguration = new Aws.NetworkFirewall.TlsInspectionConfiguration("example", new()
 ///     {
-///         Name = "example",
-///         Description = "example",
-///         EncryptionConfigurations = new[]
-///         {
-///             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationEncryptionConfigurationArgs
-///             {
-///                 KeyId = example.Arn,
-///                 Type = "CUSTOMER_KMS",
-///             },
-///         },
 ///         TlsInspectionConfig = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs
 ///         {
 ///             ServerCertificateConfigurations = new[]
 ///             {
 ///
 ///                 {
-///                     { "certificateAuthorityArn", example1.Arn },
 ///                     { "checkCertificateRevocationStatus", new[]
 ///                     {
 ///
@@ -1257,9 +1249,12 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                     {
 ///
 ///                         {
-///                             { "protocols", new[]
+///                             { "destination", new[]
 ///                             {
-///                                 6,
+///
+///                                 {
+///                                     { "addressDefinition", "0.0.0.0/0" },
+///                                 },
 ///                             } },
 ///                             { "destinationPorts", new[]
 ///                             {
@@ -1269,7 +1264,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                                     { "toPort", 443 },
 ///                                 },
 ///                             } },
-///                             { "destination", new[]
+///                             { "source", new[]
 ///                             {
 ///
 ///                                 {
@@ -1284,18 +1279,26 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                                     { "toPort", 65535 },
 ///                                 },
 ///                             } },
-///                             { "source", new[]
+///                             { "protocols", new[]
 ///                             {
-///
-///                                 {
-///                                     { "addressDefinition", "0.0.0.0/0" },
-///                                 },
+///                                 6,
 ///                             } },
 ///                         },
 ///                     } },
+///                     { "certificateAuthorityArn", example1.Arn },
 ///                 },
 ///             },
 ///         },
+///         EncryptionConfigurations = new[]
+///         {
+///             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationEncryptionConfigurationArgs
+///             {
+///                 KeyId = example.Arn,
+///                 Type = "CUSTOMER_KMS",
+///             },
+///         },
+///         Name = "example",
+///         Description = "example",
 ///     });
 ///
 /// });
@@ -1319,18 +1322,9 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 			return err
 /// 		}
 /// 		_, err = networkfirewall.NewTlsInspectionConfiguration(ctx, "example", &networkfirewall.TlsInspectionConfigurationArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Description: pulumi.String("example"),
-/// 			EncryptionConfigurations: networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArray{
-/// 				&networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArgs{
-/// 					KeyId: example.Arn,
-/// 					Type:  pulumi.String("CUSTOMER_KMS"),
-/// 				},
-/// 			},
 /// 			TlsInspectionConfiguration: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationArgs{
 /// 				ServerCertificateConfigurations: []map[string]interface{}{
 /// 					map[string]interface{}{
-/// 						"certificateAuthorityArn": example1.Arn,
 /// 						"checkCertificateRevocationStatus": []map[string]string{
 /// 							{
 /// 								"revokedStatusAction": "REJECT",
@@ -1339,8 +1333,10 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 						},
 /// 						"scope": []map[string]interface{}{
 /// 							map[string]interface{}{
-/// 								"protocols": []int{
-/// 									6,
+/// 								"destination": []map[string]string{
+/// 									{
+/// 										"addressDefinition": "0.0.0.0/0",
+/// 									},
 /// 								},
 /// 								"destinationPorts": []map[string]int{
 /// 									{
@@ -1348,7 +1344,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 										"toPort":   443,
 /// 									},
 /// 								},
-/// 								"destination": []map[string]string{
+/// 								"source": []map[string]string{
 /// 									{
 /// 										"addressDefinition": "0.0.0.0/0",
 /// 									},
@@ -1359,16 +1355,23 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 										"toPort":   65535,
 /// 									},
 /// 								},
-/// 								"source": []map[string]string{
-/// 									{
-/// 										"addressDefinition": "0.0.0.0/0",
-/// 									},
+/// 								"protocols": []int{
+/// 									6,
 /// 								},
 /// 							},
 /// 						},
+/// 						"certificateAuthorityArn": example1.Arn,
 /// 					},
 /// 				},
 /// 			},
+/// 			EncryptionConfigurations: networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArray{
+/// 				&networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArgs{
+/// 					KeyId: example.Arn,
+/// 					Type:  pulumi.String("CUSTOMER_KMS"),
+/// 				},
+/// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			Description: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1391,38 +1394,38 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///   deletion_window_in_days = 7
 /// }
 /// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
-///   name        = "example"
-///   description = "example"
-///   encryption_configurations {
-///     key_id = aws_kms_key.example.arn
-///     type   = "CUSTOMER_KMS"
-///   }
 ///   tls_inspection_configuration = {
 ///     server_certificate_configurations = [{
-///       "certificateAuthorityArn" = example1.arn
 ///       "checkCertificateRevocationStatus" = [{
 ///         "revokedStatusAction" = "REJECT"
 ///         "unknownStatusAction" = "PASS"
 ///       }]
 ///       "scope" = [{
-///         "protocols" = [6]
+///         "destination" = [{
+///           "addressDefinition" = "0.0.0.0/0"
+///         }]
 ///         "destinationPorts" = [{
 ///           "fromPort" = 443
 ///           "toPort"   = 443
 ///         }]
-///         "destination" = [{
+///         "source" = [{
 ///           "addressDefinition" = "0.0.0.0/0"
 ///         }]
 ///         "sourcePorts" = [{
 ///           "fromPort" = 0
 ///           "toPort"   = 65535
 ///         }]
-///         "source" = [{
-///           "addressDefinition" = "0.0.0.0/0"
-///         }]
+///         "protocols" = [6]
 ///       }]
+///       "certificateAuthorityArn" = example1.arn
 ///     }]
 ///   }
+///   encryption_configurations {
+///     key_id = aws_kms_key.example.arn
+///     type   = "CUSTOMER_KMS"
+///   }
+///   name        = "example"
+///   description = "example"
 /// }
 /// ```
 /// ```java
@@ -1435,8 +1438,8 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.aws.kms.KeyArgs;
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfiguration;
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfigurationArgs;
-/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1456,34 +1459,34 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///             .build());
 ///
 ///         var exampleTlsInspectionConfiguration = new TlsInspectionConfiguration("exampleTlsInspectionConfiguration", TlsInspectionConfigurationArgs.builder()
-///             .name("example")
-///             .description("example")
-///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
-///                 .keyId(example.arn())
-///                 .type("CUSTOMER_KMS")
-///                 .build())
 ///             .tlsInspectionConfiguration(TlsInspectionConfigurationTlsInspectionConfigurationArgs.builder()
 ///                 .serverCertificateConfigurations(Arrays.asList(Map.ofEntries(
-///                     Map.entry("certificateAuthorityArn", example1.arn()),
 ///                     Map.entry("checkCertificateRevocationStatus", Arrays.asList(Map.ofEntries(
 ///                         Map.entry("revokedStatusAction", "REJECT"),
 ///                         Map.entry("unknownStatusAction", "PASS")
 ///                     ))),
 ///                     Map.entry("scope", Arrays.asList(Map.ofEntries(
-///                         Map.entry("protocols", Arrays.asList(6)),
+///                         Map.entry("destination", Arrays.asList(Map.of("addressDefinition", "0.0.0.0/0"))),
 ///                         Map.entry("destinationPorts", Arrays.asList(Map.ofEntries(
 ///                             Map.entry("fromPort", 443),
 ///                             Map.entry("toPort", 443)
 ///                         ))),
-///                         Map.entry("destination", Arrays.asList(Map.of("addressDefinition", "0.0.0.0/0"))),
+///                         Map.entry("source", Arrays.asList(Map.of("addressDefinition", "0.0.0.0/0"))),
 ///                         Map.entry("sourcePorts", Arrays.asList(Map.ofEntries(
 ///                             Map.entry("fromPort", 0),
 ///                             Map.entry("toPort", 65535)
 ///                         ))),
-///                         Map.entry("source", Arrays.asList(Map.of("addressDefinition", "0.0.0.0/0")))
-///                     )))
+///                         Map.entry("protocols", Arrays.asList(6))
+///                     ))),
+///                     Map.entry("certificateAuthorityArn", example1.arn())
 ///                 )))
 ///                 .build())
+///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
+///                 .keyId(example.arn())
+///                 .type("CUSTOMER_KMS")
+///                 .build())
+///             .name("example")
+///             .description("example")
 ///             .build());
 ///
 ///     }
@@ -1500,30 +1503,30 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///     type: aws:networkfirewall:TlsInspectionConfiguration
 ///     name: example
 ///     properties:
-///       name: example
-///       description: example
-///       encryptionConfigurations:
-///         - keyId: ${example.arn}
-///           type: CUSTOMER_KMS
 ///       tlsInspectionConfiguration:
 ///         serverCertificateConfigurations:
-///           - certificateAuthorityArn: ${example1.arn}
-///             checkCertificateRevocationStatus:
+///           - checkCertificateRevocationStatus:
 ///               - revokedStatusAction: REJECT
 ///                 unknownStatusAction: PASS
 ///             scope:
-///               - protocols:
-///                   - 6
+///               - destination:
+///                   - addressDefinition: 0.0.0.0/0
 ///                 destinationPorts:
 ///                   - fromPort: 443
 ///                     toPort: 443
-///                 destination:
+///                 source:
 ///                   - addressDefinition: 0.0.0.0/0
 ///                 sourcePorts:
 ///                   - fromPort: 0
 ///                     toPort: 65535
-///                 source:
-///                   - addressDefinition: 0.0.0.0/0
+///                 protocols:
+///                   - 6
+///             certificateAuthorityArn: ${example1.arn}
+///       encryptionConfigurations:
+///         - keyId: ${example.arn}
+///           type: CUSTOMER_KMS
+///       name: example
+///       description: example
 /// ```
 ///
 ///
@@ -1535,24 +1538,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.networkfirewall.TlsInspectionConfiguration("example", {
-///     name: "example",
-///     description: "example",
-///     encryptionConfigurations: [{
-///         keyId: "AWS_OWNED_KMS_KEY",
-///         type: "AWS_OWNED_KMS_KEY",
-///     }],
 ///     tlsInspectionConfiguration: {
 ///         serverCertificateConfiguration: {
-///             certificateAuthorityArn: example1.arn,
 ///             checkCertificateRevocationStatus: {
 ///                 revokedStatusAction: "REJECT",
 ///                 unknownStatusAction: "PASS",
 ///             },
-///             serverCertificates: [{
-///                 resourceArn: example2.arn,
-///             }],
 ///             scopes: [{
-///                 protocols: [6],
 ///                 destinationPorts: [{
 ///                     fromPort: 443,
 ///                     toPort: 443,
@@ -1567,9 +1559,20 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                 sources: [{
 ///                     addressDefinition: "0.0.0.0/0",
 ///                 }],
+///                 protocols: [6],
 ///             }],
+///             serverCertificates: [{
+///                 resourceArn: example2.arn,
+///             }],
+///             certificateAuthorityArn: example1.arn,
 ///         },
 ///     },
+///     encryptionConfigurations: [{
+///         keyId: "AWS_OWNED_KMS_KEY",
+///         type: "AWS_OWNED_KMS_KEY",
+///     }],
+///     name: "example",
+///     description: "example",
 /// });
 /// ```
 /// ```python
@@ -1577,24 +1580,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.networkfirewall.TlsInspectionConfiguration("example",
-///     name="example",
-///     description="example",
-///     encryption_configurations=[{
-///         "key_id": "AWS_OWNED_KMS_KEY",
-///         "type": "AWS_OWNED_KMS_KEY",
-///     }],
 ///     tls_inspection_configuration={
 ///         "server_certificate_configuration": {
-///             "certificate_authority_arn": example1["arn"],
 ///             "check_certificate_revocation_status": {
 ///                 "revoked_status_action": "REJECT",
 ///                 "unknown_status_action": "PASS",
 ///             },
-///             "server_certificates": [{
-///                 "resource_arn": example2["arn"],
-///             }],
 ///             "scopes": [{
-///                 "protocols": [6],
 ///                 "destination_ports": [{
 ///                     "from_port": 443,
 ///                     "to_port": 443,
@@ -1609,9 +1601,20 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                 "sources": [{
 ///                     "address_definition": "0.0.0.0/0",
 ///                 }],
+///                 "protocols": [6],
 ///             }],
+///             "server_certificates": [{
+///                 "resource_arn": example2["arn"],
+///             }],
+///             "certificate_authority_arn": example1["arn"],
 ///         },
-///     })
+///     },
+///     encryption_configurations=[{
+///         "key_id": "AWS_OWNED_KMS_KEY",
+///         "type": "AWS_OWNED_KMS_KEY",
+///     }],
+///     name="example",
+///     description="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1623,41 +1626,19 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// {
 ///     var example = new Aws.NetworkFirewall.TlsInspectionConfiguration("example", new()
 ///     {
-///         Name = "example",
-///         Description = "example",
-///         EncryptionConfigurations = new[]
-///         {
-///             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationEncryptionConfigurationArgs
-///             {
-///                 KeyId = "AWS_OWNED_KMS_KEY",
-///                 Type = "AWS_OWNED_KMS_KEY",
-///             },
-///         },
 ///         TlsInspectionConfig = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs
 ///         {
 ///             ServerCertificateConfiguration = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs
 ///             {
-///                 CertificateAuthorityArn = example1.Arn,
 ///                 CheckCertificateRevocationStatus = new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatusArgs
 ///                 {
 ///                     RevokedStatusAction = "REJECT",
 ///                     UnknownStatusAction = "PASS",
 ///                 },
-///                 ServerCertificates = new[]
-///                 {
-///                     new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs
-///                     {
-///                         ResourceArn = example2.Arn,
-///                     },
-///                 },
 ///                 Scopes = new[]
 ///                 {
 ///                     new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs
 ///                     {
-///                         Protocols = new[]
-///                         {
-///                             6,
-///                         },
 ///                         DestinationPorts = new[]
 ///                         {
 ///                             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs
@@ -1688,10 +1669,32 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                                 AddressDefinition = "0.0.0.0/0",
 ///                             },
 ///                         },
+///                         Protocols = new[]
+///                         {
+///                             6,
+///                         },
 ///                     },
 ///                 },
+///                 ServerCertificates = new[]
+///                 {
+///                     new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs
+///                     {
+///                         ResourceArn = example2.Arn,
+///                     },
+///                 },
+///                 CertificateAuthorityArn = example1.Arn,
 ///             },
 ///         },
+///         EncryptionConfigurations = new[]
+///         {
+///             new Aws.NetworkFirewall.Inputs.TlsInspectionConfigurationEncryptionConfigurationArgs
+///             {
+///                 KeyId = "AWS_OWNED_KMS_KEY",
+///                 Type = "AWS_OWNED_KMS_KEY",
+///             },
+///         },
+///         Name = "example",
+///         Description = "example",
 ///     });
 ///
 /// });
@@ -1707,31 +1710,14 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := networkfirewall.NewTlsInspectionConfiguration(ctx, "example", &networkfirewall.TlsInspectionConfigurationArgs{
-/// 			Name:        pulumi.String("example"),
-/// 			Description: pulumi.String("example"),
-/// 			EncryptionConfigurations: networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArray{
-/// 				&networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArgs{
-/// 					KeyId: pulumi.String("AWS_OWNED_KMS_KEY"),
-/// 					Type:  pulumi.String("AWS_OWNED_KMS_KEY"),
-/// 				},
-/// 			},
 /// 			TlsInspectionConfiguration: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationArgs{
 /// 				ServerCertificateConfiguration: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs{
-/// 					CertificateAuthorityArn: pulumi.Any(example1.Arn),
 /// 					CheckCertificateRevocationStatus: &networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatusArgs{
 /// 						RevokedStatusAction: pulumi.String("REJECT"),
 /// 						UnknownStatusAction: pulumi.String("PASS"),
 /// 					},
-/// 					ServerCertificates: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArray{
-/// 						&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs{
-/// 							ResourceArn: pulumi.Any(example2.Arn),
-/// 						},
-/// 					},
 /// 					Scopes: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArray{
 /// 						&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs{
-/// 							Protocols: pulumi.IntArray{
-/// 								pulumi.Int(6),
-/// 							},
 /// 							DestinationPorts: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArray{
 /// 								&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs{
 /// 									FromPort: pulumi.Int(443),
@@ -1754,10 +1740,27 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// 									AddressDefinition: pulumi.String("0.0.0.0/0"),
 /// 								},
 /// 							},
+/// 							Protocols: pulumi.IntArray{
+/// 								pulumi.Int(6),
+/// 							},
 /// 						},
 /// 					},
+/// 					ServerCertificates: networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArray{
+/// 						&networkfirewall.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs{
+/// 							ResourceArn: pulumi.Any(example2.Arn),
+/// 						},
+/// 					},
+/// 					CertificateAuthorityArn: pulumi.Any(example1.Arn),
 /// 				},
 /// 			},
+/// 			EncryptionConfigurations: networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArray{
+/// 				&networkfirewall.TlsInspectionConfigurationEncryptionConfigurationArgs{
+/// 					KeyId: pulumi.String("AWS_OWNED_KMS_KEY"),
+/// 					Type:  pulumi.String("AWS_OWNED_KMS_KEY"),
+/// 				},
+/// 			},
+/// 			Name:        pulumi.String("example"),
+/// 			Description: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1776,24 +1779,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// }
 ///
 /// resource "aws_networkfirewall_tlsinspectionconfiguration" "example" {
-///   name        = "example"
-///   description = "example"
-///   encryption_configurations {
-///     key_id = "AWS_OWNED_KMS_KEY"
-///     type   = "AWS_OWNED_KMS_KEY"
-///   }
 ///   tls_inspection_configuration = {
 ///     server_certificate_configuration = {
-///       certificate_authority_arn = example1.arn
 ///       check_certificate_revocation_status = {
 ///         revoked_status_action = "REJECT"
 ///         unknown_status_action = "PASS"
 ///       }
-///       server_certificates = [{
-///         "resourceArn" = example2.arn
-///       }]
 ///       scopes = [{
-///         "protocols" = [6]
 ///         "destinationPorts" = [{
 ///           "fromPort" = 443
 ///           "toPort"   = 443
@@ -1808,9 +1800,20 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///         "sources" = [{
 ///           "addressDefinition" = "0.0.0.0/0"
 ///         }]
+///         "protocols" = [6]
 ///       }]
+///       server_certificates = [{
+///         "resourceArn" = example2.arn
+///       }]
+///       certificate_authority_arn = example1.arn
 ///     }
 ///   }
+///   encryption_configurations {
+///     key_id = "AWS_OWNED_KMS_KEY"
+///     type   = "AWS_OWNED_KMS_KEY"
+///   }
+///   name        = "example"
+///   description = "example"
 /// }
 /// ```
 /// ```java
@@ -1821,16 +1824,16 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfiguration;
 /// import com.pulumi.aws.networkfirewall.TlsInspectionConfigurationArgs;
-/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatusArgs;
-/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePortArgs;
 /// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs;
+/// import com.pulumi.aws.networkfirewall.inputs.TlsInspectionConfigurationEncryptionConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1845,24 +1848,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new TlsInspectionConfiguration("example", TlsInspectionConfigurationArgs.builder()
-///             .name("example")
-///             .description("example")
-///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
-///                 .keyId("AWS_OWNED_KMS_KEY")
-///                 .type("AWS_OWNED_KMS_KEY")
-///                 .build())
 ///             .tlsInspectionConfiguration(TlsInspectionConfigurationTlsInspectionConfigurationArgs.builder()
 ///                 .serverCertificateConfiguration(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationArgs.builder()
-///                     .certificateAuthorityArn(example1.arn())
 ///                     .checkCertificateRevocationStatus(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatusArgs.builder()
 ///                         .revokedStatusAction("REJECT")
 ///                         .unknownStatusAction("PASS")
 ///                         .build())
-///                     .serverCertificates(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs.builder()
-///                         .resourceArn(example2.arn())
-///                         .build())
 ///                     .scopes(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeArgs.builder()
-///                         .protocols(6)
 ///                         .destinationPorts(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPortArgs.builder()
 ///                             .fromPort(443)
 ///                             .toPort(443)
@@ -1877,9 +1869,20 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                         .sources(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourceArgs.builder()
 ///                             .addressDefinition("0.0.0.0/0")
 ///                             .build())
+///                         .protocols(6)
 ///                         .build())
+///                     .serverCertificates(TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificateArgs.builder()
+///                         .resourceArn(example2.arn())
+///                         .build())
+///                     .certificateAuthorityArn(example1.arn())
 ///                     .build())
 ///                 .build())
+///             .encryptionConfigurations(TlsInspectionConfigurationEncryptionConfigurationArgs.builder()
+///                 .keyId("AWS_OWNED_KMS_KEY")
+///                 .type("AWS_OWNED_KMS_KEY")
+///                 .build())
+///             .name("example")
+///             .description("example")
 ///             .build());
 ///
 ///     }
@@ -1890,23 +1893,13 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///   example:
 ///     type: aws:networkfirewall:TlsInspectionConfiguration
 ///     properties:
-///       name: example
-///       description: example
-///       encryptionConfigurations:
-///         - keyId: AWS_OWNED_KMS_KEY
-///           type: AWS_OWNED_KMS_KEY
 ///       tlsInspectionConfiguration:
 ///         serverCertificateConfiguration:
-///           certificateAuthorityArn: ${example1.arn}
 ///           checkCertificateRevocationStatus:
 ///             revokedStatusAction: REJECT
 ///             unknownStatusAction: PASS
-///           serverCertificates:
-///             - resourceArn: ${example2.arn}
 ///           scopes:
-///             - protocols:
-///                 - 6
-///               destinationPorts:
+///             - destinationPorts:
 ///                 - fromPort: 443
 ///                   toPort: 443
 ///               destinations:
@@ -1916,6 +1909,16 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///                   toPort: 65535
 ///               sources:
 ///                 - addressDefinition: 0.0.0.0/0
+///               protocols:
+///                 - 6
+///           serverCertificates:
+///             - resourceArn: ${example2.arn}
+///           certificateAuthorityArn: ${example1.arn}
+///       encryptionConfigurations:
+///         - keyId: AWS_OWNED_KMS_KEY
+///           type: AWS_OWNED_KMS_KEY
+///       name: example
+///       description: example
 /// ```
 ///
 ///
@@ -1925,7 +1928,7 @@ import 'tls_inspection_configuration_tls_inspection_configuration.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the Network Firewall TLS inspection configuration.
+/// - `arn` (String) ARN of the Network Firewall TLS inspection configuration.
 ///
 ///
 /// Using `pulumi import`, import Network Firewall TLS Inspection Configuration using the `arn`. For example:
@@ -1937,13 +1940,13 @@ class TlsInspectionConfiguration extends pulumi.CustomResource {
   /// ARN of the TLS Inspection Configuration.
   late final pulumi.Output<String> arn;
   /// Certificate Manager certificate block. See Certificate Authority below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> certificateAuthorities;
+  late final pulumi.Output<List<TlsInspectionConfigurationCertificateAuthority>> certificateAuthorities;
   /// List of certificate blocks describing certificates associated with the TLS inspection configuration. See Certificates below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> certificates;
+  late final pulumi.Output<List<TlsInspectionConfigurationCertificate>> certificates;
   /// Description of the TLS inspection configuration.
   late final pulumi.Output<String?> description;
   /// Encryption configuration block. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> encryptionConfigurations;
+  late final pulumi.Output<List<TlsInspectionConfigurationEncryptionConfiguration>> encryptionConfigurations;
   /// Descriptive name of the TLS inspection configuration.
   late final pulumi.Output<String> name;
   /// Number of firewall policies that use this TLS inspection configuration.
@@ -1974,18 +1977,18 @@ class TlsInspectionConfiguration extends pulumi.CustomResource {
           'aws:networkfirewall/tlsInspectionConfiguration:TlsInspectionConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    certificateAuthorities = registerOutput<List<Map<String, dynamic>>>('certificateAuthorities');
-    certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
+    certificateAuthorities = registerOutput<List<TlsInspectionConfigurationCertificateAuthority>>('certificateAuthorities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsInspectionConfigurationCertificateAuthority>(guardedValue, (value) => TlsInspectionConfigurationCertificateAuthority.fromMap((value as Map).cast<String, dynamic>())); });
+    certificates = registerOutput<List<TlsInspectionConfigurationCertificate>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsInspectionConfigurationCertificate>(guardedValue, (value) => TlsInspectionConfigurationCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>>('encryptionConfigurations');
+    encryptionConfigurations = registerOutput<List<TlsInspectionConfigurationEncryptionConfiguration>>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsInspectionConfigurationEncryptionConfiguration>(guardedValue, (value) => TlsInspectionConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     numberOfAssociations = registerOutput<int>('numberOfAssociations');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsInspectionConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tlsInspectionConfiguration = registerOutput<TlsInspectionConfigurationTlsInspectionConfiguration>('tlsInspectionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsInspectionConfigurationTlsInspectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tlsInspectionConfigurationId = registerOutput<String>('tlsInspectionConfigurationId');
@@ -1997,11 +2000,12 @@ class TlsInspectionConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TlsInspectionConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TlsInspectionConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2016,15 +2020,40 @@ class TlsInspectionConfiguration extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    certificateAuthorities = registerOutput<List<Map<String, dynamic>>>('certificateAuthorities');
-    certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
+    certificateAuthorities = registerOutput<List<TlsInspectionConfigurationCertificateAuthority>>('certificateAuthorities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsInspectionConfigurationCertificateAuthority>(guardedValue, (value) => TlsInspectionConfigurationCertificateAuthority.fromMap((value as Map).cast<String, dynamic>())); });
+    certificates = registerOutput<List<TlsInspectionConfigurationCertificate>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsInspectionConfigurationCertificate>(guardedValue, (value) => TlsInspectionConfigurationCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    encryptionConfigurations = registerOutput<List<Map<String, dynamic>>>('encryptionConfigurations');
+    encryptionConfigurations = registerOutput<List<TlsInspectionConfigurationEncryptionConfiguration>>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsInspectionConfigurationEncryptionConfiguration>(guardedValue, (value) => TlsInspectionConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     numberOfAssociations = registerOutput<int>('numberOfAssociations');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsInspectionConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tlsInspectionConfiguration = registerOutput<TlsInspectionConfigurationTlsInspectionConfiguration>('tlsInspectionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsInspectionConfigurationTlsInspectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tlsInspectionConfigurationId = registerOutput<String>('tlsInspectionConfigurationId');
+    updateToken = registerOutput<String>('updateToken');
+  }
+
+  /// Creates a typed reference to an existing [TlsInspectionConfiguration] resource.
+  TlsInspectionConfiguration.reference(String urn)
+    : super(
+        'aws:networkfirewall/tlsInspectionConfiguration:TlsInspectionConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    certificateAuthorities = registerOutput<List<TlsInspectionConfigurationCertificateAuthority>>('certificateAuthorities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsInspectionConfigurationCertificateAuthority>(guardedValue, (value) => TlsInspectionConfigurationCertificateAuthority.fromMap((value as Map).cast<String, dynamic>())); });
+    certificates = registerOutput<List<TlsInspectionConfigurationCertificate>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsInspectionConfigurationCertificate>(guardedValue, (value) => TlsInspectionConfigurationCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    encryptionConfigurations = registerOutput<List<TlsInspectionConfigurationEncryptionConfiguration>>('encryptionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsInspectionConfigurationEncryptionConfiguration>(guardedValue, (value) => TlsInspectionConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    numberOfAssociations = registerOutput<int>('numberOfAssociations');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<TlsInspectionConfigurationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsInspectionConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tlsInspectionConfiguration = registerOutput<TlsInspectionConfigurationTlsInspectionConfiguration>('tlsInspectionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsInspectionConfigurationTlsInspectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tlsInspectionConfigurationId = registerOutput<String>('tlsInspectionConfigurationId');

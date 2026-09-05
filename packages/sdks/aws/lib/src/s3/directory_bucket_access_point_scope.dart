@@ -24,18 +24,16 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///     state: "available",
 /// });
 /// const example = new aws.s3.DirectoryBucket("example", {
-///     bucket: "example--zoneId--x-s3",
 ///     location: {
 ///         name: available.then(available => available.zoneIds?.[0]),
 ///     },
+///     bucket: "example--zoneId--x-s3",
 /// });
 /// const exampleAccessPoint = new aws.s3.AccessPoint("example", {
 ///     bucket: example.id,
 ///     name: "example--zoneId--xa-s3",
 /// });
 /// const exampleDirectoryBucketAccessPointScope = new aws.s3control.DirectoryBucketAccessPointScope("example", {
-///     name: "example--zoneId--xa-s3",
-///     accountId: "123456789012",
 ///     scope: {
 ///         permissions: [
 ///             "GetObject",
@@ -46,6 +44,8 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///             "myobject2*",
 ///         ],
 ///     },
+///     name: "example--zoneId--xa-s3",
+///     accountId: "123456789012",
 /// });
 /// ```
 /// ```python
@@ -54,16 +54,14 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///
 /// available = aws.get_availability_zones(state="available")
 /// example = aws.s3.DirectoryBucket("example",
-///     bucket="example--zoneId--x-s3",
 ///     location={
 ///         "name": available.zone_ids[0],
-///     })
+///     },
+///     bucket="example--zoneId--x-s3")
 /// example_access_point = aws.s3.AccessPoint("example",
 ///     bucket=example.id,
 ///     name="example--zoneId--xa-s3")
 /// example_directory_bucket_access_point_scope = aws.s3control.DirectoryBucketAccessPointScope("example",
-///     name="example--zoneId--xa-s3",
-///     account_id="123456789012",
 ///     scope={
 ///         "permissions": [
 ///             "GetObject",
@@ -73,7 +71,9 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///             "myobject1.csv",
 ///             "myobject2*",
 ///         ],
-///     })
+///     },
+///     name="example--zoneId--xa-s3",
+///     account_id="123456789012")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -90,11 +90,11 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///
 ///     var example = new Aws.S3.DirectoryBucket("example", new()
 ///     {
-///         Bucket = "example--zoneId--x-s3",
 ///         Location = new Aws.S3.Inputs.DirectoryBucketLocationArgs
 ///         {
 ///             Name = available.Apply(getAvailabilityZonesResult => getAvailabilityZonesResult.ZoneIds[0]),
 ///         },
+///         Bucket = "example--zoneId--x-s3",
 ///     });
 ///
 ///     var exampleAccessPoint = new Aws.S3.AccessPoint("example", new()
@@ -105,8 +105,6 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///
 ///     var exampleDirectoryBucketAccessPointScope = new Aws.S3Control.DirectoryBucketAccessPointScope("example", new()
 ///     {
-///         Name = "example--zoneId--xa-s3",
-///         AccountId = "123456789012",
 ///         Scope = new Aws.S3Control.Inputs.DirectoryBucketAccessPointScopeScopeArgs
 ///         {
 ///             Permissions = new[]
@@ -120,6 +118,8 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///                 "myobject2*",
 ///             },
 ///         },
+///         Name = "example--zoneId--xa-s3",
+///         AccountId = "123456789012",
 ///     });
 ///
 /// });
@@ -143,10 +143,10 @@ import 'directory_bucket_access_point_scope_state.dart';
 /// 			return err
 /// 		}
 /// 		example, err := s3.NewDirectoryBucket(ctx, "example", &s3.DirectoryBucketArgs{
-/// 			Bucket: pulumi.String("example--zoneId--x-s3"),
 /// 			Location: &s3.DirectoryBucketLocationArgs{
 /// 				Name: pulumi.String(available.ZoneIds[0]),
 /// 			},
+/// 			Bucket: pulumi.String("example--zoneId--x-s3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -159,8 +159,6 @@ import 'directory_bucket_access_point_scope_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3control.NewDirectoryBucketAccessPointScope(ctx, "example", &s3control.DirectoryBucketAccessPointScopeArgs{
-/// 			Name:      pulumi.String("example--zoneId--xa-s3"),
-/// 			AccountId: pulumi.String("123456789012"),
 /// 			Scope: &s3control.DirectoryBucketAccessPointScopeScopeArgs{
 /// 				Permissions: pulumi.StringArray{
 /// 					pulumi.String("GetObject"),
@@ -171,6 +169,8 @@ import 'directory_bucket_access_point_scope_state.dart';
 /// 					pulumi.String("myobject2*"),
 /// 				},
 /// 			},
+/// 			Name:      pulumi.String("example--zoneId--xa-s3"),
+/// 			AccountId: pulumi.String("123456789012"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -193,22 +193,22 @@ import 'directory_bucket_access_point_scope_state.dart';
 /// }
 ///
 /// resource "aws_s3_directorybucket" "example" {
-///   bucket = "example--zoneId--x-s3"
 ///   location = {
 ///     name = data.aws_getavailabilityzones.available.zone_ids[0]
 ///   }
+///   bucket = "example--zoneId--x-s3"
 /// }
 /// resource "aws_s3_accesspoint" "example" {
 ///   bucket = aws_s3_directorybucket.example.id
 ///   name   = "example--zoneId--xa-s3"
 /// }
 /// resource "aws_s3control_directorybucketaccesspointscope" "example" {
-///   name       = "example--zoneId--xa-s3"
-///   account_id = "123456789012"
 ///   scope = {
 ///     permissions = ["GetObject", "ListBucket"]
 ///     prefixes    = ["myobject1.csv", "myobject2*"]
 ///   }
+///   name       = "example--zoneId--xa-s3"
+///   account_id = "123456789012"
 /// }
 /// ```
 /// ```java
@@ -245,10 +245,10 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///             .build());
 ///
 ///         var example = new DirectoryBucket("example", DirectoryBucketArgs.builder()
-///             .bucket("example--zoneId--x-s3")
 ///             .location(DirectoryBucketLocationArgs.builder()
 ///                 .name(available.zoneIds()[0])
 ///                 .build())
+///             .bucket("example--zoneId--x-s3")
 ///             .build());
 ///
 ///         var exampleAccessPoint = new AccessPoint("exampleAccessPoint", AccessPointArgs.builder()
@@ -257,8 +257,6 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///             .build());
 ///
 ///         var exampleDirectoryBucketAccessPointScope = new DirectoryBucketAccessPointScope("exampleDirectoryBucketAccessPointScope", DirectoryBucketAccessPointScopeArgs.builder()
-///             .name("example--zoneId--xa-s3")
-///             .accountId("123456789012")
 ///             .scope(DirectoryBucketAccessPointScopeScopeArgs.builder()
 ///                 .permissions(
 ///                     "GetObject",
@@ -267,6 +265,8 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///                     "myobject1.csv",
 ///                     "myobject2*")
 ///                 .build())
+///             .name("example--zoneId--xa-s3")
+///             .accountId("123456789012")
 ///             .build());
 ///
 ///     }
@@ -277,9 +277,9 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///   example:
 ///     type: aws:s3:DirectoryBucket
 ///     properties:
-///       bucket: example--zoneId--x-s3
 ///       location:
 ///         name: ${available.zoneIds[0]}
+///       bucket: example--zoneId--x-s3
 ///   exampleAccessPoint:
 ///     type: aws:s3:AccessPoint
 ///     name: example
@@ -290,8 +290,6 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///     type: aws:s3control:DirectoryBucketAccessPointScope
 ///     name: example
 ///     properties:
-///       name: example--zoneId--xa-s3
-///       accountId: '123456789012'
 ///       scope:
 ///         permissions:
 ///           - GetObject
@@ -299,6 +297,8 @@ import 'directory_bucket_access_point_scope_state.dart';
 ///         prefixes:
 ///           - myobject1.csv
 ///           - myobject2*
+///       name: example--zoneId--xa-s3
+///       accountId: '123456789012'
 /// variables:
 ///   available:
 ///     fn::invoke:
@@ -337,7 +337,7 @@ class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
           'aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');
@@ -350,11 +350,12 @@ class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DirectoryBucketAccessPointScopeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DirectoryBucketAccessPointScope._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,6 +369,21 @@ class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    scope = registerOutput<DirectoryBucketAccessPointScopeScope>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryBucketAccessPointScopeScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DirectoryBucketAccessPointScope] resource.
+  DirectoryBucketAccessPointScope.reference(String urn)
+    : super(
+        'aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

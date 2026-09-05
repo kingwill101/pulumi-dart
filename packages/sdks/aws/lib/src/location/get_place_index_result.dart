@@ -6,23 +6,23 @@ import 'get_place_index_data_source_configuration.dart';
 /// Result data returned by getPlaceIndex.
 class GetPlaceIndexResult {
   /// Timestamp for when the place index resource was created in ISO 8601 format.
-  final String createTime;
+  final String? createTime;
   /// Data provider of geospatial data.
-  final String dataSource;
+  final String? dataSource;
   /// List of configurations that specify data storage option for requesting Places.
-  final List<GetPlaceIndexDataSourceConfiguration> dataSourceConfigurations;
+  final List<GetPlaceIndexDataSourceConfiguration>? dataSourceConfigurations;
   /// Optional description for the place index resource.
-  final String description;
+  final String? description;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// ARN for the place index resource.
-  final String indexArn;
-  final String indexName;
-  final String region;
+  final String? indexArn;
+  final String? indexName;
+  final String? region;
   /// Key-value map of resource tags for the place index.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Timestamp for when the place index resource was last updated in ISO 8601 format.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetPlaceIndexResult].
   /// [createTime] Timestamp for when the place index resource was created in ISO 8601 format.
@@ -31,50 +31,50 @@ class GetPlaceIndexResult {
   /// [description] Optional description for the place index resource.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [indexArn] ARN for the place index resource.
-  /// [indexName] Required.
-  /// [region] Required.
+  /// [indexName] Optional.
+  /// [region] Optional.
   /// [tags] Key-value map of resource tags for the place index.
   /// [updateTime] Timestamp for when the place index resource was last updated in ISO 8601 format.
   const GetPlaceIndexResult({
-    required this.createTime,
-    required this.dataSource,
-    required this.dataSourceConfigurations,
-    required this.description,
-    required this.id,
-    required this.indexArn,
-    required this.indexName,
-    required this.region,
-    required this.tags,
-    required this.updateTime,
+    this.createTime,
+    this.dataSource,
+    this.dataSourceConfigurations,
+    this.description,
+    this.id,
+    this.indexArn,
+    this.indexName,
+    this.region,
+    this.tags,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'dataSource': dataSource,
-      'dataSourceConfigurations': pulumi.Input.encodeList<GetPlaceIndexDataSourceConfiguration, Map<String, dynamic>>(dataSourceConfigurations, (value) => value.toMap()),
-      'description': description,
-      'id': id,
-      'indexArn': indexArn,
-      'indexName': indexName,
-      'region': region,
-      'tags': tags,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'dataSource': ?dataSource,
+      'dataSourceConfigurations': ?(() { final guardedValue = dataSourceConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPlaceIndexDataSourceConfiguration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'description': ?description,
+      'id': ?id,
+      'indexArn': ?indexArn,
+      'indexName': ?indexName,
+      'region': ?region,
+      'tags': ?tags,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetPlaceIndexResult.fromMap(Map<String, dynamic> map) {
     return GetPlaceIndexResult(
-      createTime: map['createTime'] as String,
-      dataSource: map['dataSource'] as String,
-      dataSourceConfigurations: pulumi.Input.decodeList<GetPlaceIndexDataSourceConfiguration>(map['dataSourceConfigurations']!, (value) => GetPlaceIndexDataSourceConfiguration.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] as String,
-      id: map['id'] as String,
-      indexArn: map['indexArn'] as String,
-      indexName: map['indexName'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataSource: (() { final guardedValue = map['dataSource']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataSourceConfigurations: (() { final guardedValue = map['dataSourceConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPlaceIndexDataSourceConfiguration>(guardedValue, (value) => GetPlaceIndexDataSourceConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      indexArn: (() { final guardedValue = map['indexArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      indexName: (() { final guardedValue = map['indexName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

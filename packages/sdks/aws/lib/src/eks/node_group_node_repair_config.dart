@@ -5,17 +5,17 @@ import 'node_group_node_repair_config_node_repair_config_override.dart';
 
 class NodeGroupNodeRepairConfig {
   /// Specifies whether to enable node auto repair for the node group. Node auto repair is disabled by default. Defaults to `false`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a count of unhealthy nodes. Conflicts with `maxParallelNodesRepairedPercentage`.
-  final pulumi.Input<int>? maxParallelNodesRepairedCount;
+  final pulumi.Input<int?>? maxParallelNodesRepairedCount;
   /// Maximum number of nodes that can be repaired concurrently or in parallel, expressed as a percentage of unhealthy nodes. Conflicts with `maxParallelNodesRepairedCount`.
-  final pulumi.Input<int>? maxParallelNodesRepairedPercentage;
+  final pulumi.Input<int?>? maxParallelNodesRepairedPercentage;
   /// Count threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `maxUnhealthyNodeThresholdPercentage`.
-  final pulumi.Input<int>? maxUnhealthyNodeThresholdCount;
+  final pulumi.Input<int?>? maxUnhealthyNodeThresholdCount;
   /// Percentage threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `maxUnhealthyNodeThresholdCount`.
-  final pulumi.Input<int>? maxUnhealthyNodeThresholdPercentage;
+  final pulumi.Input<int?>? maxUnhealthyNodeThresholdPercentage;
   /// Granular overrides for specific repair actions. See `nodeRepairConfigOverrides` below for details.
-  final pulumi.Input<List<NodeGroupNodeRepairConfigNodeRepairConfigOverride>>? nodeRepairConfigOverrides;
+  final pulumi.Input<List<NodeGroupNodeRepairConfigNodeRepairConfigOverride>?>? nodeRepairConfigOverrides;
 
   /// Creates a new [NodeGroupNodeRepairConfig].
   /// [enabled] Specifies whether to enable node auto repair for the node group. Node auto repair is disabled by default. Defaults to `false`.
@@ -47,10 +47,10 @@ class NodeGroupNodeRepairConfig {
   factory NodeGroupNodeRepairConfig.fromMap(Map<String, dynamic> map) {
     return NodeGroupNodeRepairConfig(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxParallelNodesRepairedCount: (() { final guardedValue = map['maxParallelNodesRepairedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxParallelNodesRepairedPercentage: (() { final guardedValue = map['maxParallelNodesRepairedPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxUnhealthyNodeThresholdCount: (() { final guardedValue = map['maxUnhealthyNodeThresholdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxUnhealthyNodeThresholdPercentage: (() { final guardedValue = map['maxUnhealthyNodeThresholdPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxParallelNodesRepairedCount: (() { final guardedValue = map['maxParallelNodesRepairedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxParallelNodesRepairedPercentage: (() { final guardedValue = map['maxParallelNodesRepairedPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxUnhealthyNodeThresholdCount: (() { final guardedValue = map['maxUnhealthyNodeThresholdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxUnhealthyNodeThresholdPercentage: (() { final guardedValue = map['maxUnhealthyNodeThresholdPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nodeRepairConfigOverrides: (() { final guardedValue = map['nodeRepairConfigOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodeGroupNodeRepairConfigNodeRepairConfigOverride>(guardedValue, (value) => NodeGroupNodeRepairConfigNodeRepairConfigOverride.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

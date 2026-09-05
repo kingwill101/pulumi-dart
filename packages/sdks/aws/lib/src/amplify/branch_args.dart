@@ -10,41 +10,41 @@ class BranchArgs {
   /// Unique ID for an Amplify app.
   final pulumi.Input<String> appId;
   /// ARN for a backend environment that is part of an Amplify app.
-  final pulumi.Input<String>? backendEnvironmentArn;
+  final pulumi.Input<String?>? backendEnvironmentArn;
   /// Basic authorization credentials for the branch.
-  final pulumi.Input<String>? basicAuthCredentials;
+  final pulumi.Input<String?>? basicAuthCredentials;
   /// Name for the branch.
   final pulumi.Input<String> branchName;
   /// Description for the branch.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name for a branch. This is used as the default domain prefix.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Enables auto building for the branch.
-  final pulumi.Input<bool>? enableAutoBuild;
+  final pulumi.Input<bool?>? enableAutoBuild;
   /// Enables basic authorization for the branch.
-  final pulumi.Input<bool>? enableBasicAuth;
+  final pulumi.Input<bool?>? enableBasicAuth;
   /// Enables notifications for the branch.
-  final pulumi.Input<bool>? enableNotification;
+  final pulumi.Input<bool?>? enableNotification;
   /// Enables performance mode for the branch.
-  final pulumi.Input<bool>? enablePerformanceMode;
+  final pulumi.Input<bool?>? enablePerformanceMode;
   /// Enables pull request previews for this branch.
-  final pulumi.Input<bool>? enablePullRequestPreview;
+  final pulumi.Input<bool?>? enablePullRequestPreview;
   /// Enables skew protection for the branch.
-  final pulumi.Input<bool>? enableSkewProtection;
+  final pulumi.Input<bool?>? enableSkewProtection;
   /// Environment variables for the branch.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// Framework for the branch.
-  final pulumi.Input<String>? framework;
+  final pulumi.Input<String?>? framework;
   /// Amplify environment name for the pull request.
-  final pulumi.Input<String>? pullRequestEnvironmentName;
+  final pulumi.Input<String?>? pullRequestEnvironmentName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Describes the current stage for the branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Content Time To Live (TTL) for the website in seconds.
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
 
   /// Creates a new [BranchArgs].
   /// [appId] Unique ID for an Amplify app.

@@ -6,39 +6,39 @@ import 'get_secrets_secret.dart';
 /// Result data returned by getSecrets.
 class GetSecretsResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Map containing each `secret` `name` as the key with its decrypted plaintext value
-  final Map<String, String> plaintext;
-  final String region;
-  final List<GetSecretsSecret> secrets;
+  final Map<String, String>? plaintext;
+  final String? region;
+  final List<GetSecretsSecret>? secrets;
 
   /// Creates a new [GetSecretsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [plaintext] Map containing each `secret` `name` as the key with its decrypted plaintext value
-  /// [region] Required.
-  /// [secrets] Required.
+  /// [region] Optional.
+  /// [secrets] Optional.
   const GetSecretsResult({
-    required this.id,
-    required this.plaintext,
-    required this.region,
-    required this.secrets,
+    this.id,
+    this.plaintext,
+    this.region,
+    this.secrets,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'plaintext': plaintext,
-      'region': region,
-      'secrets': pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'id': ?id,
+      'plaintext': ?plaintext,
+      'region': ?region,
+      'secrets': ?(() { final guardedValue = secrets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetSecretsResult.fromMap(Map<String, dynamic> map) {
     return GetSecretsResult(
-      id: map['id'] as String,
-      plaintext: (map['plaintext'] as Map).cast<String, String>(),
-      region: map['region'] as String,
-      secrets: pulumi.Input.decodeList<GetSecretsSecret>(map['secrets']!, (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      plaintext: (() { final guardedValue = map['plaintext']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecretsSecret>(guardedValue, (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

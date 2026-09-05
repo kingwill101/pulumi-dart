@@ -9,19 +9,19 @@ import 'get_vpc_endpoint_service_filter.dart';
 /// {@macro pulumi_ec2_get_vpc_endpoint_service_get_vpc_endpoint_service_args_doc}
 class GetVpcEndpointServiceArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetVpcEndpointServiceFilter>>? filters;
+  final pulumi.Input<List<GetVpcEndpointServiceFilter>?>? filters;
   /// Common name of an AWS service (e.g., `s3`).
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// Service name that is specified when creating a VPC endpoint. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker AI Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`).
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// AWS regions in which to look for services.
-  final pulumi.Input<List<String>>? serviceRegions;
+  final pulumi.Input<List<String>?>? serviceRegions;
   /// Service type, `Gateway` or `Interface`.
-  final pulumi.Input<String>? serviceType;
+  final pulumi.Input<String?>? serviceType;
   /// Map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
   ///
   /// &gt; **NOTE:** Specifying `service` will not work for non-AWS services or AWS services that don't follow the standard `serviceName` pattern of `com.amazonaws.&lt;region&gt;.&lt;service&gt;`.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVpcEndpointServiceArgs].
   /// [filters] Configuration block(s) for filtering. Detailed below.

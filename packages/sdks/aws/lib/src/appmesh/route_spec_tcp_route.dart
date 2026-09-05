@@ -9,9 +9,9 @@ class RouteSpecTcpRoute {
   /// Action to take if a match is determined. See `spec.tcp_route.action` Block for details.
   final pulumi.Input<RouteSpecTcpRouteAction> action;
   /// Criteria for determining a TCP request match. See `spec.tcp_route.match` Block for details.
-  final pulumi.Input<RouteSpecTcpRouteMatch>? match;
+  final pulumi.Input<RouteSpecTcpRouteMatch?>? match;
   /// Types of timeouts. See `spec.tcp_route.timeout` Block for details.
-  final pulumi.Input<RouteSpecTcpRouteTimeout>? timeout;
+  final pulumi.Input<RouteSpecTcpRouteTimeout?>? timeout;
 
   /// Creates a new [RouteSpecTcpRoute].
   /// [action] Action to take if a match is determined. See `spec.tcp_route.action` Block for details.

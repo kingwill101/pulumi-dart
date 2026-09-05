@@ -5,7 +5,7 @@ import 'agentcore_evaluator_evaluator_config_llm_as_ajudge_model_config_bedrock_
 
 class AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfig {
   /// Amazon Bedrock model configuration. See `bedrockEvaluatorModelConfig` below.
-  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfig>? bedrockEvaluatorModelConfig;
+  final pulumi.Input<AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfigBedrockEvaluatorModelConfig?>? bedrockEvaluatorModelConfig;
 
   /// Creates a new [AgentcoreEvaluatorEvaluatorConfigLlmAsAJudgeModelConfig].
   /// [bedrockEvaluatorModelConfig] Amazon Bedrock model configuration. See `bedrockEvaluatorModelConfig` below.

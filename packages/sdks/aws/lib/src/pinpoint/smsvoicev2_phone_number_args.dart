@@ -9,9 +9,9 @@ import 'smsvoicev2_phone_number_timeouts.dart';
 /// {@macro pulumi_pinpoint_smsvoicev2_phone_number_smsvoicev2_phone_number_args_doc}
 class Smsvoicev2PhoneNumberArgs {
   /// Whether deletion protection is enabled. When `true`, the phone number cannot be deleted.
-  final pulumi.Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// Whether to disassociate the phone number from any pool it is associated with before destroying it.
-  final pulumi.Input<bool>? forceDisassociate;
+  final pulumi.Input<bool?>? forceDisassociate;
   /// Two-character code, in ISO 3166-1 alpha-2 format, for the country or region.
   final pulumi.Input<String> isoCountryCode;
   /// Type of message. Valid values are `TRANSACTIONAL` for messages that are critical or time-sensitive and `PROMOTIONAL` for messages that aren’t critical or time-sensitive.
@@ -23,24 +23,24 @@ class Smsvoicev2PhoneNumberArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> numberType;
   /// Name of the opt-out list to associate with the phone number. If omitted, AWS assigns the `Default` opt-out list.
-  final pulumi.Input<String>? optOutListName;
+  final pulumi.Input<String?>? optOutListName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Use this field to attach your phone number for an external registration process.
-  final pulumi.Input<String>? registrationId;
+  final pulumi.Input<String?>? registrationId;
   /// When set to `false` an end recipient sends a message that begins with HELP or STOP to one of your dedicated numbers, AWS End User Messaging SMS and Voice automatically replies with a customizable message and adds the end recipient to the opt-out list. When set to true you’re responsible for responding to HELP and STOP requests. You’re also responsible for tracking and honoring opt-out request.
-  final pulumi.Input<bool>? selfManagedOptOutsEnabled;
+  final pulumi.Input<bool?>? selfManagedOptOutsEnabled;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Smsvoicev2PhoneNumberTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Smsvoicev2PhoneNumberTimeouts?>? timeouts;
   /// Configuration for two-way SMS. Specify an ARN to receive incoming SMS messages, or `connect.[region].amazonaws.com` (with `[region]` replaced by the AWS Region of the Amazon Connect instance) to set Amazon Connect as the inbound destination.
-  final pulumi.Input<String>? twoWayChannelArn;
+  final pulumi.Input<String?>? twoWayChannelArn;
   /// Whether two-way messaging is enabled. When `true`, you can receive incoming text messages from your end recipients. If omitted, AWS sets this to `false`.
-  final pulumi.Input<bool>? twoWayChannelEnabled;
+  final pulumi.Input<bool?>? twoWayChannelEnabled;
   /// IAM Role ARN for a service to assume, to be able to post inbound SMS messages.
-  final pulumi.Input<String>? twoWayChannelRole;
+  final pulumi.Input<String?>? twoWayChannelRole;
   /// Whether to wait for the phone number to reach `ACTIVE` status before considering the resource created or updated. Defaults to `true`. Set to `false` for number types gated on carrier or registration approval (for example, `TEN_DLC`, `TOLL_FREE`, or any number submitted with `registrationId`), which can remain `PENDING` for days or weeks. When `false`, `pulumi up` returns once AWS accepts the phone number request; track activation with the `status` attribute.
-  final pulumi.Input<bool>? waitForActive;
+  final pulumi.Input<bool?>? waitForActive;
 
   /// Creates a new [Smsvoicev2PhoneNumberArgs].
   /// [deletionProtectionEnabled] Whether deletion protection is enabled. When `true`, the phone number cannot be deleted.

@@ -5,7 +5,7 @@ import 'domain_off_peak_window_options_off_peak_window_window_start_time.dart';
 
 class DomainOffPeakWindowOptionsOffPeakWindow {
   /// 10h window for updates
-  final pulumi.Input<DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime>? windowStartTime;
+  final pulumi.Input<DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime?>? windowStartTime;
 
   /// Creates a new [DomainOffPeakWindowOptionsOffPeakWindow].
   /// [windowStartTime] 10h window for updates

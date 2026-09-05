@@ -11,7 +11,7 @@ class InvocationLoggingConfigurationArgs {
   /// The logging configuration values to set. See `loggingConfig` Block for details.
   final pulumi.Input<InvocationLoggingConfigurationLoggingConfig> loggingConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [InvocationLoggingConfigurationArgs].
   /// [loggingConfig] The logging configuration values to set. See `loggingConfig` Block for details.

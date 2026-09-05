@@ -6,7 +6,7 @@ class DatabaseEncryptionConfiguration {
   /// Type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
   final pulumi.Input<String> encryptionOption;
   /// KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
 
   /// Creates a new [DatabaseEncryptionConfiguration].
   /// [encryptionOption] Type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`

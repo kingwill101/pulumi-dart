@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_args.dart';
 import 'policy_predictive_scaling_configuration.dart';
 import 'policy_state.dart';
+import 'policy_step_adjustment.dart';
 import 'policy_target_tracking_configuration.dart';
 
 /// Provides an AutoScaling Scaling Policy resource.
@@ -238,45 +239,41 @@ import 'policy_target_tracking_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.autoscaling.Policy("example", {
-///     autoscalingGroupName: "my-test-asg",
-///     name: "foo",
-///     policyType: "TargetTrackingScaling",
 ///     targetTrackingConfiguration: {
-///         targetValue: 100,
 ///         customizedMetricSpecification: {
 ///             metrics: [
 ///                 {
-///                     label: "Get the queue size (the number of messages waiting to be processed)",
-///                     id: "m1",
 ///                     metricStat: {
 ///                         metric: {
-///                             namespace: "AWS/SQS",
-///                             metricName: "ApproximateNumberOfMessagesVisible",
 ///                             dimensions: [{
 ///                                 name: "QueueName",
 ///                                 value: "my-queue",
 ///                             }],
+///                             namespace: "AWS/SQS",
+///                             metricName: "ApproximateNumberOfMessagesVisible",
 ///                         },
 ///                         stat: "Sum",
 ///                         period: 10,
 ///                     },
+///                     label: "Get the queue size (the number of messages waiting to be processed)",
+///                     id: "m1",
 ///                     returnData: false,
 ///                 },
 ///                 {
-///                     label: "Get the group size (the number of InService instances)",
-///                     id: "m2",
 ///                     metricStat: {
 ///                         metric: {
-///                             namespace: "AWS/AutoScaling",
-///                             metricName: "GroupInServiceInstances",
 ///                             dimensions: [{
 ///                                 name: "AutoScalingGroupName",
 ///                                 value: "my-asg",
 ///                             }],
+///                             namespace: "AWS/AutoScaling",
+///                             metricName: "GroupInServiceInstances",
 ///                         },
 ///                         stat: "Average",
 ///                         period: 10,
 ///                     },
+///                     label: "Get the group size (the number of InService instances)",
+///                     id: "m2",
 ///                     returnData: false,
 ///                 },
 ///                 {
@@ -287,7 +284,11 @@ import 'policy_target_tracking_configuration.dart';
 ///                 },
 ///             ],
 ///         },
+///         targetValue: 100,
 ///     },
+///     autoscalingGroupName: "my-test-asg",
+///     name: "foo",
+///     policyType: "TargetTrackingScaling",
 /// });
 /// ```
 /// ```python
@@ -295,45 +296,41 @@ import 'policy_target_tracking_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.autoscaling.Policy("example",
-///     autoscaling_group_name="my-test-asg",
-///     name="foo",
-///     policy_type="TargetTrackingScaling",
 ///     target_tracking_configuration={
-///         "target_value": float(100),
 ///         "customized_metric_specification": {
 ///             "metrics": [
 ///                 {
-///                     "label": "Get the queue size (the number of messages waiting to be processed)",
-///                     "id": "m1",
 ///                     "metric_stat": {
 ///                         "metric": {
-///                             "namespace": "AWS/SQS",
-///                             "metric_name": "ApproximateNumberOfMessagesVisible",
 ///                             "dimensions": [{
 ///                                 "name": "QueueName",
 ///                                 "value": "my-queue",
 ///                             }],
+///                             "namespace": "AWS/SQS",
+///                             "metric_name": "ApproximateNumberOfMessagesVisible",
 ///                         },
 ///                         "stat": "Sum",
 ///                         "period": 10,
 ///                     },
+///                     "label": "Get the queue size (the number of messages waiting to be processed)",
+///                     "id": "m1",
 ///                     "return_data": False,
 ///                 },
 ///                 {
-///                     "label": "Get the group size (the number of InService instances)",
-///                     "id": "m2",
 ///                     "metric_stat": {
 ///                         "metric": {
-///                             "namespace": "AWS/AutoScaling",
-///                             "metric_name": "GroupInServiceInstances",
 ///                             "dimensions": [{
 ///                                 "name": "AutoScalingGroupName",
 ///                                 "value": "my-asg",
 ///                             }],
+///                             "namespace": "AWS/AutoScaling",
+///                             "metric_name": "GroupInServiceInstances",
 ///                         },
 ///                         "stat": "Average",
 ///                         "period": 10,
 ///                     },
+///                     "label": "Get the group size (the number of InService instances)",
+///                     "id": "m2",
 ///                     "return_data": False,
 ///                 },
 ///                 {
@@ -344,7 +341,11 @@ import 'policy_target_tracking_configuration.dart';
 ///                 },
 ///             ],
 ///         },
-///     })
+///         "target_value": float(100),
+///     },
+///     autoscaling_group_name="my-test-asg",
+///     name="foo",
+///     policy_type="TargetTrackingScaling")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -356,26 +357,18 @@ import 'policy_target_tracking_configuration.dart';
 /// {
 ///     var example = new Aws.AutoScaling.Policy("example", new()
 ///     {
-///         AutoscalingGroupName = "my-test-asg",
-///         Name = "foo",
-///         PolicyType = "TargetTrackingScaling",
 ///         TargetTrackingConfiguration = new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationArgs
 ///         {
-///             TargetValue = 100,
 ///             CustomizedMetricSpecification = new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationArgs
 ///             {
 ///                 Metrics = new[]
 ///                 {
 ///                     new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArgs
 ///                     {
-///                         Label = "Get the queue size (the number of messages waiting to be processed)",
-///                         Id = "m1",
 ///                         MetricStat = new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatArgs
 ///                         {
 ///                             Metric = new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricArgs
 ///                             {
-///                                 Namespace = "AWS/SQS",
-///                                 MetricName = "ApproximateNumberOfMessagesVisible",
 ///                                 Dimensions = new[]
 ///                                 {
 ///                                     new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimensionArgs
@@ -384,22 +377,22 @@ import 'policy_target_tracking_configuration.dart';
 ///                                         Value = "my-queue",
 ///                                     },
 ///                                 },
+///                                 Namespace = "AWS/SQS",
+///                                 MetricName = "ApproximateNumberOfMessagesVisible",
 ///                             },
 ///                             Stat = "Sum",
 ///                             Period = 10,
 ///                         },
+///                         Label = "Get the queue size (the number of messages waiting to be processed)",
+///                         Id = "m1",
 ///                         ReturnData = false,
 ///                     },
 ///                     new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArgs
 ///                     {
-///                         Label = "Get the group size (the number of InService instances)",
-///                         Id = "m2",
 ///                         MetricStat = new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatArgs
 ///                         {
 ///                             Metric = new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricArgs
 ///                             {
-///                                 Namespace = "AWS/AutoScaling",
-///                                 MetricName = "GroupInServiceInstances",
 ///                                 Dimensions = new[]
 ///                                 {
 ///                                     new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimensionArgs
@@ -408,10 +401,14 @@ import 'policy_target_tracking_configuration.dart';
 ///                                         Value = "my-asg",
 ///                                     },
 ///                                 },
+///                                 Namespace = "AWS/AutoScaling",
+///                                 MetricName = "GroupInServiceInstances",
 ///                             },
 ///                             Stat = "Average",
 ///                             Period = 10,
 ///                         },
+///                         Label = "Get the group size (the number of InService instances)",
+///                         Id = "m2",
 ///                         ReturnData = false,
 ///                     },
 ///                     new Aws.AutoScaling.Inputs.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArgs
@@ -423,7 +420,11 @@ import 'policy_target_tracking_configuration.dart';
 ///                     },
 ///                 },
 ///             },
+///             TargetValue = 100,
 ///         },
+///         AutoscalingGroupName = "my-test-asg",
+///         Name = "foo",
+///         PolicyType = "TargetTrackingScaling",
 ///     });
 ///
 /// });
@@ -439,49 +440,45 @@ import 'policy_target_tracking_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := autoscaling.NewPolicy(ctx, "example", &autoscaling.PolicyArgs{
-/// 			AutoscalingGroupName: pulumi.String("my-test-asg"),
-/// 			Name:                 pulumi.String("foo"),
-/// 			PolicyType:           pulumi.String("TargetTrackingScaling"),
 /// 			TargetTrackingConfiguration: &autoscaling.PolicyTargetTrackingConfigurationArgs{
-/// 				TargetValue: pulumi.Float64(100),
 /// 				CustomizedMetricSpecification: &autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationArgs{
 /// 					Metrics: autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArray{
 /// 						&autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArgs{
-/// 							Label: pulumi.String("Get the queue size (the number of messages waiting to be processed)"),
-/// 							Id:    pulumi.String("m1"),
 /// 							MetricStat: &autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatArgs{
 /// 								Metric: &autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricArgs{
-/// 									Namespace:  pulumi.String("AWS/SQS"),
-/// 									MetricName: pulumi.String("ApproximateNumberOfMessagesVisible"),
 /// 									Dimensions: autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimensionArray{
 /// 										&autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimensionArgs{
 /// 											Name:  pulumi.String("QueueName"),
 /// 											Value: pulumi.String("my-queue"),
 /// 										},
 /// 									},
+/// 									Namespace:  pulumi.String("AWS/SQS"),
+/// 									MetricName: pulumi.String("ApproximateNumberOfMessagesVisible"),
 /// 								},
 /// 								Stat:   pulumi.String("Sum"),
 /// 								Period: pulumi.Int(10),
 /// 							},
+/// 							Label:      pulumi.String("Get the queue size (the number of messages waiting to be processed)"),
+/// 							Id:         pulumi.String("m1"),
 /// 							ReturnData: pulumi.Bool(false),
 /// 						},
 /// 						&autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArgs{
-/// 							Label: pulumi.String("Get the group size (the number of InService instances)"),
-/// 							Id:    pulumi.String("m2"),
 /// 							MetricStat: &autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatArgs{
 /// 								Metric: &autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricArgs{
-/// 									Namespace:  pulumi.String("AWS/AutoScaling"),
-/// 									MetricName: pulumi.String("GroupInServiceInstances"),
 /// 									Dimensions: autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimensionArray{
 /// 										&autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimensionArgs{
 /// 											Name:  pulumi.String("AutoScalingGroupName"),
 /// 											Value: pulumi.String("my-asg"),
 /// 										},
 /// 									},
+/// 									Namespace:  pulumi.String("AWS/AutoScaling"),
+/// 									MetricName: pulumi.String("GroupInServiceInstances"),
 /// 								},
 /// 								Stat:   pulumi.String("Average"),
 /// 								Period: pulumi.Int(10),
 /// 							},
+/// 							Label:      pulumi.String("Get the group size (the number of InService instances)"),
+/// 							Id:         pulumi.String("m2"),
 /// 							ReturnData: pulumi.Bool(false),
 /// 						},
 /// 						&autoscaling.PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArgs{
@@ -492,7 +489,11 @@ import 'policy_target_tracking_configuration.dart';
 /// 						},
 /// 					},
 /// 				},
+/// 				TargetValue: pulumi.Float64(100),
 /// 			},
+/// 			AutoscalingGroupName: pulumi.String("my-test-asg"),
+/// 			Name:                 pulumi.String("foo"),
+/// 			PolicyType:           pulumi.String("TargetTrackingScaling"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -511,43 +512,39 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 ///
 /// resource "aws_autoscaling_policy" "example" {
-///   autoscaling_group_name = "my-test-asg"
-///   name                   = "foo"
-///   policy_type            = "TargetTrackingScaling"
 ///   target_tracking_configuration = {
-///     target_value = 100
 ///     customized_metric_specification = {
 ///       metrics = [{
-///         "label" = "Get the queue size (the number of messages waiting to be processed)"
-///         "id"    = "m1"
 ///         "metricStat" = {
 ///           "metric" = {
-///             "namespace"  = "AWS/SQS"
-///             "metricName" = "ApproximateNumberOfMessagesVisible"
 ///             "dimensions" = [{
 ///               "name"  = "QueueName"
 ///               "value" = "my-queue"
 ///             }]
+///             "namespace"  = "AWS/SQS"
+///             "metricName" = "ApproximateNumberOfMessagesVisible"
 ///           }
 ///           "stat"   = "Sum"
 ///           "period" = 10
 ///         }
+///         "label"      = "Get the queue size (the number of messages waiting to be processed)"
+///         "id"         = "m1"
 ///         "returnData" = false
 ///         }, {
-///         "label" = "Get the group size (the number of InService instances)"
-///         "id"    = "m2"
 ///         "metricStat" = {
 ///           "metric" = {
-///             "namespace"  = "AWS/AutoScaling"
-///             "metricName" = "GroupInServiceInstances"
 ///             "dimensions" = [{
 ///               "name"  = "AutoScalingGroupName"
 ///               "value" = "my-asg"
 ///             }]
+///             "namespace"  = "AWS/AutoScaling"
+///             "metricName" = "GroupInServiceInstances"
 ///           }
 ///           "stat"   = "Average"
 ///           "period" = 10
 ///         }
+///         "label"      = "Get the group size (the number of InService instances)"
+///         "id"         = "m2"
 ///         "returnData" = false
 ///         }, {
 ///         "label"      = "Calculate the backlog per instance"
@@ -556,7 +553,11 @@ import 'policy_target_tracking_configuration.dart';
 ///         "returnData" = true
 ///       }]
 ///     }
+///     target_value = 100
 ///   }
+///   autoscaling_group_name = "my-test-asg"
+///   name                   = "foo"
+///   policy_type            = "TargetTrackingScaling"
 /// }
 /// ```
 /// ```java
@@ -587,45 +588,41 @@ import 'policy_target_tracking_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Policy("example", PolicyArgs.builder()
-///             .autoscalingGroupName("my-test-asg")
-///             .name("foo")
-///             .policyType("TargetTrackingScaling")
 ///             .targetTrackingConfiguration(PolicyTargetTrackingConfigurationArgs.builder()
-///                 .targetValue(100.0)
 ///                 .customizedMetricSpecification(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationArgs.builder()
 ///                     .metrics(
 ///                         PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArgs.builder()
-///                             .label("Get the queue size (the number of messages waiting to be processed)")
-///                             .id("m1")
 ///                             .metricStat(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatArgs.builder()
 ///                                 .metric(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricArgs.builder()
-///                                     .namespace("AWS/SQS")
-///                                     .metricName("ApproximateNumberOfMessagesVisible")
 ///                                     .dimensions(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimensionArgs.builder()
 ///                                         .name("QueueName")
 ///                                         .value("my-queue")
 ///                                         .build())
+///                                     .namespace("AWS/SQS")
+///                                     .metricName("ApproximateNumberOfMessagesVisible")
 ///                                     .build())
 ///                                 .stat("Sum")
 ///                                 .period(10)
 ///                                 .build())
+///                             .label("Get the queue size (the number of messages waiting to be processed)")
+///                             .id("m1")
 ///                             .returnData(false)
 ///                             .build(),
 ///                         PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArgs.builder()
-///                             .label("Get the group size (the number of InService instances)")
-///                             .id("m2")
 ///                             .metricStat(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatArgs.builder()
 ///                                 .metric(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricArgs.builder()
-///                                     .namespace("AWS/AutoScaling")
-///                                     .metricName("GroupInServiceInstances")
 ///                                     .dimensions(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimensionArgs.builder()
 ///                                         .name("AutoScalingGroupName")
 ///                                         .value("my-asg")
 ///                                         .build())
+///                                     .namespace("AWS/AutoScaling")
+///                                     .metricName("GroupInServiceInstances")
 ///                                     .build())
 ///                                 .stat("Average")
 ///                                 .period(10)
 ///                                 .build())
+///                             .label("Get the group size (the number of InService instances)")
+///                             .id("m2")
 ///                             .returnData(false)
 ///                             .build(),
 ///                         PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricArgs.builder()
@@ -635,7 +632,11 @@ import 'policy_target_tracking_configuration.dart';
 ///                             .returnData(true)
 ///                             .build())
 ///                     .build())
+///                 .targetValue(100.0)
 ///                 .build())
+///             .autoscalingGroupName("my-test-asg")
+///             .name("foo")
+///             .policyType("TargetTrackingScaling")
 ///             .build());
 ///
 ///     }
@@ -646,41 +647,41 @@ import 'policy_target_tracking_configuration.dart';
 ///   example:
 ///     type: aws:autoscaling:Policy
 ///     properties:
-///       autoscalingGroupName: my-test-asg
-///       name: foo
-///       policyType: TargetTrackingScaling
 ///       targetTrackingConfiguration:
-///         targetValue: 100
 ///         customizedMetricSpecification:
 ///           metrics:
-///             - label: Get the queue size (the number of messages waiting to be processed)
-///               id: m1
-///               metricStat:
+///             - metricStat:
 ///                 metric:
-///                   namespace: AWS/SQS
-///                   metricName: ApproximateNumberOfMessagesVisible
 ///                   dimensions:
 ///                     - name: QueueName
 ///                       value: my-queue
+///                   namespace: AWS/SQS
+///                   metricName: ApproximateNumberOfMessagesVisible
 ///                 stat: Sum
 ///                 period: 10
+///               label: Get the queue size (the number of messages waiting to be processed)
+///               id: m1
 ///               returnData: false
-///             - label: Get the group size (the number of InService instances)
-///               id: m2
-///               metricStat:
+///             - metricStat:
 ///                 metric:
-///                   namespace: AWS/AutoScaling
-///                   metricName: GroupInServiceInstances
 ///                   dimensions:
 ///                     - name: AutoScalingGroupName
 ///                       value: my-asg
+///                   namespace: AWS/AutoScaling
+///                   metricName: GroupInServiceInstances
 ///                 stat: Average
 ///                 period: 10
+///               label: Get the group size (the number of InService instances)
+///               id: m2
 ///               returnData: false
 ///             - label: Calculate the backlog per instance
 ///               id: e1
 ///               expression: m1 / m2
 ///               returnData: true
+///         targetValue: 100
+///       autoscalingGroupName: my-test-asg
+///       name: foo
+///       policyType: TargetTrackingScaling
 /// ```
 ///
 ///
@@ -692,12 +693,8 @@ import 'policy_target_tracking_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.autoscaling.Policy("example", {
-///     autoscalingGroupName: "my-test-asg",
-///     name: "foo",
-///     policyType: "PredictiveScaling",
 ///     predictiveScalingConfiguration: {
 ///         metricSpecification: {
-///             targetValue: 10,
 ///             customizedLoadMetricSpecification: {
 ///                 metricDataQueries: [{
 ///                     id: "load_sum",
@@ -728,8 +725,12 @@ import 'policy_target_tracking_configuration.dart';
 ///                     },
 ///                 ],
 ///             },
+///             targetValue: 10,
 ///         },
 ///     },
+///     autoscalingGroupName: "my-test-asg",
+///     name: "foo",
+///     policyType: "PredictiveScaling",
 /// });
 /// ```
 /// ```python
@@ -737,12 +738,8 @@ import 'policy_target_tracking_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.autoscaling.Policy("example",
-///     autoscaling_group_name="my-test-asg",
-///     name="foo",
-///     policy_type="PredictiveScaling",
 ///     predictive_scaling_configuration={
 ///         "metric_specification": {
-///             "target_value": float(10),
 ///             "customized_load_metric_specification": {
 ///                 "metric_data_queries": [{
 ///                     "id": "load_sum",
@@ -773,8 +770,12 @@ import 'policy_target_tracking_configuration.dart';
 ///                     },
 ///                 ],
 ///             },
+///             "target_value": float(10),
 ///         },
-///     })
+///     },
+///     autoscaling_group_name="my-test-asg",
+///     name="foo",
+///     policy_type="PredictiveScaling")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -786,14 +787,10 @@ import 'policy_target_tracking_configuration.dart';
 /// {
 ///     var example = new Aws.AutoScaling.Policy("example", new()
 ///     {
-///         AutoscalingGroupName = "my-test-asg",
-///         Name = "foo",
-///         PolicyType = "PredictiveScaling",
 ///         PredictiveScalingConfiguration = new Aws.AutoScaling.Inputs.PolicyPredictiveScalingConfigurationArgs
 ///         {
 ///             MetricSpecification = new Aws.AutoScaling.Inputs.PolicyPredictiveScalingConfigurationMetricSpecificationArgs
 ///             {
-///                 TargetValue = 10,
 ///                 CustomizedLoadMetricSpecification = new Aws.AutoScaling.Inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationArgs
 ///                 {
 ///                     MetricDataQueries = new[]
@@ -839,8 +836,12 @@ import 'policy_target_tracking_configuration.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 TargetValue = 10,
 ///             },
 ///         },
+///         AutoscalingGroupName = "my-test-asg",
+///         Name = "foo",
+///         PolicyType = "PredictiveScaling",
 ///     });
 ///
 /// });
@@ -856,12 +857,8 @@ import 'policy_target_tracking_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := autoscaling.NewPolicy(ctx, "example", &autoscaling.PolicyArgs{
-/// 			AutoscalingGroupName: pulumi.String("my-test-asg"),
-/// 			Name:                 pulumi.String("foo"),
-/// 			PolicyType:           pulumi.String("PredictiveScaling"),
 /// 			PredictiveScalingConfiguration: &autoscaling.PolicyPredictiveScalingConfigurationArgs{
 /// 				MetricSpecification: &autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationArgs{
-/// 					TargetValue: pulumi.Float64(10),
 /// 					CustomizedLoadMetricSpecification: &autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationArgs{
 /// 						MetricDataQueries: autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryArray{
 /// 							&autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryArgs{
@@ -896,8 +893,12 @@ import 'policy_target_tracking_configuration.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					TargetValue: pulumi.Float64(10),
 /// 				},
 /// 			},
+/// 			AutoscalingGroupName: pulumi.String("my-test-asg"),
+/// 			Name:                 pulumi.String("foo"),
+/// 			PolicyType:           pulumi.String("PredictiveScaling"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -916,12 +917,8 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 ///
 /// resource "aws_autoscaling_policy" "example" {
-///   autoscaling_group_name = "my-test-asg"
-///   name                   = "foo"
-///   policy_type            = "PredictiveScaling"
 ///   predictive_scaling_configuration = {
 ///     metric_specification = {
-///       target_value = 10
 ///       customized_load_metric_specification = {
 ///         metric_data_queries = [{
 ///           "id"         = "load_sum"
@@ -948,8 +945,12 @@ import 'policy_target_tracking_configuration.dart';
 ///           "expression" = "load_sum / (capacity_sum * PERIOD(capacity_sum) / 60)"
 ///         }]
 ///       }
+///       target_value = 10
 ///     }
 ///   }
+///   autoscaling_group_name = "my-test-asg"
+///   name                   = "foo"
+///   policy_type            = "PredictiveScaling"
 /// }
 /// ```
 /// ```java
@@ -982,12 +983,8 @@ import 'policy_target_tracking_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Policy("example", PolicyArgs.builder()
-///             .autoscalingGroupName("my-test-asg")
-///             .name("foo")
-///             .policyType("PredictiveScaling")
 ///             .predictiveScalingConfiguration(PolicyPredictiveScalingConfigurationArgs.builder()
 ///                 .metricSpecification(PolicyPredictiveScalingConfigurationMetricSpecificationArgs.builder()
-///                     .targetValue(10.0)
 ///                     .customizedLoadMetricSpecification(PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationArgs.builder()
 ///                         .metricDataQueries(PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryArgs.builder()
 ///                             .id("load_sum")
@@ -1017,8 +1014,12 @@ import 'policy_target_tracking_configuration.dart';
 ///                                 .expression("load_sum / (capacity_sum * PERIOD(capacity_sum) / 60)")
 ///                                 .build())
 ///                         .build())
+///                     .targetValue(10.0)
 ///                     .build())
 ///                 .build())
+///             .autoscalingGroupName("my-test-asg")
+///             .name("foo")
+///             .policyType("PredictiveScaling")
 ///             .build());
 ///
 ///     }
@@ -1029,12 +1030,8 @@ import 'policy_target_tracking_configuration.dart';
 ///   example:
 ///     type: aws:autoscaling:Policy
 ///     properties:
-///       autoscalingGroupName: my-test-asg
-///       name: foo
-///       policyType: PredictiveScaling
 ///       predictiveScalingConfiguration:
 ///         metricSpecification:
-///           targetValue: 10
 ///           customizedLoadMetricSpecification:
 ///             metricDataQueries:
 ///               - id: load_sum
@@ -1053,6 +1050,10 @@ import 'policy_target_tracking_configuration.dart';
 ///                 returnData: false
 ///               - id: weighted_average
 ///                 expression: load_sum / (capacity_sum * PERIOD(capacity_sum) / 60)
+///           targetValue: 10
+///       autoscalingGroupName: my-test-asg
+///       name: foo
+///       policyType: PredictiveScaling
 /// ```
 ///
 ///
@@ -1064,34 +1065,34 @@ import 'policy_target_tracking_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.autoscaling.Policy("example", {
-///     autoscalingGroupName: "my-test-asg",
-///     name: "foo",
-///     policyType: "PredictiveScaling",
 ///     predictiveScalingConfiguration: {
 ///         metricSpecification: {
-///             targetValue: 10,
 ///             predefinedLoadMetricSpecification: {
 ///                 predefinedMetricType: "ASGTotalCPUUtilization",
 ///                 resourceLabel: "app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff",
 ///             },
 ///             customizedScalingMetricSpecification: {
 ///                 metricDataQueries: [{
-///                     id: "scaling",
 ///                     metricStat: {
 ///                         metric: {
-///                             metricName: "CPUUtilization",
-///                             namespace: "AWS/EC2",
 ///                             dimensions: [{
 ///                                 name: "AutoScalingGroupName",
 ///                                 value: "my-test-asg",
 ///                             }],
+///                             metricName: "CPUUtilization",
+///                             namespace: "AWS/EC2",
 ///                         },
 ///                         stat: "Average",
 ///                     },
+///                     id: "scaling",
 ///                 }],
 ///             },
+///             targetValue: 10,
 ///         },
 ///     },
+///     autoscalingGroupName: "my-test-asg",
+///     name: "foo",
+///     policyType: "PredictiveScaling",
 /// });
 /// ```
 /// ```python
@@ -1099,34 +1100,34 @@ import 'policy_target_tracking_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.autoscaling.Policy("example",
-///     autoscaling_group_name="my-test-asg",
-///     name="foo",
-///     policy_type="PredictiveScaling",
 ///     predictive_scaling_configuration={
 ///         "metric_specification": {
-///             "target_value": float(10),
 ///             "predefined_load_metric_specification": {
 ///                 "predefined_metric_type": "ASGTotalCPUUtilization",
 ///                 "resource_label": "app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff",
 ///             },
 ///             "customized_scaling_metric_specification": {
 ///                 "metric_data_queries": [{
-///                     "id": "scaling",
 ///                     "metric_stat": {
 ///                         "metric": {
-///                             "metric_name": "CPUUtilization",
-///                             "namespace": "AWS/EC2",
 ///                             "dimensions": [{
 ///                                 "name": "AutoScalingGroupName",
 ///                                 "value": "my-test-asg",
 ///                             }],
+///                             "metric_name": "CPUUtilization",
+///                             "namespace": "AWS/EC2",
 ///                         },
 ///                         "stat": "Average",
 ///                     },
+///                     "id": "scaling",
 ///                 }],
 ///             },
+///             "target_value": float(10),
 ///         },
-///     })
+///     },
+///     autoscaling_group_name="my-test-asg",
+///     name="foo",
+///     policy_type="PredictiveScaling")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1138,14 +1139,10 @@ import 'policy_target_tracking_configuration.dart';
 /// {
 ///     var example = new Aws.AutoScaling.Policy("example", new()
 ///     {
-///         AutoscalingGroupName = "my-test-asg",
-///         Name = "foo",
-///         PolicyType = "PredictiveScaling",
 ///         PredictiveScalingConfiguration = new Aws.AutoScaling.Inputs.PolicyPredictiveScalingConfigurationArgs
 ///         {
 ///             MetricSpecification = new Aws.AutoScaling.Inputs.PolicyPredictiveScalingConfigurationMetricSpecificationArgs
 ///             {
-///                 TargetValue = 10,
 ///                 PredefinedLoadMetricSpecification = new Aws.AutoScaling.Inputs.PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationArgs
 ///                 {
 ///                     PredefinedMetricType = "ASGTotalCPUUtilization",
@@ -1157,13 +1154,10 @@ import 'policy_target_tracking_configuration.dart';
 ///                     {
 ///                         new Aws.AutoScaling.Inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryArgs
 ///                         {
-///                             Id = "scaling",
 ///                             MetricStat = new Aws.AutoScaling.Inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatArgs
 ///                             {
 ///                                 Metric = new Aws.AutoScaling.Inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricArgs
 ///                                 {
-///                                     MetricName = "CPUUtilization",
-///                                     Namespace = "AWS/EC2",
 ///                                     Dimensions = new[]
 ///                                     {
 ///                                         new Aws.AutoScaling.Inputs.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimensionArgs
@@ -1172,14 +1166,21 @@ import 'policy_target_tracking_configuration.dart';
 ///                                             Value = "my-test-asg",
 ///                                         },
 ///                                     },
+///                                     MetricName = "CPUUtilization",
+///                                     Namespace = "AWS/EC2",
 ///                                 },
 ///                                 Stat = "Average",
 ///                             },
+///                             Id = "scaling",
 ///                         },
 ///                     },
 ///                 },
+///                 TargetValue = 10,
 ///             },
 ///         },
+///         AutoscalingGroupName = "my-test-asg",
+///         Name = "foo",
+///         PolicyType = "PredictiveScaling",
 ///     });
 ///
 /// });
@@ -1195,12 +1196,8 @@ import 'policy_target_tracking_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := autoscaling.NewPolicy(ctx, "example", &autoscaling.PolicyArgs{
-/// 			AutoscalingGroupName: pulumi.String("my-test-asg"),
-/// 			Name:                 pulumi.String("foo"),
-/// 			PolicyType:           pulumi.String("PredictiveScaling"),
 /// 			PredictiveScalingConfiguration: &autoscaling.PolicyPredictiveScalingConfigurationArgs{
 /// 				MetricSpecification: &autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationArgs{
-/// 					TargetValue: pulumi.Float64(10),
 /// 					PredefinedLoadMetricSpecification: &autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationArgs{
 /// 						PredefinedMetricType: pulumi.String("ASGTotalCPUUtilization"),
 /// 						ResourceLabel:        pulumi.String("app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff"),
@@ -1208,25 +1205,29 @@ import 'policy_target_tracking_configuration.dart';
 /// 					CustomizedScalingMetricSpecification: &autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationArgs{
 /// 						MetricDataQueries: autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryArray{
 /// 							&autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryArgs{
-/// 								Id: pulumi.String("scaling"),
 /// 								MetricStat: &autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatArgs{
 /// 									Metric: &autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricArgs{
-/// 										MetricName: pulumi.String("CPUUtilization"),
-/// 										Namespace:  pulumi.String("AWS/EC2"),
 /// 										Dimensions: autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimensionArray{
 /// 											&autoscaling.PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimensionArgs{
 /// 												Name:  pulumi.String("AutoScalingGroupName"),
 /// 												Value: pulumi.String("my-test-asg"),
 /// 											},
 /// 										},
+/// 										MetricName: pulumi.String("CPUUtilization"),
+/// 										Namespace:  pulumi.String("AWS/EC2"),
 /// 									},
 /// 									Stat: pulumi.String("Average"),
 /// 								},
+/// 								Id: pulumi.String("scaling"),
 /// 							},
 /// 						},
 /// 					},
+/// 					TargetValue: pulumi.Float64(10),
 /// 				},
 /// 			},
+/// 			AutoscalingGroupName: pulumi.String("my-test-asg"),
+/// 			Name:                 pulumi.String("foo"),
+/// 			PolicyType:           pulumi.String("PredictiveScaling"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1245,34 +1246,34 @@ import 'policy_target_tracking_configuration.dart';
 /// }
 ///
 /// resource "aws_autoscaling_policy" "example" {
-///   autoscaling_group_name = "my-test-asg"
-///   name                   = "foo"
-///   policy_type            = "PredictiveScaling"
 ///   predictive_scaling_configuration = {
 ///     metric_specification = {
-///       target_value = 10
 ///       predefined_load_metric_specification = {
 ///         predefined_metric_type = "ASGTotalCPUUtilization"
 ///         resource_label         = "app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff"
 ///       }
 ///       customized_scaling_metric_specification = {
 ///         metric_data_queries = [{
-///           "id" = "scaling"
 ///           "metricStat" = {
 ///             "metric" = {
-///               "metricName" = "CPUUtilization"
-///               "namespace"  = "AWS/EC2"
 ///               "dimensions" = [{
 ///                 "name"  = "AutoScalingGroupName"
 ///                 "value" = "my-test-asg"
 ///               }]
+///               "metricName" = "CPUUtilization"
+///               "namespace"  = "AWS/EC2"
 ///             }
 ///             "stat" = "Average"
 ///           }
+///           "id" = "scaling"
 ///         }]
 ///       }
+///       target_value = 10
 ///     }
 ///   }
+///   autoscaling_group_name = "my-test-asg"
+///   name                   = "foo"
+///   policy_type            = "PredictiveScaling"
 /// }
 /// ```
 /// ```java
@@ -1305,34 +1306,34 @@ import 'policy_target_tracking_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Policy("example", PolicyArgs.builder()
-///             .autoscalingGroupName("my-test-asg")
-///             .name("foo")
-///             .policyType("PredictiveScaling")
 ///             .predictiveScalingConfiguration(PolicyPredictiveScalingConfigurationArgs.builder()
 ///                 .metricSpecification(PolicyPredictiveScalingConfigurationMetricSpecificationArgs.builder()
-///                     .targetValue(10.0)
 ///                     .predefinedLoadMetricSpecification(PolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationArgs.builder()
 ///                         .predefinedMetricType("ASGTotalCPUUtilization")
 ///                         .resourceLabel("app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff")
 ///                         .build())
 ///                     .customizedScalingMetricSpecification(PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationArgs.builder()
 ///                         .metricDataQueries(PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryArgs.builder()
-///                             .id("scaling")
 ///                             .metricStat(PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatArgs.builder()
 ///                                 .metric(PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricArgs.builder()
-///                                     .metricName("CPUUtilization")
-///                                     .namespace("AWS/EC2")
 ///                                     .dimensions(PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimensionArgs.builder()
 ///                                         .name("AutoScalingGroupName")
 ///                                         .value("my-test-asg")
 ///                                         .build())
+///                                     .metricName("CPUUtilization")
+///                                     .namespace("AWS/EC2")
 ///                                     .build())
 ///                                 .stat("Average")
 ///                                 .build())
+///                             .id("scaling")
 ///                             .build())
 ///                         .build())
+///                     .targetValue(10.0)
 ///                     .build())
 ///                 .build())
+///             .autoscalingGroupName("my-test-asg")
+///             .name("foo")
+///             .policyType("PredictiveScaling")
 ///             .build());
 ///
 ///     }
@@ -1343,26 +1344,26 @@ import 'policy_target_tracking_configuration.dart';
 ///   example:
 ///     type: aws:autoscaling:Policy
 ///     properties:
-///       autoscalingGroupName: my-test-asg
-///       name: foo
-///       policyType: PredictiveScaling
 ///       predictiveScalingConfiguration:
 ///         metricSpecification:
-///           targetValue: 10
 ///           predefinedLoadMetricSpecification:
 ///             predefinedMetricType: ASGTotalCPUUtilization
 ///             resourceLabel: app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff
 ///           customizedScalingMetricSpecification:
 ///             metricDataQueries:
-///               - id: scaling
-///                 metricStat:
+///               - metricStat:
 ///                   metric:
-///                     metricName: CPUUtilization
-///                     namespace: AWS/EC2
 ///                     dimensions:
 ///                       - name: AutoScalingGroupName
 ///                         value: my-test-asg
+///                     metricName: CPUUtilization
+///                     namespace: AWS/EC2
 ///                   stat: Average
+///                 id: scaling
+///           targetValue: 10
+///       autoscalingGroupName: my-test-asg
+///       name: foo
+///       policyType: PredictiveScaling
 /// ```
 ///
 ///
@@ -1594,7 +1595,7 @@ class Policy extends pulumi.CustomResource {
   ///
   ///
   /// The following fields are available in step adjustments:
-  late final pulumi.Output<List<Map<String, dynamic>>?> stepAdjustments;
+  late final pulumi.Output<List<PolicyStepAdjustment>?> stepAdjustments;
   /// Target tracking policy. These have the following structure:
   ///
   ///
@@ -1747,7 +1748,7 @@ class Policy extends pulumi.CustomResource {
           'aws:autoscaling/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     adjustmentType = registerOutput<String?>('adjustmentType');
     arn = registerOutput<String>('arn');
@@ -1762,7 +1763,7 @@ class Policy extends pulumi.CustomResource {
     predictiveScalingConfiguration = registerOutput<PolicyPredictiveScalingConfiguration?>('predictiveScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPredictiveScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     scalingAdjustment = registerOutput<int?>('scalingAdjustment');
-    stepAdjustments = registerOutput<List<Map<String, dynamic>>?>('stepAdjustments');
+    stepAdjustments = registerOutput<List<PolicyStepAdjustment>?>('stepAdjustments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyStepAdjustment>(guardedValue, (value) => PolicyStepAdjustment.fromMap((value as Map).cast<String, dynamic>())); });
     targetTrackingConfiguration = registerOutput<PolicyTargetTrackingConfiguration?>('targetTrackingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyTargetTrackingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1771,11 +1772,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1802,7 +1804,33 @@ class Policy extends pulumi.CustomResource {
     predictiveScalingConfiguration = registerOutput<PolicyPredictiveScalingConfiguration?>('predictiveScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPredictiveScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     scalingAdjustment = registerOutput<int?>('scalingAdjustment');
-    stepAdjustments = registerOutput<List<Map<String, dynamic>>?>('stepAdjustments');
+    stepAdjustments = registerOutput<List<PolicyStepAdjustment>?>('stepAdjustments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyStepAdjustment>(guardedValue, (value) => PolicyStepAdjustment.fromMap((value as Map).cast<String, dynamic>())); });
+    targetTrackingConfiguration = registerOutput<PolicyTargetTrackingConfiguration?>('targetTrackingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyTargetTrackingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'aws:autoscaling/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adjustmentType = registerOutput<String?>('adjustmentType');
+    arn = registerOutput<String>('arn');
+    autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    cooldown = registerOutput<int?>('cooldown');
+    enabled = registerOutput<bool?>('enabled');
+    estimatedInstanceWarmup = registerOutput<int?>('estimatedInstanceWarmup');
+    metricAggregationType = registerOutput<String>('metricAggregationType');
+    minAdjustmentMagnitude = registerOutput<int?>('minAdjustmentMagnitude');
+    this.name = registerOutput<String>('name');
+    policyType = registerOutput<String?>('policyType');
+    predictiveScalingConfiguration = registerOutput<PolicyPredictiveScalingConfiguration?>('predictiveScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPredictiveScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    scalingAdjustment = registerOutput<int?>('scalingAdjustment');
+    stepAdjustments = registerOutput<List<PolicyStepAdjustment>?>('stepAdjustments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyStepAdjustment>(guardedValue, (value) => PolicyStepAdjustment.fromMap((value as Map).cast<String, dynamic>())); });
     targetTrackingConfiguration = registerOutput<PolicyTargetTrackingConfiguration?>('targetTrackingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyTargetTrackingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

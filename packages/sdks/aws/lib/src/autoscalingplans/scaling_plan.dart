@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scaling_plan_application_source.dart';
 import 'scaling_plan_args.dart';
+import 'scaling_plan_scaling_instruction.dart';
 import 'scaling_plan_state.dart';
 
 /// Manages an AWS Auto Scaling scaling plan.
@@ -34,7 +35,6 @@ import 'scaling_plan_state.dart';
 ///     }],
 /// });
 /// const exampleScalingPlan = new aws.autoscalingplans.ScalingPlan("example", {
-///     name: "example-dynamic-cost-optimization",
 ///     applicationSource: {
 ///         tagFilters: [{
 ///             key: "application",
@@ -42,6 +42,12 @@ import 'scaling_plan_state.dart';
 ///         }],
 ///     },
 ///     scalingInstructions: [{
+///         targetTrackingConfigurations: [{
+///             predefinedScalingMetricSpecification: {
+///                 predefinedScalingMetricType: "ASGAverageCPUUtilization",
+///             },
+///             targetValue: 70,
+///         }],
 ///         maxCapacity: 3,
 ///         minCapacity: 0,
 ///         resourceId: std.format({
@@ -50,13 +56,8 @@ import 'scaling_plan_state.dart';
 ///         }).then(invoke => invoke.result),
 ///         scalableDimension: "autoscaling:autoScalingGroup:DesiredCapacity",
 ///         serviceNamespace: "autoscaling",
-///         targetTrackingConfigurations: [{
-///             predefinedScalingMetricSpecification: {
-///                 predefinedScalingMetricType: "ASGAverageCPUUtilization",
-///             },
-///             targetValue: 70,
-///         }],
 ///     }],
+///     name: "example-dynamic-cost-optimization",
 /// });
 /// ```
 /// ```python
@@ -77,7 +78,6 @@ import 'scaling_plan_state.dart';
 ///         "propagate_at_launch": True,
 ///     }])
 /// example_scaling_plan = aws.autoscalingplans.ScalingPlan("example",
-///     name="example-dynamic-cost-optimization",
 ///     application_source={
 ///         "tag_filters": [{
 ///             "key": "application",
@@ -85,19 +85,20 @@ import 'scaling_plan_state.dart';
 ///         }],
 ///     },
 ///     scaling_instructions=[{
-///         "max_capacity": 3,
-///         "min_capacity": 0,
-///         "resource_id": std.format(input="autoScalingGroup/%s",
-///             args=[example.name]).result,
-///         "scalable_dimension": "autoscaling:autoScalingGroup:DesiredCapacity",
-///         "service_namespace": "autoscaling",
 ///         "target_tracking_configurations": [{
 ///             "predefined_scaling_metric_specification": {
 ///                 "predefined_scaling_metric_type": "ASGAverageCPUUtilization",
 ///             },
 ///             "target_value": float(70),
 ///         }],
-///     }])
+///         "max_capacity": 3,
+///         "min_capacity": 0,
+///         "resource_id": std.format(input="autoScalingGroup/%s",
+///             args=[example.name]).result,
+///         "scalable_dimension": "autoscaling:autoScalingGroup:DesiredCapacity",
+///         "service_namespace": "autoscaling",
+///     }],
+///     name="example-dynamic-cost-optimization")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -133,7 +134,6 @@ import 'scaling_plan_state.dart';
 ///
 ///     var exampleScalingPlan = new Aws.AutoScalingPlans.ScalingPlan("example", new()
 ///     {
-///         Name = "example-dynamic-cost-optimization",
 ///         ApplicationSource = new Aws.AutoScalingPlans.Inputs.ScalingPlanApplicationSourceArgs
 ///         {
 ///             TagFilters = new[]
@@ -152,6 +152,17 @@ import 'scaling_plan_state.dart';
 ///         {
 ///             new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionArgs
 ///             {
+///                 TargetTrackingConfigurations = new[]
+///                 {
+///                     new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationArgs
+///                     {
+///                         PredefinedScalingMetricSpecification = new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs
+///                         {
+///                             PredefinedScalingMetricType = "ASGAverageCPUUtilization",
+///                         },
+///                         TargetValue = 70,
+///                     },
+///                 },
 ///                 MaxCapacity = 3,
 ///                 MinCapacity = 0,
 ///                 ResourceId = Std.Format.Invoke(new()
@@ -164,19 +175,9 @@ import 'scaling_plan_state.dart';
 ///                 }).Apply(invoke => invoke.Result),
 ///                 ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity",
 ///                 ServiceNamespace = "autoscaling",
-///                 TargetTrackingConfigurations = new[]
-///                 {
-///                     new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationArgs
-///                     {
-///                         PredefinedScalingMetricSpecification = new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs
-///                         {
-///                             PredefinedScalingMetricType = "ASGAverageCPUUtilization",
-///                         },
-///                         TargetValue = 70,
-///                     },
-///                 },
 ///             },
 ///         },
+///         Name = "example-dynamic-cost-optimization",
 ///     });
 ///
 /// });
@@ -228,7 +229,6 @@ import 'scaling_plan_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = autoscalingplans.NewScalingPlan(ctx, "example", &autoscalingplans.ScalingPlanArgs{
-/// 			Name: pulumi.String("example-dynamic-cost-optimization"),
 /// 			ApplicationSource: &autoscalingplans.ScalingPlanApplicationSourceArgs{
 /// 				TagFilters: autoscalingplans.ScalingPlanApplicationSourceTagFilterArray{
 /// 					&autoscalingplans.ScalingPlanApplicationSourceTagFilterArgs{
@@ -241,11 +241,6 @@ import 'scaling_plan_state.dart';
 /// 			},
 /// 			ScalingInstructions: autoscalingplans.ScalingPlanScalingInstructionArray{
 /// 				&autoscalingplans.ScalingPlanScalingInstructionArgs{
-/// 					MaxCapacity:       pulumi.Int(3),
-/// 					MinCapacity:       pulumi.Int(0),
-/// 					ResourceId:        pulumi.String(invokeFormat.Result),
-/// 					ScalableDimension: pulumi.String("autoscaling:autoScalingGroup:DesiredCapacity"),
-/// 					ServiceNamespace:  pulumi.String("autoscaling"),
 /// 					TargetTrackingConfigurations: autoscalingplans.ScalingPlanScalingInstructionTargetTrackingConfigurationArray{
 /// 						&autoscalingplans.ScalingPlanScalingInstructionTargetTrackingConfigurationArgs{
 /// 							PredefinedScalingMetricSpecification: &autoscalingplans.ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs{
@@ -254,8 +249,14 @@ import 'scaling_plan_state.dart';
 /// 							TargetValue: pulumi.Float64(70),
 /// 						},
 /// 					},
+/// 					MaxCapacity:       pulumi.Int(3),
+/// 					MinCapacity:       pulumi.Int(0),
+/// 					ResourceId:        pulumi.String(invokeFormat.Result),
+/// 					ScalableDimension: pulumi.String("autoscaling:autoScalingGroup:DesiredCapacity"),
+/// 					ServiceNamespace:  pulumi.String("autoscaling"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example-dynamic-cost-optimization"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -296,7 +297,6 @@ import 'scaling_plan_state.dart';
 ///   }
 /// }
 /// resource "aws_autoscalingplans_scalingplan" "example" {
-///   name = "example-dynamic-cost-optimization"
 ///   application_source = {
 ///     tag_filters = [{
 ///       "key"    = "application"
@@ -304,18 +304,19 @@ import 'scaling_plan_state.dart';
 ///     }]
 ///   }
 ///   scaling_instructions {
-///     max_capacity       = 3
-///     min_capacity       = 0
-///     resource_id        = data.std_format.invoke_0.result
-///     scalable_dimension = "autoscaling:autoScalingGroup:DesiredCapacity"
-///     service_namespace  = "autoscaling"
 ///     target_tracking_configurations {
 ///       predefined_scaling_metric_specification = {
 ///         predefined_scaling_metric_type = "ASGAverageCPUUtilization"
 ///       }
 ///       target_value = 70
 ///     }
+///     max_capacity       = 3
+///     min_capacity       = 0
+///     resource_id        = data.std_format.invoke_0.result
+///     scalable_dimension = "autoscaling:autoScalingGroup:DesiredCapacity"
+///     service_namespace  = "autoscaling"
 ///   }
+///   name = "example-dynamic-cost-optimization"
 /// }
 /// ```
 /// ```java
@@ -368,7 +369,6 @@ import 'scaling_plan_state.dart';
 ///             .build());
 ///
 ///         var exampleScalingPlan = new ScalingPlan("exampleScalingPlan", ScalingPlanArgs.builder()
-///             .name("example-dynamic-cost-optimization")
 ///             .applicationSource(ScalingPlanApplicationSourceArgs.builder()
 ///                 .tagFilters(ScalingPlanApplicationSourceTagFilterArgs.builder()
 ///                     .key("application")
@@ -376,6 +376,12 @@ import 'scaling_plan_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .scalingInstructions(ScalingPlanScalingInstructionArgs.builder()
+///                 .targetTrackingConfigurations(ScalingPlanScalingInstructionTargetTrackingConfigurationArgs.builder()
+///                     .predefinedScalingMetricSpecification(ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs.builder()
+///                         .predefinedScalingMetricType("ASGAverageCPUUtilization")
+///                         .build())
+///                     .targetValue(70.0)
+///                     .build())
 ///                 .maxCapacity(3)
 ///                 .minCapacity(0)
 ///                 .resourceId(StdFunctions.format(FormatArgs.builder()
@@ -384,13 +390,8 @@ import 'scaling_plan_state.dart';
 ///                     .build()).result())
 ///                 .scalableDimension("autoscaling:autoScalingGroup:DesiredCapacity")
 ///                 .serviceNamespace("autoscaling")
-///                 .targetTrackingConfigurations(ScalingPlanScalingInstructionTargetTrackingConfigurationArgs.builder()
-///                     .predefinedScalingMetricSpecification(ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs.builder()
-///                         .predefinedScalingMetricType("ASGAverageCPUUtilization")
-///                         .build())
-///                     .targetValue(70.0)
-///                     .build())
 ///                 .build())
+///             .name("example-dynamic-cost-optimization")
 ///             .build());
 ///
 ///     }
@@ -415,14 +416,17 @@ import 'scaling_plan_state.dart';
 ///     type: aws:autoscalingplans:ScalingPlan
 ///     name: example
 ///     properties:
-///       name: example-dynamic-cost-optimization
 ///       applicationSource:
 ///         tagFilters:
 ///           - key: application
 ///             values:
 ///               - example
 ///       scalingInstructions:
-///         - maxCapacity: 3
+///         - targetTrackingConfigurations:
+///             - predefinedScalingMetricSpecification:
+///                 predefinedScalingMetricType: ASGAverageCPUUtilization
+///               targetValue: 70
+///           maxCapacity: 3
 ///           minCapacity: 0
 ///           resourceId:
 ///             fn::invoke:
@@ -434,10 +438,7 @@ import 'scaling_plan_state.dart';
 ///               return: result
 ///           scalableDimension: autoscaling:autoScalingGroup:DesiredCapacity
 ///           serviceNamespace: autoscaling
-///           targetTrackingConfigurations:
-///             - predefinedScalingMetricSpecification:
-///                 predefinedScalingMetricType: ASGAverageCPUUtilization
-///               targetValue: 70
+///       name: example-dynamic-cost-optimization
 /// variables:
 ///   available:
 ///     fn::invoke:
@@ -468,7 +469,6 @@ import 'scaling_plan_state.dart';
 ///     }],
 /// });
 /// const exampleScalingPlan = new aws.autoscalingplans.ScalingPlan("example", {
-///     name: "example-predictive-cost-optimization",
 ///     applicationSource: {
 ///         tagFilters: [{
 ///             key: "application",
@@ -476,6 +476,15 @@ import 'scaling_plan_state.dart';
 ///         }],
 ///     },
 ///     scalingInstructions: [{
+///         predefinedLoadMetricSpecification: {
+///             predefinedLoadMetricType: "ASGTotalCPUUtilization",
+///         },
+///         targetTrackingConfigurations: [{
+///             predefinedScalingMetricSpecification: {
+///                 predefinedScalingMetricType: "ASGAverageCPUUtilization",
+///             },
+///             targetValue: 70,
+///         }],
 ///         disableDynamicScaling: true,
 ///         maxCapacity: 3,
 ///         minCapacity: 0,
@@ -485,18 +494,10 @@ import 'scaling_plan_state.dart';
 ///         }).then(invoke => invoke.result),
 ///         scalableDimension: "autoscaling:autoScalingGroup:DesiredCapacity",
 ///         serviceNamespace: "autoscaling",
-///         targetTrackingConfigurations: [{
-///             predefinedScalingMetricSpecification: {
-///                 predefinedScalingMetricType: "ASGAverageCPUUtilization",
-///             },
-///             targetValue: 70,
-///         }],
 ///         predictiveScalingMaxCapacityBehavior: "SetForecastCapacityToMaxCapacity",
 ///         predictiveScalingMode: "ForecastAndScale",
-///         predefinedLoadMetricSpecification: {
-///             predefinedLoadMetricType: "ASGTotalCPUUtilization",
-///         },
 ///     }],
+///     name: "example-predictive-cost-optimization",
 /// });
 /// ```
 /// ```python
@@ -517,7 +518,6 @@ import 'scaling_plan_state.dart';
 ///         "propagate_at_launch": True,
 ///     }])
 /// example_scaling_plan = aws.autoscalingplans.ScalingPlan("example",
-///     name="example-predictive-cost-optimization",
 ///     application_source={
 ///         "tag_filters": [{
 ///             "key": "application",
@@ -525,6 +525,15 @@ import 'scaling_plan_state.dart';
 ///         }],
 ///     },
 ///     scaling_instructions=[{
+///         "predefined_load_metric_specification": {
+///             "predefined_load_metric_type": "ASGTotalCPUUtilization",
+///         },
+///         "target_tracking_configurations": [{
+///             "predefined_scaling_metric_specification": {
+///                 "predefined_scaling_metric_type": "ASGAverageCPUUtilization",
+///             },
+///             "target_value": float(70),
+///         }],
 ///         "disable_dynamic_scaling": True,
 ///         "max_capacity": 3,
 ///         "min_capacity": 0,
@@ -532,18 +541,10 @@ import 'scaling_plan_state.dart';
 ///             args=[example.name]).result,
 ///         "scalable_dimension": "autoscaling:autoScalingGroup:DesiredCapacity",
 ///         "service_namespace": "autoscaling",
-///         "target_tracking_configurations": [{
-///             "predefined_scaling_metric_specification": {
-///                 "predefined_scaling_metric_type": "ASGAverageCPUUtilization",
-///             },
-///             "target_value": float(70),
-///         }],
 ///         "predictive_scaling_max_capacity_behavior": "SetForecastCapacityToMaxCapacity",
 ///         "predictive_scaling_mode": "ForecastAndScale",
-///         "predefined_load_metric_specification": {
-///             "predefined_load_metric_type": "ASGTotalCPUUtilization",
-///         },
-///     }])
+///     }],
+///     name="example-predictive-cost-optimization")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -579,7 +580,6 @@ import 'scaling_plan_state.dart';
 ///
 ///     var exampleScalingPlan = new Aws.AutoScalingPlans.ScalingPlan("example", new()
 ///     {
-///         Name = "example-predictive-cost-optimization",
 ///         ApplicationSource = new Aws.AutoScalingPlans.Inputs.ScalingPlanApplicationSourceArgs
 ///         {
 ///             TagFilters = new[]
@@ -598,6 +598,21 @@ import 'scaling_plan_state.dart';
 ///         {
 ///             new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionArgs
 ///             {
+///                 PredefinedLoadMetricSpecification = new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionPredefinedLoadMetricSpecificationArgs
+///                 {
+///                     PredefinedLoadMetricType = "ASGTotalCPUUtilization",
+///                 },
+///                 TargetTrackingConfigurations = new[]
+///                 {
+///                     new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationArgs
+///                     {
+///                         PredefinedScalingMetricSpecification = new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs
+///                         {
+///                             PredefinedScalingMetricType = "ASGAverageCPUUtilization",
+///                         },
+///                         TargetValue = 70,
+///                     },
+///                 },
 ///                 DisableDynamicScaling = true,
 ///                 MaxCapacity = 3,
 ///                 MinCapacity = 0,
@@ -611,25 +626,11 @@ import 'scaling_plan_state.dart';
 ///                 }).Apply(invoke => invoke.Result),
 ///                 ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity",
 ///                 ServiceNamespace = "autoscaling",
-///                 TargetTrackingConfigurations = new[]
-///                 {
-///                     new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationArgs
-///                     {
-///                         PredefinedScalingMetricSpecification = new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs
-///                         {
-///                             PredefinedScalingMetricType = "ASGAverageCPUUtilization",
-///                         },
-///                         TargetValue = 70,
-///                     },
-///                 },
 ///                 PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity",
 ///                 PredictiveScalingMode = "ForecastAndScale",
-///                 PredefinedLoadMetricSpecification = new Aws.AutoScalingPlans.Inputs.ScalingPlanScalingInstructionPredefinedLoadMetricSpecificationArgs
-///                 {
-///                     PredefinedLoadMetricType = "ASGTotalCPUUtilization",
-///                 },
 ///             },
 ///         },
+///         Name = "example-predictive-cost-optimization",
 ///     });
 ///
 /// });
@@ -681,7 +682,6 @@ import 'scaling_plan_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = autoscalingplans.NewScalingPlan(ctx, "example", &autoscalingplans.ScalingPlanArgs{
-/// 			Name: pulumi.String("example-predictive-cost-optimization"),
 /// 			ApplicationSource: &autoscalingplans.ScalingPlanApplicationSourceArgs{
 /// 				TagFilters: autoscalingplans.ScalingPlanApplicationSourceTagFilterArray{
 /// 					&autoscalingplans.ScalingPlanApplicationSourceTagFilterArgs{
@@ -694,12 +694,9 @@ import 'scaling_plan_state.dart';
 /// 			},
 /// 			ScalingInstructions: autoscalingplans.ScalingPlanScalingInstructionArray{
 /// 				&autoscalingplans.ScalingPlanScalingInstructionArgs{
-/// 					DisableDynamicScaling: pulumi.Bool(true),
-/// 					MaxCapacity:           pulumi.Int(3),
-/// 					MinCapacity:           pulumi.Int(0),
-/// 					ResourceId:            pulumi.String(invokeFormat.Result),
-/// 					ScalableDimension:     pulumi.String("autoscaling:autoScalingGroup:DesiredCapacity"),
-/// 					ServiceNamespace:      pulumi.String("autoscaling"),
+/// 					PredefinedLoadMetricSpecification: &autoscalingplans.ScalingPlanScalingInstructionPredefinedLoadMetricSpecificationArgs{
+/// 						PredefinedLoadMetricType: pulumi.String("ASGTotalCPUUtilization"),
+/// 					},
 /// 					TargetTrackingConfigurations: autoscalingplans.ScalingPlanScalingInstructionTargetTrackingConfigurationArray{
 /// 						&autoscalingplans.ScalingPlanScalingInstructionTargetTrackingConfigurationArgs{
 /// 							PredefinedScalingMetricSpecification: &autoscalingplans.ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs{
@@ -708,13 +705,17 @@ import 'scaling_plan_state.dart';
 /// 							TargetValue: pulumi.Float64(70),
 /// 						},
 /// 					},
+/// 					DisableDynamicScaling:                pulumi.Bool(true),
+/// 					MaxCapacity:                          pulumi.Int(3),
+/// 					MinCapacity:                          pulumi.Int(0),
+/// 					ResourceId:                           pulumi.String(invokeFormat.Result),
+/// 					ScalableDimension:                    pulumi.String("autoscaling:autoScalingGroup:DesiredCapacity"),
+/// 					ServiceNamespace:                     pulumi.String("autoscaling"),
 /// 					PredictiveScalingMaxCapacityBehavior: pulumi.String("SetForecastCapacityToMaxCapacity"),
 /// 					PredictiveScalingMode:                pulumi.String("ForecastAndScale"),
-/// 					PredefinedLoadMetricSpecification: &autoscalingplans.ScalingPlanScalingInstructionPredefinedLoadMetricSpecificationArgs{
-/// 						PredefinedLoadMetricType: pulumi.String("ASGTotalCPUUtilization"),
-/// 					},
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example-predictive-cost-optimization"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -755,7 +756,6 @@ import 'scaling_plan_state.dart';
 ///   }
 /// }
 /// resource "aws_autoscalingplans_scalingplan" "example" {
-///   name = "example-predictive-cost-optimization"
 ///   application_source = {
 ///     tag_filters = [{
 ///       "key"    = "application"
@@ -763,24 +763,25 @@ import 'scaling_plan_state.dart';
 ///     }]
 ///   }
 ///   scaling_instructions {
-///     disable_dynamic_scaling = true
-///     max_capacity            = 3
-///     min_capacity            = 0
-///     resource_id             = data.std_format.invoke_0.result
-///     scalable_dimension      = "autoscaling:autoScalingGroup:DesiredCapacity"
-///     service_namespace       = "autoscaling"
+///     predefined_load_metric_specification = {
+///       predefined_load_metric_type = "ASGTotalCPUUtilization"
+///     }
 ///     target_tracking_configurations {
 ///       predefined_scaling_metric_specification = {
 ///         predefined_scaling_metric_type = "ASGAverageCPUUtilization"
 ///       }
 ///       target_value = 70
 ///     }
+///     disable_dynamic_scaling                  = true
+///     max_capacity                             = 3
+///     min_capacity                             = 0
+///     resource_id                              = data.std_format.invoke_0.result
+///     scalable_dimension                       = "autoscaling:autoScalingGroup:DesiredCapacity"
+///     service_namespace                        = "autoscaling"
 ///     predictive_scaling_max_capacity_behavior = "SetForecastCapacityToMaxCapacity"
 ///     predictive_scaling_mode                  = "ForecastAndScale"
-///     predefined_load_metric_specification = {
-///       predefined_load_metric_type = "ASGTotalCPUUtilization"
-///     }
 ///   }
+///   name = "example-predictive-cost-optimization"
 /// }
 /// ```
 /// ```java
@@ -799,9 +800,9 @@ import 'scaling_plan_state.dart';
 /// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanApplicationSourceArgs;
 /// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanApplicationSourceTagFilterArgs;
 /// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionArgs;
+/// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionPredefinedLoadMetricSpecificationArgs;
 /// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationArgs;
 /// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs;
-/// import com.pulumi.aws.autoscalingplans.inputs.ScalingPlanScalingInstructionPredefinedLoadMetricSpecificationArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FormatArgs;
 /// import java.util.ArrayList;
@@ -834,7 +835,6 @@ import 'scaling_plan_state.dart';
 ///             .build());
 ///
 ///         var exampleScalingPlan = new ScalingPlan("exampleScalingPlan", ScalingPlanArgs.builder()
-///             .name("example-predictive-cost-optimization")
 ///             .applicationSource(ScalingPlanApplicationSourceArgs.builder()
 ///                 .tagFilters(ScalingPlanApplicationSourceTagFilterArgs.builder()
 ///                     .key("application")
@@ -842,6 +842,15 @@ import 'scaling_plan_state.dart';
 ///                     .build())
 ///                 .build())
 ///             .scalingInstructions(ScalingPlanScalingInstructionArgs.builder()
+///                 .predefinedLoadMetricSpecification(ScalingPlanScalingInstructionPredefinedLoadMetricSpecificationArgs.builder()
+///                     .predefinedLoadMetricType("ASGTotalCPUUtilization")
+///                     .build())
+///                 .targetTrackingConfigurations(ScalingPlanScalingInstructionTargetTrackingConfigurationArgs.builder()
+///                     .predefinedScalingMetricSpecification(ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs.builder()
+///                         .predefinedScalingMetricType("ASGAverageCPUUtilization")
+///                         .build())
+///                     .targetValue(70.0)
+///                     .build())
 ///                 .disableDynamicScaling(true)
 ///                 .maxCapacity(3)
 ///                 .minCapacity(0)
@@ -851,18 +860,10 @@ import 'scaling_plan_state.dart';
 ///                     .build()).result())
 ///                 .scalableDimension("autoscaling:autoScalingGroup:DesiredCapacity")
 ///                 .serviceNamespace("autoscaling")
-///                 .targetTrackingConfigurations(ScalingPlanScalingInstructionTargetTrackingConfigurationArgs.builder()
-///                     .predefinedScalingMetricSpecification(ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecificationArgs.builder()
-///                         .predefinedScalingMetricType("ASGAverageCPUUtilization")
-///                         .build())
-///                     .targetValue(70.0)
-///                     .build())
 ///                 .predictiveScalingMaxCapacityBehavior("SetForecastCapacityToMaxCapacity")
 ///                 .predictiveScalingMode("ForecastAndScale")
-///                 .predefinedLoadMetricSpecification(ScalingPlanScalingInstructionPredefinedLoadMetricSpecificationArgs.builder()
-///                     .predefinedLoadMetricType("ASGTotalCPUUtilization")
-///                     .build())
 ///                 .build())
+///             .name("example-predictive-cost-optimization")
 ///             .build());
 ///
 ///     }
@@ -887,14 +888,19 @@ import 'scaling_plan_state.dart';
 ///     type: aws:autoscalingplans:ScalingPlan
 ///     name: example
 ///     properties:
-///       name: example-predictive-cost-optimization
 ///       applicationSource:
 ///         tagFilters:
 ///           - key: application
 ///             values:
 ///               - example
 ///       scalingInstructions:
-///         - disableDynamicScaling: true
+///         - predefinedLoadMetricSpecification:
+///             predefinedLoadMetricType: ASGTotalCPUUtilization
+///           targetTrackingConfigurations:
+///             - predefinedScalingMetricSpecification:
+///                 predefinedScalingMetricType: ASGAverageCPUUtilization
+///               targetValue: 70
+///           disableDynamicScaling: true
 ///           maxCapacity: 3
 ///           minCapacity: 0
 ///           resourceId:
@@ -907,14 +913,9 @@ import 'scaling_plan_state.dart';
 ///               return: result
 ///           scalableDimension: autoscaling:autoScalingGroup:DesiredCapacity
 ///           serviceNamespace: autoscaling
-///           targetTrackingConfigurations:
-///             - predefinedScalingMetricSpecification:
-///                 predefinedScalingMetricType: ASGAverageCPUUtilization
-///               targetValue: 70
 ///           predictiveScalingMaxCapacityBehavior: SetForecastCapacityToMaxCapacity
 ///           predictiveScalingMode: ForecastAndScale
-///           predefinedLoadMetricSpecification:
-///             predefinedLoadMetricType: ASGTotalCPUUtilization
+///       name: example-predictive-cost-optimization
 /// variables:
 ///   available:
 ///     fn::invoke:
@@ -938,7 +939,7 @@ class ScalingPlan extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Scaling instructions. More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html).
-  late final pulumi.Output<List<Map<String, dynamic>>> scalingInstructions;
+  late final pulumi.Output<List<ScalingPlanScalingInstruction>> scalingInstructions;
   /// The version number of the scaling plan. This value is always 1.
   late final pulumi.Output<int> scalingPlanVersion;
 
@@ -954,12 +955,12 @@ class ScalingPlan extends pulumi.CustomResource {
           'aws:autoscalingplans/scalingPlan:ScalingPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationSource = registerOutput<ScalingPlanApplicationSource>('applicationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScalingPlanApplicationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    scalingInstructions = registerOutput<List<Map<String, dynamic>>>('scalingInstructions');
+    scalingInstructions = registerOutput<List<ScalingPlanScalingInstruction>>('scalingInstructions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingPlanScalingInstruction>(guardedValue, (value) => ScalingPlanScalingInstruction.fromMap((value as Map).cast<String, dynamic>())); });
     scalingPlanVersion = registerOutput<int>('scalingPlanVersion');
   }
 
@@ -968,11 +969,12 @@ class ScalingPlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScalingPlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScalingPlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -989,7 +991,23 @@ class ScalingPlan extends pulumi.CustomResource {
     applicationSource = registerOutput<ScalingPlanApplicationSource>('applicationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScalingPlanApplicationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    scalingInstructions = registerOutput<List<Map<String, dynamic>>>('scalingInstructions');
+    scalingInstructions = registerOutput<List<ScalingPlanScalingInstruction>>('scalingInstructions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingPlanScalingInstruction>(guardedValue, (value) => ScalingPlanScalingInstruction.fromMap((value as Map).cast<String, dynamic>())); });
+    scalingPlanVersion = registerOutput<int>('scalingPlanVersion');
+  }
+
+  /// Creates a typed reference to an existing [ScalingPlan] resource.
+  ScalingPlan.reference(String urn)
+    : super(
+        'aws:autoscalingplans/scalingPlan:ScalingPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationSource = registerOutput<ScalingPlanApplicationSource>('applicationSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScalingPlanApplicationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    scalingInstructions = registerOutput<List<ScalingPlanScalingInstruction>>('scalingInstructions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingPlanScalingInstruction>(guardedValue, (value) => ScalingPlanScalingInstruction.fromMap((value as Map).cast<String, dynamic>())); });
     scalingPlanVersion = registerOutput<int>('scalingPlanVersion');
   }
 }

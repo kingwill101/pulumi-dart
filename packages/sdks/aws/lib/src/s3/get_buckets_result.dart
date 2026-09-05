@@ -8,42 +8,42 @@ class GetBucketsResult {
   /// Bucket region.
   final String? bucketRegion;
   /// List of bucket objects:
-  final List<GetBucketsBucket> buckets;
+  final List<GetBucketsBucket>? buckets;
   final int? maxBuckets;
   final String? prefix;
-  final String region;
+  final String? region;
 
   /// Creates a new [GetBucketsResult].
   /// [bucketRegion] Bucket region.
   /// [buckets] List of bucket objects:
   /// [maxBuckets] Optional.
   /// [prefix] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   const GetBucketsResult({
     this.bucketRegion,
-    required this.buckets,
+    this.buckets,
     this.maxBuckets,
     this.prefix,
-    required this.region,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucketRegion': ?bucketRegion,
-      'buckets': pulumi.Input.encodeList<GetBucketsBucket, Map<String, dynamic>>(buckets, (value) => value.toMap()),
+      'buckets': ?(() { final guardedValue = buckets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetBucketsBucket, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'maxBuckets': ?maxBuckets,
       'prefix': ?prefix,
-      'region': region,
+      'region': ?region,
     };
   }
 
   factory GetBucketsResult.fromMap(Map<String, dynamic> map) {
     return GetBucketsResult(
       bucketRegion: (() { final guardedValue = map['bucketRegion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      buckets: pulumi.Input.decodeList<GetBucketsBucket>(map['buckets']!, (value) => GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>())),
-      maxBuckets: (() { final guardedValue = map['maxBuckets']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      buckets: (() { final guardedValue = map['buckets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBucketsBucket>(guardedValue, (value) => GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>())); })(),
+      maxBuckets: (() { final guardedValue = map['maxBuckets']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

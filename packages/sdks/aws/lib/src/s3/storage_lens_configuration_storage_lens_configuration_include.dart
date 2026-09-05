@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageLensConfigurationStorageLensConfigurationInclude {
   /// List of S3 bucket ARNs.
-  final pulumi.Input<List<String>>? buckets;
+  final pulumi.Input<List<String>?>? buckets;
   /// List of AWS Regions.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationInclude].
   /// [buckets] List of S3 bucket ARNs.

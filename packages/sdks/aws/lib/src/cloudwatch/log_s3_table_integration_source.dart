@@ -19,11 +19,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudwatch.LogS3TableIntegrationSource("example", {
-///     integrationArn: exampleAwsObservabilityadminS3TableIntegration.arn,
 ///     dataSource: {
 ///         name: "*",
 ///         type: "*",
 ///     },
+///     integrationArn: exampleAwsObservabilityadminS3TableIntegration.arn,
 /// });
 /// ```
 /// ```python
@@ -31,11 +31,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudwatch.LogS3TableIntegrationSource("example",
-///     integration_arn=example_aws_observabilityadmin_s3_table_integration["arn"],
 ///     data_source={
 ///         "name": "*",
 ///         "type": "*",
-///     })
+///     },
+///     integration_arn=example_aws_observabilityadmin_s3_table_integration["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,12 +47,12 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// {
 ///     var example = new Aws.CloudWatch.LogS3TableIntegrationSource("example", new()
 ///     {
-///         IntegrationArn = exampleAwsObservabilityadminS3TableIntegration.Arn,
 ///         DataSource = new Aws.CloudWatch.Inputs.LogS3TableIntegrationSourceDataSourceArgs
 ///         {
 ///             Name = "*",
 ///             Type = "*",
 ///         },
+///         IntegrationArn = exampleAwsObservabilityadminS3TableIntegration.Arn,
 ///     });
 ///
 /// });
@@ -68,11 +68,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewLogS3TableIntegrationSource(ctx, "example", &cloudwatch.LogS3TableIntegrationSourceArgs{
-/// 			IntegrationArn: pulumi.Any(exampleAwsObservabilityadminS3TableIntegration.Arn),
 /// 			DataSource: &cloudwatch.LogS3TableIntegrationSourceDataSourceArgs{
 /// 				Name: pulumi.String("*"),
 /// 				Type: pulumi.String("*"),
 /// 			},
+/// 			IntegrationArn: pulumi.Any(exampleAwsObservabilityadminS3TableIntegration.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -91,11 +91,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_logs3tableintegrationsource" "example" {
-///   integration_arn = exampleAwsObservabilityadminS3TableIntegration.arn
 ///   data_source = {
 ///     name = "*"
 ///     type = "*"
 ///   }
+///   integration_arn = exampleAwsObservabilityadminS3TableIntegration.arn
 /// }
 /// ```
 /// ```java
@@ -121,11 +121,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new LogS3TableIntegrationSource("example", LogS3TableIntegrationSourceArgs.builder()
-///             .integrationArn(exampleAwsObservabilityadminS3TableIntegration.arn())
 ///             .dataSource(LogS3TableIntegrationSourceDataSourceArgs.builder()
 ///                 .name("*")
 ///                 .type("*")
 ///                 .build())
+///             .integrationArn(exampleAwsObservabilityadminS3TableIntegration.arn())
 ///             .build());
 ///
 ///     }
@@ -136,10 +136,10 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///   example:
 ///     type: aws:cloudwatch:LogS3TableIntegrationSource
 ///     properties:
-///       integrationArn: ${exampleAwsObservabilityadminS3TableIntegration.arn}
 ///       dataSource:
 ///         name: '*'
 ///         type: '*'
+///       integrationArn: ${exampleAwsObservabilityadminS3TableIntegration.arn}
 /// ```
 ///
 ///
@@ -163,11 +163,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///     },
 /// });
 /// const exampleLogS3TableIntegrationSource = new aws.cloudwatch.LogS3TableIntegrationSource("example", {
-///     integrationArn: exampleAwsObservabilityadminS3TableIntegration.arn,
 ///     dataSource: {
 ///         name: "myapp",
 ///         type: "events",
 ///     },
+///     integrationArn: exampleAwsObservabilityadminS3TableIntegration.arn,
 /// });
 /// ```
 /// ```python
@@ -184,11 +184,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///         "cw:datasource:type": "events",
 ///     })
 /// example_log_s3_table_integration_source = aws.cloudwatch.LogS3TableIntegrationSource("example",
-///     integration_arn=example_aws_observabilityadmin_s3_table_integration["arn"],
 ///     data_source={
 ///         "name": "myapp",
 ///         "type": "events",
-///     })
+///     },
+///     integration_arn=example_aws_observabilityadmin_s3_table_integration["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -213,12 +213,12 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///
 ///     var exampleLogS3TableIntegrationSource = new Aws.CloudWatch.LogS3TableIntegrationSource("example", new()
 ///     {
-///         IntegrationArn = exampleAwsObservabilityadminS3TableIntegration.Arn,
 ///         DataSource = new Aws.CloudWatch.Inputs.LogS3TableIntegrationSourceDataSourceArgs
 ///         {
 ///             Name = "myapp",
 ///             Type = "events",
 ///         },
+///         IntegrationArn = exampleAwsObservabilityadminS3TableIntegration.Arn,
 ///     });
 ///
 /// });
@@ -247,11 +247,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudwatch.NewLogS3TableIntegrationSource(ctx, "example", &cloudwatch.LogS3TableIntegrationSourceArgs{
-/// 			IntegrationArn: pulumi.Any(exampleAwsObservabilityadminS3TableIntegration.Arn),
 /// 			DataSource: &cloudwatch.LogS3TableIntegrationSourceDataSourceArgs{
 /// 				Name: pulumi.String("myapp"),
 /// 				Type: pulumi.String("events"),
 /// 			},
+/// 			IntegrationArn: pulumi.Any(exampleAwsObservabilityadminS3TableIntegration.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -280,11 +280,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///   }
 /// }
 /// resource "aws_cloudwatch_logs3tableintegrationsource" "example" {
-///   integration_arn = exampleAwsObservabilityadminS3TableIntegration.arn
 ///   data_source = {
 ///     name = "myapp"
 ///     type = "events"
 ///   }
+///   integration_arn = exampleAwsObservabilityadminS3TableIntegration.arn
 /// }
 /// ```
 /// ```java
@@ -323,11 +323,11 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleLogS3TableIntegrationSource = new LogS3TableIntegrationSource("exampleLogS3TableIntegrationSource", LogS3TableIntegrationSourceArgs.builder()
-///             .integrationArn(exampleAwsObservabilityadminS3TableIntegration.arn())
 ///             .dataSource(LogS3TableIntegrationSourceDataSourceArgs.builder()
 ///                 .name("myapp")
 ///                 .type("events")
 ///                 .build())
+///             .integrationArn(exampleAwsObservabilityadminS3TableIntegration.arn())
 ///             .build());
 ///
 ///     }
@@ -349,10 +349,10 @@ import 'log_s3_table_integration_source_timeouts.dart';
 ///     type: aws:cloudwatch:LogS3TableIntegrationSource
 ///     name: example
 ///     properties:
-///       integrationArn: ${exampleAwsObservabilityadminS3TableIntegration.arn}
 ///       dataSource:
 ///         name: myapp
 ///         type: events
+///       integrationArn: ${exampleAwsObservabilityadminS3TableIntegration.arn}
 /// ```
 ///
 ///
@@ -397,7 +397,7 @@ class LogS3TableIntegrationSource extends pulumi.CustomResource {
           'aws:cloudwatch/logS3TableIntegrationSource:LogS3TableIntegrationSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     dataSource = registerOutput<LogS3TableIntegrationSourceDataSource>('dataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogS3TableIntegrationSourceDataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     integrationArn = registerOutput<String>('integrationArn');
@@ -410,11 +410,12 @@ class LogS3TableIntegrationSource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogS3TableIntegrationSourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogS3TableIntegrationSource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -428,6 +429,21 @@ class LogS3TableIntegrationSource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dataSource = registerOutput<LogS3TableIntegrationSourceDataSource>('dataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogS3TableIntegrationSourceDataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    integrationArn = registerOutput<String>('integrationArn');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<LogS3TableIntegrationSourceTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogS3TableIntegrationSourceTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [LogS3TableIntegrationSource] resource.
+  LogS3TableIntegrationSource.reference(String urn)
+    : super(
+        'aws:cloudwatch/logS3TableIntegrationSource:LogS3TableIntegrationSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dataSource = registerOutput<LogS3TableIntegrationSourceDataSource>('dataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogS3TableIntegrationSourceDataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     integrationArn = registerOutput<String>('integrationArn');
     region = registerOutput<String>('region');

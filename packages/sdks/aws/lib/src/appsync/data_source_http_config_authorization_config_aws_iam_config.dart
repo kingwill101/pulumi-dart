@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceHttpConfigAuthorizationConfigAwsIamConfig {
   /// Signing Amazon Web Services Region for IAM authorization.
-  final pulumi.Input<String>? signingRegion;
+  final pulumi.Input<String?>? signingRegion;
   /// Signing service name for IAM authorization.
-  final pulumi.Input<String>? signingServiceName;
+  final pulumi.Input<String?>? signingServiceName;
 
   /// Creates a new [DataSourceHttpConfigAuthorizationConfigAwsIamConfig].
   /// [signingRegion] Signing Amazon Web Services Region for IAM authorization.

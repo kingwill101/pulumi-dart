@@ -5,50 +5,50 @@ import 'get_instance_storage_config_storage_config.dart';
 
 /// Result data returned by getInstanceStorageConfig.
 class GetInstanceStorageConfigResult {
-  final String associationId;
+  final String? associationId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String instanceId;
-  final String region;
-  final String resourceType;
+  final String? id;
+  final String? instanceId;
+  final String? region;
+  final String? resourceType;
   /// Specifies the storage configuration options for the Connect Instance. Documented below.
-  final List<GetInstanceStorageConfigStorageConfig> storageConfigs;
+  final List<GetInstanceStorageConfigStorageConfig>? storageConfigs;
 
   /// Creates a new [GetInstanceStorageConfigResult].
-  /// [associationId] Required.
+  /// [associationId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [instanceId] Required.
-  /// [region] Required.
-  /// [resourceType] Required.
+  /// [instanceId] Optional.
+  /// [region] Optional.
+  /// [resourceType] Optional.
   /// [storageConfigs] Specifies the storage configuration options for the Connect Instance. Documented below.
   const GetInstanceStorageConfigResult({
-    required this.associationId,
-    required this.id,
-    required this.instanceId,
-    required this.region,
-    required this.resourceType,
-    required this.storageConfigs,
+    this.associationId,
+    this.id,
+    this.instanceId,
+    this.region,
+    this.resourceType,
+    this.storageConfigs,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'associationId': associationId,
-      'id': id,
-      'instanceId': instanceId,
-      'region': region,
-      'resourceType': resourceType,
-      'storageConfigs': pulumi.Input.encodeList<GetInstanceStorageConfigStorageConfig, Map<String, dynamic>>(storageConfigs, (value) => value.toMap()),
+      'associationId': ?associationId,
+      'id': ?id,
+      'instanceId': ?instanceId,
+      'region': ?region,
+      'resourceType': ?resourceType,
+      'storageConfigs': ?(() { final guardedValue = storageConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceStorageConfigStorageConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetInstanceStorageConfigResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceStorageConfigResult(
-      associationId: map['associationId'] as String,
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      region: map['region'] as String,
-      resourceType: map['resourceType'] as String,
-      storageConfigs: pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfig>(map['storageConfigs']!, (value) => GetInstanceStorageConfigStorageConfig.fromMap((value as Map).cast<String, dynamic>())),
+      associationId: (() { final guardedValue = map['associationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageConfigs: (() { final guardedValue = map['storageConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfig>(guardedValue, (value) => GetInstanceStorageConfigStorageConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

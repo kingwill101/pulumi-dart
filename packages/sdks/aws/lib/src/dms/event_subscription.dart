@@ -192,7 +192,7 @@ import 'event_subscription_state.dart';
 /// $ pulumi import aws:dms/eventSubscription:EventSubscription test my-awesome-event-subscription
 /// ```
 class EventSubscription extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the DMS Event Subscription.
+  /// ARN of the DMS Event Subscription.
   late final pulumi.Output<String> arn;
   /// Whether the event subscription should be enabled.
   late final pulumi.Output<bool?> enabled;
@@ -225,18 +225,18 @@ class EventSubscription extends pulumi.CustomResource {
           'aws:dms/eventSubscription:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool?>('enabled');
-    eventCategories = registerOutput<List<String>>('eventCategories');
+    eventCategories = registerOutput<List<String>>('eventCategories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     snsTopicArn = registerOutput<String>('snsTopicArn');
-    sourceIds = registerOutput<List<String>?>('sourceIds');
+    sourceIds = registerOutput<List<String>?>('sourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceType = registerOutput<String>('sourceType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [EventSubscription] resource's state with the given [name] and [id].
@@ -244,11 +244,12 @@ class EventSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -264,13 +265,34 @@ class EventSubscription extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool?>('enabled');
-    eventCategories = registerOutput<List<String>>('eventCategories');
+    eventCategories = registerOutput<List<String>>('eventCategories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     snsTopicArn = registerOutput<String>('snsTopicArn');
-    sourceIds = registerOutput<List<String>?>('sourceIds');
+    sourceIds = registerOutput<List<String>?>('sourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sourceType = registerOutput<String>('sourceType');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EventSubscription] resource.
+  EventSubscription.reference(String urn)
+    : super(
+        'aws:dms/eventSubscription:EventSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    enabled = registerOutput<bool?>('enabled');
+    eventCategories = registerOutput<List<String>>('eventCategories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    snsTopicArn = registerOutput<String>('snsTopicArn');
+    sourceIds = registerOutput<List<String>?>('sourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceType = registerOutput<String>('sourceType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter {
-  final pulumi.Input<List<String>>? exclusionFilters;
-  final pulumi.Input<List<String>>? inclusionFilters;
+  final pulumi.Input<List<String>?>? exclusionFilters;
+  final pulumi.Input<List<String>?>? inclusionFilters;
   /// The supported object type or content type of the data source.
   final pulumi.Input<String> objectType;
 

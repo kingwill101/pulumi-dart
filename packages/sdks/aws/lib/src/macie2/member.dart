@@ -181,7 +181,7 @@ class Member extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// The AWS account ID for the administrator account.
   late final pulumi.Output<String> administratorAccountId;
-  /// The Amazon Resource Name (ARN) of the account.
+  /// ARN of the account.
   late final pulumi.Output<String> arn;
   /// The email address for the account.
   late final pulumi.Output<String> email;
@@ -219,7 +219,7 @@ class Member extends pulumi.CustomResource {
           'aws:macie2/member:Member',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     administratorAccountId = registerOutput<String>('administratorAccountId');
@@ -233,8 +233,8 @@ class Member extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     relationshipStatus = registerOutput<String>('relationshipStatus');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -243,11 +243,12 @@ class Member extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Member._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -273,8 +274,34 @@ class Member extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     relationshipStatus = registerOutput<String>('relationshipStatus');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [Member] resource.
+  Member.reference(String urn)
+    : super(
+        'aws:macie2/member:Member',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    administratorAccountId = registerOutput<String>('administratorAccountId');
+    arn = registerOutput<String>('arn');
+    email = registerOutput<String>('email');
+    invitationDisableEmailNotification = registerOutput<bool?>('invitationDisableEmailNotification');
+    invitationMessage = registerOutput<String?>('invitationMessage');
+    invite = registerOutput<bool>('invite');
+    invitedAt = registerOutput<String>('invitedAt');
+    masterAccountId = registerOutput<String>('masterAccountId');
+    region = registerOutput<String>('region');
+    relationshipStatus = registerOutput<String>('relationshipStatus');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

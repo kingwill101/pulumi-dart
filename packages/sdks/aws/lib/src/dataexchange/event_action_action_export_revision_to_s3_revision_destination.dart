@@ -7,7 +7,7 @@ class EventActionActionExportRevisionToS3RevisionDestination {
   final pulumi.Input<String> bucket;
   /// Pattern for naming revisions in the S3 bucket.
   /// Defaults to `${Revision.CreatedAt}/${Asset.Name}`.
-  final pulumi.Input<String>? keyPattern;
+  final pulumi.Input<String?>? keyPattern;
 
   /// Creates a new [EventActionActionExportRevisionToS3RevisionDestination].
   /// [bucket] The S3 bucket where the revision will be exported.

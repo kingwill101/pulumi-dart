@@ -7,7 +7,7 @@ class LogTransformerTransformerConfigParseToOcsf {
   /// Specifies the version of the OCSF schema to use for the transformed log events. The only allowed value is `V1.1`.
   final pulumi.Input<String> ocsfVersion;
   /// Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [LogTransformerTransformerConfigParseToOcsf].
   /// [eventSource] Required.

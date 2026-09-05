@@ -20,7 +20,7 @@ class HyperParameterTuningJobTrainingJobDefinitionInputDataConfigShuffleConfig {
 
   factory HyperParameterTuningJobTrainingJobDefinitionInputDataConfigShuffleConfig.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobTrainingJobDefinitionInputDataConfigShuffleConfig(
-      seed: pulumi.Input.fromValue(map['seed'] as int),
+      seed: pulumi.Input.fromValue((map['seed'] as num).toInt()),
     );
   }
 }

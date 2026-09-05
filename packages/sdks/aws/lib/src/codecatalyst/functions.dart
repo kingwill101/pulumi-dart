@@ -135,3 +135,14 @@ Future<GetDevEnvironmentResult> getDevEnvironment(
   );
   return GetDevEnvironmentResult.fromMap(result);
 }
+
+pulumi.Output<GetDevEnvironmentResult> getDevEnvironmentOutput(
+  GetDevEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:codecatalyst/getDevEnvironment:getDevEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDevEnvironmentResult.fromMap);
+}

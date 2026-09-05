@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'phone_number_args.dart';
 import 'phone_number_state.dart';
+import 'phone_number_status.dart';
 
 /// Provides an Amazon Connect Phone Number resource. For more information see
 /// [Amazon Connect: Getting Started](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-get-started.html)
@@ -424,12 +425,12 @@ class PhoneNumber extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The status of the phone number. Valid Values: `CLAIMED` | `IN_PROGRESS` | `FAILED`.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<PhoneNumberStatus>> statuses;
   /// Tags to apply to the Phone Number. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.
+  /// ARN for Amazon Connect instances that phone numbers are claimed to.
   late final pulumi.Output<String> targetArn;
   /// The type of phone number. Valid Values: `TOLL_FREE` | `DID`.
   late final pulumi.Output<String> type;
@@ -446,7 +447,7 @@ class PhoneNumber extends pulumi.CustomResource {
           'aws:connect/phoneNumber:PhoneNumber',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     countryCode = registerOutput<String>('countryCode');
@@ -454,9 +455,9 @@ class PhoneNumber extends pulumi.CustomResource {
     phoneNumber = registerOutput<String>('phoneNumber');
     prefix = registerOutput<String?>('prefix');
     region = registerOutput<String>('region');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    statuses = registerOutput<List<PhoneNumberStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PhoneNumberStatus>(guardedValue, (value) => PhoneNumberStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
     type = registerOutput<String>('type');
   }
@@ -466,11 +467,12 @@ class PhoneNumber extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PhoneNumberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PhoneNumber._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -490,9 +492,31 @@ class PhoneNumber extends pulumi.CustomResource {
     phoneNumber = registerOutput<String>('phoneNumber');
     prefix = registerOutput<String?>('prefix');
     region = registerOutput<String>('region');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    statuses = registerOutput<List<PhoneNumberStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PhoneNumberStatus>(guardedValue, (value) => PhoneNumberStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetArn = registerOutput<String>('targetArn');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PhoneNumber] resource.
+  PhoneNumber.reference(String urn)
+    : super(
+        'aws:connect/phoneNumber:PhoneNumber',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    countryCode = registerOutput<String>('countryCode');
+    description = registerOutput<String?>('description');
+    phoneNumber = registerOutput<String>('phoneNumber');
+    prefix = registerOutput<String?>('prefix');
+    region = registerOutput<String>('region');
+    statuses = registerOutput<List<PhoneNumberStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PhoneNumberStatus>(guardedValue, (value) => PhoneNumberStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
     type = registerOutput<String>('type');
   }

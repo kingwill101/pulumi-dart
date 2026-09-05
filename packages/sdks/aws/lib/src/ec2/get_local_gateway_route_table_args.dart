@@ -8,24 +8,24 @@ import 'get_local_gateway_route_table_filter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ec2_get_local_gateway_route_table_get_local_gateway_route_table_args_doc}
 class GetLocalGatewayRouteTableArgs {
-  final pulumi.Input<List<GetLocalGatewayRouteTableFilter>>? filters;
+  final pulumi.Input<List<GetLocalGatewayRouteTableFilter>?>? filters;
   /// ID of the specific local gateway route table to retrieve.
-  final pulumi.Input<String>? localGatewayId;
+  final pulumi.Input<String?>? localGatewayId;
   /// Local Gateway Route Table Id assigned to desired local gateway route table
-  final pulumi.Input<String>? localGatewayRouteTableId;
+  final pulumi.Input<String?>? localGatewayRouteTableId;
   /// ARN of the Outpost the local gateway route table is associated with.
-  final pulumi.Input<String>? outpostArn;
+  final pulumi.Input<String?>? outpostArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// State of the local gateway route table.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the desired local gateway route table.
   ///
   /// The arguments of this data source act as filters for querying the available
   /// Local Gateway Route Tables in the current region. The given filters must match exactly one
   /// Local Gateway Route Table whose data will be exported as attributes.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetLocalGatewayRouteTableArgs].
   /// [filters] Optional.

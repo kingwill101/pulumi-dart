@@ -150,15 +150,15 @@ import 'vpc_peering_connection_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const foo = new aws.ec2.VpcPeeringConnection("foo", {
-///     peerOwnerId: peerOwnerId,
-///     peerVpcId: bar.id,
-///     vpcId: fooAwsVpc.id,
 ///     accepter: {
 ///         allowRemoteVpcDnsResolution: true,
 ///     },
 ///     requester: {
 ///         allowRemoteVpcDnsResolution: true,
 ///     },
+///     peerOwnerId: peerOwnerId,
+///     peerVpcId: bar.id,
+///     vpcId: fooAwsVpc.id,
 /// });
 /// ```
 /// ```python
@@ -166,15 +166,15 @@ import 'vpc_peering_connection_state.dart';
 /// import pulumi_aws as aws
 ///
 /// foo = aws.ec2.VpcPeeringConnection("foo",
-///     peer_owner_id=peer_owner_id,
-///     peer_vpc_id=bar["id"],
-///     vpc_id=foo_aws_vpc["id"],
 ///     accepter={
 ///         "allow_remote_vpc_dns_resolution": True,
 ///     },
 ///     requester={
 ///         "allow_remote_vpc_dns_resolution": True,
-///     })
+///     },
+///     peer_owner_id=peer_owner_id,
+///     peer_vpc_id=bar["id"],
+///     vpc_id=foo_aws_vpc["id"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -186,9 +186,6 @@ import 'vpc_peering_connection_state.dart';
 /// {
 ///     var foo = new Aws.Ec2.VpcPeeringConnection("foo", new()
 ///     {
-///         PeerOwnerId = peerOwnerId,
-///         PeerVpcId = bar.Id,
-///         VpcId = fooAwsVpc.Id,
 ///         Accepter = new Aws.Ec2.Inputs.VpcPeeringConnectionAccepterArgs
 ///         {
 ///             AllowRemoteVpcDnsResolution = true,
@@ -197,6 +194,9 @@ import 'vpc_peering_connection_state.dart';
 ///         {
 ///             AllowRemoteVpcDnsResolution = true,
 ///         },
+///         PeerOwnerId = peerOwnerId,
+///         PeerVpcId = bar.Id,
+///         VpcId = fooAwsVpc.Id,
 ///     });
 ///
 /// });
@@ -212,15 +212,15 @@ import 'vpc_peering_connection_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewVpcPeeringConnection(ctx, "foo", &ec2.VpcPeeringConnectionArgs{
-/// 			PeerOwnerId: pulumi.Any(peerOwnerId),
-/// 			PeerVpcId:   pulumi.Any(bar.Id),
-/// 			VpcId:       pulumi.Any(fooAwsVpc.Id),
 /// 			Accepter: &ec2.VpcPeeringConnectionAccepterTypeArgs{
 /// 				AllowRemoteVpcDnsResolution: pulumi.Bool(true),
 /// 			},
 /// 			Requester: &ec2.VpcPeeringConnectionRequesterArgs{
 /// 				AllowRemoteVpcDnsResolution: pulumi.Bool(true),
 /// 			},
+/// 			PeerOwnerId: pulumi.Any(peerOwnerId),
+/// 			PeerVpcId:   pulumi.Any(bar.Id),
+/// 			VpcId:       pulumi.Any(fooAwsVpc.Id),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -239,15 +239,15 @@ import 'vpc_peering_connection_state.dart';
 /// }
 ///
 /// resource "aws_ec2_vpcpeeringconnection" "foo" {
-///   peer_owner_id = peerOwnerId
-///   peer_vpc_id   = bar.id
-///   vpc_id        = fooAwsVpc.id
 ///   accepter = {
 ///     allow_remote_vpc_dns_resolution = true
 ///   }
 ///   requester = {
 ///     allow_remote_vpc_dns_resolution = true
 ///   }
+///   peer_owner_id = peerOwnerId
+///   peer_vpc_id   = bar.id
+///   vpc_id        = fooAwsVpc.id
 /// }
 /// ```
 /// ```java
@@ -274,15 +274,15 @@ import 'vpc_peering_connection_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var foo = new VpcPeeringConnection("foo", VpcPeeringConnectionArgs.builder()
-///             .peerOwnerId(peerOwnerId)
-///             .peerVpcId(bar.id())
-///             .vpcId(fooAwsVpc.id())
 ///             .accepter(VpcPeeringConnectionAccepterArgs.builder()
 ///                 .allowRemoteVpcDnsResolution(true)
 ///                 .build())
 ///             .requester(VpcPeeringConnectionRequesterArgs.builder()
 ///                 .allowRemoteVpcDnsResolution(true)
 ///                 .build())
+///             .peerOwnerId(peerOwnerId)
+///             .peerVpcId(bar.id())
+///             .vpcId(fooAwsVpc.id())
 ///             .build());
 ///
 ///     }
@@ -293,13 +293,13 @@ import 'vpc_peering_connection_state.dart';
 ///   foo:
 ///     type: aws:ec2:VpcPeeringConnection
 ///     properties:
-///       peerOwnerId: ${peerOwnerId}
-///       peerVpcId: ${bar.id}
-///       vpcId: ${fooAwsVpc.id}
 ///       accepter:
 ///         allowRemoteVpcDnsResolution: true
 ///       requester:
 ///         allowRemoteVpcDnsResolution: true
+///       peerOwnerId: ${peerOwnerId}
+///       peerVpcId: ${bar.id}
+///       vpcId: ${fooAwsVpc.id}
 /// ```
 ///
 ///
@@ -719,7 +719,7 @@ class VpcPeeringConnection extends pulumi.CustomResource {
           'aws:ec2/vpcPeeringConnection:VpcPeeringConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     acceptStatus = registerOutput<String>('acceptStatus');
     accepter = registerOutput<VpcPeeringConnectionAccepter>('accepter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcPeeringConnectionAccepter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -729,8 +729,8 @@ class VpcPeeringConnection extends pulumi.CustomResource {
     peerVpcId = registerOutput<String>('peerVpcId');
     region = registerOutput<String>('region');
     requester = registerOutput<VpcPeeringConnectionRequester>('requester', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcPeeringConnectionRequester.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -739,11 +739,12 @@ class VpcPeeringConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcPeeringConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcPeeringConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -765,8 +766,30 @@ class VpcPeeringConnection extends pulumi.CustomResource {
     peerVpcId = registerOutput<String>('peerVpcId');
     region = registerOutput<String>('region');
     requester = registerOutput<VpcPeeringConnectionRequester>('requester', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcPeeringConnectionRequester.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [VpcPeeringConnection] resource.
+  VpcPeeringConnection.reference(String urn)
+    : super(
+        'aws:ec2/vpcPeeringConnection:VpcPeeringConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceptStatus = registerOutput<String>('acceptStatus');
+    accepter = registerOutput<VpcPeeringConnectionAccepter>('accepter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcPeeringConnectionAccepter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoAccept = registerOutput<bool?>('autoAccept');
+    peerOwnerId = registerOutput<String>('peerOwnerId');
+    peerRegion = registerOutput<String>('peerRegion');
+    peerVpcId = registerOutput<String>('peerVpcId');
+    region = registerOutput<String>('region');
+    requester = registerOutput<VpcPeeringConnectionRequester>('requester', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcPeeringConnectionRequester.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

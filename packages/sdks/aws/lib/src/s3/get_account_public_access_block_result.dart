@@ -5,15 +5,15 @@
 class GetAccountPublicAccessBlockResult {
   final String? accountId;
   /// Whether or not Amazon S3 should block public ACLs for buckets in this account is enabled. Returns as `true` or `false`.
-  final bool blockPublicAcls;
+  final bool? blockPublicAcls;
   /// Whether or not Amazon S3 should block public bucket policies for buckets in this account is enabled. Returns as `true` or `false`.
-  final bool blockPublicPolicy;
+  final bool? blockPublicPolicy;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Whether or not Amazon S3 should ignore public ACLs for buckets in this account is enabled. Returns as `true` or `false`.
-  final bool ignorePublicAcls;
+  final bool? ignorePublicAcls;
   /// Whether or not Amazon S3 should restrict public bucket policies for buckets in this account is enabled. Returns as `true` or `false`.
-  final bool restrictPublicBuckets;
+  final bool? restrictPublicBuckets;
 
   /// Creates a new [GetAccountPublicAccessBlockResult].
   /// [accountId] Optional.
@@ -24,32 +24,32 @@ class GetAccountPublicAccessBlockResult {
   /// [restrictPublicBuckets] Whether or not Amazon S3 should restrict public bucket policies for buckets in this account is enabled. Returns as `true` or `false`.
   const GetAccountPublicAccessBlockResult({
     this.accountId,
-    required this.blockPublicAcls,
-    required this.blockPublicPolicy,
-    required this.id,
-    required this.ignorePublicAcls,
-    required this.restrictPublicBuckets,
+    this.blockPublicAcls,
+    this.blockPublicPolicy,
+    this.id,
+    this.ignorePublicAcls,
+    this.restrictPublicBuckets,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
-      'blockPublicAcls': blockPublicAcls,
-      'blockPublicPolicy': blockPublicPolicy,
-      'id': id,
-      'ignorePublicAcls': ignorePublicAcls,
-      'restrictPublicBuckets': restrictPublicBuckets,
+      'blockPublicAcls': ?blockPublicAcls,
+      'blockPublicPolicy': ?blockPublicPolicy,
+      'id': ?id,
+      'ignorePublicAcls': ?ignorePublicAcls,
+      'restrictPublicBuckets': ?restrictPublicBuckets,
     };
   }
 
   factory GetAccountPublicAccessBlockResult.fromMap(Map<String, dynamic> map) {
     return GetAccountPublicAccessBlockResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      blockPublicAcls: map['blockPublicAcls'] as bool,
-      blockPublicPolicy: map['blockPublicPolicy'] as bool,
-      id: map['id'] as String,
-      ignorePublicAcls: map['ignorePublicAcls'] as bool,
-      restrictPublicBuckets: map['restrictPublicBuckets'] as bool,
+      blockPublicAcls: (() { final guardedValue = map['blockPublicAcls']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      blockPublicPolicy: (() { final guardedValue = map['blockPublicPolicy']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ignorePublicAcls: (() { final guardedValue = map['ignorePublicAcls']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      restrictPublicBuckets: (() { final guardedValue = map['restrictPublicBuckets']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

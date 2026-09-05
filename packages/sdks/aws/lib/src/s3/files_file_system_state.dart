@@ -6,36 +6,36 @@ import 'files_file_system_timeouts.dart';
 /// Input properties used for looking up and filtering FilesFileSystem resources.
 class FilesFileSystemState {
   /// Set to `true` to acknowledge and accept any warnings related to the bucket configuration. If not specified, the operation may fail when such warnings are present. For example, warnings may be raised when creating a file system scoped to a prefix containing a large number of objects (approximately 12 million objects). See [the AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-files-synchronization.html#s3-files-sync-rename-move) for more details.
-  final pulumi.Input<bool>? acceptBucketWarning;
+  final pulumi.Input<bool?>? acceptBucketWarning;
   /// ARN of the file system.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// S3 bucket ARN. Changing this value forces replacement.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Creation time.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// KMS key ID for encryption. Changing this value forces replacement.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// File system name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// AWS account ID of the owner.
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// S3 bucket prefix. Changing this value forces replacement.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// IAM role ARN for S3 access. Changing this value forces replacement.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// File system status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Status message.
-  final pulumi.Input<String>? statusMessage;
+  final pulumi.Input<String?>? statusMessage;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<FilesFileSystemTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<FilesFileSystemTimeouts?>? timeouts;
 
   /// Creates a new [FilesFileSystemState].
   /// [acceptBucketWarning] Set to `true` to acknowledge and accept any warnings related to the bucket configuration. If not specified, the operation may fail when such warnings are present. For example, warnings may be raised when creating a file system scoped to a prefix containing a large number of objects (approximately 12 million objects). See [the AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-files-synchronization.html#s3-files-sync-rename-move) for more details.

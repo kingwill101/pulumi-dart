@@ -12,25 +12,25 @@ import 'app_authorization_timeouts.dart';
 class AppAuthorizationArgs {
   /// Name of the application. For valid values, see the [CreateAppAuthorization API reference](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html).
   final pulumi.Input<String> app;
-  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// ARN of the app bundle to use for the request.
   final pulumi.Input<String> appBundleArn;
   /// Authorization type for the app authorization. Valid values are `oauth2` and `apiKey`.
   final pulumi.Input<String> authType;
   /// Credentials for the application, such as an API key or OAuth2 client ID and secret. Specify credentials that match the authorization type for your request. For example, if the authorization type for your request is OAuth2 (`oauth2`), then you should provide only the OAuth2 credentials. See `credential` Block for details.
   final pulumi.Input<AppAuthorizationCredential> credential;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Information about an application tenant, such as the application display name and identifier. See `tenant` Block for details.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<AppAuthorizationTenant>> tenants;
-  final pulumi.Input<AppAuthorizationTimeouts>? timeouts;
+  final pulumi.Input<AppAuthorizationTimeouts?>? timeouts;
 
   /// Creates a new [AppAuthorizationArgs].
   /// [app] Name of the application. For valid values, see the [CreateAppAuthorization API reference](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateAppAuthorization.html).
-  /// [appBundleArn] Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// [appBundleArn] ARN of the app bundle to use for the request.
   /// [authType] Authorization type for the app authorization. Valid values are `oauth2` and `apiKey`.
   /// [credential] Credentials for the application, such as an API key or OAuth2 client ID and secret. Specify credentials that match the authorization type for your request. For example, if the authorization type for your request is OAuth2 (`oauth2`), then you should provide only the OAuth2 credentials. See `credential` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

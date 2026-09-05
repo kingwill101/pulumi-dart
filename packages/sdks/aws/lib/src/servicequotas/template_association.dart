@@ -124,7 +124,7 @@ class TemplateAssociation extends pulumi.CustomResource {
           'aws:servicequotas/templateAssociation:TemplateAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
@@ -136,11 +136,12 @@ class TemplateAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TemplateAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TemplateAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -154,6 +155,20 @@ class TemplateAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [TemplateAssociation] resource.
+  TemplateAssociation.reference(String urn)
+    : super(
+        'aws:servicequotas/templateAssociation:TemplateAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     skipDestroy = registerOutput<bool?>('skipDestroy');
     status = registerOutput<String>('status');

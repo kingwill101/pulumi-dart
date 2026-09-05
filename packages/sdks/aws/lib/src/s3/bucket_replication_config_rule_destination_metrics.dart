@@ -5,7 +5,7 @@ import 'bucket_replication_config_rule_destination_metrics_event_threshold.dart'
 
 class BucketReplicationConfigRuleDestinationMetrics {
   /// Configuration block that specifies the time threshold for emitting the `s3:Replication:OperationMissedThreshold` event. See below.
-  final pulumi.Input<BucketReplicationConfigRuleDestinationMetricsEventThreshold>? eventThreshold;
+  final pulumi.Input<BucketReplicationConfigRuleDestinationMetricsEventThreshold?>? eventThreshold;
   /// Status of the Destination Metrics. Either `"Enabled"` or `"Disabled"`.
   final pulumi.Input<String> status;
 

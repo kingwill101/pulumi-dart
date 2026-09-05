@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceSetResourceDnsTargetResourceTargetResourceNlbResource {
   /// NLB resource ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
 
   /// Creates a new [ResourceSetResourceDnsTargetResourceTargetResourceNlbResource].
   /// [arn] NLB resource ARN.

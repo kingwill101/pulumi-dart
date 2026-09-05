@@ -11,14 +11,14 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTl {
   final pulumi.Input<bool> enforce;
   /// One or more ports that the policy is enforced for.
   final pulumi.Input<List<int>> ports;
-  /// Listener's Transport Layer Security (TLS) validation context. See `spec.listener.tls.validation` Block for details.
+  /// Listener's TLS validation context. See `spec.listener.tls.validation` Block for details.
   final pulumi.Input<List<GetVirtualNodeSpecBackendDefaultClientPolicyTlValidation>> validations;
 
   /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicyTl].
   /// [certificates] Listener's TLS certificate. See `spec.listener.tls.certificate` Block for details.
   /// [enforce] Whether the policy is enforced.
   /// [ports] One or more ports that the policy is enforced for.
-  /// [validations] Listener's Transport Layer Security (TLS) validation context. See `spec.listener.tls.validation` Block for details.
+  /// [validations] Listener's TLS validation context. See `spec.listener.tls.validation` Block for details.
   const GetVirtualNodeSpecBackendDefaultClientPolicyTl({
     required this.certificates,
     required this.enforce,

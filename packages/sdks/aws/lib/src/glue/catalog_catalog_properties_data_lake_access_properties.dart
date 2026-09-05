@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogCatalogPropertiesDataLakeAccessProperties {
   /// Type of the catalog.
-  final pulumi.Input<String>? catalogType;
+  final pulumi.Input<String?>? catalogType;
   /// Whether data lake access is enabled.
-  final pulumi.Input<bool>? dataLakeAccess;
+  final pulumi.Input<bool?>? dataLakeAccess;
   /// ARN of the IAM role used for data transfer.
-  final pulumi.Input<String>? dataTransferRole;
+  final pulumi.Input<String?>? dataTransferRole;
   /// ARN of the KMS key used for encryption.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Managed workgroup name.
-  final pulumi.Input<String>? managedWorkgroupName;
+  final pulumi.Input<String?>? managedWorkgroupName;
   /// Managed workgroup status.
-  final pulumi.Input<String>? managedWorkgroupStatus;
+  final pulumi.Input<String?>? managedWorkgroupStatus;
   /// Redshift database name.
-  final pulumi.Input<String>? redshiftDatabaseName;
+  final pulumi.Input<String?>? redshiftDatabaseName;
   /// Status message.
-  final pulumi.Input<String>? statusMessage;
+  final pulumi.Input<String?>? statusMessage;
 
   /// Creates a new [CatalogCatalogPropertiesDataLakeAccessProperties].
   /// [catalogType] Type of the catalog.

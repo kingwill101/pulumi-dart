@@ -141,7 +141,7 @@ class ApprovalRuleTemplateAssociation extends pulumi.CustomResource {
           'aws:codecommit/approvalRuleTemplateAssociation:ApprovalRuleTemplateAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     approvalRuleTemplateName = registerOutput<String>('approvalRuleTemplateName');
     region = registerOutput<String>('region');
@@ -153,11 +153,12 @@ class ApprovalRuleTemplateAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApprovalRuleTemplateAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApprovalRuleTemplateAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -171,6 +172,20 @@ class ApprovalRuleTemplateAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    approvalRuleTemplateName = registerOutput<String>('approvalRuleTemplateName');
+    region = registerOutput<String>('region');
+    repositoryName = registerOutput<String>('repositoryName');
+  }
+
+  /// Creates a typed reference to an existing [ApprovalRuleTemplateAssociation] resource.
+  ApprovalRuleTemplateAssociation.reference(String urn)
+    : super(
+        'aws:codecommit/approvalRuleTemplateAssociation:ApprovalRuleTemplateAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     approvalRuleTemplateName = registerOutput<String>('approvalRuleTemplateName');
     region = registerOutput<String>('region');
     repositoryName = registerOutput<String>('repositoryName');

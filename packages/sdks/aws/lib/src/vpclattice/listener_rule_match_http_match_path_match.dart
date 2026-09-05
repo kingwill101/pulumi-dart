@@ -5,7 +5,7 @@ import 'listener_rule_match_http_match_path_match_match.dart';
 
 class ListenerRuleMatchHttpMatchPathMatch {
   /// Whether the match is case sensitive. Default is `false`.
-  final pulumi.Input<bool>? caseSensitive;
+  final pulumi.Input<bool?>? caseSensitive;
   /// Path match type. See `match.http_match.path_match.match` Block for details.
   final pulumi.Input<ListenerRuleMatchHttpMatchPathMatchMatch> match;
 

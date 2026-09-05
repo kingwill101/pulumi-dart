@@ -9,11 +9,11 @@ import 'byte_match_set_byte_match_tuple.dart';
 /// {@macro pulumi_wafregional_byte_match_set_byte_match_set_args_doc}
 class ByteMatchSetArgs {
   /// Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
-  final pulumi.Input<List<ByteMatchSetByteMatchTuple>>? byteMatchTuples;
+  final pulumi.Input<List<ByteMatchSetByteMatchTuple>?>? byteMatchTuples;
   /// The name or description of the ByteMatchSet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ByteMatchSetArgs].
   /// [byteMatchTuples] Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.

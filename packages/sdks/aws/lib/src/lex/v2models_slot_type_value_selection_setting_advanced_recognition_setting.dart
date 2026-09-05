@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting {
   /// Enables using the slot values as a custom vocabulary for recognizing user utterances.
   /// Valid value is `UseSlotValuesAsCustomVocabulary`.
-  final pulumi.Input<String>? audioRecognitionStrategy;
+  final pulumi.Input<String?>? audioRecognitionStrategy;
 
   /// Creates a new [V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting].
   /// [audioRecognitionStrategy] Enables using the slot values as a custom vocabulary for recognizing user utterances.

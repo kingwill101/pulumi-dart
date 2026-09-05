@@ -12,17 +12,17 @@ class SchemaArgs {
   /// The data format of the schema definition. Valid values are `AVRO`, `JSON` and `PROTOBUF`.
   final pulumi.Input<String> dataFormat;
   /// A description of the schema.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ARN of the Glue Registry to create the schema in.
-  final pulumi.Input<String>? registryArn;
+  final pulumi.Input<String?>? registryArn;
   /// The schema definition using the `dataFormat` setting for `schemaName`.
   final pulumi.Input<String> schemaDefinition;
   /// The Name of the schema.
   final pulumi.Input<String> schemaName;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SchemaArgs].
   /// [compatibility] The compatibility mode of the schema. Values values are: `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, and `FULL_ALL`.

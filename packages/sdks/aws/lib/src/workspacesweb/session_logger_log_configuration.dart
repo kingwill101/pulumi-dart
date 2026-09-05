@@ -5,7 +5,7 @@ import 'session_logger_log_configuration_s3.dart';
 
 class SessionLoggerLogConfiguration {
   /// Configuration block for S3 log delivery. See S3 Configuration below.
-  final pulumi.Input<SessionLoggerLogConfigurationS3>? s3;
+  final pulumi.Input<SessionLoggerLogConfigurationS3?>? s3;
 
   /// Creates a new [SessionLoggerLogConfiguration].
   /// [s3] Configuration block for S3 log delivery. See S3 Configuration below.

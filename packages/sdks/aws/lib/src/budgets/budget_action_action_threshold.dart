@@ -26,7 +26,7 @@ class BudgetActionActionThreshold {
   factory BudgetActionActionThreshold.fromMap(Map<String, dynamic> map) {
     return BudgetActionActionThreshold(
       actionThresholdType: pulumi.Input.fromValue(map['actionThresholdType'] as String),
-      actionThresholdValue: pulumi.Input.fromValue(map['actionThresholdValue'] as double),
+      actionThresholdValue: pulumi.Input.fromValue((map['actionThresholdValue'] as num).toDouble()),
     );
   }
 }

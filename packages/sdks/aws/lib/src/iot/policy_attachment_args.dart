@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iot_policy_attachment_policy_attachment_args_doc}
 class PolicyAttachmentArgs {
   /// The name of the policy to attach.
-  final pulumi.Input<String> policy;
+  final pulumi.Input<dynamic> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The identity to which the policy is attached.
   final pulumi.Input<String> target;
 
@@ -34,7 +34,7 @@ class PolicyAttachmentArgs {
 
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
-      policy: pulumi.Input.fromValue(map['policy'] as String),
+      policy: pulumi.Input.fromValue(map['policy']),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       target: pulumi.Input.fromValue(map['target'] as String),
     );

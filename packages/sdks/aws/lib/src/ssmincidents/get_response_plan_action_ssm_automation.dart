@@ -12,7 +12,7 @@ class GetResponsePlanActionSsmAutomation {
   final pulumi.Input<Map<String, String>> dynamicParameters;
   /// The key-value pair parameters used when the automation document runs. The following values are supported:
   final pulumi.Input<List<GetResponsePlanActionSsmAutomationParameter>> parameters;
-  /// The Amazon Resource Name (ARN) of the role that the automation document assumes when it runs commands.
+  /// The ARN of the role that the automation document assumes when it runs commands.
   final pulumi.Input<String> roleArn;
   /// The account that runs the automation document. This can be in either the management account or an application account.
   final pulumi.Input<String> targetAccount;
@@ -22,7 +22,7 @@ class GetResponsePlanActionSsmAutomation {
   /// [documentVersion] The version of the automation document to use at runtime.
   /// [dynamicParameters] The key-value pair used to resolve dynamic parameter values when processing a Systems Manager Automation runbook.
   /// [parameters] The key-value pair parameters used when the automation document runs. The following values are supported:
-  /// [roleArn] The Amazon Resource Name (ARN) of the role that the automation document assumes when it runs commands.
+  /// [roleArn] The ARN of the role that the automation document assumes when it runs commands.
   /// [targetAccount] The account that runs the automation document. This can be in either the management account or an application account.
   const GetResponsePlanActionSsmAutomation({
     required this.documentName,

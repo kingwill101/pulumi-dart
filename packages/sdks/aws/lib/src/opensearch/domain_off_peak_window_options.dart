@@ -5,8 +5,8 @@ import 'domain_off_peak_window_options_off_peak_window.dart';
 
 class DomainOffPeakWindowOptions {
   /// Enabled disabled toggle for off-peak update window.
-  final pulumi.Input<bool>? enabled;
-  final pulumi.Input<DomainOffPeakWindowOptionsOffPeakWindow>? offPeakWindow;
+  final pulumi.Input<bool?>? enabled;
+  final pulumi.Input<DomainOffPeakWindowOptionsOffPeakWindow?>? offPeakWindow;
 
   /// Creates a new [DomainOffPeakWindowOptions].
   /// [enabled] Enabled disabled toggle for off-peak update window.

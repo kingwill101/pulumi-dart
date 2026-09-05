@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A Region represents any valid Amazon region that may be targeted with deployments.
-enum Region {
+enum Region implements pulumi.PulumiEnum<String> {
   aFSouth1("af-south-1"),
   aPEast1("ap-east-1"),
   aPEast2("ap-east-2"),
@@ -48,6 +50,7 @@ enum Region {
   uSISOFSouth1("us-isof-south-1");
 
   const Region(this.wireValue);
+  @override
   final String wireValue;
 
   static Region fromValue(String value) {

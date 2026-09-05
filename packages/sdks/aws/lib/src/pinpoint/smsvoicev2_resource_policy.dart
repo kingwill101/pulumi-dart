@@ -21,13 +21,13 @@ import 'smsvoicev2_resource_policy_state.dart';
 /// });
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: ["sms-voice:SendTextMessage"],
-///         resources: [exampleSmsvoicev2PhoneNumber.arn],
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: ["123456789012"],
 ///         }],
+///         effect: "Allow",
+///         actions: ["sms-voice:SendTextMessage"],
+///         resources: [exampleSmsvoicev2PhoneNumber.arn],
 ///     }],
 /// });
 /// const exampleSmsvoicev2ResourcePolicy = new aws.pinpoint.Smsvoicev2ResourcePolicy("example", {
@@ -45,13 +45,13 @@ import 'smsvoicev2_resource_policy_state.dart';
 ///     number_type="SIMULATOR",
 ///     number_capabilities=["SMS"])
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
-///     "actions": ["sms-voice:SendTextMessage"],
-///     "resources": [example_smsvoicev2_phone_number.arn],
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": ["123456789012"],
 ///     }],
+///     "effect": "Allow",
+///     "actions": ["sms-voice:SendTextMessage"],
+///     "resources": [example_smsvoicev2_phone_number.arn],
 /// }])
 /// example_smsvoicev2_resource_policy = aws.pinpoint.Smsvoicev2ResourcePolicy("example",
 ///     resource_arn=example_smsvoicev2_phone_number.arn,
@@ -82,15 +82,6 @@ import 'smsvoicev2_resource_policy_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "sms-voice:SendTextMessage",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     exampleSmsvoicev2PhoneNumber.Arn,
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -101,6 +92,15 @@ import 'smsvoicev2_resource_policy_state.dart';
 ///                             "123456789012",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sms-voice:SendTextMessage",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     exampleSmsvoicev2PhoneNumber.Arn,
 ///                 },
 ///             },
 ///         },
@@ -139,13 +139,6 @@ import 'smsvoicev2_resource_policy_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
-/// 					Actions: pulumi.StringArray{
-/// 						pulumi.String("sms-voice:SendTextMessage"),
-/// 					},
-/// 					Resources: pulumi.StringArray{
-/// 						exampleSmsvoicev2PhoneNumber.Arn,
-/// 					},
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("AWS"),
@@ -153,6 +146,13 @@ import 'smsvoicev2_resource_policy_state.dart';
 /// 								pulumi.String("123456789012"),
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.String("Allow"),
+/// 					Actions: pulumi.StringArray{
+/// 						pulumi.String("sms-voice:SendTextMessage"),
+/// 					},
+/// 					Resources: pulumi.StringArray{
+/// 						exampleSmsvoicev2PhoneNumber.Arn,
 /// 					},
 /// 				},
 /// 			},
@@ -179,13 +179,13 @@ import 'smsvoicev2_resource_policy_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     effect    = "Allow"
-///     actions   = ["sms-voice:SendTextMessage"]
-///     resources = [aws_pinpoint_smsvoicev2phonenumber.example.arn]
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["123456789012"]
 ///     }
+///     effect    = "Allow"
+///     actions   = ["sms-voice:SendTextMessage"]
+///     resources = [aws_pinpoint_smsvoicev2phonenumber.example.arn]
 ///   }
 /// }
 ///
@@ -236,13 +236,13 @@ import 'smsvoicev2_resource_policy_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions("sms-voice:SendTextMessage")
-///                 .resources(exampleSmsvoicev2PhoneNumber.arn())
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers("123456789012")
 ///                     .build())
+///                 .effect("Allow")
+///                 .actions("sms-voice:SendTextMessage")
+///                 .resources(exampleSmsvoicev2PhoneNumber.arn())
 ///                 .build())
 ///             .build());
 ///
@@ -277,15 +277,15 @@ import 'smsvoicev2_resource_policy_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
+///           - principals:
+///               - type: AWS
+///                 identifiers:
+///                   - '123456789012'
+///             effect: Allow
 ///             actions:
 ///               - sms-voice:SendTextMessage
 ///             resources:
 ///               - ${exampleSmsvoicev2PhoneNumber.arn}
-///             principals:
-///               - type: AWS
-///                 identifiers:
-///                   - '123456789012'
 /// ```
 ///
 ///
@@ -325,7 +325,7 @@ class Smsvoicev2ResourcePolicy extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2ResourcePolicy:Smsvoicev2ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -337,11 +337,12 @@ class Smsvoicev2ResourcePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Smsvoicev2ResourcePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Smsvoicev2ResourcePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -355,6 +356,20 @@ class Smsvoicev2ResourcePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+  }
+
+  /// Creates a typed reference to an existing [Smsvoicev2ResourcePolicy] resource.
+  Smsvoicev2ResourcePolicy.reference(String urn)
+    : super(
+        'aws:pinpoint/smsvoicev2ResourcePolicy:Smsvoicev2ResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

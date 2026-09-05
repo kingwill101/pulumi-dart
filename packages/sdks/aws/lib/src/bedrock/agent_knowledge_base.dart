@@ -17,8 +17,6 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentKnowledgeBase("example", {
-///     name: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     knowledgeBaseConfiguration: {
 ///         vectorKnowledgeBaseConfiguration: {
 ///             embeddingModelArn: "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
@@ -26,17 +24,19 @@ import 'agent_knowledge_base_timeouts.dart';
 ///         type: "VECTOR",
 ///     },
 ///     storageConfiguration: {
-///         type: "OPENSEARCH_SERVERLESS",
 ///         opensearchServerlessConfiguration: {
-///             collectionArn: "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
-///             vectorIndexName: "bedrock-knowledge-base-default-index",
 ///             fieldMapping: {
 ///                 vectorField: "bedrock-knowledge-base-default-vector",
 ///                 textField: "AMAZON_BEDROCK_TEXT_CHUNK",
 ///                 metadataField: "AMAZON_BEDROCK_METADATA",
 ///             },
+///             collectionArn: "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
+///             vectorIndexName: "bedrock-knowledge-base-default-index",
 ///         },
+///         type: "OPENSEARCH_SERVERLESS",
 ///     },
+///     name: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -44,8 +44,6 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentKnowledgeBase("example",
-///     name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     knowledge_base_configuration={
 ///         "vector_knowledge_base_configuration": {
 ///             "embedding_model_arn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
@@ -53,17 +51,19 @@ import 'agent_knowledge_base_timeouts.dart';
 ///         "type": "VECTOR",
 ///     },
 ///     storage_configuration={
-///         "type": "OPENSEARCH_SERVERLESS",
 ///         "opensearch_serverless_configuration": {
-///             "collection_arn": "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
-///             "vector_index_name": "bedrock-knowledge-base-default-index",
 ///             "field_mapping": {
 ///                 "vector_field": "bedrock-knowledge-base-default-vector",
 ///                 "text_field": "AMAZON_BEDROCK_TEXT_CHUNK",
 ///                 "metadata_field": "AMAZON_BEDROCK_METADATA",
 ///             },
+///             "collection_arn": "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
+///             "vector_index_name": "bedrock-knowledge-base-default-index",
 ///         },
-///     })
+///         "type": "OPENSEARCH_SERVERLESS",
+///     },
+///     name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -75,8 +75,6 @@ import 'agent_knowledge_base_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentKnowledgeBase("example", new()
 ///     {
-///         Name = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
 ///         {
 ///             VectorKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs
@@ -87,19 +85,21 @@ import 'agent_knowledge_base_timeouts.dart';
 ///         },
 ///         StorageConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationArgs
 ///         {
-///             Type = "OPENSEARCH_SERVERLESS",
 ///             OpensearchServerlessConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationArgs
 ///             {
-///                 CollectionArn = "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
-///                 VectorIndexName = "bedrock-knowledge-base-default-index",
 ///                 FieldMapping = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMappingArgs
 ///                 {
 ///                     VectorField = "bedrock-knowledge-base-default-vector",
 ///                     TextField = "AMAZON_BEDROCK_TEXT_CHUNK",
 ///                     MetadataField = "AMAZON_BEDROCK_METADATA",
 ///                 },
+///                 CollectionArn = "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
+///                 VectorIndexName = "bedrock-knowledge-base-default-index",
 ///             },
+///             Type = "OPENSEARCH_SERVERLESS",
 ///         },
+///         Name = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -115,8 +115,6 @@ import 'agent_knowledge_base_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentKnowledgeBase(ctx, "example", &bedrock.AgentKnowledgeBaseArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
 /// 				VectorKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs{
 /// 					EmbeddingModelArn: pulumi.String("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"),
@@ -124,17 +122,19 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 				Type: pulumi.String("VECTOR"),
 /// 			},
 /// 			StorageConfiguration: &bedrock.AgentKnowledgeBaseStorageConfigurationArgs{
-/// 				Type: pulumi.String("OPENSEARCH_SERVERLESS"),
 /// 				OpensearchServerlessConfiguration: &bedrock.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationArgs{
-/// 					CollectionArn:   pulumi.String("arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf"),
-/// 					VectorIndexName: pulumi.String("bedrock-knowledge-base-default-index"),
 /// 					FieldMapping: &bedrock.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMappingArgs{
 /// 						VectorField:   pulumi.String("bedrock-knowledge-base-default-vector"),
 /// 						TextField:     pulumi.String("AMAZON_BEDROCK_TEXT_CHUNK"),
 /// 						MetadataField: pulumi.String("AMAZON_BEDROCK_METADATA"),
 /// 					},
+/// 					CollectionArn:   pulumi.String("arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf"),
+/// 					VectorIndexName: pulumi.String("bedrock-knowledge-base-default-index"),
 /// 				},
+/// 				Type: pulumi.String("OPENSEARCH_SERVERLESS"),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -153,8 +153,6 @@ import 'agent_knowledge_base_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentknowledgebase" "example" {
-///   name     = "example"
-///   role_arn = exampleAwsIamRole.arn
 ///   knowledge_base_configuration = {
 ///     vector_knowledge_base_configuration = {
 ///       embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"
@@ -162,17 +160,19 @@ import 'agent_knowledge_base_timeouts.dart';
 ///     type = "VECTOR"
 ///   }
 ///   storage_configuration = {
-///     type = "OPENSEARCH_SERVERLESS"
 ///     opensearch_serverless_configuration = {
-///       collection_arn    = "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf"
-///       vector_index_name = "bedrock-knowledge-base-default-index"
 ///       field_mapping = {
 ///         vector_field   = "bedrock-knowledge-base-default-vector"
 ///         text_field     = "AMAZON_BEDROCK_TEXT_CHUNK"
 ///         metadata_field = "AMAZON_BEDROCK_METADATA"
 ///       }
+///       collection_arn    = "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf"
+///       vector_index_name = "bedrock-knowledge-base-default-index"
 ///     }
+///     type = "OPENSEARCH_SERVERLESS"
 ///   }
+///   name     = "example"
+///   role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -202,8 +202,6 @@ import 'agent_knowledge_base_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentKnowledgeBase("example", AgentKnowledgeBaseArgs.builder()
-///             .name("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
 ///                 .vectorKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs.builder()
 ///                     .embeddingModelArn("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0")
@@ -211,17 +209,19 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                 .type("VECTOR")
 ///                 .build())
 ///             .storageConfiguration(AgentKnowledgeBaseStorageConfigurationArgs.builder()
-///                 .type("OPENSEARCH_SERVERLESS")
 ///                 .opensearchServerlessConfiguration(AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationArgs.builder()
-///                     .collectionArn("arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf")
-///                     .vectorIndexName("bedrock-knowledge-base-default-index")
 ///                     .fieldMapping(AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMappingArgs.builder()
 ///                         .vectorField("bedrock-knowledge-base-default-vector")
 ///                         .textField("AMAZON_BEDROCK_TEXT_CHUNK")
 ///                         .metadataField("AMAZON_BEDROCK_METADATA")
 ///                         .build())
+///                     .collectionArn("arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf")
+///                     .vectorIndexName("bedrock-knowledge-base-default-index")
 ///                     .build())
+///                 .type("OPENSEARCH_SERVERLESS")
 ///                 .build())
+///             .name("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -232,21 +232,21 @@ import 'agent_knowledge_base_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentKnowledgeBase
 ///     properties:
-///       name: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       knowledgeBaseConfiguration:
 ///         vectorKnowledgeBaseConfiguration:
 ///           embeddingModelArn: arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0
 ///         type: VECTOR
 ///       storageConfiguration:
-///         type: OPENSEARCH_SERVERLESS
 ///         opensearchServerlessConfiguration:
-///           collectionArn: arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf
-///           vectorIndexName: bedrock-knowledge-base-default-index
 ///           fieldMapping:
 ///             vectorField: bedrock-knowledge-base-default-vector
 ///             textField: AMAZON_BEDROCK_TEXT_CHUNK
 ///             metadataField: AMAZON_BEDROCK_METADATA
+///           collectionArn: arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf
+///           vectorIndexName: bedrock-knowledge-base-default-index
+///         type: OPENSEARCH_SERVERLESS
+///       name: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -258,14 +258,14 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const kendraExample = new aws.bedrock.AgentKnowledgeBase("kendra_example", {
-///     name: "example-kendra-kb",
-///     roleArn: example.arn,
 ///     knowledgeBaseConfiguration: {
-///         type: "KENDRA",
 ///         kendraKnowledgeBaseConfiguration: {
 ///             kendraIndexArn: "arn:aws:kendra:us-east-1:123456789012:index/example-index-id",
 ///         },
+///         type: "KENDRA",
 ///     },
+///     name: "example-kendra-kb",
+///     roleArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -273,14 +273,14 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// kendra_example = aws.bedrock.AgentKnowledgeBase("kendra_example",
-///     name="example-kendra-kb",
-///     role_arn=example["arn"],
 ///     knowledge_base_configuration={
-///         "type": "KENDRA",
 ///         "kendra_knowledge_base_configuration": {
 ///             "kendra_index_arn": "arn:aws:kendra:us-east-1:123456789012:index/example-index-id",
 ///         },
-///     })
+///         "type": "KENDRA",
+///     },
+///     name="example-kendra-kb",
+///     role_arn=example["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -292,16 +292,16 @@ import 'agent_knowledge_base_timeouts.dart';
 /// {
 ///     var kendraExample = new Aws.Bedrock.AgentKnowledgeBase("kendra_example", new()
 ///     {
-///         Name = "example-kendra-kb",
-///         RoleArn = example.Arn,
 ///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
 ///         {
-///             Type = "KENDRA",
 ///             KendraKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfigurationArgs
 ///             {
 ///                 KendraIndexArn = "arn:aws:kendra:us-east-1:123456789012:index/example-index-id",
 ///             },
+///             Type = "KENDRA",
 ///         },
+///         Name = "example-kendra-kb",
+///         RoleArn = example.Arn,
 ///     });
 ///
 /// });
@@ -317,14 +317,14 @@ import 'agent_knowledge_base_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentKnowledgeBase(ctx, "kendra_example", &bedrock.AgentKnowledgeBaseArgs{
-/// 			Name:    pulumi.String("example-kendra-kb"),
-/// 			RoleArn: pulumi.Any(example.Arn),
 /// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
-/// 				Type: pulumi.String("KENDRA"),
 /// 				KendraKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfigurationArgs{
 /// 					KendraIndexArn: pulumi.String("arn:aws:kendra:us-east-1:123456789012:index/example-index-id"),
 /// 				},
+/// 				Type: pulumi.String("KENDRA"),
 /// 			},
+/// 			Name:    pulumi.String("example-kendra-kb"),
+/// 			RoleArn: pulumi.Any(example.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -343,14 +343,14 @@ import 'agent_knowledge_base_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentknowledgebase" "kendra_example" {
-///   name     = "example-kendra-kb"
-///   role_arn = example.arn
 ///   knowledge_base_configuration = {
-///     type = "KENDRA"
 ///     kendra_knowledge_base_configuration = {
 ///       kendra_index_arn = "arn:aws:kendra:us-east-1:123456789012:index/example-index-id"
 ///     }
+///     type = "KENDRA"
 ///   }
+///   name     = "example-kendra-kb"
+///   role_arn = example.arn
 /// }
 /// ```
 /// ```java
@@ -377,14 +377,14 @@ import 'agent_knowledge_base_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var kendraExample = new AgentKnowledgeBase("kendraExample", AgentKnowledgeBaseArgs.builder()
-///             .name("example-kendra-kb")
-///             .roleArn(example.arn())
 ///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
-///                 .type("KENDRA")
 ///                 .kendraKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfigurationArgs.builder()
 ///                     .kendraIndexArn("arn:aws:kendra:us-east-1:123456789012:index/example-index-id")
 ///                     .build())
+///                 .type("KENDRA")
 ///                 .build())
+///             .name("example-kendra-kb")
+///             .roleArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -396,12 +396,12 @@ import 'agent_knowledge_base_timeouts.dart';
 ///     type: aws:bedrock:AgentKnowledgeBase
 ///     name: kendra_example
 ///     properties:
-///       name: example-kendra-kb
-///       roleArn: ${example.arn}
 ///       knowledgeBaseConfiguration:
-///         type: KENDRA
 ///         kendraKnowledgeBaseConfiguration:
 ///           kendraIndexArn: arn:aws:kendra:us-east-1:123456789012:index/example-index-id
+///         type: KENDRA
+///       name: example-kendra-kb
+///       roleArn: ${example.arn}
 /// ```
 ///
 ///
@@ -413,32 +413,32 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentKnowledgeBase("example", {
-///     name: "example-kb",
-///     roleArn: exampleAwsIamRole.arn,
 ///     knowledgeBaseConfiguration: {
-///         type: "SQL",
 ///         sqlKnowledgeBaseConfiguration: {
-///             type: "REDSHIFT",
 ///             redshiftConfiguration: {
 ///                 queryEngineConfiguration: {
-///                     type: "PROVISIONED",
 ///                     provisionedConfiguration: {
-///                         clusterIdentifier: exampleAwsRedshiftCluster.clusterIdentifier,
 ///                         authConfiguration: {
 ///                             type: "USERNAME",
 ///                             databaseUser: exampleAwsRedshiftCluster.masterUsername,
 ///                         },
+///                         clusterIdentifier: exampleAwsRedshiftCluster.clusterIdentifier,
 ///                     },
+///                     type: "PROVISIONED",
 ///                 },
 ///                 storageConfiguration: {
-///                     type: "REDSHIFT",
 ///                     redshiftConfiguration: {
 ///                         databaseName: exampleAwsRedshiftCluster.databaseName,
 ///                     },
+///                     type: "REDSHIFT",
 ///                 },
 ///             },
+///             type: "REDSHIFT",
 ///         },
+///         type: "SQL",
 ///     },
+///     name: "example-kb",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -446,32 +446,32 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentKnowledgeBase("example",
-///     name="example-kb",
-///     role_arn=example_aws_iam_role["arn"],
 ///     knowledge_base_configuration={
-///         "type": "SQL",
 ///         "sql_knowledge_base_configuration": {
-///             "type": "REDSHIFT",
 ///             "redshift_configuration": {
 ///                 "query_engine_configuration": {
-///                     "type": "PROVISIONED",
 ///                     "provisioned_configuration": {
-///                         "cluster_identifier": example_aws_redshift_cluster["clusterIdentifier"],
 ///                         "auth_configuration": {
 ///                             "type": "USERNAME",
 ///                             "database_user": example_aws_redshift_cluster["masterUsername"],
 ///                         },
+///                         "cluster_identifier": example_aws_redshift_cluster["clusterIdentifier"],
 ///                     },
+///                     "type": "PROVISIONED",
 ///                 },
 ///                 "storage_configuration": {
-///                     "type": "REDSHIFT",
 ///                     "redshift_configuration": {
 ///                         "database_name": example_aws_redshift_cluster["databaseName"],
 ///                     },
+///                     "type": "REDSHIFT",
 ///                 },
 ///             },
+///             "type": "REDSHIFT",
 ///         },
-///     })
+///         "type": "SQL",
+///     },
+///     name="example-kb",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -483,40 +483,40 @@ import 'agent_knowledge_base_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentKnowledgeBase("example", new()
 ///     {
-///         Name = "example-kb",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
 ///         {
-///             Type = "SQL",
 ///             SqlKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationArgs
 ///             {
-///                 Type = "REDSHIFT",
 ///                 RedshiftConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationArgs
 ///                 {
 ///                     QueryEngineConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationArgs
 ///                     {
-///                         Type = "PROVISIONED",
 ///                         ProvisionedConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationArgs
 ///                         {
-///                             ClusterIdentifier = exampleAwsRedshiftCluster.ClusterIdentifier,
 ///                             AuthConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfigurationArgs
 ///                             {
 ///                                 Type = "USERNAME",
 ///                                 DatabaseUser = exampleAwsRedshiftCluster.MasterUsername,
 ///                             },
+///                             ClusterIdentifier = exampleAwsRedshiftCluster.ClusterIdentifier,
 ///                         },
+///                         Type = "PROVISIONED",
 ///                     },
 ///                     StorageConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationArgs
 ///                     {
-///                         Type = "REDSHIFT",
 ///                         RedshiftConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfigurationArgs
 ///                         {
 ///                             DatabaseName = exampleAwsRedshiftCluster.DatabaseName,
 ///                         },
+///                         Type = "REDSHIFT",
 ///                     },
 ///                 },
+///                 Type = "REDSHIFT",
 ///             },
+///             Type = "SQL",
 ///         },
+///         Name = "example-kb",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -532,32 +532,32 @@ import 'agent_knowledge_base_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentKnowledgeBase(ctx, "example", &bedrock.AgentKnowledgeBaseArgs{
-/// 			Name:    pulumi.String("example-kb"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
-/// 				Type: pulumi.String("SQL"),
 /// 				SqlKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationArgs{
-/// 					Type: pulumi.String("REDSHIFT"),
 /// 					RedshiftConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationArgs{
 /// 						QueryEngineConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationArgs{
-/// 							Type: pulumi.String("PROVISIONED"),
 /// 							ProvisionedConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationArgs{
-/// 								ClusterIdentifier: pulumi.Any(exampleAwsRedshiftCluster.ClusterIdentifier),
 /// 								AuthConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfigurationArgs{
 /// 									Type:         pulumi.String("USERNAME"),
 /// 									DatabaseUser: pulumi.Any(exampleAwsRedshiftCluster.MasterUsername),
 /// 								},
+/// 								ClusterIdentifier: pulumi.Any(exampleAwsRedshiftCluster.ClusterIdentifier),
 /// 							},
+/// 							Type: pulumi.String("PROVISIONED"),
 /// 						},
 /// 						StorageConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationArgs{
-/// 							Type: pulumi.String("REDSHIFT"),
 /// 							RedshiftConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfigurationArgs{
 /// 								DatabaseName: pulumi.Any(exampleAwsRedshiftCluster.DatabaseName),
 /// 							},
+/// 							Type: pulumi.String("REDSHIFT"),
 /// 						},
 /// 					},
+/// 					Type: pulumi.String("REDSHIFT"),
 /// 				},
+/// 				Type: pulumi.String("SQL"),
 /// 			},
+/// 			Name:    pulumi.String("example-kb"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -576,32 +576,32 @@ import 'agent_knowledge_base_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentknowledgebase" "example" {
-///   name     = "example-kb"
-///   role_arn = exampleAwsIamRole.arn
 ///   knowledge_base_configuration = {
-///     type = "SQL"
 ///     sql_knowledge_base_configuration = {
-///       type = "REDSHIFT"
 ///       redshift_configuration = {
 ///         query_engine_configuration = {
-///           type = "PROVISIONED"
 ///           provisioned_configuration = {
-///             cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
 ///             auth_configuration = {
 ///               type          = "USERNAME"
 ///               database_user = exampleAwsRedshiftCluster.masterUsername
 ///             }
+///             cluster_identifier = exampleAwsRedshiftCluster.clusterIdentifier
 ///           }
+///           type = "PROVISIONED"
 ///         }
 ///         storage_configuration = {
-///           type = "REDSHIFT"
 ///           redshift_configuration = {
 ///             database_name = exampleAwsRedshiftCluster.databaseName
 ///           }
+///           type = "REDSHIFT"
 ///         }
 ///       }
+///       type = "REDSHIFT"
 ///     }
+///     type = "SQL"
 ///   }
+///   name     = "example-kb"
+///   role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -634,32 +634,32 @@ import 'agent_knowledge_base_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentKnowledgeBase("example", AgentKnowledgeBaseArgs.builder()
-///             .name("example-kb")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
-///                 .type("SQL")
 ///                 .sqlKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationArgs.builder()
-///                     .type("REDSHIFT")
 ///                     .redshiftConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationArgs.builder()
 ///                         .queryEngineConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationArgs.builder()
-///                             .type("PROVISIONED")
 ///                             .provisionedConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationArgs.builder()
-///                                 .clusterIdentifier(exampleAwsRedshiftCluster.clusterIdentifier())
 ///                                 .authConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfigurationArgs.builder()
 ///                                     .type("USERNAME")
 ///                                     .databaseUser(exampleAwsRedshiftCluster.masterUsername())
 ///                                     .build())
+///                                 .clusterIdentifier(exampleAwsRedshiftCluster.clusterIdentifier())
 ///                                 .build())
+///                             .type("PROVISIONED")
 ///                             .build())
 ///                         .storageConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationArgs.builder()
-///                             .type("REDSHIFT")
 ///                             .redshiftConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfigurationArgs.builder()
 ///                                 .databaseName(exampleAwsRedshiftCluster.databaseName())
 ///                                 .build())
+///                             .type("REDSHIFT")
 ///                             .build())
 ///                         .build())
+///                     .type("REDSHIFT")
 ///                     .build())
+///                 .type("SQL")
 ///                 .build())
+///             .name("example-kb")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -670,24 +670,24 @@ import 'agent_knowledge_base_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentKnowledgeBase
 ///     properties:
-///       name: example-kb
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       knowledgeBaseConfiguration:
-///         type: SQL
 ///         sqlKnowledgeBaseConfiguration:
-///           type: REDSHIFT
 ///           redshiftConfiguration:
 ///             queryEngineConfiguration:
-///               type: PROVISIONED
 ///               provisionedConfiguration:
-///                 clusterIdentifier: ${exampleAwsRedshiftCluster.clusterIdentifier}
 ///                 authConfiguration:
 ///                   type: USERNAME
 ///                   databaseUser: ${exampleAwsRedshiftCluster.masterUsername}
+///                 clusterIdentifier: ${exampleAwsRedshiftCluster.clusterIdentifier}
+///               type: PROVISIONED
 ///             storageConfiguration:
-///               type: REDSHIFT
 ///               redshiftConfiguration:
 ///                 databaseName: ${exampleAwsRedshiftCluster.databaseName}
+///               type: REDSHIFT
+///           type: REDSHIFT
+///         type: SQL
+///       name: example-kb
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -699,8 +699,6 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentKnowledgeBase("example", {
-///     name: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     knowledgeBaseConfiguration: {
 ///         vectorKnowledgeBaseConfiguration: {
 ///             embeddingModelArn: "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
@@ -708,18 +706,20 @@ import 'agent_knowledge_base_timeouts.dart';
 ///         type: "VECTOR",
 ///     },
 ///     storageConfiguration: {
-///         type: "OPENSEARCH_MANAGED_CLUSTER",
 ///         opensearchManagedClusterConfiguration: {
-///             domainArn: "arn:aws:es:us-west-2:123456789012:domain/example-domain",
-///             domainEndpoint: "https://search-example-domain.us-west-2.es.amazonaws.com",
-///             vectorIndexName: "example_index",
 ///             fieldMapping: {
 ///                 metadataField: "metadata",
 ///                 textField: "chunks",
 ///                 vectorField: "embedding",
 ///             },
+///             domainArn: "arn:aws:es:us-west-2:123456789012:domain/example-domain",
+///             domainEndpoint: "https://search-example-domain.us-west-2.es.amazonaws.com",
+///             vectorIndexName: "example_index",
 ///         },
+///         type: "OPENSEARCH_MANAGED_CLUSTER",
 ///     },
+///     name: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -727,8 +727,6 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentKnowledgeBase("example",
-///     name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     knowledge_base_configuration={
 ///         "vector_knowledge_base_configuration": {
 ///             "embedding_model_arn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
@@ -736,18 +734,20 @@ import 'agent_knowledge_base_timeouts.dart';
 ///         "type": "VECTOR",
 ///     },
 ///     storage_configuration={
-///         "type": "OPENSEARCH_MANAGED_CLUSTER",
 ///         "opensearch_managed_cluster_configuration": {
-///             "domain_arn": "arn:aws:es:us-west-2:123456789012:domain/example-domain",
-///             "domain_endpoint": "https://search-example-domain.us-west-2.es.amazonaws.com",
-///             "vector_index_name": "example_index",
 ///             "field_mapping": {
 ///                 "metadata_field": "metadata",
 ///                 "text_field": "chunks",
 ///                 "vector_field": "embedding",
 ///             },
+///             "domain_arn": "arn:aws:es:us-west-2:123456789012:domain/example-domain",
+///             "domain_endpoint": "https://search-example-domain.us-west-2.es.amazonaws.com",
+///             "vector_index_name": "example_index",
 ///         },
-///     })
+///         "type": "OPENSEARCH_MANAGED_CLUSTER",
+///     },
+///     name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -759,8 +759,6 @@ import 'agent_knowledge_base_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentKnowledgeBase("example", new()
 ///     {
-///         Name = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
 ///         {
 ///             VectorKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs
@@ -771,20 +769,22 @@ import 'agent_knowledge_base_timeouts.dart';
 ///         },
 ///         StorageConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationArgs
 ///         {
-///             Type = "OPENSEARCH_MANAGED_CLUSTER",
 ///             OpensearchManagedClusterConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationArgs
 ///             {
-///                 DomainArn = "arn:aws:es:us-west-2:123456789012:domain/example-domain",
-///                 DomainEndpoint = "https://search-example-domain.us-west-2.es.amazonaws.com",
-///                 VectorIndexName = "example_index",
 ///                 FieldMapping = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMappingArgs
 ///                 {
 ///                     MetadataField = "metadata",
 ///                     TextField = "chunks",
 ///                     VectorField = "embedding",
 ///                 },
+///                 DomainArn = "arn:aws:es:us-west-2:123456789012:domain/example-domain",
+///                 DomainEndpoint = "https://search-example-domain.us-west-2.es.amazonaws.com",
+///                 VectorIndexName = "example_index",
 ///             },
+///             Type = "OPENSEARCH_MANAGED_CLUSTER",
 ///         },
+///         Name = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -800,8 +800,6 @@ import 'agent_knowledge_base_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentKnowledgeBase(ctx, "example", &bedrock.AgentKnowledgeBaseArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
 /// 				VectorKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs{
 /// 					EmbeddingModelArn: pulumi.String("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"),
@@ -809,18 +807,20 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 				Type: pulumi.String("VECTOR"),
 /// 			},
 /// 			StorageConfiguration: &bedrock.AgentKnowledgeBaseStorageConfigurationArgs{
-/// 				Type: pulumi.String("OPENSEARCH_MANAGED_CLUSTER"),
 /// 				OpensearchManagedClusterConfiguration: &bedrock.AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationArgs{
-/// 					DomainArn:       pulumi.String("arn:aws:es:us-west-2:123456789012:domain/example-domain"),
-/// 					DomainEndpoint:  pulumi.String("https://search-example-domain.us-west-2.es.amazonaws.com"),
-/// 					VectorIndexName: pulumi.String("example_index"),
 /// 					FieldMapping: &bedrock.AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMappingArgs{
 /// 						MetadataField: pulumi.String("metadata"),
 /// 						TextField:     pulumi.String("chunks"),
 /// 						VectorField:   pulumi.String("embedding"),
 /// 					},
+/// 					DomainArn:       pulumi.String("arn:aws:es:us-west-2:123456789012:domain/example-domain"),
+/// 					DomainEndpoint:  pulumi.String("https://search-example-domain.us-west-2.es.amazonaws.com"),
+/// 					VectorIndexName: pulumi.String("example_index"),
 /// 				},
+/// 				Type: pulumi.String("OPENSEARCH_MANAGED_CLUSTER"),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -839,8 +839,6 @@ import 'agent_knowledge_base_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentknowledgebase" "example" {
-///   name     = "example"
-///   role_arn = exampleAwsIamRole.arn
 ///   knowledge_base_configuration = {
 ///     vector_knowledge_base_configuration = {
 ///       embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"
@@ -848,18 +846,20 @@ import 'agent_knowledge_base_timeouts.dart';
 ///     type = "VECTOR"
 ///   }
 ///   storage_configuration = {
-///     type = "OPENSEARCH_MANAGED_CLUSTER"
 ///     opensearch_managed_cluster_configuration = {
-///       domain_arn        = "arn:aws:es:us-west-2:123456789012:domain/example-domain"
-///       domain_endpoint   = "https://search-example-domain.us-west-2.es.amazonaws.com"
-///       vector_index_name = "example_index"
 ///       field_mapping = {
 ///         metadata_field = "metadata"
 ///         text_field     = "chunks"
 ///         vector_field   = "embedding"
 ///       }
+///       domain_arn        = "arn:aws:es:us-west-2:123456789012:domain/example-domain"
+///       domain_endpoint   = "https://search-example-domain.us-west-2.es.amazonaws.com"
+///       vector_index_name = "example_index"
 ///     }
+///     type = "OPENSEARCH_MANAGED_CLUSTER"
 ///   }
+///   name     = "example"
+///   role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -889,8 +889,6 @@ import 'agent_knowledge_base_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentKnowledgeBase("example", AgentKnowledgeBaseArgs.builder()
-///             .name("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
 ///                 .vectorKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs.builder()
 ///                     .embeddingModelArn("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0")
@@ -898,18 +896,20 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                 .type("VECTOR")
 ///                 .build())
 ///             .storageConfiguration(AgentKnowledgeBaseStorageConfigurationArgs.builder()
-///                 .type("OPENSEARCH_MANAGED_CLUSTER")
 ///                 .opensearchManagedClusterConfiguration(AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationArgs.builder()
-///                     .domainArn("arn:aws:es:us-west-2:123456789012:domain/example-domain")
-///                     .domainEndpoint("https://search-example-domain.us-west-2.es.amazonaws.com")
-///                     .vectorIndexName("example_index")
 ///                     .fieldMapping(AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMappingArgs.builder()
 ///                         .metadataField("metadata")
 ///                         .textField("chunks")
 ///                         .vectorField("embedding")
 ///                         .build())
+///                     .domainArn("arn:aws:es:us-west-2:123456789012:domain/example-domain")
+///                     .domainEndpoint("https://search-example-domain.us-west-2.es.amazonaws.com")
+///                     .vectorIndexName("example_index")
 ///                     .build())
+///                 .type("OPENSEARCH_MANAGED_CLUSTER")
 ///                 .build())
+///             .name("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -920,22 +920,22 @@ import 'agent_knowledge_base_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentKnowledgeBase
 ///     properties:
-///       name: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       knowledgeBaseConfiguration:
 ///         vectorKnowledgeBaseConfiguration:
 ///           embeddingModelArn: arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0
 ///         type: VECTOR
 ///       storageConfiguration:
-///         type: OPENSEARCH_MANAGED_CLUSTER
 ///         opensearchManagedClusterConfiguration:
-///           domainArn: arn:aws:es:us-west-2:123456789012:domain/example-domain
-///           domainEndpoint: https://search-example-domain.us-west-2.es.amazonaws.com
-///           vectorIndexName: example_index
 ///           fieldMapping:
 ///             metadataField: metadata
 ///             textField: chunks
 ///             vectorField: embedding
+///           domainArn: arn:aws:es:us-west-2:123456789012:domain/example-domain
+///           domainEndpoint: https://search-example-domain.us-west-2.es.amazonaws.com
+///           vectorIndexName: example_index
+///         type: OPENSEARCH_MANAGED_CLUSTER
+///       name: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -947,15 +947,10 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentKnowledgeBase("example", {
-///     name: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     knowledgeBaseConfiguration: {
 ///         vectorKnowledgeBaseConfiguration: {
-///             embeddingModelArn: "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///             embeddingModelConfiguration: {
 ///                 bedrockEmbeddingModelConfiguration: {
-///                     dimensions: 1024,
-///                     embeddingDataType: "FLOAT32",
 ///                     audio: {
 ///                         segmentationConfiguration: {
 ///                             fixedLengthDuration: 60,
@@ -966,31 +961,36 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                             fixedLengthDuration: 60,
 ///                         },
 ///                     },
+///                     dimensions: 1024,
+///                     embeddingDataType: "FLOAT32",
 ///                 },
 ///             },
 ///             supplementalDataStorageConfiguration: {
 ///                 storageLocation: {
-///                     type: "S3",
 ///                     s3Location: {
 ///                         uri: "s3://my-bucket/chunk-processor/",
 ///                     },
+///                     type: "S3",
 ///                 },
 ///             },
+///             embeddingModelArn: "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///         },
 ///         type: "VECTOR",
 ///     },
 ///     storageConfiguration: {
-///         type: "OPENSEARCH_SERVERLESS",
 ///         opensearchServerlessConfiguration: {
-///             collectionArn: "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
-///             vectorIndexName: "bedrock-knowledge-base-default-index",
 ///             fieldMapping: {
 ///                 vectorField: "bedrock-knowledge-base-default-vector",
 ///                 textField: "AMAZON_BEDROCK_TEXT_CHUNK",
 ///                 metadataField: "AMAZON_BEDROCK_METADATA",
 ///             },
+///             collectionArn: "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
+///             vectorIndexName: "bedrock-knowledge-base-default-index",
 ///         },
+///         type: "OPENSEARCH_SERVERLESS",
 ///     },
+///     name: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -998,15 +998,10 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentKnowledgeBase("example",
-///     name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     knowledge_base_configuration={
 ///         "vector_knowledge_base_configuration": {
-///             "embedding_model_arn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///             "embedding_model_configuration": {
 ///                 "bedrock_embedding_model_configuration": {
-///                     "dimensions": 1024,
-///                     "embedding_data_type": "FLOAT32",
 ///                     "audio": {
 ///                         "segmentation_configuration": {
 ///                             "fixed_length_duration": 60,
@@ -1017,31 +1012,36 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                             "fixed_length_duration": 60,
 ///                         },
 ///                     },
+///                     "dimensions": 1024,
+///                     "embedding_data_type": "FLOAT32",
 ///                 },
 ///             },
 ///             "supplemental_data_storage_configuration": {
 ///                 "storage_location": {
-///                     "type": "S3",
 ///                     "s3Location": {
 ///                         "uri": "s3://my-bucket/chunk-processor/",
 ///                     },
+///                     "type": "S3",
 ///                 },
 ///             },
+///             "embedding_model_arn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///         },
 ///         "type": "VECTOR",
 ///     },
 ///     storage_configuration={
-///         "type": "OPENSEARCH_SERVERLESS",
 ///         "opensearch_serverless_configuration": {
-///             "collection_arn": "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
-///             "vector_index_name": "bedrock-knowledge-base-default-index",
 ///             "field_mapping": {
 ///                 "vector_field": "bedrock-knowledge-base-default-vector",
 ///                 "text_field": "AMAZON_BEDROCK_TEXT_CHUNK",
 ///                 "metadata_field": "AMAZON_BEDROCK_METADATA",
 ///             },
+///             "collection_arn": "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
+///             "vector_index_name": "bedrock-knowledge-base-default-index",
 ///         },
-///     })
+///         "type": "OPENSEARCH_SERVERLESS",
+///     },
+///     name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1053,19 +1053,14 @@ import 'agent_knowledge_base_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentKnowledgeBase("example", new()
 ///     {
-///         Name = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
 ///         {
 ///             VectorKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs
 ///             {
-///                 EmbeddingModelArn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///                 EmbeddingModelConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs
 ///                 {
 ///                     BedrockEmbeddingModelConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs
 ///                     {
-///                         Dimensions = 1024,
-///                         EmbeddingDataType = "FLOAT32",
 ///                         Audio = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioArgs
 ///                         {
 ///                             SegmentationConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioSegmentationConfigurationArgs
@@ -1080,37 +1075,42 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                                 FixedLengthDuration = 60,
 ///                             },
 ///                         },
+///                         Dimensions = 1024,
+///                         EmbeddingDataType = "FLOAT32",
 ///                     },
 ///                 },
 ///                 SupplementalDataStorageConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationArgs
 ///                 {
 ///                     StorageLocation =
 ///                     {
-///                         { "type", "S3" },
 ///                         { "s3Location",
 ///                         {
 ///                             { "uri", "s3://my-bucket/chunk-processor/" },
 ///                         } },
+///                         { "type", "S3" },
 ///                     },
 ///                 },
+///                 EmbeddingModelArn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///             },
 ///             Type = "VECTOR",
 ///         },
 ///         StorageConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationArgs
 ///         {
-///             Type = "OPENSEARCH_SERVERLESS",
 ///             OpensearchServerlessConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationArgs
 ///             {
-///                 CollectionArn = "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
-///                 VectorIndexName = "bedrock-knowledge-base-default-index",
 ///                 FieldMapping = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMappingArgs
 ///                 {
 ///                     VectorField = "bedrock-knowledge-base-default-vector",
 ///                     TextField = "AMAZON_BEDROCK_TEXT_CHUNK",
 ///                     MetadataField = "AMAZON_BEDROCK_METADATA",
 ///                 },
+///                 CollectionArn = "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf",
+///                 VectorIndexName = "bedrock-knowledge-base-default-index",
 ///             },
+///             Type = "OPENSEARCH_SERVERLESS",
 ///         },
+///         Name = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -1126,15 +1126,10 @@ import 'agent_knowledge_base_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentKnowledgeBase(ctx, "example", &bedrock.AgentKnowledgeBaseArgs{
-/// 			Name:    pulumi.String("example"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
 /// 				VectorKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs{
-/// 					EmbeddingModelArn: pulumi.String("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"),
 /// 					EmbeddingModelConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs{
 /// 						BedrockEmbeddingModelConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs{
-/// 							Dimensions:        pulumi.Int(1024),
-/// 							EmbeddingDataType: pulumi.String("FLOAT32"),
 /// 							Audio: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioArgs{
 /// 								SegmentationConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioSegmentationConfigurationArgs{
 /// 									FixedLengthDuration: pulumi.Int(60),
@@ -1145,31 +1140,36 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 									FixedLengthDuration: pulumi.Int(60),
 /// 								},
 /// 							},
+/// 							Dimensions:        pulumi.Int(1024),
+/// 							EmbeddingDataType: pulumi.String("FLOAT32"),
 /// 						},
 /// 					},
 /// 					SupplementalDataStorageConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationArgs{
 /// 						StorageLocation: map[string]interface{}{
-/// 							"type": "S3",
 /// 							"s3Location": map[string]string{
 /// 								"uri": "s3://my-bucket/chunk-processor/",
 /// 							},
+/// 							"type": "S3",
 /// 						},
 /// 					},
+/// 					EmbeddingModelArn: pulumi.String("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"),
 /// 				},
 /// 				Type: pulumi.String("VECTOR"),
 /// 			},
 /// 			StorageConfiguration: &bedrock.AgentKnowledgeBaseStorageConfigurationArgs{
-/// 				Type: pulumi.String("OPENSEARCH_SERVERLESS"),
 /// 				OpensearchServerlessConfiguration: &bedrock.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationArgs{
-/// 					CollectionArn:   pulumi.String("arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf"),
-/// 					VectorIndexName: pulumi.String("bedrock-knowledge-base-default-index"),
 /// 					FieldMapping: &bedrock.AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMappingArgs{
 /// 						VectorField:   pulumi.String("bedrock-knowledge-base-default-vector"),
 /// 						TextField:     pulumi.String("AMAZON_BEDROCK_TEXT_CHUNK"),
 /// 						MetadataField: pulumi.String("AMAZON_BEDROCK_METADATA"),
 /// 					},
+/// 					CollectionArn:   pulumi.String("arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf"),
+/// 					VectorIndexName: pulumi.String("bedrock-knowledge-base-default-index"),
 /// 				},
+/// 				Type: pulumi.String("OPENSEARCH_SERVERLESS"),
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1188,15 +1188,10 @@ import 'agent_knowledge_base_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentknowledgebase" "example" {
-///   name     = "example"
-///   role_arn = exampleAwsIamRole.arn
 ///   knowledge_base_configuration = {
 ///     vector_knowledge_base_configuration = {
-///       embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"
 ///       embedding_model_configuration = {
 ///         bedrock_embedding_model_configuration = {
-///           dimensions          = 1024
-///           embedding_data_type = "FLOAT32"
 ///           audio = {
 ///             segmentation_configuration = {
 ///               fixed_length_duration = 60
@@ -1207,31 +1202,36 @@ import 'agent_knowledge_base_timeouts.dart';
 ///               fixed_length_duration = 60
 ///             }
 ///           }
+///           dimensions          = 1024
+///           embedding_data_type = "FLOAT32"
 ///         }
 ///       }
 ///       supplemental_data_storage_configuration = {
 ///         storage_location = {
-///           "type" = "S3"
 ///           "s3Location" = {
 ///             "uri" = "s3://my-bucket/chunk-processor/"
 ///           }
+///           "type" = "S3"
 ///         }
 ///       }
+///       embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"
 ///     }
 ///     type = "VECTOR"
 ///   }
 ///   storage_configuration = {
-///     type = "OPENSEARCH_SERVERLESS"
 ///     opensearch_serverless_configuration = {
-///       collection_arn    = "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf"
-///       vector_index_name = "bedrock-knowledge-base-default-index"
 ///       field_mapping = {
 ///         vector_field   = "bedrock-knowledge-base-default-vector"
 ///         text_field     = "AMAZON_BEDROCK_TEXT_CHUNK"
 ///         metadata_field = "AMAZON_BEDROCK_METADATA"
 ///       }
+///       collection_arn    = "arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf"
+///       vector_index_name = "bedrock-knowledge-base-default-index"
 ///     }
+///     type = "OPENSEARCH_SERVERLESS"
 ///   }
+///   name     = "example"
+///   role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1268,15 +1268,10 @@ import 'agent_knowledge_base_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentKnowledgeBase("example", AgentKnowledgeBaseArgs.builder()
-///             .name("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
 ///                 .vectorKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs.builder()
-///                     .embeddingModelArn("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0")
 ///                     .embeddingModelConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs.builder()
 ///                         .bedrockEmbeddingModelConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs.builder()
-///                             .dimensions(1024)
-///                             .embeddingDataType("FLOAT32")
 ///                             .audio(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioArgs.builder()
 ///                                 .segmentationConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioSegmentationConfigurationArgs.builder()
 ///                                     .fixedLengthDuration(60)
@@ -1287,29 +1282,34 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                                     .fixedLengthDuration(60)
 ///                                     .build())
 ///                                 .build())
+///                             .dimensions(1024)
+///                             .embeddingDataType("FLOAT32")
 ///                             .build())
 ///                         .build())
 ///                     .supplementalDataStorageConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationArgs.builder()
 ///                         .storageLocation(Map.ofEntries(
-///                             Map.entry("type", "S3"),
-///                             Map.entry("s3Location", Map.of("uri", "s3://my-bucket/chunk-processor/"))
+///                             Map.entry("s3Location", Map.of("uri", "s3://my-bucket/chunk-processor/")),
+///                             Map.entry("type", "S3")
 ///                         ))
 ///                         .build())
+///                     .embeddingModelArn("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0")
 ///                     .build())
 ///                 .type("VECTOR")
 ///                 .build())
 ///             .storageConfiguration(AgentKnowledgeBaseStorageConfigurationArgs.builder()
-///                 .type("OPENSEARCH_SERVERLESS")
 ///                 .opensearchServerlessConfiguration(AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationArgs.builder()
-///                     .collectionArn("arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf")
-///                     .vectorIndexName("bedrock-knowledge-base-default-index")
 ///                     .fieldMapping(AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMappingArgs.builder()
 ///                         .vectorField("bedrock-knowledge-base-default-vector")
 ///                         .textField("AMAZON_BEDROCK_TEXT_CHUNK")
 ///                         .metadataField("AMAZON_BEDROCK_METADATA")
 ///                         .build())
+///                     .collectionArn("arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf")
+///                     .vectorIndexName("bedrock-knowledge-base-default-index")
 ///                     .build())
+///                 .type("OPENSEARCH_SERVERLESS")
 ///                 .build())
+///             .name("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1320,36 +1320,36 @@ import 'agent_knowledge_base_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentKnowledgeBase
 ///     properties:
-///       name: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       knowledgeBaseConfiguration:
 ///         vectorKnowledgeBaseConfiguration:
-///           embeddingModelArn: arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0
 ///           embeddingModelConfiguration:
 ///             bedrockEmbeddingModelConfiguration:
-///               dimensions: 1024
-///               embeddingDataType: FLOAT32
 ///               audio:
 ///                 segmentationConfiguration:
 ///                   fixedLengthDuration: 60
 ///               video:
 ///                 segmentationConfiguration:
 ///                   fixedLengthDuration: 60
+///               dimensions: 1024
+///               embeddingDataType: FLOAT32
 ///           supplementalDataStorageConfiguration:
 ///             storageLocation:
-///               type: S3
 ///               s3Location:
 ///                 uri: s3://my-bucket/chunk-processor/
+///               type: S3
+///           embeddingModelArn: arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0
 ///         type: VECTOR
 ///       storageConfiguration:
-///         type: OPENSEARCH_SERVERLESS
 ///         opensearchServerlessConfiguration:
-///           collectionArn: arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf
-///           vectorIndexName: bedrock-knowledge-base-default-index
 ///           fieldMapping:
 ///             vectorField: bedrock-knowledge-base-default-vector
 ///             textField: AMAZON_BEDROCK_TEXT_CHUNK
 ///             metadataField: AMAZON_BEDROCK_METADATA
+///           collectionArn: arn:aws:aoss:us-west-2:123456789012:collection/142bezjddq707i5stcrf
+///           vectorIndexName: bedrock-knowledge-base-default-index
+///         type: OPENSEARCH_SERVERLESS
+///       name: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1369,26 +1369,26 @@ import 'agent_knowledge_base_timeouts.dart';
 ///     distanceMetric: "euclidean",
 /// });
 /// const exampleAgentKnowledgeBase = new aws.bedrock.AgentKnowledgeBase("example", {
-///     name: "example-s3vectors-kb",
-///     roleArn: exampleAwsIamRole.arn,
 ///     knowledgeBaseConfiguration: {
 ///         vectorKnowledgeBaseConfiguration: {
-///             embeddingModelArn: "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///             embeddingModelConfiguration: {
 ///                 bedrockEmbeddingModelConfiguration: {
 ///                     dimensions: 256,
 ///                     embeddingDataType: "FLOAT32",
 ///                 },
 ///             },
+///             embeddingModelArn: "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///         },
 ///         type: "VECTOR",
 ///     },
 ///     storageConfiguration: {
-///         type: "S3_VECTORS",
 ///         s3VectorsConfiguration: {
 ///             indexArn: exampleVectorsIndex.indexArn,
 ///         },
+///         type: "S3_VECTORS",
 ///     },
+///     name: "example-s3vectors-kb",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -1403,26 +1403,26 @@ import 'agent_knowledge_base_timeouts.dart';
 ///     dimension=256,
 ///     distance_metric="euclidean")
 /// example_agent_knowledge_base = aws.bedrock.AgentKnowledgeBase("example",
-///     name="example-s3vectors-kb",
-///     role_arn=example_aws_iam_role["arn"],
 ///     knowledge_base_configuration={
 ///         "vector_knowledge_base_configuration": {
-///             "embedding_model_arn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///             "embedding_model_configuration": {
 ///                 "bedrock_embedding_model_configuration": {
 ///                     "dimensions": 256,
 ///                     "embedding_data_type": "FLOAT32",
 ///                 },
 ///             },
+///             "embedding_model_arn": "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///         },
 ///         "type": "VECTOR",
 ///     },
 ///     storage_configuration={
-///         "type": "S3_VECTORS",
 ///         "s3_vectors_configuration": {
 ///             "index_arn": example_vectors_index.index_arn,
 ///         },
-///     })
+///         "type": "S3_VECTORS",
+///     },
+///     name="example-s3vectors-kb",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1448,13 +1448,10 @@ import 'agent_knowledge_base_timeouts.dart';
 ///
 ///     var exampleAgentKnowledgeBase = new Aws.Bedrock.AgentKnowledgeBase("example", new()
 ///     {
-///         Name = "example-s3vectors-kb",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
 ///         {
 ///             VectorKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs
 ///             {
-///                 EmbeddingModelArn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///                 EmbeddingModelConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs
 ///                 {
 ///                     BedrockEmbeddingModelConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs
@@ -1463,17 +1460,20 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                         EmbeddingDataType = "FLOAT32",
 ///                     },
 ///                 },
+///                 EmbeddingModelArn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0",
 ///             },
 ///             Type = "VECTOR",
 ///         },
 ///         StorageConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationArgs
 ///         {
-///             Type = "S3_VECTORS",
 ///             S3VectorsConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationS3VectorsConfigurationArgs
 ///             {
 ///                 IndexArn = exampleVectorsIndex.IndexArn,
 ///             },
+///             Type = "S3_VECTORS",
 ///         },
+///         Name = "example-s3vectors-kb",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -1506,26 +1506,26 @@ import 'agent_knowledge_base_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentKnowledgeBase(ctx, "example", &bedrock.AgentKnowledgeBaseArgs{
-/// 			Name:    pulumi.String("example-s3vectors-kb"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
 /// 				VectorKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs{
-/// 					EmbeddingModelArn: pulumi.String("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"),
 /// 					EmbeddingModelConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs{
 /// 						BedrockEmbeddingModelConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs{
 /// 							Dimensions:        pulumi.Int(256),
 /// 							EmbeddingDataType: pulumi.String("FLOAT32"),
 /// 						},
 /// 					},
+/// 					EmbeddingModelArn: pulumi.String("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"),
 /// 				},
 /// 				Type: pulumi.String("VECTOR"),
 /// 			},
 /// 			StorageConfiguration: &bedrock.AgentKnowledgeBaseStorageConfigurationArgs{
-/// 				Type: pulumi.String("S3_VECTORS"),
 /// 				S3VectorsConfiguration: &bedrock.AgentKnowledgeBaseStorageConfigurationS3VectorsConfigurationArgs{
 /// 					IndexArn: exampleVectorsIndex.IndexArn,
 /// 				},
+/// 				Type: pulumi.String("S3_VECTORS"),
 /// 			},
+/// 			Name:    pulumi.String("example-s3vectors-kb"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1554,26 +1554,26 @@ import 'agent_knowledge_base_timeouts.dart';
 ///   distance_metric    = "euclidean"
 /// }
 /// resource "aws_bedrock_agentknowledgebase" "example" {
-///   name     = "example-s3vectors-kb"
-///   role_arn = exampleAwsIamRole.arn
 ///   knowledge_base_configuration = {
 ///     vector_knowledge_base_configuration = {
-///       embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"
 ///       embedding_model_configuration = {
 ///         bedrock_embedding_model_configuration = {
 ///           dimensions          = 256
 ///           embedding_data_type = "FLOAT32"
 ///         }
 ///       }
+///       embedding_model_arn = "arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0"
 ///     }
 ///     type = "VECTOR"
 ///   }
 ///   storage_configuration = {
-///     type = "S3_VECTORS"
 ///     s3_vectors_configuration = {
 ///       index_arn = aws_s3_vectorsindex.example.index_arn
 ///     }
+///     type = "S3_VECTORS"
 ///   }
+///   name     = "example-s3vectors-kb"
+///   role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1620,26 +1620,26 @@ import 'agent_knowledge_base_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleAgentKnowledgeBase = new AgentKnowledgeBase("exampleAgentKnowledgeBase", AgentKnowledgeBaseArgs.builder()
-///             .name("example-s3vectors-kb")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
 ///                 .vectorKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs.builder()
-///                     .embeddingModelArn("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0")
 ///                     .embeddingModelConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs.builder()
 ///                         .bedrockEmbeddingModelConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs.builder()
 ///                             .dimensions(256)
 ///                             .embeddingDataType("FLOAT32")
 ///                             .build())
 ///                         .build())
+///                     .embeddingModelArn("arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0")
 ///                     .build())
 ///                 .type("VECTOR")
 ///                 .build())
 ///             .storageConfiguration(AgentKnowledgeBaseStorageConfigurationArgs.builder()
-///                 .type("S3_VECTORS")
 ///                 .s3VectorsConfiguration(AgentKnowledgeBaseStorageConfigurationS3VectorsConfigurationArgs.builder()
 ///                     .indexArn(exampleVectorsIndex.indexArn())
 ///                     .build())
+///                 .type("S3_VECTORS")
 ///                 .build())
+///             .name("example-s3vectors-kb")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1664,20 +1664,20 @@ import 'agent_knowledge_base_timeouts.dart';
 ///     type: aws:bedrock:AgentKnowledgeBase
 ///     name: example
 ///     properties:
-///       name: example-s3vectors-kb
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       knowledgeBaseConfiguration:
 ///         vectorKnowledgeBaseConfiguration:
-///           embeddingModelArn: arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0
 ///           embeddingModelConfiguration:
 ///             bedrockEmbeddingModelConfiguration:
 ///               dimensions: 256
 ///               embeddingDataType: FLOAT32
+///           embeddingModelArn: arn:aws:bedrock:us-west-2::foundation-model/amazon.titan-embed-text-v2:0
 ///         type: VECTOR
 ///       storageConfiguration:
-///         type: S3_VECTORS
 ///         s3VectorsConfiguration:
 ///           indexArn: ${exampleVectorsIndex.indexArn}
+///         type: S3_VECTORS
+///       name: example-s3vectors-kb
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1689,14 +1689,14 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentKnowledgeBase("example", {
-///     name: "example-managed-kb",
-///     roleArn: exampleAwsIamRole.arn,
 ///     knowledgeBaseConfiguration: {
-///         type: "MANAGED",
 ///         managedKnowledgeBaseConfiguration: {
 ///             embeddingModelType: "MANAGED",
 ///         },
+///         type: "MANAGED",
 ///     },
+///     name: "example-managed-kb",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -1704,14 +1704,14 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentKnowledgeBase("example",
-///     name="example-managed-kb",
-///     role_arn=example_aws_iam_role["arn"],
 ///     knowledge_base_configuration={
-///         "type": "MANAGED",
 ///         "managed_knowledge_base_configuration": {
 ///             "embedding_model_type": "MANAGED",
 ///         },
-///     })
+///         "type": "MANAGED",
+///     },
+///     name="example-managed-kb",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1723,16 +1723,16 @@ import 'agent_knowledge_base_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentKnowledgeBase("example", new()
 ///     {
-///         Name = "example-managed-kb",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
 ///         {
-///             Type = "MANAGED",
 ///             ManagedKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs
 ///             {
 ///                 EmbeddingModelType = "MANAGED",
 ///             },
+///             Type = "MANAGED",
 ///         },
+///         Name = "example-managed-kb",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -1748,14 +1748,14 @@ import 'agent_knowledge_base_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentKnowledgeBase(ctx, "example", &bedrock.AgentKnowledgeBaseArgs{
-/// 			Name:    pulumi.String("example-managed-kb"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
-/// 				Type: pulumi.String("MANAGED"),
 /// 				ManagedKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs{
 /// 					EmbeddingModelType: pulumi.String("MANAGED"),
 /// 				},
+/// 				Type: pulumi.String("MANAGED"),
 /// 			},
+/// 			Name:    pulumi.String("example-managed-kb"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1774,14 +1774,14 @@ import 'agent_knowledge_base_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentknowledgebase" "example" {
-///   name     = "example-managed-kb"
-///   role_arn = exampleAwsIamRole.arn
 ///   knowledge_base_configuration = {
-///     type = "MANAGED"
 ///     managed_knowledge_base_configuration = {
 ///       embedding_model_type = "MANAGED"
 ///     }
+///     type = "MANAGED"
 ///   }
+///   name     = "example-managed-kb"
+///   role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1808,14 +1808,14 @@ import 'agent_knowledge_base_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentKnowledgeBase("example", AgentKnowledgeBaseArgs.builder()
-///             .name("example-managed-kb")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
-///                 .type("MANAGED")
 ///                 .managedKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs.builder()
 ///                     .embeddingModelType("MANAGED")
 ///                     .build())
+///                 .type("MANAGED")
 ///                 .build())
+///             .name("example-managed-kb")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -1826,12 +1826,12 @@ import 'agent_knowledge_base_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentKnowledgeBase
 ///     properties:
-///       name: example-managed-kb
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       knowledgeBaseConfiguration:
-///         type: MANAGED
 ///         managedKnowledgeBaseConfiguration:
 ///           embeddingModelType: MANAGED
+///         type: MANAGED
+///       name: example-managed-kb
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -1843,20 +1843,20 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentKnowledgeBase("example", {
-///     name: "example-managed-multilingual-kb",
-///     roleArn: exampleAwsIamRole.arn,
 ///     knowledgeBaseConfiguration: {
-///         type: "MANAGED",
 ///         managedKnowledgeBaseConfiguration: {
-///             embeddingModelType: "CUSTOM",
-///             embeddingModelArn: "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3",
 ///             embeddingModelConfiguration: {
 ///                 bedrockEmbeddingModelConfiguration: {
 ///                     dimensions: 1024,
 ///                 },
 ///             },
+///             embeddingModelType: "CUSTOM",
+///             embeddingModelArn: "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3",
 ///         },
+///         type: "MANAGED",
 ///     },
+///     name: "example-managed-multilingual-kb",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -1864,20 +1864,20 @@ import 'agent_knowledge_base_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentKnowledgeBase("example",
-///     name="example-managed-multilingual-kb",
-///     role_arn=example_aws_iam_role["arn"],
 ///     knowledge_base_configuration={
-///         "type": "MANAGED",
 ///         "managed_knowledge_base_configuration": {
-///             "embedding_model_type": "CUSTOM",
-///             "embedding_model_arn": "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3",
 ///             "embedding_model_configuration": {
 ///                 "bedrock_embedding_model_configuration": {
 ///                     "dimensions": 1024,
 ///                 },
 ///             },
+///             "embedding_model_type": "CUSTOM",
+///             "embedding_model_arn": "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3",
 ///         },
-///     })
+///         "type": "MANAGED",
+///     },
+///     name="example-managed-multilingual-kb",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1889,15 +1889,10 @@ import 'agent_knowledge_base_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentKnowledgeBase("example", new()
 ///     {
-///         Name = "example-managed-multilingual-kb",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
 ///         {
-///             Type = "MANAGED",
 ///             ManagedKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs
 ///             {
-///                 EmbeddingModelType = "CUSTOM",
-///                 EmbeddingModelArn = "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3",
 ///                 EmbeddingModelConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs
 ///                 {
 ///                     BedrockEmbeddingModelConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs
@@ -1905,8 +1900,13 @@ import 'agent_knowledge_base_timeouts.dart';
 ///                         Dimensions = 1024,
 ///                     },
 ///                 },
+///                 EmbeddingModelType = "CUSTOM",
+///                 EmbeddingModelArn = "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3",
 ///             },
+///             Type = "MANAGED",
 ///         },
+///         Name = "example-managed-multilingual-kb",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -1922,20 +1922,20 @@ import 'agent_knowledge_base_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentKnowledgeBase(ctx, "example", &bedrock.AgentKnowledgeBaseArgs{
-/// 			Name:    pulumi.String("example-managed-multilingual-kb"),
-/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
-/// 				Type: pulumi.String("MANAGED"),
 /// 				ManagedKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs{
-/// 					EmbeddingModelType: pulumi.String("CUSTOM"),
-/// 					EmbeddingModelArn:  pulumi.String("arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3"),
 /// 					EmbeddingModelConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs{
 /// 						BedrockEmbeddingModelConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs{
 /// 							Dimensions: pulumi.Int(1024),
 /// 						},
 /// 					},
+/// 					EmbeddingModelType: pulumi.String("CUSTOM"),
+/// 					EmbeddingModelArn:  pulumi.String("arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3"),
 /// 				},
+/// 				Type: pulumi.String("MANAGED"),
 /// 			},
+/// 			Name:    pulumi.String("example-managed-multilingual-kb"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1954,20 +1954,20 @@ import 'agent_knowledge_base_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentknowledgebase" "example" {
-///   name     = "example-managed-multilingual-kb"
-///   role_arn = exampleAwsIamRole.arn
 ///   knowledge_base_configuration = {
-///     type = "MANAGED"
 ///     managed_knowledge_base_configuration = {
-///       embedding_model_type = "CUSTOM"
-///       embedding_model_arn  = "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3"
 ///       embedding_model_configuration = {
 ///         bedrock_embedding_model_configuration = {
 ///           dimensions = 1024
 ///         }
 ///       }
+///       embedding_model_type = "CUSTOM"
+///       embedding_model_arn  = "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3"
 ///     }
+///     type = "MANAGED"
 ///   }
+///   name     = "example-managed-multilingual-kb"
+///   role_arn = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -1996,20 +1996,20 @@ import 'agent_knowledge_base_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentKnowledgeBase("example", AgentKnowledgeBaseArgs.builder()
-///             .name("example-managed-multilingual-kb")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
-///                 .type("MANAGED")
 ///                 .managedKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationArgs.builder()
-///                     .embeddingModelType("CUSTOM")
-///                     .embeddingModelArn("arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3")
 ///                     .embeddingModelConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationArgs.builder()
 ///                         .bedrockEmbeddingModelConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationArgs.builder()
 ///                             .dimensions(1024)
 ///                             .build())
 ///                         .build())
+///                     .embeddingModelType("CUSTOM")
+///                     .embeddingModelArn("arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3")
 ///                     .build())
+///                 .type("MANAGED")
 ///                 .build())
+///             .name("example-managed-multilingual-kb")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -2020,16 +2020,16 @@ import 'agent_knowledge_base_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentKnowledgeBase
 ///     properties:
-///       name: example-managed-multilingual-kb
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       knowledgeBaseConfiguration:
-///         type: MANAGED
 ///         managedKnowledgeBaseConfiguration:
-///           embeddingModelType: CUSTOM
-///           embeddingModelArn: arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3
 ///           embeddingModelConfiguration:
 ///             bedrockEmbeddingModelConfiguration:
 ///               dimensions: 1024
+///           embeddingModelType: CUSTOM
+///           embeddingModelArn: arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-multilingual-v3
+///         type: MANAGED
+///       name: example-managed-multilingual-kb
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -2080,19 +2080,19 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
           'aws:bedrock/agentKnowledgeBase:AgentKnowledgeBase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    failureReasons = registerOutput<List<String>>('failureReasons');
+    failureReasons = registerOutput<List<String>>('failureReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     knowledgeBaseConfiguration = registerOutput<AgentKnowledgeBaseKnowledgeBaseConfiguration>('knowledgeBaseConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentKnowledgeBaseKnowledgeBaseConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     storageConfiguration = registerOutput<AgentKnowledgeBaseStorageConfiguration?>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentKnowledgeBaseStorageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentKnowledgeBaseTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }
@@ -2102,11 +2102,12 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentKnowledgeBaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentKnowledgeBase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2123,14 +2124,38 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
-    failureReasons = registerOutput<List<String>>('failureReasons');
+    failureReasons = registerOutput<List<String>>('failureReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     knowledgeBaseConfiguration = registerOutput<AgentKnowledgeBaseKnowledgeBaseConfiguration>('knowledgeBaseConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentKnowledgeBaseKnowledgeBaseConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
     storageConfiguration = registerOutput<AgentKnowledgeBaseStorageConfiguration?>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentKnowledgeBaseStorageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentKnowledgeBaseTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [AgentKnowledgeBase] resource.
+  AgentKnowledgeBase.reference(String urn)
+    : super(
+        'aws:bedrock/agentKnowledgeBase:AgentKnowledgeBase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    failureReasons = registerOutput<List<String>>('failureReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    knowledgeBaseConfiguration = registerOutput<AgentKnowledgeBaseKnowledgeBaseConfiguration>('knowledgeBaseConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentKnowledgeBaseKnowledgeBaseConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    storageConfiguration = registerOutput<AgentKnowledgeBaseStorageConfiguration?>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentKnowledgeBaseStorageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentKnowledgeBaseTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentKnowledgeBaseTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updatedAt = registerOutput<String>('updatedAt');
   }

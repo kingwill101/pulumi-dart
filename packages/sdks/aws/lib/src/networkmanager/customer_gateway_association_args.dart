@@ -16,7 +16,7 @@ class CustomerGatewayAssociationArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> globalNetworkId;
   /// ID of the link.
-  final pulumi.Input<String>? linkId;
+  final pulumi.Input<String?>? linkId;
 
   /// Creates a new [CustomerGatewayAssociationArgs].
   /// [customerGatewayArn] ARN of the customer gateway.

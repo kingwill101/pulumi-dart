@@ -39,7 +39,7 @@ class AgentcoreHarnessMemoryActualManagedMemoryConfiguration {
     return AgentcoreHarnessMemoryActualManagedMemoryConfiguration(
       arn: pulumi.Input.fromValue(map['arn'] as String),
       encryptionKeyArn: pulumi.Input.fromValue(map['encryptionKeyArn'] as String),
-      eventExpiryDuration: pulumi.Input.fromValue(map['eventExpiryDuration'] as int),
+      eventExpiryDuration: pulumi.Input.fromValue((map['eventExpiryDuration'] as num).toInt()),
       strategies: pulumi.Input.fromValue((map['strategies'] as List).cast<String>()),
     );
   }

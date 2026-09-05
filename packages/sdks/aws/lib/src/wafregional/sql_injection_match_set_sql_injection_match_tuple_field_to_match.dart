@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch {
   /// When `type` is `HEADER`, enter the name of the header that you want to search, e.g., `User-Agent` or `Referer`.
   /// If `type` is any other value, omit this field.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// The part of the web request that you want AWS WAF to search for a specified string.
   /// e.g., `HEADER`, `METHOD` or `BODY`.
   /// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_regional_FieldToMatch.html)

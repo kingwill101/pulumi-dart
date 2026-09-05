@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointClientRouteEnforcementOptions {
   /// Enable or disable Client Route Enforcement. The default is `false` (not enabled).
-  final pulumi.Input<bool>? enforced;
+  final pulumi.Input<bool?>? enforced;
 
   /// Creates a new [EndpointClientRouteEnforcementOptions].
   /// [enforced] Enable or disable Client Route Enforcement. The default is `false` (not enabled).

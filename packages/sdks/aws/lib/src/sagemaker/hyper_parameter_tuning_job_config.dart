@@ -9,21 +9,21 @@ import 'hyper_parameter_tuning_job_config_tuning_job_completion_criteria.dart';
 
 class HyperParameterTuningJobConfig {
   /// Objective metric used by tuning. See `objective`.
-  final pulumi.Input<HyperParameterTuningJobConfigObjective>? objective;
+  final pulumi.Input<HyperParameterTuningJobConfigObjective?>? objective;
   /// Hyperparameter search ranges. See `parameterRanges`.
-  final pulumi.Input<HyperParameterTuningJobConfigParameterRanges>? parameterRanges;
+  final pulumi.Input<HyperParameterTuningJobConfigParameterRanges?>? parameterRanges;
   /// Random seed for tuning.
-  final pulumi.Input<int>? randomSeed;
+  final pulumi.Input<int?>? randomSeed;
   /// Training job limits for tuning. See `resourceLimits`.
   final pulumi.Input<HyperParameterTuningJobConfigResourceLimits> resourceLimits;
   /// Search strategy for tuning.
   final pulumi.Input<String> strategy;
   /// Extra strategy options. See `strategyConfig`.
-  final pulumi.Input<HyperParameterTuningJobConfigStrategyConfig>? strategyConfig;
+  final pulumi.Input<HyperParameterTuningJobConfigStrategyConfig?>? strategyConfig;
   /// Early stopping behavior for training jobs.
-  final pulumi.Input<String>? trainingJobEarlyStoppingType;
+  final pulumi.Input<String?>? trainingJobEarlyStoppingType;
   /// Conditions to complete tuning. See `tuningJobCompletionCriteria`.
-  final pulumi.Input<HyperParameterTuningJobConfigTuningJobCompletionCriteria>? tuningJobCompletionCriteria;
+  final pulumi.Input<HyperParameterTuningJobConfigTuningJobCompletionCriteria?>? tuningJobCompletionCriteria;
 
   /// Creates a new [HyperParameterTuningJobConfig].
   /// [objective] Objective metric used by tuning. See `objective`.
@@ -62,7 +62,7 @@ class HyperParameterTuningJobConfig {
     return HyperParameterTuningJobConfig(
       objective: (() { final guardedValue = map['objective']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperParameterTuningJobConfigObjective.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       parameterRanges: (() { final guardedValue = map['parameterRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperParameterTuningJobConfigParameterRanges.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      randomSeed: (() { final guardedValue = map['randomSeed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      randomSeed: (() { final guardedValue = map['randomSeed']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       resourceLimits: pulumi.Input.fromValue(HyperParameterTuningJobConfigResourceLimits.fromMap((map['resourceLimits']! as Map).cast<String, dynamic>())),
       strategy: pulumi.Input.fromValue(map['strategy'] as String),
       strategyConfig: (() { final guardedValue = map['strategyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperParameterTuningJobConfigStrategyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -6,11 +6,11 @@ import 'listener_default_action_forward.dart';
 
 class ListenerDefaultAction {
   /// Configuration block for returning a fixed response. See `fixedResponse` Block below.
-  final pulumi.Input<ListenerDefaultActionFixedResponse>? fixedResponse;
+  final pulumi.Input<ListenerDefaultActionFixedResponse?>? fixedResponse;
   /// Route requests to one or more target groups. See `forward` Block below.
   ///
   /// &gt; **NOTE:** You must specify exactly one of the following argument blocks: `fixedResponse` or `forward`.
-  final pulumi.Input<List<ListenerDefaultActionForward>>? forwards;
+  final pulumi.Input<List<ListenerDefaultActionForward>?>? forwards;
 
   /// Creates a new [ListenerDefaultAction].
   /// [fixedResponse] Configuration block for returning a fixed response. See `fixedResponse` Block below.

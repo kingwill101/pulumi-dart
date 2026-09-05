@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceIntegrationKmsServerSideEncryption {
   /// KMS key ID. This value can be a key ID, key ARN, alias name, or alias ARN.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// Specifies whether KMS integration is enabled. Valid values are `DISABLED` and `ENABLED`.
-  final pulumi.Input<String>? optInStatus;
+  final pulumi.Input<String?>? optInStatus;
   /// Type of KMS key used. Valid values are `CUSTOMER_MANAGED_KEY` and `AWS_OWNED_KMS_KEY`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServiceIntegrationKmsServerSideEncryption].
   /// [kmsKeyId] KMS key ID. This value can be a key ID, key ARN, alias name, or alias ARN.

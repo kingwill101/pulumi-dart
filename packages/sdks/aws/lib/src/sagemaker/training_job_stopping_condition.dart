@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrainingJobStoppingCondition {
   /// Maximum time in seconds a training job can be pending before it is stopped. Valid values: 7200–2419200.
-  final pulumi.Input<int>? maxPendingTimeInSeconds;
+  final pulumi.Input<int?>? maxPendingTimeInSeconds;
   /// Maximum time in seconds the training job can run before it is stopped.
-  final pulumi.Input<int>? maxRuntimeInSeconds;
+  final pulumi.Input<int?>? maxRuntimeInSeconds;
   /// Maximum time in seconds to wait for a managed spot training job to complete.
-  final pulumi.Input<int>? maxWaitTimeInSeconds;
+  final pulumi.Input<int?>? maxWaitTimeInSeconds;
 
   /// Creates a new [TrainingJobStoppingCondition].
   /// [maxPendingTimeInSeconds] Maximum time in seconds a training job can be pending before it is stopped. Valid values: 7200–2419200.
@@ -30,9 +30,9 @@ class TrainingJobStoppingCondition {
 
   factory TrainingJobStoppingCondition.fromMap(Map<String, dynamic> map) {
     return TrainingJobStoppingCondition(
-      maxPendingTimeInSeconds: (() { final guardedValue = map['maxPendingTimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxWaitTimeInSeconds: (() { final guardedValue = map['maxWaitTimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxPendingTimeInSeconds: (() { final guardedValue = map['maxPendingTimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxWaitTimeInSeconds: (() { final guardedValue = map['maxWaitTimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

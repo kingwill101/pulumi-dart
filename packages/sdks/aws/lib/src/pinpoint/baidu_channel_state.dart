@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering BaiduChannel resources.
 class BaiduChannelState {
   /// Platform credential API key from Baidu.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// Application ID.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Whether to enable the channel. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Platform credential Secret key from Baidu.
-  final pulumi.Input<String>? secretKey;
+  final pulumi.Input<String?>? secretKey;
 
   /// Creates a new [BaiduChannelState].
   /// [apiKey] Platform credential API key from Baidu.

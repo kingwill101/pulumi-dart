@@ -218,7 +218,7 @@ class UserStackAssociation extends pulumi.CustomResource {
           'aws:appstream/userStackAssociation:UserStackAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     authenticationType = registerOutput<String>('authenticationType');
     region = registerOutput<String>('region');
@@ -232,11 +232,12 @@ class UserStackAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserStackAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserStackAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -250,6 +251,22 @@ class UserStackAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    authenticationType = registerOutput<String>('authenticationType');
+    region = registerOutput<String>('region');
+    sendEmailNotification = registerOutput<bool?>('sendEmailNotification');
+    stackName = registerOutput<String>('stackName');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [UserStackAssociation] resource.
+  UserStackAssociation.reference(String urn)
+    : super(
+        'aws:appstream/userStackAssociation:UserStackAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     authenticationType = registerOutput<String>('authenticationType');
     region = registerOutput<String>('region');
     sendEmailNotification = registerOutput<bool?>('sendEmailNotification');

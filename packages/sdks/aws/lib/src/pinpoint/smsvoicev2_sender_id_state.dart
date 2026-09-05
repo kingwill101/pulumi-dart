@@ -6,30 +6,30 @@ import 'smsvoicev2_sender_id_timeouts.dart';
 /// Input properties used for looking up and filtering Smsvoicev2SenderId resources.
 class Smsvoicev2SenderIdState {
   /// ARN of the sender ID.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Whether deletion protection is enabled. When set to `true`, the sender ID cannot be deleted. Defaults to `false`.
-  final pulumi.Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// Two-character code, in ISO 3166-1 alpha-2 format, for the country or region.
-  final pulumi.Input<String>? isoCountryCode;
+  final pulumi.Input<String?>? isoCountryCode;
   /// Type of message. Valid values are `TRANSACTIONAL` and `PROMOTIONAL`. Defaults to `["TRANSACTIONAL"]` if not specified.
-  final pulumi.Input<List<String>>? messageTypes;
+  final pulumi.Input<List<String>?>? messageTypes;
   /// Monthly leasing price, in US dollars.
-  final pulumi.Input<String>? monthlyLeasingPrice;
+  final pulumi.Input<String?>? monthlyLeasingPrice;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether the sender ID is registered.
-  final pulumi.Input<bool>? registered;
+  final pulumi.Input<bool?>? registered;
   /// Unique identifier for the registration.
-  final pulumi.Input<String>? registrationId;
+  final pulumi.Input<String?>? registrationId;
   /// Alphanumeric sender ID to request. Must be between 3 and 11 characters long, contain only upper case letters, numbers, and dashes, and cannot be numeric-only. AWS stores sender IDs in upper case, so upper case is required here to keep configuration, state, and resource identity consistent.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? senderId;
+  final pulumi.Input<String?>? senderId;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<Smsvoicev2SenderIdTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<Smsvoicev2SenderIdTimeouts?>? timeouts;
 
   /// Creates a new [Smsvoicev2SenderIdState].
   /// [arn] ARN of the sender ID.

@@ -7,31 +7,31 @@ import 'spot_fleet_request_launch_specification_root_block_device.dart';
 
 class SpotFleetRequestLaunchSpecification {
   final pulumi.Input<String> ami;
-  final pulumi.Input<bool>? associatePublicIpAddress;
+  final pulumi.Input<bool?>? associatePublicIpAddress;
   /// The availability zone in which to place the request.
-  final pulumi.Input<String>? availabilityZone;
-  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationEbsBlockDevice>>? ebsBlockDevices;
-  final pulumi.Input<bool>? ebsOptimized;
-  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationEphemeralBlockDevice>>? ephemeralBlockDevices;
-  final pulumi.Input<String>? iamInstanceProfile;
-  final pulumi.Input<String>? iamInstanceProfileArn;
+  final pulumi.Input<String?>? availabilityZone;
+  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationEbsBlockDevice>?>? ebsBlockDevices;
+  final pulumi.Input<bool?>? ebsOptimized;
+  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationEphemeralBlockDevice>?>? ephemeralBlockDevices;
+  final pulumi.Input<String?>? iamInstanceProfile;
+  final pulumi.Input<String?>? iamInstanceProfileArn;
   /// The type of instance to request.
   final pulumi.Input<String> instanceType;
-  final pulumi.Input<String>? keyName;
-  final pulumi.Input<bool>? monitoring;
-  final pulumi.Input<String>? placementGroup;
-  final pulumi.Input<String>? placementTenancy;
-  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationRootBlockDevice>>? rootBlockDevices;
+  final pulumi.Input<String?>? keyName;
+  final pulumi.Input<bool?>? monitoring;
+  final pulumi.Input<String?>? placementGroup;
+  final pulumi.Input<String?>? placementTenancy;
+  final pulumi.Input<List<SpotFleetRequestLaunchSpecificationRootBlockDevice>?>? rootBlockDevices;
   /// The maximum bid price per unit hour.
-  final pulumi.Input<String>? spotPrice;
+  final pulumi.Input<String?>? spotPrice;
   /// The subnet in which to launch the requested instance.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<String>? userData;
-  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<String?>? userData;
+  final pulumi.Input<List<String>?>? vpcSecurityGroupIds;
   /// The capacity added to the fleet by a fulfilled request.
-  final pulumi.Input<String>? weightedCapacity;
+  final pulumi.Input<String?>? weightedCapacity;
 
   /// Creates a new [SpotFleetRequestLaunchSpecification].
   /// [ami] Required.

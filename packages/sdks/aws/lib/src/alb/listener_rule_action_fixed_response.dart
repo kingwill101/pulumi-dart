@@ -6,9 +6,9 @@ class ListenerRuleActionFixedResponse {
   /// The content type. Valid values are `text/plain`, `text/css`, `text/html`, `application/javascript` and `application/json`.
   final pulumi.Input<String> contentType;
   /// The message body.
-  final pulumi.Input<String>? messageBody;
+  final pulumi.Input<String?>? messageBody;
   /// The HTTP response code. Valid values are `2XX`, `4XX`, or `5XX`.
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
 
   /// Creates a new [ListenerRuleActionFixedResponse].
   /// [contentType] The content type. Valid values are `text/plain`, `text/css`, `text/html`, `application/javascript` and `application/json`.

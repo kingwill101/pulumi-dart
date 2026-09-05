@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'serverless_collection_group_args.dart';
+import 'serverless_collection_group_capacity_limit.dart';
 import 'serverless_collection_group_state.dart';
 
 /// Resource for managing an AWS OpenSearch Serverless Collection Group.
@@ -16,15 +17,15 @@ import 'serverless_collection_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.opensearch.ServerlessCollectionGroup("example", {
-///     name: "example-group",
-///     description: "Shared compute for production collections",
-///     standbyReplicas: "ENABLED",
 ///     capacityLimits: [{
 ///         minIndexingCapacityInOcu: 2,
 ///         maxIndexingCapacityInOcu: 16,
 ///         minSearchCapacityInOcu: 2,
 ///         maxSearchCapacityInOcu: 16,
 ///     }],
+///     name: "example-group",
+///     description: "Shared compute for production collections",
+///     standbyReplicas: "ENABLED",
 /// });
 /// ```
 /// ```python
@@ -32,15 +33,15 @@ import 'serverless_collection_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.opensearch.ServerlessCollectionGroup("example",
-///     name="example-group",
-///     description="Shared compute for production collections",
-///     standby_replicas="ENABLED",
 ///     capacity_limits=[{
 ///         "min_indexing_capacity_in_ocu": float(2),
 ///         "max_indexing_capacity_in_ocu": float(16),
 ///         "min_search_capacity_in_ocu": float(2),
 ///         "max_search_capacity_in_ocu": float(16),
-///     }])
+///     }],
+///     name="example-group",
+///     description="Shared compute for production collections",
+///     standby_replicas="ENABLED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -52,9 +53,6 @@ import 'serverless_collection_group_state.dart';
 /// {
 ///     var example = new Aws.OpenSearch.ServerlessCollectionGroup("example", new()
 ///     {
-///         Name = "example-group",
-///         Description = "Shared compute for production collections",
-///         StandbyReplicas = "ENABLED",
 ///         CapacityLimits = new[]
 ///         {
 ///             new Aws.OpenSearch.Inputs.ServerlessCollectionGroupCapacityLimitArgs
@@ -65,6 +63,9 @@ import 'serverless_collection_group_state.dart';
 ///                 MaxSearchCapacityInOcu = 16,
 ///             },
 ///         },
+///         Name = "example-group",
+///         Description = "Shared compute for production collections",
+///         StandbyReplicas = "ENABLED",
 ///     });
 ///
 /// });
@@ -80,9 +81,6 @@ import 'serverless_collection_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := opensearch.NewServerlessCollectionGroup(ctx, "example", &opensearch.ServerlessCollectionGroupArgs{
-/// 			Name:            pulumi.String("example-group"),
-/// 			Description:     pulumi.String("Shared compute for production collections"),
-/// 			StandbyReplicas: pulumi.String("ENABLED"),
 /// 			CapacityLimits: opensearch.ServerlessCollectionGroupCapacityLimitArray{
 /// 				&opensearch.ServerlessCollectionGroupCapacityLimitArgs{
 /// 					MinIndexingCapacityInOcu: pulumi.Float64(2),
@@ -91,6 +89,9 @@ import 'serverless_collection_group_state.dart';
 /// 					MaxSearchCapacityInOcu:   pulumi.Float64(16),
 /// 				},
 /// 			},
+/// 			Name:            pulumi.String("example-group"),
+/// 			Description:     pulumi.String("Shared compute for production collections"),
+/// 			StandbyReplicas: pulumi.String("ENABLED"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -109,15 +110,15 @@ import 'serverless_collection_group_state.dart';
 /// }
 ///
 /// resource "aws_opensearch_serverlesscollectiongroup" "example" {
-///   name             = "example-group"
-///   description      = "Shared compute for production collections"
-///   standby_replicas = "ENABLED"
 ///   capacity_limits {
 ///     min_indexing_capacity_in_ocu = 2
 ///     max_indexing_capacity_in_ocu = 16
 ///     min_search_capacity_in_ocu   = 2
 ///     max_search_capacity_in_ocu   = 16
 ///   }
+///   name             = "example-group"
+///   description      = "Shared compute for production collections"
+///   standby_replicas = "ENABLED"
 /// }
 /// ```
 /// ```java
@@ -143,15 +144,15 @@ import 'serverless_collection_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ServerlessCollectionGroup("example", ServerlessCollectionGroupArgs.builder()
-///             .name("example-group")
-///             .description("Shared compute for production collections")
-///             .standbyReplicas("ENABLED")
 ///             .capacityLimits(ServerlessCollectionGroupCapacityLimitArgs.builder()
 ///                 .minIndexingCapacityInOcu(2.0)
 ///                 .maxIndexingCapacityInOcu(16.0)
 ///                 .minSearchCapacityInOcu(2.0)
 ///                 .maxSearchCapacityInOcu(16.0)
 ///                 .build())
+///             .name("example-group")
+///             .description("Shared compute for production collections")
+///             .standbyReplicas("ENABLED")
 ///             .build());
 ///
 ///     }
@@ -162,14 +163,14 @@ import 'serverless_collection_group_state.dart';
 ///   example:
 ///     type: aws:opensearch:ServerlessCollectionGroup
 ///     properties:
-///       name: example-group
-///       description: Shared compute for production collections
-///       standbyReplicas: ENABLED
 ///       capacityLimits:
 ///         - minIndexingCapacityInOcu: 2
 ///           maxIndexingCapacityInOcu: 16
 ///           minSearchCapacityInOcu: 2
 ///           maxSearchCapacityInOcu: 16
+///       name: example-group
+///       description: Shared compute for production collections
+///       standbyReplicas: ENABLED
 /// ```
 ///
 ///
@@ -193,10 +194,10 @@ import 'serverless_collection_group_state.dart';
 /// $ pulumi import aws:opensearch/serverlessCollectionGroup:ServerlessCollectionGroup example example-group-id
 /// ```
 class ServerlessCollectionGroup extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the collection group.
+  /// ARN of the collection group.
   late final pulumi.Output<String> arn;
   /// Configuration block for the collection group's indexing and search capacity limits. See `capacityLimits` below for details.
-  late final pulumi.Output<List<Map<String, dynamic>>> capacityLimits;
+  late final pulumi.Output<List<ServerlessCollectionGroupCapacityLimit>> capacityLimits;
   /// Date the collection group was created.
   late final pulumi.Output<String> createdDate;
   /// Description of the collection group.
@@ -228,18 +229,18 @@ class ServerlessCollectionGroup extends pulumi.CustomResource {
           'aws:opensearch/serverlessCollectionGroup:ServerlessCollectionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    capacityLimits = registerOutput<List<Map<String, dynamic>>>('capacityLimits');
+    capacityLimits = registerOutput<List<ServerlessCollectionGroupCapacityLimit>>('capacityLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionGroupCapacityLimit>(guardedValue, (value) => ServerlessCollectionGroupCapacityLimit.fromMap((value as Map).cast<String, dynamic>())); });
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
     generation = registerOutput<String>('generation');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     standbyReplicas = registerOutput<String>('standbyReplicas');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ServerlessCollectionGroup] resource's state with the given [name] and [id].
@@ -247,11 +248,12 @@ class ServerlessCollectionGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerlessCollectionGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerlessCollectionGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -266,14 +268,35 @@ class ServerlessCollectionGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    capacityLimits = registerOutput<List<Map<String, dynamic>>>('capacityLimits');
+    capacityLimits = registerOutput<List<ServerlessCollectionGroupCapacityLimit>>('capacityLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionGroupCapacityLimit>(guardedValue, (value) => ServerlessCollectionGroupCapacityLimit.fromMap((value as Map).cast<String, dynamic>())); });
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
     generation = registerOutput<String>('generation');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     standbyReplicas = registerOutput<String>('standbyReplicas');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ServerlessCollectionGroup] resource.
+  ServerlessCollectionGroup.reference(String urn)
+    : super(
+        'aws:opensearch/serverlessCollectionGroup:ServerlessCollectionGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    capacityLimits = registerOutput<List<ServerlessCollectionGroupCapacityLimit>>('capacityLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionGroupCapacityLimit>(guardedValue, (value) => ServerlessCollectionGroupCapacityLimit.fromMap((value as Map).cast<String, dynamic>())); });
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    generation = registerOutput<String>('generation');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    standbyReplicas = registerOutput<String>('standbyReplicas');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -6,7 +6,7 @@ import 'web_acl_rule_statement_rate_based_statement_custom_key_query_argument_te
 class WebAclRuleStatementRateBasedStatementCustomKeyQueryArgument {
   /// Name of the rule. Must be unique within the Web ACL.
   final pulumi.Input<String> name;
-  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation>>? textTransformations;
+  final pulumi.Input<List<WebAclRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation>?>? textTransformations;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementCustomKeyQueryArgument].
   /// [name] Name of the rule. Must be unique within the Web ACL.

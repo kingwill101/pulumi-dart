@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServerlessSecurityConfigIamIdentityCenterOptions {
   /// Group attribute for this IAM Identity Center integration. Valid values are `GroupId` and `GroupName`. Defaults to `GroupId`.
-  final pulumi.Input<String>? groupAttribute;
-  /// Amazon Resource Name (ARN) of the IAM Identity Center instance used to integrate with OpenSearch Serverless.
+  final pulumi.Input<String?>? groupAttribute;
+  /// ARN of the IAM Identity Center instance used to integrate with OpenSearch Serverless.
   final pulumi.Input<String> instanceArn;
   /// User attribute for this IAM Identity Center integration. Valid values are `UserId`, `UserName` and `Email`. Defaults to `UserId`.
-  final pulumi.Input<String>? userAttribute;
+  final pulumi.Input<String?>? userAttribute;
 
   /// Creates a new [ServerlessSecurityConfigIamIdentityCenterOptions].
   /// [groupAttribute] Group attribute for this IAM Identity Center integration. Valid values are `GroupId` and `GroupName`. Defaults to `GroupId`.
-  /// [instanceArn] Amazon Resource Name (ARN) of the IAM Identity Center instance used to integrate with OpenSearch Serverless.
+  /// [instanceArn] ARN of the IAM Identity Center instance used to integrate with OpenSearch Serverless.
   /// [userAttribute] User attribute for this IAM Identity Center integration. Valid values are `UserId`, `UserName` and `Email`. Defaults to `UserId`.
   const ServerlessSecurityConfigIamIdentityCenterOptions({
     this.groupAttribute,

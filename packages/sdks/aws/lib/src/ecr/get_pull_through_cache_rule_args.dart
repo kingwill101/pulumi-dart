@@ -10,7 +10,7 @@ class GetPullThroughCacheRuleArgs {
   /// The repository name prefix to use when caching images from the source registry.
   final pulumi.Input<String> ecrRepositoryPrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetPullThroughCacheRuleArgs].
   /// [ecrRepositoryPrefix] The repository name prefix to use when caching images from the source registry.

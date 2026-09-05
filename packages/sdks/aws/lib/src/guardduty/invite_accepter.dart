@@ -240,7 +240,7 @@ class InviteAccepter extends pulumi.CustomResource {
           'aws:guardduty/inviteAccepter:InviteAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     detectorId = registerOutput<String>('detectorId');
     masterAccountId = registerOutput<String>('masterAccountId');
@@ -252,11 +252,12 @@ class InviteAccepter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InviteAccepterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InviteAccepter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -270,6 +271,20 @@ class InviteAccepter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    detectorId = registerOutput<String>('detectorId');
+    masterAccountId = registerOutput<String>('masterAccountId');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [InviteAccepter] resource.
+  InviteAccepter.reference(String urn)
+    : super(
+        'aws:guardduty/inviteAccepter:InviteAccepter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     detectorId = registerOutput<String>('detectorId');
     masterAccountId = registerOutput<String>('masterAccountId');
     region = registerOutput<String>('region');

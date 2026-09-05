@@ -6,7 +6,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   /// Type of authentication to use. Valid values: `IAM`, `USERNAME_PASSWORD`.
   final pulumi.Input<String> type;
   /// ARN of a Secrets Manager secret for authentication.
-  final pulumi.Input<String>? usernamePasswordSecretArn;
+  final pulumi.Input<String?>? usernamePasswordSecretArn;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfigurationAuthConfiguration].
   /// [type] Type of authentication to use. Valid values: `IAM`, `USERNAME_PASSWORD`.

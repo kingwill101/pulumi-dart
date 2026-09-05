@@ -234,7 +234,7 @@ class DedicatedIpPool extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// IP pool scaling mode. Valid values: `STANDARD`, `MANAGED`. If omitted, the AWS API will default to a standard pool.
   late final pulumi.Output<String> scalingMode;
-  /// A map of tags to assign to the pool. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the pool. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -250,14 +250,14 @@ class DedicatedIpPool extends pulumi.CustomResource {
           'aws:sesv2/dedicatedIpPool:DedicatedIpPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     poolName = registerOutput<String>('poolName');
     region = registerOutput<String>('region');
     scalingMode = registerOutput<String>('scalingMode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DedicatedIpPool] resource's state with the given [name] and [id].
@@ -265,11 +265,12 @@ class DedicatedIpPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DedicatedIpPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DedicatedIpPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,7 +288,24 @@ class DedicatedIpPool extends pulumi.CustomResource {
     poolName = registerOutput<String>('poolName');
     region = registerOutput<String>('region');
     scalingMode = registerOutput<String>('scalingMode');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DedicatedIpPool] resource.
+  DedicatedIpPool.reference(String urn)
+    : super(
+        'aws:sesv2/dedicatedIpPool:DedicatedIpPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    poolName = registerOutput<String>('poolName');
+    region = registerOutput<String>('region');
+    scalingMode = registerOutput<String>('scalingMode');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

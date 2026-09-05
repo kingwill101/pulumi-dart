@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudfront_get_response_headers_policy_get_response_headers_policy_args_doc}
 class GetResponseHeadersPolicyArgs {
   /// Identifier for the response headers policy.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Unique name to identify the response headers policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetResponseHeadersPolicyArgs].
   /// [id] Identifier for the response headers policy.

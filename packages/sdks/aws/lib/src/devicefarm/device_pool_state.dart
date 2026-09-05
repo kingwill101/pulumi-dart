@@ -5,28 +5,28 @@ import 'device_pool_rule.dart';
 
 /// Input properties used for looking up and filtering DevicePool resources.
 class DevicePoolState {
-  /// The Amazon Resource Name of this Device Pool
-  final pulumi.Input<String>? arn;
+  /// ARN of this Device Pool
+  final pulumi.Input<String?>? arn;
   /// The device pool's description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The number of devices that Device Farm can add to your device pool.
-  final pulumi.Input<int>? maxDevices;
+  final pulumi.Input<int?>? maxDevices;
   /// The name of the Device Pool
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ARN of the project for the device pool.
-  final pulumi.Input<String>? projectArn;
+  final pulumi.Input<String?>? projectArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The device pool's rules. See Rule.
-  final pulumi.Input<List<DevicePoolRule>>? rules;
+  final pulumi.Input<List<DevicePoolRule>?>? rules;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DevicePoolState].
-  /// [arn] The Amazon Resource Name of this Device Pool
+  /// [arn] ARN of this Device Pool
   /// [description] The device pool's description.
   /// [maxDevices] The number of devices that Device Farm can add to your device pool.
   /// [name] The name of the Device Pool
@@ -68,7 +68,7 @@ class DevicePoolState {
     return DevicePoolState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDevices: (() { final guardedValue = map['maxDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDevices: (() { final guardedValue = map['maxDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectArn: (() { final guardedValue = map['projectArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

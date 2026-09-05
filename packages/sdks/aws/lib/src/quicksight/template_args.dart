@@ -10,17 +10,17 @@ import 'template_source_entity.dart';
 /// {@macro pulumi_quicksight_template_template_args_doc}
 class TemplateArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// Display name for the template.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A set of resource permissions on the template. Maximum of 64 items. See permissions.
-  final pulumi.Input<List<TemplatePermission>>? permissions;
+  final pulumi.Input<List<TemplatePermission>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
-  final pulumi.Input<TemplateSourceEntity>? sourceEntity;
+  final pulumi.Input<TemplateSourceEntity?>? sourceEntity;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Identifier for the template.
   final pulumi.Input<String> templateId;
   /// A description of the current template version being created/updated.

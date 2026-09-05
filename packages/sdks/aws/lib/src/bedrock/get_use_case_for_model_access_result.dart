@@ -4,23 +4,23 @@
 /// Result data returned by getUseCaseForModelAccess.
 class GetUseCaseForModelAccessResult {
   /// Form data as JSON from the Anthropic first time user request.
-  final String formData;
+  final String? formData;
 
   /// Creates a new [GetUseCaseForModelAccessResult].
   /// [formData] Form data as JSON from the Anthropic first time user request.
   const GetUseCaseForModelAccessResult({
-    required this.formData,
+    this.formData,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'formData': formData,
+      'formData': ?formData,
     };
   }
 
   factory GetUseCaseForModelAccessResult.fromMap(Map<String, dynamic> map) {
     return GetUseCaseForModelAccessResult(
-      formData: map['formData'] as String,
+      formData: (() { final guardedValue = map['formData']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

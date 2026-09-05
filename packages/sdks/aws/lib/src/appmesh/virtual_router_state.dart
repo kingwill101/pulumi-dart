@@ -6,27 +6,27 @@ import 'virtual_router_spec.dart';
 /// Input properties used for looking up and filtering VirtualRouter resources.
 class VirtualRouterState {
   /// ARN of the virtual router.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Creation date of the virtual router.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// Last update date of the virtual router.
-  final pulumi.Input<String>? lastUpdatedDate;
+  final pulumi.Input<String?>? lastUpdatedDate;
   /// Name of the service mesh in which to create the virtual router. Must be between 1 and 255 characters in length.
-  final pulumi.Input<String>? meshName;
+  final pulumi.Input<String?>? meshName;
   /// AWS account ID of the service mesh's owner. Defaults to the account ID the AWS provider is currently connected to.
-  final pulumi.Input<String>? meshOwner;
+  final pulumi.Input<String?>? meshOwner;
   /// Name to use for the virtual router. Must be between 1 and 255 characters in length.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Resource owner's AWS account ID.
-  final pulumi.Input<String>? resourceOwner;
+  final pulumi.Input<String?>? resourceOwner;
   /// Virtual router specification to apply. See `spec` Block for details.
-  final pulumi.Input<VirtualRouterSpec>? spec;
+  final pulumi.Input<VirtualRouterSpec?>? spec;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [VirtualRouterState].
   /// [arn] ARN of the virtual router.

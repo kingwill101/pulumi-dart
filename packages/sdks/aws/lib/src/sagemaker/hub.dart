@@ -125,7 +125,7 @@ import 'hub_state.dart';
 /// $ pulumi import aws:sagemaker/hub:Hub test_hub my-code-repo
 /// ```
 class Hub extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Hub.
+  /// ARN assigned by AWS to this Hub.
   late final pulumi.Output<String> arn;
   /// A description of the hub.
   late final pulumi.Output<String> hubDescription;
@@ -156,17 +156,17 @@ class Hub extends pulumi.CustomResource {
           'aws:sagemaker/hub:Hub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hubDescription = registerOutput<String>('hubDescription');
     hubDisplayName = registerOutput<String?>('hubDisplayName');
     hubName = registerOutput<String>('hubName');
-    hubSearchKeywords = registerOutput<List<String>?>('hubSearchKeywords');
+    hubSearchKeywords = registerOutput<List<String>?>('hubSearchKeywords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     s3StorageConfig = registerOutput<HubS3StorageConfig?>('s3StorageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubS3StorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Hub] resource's state with the given [name] and [id].
@@ -174,11 +174,12 @@ class Hub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Hub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -196,10 +197,30 @@ class Hub extends pulumi.CustomResource {
     hubDescription = registerOutput<String>('hubDescription');
     hubDisplayName = registerOutput<String?>('hubDisplayName');
     hubName = registerOutput<String>('hubName');
-    hubSearchKeywords = registerOutput<List<String>?>('hubSearchKeywords');
+    hubSearchKeywords = registerOutput<List<String>?>('hubSearchKeywords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
     s3StorageConfig = registerOutput<HubS3StorageConfig?>('s3StorageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubS3StorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Hub] resource.
+  Hub.reference(String urn)
+    : super(
+        'aws:sagemaker/hub:Hub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    hubDescription = registerOutput<String>('hubDescription');
+    hubDisplayName = registerOutput<String?>('hubDisplayName');
+    hubName = registerOutput<String>('hubName');
+    hubSearchKeywords = registerOutput<List<String>?>('hubSearchKeywords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    s3StorageConfig = registerOutput<HubS3StorageConfig?>('s3StorageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubS3StorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

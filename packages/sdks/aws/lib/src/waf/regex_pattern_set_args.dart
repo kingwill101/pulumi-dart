@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_waf_regex_pattern_set_regex_pattern_set_args_doc}
 class RegexPatternSetArgs {
   /// The name or description of the Regex Pattern Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-  final pulumi.Input<List<String>>? regexPatternStrings;
+  final pulumi.Input<List<String>?>? regexPatternStrings;
 
   /// Creates a new [RegexPatternSetArgs].
   /// [name] The name or description of the Regex Pattern Set.

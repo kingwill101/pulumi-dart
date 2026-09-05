@@ -159,14 +159,14 @@ class IntegrationResponse extends pulumi.CustomResource {
           'aws:apigatewayv2/integrationResponse:IntegrationResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     contentHandlingStrategy = registerOutput<String?>('contentHandlingStrategy');
     integrationId = registerOutput<String>('integrationId');
     integrationResponseKey = registerOutput<String>('integrationResponseKey');
     region = registerOutput<String>('region');
-    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates');
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateSelectionExpression = registerOutput<String?>('templateSelectionExpression');
   }
 
@@ -175,11 +175,12 @@ class IntegrationResponse extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationResponseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationResponse._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -198,7 +199,25 @@ class IntegrationResponse extends pulumi.CustomResource {
     integrationId = registerOutput<String>('integrationId');
     integrationResponseKey = registerOutput<String>('integrationResponseKey');
     region = registerOutput<String>('region');
-    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates');
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateSelectionExpression = registerOutput<String?>('templateSelectionExpression');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationResponse] resource.
+  IntegrationResponse.reference(String urn)
+    : super(
+        'aws:apigatewayv2/integrationResponse:IntegrationResponse',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiId = registerOutput<String>('apiId');
+    contentHandlingStrategy = registerOutput<String?>('contentHandlingStrategy');
+    integrationId = registerOutput<String>('integrationId');
+    integrationResponseKey = registerOutput<String>('integrationResponseKey');
+    region = registerOutput<String>('region');
+    responseTemplates = registerOutput<Map<String, String>?>('responseTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateSelectionExpression = registerOutput<String?>('templateSelectionExpression');
   }
 }

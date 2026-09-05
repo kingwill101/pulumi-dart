@@ -11,13 +11,13 @@ import 'get_task_execution_placement_strategy.dart';
 class GetTaskExecutionResult {
   final List<GetTaskExecutionCapacityProviderStrategy>? capacityProviderStrategies;
   final String? clientToken;
-  final String cluster;
+  final String? cluster;
   final int? desiredCount;
   final bool? enableEcsManagedTags;
   final bool? enableExecuteCommand;
   final String? group;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? launchType;
   final GetTaskExecutionNetworkConfiguration? networkConfiguration;
   final GetTaskExecutionOverrides? overrides;
@@ -26,17 +26,17 @@ class GetTaskExecutionResult {
   final String? platformVersion;
   final String? propagateTags;
   final String? referenceId;
-  final String region;
+  final String? region;
   final String? startedBy;
   final Map<String, String>? tags;
   /// List of the provisioned task ARNs.
-  final List<String> taskArns;
-  final String taskDefinition;
+  final List<String>? taskArns;
+  final String? taskDefinition;
 
   /// Creates a new [GetTaskExecutionResult].
   /// [capacityProviderStrategies] Optional.
   /// [clientToken] Optional.
-  /// [cluster] Required.
+  /// [cluster] Optional.
   /// [desiredCount] Optional.
   /// [enableEcsManagedTags] Optional.
   /// [enableExecuteCommand] Optional.
@@ -50,20 +50,20 @@ class GetTaskExecutionResult {
   /// [platformVersion] Optional.
   /// [propagateTags] Optional.
   /// [referenceId] Optional.
-  /// [region] Required.
+  /// [region] Optional.
   /// [startedBy] Optional.
   /// [tags] Optional.
   /// [taskArns] List of the provisioned task ARNs.
-  /// [taskDefinition] Required.
+  /// [taskDefinition] Optional.
   const GetTaskExecutionResult({
     this.capacityProviderStrategies,
     this.clientToken,
-    required this.cluster,
+    this.cluster,
     this.desiredCount,
     this.enableEcsManagedTags,
     this.enableExecuteCommand,
     this.group,
-    required this.id,
+    this.id,
     this.launchType,
     this.networkConfiguration,
     this.overrides,
@@ -72,23 +72,23 @@ class GetTaskExecutionResult {
     this.platformVersion,
     this.propagateTags,
     this.referenceId,
-    required this.region,
+    this.region,
     this.startedBy,
     this.tags,
-    required this.taskArns,
-    required this.taskDefinition,
+    this.taskArns,
+    this.taskDefinition,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityProviderStrategies': ?(() { final guardedValue = capacityProviderStrategies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTaskExecutionCapacityProviderStrategy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'clientToken': ?clientToken,
-      'cluster': cluster,
+      'cluster': ?cluster,
       'desiredCount': ?desiredCount,
       'enableEcsManagedTags': ?enableEcsManagedTags,
       'enableExecuteCommand': ?enableExecuteCommand,
       'group': ?group,
-      'id': id,
+      'id': ?id,
       'launchType': ?launchType,
       'networkConfiguration': ?networkConfiguration?.toMap(),
       'overrides': ?overrides?.toMap(),
@@ -97,11 +97,11 @@ class GetTaskExecutionResult {
       'platformVersion': ?platformVersion,
       'propagateTags': ?propagateTags,
       'referenceId': ?referenceId,
-      'region': region,
+      'region': ?region,
       'startedBy': ?startedBy,
       'tags': ?tags,
-      'taskArns': taskArns,
-      'taskDefinition': taskDefinition,
+      'taskArns': ?taskArns,
+      'taskDefinition': ?taskDefinition,
     };
   }
 
@@ -109,12 +109,12 @@ class GetTaskExecutionResult {
     return GetTaskExecutionResult(
       capacityProviderStrategies: (() { final guardedValue = map['capacityProviderStrategies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTaskExecutionCapacityProviderStrategy>(guardedValue, (value) => GetTaskExecutionCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())); })(),
       clientToken: (() { final guardedValue = map['clientToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      cluster: map['cluster'] as String,
-      desiredCount: (() { final guardedValue = map['desiredCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      cluster: (() { final guardedValue = map['cluster']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      desiredCount: (() { final guardedValue = map['desiredCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       enableEcsManagedTags: (() { final guardedValue = map['enableEcsManagedTags']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableExecuteCommand: (() { final guardedValue = map['enableExecuteCommand']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       launchType: (() { final guardedValue = map['launchType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkConfiguration: (() { final guardedValue = map['networkConfiguration']; if (guardedValue == null) return null; return GetTaskExecutionNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       overrides: (() { final guardedValue = map['overrides']; if (guardedValue == null) return null; return GetTaskExecutionOverrides.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -123,11 +123,11 @@ class GetTaskExecutionResult {
       platformVersion: (() { final guardedValue = map['platformVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       propagateTags: (() { final guardedValue = map['propagateTags']; if (guardedValue == null) return null; return guardedValue as String; })(),
       referenceId: (() { final guardedValue = map['referenceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startedBy: (() { final guardedValue = map['startedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      taskArns: (map['taskArns'] as List).cast<String>(),
-      taskDefinition: map['taskDefinition'] as String,
+      taskArns: (() { final guardedValue = map['taskArns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      taskDefinition: (() { final guardedValue = map['taskDefinition']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

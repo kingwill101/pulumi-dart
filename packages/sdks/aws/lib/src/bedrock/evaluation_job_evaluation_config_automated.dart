@@ -7,11 +7,11 @@ import 'evaluation_job_evaluation_config_automated_evaluator_model_config.dart';
 
 class EvaluationJobEvaluationConfigAutomated {
   /// Configuration for custom metrics to compute for the evaluation job. See `customMetricConfig` Block below.
-  final pulumi.Input<EvaluationJobEvaluationConfigAutomatedCustomMetricConfig>? customMetricConfig;
+  final pulumi.Input<EvaluationJobEvaluationConfigAutomatedCustomMetricConfig?>? customMetricConfig;
   /// One or more configurations for the prompt datasets and metrics to use. See `evaluation_config.automated.dataset_metric_config` Block below.
   final pulumi.Input<List<EvaluationJobEvaluationConfigAutomatedDatasetMetricConfig>> datasetMetricConfigs;
   /// Configuration for the evaluator (judge) model. Required for automated jobs that use an LLM-as-judge metric, or that evaluate a knowledge base. See `evaluatorModelConfig` Block below.
-  final pulumi.Input<EvaluationJobEvaluationConfigAutomatedEvaluatorModelConfig>? evaluatorModelConfig;
+  final pulumi.Input<EvaluationJobEvaluationConfigAutomatedEvaluatorModelConfig?>? evaluatorModelConfig;
 
   /// Creates a new [EvaluationJobEvaluationConfigAutomated].
   /// [customMetricConfig] Configuration for custom metrics to compute for the evaluation job. See `customMetricConfig` Block below.

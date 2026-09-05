@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_serverless_collection_groups_collection_group_summary_capacity_limit.dart';
 
 class GetServerlessCollectionGroupsCollectionGroupSummary {
-  /// Amazon Resource Name (ARN) of the collection group.
+  /// ARN of the collection group.
   final pulumi.Input<String> arn;
   /// Capacity limits configured for the collection group. See `capacityLimits` below for details.
   final pulumi.Input<List<GetServerlessCollectionGroupsCollectionGroupSummaryCapacityLimit>> capacityLimits;
@@ -20,7 +20,7 @@ class GetServerlessCollectionGroupsCollectionGroupSummary {
   final pulumi.Input<String> standbyReplicas;
 
   /// Creates a new [GetServerlessCollectionGroupsCollectionGroupSummary].
-  /// [arn] Amazon Resource Name (ARN) of the collection group.
+  /// [arn] ARN of the collection group.
   /// [capacityLimits] Capacity limits configured for the collection group. See `capacityLimits` below for details.
   /// [createdDate] Epoch time, in milliseconds, when the collection group was created.
   /// [id] Unique identifier for the collection group.
@@ -56,7 +56,7 @@ class GetServerlessCollectionGroupsCollectionGroupSummary {
       createdDate: pulumi.Input.fromValue(map['createdDate'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      numberOfCollections: pulumi.Input.fromValue(map['numberOfCollections'] as int),
+      numberOfCollections: pulumi.Input.fromValue((map['numberOfCollections'] as num).toInt()),
       standbyReplicas: pulumi.Input.fromValue(map['standbyReplicas'] as String),
     );
   }

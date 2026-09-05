@@ -141,7 +141,7 @@ import 'mlflow_app_timeouts.dart';
 class MlflowApp extends pulumi.CustomResource {
   /// Indicates whether this MLflow app is the default for the entire account. Valid values are `ENABLED` and `DISABLED`.
   late final pulumi.Output<String?> accountDefaultStatus;
-  /// Amazon Resource Name (ARN) of the MLflow App.
+  /// ARN of the MLflow App.
   late final pulumi.Output<String> arn;
   /// S3 URI for a general purpose bucket to use as the MLflow App artifact store.
   late final pulumi.Output<String> artifactStoreUri;
@@ -153,7 +153,7 @@ class MlflowApp extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3.
+  /// ARN for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3.
   late final pulumi.Output<String> roleArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -175,18 +175,18 @@ class MlflowApp extends pulumi.CustomResource {
           'aws:sagemaker/mlflowApp:MlflowApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountDefaultStatus = registerOutput<String?>('accountDefaultStatus');
     arn = registerOutput<String>('arn');
     artifactStoreUri = registerOutput<String>('artifactStoreUri');
-    defaultDomainIdLists = registerOutput<List<String>?>('defaultDomainIdLists');
+    defaultDomainIdLists = registerOutput<List<String>?>('defaultDomainIdLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     modelRegistrationMode = registerOutput<String>('modelRegistrationMode');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<MlflowAppTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MlflowAppTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     weeklyMaintenanceWindowStart = registerOutput<String>('weeklyMaintenanceWindowStart');
   }
@@ -196,11 +196,12 @@ class MlflowApp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MlflowAppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MlflowApp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -217,13 +218,36 @@ class MlflowApp extends pulumi.CustomResource {
     accountDefaultStatus = registerOutput<String?>('accountDefaultStatus');
     arn = registerOutput<String>('arn');
     artifactStoreUri = registerOutput<String>('artifactStoreUri');
-    defaultDomainIdLists = registerOutput<List<String>?>('defaultDomainIdLists');
+    defaultDomainIdLists = registerOutput<List<String>?>('defaultDomainIdLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     modelRegistrationMode = registerOutput<String>('modelRegistrationMode');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<MlflowAppTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MlflowAppTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    weeklyMaintenanceWindowStart = registerOutput<String>('weeklyMaintenanceWindowStart');
+  }
+
+  /// Creates a typed reference to an existing [MlflowApp] resource.
+  MlflowApp.reference(String urn)
+    : super(
+        'aws:sagemaker/mlflowApp:MlflowApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountDefaultStatus = registerOutput<String?>('accountDefaultStatus');
+    arn = registerOutput<String>('arn');
+    artifactStoreUri = registerOutput<String>('artifactStoreUri');
+    defaultDomainIdLists = registerOutput<List<String>?>('defaultDomainIdLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    modelRegistrationMode = registerOutput<String>('modelRegistrationMode');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<MlflowAppTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MlflowAppTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     weeklyMaintenanceWindowStart = registerOutput<String>('weeklyMaintenanceWindowStart');
   }

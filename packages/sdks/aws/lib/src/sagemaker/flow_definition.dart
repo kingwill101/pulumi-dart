@@ -18,8 +18,6 @@ import 'flow_definition_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.FlowDefinition("example", {
-///     flowDefinitionName: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     humanLoopConfig: {
 ///         humanTaskUiArn: exampleAwsSagemakerHumanTaskUi.arn,
 ///         taskAvailabilityLifetimeInSeconds: 1,
@@ -31,6 +29,8 @@ import 'flow_definition_state.dart';
 ///     outputConfig: {
 ///         s3OutputPath: `s3://${exampleAwsS3Bucket.bucket}/`,
 ///     },
+///     flowDefinitionName: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -38,8 +38,6 @@ import 'flow_definition_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.FlowDefinition("example",
-///     flow_definition_name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     human_loop_config={
 ///         "human_task_ui_arn": example_aws_sagemaker_human_task_ui["arn"],
 ///         "task_availability_lifetime_in_seconds": 1,
@@ -50,7 +48,9 @@ import 'flow_definition_state.dart';
 ///     },
 ///     output_config={
 ///         "s3_output_path": f"s3://{example_aws_s3_bucket['bucket']}/",
-///     })
+///     },
+///     flow_definition_name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -62,8 +62,6 @@ import 'flow_definition_state.dart';
 /// {
 ///     var example = new Aws.Sagemaker.FlowDefinition("example", new()
 ///     {
-///         FlowDefinitionName = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         HumanLoopConfig = new Aws.Sagemaker.Inputs.FlowDefinitionHumanLoopConfigArgs
 ///         {
 ///             HumanTaskUiArn = exampleAwsSagemakerHumanTaskUi.Arn,
@@ -77,6 +75,8 @@ import 'flow_definition_state.dart';
 ///         {
 ///             S3OutputPath = $"s3://{exampleAwsS3Bucket.Bucket}/",
 ///         },
+///         FlowDefinitionName = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -92,8 +92,6 @@ import 'flow_definition_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewFlowDefinition(ctx, "example", &sagemaker.FlowDefinitionArgs{
-/// 			FlowDefinitionName: pulumi.String("example"),
-/// 			RoleArn:            pulumi.Any(exampleAwsIamRole.Arn),
 /// 			HumanLoopConfig: &sagemaker.FlowDefinitionHumanLoopConfigArgs{
 /// 				HumanTaskUiArn:                    pulumi.Any(exampleAwsSagemakerHumanTaskUi.Arn),
 /// 				TaskAvailabilityLifetimeInSeconds: pulumi.Int(1),
@@ -105,6 +103,8 @@ import 'flow_definition_state.dart';
 /// 			OutputConfig: &sagemaker.FlowDefinitionOutputConfigArgs{
 /// 				S3OutputPath: pulumi.Sprintf("s3://%v/", exampleAwsS3Bucket.Bucket),
 /// 			},
+/// 			FlowDefinitionName: pulumi.String("example"),
+/// 			RoleArn:            pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -123,8 +123,6 @@ import 'flow_definition_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_flowdefinition" "example" {
-///   flow_definition_name = "example"
-///   role_arn             = exampleAwsIamRole.arn
 ///   human_loop_config = {
 ///     human_task_ui_arn                     = exampleAwsSagemakerHumanTaskUi.arn
 ///     task_availability_lifetime_in_seconds = 1
@@ -136,6 +134,8 @@ import 'flow_definition_state.dart';
 ///   output_config = {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
 ///   }
+///   flow_definition_name = "example"
+///   role_arn             = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -162,8 +162,6 @@ import 'flow_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FlowDefinition("example", FlowDefinitionArgs.builder()
-///             .flowDefinitionName("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .humanLoopConfig(FlowDefinitionHumanLoopConfigArgs.builder()
 ///                 .humanTaskUiArn(exampleAwsSagemakerHumanTaskUi.arn())
 ///                 .taskAvailabilityLifetimeInSeconds(1)
@@ -175,6 +173,8 @@ import 'flow_definition_state.dart';
 ///             .outputConfig(FlowDefinitionOutputConfigArgs.builder()
 ///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.bucket()))
 ///                 .build())
+///             .flowDefinitionName("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -185,8 +185,6 @@ import 'flow_definition_state.dart';
 ///   example:
 ///     type: aws:sagemaker:FlowDefinition
 ///     properties:
-///       flowDefinitionName: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       humanLoopConfig:
 ///         humanTaskUiArn: ${exampleAwsSagemakerHumanTaskUi.arn}
 ///         taskAvailabilityLifetimeInSeconds: 1
@@ -196,6 +194,8 @@ import 'flow_definition_state.dart';
 ///         workteamArn: ${exampleAwsSagemakerWorkteam.arn}
 ///       outputConfig:
 ///         s3OutputPath: s3://${exampleAwsS3Bucket.bucket}/
+///       flowDefinitionName: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -207,25 +207,25 @@ import 'flow_definition_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.FlowDefinition("example", {
-///     flowDefinitionName: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     humanLoopConfig: {
-///         humanTaskUiArn: exampleAwsSagemakerHumanTaskUi.arn,
-///         taskAvailabilityLifetimeInSeconds: 1,
-///         taskCount: 1,
-///         taskDescription: "example",
-///         taskTitle: "example",
-///         workteamArn: `arn:aws:sagemaker:${current.region}:394669845002:workteam/public-crowd/default`,
 ///         publicWorkforceTaskPrice: {
 ///             amountInUsd: {
 ///                 cents: 1,
 ///                 tenthFractionsOfACent: 2,
 ///             },
 ///         },
+///         humanTaskUiArn: exampleAwsSagemakerHumanTaskUi.arn,
+///         taskAvailabilityLifetimeInSeconds: 1,
+///         taskCount: 1,
+///         taskDescription: "example",
+///         taskTitle: "example",
+///         workteamArn: `arn:aws:sagemaker:${current.region}:394669845002:workteam/public-crowd/default`,
 ///     },
 ///     outputConfig: {
 ///         s3OutputPath: `s3://${exampleAwsS3Bucket.bucket}/`,
 ///     },
+///     flowDefinitionName: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -233,25 +233,25 @@ import 'flow_definition_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.FlowDefinition("example",
-///     flow_definition_name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     human_loop_config={
-///         "human_task_ui_arn": example_aws_sagemaker_human_task_ui["arn"],
-///         "task_availability_lifetime_in_seconds": 1,
-///         "task_count": 1,
-///         "task_description": "example",
-///         "task_title": "example",
-///         "workteam_arn": f"arn:aws:sagemaker:{current['region']}:394669845002:workteam/public-crowd/default",
 ///         "public_workforce_task_price": {
 ///             "amount_in_usd": {
 ///                 "cents": 1,
 ///                 "tenth_fractions_of_a_cent": 2,
 ///             },
 ///         },
+///         "human_task_ui_arn": example_aws_sagemaker_human_task_ui["arn"],
+///         "task_availability_lifetime_in_seconds": 1,
+///         "task_count": 1,
+///         "task_description": "example",
+///         "task_title": "example",
+///         "workteam_arn": f"arn:aws:sagemaker:{current['region']}:394669845002:workteam/public-crowd/default",
 ///     },
 ///     output_config={
 ///         "s3_output_path": f"s3://{example_aws_s3_bucket['bucket']}/",
-///     })
+///     },
+///     flow_definition_name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -263,16 +263,8 @@ import 'flow_definition_state.dart';
 /// {
 ///     var example = new Aws.Sagemaker.FlowDefinition("example", new()
 ///     {
-///         FlowDefinitionName = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         HumanLoopConfig = new Aws.Sagemaker.Inputs.FlowDefinitionHumanLoopConfigArgs
 ///         {
-///             HumanTaskUiArn = exampleAwsSagemakerHumanTaskUi.Arn,
-///             TaskAvailabilityLifetimeInSeconds = 1,
-///             TaskCount = 1,
-///             TaskDescription = "example",
-///             TaskTitle = "example",
-///             WorkteamArn = $"arn:aws:sagemaker:{current.Region}:394669845002:workteam/public-crowd/default",
 ///             PublicWorkforceTaskPrice = new Aws.Sagemaker.Inputs.FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceArgs
 ///             {
 ///                 AmountInUsd = new Aws.Sagemaker.Inputs.FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsdArgs
@@ -281,11 +273,19 @@ import 'flow_definition_state.dart';
 ///                     TenthFractionsOfACent = 2,
 ///                 },
 ///             },
+///             HumanTaskUiArn = exampleAwsSagemakerHumanTaskUi.Arn,
+///             TaskAvailabilityLifetimeInSeconds = 1,
+///             TaskCount = 1,
+///             TaskDescription = "example",
+///             TaskTitle = "example",
+///             WorkteamArn = $"arn:aws:sagemaker:{current.Region}:394669845002:workteam/public-crowd/default",
 ///         },
 ///         OutputConfig = new Aws.Sagemaker.Inputs.FlowDefinitionOutputConfigArgs
 ///         {
 ///             S3OutputPath = $"s3://{exampleAwsS3Bucket.Bucket}/",
 ///         },
+///         FlowDefinitionName = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -301,25 +301,25 @@ import 'flow_definition_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewFlowDefinition(ctx, "example", &sagemaker.FlowDefinitionArgs{
-/// 			FlowDefinitionName: pulumi.String("example"),
-/// 			RoleArn:            pulumi.Any(exampleAwsIamRole.Arn),
 /// 			HumanLoopConfig: &sagemaker.FlowDefinitionHumanLoopConfigArgs{
-/// 				HumanTaskUiArn:                    pulumi.Any(exampleAwsSagemakerHumanTaskUi.Arn),
-/// 				TaskAvailabilityLifetimeInSeconds: pulumi.Int(1),
-/// 				TaskCount:                         pulumi.Int(1),
-/// 				TaskDescription:                   pulumi.String("example"),
-/// 				TaskTitle:                         pulumi.String("example"),
-/// 				WorkteamArn:                       pulumi.Sprintf("arn:aws:sagemaker:%v:394669845002:workteam/public-crowd/default", current.Region),
 /// 				PublicWorkforceTaskPrice: &sagemaker.FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceArgs{
 /// 					AmountInUsd: &sagemaker.FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsdArgs{
 /// 						Cents:                 pulumi.Int(1),
 /// 						TenthFractionsOfACent: pulumi.Int(2),
 /// 					},
 /// 				},
+/// 				HumanTaskUiArn:                    pulumi.Any(exampleAwsSagemakerHumanTaskUi.Arn),
+/// 				TaskAvailabilityLifetimeInSeconds: pulumi.Int(1),
+/// 				TaskCount:                         pulumi.Int(1),
+/// 				TaskDescription:                   pulumi.String("example"),
+/// 				TaskTitle:                         pulumi.String("example"),
+/// 				WorkteamArn:                       pulumi.Sprintf("arn:aws:sagemaker:%v:394669845002:workteam/public-crowd/default", current.Region),
 /// 			},
 /// 			OutputConfig: &sagemaker.FlowDefinitionOutputConfigArgs{
 /// 				S3OutputPath: pulumi.Sprintf("s3://%v/", exampleAwsS3Bucket.Bucket),
 /// 			},
+/// 			FlowDefinitionName: pulumi.String("example"),
+/// 			RoleArn:            pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -338,25 +338,25 @@ import 'flow_definition_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_flowdefinition" "example" {
-///   flow_definition_name = "example"
-///   role_arn             = exampleAwsIamRole.arn
 ///   human_loop_config = {
-///     human_task_ui_arn                     = exampleAwsSagemakerHumanTaskUi.arn
-///     task_availability_lifetime_in_seconds = 1
-///     task_count                            = 1
-///     task_description                      = "example"
-///     task_title                            = "example"
-///     workteam_arn                          ="arn:aws:sagemaker:${current.region}:394669845002:workteam/public-crowd/default"
 ///     public_workforce_task_price = {
 ///       amount_in_usd = {
 ///         cents                     = 1
 ///         tenth_fractions_of_a_cent = 2
 ///       }
 ///     }
+///     human_task_ui_arn                     = exampleAwsSagemakerHumanTaskUi.arn
+///     task_availability_lifetime_in_seconds = 1
+///     task_count                            = 1
+///     task_description                      = "example"
+///     task_title                            = "example"
+///     workteam_arn                          ="arn:aws:sagemaker:${current.region}:394669845002:workteam/public-crowd/default"
 ///   }
 ///   output_config = {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
 ///   }
+///   flow_definition_name = "example"
+///   role_arn             = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -385,25 +385,25 @@ import 'flow_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FlowDefinition("example", FlowDefinitionArgs.builder()
-///             .flowDefinitionName("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .humanLoopConfig(FlowDefinitionHumanLoopConfigArgs.builder()
-///                 .humanTaskUiArn(exampleAwsSagemakerHumanTaskUi.arn())
-///                 .taskAvailabilityLifetimeInSeconds(1)
-///                 .taskCount(1)
-///                 .taskDescription("example")
-///                 .taskTitle("example")
-///                 .workteamArn(String.format("arn:aws:sagemaker:%s:394669845002:workteam/public-crowd/default", current.region()))
 ///                 .publicWorkforceTaskPrice(FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceArgs.builder()
 ///                     .amountInUsd(FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsdArgs.builder()
 ///                         .cents(1)
 ///                         .tenthFractionsOfACent(2)
 ///                         .build())
 ///                     .build())
+///                 .humanTaskUiArn(exampleAwsSagemakerHumanTaskUi.arn())
+///                 .taskAvailabilityLifetimeInSeconds(1)
+///                 .taskCount(1)
+///                 .taskDescription("example")
+///                 .taskTitle("example")
+///                 .workteamArn(String.format("arn:aws:sagemaker:%s:394669845002:workteam/public-crowd/default", current.region()))
 ///                 .build())
 ///             .outputConfig(FlowDefinitionOutputConfigArgs.builder()
 ///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.bucket()))
 ///                 .build())
+///             .flowDefinitionName("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -414,21 +414,21 @@ import 'flow_definition_state.dart';
 ///   example:
 ///     type: aws:sagemaker:FlowDefinition
 ///     properties:
-///       flowDefinitionName: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       humanLoopConfig:
+///         publicWorkforceTaskPrice:
+///           amountInUsd:
+///             cents: 1
+///             tenthFractionsOfACent: 2
 ///         humanTaskUiArn: ${exampleAwsSagemakerHumanTaskUi.arn}
 ///         taskAvailabilityLifetimeInSeconds: 1
 ///         taskCount: 1
 ///         taskDescription: example
 ///         taskTitle: example
 ///         workteamArn: arn:aws:sagemaker:${current.region}:394669845002:workteam/public-crowd/default
-///         publicWorkforceTaskPrice:
-///           amountInUsd:
-///             cents: 1
-///             tenthFractionsOfACent: 2
 ///       outputConfig:
 ///         s3OutputPath: s3://${exampleAwsS3Bucket.bucket}/
+///       flowDefinitionName: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -440,8 +440,6 @@ import 'flow_definition_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.sagemaker.FlowDefinition("example", {
-///     flowDefinitionName: "example",
-///     roleArn: exampleAwsIamRole.arn,
 ///     humanLoopConfig: {
 ///         humanTaskUiArn: exampleAwsSagemakerHumanTaskUi.arn,
 ///         taskAvailabilityLifetimeInSeconds: 1,
@@ -471,6 +469,8 @@ import 'flow_definition_state.dart';
 ///     outputConfig: {
 ///         s3OutputPath: `s3://${exampleAwsS3Bucket.bucket}/`,
 ///     },
+///     flowDefinitionName: "example",
+///     roleArn: exampleAwsIamRole.arn,
 /// });
 /// ```
 /// ```python
@@ -478,8 +478,6 @@ import 'flow_definition_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.sagemaker.FlowDefinition("example",
-///     flow_definition_name="example",
-///     role_arn=example_aws_iam_role["arn"],
 ///     human_loop_config={
 ///         "human_task_ui_arn": example_aws_sagemaker_human_task_ui["arn"],
 ///         "task_availability_lifetime_in_seconds": 1,
@@ -508,7 +506,9 @@ import 'flow_definition_state.dart';
 ///     },
 ///     output_config={
 ///         "s3_output_path": f"s3://{example_aws_s3_bucket['bucket']}/",
-///     })
+///     },
+///     flow_definition_name="example",
+///     role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -520,8 +520,6 @@ import 'flow_definition_state.dart';
 /// {
 ///     var example = new Aws.Sagemaker.FlowDefinition("example", new()
 ///     {
-///         FlowDefinitionName = "example",
-///         RoleArn = exampleAwsIamRole.Arn,
 ///         HumanLoopConfig = new Aws.Sagemaker.Inputs.FlowDefinitionHumanLoopConfigArgs
 ///         {
 ///             HumanTaskUiArn = exampleAwsSagemakerHumanTaskUi.Arn,
@@ -556,6 +554,8 @@ import 'flow_definition_state.dart';
 ///         {
 ///             S3OutputPath = $"s3://{exampleAwsS3Bucket.Bucket}/",
 ///         },
+///         FlowDefinitionName = "example",
+///         RoleArn = exampleAwsIamRole.Arn,
 ///     });
 ///
 /// });
@@ -571,8 +571,6 @@ import 'flow_definition_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := sagemaker.NewFlowDefinition(ctx, "example", &sagemaker.FlowDefinitionArgs{
-/// 			FlowDefinitionName: pulumi.String("example"),
-/// 			RoleArn:            pulumi.Any(exampleAwsIamRole.Arn),
 /// 			HumanLoopConfig: &sagemaker.FlowDefinitionHumanLoopConfigArgs{
 /// 				HumanTaskUiArn:                    pulumi.Any(exampleAwsSagemakerHumanTaskUi.Arn),
 /// 				TaskAvailabilityLifetimeInSeconds: pulumi.Int(1),
@@ -602,6 +600,8 @@ import 'flow_definition_state.dart';
 /// 			OutputConfig: &sagemaker.FlowDefinitionOutputConfigArgs{
 /// 				S3OutputPath: pulumi.Sprintf("s3://%v/", exampleAwsS3Bucket.Bucket),
 /// 			},
+/// 			FlowDefinitionName: pulumi.String("example"),
+/// 			RoleArn:            pulumi.Any(exampleAwsIamRole.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -620,8 +620,6 @@ import 'flow_definition_state.dart';
 /// }
 ///
 /// resource "aws_sagemaker_flowdefinition" "example" {
-///   flow_definition_name = "example"
-///   role_arn             = exampleAwsIamRole.arn
 ///   human_loop_config = {
 ///     human_task_ui_arn                     = exampleAwsSagemakerHumanTaskUi.arn
 ///     task_availability_lifetime_in_seconds = 1
@@ -641,6 +639,8 @@ import 'flow_definition_state.dart';
 ///   output_config = {
 ///     s3_output_path ="s3://${exampleAwsS3Bucket.bucket}/"
 ///   }
+///   flow_definition_name = "example"
+///   role_arn             = exampleAwsIamRole.arn
 /// }
 /// ```
 /// ```java
@@ -670,8 +670,6 @@ import 'flow_definition_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FlowDefinition("example", FlowDefinitionArgs.builder()
-///             .flowDefinitionName("example")
-///             .roleArn(exampleAwsIamRole.arn())
 ///             .humanLoopConfig(FlowDefinitionHumanLoopConfigArgs.builder()
 ///                 .humanTaskUiArn(exampleAwsSagemakerHumanTaskUi.arn())
 ///                 .taskAvailabilityLifetimeInSeconds(1)
@@ -702,6 +700,8 @@ import 'flow_definition_state.dart';
 ///             .outputConfig(FlowDefinitionOutputConfigArgs.builder()
 ///                 .s3OutputPath(String.format("s3://%s/", exampleAwsS3Bucket.bucket()))
 ///                 .build())
+///             .flowDefinitionName("example")
+///             .roleArn(exampleAwsIamRole.arn())
 ///             .build());
 ///
 ///     }
@@ -712,8 +712,6 @@ import 'flow_definition_state.dart';
 ///   example:
 ///     type: aws:sagemaker:FlowDefinition
 ///     properties:
-///       flowDefinitionName: example
-///       roleArn: ${exampleAwsIamRole.arn}
 ///       humanLoopConfig:
 ///         humanTaskUiArn: ${exampleAwsSagemakerHumanTaskUi.arn}
 ///         taskAvailabilityLifetimeInSeconds: 1
@@ -738,6 +736,8 @@ import 'flow_definition_state.dart';
 ///             \t\t}
 ///       outputConfig:
 ///         s3OutputPath: s3://${exampleAwsS3Bucket.bucket}/
+///       flowDefinitionName: example
+///       roleArn: ${exampleAwsIamRole.arn}
 /// ```
 ///
 ///
@@ -749,7 +749,7 @@ import 'flow_definition_state.dart';
 /// $ pulumi import aws:sagemaker/flowDefinition:FlowDefinition example example
 /// ```
 class FlowDefinition extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this Flow Definition.
+  /// ARN assigned by AWS to this Flow Definition.
   late final pulumi.Output<String> arn;
   /// The name of your flow definition.
   late final pulumi.Output<String> flowDefinitionName;
@@ -763,7 +763,7 @@ class FlowDefinition extends pulumi.CustomResource {
   late final pulumi.Output<FlowDefinitionOutputConfig> outputConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) of the role needed to call other services on your behalf.
+  /// ARN of the role needed to call other services on your behalf.
   late final pulumi.Output<String> roleArn;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -782,7 +782,7 @@ class FlowDefinition extends pulumi.CustomResource {
           'aws:sagemaker/flowDefinition:FlowDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     flowDefinitionName = registerOutput<String>('flowDefinitionName');
@@ -792,8 +792,8 @@ class FlowDefinition extends pulumi.CustomResource {
     outputConfig = registerOutput<FlowDefinitionOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowDefinitionOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [FlowDefinition] resource's state with the given [name] and [id].
@@ -801,11 +801,12 @@ class FlowDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlowDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlowDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -827,7 +828,28 @@ class FlowDefinition extends pulumi.CustomResource {
     outputConfig = registerOutput<FlowDefinitionOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowDefinitionOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     roleArn = registerOutput<String>('roleArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FlowDefinition] resource.
+  FlowDefinition.reference(String urn)
+    : super(
+        'aws:sagemaker/flowDefinition:FlowDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    flowDefinitionName = registerOutput<String>('flowDefinitionName');
+    humanLoopActivationConfig = registerOutput<FlowDefinitionHumanLoopActivationConfig?>('humanLoopActivationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowDefinitionHumanLoopActivationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    humanLoopConfig = registerOutput<FlowDefinitionHumanLoopConfig>('humanLoopConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowDefinitionHumanLoopConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    humanLoopRequestSource = registerOutput<FlowDefinitionHumanLoopRequestSource?>('humanLoopRequestSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowDefinitionHumanLoopRequestSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outputConfig = registerOutput<FlowDefinitionOutputConfig>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowDefinitionOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

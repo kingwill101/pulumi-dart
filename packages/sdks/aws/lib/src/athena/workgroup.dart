@@ -13,18 +13,18 @@ import 'workgroup_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.athena.Workgroup("example", {
-///     name: "example",
 ///     configuration: {
-///         enforceWorkgroupConfiguration: true,
-///         publishCloudwatchMetricsEnabled: true,
 ///         resultConfiguration: {
-///             outputLocation: `s3://${exampleAwsS3Bucket.bucket}/output/`,
 ///             encryptionConfiguration: {
 ///                 encryptionOption: "SSE_KMS",
 ///                 kmsKeyArn: exampleAwsKmsKey.arn,
 ///             },
+///             outputLocation: `s3://${exampleAwsS3Bucket.bucket}/output/`,
 ///         },
+///         enforceWorkgroupConfiguration: true,
+///         publishCloudwatchMetricsEnabled: true,
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -32,18 +32,18 @@ import 'workgroup_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.athena.Workgroup("example",
-///     name="example",
 ///     configuration={
-///         "enforce_workgroup_configuration": True,
-///         "publish_cloudwatch_metrics_enabled": True,
 ///         "result_configuration": {
-///             "output_location": f"s3://{example_aws_s3_bucket['bucket']}/output/",
 ///             "encryption_configuration": {
 ///                 "encryption_option": "SSE_KMS",
 ///                 "kms_key_arn": example_aws_kms_key["arn"],
 ///             },
+///             "output_location": f"s3://{example_aws_s3_bucket['bucket']}/output/",
 ///         },
-///     })
+///         "enforce_workgroup_configuration": True,
+///         "publish_cloudwatch_metrics_enabled": True,
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -55,21 +55,21 @@ import 'workgroup_state.dart';
 /// {
 ///     var example = new Aws.Athena.Workgroup("example", new()
 ///     {
-///         Name = "example",
 ///         Configuration = new Aws.Athena.Inputs.WorkgroupConfigurationArgs
 ///         {
-///             EnforceWorkgroupConfiguration = true,
-///             PublishCloudwatchMetricsEnabled = true,
 ///             ResultConfiguration = new Aws.Athena.Inputs.WorkgroupConfigurationResultConfigurationArgs
 ///             {
-///                 OutputLocation = $"s3://{exampleAwsS3Bucket.Bucket}/output/",
 ///                 EncryptionConfiguration = new Aws.Athena.Inputs.WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs
 ///                 {
 ///                     EncryptionOption = "SSE_KMS",
 ///                     KmsKeyArn = exampleAwsKmsKey.Arn,
 ///                 },
+///                 OutputLocation = $"s3://{exampleAwsS3Bucket.Bucket}/output/",
 ///             },
+///             EnforceWorkgroupConfiguration = true,
+///             PublishCloudwatchMetricsEnabled = true,
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -85,18 +85,18 @@ import 'workgroup_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := athena.NewWorkgroup(ctx, "example", &athena.WorkgroupArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Configuration: &athena.WorkgroupConfigurationArgs{
-/// 				EnforceWorkgroupConfiguration:   pulumi.Bool(true),
-/// 				PublishCloudwatchMetricsEnabled: pulumi.Bool(true),
 /// 				ResultConfiguration: &athena.WorkgroupConfigurationResultConfigurationArgs{
-/// 					OutputLocation: pulumi.Sprintf("s3://%v/output/", exampleAwsS3Bucket.Bucket),
 /// 					EncryptionConfiguration: &athena.WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs{
 /// 						EncryptionOption: pulumi.String("SSE_KMS"),
 /// 						KmsKeyArn:        pulumi.Any(exampleAwsKmsKey.Arn),
 /// 					},
+/// 					OutputLocation: pulumi.Sprintf("s3://%v/output/", exampleAwsS3Bucket.Bucket),
 /// 				},
+/// 				EnforceWorkgroupConfiguration:   pulumi.Bool(true),
+/// 				PublishCloudwatchMetricsEnabled: pulumi.Bool(true),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -115,18 +115,18 @@ import 'workgroup_state.dart';
 /// }
 ///
 /// resource "aws_athena_workgroup" "example" {
-///   name = "example"
 ///   configuration = {
-///     enforce_workgroup_configuration    = true
-///     publish_cloudwatch_metrics_enabled = true
 ///     result_configuration = {
-///       output_location ="s3://${exampleAwsS3Bucket.bucket}/output/"
 ///       encryption_configuration = {
 ///         encryption_option = "SSE_KMS"
 ///         kms_key_arn       = exampleAwsKmsKey.arn
 ///       }
+///       output_location ="s3://${exampleAwsS3Bucket.bucket}/output/"
 ///     }
+///     enforce_workgroup_configuration    = true
+///     publish_cloudwatch_metrics_enabled = true
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -154,18 +154,18 @@ import 'workgroup_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Workgroup("example", WorkgroupArgs.builder()
-///             .name("example")
 ///             .configuration(WorkgroupConfigurationArgs.builder()
-///                 .enforceWorkgroupConfiguration(true)
-///                 .publishCloudwatchMetricsEnabled(true)
 ///                 .resultConfiguration(WorkgroupConfigurationResultConfigurationArgs.builder()
-///                     .outputLocation(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
 ///                     .encryptionConfiguration(WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs.builder()
 ///                         .encryptionOption("SSE_KMS")
 ///                         .kmsKeyArn(exampleAwsKmsKey.arn())
 ///                         .build())
+///                     .outputLocation(String.format("s3://%s/output/", exampleAwsS3Bucket.bucket()))
 ///                     .build())
+///                 .enforceWorkgroupConfiguration(true)
+///                 .publishCloudwatchMetricsEnabled(true)
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -176,15 +176,15 @@ import 'workgroup_state.dart';
 ///   example:
 ///     type: aws:athena:Workgroup
 ///     properties:
-///       name: example
 ///       configuration:
-///         enforceWorkgroupConfiguration: true
-///         publishCloudwatchMetricsEnabled: true
 ///         resultConfiguration:
-///           outputLocation: s3://${exampleAwsS3Bucket.bucket}/output/
 ///           encryptionConfiguration:
 ///             encryptionOption: SSE_KMS
 ///             kmsKeyArn: ${exampleAwsKmsKey.arn}
+///           outputLocation: s3://${exampleAwsS3Bucket.bucket}/output/
+///         enforceWorkgroupConfiguration: true
+///         publishCloudwatchMetricsEnabled: true
+///       name: example
 /// ```
 ///
 ///
@@ -227,7 +227,7 @@ class Workgroup extends pulumi.CustomResource {
           'aws:athena/workgroup:Workgroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<WorkgroupConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkgroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -236,8 +236,8 @@ class Workgroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     state = registerOutput<String?>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Workgroup] resource's state with the given [name] and [id].
@@ -245,11 +245,12 @@ class Workgroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkgroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workgroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -270,7 +271,27 @@ class Workgroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     this.state = registerOutput<String?>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Workgroup] resource.
+  Workgroup.reference(String urn)
+    : super(
+        'aws:athena/workgroup:Workgroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<WorkgroupConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkgroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    state = registerOutput<String?>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

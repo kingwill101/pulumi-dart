@@ -228,7 +228,7 @@ class UserAccessLoggingSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/userAccessLoggingSettingsAssociation:UserAccessLoggingSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
@@ -240,11 +240,12 @@ class UserAccessLoggingSettingsAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserAccessLoggingSettingsAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserAccessLoggingSettingsAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -258,6 +259,20 @@ class UserAccessLoggingSettingsAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+    userAccessLoggingSettingsArn = registerOutput<String>('userAccessLoggingSettingsArn');
+  }
+
+  /// Creates a typed reference to an existing [UserAccessLoggingSettingsAssociation] resource.
+  UserAccessLoggingSettingsAssociation.reference(String urn)
+    : super(
+        'aws:workspacesweb/userAccessLoggingSettingsAssociation:UserAccessLoggingSettingsAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
     userAccessLoggingSettingsArn = registerOutput<String>('userAccessLoggingSettingsArn');

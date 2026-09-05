@@ -15,12 +15,12 @@ import 'indexing_rule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.xray.IndexingRule("example", {
-///     name: "Default",
 ///     rule: {
 ///         probabilistic: {
 ///             desiredSamplingPercentage: 0.66,
 ///         },
 ///     },
+///     name: "Default",
 /// });
 /// ```
 /// ```python
@@ -28,12 +28,12 @@ import 'indexing_rule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.xray.IndexingRule("example",
-///     name="Default",
 ///     rule={
 ///         "probabilistic": {
 ///             "desired_sampling_percentage": 0.66,
 ///         },
-///     })
+///     },
+///     name="Default")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,7 +45,6 @@ import 'indexing_rule_state.dart';
 /// {
 ///     var example = new Aws.Xray.IndexingRule("example", new()
 ///     {
-///         Name = "Default",
 ///         Rule = new Aws.Xray.Inputs.IndexingRuleRuleArgs
 ///         {
 ///             Probabilistic = new Aws.Xray.Inputs.IndexingRuleRuleProbabilisticArgs
@@ -53,6 +52,7 @@ import 'indexing_rule_state.dart';
 ///                 DesiredSamplingPercentage = 0.66,
 ///             },
 ///         },
+///         Name = "Default",
 ///     });
 ///
 /// });
@@ -68,12 +68,12 @@ import 'indexing_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := xray.NewIndexingRule(ctx, "example", &xray.IndexingRuleArgs{
-/// 			Name: pulumi.String("Default"),
 /// 			Rule: &xray.IndexingRuleRuleArgs{
 /// 				Probabilistic: &xray.IndexingRuleRuleProbabilisticArgs{
 /// 					DesiredSamplingPercentage: pulumi.Float64(0.66),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("Default"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -92,12 +92,12 @@ import 'indexing_rule_state.dart';
 /// }
 ///
 /// resource "aws_xray_indexingrule" "example" {
-///   name = "Default"
 ///   rule = {
 ///     probabilistic = {
 ///       desired_sampling_percentage = 0.66
 ///     }
 ///   }
+///   name = "Default"
 /// }
 /// ```
 /// ```java
@@ -124,12 +124,12 @@ import 'indexing_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new IndexingRule("example", IndexingRuleArgs.builder()
-///             .name("Default")
 ///             .rule(IndexingRuleRuleArgs.builder()
 ///                 .probabilistic(IndexingRuleRuleProbabilisticArgs.builder()
 ///                     .desiredSamplingPercentage(0.66)
 ///                     .build())
 ///                 .build())
+///             .name("Default")
 ///             .build());
 ///
 ///     }
@@ -140,10 +140,10 @@ import 'indexing_rule_state.dart';
 ///   example:
 ///     type: aws:xray:IndexingRule
 ///     properties:
-///       name: Default
 ///       rule:
 ///         probabilistic:
 ///           desiredSamplingPercentage: 0.66
+///       name: Default
 /// ```
 ///
 ///
@@ -186,7 +186,7 @@ class IndexingRule extends pulumi.CustomResource {
           'aws:xray/indexingRule:IndexingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
@@ -198,11 +198,12 @@ class IndexingRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IndexingRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IndexingRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -216,6 +217,20 @@ class IndexingRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    rule = registerOutput<IndexingRuleRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingRuleRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [IndexingRule] resource.
+  IndexingRule.reference(String urn)
+    : super(
+        'aws:xray/indexingRule:IndexingRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     rule = registerOutput<IndexingRuleRule>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingRuleRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });

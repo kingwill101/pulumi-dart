@@ -6,14 +6,14 @@ import 'route_server_propagation_timeouts.dart';
 /// Input properties used for looking up and filtering RouteServerPropagation resources.
 class RouteServerPropagationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The unique identifier for the route server to be associated.
-  final pulumi.Input<String>? routeServerId;
+  final pulumi.Input<String?>? routeServerId;
   /// The ID of the route table to which route server will propagate routes.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? routeTableId;
-  final pulumi.Input<RouteServerPropagationTimeouts>? timeouts;
+  final pulumi.Input<String?>? routeTableId;
+  final pulumi.Input<RouteServerPropagationTimeouts?>? timeouts;
 
   /// Creates a new [RouteServerPropagationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

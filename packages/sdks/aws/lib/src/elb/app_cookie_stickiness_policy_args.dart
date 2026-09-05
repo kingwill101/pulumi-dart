@@ -14,9 +14,9 @@ class AppCookieStickinessPolicyArgs {
   /// Name of load balancer to which the policy should be attached.
   final pulumi.Input<String> loadBalancer;
   /// Name of the stickiness policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AppCookieStickinessPolicyArgs].
   /// [cookieName] Application cookie whose lifetime the ELB's cookie should follow.
@@ -45,7 +45,7 @@ class AppCookieStickinessPolicyArgs {
   factory AppCookieStickinessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AppCookieStickinessPolicyArgs(
       cookieName: pulumi.Input.fromValue(map['cookieName'] as String),
-      lbPort: pulumi.Input.fromValue(map['lbPort'] as int),
+      lbPort: pulumi.Input.fromValue((map['lbPort'] as num).toInt()),
       loadBalancer: pulumi.Input.fromValue(map['loadBalancer'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

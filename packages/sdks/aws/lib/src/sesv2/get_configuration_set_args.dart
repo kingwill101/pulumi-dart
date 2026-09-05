@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_sesv2_get_configuration_set_get_configuration_set_args_doc}
 class GetConfigurationSetArgs {
-  /// The name of the configuration set.
+  /// Name of the configuration set.
   final pulumi.Input<String> configurationSetName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Key-value map of resource tags for the container recipe.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? region;
+  /// Key-value map of resource tags.
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetConfigurationSetArgs].
-  /// [configurationSetName] The name of the configuration set.
+  /// [configurationSetName] Name of the configuration set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags for the container recipe.
+  /// [tags] Key-value map of resource tags.
   const GetConfigurationSetArgs({
     required this.configurationSetName,
     this.region,

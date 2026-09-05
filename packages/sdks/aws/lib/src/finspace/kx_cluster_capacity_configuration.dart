@@ -25,7 +25,7 @@ class KxClusterCapacityConfiguration {
 
   factory KxClusterCapacityConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterCapacityConfiguration(
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
       nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
     );
   }

@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisExplanationPortRange {
-  final pulumi.Input<int>? from;
-  final pulumi.Input<int>? to;
+  final pulumi.Input<int?>? from;
+  final pulumi.Input<int?>? to;
 
   /// Creates a new [NetworkInsightsAnalysisExplanationPortRange].
   /// [from] Optional.
@@ -23,8 +23,8 @@ class NetworkInsightsAnalysisExplanationPortRange {
 
   factory NetworkInsightsAnalysisExplanationPortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationPortRange(
-      from: (() { final guardedValue = map['from']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      to: (() { final guardedValue = map['to']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      from: (() { final guardedValue = map['from']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      to: (() { final guardedValue = map['to']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

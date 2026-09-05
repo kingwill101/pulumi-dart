@@ -47,7 +47,7 @@ class GetResponsePlanIncidentTemplate {
   factory GetResponsePlanIncidentTemplate.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanIncidentTemplate(
       dedupeString: pulumi.Input.fromValue(map['dedupeString'] as String),
-      impact: pulumi.Input.fromValue(map['impact'] as int),
+      impact: pulumi.Input.fromValue((map['impact'] as num).toInt()),
       incidentTags: pulumi.Input.fromValue((map['incidentTags'] as Map).cast<String, String>()),
       notificationTargets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetResponsePlanIncidentTemplateNotificationTarget>(map['notificationTargets']!, (value) => GetResponsePlanIncidentTemplateNotificationTarget.fromMap((value as Map).cast<String, dynamic>()))),
       summary: pulumi.Input.fromValue(map['summary'] as String),

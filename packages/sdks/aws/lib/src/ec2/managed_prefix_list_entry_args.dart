@@ -10,11 +10,11 @@ class ManagedPrefixListEntryArgs {
   /// CIDR block of this entry.
   final pulumi.Input<String> cidr;
   /// Description of this entry. Please note that due to API limitations, updating only the description of an entry will require recreating the entry.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The ID of the prefix list.
   final pulumi.Input<String> prefixListId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ManagedPrefixListEntryArgs].
   /// [cidr] CIDR block of this entry.

@@ -7,11 +7,11 @@ import 'cluster_logging_info_broker_logs_s3.dart';
 
 class ClusterLoggingInfoBrokerLogs {
   /// Configuration block for Cloudwatch Logs settings. See loggingInfo broker_logs cloudwatchLogs Argument Reference below.
-  final pulumi.Input<ClusterLoggingInfoBrokerLogsCloudwatchLogs>? cloudwatchLogs;
+  final pulumi.Input<ClusterLoggingInfoBrokerLogsCloudwatchLogs?>? cloudwatchLogs;
   /// Configuration block for Kinesis Data Firehose settings. See loggingInfo broker_logs firehose Argument Reference below.
-  final pulumi.Input<ClusterLoggingInfoBrokerLogsFirehose>? firehose;
+  final pulumi.Input<ClusterLoggingInfoBrokerLogsFirehose?>? firehose;
   /// Configuration block for S3 settings. See loggingInfo broker_logs s3 Argument Reference below.
-  final pulumi.Input<ClusterLoggingInfoBrokerLogsS3>? s3;
+  final pulumi.Input<ClusterLoggingInfoBrokerLogsS3?>? s3;
 
   /// Creates a new [ClusterLoggingInfoBrokerLogs].
   /// [cloudwatchLogs] Configuration block for Cloudwatch Logs settings. See loggingInfo broker_logs cloudwatchLogs Argument Reference below.

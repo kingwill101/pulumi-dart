@@ -20,7 +20,7 @@ class GameServerGroupAutoScalingPolicyTargetTrackingConfiguration {
 
   factory GameServerGroupAutoScalingPolicyTargetTrackingConfiguration.fromMap(Map<String, dynamic> map) {
     return GameServerGroupAutoScalingPolicyTargetTrackingConfiguration(
-      targetValue: pulumi.Input.fromValue(map['targetValue'] as double),
+      targetValue: pulumi.Input.fromValue((map['targetValue'] as num).toDouble()),
     );
   }
 }

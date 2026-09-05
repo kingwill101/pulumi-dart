@@ -9,17 +9,17 @@ import 'get_availability_zone_filter.dart';
 /// {@macro pulumi_index_get_availability_zone_get_availability_zone_args_doc}
 class GetAvailabilityZoneArgs {
   /// Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
-  final pulumi.Input<bool>? allAvailabilityZones;
+  final pulumi.Input<bool?>? allAvailabilityZones;
   /// Configuration block(s) for filtering. Detailed below.
-  final pulumi.Input<List<GetAvailabilityZoneFilter>>? filters;
+  final pulumi.Input<List<GetAvailabilityZoneFilter>?>? filters;
   /// Full name of the availability zone to select.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specific availability zone state to require. May be any of `"available"`, `"information"` or `"impaired"`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Zone ID of the availability zone to select.
-  final pulumi.Input<String>? zoneId;
+  final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [GetAvailabilityZoneArgs].
   /// [allAvailabilityZones] Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.

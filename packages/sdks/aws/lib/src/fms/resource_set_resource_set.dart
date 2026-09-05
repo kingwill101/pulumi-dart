@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceSetResourceSet {
   /// Description of the resource set.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Unique identifier for the resource set. It's returned in the responses to create and list commands. You provide it to operations like update and delete.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Last time that the resource set was changed.
-  final pulumi.Input<String>? lastUpdateTime;
+  final pulumi.Input<String?>? lastUpdateTime;
   /// Descriptive name of the resource set. You can't change the name of a resource set after you create it.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> name;
   /// Whether the resource set is in or out of the admin's Region scope. Valid values are `ACTIVE` (Admin can manage and delete the resource set) or `OUT_OF_ADMIN_SCOPE` (Admin can view the resource set, but they can't edit or delete the resource set.)
-  final pulumi.Input<String>? resourceSetStatus;
+  final pulumi.Input<String?>? resourceSetStatus;
   /// Resources that can be associated to the resource set. Depending on your setting for max results and the number of resource sets, a single call might not return the full list.
-  final pulumi.Input<List<String>>? resourceTypeLists;
+  final pulumi.Input<List<String>?>? resourceTypeLists;
   /// Unique identifier for each update to the resource set.
-  final pulumi.Input<String>? updateToken;
+  final pulumi.Input<String?>? updateToken;
 
   /// Creates a new [ResourceSetResourceSet].
   /// [description] Description of the resource set.

@@ -4,37 +4,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering KxScalingGroup resources.
 class KxScalingGroupState {
-  /// Amazon Resource Name (ARN) identifier of the KX Scaling Group.
-  final pulumi.Input<String>? arn;
+  /// ARN identifier of the KX Scaling Group.
+  final pulumi.Input<String?>? arn;
   /// Availability zone identifiers for the requested regions.
-  final pulumi.Input<String>? availabilityZoneId;
+  final pulumi.Input<String?>? availabilityZoneId;
   /// List of Managed kdb clusters that are currently active in the given scaling group.
-  final pulumi.Input<List<String>>? clusters;
+  final pulumi.Input<List<String>?>? clusters;
   /// Timestamp at which the scaling group was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.
-  final pulumi.Input<String>? createdTimestamp;
+  final pulumi.Input<String?>? createdTimestamp;
   /// Unique identifier for the kdb environment, where you want to create the scaling group.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// Memory and CPU capabilities of the scaling group host on which FinSpace Managed kdb clusters will be placed.
-  final pulumi.Input<String>? hostType;
+  final pulumi.Input<String?>? hostType;
   /// Last timestamp at which the scaling group was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
-  final pulumi.Input<String>? lastModifiedTimestamp;
+  final pulumi.Input<String?>? lastModifiedTimestamp;
   /// Unique name for the scaling group that you want to create.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Status of scaling group (`CREATING`, `CREATE_FAILED`, `ACTIVE`, `UPDATING`, `UPDATE_FAILED`, `DELETING`, `DELETE_FAILED`, `DELETED`).
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Error message when a failed state occurs.
-  final pulumi.Input<String>? statusReason;
+  final pulumi.Input<String?>? statusReason;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. You can add up to 50 tags to a scaling group.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [KxScalingGroupState].
-  /// [arn] Amazon Resource Name (ARN) identifier of the KX Scaling Group.
+  /// [arn] ARN identifier of the KX Scaling Group.
   /// [availabilityZoneId] Availability zone identifiers for the requested regions.
   /// [clusters] List of Managed kdb clusters that are currently active in the given scaling group.
   /// [createdTimestamp] Timestamp at which the scaling group was created in FinSpace. The value is determined as epoch time in milliseconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.

@@ -6,11 +6,11 @@ import 'deployment_config_traffic_routing_config_time_based_linear.dart';
 
 class DeploymentConfigTrafficRoutingConfig {
   /// The time based canary configuration information. If `type` is `TimeBasedLinear`, use `timeBasedLinear` instead.
-  final pulumi.Input<DeploymentConfigTrafficRoutingConfigTimeBasedCanary>? timeBasedCanary;
+  final pulumi.Input<DeploymentConfigTrafficRoutingConfigTimeBasedCanary?>? timeBasedCanary;
   /// The time based linear configuration information. If `type` is `TimeBasedCanary`, use `timeBasedCanary` instead.
-  final pulumi.Input<DeploymentConfigTrafficRoutingConfigTimeBasedLinear>? timeBasedLinear;
+  final pulumi.Input<DeploymentConfigTrafficRoutingConfigTimeBasedLinear?>? timeBasedLinear;
   /// Type of traffic routing config. One of `TimeBasedCanary`, `TimeBasedLinear`, `AllAtOnce`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DeploymentConfigTrafficRoutingConfig].
   /// [timeBasedCanary] The time based canary configuration information. If `type` is `TimeBasedLinear`, use `timeBasedLinear` instead.

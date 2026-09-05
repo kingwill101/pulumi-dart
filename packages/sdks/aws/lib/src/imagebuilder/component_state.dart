@@ -4,55 +4,55 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Component resources.
 class ComponentState {
-  /// (Required) Amazon Resource Name (ARN) of the component.
-  final pulumi.Input<String>? arn;
+  /// (Required) ARN of the component.
+  final pulumi.Input<String?>? arn;
   /// Change description of the component.
-  final pulumi.Input<String>? changeDescription;
+  final pulumi.Input<String?>? changeDescription;
   /// Inline YAML string with data of the component. Exactly one of `data` and `uri` can be specified. the provider will only perform drift detection of its value when present in a configuration.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// Date the component was created.
-  final pulumi.Input<String>? dateCreated;
+  final pulumi.Input<String?>? dateCreated;
   /// Description of the component.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Encryption status of the component.
-  final pulumi.Input<bool>? encrypted;
-  /// Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the component.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<bool?>? encrypted;
+  /// ARN of the KMS Key used to encrypt the component.
+  final pulumi.Input<String?>? kmsKeyId;
   /// Name of the component.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Owner of the component.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Platform of the component.
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether to retain the old version when the resource is destroyed or replacement is necessary. Defaults to `false`.
-  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<bool?>? skipDestroy;
   /// Set of Operating Systems (OS) supported by the component.
-  final pulumi.Input<List<String>>? supportedOsVersions;
+  final pulumi.Input<List<String>?>? supportedOsVersions;
   /// Key-value map of resource tags for the component. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Type of the component.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// S3 URI with data of the component. Exactly one of `data` and `uri` can be specified.
   ///
   /// &gt; **NOTE:** Updating `data` or `uri` requires specifying a new `version`. This causes replacement of the resource. The `skipDestroy` argument can be used to retain the old version.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// Version of the component.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ComponentState].
-  /// [arn] (Required) Amazon Resource Name (ARN) of the component.
+  /// [arn] (Required) ARN of the component.
   /// [changeDescription] Change description of the component.
   /// [data] Inline YAML string with data of the component. Exactly one of `data` and `uri` can be specified. the provider will only perform drift detection of its value when present in a configuration.
   /// [dateCreated] Date the component was created.
   /// [description] Description of the component.
   /// [encrypted] Encryption status of the component.
-  /// [kmsKeyId] Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the component.
+  /// [kmsKeyId] ARN of the KMS Key used to encrypt the component.
   /// [name] Name of the component.
   /// [owner] Owner of the component.
   /// [platform] Platform of the component.

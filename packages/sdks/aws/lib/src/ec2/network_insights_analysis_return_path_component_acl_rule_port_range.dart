@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkInsightsAnalysisReturnPathComponentAclRulePortRange {
-  final pulumi.Input<int>? from;
-  final pulumi.Input<int>? to;
+  final pulumi.Input<int?>? from;
+  final pulumi.Input<int?>? to;
 
   /// Creates a new [NetworkInsightsAnalysisReturnPathComponentAclRulePortRange].
   /// [from] Optional.
@@ -23,8 +23,8 @@ class NetworkInsightsAnalysisReturnPathComponentAclRulePortRange {
 
   factory NetworkInsightsAnalysisReturnPathComponentAclRulePortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisReturnPathComponentAclRulePortRange(
-      from: (() { final guardedValue = map['from']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      to: (() { final guardedValue = map['to']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      from: (() { final guardedValue = map['from']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      to: (() { final guardedValue = map['to']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

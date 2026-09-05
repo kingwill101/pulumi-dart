@@ -22,29 +22,29 @@ import 'certificate_validity.dart';
 ///
 /// const exampleCertificateAuthority = new aws.acmpca.CertificateAuthority("example", {
 ///     certificateAuthorityConfiguration: {
-///         keyAlgorithm: "RSA_4096",
-///         signingAlgorithm: "SHA512WITHRSA",
 ///         subject: {
 ///             commonName: "example.com",
 ///         },
+///         keyAlgorithm: "RSA_4096",
+///         signingAlgorithm: "SHA512WITHRSA",
 ///     },
 ///     permanentDeletionTimeInDays: 7,
 /// });
 /// const key = new tls.PrivateKey("key", {algorithm: "RSA"});
 /// const csr = new tls.CertRequest("csr", {
-///     privateKeyPem: key.privateKeyPem,
 ///     subject: [{
 ///         commonName: "example",
 ///     }],
+///     privateKeyPem: key.privateKeyPem,
 /// });
 /// const example = new aws.acmpca.Certificate("example", {
-///     certificateAuthorityArn: exampleCertificateAuthority.arn,
-///     certificateSigningRequest: csr.certRequestPem,
-///     signingAlgorithm: "SHA256WITHRSA",
 ///     validity: {
 ///         type: "YEARS",
 ///         value: "1",
 ///     },
+///     certificateAuthorityArn: exampleCertificateAuthority.arn,
+///     certificateSigningRequest: csr.certRequestPem,
+///     signingAlgorithm: "SHA256WITHRSA",
 /// });
 /// ```
 /// ```python
@@ -54,27 +54,27 @@ import 'certificate_validity.dart';
 ///
 /// example_certificate_authority = aws.acmpca.CertificateAuthority("example",
 ///     certificate_authority_configuration={
-///         "key_algorithm": "RSA_4096",
-///         "signing_algorithm": "SHA512WITHRSA",
 ///         "subject": {
 ///             "common_name": "example.com",
 ///         },
+///         "key_algorithm": "RSA_4096",
+///         "signing_algorithm": "SHA512WITHRSA",
 ///     },
 ///     permanent_deletion_time_in_days=7)
 /// key = tls.PrivateKey("key", algorithm="RSA")
 /// csr = tls.CertRequest("csr",
-///     private_key_pem=key.private_key_pem,
 ///     subject=[{
 ///         "commonName": "example",
-///     }])
+///     }],
+///     private_key_pem=key.private_key_pem)
 /// example = aws.acmpca.Certificate("example",
-///     certificate_authority_arn=example_certificate_authority.arn,
-///     certificate_signing_request=csr.cert_request_pem,
-///     signing_algorithm="SHA256WITHRSA",
 ///     validity={
 ///         "type": "YEARS",
 ///         "value": "1",
-///     })
+///     },
+///     certificate_authority_arn=example_certificate_authority.arn,
+///     certificate_signing_request=csr.cert_request_pem,
+///     signing_algorithm="SHA256WITHRSA")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -89,12 +89,12 @@ import 'certificate_validity.dart';
 ///     {
 ///         CertificateAuthorityConfiguration = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationArgs
 ///         {
-///             KeyAlgorithm = "RSA_4096",
-///             SigningAlgorithm = "SHA512WITHRSA",
 ///             Subject = new Aws.Acmpca.Inputs.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs
 ///             {
 ///                 CommonName = "example.com",
 ///             },
+///             KeyAlgorithm = "RSA_4096",
+///             SigningAlgorithm = "SHA512WITHRSA",
 ///         },
 ///         PermanentDeletionTimeInDays = 7,
 ///     });
@@ -106,7 +106,6 @@ import 'certificate_validity.dart';
 ///
 ///     var csr = new Tls.CertRequest("csr", new()
 ///     {
-///         PrivateKeyPem = key.PrivateKeyPem,
 ///         Subject = new[]
 ///         {
 ///
@@ -114,18 +113,19 @@ import 'certificate_validity.dart';
 ///                 { "commonName", "example" },
 ///             },
 ///         },
+///         PrivateKeyPem = key.PrivateKeyPem,
 ///     });
 ///
 ///     var example = new Aws.Acmpca.Certificate("example", new()
 ///     {
-///         CertificateAuthorityArn = exampleCertificateAuthority.Arn,
-///         CertificateSigningRequest = csr.CertRequestPem,
-///         SigningAlgorithm = "SHA256WITHRSA",
 ///         Validity = new Aws.Acmpca.Inputs.CertificateValidityArgs
 ///         {
 ///             Type = "YEARS",
 ///             Value = "1",
 ///         },
+///         CertificateAuthorityArn = exampleCertificateAuthority.Arn,
+///         CertificateSigningRequest = csr.CertRequestPem,
+///         SigningAlgorithm = "SHA256WITHRSA",
 ///     });
 ///
 /// });
@@ -143,11 +143,11 @@ import 'certificate_validity.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleCertificateAuthority, err := acmpca.NewCertificateAuthority(ctx, "example", &acmpca.CertificateAuthorityArgs{
 /// 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
-/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
-/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 				Subject: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs{
 /// 					CommonName: pulumi.String("example.com"),
 /// 				},
+/// 				KeyAlgorithm:     pulumi.String("RSA_4096"),
+/// 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
 /// 			},
 /// 			PermanentDeletionTimeInDays: pulumi.Int(7),
 /// 		})
@@ -161,24 +161,24 @@ import 'certificate_validity.dart';
 /// 			return err
 /// 		}
 /// 		csr, err := tls.NewCertRequest(ctx, "csr", &tls.CertRequestArgs{
-/// 			PrivateKeyPem: key.PrivateKeyPem,
 /// 			Subject: tls.CertRequestSubjectArgs{
 /// 				map[string]string{
 /// 					"commonName": "example",
 /// 				},
 /// 			},
+/// 			PrivateKeyPem: key.PrivateKeyPem,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = acmpca.NewCertificate(ctx, "example", &acmpca.CertificateArgs{
-/// 			CertificateAuthorityArn:   exampleCertificateAuthority.Arn,
-/// 			CertificateSigningRequest: csr.CertRequestPem,
-/// 			SigningAlgorithm:          pulumi.String("SHA256WITHRSA"),
 /// 			Validity: &acmpca.CertificateValidityArgs{
 /// 				Type:  pulumi.String("YEARS"),
 /// 				Value: pulumi.String("1"),
 /// 			},
+/// 			CertificateAuthorityArn:   exampleCertificateAuthority.Arn,
+/// 			CertificateSigningRequest: csr.CertRequestPem,
+/// 			SigningAlgorithm:          pulumi.String("SHA256WITHRSA"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -200,21 +200,21 @@ import 'certificate_validity.dart';
 /// }
 ///
 /// resource "aws_acmpca_certificate" "example" {
-///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
-///   certificate_signing_request = tls_certrequest.csr.cert_request_pem
-///   signing_algorithm           = "SHA256WITHRSA"
 ///   validity = {
 ///     type  = "YEARS"
 ///     value = 1
 ///   }
+///   certificate_authority_arn   = aws_acmpca_certificateauthority.example.arn
+///   certificate_signing_request = tls_certrequest.csr.cert_request_pem
+///   signing_algorithm           = "SHA256WITHRSA"
 /// }
 /// resource "aws_acmpca_certificateauthority" "example" {
 ///   certificate_authority_configuration = {
-///     key_algorithm     = "RSA_4096"
-///     signing_algorithm = "SHA512WITHRSA"
 ///     subject = {
 ///       common_name = "example.com"
 ///     }
+///     key_algorithm     = "RSA_4096"
+///     signing_algorithm = "SHA512WITHRSA"
 ///   }
 ///   permanent_deletion_time_in_days = 7
 /// }
@@ -222,10 +222,10 @@ import 'certificate_validity.dart';
 ///   algorithm = "RSA"
 /// }
 /// resource "tls_certrequest" "csr" {
-///   private_key_pem = tls_privatekey.key.private_key_pem
 ///   subject = [{
 ///     "commonName" = "example"
 ///   }]
+///   private_key_pem = tls_privatekey.key.private_key_pem
 /// }
 /// ```
 /// ```java
@@ -260,11 +260,11 @@ import 'certificate_validity.dart';
 ///     public static void stack(Context ctx) {
 ///         var exampleCertificateAuthority = new CertificateAuthority("exampleCertificateAuthority", CertificateAuthorityArgs.builder()
 ///             .certificateAuthorityConfiguration(CertificateAuthorityCertificateAuthorityConfigurationArgs.builder()
-///                 .keyAlgorithm("RSA_4096")
-///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .subject(CertificateAuthorityCertificateAuthorityConfigurationSubjectArgs.builder()
 ///                     .commonName("example.com")
 ///                     .build())
+///                 .keyAlgorithm("RSA_4096")
+///                 .signingAlgorithm("SHA512WITHRSA")
 ///                 .build())
 ///             .permanentDeletionTimeInDays(7)
 ///             .build());
@@ -274,20 +274,20 @@ import 'certificate_validity.dart';
 ///             .build());
 ///
 ///         var csr = new CertRequest("csr", CertRequestArgs.builder()
-///             .privateKeyPem(key.privateKeyPem())
 ///             .subject(com.pulumi.tls.inputs.CertRequestSubjectArgs.builder()
 ///                 .commonName("example")
 ///                 .build())
+///             .privateKeyPem(key.privateKeyPem())
 ///             .build());
 ///
 ///         var example = new Certificate("example", CertificateArgs.builder()
-///             .certificateAuthorityArn(exampleCertificateAuthority.arn())
-///             .certificateSigningRequest(csr.certRequestPem())
-///             .signingAlgorithm("SHA256WITHRSA")
 ///             .validity(CertificateValidityArgs.builder()
 ///                 .type("YEARS")
 ///                 .value("1")
 ///                 .build())
+///             .certificateAuthorityArn(exampleCertificateAuthority.arn())
+///             .certificateSigningRequest(csr.certRequestPem())
+///             .signingAlgorithm("SHA256WITHRSA")
 ///             .build());
 ///
 ///     }
@@ -298,21 +298,21 @@ import 'certificate_validity.dart';
 ///   example:
 ///     type: aws:acmpca:Certificate
 ///     properties:
-///       certificateAuthorityArn: ${exampleCertificateAuthority.arn}
-///       certificateSigningRequest: ${csr.certRequestPem}
-///       signingAlgorithm: SHA256WITHRSA
 ///       validity:
 ///         type: YEARS
 ///         value: 1
+///       certificateAuthorityArn: ${exampleCertificateAuthority.arn}
+///       certificateSigningRequest: ${csr.certRequestPem}
+///       signingAlgorithm: SHA256WITHRSA
 ///   exampleCertificateAuthority:
 ///     type: aws:acmpca:CertificateAuthority
 ///     name: example
 ///     properties:
 ///       certificateAuthorityConfiguration:
-///         keyAlgorithm: RSA_4096
-///         signingAlgorithm: SHA512WITHRSA
 ///         subject:
 ///           commonName: example.com
+///         keyAlgorithm: RSA_4096
+///         signingAlgorithm: SHA512WITHRSA
 ///       permanentDeletionTimeInDays: 7
 ///   key:
 ///     type: tls:PrivateKey
@@ -321,9 +321,9 @@ import 'certificate_validity.dart';
 ///   csr:
 ///     type: tls:CertRequest
 ///     properties:
-///       privateKeyPem: ${key.privateKeyPem}
 ///       subject:
 ///         - commonName: example
+///       privateKeyPem: ${key.privateKeyPem}
 /// ```
 ///
 ///
@@ -333,7 +333,7 @@ import 'certificate_validity.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the ACM PCA certificate.
+/// - `arn` (String) ARN of the ACM PCA certificate.
 ///
 ///
 /// Using `pulumi import`, import ACM PCA Certificates using their ARN. For example:
@@ -376,7 +376,7 @@ class Certificate extends pulumi.CustomResource {
           'aws:acmpca/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiPassthrough = registerOutput<String?>('apiPassthrough');
     arn = registerOutput<String>('arn');
@@ -395,11 +395,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -413,6 +414,27 @@ class Certificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiPassthrough = registerOutput<String?>('apiPassthrough');
+    arn = registerOutput<String>('arn');
+    certificate = registerOutput<String>('certificate');
+    certificateAuthorityArn = registerOutput<String>('certificateAuthorityArn');
+    certificateChain = registerOutput<String>('certificateChain');
+    certificateSigningRequest = registerOutput<String>('certificateSigningRequest');
+    region = registerOutput<String>('region');
+    signingAlgorithm = registerOutput<String>('signingAlgorithm');
+    templateArn = registerOutput<String?>('templateArn');
+    validity = registerOutput<CertificateValidity>('validity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateValidity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'aws:acmpca/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiPassthrough = registerOutput<String?>('apiPassthrough');
     arn = registerOutput<String>('arn');
     certificate = registerOutput<String>('certificate');

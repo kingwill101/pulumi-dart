@@ -5,7 +5,7 @@ import 'findings_filter_finding_criteria_criterion.dart';
 
 class FindingsFilterFindingCriteria {
   /// A condition that specifies the property, operator, and one or more values to use to filter the results.  (documented below)
-  final pulumi.Input<List<FindingsFilterFindingCriteriaCriterion>>? criterions;
+  final pulumi.Input<List<FindingsFilterFindingCriteriaCriterion>?>? criterions;
 
   /// Creates a new [FindingsFilterFindingCriteria].
   /// [criterions] A condition that specifies the property, operator, and one or more values to use to filter the results.  (documented below)

@@ -14,10 +14,10 @@ class TrustStoreArgs {
   /// The following arguments are optional:
   final pulumi.Input<TrustStoreCaCertificatesBundleSource> caCertificatesBundleSource;
   /// Name of the trust store. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<TrustStoreTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<TrustStoreTimeouts?>? timeouts;
 
   /// Creates a new [TrustStoreArgs].
   /// [caCertificatesBundleSource] Configuration block for the CA certificates bundle source. See `caCertificatesBundleSource` below.

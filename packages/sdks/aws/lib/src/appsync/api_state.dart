@@ -6,29 +6,29 @@ import 'api_event_config.dart';
 /// Input properties used for looking up and filtering Api resources.
 class ApiState {
   /// ARN of the Event API.
-  final pulumi.Input<String>? apiArn;
+  final pulumi.Input<String?>? apiArn;
   /// ID of the Event API.
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// DNS configuration for the Event API.
-  final pulumi.Input<Map<String, String>>? dns;
+  final pulumi.Input<Map<String, String>?>? dns;
   /// Configuration for the Event API. See `eventConfig` Block below.
-  final pulumi.Input<ApiEventConfig>? eventConfig;
+  final pulumi.Input<ApiEventConfig?>? eventConfig;
   /// Name of the Event API.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Contact information for the owner of the Event API.
-  final pulumi.Input<String>? ownerContact;
+  final pulumi.Input<String?>? ownerContact;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ARN of the associated WAF web ACL.
-  final pulumi.Input<String>? wafWebAclArn;
+  final pulumi.Input<String?>? wafWebAclArn;
   /// Whether X-Ray tracing is enabled for the Event API.
-  final pulumi.Input<bool>? xrayEnabled;
+  final pulumi.Input<bool?>? xrayEnabled;
 
   /// Creates a new [ApiState].
   /// [apiArn] ARN of the Event API.

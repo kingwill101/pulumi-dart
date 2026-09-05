@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'input_security_group_args.dart';
 import 'input_security_group_state.dart';
+import 'input_security_group_whitelist_rule.dart';
 
 /// Manages an AWS MediaLive Input Security Group.
 ///
@@ -180,7 +181,7 @@ class InputSecurityGroup extends pulumi.CustomResource {
   /// Whitelist rules. See Whitelist Rules for more details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> whitelistRules;
+  late final pulumi.Output<List<InputSecurityGroupWhitelistRule>> whitelistRules;
 
   /// Creates a new [InputSecurityGroup].
   /// [name] The Pulumi resource name.
@@ -194,14 +195,14 @@ class InputSecurityGroup extends pulumi.CustomResource {
           'aws:medialive/inputSecurityGroup:InputSecurityGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    inputs = registerOutput<List<String>>('inputs');
+    inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    whitelistRules = registerOutput<List<Map<String, dynamic>>>('whitelistRules');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    whitelistRules = registerOutput<List<InputSecurityGroupWhitelistRule>>('whitelistRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputSecurityGroupWhitelistRule>(guardedValue, (value) => InputSecurityGroupWhitelistRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [InputSecurityGroup] resource's state with the given [name] and [id].
@@ -209,11 +210,12 @@ class InputSecurityGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InputSecurityGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InputSecurityGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -228,10 +230,27 @@ class InputSecurityGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    inputs = registerOutput<List<String>>('inputs');
+    inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    whitelistRules = registerOutput<List<Map<String, dynamic>>>('whitelistRules');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    whitelistRules = registerOutput<List<InputSecurityGroupWhitelistRule>>('whitelistRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputSecurityGroupWhitelistRule>(guardedValue, (value) => InputSecurityGroupWhitelistRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [InputSecurityGroup] resource.
+  InputSecurityGroup.reference(String urn)
+    : super(
+        'aws:medialive/inputSecurityGroup:InputSecurityGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    whitelistRules = registerOutput<List<InputSecurityGroupWhitelistRule>>('whitelistRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputSecurityGroupWhitelistRule>(guardedValue, (value) => InputSecurityGroupWhitelistRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

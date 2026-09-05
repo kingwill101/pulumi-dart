@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntityRecognizerInputDataConfigAnnotations {
   /// Location of training annotations.
   final pulumi.Input<String> s3Uri;
-  final pulumi.Input<String>? testS3Uri;
+  final pulumi.Input<String?>? testS3Uri;
 
   /// Creates a new [EntityRecognizerInputDataConfigAnnotations].
   /// [s3Uri] Location of training annotations.

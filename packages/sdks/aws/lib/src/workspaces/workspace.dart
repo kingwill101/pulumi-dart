@@ -21,12 +21,6 @@ import 'workspace_workspace_properties.dart';
 ///     keyId: "alias/aws/workspaces",
 /// });
 /// const example = new aws.workspaces.Workspace("example", {
-///     directoryId: exampleAwsWorkspacesDirectory.id,
-///     bundleId: valueWindows10.then(valueWindows10 => valueWindows10.id),
-///     userName: "john.doe",
-///     rootVolumeEncryptionEnabled: true,
-///     userVolumeEncryptionEnabled: true,
-///     volumeEncryptionKey: workspaces.then(workspaces => workspaces.arn),
 ///     workspaceProperties: {
 ///         computeTypeName: "VALUE",
 ///         userVolumeSizeGib: 10,
@@ -34,6 +28,12 @@ import 'workspace_workspace_properties.dart';
 ///         runningMode: "AUTO_STOP",
 ///         runningModeAutoStopTimeoutInMinutes: 60,
 ///     },
+///     directoryId: exampleAwsWorkspacesDirectory.id,
+///     bundleId: valueWindows10.then(valueWindows10 => valueWindows10.id),
+///     userName: "john.doe",
+///     rootVolumeEncryptionEnabled: true,
+///     userVolumeEncryptionEnabled: true,
+///     volumeEncryptionKey: workspaces.then(workspaces => workspaces.arn),
 ///     tags: {
 ///         Department: "IT",
 ///     },
@@ -46,12 +46,6 @@ import 'workspace_workspace_properties.dart';
 /// value_windows10 = aws.workspaces.get_bundle(bundle_id="wsb-bh8rsxt14")
 /// workspaces = aws.kms.get_key(key_id="alias/aws/workspaces")
 /// example = aws.workspaces.Workspace("example",
-///     directory_id=example_aws_workspaces_directory["id"],
-///     bundle_id=value_windows10.id,
-///     user_name="john.doe",
-///     root_volume_encryption_enabled=True,
-///     user_volume_encryption_enabled=True,
-///     volume_encryption_key=workspaces.arn,
 ///     workspace_properties={
 ///         "compute_type_name": "VALUE",
 ///         "user_volume_size_gib": 10,
@@ -59,6 +53,12 @@ import 'workspace_workspace_properties.dart';
 ///         "running_mode": "AUTO_STOP",
 ///         "running_mode_auto_stop_timeout_in_minutes": 60,
 ///     },
+///     directory_id=example_aws_workspaces_directory["id"],
+///     bundle_id=value_windows10.id,
+///     user_name="john.doe",
+///     root_volume_encryption_enabled=True,
+///     user_volume_encryption_enabled=True,
+///     volume_encryption_key=workspaces.arn,
 ///     tags={
 ///         "Department": "IT",
 ///     })
@@ -83,12 +83,6 @@ import 'workspace_workspace_properties.dart';
 ///
 ///     var example = new Aws.Workspaces.Workspace("example", new()
 ///     {
-///         DirectoryId = exampleAwsWorkspacesDirectory.Id,
-///         BundleId = valueWindows10.Apply(getBundleResult => getBundleResult.Id),
-///         UserName = "john.doe",
-///         RootVolumeEncryptionEnabled = true,
-///         UserVolumeEncryptionEnabled = true,
-///         VolumeEncryptionKey = workspaces.Apply(getKeyResult => getKeyResult.Arn),
 ///         WorkspaceProperties = new Aws.Workspaces.Inputs.WorkspaceWorkspacePropertiesArgs
 ///         {
 ///             ComputeTypeName = "VALUE",
@@ -97,6 +91,12 @@ import 'workspace_workspace_properties.dart';
 ///             RunningMode = "AUTO_STOP",
 ///             RunningModeAutoStopTimeoutInMinutes = 60,
 ///         },
+///         DirectoryId = exampleAwsWorkspacesDirectory.Id,
+///         BundleId = valueWindows10.Apply(getBundleResult => getBundleResult.Id),
+///         UserName = "john.doe",
+///         RootVolumeEncryptionEnabled = true,
+///         UserVolumeEncryptionEnabled = true,
+///         VolumeEncryptionKey = workspaces.Apply(getKeyResult => getKeyResult.Arn),
 ///         Tags =
 ///         {
 ///             { "Department", "IT" },
@@ -129,12 +129,6 @@ import 'workspace_workspace_properties.dart';
 /// 			return err
 /// 		}
 /// 		_, err = workspaces.NewWorkspace(ctx, "example", &workspaces.WorkspaceArgs{
-/// 			DirectoryId:                 pulumi.Any(exampleAwsWorkspacesDirectory.Id),
-/// 			BundleId:                    pulumi.String(valueWindows10.Id),
-/// 			UserName:                    pulumi.String("john.doe"),
-/// 			RootVolumeEncryptionEnabled: pulumi.Bool(true),
-/// 			UserVolumeEncryptionEnabled: pulumi.Bool(true),
-/// 			VolumeEncryptionKey:         pulumi.String(workspaces2.Arn),
 /// 			WorkspaceProperties: &workspaces.WorkspaceWorkspacePropertiesArgs{
 /// 				ComputeTypeName:                     pulumi.String("VALUE"),
 /// 				UserVolumeSizeGib:                   pulumi.Int(10),
@@ -142,6 +136,12 @@ import 'workspace_workspace_properties.dart';
 /// 				RunningMode:                         pulumi.String("AUTO_STOP"),
 /// 				RunningModeAutoStopTimeoutInMinutes: pulumi.Int(60),
 /// 			},
+/// 			DirectoryId:                 pulumi.Any(exampleAwsWorkspacesDirectory.Id),
+/// 			BundleId:                    pulumi.String(valueWindows10.Id),
+/// 			UserName:                    pulumi.String("john.doe"),
+/// 			RootVolumeEncryptionEnabled: pulumi.Bool(true),
+/// 			UserVolumeEncryptionEnabled: pulumi.Bool(true),
+/// 			VolumeEncryptionKey:         pulumi.String(workspaces2.Arn),
 /// 			Tags: pulumi.StringMap{
 /// 				"Department": pulumi.String("IT"),
 /// 			},
@@ -170,12 +170,6 @@ import 'workspace_workspace_properties.dart';
 /// }
 ///
 /// resource "aws_workspaces_workspace" "example" {
-///   directory_id                   = exampleAwsWorkspacesDirectory.id
-///   bundle_id                      = data.aws_workspaces_getbundle.valueWindows10.id
-///   user_name                      = "john.doe"
-///   root_volume_encryption_enabled = true
-///   user_volume_encryption_enabled = true
-///   volume_encryption_key          = data.aws_kms_getkey.workspaces.arn
 ///   workspace_properties = {
 ///     compute_type_name                         = "VALUE"
 ///     user_volume_size_gib                      = 10
@@ -183,6 +177,12 @@ import 'workspace_workspace_properties.dart';
 ///     running_mode                              = "AUTO_STOP"
 ///     running_mode_auto_stop_timeout_in_minutes = 60
 ///   }
+///   directory_id                   = exampleAwsWorkspacesDirectory.id
+///   bundle_id                      = data.aws_workspaces_getbundle.valueWindows10.id
+///   user_name                      = "john.doe"
+///   root_volume_encryption_enabled = true
+///   user_volume_encryption_enabled = true
+///   volume_encryption_key          = data.aws_kms_getkey.workspaces.arn
 ///   tags = {
 ///     "Department" = "IT"
 ///   }
@@ -223,12 +223,6 @@ import 'workspace_workspace_properties.dart';
 ///             .build());
 ///
 ///         var example = new Workspace("example", WorkspaceArgs.builder()
-///             .directoryId(exampleAwsWorkspacesDirectory.id())
-///             .bundleId(valueWindows10.id())
-///             .userName("john.doe")
-///             .rootVolumeEncryptionEnabled(true)
-///             .userVolumeEncryptionEnabled(true)
-///             .volumeEncryptionKey(workspaces.arn())
 ///             .workspaceProperties(WorkspaceWorkspacePropertiesArgs.builder()
 ///                 .computeTypeName("VALUE")
 ///                 .userVolumeSizeGib(10)
@@ -236,6 +230,12 @@ import 'workspace_workspace_properties.dart';
 ///                 .runningMode("AUTO_STOP")
 ///                 .runningModeAutoStopTimeoutInMinutes(60)
 ///                 .build())
+///             .directoryId(exampleAwsWorkspacesDirectory.id())
+///             .bundleId(valueWindows10.id())
+///             .userName("john.doe")
+///             .rootVolumeEncryptionEnabled(true)
+///             .userVolumeEncryptionEnabled(true)
+///             .volumeEncryptionKey(workspaces.arn())
 ///             .tags(Map.of("Department", "IT"))
 ///             .build());
 ///
@@ -247,18 +247,18 @@ import 'workspace_workspace_properties.dart';
 ///   example:
 ///     type: aws:workspaces:Workspace
 ///     properties:
-///       directoryId: ${exampleAwsWorkspacesDirectory.id}
-///       bundleId: ${valueWindows10.id}
-///       userName: john.doe
-///       rootVolumeEncryptionEnabled: true
-///       userVolumeEncryptionEnabled: true
-///       volumeEncryptionKey: ${workspaces.arn}
 ///       workspaceProperties:
 ///         computeTypeName: VALUE
 ///         userVolumeSizeGib: 10
 ///         rootVolumeSizeGib: 80
 ///         runningMode: AUTO_STOP
 ///         runningModeAutoStopTimeoutInMinutes: 60
+///       directoryId: ${exampleAwsWorkspacesDirectory.id}
+///       bundleId: ${valueWindows10.id}
+///       userName: john.doe
+///       rootVolumeEncryptionEnabled: true
+///       userVolumeEncryptionEnabled: true
+///       volumeEncryptionKey: ${workspaces.arn}
 ///       tags:
 ///         Department: IT
 /// variables:
@@ -322,7 +322,7 @@ class Workspace extends pulumi.CustomResource {
           'aws:workspaces/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bundleId = registerOutput<String>('bundleId');
     computerName = registerOutput<String>('computerName');
@@ -331,8 +331,8 @@ class Workspace extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootVolumeEncryptionEnabled = registerOutput<bool?>('rootVolumeEncryptionEnabled');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userName = registerOutput<String>('userName');
     userVolumeEncryptionEnabled = registerOutput<bool?>('userVolumeEncryptionEnabled');
     volumeEncryptionKey = registerOutput<String?>('volumeEncryptionKey');
@@ -344,11 +344,12 @@ class Workspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -369,8 +370,32 @@ class Workspace extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     rootVolumeEncryptionEnabled = registerOutput<bool?>('rootVolumeEncryptionEnabled');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userName = registerOutput<String>('userName');
+    userVolumeEncryptionEnabled = registerOutput<bool?>('userVolumeEncryptionEnabled');
+    volumeEncryptionKey = registerOutput<String?>('volumeEncryptionKey');
+    workspaceProperties = registerOutput<WorkspaceWorkspaceProperties>('workspaceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceWorkspaceProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'aws:workspaces/workspace:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bundleId = registerOutput<String>('bundleId');
+    computerName = registerOutput<String>('computerName');
+    directoryId = registerOutput<String>('directoryId');
+    ipAddress = registerOutput<String>('ipAddress');
+    region = registerOutput<String>('region');
+    rootVolumeEncryptionEnabled = registerOutput<bool?>('rootVolumeEncryptionEnabled');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userName = registerOutput<String>('userName');
     userVolumeEncryptionEnabled = registerOutput<bool?>('userVolumeEncryptionEnabled');
     volumeEncryptionKey = registerOutput<String?>('volumeEncryptionKey');

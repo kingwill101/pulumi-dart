@@ -151,7 +151,7 @@ import 'elastic_cluster_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DocDB Elastic cluster.
+/// - `arn` (String) ARN of the DocDB Elastic cluster.
 ///
 ///
 /// Using `pulumi import`, import DocDB (DocumentDB) Elastic Cluster using the `arn` argument. For example,
@@ -214,10 +214,11 @@ class ElasticCluster extends pulumi.CustomResource {
           'aws:docdb/elasticCluster:ElasticCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['adminUserPassword'],
         ) {
     adminUserName = registerOutput<String>('adminUserName');
-    adminUserPassword = registerOutput<String>('adminUserPassword');
+    adminUserPassword = registerOutput<String>('adminUserPassword', isSecret: true);
     arn = registerOutput<String>('arn');
     authType = registerOutput<String>('authType');
     backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
@@ -230,11 +231,11 @@ class ElasticCluster extends pulumi.CustomResource {
     shardCapacity = registerOutput<int>('shardCapacity');
     shardCount = registerOutput<int>('shardCount');
     shardInstanceCount = registerOutput<int>('shardInstanceCount');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ElasticClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ElasticCluster] resource's state with the given [name] and [id].
@@ -242,11 +243,12 @@ class ElasticCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ElasticClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ElasticCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -261,7 +263,7 @@ class ElasticCluster extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     adminUserName = registerOutput<String>('adminUserName');
-    adminUserPassword = registerOutput<String>('adminUserPassword');
+    adminUserPassword = registerOutput<String>('adminUserPassword', isSecret: true);
     arn = registerOutput<String>('arn');
     authType = registerOutput<String>('authType');
     backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
@@ -274,10 +276,41 @@ class ElasticCluster extends pulumi.CustomResource {
     shardCapacity = registerOutput<int>('shardCapacity');
     shardCount = registerOutput<int>('shardCount');
     shardInstanceCount = registerOutput<int>('shardInstanceCount');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ElasticClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds');
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ElasticCluster] resource.
+  ElasticCluster.reference(String urn)
+    : super(
+        'aws:docdb/elasticCluster:ElasticCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['adminUserPassword'],
+        isResourceReference: true,
+      ) {
+    adminUserName = registerOutput<String>('adminUserName');
+    adminUserPassword = registerOutput<String>('adminUserPassword', isSecret: true);
+    arn = registerOutput<String>('arn');
+    authType = registerOutput<String>('authType');
+    backupRetentionPeriod = registerOutput<int>('backupRetentionPeriod');
+    endpoint = registerOutput<String>('endpoint');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    this.name = registerOutput<String>('name');
+    preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
+    region = registerOutput<String>('region');
+    shardCapacity = registerOutput<int>('shardCapacity');
+    shardCount = registerOutput<int>('shardCount');
+    shardInstanceCount = registerOutput<int>('shardInstanceCount');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ElasticClusterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpcSecurityGroupIds = registerOutput<List<String>>('vpcSecurityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

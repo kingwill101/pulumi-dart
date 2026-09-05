@@ -7,23 +7,23 @@ import 'agentcore_oauth2_credential_provider_oauth2_provider_config.dart';
 /// Input properties used for looking up and filtering AgentcoreOauth2CredentialProvider resources.
 class AgentcoreOauth2CredentialProviderState {
   /// ARN of the AWS Secrets Manager secret containing the client secret.
-  final pulumi.Input<List<AgentcoreOauth2CredentialProviderClientSecretArn>>? clientSecretArns;
+  final pulumi.Input<List<AgentcoreOauth2CredentialProviderClientSecretArn>?>? clientSecretArns;
   /// ARN of the OAuth2 credential provider.
-  final pulumi.Input<String>? credentialProviderArn;
+  final pulumi.Input<String?>? credentialProviderArn;
   /// Vendor of the OAuth2 credential provider. Valid values: `CustomOauth2`, `GithubOauth2`, `GoogleOauth2`, `Microsoft`, `SalesforceOauth2`, `SlackOauth2`.
-  final pulumi.Input<String>? credentialProviderVendor;
+  final pulumi.Input<String?>? credentialProviderVendor;
   /// Name of the OAuth2 credential provider.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2ProviderConfig` below.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>? oauth2ProviderConfig;
+  final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>? oauth2ProviderConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderState].
   /// [clientSecretArns] ARN of the AWS Secrets Manager secret containing the client secret.

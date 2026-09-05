@@ -7,21 +7,21 @@ import 'vault_notification.dart';
 class VaultState {
   /// The policy document. This is a JSON formatted string.
   /// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
-  final pulumi.Input<String>? accessPolicy;
+  final pulumi.Input<String?>? accessPolicy;
   /// The ARN of the vault.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The URI of the vault that was created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The notifications for the Vault. Fields documented below.
-  final pulumi.Input<VaultNotification>? notification;
+  final pulumi.Input<VaultNotification?>? notification;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [VaultState].
   /// [accessPolicy] The policy document. This is a JSON formatted string.

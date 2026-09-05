@@ -6,9 +6,9 @@ import 'cluster_core_instance_fleet_launch_specifications_spot_specification.dar
 
 class ClusterCoreInstanceFleetLaunchSpecifications {
   /// Configuration block for on demand instances launch specifications.
-  final pulumi.Input<List<ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification>>? onDemandSpecifications;
+  final pulumi.Input<List<ClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification>?>? onDemandSpecifications;
   /// Configuration block for spot instances launch specifications.
-  final pulumi.Input<List<ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification>>? spotSpecifications;
+  final pulumi.Input<List<ClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification>?>? spotSpecifications;
 
   /// Creates a new [ClusterCoreInstanceFleetLaunchSpecifications].
   /// [onDemandSpecifications] Configuration block for on demand instances launch specifications.

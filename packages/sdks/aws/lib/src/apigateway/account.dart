@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
 import 'account_state.dart';
+import 'account_throttle_setting.dart';
 
 /// Provides a settings of an API Gateway Account. Settings is applied region-wide per `provider` block.
 ///
@@ -13,11 +14,11 @@ import 'account_state.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["apigateway.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
@@ -52,11 +53,11 @@ import 'account_state.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["apigateway.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["sts:AssumeRole"],
 /// }])
 /// cloudwatch_role = aws.iam.Role("cloudwatch",
@@ -95,7 +96,6 @@ import 'account_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -107,6 +107,7 @@ import 'account_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "sts:AssumeRole",
@@ -174,7 +175,6 @@ import 'account_state.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -183,6 +183,7 @@ import 'account_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"sts:AssumeRole",
 /// 					},
@@ -250,11 +251,11 @@ import 'account_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["apigateway.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
 ///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
@@ -310,11 +311,11 @@ import 'account_state.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("apigateway.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
@@ -377,11 +378,11 @@ import 'account_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - apigateway.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - sts:AssumeRole
 ///   cloudwatch:
@@ -420,7 +421,7 @@ class Account extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Account-Level throttle settings. See `throttleSettings` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>> throttleSettings;
+  late final pulumi.Output<List<AccountThrottleSetting>> throttleSettings;
 
   /// Creates a new [Account].
   /// [name] The Pulumi resource name.
@@ -434,13 +435,13 @@ class Account extends pulumi.CustomResource {
           'aws:apigateway/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiKeyVersion = registerOutput<String>('apiKeyVersion');
     cloudwatchRoleArn = registerOutput<String>('cloudwatchRoleArn');
-    features = registerOutput<List<String>>('features');
+    features = registerOutput<List<String>>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    throttleSettings = registerOutput<List<Map<String, dynamic>>>('throttleSettings');
+    throttleSettings = registerOutput<List<AccountThrottleSetting>>('throttleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountThrottleSetting>(guardedValue, (value) => AccountThrottleSetting.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -448,11 +449,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -468,8 +470,24 @@ class Account extends pulumi.CustomResource {
         ) {
     apiKeyVersion = registerOutput<String>('apiKeyVersion');
     cloudwatchRoleArn = registerOutput<String>('cloudwatchRoleArn');
-    features = registerOutput<List<String>>('features');
+    features = registerOutput<List<String>>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    throttleSettings = registerOutput<List<Map<String, dynamic>>>('throttleSettings');
+    throttleSettings = registerOutput<List<AccountThrottleSetting>>('throttleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountThrottleSetting>(guardedValue, (value) => AccountThrottleSetting.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'aws:apigateway/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiKeyVersion = registerOutput<String>('apiKeyVersion');
+    cloudwatchRoleArn = registerOutput<String>('cloudwatchRoleArn');
+    features = registerOutput<List<String>>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    throttleSettings = registerOutput<List<AccountThrottleSetting>>('throttleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountThrottleSetting>(guardedValue, (value) => AccountThrottleSetting.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

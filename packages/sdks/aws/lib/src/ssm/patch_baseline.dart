@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'patch_baseline_approval_rule.dart';
 import 'patch_baseline_args.dart';
+import 'patch_baseline_global_filter.dart';
+import 'patch_baseline_source.dart';
 import 'patch_baseline_state.dart';
 
 /// Provides an SSM Patch Baseline resource.
@@ -136,31 +139,8 @@ import 'patch_baseline_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const production = new aws.ssm.PatchBaseline("production", {
-///     name: "patch-baseline",
-///     description: "Patch Baseline Description",
-///     approvedPatches: [
-///         "KB123456",
-///         "KB456789",
-///     ],
-///     rejectedPatches: ["KB987654"],
-///     globalFilters: [
-///         {
-///             key: "PRODUCT",
-///             values: ["WindowsServer2008"],
-///         },
-///         {
-///             key: "CLASSIFICATION",
-///             values: ["ServicePacks"],
-///         },
-///         {
-///             key: "MSRC_SEVERITY",
-///             values: ["Low"],
-///         },
-///     ],
 ///     approvalRules: [
 ///         {
-///             approveAfterDays: 7,
-///             complianceLevel: "HIGH",
 ///             patchFilters: [
 ///                 {
 ///                     key: "PRODUCT",
@@ -183,15 +163,38 @@ import 'patch_baseline_state.dart';
 ///                     ],
 ///                 },
 ///             ],
+///             approveAfterDays: 7,
+///             complianceLevel: "HIGH",
 ///         },
 ///         {
-///             approveAfterDays: 7,
 ///             patchFilters: [{
 ///                 key: "PRODUCT",
 ///                 values: ["WindowsServer2012"],
 ///             }],
+///             approveAfterDays: 7,
 ///         },
 ///     ],
+///     globalFilters: [
+///         {
+///             key: "PRODUCT",
+///             values: ["WindowsServer2008"],
+///         },
+///         {
+///             key: "CLASSIFICATION",
+///             values: ["ServicePacks"],
+///         },
+///         {
+///             key: "MSRC_SEVERITY",
+///             values: ["Low"],
+///         },
+///     ],
+///     name: "patch-baseline",
+///     description: "Patch Baseline Description",
+///     approvedPatches: [
+///         "KB123456",
+///         "KB456789",
+///     ],
+///     rejectedPatches: ["KB987654"],
 /// });
 /// ```
 /// ```python
@@ -199,31 +202,8 @@ import 'patch_baseline_state.dart';
 /// import pulumi_aws as aws
 ///
 /// production = aws.ssm.PatchBaseline("production",
-///     name="patch-baseline",
-///     description="Patch Baseline Description",
-///     approved_patches=[
-///         "KB123456",
-///         "KB456789",
-///     ],
-///     rejected_patches=["KB987654"],
-///     global_filters=[
-///         {
-///             "key": "PRODUCT",
-///             "values": ["WindowsServer2008"],
-///         },
-///         {
-///             "key": "CLASSIFICATION",
-///             "values": ["ServicePacks"],
-///         },
-///         {
-///             "key": "MSRC_SEVERITY",
-///             "values": ["Low"],
-///         },
-///     ],
 ///     approval_rules=[
 ///         {
-///             "approve_after_days": 7,
-///             "compliance_level": "HIGH",
 ///             "patch_filters": [
 ///                 {
 ///                     "key": "PRODUCT",
@@ -246,15 +226,38 @@ import 'patch_baseline_state.dart';
 ///                     ],
 ///                 },
 ///             ],
+///             "approve_after_days": 7,
+///             "compliance_level": "HIGH",
 ///         },
 ///         {
-///             "approve_after_days": 7,
 ///             "patch_filters": [{
 ///                 "key": "PRODUCT",
 ///                 "values": ["WindowsServer2012"],
 ///             }],
+///             "approve_after_days": 7,
 ///         },
-///     ])
+///     ],
+///     global_filters=[
+///         {
+///             "key": "PRODUCT",
+///             "values": ["WindowsServer2008"],
+///         },
+///         {
+///             "key": "CLASSIFICATION",
+///             "values": ["ServicePacks"],
+///         },
+///         {
+///             "key": "MSRC_SEVERITY",
+///             "values": ["Low"],
+///         },
+///     ],
+///     name="patch-baseline",
+///     description="Patch Baseline Description",
+///     approved_patches=[
+///         "KB123456",
+///         "KB456789",
+///     ],
+///     rejected_patches=["KB987654"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -266,50 +269,10 @@ import 'patch_baseline_state.dart';
 /// {
 ///     var production = new Aws.Ssm.PatchBaseline("production", new()
 ///     {
-///         Name = "patch-baseline",
-///         Description = "Patch Baseline Description",
-///         ApprovedPatches = new[]
-///         {
-///             "KB123456",
-///             "KB456789",
-///         },
-///         RejectedPatches = new[]
-///         {
-///             "KB987654",
-///         },
-///         GlobalFilters = new[]
-///         {
-///             new Aws.Ssm.Inputs.PatchBaselineGlobalFilterArgs
-///             {
-///                 Key = "PRODUCT",
-///                 Values = new[]
-///                 {
-///                     "WindowsServer2008",
-///                 },
-///             },
-///             new Aws.Ssm.Inputs.PatchBaselineGlobalFilterArgs
-///             {
-///                 Key = "CLASSIFICATION",
-///                 Values = new[]
-///                 {
-///                     "ServicePacks",
-///                 },
-///             },
-///             new Aws.Ssm.Inputs.PatchBaselineGlobalFilterArgs
-///             {
-///                 Key = "MSRC_SEVERITY",
-///                 Values = new[]
-///                 {
-///                     "Low",
-///                 },
-///             },
-///         },
 ///         ApprovalRules = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.PatchBaselineApprovalRuleArgs
 ///             {
-///                 ApproveAfterDays = 7,
-///                 ComplianceLevel = "HIGH",
 ///                 PatchFilters = new[]
 ///                 {
 ///                     new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
@@ -341,10 +304,11 @@ import 'patch_baseline_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 ApproveAfterDays = 7,
+///                 ComplianceLevel = "HIGH",
 ///             },
 ///             new Aws.Ssm.Inputs.PatchBaselineApprovalRuleArgs
 ///             {
-///                 ApproveAfterDays = 7,
 ///                 PatchFilters = new[]
 ///                 {
 ///                     new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
@@ -356,7 +320,46 @@ import 'patch_baseline_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 ApproveAfterDays = 7,
 ///             },
+///         },
+///         GlobalFilters = new[]
+///         {
+///             new Aws.Ssm.Inputs.PatchBaselineGlobalFilterArgs
+///             {
+///                 Key = "PRODUCT",
+///                 Values = new[]
+///                 {
+///                     "WindowsServer2008",
+///                 },
+///             },
+///             new Aws.Ssm.Inputs.PatchBaselineGlobalFilterArgs
+///             {
+///                 Key = "CLASSIFICATION",
+///                 Values = new[]
+///                 {
+///                     "ServicePacks",
+///                 },
+///             },
+///             new Aws.Ssm.Inputs.PatchBaselineGlobalFilterArgs
+///             {
+///                 Key = "MSRC_SEVERITY",
+///                 Values = new[]
+///                 {
+///                     "Low",
+///                 },
+///             },
+///         },
+///         Name = "patch-baseline",
+///         Description = "Patch Baseline Description",
+///         ApprovedPatches = new[]
+///         {
+///             "KB123456",
+///             "KB456789",
+///         },
+///         RejectedPatches = new[]
+///         {
+///             "KB987654",
 ///         },
 ///     });
 ///
@@ -373,39 +376,8 @@ import 'patch_baseline_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewPatchBaseline(ctx, "production", &ssm.PatchBaselineArgs{
-/// 			Name:        pulumi.String("patch-baseline"),
-/// 			Description: pulumi.String("Patch Baseline Description"),
-/// 			ApprovedPatches: pulumi.StringArray{
-/// 				pulumi.String("KB123456"),
-/// 				pulumi.String("KB456789"),
-/// 			},
-/// 			RejectedPatches: pulumi.StringArray{
-/// 				pulumi.String("KB987654"),
-/// 			},
-/// 			GlobalFilters: ssm.PatchBaselineGlobalFilterArray{
-/// 				&ssm.PatchBaselineGlobalFilterArgs{
-/// 					Key: pulumi.String("PRODUCT"),
-/// 					Values: pulumi.StringArray{
-/// 						pulumi.String("WindowsServer2008"),
-/// 					},
-/// 				},
-/// 				&ssm.PatchBaselineGlobalFilterArgs{
-/// 					Key: pulumi.String("CLASSIFICATION"),
-/// 					Values: pulumi.StringArray{
-/// 						pulumi.String("ServicePacks"),
-/// 					},
-/// 				},
-/// 				&ssm.PatchBaselineGlobalFilterArgs{
-/// 					Key: pulumi.String("MSRC_SEVERITY"),
-/// 					Values: pulumi.StringArray{
-/// 						pulumi.String("Low"),
-/// 					},
-/// 				},
-/// 			},
 /// 			ApprovalRules: ssm.PatchBaselineApprovalRuleArray{
 /// 				&ssm.PatchBaselineApprovalRuleArgs{
-/// 					ApproveAfterDays: pulumi.Int(7),
-/// 					ComplianceLevel:  pulumi.String("HIGH"),
 /// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
 /// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
 /// 							Key: pulumi.String("PRODUCT"),
@@ -430,9 +402,10 @@ import 'patch_baseline_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					ApproveAfterDays: pulumi.Int(7),
+/// 					ComplianceLevel:  pulumi.String("HIGH"),
 /// 				},
 /// 				&ssm.PatchBaselineApprovalRuleArgs{
-/// 					ApproveAfterDays: pulumi.Int(7),
 /// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
 /// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
 /// 							Key: pulumi.String("PRODUCT"),
@@ -441,7 +414,37 @@ import 'patch_baseline_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					ApproveAfterDays: pulumi.Int(7),
 /// 				},
+/// 			},
+/// 			GlobalFilters: ssm.PatchBaselineGlobalFilterArray{
+/// 				&ssm.PatchBaselineGlobalFilterArgs{
+/// 					Key: pulumi.String("PRODUCT"),
+/// 					Values: pulumi.StringArray{
+/// 						pulumi.String("WindowsServer2008"),
+/// 					},
+/// 				},
+/// 				&ssm.PatchBaselineGlobalFilterArgs{
+/// 					Key: pulumi.String("CLASSIFICATION"),
+/// 					Values: pulumi.StringArray{
+/// 						pulumi.String("ServicePacks"),
+/// 					},
+/// 				},
+/// 				&ssm.PatchBaselineGlobalFilterArgs{
+/// 					Key: pulumi.String("MSRC_SEVERITY"),
+/// 					Values: pulumi.StringArray{
+/// 						pulumi.String("Low"),
+/// 					},
+/// 				},
+/// 			},
+/// 			Name:        pulumi.String("patch-baseline"),
+/// 			Description: pulumi.String("Patch Baseline Description"),
+/// 			ApprovedPatches: pulumi.StringArray{
+/// 				pulumi.String("KB123456"),
+/// 				pulumi.String("KB456789"),
+/// 			},
+/// 			RejectedPatches: pulumi.StringArray{
+/// 				pulumi.String("KB987654"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -461,25 +464,7 @@ import 'patch_baseline_state.dart';
 /// }
 ///
 /// resource "aws_ssm_patchbaseline" "production" {
-///   name             = "patch-baseline"
-///   description      = "Patch Baseline Description"
-///   approved_patches = ["KB123456", "KB456789"]
-///   rejected_patches = ["KB987654"]
-///   global_filters {
-///     key    = "PRODUCT"
-///     values = ["WindowsServer2008"]
-///   }
-///   global_filters {
-///     key    = "CLASSIFICATION"
-///     values = ["ServicePacks"]
-///   }
-///   global_filters {
-///     key    = "MSRC_SEVERITY"
-///     values = ["Low"]
-///   }
 ///   approval_rules {
-///     approve_after_days = 7
-///     compliance_level   = "HIGH"
 ///     patch_filters {
 ///       key    = "PRODUCT"
 ///       values = ["WindowsServer2016"]
@@ -492,14 +477,32 @@ import 'patch_baseline_state.dart';
 ///       key    = "MSRC_SEVERITY"
 ///       values = ["Critical", "Important", "Moderate"]
 ///     }
+///     approve_after_days = 7
+///     compliance_level   = "HIGH"
 ///   }
 ///   approval_rules {
-///     approve_after_days = 7
 ///     patch_filters {
 ///       key    = "PRODUCT"
 ///       values = ["WindowsServer2012"]
 ///     }
+///     approve_after_days = 7
 ///   }
+///   global_filters {
+///     key    = "PRODUCT"
+///     values = ["WindowsServer2008"]
+///   }
+///   global_filters {
+///     key    = "CLASSIFICATION"
+///     values = ["ServicePacks"]
+///   }
+///   global_filters {
+///     key    = "MSRC_SEVERITY"
+///     values = ["Low"]
+///   }
+///   name             = "patch-baseline"
+///   description      = "Patch Baseline Description"
+///   approved_patches = ["KB123456", "KB456789"]
+///   rejected_patches = ["KB987654"]
 /// }
 /// ```
 /// ```java
@@ -510,9 +513,9 @@ import 'patch_baseline_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.ssm.PatchBaseline;
 /// import com.pulumi.aws.ssm.PatchBaselineArgs;
-/// import com.pulumi.aws.ssm.inputs.PatchBaselineGlobalFilterArgs;
 /// import com.pulumi.aws.ssm.inputs.PatchBaselineApprovalRuleArgs;
 /// import com.pulumi.aws.ssm.inputs.PatchBaselineApprovalRulePatchFilterArgs;
+/// import com.pulumi.aws.ssm.inputs.PatchBaselineGlobalFilterArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -527,29 +530,8 @@ import 'patch_baseline_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var production = new PatchBaseline("production", PatchBaselineArgs.builder()
-///             .name("patch-baseline")
-///             .description("Patch Baseline Description")
-///             .approvedPatches(
-///                 "KB123456",
-///                 "KB456789")
-///             .rejectedPatches("KB987654")
-///             .globalFilters(
-///                 PatchBaselineGlobalFilterArgs.builder()
-///                     .key("PRODUCT")
-///                     .values("WindowsServer2008")
-///                     .build(),
-///                 PatchBaselineGlobalFilterArgs.builder()
-///                     .key("CLASSIFICATION")
-///                     .values("ServicePacks")
-///                     .build(),
-///                 PatchBaselineGlobalFilterArgs.builder()
-///                     .key("MSRC_SEVERITY")
-///                     .values("Low")
-///                     .build())
 ///             .approvalRules(
 ///                 PatchBaselineApprovalRuleArgs.builder()
-///                     .approveAfterDays(7)
-///                     .complianceLevel("HIGH")
 ///                     .patchFilters(
 ///                         PatchBaselineApprovalRulePatchFilterArgs.builder()
 ///                             .key("PRODUCT")
@@ -569,14 +551,35 @@ import 'patch_baseline_state.dart';
 ///                                 "Important",
 ///                                 "Moderate")
 ///                             .build())
+///                     .approveAfterDays(7)
+///                     .complianceLevel("HIGH")
 ///                     .build(),
 ///                 PatchBaselineApprovalRuleArgs.builder()
-///                     .approveAfterDays(7)
 ///                     .patchFilters(PatchBaselineApprovalRulePatchFilterArgs.builder()
 ///                         .key("PRODUCT")
 ///                         .values("WindowsServer2012")
 ///                         .build())
+///                     .approveAfterDays(7)
 ///                     .build())
+///             .globalFilters(
+///                 PatchBaselineGlobalFilterArgs.builder()
+///                     .key("PRODUCT")
+///                     .values("WindowsServer2008")
+///                     .build(),
+///                 PatchBaselineGlobalFilterArgs.builder()
+///                     .key("CLASSIFICATION")
+///                     .values("ServicePacks")
+///                     .build(),
+///                 PatchBaselineGlobalFilterArgs.builder()
+///                     .key("MSRC_SEVERITY")
+///                     .values("Low")
+///                     .build())
+///             .name("patch-baseline")
+///             .description("Patch Baseline Description")
+///             .approvedPatches(
+///                 "KB123456",
+///                 "KB456789")
+///             .rejectedPatches("KB987654")
 ///             .build());
 ///
 ///     }
@@ -587,27 +590,8 @@ import 'patch_baseline_state.dart';
 ///   production:
 ///     type: aws:ssm:PatchBaseline
 ///     properties:
-///       name: patch-baseline
-///       description: Patch Baseline Description
-///       approvedPatches:
-///         - KB123456
-///         - KB456789
-///       rejectedPatches:
-///         - KB987654
-///       globalFilters:
-///         - key: PRODUCT
-///           values:
-///             - WindowsServer2008
-///         - key: CLASSIFICATION
-///           values:
-///             - ServicePacks
-///         - key: MSRC_SEVERITY
-///           values:
-///             - Low
 ///       approvalRules:
-///         - approveAfterDays: 7
-///           complianceLevel: HIGH
-///           patchFilters:
+///         - patchFilters:
 ///             - key: PRODUCT
 ///               values:
 ///                 - WindowsServer2016
@@ -621,11 +605,30 @@ import 'patch_baseline_state.dart';
 ///                 - Critical
 ///                 - Important
 ///                 - Moderate
-///         - approveAfterDays: 7
-///           patchFilters:
+///           approveAfterDays: 7
+///           complianceLevel: HIGH
+///         - patchFilters:
 ///             - key: PRODUCT
 ///               values:
 ///                 - WindowsServer2012
+///           approveAfterDays: 7
+///       globalFilters:
+///         - key: PRODUCT
+///           values:
+///             - WindowsServer2008
+///         - key: CLASSIFICATION
+///           values:
+///             - ServicePacks
+///         - key: MSRC_SEVERITY
+///           values:
+///             - Low
+///       name: patch-baseline
+///       description: Patch Baseline Description
+///       approvedPatches:
+///         - KB123456
+///         - KB456789
+///       rejectedPatches:
+///         - KB987654
 /// ```
 ///
 ///
@@ -637,12 +640,8 @@ import 'patch_baseline_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const windowsOsApps = new aws.ssm.PatchBaseline("windows_os_apps", {
-///     name: "WindowsOSAndMicrosoftApps",
-///     description: "Patch both Windows and Microsoft apps",
-///     operatingSystem: "WINDOWS",
 ///     approvalRules: [
 ///         {
-///             approveAfterDays: 7,
 ///             patchFilters: [
 ///                 {
 ///                     key: "CLASSIFICATION",
@@ -659,9 +658,9 @@ import 'patch_baseline_state.dart';
 ///                     ],
 ///                 },
 ///             ],
+///             approveAfterDays: 7,
 ///         },
 ///         {
-///             approveAfterDays: 7,
 ///             patchFilters: [
 ///                 {
 ///                     key: "PATCH_SET",
@@ -675,8 +674,12 @@ import 'patch_baseline_state.dart';
 ///                     ],
 ///                 },
 ///             ],
+///             approveAfterDays: 7,
 ///         },
 ///     ],
+///     name: "WindowsOSAndMicrosoftApps",
+///     description: "Patch both Windows and Microsoft apps",
+///     operatingSystem: "WINDOWS",
 /// });
 /// ```
 /// ```python
@@ -684,12 +687,8 @@ import 'patch_baseline_state.dart';
 /// import pulumi_aws as aws
 ///
 /// windows_os_apps = aws.ssm.PatchBaseline("windows_os_apps",
-///     name="WindowsOSAndMicrosoftApps",
-///     description="Patch both Windows and Microsoft apps",
-///     operating_system="WINDOWS",
 ///     approval_rules=[
 ///         {
-///             "approve_after_days": 7,
 ///             "patch_filters": [
 ///                 {
 ///                     "key": "CLASSIFICATION",
@@ -706,9 +705,9 @@ import 'patch_baseline_state.dart';
 ///                     ],
 ///                 },
 ///             ],
+///             "approve_after_days": 7,
 ///         },
 ///         {
-///             "approve_after_days": 7,
 ///             "patch_filters": [
 ///                 {
 ///                     "key": "PATCH_SET",
@@ -722,8 +721,12 @@ import 'patch_baseline_state.dart';
 ///                     ],
 ///                 },
 ///             ],
+///             "approve_after_days": 7,
 ///         },
-///     ])
+///     ],
+///     name="WindowsOSAndMicrosoftApps",
+///     description="Patch both Windows and Microsoft apps",
+///     operating_system="WINDOWS")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -735,14 +738,10 @@ import 'patch_baseline_state.dart';
 /// {
 ///     var windowsOsApps = new Aws.Ssm.PatchBaseline("windows_os_apps", new()
 ///     {
-///         Name = "WindowsOSAndMicrosoftApps",
-///         Description = "Patch both Windows and Microsoft apps",
-///         OperatingSystem = "WINDOWS",
 ///         ApprovalRules = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.PatchBaselineApprovalRuleArgs
 ///             {
-///                 ApproveAfterDays = 7,
 ///                 PatchFilters = new[]
 ///                 {
 ///                     new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
@@ -764,10 +763,10 @@ import 'patch_baseline_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 ApproveAfterDays = 7,
 ///             },
 ///             new Aws.Ssm.Inputs.PatchBaselineApprovalRuleArgs
 ///             {
-///                 ApproveAfterDays = 7,
 ///                 PatchFilters = new[]
 ///                 {
 ///                     new Aws.Ssm.Inputs.PatchBaselineApprovalRulePatchFilterArgs
@@ -788,8 +787,12 @@ import 'patch_baseline_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 ApproveAfterDays = 7,
 ///             },
 ///         },
+///         Name = "WindowsOSAndMicrosoftApps",
+///         Description = "Patch both Windows and Microsoft apps",
+///         OperatingSystem = "WINDOWS",
 ///     });
 ///
 /// });
@@ -805,12 +808,8 @@ import 'patch_baseline_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ssm.NewPatchBaseline(ctx, "windows_os_apps", &ssm.PatchBaselineArgs{
-/// 			Name:            pulumi.String("WindowsOSAndMicrosoftApps"),
-/// 			Description:     pulumi.String("Patch both Windows and Microsoft apps"),
-/// 			OperatingSystem: pulumi.String("WINDOWS"),
 /// 			ApprovalRules: ssm.PatchBaselineApprovalRuleArray{
 /// 				&ssm.PatchBaselineApprovalRuleArgs{
-/// 					ApproveAfterDays: pulumi.Int(7),
 /// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
 /// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
 /// 							Key: pulumi.String("CLASSIFICATION"),
@@ -827,9 +826,9 @@ import 'patch_baseline_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					ApproveAfterDays: pulumi.Int(7),
 /// 				},
 /// 				&ssm.PatchBaselineApprovalRuleArgs{
-/// 					ApproveAfterDays: pulumi.Int(7),
 /// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
 /// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
 /// 							Key: pulumi.String("PATCH_SET"),
@@ -845,8 +844,12 @@ import 'patch_baseline_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					ApproveAfterDays: pulumi.Int(7),
 /// 				},
 /// 			},
+/// 			Name:            pulumi.String("WindowsOSAndMicrosoftApps"),
+/// 			Description:     pulumi.String("Patch both Windows and Microsoft apps"),
+/// 			OperatingSystem: pulumi.String("WINDOWS"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -865,11 +868,7 @@ import 'patch_baseline_state.dart';
 /// }
 ///
 /// resource "aws_ssm_patchbaseline" "windows_os_apps" {
-///   name             = "WindowsOSAndMicrosoftApps"
-///   description      = "Patch both Windows and Microsoft apps"
-///   operating_system = "WINDOWS"
 ///   approval_rules {
-///     approve_after_days = 7
 ///     patch_filters {
 ///       key    = "CLASSIFICATION"
 ///       values = ["CriticalUpdates", "SecurityUpdates"]
@@ -878,9 +877,9 @@ import 'patch_baseline_state.dart';
 ///       key    = "MSRC_SEVERITY"
 ///       values = ["Critical", "Important"]
 ///     }
+///     approve_after_days = 7
 ///   }
 ///   approval_rules {
-///     approve_after_days = 7
 ///     patch_filters {
 ///       key    = "PATCH_SET"
 ///       values = ["APPLICATION"]
@@ -889,7 +888,11 @@ import 'patch_baseline_state.dart';
 ///       key    = "PRODUCT"
 ///       values = ["Office 2013", "Office 2016"]
 ///     }
+///     approve_after_days = 7
 ///   }
+///   name             = "WindowsOSAndMicrosoftApps"
+///   description      = "Patch both Windows and Microsoft apps"
+///   operating_system = "WINDOWS"
 /// }
 /// ```
 /// ```java
@@ -916,12 +919,8 @@ import 'patch_baseline_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var windowsOsApps = new PatchBaseline("windowsOsApps", PatchBaselineArgs.builder()
-///             .name("WindowsOSAndMicrosoftApps")
-///             .description("Patch both Windows and Microsoft apps")
-///             .operatingSystem("WINDOWS")
 ///             .approvalRules(
 ///                 PatchBaselineApprovalRuleArgs.builder()
-///                     .approveAfterDays(7)
 ///                     .patchFilters(
 ///                         PatchBaselineApprovalRulePatchFilterArgs.builder()
 ///                             .key("CLASSIFICATION")
@@ -935,9 +934,9 @@ import 'patch_baseline_state.dart';
 ///                                 "Critical",
 ///                                 "Important")
 ///                             .build())
+///                     .approveAfterDays(7)
 ///                     .build(),
 ///                 PatchBaselineApprovalRuleArgs.builder()
-///                     .approveAfterDays(7)
 ///                     .patchFilters(
 ///                         PatchBaselineApprovalRulePatchFilterArgs.builder()
 ///                             .key("PATCH_SET")
@@ -949,7 +948,11 @@ import 'patch_baseline_state.dart';
 ///                                 "Office 2013",
 ///                                 "Office 2016")
 ///                             .build())
+///                     .approveAfterDays(7)
 ///                     .build())
+///             .name("WindowsOSAndMicrosoftApps")
+///             .description("Patch both Windows and Microsoft apps")
+///             .operatingSystem("WINDOWS")
 ///             .build());
 ///
 ///     }
@@ -961,12 +964,8 @@ import 'patch_baseline_state.dart';
 ///     type: aws:ssm:PatchBaseline
 ///     name: windows_os_apps
 ///     properties:
-///       name: WindowsOSAndMicrosoftApps
-///       description: Patch both Windows and Microsoft apps
-///       operatingSystem: WINDOWS
 ///       approvalRules:
-///         - approveAfterDays: 7
-///           patchFilters:
+///         - patchFilters:
 ///             - key: CLASSIFICATION
 ///               values:
 ///                 - CriticalUpdates
@@ -975,8 +974,8 @@ import 'patch_baseline_state.dart';
 ///               values:
 ///                 - Critical
 ///                 - Important
-///         - approveAfterDays: 7
-///           patchFilters:
+///           approveAfterDays: 7
+///         - patchFilters:
 ///             - key: PATCH_SET
 ///               values:
 ///                 - APPLICATION
@@ -984,6 +983,10 @@ import 'patch_baseline_state.dart';
 ///               values:
 ///                 - Office 2013
 ///                 - Office 2016
+///           approveAfterDays: 7
+///       name: WindowsOSAndMicrosoftApps
+///       description: Patch both Windows and Microsoft apps
+///       operatingSystem: WINDOWS
 /// ```
 ///
 ///
@@ -996,9 +999,6 @@ import 'patch_baseline_state.dart';
 ///
 /// const al201709 = new aws.ssm.PatchBaseline("al_2017_09", {
 ///     approvalRules: [{}],
-///     name: "Amazon-Linux-2017.09",
-///     description: "My patch repository for Amazon Linux 2017.09",
-///     operatingSystem: "AMAZON_LINUX",
 ///     sources: [{
 ///         name: "My-AL2017.09",
 ///         products: ["AmazonLinux2017.09"],
@@ -1018,6 +1018,9 @@ import 'patch_baseline_state.dart';
 /// report_instanceid=yes
 /// `,
 ///     }],
+///     name: "Amazon-Linux-2017.09",
+///     description: "My patch repository for Amazon Linux 2017.09",
+///     operatingSystem: "AMAZON_LINUX",
 /// });
 /// ```
 /// ```python
@@ -1026,9 +1029,6 @@ import 'patch_baseline_state.dart';
 ///
 /// al201709 = aws.ssm.PatchBaseline("al_2017_09",
 ///     approval_rules=[{}],
-///     name="Amazon-Linux-2017.09",
-///     description="My patch repository for Amazon Linux 2017.09",
-///     operating_system="AMAZON_LINUX",
 ///     sources=[{
 ///         "name": "My-AL2017.09",
 ///         "products": ["AmazonLinux2017.09"],
@@ -1047,7 +1047,10 @@ import 'patch_baseline_state.dart';
 /// timeout=5
 /// report_instanceid=yes
 /// """,
-///     }])
+///     }],
+///     name="Amazon-Linux-2017.09",
+///     description="My patch repository for Amazon Linux 2017.09",
+///     operating_system="AMAZON_LINUX")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1063,9 +1066,6 @@ import 'patch_baseline_state.dart';
 ///         {
 ///             null,
 ///         },
-///         Name = "Amazon-Linux-2017.09",
-///         Description = "My patch repository for Amazon Linux 2017.09",
-///         OperatingSystem = "AMAZON_LINUX",
 ///         Sources = new[]
 ///         {
 ///             new Aws.Ssm.Inputs.PatchBaselineSourceArgs
@@ -1092,6 +1092,9 @@ import 'patch_baseline_state.dart';
 /// ",
 ///             },
 ///         },
+///         Name = "Amazon-Linux-2017.09",
+///         Description = "My patch repository for Amazon Linux 2017.09",
+///         OperatingSystem = "AMAZON_LINUX",
 ///     });
 ///
 /// });
@@ -1110,9 +1113,6 @@ import 'patch_baseline_state.dart';
 /// 			ApprovalRules: ssm.PatchBaselineApprovalRuleArray{
 /// 				&ssm.PatchBaselineApprovalRuleArgs{},
 /// 			},
-/// 			Name:            pulumi.String("Amazon-Linux-2017.09"),
-/// 			Description:     pulumi.String("My patch repository for Amazon Linux 2017.09"),
-/// 			OperatingSystem: pulumi.String("AMAZON_LINUX"),
 /// 			Sources: ssm.PatchBaselineSourceArray{
 /// 				&ssm.PatchBaselineSourceArgs{
 /// 					Name: pulumi.String("My-AL2017.09"),
@@ -1136,6 +1136,9 @@ import 'patch_baseline_state.dart';
 /// `),
 /// 				},
 /// 			},
+/// 			Name:            pulumi.String("Amazon-Linux-2017.09"),
+/// 			Description:     pulumi.String("My patch repository for Amazon Linux 2017.09"),
+/// 			OperatingSystem: pulumi.String("AMAZON_LINUX"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1156,14 +1159,14 @@ import 'patch_baseline_state.dart';
 /// resource "aws_ssm_patchbaseline" "al_2017_09" {
 ///   approval_rules {
 ///   }
-///   name             = "Amazon-Linux-2017.09"
-///   description      = "My patch repository for Amazon Linux 2017.09"
-///   operating_system = "AMAZON_LINUX"
 ///   sources {
 ///     name          = "My-AL2017.09"
 ///     products      = ["AmazonLinux2017.09"]
 ///     configuration = "[amzn-main]\nname=amzn-main-Base\nmirrorlist=http://repo./$awsregion./$awsdomain//$releasever/main/mirror.list\nmirrorlist_expire=300\nmetadata_expire=300\npriority=10\nfailovermethod=priority\nfastestmirror_enabled=0\ngpgcheck=1\ngpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-ga\nenabled=1\nretries=3\ntimeout=5\nreport_instanceid=yes\n"
 ///   }
+///   name             = "Amazon-Linux-2017.09"
+///   description      = "My patch repository for Amazon Linux 2017.09"
+///   operating_system = "AMAZON_LINUX"
 /// }
 /// ```
 /// ```java
@@ -1192,9 +1195,6 @@ import 'patch_baseline_state.dart';
 ///         var al201709 = new PatchBaseline("al201709", PatchBaselineArgs.builder()
 ///             .approvalRules(PatchBaselineApprovalRuleArgs.builder()
 ///                 .build())
-///             .name("Amazon-Linux-2017.09")
-///             .description("My patch repository for Amazon Linux 2017.09")
-///             .operatingSystem("AMAZON_LINUX")
 ///             .sources(PatchBaselineSourceArgs.builder()
 ///                 .name("My-AL2017.09")
 ///                 .products("AmazonLinux2017.09")
@@ -1215,6 +1215,9 @@ import 'patch_baseline_state.dart';
 /// report_instanceid=yes
 ///                 """)
 ///                 .build())
+///             .name("Amazon-Linux-2017.09")
+///             .description("My patch repository for Amazon Linux 2017.09")
+///             .operatingSystem("AMAZON_LINUX")
 ///             .build());
 ///
 ///     }
@@ -1228,9 +1231,6 @@ import 'patch_baseline_state.dart';
 ///     properties:
 ///       approvalRules:
 ///         - {}
-///       name: Amazon-Linux-2017.09
-///       description: My patch repository for Amazon Linux 2017.09
-///       operatingSystem: AMAZON_LINUX
 ///       sources:
 ///         - name: My-AL2017.09
 ///           products:
@@ -1250,6 +1250,9 @@ import 'patch_baseline_state.dart';
 ///             retries=3
 ///             timeout=5
 ///             report_instanceid=yes
+///       name: Amazon-Linux-2017.09
+///       description: My patch repository for Amazon Linux 2017.09
+///       operatingSystem: AMAZON_LINUX
 /// ```
 ///
 ///
@@ -1274,7 +1277,7 @@ import 'patch_baseline_state.dart';
 /// ```
 class PatchBaseline extends pulumi.CustomResource {
   /// Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approvalRule` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> approvalRules;
+  late final pulumi.Output<List<PatchBaselineApprovalRule>?> approvalRules;
   /// List of explicitly approved patches for the baseline. Cannot be specified with `approvalRule`.
   late final pulumi.Output<List<String>?> approvedPatches;
   /// Compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid values are `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
@@ -1288,7 +1291,7 @@ class PatchBaseline extends pulumi.CustomResource {
   /// Description of the patch baseline.
   late final pulumi.Output<String?> description;
   /// Set of global filters used to exclude patches from the baseline. Up to 4 global filters can be specified using Key/Value pairs. Valid Keys are `PRODUCT`, `CLASSIFICATION`, `MSRC_SEVERITY`, and `PATCH_ID`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> globalFilters;
+  late final pulumi.Output<List<PatchBaselineGlobalFilter>?> globalFilters;
   /// JSON definition of the baseline.
   late final pulumi.Output<String> json;
   /// Name of the patch baseline.
@@ -1304,7 +1307,7 @@ class PatchBaseline extends pulumi.CustomResource {
   /// Action for Patch Manager to take on patches included in the `rejectedPatches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
   late final pulumi.Output<String> rejectedPatchesAction;
   /// Configuration block with alternate sources for patches. Applies to Linux instances only. See `source` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sources;
+  late final pulumi.Output<List<PatchBaselineSource>?> sources;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -1322,25 +1325,25 @@ class PatchBaseline extends pulumi.CustomResource {
           'aws:ssm/patchBaseline:PatchBaseline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    approvalRules = registerOutput<List<Map<String, dynamic>>?>('approvalRules');
-    approvedPatches = registerOutput<List<String>?>('approvedPatches');
+    approvalRules = registerOutput<List<PatchBaselineApprovalRule>?>('approvalRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatchBaselineApprovalRule>(guardedValue, (value) => PatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>())); });
+    approvedPatches = registerOutput<List<String>?>('approvedPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     approvedPatchesComplianceLevel = registerOutput<String?>('approvedPatchesComplianceLevel');
     approvedPatchesEnableNonSecurity = registerOutput<bool?>('approvedPatchesEnableNonSecurity');
     arn = registerOutput<String>('arn');
     availableSecurityUpdatesComplianceStatus = registerOutput<String>('availableSecurityUpdatesComplianceStatus');
     description = registerOutput<String?>('description');
-    globalFilters = registerOutput<List<Map<String, dynamic>>?>('globalFilters');
+    globalFilters = registerOutput<List<PatchBaselineGlobalFilter>?>('globalFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatchBaselineGlobalFilter>(guardedValue, (value) => PatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>())); });
     json = registerOutput<String>('json');
     this.name = registerOutput<String>('name');
     operatingSystem = registerOutput<String?>('operatingSystem');
     region = registerOutput<String>('region');
-    rejectedPatches = registerOutput<List<String>?>('rejectedPatches');
+    rejectedPatches = registerOutput<List<String>?>('rejectedPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     rejectedPatchesAction = registerOutput<String>('rejectedPatchesAction');
-    sources = registerOutput<List<Map<String, dynamic>>?>('sources');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    sources = registerOutput<List<PatchBaselineSource>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatchBaselineSource>(guardedValue, (value) => PatchBaselineSource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [PatchBaseline] resource's state with the given [name] and [id].
@@ -1348,11 +1351,12 @@ class PatchBaseline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PatchBaselineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PatchBaseline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1366,22 +1370,50 @@ class PatchBaseline extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    approvalRules = registerOutput<List<Map<String, dynamic>>?>('approvalRules');
-    approvedPatches = registerOutput<List<String>?>('approvedPatches');
+    approvalRules = registerOutput<List<PatchBaselineApprovalRule>?>('approvalRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatchBaselineApprovalRule>(guardedValue, (value) => PatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>())); });
+    approvedPatches = registerOutput<List<String>?>('approvedPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     approvedPatchesComplianceLevel = registerOutput<String?>('approvedPatchesComplianceLevel');
     approvedPatchesEnableNonSecurity = registerOutput<bool?>('approvedPatchesEnableNonSecurity');
     arn = registerOutput<String>('arn');
     availableSecurityUpdatesComplianceStatus = registerOutput<String>('availableSecurityUpdatesComplianceStatus');
     description = registerOutput<String?>('description');
-    globalFilters = registerOutput<List<Map<String, dynamic>>?>('globalFilters');
+    globalFilters = registerOutput<List<PatchBaselineGlobalFilter>?>('globalFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatchBaselineGlobalFilter>(guardedValue, (value) => PatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>())); });
     json = registerOutput<String>('json');
     this.name = registerOutput<String>('name');
     operatingSystem = registerOutput<String?>('operatingSystem');
     region = registerOutput<String>('region');
-    rejectedPatches = registerOutput<List<String>?>('rejectedPatches');
+    rejectedPatches = registerOutput<List<String>?>('rejectedPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     rejectedPatchesAction = registerOutput<String>('rejectedPatchesAction');
-    sources = registerOutput<List<Map<String, dynamic>>?>('sources');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    sources = registerOutput<List<PatchBaselineSource>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatchBaselineSource>(guardedValue, (value) => PatchBaselineSource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PatchBaseline] resource.
+  PatchBaseline.reference(String urn)
+    : super(
+        'aws:ssm/patchBaseline:PatchBaseline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approvalRules = registerOutput<List<PatchBaselineApprovalRule>?>('approvalRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatchBaselineApprovalRule>(guardedValue, (value) => PatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>())); });
+    approvedPatches = registerOutput<List<String>?>('approvedPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    approvedPatchesComplianceLevel = registerOutput<String?>('approvedPatchesComplianceLevel');
+    approvedPatchesEnableNonSecurity = registerOutput<bool?>('approvedPatchesEnableNonSecurity');
+    arn = registerOutput<String>('arn');
+    availableSecurityUpdatesComplianceStatus = registerOutput<String>('availableSecurityUpdatesComplianceStatus');
+    description = registerOutput<String?>('description');
+    globalFilters = registerOutput<List<PatchBaselineGlobalFilter>?>('globalFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatchBaselineGlobalFilter>(guardedValue, (value) => PatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    json = registerOutput<String>('json');
+    this.name = registerOutput<String>('name');
+    operatingSystem = registerOutput<String?>('operatingSystem');
+    region = registerOutput<String>('region');
+    rejectedPatches = registerOutput<List<String>?>('rejectedPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    rejectedPatchesAction = registerOutput<String>('rejectedPatchesAction');
+    sources = registerOutput<List<PatchBaselineSource>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PatchBaselineSource>(guardedValue, (value) => PatchBaselineSource.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

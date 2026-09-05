@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern {
   /// An empty configuration block that is used for inspecting all headers.
-  final pulumi.Input<Map<String, dynamic>>? all;
-  final pulumi.Input<List<String>>? excludedCookies;
-  final pulumi.Input<List<String>>? includedCookies;
+  final pulumi.Input<Map<String, dynamic>?>? all;
+  final pulumi.Input<List<String>?>? excludedCookies;
+  final pulumi.Input<List<String>?>? includedCookies;
 
   /// Creates a new [RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.

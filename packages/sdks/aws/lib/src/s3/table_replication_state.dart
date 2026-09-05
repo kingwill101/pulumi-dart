@@ -6,15 +6,15 @@ import 'table_replication_rule.dart';
 /// Input properties used for looking up and filtering TableReplication resources.
 class TableReplicationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// ARN referencing the IAM role assumed by S3 when replicating tables.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// Replication rules. See Rule below for more details.
-  final pulumi.Input<TableReplicationRule>? rule;
+  final pulumi.Input<TableReplicationRule?>? rule;
   /// ARN referencing the Table that owns this replication configuration.
-  final pulumi.Input<String>? tableArn;
+  final pulumi.Input<String?>? tableArn;
   /// Identifier for the current version of the replication configuration.
-  final pulumi.Input<String>? versionToken;
+  final pulumi.Input<String?>? versionToken;
 
   /// Creates a new [TableReplicationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

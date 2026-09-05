@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LicenseGrant resources.
 class LicenseGrantState {
   /// A list of the allowed operations for the grant. This is a subset of the allowed operations on the license.
-  final pulumi.Input<List<String>>? allowedOperations;
+  final pulumi.Input<List<String>?>? allowedOperations;
   /// The grant ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The home region for the license.
-  final pulumi.Input<String>? homeRegion;
+  final pulumi.Input<String?>? homeRegion;
   /// The ARN of the license to grant.
-  final pulumi.Input<String>? licenseArn;
+  final pulumi.Input<String?>? licenseArn;
   /// The Name of the grant.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent ARN.
-  final pulumi.Input<String>? parentArn;
+  final pulumi.Input<String?>? parentArn;
   /// The target account for the grant in the form of the ARN for an account principal of the root user.
-  final pulumi.Input<String>? principal;
+  final pulumi.Input<String?>? principal;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The grant status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The grant version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [LicenseGrantState].
   /// [allowedOperations] A list of the allowed operations for the grant. This is a subset of the allowed operations on the license.

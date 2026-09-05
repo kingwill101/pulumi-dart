@@ -17,21 +17,21 @@ import 'network_insights_analysis_forward_path_component_transit_gateway_route_t
 import 'network_insights_analysis_forward_path_component_vpc.dart';
 
 class NetworkInsightsAnalysisForwardPathComponent {
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentAclRule>>? aclRules;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentAdditionalDetail>>? additionalDetails;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentAttachedTo>>? attachedTos;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentComponent>>? components;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentDestinationVpc>>? destinationVpcs;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentInboundHeader>>? inboundHeaders;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentOutboundHeader>>? outboundHeaders;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentRouteTableRoute>>? routeTableRoutes;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentSecurityGroupRule>>? securityGroupRules;
-  final pulumi.Input<int>? sequenceNumber;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentSourceVpc>>? sourceVpcs;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentSubnet>>? subnets;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute>>? transitGatewayRouteTableRoutes;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentTransitGateway>>? transitGateways;
-  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentVpc>>? vpcs;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentAclRule>?>? aclRules;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentAdditionalDetail>?>? additionalDetails;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentAttachedTo>?>? attachedTos;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentComponent>?>? components;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentDestinationVpc>?>? destinationVpcs;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentInboundHeader>?>? inboundHeaders;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentOutboundHeader>?>? outboundHeaders;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentRouteTableRoute>?>? routeTableRoutes;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentSecurityGroupRule>?>? securityGroupRules;
+  final pulumi.Input<int?>? sequenceNumber;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentSourceVpc>?>? sourceVpcs;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentSubnet>?>? subnets;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute>?>? transitGatewayRouteTableRoutes;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentTransitGateway>?>? transitGateways;
+  final pulumi.Input<List<NetworkInsightsAnalysisForwardPathComponentVpc>?>? vpcs;
 
   /// Creates a new [NetworkInsightsAnalysisForwardPathComponent].
   /// [aclRules] Optional.
@@ -98,7 +98,7 @@ class NetworkInsightsAnalysisForwardPathComponent {
       outboundHeaders: (() { final guardedValue = map['outboundHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponentOutboundHeader>(guardedValue, (value) => NetworkInsightsAnalysisForwardPathComponentOutboundHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       routeTableRoutes: (() { final guardedValue = map['routeTableRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponentRouteTableRoute>(guardedValue, (value) => NetworkInsightsAnalysisForwardPathComponentRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))); })(),
       securityGroupRules: (() { final guardedValue = map['securityGroupRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponentSecurityGroupRule>(guardedValue, (value) => NetworkInsightsAnalysisForwardPathComponentSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      sequenceNumber: (() { final guardedValue = map['sequenceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sequenceNumber: (() { final guardedValue = map['sequenceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sourceVpcs: (() { final guardedValue = map['sourceVpcs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponentSourceVpc>(guardedValue, (value) => NetworkInsightsAnalysisForwardPathComponentSourceVpc.fromMap((value as Map).cast<String, dynamic>()))); })(),
       subnets: (() { final guardedValue = map['subnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponentSubnet>(guardedValue, (value) => NetworkInsightsAnalysisForwardPathComponentSubnet.fromMap((value as Map).cast<String, dynamic>()))); })(),
       transitGatewayRouteTableRoutes: (() { final guardedValue = map['transitGatewayRouteTableRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute>(guardedValue, (value) => NetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))); })(),

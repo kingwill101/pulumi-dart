@@ -7,10 +7,10 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource {
   /// The name of the S3 bucket.
   final pulumi.Input<String> bucket;
   /// List of key prefixes in the S3 bucket.
-  final pulumi.Input<List<String>>? keyPrefixes;
+  final pulumi.Input<List<String>?>? keyPrefixes;
   /// List of object keys in the S3 bucket.
-  final pulumi.Input<List<String>>? keys;
-  final pulumi.Input<List<RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant>>? kmsKeysToGrants;
+  final pulumi.Input<List<String>?>? keys;
+  final pulumi.Input<List<RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant>?>? kmsKeysToGrants;
 
   /// Creates a new [RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource].
   /// [bucket] The name of the S3 bucket.

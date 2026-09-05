@@ -7,31 +7,31 @@ import 'database_encryption_configuration.dart';
 /// Input properties used for looking up and filtering Database resources.
 class DatabaseState {
   /// That an Amazon S3 canned ACL should be set to control ownership of stored query results. See ACL Configuration below.
-  final pulumi.Input<DatabaseAclConfiguration>? aclConfiguration;
+  final pulumi.Input<DatabaseAclConfiguration?>? aclConfiguration;
   /// Name of S3 bucket to save the results of the query execution.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Description of the database.
-  final pulumi.Input<String>? comment;
-  /// Encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. See Encryption Configuration below.
-  final pulumi.Input<DatabaseEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<String?>? comment;
+  /// Encryption key block AWS Athena uses to decrypt the data in S3, such as a KMS key. See Encryption Configuration below.
+  final pulumi.Input<DatabaseEncryptionConfiguration?>? encryptionConfiguration;
   /// AWS account ID that you expect to be the owner of the Amazon S3 bucket.
-  final pulumi.Input<String>? expectedBucketOwner;
+  final pulumi.Input<String?>? expectedBucketOwner;
   /// Boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// Name of the database to create.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Key-value map of custom metadata properties for the database definition.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Name of the workgroup.
-  final pulumi.Input<String>? workgroup;
+  final pulumi.Input<String?>? workgroup;
 
   /// Creates a new [DatabaseState].
   /// [aclConfiguration] That an Amazon S3 canned ACL should be set to control ownership of stored query results. See ACL Configuration below.
   /// [bucket] Name of S3 bucket to save the results of the query execution.
   /// [comment] Description of the database.
-  /// [encryptionConfiguration] Encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. See Encryption Configuration below.
+  /// [encryptionConfiguration] Encryption key block AWS Athena uses to decrypt the data in S3, such as a KMS key. See Encryption Configuration below.
   /// [expectedBucketOwner] AWS account ID that you expect to be the owner of the Amazon S3 bucket.
   /// [forceDestroy] Boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
   /// [name] Name of the database to create.

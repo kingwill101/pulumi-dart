@@ -4,39 +4,39 @@
 /// Result data returned by getService.
 class GetServiceResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String region;
+  final String? id;
+  final String? region;
   /// Code of the service.
-  final String serviceCode;
-  final String serviceName;
+  final String? serviceCode;
+  final String? serviceName;
 
   /// Creates a new [GetServiceResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [region] Required.
+  /// [region] Optional.
   /// [serviceCode] Code of the service.
-  /// [serviceName] Required.
+  /// [serviceName] Optional.
   const GetServiceResult({
-    required this.id,
-    required this.region,
-    required this.serviceCode,
-    required this.serviceName,
+    this.id,
+    this.region,
+    this.serviceCode,
+    this.serviceName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'region': region,
-      'serviceCode': serviceCode,
-      'serviceName': serviceName,
+      'id': ?id,
+      'region': ?region,
+      'serviceCode': ?serviceCode,
+      'serviceName': ?serviceName,
     };
   }
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      id: map['id'] as String,
-      region: map['region'] as String,
-      serviceCode: map['serviceCode'] as String,
-      serviceName: map['serviceName'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceCode: (() { final guardedValue = map['serviceCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

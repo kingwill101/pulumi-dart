@@ -8,25 +8,25 @@ class VpcBlockPublicAccessExclusionState {
   /// Mode of exclusion from Block Public Access. The allowed values are `allow-egress` and `allow-bidirectional`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? internetGatewayExclusionMode;
+  final pulumi.Input<String?>? internetGatewayExclusionMode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) the excluded resource.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? region;
+  /// ARN the excluded resource.
+  final pulumi.Input<String?>? resourceArn;
   /// Id of the subnet to which this exclusion applies. Either this or the vpcId needs to be provided.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// A map of tags to assign to the exclusion. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<VpcBlockPublicAccessExclusionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<VpcBlockPublicAccessExclusionTimeouts?>? timeouts;
   /// Id of the VPC to which this exclusion applies. Either this or the subnetId needs to be provided.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [VpcBlockPublicAccessExclusionState].
   /// [internetGatewayExclusionMode] Mode of exclusion from Block Public Access. The allowed values are `allow-egress` and `allow-bidirectional`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceArn] The Amazon Resource Name (ARN) the excluded resource.
+  /// [resourceArn] ARN the excluded resource.
   /// [subnetId] Id of the subnet to which this exclusion applies. Either this or the vpcId needs to be provided.
   /// [tags] A map of tags to assign to the exclusion. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.

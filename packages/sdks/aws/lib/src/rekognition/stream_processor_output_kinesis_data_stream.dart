@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamProcessorOutputKinesisDataStream {
   /// ARN of the output Amazon Kinesis Data Streams stream.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
 
   /// Creates a new [StreamProcessorOutputKinesisDataStream].
   /// [arn] ARN of the output Amazon Kinesis Data Streams stream.

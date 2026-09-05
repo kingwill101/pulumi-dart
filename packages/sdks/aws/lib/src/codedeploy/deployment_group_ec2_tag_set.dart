@@ -5,7 +5,7 @@ import 'deployment_group_ec2_tag_set_ec2_tag_filter.dart';
 
 class DeploymentGroupEc2TagSet {
   /// Tag filters associated with the deployment group. See the AWS docs for details.
-  final pulumi.Input<List<DeploymentGroupEc2TagSetEc2TagFilter>>? ec2TagFilters;
+  final pulumi.Input<List<DeploymentGroupEc2TagSetEc2TagFilter>?>? ec2TagFilters;
 
   /// Creates a new [DeploymentGroupEc2TagSet].
   /// [ec2TagFilters] Tag filters associated with the deployment group. See the AWS docs for details.

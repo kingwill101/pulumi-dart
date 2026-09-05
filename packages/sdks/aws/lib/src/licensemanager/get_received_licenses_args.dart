@@ -9,9 +9,9 @@ import 'get_received_licenses_filter.dart';
 /// {@macro pulumi_licensemanager_get_received_licenses_get_received_licenses_args_doc}
 class GetReceivedLicensesArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetReceivedLicensesFilter>>? filters;
+  final pulumi.Input<List<GetReceivedLicensesFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetReceivedLicensesArgs].
   /// [filters] Custom filter block as described below.

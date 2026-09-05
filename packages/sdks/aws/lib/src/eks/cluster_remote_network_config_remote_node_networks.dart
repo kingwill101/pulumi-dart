@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterRemoteNetworkConfigRemoteNodeNetworks {
   /// List of network CIDRs that can contain hybrid nodes.
-  final pulumi.Input<List<String>>? cidrs;
+  final pulumi.Input<List<String>?>? cidrs;
 
   /// Creates a new [ClusterRemoteNetworkConfigRemoteNodeNetworks].
   /// [cidrs] List of network CIDRs that can contain hybrid nodes.

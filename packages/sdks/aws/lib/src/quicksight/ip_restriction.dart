@@ -180,14 +180,14 @@ class IpRestriction extends pulumi.CustomResource {
           'aws:quicksight/ipRestriction:IpRestriction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     enabled = registerOutput<bool>('enabled');
-    ipRestrictionRuleMap = registerOutput<Map<String, String>?>('ipRestrictionRuleMap');
+    ipRestrictionRuleMap = registerOutput<Map<String, String>?>('ipRestrictionRuleMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
-    vpcEndpointIdRestrictionRuleMap = registerOutput<Map<String, String>?>('vpcEndpointIdRestrictionRuleMap');
-    vpcIdRestrictionRuleMap = registerOutput<Map<String, String>?>('vpcIdRestrictionRuleMap');
+    vpcEndpointIdRestrictionRuleMap = registerOutput<Map<String, String>?>('vpcEndpointIdRestrictionRuleMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcIdRestrictionRuleMap = registerOutput<Map<String, String>?>('vpcIdRestrictionRuleMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IpRestriction] resource's state with the given [name] and [id].
@@ -195,11 +195,12 @@ class IpRestriction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IpRestrictionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IpRestriction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -215,9 +216,26 @@ class IpRestriction extends pulumi.CustomResource {
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     enabled = registerOutput<bool>('enabled');
-    ipRestrictionRuleMap = registerOutput<Map<String, String>?>('ipRestrictionRuleMap');
+    ipRestrictionRuleMap = registerOutput<Map<String, String>?>('ipRestrictionRuleMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
-    vpcEndpointIdRestrictionRuleMap = registerOutput<Map<String, String>?>('vpcEndpointIdRestrictionRuleMap');
-    vpcIdRestrictionRuleMap = registerOutput<Map<String, String>?>('vpcIdRestrictionRuleMap');
+    vpcEndpointIdRestrictionRuleMap = registerOutput<Map<String, String>?>('vpcEndpointIdRestrictionRuleMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcIdRestrictionRuleMap = registerOutput<Map<String, String>?>('vpcIdRestrictionRuleMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IpRestriction] resource.
+  IpRestriction.reference(String urn)
+    : super(
+        'aws:quicksight/ipRestriction:IpRestriction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    awsAccountId = registerOutput<String>('awsAccountId');
+    enabled = registerOutput<bool>('enabled');
+    ipRestrictionRuleMap = registerOutput<Map<String, String>?>('ipRestrictionRuleMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    region = registerOutput<String>('region');
+    vpcEndpointIdRestrictionRuleMap = registerOutput<Map<String, String>?>('vpcEndpointIdRestrictionRuleMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcIdRestrictionRuleMap = registerOutput<Map<String, String>?>('vpcIdRestrictionRuleMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

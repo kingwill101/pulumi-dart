@@ -11,14 +11,14 @@ class GetVolumeArgs {
   /// One or more name/value pairs to filter off of. There are
   /// several valid keys, for a full reference, check out
   /// [describe-volumes in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-volumes.html).
-  final pulumi.Input<List<GetVolumeFilter>>? filters;
+  final pulumi.Input<List<GetVolumeFilter>?>? filters;
   /// If more than one result is returned, use the most
   /// recent volume.
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags for the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVolumeArgs].
   /// [filters] One or more name/value pairs to filter off of. There are

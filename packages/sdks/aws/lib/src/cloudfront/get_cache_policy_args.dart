@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudfront_get_cache_policy_get_cache_policy_args_doc}
 class GetCachePolicyArgs {
   /// Identifier for the cache policy.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Unique name to identify the cache policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetCachePolicyArgs].
   /// [id] Identifier for the cache policy.

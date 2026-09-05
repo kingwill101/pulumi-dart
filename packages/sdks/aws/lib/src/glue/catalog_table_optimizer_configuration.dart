@@ -7,13 +7,13 @@ import 'catalog_table_optimizer_configuration_retention_configuration.dart';
 
 class CatalogTableOptimizerConfiguration {
   /// The configuration block for a compaction optimizer. See Compaction Configuration for additional details.
-  final pulumi.Input<CatalogTableOptimizerConfigurationCompactionConfiguration>? compactionConfiguration;
+  final pulumi.Input<CatalogTableOptimizerConfigurationCompactionConfiguration?>? compactionConfiguration;
   /// Indicates whether the table optimizer is enabled.
   final pulumi.Input<bool> enabled;
   /// The configuration block for an orphan file deletion optimizer. See Orphan File Deletion Configuration for additional details.
-  final pulumi.Input<CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration>? orphanFileDeletionConfiguration;
+  final pulumi.Input<CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration?>? orphanFileDeletionConfiguration;
   /// The configuration block for a snapshot retention optimizer. See Retention Configuration for additional details.
-  final pulumi.Input<CatalogTableOptimizerConfigurationRetentionConfiguration>? retentionConfiguration;
+  final pulumi.Input<CatalogTableOptimizerConfigurationRetentionConfiguration?>? retentionConfiguration;
   /// The ARN of the IAM role to use for the table optimizer.
   final pulumi.Input<String> roleArn;
 

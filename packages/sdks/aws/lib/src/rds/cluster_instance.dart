@@ -266,7 +266,7 @@ import 'engine_type.dart';
 class ClusterInstance extends pulumi.CustomResource {
   /// Specifies whether any database modifications are applied immediately, or during the next maintenance window. Default is`false`.
   late final pulumi.Output<bool> applyImmediately;
-  /// Amazon Resource Name (ARN) of cluster instance
+  /// ARN of cluster instance
   late final pulumi.Output<String> arn;
   /// Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window. Default `true`.
   late final pulumi.Output<bool?> autoMinorVersionUpgrade;
@@ -353,7 +353,7 @@ class ClusterInstance extends pulumi.CustomResource {
           'aws:rds/clusterInstance:ClusterInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
@@ -388,8 +388,8 @@ class ClusterInstance extends pulumi.CustomResource {
     publiclyAccessible = registerOutput<bool>('publiclyAccessible');
     region = registerOutput<String>('region');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     writer = registerOutput<bool>('writer');
   }
 
@@ -398,11 +398,12 @@ class ClusterInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -449,8 +450,55 @@ class ClusterInstance extends pulumi.CustomResource {
     publiclyAccessible = registerOutput<bool>('publiclyAccessible');
     region = registerOutput<String>('region');
     storageEncrypted = registerOutput<bool>('storageEncrypted');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    writer = registerOutput<bool>('writer');
+  }
+
+  /// Creates a typed reference to an existing [ClusterInstance] resource.
+  ClusterInstance.reference(String urn)
+    : super(
+        'aws:rds/clusterInstance:ClusterInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applyImmediately = registerOutput<bool>('applyImmediately');
+    arn = registerOutput<String>('arn');
+    autoMinorVersionUpgrade = registerOutput<bool?>('autoMinorVersionUpgrade');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    caCertIdentifier = registerOutput<String>('caCertIdentifier');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    copyTagsToSnapshot = registerOutput<bool?>('copyTagsToSnapshot');
+    customIamInstanceProfile = registerOutput<String?>('customIamInstanceProfile');
+    dbParameterGroupName = registerOutput<String>('dbParameterGroupName');
+    dbSubnetGroupName = registerOutput<String>('dbSubnetGroupName');
+    dbiResourceId = registerOutput<String>('dbiResourceId');
+    endpoint = registerOutput<String>('endpoint');
+    engine = registerOutput<EngineType>('engine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EngineType.fromValue(guardedValue as String); });
+    engineVersion = registerOutput<String>('engineVersion');
+    engineVersionActual = registerOutput<String>('engineVersionActual');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    identifier = registerOutput<String>('identifier');
+    identifierPrefix = registerOutput<String>('identifierPrefix');
+    instanceClass = registerOutput<String>('instanceClass');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    monitoringInterval = registerOutput<int?>('monitoringInterval');
+    monitoringRoleArn = registerOutput<String>('monitoringRoleArn');
+    networkType = registerOutput<String>('networkType');
+    performanceInsightsEnabled = registerOutput<bool>('performanceInsightsEnabled');
+    performanceInsightsKmsKeyId = registerOutput<String>('performanceInsightsKmsKeyId');
+    performanceInsightsRetentionPeriod = registerOutput<int>('performanceInsightsRetentionPeriod');
+    port = registerOutput<int>('port');
+    preferredBackupWindow = registerOutput<String>('preferredBackupWindow');
+    preferredMaintenanceWindow = registerOutput<String>('preferredMaintenanceWindow');
+    promotionTier = registerOutput<int?>('promotionTier');
+    publiclyAccessible = registerOutput<bool>('publiclyAccessible');
+    region = registerOutput<String>('region');
+    storageEncrypted = registerOutput<bool>('storageEncrypted');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     writer = registerOutput<bool>('writer');
   }
 }

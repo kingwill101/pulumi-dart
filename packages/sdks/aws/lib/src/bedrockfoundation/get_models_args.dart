@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_bedrockfoundation_get_models_get_models_args_doc}
 class GetModelsArgs {
   /// Customization type to filter on. Valid values are `FINE_TUNING`.
-  final pulumi.Input<String>? byCustomizationType;
+  final pulumi.Input<String?>? byCustomizationType;
   /// Inference type to filter on. Valid values are `ON_DEMAND` and `PROVISIONED`.
-  final pulumi.Input<String>? byInferenceType;
+  final pulumi.Input<String?>? byInferenceType;
   /// Output modality to filter on. Valid values are `TEXT`, `IMAGE`, and `EMBEDDING`.
-  final pulumi.Input<String>? byOutputModality;
+  final pulumi.Input<String?>? byOutputModality;
   /// Model provider to filter on.
-  final pulumi.Input<String>? byProvider;
+  final pulumi.Input<String?>? byProvider;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetModelsArgs].
   /// [byCustomizationType] Customization type to filter on. Valid values are `FINE_TUNING`.

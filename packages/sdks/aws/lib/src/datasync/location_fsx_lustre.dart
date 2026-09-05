@@ -128,15 +128,15 @@ import 'location_fsx_lustre_state.dart';
 /// $ pulumi import aws:datasync/locationFsxLustre:LocationFsxLustre example arn:aws:datasync:us-west-2:123456789012:location/loc-12345678901234567#arn:aws:fsx:us-west-2:476956259333:file-system/fs-08e04cd442c1bb94a
 /// ```
 class LocationFsxLustre extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the DataSync Location.
+  /// ARN of the DataSync Location.
   late final pulumi.Output<String> arn;
   /// The time that the FSx for Lustre location was created.
   late final pulumi.Output<String> creationTime;
-  /// The Amazon Resource Name (ARN) for the FSx for Lustre file system.
+  /// ARN for the FSx for Lustre file system.
   late final pulumi.Output<String> fsxFilesystemArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Lustre file system.
+  /// ARNs of the security groups that are to use to configure the FSx for Lustre file system.
   late final pulumi.Output<List<String>> securityGroupArns;
   /// Subdirectory to perform actions as source or destination.
   late final pulumi.Output<String> subdirectory;
@@ -159,16 +159,16 @@ class LocationFsxLustre extends pulumi.CustomResource {
           'aws:datasync/locationFsxLustre:LocationFsxLustre',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
     region = registerOutput<String>('region');
-    securityGroupArns = registerOutput<List<String>>('securityGroupArns');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 
@@ -177,11 +177,12 @@ class LocationFsxLustre extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocationFsxLustreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocationFsxLustre._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -199,10 +200,30 @@ class LocationFsxLustre extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
     region = registerOutput<String>('region');
-    securityGroupArns = registerOutput<List<String>>('securityGroupArns');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [LocationFsxLustre] resource.
+  LocationFsxLustre.reference(String urn)
+    : super(
+        'aws:datasync/locationFsxLustre:LocationFsxLustre',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationTime = registerOutput<String>('creationTime');
+    fsxFilesystemArn = registerOutput<String>('fsxFilesystemArn');
+    region = registerOutput<String>('region');
+    securityGroupArns = registerOutput<List<String>>('securityGroupArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subdirectory = registerOutput<String>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
   }
 }

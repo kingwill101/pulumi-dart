@@ -5,110 +5,110 @@ import 'get_security_group_rule_filter.dart';
 
 /// Result data returned by getSecurityGroupRule.
 class GetSecurityGroupRuleResult {
-  /// The Amazon Resource Name (ARN) of the security group rule.
-  final String arn;
+  /// ARN of the security group rule.
+  final String? arn;
   /// The destination IPv4 CIDR range.
-  final String cidrIpv4;
+  final String? cidrIpv4;
   /// The destination IPv6 CIDR range.
-  final String cidrIpv6;
+  final String? cidrIpv6;
   /// The security group rule description.
-  final String description;
+  final String? description;
   final List<GetSecurityGroupRuleFilter>? filters;
   /// The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
-  final int fromPort;
-  final String id;
+  final int? fromPort;
+  final String? id;
   /// The IP protocol name or number. Use `-1` to specify all protocols.
-  final String ipProtocol;
+  final String? ipProtocol;
   /// Indicates whether the security group rule is an outbound rule.
-  final bool isEgress;
+  final bool? isEgress;
   /// The ID of the destination prefix list.
-  final String prefixListId;
+  final String? prefixListId;
   /// The destination security group that is referenced in the rule.
-  final String referencedSecurityGroupId;
-  final String region;
+  final String? referencedSecurityGroupId;
+  final String? region;
   /// The ID of the security group.
-  final String securityGroupId;
-  final String securityGroupRuleId;
+  final String? securityGroupId;
+  final String? securityGroupRuleId;
   /// A map of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// (Optional) The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
-  final int toPort;
+  final int? toPort;
 
   /// Creates a new [GetSecurityGroupRuleResult].
-  /// [arn] The Amazon Resource Name (ARN) of the security group rule.
+  /// [arn] ARN of the security group rule.
   /// [cidrIpv4] The destination IPv4 CIDR range.
   /// [cidrIpv6] The destination IPv6 CIDR range.
   /// [description] The security group rule description.
   /// [filters] Optional.
   /// [fromPort] The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
-  /// [id] Required.
+  /// [id] Optional.
   /// [ipProtocol] The IP protocol name or number. Use `-1` to specify all protocols.
   /// [isEgress] Indicates whether the security group rule is an outbound rule.
   /// [prefixListId] The ID of the destination prefix list.
   /// [referencedSecurityGroupId] The destination security group that is referenced in the rule.
-  /// [region] Required.
+  /// [region] Optional.
   /// [securityGroupId] The ID of the security group.
-  /// [securityGroupRuleId] Required.
+  /// [securityGroupRuleId] Optional.
   /// [tags] A map of tags assigned to the resource.
   /// [toPort] (Optional) The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
   const GetSecurityGroupRuleResult({
-    required this.arn,
-    required this.cidrIpv4,
-    required this.cidrIpv6,
-    required this.description,
+    this.arn,
+    this.cidrIpv4,
+    this.cidrIpv6,
+    this.description,
     this.filters,
-    required this.fromPort,
-    required this.id,
-    required this.ipProtocol,
-    required this.isEgress,
-    required this.prefixListId,
-    required this.referencedSecurityGroupId,
-    required this.region,
-    required this.securityGroupId,
-    required this.securityGroupRuleId,
-    required this.tags,
-    required this.toPort,
+    this.fromPort,
+    this.id,
+    this.ipProtocol,
+    this.isEgress,
+    this.prefixListId,
+    this.referencedSecurityGroupId,
+    this.region,
+    this.securityGroupId,
+    this.securityGroupRuleId,
+    this.tags,
+    this.toPort,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'cidrIpv4': cidrIpv4,
-      'cidrIpv6': cidrIpv6,
-      'description': description,
+      'arn': ?arn,
+      'cidrIpv4': ?cidrIpv4,
+      'cidrIpv6': ?cidrIpv6,
+      'description': ?description,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSecurityGroupRuleFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'fromPort': fromPort,
-      'id': id,
-      'ipProtocol': ipProtocol,
-      'isEgress': isEgress,
-      'prefixListId': prefixListId,
-      'referencedSecurityGroupId': referencedSecurityGroupId,
-      'region': region,
-      'securityGroupId': securityGroupId,
-      'securityGroupRuleId': securityGroupRuleId,
-      'tags': tags,
-      'toPort': toPort,
+      'fromPort': ?fromPort,
+      'id': ?id,
+      'ipProtocol': ?ipProtocol,
+      'isEgress': ?isEgress,
+      'prefixListId': ?prefixListId,
+      'referencedSecurityGroupId': ?referencedSecurityGroupId,
+      'region': ?region,
+      'securityGroupId': ?securityGroupId,
+      'securityGroupRuleId': ?securityGroupRuleId,
+      'tags': ?tags,
+      'toPort': ?toPort,
     };
   }
 
   factory GetSecurityGroupRuleResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupRuleResult(
-      arn: map['arn'] as String,
-      cidrIpv4: map['cidrIpv4'] as String,
-      cidrIpv6: map['cidrIpv6'] as String,
-      description: map['description'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cidrIpv4: (() { final guardedValue = map['cidrIpv4']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cidrIpv6: (() { final guardedValue = map['cidrIpv6']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(guardedValue, (value) => GetSecurityGroupRuleFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      fromPort: map['fromPort'] as int,
-      id: map['id'] as String,
-      ipProtocol: map['ipProtocol'] as String,
-      isEgress: map['isEgress'] as bool,
-      prefixListId: map['prefixListId'] as String,
-      referencedSecurityGroupId: map['referencedSecurityGroupId'] as String,
-      region: map['region'] as String,
-      securityGroupId: map['securityGroupId'] as String,
-      securityGroupRuleId: map['securityGroupRuleId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      toPort: map['toPort'] as int,
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isEgress: (() { final guardedValue = map['isEgress']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      prefixListId: (() { final guardedValue = map['prefixListId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      referencedSecurityGroupId: (() { final guardedValue = map['referencedSecurityGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityGroupId: (() { final guardedValue = map['securityGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityGroupRuleId: (() { final guardedValue = map['securityGroupRuleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
     );
   }
 }

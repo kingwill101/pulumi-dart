@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TargetSuspendedState {
   /// Whether scale in by a target tracking scaling policy or a step scaling policy is suspended. Default is `false`.
-  final pulumi.Input<bool>? dynamicScalingInSuspended;
+  final pulumi.Input<bool?>? dynamicScalingInSuspended;
   /// Whether scale out by a target tracking scaling policy or a step scaling policy is suspended. Default is `false`.
-  final pulumi.Input<bool>? dynamicScalingOutSuspended;
+  final pulumi.Input<bool?>? dynamicScalingOutSuspended;
   /// Whether scheduled scaling is suspended. Default is `false`.
-  final pulumi.Input<bool>? scheduledScalingSuspended;
+  final pulumi.Input<bool?>? scheduledScalingSuspended;
 
   /// Creates a new [TargetSuspendedState].
   /// [dynamicScalingInSuspended] Whether scale in by a target tracking scaling policy or a step scaling policy is suspended. Default is `false`.

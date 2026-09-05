@@ -7,75 +7,75 @@ import 'metric_alarm_metric_query.dart';
 /// Input properties used for looking up and filtering MetricAlarm resources.
 class MetricAlarmState {
   /// Indicates whether or not actions should be executed during any changes to the alarm's state. Defaults to `true`.
-  final pulumi.Input<bool>? actionsEnabled;
-  /// The list of actions to execute when this alarm transitions into an ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).
-  final pulumi.Input<List<String>>? alarmActions;
+  final pulumi.Input<bool?>? actionsEnabled;
+  /// List of actions to execute when this alarm transitions into an ALARM state from any other state. Each action is specified as an ARN.
+  final pulumi.Input<List<dynamic>?>? alarmActions;
   /// The description for the alarm.
-  final pulumi.Input<String>? alarmDescription;
+  final pulumi.Input<String?>? alarmDescription;
   /// The ARN of the CloudWatch Metric Alarm.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Either of the following is supported: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanThreshold`, `LessThanOrEqualToThreshold`. Additionally, the values  `LessThanLowerOrGreaterThanUpperThreshold`, `LessThanLowerThreshold`, and `GreaterThanUpperThreshold` are used only for alarms based on anomaly detection models.
-  final pulumi.Input<String>? comparisonOperator;
+  final pulumi.Input<String?>? comparisonOperator;
   /// The number of data points that must be breaching to trigger the alarm.
-  final pulumi.Input<int>? datapointsToAlarm;
+  final pulumi.Input<int?>? datapointsToAlarm;
   /// The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-  final pulumi.Input<Map<String, String>>? dimensions;
+  final pulumi.Input<Map<String, String>?>? dimensions;
   /// Used only for alarms based on percentiles.
   /// If you specify `ignore`, the alarm state will not change during periods with too few data points to be statistically significant.
   /// If you specify `evaluate` or omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points are available.
   /// The following values are supported: `ignore`, and `evaluate`.
-  final pulumi.Input<String>? evaluateLowSampleCountPercentiles;
+  final pulumi.Input<String?>? evaluateLowSampleCountPercentiles;
   /// The evaluation criteria for PromQL alarms. Cannot be used with traditional metric alarm parameters.
-  final pulumi.Input<MetricAlarmEvaluationCriteria>? evaluationCriteria;
+  final pulumi.Input<MetricAlarmEvaluationCriteria?>? evaluationCriteria;
   /// The frequency, in seconds, at which the alarm is evaluated. Valid values are `10`, `20`, `30`, and any multiple of `60`. Required when using `evaluationCriteria`.
-  final pulumi.Input<int>? evaluationInterval;
+  final pulumi.Input<int?>? evaluationInterval;
   /// The number of periods over which data is compared to the specified threshold. Required for traditional metric alarms.
-  final pulumi.Input<int>? evaluationPeriods;
+  final pulumi.Input<int?>? evaluationPeriods;
   /// The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
-  final pulumi.Input<String>? extendedStatistic;
-  /// The list of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).
-  final pulumi.Input<List<String>>? insufficientDataActions;
+  final pulumi.Input<String?>? extendedStatistic;
+  /// List of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state. Each action is specified as an ARN.
+  final pulumi.Input<List<dynamic>?>? insufficientDataActions;
   /// The name for the alarm's associated metric.
   /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// Enables you to create an alarm based on a metric math expression. You may specify at most 20.
-  final pulumi.Input<List<MetricAlarmMetricQuery>>? metricQueries;
+  final pulumi.Input<List<MetricAlarmMetricQuery>?>? metricQueries;
   /// The descriptive name for the alarm. This name must be unique within the user's AWS account
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
   /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-  final pulumi.Input<String>? namespace;
-  /// The list of actions to execute when this alarm transitions into an OK state from any other state. Each action is specified as an Amazon Resource Name (ARN).
-  final pulumi.Input<List<String>>? okActions;
+  final pulumi.Input<String?>? namespace;
+  /// List of actions to execute when this alarm transitions into an OK state from any other state. Each action is specified as an ARN.
+  final pulumi.Input<List<dynamic>?>? okActions;
   /// The period in seconds over which the specified `statistic` is applied.
   /// Valid values are `10`, `20`, `30`, or any multiple of `60`.
-  final pulumi.Input<int>? period;
+  final pulumi.Input<int?>? period;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The statistic to apply to the alarm's associated metric.
   /// Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
-  final pulumi.Input<String>? statistic;
+  final pulumi.Input<String?>? statistic;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// See [related part of AWS Docs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutMetricAlarm.html)
   /// for details about valid values.
   ///
   /// &gt; **NOTE:**  If you specify at least one `metricQuery`, you may not specify a `metricName`, `namespace`, `period` or `statistic`. If you do not specify a `metricQuery`, you must specify each of these (although you may use `extendedStatistic` instead of `statistic`).
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// The value against which the specified statistic is compared. This parameter is required for alarms based on static thresholds, but should not be used for alarms based on anomaly detection models.
-  final pulumi.Input<double>? threshold;
+  final pulumi.Input<double?>? threshold;
   /// If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.
-  final pulumi.Input<String>? thresholdMetricId;
+  final pulumi.Input<String?>? thresholdMetricId;
   /// Sets how this alarm is to handle missing data points. The following values are supported: `missing`, `ignore`, `breaching` and `notBreaching`. Defaults to `missing`.
-  final pulumi.Input<String>? treatMissingData;
+  final pulumi.Input<String?>? treatMissingData;
   /// The unit for the alarm's associated metric.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
 
   /// Creates a new [MetricAlarmState].
   /// [actionsEnabled] Indicates whether or not actions should be executed during any changes to the alarm's state. Defaults to `true`.
-  /// [alarmActions] The list of actions to execute when this alarm transitions into an ALARM state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+  /// [alarmActions] List of actions to execute when this alarm transitions into an ALARM state from any other state. Each action is specified as an ARN.
   /// [alarmDescription] The description for the alarm.
   /// [arn] The ARN of the CloudWatch Metric Alarm.
   /// [comparisonOperator] The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Either of the following is supported: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanThreshold`, `LessThanOrEqualToThreshold`. Additionally, the values  `LessThanLowerOrGreaterThanUpperThreshold`, `LessThanLowerThreshold`, and `GreaterThanUpperThreshold` are used only for alarms based on anomaly detection models.
@@ -86,12 +86,12 @@ class MetricAlarmState {
   /// [evaluationInterval] The frequency, in seconds, at which the alarm is evaluated. Valid values are `10`, `20`, `30`, and any multiple of `60`. Required when using `evaluationCriteria`.
   /// [evaluationPeriods] The number of periods over which data is compared to the specified threshold. Required for traditional metric alarms.
   /// [extendedStatistic] The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
-  /// [insufficientDataActions] The list of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+  /// [insufficientDataActions] List of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state. Each action is specified as an ARN.
   /// [metricName] The name for the alarm's associated metric.
   /// [metricQueries] Enables you to create an alarm based on a metric math expression. You may specify at most 20.
   /// [name] The descriptive name for the alarm. This name must be unique within the user's AWS account
   /// [namespace] The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
-  /// [okActions] The list of actions to execute when this alarm transitions into an OK state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+  /// [okActions] List of actions to execute when this alarm transitions into an OK state from any other state. Each action is specified as an ARN.
   /// [period] The period in seconds over which the specified `statistic` is applied.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [statistic] The statistic to apply to the alarm's associated metric.
@@ -166,29 +166,29 @@ class MetricAlarmState {
   factory MetricAlarmState.fromMap(Map<String, dynamic> map) {
     return MetricAlarmState(
       actionsEnabled: (() { final guardedValue = map['actionsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      alarmActions: (() { final guardedValue = map['alarmActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      alarmActions: (() { final guardedValue = map['alarmActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       alarmDescription: (() { final guardedValue = map['alarmDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       comparisonOperator: (() { final guardedValue = map['comparisonOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      datapointsToAlarm: (() { final guardedValue = map['datapointsToAlarm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      datapointsToAlarm: (() { final guardedValue = map['datapointsToAlarm']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       evaluateLowSampleCountPercentiles: (() { final guardedValue = map['evaluateLowSampleCountPercentiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       evaluationCriteria: (() { final guardedValue = map['evaluationCriteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetricAlarmEvaluationCriteria.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      evaluationInterval: (() { final guardedValue = map['evaluationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      evaluationPeriods: (() { final guardedValue = map['evaluationPeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      evaluationInterval: (() { final guardedValue = map['evaluationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      evaluationPeriods: (() { final guardedValue = map['evaluationPeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       extendedStatistic: (() { final guardedValue = map['extendedStatistic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      insufficientDataActions: (() { final guardedValue = map['insufficientDataActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      insufficientDataActions: (() { final guardedValue = map['insufficientDataActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricQueries: (() { final guardedValue = map['metricQueries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricAlarmMetricQuery>(guardedValue, (value) => MetricAlarmMetricQuery.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      okActions: (() { final guardedValue = map['okActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      okActions: (() { final guardedValue = map['okActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       statistic: (() { final guardedValue = map['statistic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       thresholdMetricId: (() { final guardedValue = map['thresholdMetricId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       treatMissingData: (() { final guardedValue = map['treatMissingData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

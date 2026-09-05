@@ -5,7 +5,7 @@ import 'flow_definition_human_loop_config_public_workforce_task_price_amount_in_
 
 class FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice {
   /// Defines the amount of money paid to an Amazon Mechanical Turk worker in United States dollars. See Amount In Usd details below.
-  final pulumi.Input<FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd>? amountInUsd;
+  final pulumi.Input<FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd?>? amountInUsd;
 
   /// Creates a new [FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice].
   /// [amountInUsd] Defines the amount of money paid to an Amazon Mechanical Turk worker in United States dollars. See Amount In Usd details below.

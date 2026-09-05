@@ -11,15 +11,15 @@ class AssessmentTemplateArgs {
   /// The duration of the inspector run.
   final pulumi.Input<int> duration;
   /// A block that enables sending notifications about a specified assessment template event to a designated SNS topic. See Event Subscriptions for details.
-  final pulumi.Input<List<AssessmentTemplateEventSubscription>>? eventSubscriptions;
+  final pulumi.Input<List<AssessmentTemplateEventSubscription>?>? eventSubscriptions;
   /// The name of the assessment template.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The rules to be used during the run.
   final pulumi.Input<List<String>> rulesPackageArns;
   /// Key-value map of tags for the Inspector assessment template. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The assessment target ARN to attach the template to.
   final pulumi.Input<String> targetArn;
 
@@ -55,7 +55,7 @@ class AssessmentTemplateArgs {
 
   factory AssessmentTemplateArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentTemplateArgs(
-      duration: pulumi.Input.fromValue(map['duration'] as int),
+      duration: pulumi.Input.fromValue((map['duration'] as num).toInt()),
       eventSubscriptions: (() { final guardedValue = map['eventSubscriptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(guardedValue, (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

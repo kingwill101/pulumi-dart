@@ -8,21 +8,21 @@ import 'custom_log_source_provider_detail.dart';
 /// Input properties used for looking up and filtering CustomLogSource resources.
 class CustomLogSourceState {
   /// The attributes of a third-party custom source.
-  final pulumi.Input<List<CustomLogSourceAttribute>>? attributes;
+  final pulumi.Input<List<CustomLogSourceAttribute>?>? attributes;
   /// The configuration for the third-party custom source.
-  final pulumi.Input<CustomLogSourceConfiguration>? configuration;
+  final pulumi.Input<CustomLogSourceConfiguration?>? configuration;
   /// The Open Cybersecurity Schema Framework (OCSF) event classes which describes the type of data that the custom source will send to Security Lake.
-  final pulumi.Input<List<String>>? eventClasses;
+  final pulumi.Input<List<String>?>? eventClasses;
   /// The details of the log provider for a third-party custom source.
-  final pulumi.Input<List<CustomLogSourceProviderDetail>>? providerDetails;
+  final pulumi.Input<List<CustomLogSourceProviderDetail>?>? providerDetails;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Specify the name for a third-party custom source.
   /// This must be a Regionally unique value.
   /// Has a maximum length of 20.
-  final pulumi.Input<String>? sourceName;
+  final pulumi.Input<String?>? sourceName;
   /// Specify the source version for the third-party custom source, to limit log collection to a specific version of custom data source.
-  final pulumi.Input<String>? sourceVersion;
+  final pulumi.Input<String?>? sourceVersion;
 
   /// Creates a new [CustomLogSourceState].
   /// [attributes] The attributes of a third-party custom source.

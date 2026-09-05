@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lf_tag_expression_args.dart';
+import 'lf_tag_expression_expression.dart';
 import 'lf_tag_expression_state.dart';
 
 /// Resource for managing an AWS Lake Formation LF Tag Expression.
@@ -18,11 +19,11 @@ import 'lf_tag_expression_state.dart';
 ///     values: ["value"],
 /// });
 /// const exampleLfTagExpression = new aws.lakeformation.LfTagExpression("example", {
-///     name: "example",
 ///     expressions: [{
 ///         tagKey: example.key,
 ///         tagValues: example.values,
 ///     }],
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -33,11 +34,11 @@ import 'lf_tag_expression_state.dart';
 ///     key="example",
 ///     values=["value"])
 /// example_lf_tag_expression = aws.lakeformation.LfTagExpression("example",
-///     name="example",
 ///     expressions=[{
 ///         "tag_key": example.key,
 ///         "tag_values": example.values,
-///     }])
+///     }],
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -58,7 +59,6 @@ import 'lf_tag_expression_state.dart';
 ///
 ///     var exampleLfTagExpression = new Aws.LakeFormation.LfTagExpression("example", new()
 ///     {
-///         Name = "example",
 ///         Expressions = new[]
 ///         {
 ///             new Aws.LakeFormation.Inputs.LfTagExpressionExpressionArgs
@@ -67,6 +67,7 @@ import 'lf_tag_expression_state.dart';
 ///                 TagValues = example.Values,
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -91,13 +92,13 @@ import 'lf_tag_expression_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lakeformation.NewLfTagExpression(ctx, "example", &lakeformation.LfTagExpressionArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Expressions: lakeformation.LfTagExpressionExpressionArray{
 /// 				&lakeformation.LfTagExpressionExpressionArgs{
 /// 					TagKey:    example.Key,
 /// 					TagValues: example.Values,
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -120,11 +121,11 @@ import 'lf_tag_expression_state.dart';
 ///   values = ["value"]
 /// }
 /// resource "aws_lakeformation_lftagexpression" "example" {
-///   name = "example"
 ///   expressions {
 ///     tag_key    = aws_lakeformation_lftag.example.key
 ///     tag_values = aws_lakeformation_lftag.example.values
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -157,11 +158,11 @@ import 'lf_tag_expression_state.dart';
 ///             .build());
 ///
 ///         var exampleLfTagExpression = new LfTagExpression("exampleLfTagExpression", LfTagExpressionArgs.builder()
-///             .name("example")
 ///             .expressions(LfTagExpressionExpressionArgs.builder()
 ///                 .tagKey(example.key())
 ///                 .tagValues(example.values())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -179,10 +180,10 @@ import 'lf_tag_expression_state.dart';
 ///     type: aws:lakeformation:LfTagExpression
 ///     name: example
 ///     properties:
-///       name: example
 ///       expressions:
 ///         - tagKey: ${example.key}
 ///           tagValues: ${example.values}
+///       name: example
 /// ```
 ///
 ///
@@ -201,7 +202,7 @@ class LfTagExpression extends pulumi.CustomResource {
   /// A list of LF-Tag conditions (key-value pairs). See expression for more details.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<List<Map<String, dynamic>>> expressions;
+  late final pulumi.Output<List<LfTagExpressionExpression>> expressions;
   /// Name of the LF-Tag Expression.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -219,11 +220,11 @@ class LfTagExpression extends pulumi.CustomResource {
           'aws:lakeformation/lfTagExpression:LfTagExpression',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     description = registerOutput<String?>('description');
-    expressions = registerOutput<List<Map<String, dynamic>>>('expressions');
+    expressions = registerOutput<List<LfTagExpressionExpression>>('expressions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LfTagExpressionExpression>(guardedValue, (value) => LfTagExpressionExpression.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
   }
@@ -233,11 +234,12 @@ class LfTagExpression extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LfTagExpressionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LfTagExpression._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -253,7 +255,23 @@ class LfTagExpression extends pulumi.CustomResource {
         ) {
     catalogId = registerOutput<String>('catalogId');
     description = registerOutput<String?>('description');
-    expressions = registerOutput<List<Map<String, dynamic>>>('expressions');
+    expressions = registerOutput<List<LfTagExpressionExpression>>('expressions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LfTagExpressionExpression>(guardedValue, (value) => LfTagExpressionExpression.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [LfTagExpression] resource.
+  LfTagExpression.reference(String urn)
+    : super(
+        'aws:lakeformation/lfTagExpression:LfTagExpression',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalogId = registerOutput<String>('catalogId');
+    description = registerOutput<String?>('description');
+    expressions = registerOutput<List<LfTagExpressionExpression>>('expressions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LfTagExpressionExpression>(guardedValue, (value) => LfTagExpressionExpression.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
   }

@@ -140,7 +140,7 @@ class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
           'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     timeouts = registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -152,11 +152,12 @@ class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallTransitGatewayAttachmentAccepterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallTransitGatewayAttachmentAccepter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -170,6 +171,20 @@ class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+  }
+
+  /// Creates a typed reference to an existing [FirewallTransitGatewayAttachmentAccepter] resource.
+  FirewallTransitGatewayAttachmentAccepter.reference(String urn)
+    : super(
+        'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     timeouts = registerOutput<FirewallTransitGatewayAttachmentAccepterTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallTransitGatewayAttachmentAccepterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');

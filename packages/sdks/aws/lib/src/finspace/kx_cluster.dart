@@ -1,11 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kx_cluster_args.dart';
 import 'kx_cluster_auto_scaling_configuration.dart';
+import 'kx_cluster_cache_storage_configuration.dart';
 import 'kx_cluster_capacity_configuration.dart';
 import 'kx_cluster_code.dart';
+import 'kx_cluster_database.dart';
 import 'kx_cluster_savedown_storage_configuration.dart';
 import 'kx_cluster_scaling_group_configuration.dart';
 import 'kx_cluster_state.dart';
+import 'kx_cluster_tickerplant_log_configuration.dart';
 import 'kx_cluster_vpc_configuration.dart';
 
 /// Resource for managing an AWS FinSpace Kx Cluster.
@@ -20,12 +23,6 @@ import 'kx_cluster_vpc_configuration.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.finspace.KxCluster("example", {
-///     name: "my-tf-kx-cluster",
-///     environmentId: exampleAwsFinspaceKxEnvironment.id,
-///     type: "HDB",
-///     releaseLabel: "1.0",
-///     azMode: "SINGLE",
-///     availabilityZoneId: "use1-az2",
 ///     capacityConfiguration: {
 ///         nodeType: "kx.s.2xlarge",
 ///         nodeCount: 2,
@@ -36,20 +33,31 @@ import 'kx_cluster_vpc_configuration.dart';
 ///         subnetIds: [exampleAwsSubnet.id],
 ///         ipAddressType: "IP_V4",
 ///     },
+///     code: {
+///         s3Bucket: testAwsS3Bucket.id,
+///         s3Key: object.key,
+///     },
 ///     cacheStorageConfigurations: [{
 ///         type: "CACHE_1000",
 ///         size: 1200,
 ///     }],
 ///     databases: [{
-///         databaseName: exampleAwsFinspaceKxDatabase.name,
 ///         cacheConfiguration: [{
 ///             cacheType: "CACHE_1000",
 ///             dbPaths: "/",
 ///         }],
+///         databaseName: exampleAwsFinspaceKxDatabase.name,
 ///     }],
-///     code: {
-///         s3Bucket: testAwsS3Bucket.id,
-///         s3Key: object.key,
+///     name: "my-tf-kx-cluster",
+///     environmentId: exampleAwsFinspaceKxEnvironment.id,
+///     type: "HDB",
+///     releaseLabel: "1.0",
+///     azMode: "SINGLE",
+///     availabilityZoneId: "use1-az2",
+/// }, {
+///     customTimeouts: {
+///         create: "18h",
+///         update: "18h",
 ///     },
 /// });
 /// ```
@@ -58,12 +66,6 @@ import 'kx_cluster_vpc_configuration.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.finspace.KxCluster("example",
-///     name="my-tf-kx-cluster",
-///     environment_id=example_aws_finspace_kx_environment["id"],
-///     type="HDB",
-///     release_label="1.0",
-///     az_mode="SINGLE",
-///     availability_zone_id="use1-az2",
 ///     capacity_configuration={
 ///         "node_type": "kx.s.2xlarge",
 ///         "node_count": 2,
@@ -74,21 +76,28 @@ import 'kx_cluster_vpc_configuration.dart';
 ///         "subnet_ids": [example_aws_subnet["id"]],
 ///         "ip_address_type": "IP_V4",
 ///     },
+///     code={
+///         "s3_bucket": test_aws_s3_bucket["id"],
+///         "s3_key": object["key"],
+///     },
 ///     cache_storage_configurations=[{
 ///         "type": "CACHE_1000",
 ///         "size": 1200,
 ///     }],
 ///     databases=[{
-///         "database_name": example_aws_finspace_kx_database["name"],
 ///         "cache_configuration": [{
 ///             "cacheType": "CACHE_1000",
 ///             "dbPaths": "/",
 ///         }],
+///         "database_name": example_aws_finspace_kx_database["name"],
 ///     }],
-///     code={
-///         "s3_bucket": test_aws_s3_bucket["id"],
-///         "s3_key": object["key"],
-///     })
+///     name="my-tf-kx-cluster",
+///     environment_id=example_aws_finspace_kx_environment["id"],
+///     type="HDB",
+///     release_label="1.0",
+///     az_mode="SINGLE",
+///     availability_zone_id="use1-az2",
+///     opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(create="18h", update="18h")))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -100,12 +109,6 @@ import 'kx_cluster_vpc_configuration.dart';
 /// {
 ///     var example = new Aws.FinSpace.KxCluster("example", new()
 ///     {
-///         Name = "my-tf-kx-cluster",
-///         EnvironmentId = exampleAwsFinspaceKxEnvironment.Id,
-///         Type = "HDB",
-///         ReleaseLabel = "1.0",
-///         AzMode = "SINGLE",
-///         AvailabilityZoneId = "use1-az2",
 ///         CapacityConfiguration = new Aws.FinSpace.Inputs.KxClusterCapacityConfigurationArgs
 ///         {
 ///             NodeType = "kx.s.2xlarge",
@@ -124,6 +127,11 @@ import 'kx_cluster_vpc_configuration.dart';
 ///             },
 ///             IpAddressType = "IP_V4",
 ///         },
+///         Code = new Aws.FinSpace.Inputs.KxClusterCodeArgs
+///         {
+///             S3Bucket = testAwsS3Bucket.Id,
+///             S3Key = @object.Key,
+///         },
 ///         CacheStorageConfigurations = new[]
 ///         {
 ///             new Aws.FinSpace.Inputs.KxClusterCacheStorageConfigurationArgs
@@ -136,7 +144,6 @@ import 'kx_cluster_vpc_configuration.dart';
 ///         {
 ///             new Aws.FinSpace.Inputs.KxClusterDatabaseArgs
 ///             {
-///                 DatabaseName = exampleAwsFinspaceKxDatabase.Name,
 ///                 CacheConfiguration = new[]
 ///                 {
 ///
@@ -145,13 +152,15 @@ import 'kx_cluster_vpc_configuration.dart';
 ///                         { "dbPaths", "/" },
 ///                     },
 ///                 },
+///                 DatabaseName = exampleAwsFinspaceKxDatabase.Name,
 ///             },
 ///         },
-///         Code = new Aws.FinSpace.Inputs.KxClusterCodeArgs
-///         {
-///             S3Bucket = testAwsS3Bucket.Id,
-///             S3Key = @object.Key,
-///         },
+///         Name = "my-tf-kx-cluster",
+///         EnvironmentId = exampleAwsFinspaceKxEnvironment.Id,
+///         Type = "HDB",
+///         ReleaseLabel = "1.0",
+///         AzMode = "SINGLE",
+///         AvailabilityZoneId = "use1-az2",
 ///     });
 ///
 /// });
@@ -167,12 +176,6 @@ import 'kx_cluster_vpc_configuration.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := finspace.NewKxCluster(ctx, "example", &finspace.KxClusterArgs{
-/// 			Name:               pulumi.String("my-tf-kx-cluster"),
-/// 			EnvironmentId:      pulumi.Any(exampleAwsFinspaceKxEnvironment.Id),
-/// 			Type:               pulumi.String("HDB"),
-/// 			ReleaseLabel:       pulumi.String("1.0"),
-/// 			AzMode:             pulumi.String("SINGLE"),
-/// 			AvailabilityZoneId: pulumi.String("use1-az2"),
 /// 			CapacityConfiguration: &finspace.KxClusterCapacityConfigurationArgs{
 /// 				NodeType:  pulumi.String("kx.s.2xlarge"),
 /// 				NodeCount: pulumi.Int(2),
@@ -187,6 +190,10 @@ import 'kx_cluster_vpc_configuration.dart';
 /// 				},
 /// 				IpAddressType: pulumi.String("IP_V4"),
 /// 			},
+/// 			Code: &finspace.KxClusterCodeArgs{
+/// 				S3Bucket: pulumi.Any(testAwsS3Bucket.Id),
+/// 				S3Key:    pulumi.Any(object.Key),
+/// 			},
 /// 			CacheStorageConfigurations: finspace.KxClusterCacheStorageConfigurationArray{
 /// 				&finspace.KxClusterCacheStorageConfigurationArgs{
 /// 					Type: pulumi.String("CACHE_1000"),
@@ -195,20 +202,22 @@ import 'kx_cluster_vpc_configuration.dart';
 /// 			},
 /// 			Databases: finspace.KxClusterDatabaseArray{
 /// 				&finspace.KxClusterDatabaseArgs{
-/// 					DatabaseName: pulumi.Any(exampleAwsFinspaceKxDatabase.Name),
 /// 					CacheConfiguration: []map[string]string{
 /// 						{
 /// 							"cacheType": "CACHE_1000",
 /// 							"dbPaths":   "/",
 /// 						},
 /// 					},
+/// 					DatabaseName: pulumi.Any(exampleAwsFinspaceKxDatabase.Name),
 /// 				},
 /// 			},
-/// 			Code: &finspace.KxClusterCodeArgs{
-/// 				S3Bucket: pulumi.Any(testAwsS3Bucket.Id),
-/// 				S3Key:    pulumi.Any(object.Key),
-/// 			},
-/// 		})
+/// 			Name:               pulumi.String("my-tf-kx-cluster"),
+/// 			EnvironmentId:      pulumi.Any(exampleAwsFinspaceKxEnvironment.Id),
+/// 			Type:               pulumi.String("HDB"),
+/// 			ReleaseLabel:       pulumi.String("1.0"),
+/// 			AzMode:             pulumi.String("SINGLE"),
+/// 			AvailabilityZoneId: pulumi.String("use1-az2"),
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Create: "18h", Update: "18h"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -226,12 +235,10 @@ import 'kx_cluster_vpc_configuration.dart';
 /// }
 ///
 /// resource "aws_finspace_kxcluster" "example" {
-///   name                 = "my-tf-kx-cluster"
-///   environment_id       = exampleAwsFinspaceKxEnvironment.id
-///   type                 = "HDB"
-///   release_label        = "1.0"
-///   az_mode              = "SINGLE"
-///   availability_zone_id = "use1-az2"
+///   timeouts {
+///     create = "18h"
+///     update = "18h"
+///   }
 ///   capacity_configuration = {
 ///     node_type  = "kx.s.2xlarge"
 ///     node_count = 2
@@ -242,21 +249,27 @@ import 'kx_cluster_vpc_configuration.dart';
 ///     subnet_ids         = [exampleAwsSubnet.id]
 ///     ip_address_type    = "IP_V4"
 ///   }
+///   code = {
+///     s3_bucket = testAwsS3Bucket.id
+///     s3_key    = object.key
+///   }
 ///   cache_storage_configurations {
 ///     type = "CACHE_1000"
 ///     size = 1200
 ///   }
 ///   databases {
-///     database_name = exampleAwsFinspaceKxDatabase.name
 ///     cache_configuration = [{
 ///       "cacheType" = "CACHE_1000"
 ///       "dbPaths"   = "/"
 ///     }]
+///     database_name = exampleAwsFinspaceKxDatabase.name
 ///   }
-///   code = {
-///     s3_bucket = testAwsS3Bucket.id
-///     s3_key    = object.key
-///   }
+///   name                 = "my-tf-kx-cluster"
+///   environment_id       = exampleAwsFinspaceKxEnvironment.id
+///   type                 = "HDB"
+///   release_label        = "1.0"
+///   az_mode              = "SINGLE"
+///   availability_zone_id = "use1-az2"
 /// }
 /// ```
 /// ```java
@@ -269,9 +282,11 @@ import 'kx_cluster_vpc_configuration.dart';
 /// import com.pulumi.aws.finspace.KxClusterArgs;
 /// import com.pulumi.aws.finspace.inputs.KxClusterCapacityConfigurationArgs;
 /// import com.pulumi.aws.finspace.inputs.KxClusterVpcConfigurationArgs;
+/// import com.pulumi.aws.finspace.inputs.KxClusterCodeArgs;
 /// import com.pulumi.aws.finspace.inputs.KxClusterCacheStorageConfigurationArgs;
 /// import com.pulumi.aws.finspace.inputs.KxClusterDatabaseArgs;
-/// import com.pulumi.aws.finspace.inputs.KxClusterCodeArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import com.pulumi.resources.CustomTimeouts;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -286,12 +301,6 @@ import 'kx_cluster_vpc_configuration.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new KxCluster("example", KxClusterArgs.builder()
-///             .name("my-tf-kx-cluster")
-///             .environmentId(exampleAwsFinspaceKxEnvironment.id())
-///             .type("HDB")
-///             .releaseLabel("1.0")
-///             .azMode("SINGLE")
-///             .availabilityZoneId("use1-az2")
 ///             .capacityConfiguration(KxClusterCapacityConfigurationArgs.builder()
 ///                 .nodeType("kx.s.2xlarge")
 ///                 .nodeCount(2)
@@ -302,22 +311,33 @@ import 'kx_cluster_vpc_configuration.dart';
 ///                 .subnetIds(exampleAwsSubnet.id())
 ///                 .ipAddressType("IP_V4")
 ///                 .build())
+///             .code(KxClusterCodeArgs.builder()
+///                 .s3Bucket(testAwsS3Bucket.id())
+///                 .s3Key(object.key())
+///                 .build())
 ///             .cacheStorageConfigurations(KxClusterCacheStorageConfigurationArgs.builder()
 ///                 .type("CACHE_1000")
 ///                 .size(1200)
 ///                 .build())
 ///             .databases(KxClusterDatabaseArgs.builder()
-///                 .databaseName(exampleAwsFinspaceKxDatabase.name())
 ///                 .cacheConfiguration(Arrays.asList(Map.ofEntries(
 ///                     Map.entry("cacheType", "CACHE_1000"),
 ///                     Map.entry("dbPaths", "/")
 ///                 )))
+///                 .databaseName(exampleAwsFinspaceKxDatabase.name())
 ///                 .build())
-///             .code(KxClusterCodeArgs.builder()
-///                 .s3Bucket(testAwsS3Bucket.id())
-///                 .s3Key(object.key())
+///             .name("my-tf-kx-cluster")
+///             .environmentId(exampleAwsFinspaceKxEnvironment.id())
+///             .type("HDB")
+///             .releaseLabel("1.0")
+///             .azMode("SINGLE")
+///             .availabilityZoneId("use1-az2")
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .create(CustomTimeouts.parseTimeoutString("18h"))
+///                     .update(CustomTimeouts.parseTimeoutString("18h"))
 ///                 .build())
-///             .build());
+///                 .build());
 ///
 ///     }
 /// }
@@ -327,12 +347,6 @@ import 'kx_cluster_vpc_configuration.dart';
 ///   example:
 ///     type: aws:finspace:KxCluster
 ///     properties:
-///       name: my-tf-kx-cluster
-///       environmentId: ${exampleAwsFinspaceKxEnvironment.id}
-///       type: HDB
-///       releaseLabel: '1.0'
-///       azMode: SINGLE
-///       availabilityZoneId: use1-az2
 ///       capacityConfiguration:
 ///         nodeType: kx.s.2xlarge
 ///         nodeCount: 2
@@ -343,17 +357,27 @@ import 'kx_cluster_vpc_configuration.dart';
 ///         subnetIds:
 ///           - ${exampleAwsSubnet.id}
 ///         ipAddressType: IP_V4
+///       code:
+///         s3Bucket: ${testAwsS3Bucket.id}
+///         s3Key: ${object.key}
 ///       cacheStorageConfigurations:
 ///         - type: CACHE_1000
 ///           size: 1200
 ///       databases:
-///         - databaseName: ${exampleAwsFinspaceKxDatabase.name}
-///           cacheConfiguration:
+///         - cacheConfiguration:
 ///             - cacheType: CACHE_1000
 ///               dbPaths: /
-///       code:
-///         s3Bucket: ${testAwsS3Bucket.id}
-///         s3Key: ${object.key}
+///           databaseName: ${exampleAwsFinspaceKxDatabase.name}
+///       name: my-tf-kx-cluster
+///       environmentId: ${exampleAwsFinspaceKxEnvironment.id}
+///       type: HDB
+///       releaseLabel: '1.0'
+///       azMode: SINGLE
+///       availabilityZoneId: use1-az2
+///     options:
+///       customTimeouts:
+///         create: 18h
+///         update: 18h
 /// ```
 ///
 ///
@@ -365,7 +389,7 @@ import 'kx_cluster_vpc_configuration.dart';
 /// $ pulumi import aws:finspace/kxCluster:KxCluster example n3ceo7wqxoxcti5tujqwzs,my-tf-kx-cluster
 /// ```
 class KxCluster extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) identifier of the KX cluster.
+  /// ARN identifier of the KX cluster.
   late final pulumi.Output<String> arn;
   /// Configuration based on which FinSpace will scale in or scale out nodes in your cluster. See `autoScalingConfiguration` Block.
   late final pulumi.Output<KxClusterAutoScalingConfiguration?> autoScalingConfiguration;
@@ -374,7 +398,7 @@ class KxCluster extends pulumi.CustomResource {
   /// Number of availability zones to assign per cluster. Valid values are `SINGLE` (assigns one availability zone per cluster) and `MULTI` (assigns all the availability zones per cluster).
   late final pulumi.Output<String> azMode;
   /// Configurations for a read only cache storage associated with a cluster. This cache will be stored as an FSx Lustre that reads from the S3 store. See `cacheStorageConfigurations` Block.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cacheStorageConfigurations;
+  late final pulumi.Output<List<KxClusterCacheStorageConfiguration>?> cacheStorageConfigurations;
   /// Structure for the metadata of a cluster. Includes information like the CPUs needed, memory of instances, and number of instances. See `capacityConfiguration` Block.
   late final pulumi.Output<KxClusterCapacityConfiguration?> capacityConfiguration;
   /// Details of the custom code that you want to use inside a cluster when analyzing data. Consists of the S3 source bucket, location, object version, and the relative path from where the custom code is loaded into the cluster. See `code` Block.
@@ -384,7 +408,7 @@ class KxCluster extends pulumi.CustomResource {
   /// Timestamp at which the cluster is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   late final pulumi.Output<String> createdTimestamp;
   /// KX database that will be available for querying. See `database` Block.
-  late final pulumi.Output<List<Map<String, dynamic>>?> databases;
+  late final pulumi.Output<List<KxClusterDatabase>?> databases;
   /// Description of the cluster.
   late final pulumi.Output<String?> description;
   /// Unique identifier for the KX environment.
@@ -414,7 +438,7 @@ class KxCluster extends pulumi.CustomResource {
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration to store Tickerplant logs. It consists of a list of volumes that will be mounted to your cluster. For the cluster type Tickerplant, the location of the TP volume on the cluster will be available by using the global variable .aws.tp_log_path. See `tickerplantLogConfiguration` Block.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tickerplantLogConfigurations;
+  late final pulumi.Output<List<KxClusterTickerplantLogConfiguration>?> tickerplantLogConfigurations;
   /// Type of KDB database. Valid values are `HDB` (Historical Database), `RDB` (Realtime Database, which requires the `savedownStorageConfiguration` parameter), `GATEWAY`, `GP` (general purpose), and `Tickerplant`.
   late final pulumi.Output<String> type;
   /// Configuration details about the network where the Privatelink endpoint of the cluster resides. See `vpcConfiguration` Block.
@@ -434,18 +458,18 @@ class KxCluster extends pulumi.CustomResource {
           'aws:finspace/kxCluster:KxCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingConfiguration = registerOutput<KxClusterAutoScalingConfiguration?>('autoScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterAutoScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     availabilityZoneId = registerOutput<String?>('availabilityZoneId');
     azMode = registerOutput<String>('azMode');
-    cacheStorageConfigurations = registerOutput<List<Map<String, dynamic>>?>('cacheStorageConfigurations');
+    cacheStorageConfigurations = registerOutput<List<KxClusterCacheStorageConfiguration>?>('cacheStorageConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxClusterCacheStorageConfiguration>(guardedValue, (value) => KxClusterCacheStorageConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     capacityConfiguration = registerOutput<KxClusterCapacityConfiguration?>('capacityConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterCapacityConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     code = registerOutput<KxClusterCode?>('code', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterCode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    commandLineArguments = registerOutput<Map<String, String>?>('commandLineArguments');
+    commandLineArguments = registerOutput<Map<String, String>?>('commandLineArguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createdTimestamp = registerOutput<String>('createdTimestamp');
-    databases = registerOutput<List<Map<String, dynamic>>?>('databases');
+    databases = registerOutput<List<KxClusterDatabase>?>('databases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxClusterDatabase>(guardedValue, (value) => KxClusterDatabase.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     environmentId = registerOutput<String>('environmentId');
     executionRole = registerOutput<String?>('executionRole');
@@ -458,9 +482,9 @@ class KxCluster extends pulumi.CustomResource {
     scalingGroupConfiguration = registerOutput<KxClusterScalingGroupConfiguration?>('scalingGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterScalingGroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tickerplantLogConfigurations = registerOutput<List<Map<String, dynamic>>?>('tickerplantLogConfigurations');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tickerplantLogConfigurations = registerOutput<List<KxClusterTickerplantLogConfiguration>?>('tickerplantLogConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxClusterTickerplantLogConfiguration>(guardedValue, (value) => KxClusterTickerplantLogConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     vpcConfiguration = registerOutput<KxClusterVpcConfiguration>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -470,11 +494,12 @@ class KxCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KxClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KxCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -492,12 +517,12 @@ class KxCluster extends pulumi.CustomResource {
     autoScalingConfiguration = registerOutput<KxClusterAutoScalingConfiguration?>('autoScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterAutoScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     availabilityZoneId = registerOutput<String?>('availabilityZoneId');
     azMode = registerOutput<String>('azMode');
-    cacheStorageConfigurations = registerOutput<List<Map<String, dynamic>>?>('cacheStorageConfigurations');
+    cacheStorageConfigurations = registerOutput<List<KxClusterCacheStorageConfiguration>?>('cacheStorageConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxClusterCacheStorageConfiguration>(guardedValue, (value) => KxClusterCacheStorageConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     capacityConfiguration = registerOutput<KxClusterCapacityConfiguration?>('capacityConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterCapacityConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     code = registerOutput<KxClusterCode?>('code', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterCode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    commandLineArguments = registerOutput<Map<String, String>?>('commandLineArguments');
+    commandLineArguments = registerOutput<Map<String, String>?>('commandLineArguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createdTimestamp = registerOutput<String>('createdTimestamp');
-    databases = registerOutput<List<Map<String, dynamic>>?>('databases');
+    databases = registerOutput<List<KxClusterDatabase>?>('databases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxClusterDatabase>(guardedValue, (value) => KxClusterDatabase.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     environmentId = registerOutput<String>('environmentId');
     executionRole = registerOutput<String?>('executionRole');
@@ -510,9 +535,47 @@ class KxCluster extends pulumi.CustomResource {
     scalingGroupConfiguration = registerOutput<KxClusterScalingGroupConfiguration?>('scalingGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterScalingGroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     statusReason = registerOutput<String>('statusReason');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    tickerplantLogConfigurations = registerOutput<List<Map<String, dynamic>>?>('tickerplantLogConfigurations');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tickerplantLogConfigurations = registerOutput<List<KxClusterTickerplantLogConfiguration>?>('tickerplantLogConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxClusterTickerplantLogConfiguration>(guardedValue, (value) => KxClusterTickerplantLogConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    vpcConfiguration = registerOutput<KxClusterVpcConfiguration>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [KxCluster] resource.
+  KxCluster.reference(String urn)
+    : super(
+        'aws:finspace/kxCluster:KxCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    autoScalingConfiguration = registerOutput<KxClusterAutoScalingConfiguration?>('autoScalingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterAutoScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availabilityZoneId = registerOutput<String?>('availabilityZoneId');
+    azMode = registerOutput<String>('azMode');
+    cacheStorageConfigurations = registerOutput<List<KxClusterCacheStorageConfiguration>?>('cacheStorageConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxClusterCacheStorageConfiguration>(guardedValue, (value) => KxClusterCacheStorageConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    capacityConfiguration = registerOutput<KxClusterCapacityConfiguration?>('capacityConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterCapacityConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    code = registerOutput<KxClusterCode?>('code', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterCode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    commandLineArguments = registerOutput<Map<String, String>?>('commandLineArguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    databases = registerOutput<List<KxClusterDatabase>?>('databases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxClusterDatabase>(guardedValue, (value) => KxClusterDatabase.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    environmentId = registerOutput<String>('environmentId');
+    executionRole = registerOutput<String?>('executionRole');
+    initializationScript = registerOutput<String?>('initializationScript');
+    lastModifiedTimestamp = registerOutput<String>('lastModifiedTimestamp');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    releaseLabel = registerOutput<String>('releaseLabel');
+    savedownStorageConfiguration = registerOutput<KxClusterSavedownStorageConfiguration?>('savedownStorageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterSavedownStorageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scalingGroupConfiguration = registerOutput<KxClusterScalingGroupConfiguration?>('scalingGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterScalingGroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tickerplantLogConfigurations = registerOutput<List<KxClusterTickerplantLogConfiguration>?>('tickerplantLogConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxClusterTickerplantLogConfiguration>(guardedValue, (value) => KxClusterTickerplantLogConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     vpcConfiguration = registerOutput<KxClusterVpcConfiguration>('vpcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KxClusterVpcConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

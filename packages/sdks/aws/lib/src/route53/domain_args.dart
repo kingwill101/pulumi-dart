@@ -16,34 +16,34 @@ class DomainArgs {
   /// Details about the domain administrative contact. See Contact Blocks for more details.
   final pulumi.Input<DomainAdminContact> adminContact;
   /// Whether domain administrative contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? adminPrivacy;
+  final pulumi.Input<bool?>? adminPrivacy;
   /// Whether the domain registration is set to renew automatically. Default: `true`.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// Details about the domain billing contact. See Contact Blocks for more details.
-  final pulumi.Input<List<DomainBillingContact>>? billingContacts;
+  final pulumi.Input<List<DomainBillingContact>?>? billingContacts;
   /// Whether domain billing contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? billingPrivacy;
+  final pulumi.Input<bool?>? billingPrivacy;
   /// The name of the domain.
   final pulumi.Input<String> domainName;
   /// The number of years that you want to register the domain for. Domains are registered for a minimum of one year. Increasing the duration renews the domain.
-  final pulumi.Input<int>? durationInYears;
+  final pulumi.Input<int?>? durationInYears;
   /// The list of nameservers for the domain. See `nameServer` Blocks for more details.
-  final pulumi.Input<List<DomainNameServer>>? nameServers;
+  final pulumi.Input<List<DomainNameServer>?>? nameServers;
   /// Details about the domain registrant. See Contact Blocks for more details.
   final pulumi.Input<DomainRegistrantContact> registrantContact;
   /// Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? registrantPrivacy;
+  final pulumi.Input<bool?>? registrantPrivacy;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Details about the domain technical contact. See Contact Blocks for more details.
   final pulumi.Input<DomainTechContact> techContact;
   /// Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
-  final pulumi.Input<bool>? techPrivacy;
-  final pulumi.Input<DomainTimeouts>? timeouts;
+  final pulumi.Input<bool?>? techPrivacy;
+  final pulumi.Input<DomainTimeouts?>? timeouts;
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
   /// &gt; **NOTE:** You must specify the same privacy setting for `adminPrivacy`, `registrantPrivacy` and `techPrivacy`.
-  final pulumi.Input<bool>? transferLock;
+  final pulumi.Input<bool?>? transferLock;
 
   /// Creates a new [DomainArgs].
   /// [adminContact] Details about the domain administrative contact. See Contact Blocks for more details.
@@ -107,7 +107,7 @@ class DomainArgs {
       billingContacts: (() { final guardedValue = map['billingContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainBillingContact>(guardedValue, (value) => DomainBillingContact.fromMap((value as Map).cast<String, dynamic>()))); })(),
       billingPrivacy: (() { final guardedValue = map['billingPrivacy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      durationInYears: (() { final guardedValue = map['durationInYears']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      durationInYears: (() { final guardedValue = map['durationInYears']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nameServers: (() { final guardedValue = map['nameServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainNameServer>(guardedValue, (value) => DomainNameServer.fromMap((value as Map).cast<String, dynamic>()))); })(),
       registrantContact: pulumi.Input.fromValue(DomainRegistrantContact.fromMap((map['registrantContact']! as Map).cast<String, dynamic>())),
       registrantPrivacy: (() { final guardedValue = map['registrantPrivacy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

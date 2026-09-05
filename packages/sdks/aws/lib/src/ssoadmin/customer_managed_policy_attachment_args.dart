@@ -10,17 +10,17 @@ import 'customer_managed_policy_attachment_customer_managed_policy_reference.dar
 class CustomerManagedPolicyAttachmentArgs {
   /// Specifies the name and path of a customer managed policy. See below.
   final pulumi.Input<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference> customerManagedPolicyReference;
-  /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
+  /// ARN of the SSO Instance under which the operation will be executed.
   final pulumi.Input<String> instanceArn;
-  /// The Amazon Resource Name (ARN) of the Permission Set.
+  /// ARN of the Permission Set.
   final pulumi.Input<String> permissionSetArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [CustomerManagedPolicyAttachmentArgs].
   /// [customerManagedPolicyReference] Specifies the name and path of a customer managed policy. See below.
-  /// [instanceArn] The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
-  /// [permissionSetArn] The Amazon Resource Name (ARN) of the Permission Set.
+  /// [instanceArn] ARN of the SSO Instance under which the operation will be executed.
+  /// [permissionSetArn] ARN of the Permission Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const CustomerManagedPolicyAttachmentArgs({
     required this.customerManagedPolicyReference,

@@ -5,7 +5,7 @@ import 'guardrail_contextual_grounding_policy_config_filters_config.dart';
 
 class GuardrailContextualGroundingPolicyConfig {
   /// One or more blocks defining contextual grounding filter configs. See Contextual Grounding Filters Config for more information.
-  final pulumi.Input<List<GuardrailContextualGroundingPolicyConfigFiltersConfig>>? filtersConfigs;
+  final pulumi.Input<List<GuardrailContextualGroundingPolicyConfigFiltersConfig>?>? filtersConfigs;
 
   /// Creates a new [GuardrailContextualGroundingPolicyConfig].
   /// [filtersConfigs] One or more blocks defining contextual grounding filter configs. See Contextual Grounding Filters Config for more information.

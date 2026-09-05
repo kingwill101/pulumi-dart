@@ -245,7 +245,7 @@ class MulticastDomainAssociation extends pulumi.CustomResource {
           'aws:ec2transitgateway/multicastDomainAssociation:MulticastDomainAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     subnetId = registerOutput<String>('subnetId');
@@ -258,11 +258,12 @@ class MulticastDomainAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MulticastDomainAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MulticastDomainAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,6 +277,21 @@ class MulticastDomainAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String>('subnetId');
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+    transitGatewayMulticastDomainId = registerOutput<String>('transitGatewayMulticastDomainId');
+  }
+
+  /// Creates a typed reference to an existing [MulticastDomainAssociation] resource.
+  MulticastDomainAssociation.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/multicastDomainAssociation:MulticastDomainAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     subnetId = registerOutput<String>('subnetId');
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');

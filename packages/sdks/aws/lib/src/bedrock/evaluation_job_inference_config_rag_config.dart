@@ -6,9 +6,9 @@ import 'evaluation_job_inference_config_rag_config_precomputed_rag_source_config
 
 class EvaluationJobInferenceConfigRagConfig {
   /// Amazon Bedrock knowledge base. See `knowledgeBaseConfig` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfig>? knowledgeBaseConfig;
+  final pulumi.Input<EvaluationJobInferenceConfigRagConfigKnowledgeBaseConfig?>? knowledgeBaseConfig;
   /// RAG source where you provide your own precomputed inference response data. See `precomputedRagSourceConfig` Block below.
-  final pulumi.Input<EvaluationJobInferenceConfigRagConfigPrecomputedRagSourceConfig>? precomputedRagSourceConfig;
+  final pulumi.Input<EvaluationJobInferenceConfigRagConfigPrecomputedRagSourceConfig?>? precomputedRagSourceConfig;
 
   /// Creates a new [EvaluationJobInferenceConfigRagConfig].
   /// [knowledgeBaseConfig] Amazon Bedrock knowledge base. See `knowledgeBaseConfig` Block below.

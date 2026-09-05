@@ -521,7 +521,7 @@ class EnvironmentEC2 extends pulumi.CustomResource {
   late final pulumi.Output<String?> connectionType;
   /// The description of the environment.
   late final pulumi.Output<String?> description;
-  /// The identifier for the Amazon Machine Image (AMI) that's used to create the EC2 instance. Valid values are
+  /// Identifier for the AMI that's used to create the EC2 instance. Valid values are
   /// * `amazonlinux-2-x86_64`
   /// * `amazonlinux-2023-x86_64`
   /// * `ubuntu-18.04-x86_64`
@@ -560,7 +560,7 @@ class EnvironmentEC2 extends pulumi.CustomResource {
           'aws:cloud9/environmentEC2:EnvironmentEC2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     automaticStopTimeMinutes = registerOutput<int?>('automaticStopTimeMinutes');
@@ -572,8 +572,8 @@ class EnvironmentEC2 extends pulumi.CustomResource {
     ownerArn = registerOutput<String>('ownerArn');
     region = registerOutput<String>('region');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -582,11 +582,12 @@ class EnvironmentEC2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentEC2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentEC2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -610,8 +611,32 @@ class EnvironmentEC2 extends pulumi.CustomResource {
     ownerArn = registerOutput<String>('ownerArn');
     region = registerOutput<String>('region');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentEC2] resource.
+  EnvironmentEC2.reference(String urn)
+    : super(
+        'aws:cloud9/environmentEC2:EnvironmentEC2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    automaticStopTimeMinutes = registerOutput<int?>('automaticStopTimeMinutes');
+    connectionType = registerOutput<String?>('connectionType');
+    description = registerOutput<String?>('description');
+    imageId = registerOutput<String>('imageId');
+    instanceType = registerOutput<String>('instanceType');
+    this.name = registerOutput<String>('name');
+    ownerArn = registerOutput<String>('ownerArn');
+    region = registerOutput<String>('region');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

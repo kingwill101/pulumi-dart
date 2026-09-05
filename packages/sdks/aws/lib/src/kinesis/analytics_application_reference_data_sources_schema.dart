@@ -9,7 +9,7 @@ class AnalyticsApplicationReferenceDataSourcesSchema {
   /// See Record Columns below for more details.
   final pulumi.Input<List<AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn>> recordColumns;
   /// The Encoding of the record in the streaming source.
-  final pulumi.Input<String>? recordEncoding;
+  final pulumi.Input<String?>? recordEncoding;
   /// The Record Format and mapping information to schematize a record.
   /// See Record Format below for more details.
   final pulumi.Input<AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat> recordFormat;

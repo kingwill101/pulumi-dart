@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexingRuleRuleProbabilistic {
-  final pulumi.Input<double>? actualSamplingPercentage;
+  final pulumi.Input<double?>? actualSamplingPercentage;
   /// Configured sampling percentage of traceIds.
   final pulumi.Input<double> desiredSamplingPercentage;
 
@@ -24,8 +24,8 @@ class IndexingRuleRuleProbabilistic {
 
   factory IndexingRuleRuleProbabilistic.fromMap(Map<String, dynamic> map) {
     return IndexingRuleRuleProbabilistic(
-      actualSamplingPercentage: (() { final guardedValue = map['actualSamplingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      desiredSamplingPercentage: pulumi.Input.fromValue(map['desiredSamplingPercentage'] as double),
+      actualSamplingPercentage: (() { final guardedValue = map['actualSamplingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      desiredSamplingPercentage: pulumi.Input.fromValue((map['desiredSamplingPercentage'] as num).toDouble()),
     );
   }
 }

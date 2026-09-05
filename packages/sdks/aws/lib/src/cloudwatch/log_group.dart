@@ -155,7 +155,7 @@ import 'log_group_state.dart';
 /// $ pulumi import aws:cloudwatch/logGroup:LogGroup example yada
 /// ```
 class LogGroup extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) specifying the log group. Any `:*` suffix added by the API, denoting all CloudWatch Log Streams under the CloudWatch Log Group, is removed for greater compatibility with other AWS services that do not accept the suffix.
+  /// ARN specifying the log group. Any `:*` suffix added by the API, denoting all CloudWatch Log Streams under the CloudWatch Log Group, is removed for greater compatibility with other AWS services that do not accept the suffix.
   late final pulumi.Output<String> arn;
   /// Boolean to indicate whether deletion protection is enabled. Defaults to `false`. Once set, switching to `false` requires explicitly specifying `false` rather than removing this argument.
   late final pulumi.Output<bool> deletionProtectionEnabled;
@@ -194,7 +194,7 @@ class LogGroup extends pulumi.CustomResource {
           'aws:cloudwatch/logGroup:LogGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
@@ -205,8 +205,8 @@ class LogGroup extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     retentionInDays = registerOutput<int?>('retentionInDays');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LogGroup] resource's state with the given [name] and [id].
@@ -214,11 +214,12 @@ class LogGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -241,7 +242,29 @@ class LogGroup extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     retentionInDays = registerOutput<int?>('retentionInDays');
     skipDestroy = registerOutput<bool?>('skipDestroy');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LogGroup] resource.
+  LogGroup.reference(String urn)
+    : super(
+        'aws:cloudwatch/logGroup:LogGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    logGroupClass = registerOutput<String>('logGroupClass');
+    this.name = registerOutput<String>('name');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

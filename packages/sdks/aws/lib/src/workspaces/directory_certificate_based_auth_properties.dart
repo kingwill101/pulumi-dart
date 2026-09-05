@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryCertificateBasedAuthProperties {
-  /// The Amazon Resource Name (ARN) of the certificate manager private certificate authority (ACM-PCA) that is used for certificate-based authentication.
-  final pulumi.Input<String>? certificateAuthorityArn;
+  /// ARN of the certificate manager private certificate authority (ACM-PCA) that is used for certificate-based authentication.
+  final pulumi.Input<String?>? certificateAuthorityArn;
   /// Status of certificate-based authentication. Default `DISABLED`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DirectoryCertificateBasedAuthProperties].
-  /// [certificateAuthorityArn] The Amazon Resource Name (ARN) of the certificate manager private certificate authority (ACM-PCA) that is used for certificate-based authentication.
+  /// [certificateAuthorityArn] ARN of the certificate manager private certificate authority (ACM-PCA) that is used for certificate-based authentication.
   /// [status] Status of certificate-based authentication. Default `DISABLED`.
   const DirectoryCertificateBasedAuthProperties({
     this.certificateAuthorityArn,

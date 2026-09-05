@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_secretsmanager_get_random_password_get_random_password_args_doc}
 class GetRandomPasswordArgs {
   /// String of the characters that you don't want in the password.
-  final pulumi.Input<String>? excludeCharacters;
+  final pulumi.Input<String?>? excludeCharacters;
   /// Whether to exclude lowercase letters from the password.
-  final pulumi.Input<bool>? excludeLowercase;
+  final pulumi.Input<bool?>? excludeLowercase;
   /// Whether to exclude numbers from the password.
-  final pulumi.Input<bool>? excludeNumbers;
+  final pulumi.Input<bool?>? excludeNumbers;
   /// Whether to exclude the following punctuation characters from the password: ``! " # $ % & ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~ .``
-  final pulumi.Input<bool>? excludePunctuation;
+  final pulumi.Input<bool?>? excludePunctuation;
   /// Whether to exclude uppercase letters from the password.
-  final pulumi.Input<bool>? excludeUppercase;
+  final pulumi.Input<bool?>? excludeUppercase;
   /// Whether to include the space character.
-  final pulumi.Input<bool>? includeSpace;
+  final pulumi.Input<bool?>? includeSpace;
   /// Length of the password.
-  final pulumi.Input<int>? passwordLength;
+  final pulumi.Input<int?>? passwordLength;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether to include at least one upper and lowercase letter, one number, and one punctuation.
-  final pulumi.Input<bool>? requireEachIncludedType;
+  final pulumi.Input<bool?>? requireEachIncludedType;
 
   /// Creates a new [GetRandomPasswordArgs].
   /// [excludeCharacters] String of the characters that you don't want in the password.
@@ -70,7 +70,7 @@ class GetRandomPasswordArgs {
       excludePunctuation: (() { final guardedValue = map['excludePunctuation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       excludeUppercase: (() { final guardedValue = map['excludeUppercase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       includeSpace: (() { final guardedValue = map['includeSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      passwordLength: (() { final guardedValue = map['passwordLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      passwordLength: (() { final guardedValue = map['passwordLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requireEachIncludedType: (() { final guardedValue = map['requireEachIncludedType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

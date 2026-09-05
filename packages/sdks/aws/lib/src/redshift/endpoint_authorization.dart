@@ -138,7 +138,7 @@ class EndpointAuthorization extends pulumi.CustomResource {
   late final pulumi.Output<String> grantor;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
+  /// VPC identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
   late final pulumi.Output<List<String>?> vpcIds;
 
   /// Creates a new [EndpointAuthorization].
@@ -153,7 +153,7 @@ class EndpointAuthorization extends pulumi.CustomResource {
           'aws:redshift/endpointAuthorization:EndpointAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     account = registerOutput<String>('account');
     allowedAllVpcs = registerOutput<bool>('allowedAllVpcs');
@@ -163,7 +163,7 @@ class EndpointAuthorization extends pulumi.CustomResource {
     grantee = registerOutput<String>('grantee');
     grantor = registerOutput<String>('grantor');
     region = registerOutput<String>('region');
-    vpcIds = registerOutput<List<String>?>('vpcIds');
+    vpcIds = registerOutput<List<String>?>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [EndpointAuthorization] resource's state with the given [name] and [id].
@@ -171,11 +171,12 @@ class EndpointAuthorization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointAuthorizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointAuthorization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -197,6 +198,26 @@ class EndpointAuthorization extends pulumi.CustomResource {
     grantee = registerOutput<String>('grantee');
     grantor = registerOutput<String>('grantor');
     region = registerOutput<String>('region');
-    vpcIds = registerOutput<List<String>?>('vpcIds');
+    vpcIds = registerOutput<List<String>?>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [EndpointAuthorization] resource.
+  EndpointAuthorization.reference(String urn)
+    : super(
+        'aws:redshift/endpointAuthorization:EndpointAuthorization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    account = registerOutput<String>('account');
+    allowedAllVpcs = registerOutput<bool>('allowedAllVpcs');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    endpointCount = registerOutput<int>('endpointCount');
+    forceDelete = registerOutput<bool?>('forceDelete');
+    grantee = registerOutput<String>('grantee');
+    grantor = registerOutput<String>('grantor');
+    region = registerOutput<String>('region');
+    vpcIds = registerOutput<List<String>?>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

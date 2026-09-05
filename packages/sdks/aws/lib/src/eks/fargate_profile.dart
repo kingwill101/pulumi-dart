@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fargate_profile_args.dart';
+import 'fargate_profile_selector.dart';
 import 'fargate_profile_state.dart';
 
 /// Manages an EKS Fargate Profile.
@@ -12,13 +13,13 @@ import 'fargate_profile_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.eks.FargateProfile("example", {
+///     selectors: [{
+///         namespace: "example",
+///     }],
 ///     clusterName: exampleAwsEksCluster.name,
 ///     fargateProfileName: "example",
 ///     podExecutionRoleArn: exampleAwsIamRole.arn,
 ///     subnetIds: exampleAwsSubnet.map(__item => __item.id),
-///     selectors: [{
-///         namespace: "example",
-///     }],
 /// });
 /// ```
 /// ```python
@@ -26,13 +27,13 @@ import 'fargate_profile_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.eks.FargateProfile("example",
+///     selectors=[{
+///         "namespace": "example",
+///     }],
 ///     cluster_name=example_aws_eks_cluster["name"],
 ///     fargate_profile_name="example",
 ///     pod_execution_role_arn=example_aws_iam_role["arn"],
-///     subnet_ids=[__item["id"] for __item in example_aws_subnet],
-///     selectors=[{
-///         "namespace": "example",
-///     }])
+///     subnet_ids=[__item["id"] for __item in example_aws_subnet])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,10 +45,6 @@ import 'fargate_profile_state.dart';
 /// {
 ///     var example = new Aws.Eks.FargateProfile("example", new()
 ///     {
-///         ClusterName = exampleAwsEksCluster.Name,
-///         FargateProfileName = "example",
-///         PodExecutionRoleArn = exampleAwsIamRole.Arn,
-///         SubnetIds = exampleAwsSubnet.Select(__item => __item.Id).ToList(),
 ///         Selectors = new[]
 ///         {
 ///             new Aws.Eks.Inputs.FargateProfileSelectorArgs
@@ -55,6 +52,10 @@ import 'fargate_profile_state.dart';
 ///                 Namespace = "example",
 ///             },
 ///         },
+///         ClusterName = exampleAwsEksCluster.Name,
+///         FargateProfileName = "example",
+///         PodExecutionRoleArn = exampleAwsIamRole.Arn,
+///         SubnetIds = exampleAwsSubnet.Select(__item => __item.Id).ToList(),
 ///     });
 ///
 /// });
@@ -73,15 +74,15 @@ import 'fargate_profile_state.dart';
 /// splat0 = append(splat0, val0.(map[string]interface{})["id"])
 /// }
 /// _, err := eks.NewFargateProfile(ctx, "example", &eks.FargateProfileArgs{
-/// ClusterName: pulumi.Any(exampleAwsEksCluster.Name),
-/// FargateProfileName: pulumi.String("example"),
-/// PodExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// SubnetIds: toPulumiArray(splat0),
 /// Selectors: eks.FargateProfileSelectorArray{
 /// &eks.FargateProfileSelectorArgs{
 /// Namespace: pulumi.String("example"),
 /// },
 /// },
+/// ClusterName: pulumi.Any(exampleAwsEksCluster.Name),
+/// FargateProfileName: pulumi.String("example"),
+/// PodExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// SubnetIds: toPulumiArray(splat0),
 /// })
 /// if err != nil {
 /// return err
@@ -107,13 +108,13 @@ import 'fargate_profile_state.dart';
 /// }
 ///
 /// resource "aws_eks_fargateprofile" "example" {
+///   selectors {
+///     namespace = "example"
+///   }
 ///   cluster_name           = exampleAwsEksCluster.name
 ///   fargate_profile_name   = "example"
 ///   pod_execution_role_arn = exampleAwsIamRole.arn
 ///   subnet_ids             = exampleAwsSubnet[*].id
-///   selectors {
-///     namespace = "example"
-///   }
 /// }
 /// ```
 /// ```java
@@ -139,13 +140,13 @@ import 'fargate_profile_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new FargateProfile("example", FargateProfileArgs.builder()
+///             .selectors(FargateProfileSelectorArgs.builder()
+///                 .namespace("example")
+///                 .build())
 ///             .clusterName(exampleAwsEksCluster.name())
 ///             .fargateProfileName("example")
 ///             .podExecutionRoleArn(exampleAwsIamRole.arn())
 ///             .subnetIds(exampleAwsSubnet.stream().map(element -> element.id()).collect(toList()))
-///             .selectors(FargateProfileSelectorArgs.builder()
-///                 .namespace("example")
-///                 .build())
 ///             .build());
 ///
 ///     }
@@ -400,18 +401,18 @@ import 'fargate_profile_state.dart';
 /// $ pulumi import aws:eks/fargateProfile:FargateProfile example example-cluster:example-profile
 /// ```
 class FargateProfile extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the EKS Fargate Profile.
+  /// ARN of the EKS Fargate Profile.
   late final pulumi.Output<String> arn;
   /// Name of the EKS Cluster.
   late final pulumi.Output<String> clusterName;
   /// Name of the EKS Fargate Profile.
   late final pulumi.Output<String> fargateProfileName;
-  /// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Fargate Profile.
+  /// ARN of the IAM Role that provides permissions for the EKS Fargate Profile.
   late final pulumi.Output<String> podExecutionRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block(s) for selecting Kubernetes Pods to execute with this EKS Fargate Profile. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> selectors;
+  late final pulumi.Output<List<FargateProfileSelector>> selectors;
   /// Status of the EKS Fargate Profile.
   late final pulumi.Output<String> status;
   /// Identifiers of private EC2 Subnets to associate with the EKS Fargate Profile. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
@@ -435,18 +436,18 @@ class FargateProfile extends pulumi.CustomResource {
           'aws:eks/fargateProfile:FargateProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterName = registerOutput<String>('clusterName');
     fargateProfileName = registerOutput<String>('fargateProfileName');
     podExecutionRoleArn = registerOutput<String>('podExecutionRoleArn');
     region = registerOutput<String>('region');
-    selectors = registerOutput<List<Map<String, dynamic>>>('selectors');
+    selectors = registerOutput<List<FargateProfileSelector>>('selectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FargateProfileSelector>(guardedValue, (value) => FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    subnetIds = registerOutput<List<String>?>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [FargateProfile] resource's state with the given [name] and [id].
@@ -454,11 +455,12 @@ class FargateProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FargateProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FargateProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -477,10 +479,31 @@ class FargateProfile extends pulumi.CustomResource {
     fargateProfileName = registerOutput<String>('fargateProfileName');
     podExecutionRoleArn = registerOutput<String>('podExecutionRoleArn');
     region = registerOutput<String>('region');
-    selectors = registerOutput<List<Map<String, dynamic>>>('selectors');
+    selectors = registerOutput<List<FargateProfileSelector>>('selectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FargateProfileSelector>(guardedValue, (value) => FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    subnetIds = registerOutput<List<String>?>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FargateProfile] resource.
+  FargateProfile.reference(String urn)
+    : super(
+        'aws:eks/fargateProfile:FargateProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    clusterName = registerOutput<String>('clusterName');
+    fargateProfileName = registerOutput<String>('fargateProfileName');
+    podExecutionRoleArn = registerOutput<String>('podExecutionRoleArn');
+    region = registerOutput<String>('region');
+    selectors = registerOutput<List<FargateProfileSelector>>('selectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FargateProfileSelector>(guardedValue, (value) => FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    subnetIds = registerOutput<List<String>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

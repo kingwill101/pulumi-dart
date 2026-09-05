@@ -6,9 +6,9 @@ import 'v2models_intent_confirmation_setting_declination_conditional_default_bra
 
 class V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranch {
   /// Configuration block for the next step in the conversation. See `nextStep`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchNextStep?>? nextStep;
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponse>? response;
+  final pulumi.Input<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponse?>? response;
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `nextStep`.

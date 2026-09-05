@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThemeConfigurationSheetTileBorder {
   /// The option to enable display of borders for visuals.
-  final pulumi.Input<bool>? show;
+  final pulumi.Input<bool?>? show;
 
   /// Creates a new [ThemeConfigurationSheetTileBorder].
   /// [show] The option to enable display of borders for visuals.

@@ -6,9 +6,9 @@ class ProvisionedProductProvisioningParameter {
   /// Parameter key.
   final pulumi.Input<String> key;
   /// Whether to ignore `value` and keep the previous parameter value. Ignored when initially provisioning a product.
-  final pulumi.Input<bool>? usePreviousValue;
+  final pulumi.Input<bool?>? usePreviousValue;
   /// Parameter value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ProvisionedProductProvisioningParameter].
   /// [key] Parameter key.

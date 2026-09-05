@@ -5,7 +5,7 @@ import 'replicator_log_delivery_replicator_log_delivery.dart';
 
 class ReplicatorLogDelivery {
   /// Configuration block for replicator log delivery. Detailed below.
-  final pulumi.Input<ReplicatorLogDeliveryReplicatorLogDelivery>? replicatorLogDelivery;
+  final pulumi.Input<ReplicatorLogDeliveryReplicatorLogDelivery?>? replicatorLogDelivery;
 
   /// Creates a new [ReplicatorLogDelivery].
   /// [replicatorLogDelivery] Configuration block for replicator log delivery. Detailed below.

@@ -6,7 +6,7 @@ class ProjectServiceCatalogProvisioningDetailsProvisioningParameter {
   /// The key that identifies a provisioning parameter.
   final pulumi.Input<String> key;
   /// The value of the provisioning parameter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ProjectServiceCatalogProvisioningDetailsProvisioningParameter].
   /// [key] The key that identifies a provisioning parameter.

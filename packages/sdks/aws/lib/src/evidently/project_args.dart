@@ -9,15 +9,15 @@ import 'project_data_delivery.dart';
 /// {@macro pulumi_evidently_project_project_args_doc}
 class ProjectArgs {
   /// A block that contains information about where Evidently is to store evaluation events for longer term storage, if you choose to do so. If you choose not to store these events, Evidently deletes them after using them to produce metrics and other experiment results that you can view. See below.
-  final pulumi.Input<ProjectDataDelivery>? dataDelivery;
+  final pulumi.Input<ProjectDataDelivery?>? dataDelivery;
   /// Specifies the description of the project.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A name for the project.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Tags to apply to the project. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ProjectArgs].
   /// [dataDelivery] A block that contains information about where Evidently is to store evaluation events for longer term storage, if you choose to do so. If you choose not to store these events, Evidently deletes them after using them to produce metrics and other experiment results that you can view. See below.

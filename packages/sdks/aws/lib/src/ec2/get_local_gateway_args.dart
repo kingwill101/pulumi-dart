@@ -9,21 +9,21 @@ import 'get_local_gateway_filter.dart';
 /// {@macro pulumi_ec2_get_local_gateway_get_local_gateway_args_doc}
 class GetLocalGatewayArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetLocalGatewayFilter>>? filters;
+  final pulumi.Input<List<GetLocalGatewayFilter>?>? filters;
   /// Id of the specific Local Gateway to retrieve.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Current state of the desired Local Gateway.
   /// Can be either `"pending"` or `"available"`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the desired Local Gateway.
   ///
   /// The arguments of this data source act as filters for querying the available
   /// Local Gateways in the current region. The given filters must match exactly one
   /// Local Gateway whose data will be exported as attributes.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetLocalGatewayArgs].
   /// [filters] Custom filter block as described below.

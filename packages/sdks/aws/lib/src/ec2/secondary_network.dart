@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secondary_network_args.dart';
+import 'secondary_network_ipv4_cidr_block_association.dart';
 import 'secondary_network_state.dart';
 import 'secondary_network_timeouts.dart';
 
@@ -162,7 +163,7 @@ class SecondaryNetwork extends pulumi.CustomResource {
   /// IPv4 CIDR block for the secondary network. The CIDR block size must be between `/12` and `/28`.
   late final pulumi.Output<String> ipv4CidrBlock;
   /// A list of IPv4 CIDR block associations for the secondary network.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipv4CidrBlockAssociations;
+  late final pulumi.Output<List<SecondaryNetworkIpv4CidrBlockAssociation>> ipv4CidrBlockAssociations;
   /// Type of secondary network. Currently only `rdma` is supported.
   late final pulumi.Output<String> networkType;
   late final pulumi.Output<String> ownerId;
@@ -190,18 +191,18 @@ class SecondaryNetwork extends pulumi.CustomResource {
           'aws:ec2/secondaryNetwork:SecondaryNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
-    ipv4CidrBlockAssociations = registerOutput<List<Map<String, dynamic>>>('ipv4CidrBlockAssociations');
+    ipv4CidrBlockAssociations = registerOutput<List<SecondaryNetworkIpv4CidrBlockAssociation>>('ipv4CidrBlockAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecondaryNetworkIpv4CidrBlockAssociation>(guardedValue, (value) => SecondaryNetworkIpv4CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>())); });
     networkType = registerOutput<String>('networkType');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     secondaryNetworkId = registerOutput<String>('secondaryNetworkId');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<SecondaryNetworkTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecondaryNetworkTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -210,11 +211,12 @@ class SecondaryNetwork extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecondaryNetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecondaryNetwork._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -230,14 +232,36 @@ class SecondaryNetwork extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
-    ipv4CidrBlockAssociations = registerOutput<List<Map<String, dynamic>>>('ipv4CidrBlockAssociations');
+    ipv4CidrBlockAssociations = registerOutput<List<SecondaryNetworkIpv4CidrBlockAssociation>>('ipv4CidrBlockAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecondaryNetworkIpv4CidrBlockAssociation>(guardedValue, (value) => SecondaryNetworkIpv4CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>())); });
     networkType = registerOutput<String>('networkType');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     secondaryNetworkId = registerOutput<String>('secondaryNetworkId');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<SecondaryNetworkTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecondaryNetworkTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SecondaryNetwork] resource.
+  SecondaryNetwork.reference(String urn)
+    : super(
+        'aws:ec2/secondaryNetwork:SecondaryNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    ipv4CidrBlock = registerOutput<String>('ipv4CidrBlock');
+    ipv4CidrBlockAssociations = registerOutput<List<SecondaryNetworkIpv4CidrBlockAssociation>>('ipv4CidrBlockAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecondaryNetworkIpv4CidrBlockAssociation>(guardedValue, (value) => SecondaryNetworkIpv4CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>())); });
+    networkType = registerOutput<String>('networkType');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    secondaryNetworkId = registerOutput<String>('secondaryNetworkId');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<SecondaryNetworkTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecondaryNetworkTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

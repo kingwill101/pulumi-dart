@@ -7,7 +7,7 @@ import 'bucket_metadata_configuration_metadata_configuration_journal_table_confi
 
 class BucketMetadataConfigurationMetadataConfiguration {
   /// Destination information for the S3 Metadata configuration. See `destination` Block for details.
-  final pulumi.Input<List<BucketMetadataConfigurationMetadataConfigurationDestination>>? destinations;
+  final pulumi.Input<List<BucketMetadataConfigurationMetadataConfigurationDestination>?>? destinations;
   /// Inventory table configuration. See `inventoryTableConfiguration` Block for details.
   final pulumi.Input<BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration> inventoryTableConfiguration;
   /// Journal table configuration. See `journalTableConfiguration` Block for details.

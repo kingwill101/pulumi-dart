@@ -243,7 +243,7 @@ class VectorsVectorBucketPolicy extends pulumi.CustomResource {
           'aws:s3/vectorsVectorBucketPolicy:VectorsVectorBucketPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
@@ -255,11 +255,12 @@ class VectorsVectorBucketPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VectorsVectorBucketPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VectorsVectorBucketPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -273,6 +274,20 @@ class VectorsVectorBucketPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    vectorBucketArn = registerOutput<String>('vectorBucketArn');
+  }
+
+  /// Creates a typed reference to an existing [VectorsVectorBucketPolicy] resource.
+  VectorsVectorBucketPolicy.reference(String urn)
+    : super(
+        'aws:s3/vectorsVectorBucketPolicy:VectorsVectorBucketPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
     vectorBucketArn = registerOutput<String>('vectorBucketArn');

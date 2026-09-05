@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_signing_key_args.dart';
 import 'key_signing_key_state.dart';
 
-/// Manages a Route 53 Key Signing Key. To manage Domain Name System Security Extensions (DNSSEC) for a Hosted Zone, see the `aws.route53.HostedZoneDnsSec` resource. For more information about managing DNSSEC in Route 53, see the [Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec.html).
+/// Manages a Route 53 Key Signing Key. To manage DNS Security Extensions (DNSSEC) for a Hosted Zone, see the `aws.route53.HostedZoneDnsSec` resource. For more information about managing DNSSEC in Route 53, see the [Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec.html).
 ///
 /// ## Example Usage
 ///
@@ -627,7 +627,7 @@ class KeySigningKey extends pulumi.CustomResource {
   late final pulumi.Output<int> flag;
   /// Identifier of the Route 53 Hosted Zone.
   late final pulumi.Output<String> hostedZoneId;
-  /// Amazon Resource Name (ARN) of the Key Management Service (KMS) Key. This must be unique for each key-signing key (KSK) in a single hosted zone. This key must be in the `us-east-1` Region and meet certain requirements, which are described in the [Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec-cmk-requirements.html) and [Route 53 API Reference](https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateKeySigningKey.html).
+  /// ARN of the KMS Key. This must be unique for each key-signing key (KSK) in a single hosted zone. This key must be in the `us-east-1` Region and meet certain requirements, which are described in the [Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec-cmk-requirements.html) and [Route 53 API Reference](https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateKeySigningKey.html).
   late final pulumi.Output<String> keyManagementServiceArn;
   /// An integer used to identify the DNSSEC record for the domain name. The process used to calculate the value is described in [RFC-4034 Appendix B](https://tools.ietf.org/rfc/rfc4034.txt).
   late final pulumi.Output<int> keyTag;
@@ -656,7 +656,7 @@ class KeySigningKey extends pulumi.CustomResource {
           'aws:route53/keySigningKey:KeySigningKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     digestAlgorithmMnemonic = registerOutput<String>('digestAlgorithmMnemonic');
     digestAlgorithmType = registerOutput<int>('digestAlgorithmType');
@@ -679,11 +679,12 @@ class KeySigningKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeySigningKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeySigningKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -697,6 +698,31 @@ class KeySigningKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    digestAlgorithmMnemonic = registerOutput<String>('digestAlgorithmMnemonic');
+    digestAlgorithmType = registerOutput<int>('digestAlgorithmType');
+    digestValue = registerOutput<String>('digestValue');
+    dnskeyRecord = registerOutput<String>('dnskeyRecord');
+    dsRecord = registerOutput<String>('dsRecord');
+    flag = registerOutput<int>('flag');
+    hostedZoneId = registerOutput<String>('hostedZoneId');
+    keyManagementServiceArn = registerOutput<String>('keyManagementServiceArn');
+    keyTag = registerOutput<int>('keyTag');
+    this.name = registerOutput<String>('name');
+    publicKey = registerOutput<String>('publicKey');
+    signingAlgorithmMnemonic = registerOutput<String>('signingAlgorithmMnemonic');
+    signingAlgorithmType = registerOutput<int>('signingAlgorithmType');
+    status = registerOutput<String?>('status');
+  }
+
+  /// Creates a typed reference to an existing [KeySigningKey] resource.
+  KeySigningKey.reference(String urn)
+    : super(
+        'aws:route53/keySigningKey:KeySigningKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     digestAlgorithmMnemonic = registerOutput<String>('digestAlgorithmMnemonic');
     digestAlgorithmType = registerOutput<int>('digestAlgorithmType');
     digestValue = registerOutput<String>('digestValue');

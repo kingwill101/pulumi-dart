@@ -4,26 +4,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Alias resources.
 class AliasState {
-  /// The Amazon Resource Name (ARN) of the key alias.
-  final pulumi.Input<String>? arn;
+  /// ARN of the key alias.
+  final pulumi.Input<String?>? arn;
   /// The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates an unique alias beginning with the specified prefix.
   /// The name must start with the word "alias" followed by a forward slash (alias/).  Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// The Amazon Resource Name (ARN) of the target key identifier.
-  final pulumi.Input<String>? targetKeyArn;
+  final pulumi.Input<String?>? region;
+  /// ARN of the target key identifier.
+  final pulumi.Input<String?>? targetKeyArn;
   /// Identifier for the key for which the alias is for, can be either an ARN or key_id.
-  final pulumi.Input<String>? targetKeyId;
+  final pulumi.Input<String?>? targetKeyId;
 
   /// Creates a new [AliasState].
-  /// [arn] The Amazon Resource Name (ARN) of the key alias.
+  /// [arn] ARN of the key alias.
   /// [name] The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
   /// [namePrefix] Creates an unique alias beginning with the specified prefix.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [targetKeyArn] The Amazon Resource Name (ARN) of the target key identifier.
+  /// [targetKeyArn] ARN of the target key identifier.
   /// [targetKeyId] Identifier for the key for which the alias is for, can be either an ARN or key_id.
   const AliasState({
     this.arn,

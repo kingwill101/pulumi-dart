@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetReleaseLabelsFilters {
   /// Optional release label application filter. For example, `Spark@2.1.0` or `Spark`.
-  final pulumi.Input<String>? application;
+  final pulumi.Input<String?>? application;
   /// Optional release label version prefix filter. For example, `emr-5`.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [GetReleaseLabelsFilters].
   /// [application] Optional release label application filter. For example, `Spark@2.1.0` or `Spark`.

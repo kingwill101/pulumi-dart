@@ -6,9 +6,9 @@ class IngressPointIngressPointConfigurationTlsAuthConfigurationTrustStore {
   /// PEM-encoded certificate authority (CA) content used to validate client certificates.
   final pulumi.Input<String> caContent;
   /// PEM-encoded certificate revocation list (CRL) content used to check whether client certificates have been revoked.
-  final pulumi.Input<String>? crlContent;
+  final pulumi.Input<String?>? crlContent;
   /// ARN of the AWS KMS key used to decrypt the CRL content.
-  final pulumi.Input<String>? kmsKeyArn;
+  final pulumi.Input<String?>? kmsKeyArn;
 
   /// Creates a new [IngressPointIngressPointConfigurationTlsAuthConfigurationTrustStore].
   /// [caContent] PEM-encoded certificate authority (CA) content used to validate client certificates.

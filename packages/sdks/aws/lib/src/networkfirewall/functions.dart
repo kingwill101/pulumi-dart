@@ -339,6 +339,17 @@ Future<GetFirewallResult> getFirewall(
   return GetFirewallResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallResult> getFirewallOutput(
+  GetFirewallArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkfirewall/getFirewall:getFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallResult.fromMap);
+}
+
 /// Retrieve information about a firewall policy.
 ///
 /// ## Example Usage
@@ -677,6 +688,17 @@ Future<GetFirewallPolicyResult> getFirewallPolicy(
   return GetFirewallPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallPolicyResult> getFirewallPolicyOutput(
+  GetFirewallPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkfirewall/getFirewallPolicy:getFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyResult.fromMap);
+}
+
 /// Retrieve information about a Network Firewall resource policy.
 ///
 /// ## Example Usage
@@ -793,4 +815,15 @@ Future<GetResourcePolicyResult> getResourcePolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourcePolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetResourcePolicyResult> getResourcePolicyOutput(
+  GetResourcePolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:networkfirewall/getResourcePolicy:getResourcePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcePolicyResult.fromMap);
 }

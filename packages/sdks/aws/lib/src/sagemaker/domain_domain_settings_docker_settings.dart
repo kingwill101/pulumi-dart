@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainDomainSettingsDockerSettings {
   /// Indicates whether the domain can access Docker. Valid values are `ENABLED` and `DISABLED`.
-  final pulumi.Input<String>? enableDockerAccess;
+  final pulumi.Input<String?>? enableDockerAccess;
   /// The list of Amazon Web Services accounts that are trusted when the domain is created in VPC-only mode.
-  final pulumi.Input<List<String>>? vpcOnlyTrustedAccounts;
+  final pulumi.Input<List<String>?>? vpcOnlyTrustedAccounts;
 
   /// Creates a new [DomainDomainSettingsDockerSettings].
   /// [enableDockerAccess] Indicates whether the domain can access Docker. Valid values are `ENABLED` and `DISABLED`.

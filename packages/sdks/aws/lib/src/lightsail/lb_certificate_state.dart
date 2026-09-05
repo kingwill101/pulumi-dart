@@ -6,25 +6,25 @@ import 'lb_certificate_domain_validation_record.dart';
 /// Input properties used for looking up and filtering LbCertificate resources.
 class LbCertificateState {
   /// ARN of the lightsail certificate.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Timestamp when the instance was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined. Each element contains the following attributes:
-  final pulumi.Input<List<LbCertificateDomainValidationRecord>>? domainValidationRecords;
+  final pulumi.Input<List<LbCertificateDomainValidationRecord>?>? domainValidationRecords;
   /// Load balancer name where you want to create the SSL/TLS certificate.
-  final pulumi.Input<String>? lbName;
+  final pulumi.Input<String?>? lbName;
   /// SSL/TLS certificate name.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Set of domains that should be SANs in the issued certificate. `domainName` attribute is automatically added as a Subject Alternative Name.
-  final pulumi.Input<List<String>>? subjectAlternativeNames;
+  final pulumi.Input<List<String>?>? subjectAlternativeNames;
   /// Support code for the certificate.
-  final pulumi.Input<String>? supportCode;
+  final pulumi.Input<String?>? supportCode;
 
   /// Creates a new [LbCertificateState].
   /// [arn] ARN of the lightsail certificate.

@@ -15,26 +15,26 @@ import 'origin_request_policy_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.cloudfront.OriginRequestPolicy("example", {
-///     name: "example-policy",
-///     comment: "example comment",
 ///     cookiesConfig: {
-///         cookieBehavior: "whitelist",
 ///         cookies: {
 ///             items: ["example"],
 ///         },
+///         cookieBehavior: "whitelist",
 ///     },
 ///     headersConfig: {
-///         headerBehavior: "whitelist",
 ///         headers: {
 ///             items: ["example"],
 ///         },
+///         headerBehavior: "whitelist",
 ///     },
 ///     queryStringsConfig: {
-///         queryStringBehavior: "whitelist",
 ///         queryStrings: {
 ///             items: ["example"],
 ///         },
+///         queryStringBehavior: "whitelist",
 ///     },
+///     name: "example-policy",
+///     comment: "example comment",
 /// });
 /// ```
 /// ```python
@@ -42,26 +42,26 @@ import 'origin_request_policy_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.cloudfront.OriginRequestPolicy("example",
-///     name="example-policy",
-///     comment="example comment",
 ///     cookies_config={
-///         "cookie_behavior": "whitelist",
 ///         "cookies": {
 ///             "items": ["example"],
 ///         },
+///         "cookie_behavior": "whitelist",
 ///     },
 ///     headers_config={
-///         "header_behavior": "whitelist",
 ///         "headers": {
 ///             "items": ["example"],
 ///         },
+///         "header_behavior": "whitelist",
 ///     },
 ///     query_strings_config={
-///         "query_string_behavior": "whitelist",
 ///         "query_strings": {
 ///             "items": ["example"],
 ///         },
-///     })
+///         "query_string_behavior": "whitelist",
+///     },
+///     name="example-policy",
+///     comment="example comment")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -73,11 +73,8 @@ import 'origin_request_policy_state.dart';
 /// {
 ///     var example = new Aws.CloudFront.OriginRequestPolicy("example", new()
 ///     {
-///         Name = "example-policy",
-///         Comment = "example comment",
 ///         CookiesConfig = new Aws.CloudFront.Inputs.OriginRequestPolicyCookiesConfigArgs
 ///         {
-///             CookieBehavior = "whitelist",
 ///             Cookies = new Aws.CloudFront.Inputs.OriginRequestPolicyCookiesConfigCookiesArgs
 ///             {
 ///                 Items = new[]
@@ -85,10 +82,10 @@ import 'origin_request_policy_state.dart';
 ///                     "example",
 ///                 },
 ///             },
+///             CookieBehavior = "whitelist",
 ///         },
 ///         HeadersConfig = new Aws.CloudFront.Inputs.OriginRequestPolicyHeadersConfigArgs
 ///         {
-///             HeaderBehavior = "whitelist",
 ///             Headers = new Aws.CloudFront.Inputs.OriginRequestPolicyHeadersConfigHeadersArgs
 ///             {
 ///                 Items = new[]
@@ -96,10 +93,10 @@ import 'origin_request_policy_state.dart';
 ///                     "example",
 ///                 },
 ///             },
+///             HeaderBehavior = "whitelist",
 ///         },
 ///         QueryStringsConfig = new Aws.CloudFront.Inputs.OriginRequestPolicyQueryStringsConfigArgs
 ///         {
-///             QueryStringBehavior = "whitelist",
 ///             QueryStrings = new Aws.CloudFront.Inputs.OriginRequestPolicyQueryStringsConfigQueryStringsArgs
 ///             {
 ///                 Items = new[]
@@ -107,7 +104,10 @@ import 'origin_request_policy_state.dart';
 ///                     "example",
 ///                 },
 ///             },
+///             QueryStringBehavior = "whitelist",
 ///         },
+///         Name = "example-policy",
+///         Comment = "example comment",
 ///     });
 ///
 /// });
@@ -123,32 +123,32 @@ import 'origin_request_policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudfront.NewOriginRequestPolicy(ctx, "example", &cloudfront.OriginRequestPolicyArgs{
-/// 			Name:    pulumi.String("example-policy"),
-/// 			Comment: pulumi.String("example comment"),
 /// 			CookiesConfig: &cloudfront.OriginRequestPolicyCookiesConfigArgs{
-/// 				CookieBehavior: pulumi.String("whitelist"),
 /// 				Cookies: &cloudfront.OriginRequestPolicyCookiesConfigCookiesArgs{
 /// 					Items: pulumi.StringArray{
 /// 						pulumi.String("example"),
 /// 					},
 /// 				},
+/// 				CookieBehavior: pulumi.String("whitelist"),
 /// 			},
 /// 			HeadersConfig: &cloudfront.OriginRequestPolicyHeadersConfigArgs{
-/// 				HeaderBehavior: pulumi.String("whitelist"),
 /// 				Headers: &cloudfront.OriginRequestPolicyHeadersConfigHeadersArgs{
 /// 					Items: pulumi.StringArray{
 /// 						pulumi.String("example"),
 /// 					},
 /// 				},
+/// 				HeaderBehavior: pulumi.String("whitelist"),
 /// 			},
 /// 			QueryStringsConfig: &cloudfront.OriginRequestPolicyQueryStringsConfigArgs{
-/// 				QueryStringBehavior: pulumi.String("whitelist"),
 /// 				QueryStrings: &cloudfront.OriginRequestPolicyQueryStringsConfigQueryStringsArgs{
 /// 					Items: pulumi.StringArray{
 /// 						pulumi.String("example"),
 /// 					},
 /// 				},
+/// 				QueryStringBehavior: pulumi.String("whitelist"),
 /// 			},
+/// 			Name:    pulumi.String("example-policy"),
+/// 			Comment: pulumi.String("example comment"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -167,26 +167,26 @@ import 'origin_request_policy_state.dart';
 /// }
 ///
 /// resource "aws_cloudfront_originrequestpolicy" "example" {
-///   name    = "example-policy"
-///   comment = "example comment"
 ///   cookies_config = {
-///     cookie_behavior = "whitelist"
 ///     cookies = {
 ///       items = ["example"]
 ///     }
+///     cookie_behavior = "whitelist"
 ///   }
 ///   headers_config = {
-///     header_behavior = "whitelist"
 ///     headers = {
 ///       items = ["example"]
 ///     }
+///     header_behavior = "whitelist"
 ///   }
 ///   query_strings_config = {
-///     query_string_behavior = "whitelist"
 ///     query_strings = {
 ///       items = ["example"]
 ///     }
+///     query_string_behavior = "whitelist"
 ///   }
+///   name    = "example-policy"
+///   comment = "example comment"
 /// }
 /// ```
 /// ```java
@@ -217,26 +217,26 @@ import 'origin_request_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new OriginRequestPolicy("example", OriginRequestPolicyArgs.builder()
-///             .name("example-policy")
-///             .comment("example comment")
 ///             .cookiesConfig(OriginRequestPolicyCookiesConfigArgs.builder()
-///                 .cookieBehavior("whitelist")
 ///                 .cookies(OriginRequestPolicyCookiesConfigCookiesArgs.builder()
 ///                     .items("example")
 ///                     .build())
+///                 .cookieBehavior("whitelist")
 ///                 .build())
 ///             .headersConfig(OriginRequestPolicyHeadersConfigArgs.builder()
-///                 .headerBehavior("whitelist")
 ///                 .headers(OriginRequestPolicyHeadersConfigHeadersArgs.builder()
 ///                     .items("example")
 ///                     .build())
+///                 .headerBehavior("whitelist")
 ///                 .build())
 ///             .queryStringsConfig(OriginRequestPolicyQueryStringsConfigArgs.builder()
-///                 .queryStringBehavior("whitelist")
 ///                 .queryStrings(OriginRequestPolicyQueryStringsConfigQueryStringsArgs.builder()
 ///                     .items("example")
 ///                     .build())
+///                 .queryStringBehavior("whitelist")
 ///                 .build())
+///             .name("example-policy")
+///             .comment("example comment")
 ///             .build());
 ///
 ///     }
@@ -247,23 +247,23 @@ import 'origin_request_policy_state.dart';
 ///   example:
 ///     type: aws:cloudfront:OriginRequestPolicy
 ///     properties:
-///       name: example-policy
-///       comment: example comment
 ///       cookiesConfig:
-///         cookieBehavior: whitelist
 ///         cookies:
 ///           items:
 ///             - example
+///         cookieBehavior: whitelist
 ///       headersConfig:
-///         headerBehavior: whitelist
 ///         headers:
 ///           items:
 ///             - example
+///         headerBehavior: whitelist
 ///       queryStringsConfig:
-///         queryStringBehavior: whitelist
 ///         queryStrings:
 ///           items:
 ///             - example
+///         queryStringBehavior: whitelist
+///       name: example-policy
+///       comment: example comment
 /// ```
 ///
 ///
@@ -302,7 +302,7 @@ class OriginRequestPolicy extends pulumi.CustomResource {
           'aws:cloudfront/originRequestPolicy:OriginRequestPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
@@ -318,11 +318,12 @@ class OriginRequestPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OriginRequestPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OriginRequestPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,6 +337,24 @@ class OriginRequestPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    comment = registerOutput<String?>('comment');
+    cookiesConfig = registerOutput<OriginRequestPolicyCookiesConfig>('cookiesConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OriginRequestPolicyCookiesConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    headersConfig = registerOutput<OriginRequestPolicyHeadersConfig>('headersConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OriginRequestPolicyHeadersConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    queryStringsConfig = registerOutput<OriginRequestPolicyQueryStringsConfig>('queryStringsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OriginRequestPolicyQueryStringsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [OriginRequestPolicy] resource.
+  OriginRequestPolicy.reference(String urn)
+    : super(
+        'aws:cloudfront/originRequestPolicy:OriginRequestPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');
     cookiesConfig = registerOutput<OriginRequestPolicyCookiesConfig>('cookiesConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OriginRequestPolicyCookiesConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

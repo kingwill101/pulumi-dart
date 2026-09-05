@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyvaluestoreKeyArgs {
   /// Key to put.
   final pulumi.Input<String> key;
-  /// Amazon Resource Name (ARN) of the Key Value Store.
+  /// ARN of the Key Value Store.
   final pulumi.Input<String> keyValueStoreArn;
   /// Value to put.
   final pulumi.Input<String> value;
 
   /// Creates a new [KeyvaluestoreKeyArgs].
   /// [key] Key to put.
-  /// [keyValueStoreArn] Amazon Resource Name (ARN) of the Key Value Store.
+  /// [keyValueStoreArn] ARN of the Key Value Store.
   /// [value] Value to put.
   const KeyvaluestoreKeyArgs({
     required this.key,

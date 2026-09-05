@@ -12,17 +12,17 @@ import 'classifier_xml_classifier.dart';
 /// {@macro pulumi_glue_classifier_classifier_args_doc}
 class ClassifierArgs {
   /// A classifier for CSV content. Defined below.
-  final pulumi.Input<ClassifierCsvClassifier>? csvClassifier;
+  final pulumi.Input<ClassifierCsvClassifier?>? csvClassifier;
   /// A classifier that uses grok patterns. Defined below.
-  final pulumi.Input<ClassifierGrokClassifier>? grokClassifier;
+  final pulumi.Input<ClassifierGrokClassifier?>? grokClassifier;
   /// A classifier for JSON content. Defined below.
-  final pulumi.Input<ClassifierJsonClassifier>? jsonClassifier;
+  final pulumi.Input<ClassifierJsonClassifier?>? jsonClassifier;
   /// The name of the classifier.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A classifier for XML content. Defined below.
-  final pulumi.Input<ClassifierXmlClassifier>? xmlClassifier;
+  final pulumi.Input<ClassifierXmlClassifier?>? xmlClassifier;
 
   /// Creates a new [ClassifierArgs].
   /// [csvClassifier] A classifier for CSV content. Defined below.

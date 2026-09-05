@@ -10,13 +10,13 @@ class BackendEnvironmentArgs {
   /// Unique ID for an Amplify app.
   final pulumi.Input<String> appId;
   /// Name of deployment artifacts.
-  final pulumi.Input<String>? deploymentArtifacts;
+  final pulumi.Input<String?>? deploymentArtifacts;
   /// Name for the backend environment.
   final pulumi.Input<String> environmentName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// AWS CloudFormation stack name of a backend environment.
-  final pulumi.Input<String>? stackName;
+  final pulumi.Input<String?>? stackName;
 
   /// Creates a new [BackendEnvironmentArgs].
   /// [appId] Unique ID for an Amplify app.

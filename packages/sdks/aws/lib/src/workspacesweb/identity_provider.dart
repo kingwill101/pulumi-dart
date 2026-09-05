@@ -402,16 +402,16 @@ class IdentityProvider extends pulumi.CustomResource {
           'aws:workspacesweb/identityProvider:IdentityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     identityProviderArn = registerOutput<String>('identityProviderArn');
-    identityProviderDetails = registerOutput<Map<String, String>>('identityProviderDetails');
+    identityProviderDetails = registerOutput<Map<String, String>>('identityProviderDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     identityProviderName = registerOutput<String>('identityProviderName');
     identityProviderType = registerOutput<String>('identityProviderType');
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IdentityProvider] resource's state with the given [name] and [id].
@@ -419,11 +419,12 @@ class IdentityProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -438,12 +439,31 @@ class IdentityProvider extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     identityProviderArn = registerOutput<String>('identityProviderArn');
-    identityProviderDetails = registerOutput<Map<String, String>>('identityProviderDetails');
+    identityProviderDetails = registerOutput<Map<String, String>>('identityProviderDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     identityProviderName = registerOutput<String>('identityProviderName');
     identityProviderType = registerOutput<String>('identityProviderType');
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IdentityProvider] resource.
+  IdentityProvider.reference(String urn)
+    : super(
+        'aws:workspacesweb/identityProvider:IdentityProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    identityProviderArn = registerOutput<String>('identityProviderArn');
+    identityProviderDetails = registerOutput<Map<String, String>>('identityProviderDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    identityProviderName = registerOutput<String>('identityProviderName');
+    identityProviderType = registerOutput<String>('identityProviderType');
+    portalArn = registerOutput<String>('portalArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

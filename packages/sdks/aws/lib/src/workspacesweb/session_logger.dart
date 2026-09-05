@@ -18,11 +18,11 @@ import 'session_logger_state.dart';
 /// const exampleBucket = new aws.s3.Bucket("example", {bucket: "example-session-logs"});
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["workspaces-web.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["s3:PutObject"],
 ///         resources: [pulumi.interpolate`${exampleBucket.arn}/*`],
 ///     }],
@@ -32,7 +32,6 @@ import 'session_logger_state.dart';
 ///     policy: example.json,
 /// });
 /// const exampleSessionLogger = new aws.workspacesweb.SessionLogger("example", {
-///     displayName: "example-session-logger",
 ///     eventFilter: {
 ///         all: {},
 ///     },
@@ -43,6 +42,7 @@ import 'session_logger_state.dart';
 ///             logFileFormat: "Json",
 ///         },
 ///     },
+///     displayName: "example-session-logger",
 /// }, {
 ///     dependsOn: [exampleBucketPolicy],
 /// });
@@ -53,11 +53,11 @@ import 'session_logger_state.dart';
 ///
 /// example_bucket = aws.s3.Bucket("example", bucket="example-session-logs")
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["workspaces-web.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["s3:PutObject"],
 ///     "resources": [example_bucket.arn.apply(lambda arn: f"{arn}/*")],
 /// }])
@@ -65,7 +65,6 @@ import 'session_logger_state.dart';
 ///     bucket=example_bucket.id,
 ///     policy=example.json)
 /// example_session_logger = aws.workspacesweb.SessionLogger("example",
-///     display_name="example-session-logger",
 ///     event_filter={
 ///         "all": {},
 ///     },
@@ -76,6 +75,7 @@ import 'session_logger_state.dart';
 ///             "log_file_format": "Json",
 ///         },
 ///     },
+///     display_name="example-session-logger",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_bucket_policy]))
 /// ```
 /// ```csharp
@@ -97,7 +97,6 @@ import 'session_logger_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -109,6 +108,7 @@ import 'session_logger_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "s3:PutObject",
@@ -129,7 +129,6 @@ import 'session_logger_state.dart';
 ///
 ///     var exampleSessionLogger = new Aws.WorkSpacesWeb.SessionLogger("example", new()
 ///     {
-///         DisplayName = "example-session-logger",
 ///         EventFilter = new Aws.WorkSpacesWeb.Inputs.SessionLoggerEventFilterArgs
 ///         {
 ///             All = null,
@@ -143,6 +142,7 @@ import 'session_logger_state.dart';
 ///                 LogFileFormat = "Json",
 ///             },
 ///         },
+///         DisplayName = "example-session-logger",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -176,7 +176,6 @@ import 'session_logger_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -185,6 +184,7 @@ import 'session_logger_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("s3:PutObject"),
 /// 					},
@@ -204,7 +204,6 @@ import 'session_logger_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = workspacesweb.NewSessionLogger(ctx, "example", &workspacesweb.SessionLoggerArgs{
-/// 			DisplayName: pulumi.String("example-session-logger"),
 /// 			EventFilter: &workspacesweb.SessionLoggerEventFilterArgs{
 /// 				All: &workspacesweb.SessionLoggerEventFilterAllArgs{},
 /// 			},
@@ -215,6 +214,7 @@ import 'session_logger_state.dart';
 /// 					LogFileFormat:   pulumi.String("Json"),
 /// 				},
 /// 			},
+/// 			DisplayName: pulumi.String("example-session-logger"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleBucketPolicy,
 /// 		}))
@@ -236,11 +236,11 @@ import 'session_logger_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["workspaces-web.amazonaws.com"]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["s3:PutObject"]
 ///     resources = ["${aws_s3_bucket.example.arn}/*"]
 ///   }
@@ -254,8 +254,7 @@ import 'session_logger_state.dart';
 ///   policy = data.aws_iam_getpolicydocument.example.json
 /// }
 /// resource "aws_workspacesweb_sessionlogger" "example" {
-///   depends_on   = [aws_s3_bucketpolicy.example]
-///   display_name = "example-session-logger"
+///   depends_on = [aws_s3_bucketpolicy.example]
 ///   event_filter = {
 ///     all = {}
 ///   }
@@ -266,6 +265,7 @@ import 'session_logger_state.dart';
 ///       log_file_format  = "Json"
 ///     }
 ///   }
+///   display_name = "example-session-logger"
 /// }
 /// ```
 /// ```java
@@ -308,11 +308,11 @@ import 'session_logger_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("workspaces-web.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("s3:PutObject")
 ///                 .resources(exampleBucket.arn().applyValue(_arn -> String.format("%s/*", _arn)))
 ///                 .build())
@@ -324,7 +324,6 @@ import 'session_logger_state.dart';
 ///             .build());
 ///
 ///         var exampleSessionLogger = new SessionLogger("exampleSessionLogger", SessionLoggerArgs.builder()
-///             .displayName("example-session-logger")
 ///             .eventFilter(SessionLoggerEventFilterArgs.builder()
 ///                 .all(SessionLoggerEventFilterAllArgs.builder()
 ///                     .build())
@@ -336,6 +335,7 @@ import 'session_logger_state.dart';
 ///                     .logFileFormat("Json")
 ///                     .build())
 ///                 .build())
+///             .displayName("example-session-logger")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleBucketPolicy)
 ///                 .build());
@@ -360,7 +360,6 @@ import 'session_logger_state.dart';
 ///     type: aws:workspacesweb:SessionLogger
 ///     name: example
 ///     properties:
-///       displayName: example-session-logger
 ///       eventFilter:
 ///         all: {}
 ///       logConfiguration:
@@ -368,6 +367,7 @@ import 'session_logger_state.dart';
 ///           bucket: ${exampleBucket.id}
 ///           folderStructure: Flat
 ///           logFileFormat: Json
+///       displayName: example-session-logger
 ///     options:
 ///       dependsOn:
 ///         - ${exampleBucketPolicy}
@@ -377,11 +377,11 @@ import 'session_logger_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - workspaces-web.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - s3:PutObject
 ///             resources:
@@ -402,11 +402,11 @@ import 'session_logger_state.dart';
 /// });
 /// const example = aws.iam.getPolicyDocumentOutput({
 ///     statements: [{
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["workspaces-web.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
 ///         actions: ["s3:PutObject"],
 ///         resources: [
 ///             exampleBucket.arn,
@@ -450,12 +450,6 @@ import 'session_logger_state.dart';
 ///     policy: kmsKeyPolicy.then(kmsKeyPolicy => kmsKeyPolicy.json),
 /// });
 /// const exampleSessionLogger = new aws.workspacesweb.SessionLogger("example", {
-///     displayName: "example-session-logger",
-///     customerManagedKey: exampleKey.arn,
-///     additionalEncryptionContext: {
-///         Environment: "Production",
-///         Application: "WorkSpacesWeb",
-///     },
 ///     eventFilter: {
 ///         includes: [
 ///             "SessionStart",
@@ -470,6 +464,12 @@ import 'session_logger_state.dart';
 ///             keyPrefix: "workspaces-web-logs/",
 ///             logFileFormat: "JsonLines",
 ///         },
+///     },
+///     displayName: "example-session-logger",
+///     customerManagedKey: exampleKey.arn,
+///     additionalEncryptionContext: {
+///         Environment: "Production",
+///         Application: "WorkSpacesWeb",
 ///     },
 ///     tags: {
 ///         Name: "example-session-logger",
@@ -490,11 +490,11 @@ import 'session_logger_state.dart';
 ///     bucket="example-session-logs",
 ///     force_destroy=True)
 /// example = aws.iam.get_policy_document_output(statements=[{
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["workspaces-web.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
 ///     "actions": ["s3:PutObject"],
 ///     "resources": [
 ///         example_bucket.arn,
@@ -533,12 +533,6 @@ import 'session_logger_state.dart';
 ///     description="KMS key for WorkSpaces Web Session Logger",
 ///     policy=kms_key_policy.json)
 /// example_session_logger = aws.workspacesweb.SessionLogger("example",
-///     display_name="example-session-logger",
-///     customer_managed_key=example_key.arn,
-///     additional_encryption_context={
-///         "Environment": "Production",
-///         "Application": "WorkSpacesWeb",
-///     },
 ///     event_filter={
 ///         "includes": [
 ///             "SessionStart",
@@ -553,6 +547,12 @@ import 'session_logger_state.dart';
 ///             "key_prefix": "workspaces-web-logs/",
 ///             "log_file_format": "JsonLines",
 ///         },
+///     },
+///     display_name="example-session-logger",
+///     customer_managed_key=example_key.arn,
+///     additional_encryption_context={
+///         "Environment": "Production",
+///         "Application": "WorkSpacesWeb",
 ///     },
 ///     tags={
 ///         "Name": "example-session-logger",
@@ -583,7 +583,6 @@ import 'session_logger_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -595,6 +594,7 @@ import 'session_logger_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "s3:PutObject",
@@ -680,13 +680,6 @@ import 'session_logger_state.dart';
 ///
 ///     var exampleSessionLogger = new Aws.WorkSpacesWeb.SessionLogger("example", new()
 ///     {
-///         DisplayName = "example-session-logger",
-///         CustomerManagedKey = exampleKey.Arn,
-///         AdditionalEncryptionContext =
-///         {
-///             { "Environment", "Production" },
-///             { "Application", "WorkSpacesWeb" },
-///         },
 ///         EventFilter = new Aws.WorkSpacesWeb.Inputs.SessionLoggerEventFilterArgs
 ///         {
 ///             Includes = new[]
@@ -705,6 +698,13 @@ import 'session_logger_state.dart';
 ///                 KeyPrefix = "workspaces-web-logs/",
 ///                 LogFileFormat = "JsonLines",
 ///             },
+///         },
+///         DisplayName = "example-session-logger",
+///         CustomerManagedKey = exampleKey.Arn,
+///         AdditionalEncryptionContext =
+///         {
+///             { "Environment", "Production" },
+///             { "Application", "WorkSpacesWeb" },
 ///         },
 ///         Tags =
 ///         {
@@ -748,7 +748,6 @@ import 'session_logger_state.dart';
 /// 		example := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("Service"),
@@ -757,6 +756,7 @@ import 'session_logger_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("s3:PutObject"),
 /// 					},
@@ -834,12 +834,6 @@ import 'session_logger_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = workspacesweb.NewSessionLogger(ctx, "example", &workspacesweb.SessionLoggerArgs{
-/// 			DisplayName:        pulumi.String("example-session-logger"),
-/// 			CustomerManagedKey: exampleKey.Arn,
-/// 			AdditionalEncryptionContext: pulumi.StringMap{
-/// 				"Environment": pulumi.String("Production"),
-/// 				"Application": pulumi.String("WorkSpacesWeb"),
-/// 			},
 /// 			EventFilter: &workspacesweb.SessionLoggerEventFilterArgs{
 /// 				Includes: pulumi.StringArray{
 /// 					pulumi.String("SessionStart"),
@@ -854,6 +848,12 @@ import 'session_logger_state.dart';
 /// 					KeyPrefix:       pulumi.String("workspaces-web-logs/"),
 /// 					LogFileFormat:   pulumi.String("JsonLines"),
 /// 				},
+/// 			},
+/// 			DisplayName:        pulumi.String("example-session-logger"),
+/// 			CustomerManagedKey: exampleKey.Arn,
+/// 			AdditionalEncryptionContext: pulumi.StringMap{
+/// 				"Environment": pulumi.String("Production"),
+/// 				"Application": pulumi.String("WorkSpacesWeb"),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"Name":        pulumi.String("example-session-logger"),
@@ -881,11 +881,11 @@ import 'session_logger_state.dart';
 ///
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["workspaces-web.amazonaws.com"]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["s3:PutObject"]
 ///     resources = [aws_s3_bucket.example.arn, "${aws_s3_bucket.example.arn}/*"]
 ///   }
@@ -926,13 +926,7 @@ import 'session_logger_state.dart';
 ///   policy      = data.aws_iam_getpolicydocument.kmsKeyPolicy.json
 /// }
 /// resource "aws_workspacesweb_sessionlogger" "example" {
-///   depends_on           = [aws_s3_bucketpolicy.example, aws_kms_key.example]
-///   display_name         = "example-session-logger"
-///   customer_managed_key = aws_kms_key.example.arn
-///   additional_encryption_context = {
-///     "Environment" = "Production"
-///     "Application" = "WorkSpacesWeb"
-///   }
+///   depends_on = [aws_s3_bucketpolicy.example, aws_kms_key.example]
 ///   event_filter = {
 ///     includes = ["SessionStart", "SessionEnd"]
 ///   }
@@ -944,6 +938,12 @@ import 'session_logger_state.dart';
 ///       key_prefix       = "workspaces-web-logs/"
 ///       log_file_format  = "JsonLines"
 ///     }
+///   }
+///   display_name         = "example-session-logger"
+///   customer_managed_key = aws_kms_key.example.arn
+///   additional_encryption_context = {
+///     "Environment" = "Production"
+///     "Application" = "WorkSpacesWeb"
 ///   }
 ///   tags = {
 ///     "Name"        = "example-session-logger"
@@ -996,11 +996,11 @@ import 'session_logger_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("workspaces-web.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
 ///                 .actions("s3:PutObject")
 ///                 .resources(
 ///                     exampleBucket.arn(),
@@ -1049,12 +1049,6 @@ import 'session_logger_state.dart';
 ///             .build());
 ///
 ///         var exampleSessionLogger = new SessionLogger("exampleSessionLogger", SessionLoggerArgs.builder()
-///             .displayName("example-session-logger")
-///             .customerManagedKey(exampleKey.arn())
-///             .additionalEncryptionContext(Map.ofEntries(
-///                 Map.entry("Environment", "Production"),
-///                 Map.entry("Application", "WorkSpacesWeb")
-///             ))
 ///             .eventFilter(SessionLoggerEventFilterArgs.builder()
 ///                 .includes(
 ///                     "SessionStart",
@@ -1069,6 +1063,12 @@ import 'session_logger_state.dart';
 ///                     .logFileFormat("JsonLines")
 ///                     .build())
 ///                 .build())
+///             .displayName("example-session-logger")
+///             .customerManagedKey(exampleKey.arn())
+///             .additionalEncryptionContext(Map.ofEntries(
+///                 Map.entry("Environment", "Production"),
+///                 Map.entry("Application", "WorkSpacesWeb")
+///             ))
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Name", "example-session-logger"),
 ///                 Map.entry("Environment", "Production")
@@ -1106,11 +1106,6 @@ import 'session_logger_state.dart';
 ///     type: aws:workspacesweb:SessionLogger
 ///     name: example
 ///     properties:
-///       displayName: example-session-logger
-///       customerManagedKey: ${exampleKey.arn}
-///       additionalEncryptionContext:
-///         Environment: Production
-///         Application: WorkSpacesWeb
 ///       eventFilter:
 ///         includes:
 ///           - SessionStart
@@ -1122,6 +1117,11 @@ import 'session_logger_state.dart';
 ///           folderStructure: NestedByDate
 ///           keyPrefix: workspaces-web-logs/
 ///           logFileFormat: JsonLines
+///       displayName: example-session-logger
+///       customerManagedKey: ${exampleKey.arn}
+///       additionalEncryptionContext:
+///         Environment: Production
+///         Application: WorkSpacesWeb
 ///       tags:
 ///         Name: example-session-logger
 ///         Environment: Production
@@ -1135,11 +1135,11 @@ import 'session_logger_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - workspaces-web.amazonaws.com
+///             effect: Allow
 ///             actions:
 ///               - s3:PutObject
 ///             resources:
@@ -1223,18 +1223,18 @@ class SessionLogger extends pulumi.CustomResource {
           'aws:workspacesweb/sessionLogger:SessionLogger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customerManagedKey = registerOutput<String?>('customerManagedKey');
     displayName = registerOutput<String?>('displayName');
     eventFilter = registerOutput<SessionLoggerEventFilter>('eventFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionLoggerEventFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logConfiguration = registerOutput<SessionLoggerLogConfiguration>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionLoggerLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SessionLogger] resource's state with the given [name] and [id].
@@ -1242,11 +1242,12 @@ class SessionLogger extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SessionLoggerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SessionLogger._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1260,15 +1261,36 @@ class SessionLogger extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
-    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     customerManagedKey = registerOutput<String?>('customerManagedKey');
     displayName = registerOutput<String?>('displayName');
     eventFilter = registerOutput<SessionLoggerEventFilter>('eventFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionLoggerEventFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logConfiguration = registerOutput<SessionLoggerLogConfiguration>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionLoggerLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SessionLogger] resource.
+  SessionLogger.reference(String urn)
+    : super(
+        'aws:workspacesweb/sessionLogger:SessionLogger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customerManagedKey = registerOutput<String?>('customerManagedKey');
+    displayName = registerOutput<String?>('displayName');
+    eventFilter = registerOutput<SessionLoggerEventFilter>('eventFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionLoggerEventFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logConfiguration = registerOutput<SessionLoggerLogConfiguration>('logConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionLoggerLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    sessionLoggerArn = registerOutput<String>('sessionLoggerArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

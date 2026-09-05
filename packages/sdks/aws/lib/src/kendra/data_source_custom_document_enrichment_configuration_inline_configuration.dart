@@ -6,11 +6,11 @@ import 'data_source_custom_document_enrichment_configuration_inline_configuratio
 
 class DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration {
   /// Configuration of the condition used for the target document attribute or metadata field when ingesting documents into Amazon Kendra. See condition.
-  final pulumi.Input<DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition>? condition;
+  final pulumi.Input<DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition?>? condition;
   /// `TRUE` to delete content if the condition used for the target attribute is met.
-  final pulumi.Input<bool>? documentContentDeletion;
+  final pulumi.Input<bool?>? documentContentDeletion;
   /// Configuration of the target document attribute or metadata field when ingesting documents into Amazon Kendra. You can also include a value. Detailed below.
-  final pulumi.Input<DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTarget>? target;
+  final pulumi.Input<DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTarget?>? target;
 
   /// Creates a new [DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration].
   /// [condition] Configuration of the condition used for the target document attribute or metadata field when ingesting documents into Amazon Kendra. See condition.

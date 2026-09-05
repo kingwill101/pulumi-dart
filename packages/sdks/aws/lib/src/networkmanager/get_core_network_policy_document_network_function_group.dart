@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCoreNetworkPolicyDocumentNetworkFunctionGroup {
   /// Optional description of the network function group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// This identifies the network function group container.
   final pulumi.Input<String> name;
   /// This will be either `true`, that attachment acceptance is required, or `false`, that it is not required.

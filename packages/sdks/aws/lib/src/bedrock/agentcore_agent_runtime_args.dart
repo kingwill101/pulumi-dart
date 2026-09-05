@@ -20,30 +20,30 @@ class AgentcoreAgentRuntimeArgs {
   /// Name of the agent runtime.
   final pulumi.Input<String> agentRuntimeName;
   /// Authorization configuration for authenticating incoming requests. See `authorizerConfiguration` below.
-  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfiguration>? authorizerConfiguration;
+  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfiguration?>? authorizerConfiguration;
   /// Description of the agent runtime.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Map of environment variables to pass to the container.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// List of filesystems to mount into the agent runtime. Up to 5 entries are supported. Each entry is one of session storage, Amazon S3 Files access point, or Amazon EFS access point. See `filesystemConfiguration` below.
-  final pulumi.Input<List<AgentcoreAgentRuntimeFilesystemConfiguration>>? filesystemConfigurations;
+  final pulumi.Input<List<AgentcoreAgentRuntimeFilesystemConfiguration>?>? filesystemConfigurations;
   /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycleConfiguration` below.
-  final pulumi.Input<List<AgentcoreAgentRuntimeLifecycleConfiguration>>? lifecycleConfigurations;
+  final pulumi.Input<List<AgentcoreAgentRuntimeLifecycleConfiguration>?>? lifecycleConfigurations;
   /// Network configuration for the agent runtime. See `networkConfiguration` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<AgentcoreAgentRuntimeNetworkConfiguration> networkConfiguration;
   /// Protocol configuration for the agent runtime. See `protocolConfiguration` below.
-  final pulumi.Input<AgentcoreAgentRuntimeProtocolConfiguration>? protocolConfiguration;
+  final pulumi.Input<AgentcoreAgentRuntimeProtocolConfiguration?>? protocolConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configuration for HTTP request headers that will be passed through to the runtime. See `requestHeaderConfiguration` below.
-  final pulumi.Input<AgentcoreAgentRuntimeRequestHeaderConfiguration>? requestHeaderConfiguration;
+  final pulumi.Input<AgentcoreAgentRuntimeRequestHeaderConfiguration?>? requestHeaderConfiguration;
   /// ARN of the IAM role that the agent runtime assumes to access AWS services.
   final pulumi.Input<String> roleArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<AgentcoreAgentRuntimeTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<AgentcoreAgentRuntimeTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreAgentRuntimeArgs].
   /// [agentRuntimeArtifact] Container artifact configuration. See `agentRuntimeArtifact` below.

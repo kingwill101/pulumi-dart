@@ -6,9 +6,9 @@ import 'get_lifecycle_policy_document_rule_selection.dart';
 
 class GetLifecyclePolicyDocumentRule {
   /// Specifies the action to take.
-  final pulumi.Input<GetLifecyclePolicyDocumentRuleAction>? action;
+  final pulumi.Input<GetLifecyclePolicyDocumentRuleAction?>? action;
   /// Describes the purpose of a rule within a lifecycle policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Sets the order in which rules are evaluated, lowest to highest. When you add rules to a lifecycle policy, you must give them each a unique value for `priority`. Values do not need to be sequential across rules in a policy. A rule with a `tagStatus` value of `any` must have the highest value for `priority` and be evaluated last.
   final pulumi.Input<int> priority;
   /// Collects parameters describing the selection criteria for the ECR lifecycle policy:
@@ -39,7 +39,7 @@ class GetLifecyclePolicyDocumentRule {
     return GetLifecyclePolicyDocumentRule(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetLifecyclePolicyDocumentRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       selection: pulumi.Input.fromValue(GetLifecyclePolicyDocumentRuleSelection.fromMap((map['selection']! as Map).cast<String, dynamic>())),
     );
   }

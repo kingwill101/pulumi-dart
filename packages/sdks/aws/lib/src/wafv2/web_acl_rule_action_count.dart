@@ -5,7 +5,7 @@ import 'web_acl_rule_action_count_custom_request_handling.dart';
 
 class WebAclRuleActionCount {
   /// Custom request handling configuration. See Custom Request Handling below.
-  final pulumi.Input<WebAclRuleActionCountCustomRequestHandling>? customRequestHandling;
+  final pulumi.Input<WebAclRuleActionCountCustomRequestHandling?>? customRequestHandling;
 
   /// Creates a new [WebAclRuleActionCount].
   /// [customRequestHandling] Custom request handling configuration. See Custom Request Handling below.

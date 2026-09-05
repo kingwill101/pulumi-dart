@@ -20,8 +20,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// const example = new aws.s3.Bucket("example", {bucket: "example"});
 /// const analytics = new aws.s3.Bucket("analytics", {bucket: "analytics-destination"});
 /// const example_entire_bucket = new aws.s3.AnalyticsConfiguration("example-entire-bucket", {
-///     bucket: example.id,
-///     name: "EntireBucket",
 ///     storageClassAnalysis: {
 ///         dataExport: {
 ///             destination: {
@@ -31,6 +29,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///             },
 ///         },
 ///     },
+///     bucket: example.id,
+///     name: "EntireBucket",
 /// });
 /// ```
 /// ```python
@@ -40,8 +40,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// example = aws.s3.Bucket("example", bucket="example")
 /// analytics = aws.s3.Bucket("analytics", bucket="analytics-destination")
 /// example_entire_bucket = aws.s3.AnalyticsConfiguration("example-entire-bucket",
-///     bucket=example.id,
-///     name="EntireBucket",
 ///     storage_class_analysis={
 ///         "data_export": {
 ///             "destination": {
@@ -50,7 +48,9 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///                 },
 ///             },
 ///         },
-///     })
+///     },
+///     bucket=example.id,
+///     name="EntireBucket")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -72,8 +72,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///
 ///     var example_entire_bucket = new Aws.S3.AnalyticsConfiguration("example-entire-bucket", new()
 ///     {
-///         Bucket = example.Id,
-///         Name = "EntireBucket",
 ///         StorageClassAnalysis = new Aws.S3.Inputs.AnalyticsConfigurationStorageClassAnalysisArgs
 ///         {
 ///             DataExport = new Aws.S3.Inputs.AnalyticsConfigurationStorageClassAnalysisDataExportArgs
@@ -87,6 +85,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///                 },
 ///             },
 ///         },
+///         Bucket = example.Id,
+///         Name = "EntireBucket",
 ///     });
 ///
 /// });
@@ -114,8 +114,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewAnalyticsConfiguration(ctx, "example-entire-bucket", &s3.AnalyticsConfigurationArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:   pulumi.String("EntireBucket"),
 /// 			StorageClassAnalysis: &s3.AnalyticsConfigurationStorageClassAnalysisArgs{
 /// 				DataExport: &s3.AnalyticsConfigurationStorageClassAnalysisDataExportArgs{
 /// 					Destination: &s3.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationArgs{
@@ -125,6 +123,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:   pulumi.String("EntireBucket"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -143,8 +143,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// }
 ///
 /// resource "aws_s3_analyticsconfiguration" "example-entire-bucket" {
-///   bucket = aws_s3_bucket.example.id
-///   name   = "EntireBucket"
 ///   storage_class_analysis = {
 ///     data_export = {
 ///       destination = {
@@ -154,6 +152,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///       }
 ///     }
 ///   }
+///   bucket = aws_s3_bucket.example.id
+///   name   = "EntireBucket"
 /// }
 /// resource "aws_s3_bucket" "example" {
 ///   bucket = "example"
@@ -198,8 +198,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///             .build());
 ///
 ///         var example_entire_bucket = new AnalyticsConfiguration("example-entire-bucket", AnalyticsConfigurationArgs.builder()
-///             .bucket(example.id())
-///             .name("EntireBucket")
 ///             .storageClassAnalysis(AnalyticsConfigurationStorageClassAnalysisArgs.builder()
 ///                 .dataExport(AnalyticsConfigurationStorageClassAnalysisDataExportArgs.builder()
 ///                     .destination(AnalyticsConfigurationStorageClassAnalysisDataExportDestinationArgs.builder()
@@ -209,6 +207,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
+///             .bucket(example.id())
+///             .name("EntireBucket")
 ///             .build());
 ///
 ///     }
@@ -219,13 +219,13 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///   example-entire-bucket:
 ///     type: aws:s3:AnalyticsConfiguration
 ///     properties:
-///       bucket: ${example.id}
-///       name: EntireBucket
 ///       storageClassAnalysis:
 ///         dataExport:
 ///           destination:
 ///             s3BucketDestination:
 ///               bucketArn: ${analytics.arn}
+///       bucket: ${example.id}
+///       name: EntireBucket
 ///   example:
 ///     type: aws:s3:Bucket
 ///     properties:
@@ -246,8 +246,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///
 /// const example = new aws.s3.Bucket("example", {bucket: "example"});
 /// const example_filtered = new aws.s3.AnalyticsConfiguration("example-filtered", {
-///     bucket: example.id,
-///     name: "ImportantBlueDocuments",
 ///     filter: {
 ///         prefix: "documents/",
 ///         tags: {
@@ -255,6 +253,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///             "class": "blue",
 ///         },
 ///     },
+///     bucket: example.id,
+///     name: "ImportantBlueDocuments",
 /// });
 /// ```
 /// ```python
@@ -263,15 +263,15 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///
 /// example = aws.s3.Bucket("example", bucket="example")
 /// example_filtered = aws.s3.AnalyticsConfiguration("example-filtered",
-///     bucket=example.id,
-///     name="ImportantBlueDocuments",
 ///     filter={
 ///         "prefix": "documents/",
 ///         "tags": {
 ///             "priority": "high",
 ///             "class": "blue",
 ///         },
-///     })
+///     },
+///     bucket=example.id,
+///     name="ImportantBlueDocuments")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -288,8 +288,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///
 ///     var example_filtered = new Aws.S3.AnalyticsConfiguration("example-filtered", new()
 ///     {
-///         Bucket = example.Id,
-///         Name = "ImportantBlueDocuments",
 ///         Filter = new Aws.S3.Inputs.AnalyticsConfigurationFilterArgs
 ///         {
 ///             Prefix = "documents/",
@@ -299,6 +297,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///                 { "class", "blue" },
 ///             },
 ///         },
+///         Bucket = example.Id,
+///         Name = "ImportantBlueDocuments",
 ///     });
 ///
 /// });
@@ -320,8 +320,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3.NewAnalyticsConfiguration(ctx, "example-filtered", &s3.AnalyticsConfigurationArgs{
-/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
-/// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 			Filter: &s3.AnalyticsConfigurationFilterArgs{
 /// 				Prefix: pulumi.String("documents/"),
 /// 				Tags: pulumi.StringMap{
@@ -329,6 +327,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// 					"class":    pulumi.String("blue"),
 /// 				},
 /// 			},
+/// 			Bucket: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:   pulumi.String("ImportantBlueDocuments"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -347,8 +347,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 /// }
 ///
 /// resource "aws_s3_analyticsconfiguration" "example-filtered" {
-///   bucket = aws_s3_bucket.example.id
-///   name   = "ImportantBlueDocuments"
 ///   filter = {
 ///     prefix = "documents/"
 ///     tags = {
@@ -356,6 +354,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///       "class"    = "blue"
 ///     }
 ///   }
+///   bucket = aws_s3_bucket.example.id
+///   name   = "ImportantBlueDocuments"
 /// }
 /// resource "aws_s3_bucket" "example" {
 ///   bucket = "example"
@@ -390,8 +390,6 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///             .build());
 ///
 ///         var example_filtered = new AnalyticsConfiguration("example-filtered", AnalyticsConfigurationArgs.builder()
-///             .bucket(example.id())
-///             .name("ImportantBlueDocuments")
 ///             .filter(AnalyticsConfigurationFilterArgs.builder()
 ///                 .prefix("documents/")
 ///                 .tags(Map.ofEntries(
@@ -399,6 +397,8 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///                     Map.entry("class", "blue")
 ///                 ))
 ///                 .build())
+///             .bucket(example.id())
+///             .name("ImportantBlueDocuments")
 ///             .build());
 ///
 ///     }
@@ -409,13 +409,13 @@ import 'analytics_configuration_storage_class_analysis.dart';
 ///   example-filtered:
 ///     type: aws:s3:AnalyticsConfiguration
 ///     properties:
-///       bucket: ${example.id}
-///       name: ImportantBlueDocuments
 ///       filter:
 ///         prefix: documents/
 ///         tags:
 ///           priority: high
 ///           class: blue
+///       bucket: ${example.id}
+///       name: ImportantBlueDocuments
 ///   example:
 ///     type: aws:s3:Bucket
 ///     properties:
@@ -454,7 +454,7 @@ class AnalyticsConfiguration extends pulumi.CustomResource {
           'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     filter = registerOutput<AnalyticsConfigurationFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConfigurationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -468,11 +468,12 @@ class AnalyticsConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnalyticsConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AnalyticsConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -486,6 +487,22 @@ class AnalyticsConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    filter = registerOutput<AnalyticsConfigurationFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConfigurationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    storageClassAnalysis = registerOutput<AnalyticsConfigurationStorageClassAnalysis?>('storageClassAnalysis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConfigurationStorageClassAnalysis.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AnalyticsConfiguration] resource.
+  AnalyticsConfiguration.reference(String urn)
+    : super(
+        'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     filter = registerOutput<AnalyticsConfigurationFilter?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConfigurationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

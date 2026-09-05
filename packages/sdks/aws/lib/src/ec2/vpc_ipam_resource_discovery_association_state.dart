@@ -4,32 +4,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering VpcIpamResourceDiscoveryAssociation resources.
 class VpcIpamResourceDiscoveryAssociationState {
-  /// The Amazon Resource Name (ARN) of IPAM Resource Discovery Association.
-  final pulumi.Input<String>? arn;
-  /// The Amazon Resource Name (ARN) of the IPAM.
-  final pulumi.Input<String>? ipamArn;
+  /// ARN of IPAM Resource Discovery Association.
+  final pulumi.Input<String?>? arn;
+  /// ARN of the IPAM.
+  final pulumi.Input<String?>? ipamArn;
   /// The ID of the IPAM to associate.
-  final pulumi.Input<String>? ipamId;
+  final pulumi.Input<String?>? ipamId;
   /// The home region of the IPAM.
-  final pulumi.Input<String>? ipamRegion;
+  final pulumi.Input<String?>? ipamRegion;
   /// The ID of the Resource Discovery to associate.
-  final pulumi.Input<String>? ipamResourceDiscoveryId;
+  final pulumi.Input<String?>? ipamResourceDiscoveryId;
   /// A boolean to identify if the Resource Discovery is the accounts default resource discovery.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// The account ID for the account that manages the Resource Discovery
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The lifecycle state of the association when you associate or disassociate a resource discovery.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// A map of tags to add to the IPAM resource discovery association resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [VpcIpamResourceDiscoveryAssociationState].
-  /// [arn] The Amazon Resource Name (ARN) of IPAM Resource Discovery Association.
-  /// [ipamArn] The Amazon Resource Name (ARN) of the IPAM.
+  /// [arn] ARN of IPAM Resource Discovery Association.
+  /// [ipamArn] ARN of the IPAM.
   /// [ipamId] The ID of the IPAM to associate.
   /// [ipamRegion] The home region of the IPAM.
   /// [ipamResourceDiscoveryId] The ID of the Resource Discovery to associate.

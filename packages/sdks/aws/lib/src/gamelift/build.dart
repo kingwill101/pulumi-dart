@@ -13,13 +13,13 @@ import 'build_storage_location.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const test = new aws.gamelift.Build("test", {
-///     name: "example-build",
-///     operatingSystem: "WINDOWS_2012",
 ///     storageLocation: {
 ///         bucket: testAwsS3Bucket.id,
 ///         key: testAwsS3Object.key,
 ///         roleArn: testAwsIamRole.arn,
 ///     },
+///     name: "example-build",
+///     operatingSystem: "WINDOWS_2012",
 /// });
 /// ```
 /// ```python
@@ -27,13 +27,13 @@ import 'build_storage_location.dart';
 /// import pulumi_aws as aws
 ///
 /// test = aws.gamelift.Build("test",
-///     name="example-build",
-///     operating_system="WINDOWS_2012",
 ///     storage_location={
 ///         "bucket": test_aws_s3_bucket["id"],
 ///         "key": test_aws_s3_object["key"],
 ///         "role_arn": test_aws_iam_role["arn"],
-///     })
+///     },
+///     name="example-build",
+///     operating_system="WINDOWS_2012")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,14 +45,14 @@ import 'build_storage_location.dart';
 /// {
 ///     var test = new Aws.GameLift.Build("test", new()
 ///     {
-///         Name = "example-build",
-///         OperatingSystem = "WINDOWS_2012",
 ///         StorageLocation = new Aws.GameLift.Inputs.BuildStorageLocationArgs
 ///         {
 ///             Bucket = testAwsS3Bucket.Id,
 ///             Key = testAwsS3Object.Key,
 ///             RoleArn = testAwsIamRole.Arn,
 ///         },
+///         Name = "example-build",
+///         OperatingSystem = "WINDOWS_2012",
 ///     });
 ///
 /// });
@@ -68,13 +68,13 @@ import 'build_storage_location.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := gamelift.NewBuild(ctx, "test", &gamelift.BuildArgs{
-/// 			Name:            pulumi.String("example-build"),
-/// 			OperatingSystem: pulumi.String("WINDOWS_2012"),
 /// 			StorageLocation: &gamelift.BuildStorageLocationArgs{
 /// 				Bucket:  pulumi.Any(testAwsS3Bucket.Id),
 /// 				Key:     pulumi.Any(testAwsS3Object.Key),
 /// 				RoleArn: pulumi.Any(testAwsIamRole.Arn),
 /// 			},
+/// 			Name:            pulumi.String("example-build"),
+/// 			OperatingSystem: pulumi.String("WINDOWS_2012"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,13 +93,13 @@ import 'build_storage_location.dart';
 /// }
 ///
 /// resource "aws_gamelift_build" "test" {
-///   name             = "example-build"
-///   operating_system = "WINDOWS_2012"
 ///   storage_location = {
 ///     bucket   = testAwsS3Bucket.id
 ///     key      = testAwsS3Object.key
 ///     role_arn = testAwsIamRole.arn
 ///   }
+///   name             = "example-build"
+///   operating_system = "WINDOWS_2012"
 /// }
 /// ```
 /// ```java
@@ -125,13 +125,13 @@ import 'build_storage_location.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Build("test", BuildArgs.builder()
-///             .name("example-build")
-///             .operatingSystem("WINDOWS_2012")
 ///             .storageLocation(BuildStorageLocationArgs.builder()
 ///                 .bucket(testAwsS3Bucket.id())
 ///                 .key(testAwsS3Object.key())
 ///                 .roleArn(testAwsIamRole.arn())
 ///                 .build())
+///             .name("example-build")
+///             .operatingSystem("WINDOWS_2012")
 ///             .build());
 ///
 ///     }
@@ -142,12 +142,12 @@ import 'build_storage_location.dart';
 ///   test:
 ///     type: aws:gamelift:Build
 ///     properties:
-///       name: example-build
-///       operatingSystem: WINDOWS_2012
 ///       storageLocation:
 ///         bucket: ${testAwsS3Bucket.id}
 ///         key: ${testAwsS3Object.key}
 ///         roleArn: ${testAwsIamRole.arn}
+///       name: example-build
+///       operatingSystem: WINDOWS_2012
 /// ```
 ///
 ///
@@ -188,15 +188,15 @@ class Build extends pulumi.CustomResource {
           'aws:gamelift/build:Build',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     operatingSystem = registerOutput<String>('operatingSystem');
     region = registerOutput<String>('region');
     storageLocation = registerOutput<BuildStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String?>('version');
   }
 
@@ -205,11 +205,12 @@ class Build extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BuildState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Build._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -228,8 +229,27 @@ class Build extends pulumi.CustomResource {
     operatingSystem = registerOutput<String>('operatingSystem');
     region = registerOutput<String>('region');
     storageLocation = registerOutput<BuildStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Build] resource.
+  Build.reference(String urn)
+    : super(
+        'aws:gamelift/build:Build',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    this.name = registerOutput<String>('name');
+    operatingSystem = registerOutput<String>('operatingSystem');
+    region = registerOutput<String>('region');
+    storageLocation = registerOutput<BuildStorageLocation>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String?>('version');
   }
 }

@@ -6,7 +6,7 @@ import 'sdkvoice_global_settings_voice_connector.dart';
 /// Input properties used for looking up and filtering SdkvoiceGlobalSettings resources.
 class SdkvoiceGlobalSettingsState {
   /// The Voice Connector settings. See voice_connector.
-  final pulumi.Input<SdkvoiceGlobalSettingsVoiceConnector>? voiceConnector;
+  final pulumi.Input<SdkvoiceGlobalSettingsVoiceConnector?>? voiceConnector;
 
   /// Creates a new [SdkvoiceGlobalSettingsState].
   /// [voiceConnector] The Voice Connector settings. See voice_connector.

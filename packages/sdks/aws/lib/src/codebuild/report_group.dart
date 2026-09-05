@@ -15,12 +15,12 @@ import 'report_group_state.dart';
 /// const current = aws.getCallerIdentity({});
 /// const example = current.then(current => aws.iam.getPolicyDocument({
 ///     statements: [{
-///         sid: "Enable IAM User Permissions",
-///         effect: "Allow",
 ///         principals: [{
 ///             type: "AWS",
 ///             identifiers: [`arn:aws:iam::${current.accountId}:root`],
 ///         }],
+///         sid: "Enable IAM User Permissions",
+///         effect: "Allow",
 ///         actions: ["kms:*"],
 ///         resources: ["*"],
 ///     }],
@@ -32,10 +32,7 @@ import 'report_group_state.dart';
 /// });
 /// const exampleBucket = new aws.s3.Bucket("example", {bucket: "my-test"});
 /// const exampleReportGroup = new aws.codebuild.ReportGroup("example", {
-///     name: "my test report group",
-///     type: "TEST",
 ///     exportConfig: {
-///         type: "S3",
 ///         s3Destination: {
 ///             bucket: exampleBucket.id,
 ///             encryptionDisabled: false,
@@ -43,7 +40,10 @@ import 'report_group_state.dart';
 ///             packaging: "NONE",
 ///             path: "/some",
 ///         },
+///         type: "S3",
 ///     },
+///     name: "my test report group",
+///     type: "TEST",
 /// });
 /// ```
 /// ```python
@@ -52,12 +52,12 @@ import 'report_group_state.dart';
 ///
 /// current = aws.get_caller_identity()
 /// example = aws.iam.get_policy_document(statements=[{
-///     "sid": "Enable IAM User Permissions",
-///     "effect": "Allow",
 ///     "principals": [{
 ///         "type": "AWS",
 ///         "identifiers": [f"arn:aws:iam::{current.account_id}:root"],
 ///     }],
+///     "sid": "Enable IAM User Permissions",
+///     "effect": "Allow",
 ///     "actions": ["kms:*"],
 ///     "resources": ["*"],
 /// }])
@@ -67,10 +67,7 @@ import 'report_group_state.dart';
 ///     policy=example.json)
 /// example_bucket = aws.s3.Bucket("example", bucket="my-test")
 /// example_report_group = aws.codebuild.ReportGroup("example",
-///     name="my test report group",
-///     type="TEST",
 ///     export_config={
-///         "type": "S3",
 ///         "s3_destination": {
 ///             "bucket": example_bucket.id,
 ///             "encryption_disabled": False,
@@ -78,7 +75,10 @@ import 'report_group_state.dart';
 ///             "packaging": "NONE",
 ///             "path": "/some",
 ///         },
-///     })
+///         "type": "S3",
+///     },
+///     name="my test report group",
+///     type="TEST")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -96,8 +96,6 @@ import 'report_group_state.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Sid = "Enable IAM User Permissions",
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -109,6 +107,8 @@ import 'report_group_state.dart';
 ///                         },
 ///                     },
 ///                 },
+///                 Sid = "Enable IAM User Permissions",
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "kms:*",
@@ -135,11 +135,8 @@ import 'report_group_state.dart';
 ///
 ///     var exampleReportGroup = new Aws.CodeBuild.ReportGroup("example", new()
 ///     {
-///         Name = "my test report group",
-///         Type = "TEST",
 ///         ExportConfig = new Aws.CodeBuild.Inputs.ReportGroupExportConfigArgs
 ///         {
-///             Type = "S3",
 ///             S3Destination = new Aws.CodeBuild.Inputs.ReportGroupExportConfigS3DestinationArgs
 ///             {
 ///                 Bucket = exampleBucket.Id,
@@ -148,7 +145,10 @@ import 'report_group_state.dart';
 ///                 Packaging = "NONE",
 ///                 Path = "/some",
 ///             },
+///             Type = "S3",
 ///         },
+///         Name = "my test report group",
+///         Type = "TEST",
 ///     });
 ///
 /// });
@@ -176,8 +176,6 @@ import 'report_group_state.dart';
 /// 		example, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Sid:    pulumi.StringRef("Enable IAM User Permissions"),
-/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -186,6 +184,8 @@ import 'report_group_state.dart';
 /// 							},
 /// 						},
 /// 					},
+/// 					Sid:    pulumi.StringRef("Enable IAM User Permissions"),
+/// 					Effect: pulumi.StringRef("Allow"),
 /// 					Actions: []string{
 /// 						"kms:*",
 /// 					},
@@ -213,10 +213,7 @@ import 'report_group_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = codebuild.NewReportGroup(ctx, "example", &codebuild.ReportGroupArgs{
-/// 			Name: pulumi.String("my test report group"),
-/// 			Type: pulumi.String("TEST"),
 /// 			ExportConfig: &codebuild.ReportGroupExportConfigArgs{
-/// 				Type: pulumi.String("S3"),
 /// 				S3Destination: &codebuild.ReportGroupExportConfigS3DestinationArgs{
 /// 					Bucket:             exampleBucket.ID().ToIDOutput().ToStringOutput(),
 /// 					EncryptionDisabled: pulumi.Bool(false),
@@ -224,7 +221,10 @@ import 'report_group_state.dart';
 /// 					Packaging:          pulumi.String("NONE"),
 /// 					Path:               pulumi.String("/some"),
 /// 				},
+/// 				Type: pulumi.String("S3"),
 /// 			},
+/// 			Name: pulumi.String("my test report group"),
+/// 			Type: pulumi.String("TEST"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -246,12 +246,12 @@ import 'report_group_state.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "example" {
 ///   statements {
-///     sid    = "Enable IAM User Permissions"
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
 ///     }
+///     sid       = "Enable IAM User Permissions"
+///     effect    = "Allow"
 ///     actions   = ["kms:*"]
 ///     resources = ["*"]
 ///   }
@@ -266,10 +266,7 @@ import 'report_group_state.dart';
 ///   bucket = "my-test"
 /// }
 /// resource "aws_codebuild_reportgroup" "example" {
-///   name = "my test report group"
-///   type = "TEST"
 ///   export_config = {
-///     type = "S3"
 ///     s3_destination = {
 ///       bucket              = aws_s3_bucket.example.id
 ///       encryption_disabled = false
@@ -277,7 +274,10 @@ import 'report_group_state.dart';
 ///       packaging           = "NONE"
 ///       path                = "/some"
 ///     }
+///     type = "S3"
 ///   }
+///   name = "my test report group"
+///   type = "TEST"
 /// }
 /// ```
 /// ```java
@@ -318,12 +318,12 @@ import 'report_group_state.dart';
 ///
 ///         final var example = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .sid("Enable IAM User Permissions")
-///                 .effect("Allow")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("AWS")
 ///                     .identifiers(String.format("arn:aws:iam::%s:root", current.accountId()))
 ///                     .build())
+///                 .sid("Enable IAM User Permissions")
+///                 .effect("Allow")
 ///                 .actions("kms:*")
 ///                 .resources("*")
 ///                 .build())
@@ -340,10 +340,7 @@ import 'report_group_state.dart';
 ///             .build());
 ///
 ///         var exampleReportGroup = new ReportGroup("exampleReportGroup", ReportGroupArgs.builder()
-///             .name("my test report group")
-///             .type("TEST")
 ///             .exportConfig(ReportGroupExportConfigArgs.builder()
-///                 .type("S3")
 ///                 .s3Destination(ReportGroupExportConfigS3DestinationArgs.builder()
 ///                     .bucket(exampleBucket.id())
 ///                     .encryptionDisabled(false)
@@ -351,7 +348,10 @@ import 'report_group_state.dart';
 ///                     .packaging("NONE")
 ///                     .path("/some")
 ///                     .build())
+///                 .type("S3")
 ///                 .build())
+///             .name("my test report group")
+///             .type("TEST")
 ///             .build());
 ///
 ///     }
@@ -375,16 +375,16 @@ import 'report_group_state.dart';
 ///     type: aws:codebuild:ReportGroup
 ///     name: example
 ///     properties:
-///       name: my test report group
-///       type: TEST
 ///       exportConfig:
-///         type: S3
 ///         s3Destination:
 ///           bucket: ${exampleBucket.id}
 ///           encryptionDisabled: false
 ///           encryptionKey: ${exampleKey.arn}
 ///           packaging: NONE
 ///           path: /some
+///         type: S3
+///       name: my test report group
+///       type: TEST
 /// variables:
 ///   current:
 ///     fn::invoke:
@@ -395,12 +395,12 @@ import 'report_group_state.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - sid: Enable IAM User Permissions
-///             effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - arn:aws:iam::${current.accountId}:root
+///             sid: Enable IAM User Permissions
+///             effect: Allow
 ///             actions:
 ///               - kms:*
 ///             resources:
@@ -414,7 +414,7 @@ import 'report_group_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the CodeBuild report group.
+/// - `arn` (String) ARN of the CodeBuild report group.
 ///
 ///
 /// Using `pulumi import`, import CodeBuild Report Group using the CodeBuild Report Group arn. For example:
@@ -454,7 +454,7 @@ class ReportGroup extends pulumi.CustomResource {
           'aws:codebuild/reportGroup:ReportGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     created = registerOutput<String>('created');
@@ -462,8 +462,8 @@ class ReportGroup extends pulumi.CustomResource {
     exportConfig = registerOutput<ReportGroupExportConfig>('exportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportGroupExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -472,11 +472,12 @@ class ReportGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReportGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReportGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -496,8 +497,28 @@ class ReportGroup extends pulumi.CustomResource {
     exportConfig = registerOutput<ReportGroupExportConfig>('exportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportGroupExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ReportGroup] resource.
+  ReportGroup.reference(String urn)
+    : super(
+        'aws:codebuild/reportGroup:ReportGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    created = registerOutput<String>('created');
+    deleteReports = registerOutput<bool?>('deleteReports');
+    exportConfig = registerOutput<ReportGroupExportConfig>('exportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportGroupExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

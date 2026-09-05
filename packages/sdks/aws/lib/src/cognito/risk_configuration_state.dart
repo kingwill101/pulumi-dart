@@ -8,17 +8,17 @@ import 'risk_configuration_risk_exception_configuration.dart';
 /// Input properties used for looking up and filtering RiskConfiguration resources.
 class RiskConfigurationState {
   /// The account takeover risk configuration. See details below.
-  final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfiguration>? accountTakeoverRiskConfiguration;
+  final pulumi.Input<RiskConfigurationAccountTakeoverRiskConfiguration?>? accountTakeoverRiskConfiguration;
   /// The app client ID. When the client ID is not provided, the same risk configuration is applied to all the clients in the User Pool.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The compromised credentials risk configuration. See details below.
-  final pulumi.Input<RiskConfigurationCompromisedCredentialsRiskConfiguration>? compromisedCredentialsRiskConfiguration;
+  final pulumi.Input<RiskConfigurationCompromisedCredentialsRiskConfiguration?>? compromisedCredentialsRiskConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The configuration to override the risk decision. See details below.
-  final pulumi.Input<RiskConfigurationRiskExceptionConfiguration>? riskExceptionConfiguration;
+  final pulumi.Input<RiskConfigurationRiskExceptionConfiguration?>? riskExceptionConfiguration;
   /// The user pool ID.
-  final pulumi.Input<String>? userPoolId;
+  final pulumi.Input<String?>? userPoolId;
 
   /// Creates a new [RiskConfigurationState].
   /// [accountTakeoverRiskConfiguration] The account takeover risk configuration. See details below.

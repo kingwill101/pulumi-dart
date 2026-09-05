@@ -9,13 +9,13 @@ import 'get_ontap_storage_virtual_machine_filter.dart';
 /// {@macro pulumi_fsx_get_ontap_storage_virtual_machine_get_ontap_storage_virtual_machine_args_doc}
 class GetOntapStorageVirtualMachineArgs {
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<GetOntapStorageVirtualMachineFilter>>? filters;
+  final pulumi.Input<List<GetOntapStorageVirtualMachineFilter>?>? filters;
   /// Identifier of the storage virtual machine (e.g. `svm-12345678`).
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetOntapStorageVirtualMachineArgs].
   /// [filters] Configuration block. Detailed below.

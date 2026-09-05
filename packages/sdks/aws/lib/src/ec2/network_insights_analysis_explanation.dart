@@ -35,54 +35,54 @@ import 'network_insights_analysis_explanation_vpn_connection.dart';
 import 'network_insights_analysis_explanation_vpn_gateway.dart';
 
 class NetworkInsightsAnalysisExplanation {
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationAclRule>>? aclRules;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationAcl>>? acls;
-  final pulumi.Input<String>? address;
-  final pulumi.Input<List<String>>? addresses;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationAttachedTo>>? attachedTos;
-  final pulumi.Input<List<String>>? availabilityZones;
-  final pulumi.Input<List<String>>? cidrs;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationClassicLoadBalancerListener>>? classicLoadBalancerListeners;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationComponent>>? components;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationCustomerGateway>>? customerGateways;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationDestinationVpc>>? destinationVpcs;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationDestination>>? destinations;
-  final pulumi.Input<String>? direction;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationElasticLoadBalancerListener>>? elasticLoadBalancerListeners;
-  final pulumi.Input<String>? explanationCode;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationIngressRouteTable>>? ingressRouteTables;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationInternetGateway>>? internetGateways;
-  final pulumi.Input<String>? loadBalancerArn;
-  final pulumi.Input<int>? loadBalancerListenerPort;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup>>? loadBalancerTargetGroup;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup>>? loadBalancerTargetGroups;
-  final pulumi.Input<int>? loadBalancerTargetPort;
-  final pulumi.Input<String>? missingComponent;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationNatGateway>>? natGateways;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationNetworkInterface>>? networkInterfaces;
-  final pulumi.Input<String>? packetField;
-  final pulumi.Input<int>? port;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationPortRange>>? portRanges;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationPrefixList>>? prefixLists;
-  final pulumi.Input<List<String>>? protocols;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationRouteTableRoute>>? routeTableRoutes;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationRouteTable>>? routeTables;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSecurityGroup>>? securityGroup;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSecurityGroupRule>>? securityGroupRules;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSecurityGroup>>? securityGroups;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSourceVpc>>? sourceVpcs;
-  final pulumi.Input<String>? state;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSubnetRouteTable>>? subnetRouteTables;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSubnet>>? subnets;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationTransitGatewayAttachment>>? transitGatewayAttachments;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationTransitGatewayRouteTableRoute>>? transitGatewayRouteTableRoutes;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationTransitGatewayRouteTable>>? transitGatewayRouteTables;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationTransitGateway>>? transitGateways;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationVpcEndpoint>>? vpcEndpoints;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationVpcPeeringConnection>>? vpcPeeringConnections;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationVpc>>? vpcs;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationVpnConnection>>? vpnConnections;
-  final pulumi.Input<List<NetworkInsightsAnalysisExplanationVpnGateway>>? vpnGateways;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationAclRule>?>? aclRules;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationAcl>?>? acls;
+  final pulumi.Input<String?>? address;
+  final pulumi.Input<List<String>?>? addresses;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationAttachedTo>?>? attachedTos;
+  final pulumi.Input<List<String>?>? availabilityZones;
+  final pulumi.Input<List<String>?>? cidrs;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationClassicLoadBalancerListener>?>? classicLoadBalancerListeners;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationComponent>?>? components;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationCustomerGateway>?>? customerGateways;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationDestinationVpc>?>? destinationVpcs;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationDestination>?>? destinations;
+  final pulumi.Input<String?>? direction;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationElasticLoadBalancerListener>?>? elasticLoadBalancerListeners;
+  final pulumi.Input<String?>? explanationCode;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationIngressRouteTable>?>? ingressRouteTables;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationInternetGateway>?>? internetGateways;
+  final pulumi.Input<String?>? loadBalancerArn;
+  final pulumi.Input<int?>? loadBalancerListenerPort;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup>?>? loadBalancerTargetGroup;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup>?>? loadBalancerTargetGroups;
+  final pulumi.Input<int?>? loadBalancerTargetPort;
+  final pulumi.Input<String?>? missingComponent;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationNatGateway>?>? natGateways;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationNetworkInterface>?>? networkInterfaces;
+  final pulumi.Input<String?>? packetField;
+  final pulumi.Input<int?>? port;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationPortRange>?>? portRanges;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationPrefixList>?>? prefixLists;
+  final pulumi.Input<List<String>?>? protocols;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationRouteTableRoute>?>? routeTableRoutes;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationRouteTable>?>? routeTables;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSecurityGroup>?>? securityGroup;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSecurityGroupRule>?>? securityGroupRules;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSecurityGroup>?>? securityGroups;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSourceVpc>?>? sourceVpcs;
+  final pulumi.Input<String?>? state;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSubnetRouteTable>?>? subnetRouteTables;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationSubnet>?>? subnets;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationTransitGatewayAttachment>?>? transitGatewayAttachments;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationTransitGatewayRouteTableRoute>?>? transitGatewayRouteTableRoutes;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationTransitGatewayRouteTable>?>? transitGatewayRouteTables;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationTransitGateway>?>? transitGateways;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationVpcEndpoint>?>? vpcEndpoints;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationVpcPeeringConnection>?>? vpcPeeringConnections;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationVpc>?>? vpcs;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationVpnConnection>?>? vpnConnections;
+  final pulumi.Input<List<NetworkInsightsAnalysisExplanationVpnGateway>?>? vpnGateways;
 
   /// Creates a new [NetworkInsightsAnalysisExplanation].
   /// [aclRules] Optional.
@@ -257,15 +257,15 @@ class NetworkInsightsAnalysisExplanation {
       ingressRouteTables: (() { final guardedValue = map['ingressRouteTables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationIngressRouteTable>(guardedValue, (value) => NetworkInsightsAnalysisExplanationIngressRouteTable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       internetGateways: (() { final guardedValue = map['internetGateways']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationInternetGateway>(guardedValue, (value) => NetworkInsightsAnalysisExplanationInternetGateway.fromMap((value as Map).cast<String, dynamic>()))); })(),
       loadBalancerArn: (() { final guardedValue = map['loadBalancerArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      loadBalancerListenerPort: (() { final guardedValue = map['loadBalancerListenerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      loadBalancerListenerPort: (() { final guardedValue = map['loadBalancerListenerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       loadBalancerTargetGroup: (() { final guardedValue = map['loadBalancerTargetGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup>(guardedValue, (value) => NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       loadBalancerTargetGroups: (() { final guardedValue = map['loadBalancerTargetGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup>(guardedValue, (value) => NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      loadBalancerTargetPort: (() { final guardedValue = map['loadBalancerTargetPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      loadBalancerTargetPort: (() { final guardedValue = map['loadBalancerTargetPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       missingComponent: (() { final guardedValue = map['missingComponent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       natGateways: (() { final guardedValue = map['natGateways']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationNatGateway>(guardedValue, (value) => NetworkInsightsAnalysisExplanationNatGateway.fromMap((value as Map).cast<String, dynamic>()))); })(),
       networkInterfaces: (() { final guardedValue = map['networkInterfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationNetworkInterface>(guardedValue, (value) => NetworkInsightsAnalysisExplanationNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))); })(),
       packetField: (() { final guardedValue = map['packetField']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       portRanges: (() { final guardedValue = map['portRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationPortRange>(guardedValue, (value) => NetworkInsightsAnalysisExplanationPortRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
       prefixLists: (() { final guardedValue = map['prefixLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationPrefixList>(guardedValue, (value) => NetworkInsightsAnalysisExplanationPrefixList.fromMap((value as Map).cast<String, dynamic>()))); })(),
       protocols: (() { final guardedValue = map['protocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

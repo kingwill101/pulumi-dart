@@ -162,7 +162,7 @@ class IamRoleAssociation extends pulumi.CustomResource {
           'aws:odb/iamRoleAssociation:IamRoleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     awsIntegration = registerOutput<String>('awsIntegration');
     iamRoleArn = registerOutput<String>('iamRoleArn');
@@ -178,11 +178,12 @@ class IamRoleAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IamRoleAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IamRoleAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -196,6 +197,24 @@ class IamRoleAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsIntegration = registerOutput<String>('awsIntegration');
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+    status = registerOutput<String>('status');
+    statusReason = registerOutput<String>('statusReason');
+    timeouts = registerOutput<IamRoleAssociationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IamRoleAssociationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [IamRoleAssociation] resource.
+  IamRoleAssociation.reference(String urn)
+    : super(
+        'aws:odb/iamRoleAssociation:IamRoleAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsIntegration = registerOutput<String>('awsIntegration');
     iamRoleArn = registerOutput<String>('iamRoleArn');
     region = registerOutput<String>('region');

@@ -13,7 +13,6 @@ import 'security_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.glue.SecurityConfiguration("example", {
-///     name: "example",
 ///     encryptionConfiguration: {
 ///         cloudwatchEncryption: {
 ///             cloudwatchEncryptionMode: "DISABLED",
@@ -26,6 +25,7 @@ import 'security_configuration_state.dart';
 ///             s3EncryptionMode: "SSE-KMS",
 ///         },
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -33,7 +33,6 @@ import 'security_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.glue.SecurityConfiguration("example",
-///     name="example",
 ///     encryption_configuration={
 ///         "cloudwatch_encryption": {
 ///             "cloudwatch_encryption_mode": "DISABLED",
@@ -45,7 +44,8 @@ import 'security_configuration_state.dart';
 ///             "kms_key_arn": example_aws_kms_key["arn"],
 ///             "s3_encryption_mode": "SSE-KMS",
 ///         },
-///     })
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -57,7 +57,6 @@ import 'security_configuration_state.dart';
 /// {
 ///     var example = new Aws.Glue.SecurityConfiguration("example", new()
 ///     {
-///         Name = "example",
 ///         EncryptionConfiguration = new Aws.Glue.Inputs.SecurityConfigurationEncryptionConfigurationArgs
 ///         {
 ///             CloudwatchEncryption = new Aws.Glue.Inputs.SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs
@@ -74,6 +73,7 @@ import 'security_configuration_state.dart';
 ///                 S3EncryptionMode = "SSE-KMS",
 ///             },
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -89,7 +89,6 @@ import 'security_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := glue.NewSecurityConfiguration(ctx, "example", &glue.SecurityConfigurationArgs{
-/// 			Name: pulumi.String("example"),
 /// 			EncryptionConfiguration: &glue.SecurityConfigurationEncryptionConfigurationArgs{
 /// 				CloudwatchEncryption: &glue.SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs{
 /// 					CloudwatchEncryptionMode: pulumi.String("DISABLED"),
@@ -102,6 +101,7 @@ import 'security_configuration_state.dart';
 /// 					S3EncryptionMode: pulumi.String("SSE-KMS"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -120,7 +120,6 @@ import 'security_configuration_state.dart';
 /// }
 ///
 /// resource "aws_glue_securityconfiguration" "example" {
-///   name = "example"
 ///   encryption_configuration = {
 ///     cloudwatch_encryption = {
 ///       cloudwatch_encryption_mode = "DISABLED"
@@ -133,6 +132,7 @@ import 'security_configuration_state.dart';
 ///       s3_encryption_mode = "SSE-KMS"
 ///     }
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -161,7 +161,6 @@ import 'security_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new SecurityConfiguration("example", SecurityConfigurationArgs.builder()
-///             .name("example")
 ///             .encryptionConfiguration(SecurityConfigurationEncryptionConfigurationArgs.builder()
 ///                 .cloudwatchEncryption(SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs.builder()
 ///                     .cloudwatchEncryptionMode("DISABLED")
@@ -174,6 +173,7 @@ import 'security_configuration_state.dart';
 ///                     .s3EncryptionMode("SSE-KMS")
 ///                     .build())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -184,7 +184,6 @@ import 'security_configuration_state.dart';
 ///   example:
 ///     type: aws:glue:SecurityConfiguration
 ///     properties:
-///       name: example
 ///       encryptionConfiguration:
 ///         cloudwatchEncryption:
 ///           cloudwatchEncryptionMode: DISABLED
@@ -193,6 +192,7 @@ import 'security_configuration_state.dart';
 ///         s3Encryption:
 ///           kmsKeyArn: ${exampleAwsKmsKey.arn}
 ///           s3EncryptionMode: SSE-KMS
+///       name: example
 /// ```
 ///
 ///
@@ -223,7 +223,7 @@ class SecurityConfiguration extends pulumi.CustomResource {
           'aws:glue/securityConfiguration:SecurityConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     encryptionConfiguration = registerOutput<SecurityConfigurationEncryptionConfiguration>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityConfigurationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -235,11 +235,12 @@ class SecurityConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -253,6 +254,20 @@ class SecurityConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    encryptionConfiguration = registerOutput<SecurityConfigurationEncryptionConfiguration>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityConfigurationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [SecurityConfiguration] resource.
+  SecurityConfiguration.reference(String urn)
+    : super(
+        'aws:glue/securityConfiguration:SecurityConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     encryptionConfiguration = registerOutput<SecurityConfigurationEncryptionConfiguration>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityConfigurationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

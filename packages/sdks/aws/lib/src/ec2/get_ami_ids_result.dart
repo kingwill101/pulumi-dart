@@ -8,13 +8,13 @@ class GetAmiIdsResult {
   final List<String>? executableUsers;
   final List<GetAmiIdsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// List of AMI IDs, sorted by creation time according to `sortAscending`.
-  final List<String> ids;
+  final List<String>? ids;
   final bool? includeDeprecated;
   final String? nameRegex;
-  final List<String> owners;
-  final String region;
+  final List<String>? owners;
+  final String? region;
   final bool? sortAscending;
 
   /// Creates a new [GetAmiIdsResult].
@@ -24,18 +24,18 @@ class GetAmiIdsResult {
   /// [ids] List of AMI IDs, sorted by creation time according to `sortAscending`.
   /// [includeDeprecated] Optional.
   /// [nameRegex] Optional.
-  /// [owners] Required.
-  /// [region] Required.
+  /// [owners] Optional.
+  /// [region] Optional.
   /// [sortAscending] Optional.
   const GetAmiIdsResult({
     this.executableUsers,
     this.filters,
-    required this.id,
-    required this.ids,
+    this.id,
+    this.ids,
     this.includeDeprecated,
     this.nameRegex,
-    required this.owners,
-    required this.region,
+    this.owners,
+    this.region,
     this.sortAscending,
   });
 
@@ -43,12 +43,12 @@ class GetAmiIdsResult {
     return <String, dynamic>{
       'executableUsers': ?executableUsers,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAmiIdsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'ids': ids,
+      'id': ?id,
+      'ids': ?ids,
       'includeDeprecated': ?includeDeprecated,
       'nameRegex': ?nameRegex,
-      'owners': owners,
-      'region': region,
+      'owners': ?owners,
+      'region': ?region,
       'sortAscending': ?sortAscending,
     };
   }
@@ -57,12 +57,12 @@ class GetAmiIdsResult {
     return GetAmiIdsResult(
       executableUsers: (() { final guardedValue = map['executableUsers']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAmiIdsFilter>(guardedValue, (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      ids: (map['ids'] as List).cast<String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       includeDeprecated: (() { final guardedValue = map['includeDeprecated']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       nameRegex: (() { final guardedValue = map['nameRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      owners: (map['owners'] as List).cast<String>(),
-      region: map['region'] as String,
+      owners: (() { final guardedValue = map['owners']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sortAscending: (() { final guardedValue = map['sortAscending']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }

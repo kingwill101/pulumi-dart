@@ -40,11 +40,11 @@ class GetCapacityBlockReservationInterruptibleCapacityAllocation {
 
   factory GetCapacityBlockReservationInterruptibleCapacityAllocation.fromMap(Map<String, dynamic> map) {
     return GetCapacityBlockReservationInterruptibleCapacityAllocation(
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
       interruptibleCapacityReservationId: pulumi.Input.fromValue(map['interruptibleCapacityReservationId'] as String),
       interruptionType: pulumi.Input.fromValue(map['interruptionType'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      targetInstanceCount: pulumi.Input.fromValue(map['targetInstanceCount'] as int),
+      targetInstanceCount: pulumi.Input.fromValue((map['targetInstanceCount'] as num).toInt()),
     );
   }
 }

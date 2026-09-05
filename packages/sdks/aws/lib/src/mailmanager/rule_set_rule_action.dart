@@ -15,29 +15,29 @@ import 'rule_set_rule_action_write_to_s3.dart';
 
 class RuleSetRuleAction {
   /// Adds a header to the email. See `addHeader` Block.
-  final pulumi.Input<RuleSetRuleActionAddHeader>? addHeader;
+  final pulumi.Input<RuleSetRuleActionAddHeader?>? addHeader;
   /// Archives the email. See `archive` Block.
-  final pulumi.Input<RuleSetRuleActionArchive>? archive;
+  final pulumi.Input<RuleSetRuleActionArchive?>? archive;
   /// Sends a bounce response. See `bounce` Block.
-  final pulumi.Input<RuleSetRuleActionBounce>? bounce;
+  final pulumi.Input<RuleSetRuleActionBounce?>? bounce;
   /// Delivers the email to a WorkMail mailbox. See `deliverToMailbox` Block.
-  final pulumi.Input<RuleSetRuleActionDeliverToMailbox>? deliverToMailbox;
+  final pulumi.Input<RuleSetRuleActionDeliverToMailbox?>? deliverToMailbox;
   /// Delivers the email to an Amazon Q Business application. See `deliverToQBusiness` Block.
-  final pulumi.Input<RuleSetRuleActionDeliverToQBusiness>? deliverToQBusiness;
+  final pulumi.Input<RuleSetRuleActionDeliverToQBusiness?>? deliverToQBusiness;
   /// Stops rule evaluation and drops the email.
-  final pulumi.Input<Map<String, dynamic>>? drop;
+  final pulumi.Input<Map<String, dynamic>?>? drop;
   /// Invokes a Lambda function. See `invokeLambda` Block.
-  final pulumi.Input<RuleSetRuleActionInvokeLambda>? invokeLambda;
+  final pulumi.Input<RuleSetRuleActionInvokeLambda?>? invokeLambda;
   /// Publishes the email to an SNS topic. See `publishToSns` Block.
-  final pulumi.Input<RuleSetRuleActionPublishToSns>? publishToSns;
+  final pulumi.Input<RuleSetRuleActionPublishToSns?>? publishToSns;
   /// Relays the email to an SMTP server. See `relay` Block.
-  final pulumi.Input<RuleSetRuleActionRelay>? relay;
+  final pulumi.Input<RuleSetRuleActionRelay?>? relay;
   /// Replaces envelope recipients. See `replaceRecipient` Block.
-  final pulumi.Input<RuleSetRuleActionReplaceRecipient>? replaceRecipient;
+  final pulumi.Input<RuleSetRuleActionReplaceRecipient?>? replaceRecipient;
   /// Sends the email to the internet. See `send` Block.
-  final pulumi.Input<RuleSetRuleActionSend>? send;
+  final pulumi.Input<RuleSetRuleActionSend?>? send;
   /// Writes the email MIME content to an S3 bucket. See `writeToS3` Block.
-  final pulumi.Input<RuleSetRuleActionWriteToS3>? writeToS3;
+  final pulumi.Input<RuleSetRuleActionWriteToS3?>? writeToS3;
 
   /// Creates a new [RuleSetRuleAction].
   /// [addHeader] Adds a header to the email. See `addHeader` Block.

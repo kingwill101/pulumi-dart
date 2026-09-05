@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProvisionedProductStackSetProvisioningPreferences {
   /// One or more AWS accounts that will have access to the provisioned product. The AWS accounts specified should be within the list of accounts in the STACKSET constraint. To get the list of accounts in the STACKSET constraint, use the `awsServicecatalogProvisioningParameters` data source. If no values are specified, the default value is all accounts from the STACKSET constraint.
-  final pulumi.Input<List<String>>? accounts;
+  final pulumi.Input<List<String>?>? accounts;
   /// Number of accounts, per region, for which this operation can fail before AWS Service Catalog stops the operation in that region. If the operation is stopped in a region, AWS Service Catalog doesn't attempt the operation in any subsequent regions. You must specify either `failureToleranceCount` or `failureTolerancePercentage`, but not both. The default value is 0 if no value is specified.
-  final pulumi.Input<int>? failureToleranceCount;
+  final pulumi.Input<int?>? failureToleranceCount;
   /// Percentage of accounts, per region, for which this stack operation can fail before AWS Service Catalog stops the operation in that region. If the operation is stopped in a region, AWS Service Catalog doesn't attempt the operation in any subsequent regions. When calculating the number of accounts based on the specified percentage, AWS Service Catalog rounds down to the next whole number. You must specify either `failureToleranceCount` or `failureTolerancePercentage`, but not both.
-  final pulumi.Input<int>? failureTolerancePercentage;
+  final pulumi.Input<int?>? failureTolerancePercentage;
   /// Maximum number of accounts in which to perform this operation at one time. This is dependent on the value of `failureToleranceCount`. `maxConcurrencyCount` is at most one more than the `failureToleranceCount`. Note that this setting lets you specify the maximum for operations. For large deployments, under certain circumstances the actual number of accounts acted upon concurrently may be lower due to service throttling. You must specify either `maxConcurrencyCount` or `maxConcurrencyPercentage`, but not both.
-  final pulumi.Input<int>? maxConcurrencyCount;
+  final pulumi.Input<int?>? maxConcurrencyCount;
   /// Maximum percentage of accounts in which to perform this operation at one time. When calculating the number of accounts based on the specified percentage, AWS Service Catalog rounds down to the next whole number. This is true except in cases where rounding down would result is zero. In this case, AWS Service Catalog sets the number as 1 instead. Note that this setting lets you specify the maximum for operations. For large deployments, under certain circumstances the actual number of accounts acted upon concurrently may be lower due to service throttling. You must specify either `maxConcurrencyCount` or `maxConcurrencyPercentage`, but not both.
-  final pulumi.Input<int>? maxConcurrencyPercentage;
+  final pulumi.Input<int?>? maxConcurrencyPercentage;
   /// One or more AWS Regions where the provisioned product will be available. The specified regions should be within the list of regions from the STACKSET constraint. To get the list of regions in the STACKSET constraint, use the `awsServicecatalogProvisioningParameters` data source. If no values are specified, the default value is all regions from the STACKSET constraint.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
 
   /// Creates a new [ProvisionedProductStackSetProvisioningPreferences].
   /// [accounts] One or more AWS accounts that will have access to the provisioned product. The AWS accounts specified should be within the list of accounts in the STACKSET constraint. To get the list of accounts in the STACKSET constraint, use the `awsServicecatalogProvisioningParameters` data source. If no values are specified, the default value is all accounts from the STACKSET constraint.
@@ -46,10 +46,10 @@ class ProvisionedProductStackSetProvisioningPreferences {
   factory ProvisionedProductStackSetProvisioningPreferences.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductStackSetProvisioningPreferences(
       accounts: (() { final guardedValue = map['accounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      failureToleranceCount: (() { final guardedValue = map['failureToleranceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      failureTolerancePercentage: (() { final guardedValue = map['failureTolerancePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrencyCount: (() { final guardedValue = map['maxConcurrencyCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrencyPercentage: (() { final guardedValue = map['maxConcurrencyPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      failureToleranceCount: (() { final guardedValue = map['failureToleranceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      failureTolerancePercentage: (() { final guardedValue = map['failureTolerancePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrencyCount: (() { final guardedValue = map['maxConcurrencyCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrencyPercentage: (() { final guardedValue = map['maxConcurrencyPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

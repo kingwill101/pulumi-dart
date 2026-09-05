@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subscriber_args.dart';
+import 'subscriber_source.dart';
 import 'subscriber_state.dart';
 import 'subscriber_subscriber_identity.dart';
 import 'subscriber_timeouts.dart';
@@ -18,18 +19,18 @@ import 'subscriber_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.securitylake.Subscriber("example", {
-///     subscriberName: "example-name",
-///     accessType: "S3",
+///     subscriberIdentity: {
+///         externalId: "example",
+///         principal: "1234567890",
+///     },
 ///     sources: [{
 ///         awsLogSourceResource: {
 ///             sourceName: "ROUTE53",
 ///             sourceVersion: "1.0",
 ///         },
 ///     }],
-///     subscriberIdentity: {
-///         externalId: "example",
-///         principal: "1234567890",
-///     },
+///     subscriberName: "example-name",
+///     accessType: "S3",
 /// }, {
 ///     dependsOn: [exampleAwsSecuritylakeDataLake],
 /// });
@@ -39,18 +40,18 @@ import 'subscriber_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.securitylake.Subscriber("example",
-///     subscriber_name="example-name",
-///     access_type="S3",
+///     subscriber_identity={
+///         "external_id": "example",
+///         "principal": "1234567890",
+///     },
 ///     sources=[{
 ///         "aws_log_source_resource": {
 ///             "source_name": "ROUTE53",
 ///             "source_version": "1.0",
 ///         },
 ///     }],
-///     subscriber_identity={
-///         "external_id": "example",
-///         "principal": "1234567890",
-///     },
+///     subscriber_name="example-name",
+///     access_type="S3",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aws_securitylake_data_lake]))
 /// ```
 /// ```csharp
@@ -63,8 +64,11 @@ import 'subscriber_timeouts.dart';
 /// {
 ///     var example = new Aws.SecurityLake.Subscriber("example", new()
 ///     {
-///         SubscriberName = "example-name",
-///         AccessType = "S3",
+///         SubscriberIdentity = new Aws.SecurityLake.Inputs.SubscriberSubscriberIdentityArgs
+///         {
+///             ExternalId = "example",
+///             Principal = "1234567890",
+///         },
 ///         Sources = new[]
 ///         {
 ///             new Aws.SecurityLake.Inputs.SubscriberSourceArgs
@@ -76,11 +80,8 @@ import 'subscriber_timeouts.dart';
 ///                 },
 ///             },
 ///         },
-///         SubscriberIdentity = new Aws.SecurityLake.Inputs.SubscriberSubscriberIdentityArgs
-///         {
-///             ExternalId = "example",
-///             Principal = "1234567890",
-///         },
+///         SubscriberName = "example-name",
+///         AccessType = "S3",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -102,8 +103,10 @@ import 'subscriber_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securitylake.NewSubscriber(ctx, "example", &securitylake.SubscriberArgs{
-/// 			SubscriberName: pulumi.String("example-name"),
-/// 			AccessType:     pulumi.String("S3"),
+/// 			SubscriberIdentity: &securitylake.SubscriberSubscriberIdentityArgs{
+/// 				ExternalId: pulumi.String("example"),
+/// 				Principal:  pulumi.String("1234567890"),
+/// 			},
 /// 			Sources: securitylake.SubscriberSourceArray{
 /// 				&securitylake.SubscriberSourceArgs{
 /// 					AwsLogSourceResource: &securitylake.SubscriberSourceAwsLogSourceResourceArgs{
@@ -112,10 +115,8 @@ import 'subscriber_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			SubscriberIdentity: &securitylake.SubscriberSubscriberIdentityArgs{
-/// 				ExternalId: pulumi.String("example"),
-/// 				Principal:  pulumi.String("1234567890"),
-/// 			},
+/// 			SubscriberName: pulumi.String("example-name"),
+/// 			AccessType:     pulumi.String("S3"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAwsSecuritylakeDataLake,
 /// 		}))
@@ -136,19 +137,19 @@ import 'subscriber_timeouts.dart';
 /// }
 ///
 /// resource "aws_securitylake_subscriber" "example" {
-///   depends_on      = [exampleAwsSecuritylakeDataLake]
-///   subscriber_name = "example-name"
-///   access_type     = "S3"
+///   depends_on = [exampleAwsSecuritylakeDataLake]
+///   subscriber_identity = {
+///     external_id = "example"
+///     principal   = "1234567890"
+///   }
 ///   sources {
 ///     aws_log_source_resource = {
 ///       source_name    = "ROUTE53"
 ///       source_version = "1.0"
 ///     }
 ///   }
-///   subscriber_identity = {
-///     external_id = "example"
-///     principal   = "1234567890"
-///   }
+///   subscriber_name = "example-name"
+///   access_type     = "S3"
 /// }
 /// ```
 /// ```java
@@ -159,9 +160,9 @@ import 'subscriber_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.securitylake.Subscriber;
 /// import com.pulumi.aws.securitylake.SubscriberArgs;
+/// import com.pulumi.aws.securitylake.inputs.SubscriberSubscriberIdentityArgs;
 /// import com.pulumi.aws.securitylake.inputs.SubscriberSourceArgs;
 /// import com.pulumi.aws.securitylake.inputs.SubscriberSourceAwsLogSourceResourceArgs;
-/// import com.pulumi.aws.securitylake.inputs.SubscriberSubscriberIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -177,18 +178,18 @@ import 'subscriber_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Subscriber("example", SubscriberArgs.builder()
-///             .subscriberName("example-name")
-///             .accessType("S3")
+///             .subscriberIdentity(SubscriberSubscriberIdentityArgs.builder()
+///                 .externalId("example")
+///                 .principal("1234567890")
+///                 .build())
 ///             .sources(SubscriberSourceArgs.builder()
 ///                 .awsLogSourceResource(SubscriberSourceAwsLogSourceResourceArgs.builder()
 ///                     .sourceName("ROUTE53")
 ///                     .sourceVersion("1.0")
 ///                     .build())
 ///                 .build())
-///             .subscriberIdentity(SubscriberSubscriberIdentityArgs.builder()
-///                 .externalId("example")
-///                 .principal("1234567890")
-///                 .build())
+///             .subscriberName("example-name")
+///             .accessType("S3")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsSecuritylakeDataLake)
 ///                 .build());
@@ -201,15 +202,15 @@ import 'subscriber_timeouts.dart';
 ///   example:
 ///     type: aws:securitylake:Subscriber
 ///     properties:
-///       subscriberName: example-name
-///       accessType: S3
+///       subscriberIdentity:
+///         externalId: example
+///         principal: '1234567890'
 ///       sources:
 ///         - awsLogSourceResource:
 ///             sourceName: ROUTE53
 ///             sourceVersion: '1.0'
-///       subscriberIdentity:
-///         externalId: example
-///         principal: '1234567890'
+///       subscriberName: example-name
+///       accessType: S3
 ///     options:
 ///       dependsOn:
 ///         - ${exampleAwsSecuritylakeDataLake}
@@ -224,8 +225,10 @@ import 'subscriber_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.securitylake.Subscriber("example", {
-///     subscriberName: "example-name",
-///     accessType: "S3",
+///     subscriberIdentity: {
+///         externalId: "example",
+///         principal: "1234567890",
+///     },
 ///     sources: [
 ///         {
 ///             awsLogSourceResource: {
@@ -240,10 +243,8 @@ import 'subscriber_timeouts.dart';
 ///             },
 ///         },
 ///     ],
-///     subscriberIdentity: {
-///         externalId: "example",
-///         principal: "1234567890",
-///     },
+///     subscriberName: "example-name",
+///     accessType: "S3",
 /// }, {
 ///     dependsOn: [exampleAwsSecuritylakeDataLake],
 /// });
@@ -253,8 +254,10 @@ import 'subscriber_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.securitylake.Subscriber("example",
-///     subscriber_name="example-name",
-///     access_type="S3",
+///     subscriber_identity={
+///         "external_id": "example",
+///         "principal": "1234567890",
+///     },
 ///     sources=[
 ///         {
 ///             "aws_log_source_resource": {
@@ -269,10 +272,8 @@ import 'subscriber_timeouts.dart';
 ///             },
 ///         },
 ///     ],
-///     subscriber_identity={
-///         "external_id": "example",
-///         "principal": "1234567890",
-///     },
+///     subscriber_name="example-name",
+///     access_type="S3",
 ///     opts = pulumi.ResourceOptions(depends_on=[example_aws_securitylake_data_lake]))
 /// ```
 /// ```csharp
@@ -285,8 +286,11 @@ import 'subscriber_timeouts.dart';
 /// {
 ///     var example = new Aws.SecurityLake.Subscriber("example", new()
 ///     {
-///         SubscriberName = "example-name",
-///         AccessType = "S3",
+///         SubscriberIdentity = new Aws.SecurityLake.Inputs.SubscriberSubscriberIdentityArgs
+///         {
+///             ExternalId = "example",
+///             Principal = "1234567890",
+///         },
 ///         Sources = new[]
 ///         {
 ///             new Aws.SecurityLake.Inputs.SubscriberSourceArgs
@@ -306,11 +310,8 @@ import 'subscriber_timeouts.dart';
 ///                 },
 ///             },
 ///         },
-///         SubscriberIdentity = new Aws.SecurityLake.Inputs.SubscriberSubscriberIdentityArgs
-///         {
-///             ExternalId = "example",
-///             Principal = "1234567890",
-///         },
+///         SubscriberName = "example-name",
+///         AccessType = "S3",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -332,8 +333,10 @@ import 'subscriber_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := securitylake.NewSubscriber(ctx, "example", &securitylake.SubscriberArgs{
-/// 			SubscriberName: pulumi.String("example-name"),
-/// 			AccessType:     pulumi.String("S3"),
+/// 			SubscriberIdentity: &securitylake.SubscriberSubscriberIdentityArgs{
+/// 				ExternalId: pulumi.String("example"),
+/// 				Principal:  pulumi.String("1234567890"),
+/// 			},
 /// 			Sources: securitylake.SubscriberSourceArray{
 /// 				&securitylake.SubscriberSourceArgs{
 /// 					AwsLogSourceResource: &securitylake.SubscriberSourceAwsLogSourceResourceArgs{
@@ -348,10 +351,8 @@ import 'subscriber_timeouts.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			SubscriberIdentity: &securitylake.SubscriberSubscriberIdentityArgs{
-/// 				ExternalId: pulumi.String("example"),
-/// 				Principal:  pulumi.String("1234567890"),
-/// 			},
+/// 			SubscriberName: pulumi.String("example-name"),
+/// 			AccessType:     pulumi.String("S3"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAwsSecuritylakeDataLake,
 /// 		}))
@@ -372,9 +373,11 @@ import 'subscriber_timeouts.dart';
 /// }
 ///
 /// resource "aws_securitylake_subscriber" "example" {
-///   depends_on      = [exampleAwsSecuritylakeDataLake]
-///   subscriber_name = "example-name"
-///   access_type     = "S3"
+///   depends_on = [exampleAwsSecuritylakeDataLake]
+///   subscriber_identity = {
+///     external_id = "example"
+///     principal   = "1234567890"
+///   }
 ///   sources {
 ///     aws_log_source_resource = {
 ///       source_name    = "SH_FINDINGS"
@@ -387,10 +390,8 @@ import 'subscriber_timeouts.dart';
 ///       source_version = "2.0"
 ///     }
 ///   }
-///   subscriber_identity = {
-///     external_id = "example"
-///     principal   = "1234567890"
-///   }
+///   subscriber_name = "example-name"
+///   access_type     = "S3"
 /// }
 /// ```
 /// ```java
@@ -401,9 +402,9 @@ import 'subscriber_timeouts.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.securitylake.Subscriber;
 /// import com.pulumi.aws.securitylake.SubscriberArgs;
+/// import com.pulumi.aws.securitylake.inputs.SubscriberSubscriberIdentityArgs;
 /// import com.pulumi.aws.securitylake.inputs.SubscriberSourceArgs;
 /// import com.pulumi.aws.securitylake.inputs.SubscriberSourceAwsLogSourceResourceArgs;
-/// import com.pulumi.aws.securitylake.inputs.SubscriberSubscriberIdentityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -419,8 +420,10 @@ import 'subscriber_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Subscriber("example", SubscriberArgs.builder()
-///             .subscriberName("example-name")
-///             .accessType("S3")
+///             .subscriberIdentity(SubscriberSubscriberIdentityArgs.builder()
+///                 .externalId("example")
+///                 .principal("1234567890")
+///                 .build())
 ///             .sources(
 ///                 SubscriberSourceArgs.builder()
 ///                     .awsLogSourceResource(SubscriberSourceAwsLogSourceResourceArgs.builder()
@@ -434,10 +437,8 @@ import 'subscriber_timeouts.dart';
 ///                         .sourceVersion("2.0")
 ///                         .build())
 ///                     .build())
-///             .subscriberIdentity(SubscriberSubscriberIdentityArgs.builder()
-///                 .externalId("example")
-///                 .principal("1234567890")
-///                 .build())
+///             .subscriberName("example-name")
+///             .accessType("S3")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleAwsSecuritylakeDataLake)
 ///                 .build());
@@ -450,8 +451,9 @@ import 'subscriber_timeouts.dart';
 ///   example:
 ///     type: aws:securitylake:Subscriber
 ///     properties:
-///       subscriberName: example-name
-///       accessType: S3
+///       subscriberIdentity:
+///         externalId: example
+///         principal: '1234567890'
 ///       sources:
 ///         - awsLogSourceResource:
 ///             sourceName: SH_FINDINGS
@@ -459,9 +461,8 @@ import 'subscriber_timeouts.dart';
 ///         - awsLogSourceResource:
 ///             sourceName: ROUTE53
 ///             sourceVersion: '2.0'
-///       subscriberIdentity:
-///         externalId: example
-///         principal: '1234567890'
+///       subscriberName: example-name
+///       accessType: S3
 ///     options:
 ///       dependsOn:
 ///         - ${exampleAwsSecuritylakeDataLake}
@@ -482,7 +483,7 @@ class Subscriber extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Amazon Resource Name (ARN) which uniquely defines the AWS RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share.
+  /// ARN which uniquely defines the AWS RAM resource share. Before accepting the RAM resource share invitation, you can view details related to the RAM resource share.
   late final pulumi.Output<String> resourceShareArn;
   /// The name of the resource share.
   late final pulumi.Output<String> resourceShareName;
@@ -491,7 +492,7 @@ class Subscriber extends pulumi.CustomResource {
   /// The ARN for the Amazon Security Lake Amazon S3 bucket.
   late final pulumi.Output<String> s3BucketArn;
   /// The supported AWS services from which logs and events are collected. Security Lake supports log and event collection for natively supported AWS services. See `source` Blocks below.
-  late final pulumi.Output<List<Map<String, dynamic>>> sources;
+  late final pulumi.Output<List<SubscriberSource>> sources;
   /// The description for your subscriber account in Security Lake.
   late final pulumi.Output<String?> subscriberDescription;
   /// The subscriber endpoint to which exception messages are posted.
@@ -520,7 +521,7 @@ class Subscriber extends pulumi.CustomResource {
           'aws:securitylake/subscriber:Subscriber',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessType = registerOutput<String>('accessType');
     arn = registerOutput<String>('arn');
@@ -529,14 +530,14 @@ class Subscriber extends pulumi.CustomResource {
     resourceShareName = registerOutput<String>('resourceShareName');
     roleArn = registerOutput<String>('roleArn');
     s3BucketArn = registerOutput<String>('s3BucketArn');
-    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    sources = registerOutput<List<SubscriberSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubscriberSource>(guardedValue, (value) => SubscriberSource.fromMap((value as Map).cast<String, dynamic>())); });
     subscriberDescription = registerOutput<String?>('subscriberDescription');
     subscriberEndpoint = registerOutput<String>('subscriberEndpoint');
     subscriberIdentity = registerOutput<SubscriberSubscriberIdentity>('subscriberIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberSubscriberIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subscriberName = registerOutput<String?>('subscriberName');
     subscriberStatus = registerOutput<String>('subscriberStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<SubscriberTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -545,11 +546,12 @@ class Subscriber extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Subscriber._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -570,14 +572,41 @@ class Subscriber extends pulumi.CustomResource {
     resourceShareName = registerOutput<String>('resourceShareName');
     roleArn = registerOutput<String>('roleArn');
     s3BucketArn = registerOutput<String>('s3BucketArn');
-    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    sources = registerOutput<List<SubscriberSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubscriberSource>(guardedValue, (value) => SubscriberSource.fromMap((value as Map).cast<String, dynamic>())); });
     subscriberDescription = registerOutput<String?>('subscriberDescription');
     subscriberEndpoint = registerOutput<String>('subscriberEndpoint');
     subscriberIdentity = registerOutput<SubscriberSubscriberIdentity>('subscriberIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberSubscriberIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subscriberName = registerOutput<String?>('subscriberName');
     subscriberStatus = registerOutput<String>('subscriberStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<SubscriberTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Subscriber] resource.
+  Subscriber.reference(String urn)
+    : super(
+        'aws:securitylake/subscriber:Subscriber',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessType = registerOutput<String>('accessType');
+    arn = registerOutput<String>('arn');
+    region = registerOutput<String>('region');
+    resourceShareArn = registerOutput<String>('resourceShareArn');
+    resourceShareName = registerOutput<String>('resourceShareName');
+    roleArn = registerOutput<String>('roleArn');
+    s3BucketArn = registerOutput<String>('s3BucketArn');
+    sources = registerOutput<List<SubscriberSource>>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubscriberSource>(guardedValue, (value) => SubscriberSource.fromMap((value as Map).cast<String, dynamic>())); });
+    subscriberDescription = registerOutput<String?>('subscriberDescription');
+    subscriberEndpoint = registerOutput<String>('subscriberEndpoint');
+    subscriberIdentity = registerOutput<SubscriberSubscriberIdentity>('subscriberIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberSubscriberIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subscriberName = registerOutput<String?>('subscriberName');
+    subscriberStatus = registerOutput<String>('subscriberStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<SubscriberTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

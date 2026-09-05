@@ -31,7 +31,7 @@ import 'user_agent_args.dart';
 
 /// Builds an ARN from its constituent parts.
 ///
-/// See the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) for additional information on Amazon Resource Names.
+/// See the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) for additional information on ARNs.
 ///
 /// ## Signature
 ///
@@ -39,22 +39,49 @@ import 'user_agent_args.dart';
 /// arn_build(partition string, service string, region string, account_id string, resource string) string
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_arn_build_arn_build_args_doc}
+/// [partition] Value for the `partition` invoke input.
+/// [service] Value for the `service` invoke input.
+/// [region] Value for the `region` invoke input.
+/// [accountId] Value for the `accountId` invoke input.
+/// [resource] Value for the `resource` invoke input.
 /// [options] Invoke options controlling this call.
-Future<Map<String, dynamic>> arnBuild(
-  ArnBuildArgs args, {
+Future<String> arnBuild(
+  pulumi.Input<String> partition,
+  pulumi.Input<String> service,
+  pulumi.Input<String> region,
+  pulumi.Input<String> accountId,
+  pulumi.Input<String> resource,
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
-  return await deployment.invoke<Map<String, dynamic>>(
+  final value = await deployment.invokeSingle<dynamic>(
     'aws:index/arnBuild:arnBuild',
-    args.toMap(),
+    ArnBuildArgs(partition: partition, service: service, region: region, accountId: accountId, resource: resource, ).toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
+  return value as String;
+}
+
+pulumi.Output<String> arnBuildOutput(
+  pulumi.Input<String> partition,
+  pulumi.Input<String> service,
+  pulumi.Input<String> region,
+  pulumi.Input<String> accountId,
+  pulumi.Input<String> resource,
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeSingleOutput<dynamic>(
+    'aws:index/arnBuild:arnBuild',
+    pulumi.Input.mapToInputs(ArnBuildArgs(partition: partition, service: service, region: region, accountId: accountId, resource: resource, ).toMap()),
+    options: options,
+  ).apply<String>((value) => value as String);
 }
 
 /// Parses an ARN into its constituent parts.
 ///
-/// See the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) for additional information on Amazon Resource Names.
+/// See the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) for additional information on ARNs.
 ///
 /// ## Signature
 ///
@@ -62,18 +89,32 @@ Future<Map<String, dynamic>> arnBuild(
 /// arn_parse(arn string) object
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_arn_parse_arn_parse_args_doc}
+/// [arn] Value for the `arn` invoke input.
 /// [options] Invoke options controlling this call.
 Future<ArnParseResult> arnParse(
-  ArnParseArgs args, {
+  pulumi.Input<String> arn,
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:index/arnParse:arnParse',
-    args.toMap(),
+    ArnParseArgs(arn: arn, ).toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ArnParseResult.fromMap(result);
+}
+
+pulumi.Output<ArnParseResult> arnParseOutput(
+  pulumi.Input<String> arn,
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/arnParse:arnParse',
+    pulumi.Input.mapToInputs(ArnParseArgs(arn: arn, ).toMap()),
+    options: options,
+  ).apply(ArnParseResult.fromMap);
 }
 
 /// Parses an ARN into its constituent parts.
@@ -192,6 +233,17 @@ Future<GetArnResult> getArn(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetArnResult.fromMap(result);
+}
+
+pulumi.Output<GetArnResult> getArnOutput(
+  GetArnArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getArn:getArn',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArnResult.fromMap);
 }
 
 /// `aws.getAvailabilityZone` provides details about a specific availability zone (AZ)
@@ -416,7 +468,7 @@ Future<GetArnResult> getArn(
 /// 			CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 /// 				Input:   exampleVpc.CidrBlock,
 /// 				Newbits: pulumi.Int(4),
-/// 				Netnum:  pulumi.Int(azNumber[example.NameSuffix]),
+/// 				Netnum:  azNumber[example.NameSuffix].(pulumi.Int),
 /// 			}, nil).Result(),
 /// 		})
 /// 		if err != nil {
@@ -557,6 +609,17 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAvailabilityZoneResult.fromMap(result);
+}
+
+pulumi.Output<GetAvailabilityZoneResult> getAvailabilityZoneOutput(
+  GetAvailabilityZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getAvailabilityZone:getAvailabilityZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAvailabilityZoneResult.fromMap);
 }
 
 /// The Availability Zones data source allows access to the list of AWS
@@ -750,7 +813,6 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.getAvailabilityZones({
-///     allAvailabilityZones: true,
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: [
@@ -758,20 +820,21 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 ///             "opted-in",
 ///         ],
 ///     }],
+///     allAvailabilityZones: true,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.get_availability_zones(all_availability_zones=True,
-///     filters=[{
+/// example = aws.get_availability_zones(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": [
 ///             "not-opted-in",
 ///             "opted-in",
 ///         ],
-///     }])
+///     }],
+///     all_availability_zones=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -783,7 +846,6 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// {
 ///     var example = Aws.GetAvailabilityZones.Invoke(new()
 ///     {
-///         AllAvailabilityZones = true,
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetAvailabilityZonesFilterInputArgs
@@ -796,6 +858,7 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 ///                 },
 ///             },
 ///         },
+///         AllAvailabilityZones = true,
 ///     });
 ///
 /// });
@@ -811,7 +874,6 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
-/// 			AllAvailabilityZones: pulumi.BoolRef(true),
 /// 			Filters: []aws.GetAvailabilityZonesFilter{
 /// 				{
 /// 					Name: "opt-in-status",
@@ -821,6 +883,7 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// 					},
 /// 				},
 /// 			},
+/// 			AllAvailabilityZones: pulumi.BoolRef(true),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -839,11 +902,11 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 /// }
 ///
 /// data "aws_getavailabilityzones" "example" {
-///   all_availability_zones = true
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["not-opted-in", "opted-in"]
 ///   }
+///   all_availability_zones = true
 /// }
 /// ```
 /// ```java
@@ -869,13 +932,13 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = AwsFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
-///             .allAvailabilityZones(true)
 ///             .filters(GetAvailabilityZonesFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values(
 ///                     "not-opted-in",
 ///                     "opted-in")
 ///                 .build())
+///             .allAvailabilityZones(true)
 ///             .build());
 ///
 ///     }
@@ -887,12 +950,12 @@ Future<GetAvailabilityZoneResult> getAvailabilityZone(
 ///     fn::invoke:
 ///       function: aws:getAvailabilityZones
 ///       arguments:
-///         allAvailabilityZones: true
 ///         filters:
 ///           - name: opt-in-status
 ///             values:
 ///               - not-opted-in
 ///               - opted-in
+///         allAvailabilityZones: true
 /// ```
 ///
 ///
@@ -1045,6 +1108,17 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
   return GetAvailabilityZonesResult.fromMap(result);
 }
 
+pulumi.Output<GetAvailabilityZonesResult> getAvailabilityZonesOutput(
+  GetAvailabilityZonesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getAvailabilityZones:getAvailabilityZones',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAvailabilityZonesResult.fromMap);
+}
+
 /// Use this data source to get the Account ID of the [AWS Billing and Cost Management Service Account](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-getting-started.html#step-2) for the purpose of permitting in S3 bucket policy.
 ///
 /// ## Example Usage
@@ -1063,11 +1137,11 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 /// const allowBillingLogging = aws.iam.getPolicyDocumentOutput({
 ///     statements: [
 ///         {
-///             effect: "Allow",
 ///             principals: [{
 ///                 type: "AWS",
 ///                 identifiers: [main.then(main => main.arn)],
 ///             }],
+///             effect: "Allow",
 ///             actions: [
 ///                 "s3:GetBucketAcl",
 ///                 "s3:GetBucketPolicy",
@@ -1075,11 +1149,11 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///             resources: [billingLogs.arn],
 ///         },
 ///         {
-///             effect: "Allow",
 ///             principals: [{
 ///                 type: "AWS",
 ///                 identifiers: [main.then(main => main.arn)],
 ///             }],
+///             effect: "Allow",
 ///             actions: ["s3:PutObject"],
 ///             resources: [pulumi.interpolate`${billingLogs.arn}/*`],
 ///         },
@@ -1101,11 +1175,11 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///     acl="private")
 /// allow_billing_logging = aws.iam.get_policy_document_output(statements=[
 ///     {
-///         "effect": "Allow",
 ///         "principals": [{
 ///             "type": "AWS",
 ///             "identifiers": [main.arn],
 ///         }],
+///         "effect": "Allow",
 ///         "actions": [
 ///             "s3:GetBucketAcl",
 ///             "s3:GetBucketPolicy",
@@ -1113,11 +1187,11 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///         "resources": [billing_logs.arn],
 ///     },
 ///     {
-///         "effect": "Allow",
 ///         "principals": [{
 ///             "type": "AWS",
 ///             "identifiers": [main.arn],
 ///         }],
+///         "effect": "Allow",
 ///         "actions": ["s3:PutObject"],
 ///         "resources": [billing_logs.arn.apply(lambda arn: f"{arn}/*")],
 ///     },
@@ -1153,7 +1227,6 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -1165,6 +1238,7 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "s3:GetBucketAcl",
@@ -1177,7 +1251,6 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///             },
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -1189,6 +1262,7 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///                         },
 ///                     },
 ///                 },
+///                 Effect = "Allow",
 ///                 Actions = new[]
 ///                 {
 ///                     "s3:PutObject",
@@ -1243,7 +1317,6 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 /// 		allowBillingLogging := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
 /// 			Statements: iam.GetPolicyDocumentStatementArray{
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("AWS"),
@@ -1252,6 +1325,7 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("s3:GetBucketAcl"),
 /// 						pulumi.String("s3:GetBucketPolicy"),
@@ -1261,7 +1335,6 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 /// 					},
 /// 				},
 /// 				&iam.GetPolicyDocumentStatementArgs{
-/// 					Effect: pulumi.String("Allow"),
 /// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
 /// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
 /// 							Type: pulumi.String("AWS"),
@@ -1270,6 +1343,7 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 /// 							},
 /// 						},
 /// 					},
+/// 					Effect: pulumi.String("Allow"),
 /// 					Actions: pulumi.StringArray{
 /// 						pulumi.String("s3:PutObject"),
 /// 					},
@@ -1305,20 +1379,20 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 /// }
 /// data "aws_iam_getpolicydocument" "allowBillingLogging" {
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [data.aws_getbillingserviceaccount.main.arn]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["s3:GetBucketAcl", "s3:GetBucketPolicy"]
 ///     resources = [aws_s3_bucket.billing_logs.arn]
 ///   }
 ///   statements {
-///     effect = "Allow"
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = [data.aws_getbillingserviceaccount.main.arn]
 ///     }
+///     effect    = "Allow"
 ///     actions   = ["s3:PutObject"]
 ///     resources = ["${aws_s3_bucket.billing_logs.arn}/*"]
 ///   }
@@ -1382,22 +1456,22 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///         final var allowBillingLogging = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .effect("Allow")
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("AWS")
 ///                         .identifiers(main.arn())
 ///                         .build())
+///                     .effect("Allow")
 ///                     .actions(
 ///                         "s3:GetBucketAcl",
 ///                         "s3:GetBucketPolicy")
 ///                     .resources(billingLogs.arn())
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .effect("Allow")
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("AWS")
 ///                         .identifiers(main.arn())
 ///                         .build())
+///                     .effect("Allow")
 ///                     .actions("s3:PutObject")
 ///                     .resources(billingLogs.arn().applyValue(_arn -> String.format("%s/*", _arn)))
 ///                     .build())
@@ -1440,21 +1514,21 @@ Future<GetAvailabilityZonesResult> getAvailabilityZones(
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - ${main.arn}
+///             effect: Allow
 ///             actions:
 ///               - s3:GetBucketAcl
 ///               - s3:GetBucketPolicy
 ///             resources:
 ///               - ${billingLogs.arn}
-///           - effect: Allow
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - ${main.arn}
+///             effect: Allow
 ///             actions:
 ///               - s3:PutObject
 ///             resources:
@@ -1473,6 +1547,17 @@ Future<GetBillingServiceAccountResult> getBillingServiceAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBillingServiceAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetBillingServiceAccountResult> getBillingServiceAccountOutput(
+  GetBillingServiceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getBillingServiceAccount:getBillingServiceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingServiceAccountResult.fromMap);
 }
 
 /// Use this data source to get the access to the effective Account ID, User ID, and ARN in
@@ -1616,6 +1701,17 @@ Future<GetCallerIdentityResult> getCallerIdentity(
   return GetCallerIdentityResult.fromMap(result);
 }
 
+pulumi.Output<GetCallerIdentityResult> getCallerIdentityOutput(
+  GetCallerIdentityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getCallerIdentity:getCallerIdentity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCallerIdentityResult.fromMap);
+}
+
 /// Use this data source to get the default tags configured on the provider.
 ///
 /// With this data source, you can apply default tags to resources not _directly_ managed by a resource, such as the instances underneath an Auto Scaling group or the volumes created for an EC2 instance.
@@ -1723,22 +1819,22 @@ Future<GetCallerIdentityResult> getCallerIdentity(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = aws.getDefaultTags({});
-/// const exampleGroup = new aws.autoscaling.Group("example", {tags: .map(entry => ({
-///     key: entry.key,
-///     value: entry.value,
+/// const exampleGroup = new aws.autoscaling.Group("example", {tags: example.then(example => .map(([key, entry]) => ({
+///     key: key,
+///     value: entry,
 ///     propagateAtLaunch: true,
-/// }))});
+/// })))});
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
 /// example = aws.get_default_tags()
-/// example_group = aws.autoscaling.Group("example", tags=[{"key": k, "value": v} for k, v in sorted(example.tags.items())].apply(lambda entries: [aws.autoscaling.GroupTagArgs(
-///     key=entry["key"],
-///     value=entry["value"],
-///     propagate_at_launch=True,
-/// ) for entry in entries]))
+/// example_group = aws.autoscaling.Group("example", tags=[{
+///     "key": key,
+///     "value": entry,
+///     "propagate_at_launch": True,
+/// } for key, entry in sorted(example.tags.items())])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1752,7 +1848,15 @@ Future<GetCallerIdentityResult> getCallerIdentity(
 ///
 ///     var exampleGroup = new Aws.AutoScaling.Group("example", new()
 ///     {
-///         Tags = ,
+///         Tags = .Select(entry =>
+///         {
+///             return
+///             {
+///                 { "key", key },
+///                 { "value", entry },
+///                 { "propagateAtLaunch", true },
+///             };
+///         }).ToList(),
 ///     });
 ///
 /// });
@@ -1771,10 +1875,10 @@ Future<GetCallerIdentityResult> getCallerIdentity(
 ///
 /// resource "aws_autoscaling_group" "example" {
 ///   dynamic "tags" {
-///     for_each = entries(data.aws_getdefaulttags.example.tags)
+///     for_each = data.aws_getdefaulttags.example.tags
 ///     content {
-///       key                 = tags.value.key
-///       value               = tags.value.value
+///       key                 = tags.key
+///       value               = tags.value
 ///       propagate_at_launch = true
 ///     }
 ///   }
@@ -1795,6 +1899,17 @@ Future<GetDefaultTagsResult> getDefaultTags(
   return GetDefaultTagsResult.fromMap(result);
 }
 
+pulumi.Output<GetDefaultTagsResult> getDefaultTagsOutput(
+  GetDefaultTagsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getDefaultTags:getDefaultTags',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefaultTagsResult.fromMap);
+}
+
 /// Use this data source to get the IP ranges of various AWS products and services. For more information about the contents of this data source and required JSON syntax if referencing a custom URL, see the [AWS IP Address Ranges documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
 ///
 /// ## Example Usage
@@ -1812,7 +1927,6 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///     services: ["ec2"],
 /// });
 /// const fromEurope = new aws.ec2.SecurityGroup("from_europe", {
-///     name: "from_europe",
 ///     ingress: [{
 ///         fromPort: 443,
 ///         toPort: 443,
@@ -1820,6 +1934,7 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///         cidrBlocks: europeanEc2.then(europeanEc2 => europeanEc2.cidrBlocks),
 ///         ipv6CidrBlocks: europeanEc2.then(europeanEc2 => europeanEc2.ipv6CidrBlocks),
 ///     }],
+///     name: "from_europe",
 ///     tags: {
 ///         CreateDate: europeanEc2.then(europeanEc2 => europeanEc2.createDate),
 ///         SyncToken: output(europeanEc2.then(europeanEc2 => europeanEc2.syncToken)).apply(x =>String(x)),
@@ -1836,7 +1951,6 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///     ],
 ///     services=["ec2"])
 /// from_europe = aws.ec2.SecurityGroup("from_europe",
-///     name="from_europe",
 ///     ingress=[{
 ///         "from_port": 443,
 ///         "to_port": 443,
@@ -1844,6 +1958,7 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///         "cidr_blocks": european_ec2.cidr_blocks,
 ///         "ipv6_cidr_blocks": european_ec2.ipv6_cidr_blocks,
 ///     }],
+///     name="from_europe",
 ///     tags={
 ///         "CreateDate": european_ec2.create_date,
 ///         "SyncToken": output(european_ec2.sync_token).apply(lambda x: str(x)),
@@ -1872,7 +1987,6 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///
 ///     var fromEurope = new Aws.Ec2.SecurityGroup("from_europe", new()
 ///     {
-///         Name = "from_europe",
 ///         Ingress = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.SecurityGroupIngressArgs
@@ -1884,6 +1998,7 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///                 Ipv6CidrBlocks = europeanEc2.Apply(getIpRangesResult => getIpRangesResult.Ipv6CidrBlocks),
 ///             },
 ///         },
+///         Name = "from_europe",
 ///         Tags =
 ///         {
 ///             { "CreateDate", europeanEc2.Apply(getIpRangesResult => getIpRangesResult.CreateDate) },
@@ -1917,7 +2032,6 @@ Future<GetDefaultTagsResult> getDefaultTags(
 /// 			return err
 /// 		}
 /// 		_, err = ec2.NewSecurityGroup(ctx, "from_europe", &ec2.SecurityGroupArgs{
-/// 			Name: pulumi.String("from_europe"),
 /// 			Ingress: ec2.SecurityGroupIngressArray{
 /// 				&ec2.SecurityGroupIngressArgs{
 /// 					FromPort:       pulumi.Int(443),
@@ -1927,6 +2041,7 @@ Future<GetDefaultTagsResult> getDefaultTags(
 /// 					Ipv6CidrBlocks: toPulumiStringArray(europeanEc2.Ipv6CidrBlocks),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("from_europe"),
 /// 			Tags: pulumi.StringMap{
 /// 				"CreateDate": pulumi.String(europeanEc2.CreateDate),
 /// 				"SyncToken":  pulumi.Int(europeanEc2.SyncToken),
@@ -1961,7 +2076,6 @@ Future<GetDefaultTagsResult> getDefaultTags(
 /// }
 ///
 /// resource "aws_ec2_securitygroup" "from_europe" {
-///   name = "from_europe"
 ///   ingress {
 ///     from_port        = "443"
 ///     to_port          = "443"
@@ -1969,6 +2083,7 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///     cidr_blocks      = data.aws_getipranges.europeanEc2.cidr_blocks
 ///     ipv6_cidr_blocks = data.aws_getipranges.europeanEc2.ipv6_cidr_blocks
 ///   }
+///   name = "from_europe"
 ///   tags = {
 ///     "CreateDate" = data.aws_getipranges.europeanEc2.create_date
 ///     "SyncToken"  = data.aws_getipranges.europeanEc2.sync_token
@@ -2007,7 +2122,6 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///             .build());
 ///
 ///         var fromEurope = new SecurityGroup("fromEurope", SecurityGroupArgs.builder()
-///             .name("from_europe")
 ///             .ingress(SecurityGroupIngressArgs.builder()
 ///                 .fromPort(443)
 ///                 .toPort(443)
@@ -2015,6 +2129,7 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///                 .cidrBlocks(europeanEc2.cidrBlocks())
 ///                 .ipv6CidrBlocks(europeanEc2.ipv6CidrBlocks())
 ///                 .build())
+///             .name("from_europe")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("CreateDate", europeanEc2.createDate()),
 ///                 Map.entry("SyncToken", europeanEc2.syncToken())
@@ -2030,13 +2145,13 @@ Future<GetDefaultTagsResult> getDefaultTags(
 ///     type: aws:ec2:SecurityGroup
 ///     name: from_europe
 ///     properties:
-///       name: from_europe
 ///       ingress:
 ///         - fromPort: '443'
 ///           toPort: '443'
 ///           protocol: tcp
 ///           cidrBlocks: ${europeanEc2.cidrBlocks}
 ///           ipv6CidrBlocks: ${europeanEc2.ipv6CidrBlocks}
+///       name: from_europe
 ///       tags:
 ///         CreateDate: ${europeanEc2.createDate}
 ///         SyncToken: ${europeanEc2.syncToken}
@@ -2064,6 +2179,17 @@ Future<GetIpRangesResult> getIpRanges(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIpRangesResult.fromMap(result);
+}
+
+pulumi.Output<GetIpRangesResult> getIpRangesOutput(
+  GetIpRangesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getIpRanges:getIpRanges',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpRangesResult.fromMap);
 }
 
 /// Use this data source to lookup information about the current AWS partition in
@@ -2253,6 +2379,17 @@ Future<GetPartitionResult> getPartition(
   return GetPartitionResult.fromMap(result);
 }
 
+pulumi.Output<GetPartitionResult> getPartitionOutput(
+  GetPartitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getPartition:getPartition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartitionResult.fromMap);
+}
+
 /// `aws.getRegion` provides details about a specific AWS Region.
 ///
 /// As well as validating a given Region name this resource can be used to
@@ -2367,6 +2504,17 @@ Future<GetRegionResult> getRegion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionResult> getRegionOutput(
+  GetRegionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getRegion:getRegion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionResult.fromMap);
 }
 
 /// Provides information about AWS Regions. Can be used to filter regions i.e., by Opt-In status or only regions enabled for current account. To get details like endpoint and description of each region the data source can be combined with the `aws.getRegion` data source.
@@ -2577,22 +2725,22 @@ Future<GetRegionResult> getRegion(
 /// import * as aws from "@pulumi/aws";
 ///
 /// const current = aws.getRegions({
-///     allRegions: true,
 ///     filters: [{
 ///         name: "opt-in-status",
 ///         values: ["not-opted-in"],
 ///     }],
+///     allRegions: true,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// current = aws.get_regions(all_regions=True,
-///     filters=[{
+/// current = aws.get_regions(filters=[{
 ///         "name": "opt-in-status",
 ///         "values": ["not-opted-in"],
-///     }])
+///     }],
+///     all_regions=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2604,7 +2752,6 @@ Future<GetRegionResult> getRegion(
 /// {
 ///     var current = Aws.GetRegions.Invoke(new()
 ///     {
-///         AllRegions = true,
 ///         Filters = new[]
 ///         {
 ///             new Aws.Inputs.GetRegionsFilterInputArgs
@@ -2616,6 +2763,7 @@ Future<GetRegionResult> getRegion(
 ///                 },
 ///             },
 ///         },
+///         AllRegions = true,
 ///     });
 ///
 /// });
@@ -2631,7 +2779,6 @@ Future<GetRegionResult> getRegion(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := aws.GetRegions(ctx, &aws.GetRegionsArgs{
-/// 			AllRegions: pulumi.BoolRef(true),
 /// 			Filters: []aws.GetRegionsFilter{
 /// 				{
 /// 					Name: "opt-in-status",
@@ -2640,6 +2787,7 @@ Future<GetRegionResult> getRegion(
 /// 					},
 /// 				},
 /// 			},
+/// 			AllRegions: pulumi.BoolRef(true),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -2658,11 +2806,11 @@ Future<GetRegionResult> getRegion(
 /// }
 ///
 /// data "aws_getregions" "current" {
-///   all_regions = true
 ///   filters {
 ///     name   = "opt-in-status"
 ///     values = ["not-opted-in"]
 ///   }
+///   all_regions = true
 /// }
 /// ```
 /// ```java
@@ -2688,11 +2836,11 @@ Future<GetRegionResult> getRegion(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var current = AwsFunctions.getRegions(GetRegionsArgs.builder()
-///             .allRegions(true)
 ///             .filters(GetRegionsFilterArgs.builder()
 ///                 .name("opt-in-status")
 ///                 .values("not-opted-in")
 ///                 .build())
+///             .allRegions(true)
 ///             .build());
 ///
 ///     }
@@ -2704,11 +2852,11 @@ Future<GetRegionResult> getRegion(
 ///     fn::invoke:
 ///       function: aws:getRegions
 ///       arguments:
-///         allRegions: true
 ///         filters:
 ///           - name: opt-in-status
 ///             values:
 ///               - not-opted-in
+///         allRegions: true
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_regions_get_regions_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2723,6 +2871,17 @@ Future<GetRegionsResult> getRegions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionsResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionsResult> getRegionsOutput(
+  GetRegionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getRegions:getRegions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionsResult.fromMap);
 }
 
 /// Use this data source to compose and decompose AWS service DNS names.
@@ -3076,6 +3235,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Use this data source to create a Service Principal Name for a service in a given region. Service Principal Names should always end in the standard global format: `{servicename}.amazonaws.com`. However, in some AWS partitions, AWS may expect a different format.
 ///
 /// ## Example Usage
@@ -3228,7 +3398,18 @@ Future<GetServicePrincipalResult> getServicePrincipal(
   return GetServicePrincipalResult.fromMap(result);
 }
 
-/// Trims the path prefix from an IAM role Amazon Resource Name (ARN).
+pulumi.Output<GetServicePrincipalResult> getServicePrincipalOutput(
+  GetServicePrincipalArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:index/getServicePrincipal:getServicePrincipal',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServicePrincipalResult.fromMap);
+}
+
+/// Trims the path prefix from an IAM role ARN.
 /// This function can be used when services require role ARNs to be passed without a path.
 ///
 /// See the [AWS IAM documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awsidentityandaccessmanagementiam.html#awsidentityandaccessmanagementiam-resources-for-iam-policies) for additional information on IAM role ARNs.
@@ -3239,17 +3420,32 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 /// trim_iam_role_path(arn string) string
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_trim_iam_role_path_trim_iam_role_path_args_doc}
+/// [arn] Value for the `arn` invoke input.
 /// [options] Invoke options controlling this call.
-Future<Map<String, dynamic>> trimIamRolePath(
-  TrimIamRolePathArgs args, {
+Future<String> trimIamRolePath(
+  pulumi.Input<String> arn,
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
-  return await deployment.invoke<Map<String, dynamic>>(
+  final value = await deployment.invokeSingle<dynamic>(
     'aws:index/trimIamRolePath:trimIamRolePath',
-    args.toMap(),
+    TrimIamRolePathArgs(arn: arn, ).toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
+  return value as String;
+}
+
+pulumi.Output<String> trimIamRolePathOutput(
+  pulumi.Input<String> arn,
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeSingleOutput<dynamic>(
+    'aws:index/trimIamRolePath:trimIamRolePath',
+    pulumi.Input.mapToInputs(TrimIamRolePathArgs(arn: arn, ).toMap()),
+    options: options,
+  ).apply<String>((value) => value as String);
 }
 
 /// Formats a User-Agent product for use with the `userAgent` argument in the `provider` block.
@@ -3262,15 +3458,36 @@ Future<Map<String, dynamic>> trimIamRolePath(
 /// user_agent(product_name string, product_version string, comment string) string
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_user_agent_user_agent_args_doc}
+/// [productName] Value for the `productName` invoke input.
+/// [productVersion] Value for the `productVersion` invoke input.
+/// [comment] Value for the `comment` invoke input.
 /// [options] Invoke options controlling this call.
-Future<Map<String, dynamic>> userAgent(
-  UserAgentArgs args, {
+Future<String> userAgent(
+  pulumi.Input<String> productName,
+  pulumi.Input<String> productVersion,
+  pulumi.Input<String> comment,
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
-  return await deployment.invoke<Map<String, dynamic>>(
+  final value = await deployment.invokeSingle<dynamic>(
     'aws:index/userAgent:userAgent',
-    args.toMap(),
+    UserAgentArgs(productName: productName, productVersion: productVersion, comment: comment, ).toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
+  return value as String;
+}
+
+pulumi.Output<String> userAgentOutput(
+  pulumi.Input<String> productName,
+  pulumi.Input<String> productVersion,
+  pulumi.Input<String> comment,
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeSingleOutput<dynamic>(
+    'aws:index/userAgent:userAgent',
+    pulumi.Input.mapToInputs(UserAgentArgs(productName: productName, productVersion: productVersion, comment: comment, ).toMap()),
+    options: options,
+  ).apply<String>((value) => value as String);
 }

@@ -6,14 +6,14 @@ import 'policy_target_tracking_scaling_policy_configuration_customized_metric_sp
 
 class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification {
   /// Dimensions of the metric. See `target_tracking_scaling_policy_configuration.customized_metric_specification.metrics.metric_stat.metric.dimensions` Block for details.
-  final pulumi.Input<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>>? dimensions;
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension>?>? dimensions;
+  final pulumi.Input<String?>? metricName;
   /// Metrics to include, as a metric data query. See `target_tracking_scaling_policy_configuration.customized_metric_specification.metrics` Block for details.
-  final pulumi.Input<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric>>? metrics;
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<List<PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetric>?>? metrics;
+  final pulumi.Input<String?>? namespace;
   /// Statistic of the metric. Valid values are `Average`, `Minimum`, `Maximum`, `SampleCount`, and `Sum`.
-  final pulumi.Input<String>? statistic;
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? statistic;
+  final pulumi.Input<String?>? unit;
 
   /// Creates a new [PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification].
   /// [dimensions] Dimensions of the metric. See `target_tracking_scaling_policy_configuration.customized_metric_specification.metrics.metric_stat.metric.dimensions` Block for details.

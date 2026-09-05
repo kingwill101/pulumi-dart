@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_browser_args.dart';
 import 'agentcore_browser_browser_signing.dart';
+import 'agentcore_browser_certificate.dart';
+import 'agentcore_browser_enterprise_policy.dart';
 import 'agentcore_browser_network_configuration.dart';
 import 'agentcore_browser_recording.dart';
 import 'agentcore_browser_state.dart';
@@ -18,11 +20,11 @@ import 'agentcore_browser_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreBrowser("example", {
-///     name: "example-browser",
-///     description: "Browser for web data extraction",
 ///     networkConfiguration: {
 ///         networkMode: "PUBLIC",
 ///     },
+///     name: "example-browser",
+///     description: "Browser for web data extraction",
 /// });
 /// ```
 /// ```python
@@ -30,11 +32,11 @@ import 'agentcore_browser_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreBrowser("example",
-///     name="example-browser",
-///     description="Browser for web data extraction",
 ///     network_configuration={
 ///         "network_mode": "PUBLIC",
-///     })
+///     },
+///     name="example-browser",
+///     description="Browser for web data extraction")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -46,12 +48,12 @@ import 'agentcore_browser_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreBrowser("example", new()
 ///     {
-///         Name = "example-browser",
-///         Description = "Browser for web data extraction",
 ///         NetworkConfiguration = new Aws.Bedrock.Inputs.AgentcoreBrowserNetworkConfigurationArgs
 ///         {
 ///             NetworkMode = "PUBLIC",
 ///         },
+///         Name = "example-browser",
+///         Description = "Browser for web data extraction",
 ///     });
 ///
 /// });
@@ -67,11 +69,11 @@ import 'agentcore_browser_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreBrowser(ctx, "example", &bedrock.AgentcoreBrowserArgs{
-/// 			Name:        pulumi.String("example-browser"),
-/// 			Description: pulumi.String("Browser for web data extraction"),
 /// 			NetworkConfiguration: &bedrock.AgentcoreBrowserNetworkConfigurationArgs{
 /// 				NetworkMode: pulumi.String("PUBLIC"),
 /// 			},
+/// 			Name:        pulumi.String("example-browser"),
+/// 			Description: pulumi.String("Browser for web data extraction"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -90,11 +92,11 @@ import 'agentcore_browser_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcorebrowser" "example" {
-///   name        = "example-browser"
-///   description = "Browser for web data extraction"
 ///   network_configuration = {
 ///     network_mode = "PUBLIC"
 ///   }
+///   name        = "example-browser"
+///   description = "Browser for web data extraction"
 /// }
 /// ```
 /// ```java
@@ -120,11 +122,11 @@ import 'agentcore_browser_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreBrowser("example", AgentcoreBrowserArgs.builder()
-///             .name("example-browser")
-///             .description("Browser for web data extraction")
 ///             .networkConfiguration(AgentcoreBrowserNetworkConfigurationArgs.builder()
 ///                 .networkMode("PUBLIC")
 ///                 .build())
+///             .name("example-browser")
+///             .description("Browser for web data extraction")
 ///             .build());
 ///
 ///     }
@@ -135,10 +137,10 @@ import 'agentcore_browser_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreBrowser
 ///     properties:
-///       name: example-browser
-///       description: Browser for web data extraction
 ///       networkConfiguration:
 ///         networkMode: PUBLIC
+///       name: example-browser
+///       description: Browser for web data extraction
 /// ```
 ///
 ///
@@ -150,10 +152,7 @@ import 'agentcore_browser_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const vpcExample = new aws.bedrock.AgentcoreBrowser("vpc_example", {
-///     name: "vpc-browser",
-///     description: "Browser with VPC configuration",
 ///     networkConfiguration: {
-///         networkMode: "VPC",
 ///         vpcConfig: {
 ///             securityGroups: ["sg-12345678"],
 ///             subnets: [
@@ -161,7 +160,10 @@ import 'agentcore_browser_timeouts.dart';
 ///                 "subnet-87654321",
 ///             ],
 ///         },
+///         networkMode: "VPC",
 ///     },
+///     name: "vpc-browser",
+///     description: "Browser with VPC configuration",
 /// });
 /// ```
 /// ```python
@@ -169,10 +171,7 @@ import 'agentcore_browser_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// vpc_example = aws.bedrock.AgentcoreBrowser("vpc_example",
-///     name="vpc-browser",
-///     description="Browser with VPC configuration",
 ///     network_configuration={
-///         "network_mode": "VPC",
 ///         "vpc_config": {
 ///             "security_groups": ["sg-12345678"],
 ///             "subnets": [
@@ -180,7 +179,10 @@ import 'agentcore_browser_timeouts.dart';
 ///                 "subnet-87654321",
 ///             ],
 ///         },
-///     })
+///         "network_mode": "VPC",
+///     },
+///     name="vpc-browser",
+///     description="Browser with VPC configuration")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -192,11 +194,8 @@ import 'agentcore_browser_timeouts.dart';
 /// {
 ///     var vpcExample = new Aws.Bedrock.AgentcoreBrowser("vpc_example", new()
 ///     {
-///         Name = "vpc-browser",
-///         Description = "Browser with VPC configuration",
 ///         NetworkConfiguration = new Aws.Bedrock.Inputs.AgentcoreBrowserNetworkConfigurationArgs
 ///         {
-///             NetworkMode = "VPC",
 ///             VpcConfig = new Aws.Bedrock.Inputs.AgentcoreBrowserNetworkConfigurationVpcConfigArgs
 ///             {
 ///                 SecurityGroups = new[]
@@ -209,7 +208,10 @@ import 'agentcore_browser_timeouts.dart';
 ///                     "subnet-87654321",
 ///                 },
 ///             },
+///             NetworkMode = "VPC",
 ///         },
+///         Name = "vpc-browser",
+///         Description = "Browser with VPC configuration",
 ///     });
 ///
 /// });
@@ -225,10 +227,7 @@ import 'agentcore_browser_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreBrowser(ctx, "vpc_example", &bedrock.AgentcoreBrowserArgs{
-/// 			Name:        pulumi.String("vpc-browser"),
-/// 			Description: pulumi.String("Browser with VPC configuration"),
 /// 			NetworkConfiguration: &bedrock.AgentcoreBrowserNetworkConfigurationArgs{
-/// 				NetworkMode: pulumi.String("VPC"),
 /// 				VpcConfig: &bedrock.AgentcoreBrowserNetworkConfigurationVpcConfigArgs{
 /// 					SecurityGroups: pulumi.StringArray{
 /// 						pulumi.String("sg-12345678"),
@@ -238,7 +237,10 @@ import 'agentcore_browser_timeouts.dart';
 /// 						pulumi.String("subnet-87654321"),
 /// 					},
 /// 				},
+/// 				NetworkMode: pulumi.String("VPC"),
 /// 			},
+/// 			Name:        pulumi.String("vpc-browser"),
+/// 			Description: pulumi.String("Browser with VPC configuration"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -257,15 +259,15 @@ import 'agentcore_browser_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcorebrowser" "vpc_example" {
-///   name        = "vpc-browser"
-///   description = "Browser with VPC configuration"
 ///   network_configuration = {
-///     network_mode = "VPC"
 ///     vpc_config = {
 ///       security_groups = ["sg-12345678"]
 ///       subnets         = ["subnet-12345678", "subnet-87654321"]
 ///     }
+///     network_mode = "VPC"
 ///   }
+///   name        = "vpc-browser"
+///   description = "Browser with VPC configuration"
 /// }
 /// ```
 /// ```java
@@ -292,17 +294,17 @@ import 'agentcore_browser_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var vpcExample = new AgentcoreBrowser("vpcExample", AgentcoreBrowserArgs.builder()
-///             .name("vpc-browser")
-///             .description("Browser with VPC configuration")
 ///             .networkConfiguration(AgentcoreBrowserNetworkConfigurationArgs.builder()
-///                 .networkMode("VPC")
 ///                 .vpcConfig(AgentcoreBrowserNetworkConfigurationVpcConfigArgs.builder()
 ///                     .securityGroups("sg-12345678")
 ///                     .subnets(
 ///                         "subnet-12345678",
 ///                         "subnet-87654321")
 ///                     .build())
+///                 .networkMode("VPC")
 ///                 .build())
+///             .name("vpc-browser")
+///             .description("Browser with VPC configuration")
 ///             .build());
 ///
 ///     }
@@ -314,16 +316,16 @@ import 'agentcore_browser_timeouts.dart';
 ///     type: aws:bedrock:AgentcoreBrowser
 ///     name: vpc_example
 ///     properties:
-///       name: vpc-browser
-///       description: Browser with VPC configuration
 ///       networkConfiguration:
-///         networkMode: VPC
 ///         vpcConfig:
 ///           securityGroups:
 ///             - sg-12345678
 ///           subnets:
 ///             - subnet-12345678
 ///             - subnet-87654321
+///         networkMode: VPC
+///       name: vpc-browser
+///       description: Browser with VPC configuration
 /// ```
 ///
 ///
@@ -336,12 +338,12 @@ import 'agentcore_browser_timeouts.dart';
 ///
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
-///         effect: "Allow",
-///         actions: ["sts:AssumeRole"],
 ///         principals: [{
 ///             type: "Service",
 ///             identifiers: ["bedrock-agentcore.amazonaws.com"],
 ///         }],
+///         effect: "Allow",
+///         actions: ["sts:AssumeRole"],
 ///     }],
 /// });
 /// const example = new aws.iam.Role("example", {
@@ -350,19 +352,19 @@ import 'agentcore_browser_timeouts.dart';
 /// });
 /// const recording = new aws.s3.Bucket("recording", {bucket: "browser-recording-bucket"});
 /// const exampleAgentcoreBrowser = new aws.bedrock.AgentcoreBrowser("example", {
-///     name: "example-browser",
-///     description: "Browser with recording enabled",
-///     executionRoleArn: example.arn,
 ///     networkConfiguration: {
 ///         networkMode: "PUBLIC",
 ///     },
 ///     recording: {
-///         enabled: true,
 ///         s3Location: {
 ///             bucket: recording.bucket,
 ///             prefix: "browser-sessions/",
 ///         },
+///         enabled: true,
 ///     },
+///     name: "example-browser",
+///     description: "Browser with recording enabled",
+///     executionRoleArn: example.arn,
 /// });
 /// ```
 /// ```python
@@ -370,31 +372,31 @@ import 'agentcore_browser_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// assume_role = aws.iam.get_policy_document(statements=[{
-///     "effect": "Allow",
-///     "actions": ["sts:AssumeRole"],
 ///     "principals": [{
 ///         "type": "Service",
 ///         "identifiers": ["bedrock-agentcore.amazonaws.com"],
 ///     }],
+///     "effect": "Allow",
+///     "actions": ["sts:AssumeRole"],
 /// }])
 /// example = aws.iam.Role("example",
 ///     name="bedrock-agentcore-browser-role",
 ///     assume_role_policy=assume_role.json)
 /// recording = aws.s3.Bucket("recording", bucket="browser-recording-bucket")
 /// example_agentcore_browser = aws.bedrock.AgentcoreBrowser("example",
-///     name="example-browser",
-///     description="Browser with recording enabled",
-///     execution_role_arn=example.arn,
 ///     network_configuration={
 ///         "network_mode": "PUBLIC",
 ///     },
 ///     recording={
-///         "enabled": True,
 ///         "s3_location": {
 ///             "bucket": recording.bucket,
 ///             "prefix": "browser-sessions/",
 ///         },
-///     })
+///         "enabled": True,
+///     },
+///     name="example-browser",
+///     description="Browser with recording enabled",
+///     execution_role_arn=example.arn)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -410,11 +412,6 @@ import 'agentcore_browser_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Effect = "Allow",
-///                 Actions = new[]
-///                 {
-///                     "sts:AssumeRole",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -425,6 +422,11 @@ import 'agentcore_browser_timeouts.dart';
 ///                             "bedrock-agentcore.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Effect = "Allow",
+///                 Actions = new[]
+///                 {
+///                     "sts:AssumeRole",
 ///                 },
 ///             },
 ///         },
@@ -443,22 +445,22 @@ import 'agentcore_browser_timeouts.dart';
 ///
 ///     var exampleAgentcoreBrowser = new Aws.Bedrock.AgentcoreBrowser("example", new()
 ///     {
-///         Name = "example-browser",
-///         Description = "Browser with recording enabled",
-///         ExecutionRoleArn = example.Arn,
 ///         NetworkConfiguration = new Aws.Bedrock.Inputs.AgentcoreBrowserNetworkConfigurationArgs
 ///         {
 ///             NetworkMode = "PUBLIC",
 ///         },
 ///         Recording = new Aws.Bedrock.Inputs.AgentcoreBrowserRecordingArgs
 ///         {
-///             Enabled = true,
 ///             S3Location = new Aws.Bedrock.Inputs.AgentcoreBrowserRecordingS3LocationArgs
 ///             {
 ///                 Bucket = recording.BucketName,
 ///                 Prefix = "browser-sessions/",
 ///             },
+///             Enabled = true,
 ///         },
+///         Name = "example-browser",
+///         Description = "Browser with recording enabled",
+///         ExecutionRoleArn = example.Arn,
 ///     });
 ///
 /// });
@@ -478,10 +480,6 @@ import 'agentcore_browser_timeouts.dart';
 /// 		assumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Effect: pulumi.StringRef("Allow"),
-/// 					Actions: []string{
-/// 						"sts:AssumeRole",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -489,6 +487,10 @@ import 'agentcore_browser_timeouts.dart';
 /// 								"bedrock-agentcore.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Effect: pulumi.StringRef("Allow"),
+/// 					Actions: []string{
+/// 						"sts:AssumeRole",
 /// 					},
 /// 				},
 /// 			},
@@ -510,19 +512,19 @@ import 'agentcore_browser_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.NewAgentcoreBrowser(ctx, "example", &bedrock.AgentcoreBrowserArgs{
-/// 			Name:             pulumi.String("example-browser"),
-/// 			Description:      pulumi.String("Browser with recording enabled"),
-/// 			ExecutionRoleArn: example.Arn,
 /// 			NetworkConfiguration: &bedrock.AgentcoreBrowserNetworkConfigurationArgs{
 /// 				NetworkMode: pulumi.String("PUBLIC"),
 /// 			},
 /// 			Recording: &bedrock.AgentcoreBrowserRecordingArgs{
-/// 				Enabled: pulumi.Bool(true),
 /// 				S3Location: &bedrock.AgentcoreBrowserRecordingS3LocationArgs{
 /// 					Bucket: recording.Bucket,
 /// 					Prefix: pulumi.String("browser-sessions/"),
 /// 				},
+/// 				Enabled: pulumi.Bool(true),
 /// 			},
+/// 			Name:             pulumi.String("example-browser"),
+/// 			Description:      pulumi.String("Browser with recording enabled"),
+/// 			ExecutionRoleArn: example.Arn,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -542,12 +544,12 @@ import 'agentcore_browser_timeouts.dart';
 ///
 /// data "aws_iam_getpolicydocument" "assumeRole" {
 ///   statements {
-///     effect  = "Allow"
-///     actions = ["sts:AssumeRole"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["bedrock-agentcore.amazonaws.com"]
 ///     }
+///     effect  = "Allow"
+///     actions = ["sts:AssumeRole"]
 ///   }
 /// }
 ///
@@ -559,19 +561,19 @@ import 'agentcore_browser_timeouts.dart';
 ///   bucket = "browser-recording-bucket"
 /// }
 /// resource "aws_bedrock_agentcorebrowser" "example" {
-///   name               = "example-browser"
-///   description        = "Browser with recording enabled"
-///   execution_role_arn = aws_iam_role.example.arn
 ///   network_configuration = {
 ///     network_mode = "PUBLIC"
 ///   }
 ///   recording = {
-///     enabled = true
 ///     s3_location = {
 ///       bucket = aws_s3_bucket.recording.bucket
 ///       prefix = "browser-sessions/"
 ///     }
+///     enabled = true
 ///   }
+///   name               = "example-browser"
+///   description        = "Browser with recording enabled"
+///   execution_role_arn = aws_iam_role.example.arn
 /// }
 /// ```
 /// ```java
@@ -608,12 +610,12 @@ import 'agentcore_browser_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(GetPolicyDocumentStatementArgs.builder()
-///                 .effect("Allow")
-///                 .actions("sts:AssumeRole")
 ///                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                     .type("Service")
 ///                     .identifiers("bedrock-agentcore.amazonaws.com")
 ///                     .build())
+///                 .effect("Allow")
+///                 .actions("sts:AssumeRole")
 ///                 .build())
 ///             .build());
 ///
@@ -627,19 +629,19 @@ import 'agentcore_browser_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleAgentcoreBrowser = new AgentcoreBrowser("exampleAgentcoreBrowser", AgentcoreBrowserArgs.builder()
-///             .name("example-browser")
-///             .description("Browser with recording enabled")
-///             .executionRoleArn(example.arn())
 ///             .networkConfiguration(AgentcoreBrowserNetworkConfigurationArgs.builder()
 ///                 .networkMode("PUBLIC")
 ///                 .build())
 ///             .recording(AgentcoreBrowserRecordingArgs.builder()
-///                 .enabled(true)
 ///                 .s3Location(AgentcoreBrowserRecordingS3LocationArgs.builder()
 ///                     .bucket(recording.bucket())
 ///                     .prefix("browser-sessions/")
 ///                     .build())
+///                 .enabled(true)
 ///                 .build())
+///             .name("example-browser")
+///             .description("Browser with recording enabled")
+///             .executionRoleArn(example.arn())
 ///             .build());
 ///
 ///     }
@@ -660,29 +662,29 @@ import 'agentcore_browser_timeouts.dart';
 ///     type: aws:bedrock:AgentcoreBrowser
 ///     name: example
 ///     properties:
-///       name: example-browser
-///       description: Browser with recording enabled
-///       executionRoleArn: ${example.arn}
 ///       networkConfiguration:
 ///         networkMode: PUBLIC
 ///       recording:
-///         enabled: true
 ///         s3Location:
 ///           bucket: ${recording.bucket}
 ///           prefix: browser-sessions/
+///         enabled: true
+///       name: example-browser
+///       description: Browser with recording enabled
+///       executionRoleArn: ${example.arn}
 /// variables:
 ///   assumeRole:
 ///     fn::invoke:
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - effect: Allow
-///             actions:
-///               - sts:AssumeRole
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - bedrock-agentcore.amazonaws.com
+///             effect: Allow
+///             actions:
+///               - sts:AssumeRole
 /// ```
 ///
 ///
@@ -701,11 +703,11 @@ class AgentcoreBrowser extends pulumi.CustomResource {
   /// Browser signing configuration that enables cryptographic agent identification using HTTP message signatures. See `browserSigning` below.
   late final pulumi.Output<AgentcoreBrowserBrowserSigning?> browserSigning;
   /// Certificates to install in the browser. See `certificate` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+  late final pulumi.Output<List<AgentcoreBrowserCertificate>?> certificates;
   /// Description of the browser.
   late final pulumi.Output<String?> description;
   /// Enterprise policy files to apply to the browser. See `enterprisePolicy` below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> enterprisePolicies;
+  late final pulumi.Output<List<AgentcoreBrowserEnterprisePolicy>?> enterprisePolicies;
   /// ARN of the IAM role that the browser assumes for execution.
   late final pulumi.Output<String?> executionRoleArn;
   /// Name of the browser.
@@ -736,21 +738,21 @@ class AgentcoreBrowser extends pulumi.CustomResource {
           'aws:bedrock/agentcoreBrowser:AgentcoreBrowser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     browserArn = registerOutput<String>('browserArn');
     browserId = registerOutput<String>('browserId');
     browserSigning = registerOutput<AgentcoreBrowserBrowserSigning?>('browserSigning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserBrowserSigning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    certificates = registerOutput<List<AgentcoreBrowserCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreBrowserCertificate>(guardedValue, (value) => AgentcoreBrowserCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    enterprisePolicies = registerOutput<List<Map<String, dynamic>>?>('enterprisePolicies');
+    enterprisePolicies = registerOutput<List<AgentcoreBrowserEnterprisePolicy>?>('enterprisePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreBrowserEnterprisePolicy>(guardedValue, (value) => AgentcoreBrowserEnterprisePolicy.fromMap((value as Map).cast<String, dynamic>())); });
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     recording = registerOutput<AgentcoreBrowserRecording?>('recording', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserRecording.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreBrowserTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -759,11 +761,12 @@ class AgentcoreBrowser extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentcoreBrowserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentcoreBrowser._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -780,16 +783,41 @@ class AgentcoreBrowser extends pulumi.CustomResource {
     browserArn = registerOutput<String>('browserArn');
     browserId = registerOutput<String>('browserId');
     browserSigning = registerOutput<AgentcoreBrowserBrowserSigning?>('browserSigning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserBrowserSigning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    certificates = registerOutput<List<AgentcoreBrowserCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreBrowserCertificate>(guardedValue, (value) => AgentcoreBrowserCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    enterprisePolicies = registerOutput<List<Map<String, dynamic>>?>('enterprisePolicies');
+    enterprisePolicies = registerOutput<List<AgentcoreBrowserEnterprisePolicy>?>('enterprisePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreBrowserEnterprisePolicy>(guardedValue, (value) => AgentcoreBrowserEnterprisePolicy.fromMap((value as Map).cast<String, dynamic>())); });
     executionRoleArn = registerOutput<String?>('executionRoleArn');
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     recording = registerOutput<AgentcoreBrowserRecording?>('recording', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserRecording.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreBrowserTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AgentcoreBrowser] resource.
+  AgentcoreBrowser.reference(String urn)
+    : super(
+        'aws:bedrock/agentcoreBrowser:AgentcoreBrowser',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    browserArn = registerOutput<String>('browserArn');
+    browserId = registerOutput<String>('browserId');
+    browserSigning = registerOutput<AgentcoreBrowserBrowserSigning?>('browserSigning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserBrowserSigning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificates = registerOutput<List<AgentcoreBrowserCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreBrowserCertificate>(guardedValue, (value) => AgentcoreBrowserCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    enterprisePolicies = registerOutput<List<AgentcoreBrowserEnterprisePolicy>?>('enterprisePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreBrowserEnterprisePolicy>(guardedValue, (value) => AgentcoreBrowserEnterprisePolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    executionRoleArn = registerOutput<String?>('executionRoleArn');
+    this.name = registerOutput<String>('name');
+    networkConfiguration = registerOutput<AgentcoreBrowserNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    recording = registerOutput<AgentcoreBrowserRecording?>('recording', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserRecording.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<AgentcoreBrowserTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreBrowserTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

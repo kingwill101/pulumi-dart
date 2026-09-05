@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OpenZfsFileSystemDiskIopsConfiguration {
   /// Total number of SSD IOPS provisioned for the file system.
-  final pulumi.Input<int>? iops;
+  final pulumi.Input<int?>? iops;
   /// How the number of IOPS for the file system is set. Valid values are `AUTOMATIC` and `USER_PROVISIONED`. Default value is `AUTOMATIC`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [OpenZfsFileSystemDiskIopsConfiguration].
   /// [iops] Total number of SSD IOPS provisioned for the file system.
@@ -25,7 +25,7 @@ class OpenZfsFileSystemDiskIopsConfiguration {
 
   factory OpenZfsFileSystemDiskIopsConfiguration.fromMap(Map<String, dynamic> map) {
     return OpenZfsFileSystemDiskIopsConfiguration(
-      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

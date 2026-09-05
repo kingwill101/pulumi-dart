@@ -8,13 +8,13 @@ import 'v2models_intent_initial_response_setting_next_step.dart';
 
 class V2modelsIntentInitialResponseSetting {
   /// Configuration block for the dialog code hook that is called by Amazon Lex at a step of the conversation. See `codeHook`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHook>? codeHook;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingCodeHook?>? codeHook;
   /// Configuration block for conditional branches. Branches are evaluated in the order that they are entered in the list. The first branch with a condition that evaluates to true is executed. The last branch in the list is the default branch. The default branch should not have any condition expression. The default branch is executed if no other branch has a matching condition. See `conditional`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingConditional>? conditional;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingConditional?>? conditional;
   /// Configuration block for message groups that Amazon Lex uses to respond the user input. See `initialResponse`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingInitialResponse>? initialResponse;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingInitialResponse?>? initialResponse;
   /// Configuration block for the next step in the conversation. See `nextStep`.
-  final pulumi.Input<V2modelsIntentInitialResponseSettingNextStep>? nextStep;
+  final pulumi.Input<V2modelsIntentInitialResponseSettingNextStep?>? nextStep;
 
   /// Creates a new [V2modelsIntentInitialResponseSetting].
   /// [codeHook] Configuration block for the dialog code hook that is called by Amazon Lex at a step of the conversation. See `codeHook`.

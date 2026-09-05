@@ -15,14 +15,14 @@ import 'refresh_schedule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.quicksight.RefreshSchedule("example", {
-///     dataSetId: "dataset-id",
-///     scheduleId: "schedule-id",
 ///     schedule: {
-///         refreshType: "FULL_REFRESH",
 ///         scheduleFrequency: {
 ///             interval: "HOURLY",
 ///         },
+///         refreshType: "FULL_REFRESH",
 ///     },
+///     dataSetId: "dataset-id",
+///     scheduleId: "schedule-id",
 /// });
 /// ```
 /// ```python
@@ -30,14 +30,14 @@ import 'refresh_schedule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.quicksight.RefreshSchedule("example",
-///     data_set_id="dataset-id",
-///     schedule_id="schedule-id",
 ///     schedule={
-///         "refresh_type": "FULL_REFRESH",
 ///         "schedule_frequency": {
 ///             "interval": "HOURLY",
 ///         },
-///     })
+///         "refresh_type": "FULL_REFRESH",
+///     },
+///     data_set_id="dataset-id",
+///     schedule_id="schedule-id")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -49,16 +49,16 @@ import 'refresh_schedule_state.dart';
 /// {
 ///     var example = new Aws.Quicksight.RefreshSchedule("example", new()
 ///     {
-///         DataSetId = "dataset-id",
-///         ScheduleId = "schedule-id",
 ///         Schedule = new Aws.Quicksight.Inputs.RefreshScheduleScheduleArgs
 ///         {
-///             RefreshType = "FULL_REFRESH",
 ///             ScheduleFrequency = new Aws.Quicksight.Inputs.RefreshScheduleScheduleScheduleFrequencyArgs
 ///             {
 ///                 Interval = "HOURLY",
 ///             },
+///             RefreshType = "FULL_REFRESH",
 ///         },
+///         DataSetId = "dataset-id",
+///         ScheduleId = "schedule-id",
 ///     });
 ///
 /// });
@@ -74,14 +74,14 @@ import 'refresh_schedule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := quicksight.NewRefreshSchedule(ctx, "example", &quicksight.RefreshScheduleArgs{
-/// 			DataSetId:  pulumi.String("dataset-id"),
-/// 			ScheduleId: pulumi.String("schedule-id"),
 /// 			Schedule: &quicksight.RefreshScheduleScheduleArgs{
-/// 				RefreshType: pulumi.String("FULL_REFRESH"),
 /// 				ScheduleFrequency: &quicksight.RefreshScheduleScheduleScheduleFrequencyArgs{
 /// 					Interval: pulumi.String("HOURLY"),
 /// 				},
+/// 				RefreshType: pulumi.String("FULL_REFRESH"),
 /// 			},
+/// 			DataSetId:  pulumi.String("dataset-id"),
+/// 			ScheduleId: pulumi.String("schedule-id"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -100,14 +100,14 @@ import 'refresh_schedule_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_refreshschedule" "example" {
-///   data_set_id = "dataset-id"
-///   schedule_id = "schedule-id"
 ///   schedule = {
-///     refresh_type = "FULL_REFRESH"
 ///     schedule_frequency = {
 ///       interval = "HOURLY"
 ///     }
+///     refresh_type = "FULL_REFRESH"
 ///   }
+///   data_set_id = "dataset-id"
+///   schedule_id = "schedule-id"
 /// }
 /// ```
 /// ```java
@@ -134,14 +134,14 @@ import 'refresh_schedule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RefreshSchedule("example", RefreshScheduleArgs.builder()
-///             .dataSetId("dataset-id")
-///             .scheduleId("schedule-id")
 ///             .schedule(RefreshScheduleScheduleArgs.builder()
-///                 .refreshType("FULL_REFRESH")
 ///                 .scheduleFrequency(RefreshScheduleScheduleScheduleFrequencyArgs.builder()
 ///                     .interval("HOURLY")
 ///                     .build())
+///                 .refreshType("FULL_REFRESH")
 ///                 .build())
+///             .dataSetId("dataset-id")
+///             .scheduleId("schedule-id")
 ///             .build());
 ///
 ///     }
@@ -152,12 +152,12 @@ import 'refresh_schedule_state.dart';
 ///   example:
 ///     type: aws:quicksight:RefreshSchedule
 ///     properties:
-///       dataSetId: dataset-id
-///       scheduleId: schedule-id
 ///       schedule:
-///         refreshType: FULL_REFRESH
 ///         scheduleFrequency:
 ///           interval: HOURLY
+///         refreshType: FULL_REFRESH
+///       dataSetId: dataset-id
+///       scheduleId: schedule-id
 /// ```
 ///
 ///
@@ -169,19 +169,19 @@ import 'refresh_schedule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.quicksight.RefreshSchedule("example", {
-///     dataSetId: "dataset-id",
-///     scheduleId: "schedule-id",
 ///     schedule: {
-///         refreshType: "INCREMENTAL_REFRESH",
 ///         scheduleFrequency: {
-///             interval: "WEEKLY",
-///             timeOfTheDay: "01:00",
-///             timezone: "Europe/London",
 ///             refreshOnDay: {
 ///                 dayOfWeek: "MONDAY",
 ///             },
+///             interval: "WEEKLY",
+///             timeOfTheDay: "01:00",
+///             timezone: "Europe/London",
 ///         },
+///         refreshType: "INCREMENTAL_REFRESH",
 ///     },
+///     dataSetId: "dataset-id",
+///     scheduleId: "schedule-id",
 /// });
 /// ```
 /// ```python
@@ -189,19 +189,19 @@ import 'refresh_schedule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.quicksight.RefreshSchedule("example",
-///     data_set_id="dataset-id",
-///     schedule_id="schedule-id",
 ///     schedule={
-///         "refresh_type": "INCREMENTAL_REFRESH",
 ///         "schedule_frequency": {
-///             "interval": "WEEKLY",
-///             "time_of_the_day": "01:00",
-///             "timezone": "Europe/London",
 ///             "refresh_on_day": {
 ///                 "day_of_week": "MONDAY",
 ///             },
+///             "interval": "WEEKLY",
+///             "time_of_the_day": "01:00",
+///             "timezone": "Europe/London",
 ///         },
-///     })
+///         "refresh_type": "INCREMENTAL_REFRESH",
+///     },
+///     data_set_id="dataset-id",
+///     schedule_id="schedule-id")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -213,22 +213,22 @@ import 'refresh_schedule_state.dart';
 /// {
 ///     var example = new Aws.Quicksight.RefreshSchedule("example", new()
 ///     {
-///         DataSetId = "dataset-id",
-///         ScheduleId = "schedule-id",
 ///         Schedule = new Aws.Quicksight.Inputs.RefreshScheduleScheduleArgs
 ///         {
-///             RefreshType = "INCREMENTAL_REFRESH",
 ///             ScheduleFrequency = new Aws.Quicksight.Inputs.RefreshScheduleScheduleScheduleFrequencyArgs
 ///             {
-///                 Interval = "WEEKLY",
-///                 TimeOfTheDay = "01:00",
-///                 Timezone = "Europe/London",
 ///                 RefreshOnDay = new Aws.Quicksight.Inputs.RefreshScheduleScheduleScheduleFrequencyRefreshOnDayArgs
 ///                 {
 ///                     DayOfWeek = "MONDAY",
 ///                 },
+///                 Interval = "WEEKLY",
+///                 TimeOfTheDay = "01:00",
+///                 Timezone = "Europe/London",
 ///             },
+///             RefreshType = "INCREMENTAL_REFRESH",
 ///         },
+///         DataSetId = "dataset-id",
+///         ScheduleId = "schedule-id",
 ///     });
 ///
 /// });
@@ -244,19 +244,19 @@ import 'refresh_schedule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := quicksight.NewRefreshSchedule(ctx, "example", &quicksight.RefreshScheduleArgs{
-/// 			DataSetId:  pulumi.String("dataset-id"),
-/// 			ScheduleId: pulumi.String("schedule-id"),
 /// 			Schedule: &quicksight.RefreshScheduleScheduleArgs{
-/// 				RefreshType: pulumi.String("INCREMENTAL_REFRESH"),
 /// 				ScheduleFrequency: &quicksight.RefreshScheduleScheduleScheduleFrequencyArgs{
-/// 					Interval:     pulumi.String("WEEKLY"),
-/// 					TimeOfTheDay: pulumi.String("01:00"),
-/// 					Timezone:     pulumi.String("Europe/London"),
 /// 					RefreshOnDay: &quicksight.RefreshScheduleScheduleScheduleFrequencyRefreshOnDayArgs{
 /// 						DayOfWeek: pulumi.String("MONDAY"),
 /// 					},
+/// 					Interval:     pulumi.String("WEEKLY"),
+/// 					TimeOfTheDay: pulumi.String("01:00"),
+/// 					Timezone:     pulumi.String("Europe/London"),
 /// 				},
+/// 				RefreshType: pulumi.String("INCREMENTAL_REFRESH"),
 /// 			},
+/// 			DataSetId:  pulumi.String("dataset-id"),
+/// 			ScheduleId: pulumi.String("schedule-id"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -275,19 +275,19 @@ import 'refresh_schedule_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_refreshschedule" "example" {
-///   data_set_id = "dataset-id"
-///   schedule_id = "schedule-id"
 ///   schedule = {
-///     refresh_type = "INCREMENTAL_REFRESH"
 ///     schedule_frequency = {
-///       interval        = "WEEKLY"
-///       time_of_the_day = "01:00"
-///       timezone        = "Europe/London"
 ///       refresh_on_day = {
 ///         day_of_week = "MONDAY"
 ///       }
+///       interval        = "WEEKLY"
+///       time_of_the_day = "01:00"
+///       timezone        = "Europe/London"
 ///     }
+///     refresh_type = "INCREMENTAL_REFRESH"
 ///   }
+///   data_set_id = "dataset-id"
+///   schedule_id = "schedule-id"
 /// }
 /// ```
 /// ```java
@@ -315,19 +315,19 @@ import 'refresh_schedule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RefreshSchedule("example", RefreshScheduleArgs.builder()
-///             .dataSetId("dataset-id")
-///             .scheduleId("schedule-id")
 ///             .schedule(RefreshScheduleScheduleArgs.builder()
-///                 .refreshType("INCREMENTAL_REFRESH")
 ///                 .scheduleFrequency(RefreshScheduleScheduleScheduleFrequencyArgs.builder()
-///                     .interval("WEEKLY")
-///                     .timeOfTheDay("01:00")
-///                     .timezone("Europe/London")
 ///                     .refreshOnDay(RefreshScheduleScheduleScheduleFrequencyRefreshOnDayArgs.builder()
 ///                         .dayOfWeek("MONDAY")
 ///                         .build())
+///                     .interval("WEEKLY")
+///                     .timeOfTheDay("01:00")
+///                     .timezone("Europe/London")
 ///                     .build())
+///                 .refreshType("INCREMENTAL_REFRESH")
 ///                 .build())
+///             .dataSetId("dataset-id")
+///             .scheduleId("schedule-id")
 ///             .build());
 ///
 ///     }
@@ -338,16 +338,16 @@ import 'refresh_schedule_state.dart';
 ///   example:
 ///     type: aws:quicksight:RefreshSchedule
 ///     properties:
-///       dataSetId: dataset-id
-///       scheduleId: schedule-id
 ///       schedule:
-///         refreshType: INCREMENTAL_REFRESH
 ///         scheduleFrequency:
+///           refreshOnDay:
+///             dayOfWeek: MONDAY
 ///           interval: WEEKLY
 ///           timeOfTheDay: 01:00
 ///           timezone: Europe/London
-///           refreshOnDay:
-///             dayOfWeek: MONDAY
+///         refreshType: INCREMENTAL_REFRESH
+///       dataSetId: dataset-id
+///       scheduleId: schedule-id
 /// ```
 ///
 ///
@@ -359,19 +359,19 @@ import 'refresh_schedule_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.quicksight.RefreshSchedule("example", {
-///     dataSetId: "dataset-id",
-///     scheduleId: "schedule-id",
 ///     schedule: {
-///         refreshType: "INCREMENTAL_REFRESH",
 ///         scheduleFrequency: {
-///             interval: "MONTHLY",
-///             timeOfTheDay: "01:00",
-///             timezone: "Europe/London",
 ///             refreshOnDay: {
 ///                 dayOfMonth: "1",
 ///             },
+///             interval: "MONTHLY",
+///             timeOfTheDay: "01:00",
+///             timezone: "Europe/London",
 ///         },
+///         refreshType: "INCREMENTAL_REFRESH",
 ///     },
+///     dataSetId: "dataset-id",
+///     scheduleId: "schedule-id",
 /// });
 /// ```
 /// ```python
@@ -379,19 +379,19 @@ import 'refresh_schedule_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.quicksight.RefreshSchedule("example",
-///     data_set_id="dataset-id",
-///     schedule_id="schedule-id",
 ///     schedule={
-///         "refresh_type": "INCREMENTAL_REFRESH",
 ///         "schedule_frequency": {
-///             "interval": "MONTHLY",
-///             "time_of_the_day": "01:00",
-///             "timezone": "Europe/London",
 ///             "refresh_on_day": {
 ///                 "day_of_month": "1",
 ///             },
+///             "interval": "MONTHLY",
+///             "time_of_the_day": "01:00",
+///             "timezone": "Europe/London",
 ///         },
-///     })
+///         "refresh_type": "INCREMENTAL_REFRESH",
+///     },
+///     data_set_id="dataset-id",
+///     schedule_id="schedule-id")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -403,22 +403,22 @@ import 'refresh_schedule_state.dart';
 /// {
 ///     var example = new Aws.Quicksight.RefreshSchedule("example", new()
 ///     {
-///         DataSetId = "dataset-id",
-///         ScheduleId = "schedule-id",
 ///         Schedule = new Aws.Quicksight.Inputs.RefreshScheduleScheduleArgs
 ///         {
-///             RefreshType = "INCREMENTAL_REFRESH",
 ///             ScheduleFrequency = new Aws.Quicksight.Inputs.RefreshScheduleScheduleScheduleFrequencyArgs
 ///             {
-///                 Interval = "MONTHLY",
-///                 TimeOfTheDay = "01:00",
-///                 Timezone = "Europe/London",
 ///                 RefreshOnDay = new Aws.Quicksight.Inputs.RefreshScheduleScheduleScheduleFrequencyRefreshOnDayArgs
 ///                 {
 ///                     DayOfMonth = "1",
 ///                 },
+///                 Interval = "MONTHLY",
+///                 TimeOfTheDay = "01:00",
+///                 Timezone = "Europe/London",
 ///             },
+///             RefreshType = "INCREMENTAL_REFRESH",
 ///         },
+///         DataSetId = "dataset-id",
+///         ScheduleId = "schedule-id",
 ///     });
 ///
 /// });
@@ -434,19 +434,19 @@ import 'refresh_schedule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := quicksight.NewRefreshSchedule(ctx, "example", &quicksight.RefreshScheduleArgs{
-/// 			DataSetId:  pulumi.String("dataset-id"),
-/// 			ScheduleId: pulumi.String("schedule-id"),
 /// 			Schedule: &quicksight.RefreshScheduleScheduleArgs{
-/// 				RefreshType: pulumi.String("INCREMENTAL_REFRESH"),
 /// 				ScheduleFrequency: &quicksight.RefreshScheduleScheduleScheduleFrequencyArgs{
-/// 					Interval:     pulumi.String("MONTHLY"),
-/// 					TimeOfTheDay: pulumi.String("01:00"),
-/// 					Timezone:     pulumi.String("Europe/London"),
 /// 					RefreshOnDay: &quicksight.RefreshScheduleScheduleScheduleFrequencyRefreshOnDayArgs{
 /// 						DayOfMonth: pulumi.String("1"),
 /// 					},
+/// 					Interval:     pulumi.String("MONTHLY"),
+/// 					TimeOfTheDay: pulumi.String("01:00"),
+/// 					Timezone:     pulumi.String("Europe/London"),
 /// 				},
+/// 				RefreshType: pulumi.String("INCREMENTAL_REFRESH"),
 /// 			},
+/// 			DataSetId:  pulumi.String("dataset-id"),
+/// 			ScheduleId: pulumi.String("schedule-id"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -465,19 +465,19 @@ import 'refresh_schedule_state.dart';
 /// }
 ///
 /// resource "aws_quicksight_refreshschedule" "example" {
-///   data_set_id = "dataset-id"
-///   schedule_id = "schedule-id"
 ///   schedule = {
-///     refresh_type = "INCREMENTAL_REFRESH"
 ///     schedule_frequency = {
-///       interval        = "MONTHLY"
-///       time_of_the_day = "01:00"
-///       timezone        = "Europe/London"
 ///       refresh_on_day = {
 ///         day_of_month = "1"
 ///       }
+///       interval        = "MONTHLY"
+///       time_of_the_day = "01:00"
+///       timezone        = "Europe/London"
 ///     }
+///     refresh_type = "INCREMENTAL_REFRESH"
 ///   }
+///   data_set_id = "dataset-id"
+///   schedule_id = "schedule-id"
 /// }
 /// ```
 /// ```java
@@ -505,19 +505,19 @@ import 'refresh_schedule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new RefreshSchedule("example", RefreshScheduleArgs.builder()
-///             .dataSetId("dataset-id")
-///             .scheduleId("schedule-id")
 ///             .schedule(RefreshScheduleScheduleArgs.builder()
-///                 .refreshType("INCREMENTAL_REFRESH")
 ///                 .scheduleFrequency(RefreshScheduleScheduleScheduleFrequencyArgs.builder()
-///                     .interval("MONTHLY")
-///                     .timeOfTheDay("01:00")
-///                     .timezone("Europe/London")
 ///                     .refreshOnDay(RefreshScheduleScheduleScheduleFrequencyRefreshOnDayArgs.builder()
 ///                         .dayOfMonth("1")
 ///                         .build())
+///                     .interval("MONTHLY")
+///                     .timeOfTheDay("01:00")
+///                     .timezone("Europe/London")
 ///                     .build())
+///                 .refreshType("INCREMENTAL_REFRESH")
 ///                 .build())
+///             .dataSetId("dataset-id")
+///             .scheduleId("schedule-id")
 ///             .build());
 ///
 ///     }
@@ -528,16 +528,16 @@ import 'refresh_schedule_state.dart';
 ///   example:
 ///     type: aws:quicksight:RefreshSchedule
 ///     properties:
-///       dataSetId: dataset-id
-///       scheduleId: schedule-id
 ///       schedule:
-///         refreshType: INCREMENTAL_REFRESH
 ///         scheduleFrequency:
+///           refreshOnDay:
+///             dayOfMonth: '1'
 ///           interval: MONTHLY
 ///           timeOfTheDay: 01:00
 ///           timezone: Europe/London
-///           refreshOnDay:
-///             dayOfMonth: '1'
+///         refreshType: INCREMENTAL_REFRESH
+///       dataSetId: dataset-id
+///       scheduleId: schedule-id
 /// ```
 ///
 ///
@@ -549,7 +549,7 @@ import 'refresh_schedule_state.dart';
 /// $ pulumi import aws:quicksight/refreshSchedule:RefreshSchedule example 123456789012,dataset-id,schedule-id
 /// ```
 class RefreshSchedule extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the refresh schedule.
+  /// ARN of the refresh schedule.
   late final pulumi.Output<String> arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
@@ -576,7 +576,7 @@ class RefreshSchedule extends pulumi.CustomResource {
           'aws:quicksight/refreshSchedule:RefreshSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
@@ -591,11 +591,12 @@ class RefreshSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RefreshScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RefreshSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -609,6 +610,23 @@ class RefreshSchedule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    dataSetId = registerOutput<String>('dataSetId');
+    region = registerOutput<String>('region');
+    schedule = registerOutput<RefreshScheduleSchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RefreshScheduleSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduleId = registerOutput<String>('scheduleId');
+  }
+
+  /// Creates a typed reference to an existing [RefreshSchedule] resource.
+  RefreshSchedule.reference(String urn)
+    : super(
+        'aws:quicksight/refreshSchedule:RefreshSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
     dataSetId = registerOutput<String>('dataSetId');

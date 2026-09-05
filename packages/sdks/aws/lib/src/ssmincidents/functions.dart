@@ -116,6 +116,17 @@ Future<GetReplicationSetResult> getReplicationSet(
   return GetReplicationSetResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicationSetResult> getReplicationSetOutput(
+  GetReplicationSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssmincidents/getReplicationSet:getReplicationSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationSetResult.fromMap);
+}
+
 /// Use this data source to manage a response plan in AWS Systems Manager Incident Manager.
 ///
 /// ## Example Usage
@@ -231,4 +242,15 @@ Future<GetResponsePlanResult> getResponsePlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResponsePlanResult.fromMap(result);
+}
+
+pulumi.Output<GetResponsePlanResult> getResponsePlanOutput(
+  GetResponsePlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:ssmincidents/getResponsePlan:getResponsePlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResponsePlanResult.fromMap);
 }

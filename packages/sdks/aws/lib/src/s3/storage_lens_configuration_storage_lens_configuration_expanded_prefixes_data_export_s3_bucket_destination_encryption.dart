@@ -5,9 +5,9 @@ import 'storage_lens_configuration_storage_lens_configuration_expanded_prefixes_
 
 class StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportS3BucketDestinationEncryption {
   /// SSE-KMS encryption. See `sseKms` below for more details.
-  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportS3BucketDestinationEncryptionSseKms>? sseKms;
+  final pulumi.Input<StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportS3BucketDestinationEncryptionSseKms?>? sseKms;
   /// SSE-S3 encryption. An empty configuration block `{}` should be used.
-  final pulumi.Input<List<Map<String, dynamic>>>? sseS3s;
+  final pulumi.Input<List<Map<String, dynamic>>?>? sseS3s;
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationExpandedPrefixesDataExportS3BucketDestinationEncryption].
   /// [sseKms] SSE-KMS encryption. See `sseKms` below for more details.

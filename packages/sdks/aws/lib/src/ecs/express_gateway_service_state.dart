@@ -10,45 +10,45 @@ import 'express_gateway_service_timeouts.dart';
 /// Input properties used for looking up and filtering ExpressGatewayService resources.
 class ExpressGatewayServiceState {
   /// Name or ARN of the ECS cluster. Defaults to `default`.
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096. Defaults to `1024`.
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
   /// (**Deprecated**) ARN of the current deployment.
-  final pulumi.Input<String>? currentDeployment;
+  final pulumi.Input<String?>? currentDeployment;
   /// ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
-  final pulumi.Input<String>? executionRoleArn;
+  final pulumi.Input<String?>? executionRoleArn;
   /// Path for health check requests. Defaults to `/`.
-  final pulumi.Input<String>? healthCheckPath;
+  final pulumi.Input<String?>? healthCheckPath;
   /// ARN of the IAM role that allows ECS to manage AWS infrastructure on your behalf. **Important:** The infrastructure role cannot be modified after the service is created. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? infrastructureRoleArn;
+  final pulumi.Input<String?>? infrastructureRoleArn;
   /// List of ingress paths for the service. See `ingressPaths` Block below.
-  final pulumi.Input<List<ExpressGatewayServiceIngressPath>>? ingressPaths;
+  final pulumi.Input<List<ExpressGatewayServiceIngressPath>?>? ingressPaths;
   /// Amount of memory (in MiB) used by the task. Valid values are between 512 and 8192. Defaults to `2048`.
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
   /// Network configuration for the service. See `networkConfiguration` Block below.
-  final pulumi.Input<List<ExpressGatewayServiceNetworkConfiguration>>? networkConfigurations;
-  final pulumi.Input<ExpressGatewayServicePrimaryContainer>? primaryContainer;
+  final pulumi.Input<List<ExpressGatewayServiceNetworkConfiguration>?>? networkConfigurations;
+  final pulumi.Input<ExpressGatewayServicePrimaryContainer?>? primaryContainer;
   /// AWS region where the service will be created. If not specified, the region configured in the provider will be used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Auto-scaling configuration for the service. See `scalingTarget` Block below.
-  final pulumi.Input<List<ExpressGatewayServiceScalingTarget>>? scalingTargets;
+  final pulumi.Input<List<ExpressGatewayServiceScalingTarget>?>? scalingTargets;
   /// ARN of the Express Gateway Service.
-  final pulumi.Input<String>? serviceArn;
+  final pulumi.Input<String?>? serviceArn;
   /// Name of the service. If not specified, a name will be generated. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// ARN of the service revision.
-  final pulumi.Input<String>? serviceRevisionArn;
+  final pulumi.Input<String?>? serviceRevisionArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ARN of the IAM role that allows your Amazon ECS container task to make calls to other AWS services.
-  final pulumi.Input<String>? taskRoleArn;
-  final pulumi.Input<ExpressGatewayServiceTimeouts>? timeouts;
+  final pulumi.Input<String?>? taskRoleArn;
+  final pulumi.Input<ExpressGatewayServiceTimeouts?>? timeouts;
   /// Whether to wait for the service to reach a steady state before considering the operation complete. Defaults to `false`.
-  final pulumi.Input<bool>? waitForSteadyState;
+  final pulumi.Input<bool?>? waitForSteadyState;
 
   /// Creates a new [ExpressGatewayServiceState].
   /// [cluster] Name or ARN of the ECS cluster. Defaults to `default`.

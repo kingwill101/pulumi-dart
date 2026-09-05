@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Acl resources.
 class AclState {
   /// The ARN of the ACL.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The minimum engine version supported by the ACL.
-  final pulumi.Input<String>? minimumEngineVersion;
+  final pulumi.Input<String?>? minimumEngineVersion;
   /// Name of the ACL. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Set of MemoryDB user names to be included in this ACL.
-  final pulumi.Input<List<String>>? userNames;
+  final pulumi.Input<List<String>?>? userNames;
 
   /// Creates a new [AclState].
   /// [arn] The ARN of the ACL.

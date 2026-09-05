@@ -6,23 +6,23 @@ import 'target_group_config.dart';
 /// Input properties used for looking up and filtering TargetGroup resources.
 class TargetGroupState {
   /// ARN of the target group.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Target group configuration. See `config` Block below.
-  final pulumi.Input<TargetGroupConfig>? config;
+  final pulumi.Input<TargetGroupConfig?>? config;
   /// Name of the target group. The name must be unique within the account. The valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen as the first or last character, or immediately after another hyphen.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Status of the target group.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Type of target group. Valid values are `IP`, `LAMBDA`, `INSTANCE`, or `ALB`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [TargetGroupState].
   /// [arn] ARN of the target group.

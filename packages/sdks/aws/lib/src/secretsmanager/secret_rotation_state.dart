@@ -7,31 +7,31 @@ import 'secret_rotation_rotation_rules.dart';
 /// Input properties used for looking up and filtering SecretRotation resources.
 class SecretRotationState {
   /// Configuration block for metadata required by the external secret partner. Required for managed external secrets. See details below.
-  final pulumi.Input<List<SecretRotationExternalSecretRotationMetadata>>? externalSecretRotationMetadatas;
+  final pulumi.Input<List<SecretRotationExternalSecretRotationMetadata>?>? externalSecretRotationMetadatas;
   /// ARN of the IAM role that allows Secrets Manager to rotate the secret held by a third-party partner. Required for managed external secrets.
-  final pulumi.Input<String>? externalSecretRotationRoleArn;
+  final pulumi.Input<String?>? externalSecretRotationRoleArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether to rotate the secret immediately or wait until the next scheduled rotation window. The rotation schedule is defined in `rotationRules`. For secrets that use a Lambda rotation function to rotate, if you don't immediately rotate the secret, Secrets Manager tests the rotation configuration by running the testSecret step (https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_how.html) of the Lambda rotation function. The test creates an AWSPENDING version of the secret and then removes it. Defaults to `true`.
-  final pulumi.Input<bool>? rotateImmediately;
-  /// Whether automatic rotation is enabled for this secret.
-  final pulumi.Input<bool>? rotationEnabled;
+  final pulumi.Input<bool?>? rotateImmediately;
+  /// Whether automatic rotation is enabled for the secret. Set to `false` to disable rotation on a secret whose rotation is otherwise managed by AWS (for example, an RDS master user password secret). When `false`, `rotationRules` must be omitted. Defaults to enabled when `rotationRules` is configured. Destroying this resource does not re-enable the automatic rotation that AWS configured.
+  final pulumi.Input<bool?>? rotationEnabled;
   /// ARN of the Lambda function that can rotate the secret. Must be supplied if the secret is not managed by AWS.
-  final pulumi.Input<String>? rotationLambdaArn;
-  /// Structure that defines the rotation configuration for this secret. Defined below.
-  final pulumi.Input<SecretRotationRotationRules>? rotationRules;
-  /// Secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
-  final pulumi.Input<String>? secretId;
+  final pulumi.Input<String?>? rotationLambdaArn;
+  /// Structure that defines the rotation configuration for this secret. Required unless `rotationEnabled` is `false`. Defined below.
+  final pulumi.Input<SecretRotationRotationRules?>? rotationRules;
+  /// Secret to which you want to add a new version. You can specify either the ARN or the friendly name of the secret. The secret must already exist.
+  final pulumi.Input<String?>? secretId;
 
   /// Creates a new [SecretRotationState].
   /// [externalSecretRotationMetadatas] Configuration block for metadata required by the external secret partner. Required for managed external secrets. See details below.
   /// [externalSecretRotationRoleArn] ARN of the IAM role that allows Secrets Manager to rotate the secret held by a third-party partner. Required for managed external secrets.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rotateImmediately] Whether to rotate the secret immediately or wait until the next scheduled rotation window. The rotation schedule is defined in `rotationRules`. For secrets that use a Lambda rotation function to rotate, if you don't immediately rotate the secret, Secrets Manager tests the rotation configuration by running the testSecret step (https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_how.html) of the Lambda rotation function. The test creates an AWSPENDING version of the secret and then removes it. Defaults to `true`.
-  /// [rotationEnabled] Whether automatic rotation is enabled for this secret.
+  /// [rotationEnabled] Whether automatic rotation is enabled for the secret. Set to `false` to disable rotation on a secret whose rotation is otherwise managed by AWS (for example, an RDS master user password secret). When `false`, `rotationRules` must be omitted. Defaults to enabled when `rotationRules` is configured. Destroying this resource does not re-enable the automatic rotation that AWS configured.
   /// [rotationLambdaArn] ARN of the Lambda function that can rotate the secret. Must be supplied if the secret is not managed by AWS.
-  /// [rotationRules] Structure that defines the rotation configuration for this secret. Defined below.
-  /// [secretId] Secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
+  /// [rotationRules] Structure that defines the rotation configuration for this secret. Required unless `rotationEnabled` is `false`. Defined below.
+  /// [secretId] Secret to which you want to add a new version. You can specify either the ARN or the friendly name of the secret. The secret must already exist.
   const SecretRotationState({
     this.externalSecretRotationMetadatas,
     this.externalSecretRotationRoleArn,

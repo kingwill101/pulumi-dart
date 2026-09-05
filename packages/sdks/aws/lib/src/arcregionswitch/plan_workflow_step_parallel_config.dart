@@ -5,7 +5,7 @@ import 'plan_workflow_step_parallel_config_step.dart';
 
 class PlanWorkflowStepParallelConfig {
   /// Steps to execute in parallel. See `step` Block for details. The parallel step schema matches `step` Block but does not support `parallelConfig` to prevent infinite nesting.
-  final pulumi.Input<List<PlanWorkflowStepParallelConfigStep>>? steps;
+  final pulumi.Input<List<PlanWorkflowStepParallelConfigStep>?>? steps;
 
   /// Creates a new [PlanWorkflowStepParallelConfig].
   /// [steps] Steps to execute in parallel. See `step` Block for details. The parallel step schema matches `step` Block but does not support `parallelConfig` to prevent infinite nesting.

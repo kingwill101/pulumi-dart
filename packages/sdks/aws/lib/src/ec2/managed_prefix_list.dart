@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_prefix_list_args.dart';
+import 'managed_prefix_list_entry.dart';
 import 'managed_prefix_list_state.dart';
 
 /// Provides a managed prefix list resource.
@@ -26,9 +27,6 @@ import 'managed_prefix_list_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.ec2.ManagedPrefixList("example", {
-///     name: "All VPC CIDR-s",
-///     addressFamily: "IPv4",
-///     maxEntries: 5,
 ///     entries: [
 ///         {
 ///             cidr: exampleAwsVpc.cidrBlock,
@@ -39,6 +37,9 @@ import 'managed_prefix_list_state.dart';
 ///             description: "Secondary",
 ///         },
 ///     ],
+///     name: "All VPC CIDR-s",
+///     addressFamily: "IPv4",
+///     maxEntries: 5,
 ///     tags: {
 ///         Env: "live",
 ///     },
@@ -49,9 +50,6 @@ import 'managed_prefix_list_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.ec2.ManagedPrefixList("example",
-///     name="All VPC CIDR-s",
-///     address_family="IPv4",
-///     max_entries=5,
 ///     entries=[
 ///         {
 ///             "cidr": example_aws_vpc["cidrBlock"],
@@ -62,6 +60,9 @@ import 'managed_prefix_list_state.dart';
 ///             "description": "Secondary",
 ///         },
 ///     ],
+///     name="All VPC CIDR-s",
+///     address_family="IPv4",
+///     max_entries=5,
 ///     tags={
 ///         "Env": "live",
 ///     })
@@ -76,9 +77,6 @@ import 'managed_prefix_list_state.dart';
 /// {
 ///     var example = new Aws.Ec2.ManagedPrefixList("example", new()
 ///     {
-///         Name = "All VPC CIDR-s",
-///         AddressFamily = "IPv4",
-///         MaxEntries = 5,
 ///         Entries = new[]
 ///         {
 ///             new Aws.Ec2.Inputs.ManagedPrefixListEntryArgs
@@ -92,6 +90,9 @@ import 'managed_prefix_list_state.dart';
 ///                 Description = "Secondary",
 ///             },
 ///         },
+///         Name = "All VPC CIDR-s",
+///         AddressFamily = "IPv4",
+///         MaxEntries = 5,
 ///         Tags =
 ///         {
 ///             { "Env", "live" },
@@ -111,9 +112,6 @@ import 'managed_prefix_list_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := ec2.NewManagedPrefixList(ctx, "example", &ec2.ManagedPrefixListArgs{
-/// 			Name:          pulumi.String("All VPC CIDR-s"),
-/// 			AddressFamily: pulumi.String("IPv4"),
-/// 			MaxEntries:    pulumi.Int(5),
 /// 			Entries: ec2.ManagedPrefixListEntryTypeArray{
 /// 				&ec2.ManagedPrefixListEntryTypeArgs{
 /// 					Cidr:        pulumi.Any(exampleAwsVpc.CidrBlock),
@@ -124,6 +122,9 @@ import 'managed_prefix_list_state.dart';
 /// 					Description: pulumi.String("Secondary"),
 /// 				},
 /// 			},
+/// 			Name:          pulumi.String("All VPC CIDR-s"),
+/// 			AddressFamily: pulumi.String("IPv4"),
+/// 			MaxEntries:    pulumi.Int(5),
 /// 			Tags: pulumi.StringMap{
 /// 				"Env": pulumi.String("live"),
 /// 			},
@@ -145,9 +146,6 @@ import 'managed_prefix_list_state.dart';
 /// }
 ///
 /// resource "aws_ec2_managedprefixlist" "example" {
-///   name           = "All VPC CIDR-s"
-///   address_family = "IPv4"
-///   max_entries    = 5
 ///   entries {
 ///     cidr        = exampleAwsVpc.cidrBlock
 ///     description = "Primary"
@@ -156,6 +154,9 @@ import 'managed_prefix_list_state.dart';
 ///     cidr        = exampleAwsVpcIpv4CidrBlockAssociation.cidrBlock
 ///     description = "Secondary"
 ///   }
+///   name           = "All VPC CIDR-s"
+///   address_family = "IPv4"
+///   max_entries    = 5
 ///   tags = {
 ///     "Env" = "live"
 ///   }
@@ -184,9 +185,6 @@ import 'managed_prefix_list_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new ManagedPrefixList("example", ManagedPrefixListArgs.builder()
-///             .name("All VPC CIDR-s")
-///             .addressFamily("IPv4")
-///             .maxEntries(5)
 ///             .entries(
 ///                 ManagedPrefixListEntryArgs.builder()
 ///                     .cidr(exampleAwsVpc.cidrBlock())
@@ -196,6 +194,9 @@ import 'managed_prefix_list_state.dart';
 ///                     .cidr(exampleAwsVpcIpv4CidrBlockAssociation.cidrBlock())
 ///                     .description("Secondary")
 ///                     .build())
+///             .name("All VPC CIDR-s")
+///             .addressFamily("IPv4")
+///             .maxEntries(5)
 ///             .tags(Map.of("Env", "live"))
 ///             .build());
 ///
@@ -207,14 +208,14 @@ import 'managed_prefix_list_state.dart';
 ///   example:
 ///     type: aws:ec2:ManagedPrefixList
 ///     properties:
-///       name: All VPC CIDR-s
-///       addressFamily: IPv4
-///       maxEntries: 5
 ///       entries:
 ///         - cidr: ${exampleAwsVpc.cidrBlock}
 ///           description: Primary
 ///         - cidr: ${exampleAwsVpcIpv4CidrBlockAssociation.cidrBlock}
 ///           description: Secondary
+///       name: All VPC CIDR-s
+///       addressFamily: IPv4
+///       maxEntries: 5
 ///       tags:
 ///         Env: live
 /// ```
@@ -233,7 +234,7 @@ class ManagedPrefixList extends pulumi.CustomResource {
   /// ARN of the prefix list.
   late final pulumi.Output<String> arn;
   /// Configuration block for prefix list entry. Detailed below. Different entries may have overlapping CIDR blocks, but a particular CIDR should not be duplicated.
-  late final pulumi.Output<List<Map<String, dynamic>>> entries;
+  late final pulumi.Output<List<ManagedPrefixListEntry>> entries;
   /// Maximum number of entries that this prefix list can contain.
   late final pulumi.Output<int> maxEntries;
   /// Name of this resource. The name must not start with `com.amazonaws`.
@@ -261,17 +262,17 @@ class ManagedPrefixList extends pulumi.CustomResource {
           'aws:ec2/managedPrefixList:ManagedPrefixList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');
-    entries = registerOutput<List<Map<String, dynamic>>>('entries');
+    entries = registerOutput<List<ManagedPrefixListEntry>>('entries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedPrefixListEntry>(guardedValue, (value) => ManagedPrefixListEntry.fromMap((value as Map).cast<String, dynamic>())); });
     maxEntries = registerOutput<int>('maxEntries');
     this.name = registerOutput<String>('name');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<int>('version');
   }
 
@@ -280,11 +281,12 @@ class ManagedPrefixList extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedPrefixListState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedPrefixList._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,13 +302,34 @@ class ManagedPrefixList extends pulumi.CustomResource {
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');
-    entries = registerOutput<List<Map<String, dynamic>>>('entries');
+    entries = registerOutput<List<ManagedPrefixListEntry>>('entries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedPrefixListEntry>(guardedValue, (value) => ManagedPrefixListEntry.fromMap((value as Map).cast<String, dynamic>())); });
     maxEntries = registerOutput<int>('maxEntries');
     this.name = registerOutput<String>('name');
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [ManagedPrefixList] resource.
+  ManagedPrefixList.reference(String urn)
+    : super(
+        'aws:ec2/managedPrefixList:ManagedPrefixList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressFamily = registerOutput<String>('addressFamily');
+    arn = registerOutput<String>('arn');
+    entries = registerOutput<List<ManagedPrefixListEntry>>('entries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedPrefixListEntry>(guardedValue, (value) => ManagedPrefixListEntry.fromMap((value as Map).cast<String, dynamic>())); });
+    maxEntries = registerOutput<int>('maxEntries');
+    this.name = registerOutput<String>('name');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<int>('version');
   }
 }

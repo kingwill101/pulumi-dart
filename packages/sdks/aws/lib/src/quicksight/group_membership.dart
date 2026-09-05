@@ -146,7 +146,7 @@ class GroupMembership extends pulumi.CustomResource {
           'aws:quicksight/groupMembership:GroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
@@ -161,11 +161,12 @@ class GroupMembership extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupMembershipState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupMembership._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -179,6 +180,23 @@ class GroupMembership extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    groupName = registerOutput<String>('groupName');
+    memberName = registerOutput<String>('memberName');
+    namespace = registerOutput<String?>('namespace');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [GroupMembership] resource.
+  GroupMembership.reference(String urn)
+    : super(
+        'aws:quicksight/groupMembership:GroupMembership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');
     groupName = registerOutput<String>('groupName');

@@ -5,9 +5,9 @@ import 'firewall_firewall_status_sync_state_attachment.dart';
 
 class FirewallFirewallStatusSyncState {
   /// Nested list describing the attachment status of the firewall's association with a single VPC subnet.
-  final pulumi.Input<List<FirewallFirewallStatusSyncStateAttachment>>? attachments;
+  final pulumi.Input<List<FirewallFirewallStatusSyncStateAttachment>?>? attachments;
   /// The Availability Zone where the subnet is configured.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
 
   /// Creates a new [FirewallFirewallStatusSyncState].
   /// [attachments] Nested list describing the attachment status of the firewall's association with a single VPC subnet.

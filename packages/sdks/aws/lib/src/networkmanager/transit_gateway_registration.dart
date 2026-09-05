@@ -183,7 +183,7 @@ class TransitGatewayRegistration extends pulumi.CustomResource {
           'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     globalNetworkId = registerOutput<String>('globalNetworkId');
     transitGatewayArn = registerOutput<String>('transitGatewayArn');
@@ -194,11 +194,12 @@ class TransitGatewayRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TransitGatewayRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TransitGatewayRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -212,6 +213,19 @@ class TransitGatewayRegistration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    transitGatewayArn = registerOutput<String>('transitGatewayArn');
+  }
+
+  /// Creates a typed reference to an existing [TransitGatewayRegistration] resource.
+  TransitGatewayRegistration.reference(String urn)
+    : super(
+        'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     globalNetworkId = registerOutput<String>('globalNetworkId');
     transitGatewayArn = registerOutput<String>('transitGatewayArn');
   }

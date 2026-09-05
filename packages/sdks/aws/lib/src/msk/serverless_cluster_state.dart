@@ -7,23 +7,23 @@ import 'serverless_cluster_vpc_config.dart';
 /// Input properties used for looking up and filtering ServerlessCluster resources.
 class ServerlessClusterState {
   /// The ARN of the serverless cluster.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `boot-abcdefg.c2.kafka-serverless.eu-central-1.amazonaws.com:9098`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
-  final pulumi.Input<String>? bootstrapBrokersSaslIam;
+  final pulumi.Input<String?>? bootstrapBrokersSaslIam;
   /// Specifies client authentication information for the serverless cluster. See below.
-  final pulumi.Input<ServerlessClusterClientAuthentication>? clientAuthentication;
+  final pulumi.Input<ServerlessClusterClientAuthentication?>? clientAuthentication;
   /// The name of the serverless cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// UUID of the serverless cluster, for use in IAM policies.
-  final pulumi.Input<String>? clusterUuid;
+  final pulumi.Input<String?>? clusterUuid;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
   /// VPC configuration information. See below.
-  final pulumi.Input<List<ServerlessClusterVpcConfig>>? vpcConfigs;
+  final pulumi.Input<List<ServerlessClusterVpcConfig>?>? vpcConfigs;
 
   /// Creates a new [ServerlessClusterState].
   /// [arn] The ARN of the serverless cluster.

@@ -8,25 +8,25 @@ import 'app_authorization_connection_timeouts.dart';
 /// Input properties used for looking up and filtering AppAuthorizationConnection resources.
 class AppAuthorizationConnectionState {
   /// Name of the application.
-  final pulumi.Input<String>? app;
-  /// Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
-  final pulumi.Input<String>? appAuthorizationArn;
-  /// Amazon Resource Name (ARN) of the app bundle to use for the request.
+  final pulumi.Input<String?>? app;
+  /// ARN or Universal Unique Identifier (UUID) of the app authorization to use for the request.
+  final pulumi.Input<String?>? appAuthorizationArn;
+  /// ARN of the app bundle to use for the request.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? appBundleArn;
+  final pulumi.Input<String?>? appBundleArn;
   /// OAuth2 authorization information. Required if the app authorization for the request is configured with an OAuth2 (`oauth2`) authorization type. See `authRequest` Block for details.
-  final pulumi.Input<AppAuthorizationConnectionAuthRequest>? authRequest;
+  final pulumi.Input<AppAuthorizationConnectionAuthRequest?>? authRequest;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Information about an application tenant. See `tenant` Block below.
-  final pulumi.Input<List<AppAuthorizationConnectionTenant>>? tenants;
-  final pulumi.Input<AppAuthorizationConnectionTimeouts>? timeouts;
+  final pulumi.Input<List<AppAuthorizationConnectionTenant>?>? tenants;
+  final pulumi.Input<AppAuthorizationConnectionTimeouts?>? timeouts;
 
   /// Creates a new [AppAuthorizationConnectionState].
   /// [app] Name of the application.
-  /// [appAuthorizationArn] Amazon Resource Name (ARN) or Universal Unique Identifier (UUID) of the app authorization to use for the request.
-  /// [appBundleArn] Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// [appAuthorizationArn] ARN or Universal Unique Identifier (UUID) of the app authorization to use for the request.
+  /// [appBundleArn] ARN of the app bundle to use for the request.
   /// [authRequest] OAuth2 authorization information. Required if the app authorization for the request is configured with an OAuth2 (`oauth2`) authorization type. See `authRequest` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tenants] Information about an application tenant. See `tenant` Block below.

@@ -5,24 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IdentityProvider resources.
 class IdentityProviderState {
   /// ARN of the identity provider.
-  final pulumi.Input<String>? identityProviderArn;
+  final pulumi.Input<String?>? identityProviderArn;
   /// Identity provider details. The following list describes the provider detail keys for each identity provider type:
   /// * For Google and Login with Amazon:
-  final pulumi.Input<Map<String, String>>? identityProviderDetails;
+  final pulumi.Input<Map<String, String>?>? identityProviderDetails;
   /// Identity provider name.
-  final pulumi.Input<String>? identityProviderName;
+  final pulumi.Input<String?>? identityProviderName;
   /// Identity provider type. Valid values: `SAML`, `Facebook`, `Google`, `LoginWithAmazon`, `SignInWithApple`, `OIDC`.
-  final pulumi.Input<String>? identityProviderType;
+  final pulumi.Input<String?>? identityProviderType;
   /// ARN of the web portal. Forces replacement if changed.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? portalArn;
+  final pulumi.Input<String?>? portalArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [IdentityProviderState].
   /// [identityProviderArn] ARN of the identity provider.

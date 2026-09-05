@@ -8,23 +8,23 @@ import 'email_identity_dkim_signing_attributes.dart';
 /// {@endtemplate}
 /// {@macro pulumi_sesv2_email_identity_email_identity_args_doc}
 class EmailIdentityArgs {
-  /// The configuration set to use by default when sending from this identity. Note that any configuration set defined in the email sending request takes precedence.
-  final pulumi.Input<String>? configurationSetName;
-  /// The configuration of the DKIM authentication settings for an email domain identity.
-  final pulumi.Input<EmailIdentityDkimSigningAttributes>? dkimSigningAttributes;
-  /// The email address or domain to verify.
+  /// Configuration set to use by default when sending from this identity. Any configuration set defined in the email sending request takes precedence.
+  final pulumi.Input<String?>? configurationSetName;
+  /// Configuration block for the DKIM authentication settings for an email domain identity. See `dkimSigningAttributes` Block below.
+  final pulumi.Input<EmailIdentityDkimSigningAttributes?>? dkimSigningAttributes;
+  /// Email address or domain to verify.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> emailIdentity;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EmailIdentityArgs].
-  /// [configurationSetName] The configuration set to use by default when sending from this identity. Note that any configuration set defined in the email sending request takes precedence.
-  /// [dkimSigningAttributes] The configuration of the DKIM authentication settings for an email domain identity.
-  /// [emailIdentity] The email address or domain to verify.
+  /// [configurationSetName] Configuration set to use by default when sending from this identity. Any configuration set defined in the email sending request takes precedence.
+  /// [dkimSigningAttributes] Configuration block for the DKIM authentication settings for an email domain identity. See `dkimSigningAttributes` Block below.
+  /// [emailIdentity] Email address or domain to verify.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const EmailIdentityArgs({

@@ -237,7 +237,7 @@ class ReplicationTask extends pulumi.CustomResource {
           'aws:dms/replicationTask:ReplicationTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     cdcStartPosition = registerOutput<String>('cdcStartPosition');
     cdcStartTime = registerOutput<String?>('cdcStartTime');
@@ -252,8 +252,8 @@ class ReplicationTask extends pulumi.CustomResource {
     startReplicationTask = registerOutput<bool?>('startReplicationTask');
     status = registerOutput<String>('status');
     tableMappings = registerOutput<String>('tableMappings');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetEndpointArn = registerOutput<String>('targetEndpointArn');
   }
 
@@ -262,11 +262,12 @@ class ReplicationTask extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationTaskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationTask._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -293,8 +294,35 @@ class ReplicationTask extends pulumi.CustomResource {
     startReplicationTask = registerOutput<bool?>('startReplicationTask');
     status = registerOutput<String>('status');
     tableMappings = registerOutput<String>('tableMappings');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetEndpointArn = registerOutput<String>('targetEndpointArn');
+  }
+
+  /// Creates a typed reference to an existing [ReplicationTask] resource.
+  ReplicationTask.reference(String urn)
+    : super(
+        'aws:dms/replicationTask:ReplicationTask',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cdcStartPosition = registerOutput<String>('cdcStartPosition');
+    cdcStartTime = registerOutput<String?>('cdcStartTime');
+    migrationType = registerOutput<String>('migrationType');
+    region = registerOutput<String>('region');
+    replicationInstanceArn = registerOutput<String>('replicationInstanceArn');
+    replicationTaskArn = registerOutput<String>('replicationTaskArn');
+    replicationTaskId = registerOutput<String>('replicationTaskId');
+    replicationTaskSettings = registerOutput<String>('replicationTaskSettings');
+    resourceIdentifier = registerOutput<String?>('resourceIdentifier');
+    sourceEndpointArn = registerOutput<String>('sourceEndpointArn');
+    startReplicationTask = registerOutput<bool?>('startReplicationTask');
+    status = registerOutput<String>('status');
+    tableMappings = registerOutput<String>('tableMappings');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetEndpointArn = registerOutput<String>('targetEndpointArn');
   }
 }

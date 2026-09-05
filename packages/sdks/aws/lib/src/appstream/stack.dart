@@ -1,8 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'stack_access_endpoint.dart';
 import 'stack_application_settings.dart';
 import 'stack_args.dart';
 import 'stack_state.dart';
+import 'stack_storage_connector.dart';
 import 'stack_streaming_experience_settings.dart';
+import 'stack_user_setting.dart';
 
 /// Provides an AppStream stack.
 ///
@@ -14,11 +17,10 @@ import 'stack_streaming_experience_settings.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.appstream.Stack("example", {
-///     name: "stack name",
-///     description: "stack description",
-///     displayName: "stack display name",
-///     feedbackUrl: "http://your-domain/feedback",
-///     redirectUrl: "http://your-domain/redirect",
+///     applicationSettings: {
+///         enabled: true,
+///         settingsGroup: "SettingsGroup",
+///     },
 ///     storageConnectors: [{
 ///         connectorType: "HOMEFOLDERS",
 ///     }],
@@ -56,10 +58,11 @@ import 'stack_streaming_experience_settings.dart';
 ///             permission: "ENABLED",
 ///         },
 ///     ],
-///     applicationSettings: {
-///         enabled: true,
-///         settingsGroup: "SettingsGroup",
-///     },
+///     name: "stack name",
+///     description: "stack description",
+///     displayName: "stack display name",
+///     feedbackUrl: "http://your-domain/feedback",
+///     redirectUrl: "http://your-domain/redirect",
 ///     tags: {
 ///         TagName: "TagValue",
 ///     },
@@ -70,11 +73,10 @@ import 'stack_streaming_experience_settings.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.appstream.Stack("example",
-///     name="stack name",
-///     description="stack description",
-///     display_name="stack display name",
-///     feedback_url="http://your-domain/feedback",
-///     redirect_url="http://your-domain/redirect",
+///     application_settings={
+///         "enabled": True,
+///         "settings_group": "SettingsGroup",
+///     },
 ///     storage_connectors=[{
 ///         "connector_type": "HOMEFOLDERS",
 ///     }],
@@ -112,10 +114,11 @@ import 'stack_streaming_experience_settings.dart';
 ///             "permission": "ENABLED",
 ///         },
 ///     ],
-///     application_settings={
-///         "enabled": True,
-///         "settings_group": "SettingsGroup",
-///     },
+///     name="stack name",
+///     description="stack description",
+///     display_name="stack display name",
+///     feedback_url="http://your-domain/feedback",
+///     redirect_url="http://your-domain/redirect",
 ///     tags={
 ///         "TagName": "TagValue",
 ///     })
@@ -130,11 +133,11 @@ import 'stack_streaming_experience_settings.dart';
 /// {
 ///     var example = new Aws.AppStream.Stack("example", new()
 ///     {
-///         Name = "stack name",
-///         Description = "stack description",
-///         DisplayName = "stack display name",
-///         FeedbackUrl = "http://your-domain/feedback",
-///         RedirectUrl = "http://your-domain/redirect",
+///         ApplicationSettings = new Aws.AppStream.Inputs.StackApplicationSettingsArgs
+///         {
+///             Enabled = true,
+///             SettingsGroup = "SettingsGroup",
+///         },
 ///         StorageConnectors = new[]
 ///         {
 ///             new Aws.AppStream.Inputs.StackStorageConnectorArgs
@@ -185,11 +188,11 @@ import 'stack_streaming_experience_settings.dart';
 ///                 Permission = "ENABLED",
 ///             },
 ///         },
-///         ApplicationSettings = new Aws.AppStream.Inputs.StackApplicationSettingsArgs
-///         {
-///             Enabled = true,
-///             SettingsGroup = "SettingsGroup",
-///         },
+///         Name = "stack name",
+///         Description = "stack description",
+///         DisplayName = "stack display name",
+///         FeedbackUrl = "http://your-domain/feedback",
+///         RedirectUrl = "http://your-domain/redirect",
 ///         Tags =
 ///         {
 ///             { "TagName", "TagValue" },
@@ -209,11 +212,10 @@ import 'stack_streaming_experience_settings.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := appstream.NewStack(ctx, "example", &appstream.StackArgs{
-/// 			Name:        pulumi.String("stack name"),
-/// 			Description: pulumi.String("stack description"),
-/// 			DisplayName: pulumi.String("stack display name"),
-/// 			FeedbackUrl: pulumi.String("http://your-domain/feedback"),
-/// 			RedirectUrl: pulumi.String("http://your-domain/redirect"),
+/// 			ApplicationSettings: &appstream.StackApplicationSettingsArgs{
+/// 				Enabled:       pulumi.Bool(true),
+/// 				SettingsGroup: pulumi.String("SettingsGroup"),
+/// 			},
 /// 			StorageConnectors: appstream.StackStorageConnectorArray{
 /// 				&appstream.StackStorageConnectorArgs{
 /// 					ConnectorType: pulumi.String("HOMEFOLDERS"),
@@ -253,10 +255,11 @@ import 'stack_streaming_experience_settings.dart';
 /// 					Permission: pulumi.String("ENABLED"),
 /// 				},
 /// 			},
-/// 			ApplicationSettings: &appstream.StackApplicationSettingsArgs{
-/// 				Enabled:       pulumi.Bool(true),
-/// 				SettingsGroup: pulumi.String("SettingsGroup"),
-/// 			},
+/// 			Name:        pulumi.String("stack name"),
+/// 			Description: pulumi.String("stack description"),
+/// 			DisplayName: pulumi.String("stack display name"),
+/// 			FeedbackUrl: pulumi.String("http://your-domain/feedback"),
+/// 			RedirectUrl: pulumi.String("http://your-domain/redirect"),
 /// 			Tags: pulumi.StringMap{
 /// 				"TagName": pulumi.String("TagValue"),
 /// 			},
@@ -278,11 +281,10 @@ import 'stack_streaming_experience_settings.dart';
 /// }
 ///
 /// resource "aws_appstream_stack" "example" {
-///   name         = "stack name"
-///   description  = "stack description"
-///   display_name = "stack display name"
-///   feedback_url = "http://your-domain/feedback"
-///   redirect_url = "http://your-domain/redirect"
+///   application_settings = {
+///     enabled        = true
+///     settings_group = "SettingsGroup"
+///   }
 ///   storage_connectors {
 ///     connector_type = "HOMEFOLDERS"
 ///   }
@@ -318,10 +320,11 @@ import 'stack_streaming_experience_settings.dart';
 ///     action     = "PRINTING_TO_LOCAL_DEVICE"
 ///     permission = "ENABLED"
 ///   }
-///   application_settings = {
-///     enabled        = true
-///     settings_group = "SettingsGroup"
-///   }
+///   name         = "stack name"
+///   description  = "stack description"
+///   display_name = "stack display name"
+///   feedback_url = "http://your-domain/feedback"
+///   redirect_url = "http://your-domain/redirect"
 ///   tags = {
 ///     "TagName" = "TagValue"
 ///   }
@@ -335,9 +338,9 @@ import 'stack_streaming_experience_settings.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.appstream.Stack;
 /// import com.pulumi.aws.appstream.StackArgs;
+/// import com.pulumi.aws.appstream.inputs.StackApplicationSettingsArgs;
 /// import com.pulumi.aws.appstream.inputs.StackStorageConnectorArgs;
 /// import com.pulumi.aws.appstream.inputs.StackUserSettingArgs;
-/// import com.pulumi.aws.appstream.inputs.StackApplicationSettingsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -352,11 +355,10 @@ import 'stack_streaming_experience_settings.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Stack("example", StackArgs.builder()
-///             .name("stack name")
-///             .description("stack description")
-///             .displayName("stack display name")
-///             .feedbackUrl("http://your-domain/feedback")
-///             .redirectUrl("http://your-domain/redirect")
+///             .applicationSettings(StackApplicationSettingsArgs.builder()
+///                 .enabled(true)
+///                 .settingsGroup("SettingsGroup")
+///                 .build())
 ///             .storageConnectors(StackStorageConnectorArgs.builder()
 ///                 .connectorType("HOMEFOLDERS")
 ///                 .build())
@@ -393,10 +395,11 @@ import 'stack_streaming_experience_settings.dart';
 ///                     .action("PRINTING_TO_LOCAL_DEVICE")
 ///                     .permission("ENABLED")
 ///                     .build())
-///             .applicationSettings(StackApplicationSettingsArgs.builder()
-///                 .enabled(true)
-///                 .settingsGroup("SettingsGroup")
-///                 .build())
+///             .name("stack name")
+///             .description("stack description")
+///             .displayName("stack display name")
+///             .feedbackUrl("http://your-domain/feedback")
+///             .redirectUrl("http://your-domain/redirect")
 ///             .tags(Map.of("TagName", "TagValue"))
 ///             .build());
 ///
@@ -408,11 +411,9 @@ import 'stack_streaming_experience_settings.dart';
 ///   example:
 ///     type: aws:appstream:Stack
 ///     properties:
-///       name: stack name
-///       description: stack description
-///       displayName: stack display name
-///       feedbackUrl: http://your-domain/feedback
-///       redirectUrl: http://your-domain/redirect
+///       applicationSettings:
+///         enabled: true
+///         settingsGroup: SettingsGroup
 ///       storageConnectors:
 ///         - connectorType: HOMEFOLDERS
 ///       userSettings:
@@ -432,9 +433,11 @@ import 'stack_streaming_experience_settings.dart';
 ///           permission: ENABLED
 ///         - action: PRINTING_TO_LOCAL_DEVICE
 ///           permission: ENABLED
-///       applicationSettings:
-///         enabled: true
-///         settingsGroup: SettingsGroup
+///       name: stack name
+///       description: stack description
+///       displayName: stack display name
+///       feedbackUrl: http://your-domain/feedback
+///       redirectUrl: http://your-domain/redirect
 ///       tags:
 ///         TagName: TagValue
 /// ```
@@ -449,7 +452,7 @@ import 'stack_streaming_experience_settings.dart';
 /// ```
 class Stack extends pulumi.CustomResource {
   /// Set of configuration blocks defining the interface VPC endpoints. Users of the stack can connect to AppStream 2.0 only through the specified endpoints. See `accessEndpoints` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> accessEndpoints;
+  late final pulumi.Output<List<StackAccessEndpoint>> accessEndpoints;
   /// Settings for application settings persistence. See `applicationSettings` below.
   late final pulumi.Output<StackApplicationSettings> applicationSettings;
   /// ARN of the appstream stack.
@@ -473,14 +476,14 @@ class Stack extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block for the storage connectors to enable. See `storageConnectors` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> storageConnectors;
+  late final pulumi.Output<List<StackStorageConnector>> storageConnectors;
   /// Streaming protocol you want your stack to prefer. This can be UDP or TCP. Currently, UDP is only supported in the Windows native client. See `streamingExperienceSettings` below.
   late final pulumi.Output<StackStreamingExperienceSettings> streamingExperienceSettings;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Configuration block for the actions that are enabled or disabled for users during their streaming sessions. If not provided, these settings are configured automatically by AWS. If provided, the configuration should include a block for each configurable action. See `userSettings` below.
-  late final pulumi.Output<List<Map<String, dynamic>>> userSettings;
+  late final pulumi.Output<List<StackUserSetting>> userSettings;
 
   /// Creates a new [Stack].
   /// [name] The Pulumi resource name.
@@ -494,24 +497,24 @@ class Stack extends pulumi.CustomResource {
           'aws:appstream/stack:Stack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    accessEndpoints = registerOutput<List<Map<String, dynamic>>>('accessEndpoints');
+    accessEndpoints = registerOutput<List<StackAccessEndpoint>>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackAccessEndpoint>(guardedValue, (value) => StackAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     applicationSettings = registerOutput<StackApplicationSettings>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    embedHostDomains = registerOutput<List<String>>('embedHostDomains');
+    embedHostDomains = registerOutput<List<String>>('embedHostDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     feedbackUrl = registerOutput<String>('feedbackUrl');
     this.name = registerOutput<String>('name');
     redirectUrl = registerOutput<String>('redirectUrl');
     region = registerOutput<String>('region');
-    storageConnectors = registerOutput<List<Map<String, dynamic>>>('storageConnectors');
+    storageConnectors = registerOutput<List<StackStorageConnector>>('storageConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackStorageConnector>(guardedValue, (value) => StackStorageConnector.fromMap((value as Map).cast<String, dynamic>())); });
     streamingExperienceSettings = registerOutput<StackStreamingExperienceSettings>('streamingExperienceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackStreamingExperienceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    userSettings = registerOutput<List<Map<String, dynamic>>>('userSettings');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userSettings = registerOutput<List<StackUserSetting>>('userSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackUserSetting>(guardedValue, (value) => StackUserSetting.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Stack] resource's state with the given [name] and [id].
@@ -519,11 +522,12 @@ class Stack extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StackState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Stack._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -537,21 +541,48 @@ class Stack extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessEndpoints = registerOutput<List<Map<String, dynamic>>>('accessEndpoints');
+    accessEndpoints = registerOutput<List<StackAccessEndpoint>>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackAccessEndpoint>(guardedValue, (value) => StackAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     applicationSettings = registerOutput<StackApplicationSettings>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    embedHostDomains = registerOutput<List<String>>('embedHostDomains');
+    embedHostDomains = registerOutput<List<String>>('embedHostDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     feedbackUrl = registerOutput<String>('feedbackUrl');
     this.name = registerOutput<String>('name');
     redirectUrl = registerOutput<String>('redirectUrl');
     region = registerOutput<String>('region');
-    storageConnectors = registerOutput<List<Map<String, dynamic>>>('storageConnectors');
+    storageConnectors = registerOutput<List<StackStorageConnector>>('storageConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackStorageConnector>(guardedValue, (value) => StackStorageConnector.fromMap((value as Map).cast<String, dynamic>())); });
     streamingExperienceSettings = registerOutput<StackStreamingExperienceSettings>('streamingExperienceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackStreamingExperienceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    userSettings = registerOutput<List<Map<String, dynamic>>>('userSettings');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userSettings = registerOutput<List<StackUserSetting>>('userSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackUserSetting>(guardedValue, (value) => StackUserSetting.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Stack] resource.
+  Stack.reference(String urn)
+    : super(
+        'aws:appstream/stack:Stack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessEndpoints = registerOutput<List<StackAccessEndpoint>>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackAccessEndpoint>(guardedValue, (value) => StackAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    applicationSettings = registerOutput<StackApplicationSettings>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    createdTime = registerOutput<String>('createdTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    embedHostDomains = registerOutput<List<String>>('embedHostDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    feedbackUrl = registerOutput<String>('feedbackUrl');
+    this.name = registerOutput<String>('name');
+    redirectUrl = registerOutput<String>('redirectUrl');
+    region = registerOutput<String>('region');
+    storageConnectors = registerOutput<List<StackStorageConnector>>('storageConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackStorageConnector>(guardedValue, (value) => StackStorageConnector.fromMap((value as Map).cast<String, dynamic>())); });
+    streamingExperienceSettings = registerOutput<StackStreamingExperienceSettings>('streamingExperienceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackStreamingExperienceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userSettings = registerOutput<List<StackUserSetting>>('userSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackUserSetting>(guardedValue, (value) => StackUserSetting.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

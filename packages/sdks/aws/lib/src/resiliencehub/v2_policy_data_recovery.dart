@@ -20,7 +20,7 @@ class V2PolicyDataRecovery {
 
   factory V2PolicyDataRecovery.fromMap(Map<String, dynamic> map) {
     return V2PolicyDataRecovery(
-      timeBetweenBackupsInMinutes: pulumi.Input.fromValue(map['timeBetweenBackupsInMinutes'] as int),
+      timeBetweenBackupsInMinutes: pulumi.Input.fromValue((map['timeBetweenBackupsInMinutes'] as num).toInt()),
     );
   }
 }

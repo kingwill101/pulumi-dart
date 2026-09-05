@@ -187,7 +187,7 @@ class AccountPasswordPolicy extends pulumi.CustomResource {
           'aws:iam/accountPasswordPolicy:AccountPasswordPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allowUsersToChangePassword = registerOutput<bool?>('allowUsersToChangePassword');
     expirePasswords = registerOutput<bool>('expirePasswords');
@@ -206,11 +206,12 @@ class AccountPasswordPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountPasswordPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountPasswordPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -224,6 +225,27 @@ class AccountPasswordPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allowUsersToChangePassword = registerOutput<bool?>('allowUsersToChangePassword');
+    expirePasswords = registerOutput<bool>('expirePasswords');
+    hardExpiry = registerOutput<bool>('hardExpiry');
+    maxPasswordAge = registerOutput<int>('maxPasswordAge');
+    minimumPasswordLength = registerOutput<int?>('minimumPasswordLength');
+    passwordReusePrevention = registerOutput<int>('passwordReusePrevention');
+    requireLowercaseCharacters = registerOutput<bool>('requireLowercaseCharacters');
+    requireNumbers = registerOutput<bool>('requireNumbers');
+    requireSymbols = registerOutput<bool>('requireSymbols');
+    requireUppercaseCharacters = registerOutput<bool>('requireUppercaseCharacters');
+  }
+
+  /// Creates a typed reference to an existing [AccountPasswordPolicy] resource.
+  AccountPasswordPolicy.reference(String urn)
+    : super(
+        'aws:iam/accountPasswordPolicy:AccountPasswordPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allowUsersToChangePassword = registerOutput<bool?>('allowUsersToChangePassword');
     expirePasswords = registerOutput<bool>('expirePasswords');
     hardExpiry = registerOutput<bool>('hardExpiry');

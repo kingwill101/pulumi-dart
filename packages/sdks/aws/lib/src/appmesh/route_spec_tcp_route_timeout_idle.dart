@@ -26,7 +26,7 @@ class RouteSpecTcpRouteTimeoutIdle {
   factory RouteSpecTcpRouteTimeoutIdle.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteTimeoutIdle(
       unit: pulumi.Input.fromValue(map['unit'] as String),
-      value: pulumi.Input.fromValue(map['value'] as int),
+      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
     );
   }
 }

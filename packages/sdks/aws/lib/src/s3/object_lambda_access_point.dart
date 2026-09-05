@@ -19,18 +19,18 @@ import 'object_lambda_access_point_state.dart';
 ///     name: "example",
 /// });
 /// const exampleObjectLambdaAccessPoint = new aws.s3control.ObjectLambdaAccessPoint("example", {
-///     name: "example",
 ///     configuration: {
-///         supportingAccessPoint: exampleAccessPoint.arn,
 ///         transformationConfigurations: [{
-///             actions: ["GetObject"],
 ///             contentTransformation: {
 ///                 awsLambda: {
 ///                     functionArn: exampleAwsLambdaFunction.arn,
 ///                 },
 ///             },
+///             actions: ["GetObject"],
 ///         }],
+///         supportingAccessPoint: exampleAccessPoint.arn,
 ///     },
+///     name: "example",
 /// });
 /// ```
 /// ```python
@@ -42,18 +42,18 @@ import 'object_lambda_access_point_state.dart';
 ///     bucket=example.id,
 ///     name="example")
 /// example_object_lambda_access_point = aws.s3control.ObjectLambdaAccessPoint("example",
-///     name="example",
 ///     configuration={
-///         "supporting_access_point": example_access_point.arn,
 ///         "transformation_configurations": [{
-///             "actions": ["GetObject"],
 ///             "content_transformation": {
 ///                 "aws_lambda": {
 ///                     "function_arn": example_aws_lambda_function["arn"],
 ///                 },
 ///             },
+///             "actions": ["GetObject"],
 ///         }],
-///     })
+///         "supporting_access_point": example_access_point.arn,
+///     },
+///     name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -76,18 +76,12 @@ import 'object_lambda_access_point_state.dart';
 ///
 ///     var exampleObjectLambdaAccessPoint = new Aws.S3Control.ObjectLambdaAccessPoint("example", new()
 ///     {
-///         Name = "example",
 ///         Configuration = new Aws.S3Control.Inputs.ObjectLambdaAccessPointConfigurationArgs
 ///         {
-///             SupportingAccessPoint = exampleAccessPoint.Arn,
 ///             TransformationConfigurations = new[]
 ///             {
 ///                 new Aws.S3Control.Inputs.ObjectLambdaAccessPointConfigurationTransformationConfigurationArgs
 ///                 {
-///                     Actions = new[]
-///                     {
-///                         "GetObject",
-///                     },
 ///                     ContentTransformation = new Aws.S3Control.Inputs.ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationArgs
 ///                     {
 ///                         AwsLambda = new Aws.S3Control.Inputs.ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaArgs
@@ -95,9 +89,15 @@ import 'object_lambda_access_point_state.dart';
 ///                             FunctionArn = exampleAwsLambdaFunction.Arn,
 ///                         },
 ///                     },
+///                     Actions = new[]
+///                     {
+///                         "GetObject",
+///                     },
 ///                 },
 ///             },
+///             SupportingAccessPoint = exampleAccessPoint.Arn,
 ///         },
+///         Name = "example",
 ///     });
 ///
 /// });
@@ -127,22 +127,22 @@ import 'object_lambda_access_point_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = s3control.NewObjectLambdaAccessPoint(ctx, "example", &s3control.ObjectLambdaAccessPointArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Configuration: &s3control.ObjectLambdaAccessPointConfigurationArgs{
-/// 				SupportingAccessPoint: exampleAccessPoint.Arn,
 /// 				TransformationConfigurations: s3control.ObjectLambdaAccessPointConfigurationTransformationConfigurationArray{
 /// 					&s3control.ObjectLambdaAccessPointConfigurationTransformationConfigurationArgs{
-/// 						Actions: pulumi.StringArray{
-/// 							pulumi.String("GetObject"),
-/// 						},
 /// 						ContentTransformation: &s3control.ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationArgs{
 /// 							AwsLambda: &s3control.ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaArgs{
 /// 								FunctionArn: pulumi.Any(exampleAwsLambdaFunction.Arn),
 /// 							},
 /// 						},
+/// 						Actions: pulumi.StringArray{
+/// 							pulumi.String("GetObject"),
+/// 						},
 /// 					},
 /// 				},
+/// 				SupportingAccessPoint: exampleAccessPoint.Arn,
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -168,18 +168,18 @@ import 'object_lambda_access_point_state.dart';
 ///   name   = "example"
 /// }
 /// resource "aws_s3control_objectlambdaaccesspoint" "example" {
-///   name = "example"
 ///   configuration = {
-///     supporting_access_point = aws_s3_accesspoint.example.arn
 ///     transformation_configurations = [{
-///       "actions" = ["GetObject"]
 ///       "contentTransformation" = {
 ///         "awsLambda" = {
 ///           "functionArn" = exampleAwsLambdaFunction.arn
 ///         }
 ///       }
+///       "actions" = ["GetObject"]
 ///     }]
+///     supporting_access_point = aws_s3_accesspoint.example.arn
 ///   }
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -221,18 +221,18 @@ import 'object_lambda_access_point_state.dart';
 ///             .build());
 ///
 ///         var exampleObjectLambdaAccessPoint = new ObjectLambdaAccessPoint("exampleObjectLambdaAccessPoint", ObjectLambdaAccessPointArgs.builder()
-///             .name("example")
 ///             .configuration(ObjectLambdaAccessPointConfigurationArgs.builder()
-///                 .supportingAccessPoint(exampleAccessPoint.arn())
 ///                 .transformationConfigurations(ObjectLambdaAccessPointConfigurationTransformationConfigurationArgs.builder()
-///                     .actions("GetObject")
 ///                     .contentTransformation(ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationArgs.builder()
 ///                         .awsLambda(ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaArgs.builder()
 ///                             .functionArn(exampleAwsLambdaFunction.arn())
 ///                             .build())
 ///                         .build())
+///                     .actions("GetObject")
 ///                     .build())
+///                 .supportingAccessPoint(exampleAccessPoint.arn())
 ///                 .build())
+///             .name("example")
 ///             .build());
 ///
 ///     }
@@ -254,15 +254,15 @@ import 'object_lambda_access_point_state.dart';
 ///     type: aws:s3control:ObjectLambdaAccessPoint
 ///     name: example
 ///     properties:
-///       name: example
 ///       configuration:
-///         supportingAccessPoint: ${exampleAccessPoint.arn}
 ///         transformationConfigurations:
-///           - actions:
-///               - GetObject
-///             contentTransformation:
+///           - contentTransformation:
 ///               awsLambda:
 ///                 functionArn: ${exampleAwsLambdaFunction.arn}
+///             actions:
+///               - GetObject
+///         supportingAccessPoint: ${exampleAccessPoint.arn}
+///       name: example
 /// ```
 ///
 ///
@@ -278,7 +278,7 @@ class ObjectLambdaAccessPoint extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// Alias for the S3 Object Lambda Access Point.
   late final pulumi.Output<String> alias;
-  /// Amazon Resource Name (ARN) of the Object Lambda Access Point.
+  /// ARN of the Object Lambda Access Point.
   late final pulumi.Output<String> arn;
   /// Configuration block containing details about the Object Lambda Access Point. See `configuration` Block below for more details.
   late final pulumi.Output<ObjectLambdaAccessPointConfiguration> configuration;
@@ -299,7 +299,7 @@ class ObjectLambdaAccessPoint extends pulumi.CustomResource {
           'aws:s3control/objectLambdaAccessPoint:ObjectLambdaAccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
@@ -314,11 +314,12 @@ class ObjectLambdaAccessPoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ObjectLambdaAccessPointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ObjectLambdaAccessPoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -332,6 +333,23 @@ class ObjectLambdaAccessPoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    alias = registerOutput<String>('alias');
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<ObjectLambdaAccessPointConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectLambdaAccessPointConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [ObjectLambdaAccessPoint] resource.
+  ObjectLambdaAccessPoint.reference(String urn)
+    : super(
+        'aws:s3control/objectLambdaAccessPoint:ObjectLambdaAccessPoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');

@@ -706,7 +706,7 @@ class ReplicationConfiguration extends pulumi.CustomResource {
           'aws:ecr/replicationConfiguration:ReplicationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
@@ -718,11 +718,12 @@ class ReplicationConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -736,6 +737,20 @@ class ReplicationConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    registryId = registerOutput<String>('registryId');
+    replicationConfiguration = registerOutput<ReplicationConfigurationReplicationConfiguration?>('replicationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationReplicationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ReplicationConfiguration] resource.
+  ReplicationConfiguration.reference(String urn)
+    : super(
+        'aws:ecr/replicationConfiguration:ReplicationConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     registryId = registerOutput<String>('registryId');
     replicationConfiguration = registerOutput<ReplicationConfigurationReplicationConfiguration?>('replicationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationReplicationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

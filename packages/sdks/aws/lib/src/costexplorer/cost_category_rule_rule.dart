@@ -10,17 +10,17 @@ import 'cost_category_rule_rule_tags.dart';
 
 class CostCategoryRuleRule {
   /// Return results that match both `Dimension` objects.
-  final pulumi.Input<List<CostCategoryRuleRuleAnd>>? ands;
+  final pulumi.Input<List<CostCategoryRuleRuleAnd>?>? ands;
   /// Configuration block for the filter that's based on `CostCategory` values. See below.
-  final pulumi.Input<CostCategoryRuleRuleCostCategory>? costCategory;
+  final pulumi.Input<CostCategoryRuleRuleCostCategory?>? costCategory;
   /// Configuration block for the specific `Dimension` to use for `Expression`. See below.
-  final pulumi.Input<CostCategoryRuleRuleDimension>? dimension;
+  final pulumi.Input<CostCategoryRuleRuleDimension?>? dimension;
   /// Return results that match both `Dimension` object.
-  final pulumi.Input<CostCategoryRuleRuleNot>? not;
+  final pulumi.Input<CostCategoryRuleRuleNot?>? not;
   /// Return results that match both `Dimension` object.
-  final pulumi.Input<List<CostCategoryRuleRuleOr>>? ors;
+  final pulumi.Input<List<CostCategoryRuleRuleOr>?>? ors;
   /// Configuration block for the specific `Tag` to use for `Expression`. See below.
-  final pulumi.Input<CostCategoryRuleRuleTags>? tags;
+  final pulumi.Input<CostCategoryRuleRuleTags?>? tags;
 
   /// Creates a new [CostCategoryRuleRule].
   /// [ands] Return results that match both `Dimension` objects.

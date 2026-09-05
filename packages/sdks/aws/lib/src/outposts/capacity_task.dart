@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capacity_task_args.dart';
+import 'capacity_task_instance_pool.dart';
 import 'capacity_task_instances_to_exclude.dart';
 import 'capacity_task_state.dart';
 import 'capacity_task_timeouts.dart';
@@ -21,11 +22,11 @@ import 'capacity_task_timeouts.dart';
 ///
 /// const example = aws.outposts.getOutposts({});
 /// const exampleCapacityTask = new aws.outposts.CapacityTask("example", {
-///     outpostIdentifier: example.then(example => example.arns?.[0]),
 ///     instancePools: [{
 ///         instanceType: "m5.large",
 ///         count: 2,
 ///     }],
+///     outpostIdentifier: example.then(example => example.arns?.[0]),
 /// });
 /// ```
 /// ```python
@@ -34,11 +35,11 @@ import 'capacity_task_timeouts.dart';
 ///
 /// example = aws.outposts.get_outposts()
 /// example_capacity_task = aws.outposts.CapacityTask("example",
-///     outpost_identifier=example.arns[0],
 ///     instance_pools=[{
 ///         "instance_type": "m5.large",
 ///         "count": 2,
-///     }])
+///     }],
+///     outpost_identifier=example.arns[0])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -52,7 +53,6 @@ import 'capacity_task_timeouts.dart';
 ///
 ///     var exampleCapacityTask = new Aws.Outposts.CapacityTask("example", new()
 ///     {
-///         OutpostIdentifier = example.Apply(getOutpostsResult => getOutpostsResult.Arns[0]),
 ///         InstancePools = new[]
 ///         {
 ///             new Aws.Outposts.Inputs.CapacityTaskInstancePoolArgs
@@ -61,6 +61,7 @@ import 'capacity_task_timeouts.dart';
 ///                 Count = 2,
 ///             },
 ///         },
+///         OutpostIdentifier = example.Apply(getOutpostsResult => getOutpostsResult.Arns[0]),
 ///     });
 ///
 /// });
@@ -80,13 +81,13 @@ import 'capacity_task_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = outposts.NewCapacityTask(ctx, "example", &outposts.CapacityTaskArgs{
-/// 			OutpostIdentifier: pulumi.String(example.Arns[0]),
 /// 			InstancePools: outposts.CapacityTaskInstancePoolArray{
 /// 				&outposts.CapacityTaskInstancePoolArgs{
 /// 					InstanceType: pulumi.String("m5.large"),
 /// 					Count:        pulumi.Int(2),
 /// 				},
 /// 			},
+/// 			OutpostIdentifier: pulumi.String(example.Arns[0]),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -108,11 +109,11 @@ import 'capacity_task_timeouts.dart';
 /// }
 ///
 /// resource "aws_outposts_capacitytask" "example" {
-///   outpost_identifier = data.aws_outposts_getoutposts.example.arns[0]
 ///   instance_pools {
 ///     instance_type = "m5.large"
 ///     count         = 2
 ///   }
+///   outpost_identifier = data.aws_outposts_getoutposts.example.arns[0]
 /// }
 /// ```
 /// ```java
@@ -143,11 +144,11 @@ import 'capacity_task_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleCapacityTask = new CapacityTask("exampleCapacityTask", CapacityTaskArgs.builder()
-///             .outpostIdentifier(example.arns()[0])
 ///             .instancePools(CapacityTaskInstancePoolArgs.builder()
 ///                 .instanceType("m5.large")
 ///                 .count(2)
 ///                 .build())
+///             .outpostIdentifier(example.arns()[0])
 ///             .build());
 ///
 ///     }
@@ -159,10 +160,10 @@ import 'capacity_task_timeouts.dart';
 ///     type: aws:outposts:CapacityTask
 ///     name: example
 ///     properties:
-///       outpostIdentifier: ${example.arns[0]}
 ///       instancePools:
 ///         - instanceType: m5.large
 ///           count: 2
+///       outpostIdentifier: ${example.arns[0]}
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -182,9 +183,12 @@ import 'capacity_task_timeouts.dart';
 ///     arn: "arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef",
 /// });
 /// const exampleCapacityTask = new aws.outposts.CapacityTask("example", {
-///     outpostIdentifier: "op-1234567890abcdef",
-///     taskActionOnBlockingInstances: "WAIT_FOR_EVACUATION",
-///     assetId: example.then(example => example.assetIds?.[0]),
+///     instancesToExclude: {
+///         instances: [
+///             "i-0123456789abcdef0",
+///             "i-0fedcba9876543210",
+///         ],
+///     },
 ///     instancePools: [
 ///         {
 ///             instanceType: "m5.large",
@@ -195,11 +199,13 @@ import 'capacity_task_timeouts.dart';
 ///             count: 2,
 ///         },
 ///     ],
-///     instancesToExclude: {
-///         instances: [
-///             "i-0123456789abcdef0",
-///             "i-0fedcba9876543210",
-///         ],
+///     outpostIdentifier: "op-1234567890abcdef",
+///     taskActionOnBlockingInstances: "WAIT_FOR_EVACUATION",
+///     assetId: example.then(example => example.assetIds?.[0]),
+/// }, {
+///     customTimeouts: {
+///         create: "90m",
+///         "delete": "15m",
 ///     },
 /// });
 /// ```
@@ -209,9 +215,12 @@ import 'capacity_task_timeouts.dart';
 ///
 /// example = aws.outposts.get_assets(arn="arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef")
 /// example_capacity_task = aws.outposts.CapacityTask("example",
-///     outpost_identifier="op-1234567890abcdef",
-///     task_action_on_blocking_instances="WAIT_FOR_EVACUATION",
-///     asset_id=example.asset_ids[0],
+///     instances_to_exclude={
+///         "instances": [
+///             "i-0123456789abcdef0",
+///             "i-0fedcba9876543210",
+///         ],
+///     },
 ///     instance_pools=[
 ///         {
 ///             "instance_type": "m5.large",
@@ -222,12 +231,10 @@ import 'capacity_task_timeouts.dart';
 ///             "count": 2,
 ///         },
 ///     ],
-///     instances_to_exclude={
-///         "instances": [
-///             "i-0123456789abcdef0",
-///             "i-0fedcba9876543210",
-///         ],
-///     })
+///     outpost_identifier="op-1234567890abcdef",
+///     task_action_on_blocking_instances="WAIT_FOR_EVACUATION",
+///     asset_id=example.asset_ids[0],
+///     opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(create="90m", delete="15m")))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -244,9 +251,14 @@ import 'capacity_task_timeouts.dart';
 ///
 ///     var exampleCapacityTask = new Aws.Outposts.CapacityTask("example", new()
 ///     {
-///         OutpostIdentifier = "op-1234567890abcdef",
-///         TaskActionOnBlockingInstances = "WAIT_FOR_EVACUATION",
-///         AssetId = example.Apply(getAssetsResult => getAssetsResult.AssetIds[0]),
+///         InstancesToExclude = new Aws.Outposts.Inputs.CapacityTaskInstancesToExcludeArgs
+///         {
+///             Instances = new[]
+///             {
+///                 "i-0123456789abcdef0",
+///                 "i-0fedcba9876543210",
+///             },
+///         },
 ///         InstancePools = new[]
 ///         {
 ///             new Aws.Outposts.Inputs.CapacityTaskInstancePoolArgs
@@ -260,14 +272,9 @@ import 'capacity_task_timeouts.dart';
 ///                 Count = 2,
 ///             },
 ///         },
-///         InstancesToExclude = new Aws.Outposts.Inputs.CapacityTaskInstancesToExcludeArgs
-///         {
-///             Instances = new[]
-///             {
-///                 "i-0123456789abcdef0",
-///                 "i-0fedcba9876543210",
-///             },
-///         },
+///         OutpostIdentifier = "op-1234567890abcdef",
+///         TaskActionOnBlockingInstances = "WAIT_FOR_EVACUATION",
+///         AssetId = example.Apply(getAssetsResult => getAssetsResult.AssetIds[0]),
 ///     });
 ///
 /// });
@@ -289,9 +296,12 @@ import 'capacity_task_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = outposts.NewCapacityTask(ctx, "example", &outposts.CapacityTaskArgs{
-/// 			OutpostIdentifier:             pulumi.String("op-1234567890abcdef"),
-/// 			TaskActionOnBlockingInstances: pulumi.String("WAIT_FOR_EVACUATION"),
-/// 			AssetId:                       pulumi.String(example.AssetIds[0]),
+/// 			InstancesToExclude: &outposts.CapacityTaskInstancesToExcludeArgs{
+/// 				Instances: pulumi.StringArray{
+/// 					pulumi.String("i-0123456789abcdef0"),
+/// 					pulumi.String("i-0fedcba9876543210"),
+/// 				},
+/// 			},
 /// 			InstancePools: outposts.CapacityTaskInstancePoolArray{
 /// 				&outposts.CapacityTaskInstancePoolArgs{
 /// 					InstanceType: pulumi.String("m5.large"),
@@ -302,13 +312,10 @@ import 'capacity_task_timeouts.dart';
 /// 					Count:        pulumi.Int(2),
 /// 				},
 /// 			},
-/// 			InstancesToExclude: &outposts.CapacityTaskInstancesToExcludeArgs{
-/// 				Instances: pulumi.StringArray{
-/// 					pulumi.String("i-0123456789abcdef0"),
-/// 					pulumi.String("i-0fedcba9876543210"),
-/// 				},
-/// 			},
-/// 		})
+/// 			OutpostIdentifier:             pulumi.String("op-1234567890abcdef"),
+/// 			TaskActionOnBlockingInstances: pulumi.String("WAIT_FOR_EVACUATION"),
+/// 			AssetId:                       pulumi.String(example.AssetIds[0]),
+/// 		}, pulumi.Timeouts(&pulumi.CustomTimeouts{Create: "90m", Delete: "15m"}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -330,9 +337,13 @@ import 'capacity_task_timeouts.dart';
 /// }
 ///
 /// resource "aws_outposts_capacitytask" "example" {
-///   outpost_identifier                = "op-1234567890abcdef"
-///   task_action_on_blocking_instances = "WAIT_FOR_EVACUATION"
-///   asset_id                          = data.aws_outposts_getassets.example.asset_ids[0]
+///   timeouts {
+///     create = "90m"
+///     delete = "15m"
+///   }
+///   instances_to_exclude = {
+///     instances = ["i-0123456789abcdef0", "i-0fedcba9876543210"]
+///   }
 ///   instance_pools {
 ///     instance_type = "m5.large"
 ///     count         = 4
@@ -341,9 +352,9 @@ import 'capacity_task_timeouts.dart';
 ///     instance_type = "c5.xlarge"
 ///     count         = 2
 ///   }
-///   instances_to_exclude = {
-///     instances = ["i-0123456789abcdef0", "i-0fedcba9876543210"]
-///   }
+///   outpost_identifier                = "op-1234567890abcdef"
+///   task_action_on_blocking_instances = "WAIT_FOR_EVACUATION"
+///   asset_id                          = data.aws_outposts_getassets.example.asset_ids[0]
 /// }
 /// ```
 /// ```java
@@ -356,8 +367,10 @@ import 'capacity_task_timeouts.dart';
 /// import com.pulumi.aws.outposts.inputs.GetAssetsArgs;
 /// import com.pulumi.aws.outposts.CapacityTask;
 /// import com.pulumi.aws.outposts.CapacityTaskArgs;
-/// import com.pulumi.aws.outposts.inputs.CapacityTaskInstancePoolArgs;
 /// import com.pulumi.aws.outposts.inputs.CapacityTaskInstancesToExcludeArgs;
+/// import com.pulumi.aws.outposts.inputs.CapacityTaskInstancePoolArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import com.pulumi.resources.CustomTimeouts;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -376,9 +389,11 @@ import 'capacity_task_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleCapacityTask = new CapacityTask("exampleCapacityTask", CapacityTaskArgs.builder()
-///             .outpostIdentifier("op-1234567890abcdef")
-///             .taskActionOnBlockingInstances("WAIT_FOR_EVACUATION")
-///             .assetId(example.assetIds()[0])
+///             .instancesToExclude(CapacityTaskInstancesToExcludeArgs.builder()
+///                 .instances(
+///                     "i-0123456789abcdef0",
+///                     "i-0fedcba9876543210")
+///                 .build())
 ///             .instancePools(
 ///                 CapacityTaskInstancePoolArgs.builder()
 ///                     .instanceType("m5.large")
@@ -388,12 +403,15 @@ import 'capacity_task_timeouts.dart';
 ///                     .instanceType("c5.xlarge")
 ///                     .count(2)
 ///                     .build())
-///             .instancesToExclude(CapacityTaskInstancesToExcludeArgs.builder()
-///                 .instances(
-///                     "i-0123456789abcdef0",
-///                     "i-0fedcba9876543210")
+///             .outpostIdentifier("op-1234567890abcdef")
+///             .taskActionOnBlockingInstances("WAIT_FOR_EVACUATION")
+///             .assetId(example.assetIds()[0])
+///             .build(), CustomResourceOptions.builder()
+///                 .customTimeouts(CustomTimeouts.builder()
+///                     .create(CustomTimeouts.parseTimeoutString("90m"))
+///                     .delete(CustomTimeouts.parseTimeoutString("15m"))
 ///                 .build())
-///             .build());
+///                 .build());
 ///
 ///     }
 /// }
@@ -404,18 +422,22 @@ import 'capacity_task_timeouts.dart';
 ///     type: aws:outposts:CapacityTask
 ///     name: example
 ///     properties:
-///       outpostIdentifier: op-1234567890abcdef
-///       taskActionOnBlockingInstances: WAIT_FOR_EVACUATION
-///       assetId: ${example.assetIds[0]}
+///       instancesToExclude:
+///         instances:
+///           - i-0123456789abcdef0
+///           - i-0fedcba9876543210
 ///       instancePools:
 ///         - instanceType: m5.large
 ///           count: 4
 ///         - instanceType: c5.xlarge
 ///           count: 2
-///       instancesToExclude:
-///         instances:
-///           - i-0123456789abcdef0
-///           - i-0fedcba9876543210
+///       outpostIdentifier: op-1234567890abcdef
+///       taskActionOnBlockingInstances: WAIT_FOR_EVACUATION
+///       assetId: ${example.assetIds[0]}
+///     options:
+///       customTimeouts:
+///         create: 90m
+///         delete: 15m
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -457,7 +479,7 @@ class CapacityTask extends pulumi.CustomResource {
   /// Human-readable reason reported by AWS when the capacity task failed. `null` unless the terminal state is `FAILED`.
   late final pulumi.Output<String> failureReason;
   /// One or more `instancePool` blocks defining the desired instance-type layout for the Outpost. See below. At least one block is required. Changing any value forces a new resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?> instancePools;
+  late final pulumi.Output<List<CapacityTaskInstancePool>?> instancePools;
   /// Single `instancesToExclude` block specifying user-owned running instances that must not be stopped to free up capacity. See below. Note: AWS does not return this value via the Get/Describe API; after import, you must add the block back to your configuration manually — see Import.
   late final pulumi.Output<CapacityTaskInstancesToExclude?> instancesToExclude;
   /// ID of the Amazon Web Services Outposts order associated with the capacity task. Changing this value forces a new resource.
@@ -485,14 +507,14 @@ class CapacityTask extends pulumi.CustomResource {
           'aws:outposts/capacityTask:CapacityTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     assetId = registerOutput<String>('assetId');
     capacityTaskId = registerOutput<String>('capacityTaskId');
     completionDate = registerOutput<String>('completionDate');
     creationDate = registerOutput<String>('creationDate');
     failureReason = registerOutput<String>('failureReason');
-    instancePools = registerOutput<List<Map<String, dynamic>>?>('instancePools');
+    instancePools = registerOutput<List<CapacityTaskInstancePool>?>('instancePools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CapacityTaskInstancePool>(guardedValue, (value) => CapacityTaskInstancePool.fromMap((value as Map).cast<String, dynamic>())); });
     instancesToExclude = registerOutput<CapacityTaskInstancesToExclude?>('instancesToExclude', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityTaskInstancesToExclude.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orderId = registerOutput<String>('orderId');
     outpostIdentifier = registerOutput<String>('outpostIdentifier');
@@ -507,11 +529,12 @@ class CapacityTask extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CapacityTaskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CapacityTask._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -530,7 +553,31 @@ class CapacityTask extends pulumi.CustomResource {
     completionDate = registerOutput<String>('completionDate');
     creationDate = registerOutput<String>('creationDate');
     failureReason = registerOutput<String>('failureReason');
-    instancePools = registerOutput<List<Map<String, dynamic>>?>('instancePools');
+    instancePools = registerOutput<List<CapacityTaskInstancePool>?>('instancePools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CapacityTaskInstancePool>(guardedValue, (value) => CapacityTaskInstancePool.fromMap((value as Map).cast<String, dynamic>())); });
+    instancesToExclude = registerOutput<CapacityTaskInstancesToExclude?>('instancesToExclude', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityTaskInstancesToExclude.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orderId = registerOutput<String>('orderId');
+    outpostIdentifier = registerOutput<String>('outpostIdentifier');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    taskActionOnBlockingInstances = registerOutput<String>('taskActionOnBlockingInstances');
+    timeouts = registerOutput<CapacityTaskTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityTaskTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CapacityTask] resource.
+  CapacityTask.reference(String urn)
+    : super(
+        'aws:outposts/capacityTask:CapacityTask',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assetId = registerOutput<String>('assetId');
+    capacityTaskId = registerOutput<String>('capacityTaskId');
+    completionDate = registerOutput<String>('completionDate');
+    creationDate = registerOutput<String>('creationDate');
+    failureReason = registerOutput<String>('failureReason');
+    instancePools = registerOutput<List<CapacityTaskInstancePool>?>('instancePools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CapacityTaskInstancePool>(guardedValue, (value) => CapacityTaskInstancePool.fromMap((value as Map).cast<String, dynamic>())); });
     instancesToExclude = registerOutput<CapacityTaskInstancesToExclude?>('instancesToExclude', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityTaskInstancesToExclude.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orderId = registerOutput<String>('orderId');
     outpostIdentifier = registerOutput<String>('outpostIdentifier');

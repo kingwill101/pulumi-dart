@@ -5,9 +5,9 @@ import 'recorder_recording_mode_recording_mode_override.dart';
 
 class RecorderRecordingMode {
   /// Default recording frequency. `CONTINUOUS` or `DAILY`.
-  final pulumi.Input<String>? recordingFrequency;
+  final pulumi.Input<String?>? recordingFrequency;
   /// Recording mode overrides. Detailed below.
-  final pulumi.Input<RecorderRecordingModeRecordingModeOverride>? recordingModeOverride;
+  final pulumi.Input<RecorderRecordingModeRecordingModeOverride?>? recordingModeOverride;
 
   /// Creates a new [RecorderRecordingMode].
   /// [recordingFrequency] Default recording frequency. `CONTINUOUS` or `DAILY`.

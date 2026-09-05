@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern {
-  final pulumi.Input<Map<String, dynamic>>? all;
+  final pulumi.Input<Map<String, dynamic>?>? all;
   /// List of JSON pointer expressions to inspect (e.g., `/foo/bar`).
-  final pulumi.Input<List<String>>? includedPaths;
+  final pulumi.Input<List<String>?>? includedPaths;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] Optional.

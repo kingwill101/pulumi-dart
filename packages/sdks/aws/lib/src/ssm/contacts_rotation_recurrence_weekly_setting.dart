@@ -7,7 +7,7 @@ class ContactsRotationRecurrenceWeeklySetting {
   /// (Required) The day of the week when the shift coverage occurs.
   final pulumi.Input<String> dayOfWeek;
   /// (Required) The hand off time. See Hand Off Time for more details.
-  final pulumi.Input<ContactsRotationRecurrenceWeeklySettingHandOffTime>? handOffTime;
+  final pulumi.Input<ContactsRotationRecurrenceWeeklySettingHandOffTime?>? handOffTime;
 
   /// Creates a new [ContactsRotationRecurrenceWeeklySetting].
   /// [dayOfWeek] (Required) The day of the week when the shift coverage occurs.

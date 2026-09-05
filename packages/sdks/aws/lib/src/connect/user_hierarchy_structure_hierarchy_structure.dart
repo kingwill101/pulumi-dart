@@ -11,15 +11,15 @@ class UserHierarchyStructureHierarchyStructure {
   /// A block that defines the details of level five. The level block is documented below.
   ///
   /// Each level block supports the following arguments:
-  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelFive>? levelFive;
+  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelFive?>? levelFive;
   /// A block that defines the details of level four. The level block is documented below.
-  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelFour>? levelFour;
+  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelFour?>? levelFour;
   /// A block that defines the details of level one. The level block is documented below.
-  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelOne>? levelOne;
+  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelOne?>? levelOne;
   /// A block that defines the details of level three. The level block is documented below.
-  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelThree>? levelThree;
+  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelThree?>? levelThree;
   /// A block that defines the details of level two. The level block is documented below.
-  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelTwo>? levelTwo;
+  final pulumi.Input<UserHierarchyStructureHierarchyStructureLevelTwo?>? levelTwo;
 
   /// Creates a new [UserHierarchyStructureHierarchyStructure].
   /// [levelFive] A block that defines the details of level five. The level block is documented below.

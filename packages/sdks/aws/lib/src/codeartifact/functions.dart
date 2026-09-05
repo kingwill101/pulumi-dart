@@ -122,6 +122,17 @@ Future<GetAuthorizationTokenResult> getAuthorizationToken(
   return GetAuthorizationTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthorizationTokenResult> getAuthorizationTokenOutput(
+  GetAuthorizationTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:codeartifact/getAuthorizationToken:getAuthorizationToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizationTokenResult.fromMap);
+}
+
 /// The CodeArtifact Repository Endpoint data source returns the endpoint of a repository for a specific package format.
 ///
 /// ## Example Usage
@@ -252,4 +263,15 @@ Future<GetRepositoryEndpointResult> getRepositoryEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepositoryEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetRepositoryEndpointResult> getRepositoryEndpointOutput(
+  GetRepositoryEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:codeartifact/getRepositoryEndpoint:getRepositoryEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryEndpointResult.fromMap);
 }

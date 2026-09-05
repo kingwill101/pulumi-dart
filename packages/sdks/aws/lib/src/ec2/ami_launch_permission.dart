@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ami_launch_permission_args.dart';
 import 'ami_launch_permission_state.dart';
 
-/// Adds a launch permission to an Amazon Machine Image (AMI).
+/// Adds a launch permission to an AMI.
 ///
 /// ## Example Usage
 ///
@@ -407,7 +407,7 @@ class AmiLaunchPermission extends pulumi.CustomResource {
           'aws:ec2/amiLaunchPermission:AmiLaunchPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     group = registerOutput<String?>('group');
@@ -422,11 +422,12 @@ class AmiLaunchPermission extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AmiLaunchPermissionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AmiLaunchPermission._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -440,6 +441,23 @@ class AmiLaunchPermission extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String?>('accountId');
+    group = registerOutput<String?>('group');
+    imageId = registerOutput<String>('imageId');
+    organizationArn = registerOutput<String?>('organizationArn');
+    organizationalUnitArn = registerOutput<String?>('organizationalUnitArn');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AmiLaunchPermission] resource.
+  AmiLaunchPermission.reference(String urn)
+    : super(
+        'aws:ec2/amiLaunchPermission:AmiLaunchPermission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String?>('accountId');
     group = registerOutput<String?>('group');
     imageId = registerOutput<String>('imageId');

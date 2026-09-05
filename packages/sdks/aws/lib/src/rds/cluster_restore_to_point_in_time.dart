@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterRestoreToPointInTime {
   /// Date and time in UTC format to restore the database cluster to. Conflicts with `useLatestRestorableTime`.
-  final pulumi.Input<String>? restoreToTime;
+  final pulumi.Input<String?>? restoreToTime;
   /// Type of restore to be performed.
   /// Valid options are `full-copy` (default) and `copy-on-write`.
-  final pulumi.Input<String>? restoreType;
+  final pulumi.Input<String?>? restoreType;
   /// Identifier of the source database cluster from which to restore. When restoring from a cluster in another AWS account, the identifier is the ARN of that cluster.
-  final pulumi.Input<String>? sourceClusterIdentifier;
+  final pulumi.Input<String?>? sourceClusterIdentifier;
   /// Cluster resource ID of the source database cluster from which to restore. To be used for restoring a deleted cluster in the same account which still has a retained automatic backup available.
-  final pulumi.Input<String>? sourceClusterResourceId;
+  final pulumi.Input<String?>? sourceClusterResourceId;
   /// Set to true to restore the database cluster to the latest restorable backup time. Defaults to false. Conflicts with `restoreToTime`.
-  final pulumi.Input<bool>? useLatestRestorableTime;
+  final pulumi.Input<bool?>? useLatestRestorableTime;
 
   /// Creates a new [ClusterRestoreToPointInTime].
   /// [restoreToTime] Date and time in UTC format to restore the database cluster to. Conflicts with `useLatestRestorableTime`.

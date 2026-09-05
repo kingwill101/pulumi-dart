@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration {
   /// The starting position on the stream. Valid values: `LAST_STOPPED_POINT`, `NOW`, `TRIM_HORIZON`.
-  final pulumi.Input<String>? inputStartingPosition;
+  final pulumi.Input<String?>? inputStartingPosition;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration].
   /// [inputStartingPosition] The starting position on the stream. Valid values: `LAST_STOPPED_POINT`, `NOW`, `TRIM_HORIZON`.

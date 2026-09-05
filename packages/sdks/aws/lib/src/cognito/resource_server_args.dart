@@ -11,11 +11,11 @@ class ResourceServerArgs {
   /// An identifier for the resource server.
   final pulumi.Input<String> identifier;
   /// A name for the resource server.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of Authorization Scope.
-  final pulumi.Input<List<ResourceServerScope>>? scopes;
+  final pulumi.Input<List<ResourceServerScope>?>? scopes;
   /// User pool the client belongs to.
   final pulumi.Input<String> userPoolId;
 

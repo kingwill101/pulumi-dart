@@ -35,10 +35,10 @@ class FleetEc2InboundPermission {
 
   factory FleetEc2InboundPermission.fromMap(Map<String, dynamic> map) {
     return FleetEc2InboundPermission(
-      fromPort: pulumi.Input.fromValue(map['fromPort'] as int),
+      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
       ipRange: pulumi.Input.fromValue(map['ipRange'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      toPort: pulumi.Input.fromValue(map['toPort'] as int),
+      toPort: pulumi.Input.fromValue((map['toPort'] as num).toInt()),
     );
   }
 }

@@ -7,7 +7,7 @@ class ExportExportDestinationConfigurationS3Destination {
   /// Name of the Amazon S3 bucket used as the destination of a data export file.
   final pulumi.Input<String> s3Bucket;
   /// Output configuration for the data export. See the `s3OutputConfigurations` argument reference below.
-  final pulumi.Input<List<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration>>? s3OutputConfigurations;
+  final pulumi.Input<List<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration>?>? s3OutputConfigurations;
   /// S3 path prefix you want prepended to the name of your data export.
   final pulumi.Input<String> s3Prefix;
   /// S3 bucket region.

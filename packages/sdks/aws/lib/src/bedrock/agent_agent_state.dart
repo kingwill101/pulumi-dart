@@ -9,48 +9,48 @@ import 'agent_agent_timeouts.dart';
 /// Input properties used for looking up and filtering AgentAgent resources.
 class AgentAgentState {
   /// ARN of the agent.
-  final pulumi.Input<String>? agentArn;
+  final pulumi.Input<String?>? agentArn;
   /// Agents collaboration role. Valid values: `SUPERVISOR`, `SUPERVISOR_ROUTER`, `DISABLED`.
-  final pulumi.Input<String>? agentCollaboration;
+  final pulumi.Input<String?>? agentCollaboration;
   /// Unique identifier of the agent.
-  final pulumi.Input<String>? agentId;
+  final pulumi.Input<String?>? agentId;
   /// Name of the agent.
-  final pulumi.Input<String>? agentName;
+  final pulumi.Input<String?>? agentName;
   /// ARN of the IAM role with permissions to invoke API operations on the agent.
-  final pulumi.Input<String>? agentResourceRoleArn;
+  final pulumi.Input<String?>? agentResourceRoleArn;
   /// Version of the agent.
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// ARN of the AWS KMS key that encrypts the agent.
-  final pulumi.Input<String>? customerEncryptionKeyArn;
+  final pulumi.Input<String?>? customerEncryptionKeyArn;
   /// Description of the agent.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Foundation model used for orchestration by the agent.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? foundationModel;
+  final pulumi.Input<String?>? foundationModel;
   /// Details about the guardrail associated with the agent. See `guardrailConfiguration` Block for details.
-  final pulumi.Input<List<AgentAgentGuardrailConfiguration>>? guardrailConfigurations;
+  final pulumi.Input<List<AgentAgentGuardrailConfiguration>?>? guardrailConfigurations;
   /// Number of seconds for which Amazon Bedrock keeps information about a user's conversation with the agent. A user interaction remains active for the amount of time specified. If no conversation occurs during this time, the session expires and Amazon Bedrock deletes any data provided before the timeout.
-  final pulumi.Input<int>? idleSessionTtlInSeconds;
+  final pulumi.Input<int?>? idleSessionTtlInSeconds;
   /// Instructions that tell the agent what it should do and how it should interact with users. If `prepareAgent` is `true` this argument is required. The valid range is 40 - 20000 characters.
-  final pulumi.Input<String>? instruction;
+  final pulumi.Input<String?>? instruction;
   /// Configurations for the agent's ability to retain the conversational context.
-  final pulumi.Input<List<AgentAgentMemoryConfiguration>>? memoryConfigurations;
+  final pulumi.Input<List<AgentAgentMemoryConfiguration>?>? memoryConfigurations;
   /// Whether to prepare the agent after creation or modification. Defaults to `true`.
-  final pulumi.Input<bool>? prepareAgent;
+  final pulumi.Input<bool?>? prepareAgent;
   /// Timestamp of when the agent was last prepared.
-  final pulumi.Input<String>? preparedAt;
+  final pulumi.Input<String?>? preparedAt;
   /// Configurations to override prompt templates in different parts of an agent sequence. For more information, see [Advanced prompts](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html). See `promptOverrideConfiguration` Block for details.
-  final pulumi.Input<List<AgentAgentPromptOverrideConfiguration>>? promptOverrideConfigurations;
+  final pulumi.Input<List<AgentAgentPromptOverrideConfiguration>?>? promptOverrideConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether the in-use check is skipped when deleting the agent.
-  final pulumi.Input<bool>? skipResourceInUseCheck;
+  final pulumi.Input<bool?>? skipResourceInUseCheck;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<AgentAgentTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<AgentAgentTimeouts?>? timeouts;
 
   /// Creates a new [AgentAgentState].
   /// [agentArn] ARN of the agent.
@@ -136,7 +136,7 @@ class AgentAgentState {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       foundationModel: (() { final guardedValue = map['foundationModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       guardrailConfigurations: (() { final guardedValue = map['guardrailConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentAgentGuardrailConfiguration>(guardedValue, (value) => AgentAgentGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      idleSessionTtlInSeconds: (() { final guardedValue = map['idleSessionTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      idleSessionTtlInSeconds: (() { final guardedValue = map['idleSessionTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       instruction: (() { final guardedValue = map['instruction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       memoryConfigurations: (() { final guardedValue = map['memoryConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentAgentMemoryConfiguration>(guardedValue, (value) => AgentAgentMemoryConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       prepareAgent: (() { final guardedValue = map['prepareAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

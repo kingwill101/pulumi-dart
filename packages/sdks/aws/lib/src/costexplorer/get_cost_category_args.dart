@@ -10,7 +10,7 @@ class GetCostCategoryArgs {
   /// Unique name for the Cost Category.
   final pulumi.Input<String> costCategoryArn;
   /// Configuration block for the specific `Tag` to use for `Expression`. See below.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetCostCategoryArgs].
   /// [costCategoryArn] Unique name for the Cost Category.

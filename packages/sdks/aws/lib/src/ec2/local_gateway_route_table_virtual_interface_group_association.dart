@@ -203,7 +203,7 @@ import 'local_gateway_route_table_virtual_interface_group_association_state.dart
 class LocalGatewayRouteTableVirtualInterfaceGroupAssociation extends pulumi.CustomResource {
   /// Identifier of the EC2 Local Gateway.
   late final pulumi.Output<String> localGatewayId;
-  /// Amazon Resource Name (ARN) of the EC2 Local Gateway Route Table.
+  /// ARN of the EC2 Local Gateway Route Table.
   late final pulumi.Output<String> localGatewayRouteTableArn;
   /// Identifier of EC2 Local Gateway Route Table.
   late final pulumi.Output<String> localGatewayRouteTableId;
@@ -234,7 +234,7 @@ class LocalGatewayRouteTableVirtualInterfaceGroupAssociation extends pulumi.Cust
           'aws:ec2/localGatewayRouteTableVirtualInterfaceGroupAssociation:LocalGatewayRouteTableVirtualInterfaceGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     localGatewayId = registerOutput<String>('localGatewayId');
     localGatewayRouteTableArn = registerOutput<String>('localGatewayRouteTableArn');
@@ -243,8 +243,8 @@ class LocalGatewayRouteTableVirtualInterfaceGroupAssociation extends pulumi.Cust
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LocalGatewayRouteTableVirtualInterfaceGroupAssociation] resource's state with the given [name] and [id].
@@ -252,11 +252,12 @@ class LocalGatewayRouteTableVirtualInterfaceGroupAssociation extends pulumi.Cust
     String name,
     pulumi.Input<String> id, {
     LocalGatewayRouteTableVirtualInterfaceGroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocalGatewayRouteTableVirtualInterfaceGroupAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -277,7 +278,27 @@ class LocalGatewayRouteTableVirtualInterfaceGroupAssociation extends pulumi.Cust
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LocalGatewayRouteTableVirtualInterfaceGroupAssociation] resource.
+  LocalGatewayRouteTableVirtualInterfaceGroupAssociation.reference(String urn)
+    : super(
+        'aws:ec2/localGatewayRouteTableVirtualInterfaceGroupAssociation:LocalGatewayRouteTableVirtualInterfaceGroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    localGatewayId = registerOutput<String>('localGatewayId');
+    localGatewayRouteTableArn = registerOutput<String>('localGatewayRouteTableArn');
+    localGatewayRouteTableId = registerOutput<String>('localGatewayRouteTableId');
+    localGatewayVirtualInterfaceGroupId = registerOutput<String>('localGatewayVirtualInterfaceGroupId');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

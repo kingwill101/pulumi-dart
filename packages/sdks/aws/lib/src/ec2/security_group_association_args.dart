@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_security_group_association_security_group_association_args_doc}
 class SecurityGroupAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Whether this association should replace the association with the VPC's default security group that is created when no security groups are specified during VPC endpoint creation. At most 1 association per-VPC endpoint should be configured with `replaceDefaultAssociation = true`. `false` should be used when importing resources.
-  final pulumi.Input<bool>? replaceDefaultAssociation;
+  final pulumi.Input<bool?>? replaceDefaultAssociation;
   /// The ID of the security group to be associated with the VPC endpoint.
   final pulumi.Input<String> securityGroupId;
   /// The ID of the VPC endpoint with which the security group will be associated.

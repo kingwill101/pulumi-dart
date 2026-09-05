@@ -6,30 +6,30 @@ import 'identity_pool_cognito_identity_provider.dart';
 /// Input properties used for looking up and filtering IdentityPool resources.
 class IdentityPoolState {
   /// Enables or disables the classic / basic authentication flow. Default is `false`.
-  final pulumi.Input<bool>? allowClassicFlow;
+  final pulumi.Input<bool?>? allowClassicFlow;
   /// Whether the identity pool supports unauthenticated logins or not.
-  final pulumi.Input<bool>? allowUnauthenticatedIdentities;
+  final pulumi.Input<bool?>? allowUnauthenticatedIdentities;
   /// The ARN of the identity pool.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// An array of Amazon Cognito Identity user pools and their client IDs.
-  final pulumi.Input<List<IdentityPoolCognitoIdentityProvider>>? cognitoIdentityProviders;
+  final pulumi.Input<List<IdentityPoolCognitoIdentityProvider>?>? cognitoIdentityProviders;
   /// The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your
   /// backend and the Cognito service to communicate about the developer provider.
-  final pulumi.Input<String>? developerProviderName;
+  final pulumi.Input<String?>? developerProviderName;
   /// The Cognito Identity Pool name.
-  final pulumi.Input<String>? identityPoolName;
+  final pulumi.Input<String?>? identityPoolName;
   /// Set of OpendID Connect provider ARNs.
-  final pulumi.Input<List<String>>? openidConnectProviderArns;
+  final pulumi.Input<List<String>?>? openidConnectProviderArns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// An array of Amazon Resource Names (ARNs) of the SAML provider for your identity.
-  final pulumi.Input<List<String>>? samlProviderArns;
+  final pulumi.Input<String?>? region;
+  /// An array of ARNs of the SAML provider for your identity.
+  final pulumi.Input<List<String>?>? samlProviderArns;
   /// Key-Value pairs mapping provider names to provider app IDs.
-  final pulumi.Input<Map<String, String>>? supportedLoginProviders;
+  final pulumi.Input<Map<String, String>?>? supportedLoginProviders;
   /// A map of tags to assign to the Identity Pool. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [IdentityPoolState].
   /// [allowClassicFlow] Enables or disables the classic / basic authentication flow. Default is `false`.
@@ -40,7 +40,7 @@ class IdentityPoolState {
   /// [identityPoolName] The Cognito Identity Pool name.
   /// [openidConnectProviderArns] Set of OpendID Connect provider ARNs.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [samlProviderArns] An array of Amazon Resource Names (ARNs) of the SAML provider for your identity.
+  /// [samlProviderArns] An array of ARNs of the SAML provider for your identity.
   /// [supportedLoginProviders] Key-Value pairs mapping provider names to provider app IDs.
   /// [tags] A map of tags to assign to the Identity Pool. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.

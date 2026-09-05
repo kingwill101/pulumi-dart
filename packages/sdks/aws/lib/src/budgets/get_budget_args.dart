@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_budgets_get_budget_get_budget_args_doc}
 class GetBudgetArgs {
   /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The name of a budget. Unique within accounts.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> name;
   /// The prefix of the name of a budget. Unique within accounts.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Map of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetBudgetArgs].
   /// [accountId] The ID of the target account for budget. Will use current user's accountId by default if omitted.

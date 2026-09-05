@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_auditmanager_framework_share_framework_share_args_doc}
 class FrameworkShareArgs {
   /// Comment from the sender about the share request.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Amazon Web Services account of the recipient.
   final pulumi.Input<String> destinationAccount;
   /// Amazon Web Services region of the recipient.
@@ -18,7 +18,7 @@ class FrameworkShareArgs {
   /// The following arguments are optional:
   final pulumi.Input<String> frameworkId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [FrameworkShareArgs].
   /// [comment] Comment from the sender about the share request.

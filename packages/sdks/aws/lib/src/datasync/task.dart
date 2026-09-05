@@ -17,12 +17,12 @@ import 'task_task_report_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.datasync.Task("example", {
-///     destinationLocationArn: destination.arn,
-///     name: "example",
-///     sourceLocationArn: source.arn,
 ///     options: {
 ///         bytesPerSecond: -1,
 ///     },
+///     destinationLocationArn: destination.arn,
+///     name: "example",
+///     sourceLocationArn: source.arn,
 /// });
 /// ```
 /// ```python
@@ -30,12 +30,12 @@ import 'task_task_report_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.datasync.Task("example",
-///     destination_location_arn=destination["arn"],
-///     name="example",
-///     source_location_arn=source["arn"],
 ///     options={
 ///         "bytes_per_second": -1,
-///     })
+///     },
+///     destination_location_arn=destination["arn"],
+///     name="example",
+///     source_location_arn=source["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,13 +47,13 @@ import 'task_task_report_config.dart';
 /// {
 ///     var example = new Aws.DataSync.Task("example", new()
 ///     {
-///         DestinationLocationArn = destination.Arn,
-///         Name = "example",
-///         SourceLocationArn = source.Arn,
 ///         Options = new Aws.DataSync.Inputs.TaskOptionsArgs
 ///         {
 ///             BytesPerSecond = -1,
 ///         },
+///         DestinationLocationArn = destination.Arn,
+///         Name = "example",
+///         SourceLocationArn = source.Arn,
 ///     });
 ///
 /// });
@@ -69,12 +69,12 @@ import 'task_task_report_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datasync.NewTask(ctx, "example", &datasync.TaskArgs{
-/// 			DestinationLocationArn: pulumi.Any(destination.Arn),
-/// 			Name:                   pulumi.String("example"),
-/// 			SourceLocationArn:      pulumi.Any(source.Arn),
 /// 			Options: &datasync.TaskOptionsArgs{
 /// 				BytesPerSecond: pulumi.Int(-1),
 /// 			},
+/// 			DestinationLocationArn: pulumi.Any(destination.Arn),
+/// 			Name:                   pulumi.String("example"),
+/// 			SourceLocationArn:      pulumi.Any(source.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,12 +93,12 @@ import 'task_task_report_config.dart';
 /// }
 ///
 /// resource "aws_datasync_task" "example" {
-///   destination_location_arn = destination.arn
-///   name                     = "example"
-///   source_location_arn      = source.arn
 ///   options = {
 ///     bytes_per_second = -1
 ///   }
+///   destination_location_arn = destination.arn
+///   name                     = "example"
+///   source_location_arn      = source.arn
 /// }
 /// ```
 /// ```java
@@ -124,12 +124,12 @@ import 'task_task_report_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Task("example", TaskArgs.builder()
-///             .destinationLocationArn(destination.arn())
-///             .name("example")
-///             .sourceLocationArn(source.arn())
 ///             .options(TaskOptionsArgs.builder()
 ///                 .bytesPerSecond(-1)
 ///                 .build())
+///             .destinationLocationArn(destination.arn())
+///             .name("example")
+///             .sourceLocationArn(source.arn())
 ///             .build());
 ///
 ///     }
@@ -140,11 +140,11 @@ import 'task_task_report_config.dart';
 ///   example:
 ///     type: aws:datasync:Task
 ///     properties:
+///       options:
+///         bytesPerSecond: -1
 ///       destinationLocationArn: ${destination.arn}
 ///       name: example
 ///       sourceLocationArn: ${source.arn}
-///       options:
-///         bytesPerSecond: -1
 /// ```
 ///
 ///
@@ -156,12 +156,12 @@ import 'task_task_report_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.datasync.Task("example", {
-///     destinationLocationArn: destination.arn,
-///     name: "example",
-///     sourceLocationArn: source.arn,
 ///     schedule: {
 ///         scheduleExpression: "cron(0 12 ? * SUN,WED *)",
 ///     },
+///     destinationLocationArn: destination.arn,
+///     name: "example",
+///     sourceLocationArn: source.arn,
 /// });
 /// ```
 /// ```python
@@ -169,12 +169,12 @@ import 'task_task_report_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.datasync.Task("example",
-///     destination_location_arn=destination["arn"],
-///     name="example",
-///     source_location_arn=source["arn"],
 ///     schedule={
 ///         "schedule_expression": "cron(0 12 ? * SUN,WED *)",
-///     })
+///     },
+///     destination_location_arn=destination["arn"],
+///     name="example",
+///     source_location_arn=source["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -186,13 +186,13 @@ import 'task_task_report_config.dart';
 /// {
 ///     var example = new Aws.DataSync.Task("example", new()
 ///     {
-///         DestinationLocationArn = destination.Arn,
-///         Name = "example",
-///         SourceLocationArn = source.Arn,
 ///         Schedule = new Aws.DataSync.Inputs.TaskScheduleArgs
 ///         {
 ///             ScheduleExpression = "cron(0 12 ? * SUN,WED *)",
 ///         },
+///         DestinationLocationArn = destination.Arn,
+///         Name = "example",
+///         SourceLocationArn = source.Arn,
 ///     });
 ///
 /// });
@@ -208,12 +208,12 @@ import 'task_task_report_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datasync.NewTask(ctx, "example", &datasync.TaskArgs{
-/// 			DestinationLocationArn: pulumi.Any(destination.Arn),
-/// 			Name:                   pulumi.String("example"),
-/// 			SourceLocationArn:      pulumi.Any(source.Arn),
 /// 			Schedule: &datasync.TaskScheduleArgs{
 /// 				ScheduleExpression: pulumi.String("cron(0 12 ? * SUN,WED *)"),
 /// 			},
+/// 			DestinationLocationArn: pulumi.Any(destination.Arn),
+/// 			Name:                   pulumi.String("example"),
+/// 			SourceLocationArn:      pulumi.Any(source.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -232,12 +232,12 @@ import 'task_task_report_config.dart';
 /// }
 ///
 /// resource "aws_datasync_task" "example" {
-///   destination_location_arn = destination.arn
-///   name                     = "example"
-///   source_location_arn      = source.arn
 ///   schedule = {
 ///     schedule_expression = "cron(0 12 ? * SUN,WED *)"
 ///   }
+///   destination_location_arn = destination.arn
+///   name                     = "example"
+///   source_location_arn      = source.arn
 /// }
 /// ```
 /// ```java
@@ -263,12 +263,12 @@ import 'task_task_report_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Task("example", TaskArgs.builder()
-///             .destinationLocationArn(destination.arn())
-///             .name("example")
-///             .sourceLocationArn(source.arn())
 ///             .schedule(TaskScheduleArgs.builder()
 ///                 .scheduleExpression("cron(0 12 ? * SUN,WED *)")
 ///                 .build())
+///             .destinationLocationArn(destination.arn())
+///             .name("example")
+///             .sourceLocationArn(source.arn())
 ///             .build());
 ///
 ///     }
@@ -279,11 +279,11 @@ import 'task_task_report_config.dart';
 ///   example:
 ///     type: aws:datasync:Task
 ///     properties:
+///       schedule:
+///         scheduleExpression: cron(0 12 ? * SUN,WED *)
 ///       destinationLocationArn: ${destination.arn}
 ///       name: example
 ///       sourceLocationArn: ${source.arn}
-///       schedule:
-///         scheduleExpression: cron(0 12 ? * SUN,WED *)
 /// ```
 ///
 ///
@@ -295,9 +295,6 @@ import 'task_task_report_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.datasync.Task("example", {
-///     destinationLocationArn: destination.arn,
-///     name: "example",
-///     sourceLocationArn: source.arn,
 ///     excludes: {
 ///         filterType: "SIMPLE_PATTERN",
 ///         value: "/folder1|/folder2",
@@ -306,6 +303,9 @@ import 'task_task_report_config.dart';
 ///         filterType: "SIMPLE_PATTERN",
 ///         value: "/folder1|/folder2",
 ///     },
+///     destinationLocationArn: destination.arn,
+///     name: "example",
+///     sourceLocationArn: source.arn,
 /// });
 /// ```
 /// ```python
@@ -313,9 +313,6 @@ import 'task_task_report_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.datasync.Task("example",
-///     destination_location_arn=destination["arn"],
-///     name="example",
-///     source_location_arn=source["arn"],
 ///     excludes={
 ///         "filter_type": "SIMPLE_PATTERN",
 ///         "value": "/folder1|/folder2",
@@ -323,7 +320,10 @@ import 'task_task_report_config.dart';
 ///     includes={
 ///         "filter_type": "SIMPLE_PATTERN",
 ///         "value": "/folder1|/folder2",
-///     })
+///     },
+///     destination_location_arn=destination["arn"],
+///     name="example",
+///     source_location_arn=source["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -335,9 +335,6 @@ import 'task_task_report_config.dart';
 /// {
 ///     var example = new Aws.DataSync.Task("example", new()
 ///     {
-///         DestinationLocationArn = destination.Arn,
-///         Name = "example",
-///         SourceLocationArn = source.Arn,
 ///         Excludes = new Aws.DataSync.Inputs.TaskExcludesArgs
 ///         {
 ///             FilterType = "SIMPLE_PATTERN",
@@ -348,6 +345,9 @@ import 'task_task_report_config.dart';
 ///             FilterType = "SIMPLE_PATTERN",
 ///             Value = "/folder1|/folder2",
 ///         },
+///         DestinationLocationArn = destination.Arn,
+///         Name = "example",
+///         SourceLocationArn = source.Arn,
 ///     });
 ///
 /// });
@@ -363,9 +363,6 @@ import 'task_task_report_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datasync.NewTask(ctx, "example", &datasync.TaskArgs{
-/// 			DestinationLocationArn: pulumi.Any(destination.Arn),
-/// 			Name:                   pulumi.String("example"),
-/// 			SourceLocationArn:      pulumi.Any(source.Arn),
 /// 			Excludes: &datasync.TaskExcludesArgs{
 /// 				FilterType: pulumi.String("SIMPLE_PATTERN"),
 /// 				Value:      pulumi.String("/folder1|/folder2"),
@@ -374,6 +371,9 @@ import 'task_task_report_config.dart';
 /// 				FilterType: pulumi.String("SIMPLE_PATTERN"),
 /// 				Value:      pulumi.String("/folder1|/folder2"),
 /// 			},
+/// 			DestinationLocationArn: pulumi.Any(destination.Arn),
+/// 			Name:                   pulumi.String("example"),
+/// 			SourceLocationArn:      pulumi.Any(source.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -392,9 +392,6 @@ import 'task_task_report_config.dart';
 /// }
 ///
 /// resource "aws_datasync_task" "example" {
-///   destination_location_arn = destination.arn
-///   name                     = "example"
-///   source_location_arn      = source.arn
 ///   excludes = {
 ///     filter_type = "SIMPLE_PATTERN"
 ///     value       = "/folder1|/folder2"
@@ -403,6 +400,9 @@ import 'task_task_report_config.dart';
 ///     filter_type = "SIMPLE_PATTERN"
 ///     value       = "/folder1|/folder2"
 ///   }
+///   destination_location_arn = destination.arn
+///   name                     = "example"
+///   source_location_arn      = source.arn
 /// }
 /// ```
 /// ```java
@@ -429,9 +429,6 @@ import 'task_task_report_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Task("example", TaskArgs.builder()
-///             .destinationLocationArn(destination.arn())
-///             .name("example")
-///             .sourceLocationArn(source.arn())
 ///             .excludes(TaskExcludesArgs.builder()
 ///                 .filterType("SIMPLE_PATTERN")
 ///                 .value("/folder1|/folder2")
@@ -440,6 +437,9 @@ import 'task_task_report_config.dart';
 ///                 .filterType("SIMPLE_PATTERN")
 ///                 .value("/folder1|/folder2")
 ///                 .build())
+///             .destinationLocationArn(destination.arn())
+///             .name("example")
+///             .sourceLocationArn(source.arn())
 ///             .build());
 ///
 ///     }
@@ -450,15 +450,15 @@ import 'task_task_report_config.dart';
 ///   example:
 ///     type: aws:datasync:Task
 ///     properties:
-///       destinationLocationArn: ${destination.arn}
-///       name: example
-///       sourceLocationArn: ${source.arn}
 ///       excludes:
 ///         filterType: SIMPLE_PATTERN
 ///         value: /folder1|/folder2
 ///       includes:
 ///         filterType: SIMPLE_PATTERN
 ///         value: /folder1|/folder2
+///       destinationLocationArn: ${destination.arn}
+///       name: example
+///       sourceLocationArn: ${source.arn}
 /// ```
 ///
 ///
@@ -470,16 +470,16 @@ import 'task_task_report_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.datasync.Task("example", {
-///     destinationLocationArn: destination.arn,
-///     name: "example",
-///     sourceLocationArn: source.arn,
-///     taskMode: "ENHANCED",
 ///     options: {
 ///         gid: "NONE",
 ///         posixPermissions: "NONE",
 ///         uid: "NONE",
 ///         verifyMode: "ONLY_FILES_TRANSFERRED",
 ///     },
+///     destinationLocationArn: destination.arn,
+///     name: "example",
+///     sourceLocationArn: source.arn,
+///     taskMode: "ENHANCED",
 /// });
 /// ```
 /// ```python
@@ -487,16 +487,16 @@ import 'task_task_report_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.datasync.Task("example",
-///     destination_location_arn=destination["arn"],
-///     name="example",
-///     source_location_arn=source["arn"],
-///     task_mode="ENHANCED",
 ///     options={
 ///         "gid": "NONE",
 ///         "posix_permissions": "NONE",
 ///         "uid": "NONE",
 ///         "verify_mode": "ONLY_FILES_TRANSFERRED",
-///     })
+///     },
+///     destination_location_arn=destination["arn"],
+///     name="example",
+///     source_location_arn=source["arn"],
+///     task_mode="ENHANCED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -508,10 +508,6 @@ import 'task_task_report_config.dart';
 /// {
 ///     var example = new Aws.DataSync.Task("example", new()
 ///     {
-///         DestinationLocationArn = destination.Arn,
-///         Name = "example",
-///         SourceLocationArn = source.Arn,
-///         TaskMode = "ENHANCED",
 ///         Options = new Aws.DataSync.Inputs.TaskOptionsArgs
 ///         {
 ///             Gid = "NONE",
@@ -519,6 +515,10 @@ import 'task_task_report_config.dart';
 ///             Uid = "NONE",
 ///             VerifyMode = "ONLY_FILES_TRANSFERRED",
 ///         },
+///         DestinationLocationArn = destination.Arn,
+///         Name = "example",
+///         SourceLocationArn = source.Arn,
+///         TaskMode = "ENHANCED",
 ///     });
 ///
 /// });
@@ -534,16 +534,16 @@ import 'task_task_report_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := datasync.NewTask(ctx, "example", &datasync.TaskArgs{
-/// 			DestinationLocationArn: pulumi.Any(destination.Arn),
-/// 			Name:                   pulumi.String("example"),
-/// 			SourceLocationArn:      pulumi.Any(source.Arn),
-/// 			TaskMode:               pulumi.String("ENHANCED"),
 /// 			Options: &datasync.TaskOptionsArgs{
 /// 				Gid:              pulumi.String("NONE"),
 /// 				PosixPermissions: pulumi.String("NONE"),
 /// 				Uid:              pulumi.String("NONE"),
 /// 				VerifyMode:       pulumi.String("ONLY_FILES_TRANSFERRED"),
 /// 			},
+/// 			DestinationLocationArn: pulumi.Any(destination.Arn),
+/// 			Name:                   pulumi.String("example"),
+/// 			SourceLocationArn:      pulumi.Any(source.Arn),
+/// 			TaskMode:               pulumi.String("ENHANCED"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -562,16 +562,16 @@ import 'task_task_report_config.dart';
 /// }
 ///
 /// resource "aws_datasync_task" "example" {
-///   destination_location_arn = destination.arn
-///   name                     = "example"
-///   source_location_arn      = source.arn
-///   task_mode                = "ENHANCED"
 ///   options = {
 ///     gid               = "NONE"
 ///     posix_permissions = "NONE"
 ///     uid               = "NONE"
 ///     verify_mode       = "ONLY_FILES_TRANSFERRED"
 ///   }
+///   destination_location_arn = destination.arn
+///   name                     = "example"
+///   source_location_arn      = source.arn
+///   task_mode                = "ENHANCED"
 /// }
 /// ```
 /// ```java
@@ -597,16 +597,16 @@ import 'task_task_report_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Task("example", TaskArgs.builder()
-///             .destinationLocationArn(destination.arn())
-///             .name("example")
-///             .sourceLocationArn(source.arn())
-///             .taskMode("ENHANCED")
 ///             .options(TaskOptionsArgs.builder()
 ///                 .gid("NONE")
 ///                 .posixPermissions("NONE")
 ///                 .uid("NONE")
 ///                 .verifyMode("ONLY_FILES_TRANSFERRED")
 ///                 .build())
+///             .destinationLocationArn(destination.arn())
+///             .name("example")
+///             .sourceLocationArn(source.arn())
+///             .taskMode("ENHANCED")
 ///             .build());
 ///
 ///     }
@@ -617,15 +617,15 @@ import 'task_task_report_config.dart';
 ///   example:
 ///     type: aws:datasync:Task
 ///     properties:
-///       destinationLocationArn: ${destination.arn}
-///       name: example
-///       sourceLocationArn: ${source.arn}
-///       taskMode: ENHANCED
 ///       options:
 ///         gid: NONE
 ///         posixPermissions: NONE
 ///         uid: NONE
 ///         verifyMode: ONLY_FILES_TRANSFERRED
+///       destinationLocationArn: ${destination.arn}
+///       name: example
+///       sourceLocationArn: ${source.arn}
+///       taskMode: ENHANCED
 /// ```
 ///
 ///
@@ -635,20 +635,20 @@ import 'task_task_report_config.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync task.
+/// - `arn` (String) ARN of the DataSync task.
 ///
 ///
-/// Using `pulumi import`, import `aws.datasync.Task` using the DataSync Task Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.Task` using the DataSync Task ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/task:Task example arn:aws:datasync:us-east-1:123456789012:task/task-12345678901234567
 /// ```
 class Task extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the DataSync Task.
+  /// ARN of the DataSync Task.
   late final pulumi.Output<String> arn;
-  /// Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
+  /// ARN of the CloudWatch Log Group that is used to monitor and log events in the sync task.
   late final pulumi.Output<String?> cloudwatchLogGroupArn;
-  /// Amazon Resource Name (ARN) of destination DataSync Location.
+  /// ARN of destination DataSync Location.
   late final pulumi.Output<String> destinationLocationArn;
   /// Filter rules that determines which files to exclude from a task.
   late final pulumi.Output<TaskExcludes?> excludes;
@@ -662,7 +662,7 @@ class Task extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Specifies a schedule used to periodically transfer files from a source to a destination location.
   late final pulumi.Output<TaskSchedule?> schedule;
-  /// Amazon Resource Name (ARN) of source DataSync Location.
+  /// ARN of source DataSync Location.
   late final pulumi.Output<String> sourceLocationArn;
   /// Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -687,7 +687,7 @@ class Task extends pulumi.CustomResource {
           'aws:datasync/task:Task',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchLogGroupArn = registerOutput<String?>('cloudwatchLogGroupArn');
@@ -699,8 +699,8 @@ class Task extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     schedule = registerOutput<TaskSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceLocationArn = registerOutput<String>('sourceLocationArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskMode = registerOutput<String>('taskMode');
     taskReportConfig = registerOutput<TaskTaskReportConfig?>('taskReportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskTaskReportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -710,11 +710,12 @@ class Task extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TaskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Task._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -738,8 +739,33 @@ class Task extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     schedule = registerOutput<TaskSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceLocationArn = registerOutput<String>('sourceLocationArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taskMode = registerOutput<String>('taskMode');
+    taskReportConfig = registerOutput<TaskTaskReportConfig?>('taskReportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskTaskReportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Task] resource.
+  Task.reference(String urn)
+    : super(
+        'aws:datasync/task:Task',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    cloudwatchLogGroupArn = registerOutput<String?>('cloudwatchLogGroupArn');
+    destinationLocationArn = registerOutput<String>('destinationLocationArn');
+    excludes = registerOutput<TaskExcludes?>('excludes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskExcludes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includes = registerOutput<TaskIncludes?>('includes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskIncludes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    this.options = registerOutput<TaskOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    schedule = registerOutput<TaskSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceLocationArn = registerOutput<String>('sourceLocationArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     taskMode = registerOutput<String>('taskMode');
     taskReportConfig = registerOutput<TaskTaskReportConfig?>('taskReportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskTaskReportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

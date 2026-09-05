@@ -204,7 +204,7 @@ import 'access_grants_instance_state.dart';
 /// $ pulumi import aws:s3control/accessGrantsInstance:AccessGrantsInstance example 123456789012
 /// ```
 class AccessGrantsInstance extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the S3 Access Grants instance.
+  /// ARN of the S3 Access Grants instance.
   late final pulumi.Output<String> accessGrantsInstanceArn;
   /// Unique ID of the S3 Access Grants instance.
   late final pulumi.Output<String> accessGrantsInstanceId;
@@ -233,7 +233,7 @@ class AccessGrantsInstance extends pulumi.CustomResource {
           'aws:s3control/accessGrantsInstance:AccessGrantsInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessGrantsInstanceArn = registerOutput<String>('accessGrantsInstanceArn');
     accessGrantsInstanceId = registerOutput<String>('accessGrantsInstanceId');
@@ -241,8 +241,8 @@ class AccessGrantsInstance extends pulumi.CustomResource {
     identityCenterApplicationArn = registerOutput<String>('identityCenterApplicationArn');
     identityCenterArn = registerOutput<String?>('identityCenterArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AccessGrantsInstance] resource's state with the given [name] and [id].
@@ -250,11 +250,12 @@ class AccessGrantsInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessGrantsInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessGrantsInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -274,7 +275,26 @@ class AccessGrantsInstance extends pulumi.CustomResource {
     identityCenterApplicationArn = registerOutput<String>('identityCenterApplicationArn');
     identityCenterArn = registerOutput<String?>('identityCenterArn');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccessGrantsInstance] resource.
+  AccessGrantsInstance.reference(String urn)
+    : super(
+        'aws:s3control/accessGrantsInstance:AccessGrantsInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessGrantsInstanceArn = registerOutput<String>('accessGrantsInstanceArn');
+    accessGrantsInstanceId = registerOutput<String>('accessGrantsInstanceId');
+    accountId = registerOutput<String>('accountId');
+    identityCenterApplicationArn = registerOutput<String>('identityCenterApplicationArn');
+    identityCenterArn = registerOutput<String?>('identityCenterArn');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

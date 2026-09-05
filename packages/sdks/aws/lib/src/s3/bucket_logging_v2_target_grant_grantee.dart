@@ -3,15 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketLoggingV2TargetGrantGrantee {
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Email address of the grantee. See [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) for supported AWS regions where this argument can be specified.
-  final pulumi.Input<String>? emailAddress;
+  final pulumi.Input<String?>? emailAddress;
   /// Canonical user ID of the grantee.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Type of grantee. Valid values: `CanonicalUser`, `AmazonCustomerByEmail`, `Group`.
   final pulumi.Input<String> type;
   /// URI of the grantee group.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [BucketLoggingV2TargetGrantGrantee].
   /// [displayName] Optional.

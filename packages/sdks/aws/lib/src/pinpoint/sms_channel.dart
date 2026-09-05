@@ -156,7 +156,7 @@ class SmsChannel extends pulumi.CustomResource {
           'aws:pinpoint/smsChannel:SmsChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     enabled = registerOutput<bool?>('enabled');
@@ -172,11 +172,12 @@ class SmsChannel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SmsChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SmsChannel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -190,6 +191,24 @@ class SmsChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    enabled = registerOutput<bool?>('enabled');
+    promotionalMessagesPerSecond = registerOutput<int>('promotionalMessagesPerSecond');
+    region = registerOutput<String>('region');
+    senderId = registerOutput<String?>('senderId');
+    shortCode = registerOutput<String?>('shortCode');
+    transactionalMessagesPerSecond = registerOutput<int>('transactionalMessagesPerSecond');
+  }
+
+  /// Creates a typed reference to an existing [SmsChannel] resource.
+  SmsChannel.reference(String urn)
+    : super(
+        'aws:pinpoint/smsChannel:SmsChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     enabled = registerOutput<bool?>('enabled');
     promotionalMessagesPerSecond = registerOutput<int>('promotionalMessagesPerSecond');

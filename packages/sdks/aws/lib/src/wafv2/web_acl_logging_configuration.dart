@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_logging_configuration_args.dart';
 import 'web_acl_logging_configuration_logging_filter.dart';
+import 'web_acl_logging_configuration_redacted_field.dart';
 import 'web_acl_logging_configuration_state.dart';
 
 /// This resource creates a WAFv2 Web ACL Logging Configuration.
@@ -17,13 +18,13 @@ import 'web_acl_logging_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAclLoggingConfiguration("example", {
-///     logDestinationConfigs: [exampleAwsKinesisFirehoseDeliveryStream.arn],
-///     resourceArn: exampleAwsWafv2WebAcl.arn,
 ///     redactedFields: [{
 ///         singleHeader: {
 ///             name: "user-agent",
 ///         },
 ///     }],
+///     logDestinationConfigs: [exampleAwsKinesisFirehoseDeliveryStream.arn],
+///     resourceArn: exampleAwsWafv2WebAcl.arn,
 /// });
 /// ```
 /// ```python
@@ -31,13 +32,13 @@ import 'web_acl_logging_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAclLoggingConfiguration("example",
-///     log_destination_configs=[example_aws_kinesis_firehose_delivery_stream["arn"]],
-///     resource_arn=example_aws_wafv2_web_acl["arn"],
 ///     redacted_fields=[{
 ///         "single_header": {
 ///             "name": "user-agent",
 ///         },
-///     }])
+///     }],
+///     log_destination_configs=[example_aws_kinesis_firehose_delivery_stream["arn"]],
+///     resource_arn=example_aws_wafv2_web_acl["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -49,11 +50,6 @@ import 'web_acl_logging_configuration_state.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAclLoggingConfiguration("example", new()
 ///     {
-///         LogDestinationConfigs = new[]
-///         {
-///             exampleAwsKinesisFirehoseDeliveryStream.Arn,
-///         },
-///         ResourceArn = exampleAwsWafv2WebAcl.Arn,
 ///         RedactedFields = new[]
 ///         {
 ///             new Aws.WafV2.Inputs.WebAclLoggingConfigurationRedactedFieldArgs
@@ -64,6 +60,11 @@ import 'web_acl_logging_configuration_state.dart';
 ///                 },
 ///             },
 ///         },
+///         LogDestinationConfigs = new[]
+///         {
+///             exampleAwsKinesisFirehoseDeliveryStream.Arn,
+///         },
+///         ResourceArn = exampleAwsWafv2WebAcl.Arn,
 ///     });
 ///
 /// });
@@ -79,10 +80,6 @@ import 'web_acl_logging_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclLoggingConfiguration(ctx, "example", &wafv2.WebAclLoggingConfigurationArgs{
-/// 			LogDestinationConfigs: pulumi.StringArray{
-/// 				exampleAwsKinesisFirehoseDeliveryStream.Arn,
-/// 			},
-/// 			ResourceArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 			RedactedFields: wafv2.WebAclLoggingConfigurationRedactedFieldArray{
 /// 				&wafv2.WebAclLoggingConfigurationRedactedFieldArgs{
 /// 					SingleHeader: &wafv2.WebAclLoggingConfigurationRedactedFieldSingleHeaderArgs{
@@ -90,6 +87,10 @@ import 'web_acl_logging_configuration_state.dart';
 /// 					},
 /// 				},
 /// 			},
+/// 			LogDestinationConfigs: pulumi.StringArray{
+/// 				exampleAwsKinesisFirehoseDeliveryStream.Arn,
+/// 			},
+/// 			ResourceArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -108,13 +109,13 @@ import 'web_acl_logging_configuration_state.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclloggingconfiguration" "example" {
-///   log_destination_configs = [exampleAwsKinesisFirehoseDeliveryStream.arn]
-///   resource_arn            = exampleAwsWafv2WebAcl.arn
 ///   redacted_fields {
 ///     single_header = {
 ///       name = "user-agent"
 ///     }
 ///   }
+///   log_destination_configs = [exampleAwsKinesisFirehoseDeliveryStream.arn]
+///   resource_arn            = exampleAwsWafv2WebAcl.arn
 /// }
 /// ```
 /// ```java
@@ -141,13 +142,13 @@ import 'web_acl_logging_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclLoggingConfiguration("example", WebAclLoggingConfigurationArgs.builder()
-///             .logDestinationConfigs(exampleAwsKinesisFirehoseDeliveryStream.arn())
-///             .resourceArn(exampleAwsWafv2WebAcl.arn())
 ///             .redactedFields(WebAclLoggingConfigurationRedactedFieldArgs.builder()
 ///                 .singleHeader(WebAclLoggingConfigurationRedactedFieldSingleHeaderArgs.builder()
 ///                     .name("user-agent")
 ///                     .build())
 ///                 .build())
+///             .logDestinationConfigs(exampleAwsKinesisFirehoseDeliveryStream.arn())
+///             .resourceArn(exampleAwsWafv2WebAcl.arn())
 ///             .build());
 ///
 ///     }
@@ -158,12 +159,12 @@ import 'web_acl_logging_configuration_state.dart';
 ///   example:
 ///     type: aws:wafv2:WebAclLoggingConfiguration
 ///     properties:
-///       logDestinationConfigs:
-///         - ${exampleAwsKinesisFirehoseDeliveryStream.arn}
-///       resourceArn: ${exampleAwsWafv2WebAcl.arn}
 ///       redactedFields:
 ///         - singleHeader:
 ///             name: user-agent
+///       logDestinationConfigs:
+///         - ${exampleAwsKinesisFirehoseDeliveryStream.arn}
+///       resourceArn: ${exampleAwsWafv2WebAcl.arn}
 /// ```
 ///
 ///
@@ -175,13 +176,9 @@ import 'web_acl_logging_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.wafv2.WebAclLoggingConfiguration("example", {
-///     logDestinationConfigs: [exampleAwsKinesisFirehoseDeliveryStream.arn],
-///     resourceArn: exampleAwsWafv2WebAcl.arn,
 ///     loggingFilter: {
-///         defaultBehavior: "KEEP",
 ///         filters: [
 ///             {
-///                 behavior: "DROP",
 ///                 conditions: [
 ///                     {
 ///                         actionCondition: {
@@ -194,19 +191,23 @@ import 'web_acl_logging_configuration_state.dart';
 ///                         },
 ///                     },
 ///                 ],
+///                 behavior: "DROP",
 ///                 requirement: "MEETS_ALL",
 ///             },
 ///             {
-///                 behavior: "KEEP",
 ///                 conditions: [{
 ///                     actionCondition: {
 ///                         action: "ALLOW",
 ///                     },
 ///                 }],
+///                 behavior: "KEEP",
 ///                 requirement: "MEETS_ANY",
 ///             },
 ///         ],
+///         defaultBehavior: "KEEP",
 ///     },
+///     logDestinationConfigs: [exampleAwsKinesisFirehoseDeliveryStream.arn],
+///     resourceArn: exampleAwsWafv2WebAcl.arn,
 /// });
 /// ```
 /// ```python
@@ -214,13 +215,9 @@ import 'web_acl_logging_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.wafv2.WebAclLoggingConfiguration("example",
-///     log_destination_configs=[example_aws_kinesis_firehose_delivery_stream["arn"]],
-///     resource_arn=example_aws_wafv2_web_acl["arn"],
 ///     logging_filter={
-///         "default_behavior": "KEEP",
 ///         "filters": [
 ///             {
-///                 "behavior": "DROP",
 ///                 "conditions": [
 ///                     {
 ///                         "action_condition": {
@@ -233,19 +230,23 @@ import 'web_acl_logging_configuration_state.dart';
 ///                         },
 ///                     },
 ///                 ],
+///                 "behavior": "DROP",
 ///                 "requirement": "MEETS_ALL",
 ///             },
 ///             {
-///                 "behavior": "KEEP",
 ///                 "conditions": [{
 ///                     "action_condition": {
 ///                         "action": "ALLOW",
 ///                     },
 ///                 }],
+///                 "behavior": "KEEP",
 ///                 "requirement": "MEETS_ANY",
 ///             },
 ///         ],
-///     })
+///         "default_behavior": "KEEP",
+///     },
+///     log_destination_configs=[example_aws_kinesis_firehose_delivery_stream["arn"]],
+///     resource_arn=example_aws_wafv2_web_acl["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -257,19 +258,12 @@ import 'web_acl_logging_configuration_state.dart';
 /// {
 ///     var example = new Aws.WafV2.WebAclLoggingConfiguration("example", new()
 ///     {
-///         LogDestinationConfigs = new[]
-///         {
-///             exampleAwsKinesisFirehoseDeliveryStream.Arn,
-///         },
-///         ResourceArn = exampleAwsWafv2WebAcl.Arn,
 ///         LoggingFilter = new Aws.WafV2.Inputs.WebAclLoggingConfigurationLoggingFilterArgs
 ///         {
-///             DefaultBehavior = "KEEP",
 ///             Filters = new[]
 ///             {
 ///                 new Aws.WafV2.Inputs.WebAclLoggingConfigurationLoggingFilterFilterArgs
 ///                 {
-///                     Behavior = "DROP",
 ///                     Conditions = new[]
 ///                     {
 ///                         new Aws.WafV2.Inputs.WebAclLoggingConfigurationLoggingFilterFilterConditionArgs
@@ -287,11 +281,11 @@ import 'web_acl_logging_configuration_state.dart';
 ///                             },
 ///                         },
 ///                     },
+///                     Behavior = "DROP",
 ///                     Requirement = "MEETS_ALL",
 ///                 },
 ///                 new Aws.WafV2.Inputs.WebAclLoggingConfigurationLoggingFilterFilterArgs
 ///                 {
-///                     Behavior = "KEEP",
 ///                     Conditions = new[]
 ///                     {
 ///                         new Aws.WafV2.Inputs.WebAclLoggingConfigurationLoggingFilterFilterConditionArgs
@@ -302,10 +296,17 @@ import 'web_acl_logging_configuration_state.dart';
 ///                             },
 ///                         },
 ///                     },
+///                     Behavior = "KEEP",
 ///                     Requirement = "MEETS_ANY",
 ///                 },
 ///             },
+///             DefaultBehavior = "KEEP",
 ///         },
+///         LogDestinationConfigs = new[]
+///         {
+///             exampleAwsKinesisFirehoseDeliveryStream.Arn,
+///         },
+///         ResourceArn = exampleAwsWafv2WebAcl.Arn,
 ///     });
 ///
 /// });
@@ -321,15 +322,9 @@ import 'web_acl_logging_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := wafv2.NewWebAclLoggingConfiguration(ctx, "example", &wafv2.WebAclLoggingConfigurationArgs{
-/// 			LogDestinationConfigs: pulumi.StringArray{
-/// 				exampleAwsKinesisFirehoseDeliveryStream.Arn,
-/// 			},
-/// 			ResourceArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 			LoggingFilter: &wafv2.WebAclLoggingConfigurationLoggingFilterArgs{
-/// 				DefaultBehavior: pulumi.String("KEEP"),
 /// 				Filters: wafv2.WebAclLoggingConfigurationLoggingFilterFilterArray{
 /// 					&wafv2.WebAclLoggingConfigurationLoggingFilterFilterArgs{
-/// 						Behavior: pulumi.String("DROP"),
 /// 						Conditions: wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionArray{
 /// 							&wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionArgs{
 /// 								ActionCondition: &wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionActionConditionArgs{
@@ -342,10 +337,10 @@ import 'web_acl_logging_configuration_state.dart';
 /// 								},
 /// 							},
 /// 						},
+/// 						Behavior:    pulumi.String("DROP"),
 /// 						Requirement: pulumi.String("MEETS_ALL"),
 /// 					},
 /// 					&wafv2.WebAclLoggingConfigurationLoggingFilterFilterArgs{
-/// 						Behavior: pulumi.String("KEEP"),
 /// 						Conditions: wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionArray{
 /// 							&wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionArgs{
 /// 								ActionCondition: &wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionActionConditionArgs{
@@ -353,10 +348,16 @@ import 'web_acl_logging_configuration_state.dart';
 /// 								},
 /// 							},
 /// 						},
+/// 						Behavior:    pulumi.String("KEEP"),
 /// 						Requirement: pulumi.String("MEETS_ANY"),
 /// 					},
 /// 				},
+/// 				DefaultBehavior: pulumi.String("KEEP"),
 /// 			},
+/// 			LogDestinationConfigs: pulumi.StringArray{
+/// 				exampleAwsKinesisFirehoseDeliveryStream.Arn,
+/// 			},
+/// 			ResourceArn: pulumi.Any(exampleAwsWafv2WebAcl.Arn),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -375,12 +376,8 @@ import 'web_acl_logging_configuration_state.dart';
 /// }
 ///
 /// resource "aws_wafv2_webaclloggingconfiguration" "example" {
-///   log_destination_configs = [exampleAwsKinesisFirehoseDeliveryStream.arn]
-///   resource_arn            = exampleAwsWafv2WebAcl.arn
 ///   logging_filter = {
-///     default_behavior = "KEEP"
 ///     filters = [{
-///       "behavior" = "DROP"
 ///       "conditions" = [{
 ///         "actionCondition" = {
 ///           "action" = "COUNT"
@@ -390,17 +387,21 @@ import 'web_acl_logging_configuration_state.dart';
 ///           "labelName" = "awswaf:111122223333:rulegroup:testRules:LabelNameZ"
 ///         }
 ///       }]
+///       "behavior"    = "DROP"
 ///       "requirement" = "MEETS_ALL"
 ///       }, {
-///       "behavior" = "KEEP"
 ///       "conditions" = [{
 ///         "actionCondition" = {
 ///           "action" = "ALLOW"
 ///         }
 ///       }]
+///       "behavior"    = "KEEP"
 ///       "requirement" = "MEETS_ANY"
 ///     }]
+///     default_behavior = "KEEP"
 ///   }
+///   log_destination_configs = [exampleAwsKinesisFirehoseDeliveryStream.arn]
+///   resource_arn            = exampleAwsWafv2WebAcl.arn
 /// }
 /// ```
 /// ```java
@@ -430,13 +431,9 @@ import 'web_acl_logging_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new WebAclLoggingConfiguration("example", WebAclLoggingConfigurationArgs.builder()
-///             .logDestinationConfigs(exampleAwsKinesisFirehoseDeliveryStream.arn())
-///             .resourceArn(exampleAwsWafv2WebAcl.arn())
 ///             .loggingFilter(WebAclLoggingConfigurationLoggingFilterArgs.builder()
-///                 .defaultBehavior("KEEP")
 ///                 .filters(
 ///                     WebAclLoggingConfigurationLoggingFilterFilterArgs.builder()
-///                         .behavior("DROP")
 ///                         .conditions(
 ///                             WebAclLoggingConfigurationLoggingFilterFilterConditionArgs.builder()
 ///                                 .actionCondition(WebAclLoggingConfigurationLoggingFilterFilterConditionActionConditionArgs.builder()
@@ -448,18 +445,22 @@ import 'web_acl_logging_configuration_state.dart';
 ///                                     .labelName("awswaf:111122223333:rulegroup:testRules:LabelNameZ")
 ///                                     .build())
 ///                                 .build())
+///                         .behavior("DROP")
 ///                         .requirement("MEETS_ALL")
 ///                         .build(),
 ///                     WebAclLoggingConfigurationLoggingFilterFilterArgs.builder()
-///                         .behavior("KEEP")
 ///                         .conditions(WebAclLoggingConfigurationLoggingFilterFilterConditionArgs.builder()
 ///                             .actionCondition(WebAclLoggingConfigurationLoggingFilterFilterConditionActionConditionArgs.builder()
 ///                                 .action("ALLOW")
 ///                                 .build())
 ///                             .build())
+///                         .behavior("KEEP")
 ///                         .requirement("MEETS_ANY")
 ///                         .build())
+///                 .defaultBehavior("KEEP")
 ///                 .build())
+///             .logDestinationConfigs(exampleAwsKinesisFirehoseDeliveryStream.arn())
+///             .resourceArn(exampleAwsWafv2WebAcl.arn())
 ///             .build());
 ///
 ///     }
@@ -470,24 +471,24 @@ import 'web_acl_logging_configuration_state.dart';
 ///   example:
 ///     type: aws:wafv2:WebAclLoggingConfiguration
 ///     properties:
-///       logDestinationConfigs:
-///         - ${exampleAwsKinesisFirehoseDeliveryStream.arn}
-///       resourceArn: ${exampleAwsWafv2WebAcl.arn}
 ///       loggingFilter:
-///         defaultBehavior: KEEP
 ///         filters:
-///           - behavior: DROP
-///             conditions:
+///           - conditions:
 ///               - actionCondition:
 ///                   action: COUNT
 ///               - labelNameCondition:
 ///                   labelName: awswaf:111122223333:rulegroup:testRules:LabelNameZ
+///             behavior: DROP
 ///             requirement: MEETS_ALL
-///           - behavior: KEEP
-///             conditions:
+///           - conditions:
 ///               - actionCondition:
 ///                   action: ALLOW
+///             behavior: KEEP
 ///             requirement: MEETS_ANY
+///         defaultBehavior: KEEP
+///       logDestinationConfigs:
+///         - ${exampleAwsKinesisFirehoseDeliveryStream.arn}
+///       resourceArn: ${exampleAwsWafv2WebAcl.arn}
 /// ```
 ///
 ///
@@ -499,15 +500,15 @@ import 'web_acl_logging_configuration_state.dart';
 /// $ pulumi import aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration example arn:aws:wafv2:us-west-2:123456789012:regional/webacl/test-logs/a1b2c3d4-5678-90ab-cdef
 /// ```
 class WebAclLoggingConfiguration extends pulumi.CustomResource {
-  /// Configuration block that allows you to associate Amazon Kinesis Data Firehose, Cloudwatch Log log group, or S3 bucket Amazon Resource Names (ARNs) with the web ACL. **Note:** data firehose, log group, or bucket name **must** be prefixed with `aws-waf-logs-`, e.g. `aws-waf-logs-example-firehose`, `aws-waf-logs-example-log-group`, or `aws-waf-logs-example-bucket`.
+  /// Configuration block that allows you to associate Amazon Kinesis Data Firehose, Cloudwatch Log log group, or S3 bucket ARNs with the web ACL. **Note:** data firehose, log group, or bucket name **must** be prefixed with `aws-waf-logs-`, e.g. `aws-waf-logs-example-firehose`, `aws-waf-logs-example-log-group`, or `aws-waf-logs-example-bucket`.
   late final pulumi.Output<List<String>> logDestinationConfigs;
   /// Configuration block that specifies which web requests are kept in the logs and which are dropped. It allows filtering based on the rule action and the web request labels applied by matching rules during web ACL evaluation. For more details, refer to the Logging Filter section below.
   late final pulumi.Output<WebAclLoggingConfigurationLoggingFilter?> loggingFilter;
   /// Configuration for parts of the request that you want to keep out of the logs. Up to 100 `redactedFields` blocks are supported. See Redacted Fields below for more details.
-  late final pulumi.Output<List<Map<String, dynamic>>?> redactedFields;
+  late final pulumi.Output<List<WebAclLoggingConfigurationRedactedField>?> redactedFields;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Amazon Resource Name (ARN) of the web ACL that you want to associate with `logDestinationConfigs`.
+  /// ARN of the web ACL that you want to associate with `logDestinationConfigs`.
   late final pulumi.Output<String> resourceArn;
 
   /// Creates a new [WebAclLoggingConfiguration].
@@ -522,11 +523,11 @@ class WebAclLoggingConfiguration extends pulumi.CustomResource {
           'aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    logDestinationConfigs = registerOutput<List<String>>('logDestinationConfigs');
+    logDestinationConfigs = registerOutput<List<String>>('logDestinationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>('loggingFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclLoggingConfigurationLoggingFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    redactedFields = registerOutput<List<Map<String, dynamic>>?>('redactedFields');
+    redactedFields = registerOutput<List<WebAclLoggingConfigurationRedactedField>?>('redactedFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclLoggingConfigurationRedactedField>(guardedValue, (value) => WebAclLoggingConfigurationRedactedField.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
   }
@@ -536,11 +537,12 @@ class WebAclLoggingConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAclLoggingConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebAclLoggingConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -554,9 +556,25 @@ class WebAclLoggingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    logDestinationConfigs = registerOutput<List<String>>('logDestinationConfigs');
+    logDestinationConfigs = registerOutput<List<String>>('logDestinationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>('loggingFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclLoggingConfigurationLoggingFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    redactedFields = registerOutput<List<Map<String, dynamic>>?>('redactedFields');
+    redactedFields = registerOutput<List<WebAclLoggingConfigurationRedactedField>?>('redactedFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclLoggingConfigurationRedactedField>(guardedValue, (value) => WebAclLoggingConfigurationRedactedField.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    resourceArn = registerOutput<String>('resourceArn');
+  }
+
+  /// Creates a typed reference to an existing [WebAclLoggingConfiguration] resource.
+  WebAclLoggingConfiguration.reference(String urn)
+    : super(
+        'aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    logDestinationConfigs = registerOutput<List<String>>('logDestinationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>('loggingFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclLoggingConfigurationLoggingFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redactedFields = registerOutput<List<WebAclLoggingConfigurationRedactedField>?>('redactedFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebAclLoggingConfigurationRedactedField>(guardedValue, (value) => WebAclLoggingConfigurationRedactedField.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');
   }

@@ -8,18 +8,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_vpclattice_get_service_get_service_args_doc}
 class GetServiceArgs {
   /// Service name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// ID or Amazon Resource Name (ARN) of the service.
-  final pulumi.Input<String>? serviceIdentifier;
+  final pulumi.Input<String?>? region;
+  /// ID or ARN of the service.
+  final pulumi.Input<String?>? serviceIdentifier;
   /// List of tags associated with the service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetServiceArgs].
   /// [name] Service name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceIdentifier] ID or Amazon Resource Name (ARN) of the service.
+  /// [serviceIdentifier] ID or ARN of the service.
   /// [tags] List of tags associated with the service.
   const GetServiceArgs({
     this.name,

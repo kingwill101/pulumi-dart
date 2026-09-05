@@ -51,7 +51,7 @@ class GetListenerDefaultActionAuthenticateCognito {
       onUnauthenticatedRequest: pulumi.Input.fromValue(map['onUnauthenticatedRequest'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
       sessionCookieName: pulumi.Input.fromValue(map['sessionCookieName'] as String),
-      sessionTimeout: pulumi.Input.fromValue(map['sessionTimeout'] as int),
+      sessionTimeout: pulumi.Input.fromValue((map['sessionTimeout'] as num).toInt()),
       userPoolArn: pulumi.Input.fromValue(map['userPoolArn'] as String),
       userPoolClientId: pulumi.Input.fromValue(map['userPoolClientId'] as String),
       userPoolDomain: pulumi.Input.fromValue(map['userPoolDomain'] as String),

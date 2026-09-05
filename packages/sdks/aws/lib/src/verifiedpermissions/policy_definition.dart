@@ -6,9 +6,9 @@ import 'policy_definition_template_linked.dart';
 
 class PolicyDefinition {
   /// The static policy statement. See Static below.
-  final pulumi.Input<PolicyDefinitionStatic>? static;
+  final pulumi.Input<PolicyDefinitionStatic?>? static;
   /// The template linked policy. See Template Linked below.
-  final pulumi.Input<PolicyDefinitionTemplateLinked>? templateLinked;
+  final pulumi.Input<PolicyDefinitionTemplateLinked?>? templateLinked;
 
   /// Creates a new [PolicyDefinition].
   /// [static] The static policy statement. See Static below.

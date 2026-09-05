@@ -16,13 +16,13 @@ import 'job_template_state.dart';
 ///
 /// const example = new aws.emrcontainers.JobTemplate("example", {
 ///     jobTemplateData: {
-///         executionRoleArn: exampleAwsIamRole.arn,
-///         releaseLabel: "emr-6.10.0-latest",
 ///         jobDriver: {
 ///             sparkSqlJobDriver: {
 ///                 entryPoint: "default",
 ///             },
 ///         },
+///         executionRoleArn: exampleAwsIamRole.arn,
+///         releaseLabel: "emr-6.10.0-latest",
 ///     },
 ///     name: "example",
 /// });
@@ -33,13 +33,13 @@ import 'job_template_state.dart';
 ///
 /// example = aws.emrcontainers.JobTemplate("example",
 ///     job_template_data={
-///         "execution_role_arn": example_aws_iam_role["arn"],
-///         "release_label": "emr-6.10.0-latest",
 ///         "job_driver": {
 ///             "spark_sql_job_driver": {
 ///                 "entry_point": "default",
 ///             },
 ///         },
+///         "execution_role_arn": example_aws_iam_role["arn"],
+///         "release_label": "emr-6.10.0-latest",
 ///     },
 ///     name="example")
 /// ```
@@ -55,8 +55,6 @@ import 'job_template_state.dart';
 ///     {
 ///         JobTemplateData = new Aws.EmrContainers.Inputs.JobTemplateJobTemplateDataArgs
 ///         {
-///             ExecutionRoleArn = exampleAwsIamRole.Arn,
-///             ReleaseLabel = "emr-6.10.0-latest",
 ///             JobDriver = new Aws.EmrContainers.Inputs.JobTemplateJobTemplateDataJobDriverArgs
 ///             {
 ///                 SparkSqlJobDriver = new Aws.EmrContainers.Inputs.JobTemplateJobTemplateDataJobDriverSparkSqlJobDriverArgs
@@ -64,6 +62,8 @@ import 'job_template_state.dart';
 ///                     EntryPoint = "default",
 ///                 },
 ///             },
+///             ExecutionRoleArn = exampleAwsIamRole.Arn,
+///             ReleaseLabel = "emr-6.10.0-latest",
 ///         },
 ///         Name = "example",
 ///     });
@@ -82,13 +82,13 @@ import 'job_template_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := emrcontainers.NewJobTemplate(ctx, "example", &emrcontainers.JobTemplateArgs{
 /// 			JobTemplateData: &emrcontainers.JobTemplateJobTemplateDataArgs{
-/// 				ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 				ReleaseLabel:     pulumi.String("emr-6.10.0-latest"),
 /// 				JobDriver: &emrcontainers.JobTemplateJobTemplateDataJobDriverArgs{
 /// 					SparkSqlJobDriver: &emrcontainers.JobTemplateJobTemplateDataJobDriverSparkSqlJobDriverArgs{
 /// 						EntryPoint: pulumi.String("default"),
 /// 					},
 /// 				},
+/// 				ExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 				ReleaseLabel:     pulumi.String("emr-6.10.0-latest"),
 /// 			},
 /// 			Name: pulumi.String("example"),
 /// 		})
@@ -110,13 +110,13 @@ import 'job_template_state.dart';
 ///
 /// resource "aws_emrcontainers_jobtemplate" "example" {
 ///   job_template_data = {
-///     execution_role_arn = exampleAwsIamRole.arn
-///     release_label      = "emr-6.10.0-latest"
 ///     job_driver = {
 ///       spark_sql_job_driver = {
 ///         entry_point = "default"
 ///       }
 ///     }
+///     execution_role_arn = exampleAwsIamRole.arn
+///     release_label      = "emr-6.10.0-latest"
 ///   }
 ///   name = "example"
 /// }
@@ -147,13 +147,13 @@ import 'job_template_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new JobTemplate("example", JobTemplateArgs.builder()
 ///             .jobTemplateData(JobTemplateJobTemplateDataArgs.builder()
-///                 .executionRoleArn(exampleAwsIamRole.arn())
-///                 .releaseLabel("emr-6.10.0-latest")
 ///                 .jobDriver(JobTemplateJobTemplateDataJobDriverArgs.builder()
 ///                     .sparkSqlJobDriver(JobTemplateJobTemplateDataJobDriverSparkSqlJobDriverArgs.builder()
 ///                         .entryPoint("default")
 ///                         .build())
 ///                     .build())
+///                 .executionRoleArn(exampleAwsIamRole.arn())
+///                 .releaseLabel("emr-6.10.0-latest")
 ///                 .build())
 ///             .name("example")
 ///             .build());
@@ -167,11 +167,11 @@ import 'job_template_state.dart';
 ///     type: aws:emrcontainers:JobTemplate
 ///     properties:
 ///       jobTemplateData:
-///         executionRoleArn: ${exampleAwsIamRole.arn}
-///         releaseLabel: emr-6.10.0-latest
 ///         jobDriver:
 ///           sparkSqlJobDriver:
 ///             entryPoint: default
+///         executionRoleArn: ${exampleAwsIamRole.arn}
+///         releaseLabel: emr-6.10.0-latest
 ///       name: example
 /// ```
 ///
@@ -211,15 +211,15 @@ class JobTemplate extends pulumi.CustomResource {
           'aws:emrcontainers/jobTemplate:JobTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     jobTemplateData = registerOutput<JobTemplateJobTemplateData>('jobTemplateData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplateJobTemplateData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [JobTemplate] resource's state with the given [name] and [id].
@@ -227,11 +227,12 @@ class JobTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -250,7 +251,25 @@ class JobTemplate extends pulumi.CustomResource {
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [JobTemplate] resource.
+  JobTemplate.reference(String urn)
+    : super(
+        'aws:emrcontainers/jobTemplate:JobTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    jobTemplateData = registerOutput<JobTemplateJobTemplateData>('jobTemplateData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplateJobTemplateData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -311,7 +311,7 @@ class NotificationChannel extends pulumi.CustomResource {
           'aws:devopsguru/notificationChannel:NotificationChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     filters = registerOutput<NotificationChannelFilters?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
@@ -323,11 +323,12 @@ class NotificationChannel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotificationChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NotificationChannel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,6 +342,20 @@ class NotificationChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    filters = registerOutput<NotificationChannelFilters?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    sns = registerOutput<NotificationChannelSns>('sns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelSns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NotificationChannel] resource.
+  NotificationChannel.reference(String urn)
+    : super(
+        'aws:devopsguru/notificationChannel:NotificationChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     filters = registerOutput<NotificationChannelFilters?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     sns = registerOutput<NotificationChannelSns>('sns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelSns.fromMap((guardedValue as Map).cast<String, dynamic>()); });

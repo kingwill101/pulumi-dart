@@ -15,7 +15,7 @@ import 'endpoint_state.dart';
 /// $ pulumi import aws:sagemaker/endpoint:Endpoint test_endpoint my-endpoint
 /// ```
 class Endpoint extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) assigned by AWS to this endpoint.
+  /// ARN assigned by AWS to this endpoint.
   late final pulumi.Output<String> arn;
   /// The deployment configuration for an endpoint, which contains the desired deployment strategy and rollback configurations. See Deployment Config.
   late final pulumi.Output<EndpointDeploymentConfig?> deploymentConfig;
@@ -42,15 +42,15 @@ class Endpoint extends pulumi.CustomResource {
           'aws:sagemaker/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deploymentConfig = registerOutput<EndpointDeploymentConfig?>('deploymentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointDeploymentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointConfigName = registerOutput<String>('endpointConfigName');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Endpoint] resource's state with the given [name] and [id].
@@ -58,11 +58,12 @@ class Endpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Endpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -81,7 +82,25 @@ class Endpoint extends pulumi.CustomResource {
     endpointConfigName = registerOutput<String>('endpointConfigName');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Endpoint] resource.
+  Endpoint.reference(String urn)
+    : super(
+        'aws:sagemaker/endpoint:Endpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    deploymentConfig = registerOutput<EndpointDeploymentConfig?>('deploymentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointDeploymentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointConfigName = registerOutput<String>('endpointConfigName');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -5,15 +5,15 @@ import 'task_definition_volume_efs_volume_configuration_authorization_config.dar
 
 class TaskDefinitionVolumeEfsVolumeConfiguration {
   /// Configuration block for authorization for the Amazon EFS file system. Detailed below.
-  final pulumi.Input<TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig>? authorizationConfig;
+  final pulumi.Input<TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig?>? authorizationConfig;
   /// ID of the EFS File System.
   final pulumi.Input<String> fileSystemId;
   /// Directory within the Amazon EFS file system to mount as the root directory inside the host. If this parameter is omitted, the root of the Amazon EFS volume will be used. Specifying / will have the same effect as omitting this parameter. This argument is ignored when using `authorizationConfig`.
-  final pulumi.Input<String>? rootDirectory;
+  final pulumi.Input<String?>? rootDirectory;
   /// Whether or not to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server. Transit encryption must be enabled if Amazon EFS IAM authorization is used. Valid values: `ENABLED`, `DISABLED`. If this parameter is omitted, the default value of `DISABLED` is used.
-  final pulumi.Input<String>? transitEncryption;
+  final pulumi.Input<String?>? transitEncryption;
   /// Port to use for transit encryption. If you do not specify a transit encryption port, it will use the port selection strategy that the Amazon EFS mount helper uses.
-  final pulumi.Input<int>? transitEncryptionPort;
+  final pulumi.Input<int?>? transitEncryptionPort;
 
   /// Creates a new [TaskDefinitionVolumeEfsVolumeConfiguration].
   /// [authorizationConfig] Configuration block for authorization for the Amazon EFS file system. Detailed below.
@@ -45,7 +45,7 @@ class TaskDefinitionVolumeEfsVolumeConfiguration {
       fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
       rootDirectory: (() { final guardedValue = map['rootDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transitEncryption: (() { final guardedValue = map['transitEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transitEncryptionPort: (() { final guardedValue = map['transitEncryptionPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      transitEncryptionPort: (() { final guardedValue = map['transitEncryptionPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

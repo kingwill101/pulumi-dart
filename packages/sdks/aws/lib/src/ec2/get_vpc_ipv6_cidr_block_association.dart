@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcIpv6CidrBlockAssociation {
   /// Association ID for the IPv4 CIDR block.
   final pulumi.Input<String> associationId;
-  /// The source that allocated the IP address space. Values: `amazon`, `byoip`, `none`.
+  /// Source that allocated the IP address space. Values: `amazon`, `byoip`, `none`.
   final pulumi.Input<String> ipSource;
-  /// Indicates whether the address is `public` or `private`.
+  /// Whether the address is `public` or `private`.
   final pulumi.Input<String> ipv6AddressAttribute;
   /// IPv6 CIDR block for the association.
   final pulumi.Input<String> ipv6CidrBlock;
@@ -15,18 +15,17 @@ class GetVpcIpv6CidrBlockAssociation {
   final pulumi.Input<String> ipv6Pool;
   /// Name of association's network border group.
   final pulumi.Input<String> networkBorderGroup;
-  /// Current state of the desired VPC.
-  /// Can be either `"pending"` or `"available"`.
+  /// Current state of the desired VPC. Can be either `"pending"` or `"available"`.
   final pulumi.Input<String> state;
 
   /// Creates a new [GetVpcIpv6CidrBlockAssociation].
   /// [associationId] Association ID for the IPv4 CIDR block.
-  /// [ipSource] The source that allocated the IP address space. Values: `amazon`, `byoip`, `none`.
-  /// [ipv6AddressAttribute] Indicates whether the address is `public` or `private`.
+  /// [ipSource] Source that allocated the IP address space. Values: `amazon`, `byoip`, `none`.
+  /// [ipv6AddressAttribute] Whether the address is `public` or `private`.
   /// [ipv6CidrBlock] IPv6 CIDR block for the association.
   /// [ipv6Pool] Name of IPv6 address pool from which the IPv6 CIDR block is allocated.
   /// [networkBorderGroup] Name of association's network border group.
-  /// [state] Current state of the desired VPC.
+  /// [state] Current state of the desired VPC. Can be either `"pending"` or `"available"`.
   const GetVpcIpv6CidrBlockAssociation({
     required this.associationId,
     required this.ipSource,

@@ -25,8 +25,8 @@ class FilterFilterCriteriaVulnerablePackageEpoch {
 
   factory FilterFilterCriteriaVulnerablePackageEpoch.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaVulnerablePackageEpoch(
-      lowerInclusive: pulumi.Input.fromValue(map['lowerInclusive'] as double),
-      upperInclusive: pulumi.Input.fromValue(map['upperInclusive'] as double),
+      lowerInclusive: pulumi.Input.fromValue((map['lowerInclusive'] as num).toDouble()),
+      upperInclusive: pulumi.Input.fromValue((map['upperInclusive'] as num).toDouble()),
     );
   }
 }

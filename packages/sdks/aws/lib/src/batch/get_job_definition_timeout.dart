@@ -20,7 +20,7 @@ class GetJobDefinitionTimeout {
 
   factory GetJobDefinitionTimeout.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionTimeout(
-      attemptDurationSeconds: pulumi.Input.fromValue(map['attemptDurationSeconds'] as int),
+      attemptDurationSeconds: pulumi.Input.fromValue((map['attemptDurationSeconds'] as num).toInt()),
     );
   }
 }

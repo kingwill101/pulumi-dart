@@ -5,7 +5,7 @@ import 'data_set_column_group_geo_spatial_column_group.dart';
 
 class DataSetColumnGroup {
   /// Geospatial column group that denotes a hierarchy. See geo_spatial_column_group.
-  final pulumi.Input<DataSetColumnGroupGeoSpatialColumnGroup>? geoSpatialColumnGroup;
+  final pulumi.Input<DataSetColumnGroupGeoSpatialColumnGroup?>? geoSpatialColumnGroup;
 
   /// Creates a new [DataSetColumnGroup].
   /// [geoSpatialColumnGroup] Geospatial column group that denotes a hierarchy. See geo_spatial_column_group.

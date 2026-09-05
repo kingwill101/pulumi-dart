@@ -7,7 +7,7 @@ class PlanStage {
   /// The time to wait until beginning the next stage. The duration can only be set to 0 if a target is specified.
   final pulumi.Input<int> durationInMinutes;
   /// One or more configuration blocks for specifying the contacts or contact methods that the escalation plan or engagement plan is engaging. See Target below for more details.
-  final pulumi.Input<List<PlanStageTarget>>? targets;
+  final pulumi.Input<List<PlanStageTarget>?>? targets;
 
   /// Creates a new [PlanStage].
   /// [durationInMinutes] The time to wait until beginning the next stage. The duration can only be set to 0 if a target is specified.
@@ -26,7 +26,7 @@ class PlanStage {
 
   factory PlanStage.fromMap(Map<String, dynamic> map) {
     return PlanStage(
-      durationInMinutes: pulumi.Input.fromValue(map['durationInMinutes'] as int),
+      durationInMinutes: pulumi.Input.fromValue((map['durationInMinutes'] as num).toInt()),
       targets: (() { final guardedValue = map['targets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanStageTarget>(guardedValue, (value) => PlanStageTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

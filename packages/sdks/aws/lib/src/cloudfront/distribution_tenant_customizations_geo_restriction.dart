@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionTenantCustomizationsGeoRestriction {
   /// Set of ISO 3166-1-alpha-2 country codes for the restriction. Required if `restrictionType` is `whitelist` or `blacklist`.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// Method to restrict distribution by country: `none`, `whitelist`, or `blacklist`.
-  final pulumi.Input<String>? restrictionType;
+  final pulumi.Input<String?>? restrictionType;
 
   /// Creates a new [DistributionTenantCustomizationsGeoRestriction].
   /// [locations] Set of ISO 3166-1-alpha-2 country codes for the restriction. Required if `restrictionType` is `whitelist` or `blacklist`.

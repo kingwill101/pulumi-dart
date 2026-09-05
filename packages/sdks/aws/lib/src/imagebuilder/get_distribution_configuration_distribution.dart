@@ -17,7 +17,7 @@ class GetDistributionConfigurationDistribution {
   final pulumi.Input<List<GetDistributionConfigurationDistributionFastLaunchConfiguration>> fastLaunchConfigurations;
   /// Nested list of launch template configurations.
   final pulumi.Input<List<GetDistributionConfigurationDistributionLaunchTemplateConfiguration>> launchTemplateConfigurations;
-  /// Set of Amazon Resource Names (ARNs) of License Manager License Configurations.
+  /// Set of ARNs of License Manager License Configurations.
   final pulumi.Input<List<String>> licenseConfigurationArns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String> region;
@@ -31,7 +31,7 @@ class GetDistributionConfigurationDistribution {
   /// [containerDistributionConfigurations] Nested list of container distribution configurations.
   /// [fastLaunchConfigurations] Nested list of Windows faster-launching configurations to use for AMI distribution.
   /// [launchTemplateConfigurations] Nested list of launch template configurations.
-  /// [licenseConfigurationArns] Set of Amazon Resource Names (ARNs) of License Manager License Configurations.
+  /// [licenseConfigurationArns] Set of ARNs of License Manager License Configurations.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3ExportConfigurations] Nested list of S3 export configuration.
   /// [ssmParameterConfigurations] Nested list of SSM parameter configuration.

@@ -10,16 +10,16 @@ import 'default_security_group_ingress.dart';
 /// {@macro pulumi_ec2_default_security_group_default_security_group_args_doc}
 class DefaultSecurityGroupArgs {
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<DefaultSecurityGroupEgress>>? egress;
+  final pulumi.Input<List<DefaultSecurityGroupEgress>?>? egress;
   /// Configuration block. Detailed below.
-  final pulumi.Input<List<DefaultSecurityGroupIngress>>? ingress;
+  final pulumi.Input<List<DefaultSecurityGroupIngress>?>? ingress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<bool>? revokeRulesOnDelete;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<bool?>? revokeRulesOnDelete;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// VPC ID. **Note that changing the `vpcId` will _not_ restore any default security group rules that were modified, added, or removed.** It will be left in its current state.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [DefaultSecurityGroupArgs].
   /// [egress] Configuration block. Detailed below.

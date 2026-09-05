@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointClientConnectOptions {
   /// Indicates whether client connect options are enabled. The default is `false` (not enabled).
-  final pulumi.Input<bool>? enabled;
-  /// The Amazon Resource Name (ARN) of the Lambda function used for connection authorization.
-  final pulumi.Input<String>? lambdaFunctionArn;
+  final pulumi.Input<bool?>? enabled;
+  /// ARN of the Lambda function used for connection authorization.
+  final pulumi.Input<String?>? lambdaFunctionArn;
 
   /// Creates a new [EndpointClientConnectOptions].
   /// [enabled] Indicates whether client connect options are enabled. The default is `false` (not enabled).
-  /// [lambdaFunctionArn] The Amazon Resource Name (ARN) of the Lambda function used for connection authorization.
+  /// [lambdaFunctionArn] ARN of the Lambda function used for connection authorization.
   const EndpointClientConnectOptions({
     this.enabled,
     this.lambdaFunctionArn,

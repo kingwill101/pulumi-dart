@@ -13,20 +13,20 @@ class GetNatGatewayArgs {
   /// The arguments of this data source act as filters for querying the available
   /// NAT Gateways in the current Region. The given filters must match exactly one
   /// NAT Gateway whose data will be exported as attributes.
-  final pulumi.Input<List<GetNatGatewayFilter>>? filters;
+  final pulumi.Input<List<GetNatGatewayFilter>?>? filters;
   /// ID of the specific NAT Gateway to retrieve.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// State of the NAT Gateway (pending | failed | available | deleting | deleted ).
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// ID of subnet that the NAT Gateway resides in.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired NAT Gateway.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ID of the VPC that the NAT Gateway resides in.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [GetNatGatewayArgs].
   /// [filters] Custom filter block as described below.

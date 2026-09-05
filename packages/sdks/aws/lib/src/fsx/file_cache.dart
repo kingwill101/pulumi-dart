@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_cache_args.dart';
+import 'file_cache_data_repository_association.dart';
+import 'file_cache_lustre_configuration.dart';
 import 'file_cache_state.dart';
 
 /// Resource for managing an Amazon File Cache cache.
@@ -14,12 +16,6 @@ import 'file_cache_state.dart';
 ///
 /// const example = new aws.fsx.FileCache("example", {
 ///     dataRepositoryAssociations: [{
-///         dataRepositoryPath: "nfs://filer.domain.com",
-///         dataRepositorySubdirectories: [
-///             "test",
-///             "test2",
-///         ],
-///         fileCachePath: "/ns1",
 ///         nfs: [{
 ///             dnsIps: [
 ///                 "192.168.0.1",
@@ -27,17 +23,23 @@ import 'file_cache_state.dart';
 ///             ],
 ///             version: "NFS3",
 ///         }],
+///         dataRepositoryPath: "nfs://filer.domain.com",
+///         dataRepositorySubdirectories: [
+///             "test",
+///             "test2",
+///         ],
+///         fileCachePath: "/ns1",
 ///     }],
-///     fileCacheType: "LUSTRE",
-///     fileCacheTypeVersion: "2.12",
 ///     lustreConfigurations: [{
-///         deploymentType: "CACHE_1",
 ///         metadataConfigurations: [{
 ///             storageCapacity: 2400,
 ///         }],
+///         deploymentType: "CACHE_1",
 ///         perUnitStorageThroughput: 1000,
 ///         weeklyMaintenanceStartTime: "2:05:00",
 ///     }],
+///     fileCacheType: "LUSTRE",
+///     fileCacheTypeVersion: "2.12",
 ///     subnetIds: [test1.id],
 ///     storageCapacity: 1200,
 /// });
@@ -48,12 +50,6 @@ import 'file_cache_state.dart';
 ///
 /// example = aws.fsx.FileCache("example",
 ///     data_repository_associations=[{
-///         "data_repository_path": "nfs://filer.domain.com",
-///         "data_repository_subdirectories": [
-///             "test",
-///             "test2",
-///         ],
-///         "file_cache_path": "/ns1",
 ///         "nfs": [{
 ///             "dns_ips": [
 ///                 "192.168.0.1",
@@ -61,17 +57,23 @@ import 'file_cache_state.dart';
 ///             ],
 ///             "version": "NFS3",
 ///         }],
+///         "data_repository_path": "nfs://filer.domain.com",
+///         "data_repository_subdirectories": [
+///             "test",
+///             "test2",
+///         ],
+///         "file_cache_path": "/ns1",
 ///     }],
-///     file_cache_type="LUSTRE",
-///     file_cache_type_version="2.12",
 ///     lustre_configurations=[{
-///         "deployment_type": "CACHE_1",
 ///         "metadata_configurations": [{
 ///             "storage_capacity": 2400,
 ///         }],
+///         "deployment_type": "CACHE_1",
 ///         "per_unit_storage_throughput": 1000,
 ///         "weekly_maintenance_start_time": "2:05:00",
 ///     }],
+///     file_cache_type="LUSTRE",
+///     file_cache_type_version="2.12",
 ///     subnet_ids=[test1["id"]],
 ///     storage_capacity=1200)
 /// ```
@@ -89,13 +91,6 @@ import 'file_cache_state.dart';
 ///         {
 ///             new Aws.Fsx.Inputs.FileCacheDataRepositoryAssociationArgs
 ///             {
-///                 DataRepositoryPath = "nfs://filer.domain.com",
-///                 DataRepositorySubdirectories = new[]
-///                 {
-///                     "test",
-///                     "test2",
-///                 },
-///                 FileCachePath = "/ns1",
 ///                 Nfs = new[]
 ///                 {
 ///                     new Aws.Fsx.Inputs.FileCacheDataRepositoryAssociationNfArgs
@@ -108,15 +103,19 @@ import 'file_cache_state.dart';
 ///                         Version = "NFS3",
 ///                     },
 ///                 },
+///                 DataRepositoryPath = "nfs://filer.domain.com",
+///                 DataRepositorySubdirectories = new[]
+///                 {
+///                     "test",
+///                     "test2",
+///                 },
+///                 FileCachePath = "/ns1",
 ///             },
 ///         },
-///         FileCacheType = "LUSTRE",
-///         FileCacheTypeVersion = "2.12",
 ///         LustreConfigurations = new[]
 ///         {
 ///             new Aws.Fsx.Inputs.FileCacheLustreConfigurationArgs
 ///             {
-///                 DeploymentType = "CACHE_1",
 ///                 MetadataConfigurations = new[]
 ///                 {
 ///                     new Aws.Fsx.Inputs.FileCacheLustreConfigurationMetadataConfigurationArgs
@@ -124,10 +123,13 @@ import 'file_cache_state.dart';
 ///                         StorageCapacity = 2400,
 ///                     },
 ///                 },
+///                 DeploymentType = "CACHE_1",
 ///                 PerUnitStorageThroughput = 1000,
 ///                 WeeklyMaintenanceStartTime = "2:05:00",
 ///             },
 ///         },
+///         FileCacheType = "LUSTRE",
+///         FileCacheTypeVersion = "2.12",
 ///         SubnetIds = new[]
 ///         {
 ///             test1.Id,
@@ -150,12 +152,6 @@ import 'file_cache_state.dart';
 /// 		_, err := fsx.NewFileCache(ctx, "example", &fsx.FileCacheArgs{
 /// 			DataRepositoryAssociations: fsx.FileCacheDataRepositoryAssociationArray{
 /// 				&fsx.FileCacheDataRepositoryAssociationArgs{
-/// 					DataRepositoryPath: pulumi.String("nfs://filer.domain.com"),
-/// 					DataRepositorySubdirectories: pulumi.StringArray{
-/// 						pulumi.String("test"),
-/// 						pulumi.String("test2"),
-/// 					},
-/// 					FileCachePath: pulumi.String("/ns1"),
 /// 					Nfs: fsx.FileCacheDataRepositoryAssociationNfArray{
 /// 						&fsx.FileCacheDataRepositoryAssociationNfArgs{
 /// 							DnsIps: pulumi.StringArray{
@@ -165,22 +161,28 @@ import 'file_cache_state.dart';
 /// 							Version: pulumi.String("NFS3"),
 /// 						},
 /// 					},
+/// 					DataRepositoryPath: pulumi.String("nfs://filer.domain.com"),
+/// 					DataRepositorySubdirectories: pulumi.StringArray{
+/// 						pulumi.String("test"),
+/// 						pulumi.String("test2"),
+/// 					},
+/// 					FileCachePath: pulumi.String("/ns1"),
 /// 				},
 /// 			},
-/// 			FileCacheType:        pulumi.String("LUSTRE"),
-/// 			FileCacheTypeVersion: pulumi.String("2.12"),
 /// 			LustreConfigurations: fsx.FileCacheLustreConfigurationArray{
 /// 				&fsx.FileCacheLustreConfigurationArgs{
-/// 					DeploymentType: pulumi.String("CACHE_1"),
 /// 					MetadataConfigurations: fsx.FileCacheLustreConfigurationMetadataConfigurationArray{
 /// 						&fsx.FileCacheLustreConfigurationMetadataConfigurationArgs{
 /// 							StorageCapacity: pulumi.Int(2400),
 /// 						},
 /// 					},
+/// 					DeploymentType:             pulumi.String("CACHE_1"),
 /// 					PerUnitStorageThroughput:   pulumi.Int(1000),
 /// 					WeeklyMaintenanceStartTime: pulumi.String("2:05:00"),
 /// 				},
 /// 			},
+/// 			FileCacheType:        pulumi.String("LUSTRE"),
+/// 			FileCacheTypeVersion: pulumi.String("2.12"),
 /// 			SubnetIds: pulumi.StringArray{
 /// 				test1.Id,
 /// 			},
@@ -204,26 +206,26 @@ import 'file_cache_state.dart';
 ///
 /// resource "aws_fsx_filecache" "example" {
 ///   data_repository_associations {
-///     data_repository_path           = "nfs://filer.domain.com"
-///     data_repository_subdirectories = ["test", "test2"]
-///     file_cache_path                = "/ns1"
 ///     nfs {
 ///       dns_ips = ["192.168.0.1", "192.168.0.2"]
 ///       version = "NFS3"
 ///     }
+///     data_repository_path           = "nfs://filer.domain.com"
+///     data_repository_subdirectories = ["test", "test2"]
+///     file_cache_path                = "/ns1"
 ///   }
-///   file_cache_type         = "LUSTRE"
-///   file_cache_type_version = "2.12"
 ///   lustre_configurations {
-///     deployment_type = "CACHE_1"
 ///     metadata_configurations {
 ///       storage_capacity = 2400
 ///     }
+///     deployment_type               = "CACHE_1"
 ///     per_unit_storage_throughput   = 1000
 ///     weekly_maintenance_start_time = "2:05:00"
 ///   }
-///   subnet_ids       = [test1.id]
-///   storage_capacity = 1200
+///   file_cache_type         = "LUSTRE"
+///   file_cache_type_version = "2.12"
+///   subnet_ids              = [test1.id]
+///   storage_capacity        = 1200
 /// }
 /// ```
 /// ```java
@@ -253,28 +255,28 @@ import 'file_cache_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new FileCache("example", FileCacheArgs.builder()
 ///             .dataRepositoryAssociations(FileCacheDataRepositoryAssociationArgs.builder()
-///                 .dataRepositoryPath("nfs://filer.domain.com")
-///                 .dataRepositorySubdirectories(
-///                     "test",
-///                     "test2")
-///                 .fileCachePath("/ns1")
 ///                 .nfs(FileCacheDataRepositoryAssociationNfArgs.builder()
 ///                     .dnsIps(
 ///                         "192.168.0.1",
 ///                         "192.168.0.2")
 ///                     .version("NFS3")
 ///                     .build())
+///                 .dataRepositoryPath("nfs://filer.domain.com")
+///                 .dataRepositorySubdirectories(
+///                     "test",
+///                     "test2")
+///                 .fileCachePath("/ns1")
 ///                 .build())
-///             .fileCacheType("LUSTRE")
-///             .fileCacheTypeVersion("2.12")
 ///             .lustreConfigurations(FileCacheLustreConfigurationArgs.builder()
-///                 .deploymentType("CACHE_1")
 ///                 .metadataConfigurations(FileCacheLustreConfigurationMetadataConfigurationArgs.builder()
 ///                     .storageCapacity(2400)
 ///                     .build())
+///                 .deploymentType("CACHE_1")
 ///                 .perUnitStorageThroughput(1000)
 ///                 .weeklyMaintenanceStartTime("2:05:00")
 ///                 .build())
+///             .fileCacheType("LUSTRE")
+///             .fileCacheTypeVersion("2.12")
 ///             .subnetIds(test1.id())
 ///             .storageCapacity(1200)
 ///             .build());
@@ -288,24 +290,24 @@ import 'file_cache_state.dart';
 ///     type: aws:fsx:FileCache
 ///     properties:
 ///       dataRepositoryAssociations:
-///         - dataRepositoryPath: nfs://filer.domain.com
-///           dataRepositorySubdirectories:
-///             - test
-///             - test2
-///           fileCachePath: /ns1
-///           nfs:
+///         - nfs:
 ///             - dnsIps:
 ///                 - 192.168.0.1
 ///                 - 192.168.0.2
 ///               version: NFS3
-///       fileCacheType: LUSTRE
-///       fileCacheTypeVersion: '2.12'
+///           dataRepositoryPath: nfs://filer.domain.com
+///           dataRepositorySubdirectories:
+///             - test
+///             - test2
+///           fileCachePath: /ns1
 ///       lustreConfigurations:
-///         - deploymentType: CACHE_1
-///           metadataConfigurations:
+///         - metadataConfigurations:
 ///             - storageCapacity: 2400
+///           deploymentType: CACHE_1
 ///           perUnitStorageThroughput: 1000
 ///           weeklyMaintenanceStartTime: 2:05:00
+///       fileCacheType: LUSTRE
+///       fileCacheTypeVersion: '2.12'
 ///       subnetIds:
 ///         - ${test1.id}
 ///       storageCapacity: 1200
@@ -320,15 +322,15 @@ import 'file_cache_state.dart';
 /// $ pulumi import aws:fsx/fileCache:FileCache example fc-8012925589
 /// ```
 class FileCache extends pulumi.CustomResource {
-  /// Amazon Resource Name (ARN) of the cache.
+  /// ARN of the cache.
   late final pulumi.Output<String> arn;
   /// Whether to copy tags for the cache to data repository associations. Defaults to `false`.
   late final pulumi.Output<bool?> copyTagsToDataRepositoryAssociations;
   /// IDs of data repository associations that are associated with the cache.
   late final pulumi.Output<List<String>> dataRepositoryAssociationIds;
   /// Configurations for up to 8 data repository associations (DRAs) to create during cache creation. All configurations must be of the same data repository type, either all S3 or all NFS. Maximum of 8. See `dataRepositoryAssociation` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dataRepositoryAssociations;
-  /// Domain Name System (DNS) name for the cache.
+  late final pulumi.Output<List<FileCacheDataRepositoryAssociation>?> dataRepositoryAssociations;
+  /// DNS name for the cache.
   late final pulumi.Output<String> dnsName;
   /// System-generated, unique ID of the cache.
   late final pulumi.Output<String> fileCacheId;
@@ -336,10 +338,10 @@ class FileCache extends pulumi.CustomResource {
   late final pulumi.Output<String> fileCacheType;
   /// Version for the type of cache to create. The only supported value is `2.12`.
   late final pulumi.Output<String> fileCacheTypeVersion;
-  /// ID of the AWS Key Management Service (KMS) key to use for encrypting data on the cache. Defaults to the Amazon FSx-managed KMS key for your account.
+  /// ID of the KMS key to use for encrypting data on the cache. Defaults to the Amazon FSx-managed KMS key for your account.
   late final pulumi.Output<String> kmsKeyId;
   /// Configuration for the Lustre cache. Required when `fileCacheType` is `LUSTRE`. See `lustreConfiguration` Block below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> lustreConfigurations;
+  late final pulumi.Output<List<FileCacheLustreConfiguration>?> lustreConfigurations;
   /// IDs of the network interfaces.
   late final pulumi.Output<List<String>> networkInterfaceIds;
   /// AWS account that created the cache.
@@ -355,7 +357,7 @@ class FileCache extends pulumi.CustomResource {
   /// Map of tags to assign to the file cache. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// ID of your virtual private cloud (VPC).
+  /// ID of your VPC.
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [FileCache].
@@ -370,26 +372,26 @@ class FileCache extends pulumi.CustomResource {
           'aws:fsx/fileCache:FileCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     copyTagsToDataRepositoryAssociations = registerOutput<bool?>('copyTagsToDataRepositoryAssociations');
-    dataRepositoryAssociationIds = registerOutput<List<String>>('dataRepositoryAssociationIds');
-    dataRepositoryAssociations = registerOutput<List<Map<String, dynamic>>?>('dataRepositoryAssociations');
+    dataRepositoryAssociationIds = registerOutput<List<String>>('dataRepositoryAssociationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataRepositoryAssociations = registerOutput<List<FileCacheDataRepositoryAssociation>?>('dataRepositoryAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileCacheDataRepositoryAssociation>(guardedValue, (value) => FileCacheDataRepositoryAssociation.fromMap((value as Map).cast<String, dynamic>())); });
     dnsName = registerOutput<String>('dnsName');
     fileCacheId = registerOutput<String>('fileCacheId');
     fileCacheType = registerOutput<String>('fileCacheType');
     fileCacheTypeVersion = registerOutput<String>('fileCacheTypeVersion');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    lustreConfigurations = registerOutput<List<Map<String, dynamic>>?>('lustreConfigurations');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    lustreConfigurations = registerOutput<List<FileCacheLustreConfiguration>?>('lustreConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileCacheLustreConfiguration>(guardedValue, (value) => FileCacheLustreConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageCapacity = registerOutput<int>('storageCapacity');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 
@@ -398,11 +400,12 @@ class FileCache extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FileCacheState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FileCache._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -418,22 +421,52 @@ class FileCache extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     copyTagsToDataRepositoryAssociations = registerOutput<bool?>('copyTagsToDataRepositoryAssociations');
-    dataRepositoryAssociationIds = registerOutput<List<String>>('dataRepositoryAssociationIds');
-    dataRepositoryAssociations = registerOutput<List<Map<String, dynamic>>?>('dataRepositoryAssociations');
+    dataRepositoryAssociationIds = registerOutput<List<String>>('dataRepositoryAssociationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataRepositoryAssociations = registerOutput<List<FileCacheDataRepositoryAssociation>?>('dataRepositoryAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileCacheDataRepositoryAssociation>(guardedValue, (value) => FileCacheDataRepositoryAssociation.fromMap((value as Map).cast<String, dynamic>())); });
     dnsName = registerOutput<String>('dnsName');
     fileCacheId = registerOutput<String>('fileCacheId');
     fileCacheType = registerOutput<String>('fileCacheType');
     fileCacheTypeVersion = registerOutput<String>('fileCacheTypeVersion');
     kmsKeyId = registerOutput<String>('kmsKeyId');
-    lustreConfigurations = registerOutput<List<Map<String, dynamic>>?>('lustreConfigurations');
-    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds');
+    lustreConfigurations = registerOutput<List<FileCacheLustreConfiguration>?>('lustreConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileCacheLustreConfiguration>(guardedValue, (value) => FileCacheLustreConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerId = registerOutput<String>('ownerId');
     region = registerOutput<String>('region');
-    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageCapacity = registerOutput<int>('storageCapacity');
-    subnetIds = registerOutput<List<String>>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [FileCache] resource.
+  FileCache.reference(String urn)
+    : super(
+        'aws:fsx/fileCache:FileCache',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    copyTagsToDataRepositoryAssociations = registerOutput<bool?>('copyTagsToDataRepositoryAssociations');
+    dataRepositoryAssociationIds = registerOutput<List<String>>('dataRepositoryAssociationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataRepositoryAssociations = registerOutput<List<FileCacheDataRepositoryAssociation>?>('dataRepositoryAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileCacheDataRepositoryAssociation>(guardedValue, (value) => FileCacheDataRepositoryAssociation.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsName = registerOutput<String>('dnsName');
+    fileCacheId = registerOutput<String>('fileCacheId');
+    fileCacheType = registerOutput<String>('fileCacheType');
+    fileCacheTypeVersion = registerOutput<String>('fileCacheTypeVersion');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    lustreConfigurations = registerOutput<List<FileCacheLustreConfiguration>?>('lustreConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileCacheLustreConfiguration>(guardedValue, (value) => FileCacheLustreConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    networkInterfaceIds = registerOutput<List<String>>('networkInterfaceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storageCapacity = registerOutput<int>('storageCapacity');
+    subnetIds = registerOutput<List<String>>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     vpcId = registerOutput<String>('vpcId');
   }
 }

@@ -267,9 +267,9 @@ class RolePoliciesExclusive extends pulumi.CustomResource {
           'aws:iam/rolePoliciesExclusive:RolePoliciesExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    policyNames = registerOutput<List<String>>('policyNames');
+    policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     roleName = registerOutput<String>('roleName');
   }
 
@@ -278,11 +278,12 @@ class RolePoliciesExclusive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RolePoliciesExclusiveState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RolePoliciesExclusive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -296,7 +297,20 @@ class RolePoliciesExclusive extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    policyNames = registerOutput<List<String>>('policyNames');
+    policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    roleName = registerOutput<String>('roleName');
+  }
+
+  /// Creates a typed reference to an existing [RolePoliciesExclusive] resource.
+  RolePoliciesExclusive.reference(String urn)
+    : super(
+        'aws:iam/rolePoliciesExclusive:RolePoliciesExclusive',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    policyNames = registerOutput<List<String>>('policyNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     roleName = registerOutput<String>('roleName');
   }
 }

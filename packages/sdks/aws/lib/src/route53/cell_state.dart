@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Cell resources.
 class CellState {
   /// ARN of the cell
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Unique name describing the cell.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? cellName;
+  final pulumi.Input<String?>? cellName;
   /// List of cell arns to add as nested fault domains within this cell.
-  final pulumi.Input<List<String>>? cells;
+  final pulumi.Input<List<String>?>? cells;
   /// List of readiness scopes (recovery groups or cells) that contain this cell.
-  final pulumi.Input<List<String>>? parentReadinessScopes;
+  final pulumi.Input<List<String>?>? parentReadinessScopes;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CellState].
   /// [arn] ARN of the cell

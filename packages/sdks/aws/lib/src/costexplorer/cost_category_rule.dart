@@ -6,13 +6,13 @@ import 'cost_category_rule_rule.dart';
 
 class CostCategoryRule {
   /// Configuration block for the value the line item is categorized as if the line item contains the matched dimension. See below.
-  final pulumi.Input<CostCategoryRuleInheritedValue>? inheritedValue;
+  final pulumi.Input<CostCategoryRuleInheritedValue?>? inheritedValue;
   /// Configuration block for the `Expression` object used to categorize costs. See below.
-  final pulumi.Input<CostCategoryRuleRule>? rule;
+  final pulumi.Input<CostCategoryRuleRule?>? rule;
   /// You can define the CostCategoryRule rule type as either `REGULAR` or `INHERITED_VALUE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Default value for the cost category.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CostCategoryRule].
   /// [inheritedValue] Configuration block for the value the line item is categorized as if the line item contains the matched dimension. See below.

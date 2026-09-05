@@ -5,46 +5,46 @@ import 'get_elastic_ip_filter.dart';
 
 /// Result data returned by getElasticIp.
 class GetElasticIpResult {
-  final String arn;
+  final String? arn;
   /// ID representing the association of the address with an instance in a VPC.
-  final String associationId;
+  final String? associationId;
   /// Carrier IP address.
-  final String carrierIp;
+  final String? carrierIp;
   /// Customer Owned IP.
-  final String customerOwnedIp;
+  final String? customerOwnedIp;
   /// The ID of a Customer Owned IP Pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-  final String customerOwnedIpv4Pool;
+  final String? customerOwnedIpv4Pool;
   /// Whether the address is for use in EC2-Classic (standard) or in a VPC (vpc).
-  final String domain;
+  final String? domain;
   final List<GetElasticIpFilter>? filters;
   /// If VPC Elastic IP, the allocation identifier. If EC2-Classic Elastic IP, the public IP address.
-  final String id;
+  final String? id;
   /// ID of the instance that the address is associated with (if any).
-  final String instanceId;
+  final String? instanceId;
   /// The ID of an IPAM pool which has an Amazon-provided or BYOIP public IPv4 CIDR provisioned to it.
-  final String ipamPoolId;
+  final String? ipamPoolId;
   /// The ID of the network interface.
-  final String networkInterfaceId;
+  final String? networkInterfaceId;
   /// The ID of the AWS account that owns the network interface.
-  final String networkInterfaceOwnerId;
+  final String? networkInterfaceOwnerId;
   /// Private DNS associated with the Elastic IP address.
-  final String privateDns;
+  final String? privateDns;
   /// Private IP address associated with the Elastic IP address.
-  final String privateIp;
+  final String? privateIp;
   /// The DNS pointer (PTR) record for the IP address.
-  final String ptrRecord;
+  final String? ptrRecord;
   /// Public DNS associated with the Elastic IP address.
-  final String publicDns;
+  final String? publicDns;
   /// Public IP address of Elastic IP.
-  final String publicIp;
+  final String? publicIp;
   /// ID of an address pool.
-  final String publicIpv4Pool;
-  final String region;
+  final String? publicIpv4Pool;
+  final String? region;
   /// Key-value map of tags associated with Elastic IP.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetElasticIpResult].
-  /// [arn] Required.
+  /// [arn] Optional.
   /// [associationId] ID representing the association of the address with an instance in a VPC.
   /// [carrierIp] Carrier IP address.
   /// [customerOwnedIp] Customer Owned IP.
@@ -62,78 +62,78 @@ class GetElasticIpResult {
   /// [publicDns] Public DNS associated with the Elastic IP address.
   /// [publicIp] Public IP address of Elastic IP.
   /// [publicIpv4Pool] ID of an address pool.
-  /// [region] Required.
+  /// [region] Optional.
   /// [tags] Key-value map of tags associated with Elastic IP.
   const GetElasticIpResult({
-    required this.arn,
-    required this.associationId,
-    required this.carrierIp,
-    required this.customerOwnedIp,
-    required this.customerOwnedIpv4Pool,
-    required this.domain,
+    this.arn,
+    this.associationId,
+    this.carrierIp,
+    this.customerOwnedIp,
+    this.customerOwnedIpv4Pool,
+    this.domain,
     this.filters,
-    required this.id,
-    required this.instanceId,
-    required this.ipamPoolId,
-    required this.networkInterfaceId,
-    required this.networkInterfaceOwnerId,
-    required this.privateDns,
-    required this.privateIp,
-    required this.ptrRecord,
-    required this.publicDns,
-    required this.publicIp,
-    required this.publicIpv4Pool,
-    required this.region,
-    required this.tags,
+    this.id,
+    this.instanceId,
+    this.ipamPoolId,
+    this.networkInterfaceId,
+    this.networkInterfaceOwnerId,
+    this.privateDns,
+    this.privateIp,
+    this.ptrRecord,
+    this.publicDns,
+    this.publicIp,
+    this.publicIpv4Pool,
+    this.region,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'associationId': associationId,
-      'carrierIp': carrierIp,
-      'customerOwnedIp': customerOwnedIp,
-      'customerOwnedIpv4Pool': customerOwnedIpv4Pool,
-      'domain': domain,
+      'arn': ?arn,
+      'associationId': ?associationId,
+      'carrierIp': ?carrierIp,
+      'customerOwnedIp': ?customerOwnedIp,
+      'customerOwnedIpv4Pool': ?customerOwnedIpv4Pool,
+      'domain': ?domain,
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetElasticIpFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'instanceId': instanceId,
-      'ipamPoolId': ipamPoolId,
-      'networkInterfaceId': networkInterfaceId,
-      'networkInterfaceOwnerId': networkInterfaceOwnerId,
-      'privateDns': privateDns,
-      'privateIp': privateIp,
-      'ptrRecord': ptrRecord,
-      'publicDns': publicDns,
-      'publicIp': publicIp,
-      'publicIpv4Pool': publicIpv4Pool,
-      'region': region,
-      'tags': tags,
+      'id': ?id,
+      'instanceId': ?instanceId,
+      'ipamPoolId': ?ipamPoolId,
+      'networkInterfaceId': ?networkInterfaceId,
+      'networkInterfaceOwnerId': ?networkInterfaceOwnerId,
+      'privateDns': ?privateDns,
+      'privateIp': ?privateIp,
+      'ptrRecord': ?ptrRecord,
+      'publicDns': ?publicDns,
+      'publicIp': ?publicIp,
+      'publicIpv4Pool': ?publicIpv4Pool,
+      'region': ?region,
+      'tags': ?tags,
     };
   }
 
   factory GetElasticIpResult.fromMap(Map<String, dynamic> map) {
     return GetElasticIpResult(
-      arn: map['arn'] as String,
-      associationId: map['associationId'] as String,
-      carrierIp: map['carrierIp'] as String,
-      customerOwnedIp: map['customerOwnedIp'] as String,
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] as String,
-      domain: map['domain'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      associationId: (() { final guardedValue = map['associationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      carrierIp: (() { final guardedValue = map['carrierIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customerOwnedIp: (() { final guardedValue = map['customerOwnedIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customerOwnedIpv4Pool: (() { final guardedValue = map['customerOwnedIpv4Pool']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetElasticIpFilter>(guardedValue, (value) => GetElasticIpFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      instanceId: map['instanceId'] as String,
-      ipamPoolId: map['ipamPoolId'] as String,
-      networkInterfaceId: map['networkInterfaceId'] as String,
-      networkInterfaceOwnerId: map['networkInterfaceOwnerId'] as String,
-      privateDns: map['privateDns'] as String,
-      privateIp: map['privateIp'] as String,
-      ptrRecord: map['ptrRecord'] as String,
-      publicDns: map['publicDns'] as String,
-      publicIp: map['publicIp'] as String,
-      publicIpv4Pool: map['publicIpv4Pool'] as String,
-      region: map['region'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipamPoolId: (() { final guardedValue = map['ipamPoolId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkInterfaceId: (() { final guardedValue = map['networkInterfaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkInterfaceOwnerId: (() { final guardedValue = map['networkInterfaceOwnerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateDns: (() { final guardedValue = map['privateDns']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateIp: (() { final guardedValue = map['privateIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ptrRecord: (() { final guardedValue = map['ptrRecord']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicDns: (() { final guardedValue = map['publicDns']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicIp: (() { final guardedValue = map['publicIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicIpv4Pool: (() { final guardedValue = map['publicIpv4Pool']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

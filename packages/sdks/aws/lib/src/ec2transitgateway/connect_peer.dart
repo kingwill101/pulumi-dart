@@ -207,17 +207,17 @@ class ConnectPeer extends pulumi.CustomResource {
           'aws:ec2transitgateway/connectPeer:ConnectPeer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bgpAsn = registerOutput<String>('bgpAsn');
     bgpPeerAddress = registerOutput<String>('bgpPeerAddress');
-    bgpTransitGatewayAddresses = registerOutput<List<String>>('bgpTransitGatewayAddresses');
-    insideCidrBlocks = registerOutput<List<String>>('insideCidrBlocks');
+    bgpTransitGatewayAddresses = registerOutput<List<String>>('bgpTransitGatewayAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    insideCidrBlocks = registerOutput<List<String>>('insideCidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     peerAddress = registerOutput<String>('peerAddress');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayAddress = registerOutput<String>('transitGatewayAddress');
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
   }
@@ -227,11 +227,12 @@ class ConnectPeer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectPeerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectPeer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -248,12 +249,34 @@ class ConnectPeer extends pulumi.CustomResource {
     arn = registerOutput<String>('arn');
     bgpAsn = registerOutput<String>('bgpAsn');
     bgpPeerAddress = registerOutput<String>('bgpPeerAddress');
-    bgpTransitGatewayAddresses = registerOutput<List<String>>('bgpTransitGatewayAddresses');
-    insideCidrBlocks = registerOutput<List<String>>('insideCidrBlocks');
+    bgpTransitGatewayAddresses = registerOutput<List<String>>('bgpTransitGatewayAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    insideCidrBlocks = registerOutput<List<String>>('insideCidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     peerAddress = registerOutput<String>('peerAddress');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transitGatewayAddress = registerOutput<String>('transitGatewayAddress');
+    transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
+  }
+
+  /// Creates a typed reference to an existing [ConnectPeer] resource.
+  ConnectPeer.reference(String urn)
+    : super(
+        'aws:ec2transitgateway/connectPeer:ConnectPeer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    bgpAsn = registerOutput<String>('bgpAsn');
+    bgpPeerAddress = registerOutput<String>('bgpPeerAddress');
+    bgpTransitGatewayAddresses = registerOutput<List<String>>('bgpTransitGatewayAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    insideCidrBlocks = registerOutput<List<String>>('insideCidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    peerAddress = registerOutput<String>('peerAddress');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transitGatewayAddress = registerOutput<String>('transitGatewayAddress');
     transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
   }

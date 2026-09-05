@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledActionTargetActionResizeCluster {
   /// A boolean value indicating whether the resize operation is using the classic resize process. Default: `false`.
-  final pulumi.Input<bool>? classic;
+  final pulumi.Input<bool?>? classic;
   /// The unique identifier for the cluster to resize.
   final pulumi.Input<String> clusterIdentifier;
   /// The new cluster type for the specified cluster.
-  final pulumi.Input<String>? clusterType;
+  final pulumi.Input<String?>? clusterType;
   /// The new node type for the nodes you are adding.
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<String?>? nodeType;
   /// The new number of nodes for the cluster.
-  final pulumi.Input<int>? numberOfNodes;
+  final pulumi.Input<int?>? numberOfNodes;
 
   /// Creates a new [ScheduledActionTargetActionResizeCluster].
   /// [classic] A boolean value indicating whether the resize operation is using the classic resize process. Default: `false`.
@@ -44,7 +44,7 @@ class ScheduledActionTargetActionResizeCluster {
       clusterIdentifier: pulumi.Input.fromValue(map['clusterIdentifier'] as String),
       clusterType: (() { final guardedValue = map['clusterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfNodes: (() { final guardedValue = map['numberOfNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfNodes: (() { final guardedValue = map['numberOfNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

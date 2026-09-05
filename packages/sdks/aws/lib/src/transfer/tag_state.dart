@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Tag resources.
 class TagState {
   /// Tag name.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  /// Amazon Resource Name (ARN) of the Transfer Family resource to tag.
-  final pulumi.Input<String>? resourceArn;
+  final pulumi.Input<String?>? region;
+  /// ARN of the Transfer Family resource to tag.
+  final pulumi.Input<String?>? resourceArn;
   /// Tag value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TagState].
   /// [key] Tag name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceArn] Amazon Resource Name (ARN) of the Transfer Family resource to tag.
+  /// [resourceArn] ARN of the Transfer Family resource to tag.
   /// [value] Tag value.
   const TagState({
     this.key,

@@ -5,9 +5,9 @@ import 'cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication {
   /// Configuration block for specifying SASL client authentication. See clientAuthentication sasl Argument Reference below.
-  final pulumi.Input<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl>? sasl;
+  final pulumi.Input<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl?>? sasl;
   /// Configuration block for specifying TLS client authentication. See clientAuthentication tls Argument Reference below.
-  final pulumi.Input<bool>? tls;
+  final pulumi.Input<bool?>? tls;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication].
   /// [sasl] Configuration block for specifying SASL client authentication. See clientAuthentication sasl Argument Reference below.

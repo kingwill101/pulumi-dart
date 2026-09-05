@@ -6,17 +6,17 @@ import 'cloud_autonomous_vm_cluster_maintenance_window_month.dart';
 
 class CloudAutonomousVmClusterMaintenanceWindow {
   /// Days of the week when maintenance can be performed. Changing this will force terraform to create new resource. See `daysOfWeek` Block below.
-  final pulumi.Input<List<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>>? daysOfWeeks;
+  final pulumi.Input<List<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>?>? daysOfWeeks;
   /// Hours of the day when maintenance can be performed. Changing this will force terraform to create new resource.
-  final pulumi.Input<List<int>>? hoursOfDays;
+  final pulumi.Input<List<int>?>? hoursOfDays;
   /// Lead time in weeks before the maintenance window. Changing this will force terraform to create new resource.
-  final pulumi.Input<int>? leadTimeInWeeks;
+  final pulumi.Input<int?>? leadTimeInWeeks;
   /// Months when maintenance can be performed. Changing this will force terraform to create new resource. See `months` Block below.
-  final pulumi.Input<List<CloudAutonomousVmClusterMaintenanceWindowMonth>>? months;
+  final pulumi.Input<List<CloudAutonomousVmClusterMaintenanceWindowMonth>?>? months;
   /// Preference for the maintenance window scheduling. Changing this will force terraform to create new resource.
   final pulumi.Input<String> preference;
   /// Whether to skip release updates during maintenance. Changing this will force terraform to create new resource.
-  final pulumi.Input<List<int>>? weeksOfMonths;
+  final pulumi.Input<List<int>?>? weeksOfMonths;
 
   /// Creates a new [CloudAutonomousVmClusterMaintenanceWindow].
   /// [daysOfWeeks] Days of the week when maintenance can be performed. Changing this will force terraform to create new resource. See `daysOfWeek` Block below.
@@ -49,7 +49,7 @@ class CloudAutonomousVmClusterMaintenanceWindow {
     return CloudAutonomousVmClusterMaintenanceWindow(
       daysOfWeeks: (() { final guardedValue = map['daysOfWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>(guardedValue, (value) => CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek.fromMap((value as Map).cast<String, dynamic>()))); })(),
       hoursOfDays: (() { final guardedValue = map['hoursOfDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      leadTimeInWeeks: (() { final guardedValue = map['leadTimeInWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      leadTimeInWeeks: (() { final guardedValue = map['leadTimeInWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       months: (() { final guardedValue = map['months']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowMonth>(guardedValue, (value) => CloudAutonomousVmClusterMaintenanceWindowMonth.fromMap((value as Map).cast<String, dynamic>()))); })(),
       preference: pulumi.Input.fromValue(map['preference'] as String),
       weeksOfMonths: (() { final guardedValue = map['weeksOfMonths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),

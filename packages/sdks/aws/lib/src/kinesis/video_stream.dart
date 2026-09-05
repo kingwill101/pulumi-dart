@@ -157,7 +157,7 @@ import 'video_stream_state.dart';
 /// $ pulumi import aws:kinesis/videoStream:VideoStream test_stream arn:aws:kinesisvideo:us-west-2:123456789012:stream/pulumi-kinesis-test/1554978910975
 /// ```
 class VideoStream extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) specifying the Stream (same as `id`)
+  /// ARN specifying the Stream (same as `id`)
   late final pulumi.Output<String> arn;
   /// A time stamp that indicates when the stream was created.
   late final pulumi.Output<String> creationTime;
@@ -165,7 +165,7 @@ class VideoStream extends pulumi.CustomResource {
   late final pulumi.Output<int?> dataRetentionInHours;
   /// The name of the device that is writing to the stream. **In the current implementation, Kinesis Video Streams does not use this name.**
   late final pulumi.Output<String?> deviceName;
-  /// The ID of the AWS Key Management Service (AWS KMS) key that you want Kinesis Video Streams to use to encrypt stream data. If no key ID is specified, the default, Kinesis Video-managed key (`aws/kinesisvideo`) is used.
+  /// ID of the KMS key that you want Kinesis Video Streams to use to encrypt stream data. If no key ID is specified, the default, Kinesis Video-managed key (`aws/kinesisvideo`) is used.
   late final pulumi.Output<String> kmsKeyId;
   /// The media type of the stream. Consumers of the stream can use this information when processing the stream. For more information about media types, see [Media Types](http://www.iana.org/assignments/media-types/media-types.xhtml). If you choose to specify the MediaType, see [Naming Requirements](https://tools.ietf.org/html/rfc6838#section-4.2) for guidelines.
   late final pulumi.Output<String?> mediaType;
@@ -193,7 +193,7 @@ class VideoStream extends pulumi.CustomResource {
           'aws:kinesis/videoStream:VideoStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');
@@ -203,8 +203,8 @@ class VideoStream extends pulumi.CustomResource {
     mediaType = registerOutput<String?>('mediaType');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
   }
 
@@ -213,11 +213,12 @@ class VideoStream extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VideoStreamState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VideoStream._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -239,8 +240,30 @@ class VideoStream extends pulumi.CustomResource {
     mediaType = registerOutput<String?>('mediaType');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [VideoStream] resource.
+  VideoStream.reference(String urn)
+    : super(
+        'aws:kinesis/videoStream:VideoStream',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    creationTime = registerOutput<String>('creationTime');
+    dataRetentionInHours = registerOutput<int?>('dataRetentionInHours');
+    deviceName = registerOutput<String?>('deviceName');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    mediaType = registerOutput<String?>('mediaType');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<String>('version');
   }
 }

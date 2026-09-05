@@ -6,7 +6,7 @@ class ScalingPlanApplicationSourceTagFilter {
   /// Tag key.
   final pulumi.Input<String> key;
   /// Tag values.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ScalingPlanApplicationSourceTagFilter].
   /// [key] Tag key.

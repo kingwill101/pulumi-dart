@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_pool_args.dart';
+import 'identity_pool_cognito_identity_provider.dart';
 import 'identity_pool_state.dart';
 
 /// Provides an AWS Cognito Identity Pool.
@@ -19,9 +20,6 @@ import 'identity_pool_state.dart';
 ///     }).then(invoke => invoke.result),
 /// });
 /// const main = new aws.cognito.IdentityPool("main", {
-///     identityPoolName: "identity pool",
-///     allowUnauthenticatedIdentities: false,
-///     allowClassicFlow: false,
 ///     cognitoIdentityProviders: [
 ///         {
 ///             clientId: "6lhlkkfbfb4q5kpp90urffae",
@@ -34,6 +32,9 @@ import 'identity_pool_state.dart';
 ///             serverSideTokenCheck: false,
 ///         },
 ///     ],
+///     identityPoolName: "identity pool",
+///     allowUnauthenticatedIdentities: false,
+///     allowClassicFlow: false,
 ///     supportedLoginProviders: {
 ///         "graph.facebook.com": "7346241598935552",
 ///         "accounts.google.com": "123456789012.apps.googleusercontent.com",
@@ -51,9 +52,6 @@ import 'identity_pool_state.dart';
 ///     name="my-saml-provider",
 ///     saml_metadata_document=std.file(input="saml-metadata.xml").result)
 /// main = aws.cognito.IdentityPool("main",
-///     identity_pool_name="identity pool",
-///     allow_unauthenticated_identities=False,
-///     allow_classic_flow=False,
 ///     cognito_identity_providers=[
 ///         {
 ///             "client_id": "6lhlkkfbfb4q5kpp90urffae",
@@ -66,6 +64,9 @@ import 'identity_pool_state.dart';
 ///             "server_side_token_check": False,
 ///         },
 ///     ],
+///     identity_pool_name="identity pool",
+///     allow_unauthenticated_identities=False,
+///     allow_classic_flow=False,
 ///     supported_login_providers={
 ///         "graph.facebook.com": "7346241598935552",
 ///         "accounts.google.com": "123456789012.apps.googleusercontent.com",
@@ -93,9 +94,6 @@ import 'identity_pool_state.dart';
 ///
 ///     var main = new Aws.Cognito.IdentityPool("main", new()
 ///     {
-///         IdentityPoolName = "identity pool",
-///         AllowUnauthenticatedIdentities = false,
-///         AllowClassicFlow = false,
 ///         CognitoIdentityProviders = new[]
 ///         {
 ///             new Aws.Cognito.Inputs.IdentityPoolCognitoIdentityProviderArgs
@@ -111,6 +109,9 @@ import 'identity_pool_state.dart';
 ///                 ServerSideTokenCheck = false,
 ///             },
 ///         },
+///         IdentityPoolName = "identity pool",
+///         AllowUnauthenticatedIdentities = false,
+///         AllowClassicFlow = false,
 ///         SupportedLoginProviders =
 ///         {
 ///             { "graph.facebook.com", "7346241598935552" },
@@ -154,9 +155,6 @@ import 'identity_pool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognito.NewIdentityPool(ctx, "main", &cognito.IdentityPoolArgs{
-/// 			IdentityPoolName:               pulumi.String("identity pool"),
-/// 			AllowUnauthenticatedIdentities: pulumi.Bool(false),
-/// 			AllowClassicFlow:               pulumi.Bool(false),
 /// 			CognitoIdentityProviders: cognito.IdentityPoolCognitoIdentityProviderArray{
 /// 				&cognito.IdentityPoolCognitoIdentityProviderArgs{
 /// 					ClientId:             pulumi.String("6lhlkkfbfb4q5kpp90urffae"),
@@ -169,6 +167,9 @@ import 'identity_pool_state.dart';
 /// 					ServerSideTokenCheck: pulumi.Bool(false),
 /// 				},
 /// 			},
+/// 			IdentityPoolName:               pulumi.String("identity pool"),
+/// 			AllowUnauthenticatedIdentities: pulumi.Bool(false),
+/// 			AllowClassicFlow:               pulumi.Bool(false),
 /// 			SupportedLoginProviders: pulumi.StringMap{
 /// 				"graph.facebook.com":  pulumi.String("7346241598935552"),
 /// 				"accounts.google.com": pulumi.String("123456789012.apps.googleusercontent.com"),
@@ -204,9 +205,6 @@ import 'identity_pool_state.dart';
 ///   saml_metadata_document = file("saml-metadata.xml")
 /// }
 /// resource "aws_cognito_identitypool" "main" {
-///   identity_pool_name               = "identity pool"
-///   allow_unauthenticated_identities = false
-///   allow_classic_flow               = false
 ///   cognito_identity_providers {
 ///     client_id               = "6lhlkkfbfb4q5kpp90urffae"
 ///     provider_name           = "cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ"
@@ -217,6 +215,9 @@ import 'identity_pool_state.dart';
 ///     provider_name           = "cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu"
 ///     server_side_token_check = false
 ///   }
+///   identity_pool_name               = "identity pool"
+///   allow_unauthenticated_identities = false
+///   allow_classic_flow               = false
 ///   supported_login_providers = {
 ///     "graph.facebook.com"  = "7346241598935552"
 ///     "accounts.google.com" = "123456789012.apps.googleusercontent.com"
@@ -259,9 +260,6 @@ import 'identity_pool_state.dart';
 ///             .build());
 ///
 ///         var main = new IdentityPool("main", IdentityPoolArgs.builder()
-///             .identityPoolName("identity pool")
-///             .allowUnauthenticatedIdentities(false)
-///             .allowClassicFlow(false)
 ///             .cognitoIdentityProviders(
 ///                 IdentityPoolCognitoIdentityProviderArgs.builder()
 ///                     .clientId("6lhlkkfbfb4q5kpp90urffae")
@@ -273,6 +271,9 @@ import 'identity_pool_state.dart';
 ///                     .providerName("cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu")
 ///                     .serverSideTokenCheck(false)
 ///                     .build())
+///             .identityPoolName("identity pool")
+///             .allowUnauthenticatedIdentities(false)
+///             .allowClassicFlow(false)
 ///             .supportedLoginProviders(Map.ofEntries(
 ///                 Map.entry("graph.facebook.com", "7346241598935552"),
 ///                 Map.entry("accounts.google.com", "123456789012.apps.googleusercontent.com")
@@ -299,9 +300,6 @@ import 'identity_pool_state.dart';
 ///   main:
 ///     type: aws:cognito:IdentityPool
 ///     properties:
-///       identityPoolName: identity pool
-///       allowUnauthenticatedIdentities: false
-///       allowClassicFlow: false
 ///       cognitoIdentityProviders:
 ///         - clientId: 6lhlkkfbfb4q5kpp90urffae
 ///           providerName: cognito-idp.us-east-1.amazonaws.com/us-east-1_Tv0493apJ
@@ -309,6 +307,9 @@ import 'identity_pool_state.dart';
 ///         - clientId: 7kodkvfqfb4qfkp39eurffae
 ///           providerName: cognito-idp.us-east-1.amazonaws.com/eu-west-1_Zr231apJu
 ///           serverSideTokenCheck: false
+///       identityPoolName: identity pool
+///       allowUnauthenticatedIdentities: false
+///       allowClassicFlow: false
 ///       supportedLoginProviders:
 ///         graph.facebook.com: '7346241598935552'
 ///         accounts.google.com: 123456789012.apps.googleusercontent.com
@@ -334,7 +335,7 @@ class IdentityPool extends pulumi.CustomResource {
   /// The ARN of the identity pool.
   late final pulumi.Output<String> arn;
   /// An array of Amazon Cognito Identity user pools and their client IDs.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cognitoIdentityProviders;
+  late final pulumi.Output<List<IdentityPoolCognitoIdentityProvider>?> cognitoIdentityProviders;
   /// The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your
   /// backend and the Cognito service to communicate about the developer provider.
   late final pulumi.Output<String?> developerProviderName;
@@ -344,7 +345,7 @@ class IdentityPool extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> openidConnectProviderArns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// An array of Amazon Resource Names (ARNs) of the SAML provider for your identity.
+  /// An array of ARNs of the SAML provider for your identity.
   late final pulumi.Output<List<String>?> samlProviderArns;
   /// Key-Value pairs mapping provider names to provider app IDs.
   late final pulumi.Output<Map<String, String>?> supportedLoginProviders;
@@ -365,20 +366,20 @@ class IdentityPool extends pulumi.CustomResource {
           'aws:cognito/identityPool:IdentityPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     allowClassicFlow = registerOutput<bool?>('allowClassicFlow');
     allowUnauthenticatedIdentities = registerOutput<bool?>('allowUnauthenticatedIdentities');
     arn = registerOutput<String>('arn');
-    cognitoIdentityProviders = registerOutput<List<Map<String, dynamic>>?>('cognitoIdentityProviders');
+    cognitoIdentityProviders = registerOutput<List<IdentityPoolCognitoIdentityProvider>?>('cognitoIdentityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IdentityPoolCognitoIdentityProvider>(guardedValue, (value) => IdentityPoolCognitoIdentityProvider.fromMap((value as Map).cast<String, dynamic>())); });
     developerProviderName = registerOutput<String?>('developerProviderName');
     identityPoolName = registerOutput<String>('identityPoolName');
-    openidConnectProviderArns = registerOutput<List<String>?>('openidConnectProviderArns');
+    openidConnectProviderArns = registerOutput<List<String>?>('openidConnectProviderArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    samlProviderArns = registerOutput<List<String>?>('samlProviderArns');
-    supportedLoginProviders = registerOutput<Map<String, String>?>('supportedLoginProviders');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    samlProviderArns = registerOutput<List<String>?>('samlProviderArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedLoginProviders = registerOutput<Map<String, String>?>('supportedLoginProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IdentityPool] resource's state with the given [name] and [id].
@@ -386,11 +387,12 @@ class IdentityPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -407,14 +409,37 @@ class IdentityPool extends pulumi.CustomResource {
     allowClassicFlow = registerOutput<bool?>('allowClassicFlow');
     allowUnauthenticatedIdentities = registerOutput<bool?>('allowUnauthenticatedIdentities');
     arn = registerOutput<String>('arn');
-    cognitoIdentityProviders = registerOutput<List<Map<String, dynamic>>?>('cognitoIdentityProviders');
+    cognitoIdentityProviders = registerOutput<List<IdentityPoolCognitoIdentityProvider>?>('cognitoIdentityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IdentityPoolCognitoIdentityProvider>(guardedValue, (value) => IdentityPoolCognitoIdentityProvider.fromMap((value as Map).cast<String, dynamic>())); });
     developerProviderName = registerOutput<String?>('developerProviderName');
     identityPoolName = registerOutput<String>('identityPoolName');
-    openidConnectProviderArns = registerOutput<List<String>?>('openidConnectProviderArns');
+    openidConnectProviderArns = registerOutput<List<String>?>('openidConnectProviderArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    samlProviderArns = registerOutput<List<String>?>('samlProviderArns');
-    supportedLoginProviders = registerOutput<Map<String, String>?>('supportedLoginProviders');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    samlProviderArns = registerOutput<List<String>?>('samlProviderArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedLoginProviders = registerOutput<Map<String, String>?>('supportedLoginProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IdentityPool] resource.
+  IdentityPool.reference(String urn)
+    : super(
+        'aws:cognito/identityPool:IdentityPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowClassicFlow = registerOutput<bool?>('allowClassicFlow');
+    allowUnauthenticatedIdentities = registerOutput<bool?>('allowUnauthenticatedIdentities');
+    arn = registerOutput<String>('arn');
+    cognitoIdentityProviders = registerOutput<List<IdentityPoolCognitoIdentityProvider>?>('cognitoIdentityProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IdentityPoolCognitoIdentityProvider>(guardedValue, (value) => IdentityPoolCognitoIdentityProvider.fromMap((value as Map).cast<String, dynamic>())); });
+    developerProviderName = registerOutput<String?>('developerProviderName');
+    identityPoolName = registerOutput<String>('identityPoolName');
+    openidConnectProviderArns = registerOutput<List<String>?>('openidConnectProviderArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    samlProviderArns = registerOutput<List<String>?>('samlProviderArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    supportedLoginProviders = registerOutput<Map<String, String>?>('supportedLoginProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

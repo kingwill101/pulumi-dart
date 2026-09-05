@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_group_args.dart';
+import 'parameter_group_parameter.dart';
 import 'parameter_group_state.dart';
 
 /// Provides an ElastiCache parameter group resource.
@@ -14,8 +15,6 @@ import 'parameter_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const _default = new aws.elasticache.ParameterGroup("default", {
-///     name: "cache-params",
-///     family: "redis2.8",
 ///     parameters: [
 ///         {
 ///             name: "activerehashing",
@@ -26,6 +25,8 @@ import 'parameter_group_state.dart';
 ///             value: "2",
 ///         },
 ///     ],
+///     name: "cache-params",
+///     family: "redis2.8",
 /// });
 /// ```
 /// ```python
@@ -33,8 +34,6 @@ import 'parameter_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// default = aws.elasticache.ParameterGroup("default",
-///     name="cache-params",
-///     family="redis2.8",
 ///     parameters=[
 ///         {
 ///             "name": "activerehashing",
@@ -44,7 +43,9 @@ import 'parameter_group_state.dart';
 ///             "name": "min-slaves-to-write",
 ///             "value": "2",
 ///         },
-///     ])
+///     ],
+///     name="cache-params",
+///     family="redis2.8")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -56,8 +57,6 @@ import 'parameter_group_state.dart';
 /// {
 ///     var @default = new Aws.ElastiCache.ParameterGroup("default", new()
 ///     {
-///         Name = "cache-params",
-///         Family = "redis2.8",
 ///         Parameters = new[]
 ///         {
 ///             new Aws.ElastiCache.Inputs.ParameterGroupParameterArgs
@@ -71,6 +70,8 @@ import 'parameter_group_state.dart';
 ///                 Value = "2",
 ///             },
 ///         },
+///         Name = "cache-params",
+///         Family = "redis2.8",
 ///     });
 ///
 /// });
@@ -86,8 +87,6 @@ import 'parameter_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := elasticache.NewParameterGroup(ctx, "default", &elasticache.ParameterGroupArgs{
-/// 			Name:   pulumi.String("cache-params"),
-/// 			Family: pulumi.String("redis2.8"),
 /// 			Parameters: elasticache.ParameterGroupParameterArray{
 /// 				&elasticache.ParameterGroupParameterArgs{
 /// 					Name:  pulumi.String("activerehashing"),
@@ -98,6 +97,8 @@ import 'parameter_group_state.dart';
 /// 					Value: pulumi.String("2"),
 /// 				},
 /// 			},
+/// 			Name:   pulumi.String("cache-params"),
+/// 			Family: pulumi.String("redis2.8"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -116,8 +117,6 @@ import 'parameter_group_state.dart';
 /// }
 ///
 /// resource "aws_elasticache_parametergroup" "default" {
-///   name   = "cache-params"
-///   family = "redis2.8"
 ///   parameters {
 ///     name  = "activerehashing"
 ///     value = "yes"
@@ -126,6 +125,8 @@ import 'parameter_group_state.dart';
 ///     name  = "min-slaves-to-write"
 ///     value = "2"
 ///   }
+///   name   = "cache-params"
+///   family = "redis2.8"
 /// }
 /// ```
 /// ```java
@@ -151,8 +152,6 @@ import 'parameter_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var default_ = new ParameterGroup("default", ParameterGroupArgs.builder()
-///             .name("cache-params")
-///             .family("redis2.8")
 ///             .parameters(
 ///                 ParameterGroupParameterArgs.builder()
 ///                     .name("activerehashing")
@@ -162,6 +161,8 @@ import 'parameter_group_state.dart';
 ///                     .name("min-slaves-to-write")
 ///                     .value("2")
 ///                     .build())
+///             .name("cache-params")
+///             .family("redis2.8")
 ///             .build());
 ///
 ///     }
@@ -172,13 +173,13 @@ import 'parameter_group_state.dart';
 ///   default:
 ///     type: aws:elasticache:ParameterGroup
 ///     properties:
-///       name: cache-params
-///       family: redis2.8
 ///       parameters:
 ///         - name: activerehashing
 ///           value: yes
 ///         - name: min-slaves-to-write
 ///           value: '2'
+///       name: cache-params
+///       family: redis2.8
 /// ```
 ///
 ///
@@ -199,7 +200,7 @@ class ParameterGroup extends pulumi.CustomResource {
   /// The name of the ElastiCache parameter.
   late final pulumi.Output<String> name;
   /// A list of ElastiCache parameters to apply.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<ParameterGroupParameter>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
@@ -219,16 +220,16 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:elasticache/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');
     family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ParameterGroup] resource's state with the given [name] and [id].
@@ -236,11 +237,12 @@ class ParameterGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ParameterGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ParameterGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -258,9 +260,28 @@ class ParameterGroup extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     family = registerOutput<String>('family');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<ParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ParameterGroup] resource.
+  ParameterGroup.reference(String urn)
+    : super(
+        'aws:elasticache/parameterGroup:ParameterGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    family = registerOutput<String>('family');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<List<ParameterGroupParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterGroupParameter>(guardedValue, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

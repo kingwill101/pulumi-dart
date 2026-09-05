@@ -16,6 +16,10 @@ import 'integration_timeouts.dart';
 ///
 /// const example = new aws.redshiftserverless.Namespace("example", {namespaceName: "redshift-example"});
 /// const exampleWorkgroup = new aws.redshiftserverless.Workgroup("example", {
+///     configParameters: [{
+///         parameterKey: "enable_case_sensitive_identifier",
+///         parameterValue: "true",
+///     }],
 ///     namespaceName: example.namespaceName,
 ///     workgroupName: "example-workspace",
 ///     baseCapacity: 8,
@@ -25,15 +29,13 @@ import 'integration_timeouts.dart';
 ///         example2.id,
 ///         example3.id,
 ///     ],
-///     configParameters: [{
-///         parameterKey: "enable_case_sensitive_identifier",
-///         parameterValue: "true",
-///     }],
 /// });
 /// const exampleIntegration = new aws.rds.Integration("example", {
 ///     integrationName: "example",
 ///     sourceArn: exampleAwsRdsCluster.arn,
 ///     targetArn: example.arn,
+/// }, {
+///     ignoreChanges: ["kmsKeyId"],
 /// });
 /// ```
 /// ```python
@@ -42,6 +44,10 @@ import 'integration_timeouts.dart';
 ///
 /// example = aws.redshiftserverless.Namespace("example", namespace_name="redshift-example")
 /// example_workgroup = aws.redshiftserverless.Workgroup("example",
+///     config_parameters=[{
+///         "parameter_key": "enable_case_sensitive_identifier",
+///         "parameter_value": "true",
+///     }],
 ///     namespace_name=example.namespace_name,
 ///     workgroup_name="example-workspace",
 ///     base_capacity=8,
@@ -50,15 +56,12 @@ import 'integration_timeouts.dart';
 ///         example1["id"],
 ///         example2["id"],
 ///         example3["id"],
-///     ],
-///     config_parameters=[{
-///         "parameter_key": "enable_case_sensitive_identifier",
-///         "parameter_value": "true",
-///     }])
+///     ])
 /// example_integration = aws.rds.Integration("example",
 ///     integration_name="example",
 ///     source_arn=example_aws_rds_cluster["arn"],
-///     target_arn=example.arn)
+///     target_arn=example.arn,
+///     opts = pulumi.ResourceOptions(ignore_changes=["kmsKeyId"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -75,6 +78,14 @@ import 'integration_timeouts.dart';
 ///
 ///     var exampleWorkgroup = new Aws.RedshiftServerless.Workgroup("example", new()
 ///     {
+///         ConfigParameters = new[]
+///         {
+///             new Aws.RedshiftServerless.Inputs.WorkgroupConfigParameterArgs
+///             {
+///                 ParameterKey = "enable_case_sensitive_identifier",
+///                 ParameterValue = "true",
+///             },
+///         },
 ///         NamespaceName = example.NamespaceName,
 ///         WorkgroupName = "example-workspace",
 ///         BaseCapacity = 8,
@@ -85,14 +96,6 @@ import 'integration_timeouts.dart';
 ///             example2.Id,
 ///             example3.Id,
 ///         },
-///         ConfigParameters = new[]
-///         {
-///             new Aws.RedshiftServerless.Inputs.WorkgroupConfigParameterArgs
-///             {
-///                 ParameterKey = "enable_case_sensitive_identifier",
-///                 ParameterValue = "true",
-///             },
-///         },
 ///     });
 ///
 ///     var exampleIntegration = new Aws.Rds.Integration("example", new()
@@ -100,6 +103,12 @@ import 'integration_timeouts.dart';
 ///         IntegrationName = "example",
 ///         SourceArn = exampleAwsRdsCluster.Arn,
 ///         TargetArn = example.Arn,
+///     }, new CustomResourceOptions
+///     {
+///         IgnoreChanges =
+///         {
+///             "kmsKeyId",
+///         },
 ///     });
 ///
 /// });
@@ -122,6 +131,12 @@ import 'integration_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = redshiftserverless.NewWorkgroup(ctx, "example", &redshiftserverless.WorkgroupArgs{
+/// 			ConfigParameters: redshiftserverless.WorkgroupConfigParameterArray{
+/// 				&redshiftserverless.WorkgroupConfigParameterArgs{
+/// 					ParameterKey:   pulumi.String("enable_case_sensitive_identifier"),
+/// 					ParameterValue: pulumi.String("true"),
+/// 				},
+/// 			},
 /// 			NamespaceName:      example.NamespaceName,
 /// 			WorkgroupName:      pulumi.String("example-workspace"),
 /// 			BaseCapacity:       pulumi.Int(8),
@@ -131,12 +146,6 @@ import 'integration_timeouts.dart';
 /// 				example2.Id,
 /// 				example3.Id,
 /// 			},
-/// 			ConfigParameters: redshiftserverless.WorkgroupConfigParameterArray{
-/// 				&redshiftserverless.WorkgroupConfigParameterArgs{
-/// 					ParameterKey:   pulumi.String("enable_case_sensitive_identifier"),
-/// 					ParameterValue: pulumi.String("true"),
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -145,7 +154,9 @@ import 'integration_timeouts.dart';
 /// 			IntegrationName: pulumi.String("example"),
 /// 			SourceArn:       pulumi.Any(exampleAwsRdsCluster.Arn),
 /// 			TargetArn:       example.Arn,
-/// 		})
+/// 		}, pulumi.IgnoreChanges([]string{
+/// 			"kmsKeyId",
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -166,17 +177,20 @@ import 'integration_timeouts.dart';
 ///   namespace_name = "redshift-example"
 /// }
 /// resource "aws_redshiftserverless_workgroup" "example" {
+///   config_parameters {
+///     parameter_key   = "enable_case_sensitive_identifier"
+///     parameter_value = "true"
+///   }
 ///   namespace_name      = aws_redshiftserverless_namespace.example.namespace_name
 ///   workgroup_name      = "example-workspace"
 ///   base_capacity       = 8
 ///   publicly_accessible = false
 ///   subnet_ids          = [example1.id, example2.id, example3.id]
-///   config_parameters {
-///     parameter_key   = "enable_case_sensitive_identifier"
-///     parameter_value = "true"
-///   }
 /// }
 /// resource "aws_rds_integration" "example" {
+///   lifecycle {
+///     ignore_changes = [kmsKeyId]
+///   }
 ///   integration_name = "example"
 ///   source_arn       = exampleAwsRdsCluster.arn
 ///   target_arn       = aws_redshiftserverless_namespace.example.arn
@@ -195,6 +209,7 @@ import 'integration_timeouts.dart';
 /// import com.pulumi.aws.redshiftserverless.inputs.WorkgroupConfigParameterArgs;
 /// import com.pulumi.aws.rds.Integration;
 /// import com.pulumi.aws.rds.IntegrationArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -213,6 +228,10 @@ import 'integration_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleWorkgroup = new Workgroup("exampleWorkgroup", WorkgroupArgs.builder()
+///             .configParameters(WorkgroupConfigParameterArgs.builder()
+///                 .parameterKey("enable_case_sensitive_identifier")
+///                 .parameterValue("true")
+///                 .build())
 ///             .namespaceName(example.namespaceName())
 ///             .workgroupName("example-workspace")
 ///             .baseCapacity(8)
@@ -221,17 +240,15 @@ import 'integration_timeouts.dart';
 ///                 example1.id(),
 ///                 example2.id(),
 ///                 example3.id())
-///             .configParameters(WorkgroupConfigParameterArgs.builder()
-///                 .parameterKey("enable_case_sensitive_identifier")
-///                 .parameterValue("true")
-///                 .build())
 ///             .build());
 ///
 ///         var exampleIntegration = new Integration("exampleIntegration", IntegrationArgs.builder()
 ///             .integrationName("example")
 ///             .sourceArn(exampleAwsRdsCluster.arn())
 ///             .targetArn(example.arn())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .ignoreChanges("kmsKeyId")
+///                 .build());
 ///
 ///     }
 /// }
@@ -246,6 +263,9 @@ import 'integration_timeouts.dart';
 ///     type: aws:redshiftserverless:Workgroup
 ///     name: example
 ///     properties:
+///       configParameters:
+///         - parameterKey: enable_case_sensitive_identifier
+///           parameterValue: 'true'
 ///       namespaceName: ${example.namespaceName}
 ///       workgroupName: example-workspace
 ///       baseCapacity: 8
@@ -254,9 +274,6 @@ import 'integration_timeouts.dart';
 ///         - ${example1.id}
 ///         - ${example2.id}
 ///         - ${example3.id}
-///       configParameters:
-///         - parameterKey: enable_case_sensitive_identifier
-///           parameterValue: 'true'
 ///   exampleIntegration:
 ///     type: aws:rds:Integration
 ///     name: example
@@ -264,6 +281,9 @@ import 'integration_timeouts.dart';
 ///       integrationName: example
 ///       sourceArn: ${exampleAwsRdsCluster.arn}
 ///       targetArn: ${example.arn}
+///     options:
+///       ignoreChanges:
+///         - kmsKeyId
 /// ```
 ///
 ///
@@ -278,20 +298,20 @@ import 'integration_timeouts.dart';
 /// const keyPolicy = current.then(current => aws.iam.getPolicyDocument({
 ///     statements: [
 ///         {
-///             actions: ["kms:*"],
-///             resources: ["*"],
 ///             principals: [{
 ///                 type: "AWS",
 ///                 identifiers: [`arn:aws:iam::${current.accountId}:root`],
 ///             }],
+///             actions: ["kms:*"],
+///             resources: ["*"],
 ///         },
 ///         {
-///             actions: ["kms:CreateGrant"],
-///             resources: ["*"],
 ///             principals: [{
 ///                 type: "Service",
 ///                 identifiers: ["redshift.amazonaws.com"],
 ///             }],
+///             actions: ["kms:CreateGrant"],
+///             resources: ["*"],
 ///         },
 ///     ],
 /// }));
@@ -316,20 +336,20 @@ import 'integration_timeouts.dart';
 /// current = aws.get_caller_identity()
 /// key_policy = aws.iam.get_policy_document(statements=[
 ///     {
-///         "actions": ["kms:*"],
-///         "resources": ["*"],
 ///         "principals": [{
 ///             "type": "AWS",
 ///             "identifiers": [f"arn:aws:iam::{current.account_id}:root"],
 ///         }],
+///         "actions": ["kms:*"],
+///         "resources": ["*"],
 ///     },
 ///     {
-///         "actions": ["kms:CreateGrant"],
-///         "resources": ["*"],
 ///         "principals": [{
 ///             "type": "Service",
 ///             "identifiers": ["redshift.amazonaws.com"],
 ///         }],
+///         "actions": ["kms:CreateGrant"],
+///         "resources": ["*"],
 ///     },
 /// ])
 /// example = aws.kms.Key("example",
@@ -360,14 +380,6 @@ import 'integration_timeouts.dart';
 ///         {
 ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
 ///             {
-///                 Actions = new[]
-///                 {
-///                     "kms:*",
-///                 },
-///                 Resources = new[]
-///                 {
-///                     "*",
-///                 },
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -379,17 +391,17 @@ import 'integration_timeouts.dart';
 ///                         },
 ///                     },
 ///                 },
-///             },
-///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-///             {
 ///                 Actions = new[]
 ///                 {
-///                     "kms:CreateGrant",
+///                     "kms:*",
 ///                 },
 ///                 Resources = new[]
 ///                 {
 ///                     "*",
 ///                 },
+///             },
+///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+///             {
 ///                 Principals = new[]
 ///                 {
 ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
@@ -400,6 +412,14 @@ import 'integration_timeouts.dart';
 ///                             "redshift.amazonaws.com",
 ///                         },
 ///                     },
+///                 },
+///                 Actions = new[]
+///                 {
+///                     "kms:CreateGrant",
+///                 },
+///                 Resources = new[]
+///                 {
+///                     "*",
 ///                 },
 ///             },
 ///         },
@@ -447,12 +467,6 @@ import 'integration_timeouts.dart';
 /// 		keyPolicy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 /// 			Statements: []iam.GetPolicyDocumentStatement{
 /// 				{
-/// 					Actions: []string{
-/// 						"kms:*",
-/// 					},
-/// 					Resources: []string{
-/// 						"*",
-/// 					},
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "AWS",
@@ -461,14 +475,14 @@ import 'integration_timeouts.dart';
 /// 							},
 /// 						},
 /// 					},
-/// 				},
-/// 				{
 /// 					Actions: []string{
-/// 						"kms:CreateGrant",
+/// 						"kms:*",
 /// 					},
 /// 					Resources: []string{
 /// 						"*",
 /// 					},
+/// 				},
+/// 				{
 /// 					Principals: []iam.GetPolicyDocumentStatementPrincipal{
 /// 						{
 /// 							Type: "Service",
@@ -476,6 +490,12 @@ import 'integration_timeouts.dart';
 /// 								"redshift.amazonaws.com",
 /// 							},
 /// 						},
+/// 					},
+/// 					Actions: []string{
+/// 						"kms:CreateGrant",
+/// 					},
+/// 					Resources: []string{
+/// 						"*",
 /// 					},
 /// 				},
 /// 			},
@@ -519,20 +539,20 @@ import 'integration_timeouts.dart';
 /// }
 /// data "aws_iam_getpolicydocument" "keyPolicy" {
 ///   statements {
-///     actions   = ["kms:*"]
-///     resources = ["*"]
 ///     principals {
 ///       type        = "AWS"
 ///       identifiers = ["arn:aws:iam::${data.aws_getcalleridentity.current.account_id}:root"]
 ///     }
+///     actions   = ["kms:*"]
+///     resources = ["*"]
 ///   }
 ///   statements {
-///     actions   = ["kms:CreateGrant"]
-///     resources = ["*"]
 ///     principals {
 ///       type        = "Service"
 ///       identifiers = ["redshift.amazonaws.com"]
 ///     }
+///     actions   = ["kms:CreateGrant"]
+///     resources = ["*"]
 ///   }
 /// }
 ///
@@ -585,20 +605,20 @@ import 'integration_timeouts.dart';
 ///         final var keyPolicy = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
 ///             .statements(
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .actions("kms:*")
-///                     .resources("*")
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("AWS")
 ///                         .identifiers(String.format("arn:aws:iam::%s:root", current.accountId()))
 ///                         .build())
+///                     .actions("kms:*")
+///                     .resources("*")
 ///                     .build(),
 ///                 GetPolicyDocumentStatementArgs.builder()
-///                     .actions("kms:CreateGrant")
-///                     .resources("*")
 ///                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
 ///                         .type("Service")
 ///                         .identifiers("redshift.amazonaws.com")
 ///                         .build())
+///                     .actions("kms:CreateGrant")
+///                     .resources("*")
 ///                     .build())
 ///             .build());
 ///
@@ -645,22 +665,22 @@ import 'integration_timeouts.dart';
 ///       function: aws:iam:getPolicyDocument
 ///       arguments:
 ///         statements:
-///           - actions:
-///               - kms:*
-///             resources:
-///               - '*'
-///             principals:
+///           - principals:
 ///               - type: AWS
 ///                 identifiers:
 ///                   - arn:aws:iam::${current.accountId}:root
-///           - actions:
-///               - kms:CreateGrant
+///             actions:
+///               - kms:*
 ///             resources:
 ///               - '*'
-///             principals:
+///           - principals:
 ///               - type: Service
 ///                 identifiers:
 ///                   - redshift.amazonaws.com
+///             actions:
+///               - kms:CreateGrant
+///             resources:
+///               - '*'
 /// ```
 ///
 ///
@@ -670,7 +690,7 @@ import 'integration_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the RDS integration.
+/// - `arn` (String) ARN of the RDS integration.
 ///
 ///
 /// Using `pulumi import`, import RDS (Relational Database) Integration using the `arn`. For example:
@@ -727,9 +747,9 @@ class Integration extends pulumi.CustomResource {
           'aws:rds/integration:Integration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');
     dataFilter = registerOutput<String>('dataFilter');
     integrationIdentifier = registerOutput<String>('integrationIdentifier');
@@ -737,8 +757,8 @@ class Integration extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     region = registerOutput<String>('region');
     sourceArn = registerOutput<String>('sourceArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
     timeouts = registerOutput<IntegrationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -748,11 +768,12 @@ class Integration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Integration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -766,7 +787,7 @@ class Integration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext');
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     arn = registerOutput<String>('arn');
     dataFilter = registerOutput<String>('dataFilter');
     integrationIdentifier = registerOutput<String>('integrationIdentifier');
@@ -774,8 +795,31 @@ class Integration extends pulumi.CustomResource {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     region = registerOutput<String>('region');
     sourceArn = registerOutput<String>('sourceArn');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetArn = registerOutput<String>('targetArn');
+    timeouts = registerOutput<IntegrationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Integration] resource.
+  Integration.reference(String urn)
+    : super(
+        'aws:rds/integration:Integration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalEncryptionContext = registerOutput<Map<String, String>?>('additionalEncryptionContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    arn = registerOutput<String>('arn');
+    dataFilter = registerOutput<String>('dataFilter');
+    integrationIdentifier = registerOutput<String>('integrationIdentifier');
+    integrationName = registerOutput<String>('integrationName');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    region = registerOutput<String>('region');
+    sourceArn = registerOutput<String>('sourceArn');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetArn = registerOutput<String>('targetArn');
     timeouts = registerOutput<IntegrationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

@@ -12,7 +12,7 @@ class TransitGatewayConnectPeerAssociationArgs {
   /// ID of the global network.
   final pulumi.Input<String> globalNetworkId;
   /// ID of the link.
-  final pulumi.Input<String>? linkId;
+  final pulumi.Input<String?>? linkId;
   /// ARN of the Connect peer.
   ///
   /// The following arguments are optional:

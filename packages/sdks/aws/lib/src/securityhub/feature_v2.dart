@@ -195,7 +195,7 @@ class FeatureV2 extends pulumi.CustomResource {
           'aws:securityhub/featureV2:FeatureV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     featureName = registerOutput<String>('featureName');
     featureStatus = registerOutput<String>('featureStatus');
@@ -207,11 +207,12 @@ class FeatureV2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FeatureV2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FeatureV2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -225,6 +226,20 @@ class FeatureV2 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    featureName = registerOutput<String>('featureName');
+    featureStatus = registerOutput<String>('featureStatus');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [FeatureV2] resource.
+  FeatureV2.reference(String urn)
+    : super(
+        'aws:securityhub/featureV2:FeatureV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     featureName = registerOutput<String>('featureName');
     featureStatus = registerOutput<String>('featureStatus');
     region = registerOutput<String>('region');

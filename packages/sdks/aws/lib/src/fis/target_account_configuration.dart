@@ -163,7 +163,7 @@ class TargetAccountConfiguration extends pulumi.CustomResource {
           'aws:fis/targetAccountConfiguration:TargetAccountConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String>('description');
@@ -177,11 +177,12 @@ class TargetAccountConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetAccountConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TargetAccountConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -195,6 +196,22 @@ class TargetAccountConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String>('description');
+    experimentTemplateId = registerOutput<String>('experimentTemplateId');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+  }
+
+  /// Creates a typed reference to an existing [TargetAccountConfiguration] resource.
+  TargetAccountConfiguration.reference(String urn)
+    : super(
+        'aws:fis/targetAccountConfiguration:TargetAccountConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String>('description');
     experimentTemplateId = registerOutput<String>('experimentTemplateId');

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_group_policy_attachment_group_policy_attachment_args_doc}
 class GroupPolicyAttachmentArgs {
   /// The group the policy should be applied to
-  final pulumi.Input<String> group;
+  final pulumi.Input<dynamic> group;
   /// The ARN of the policy you want to apply
   final pulumi.Input<String> policyArn;
 
@@ -29,7 +29,7 @@ class GroupPolicyAttachmentArgs {
 
   factory GroupPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentArgs(
-      group: pulumi.Input.fromValue(map['group'] as String),
+      group: pulumi.Input.fromValue(map['group']),
       policyArn: pulumi.Input.fromValue(map['policyArn'] as String),
     );
   }

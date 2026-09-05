@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'application_app_config.dart';
 import 'application_args.dart';
+import 'application_data_source.dart';
 import 'application_iam_identity_center_options.dart';
 import 'application_state.dart';
 import 'application_timeouts.dart';
@@ -116,7 +118,6 @@ import 'application_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.opensearch.Application("example", {
-///     name: "my-opensearch-app",
 ///     appConfigs: [
 ///         {
 ///             key: "opensearchDashboards.dashboardAdmin.users",
@@ -127,6 +128,7 @@ import 'application_timeouts.dart';
 ///             value: "admin-group",
 ///         },
 ///     ],
+///     name: "my-opensearch-app",
 ///     tags: {
 ///         Environment: "production",
 ///         Team: "data-platform",
@@ -138,7 +140,6 @@ import 'application_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.opensearch.Application("example",
-///     name="my-opensearch-app",
 ///     app_configs=[
 ///         {
 ///             "key": "opensearchDashboards.dashboardAdmin.users",
@@ -149,6 +150,7 @@ import 'application_timeouts.dart';
 ///             "value": "admin-group",
 ///         },
 ///     ],
+///     name="my-opensearch-app",
 ///     tags={
 ///         "Environment": "production",
 ///         "Team": "data-platform",
@@ -164,7 +166,6 @@ import 'application_timeouts.dart';
 /// {
 ///     var example = new Aws.OpenSearch.Application("example", new()
 ///     {
-///         Name = "my-opensearch-app",
 ///         AppConfigs = new[]
 ///         {
 ///             new Aws.OpenSearch.Inputs.ApplicationAppConfigArgs
@@ -178,6 +179,7 @@ import 'application_timeouts.dart';
 ///                 Value = "admin-group",
 ///             },
 ///         },
+///         Name = "my-opensearch-app",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -198,7 +200,6 @@ import 'application_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := opensearch.NewApplication(ctx, "example", &opensearch.ApplicationArgs{
-/// 			Name: pulumi.String("my-opensearch-app"),
 /// 			AppConfigs: opensearch.ApplicationAppConfigArray{
 /// 				&opensearch.ApplicationAppConfigArgs{
 /// 					Key:   pulumi.String("opensearchDashboards.dashboardAdmin.users"),
@@ -209,6 +210,7 @@ import 'application_timeouts.dart';
 /// 					Value: pulumi.String("admin-group"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("my-opensearch-app"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 				"Team":        pulumi.String("data-platform"),
@@ -231,7 +233,6 @@ import 'application_timeouts.dart';
 /// }
 ///
 /// resource "aws_opensearch_application" "example" {
-///   name = "my-opensearch-app"
 ///   app_configs {
 ///     key   = "opensearchDashboards.dashboardAdmin.users"
 ///     value = "admin-user"
@@ -240,6 +241,7 @@ import 'application_timeouts.dart';
 ///     key   = "opensearchDashboards.dashboardAdmin.groups"
 ///     value = "admin-group"
 ///   }
+///   name = "my-opensearch-app"
 ///   tags = {
 ///     "Environment" = "production"
 ///     "Team"        = "data-platform"
@@ -269,7 +271,6 @@ import 'application_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Application("example", ApplicationArgs.builder()
-///             .name("my-opensearch-app")
 ///             .appConfigs(
 ///                 ApplicationAppConfigArgs.builder()
 ///                     .key("opensearchDashboards.dashboardAdmin.users")
@@ -279,6 +280,7 @@ import 'application_timeouts.dart';
 ///                     .key("opensearchDashboards.dashboardAdmin.groups")
 ///                     .value("admin-group")
 ///                     .build())
+///             .name("my-opensearch-app")
 ///             .tags(Map.ofEntries(
 ///                 Map.entry("Environment", "production"),
 ///                 Map.entry("Team", "data-platform")
@@ -293,12 +295,12 @@ import 'application_timeouts.dart';
 ///   example:
 ///     type: aws:opensearch:Application
 ///     properties:
-///       name: my-opensearch-app
 ///       appConfigs:
 ///         - key: opensearchDashboards.dashboardAdmin.users
 ///           value: admin-user
 ///         - key: opensearchDashboards.dashboardAdmin.groups
 ///           value: admin-group
+///       name: my-opensearch-app
 ///       tags:
 ///         Environment: production
 ///         Team: data-platform
@@ -313,8 +315,6 @@ import 'application_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.opensearch.Domain("example", {
-///     domainName: "example-domain",
-///     engineVersion: "OpenSearch_2.3",
 ///     clusterConfig: {
 ///         instanceType: "t3.small.search",
 ///     },
@@ -322,13 +322,15 @@ import 'application_timeouts.dart';
 ///         ebsEnabled: true,
 ///         volumeSize: 20,
 ///     },
+///     domainName: "example-domain",
+///     engineVersion: "OpenSearch_2.3",
 /// });
 /// const exampleApplication = new aws.opensearch.Application("example", {
-///     name: "my-opensearch-app",
 ///     dataSources: [{
 ///         dataSourceArn: example.arn,
 ///         dataSourceDescription: "Primary OpenSearch domain for analytics",
 ///     }],
+///     name: "my-opensearch-app",
 ///     tags: {
 ///         Environment: "production",
 ///     },
@@ -339,21 +341,21 @@ import 'application_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.opensearch.Domain("example",
-///     domain_name="example-domain",
-///     engine_version="OpenSearch_2.3",
 ///     cluster_config={
 ///         "instance_type": "t3.small.search",
 ///     },
 ///     ebs_options={
 ///         "ebs_enabled": True,
 ///         "volume_size": 20,
-///     })
+///     },
+///     domain_name="example-domain",
+///     engine_version="OpenSearch_2.3")
 /// example_application = aws.opensearch.Application("example",
-///     name="my-opensearch-app",
 ///     data_sources=[{
 ///         "data_source_arn": example.arn,
 ///         "data_source_description": "Primary OpenSearch domain for analytics",
 ///     }],
+///     name="my-opensearch-app",
 ///     tags={
 ///         "Environment": "production",
 ///     })
@@ -368,8 +370,6 @@ import 'application_timeouts.dart';
 /// {
 ///     var example = new Aws.OpenSearch.Domain("example", new()
 ///     {
-///         DomainName = "example-domain",
-///         EngineVersion = "OpenSearch_2.3",
 ///         ClusterConfig = new Aws.OpenSearch.Inputs.DomainClusterConfigArgs
 ///         {
 ///             InstanceType = "t3.small.search",
@@ -379,11 +379,12 @@ import 'application_timeouts.dart';
 ///             EbsEnabled = true,
 ///             VolumeSize = 20,
 ///         },
+///         DomainName = "example-domain",
+///         EngineVersion = "OpenSearch_2.3",
 ///     });
 ///
 ///     var exampleApplication = new Aws.OpenSearch.Application("example", new()
 ///     {
-///         Name = "my-opensearch-app",
 ///         DataSources = new[]
 ///         {
 ///             new Aws.OpenSearch.Inputs.ApplicationDataSourceArgs
@@ -392,6 +393,7 @@ import 'application_timeouts.dart';
 ///                 DataSourceDescription = "Primary OpenSearch domain for analytics",
 ///             },
 ///         },
+///         Name = "my-opensearch-app",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -411,8 +413,6 @@ import 'application_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := opensearch.NewDomain(ctx, "example", &opensearch.DomainArgs{
-/// 			DomainName:    pulumi.String("example-domain"),
-/// 			EngineVersion: pulumi.String("OpenSearch_2.3"),
 /// 			ClusterConfig: &opensearch.DomainClusterConfigArgs{
 /// 				InstanceType: pulumi.String("t3.small.search"),
 /// 			},
@@ -420,18 +420,20 @@ import 'application_timeouts.dart';
 /// 				EbsEnabled: pulumi.Bool(true),
 /// 				VolumeSize: pulumi.Int(20),
 /// 			},
+/// 			DomainName:    pulumi.String("example-domain"),
+/// 			EngineVersion: pulumi.String("OpenSearch_2.3"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = opensearch.NewApplication(ctx, "example", &opensearch.ApplicationArgs{
-/// 			Name: pulumi.String("my-opensearch-app"),
 /// 			DataSources: opensearch.ApplicationDataSourceArray{
 /// 				&opensearch.ApplicationDataSourceArgs{
 /// 					DataSourceArn:         example.Arn,
 /// 					DataSourceDescription: pulumi.String("Primary OpenSearch domain for analytics"),
 /// 				},
 /// 			},
+/// 			Name: pulumi.String("my-opensearch-app"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 			},
@@ -453,8 +455,6 @@ import 'application_timeouts.dart';
 /// }
 ///
 /// resource "aws_opensearch_domain" "example" {
-///   domain_name    = "example-domain"
-///   engine_version = "OpenSearch_2.3"
 ///   cluster_config = {
 ///     instance_type = "t3.small.search"
 ///   }
@@ -462,13 +462,15 @@ import 'application_timeouts.dart';
 ///     ebs_enabled = true
 ///     volume_size = 20
 ///   }
+///   domain_name    = "example-domain"
+///   engine_version = "OpenSearch_2.3"
 /// }
 /// resource "aws_opensearch_application" "example" {
-///   name = "my-opensearch-app"
 ///   data_sources {
 ///     data_source_arn         = aws_opensearch_domain.example.arn
 ///     data_source_description = "Primary OpenSearch domain for analytics"
 ///   }
+///   name = "my-opensearch-app"
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -501,8 +503,6 @@ import 'application_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Domain("example", DomainArgs.builder()
-///             .domainName("example-domain")
-///             .engineVersion("OpenSearch_2.3")
 ///             .clusterConfig(DomainClusterConfigArgs.builder()
 ///                 .instanceType("t3.small.search")
 ///                 .build())
@@ -510,14 +510,16 @@ import 'application_timeouts.dart';
 ///                 .ebsEnabled(true)
 ///                 .volumeSize(20)
 ///                 .build())
+///             .domainName("example-domain")
+///             .engineVersion("OpenSearch_2.3")
 ///             .build());
 ///
 ///         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
-///             .name("my-opensearch-app")
 ///             .dataSources(ApplicationDataSourceArgs.builder()
 ///                 .dataSourceArn(example.arn())
 ///                 .dataSourceDescription("Primary OpenSearch domain for analytics")
 ///                 .build())
+///             .name("my-opensearch-app")
 ///             .tags(Map.of("Environment", "production"))
 ///             .build());
 ///
@@ -529,21 +531,21 @@ import 'application_timeouts.dart';
 ///   example:
 ///     type: aws:opensearch:Domain
 ///     properties:
-///       domainName: example-domain
-///       engineVersion: OpenSearch_2.3
 ///       clusterConfig:
 ///         instanceType: t3.small.search
 ///       ebsOptions:
 ///         ebsEnabled: true
 ///         volumeSize: 20
+///       domainName: example-domain
+///       engineVersion: OpenSearch_2.3
 ///   exampleApplication:
 ///     type: aws:opensearch:Application
 ///     name: example
 ///     properties:
-///       name: my-opensearch-app
 ///       dataSources:
 ///         - dataSourceArn: ${example.arn}
 ///           dataSourceDescription: Primary OpenSearch domain for analytics
+///       name: my-opensearch-app
 ///       tags:
 ///         Environment: production
 /// ```
@@ -631,12 +633,12 @@ import 'application_timeouts.dart';
 ///     policyArn: opensearchIdentityCenter.arn,
 /// });
 /// const exampleApplication = new aws.opensearch.Application("example", {
-///     name: "my-opensearch-app",
 ///     iamIdentityCenterOptions: {
 ///         enabled: true,
 ///         iamIdentityCenterInstanceArn: example.then(example => example.arns?.[0]),
 ///         iamRoleForIdentityCenterApplicationArn: opensearchApplication.arn,
 ///     },
+///     name: "my-opensearch-app",
 ///     tags: {
 ///         Environment: "production",
 ///     },
@@ -719,12 +721,12 @@ import 'application_timeouts.dart';
 ///     role=opensearch_application.name,
 ///     policy_arn=opensearch_identity_center.arn)
 /// example_application = aws.opensearch.Application("example",
-///     name="my-opensearch-app",
 ///     iam_identity_center_options={
 ///         "enabled": True,
 ///         "iam_identity_center_instance_arn": example.arns[0],
 ///         "iam_role_for_identity_center_application_arn": opensearch_application.arn,
 ///     },
+///     name="my-opensearch-app",
 ///     tags={
 ///         "Environment": "production",
 ///     })
@@ -850,13 +852,13 @@ import 'application_timeouts.dart';
 ///
 ///     var exampleApplication = new Aws.OpenSearch.Application("example", new()
 ///     {
-///         Name = "my-opensearch-app",
 ///         IamIdentityCenterOptions = new Aws.OpenSearch.Inputs.ApplicationIamIdentityCenterOptionsArgs
 ///         {
 ///             Enabled = true,
 ///             IamIdentityCenterInstanceArn = example.Apply(getInstancesResult => getInstancesResult.Arns[0]),
 ///             IamRoleForIdentityCenterApplicationArn = opensearchApplication.Arn,
 ///         },
+///         Name = "my-opensearch-app",
 ///         Tags =
 ///         {
 ///             { "Environment", "production" },
@@ -988,12 +990,12 @@ import 'application_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		_, err = opensearch.NewApplication(ctx, "example", &opensearch.ApplicationArgs{
-/// 			Name: pulumi.String("my-opensearch-app"),
 /// 			IamIdentityCenterOptions: &opensearch.ApplicationIamIdentityCenterOptionsArgs{
 /// 				Enabled:                                pulumi.Bool(true),
 /// 				IamIdentityCenterInstanceArn:           pulumi.String(example.Arns[0]),
 /// 				IamRoleForIdentityCenterApplicationArn: opensearchApplication.Arn,
 /// 			},
+/// 			Name: pulumi.String("my-opensearch-app"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Environment": pulumi.String("production"),
 /// 			},
@@ -1081,12 +1083,12 @@ import 'application_timeouts.dart';
 ///   policy_arn = aws_iam_policy.opensearch_identity_center.arn
 /// }
 /// resource "aws_opensearch_application" "example" {
-///   name = "my-opensearch-app"
 ///   iam_identity_center_options = {
 ///     enabled                                      = true
 ///     iam_identity_center_instance_arn             = data.aws_ssoadmin_getinstances.example.arns[0]
 ///     iam_role_for_identity_center_application_arn = aws_iam_role.opensearch_application.arn
 ///   }
+///   name = "my-opensearch-app"
 ///   tags = {
 ///     "Environment" = "production"
 ///   }
@@ -1213,12 +1215,12 @@ import 'application_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
-///             .name("my-opensearch-app")
 ///             .iamIdentityCenterOptions(ApplicationIamIdentityCenterOptionsArgs.builder()
 ///                 .enabled(true)
 ///                 .iamIdentityCenterInstanceArn(example.arns()[0])
 ///                 .iamRoleForIdentityCenterApplicationArn(opensearchApplication.arn())
 ///                 .build())
+///             .name("my-opensearch-app")
 ///             .tags(Map.of("Environment", "production"))
 ///             .build());
 ///
@@ -1290,11 +1292,11 @@ import 'application_timeouts.dart';
 ///     type: aws:opensearch:Application
 ///     name: example
 ///     properties:
-///       name: my-opensearch-app
 ///       iamIdentityCenterOptions:
 ///         enabled: true
 ///         iamIdentityCenterInstanceArn: ${example.arns[0]}
 ///         iamRoleForIdentityCenterApplicationArn: ${opensearchApplication.arn}
+///       name: my-opensearch-app
 ///       tags:
 ///         Environment: production
 /// variables:
@@ -1323,11 +1325,11 @@ import 'application_timeouts.dart';
 /// ```
 class Application extends pulumi.CustomResource {
   /// Configuration block(s) for OpenSearch application settings. See App Config below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> appConfigs;
-  /// The Amazon Resource Name (ARN) of the OpenSearch application.
+  late final pulumi.Output<List<ApplicationAppConfig>?> appConfigs;
+  /// ARN of the OpenSearch application.
   late final pulumi.Output<String> arn;
   /// Configuration block(s) for data sources to link to the OpenSearch application. See Data Source below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dataSources;
+  late final pulumi.Output<List<ApplicationDataSource>?> dataSources;
   /// Endpoint URL of the OpenSearch application.
   late final pulumi.Output<String> endpoint;
   /// Configuration block for integrating AWS IAM Identity Center with the OpenSearch application. See IAM Identity Center Options below.
@@ -1356,18 +1358,18 @@ class Application extends pulumi.CustomResource {
           'aws:opensearch/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    appConfigs = registerOutput<List<Map<String, dynamic>>?>('appConfigs');
+    appConfigs = registerOutput<List<ApplicationAppConfig>?>('appConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationAppConfig>(guardedValue, (value) => ApplicationAppConfig.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
-    dataSources = registerOutput<List<Map<String, dynamic>>?>('dataSources');
+    dataSources = registerOutput<List<ApplicationDataSource>?>('dataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationDataSource>(guardedValue, (value) => ApplicationDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     endpoint = registerOutput<String>('endpoint');
     iamIdentityCenterOptions = registerOutput<ApplicationIamIdentityCenterOptions?>('iamIdentityCenterOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIamIdentityCenterOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1376,11 +1378,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1394,16 +1397,38 @@ class Application extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    appConfigs = registerOutput<List<Map<String, dynamic>>?>('appConfigs');
+    appConfigs = registerOutput<List<ApplicationAppConfig>?>('appConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationAppConfig>(guardedValue, (value) => ApplicationAppConfig.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');
-    dataSources = registerOutput<List<Map<String, dynamic>>?>('dataSources');
+    dataSources = registerOutput<List<ApplicationDataSource>?>('dataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationDataSource>(guardedValue, (value) => ApplicationDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     endpoint = registerOutput<String>('endpoint');
     iamIdentityCenterOptions = registerOutput<ApplicationIamIdentityCenterOptions?>('iamIdentityCenterOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIamIdentityCenterOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'aws:opensearch/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appConfigs = registerOutput<List<ApplicationAppConfig>?>('appConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationAppConfig>(guardedValue, (value) => ApplicationAppConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    arn = registerOutput<String>('arn');
+    dataSources = registerOutput<List<ApplicationDataSource>?>('dataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationDataSource>(guardedValue, (value) => ApplicationDataSource.fromMap((value as Map).cast<String, dynamic>())); });
+    endpoint = registerOutput<String>('endpoint');
+    iamIdentityCenterOptions = registerOutput<ApplicationIamIdentityCenterOptions?>('iamIdentityCenterOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIamIdentityCenterOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<ApplicationTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

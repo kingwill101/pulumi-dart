@@ -6,75 +6,75 @@ import 'get_link_bandwidth.dart';
 /// Result data returned by getLink.
 class GetLinkResult {
   /// ARN of the link.
-  final String arn;
+  final String? arn;
   /// Upload speed and download speed of the link as documented below
-  final List<GetLinkBandwidth> bandwidths;
+  final List<GetLinkBandwidth>? bandwidths;
   /// Description of the link.
-  final String description;
-  final String globalNetworkId;
+  final String? description;
+  final String? globalNetworkId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String linkId;
+  final String? id;
+  final String? linkId;
   /// Provider of the link.
-  final String providerName;
+  final String? providerName;
   /// ID of the site.
-  final String siteId;
+  final String? siteId;
   /// Key-value tags for the link.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Type of the link.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetLinkResult].
   /// [arn] ARN of the link.
   /// [bandwidths] Upload speed and download speed of the link as documented below
   /// [description] Description of the link.
-  /// [globalNetworkId] Required.
+  /// [globalNetworkId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [linkId] Required.
+  /// [linkId] Optional.
   /// [providerName] Provider of the link.
   /// [siteId] ID of the site.
   /// [tags] Key-value tags for the link.
   /// [type] Type of the link.
   const GetLinkResult({
-    required this.arn,
-    required this.bandwidths,
-    required this.description,
-    required this.globalNetworkId,
-    required this.id,
-    required this.linkId,
-    required this.providerName,
-    required this.siteId,
-    required this.tags,
-    required this.type,
+    this.arn,
+    this.bandwidths,
+    this.description,
+    this.globalNetworkId,
+    this.id,
+    this.linkId,
+    this.providerName,
+    this.siteId,
+    this.tags,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'bandwidths': pulumi.Input.encodeList<GetLinkBandwidth, Map<String, dynamic>>(bandwidths, (value) => value.toMap()),
-      'description': description,
-      'globalNetworkId': globalNetworkId,
-      'id': id,
-      'linkId': linkId,
-      'providerName': providerName,
-      'siteId': siteId,
-      'tags': tags,
-      'type': type,
+      'arn': ?arn,
+      'bandwidths': ?(() { final guardedValue = bandwidths; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinkBandwidth, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'description': ?description,
+      'globalNetworkId': ?globalNetworkId,
+      'id': ?id,
+      'linkId': ?linkId,
+      'providerName': ?providerName,
+      'siteId': ?siteId,
+      'tags': ?tags,
+      'type': ?type,
     };
   }
 
   factory GetLinkResult.fromMap(Map<String, dynamic> map) {
     return GetLinkResult(
-      arn: map['arn'] as String,
-      bandwidths: pulumi.Input.decodeList<GetLinkBandwidth>(map['bandwidths']!, (value) => GetLinkBandwidth.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] as String,
-      globalNetworkId: map['globalNetworkId'] as String,
-      id: map['id'] as String,
-      linkId: map['linkId'] as String,
-      providerName: map['providerName'] as String,
-      siteId: map['siteId'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      bandwidths: (() { final guardedValue = map['bandwidths']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinkBandwidth>(guardedValue, (value) => GetLinkBandwidth.fromMap((value as Map).cast<String, dynamic>())); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      globalNetworkId: (() { final guardedValue = map['globalNetworkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      linkId: (() { final guardedValue = map['linkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      providerName: (() { final guardedValue = map['providerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

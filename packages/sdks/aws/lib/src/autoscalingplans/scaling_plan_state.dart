@@ -7,15 +7,15 @@ import 'scaling_plan_scaling_instruction.dart';
 /// Input properties used for looking up and filtering ScalingPlan resources.
 class ScalingPlanState {
   /// CloudFormation stack or set of tags. You can create one scaling plan per application source.
-  final pulumi.Input<ScalingPlanApplicationSource>? applicationSource;
+  final pulumi.Input<ScalingPlanApplicationSource?>? applicationSource;
   /// Name of the scaling plan. Names cannot contain vertical bars, colons, or forward slashes.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Scaling instructions. More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html).
-  final pulumi.Input<List<ScalingPlanScalingInstruction>>? scalingInstructions;
+  final pulumi.Input<List<ScalingPlanScalingInstruction>?>? scalingInstructions;
   /// The version number of the scaling plan. This value is always 1.
-  final pulumi.Input<int>? scalingPlanVersion;
+  final pulumi.Input<int?>? scalingPlanVersion;
 
   /// Creates a new [ScalingPlanState].
   /// [applicationSource] CloudFormation stack or set of tags. You can create one scaling plan per application source.
@@ -47,7 +47,7 @@ class ScalingPlanState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scalingInstructions: (() { final guardedValue = map['scalingInstructions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScalingPlanScalingInstruction>(guardedValue, (value) => ScalingPlanScalingInstruction.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      scalingPlanVersion: (() { final guardedValue = map['scalingPlanVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scalingPlanVersion: (() { final guardedValue = map['scalingPlanVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

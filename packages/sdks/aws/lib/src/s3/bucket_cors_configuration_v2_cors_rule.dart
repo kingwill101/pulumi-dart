@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketCorsConfigurationV2CorsRule {
   /// Set of Headers that are specified in the `Access-Control-Request-Headers` header.
-  final pulumi.Input<List<String>>? allowedHeaders;
+  final pulumi.Input<List<String>?>? allowedHeaders;
   /// Set of HTTP methods that you allow the origin to execute. Valid values are `GET`, `PUT`, `HEAD`, `POST`, and `DELETE`.
   final pulumi.Input<List<String>> allowedMethods;
   /// Set of origins you want customers to be able to access the bucket from.
   final pulumi.Input<List<String>> allowedOrigins;
   /// Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript `XMLHttpRequest` object).
-  final pulumi.Input<List<String>>? exposeHeaders;
+  final pulumi.Input<List<String>?>? exposeHeaders;
   /// Unique identifier for the rule. The value cannot be longer than 255 characters.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Time in seconds that your browser is to cache the preflight response for the specified resource.
-  final pulumi.Input<int>? maxAgeSeconds;
+  final pulumi.Input<int?>? maxAgeSeconds;
 
   /// Creates a new [BucketCorsConfigurationV2CorsRule].
   /// [allowedHeaders] Set of Headers that are specified in the `Access-Control-Request-Headers` header.
@@ -50,7 +50,7 @@ class BucketCorsConfigurationV2CorsRule {
       allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
       exposeHeaders: (() { final guardedValue = map['exposeHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxAgeSeconds: (() { final guardedValue = map['maxAgeSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAgeSeconds: (() { final guardedValue = map['maxAgeSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

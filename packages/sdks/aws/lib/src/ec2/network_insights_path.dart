@@ -174,7 +174,7 @@ class NetworkInsightsPath extends pulumi.CustomResource {
           'aws:ec2/networkInsightsPath:NetworkInsightsPath',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destination = registerOutput<String?>('destination');
@@ -188,8 +188,8 @@ class NetworkInsightsPath extends pulumi.CustomResource {
     source = registerOutput<String>('source');
     sourceArn = registerOutput<String>('sourceArn');
     sourceIp = registerOutput<String?>('sourceIp');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NetworkInsightsPath] resource's state with the given [name] and [id].
@@ -197,11 +197,12 @@ class NetworkInsightsPath extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkInsightsPathState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInsightsPath._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -227,7 +228,32 @@ class NetworkInsightsPath extends pulumi.CustomResource {
     source = registerOutput<String>('source');
     sourceArn = registerOutput<String>('sourceArn');
     sourceIp = registerOutput<String?>('sourceIp');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkInsightsPath] resource.
+  NetworkInsightsPath.reference(String urn)
+    : super(
+        'aws:ec2/networkInsightsPath:NetworkInsightsPath',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    destination = registerOutput<String?>('destination');
+    destinationArn = registerOutput<String>('destinationArn');
+    destinationIp = registerOutput<String?>('destinationIp');
+    destinationPort = registerOutput<int?>('destinationPort');
+    filterAtDestination = registerOutput<NetworkInsightsPathFilterAtDestination>('filterAtDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInsightsPathFilterAtDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    filterAtSource = registerOutput<NetworkInsightsPathFilterAtSource>('filterAtSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInsightsPathFilterAtSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    source = registerOutput<String>('source');
+    sourceArn = registerOutput<String>('sourceArn');
+    sourceIp = registerOutput<String?>('sourceIp');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

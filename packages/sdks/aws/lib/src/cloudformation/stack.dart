@@ -362,21 +362,21 @@ class Stack extends pulumi.CustomResource {
           'aws:cloudformation/stack:Stack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
-    capabilities = registerOutput<List<String>?>('capabilities');
+    capabilities = registerOutput<List<String>?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     disableRollback = registerOutput<bool?>('disableRollback');
     iamRoleArn = registerOutput<String?>('iamRoleArn');
     this.name = registerOutput<String>('name');
-    notificationArns = registerOutput<List<String>?>('notificationArns');
+    notificationArns = registerOutput<List<String>?>('notificationArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     onFailure = registerOutput<String?>('onFailure');
-    outputs = registerOutput<Map<String, String>>('outputs');
-    parameters = registerOutput<Map<String, String>>('parameters');
+    outputs = registerOutput<Map<String, String>>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     policyBody = registerOutput<String>('policyBody');
     policyUrl = registerOutput<String?>('policyUrl');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateBody = registerOutput<String>('templateBody');
     templateUrl = registerOutput<String?>('templateUrl');
     timeoutInMinutes = registerOutput<int?>('timeoutInMinutes');
@@ -387,11 +387,12 @@ class Stack extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StackState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Stack._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -405,19 +406,46 @@ class Stack extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    capabilities = registerOutput<List<String>?>('capabilities');
+    capabilities = registerOutput<List<String>?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     disableRollback = registerOutput<bool?>('disableRollback');
     iamRoleArn = registerOutput<String?>('iamRoleArn');
     this.name = registerOutput<String>('name');
-    notificationArns = registerOutput<List<String>?>('notificationArns');
+    notificationArns = registerOutput<List<String>?>('notificationArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     onFailure = registerOutput<String?>('onFailure');
-    outputs = registerOutput<Map<String, String>>('outputs');
-    parameters = registerOutput<Map<String, String>>('parameters');
+    outputs = registerOutput<Map<String, String>>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     policyBody = registerOutput<String>('policyBody');
     policyUrl = registerOutput<String?>('policyUrl');
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateBody = registerOutput<String>('templateBody');
+    templateUrl = registerOutput<String?>('templateUrl');
+    timeoutInMinutes = registerOutput<int?>('timeoutInMinutes');
+  }
+
+  /// Creates a typed reference to an existing [Stack] resource.
+  Stack.reference(String urn)
+    : super(
+        'aws:cloudformation/stack:Stack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    capabilities = registerOutput<List<String>?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    disableRollback = registerOutput<bool?>('disableRollback');
+    iamRoleArn = registerOutput<String?>('iamRoleArn');
+    this.name = registerOutput<String>('name');
+    notificationArns = registerOutput<List<String>?>('notificationArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    onFailure = registerOutput<String?>('onFailure');
+    outputs = registerOutput<Map<String, String>>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    parameters = registerOutput<Map<String, String>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    policyBody = registerOutput<String>('policyBody');
+    policyUrl = registerOutput<String?>('policyUrl');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateBody = registerOutput<String>('templateBody');
     templateUrl = registerOutput<String?>('templateUrl');
     timeoutInMinutes = registerOutput<int?>('timeoutInMinutes');

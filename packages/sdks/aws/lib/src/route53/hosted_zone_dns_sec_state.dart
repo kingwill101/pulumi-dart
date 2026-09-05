@@ -7,9 +7,9 @@ class HostedZoneDnsSecState {
   /// Identifier of the Route 53 Hosted Zone.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String>? hostedZoneId;
+  final pulumi.Input<String?>? hostedZoneId;
   /// Hosted Zone signing status. Valid values: `SIGNING`, `NOT_SIGNING`. Defaults to `SIGNING`.
-  final pulumi.Input<String>? signingStatus;
+  final pulumi.Input<String?>? signingStatus;
 
   /// Creates a new [HostedZoneDnsSecState].
   /// [hostedZoneId] Identifier of the Route 53 Hosted Zone.

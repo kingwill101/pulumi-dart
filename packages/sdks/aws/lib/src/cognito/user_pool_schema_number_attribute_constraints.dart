@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPoolSchemaNumberAttributeConstraints {
   /// Maximum value of an attribute that is of the number data type.
-  final pulumi.Input<String>? maxValue;
+  final pulumi.Input<String?>? maxValue;
   /// Minimum value of an attribute that is of the number data type.
-  final pulumi.Input<String>? minValue;
+  final pulumi.Input<String?>? minValue;
 
   /// Creates a new [UserPoolSchemaNumberAttributeConstraints].
   /// [maxValue] Maximum value of an attribute that is of the number data type.

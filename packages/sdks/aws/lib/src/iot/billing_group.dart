@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'billing_group_args.dart';
+import 'billing_group_metadata.dart';
 import 'billing_group_properties.dart';
 import 'billing_group_state.dart';
 
@@ -13,10 +14,10 @@ import 'billing_group_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.iot.BillingGroup("example", {
-///     name: "example",
 ///     properties: {
 ///         description: "This is my billing group",
 ///     },
+///     name: "example",
 ///     tags: {
 ///         terraform: "true",
 ///     },
@@ -27,10 +28,10 @@ import 'billing_group_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.iot.BillingGroup("example",
-///     name="example",
 ///     properties={
 ///         "description": "This is my billing group",
 ///     },
+///     name="example",
 ///     tags={
 ///         "terraform": "true",
 ///     })
@@ -45,11 +46,11 @@ import 'billing_group_state.dart';
 /// {
 ///     var example = new Aws.Iot.BillingGroup("example", new()
 ///     {
-///         Name = "example",
 ///         Properties = new Aws.Iot.Inputs.BillingGroupPropertiesArgs
 ///         {
 ///             Description = "This is my billing group",
 ///         },
+///         Name = "example",
 ///         Tags =
 ///         {
 ///             { "terraform", "true" },
@@ -69,10 +70,10 @@ import 'billing_group_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := iot.NewBillingGroup(ctx, "example", &iot.BillingGroupArgs{
-/// 			Name: pulumi.String("example"),
 /// 			Properties: &iot.BillingGroupPropertiesArgs{
 /// 				Description: pulumi.String("This is my billing group"),
 /// 			},
+/// 			Name: pulumi.String("example"),
 /// 			Tags: pulumi.StringMap{
 /// 				"terraform": pulumi.String("true"),
 /// 			},
@@ -94,10 +95,10 @@ import 'billing_group_state.dart';
 /// }
 ///
 /// resource "aws_iot_billinggroup" "example" {
-///   name = "example"
 ///   properties = {
 ///     description = "This is my billing group"
 ///   }
+///   name = "example"
 ///   tags = {
 ///     "terraform" = "true"
 ///   }
@@ -126,10 +127,10 @@ import 'billing_group_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new BillingGroup("example", BillingGroupArgs.builder()
-///             .name("example")
 ///             .properties(BillingGroupPropertiesArgs.builder()
 ///                 .description("This is my billing group")
 ///                 .build())
+///             .name("example")
 ///             .tags(Map.of("terraform", "true"))
 ///             .build());
 ///
@@ -141,9 +142,9 @@ import 'billing_group_state.dart';
 ///   example:
 ///     type: aws:iot:BillingGroup
 ///     properties:
-///       name: example
 ///       properties:
 ///         description: This is my billing group
+///       name: example
 ///       tags:
 ///         terraform: 'true'
 /// ```
@@ -159,7 +160,7 @@ import 'billing_group_state.dart';
 class BillingGroup extends pulumi.CustomResource {
   /// The ARN of the Billing Group.
   late final pulumi.Output<String> arn;
-  late final pulumi.Output<List<Map<String, dynamic>>> metadatas;
+  late final pulumi.Output<List<BillingGroupMetadata>> metadatas;
   /// The name of the Billing Group.
   late final pulumi.Output<String> name;
   /// The Billing Group properties. Defined below.
@@ -184,15 +185,15 @@ class BillingGroup extends pulumi.CustomResource {
           'aws:iot/billingGroup:BillingGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
+    metadatas = registerOutput<List<BillingGroupMetadata>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingGroupMetadata>(guardedValue, (value) => BillingGroupMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     properties = registerOutput<BillingGroupProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<int>('version');
   }
 
@@ -201,11 +202,12 @@ class BillingGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BillingGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BillingGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -220,12 +222,31 @@ class BillingGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    metadatas = registerOutput<List<Map<String, dynamic>>>('metadatas');
+    metadatas = registerOutput<List<BillingGroupMetadata>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingGroupMetadata>(guardedValue, (value) => BillingGroupMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     properties = registerOutput<BillingGroupProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [BillingGroup] resource.
+  BillingGroup.reference(String urn)
+    : super(
+        'aws:iot/billingGroup:BillingGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    metadatas = registerOutput<List<BillingGroupMetadata>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingGroupMetadata>(guardedValue, (value) => BillingGroupMetadata.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<BillingGroupProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BillingGroupProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     version = registerOutput<int>('version');
   }
 }

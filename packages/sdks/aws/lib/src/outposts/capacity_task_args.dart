@@ -11,21 +11,21 @@ import 'capacity_task_timeouts.dart';
 /// {@macro pulumi_outposts_capacity_task_capacity_task_args_doc}
 class CapacityTaskArgs {
   /// ID of a specific Outposts asset (hardware server) to target for the capacity task. If omitted, AWS selects an appropriate asset automatically. Discover valid asset IDs with the `aws.outposts.getAssets` data source. Changing this value forces a new resource.
-  final pulumi.Input<String>? assetId;
+  final pulumi.Input<String?>? assetId;
   /// One or more `instancePool` blocks defining the desired instance-type layout for the Outpost. See below. At least one block is required. Changing any value forces a new resource.
-  final pulumi.Input<List<CapacityTaskInstancePool>>? instancePools;
+  final pulumi.Input<List<CapacityTaskInstancePool>?>? instancePools;
   /// Single `instancesToExclude` block specifying user-owned running instances that must not be stopped to free up capacity. See below. Note: AWS does not return this value via the Get/Describe API; after import, you must add the block back to your configuration manually — see Import.
-  final pulumi.Input<CapacityTaskInstancesToExclude>? instancesToExclude;
+  final pulumi.Input<CapacityTaskInstancesToExclude?>? instancesToExclude;
   /// ID of the Amazon Web Services Outposts order associated with the capacity task. Changing this value forces a new resource.
-  final pulumi.Input<String>? orderId;
+  final pulumi.Input<String?>? orderId;
   /// ID or ARN of the Outpost on which to run the capacity task. Both forms are accepted; the provider normalizes the value internally. Changing this value forces a new resource.
   final pulumi.Input<String> outpostIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Action to take if running instances block the capacity task. Valid values are `WAIT_FOR_EVACUATION` and `FAIL_TASK`. Changing this value forces a new resource.
-  final pulumi.Input<String>? taskActionOnBlockingInstances;
+  final pulumi.Input<String?>? taskActionOnBlockingInstances;
   /// Configuration block with timeouts. See below.
-  final pulumi.Input<CapacityTaskTimeouts>? timeouts;
+  final pulumi.Input<CapacityTaskTimeouts?>? timeouts;
 
   /// Creates a new [CapacityTaskArgs].
   /// [assetId] ID of a specific Outposts asset (hardware server) to target for the capacity task. If omitted, AWS selects an appropriate asset automatically. Discover valid asset IDs with the `aws.outposts.getAssets` data source. Changing this value forces a new resource.

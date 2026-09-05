@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectDataDeliveryS3Destination {
   /// The name of the bucket in which Evidently stores evaluation events.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// The bucket prefix in which Evidently stores evaluation events.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [ProjectDataDeliveryS3Destination].
   /// [bucket] The name of the bucket in which Evidently stores evaluation events.

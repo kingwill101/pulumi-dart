@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ScramSecretAssociation resources.
 class ScramSecretAssociationState {
-  /// Amazon Resource Name (ARN) of the MSK cluster.
-  final pulumi.Input<String>? clusterArn;
+  /// ARN of the MSK cluster.
+  final pulumi.Input<String?>? clusterArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of AWS Secrets Manager secret ARNs.
-  final pulumi.Input<List<String>>? secretArnLists;
+  final pulumi.Input<List<String>?>? secretArnLists;
 
   /// Creates a new [ScramSecretAssociationState].
-  /// [clusterArn] Amazon Resource Name (ARN) of the MSK cluster.
+  /// [clusterArn] ARN of the MSK cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArnLists] List of AWS Secrets Manager secret ARNs.
   const ScramSecretAssociationState({

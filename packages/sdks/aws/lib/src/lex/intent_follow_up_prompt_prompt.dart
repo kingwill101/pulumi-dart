@@ -13,7 +13,7 @@ class IntentFollowUpPromptPrompt {
   /// The response card. Amazon Lex will substitute session attributes and
   /// slot values into the response card. For more information, see
   /// [Example: Using a Response Card](https://docs.aws.amazon.com/lex/latest/dg/ex-resp-card.html). Must be less than or equal to 50000 characters in length.
-  final pulumi.Input<String>? responseCard;
+  final pulumi.Input<String?>? responseCard;
 
   /// Creates a new [IntentFollowUpPromptPrompt].
   /// [maxAttempts] The number of times to prompt the user for information. Must be a number between 1 and 5 (inclusive).
@@ -35,7 +35,7 @@ class IntentFollowUpPromptPrompt {
 
   factory IntentFollowUpPromptPrompt.fromMap(Map<String, dynamic> map) {
     return IntentFollowUpPromptPrompt(
-      maxAttempts: pulumi.Input.fromValue(map['maxAttempts'] as int),
+      maxAttempts: pulumi.Input.fromValue((map['maxAttempts'] as num).toInt()),
       messages: pulumi.Input.fromValue(pulumi.Input.decodeList<IntentFollowUpPromptPromptMessage>(map['messages']!, (value) => IntentFollowUpPromptPromptMessage.fromMap((value as Map).cast<String, dynamic>()))),
       responseCard: (() { final guardedValue = map['responseCard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

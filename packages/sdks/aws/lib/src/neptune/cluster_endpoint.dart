@@ -129,7 +129,7 @@ import 'cluster_endpoint_state.dart';
 /// $ pulumi import aws:neptune/clusterEndpoint:ClusterEndpoint example my-cluster:my-endpoint
 /// ```
 class ClusterEndpoint extends pulumi.CustomResource {
-  /// The Neptune Cluster Endpoint Amazon Resource Name (ARN).
+  /// Neptune Cluster Endpoint ARN.
   late final pulumi.Output<String> arn;
   /// The identifier of the endpoint.
   late final pulumi.Output<String> clusterEndpointIdentifier;
@@ -162,18 +162,18 @@ class ClusterEndpoint extends pulumi.CustomResource {
           'aws:neptune/clusterEndpoint:ClusterEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterEndpointIdentifier = registerOutput<String>('clusterEndpointIdentifier');
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     endpoint = registerOutput<String>('endpoint');
     endpointType = registerOutput<String>('endpointType');
-    excludedMembers = registerOutput<List<String>?>('excludedMembers');
+    excludedMembers = registerOutput<List<String>?>('excludedMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    staticMembers = registerOutput<List<String>?>('staticMembers');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    staticMembers = registerOutput<List<String>?>('staticMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ClusterEndpoint] resource's state with the given [name] and [id].
@@ -181,11 +181,12 @@ class ClusterEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -204,10 +205,31 @@ class ClusterEndpoint extends pulumi.CustomResource {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     endpoint = registerOutput<String>('endpoint');
     endpointType = registerOutput<String>('endpointType');
-    excludedMembers = registerOutput<List<String>?>('excludedMembers');
+    excludedMembers = registerOutput<List<String>?>('excludedMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');
-    staticMembers = registerOutput<List<String>?>('staticMembers');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    staticMembers = registerOutput<List<String>?>('staticMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ClusterEndpoint] resource.
+  ClusterEndpoint.reference(String urn)
+    : super(
+        'aws:neptune/clusterEndpoint:ClusterEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    clusterEndpointIdentifier = registerOutput<String>('clusterEndpointIdentifier');
+    clusterIdentifier = registerOutput<String>('clusterIdentifier');
+    endpoint = registerOutput<String>('endpoint');
+    endpointType = registerOutput<String>('endpointType');
+    excludedMembers = registerOutput<List<String>?>('excludedMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    region = registerOutput<String>('region');
+    staticMembers = registerOutput<List<String>?>('staticMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

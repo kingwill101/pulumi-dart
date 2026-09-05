@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SigningCertificate resources.
 class SigningCertificateState {
   /// The contents of the signing certificate in PEM-encoded format.
-  final pulumi.Input<String>? certificateBody;
+  final pulumi.Input<String?>? certificateBody;
   /// The ID for the signing certificate.
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// The status you want to assign to the certificate. `Active` means that the certificate can be used for programmatic calls to Amazon Web Services `Inactive` means that the certificate cannot be used.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The name of the user the signing certificate is for.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [SigningCertificateState].
   /// [certificateBody] The contents of the signing certificate in PEM-encoded format.

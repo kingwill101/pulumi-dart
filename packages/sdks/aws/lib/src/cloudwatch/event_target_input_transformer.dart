@@ -7,7 +7,7 @@ class EventTargetInputTransformer {
   /// * You can have as many as 100 key-value pairs.
   /// * You must use JSON dot notation, not bracket notation.
   /// * The keys can't start with "AWS".
-  final pulumi.Input<Map<String, String>>? inputPaths;
+  final pulumi.Input<Map<String, String>?>? inputPaths;
   /// Template to customize data sent to the target. Must be valid JSON. To send a string value, the string value must include double quotes.
   final pulumi.Input<String> inputTemplate;
 

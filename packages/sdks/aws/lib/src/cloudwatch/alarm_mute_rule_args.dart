@@ -10,23 +10,23 @@ import 'alarm_mute_rule_rule.dart';
 /// {@macro pulumi_cloudwatch_alarm_mute_rule_alarm_mute_rule_args_doc}
 class AlarmMuteRuleArgs {
   /// Description of the alarm mute rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) when the mute rule expires. Seconds must be set to `00` (e.g., `2026-12-31T23:59:00Z`). Must not be set when using `at()` expressions.
-  final pulumi.Input<String>? expireDate;
+  final pulumi.Input<String?>? expireDate;
   /// Alarms to mute. See `muteTargets` block below for details.
-  final pulumi.Input<AlarmMuteRuleMuteTargets>? muteTargets;
+  final pulumi.Input<AlarmMuteRuleMuteTargets?>? muteTargets;
   /// Name of the alarm mute rule. Changing this forces a new resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Rule definition for the mute rule. See `rule` block below for details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<AlarmMuteRuleRule>? rule;
+  final pulumi.Input<AlarmMuteRuleRule?>? rule;
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) when the mute rule becomes active. Seconds must be set to `00` (e.g., `2026-01-01T00:00:00Z`). Must not be set when using `at()` expressions.
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AlarmMuteRuleArgs].
   /// [description] Description of the alarm mute rule.

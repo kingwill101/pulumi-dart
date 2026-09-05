@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsConfigurationFilter {
   /// Object prefix for filtering.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Set of object tags for filtering.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AnalyticsConfigurationFilter].
   /// [prefix] Object prefix for filtering.

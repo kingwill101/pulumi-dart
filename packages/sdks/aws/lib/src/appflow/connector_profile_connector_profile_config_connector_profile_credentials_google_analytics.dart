@@ -5,15 +5,15 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics {
   /// Credentials used to access protected Zendesk resources.
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// Identifier for the desired client.
   final pulumi.Input<String> clientId;
   /// Client secret used by the OAuth client to authenticate to the authorization server.
   final pulumi.Input<String> clientSecret;
   /// OAuth requirement needed to request security tokens from the connector endpoint. See `connector_profile_config.connector_profile_credentials.zendesk.oauth_request` Block for details.
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest>? oauthRequest;
+  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest?>? oauthRequest;
   /// Refresh token used to refresh an expired access token.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics].
   /// [accessToken] Credentials used to access protected Zendesk resources.

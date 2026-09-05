@@ -7,19 +7,19 @@ import 'workflow_step.dart';
 /// Input properties used for looking up and filtering Workflow resources.
 class WorkflowState {
   /// Workflow ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Textual description for the workflow.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Steps (actions) to take if errors are encountered during execution of the workflow. See `onExceptionSteps` Block below.
-  final pulumi.Input<List<WorkflowOnExceptionStep>>? onExceptionSteps;
+  final pulumi.Input<List<WorkflowOnExceptionStep>?>? onExceptionSteps;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Details for the steps that are in the specified workflow. See `steps` Block below.
-  final pulumi.Input<List<WorkflowStep>>? steps;
+  final pulumi.Input<List<WorkflowStep>?>? steps;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [WorkflowState].
   /// [arn] Workflow ARN.

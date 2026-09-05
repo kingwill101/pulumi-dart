@@ -150,10 +150,10 @@ import 'location_smb_state.dart';
 ///
 /// #### Required
 ///
-/// - `arn` (String) Amazon Resource Name (ARN) of the DataSync SMB location.
+/// - `arn` (String) ARN of the DataSync SMB location.
 ///
 ///
-/// Using `pulumi import`, import `aws.datasync.LocationSmb` using the Amazon Resource Name (ARN). For example:
+/// Using `pulumi import`, import `aws.datasync.LocationSmb` using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datasync/locationSmb:LocationSmb example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
@@ -161,7 +161,7 @@ import 'location_smb_state.dart';
 class LocationSmb extends pulumi.CustomResource {
   /// A list of DataSync Agent ARNs with which this location will be associated.
   late final pulumi.Output<List<String>> agentArns;
-  /// Amazon Resource Name (ARN) of the DataSync Location.
+  /// ARN of the DataSync Location.
   late final pulumi.Output<String> arn;
   /// The name of the Windows domain the SMB server belongs to.
   late final pulumi.Output<String> domain;
@@ -195,18 +195,19 @@ class LocationSmb extends pulumi.CustomResource {
           'aws:datasync/locationSmb:LocationSmb',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
-    agentArns = registerOutput<List<String>>('agentArns');
+    agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     domain = registerOutput<String>('domain');
     mountOptions = registerOutput<LocationSmbMountOptions?>('mountOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationSmbMountOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     region = registerOutput<String>('region');
     serverHostname = registerOutput<String>('serverHostname');
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
     user = registerOutput<String>('user');
   }
@@ -216,11 +217,12 @@ class LocationSmb extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocationSmbState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocationSmb._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -234,16 +236,40 @@ class LocationSmb extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    agentArns = registerOutput<List<String>>('agentArns');
+    agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');
     domain = registerOutput<String>('domain');
     mountOptions = registerOutput<LocationSmbMountOptions?>('mountOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationSmbMountOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     region = registerOutput<String>('region');
     serverHostname = registerOutput<String>('serverHostname');
     subdirectory = registerOutput<String>('subdirectory');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    uri = registerOutput<String>('uri');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [LocationSmb] resource.
+  LocationSmb.reference(String urn)
+    : super(
+        'aws:datasync/locationSmb:LocationSmb',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    agentArns = registerOutput<List<String>>('agentArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    arn = registerOutput<String>('arn');
+    domain = registerOutput<String>('domain');
+    mountOptions = registerOutput<LocationSmbMountOptions?>('mountOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationSmbMountOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    password = registerOutput<String>('password', isSecret: true);
+    region = registerOutput<String>('region');
+    serverHostname = registerOutput<String>('serverHostname');
+    subdirectory = registerOutput<String>('subdirectory');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     uri = registerOutput<String>('uri');
     user = registerOutput<String>('user');
   }

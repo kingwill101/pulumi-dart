@@ -7,11 +7,11 @@ import 'virtual_node_spec_backend_virtual_service_client_policy_tls_validation_t
 
 class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust {
   /// AWS Certificate Manager (ACM) certificate. See `spec.listener.tls.certificate.acm` Block for details.
-  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcm>? acm;
+  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcm?>? acm;
   /// File object to send virtual node access logs to. See `spec.logging.access_log.file` Block for details.
-  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFile>? file;
+  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFile?>? file;
   /// TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate. See `spec.listener.tls.validation.trust.sds` Block for details.
-  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustSds>? sds;
+  final pulumi.Input<VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustSds?>? sds;
 
   /// Creates a new [VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust].
   /// [acm] AWS Certificate Manager (ACM) certificate. See `spec.listener.tls.certificate.acm` Block for details.

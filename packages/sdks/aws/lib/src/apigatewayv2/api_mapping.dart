@@ -155,7 +155,7 @@ class ApiMapping extends pulumi.CustomResource {
           'aws:apigatewayv2/apiMapping:ApiMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     apiMappingKey = registerOutput<String?>('apiMappingKey');
@@ -169,11 +169,12 @@ class ApiMapping extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiMappingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiMapping._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -187,6 +188,22 @@ class ApiMapping extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiId = registerOutput<String>('apiId');
+    apiMappingKey = registerOutput<String?>('apiMappingKey');
+    domainName = registerOutput<String>('domainName');
+    region = registerOutput<String>('region');
+    stage = registerOutput<String>('stage');
+  }
+
+  /// Creates a typed reference to an existing [ApiMapping] resource.
+  ApiMapping.reference(String urn)
+    : super(
+        'aws:apigatewayv2/apiMapping:ApiMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiId = registerOutput<String>('apiId');
     apiMappingKey = registerOutput<String?>('apiMappingKey');
     domainName = registerOutput<String>('domainName');

@@ -52,10 +52,10 @@ class GetDirectoryRadiusSetting {
     return GetDirectoryRadiusSetting(
       authenticationProtocol: pulumi.Input.fromValue(map['authenticationProtocol'] as String),
       displayLabel: pulumi.Input.fromValue(map['displayLabel'] as String),
-      radiusPort: pulumi.Input.fromValue(map['radiusPort'] as int),
-      radiusRetries: pulumi.Input.fromValue(map['radiusRetries'] as int),
+      radiusPort: pulumi.Input.fromValue((map['radiusPort'] as num).toInt()),
+      radiusRetries: pulumi.Input.fromValue((map['radiusRetries'] as num).toInt()),
       radiusServers: pulumi.Input.fromValue((map['radiusServers'] as List).cast<String>()),
-      radiusTimeout: pulumi.Input.fromValue(map['radiusTimeout'] as int),
+      radiusTimeout: pulumi.Input.fromValue((map['radiusTimeout'] as num).toInt()),
       useSameUsername: pulumi.Input.fromValue(map['useSameUsername'] as bool),
     );
   }

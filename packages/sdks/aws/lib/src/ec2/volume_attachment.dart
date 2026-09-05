@@ -282,7 +282,7 @@ class VolumeAttachment extends pulumi.CustomResource {
           'aws:ec2/volumeAttachment:VolumeAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     deviceName = registerOutput<String>('deviceName');
     forceDetach = registerOutput<bool?>('forceDetach');
@@ -298,11 +298,12 @@ class VolumeAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -316,6 +317,24 @@ class VolumeAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deviceName = registerOutput<String>('deviceName');
+    forceDetach = registerOutput<bool?>('forceDetach');
+    instanceId = registerOutput<String>('instanceId');
+    region = registerOutput<String>('region');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    stopInstanceBeforeDetaching = registerOutput<bool?>('stopInstanceBeforeDetaching');
+    volumeId = registerOutput<String>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [VolumeAttachment] resource.
+  VolumeAttachment.reference(String urn)
+    : super(
+        'aws:ec2/volumeAttachment:VolumeAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deviceName = registerOutput<String>('deviceName');
     forceDetach = registerOutput<bool?>('forceDetach');
     instanceId = registerOutput<String>('instanceId');

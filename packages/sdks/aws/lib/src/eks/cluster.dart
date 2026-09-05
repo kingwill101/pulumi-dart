@@ -5,6 +5,7 @@ import 'cluster_certificate_authority.dart';
 import 'cluster_compute_config.dart';
 import 'cluster_control_plane_scaling_config.dart';
 import 'cluster_encryption_config.dart';
+import 'cluster_identity.dart';
 import 'cluster_kube_api_server_config.dart';
 import 'cluster_kube_controller_manager_config.dart';
 import 'cluster_kube_scheduler_config.dart';
@@ -49,12 +50,9 @@ import 'cluster_zonal_shift_config.dart';
 ///     role: cluster.name,
 /// });
 /// const example = new aws.eks.Cluster("example", {
-///     name: "example",
 ///     accessConfig: {
 ///         authenticationMode: "API",
 ///     },
-///     roleArn: cluster.arn,
-///     version: "1.35",
 ///     vpcConfig: {
 ///         subnetIds: [
 ///             az1.id,
@@ -62,6 +60,9 @@ import 'cluster_zonal_shift_config.dart';
 ///             az3.id,
 ///         ],
 ///     },
+///     name: "example",
+///     roleArn: cluster.arn,
+///     version: "1.35",
 /// }, {
 ///     dependsOn: [clusterAmazonEKSClusterPolicy],
 /// });
@@ -90,12 +91,9 @@ import 'cluster_zonal_shift_config.dart';
 ///     policy_arn="arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
 ///     role=cluster.name)
 /// example = aws.eks.Cluster("example",
-///     name="example",
 ///     access_config={
 ///         "authentication_mode": "API",
 ///     },
-///     role_arn=cluster.arn,
-///     version="1.35",
 ///     vpc_config={
 ///         "subnet_ids": [
 ///             az1["id"],
@@ -103,6 +101,9 @@ import 'cluster_zonal_shift_config.dart';
 ///             az3["id"],
 ///         ],
 ///     },
+///     name="example",
+///     role_arn=cluster.arn,
+///     version="1.35",
 ///     opts = pulumi.ResourceOptions(depends_on=[cluster_amazon_eks_cluster_policy]))
 /// ```
 /// ```csharp
@@ -147,13 +148,10 @@ import 'cluster_zonal_shift_config.dart';
 ///
 ///     var example = new Aws.Eks.Cluster("example", new()
 ///     {
-///         Name = "example",
 ///         AccessConfig = new Aws.Eks.Inputs.ClusterAccessConfigArgs
 ///         {
 ///             AuthenticationMode = "API",
 ///         },
-///         RoleArn = cluster.Arn,
-///         Version = "1.35",
 ///         VpcConfig = new Aws.Eks.Inputs.ClusterVpcConfigArgs
 ///         {
 ///             SubnetIds = new[]
@@ -163,6 +161,9 @@ import 'cluster_zonal_shift_config.dart';
 ///                 az3.Id,
 ///             },
 ///         },
+///         Name = "example",
+///         RoleArn = cluster.Arn,
+///         Version = "1.35",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -220,12 +221,9 @@ import 'cluster_zonal_shift_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = eks.NewCluster(ctx, "example", &eks.ClusterArgs{
-/// 			Name: pulumi.String("example"),
 /// 			AccessConfig: &eks.ClusterAccessConfigArgs{
 /// 				AuthenticationMode: pulumi.String("API"),
 /// 			},
-/// 			RoleArn: cluster.Arn,
-/// 			Version: pulumi.String("1.35"),
 /// 			VpcConfig: &eks.ClusterVpcConfigArgs{
 /// 				SubnetIds: pulumi.StringArray{
 /// 					az1.Id,
@@ -233,6 +231,9 @@ import 'cluster_zonal_shift_config.dart';
 /// 					az3.Id,
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: cluster.Arn,
+/// 			Version: pulumi.String("1.35"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			clusterAmazonEKSClusterPolicy,
 /// 		}))
@@ -254,15 +255,15 @@ import 'cluster_zonal_shift_config.dart';
 ///
 /// resource "aws_eks_cluster" "example" {
 ///   depends_on = [aws_iam_rolepolicyattachment.cluster_AmazonEKSClusterPolicy]
-///   name       = "example"
 ///   access_config = {
 ///     authentication_mode = "API"
 ///   }
-///   role_arn = aws_iam_role.cluster.arn
-///   version  = "1.35"
 ///   vpc_config = {
 ///     subnet_ids = [az1.id, az2.id, az3.id]
 ///   }
+///   name     = "example"
+///   role_arn = aws_iam_role.cluster.arn
+///   version  = "1.35"
 /// }
 /// resource "aws_iam_role" "cluster" {
 ///   name = "eks-cluster-example"
@@ -335,18 +336,18 @@ import 'cluster_zonal_shift_config.dart';
 ///             .build());
 ///
 ///         var example = new Cluster("example", ClusterArgs.builder()
-///             .name("example")
 ///             .accessConfig(ClusterAccessConfigArgs.builder()
 ///                 .authenticationMode("API")
 ///                 .build())
-///             .roleArn(cluster.arn())
-///             .version("1.35")
 ///             .vpcConfig(ClusterVpcConfigArgs.builder()
 ///                 .subnetIds(
 ///                     az1.id(),
 ///                     az2.id(),
 ///                     az3.id())
 ///                 .build())
+///             .name("example")
+///             .roleArn(cluster.arn())
+///             .version("1.35")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(clusterAmazonEKSClusterPolicy)
 ///                 .build());
@@ -359,16 +360,16 @@ import 'cluster_zonal_shift_config.dart';
 ///   example:
 ///     type: aws:eks:Cluster
 ///     properties:
-///       name: example
 ///       accessConfig:
 ///         authenticationMode: API
-///       roleArn: ${cluster.arn}
-///       version: '1.35'
 ///       vpcConfig:
 ///         subnetIds:
 ///           - ${az1.id}
 ///           - ${az2.id}
 ///           - ${az3.id}
+///       name: example
+///       roleArn: ${cluster.arn}
+///       version: '1.35'
 ///     options:
 ///       dependsOn:
 ///         - ${clusterAmazonEKSClusterPolicy}
@@ -454,13 +455,9 @@ import 'cluster_zonal_shift_config.dart';
 ///     role: cluster.name,
 /// });
 /// const example = new aws.eks.Cluster("example", {
-///     name: "example",
 ///     accessConfig: {
 ///         authenticationMode: "API",
 ///     },
-///     roleArn: cluster.arn,
-///     version: "1.35",
-///     bootstrapSelfManagedAddons: false,
 ///     computeConfig: {
 ///         enabled: true,
 ///         nodePools: ["general-purpose"],
@@ -485,6 +482,10 @@ import 'cluster_zonal_shift_config.dart';
 ///             az3.id,
 ///         ],
 ///     },
+///     name: "example",
+///     roleArn: cluster.arn,
+///     version: "1.35",
+///     bootstrapSelfManagedAddons: false,
 /// }, {
 ///     dependsOn: [
 ///         clusterAmazonEKSClusterPolicy,
@@ -551,13 +552,9 @@ import 'cluster_zonal_shift_config.dart';
 ///     policy_arn="arn:aws:iam::aws:policy/AmazonEKSNetworkingPolicy",
 ///     role=cluster.name)
 /// example = aws.eks.Cluster("example",
-///     name="example",
 ///     access_config={
 ///         "authentication_mode": "API",
 ///     },
-///     role_arn=cluster.arn,
-///     version="1.35",
-///     bootstrap_self_managed_addons=False,
 ///     compute_config={
 ///         "enabled": True,
 ///         "node_pools": ["general-purpose"],
@@ -582,6 +579,10 @@ import 'cluster_zonal_shift_config.dart';
 ///             az3["id"],
 ///         ],
 ///     },
+///     name="example",
+///     role_arn=cluster.arn,
+///     version="1.35",
+///     bootstrap_self_managed_addons=False,
 ///     opts = pulumi.ResourceOptions(depends_on=[
 ///             cluster_amazon_eks_cluster_policy,
 ///             cluster_amazon_eks_compute_policy,
@@ -686,14 +687,10 @@ import 'cluster_zonal_shift_config.dart';
 ///
 ///     var example = new Aws.Eks.Cluster("example", new()
 ///     {
-///         Name = "example",
 ///         AccessConfig = new Aws.Eks.Inputs.ClusterAccessConfigArgs
 ///         {
 ///             AuthenticationMode = "API",
 ///         },
-///         RoleArn = cluster.Arn,
-///         Version = "1.35",
-///         BootstrapSelfManagedAddons = false,
 ///         ComputeConfig = new Aws.Eks.Inputs.ClusterComputeConfigArgs
 ///         {
 ///             Enabled = true,
@@ -728,6 +725,10 @@ import 'cluster_zonal_shift_config.dart';
 ///                 az3.Id,
 ///             },
 ///         },
+///         Name = "example",
+///         RoleArn = cluster.Arn,
+///         Version = "1.35",
+///         BootstrapSelfManagedAddons = false,
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -854,13 +855,9 @@ import 'cluster_zonal_shift_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = eks.NewCluster(ctx, "example", &eks.ClusterArgs{
-/// 			Name: pulumi.String("example"),
 /// 			AccessConfig: &eks.ClusterAccessConfigArgs{
 /// 				AuthenticationMode: pulumi.String("API"),
 /// 			},
-/// 			RoleArn:                    cluster.Arn,
-/// 			Version:                    pulumi.String("1.35"),
-/// 			BootstrapSelfManagedAddons: pulumi.Bool(false),
 /// 			ComputeConfig: &eks.ClusterComputeConfigArgs{
 /// 				Enabled: pulumi.Bool(true),
 /// 				NodePools: pulumi.StringArray{
@@ -887,6 +884,10 @@ import 'cluster_zonal_shift_config.dart';
 /// 					az3.Id,
 /// 				},
 /// 			},
+/// 			Name:                       pulumi.String("example"),
+/// 			RoleArn:                    cluster.Arn,
+/// 			Version:                    pulumi.String("1.35"),
+/// 			BootstrapSelfManagedAddons: pulumi.Bool(false),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			clusterAmazonEKSClusterPolicy,
 /// 			clusterAmazonEKSComputePolicy,
@@ -926,13 +927,9 @@ import 'cluster_zonal_shift_config.dart';
 ///
 /// resource "aws_eks_cluster" "example" {
 ///   depends_on = [aws_iam_rolepolicyattachment.cluster_AmazonEKSClusterPolicy, aws_iam_rolepolicyattachment.cluster_AmazonEKSComputePolicy, aws_iam_rolepolicyattachment.cluster_AmazonEKSBlockStoragePolicy, aws_iam_rolepolicyattachment.cluster_AmazonEKSLoadBalancingPolicy, aws_iam_rolepolicyattachment.cluster_AmazonEKSNetworkingPolicy]
-///   name       = "example"
 ///   access_config = {
 ///     authentication_mode = "API"
 ///   }
-///   role_arn                      = aws_iam_role.cluster.arn
-///   version                       = "1.35"
-///   bootstrap_self_managed_addons = false
 ///   compute_config = {
 ///     enabled       = true
 ///     node_pools    = ["general-purpose"]
@@ -953,6 +950,10 @@ import 'cluster_zonal_shift_config.dart';
 ///     endpoint_public_access  = true
 ///     subnet_ids              = [az1.id, az2.id, az3.id]
 ///   }
+///   name                          = "example"
+///   role_arn                      = aws_iam_role.cluster.arn
+///   version                       = "1.35"
+///   bootstrap_self_managed_addons = false
 /// }
 /// resource "aws_iam_role" "node" {
 ///   name = "eks-auto-node-example"
@@ -1102,13 +1103,9 @@ import 'cluster_zonal_shift_config.dart';
 ///             .build());
 ///
 ///         var example = new Cluster("example", ClusterArgs.builder()
-///             .name("example")
 ///             .accessConfig(ClusterAccessConfigArgs.builder()
 ///                 .authenticationMode("API")
 ///                 .build())
-///             .roleArn(cluster.arn())
-///             .version("1.35")
-///             .bootstrapSelfManagedAddons(false)
 ///             .computeConfig(ClusterComputeConfigArgs.builder()
 ///                 .enabled(true)
 ///                 .nodePools("general-purpose")
@@ -1132,6 +1129,10 @@ import 'cluster_zonal_shift_config.dart';
 ///                     az2.id(),
 ///                     az3.id())
 ///                 .build())
+///             .name("example")
+///             .roleArn(cluster.arn())
+///             .version("1.35")
+///             .bootstrapSelfManagedAddons(false)
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     clusterAmazonEKSClusterPolicy,
@@ -1159,12 +1160,8 @@ import 'cluster_zonal_shift_config.dart';
 ///   example:
 ///     type: aws:eks:Cluster
 ///     properties:
-///       name: example
 ///       accessConfig:
 ///         authenticationMode: API
-///       roleArn: ${cluster.arn}
-///       version: '1.35'
-///       bootstrapSelfManagedAddons: false
 ///       computeConfig:
 ///         enabled: true
 ///         nodePools:
@@ -1183,6 +1180,10 @@ import 'cluster_zonal_shift_config.dart';
 ///           - ${az1.id}
 ///           - ${az2.id}
 ///           - ${az3.id}
+///       name: example
+///       roleArn: ${cluster.arn}
+///       version: '1.35'
+///       bootstrapSelfManagedAddons: false
 ///     options:
 ///       dependsOn:
 ///         - ${clusterAmazonEKSClusterPolicy}
@@ -1290,12 +1291,9 @@ import 'cluster_zonal_shift_config.dart';
 ///     role: cluster.name,
 /// });
 /// const example = new aws.eks.Cluster("example", {
-///     name: "example",
 ///     accessConfig: {
 ///         authenticationMode: "API",
 ///     },
-///     roleArn: cluster.arn,
-///     version: "1.35",
 ///     remoteNetworkConfig: {
 ///         remoteNodeNetworks: {
 ///             cidrs: ["172.16.0.0/18"],
@@ -1313,6 +1311,9 @@ import 'cluster_zonal_shift_config.dart';
 ///             az3.id,
 ///         ],
 ///     },
+///     name: "example",
+///     roleArn: cluster.arn,
+///     version: "1.35",
 /// }, {
 ///     dependsOn: [clusterAmazonEKSClusterPolicy],
 /// });
@@ -1341,12 +1342,9 @@ import 'cluster_zonal_shift_config.dart';
 ///     policy_arn="arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
 ///     role=cluster.name)
 /// example = aws.eks.Cluster("example",
-///     name="example",
 ///     access_config={
 ///         "authentication_mode": "API",
 ///     },
-///     role_arn=cluster.arn,
-///     version="1.35",
 ///     remote_network_config={
 ///         "remote_node_networks": {
 ///             "cidrs": ["172.16.0.0/18"],
@@ -1364,6 +1362,9 @@ import 'cluster_zonal_shift_config.dart';
 ///             az3["id"],
 ///         ],
 ///     },
+///     name="example",
+///     role_arn=cluster.arn,
+///     version="1.35",
 ///     opts = pulumi.ResourceOptions(depends_on=[cluster_amazon_eks_cluster_policy]))
 /// ```
 /// ```csharp
@@ -1408,13 +1409,10 @@ import 'cluster_zonal_shift_config.dart';
 ///
 ///     var example = new Aws.Eks.Cluster("example", new()
 ///     {
-///         Name = "example",
 ///         AccessConfig = new Aws.Eks.Inputs.ClusterAccessConfigArgs
 ///         {
 ///             AuthenticationMode = "API",
 ///         },
-///         RoleArn = cluster.Arn,
-///         Version = "1.35",
 ///         RemoteNetworkConfig = new Aws.Eks.Inputs.ClusterRemoteNetworkConfigArgs
 ///         {
 ///             RemoteNodeNetworks = new Aws.Eks.Inputs.ClusterRemoteNetworkConfigRemoteNodeNetworksArgs
@@ -1443,6 +1441,9 @@ import 'cluster_zonal_shift_config.dart';
 ///                 az3.Id,
 ///             },
 ///         },
+///         Name = "example",
+///         RoleArn = cluster.Arn,
+///         Version = "1.35",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -1500,12 +1501,9 @@ import 'cluster_zonal_shift_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = eks.NewCluster(ctx, "example", &eks.ClusterArgs{
-/// 			Name: pulumi.String("example"),
 /// 			AccessConfig: &eks.ClusterAccessConfigArgs{
 /// 				AuthenticationMode: pulumi.String("API"),
 /// 			},
-/// 			RoleArn: cluster.Arn,
-/// 			Version: pulumi.String("1.35"),
 /// 			RemoteNetworkConfig: &eks.ClusterRemoteNetworkConfigArgs{
 /// 				RemoteNodeNetworks: &eks.ClusterRemoteNetworkConfigRemoteNodeNetworksArgs{
 /// 					Cidrs: pulumi.StringArray{
@@ -1527,6 +1525,9 @@ import 'cluster_zonal_shift_config.dart';
 /// 					az3.Id,
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: cluster.Arn,
+/// 			Version: pulumi.String("1.35"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			clusterAmazonEKSClusterPolicy,
 /// 		}))
@@ -1548,12 +1549,9 @@ import 'cluster_zonal_shift_config.dart';
 ///
 /// resource "aws_eks_cluster" "example" {
 ///   depends_on = [aws_iam_rolepolicyattachment.cluster_AmazonEKSClusterPolicy]
-///   name       = "example"
 ///   access_config = {
 ///     authentication_mode = "API"
 ///   }
-///   role_arn = aws_iam_role.cluster.arn
-///   version  = "1.35"
 ///   remote_network_config = {
 ///     remote_node_networks = {
 ///       cidrs = ["172.16.0.0/18"]
@@ -1567,6 +1565,9 @@ import 'cluster_zonal_shift_config.dart';
 ///     endpoint_public_access  = true
 ///     subnet_ids              = [az1.id, az2.id, az3.id]
 ///   }
+///   name     = "example"
+///   role_arn = aws_iam_role.cluster.arn
+///   version  = "1.35"
 /// }
 /// resource "aws_iam_role" "cluster" {
 ///   name = "eks-cluster-example"
@@ -1642,12 +1643,9 @@ import 'cluster_zonal_shift_config.dart';
 ///             .build());
 ///
 ///         var example = new Cluster("example", ClusterArgs.builder()
-///             .name("example")
 ///             .accessConfig(ClusterAccessConfigArgs.builder()
 ///                 .authenticationMode("API")
 ///                 .build())
-///             .roleArn(cluster.arn())
-///             .version("1.35")
 ///             .remoteNetworkConfig(ClusterRemoteNetworkConfigArgs.builder()
 ///                 .remoteNodeNetworks(ClusterRemoteNetworkConfigRemoteNodeNetworksArgs.builder()
 ///                     .cidrs("172.16.0.0/18")
@@ -1664,6 +1662,9 @@ import 'cluster_zonal_shift_config.dart';
 ///                     az2.id(),
 ///                     az3.id())
 ///                 .build())
+///             .name("example")
+///             .roleArn(cluster.arn())
+///             .version("1.35")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(clusterAmazonEKSClusterPolicy)
 ///                 .build());
@@ -1676,11 +1677,8 @@ import 'cluster_zonal_shift_config.dart';
 ///   example:
 ///     type: aws:eks:Cluster
 ///     properties:
-///       name: example
 ///       accessConfig:
 ///         authenticationMode: API
-///       roleArn: ${cluster.arn}
-///       version: '1.35'
 ///       remoteNetworkConfig:
 ///         remoteNodeNetworks:
 ///           cidrs:
@@ -1695,6 +1693,9 @@ import 'cluster_zonal_shift_config.dart';
 ///           - ${az1.id}
 ///           - ${az2.id}
 ///           - ${az3.id}
+///       name: example
+///       roleArn: ${cluster.arn}
+///       version: '1.35'
 ///     options:
 ///       dependsOn:
 ///         - ${clusterAmazonEKSClusterPolicy}
@@ -1757,12 +1758,9 @@ import 'cluster_zonal_shift_config.dart';
 ///     role: cluster.name,
 /// });
 /// const exampleCluster = new aws.eks.Cluster("example", {
-///     name: "example",
 ///     accessConfig: {
 ///         authenticationMode: "CONFIG_MAP",
 ///     },
-///     roleArn: cluster.arn,
-///     version: "1.35",
 ///     vpcConfig: {
 ///         endpointPrivateAccess: true,
 ///         endpointPublicAccess: false,
@@ -1776,6 +1774,9 @@ import 'cluster_zonal_shift_config.dart';
 ///         controlPlaneInstanceType: "m5.large",
 ///         outpostArns: [example.then(example => example.arn)],
 ///     },
+///     name: "example",
+///     roleArn: cluster.arn,
+///     version: "1.35",
 /// }, {
 ///     dependsOn: [clusterAmazonEKSLocalOutpostClusterPolicy],
 /// });
@@ -1808,12 +1809,9 @@ import 'cluster_zonal_shift_config.dart';
 ///     policy_arn="arn:aws:iam::aws:policy/AmazonEKSLocalOutpostClusterPolicy",
 ///     role=cluster.name)
 /// example_cluster = aws.eks.Cluster("example",
-///     name="example",
 ///     access_config={
 ///         "authentication_mode": "CONFIG_MAP",
 ///     },
-///     role_arn=cluster.arn,
-///     version="1.35",
 ///     vpc_config={
 ///         "endpoint_private_access": True,
 ///         "endpoint_public_access": False,
@@ -1827,6 +1825,9 @@ import 'cluster_zonal_shift_config.dart';
 ///         "control_plane_instance_type": "m5.large",
 ///         "outpost_arns": [example.arn],
 ///     },
+///     name="example",
+///     role_arn=cluster.arn,
+///     version="1.35",
 ///     opts = pulumi.ResourceOptions(depends_on=[cluster_amazon_eks_local_outpost_cluster_policy]))
 /// ```
 /// ```csharp
@@ -1880,13 +1881,10 @@ import 'cluster_zonal_shift_config.dart';
 ///
 ///     var exampleCluster = new Aws.Eks.Cluster("example", new()
 ///     {
-///         Name = "example",
 ///         AccessConfig = new Aws.Eks.Inputs.ClusterAccessConfigArgs
 ///         {
 ///             AuthenticationMode = "CONFIG_MAP",
 ///         },
-///         RoleArn = cluster.Arn,
-///         Version = "1.35",
 ///         VpcConfig = new Aws.Eks.Inputs.ClusterVpcConfigArgs
 ///         {
 ///             EndpointPrivateAccess = true,
@@ -1906,6 +1904,9 @@ import 'cluster_zonal_shift_config.dart';
 ///                 example.Apply(getOutpostResult => getOutpostResult.Arn),
 ///             },
 ///         },
+///         Name = "example",
+///         RoleArn = cluster.Arn,
+///         Version = "1.35",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -1973,12 +1974,9 @@ import 'cluster_zonal_shift_config.dart';
 /// 			return err
 /// 		}
 /// 		_, err = eks.NewCluster(ctx, "example", &eks.ClusterArgs{
-/// 			Name: pulumi.String("example"),
 /// 			AccessConfig: &eks.ClusterAccessConfigArgs{
 /// 				AuthenticationMode: pulumi.String("CONFIG_MAP"),
 /// 			},
-/// 			RoleArn: cluster.Arn,
-/// 			Version: pulumi.String("1.35"),
 /// 			VpcConfig: &eks.ClusterVpcConfigArgs{
 /// 				EndpointPrivateAccess: pulumi.Bool(true),
 /// 				EndpointPublicAccess:  pulumi.Bool(false),
@@ -1994,6 +1992,9 @@ import 'cluster_zonal_shift_config.dart';
 /// 					pulumi.String(example.Arn),
 /// 				},
 /// 			},
+/// 			Name:    pulumi.String("example"),
+/// 			RoleArn: cluster.Arn,
+/// 			Version: pulumi.String("1.35"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			clusterAmazonEKSLocalOutpostClusterPolicy,
 /// 		}))
@@ -2019,12 +2020,9 @@ import 'cluster_zonal_shift_config.dart';
 ///
 /// resource "aws_eks_cluster" "example" {
 ///   depends_on = [aws_iam_rolepolicyattachment.cluster_AmazonEKSLocalOutpostClusterPolicy]
-///   name       = "example"
 ///   access_config = {
 ///     authentication_mode = "CONFIG_MAP"
 ///   }
-///   role_arn = aws_iam_role.cluster.arn
-///   version  = "1.35"
 ///   vpc_config = {
 ///     endpoint_private_access = true
 ///     endpoint_public_access  = false
@@ -2034,6 +2032,9 @@ import 'cluster_zonal_shift_config.dart';
 ///     control_plane_instance_type = "m5.large"
 ///     outpost_arns                = [data.aws_outposts_getoutpost.example.arn]
 ///   }
+///   name     = "example"
+///   role_arn = aws_iam_role.cluster.arn
+///   version  = "1.35"
 /// }
 /// resource "aws_iam_role" "cluster" {
 ///   name = "eks-cluster-example"
@@ -2116,12 +2117,9 @@ import 'cluster_zonal_shift_config.dart';
 ///             .build());
 ///
 ///         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
-///             .name("example")
 ///             .accessConfig(ClusterAccessConfigArgs.builder()
 ///                 .authenticationMode("CONFIG_MAP")
 ///                 .build())
-///             .roleArn(cluster.arn())
-///             .version("1.35")
 ///             .vpcConfig(ClusterVpcConfigArgs.builder()
 ///                 .endpointPrivateAccess(true)
 ///                 .endpointPublicAccess(false)
@@ -2134,6 +2132,9 @@ import 'cluster_zonal_shift_config.dart';
 ///                 .controlPlaneInstanceType("m5.large")
 ///                 .outpostArns(example.arn())
 ///                 .build())
+///             .name("example")
+///             .roleArn(cluster.arn())
+///             .version("1.35")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(clusterAmazonEKSLocalOutpostClusterPolicy)
 ///                 .build());
@@ -2147,11 +2148,8 @@ import 'cluster_zonal_shift_config.dart';
 ///     type: aws:eks:Cluster
 ///     name: example
 ///     properties:
-///       name: example
 ///       accessConfig:
 ///         authenticationMode: CONFIG_MAP
-///       roleArn: ${cluster.arn}
-///       version: '1.35'
 ///       vpcConfig:
 ///         endpointPrivateAccess: true
 ///         endpointPublicAccess: false
@@ -2163,6 +2161,9 @@ import 'cluster_zonal_shift_config.dart';
 ///         controlPlaneInstanceType: m5.large
 ///         outpostArns:
 ///           - ${example.arn}
+///       name: example
+///       roleArn: ${cluster.arn}
+///       version: '1.35'
 ///     options:
 ///       dependsOn:
 ///         - ${clusterAmazonEKSLocalOutpostClusterPolicy}
@@ -2245,7 +2246,7 @@ class Cluster extends pulumi.CustomResource {
   /// Force version update by overriding upgrade-blocking readiness checks when updating a cluster.
   late final pulumi.Output<bool?> forceUpdateVersion;
   /// Attribute block containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. Detailed below.
-  late final pulumi.Output<List<Map<String, dynamic>>> identities;
+  late final pulumi.Output<List<ClusterIdentity>> identities;
   /// Configuration block for customizing the Kubernetes API server. Detailed below.
   late final pulumi.Output<ClusterKubeApiServerConfig> kubeApiServerConfig;
   /// Configuration block for customizing the Kubernetes controller manager. Detailed below.
@@ -2297,7 +2298,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:eks/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     accessConfig = registerOutput<ClusterAccessConfig>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');
@@ -2307,13 +2308,13 @@ class Cluster extends pulumi.CustomResource {
     computeConfig = registerOutput<ClusterComputeConfig>('computeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterComputeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controlPlaneScalingConfig = registerOutput<ClusterControlPlaneScalingConfig>('controlPlaneScalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterControlPlaneScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    defaultAddonsToRemoves = registerOutput<List<String>?>('defaultAddonsToRemoves');
+    defaultAddonsToRemoves = registerOutput<List<String>?>('defaultAddonsToRemoves', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionProtection = registerOutput<bool>('deletionProtection');
-    enabledClusterLogTypes = registerOutput<List<String>?>('enabledClusterLogTypes');
+    enabledClusterLogTypes = registerOutput<List<String>?>('enabledClusterLogTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     encryptionConfig = registerOutput<ClusterEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
-    identities = registerOutput<List<Map<String, dynamic>>>('identities');
+    identities = registerOutput<List<ClusterIdentity>>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterIdentity>(guardedValue, (value) => ClusterIdentity.fromMap((value as Map).cast<String, dynamic>())); });
     kubeApiServerConfig = registerOutput<ClusterKubeApiServerConfig>('kubeApiServerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubeApiServerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubeControllerManagerConfig = registerOutput<ClusterKubeControllerManagerConfig>('kubeControllerManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubeControllerManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubeSchedulerConfig = registerOutput<ClusterKubeSchedulerConfig>('kubeSchedulerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubeSchedulerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2326,8 +2327,8 @@ class Cluster extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     status = registerOutput<String>('status');
     storageConfig = registerOutput<ClusterStorageConfig>('storageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     upgradePolicy = registerOutput<ClusterUpgradePolicy>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
     vpcConfig = registerOutput<ClusterVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2339,11 +2340,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2365,13 +2367,13 @@ class Cluster extends pulumi.CustomResource {
     computeConfig = registerOutput<ClusterComputeConfig>('computeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterComputeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controlPlaneScalingConfig = registerOutput<ClusterControlPlaneScalingConfig>('controlPlaneScalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterControlPlaneScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    defaultAddonsToRemoves = registerOutput<List<String>?>('defaultAddonsToRemoves');
+    defaultAddonsToRemoves = registerOutput<List<String>?>('defaultAddonsToRemoves', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionProtection = registerOutput<bool>('deletionProtection');
-    enabledClusterLogTypes = registerOutput<List<String>?>('enabledClusterLogTypes');
+    enabledClusterLogTypes = registerOutput<List<String>?>('enabledClusterLogTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     encryptionConfig = registerOutput<ClusterEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
     forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
-    identities = registerOutput<List<Map<String, dynamic>>>('identities');
+    identities = registerOutput<List<ClusterIdentity>>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterIdentity>(guardedValue, (value) => ClusterIdentity.fromMap((value as Map).cast<String, dynamic>())); });
     kubeApiServerConfig = registerOutput<ClusterKubeApiServerConfig>('kubeApiServerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubeApiServerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubeControllerManagerConfig = registerOutput<ClusterKubeControllerManagerConfig>('kubeControllerManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubeControllerManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubeSchedulerConfig = registerOutput<ClusterKubeSchedulerConfig>('kubeSchedulerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubeSchedulerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2384,8 +2386,52 @@ class Cluster extends pulumi.CustomResource {
     roleArn = registerOutput<String>('roleArn');
     status = registerOutput<String>('status');
     storageConfig = registerOutput<ClusterStorageConfig>('storageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    upgradePolicy = registerOutput<ClusterUpgradePolicy>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String>('version');
+    vpcConfig = registerOutput<ClusterVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zonalShiftConfig = registerOutput<ClusterZonalShiftConfig?>('zonalShiftConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterZonalShiftConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'aws:eks/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessConfig = registerOutput<ClusterAccessConfig>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arn = registerOutput<String>('arn');
+    bootstrapSelfManagedAddons = registerOutput<bool?>('bootstrapSelfManagedAddons');
+    certificateAuthority = registerOutput<ClusterCertificateAuthority>('certificateAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCertificateAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterId = registerOutput<String>('clusterId');
+    computeConfig = registerOutput<ClusterComputeConfig>('computeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterComputeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controlPlaneScalingConfig = registerOutput<ClusterControlPlaneScalingConfig>('controlPlaneScalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterControlPlaneScalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdAt = registerOutput<String>('createdAt');
+    defaultAddonsToRemoves = registerOutput<List<String>?>('defaultAddonsToRemoves', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionProtection = registerOutput<bool>('deletionProtection');
+    enabledClusterLogTypes = registerOutput<List<String>?>('enabledClusterLogTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    encryptionConfig = registerOutput<ClusterEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoint = registerOutput<String>('endpoint');
+    forceUpdateVersion = registerOutput<bool?>('forceUpdateVersion');
+    identities = registerOutput<List<ClusterIdentity>>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterIdentity>(guardedValue, (value) => ClusterIdentity.fromMap((value as Map).cast<String, dynamic>())); });
+    kubeApiServerConfig = registerOutput<ClusterKubeApiServerConfig>('kubeApiServerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubeApiServerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubeControllerManagerConfig = registerOutput<ClusterKubeControllerManagerConfig>('kubeControllerManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubeControllerManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubeSchedulerConfig = registerOutput<ClusterKubeSchedulerConfig>('kubeSchedulerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubeSchedulerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubernetesNetworkConfig = registerOutput<ClusterKubernetesNetworkConfig>('kubernetesNetworkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterKubernetesNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    outpostConfig = registerOutput<ClusterOutpostConfig?>('outpostConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterOutpostConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformVersion = registerOutput<String>('platformVersion');
+    region = registerOutput<String>('region');
+    remoteNetworkConfig = registerOutput<ClusterRemoteNetworkConfig?>('remoteNetworkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRemoteNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roleArn = registerOutput<String>('roleArn');
+    status = registerOutput<String>('status');
+    storageConfig = registerOutput<ClusterStorageConfig>('storageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     upgradePolicy = registerOutput<ClusterUpgradePolicy>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String>('version');
     vpcConfig = registerOutput<ClusterVpcConfig>('vpcConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

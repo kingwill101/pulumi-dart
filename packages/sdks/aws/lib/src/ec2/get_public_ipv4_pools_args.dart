@@ -9,14 +9,14 @@ import 'get_public_ipv4_pools_filter.dart';
 /// {@macro pulumi_ec2_get_public_ipv4_pools_get_public_ipv4_pools_args_doc}
 class GetPublicIpv4PoolsArgs {
   /// Custom filter block as described below.
-  final pulumi.Input<List<GetPublicIpv4PoolsFilter>>? filters;
+  final pulumi.Input<List<GetPublicIpv4PoolsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Map of tags, each pair of which must exactly match a pair on the desired pools.
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetPublicIpv4PoolsArgs].
   /// [filters] Custom filter block as described below.

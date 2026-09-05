@@ -11,84 +11,84 @@ class GetDevEnvironmentResult {
   final String? alias;
   /// The system-generated unique ID of the user who created the Dev Environment.
   final String? creatorId;
-  final String envId;
+  final String? envId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Information about the integrated development environment (IDE) configured for a Dev Environment.
-  final List<GetDevEnvironmentIde> ides;
+  final List<GetDevEnvironmentIde>? ides;
   /// The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
-  final int inactivityTimeoutMinutes;
+  final int? inactivityTimeoutMinutes;
   /// The Amazon EC2 instace type to use for the Dev Environment.
-  final String instanceType;
+  final String? instanceType;
   /// The time when the Dev Environment was last updated, in coordinated universal time (UTC) timestamp format as specified in [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339#section-5.6).
-  final String lastUpdatedTime;
+  final String? lastUpdatedTime;
   /// Information about the amount of storage allocated to the Dev Environment.
-  final List<GetDevEnvironmentPersistentStorage> persistentStorages;
-  final String projectName;
-  final String region;
+  final List<GetDevEnvironmentPersistentStorage>? persistentStorages;
+  final String? projectName;
+  final String? region;
   /// The source repository that contains the branch to clone into the Dev Environment.
   final List<GetDevEnvironmentRepository>? repositories;
-  final String spaceName;
+  final String? spaceName;
   /// The current status of the Dev Environment. From: PENDING | RUNNING | STARTING | STOPPING | STOPPED | FAILED | DELETING | DELETED.
-  final String status;
+  final String? status;
   /// The reason for the status.
-  final String statusReason;
-  final Map<String, String> tags;
+  final String? statusReason;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetDevEnvironmentResult].
   /// [alias] The user-specified alias for the Dev Environment.
   /// [creatorId] The system-generated unique ID of the user who created the Dev Environment.
-  /// [envId] Required.
+  /// [envId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ides] Information about the integrated development environment (IDE) configured for a Dev Environment.
   /// [inactivityTimeoutMinutes] The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
   /// [instanceType] The Amazon EC2 instace type to use for the Dev Environment.
   /// [lastUpdatedTime] The time when the Dev Environment was last updated, in coordinated universal time (UTC) timestamp format as specified in [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339#section-5.6).
   /// [persistentStorages] Information about the amount of storage allocated to the Dev Environment.
-  /// [projectName] Required.
-  /// [region] Required.
+  /// [projectName] Optional.
+  /// [region] Optional.
   /// [repositories] The source repository that contains the branch to clone into the Dev Environment.
-  /// [spaceName] Required.
+  /// [spaceName] Optional.
   /// [status] The current status of the Dev Environment. From: PENDING | RUNNING | STARTING | STOPPING | STOPPED | FAILED | DELETING | DELETED.
   /// [statusReason] The reason for the status.
-  /// [tags] Required.
+  /// [tags] Optional.
   const GetDevEnvironmentResult({
     this.alias,
     this.creatorId,
-    required this.envId,
-    required this.id,
-    required this.ides,
-    required this.inactivityTimeoutMinutes,
-    required this.instanceType,
-    required this.lastUpdatedTime,
-    required this.persistentStorages,
-    required this.projectName,
-    required this.region,
+    this.envId,
+    this.id,
+    this.ides,
+    this.inactivityTimeoutMinutes,
+    this.instanceType,
+    this.lastUpdatedTime,
+    this.persistentStorages,
+    this.projectName,
+    this.region,
     this.repositories,
-    required this.spaceName,
-    required this.status,
-    required this.statusReason,
-    required this.tags,
+    this.spaceName,
+    this.status,
+    this.statusReason,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alias': ?alias,
       'creatorId': ?creatorId,
-      'envId': envId,
-      'id': id,
-      'ides': pulumi.Input.encodeList<GetDevEnvironmentIde, Map<String, dynamic>>(ides, (value) => value.toMap()),
-      'inactivityTimeoutMinutes': inactivityTimeoutMinutes,
-      'instanceType': instanceType,
-      'lastUpdatedTime': lastUpdatedTime,
-      'persistentStorages': pulumi.Input.encodeList<GetDevEnvironmentPersistentStorage, Map<String, dynamic>>(persistentStorages, (value) => value.toMap()),
-      'projectName': projectName,
-      'region': region,
+      'envId': ?envId,
+      'id': ?id,
+      'ides': ?(() { final guardedValue = ides; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDevEnvironmentIde, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'inactivityTimeoutMinutes': ?inactivityTimeoutMinutes,
+      'instanceType': ?instanceType,
+      'lastUpdatedTime': ?lastUpdatedTime,
+      'persistentStorages': ?(() { final guardedValue = persistentStorages; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDevEnvironmentPersistentStorage, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'projectName': ?projectName,
+      'region': ?region,
       'repositories': ?(() { final guardedValue = repositories; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDevEnvironmentRepository, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'spaceName': spaceName,
-      'status': status,
-      'statusReason': statusReason,
-      'tags': tags,
+      'spaceName': ?spaceName,
+      'status': ?status,
+      'statusReason': ?statusReason,
+      'tags': ?tags,
     };
   }
 
@@ -96,20 +96,20 @@ class GetDevEnvironmentResult {
     return GetDevEnvironmentResult(
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return guardedValue as String; })(),
       creatorId: (() { final guardedValue = map['creatorId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      envId: map['envId'] as String,
-      id: map['id'] as String,
-      ides: pulumi.Input.decodeList<GetDevEnvironmentIde>(map['ides']!, (value) => GetDevEnvironmentIde.fromMap((value as Map).cast<String, dynamic>())),
-      inactivityTimeoutMinutes: map['inactivityTimeoutMinutes'] as int,
-      instanceType: map['instanceType'] as String,
-      lastUpdatedTime: map['lastUpdatedTime'] as String,
-      persistentStorages: pulumi.Input.decodeList<GetDevEnvironmentPersistentStorage>(map['persistentStorages']!, (value) => GetDevEnvironmentPersistentStorage.fromMap((value as Map).cast<String, dynamic>())),
-      projectName: map['projectName'] as String,
-      region: map['region'] as String,
+      envId: (() { final guardedValue = map['envId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ides: (() { final guardedValue = map['ides']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDevEnvironmentIde>(guardedValue, (value) => GetDevEnvironmentIde.fromMap((value as Map).cast<String, dynamic>())); })(),
+      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastUpdatedTime: (() { final guardedValue = map['lastUpdatedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      persistentStorages: (() { final guardedValue = map['persistentStorages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDevEnvironmentPersistentStorage>(guardedValue, (value) => GetDevEnvironmentPersistentStorage.fromMap((value as Map).cast<String, dynamic>())); })(),
+      projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       repositories: (() { final guardedValue = map['repositories']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDevEnvironmentRepository>(guardedValue, (value) => GetDevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>())); })(),
-      spaceName: map['spaceName'] as String,
-      status: map['status'] as String,
-      statusReason: map['statusReason'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      spaceName: (() { final guardedValue = map['spaceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusReason: (() { final guardedValue = map['statusReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

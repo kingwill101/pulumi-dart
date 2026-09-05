@@ -126,6 +126,17 @@ Future<GetActivityResult> getActivity(
   return GetActivityResult.fromMap(result);
 }
 
+pulumi.Output<GetActivityResult> getActivityOutput(
+  GetActivityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sfn/getActivity:getActivity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActivityResult.fromMap);
+}
+
 /// Data source for managing an AWS SFN (Step Functions) State Machine Alias.
 ///
 /// ## Example Usage
@@ -253,6 +264,17 @@ Future<GetAliasResult> getAlias(
   return GetAliasResult.fromMap(result);
 }
 
+pulumi.Output<GetAliasResult> getAliasOutput(
+  GetAliasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sfn/getAlias:getAlias',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAliasResult.fromMap);
+}
+
 /// Use this data source to get the ARN of a State Machine in AWS Step
 /// Function (SFN). By using this data source, you can reference a
 /// state machine without having to hard code the ARNs as input.
@@ -373,6 +395,17 @@ Future<GetStateMachineResult> getStateMachine(
   return GetStateMachineResult.fromMap(result);
 }
 
+pulumi.Output<GetStateMachineResult> getStateMachineOutput(
+  GetStateMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sfn/getStateMachine:getStateMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStateMachineResult.fromMap);
+}
+
 /// Data source for managing an AWS SFN (Step Functions) State Machine Versions.
 ///
 /// ## Example Usage
@@ -491,4 +524,15 @@ Future<GetStateMachineVersionsResult> getStateMachineVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStateMachineVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetStateMachineVersionsResult> getStateMachineVersionsOutput(
+  GetStateMachineVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:sfn/getStateMachineVersions:getStateMachineVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStateMachineVersionsResult.fromMap);
 }

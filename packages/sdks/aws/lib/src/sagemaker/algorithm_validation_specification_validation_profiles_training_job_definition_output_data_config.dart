@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionOutputDataConfig {
   /// Compression type for the output data. Allowed values are: `None` and `GZIP`.
-  final pulumi.Input<String>? compressionType;
+  final pulumi.Input<String?>? compressionType;
   /// KMS key ID used to encrypt output data.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// S3 or HTTPS URI where output data is stored.
   final pulumi.Input<String> s3OutputPath;
 

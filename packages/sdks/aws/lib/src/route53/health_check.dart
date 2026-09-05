@@ -901,7 +901,7 @@ import 'health_check_state.dart';
 /// $ pulumi import aws:route53/healthCheck:HealthCheck http_check abcdef11-2222-3333-4444-555555fedcba
 /// ```
 class HealthCheck extends pulumi.CustomResource {
-  /// The Amazon Resource Name (ARN) of the Health Check.
+  /// ARN of the Health Check.
   late final pulumi.Output<String> arn;
   /// The minimum number of child health checks that must be healthy for Route 53 to consider the parent health check to be healthy. Valid values are integers between 0 and 256, inclusive
   late final pulumi.Output<int?> childHealthThreshold;
@@ -943,7 +943,7 @@ class HealthCheck extends pulumi.CustomResource {
   late final pulumi.Output<int?> requestInterval;
   /// The path that you want Amazon Route 53 to request when performing health checks.
   late final pulumi.Output<String?> resourcePath;
-  /// The Amazon Resource Name (ARN) for the Route 53 Application Recovery Controller routing control. This is used when health check type is `RECOVERY_CONTROL`
+  /// ARN for the Route 53 Application Recovery Controller routing control. This is used when health check type is `RECOVERY_CONTROL`
   late final pulumi.Output<String?> routingControlArn;
   /// String searched in the first 5120 bytes of the response body for check to be considered healthy. Only valid with `HTTP_STR_MATCH` and `HTTPS_STR_MATCH`.
   late final pulumi.Output<String?> searchString;
@@ -968,11 +968,11 @@ class HealthCheck extends pulumi.CustomResource {
           'aws:route53/healthCheck:HealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     childHealthThreshold = registerOutput<int?>('childHealthThreshold');
-    childHealthchecks = registerOutput<List<String>?>('childHealthchecks');
+    childHealthchecks = registerOutput<List<String>?>('childHealthchecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cloudwatchAlarmName = registerOutput<String?>('cloudwatchAlarmName');
     cloudwatchAlarmRegion = registerOutput<String?>('cloudwatchAlarmRegion');
     disabled = registerOutput<bool?>('disabled');
@@ -985,14 +985,14 @@ class HealthCheck extends pulumi.CustomResource {
     measureLatency = registerOutput<bool?>('measureLatency');
     port = registerOutput<int?>('port');
     referenceName = registerOutput<String?>('referenceName');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     requestInterval = registerOutput<int?>('requestInterval');
     resourcePath = registerOutput<String?>('resourcePath');
     routingControlArn = registerOutput<String?>('routingControlArn');
     searchString = registerOutput<String?>('searchString');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    triggers = registerOutput<Map<String, String>>('triggers');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    triggers = registerOutput<Map<String, String>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -1001,11 +1001,12 @@ class HealthCheck extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HealthCheckState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HealthCheck._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1021,7 +1022,7 @@ class HealthCheck extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     childHealthThreshold = registerOutput<int?>('childHealthThreshold');
-    childHealthchecks = registerOutput<List<String>?>('childHealthchecks');
+    childHealthchecks = registerOutput<List<String>?>('childHealthchecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cloudwatchAlarmName = registerOutput<String?>('cloudwatchAlarmName');
     cloudwatchAlarmRegion = registerOutput<String?>('cloudwatchAlarmRegion');
     disabled = registerOutput<bool?>('disabled');
@@ -1034,14 +1035,49 @@ class HealthCheck extends pulumi.CustomResource {
     measureLatency = registerOutput<bool?>('measureLatency');
     port = registerOutput<int?>('port');
     referenceName = registerOutput<String?>('referenceName');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     requestInterval = registerOutput<int?>('requestInterval');
     resourcePath = registerOutput<String?>('resourcePath');
     routingControlArn = registerOutput<String?>('routingControlArn');
     searchString = registerOutput<String?>('searchString');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    triggers = registerOutput<Map<String, String>>('triggers');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    triggers = registerOutput<Map<String, String>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [HealthCheck] resource.
+  HealthCheck.reference(String urn)
+    : super(
+        'aws:route53/healthCheck:HealthCheck',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arn = registerOutput<String>('arn');
+    childHealthThreshold = registerOutput<int?>('childHealthThreshold');
+    childHealthchecks = registerOutput<List<String>?>('childHealthchecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    cloudwatchAlarmName = registerOutput<String?>('cloudwatchAlarmName');
+    cloudwatchAlarmRegion = registerOutput<String?>('cloudwatchAlarmRegion');
+    disabled = registerOutput<bool?>('disabled');
+    enableSni = registerOutput<bool>('enableSni');
+    failureThreshold = registerOutput<int>('failureThreshold');
+    fqdn = registerOutput<String?>('fqdn');
+    insufficientDataHealthStatus = registerOutput<String?>('insufficientDataHealthStatus');
+    invertHealthcheck = registerOutput<bool?>('invertHealthcheck');
+    ipAddress = registerOutput<String?>('ipAddress');
+    measureLatency = registerOutput<bool?>('measureLatency');
+    port = registerOutput<int?>('port');
+    referenceName = registerOutput<String?>('referenceName');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requestInterval = registerOutput<int?>('requestInterval');
+    resourcePath = registerOutput<String?>('resourcePath');
+    routingControlArn = registerOutput<String?>('routingControlArn');
+    searchString = registerOutput<String?>('searchString');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    triggers = registerOutput<Map<String, String>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -5,15 +5,15 @@ import 'policy_predictive_scaling_configuration_metric_specification.dart';
 
 class PolicyPredictiveScalingConfiguration {
   /// Defines the behavior that should be applied if the forecast capacity approaches or exceeds the maximum capacity of the Auto Scaling group. Valid values are `HonorMaxCapacity` or `IncreaseMaxCapacity`. Default is `HonorMaxCapacity`.
-  final pulumi.Input<String>? maxCapacityBreachBehavior;
+  final pulumi.Input<String?>? maxCapacityBreachBehavior;
   /// Size of the capacity buffer to use when the forecast capacity is close to or exceeds the maximum capacity. Valid range is `0` to `100`. If set to `0`, Amazon EC2 Auto Scaling may scale capacity higher than the maximum capacity to equal but not exceed forecast capacity.
-  final pulumi.Input<String>? maxCapacityBuffer;
+  final pulumi.Input<String?>? maxCapacityBuffer;
   /// This structure includes the metrics and target utilization to use for predictive scaling.
   final pulumi.Input<PolicyPredictiveScalingConfigurationMetricSpecification> metricSpecification;
   /// Predictive scaling mode. Valid values are `ForecastAndScale` and `ForecastOnly`. Default is `ForecastOnly`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Amount of time, in seconds, by which the instance launch time can be advanced. Minimum is `0`.
-  final pulumi.Input<String>? schedulingBufferTime;
+  final pulumi.Input<String?>? schedulingBufferTime;
 
   /// Creates a new [PolicyPredictiveScalingConfiguration].
   /// [maxCapacityBreachBehavior] Defines the behavior that should be applied if the forecast capacity approaches or exceeds the maximum capacity of the Auto Scaling group. Valid values are `HonorMaxCapacity` or `IncreaseMaxCapacity`. Default is `HonorMaxCapacity`.

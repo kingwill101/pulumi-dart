@@ -7,35 +7,35 @@ import 'inference_profile_timeouts.dart';
 
 /// Input properties used for looking up and filtering InferenceProfile resources.
 class InferenceProfileState {
-  /// The Amazon Resource Name (ARN) of the inference profile.
-  final pulumi.Input<String>? arn;
+  /// The ARN of the inference profile.
+  final pulumi.Input<String?>? arn;
   /// The time at which the inference profile was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The description of the inference profile.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The source of the model this inference profile will track metrics and cost for. See `modelSource`.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<InferenceProfileModelSource>? modelSource;
+  final pulumi.Input<InferenceProfileModelSource?>? modelSource;
   /// A list of information about each model in the inference profile. See `models`.
-  final pulumi.Input<List<InferenceProfileModel>>? models;
+  final pulumi.Input<List<InferenceProfileModel>?>? models;
   /// The name of the inference profile.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The status of the inference profile. `ACTIVE` means that the inference profile is available to use.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Key-value mapping of resource tags for the inference profile.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<Map<String, String>>? tagsAll;
-  final pulumi.Input<InferenceProfileTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<Map<String, String>?>? tagsAll;
+  final pulumi.Input<InferenceProfileTimeouts?>? timeouts;
   /// The type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means that the inference profile is defined by the user.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The time at which the inference profile was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [InferenceProfileState].
-  /// [arn] The Amazon Resource Name (ARN) of the inference profile.
+  /// [arn] The ARN of the inference profile.
   /// [createdAt] The time at which the inference profile was created.
   /// [description] The description of the inference profile.
   /// [modelSource] The source of the model this inference profile will track metrics and cost for. See `modelSource`.

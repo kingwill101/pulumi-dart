@@ -5,139 +5,139 @@ import 'get_target_group_stickiness.dart';
 
 /// Result data returned by getTargetGroup.
 class GetTargetGroupResult {
-  final String arn;
-  final String arnSuffix;
-  final bool connectionTermination;
-  final String deregistrationDelay;
-  final GetTargetGroupHealthCheck healthCheck;
+  final String? arn;
+  final String? arnSuffix;
+  final bool? connectionTermination;
+  final String? deregistrationDelay;
+  final GetTargetGroupHealthCheck? healthCheck;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final bool lambdaMultiValueHeadersEnabled;
-  final List<String> loadBalancerArns;
-  final String loadBalancingAlgorithmType;
-  final String loadBalancingAnomalyMitigation;
-  final String loadBalancingCrossZoneEnabled;
-  final String name;
-  final int port;
-  final String preserveClientIp;
-  final String protocol;
-  final String protocolVersion;
-  final bool proxyProtocolV2;
-  final String region;
-  final int slowStart;
-  final GetTargetGroupStickiness stickiness;
-  final Map<String, String> tags;
-  final int targetControlPort;
-  final String targetType;
-  final String vpcId;
+  final String? id;
+  final bool? lambdaMultiValueHeadersEnabled;
+  final List<String>? loadBalancerArns;
+  final String? loadBalancingAlgorithmType;
+  final String? loadBalancingAnomalyMitigation;
+  final String? loadBalancingCrossZoneEnabled;
+  final String? name;
+  final int? port;
+  final String? preserveClientIp;
+  final String? protocol;
+  final String? protocolVersion;
+  final bool? proxyProtocolV2;
+  final String? region;
+  final int? slowStart;
+  final GetTargetGroupStickiness? stickiness;
+  final Map<String, String>? tags;
+  final int? targetControlPort;
+  final String? targetType;
+  final String? vpcId;
 
   /// Creates a new [GetTargetGroupResult].
-  /// [arn] Required.
-  /// [arnSuffix] Required.
-  /// [connectionTermination] Required.
-  /// [deregistrationDelay] Required.
-  /// [healthCheck] Required.
+  /// [arn] Optional.
+  /// [arnSuffix] Optional.
+  /// [connectionTermination] Optional.
+  /// [deregistrationDelay] Optional.
+  /// [healthCheck] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [lambdaMultiValueHeadersEnabled] Required.
-  /// [loadBalancerArns] Required.
-  /// [loadBalancingAlgorithmType] Required.
-  /// [loadBalancingAnomalyMitigation] Required.
-  /// [loadBalancingCrossZoneEnabled] Required.
-  /// [name] Required.
-  /// [port] Required.
-  /// [preserveClientIp] Required.
-  /// [protocol] Required.
-  /// [protocolVersion] Required.
-  /// [proxyProtocolV2] Required.
-  /// [region] Required.
-  /// [slowStart] Required.
-  /// [stickiness] Required.
-  /// [tags] Required.
-  /// [targetControlPort] Required.
-  /// [targetType] Required.
-  /// [vpcId] Required.
+  /// [lambdaMultiValueHeadersEnabled] Optional.
+  /// [loadBalancerArns] Optional.
+  /// [loadBalancingAlgorithmType] Optional.
+  /// [loadBalancingAnomalyMitigation] Optional.
+  /// [loadBalancingCrossZoneEnabled] Optional.
+  /// [name] Optional.
+  /// [port] Optional.
+  /// [preserveClientIp] Optional.
+  /// [protocol] Optional.
+  /// [protocolVersion] Optional.
+  /// [proxyProtocolV2] Optional.
+  /// [region] Optional.
+  /// [slowStart] Optional.
+  /// [stickiness] Optional.
+  /// [tags] Optional.
+  /// [targetControlPort] Optional.
+  /// [targetType] Optional.
+  /// [vpcId] Optional.
   const GetTargetGroupResult({
-    required this.arn,
-    required this.arnSuffix,
-    required this.connectionTermination,
-    required this.deregistrationDelay,
-    required this.healthCheck,
-    required this.id,
-    required this.lambdaMultiValueHeadersEnabled,
-    required this.loadBalancerArns,
-    required this.loadBalancingAlgorithmType,
-    required this.loadBalancingAnomalyMitigation,
-    required this.loadBalancingCrossZoneEnabled,
-    required this.name,
-    required this.port,
-    required this.preserveClientIp,
-    required this.protocol,
-    required this.protocolVersion,
-    required this.proxyProtocolV2,
-    required this.region,
-    required this.slowStart,
-    required this.stickiness,
-    required this.tags,
-    required this.targetControlPort,
-    required this.targetType,
-    required this.vpcId,
+    this.arn,
+    this.arnSuffix,
+    this.connectionTermination,
+    this.deregistrationDelay,
+    this.healthCheck,
+    this.id,
+    this.lambdaMultiValueHeadersEnabled,
+    this.loadBalancerArns,
+    this.loadBalancingAlgorithmType,
+    this.loadBalancingAnomalyMitigation,
+    this.loadBalancingCrossZoneEnabled,
+    this.name,
+    this.port,
+    this.preserveClientIp,
+    this.protocol,
+    this.protocolVersion,
+    this.proxyProtocolV2,
+    this.region,
+    this.slowStart,
+    this.stickiness,
+    this.tags,
+    this.targetControlPort,
+    this.targetType,
+    this.vpcId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arn': arn,
-      'arnSuffix': arnSuffix,
-      'connectionTermination': connectionTermination,
-      'deregistrationDelay': deregistrationDelay,
-      'healthCheck': healthCheck.toMap(),
-      'id': id,
-      'lambdaMultiValueHeadersEnabled': lambdaMultiValueHeadersEnabled,
-      'loadBalancerArns': loadBalancerArns,
-      'loadBalancingAlgorithmType': loadBalancingAlgorithmType,
-      'loadBalancingAnomalyMitigation': loadBalancingAnomalyMitigation,
-      'loadBalancingCrossZoneEnabled': loadBalancingCrossZoneEnabled,
-      'name': name,
-      'port': port,
-      'preserveClientIp': preserveClientIp,
-      'protocol': protocol,
-      'protocolVersion': protocolVersion,
-      'proxyProtocolV2': proxyProtocolV2,
-      'region': region,
-      'slowStart': slowStart,
-      'stickiness': stickiness.toMap(),
-      'tags': tags,
-      'targetControlPort': targetControlPort,
-      'targetType': targetType,
-      'vpcId': vpcId,
+      'arn': ?arn,
+      'arnSuffix': ?arnSuffix,
+      'connectionTermination': ?connectionTermination,
+      'deregistrationDelay': ?deregistrationDelay,
+      'healthCheck': ?healthCheck?.toMap(),
+      'id': ?id,
+      'lambdaMultiValueHeadersEnabled': ?lambdaMultiValueHeadersEnabled,
+      'loadBalancerArns': ?loadBalancerArns,
+      'loadBalancingAlgorithmType': ?loadBalancingAlgorithmType,
+      'loadBalancingAnomalyMitigation': ?loadBalancingAnomalyMitigation,
+      'loadBalancingCrossZoneEnabled': ?loadBalancingCrossZoneEnabled,
+      'name': ?name,
+      'port': ?port,
+      'preserveClientIp': ?preserveClientIp,
+      'protocol': ?protocol,
+      'protocolVersion': ?protocolVersion,
+      'proxyProtocolV2': ?proxyProtocolV2,
+      'region': ?region,
+      'slowStart': ?slowStart,
+      'stickiness': ?stickiness?.toMap(),
+      'tags': ?tags,
+      'targetControlPort': ?targetControlPort,
+      'targetType': ?targetType,
+      'vpcId': ?vpcId,
     };
   }
 
   factory GetTargetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetTargetGroupResult(
-      arn: map['arn'] as String,
-      arnSuffix: map['arnSuffix'] as String,
-      connectionTermination: map['connectionTermination'] as bool,
-      deregistrationDelay: map['deregistrationDelay'] as String,
-      healthCheck: GetTargetGroupHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      lambdaMultiValueHeadersEnabled: map['lambdaMultiValueHeadersEnabled'] as bool,
-      loadBalancerArns: (map['loadBalancerArns'] as List).cast<String>(),
-      loadBalancingAlgorithmType: map['loadBalancingAlgorithmType'] as String,
-      loadBalancingAnomalyMitigation: map['loadBalancingAnomalyMitigation'] as String,
-      loadBalancingCrossZoneEnabled: map['loadBalancingCrossZoneEnabled'] as String,
-      name: map['name'] as String,
-      port: map['port'] as int,
-      preserveClientIp: map['preserveClientIp'] as String,
-      protocol: map['protocol'] as String,
-      protocolVersion: map['protocolVersion'] as String,
-      proxyProtocolV2: map['proxyProtocolV2'] as bool,
-      region: map['region'] as String,
-      slowStart: map['slowStart'] as int,
-      stickiness: GetTargetGroupStickiness.fromMap((map['stickiness']! as Map).cast<String, dynamic>()),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      targetControlPort: map['targetControlPort'] as int,
-      targetType: map['targetType'] as String,
-      vpcId: map['vpcId'] as String,
+      arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      arnSuffix: (() { final guardedValue = map['arnSuffix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectionTermination: (() { final guardedValue = map['connectionTermination']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      deregistrationDelay: (() { final guardedValue = map['deregistrationDelay']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      healthCheck: (() { final guardedValue = map['healthCheck']; if (guardedValue == null) return null; return GetTargetGroupHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lambdaMultiValueHeadersEnabled: (() { final guardedValue = map['lambdaMultiValueHeadersEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      loadBalancerArns: (() { final guardedValue = map['loadBalancerArns']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      loadBalancingAlgorithmType: (() { final guardedValue = map['loadBalancingAlgorithmType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      loadBalancingAnomalyMitigation: (() { final guardedValue = map['loadBalancingAnomalyMitigation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      loadBalancingCrossZoneEnabled: (() { final guardedValue = map['loadBalancingCrossZoneEnabled']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      preserveClientIp: (() { final guardedValue = map['preserveClientIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protocolVersion: (() { final guardedValue = map['protocolVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      proxyProtocolV2: (() { final guardedValue = map['proxyProtocolV2']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      slowStart: (() { final guardedValue = map['slowStart']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      stickiness: (() { final guardedValue = map['stickiness']; if (guardedValue == null) return null; return GetTargetGroupStickiness.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      targetControlPort: (() { final guardedValue = map['targetControlPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      targetType: (() { final guardedValue = map['targetType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardDashboardPublishOptionsDataPointDrillUpDownOption {
   /// Availability status. Possibles values: ENABLED, DISABLED.
-  final pulumi.Input<String>? availabilityStatus;
+  final pulumi.Input<String?>? availabilityStatus;
 
   /// Creates a new [DashboardDashboardPublishOptionsDataPointDrillUpDownOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.

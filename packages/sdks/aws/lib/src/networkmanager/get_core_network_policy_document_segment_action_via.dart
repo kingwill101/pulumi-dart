@@ -5,9 +5,9 @@ import 'get_core_network_policy_document_segment_action_via_with_edge_override.d
 
 class GetCoreNetworkPolicyDocumentSegmentActionVia {
   /// A list of strings. The network function group to use for the service insertion action.
-  final pulumi.Input<List<String>>? networkFunctionGroups;
+  final pulumi.Input<List<String>?>? networkFunctionGroups;
   /// Any edge overrides and the preferred edge to use.
-  final pulumi.Input<List<GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride>>? withEdgeOverrides;
+  final pulumi.Input<List<GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride>?>? withEdgeOverrides;
 
   /// Creates a new [GetCoreNetworkPolicyDocumentSegmentActionVia].
   /// [networkFunctionGroups] A list of strings. The network function group to use for the service insertion action.

@@ -5,11 +5,11 @@ import 'insight_filters_note_updated_at_date_range.dart';
 
 class InsightFiltersNoteUpdatedAt {
   /// A configuration block of the date range for the date filter. See dateRange below for more details.
-  final pulumi.Input<InsightFiltersNoteUpdatedAtDateRange>? dateRange;
+  final pulumi.Input<InsightFiltersNoteUpdatedAtDateRange?>? dateRange;
   /// An end date for the date filter. Required with `start` if `dateRange` is not specified.
-  final pulumi.Input<String>? end;
+  final pulumi.Input<String?>? end;
   /// A start date for the date filter. Required with `end` if `dateRange` is not specified.
-  final pulumi.Input<String>? start;
+  final pulumi.Input<String?>? start;
 
   /// Creates a new [InsightFiltersNoteUpdatedAt].
   /// [dateRange] A configuration block of the date range for the date filter. See dateRange below for more details.

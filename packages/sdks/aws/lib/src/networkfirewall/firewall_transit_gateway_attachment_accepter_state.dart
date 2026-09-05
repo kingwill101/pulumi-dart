@@ -6,10 +6,10 @@ import 'firewall_transit_gateway_attachment_accepter_timeouts.dart';
 /// Input properties used for looking up and filtering FirewallTransitGatewayAttachmentAccepter resources.
 class FirewallTransitGatewayAttachmentAccepterState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<FirewallTransitGatewayAttachmentAccepterTimeouts>? timeouts;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<FirewallTransitGatewayAttachmentAccepterTimeouts?>? timeouts;
   /// The unique identifier of the transit gateway attachment to accept. This ID is returned in the response when creating a transit gateway-attached firewall.
-  final pulumi.Input<String>? transitGatewayAttachmentId;
+  final pulumi.Input<String?>? transitGatewayAttachmentId;
 
   /// Creates a new [FirewallTransitGatewayAttachmentAccepterState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

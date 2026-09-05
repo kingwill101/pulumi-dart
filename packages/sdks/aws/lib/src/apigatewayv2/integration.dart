@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'integration_args.dart';
+import 'integration_response_parameter.dart';
 import 'integration_state.dart';
 import 'integration_tls_config.dart';
 
@@ -498,20 +499,8 @@ import 'integration_tls_config.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.apigatewayv2.Integration("example", {
-///     apiId: exampleAwsApigatewayv2Api.id,
-///     credentialsArn: exampleAwsIamRole.arn,
-///     description: "Example with a load balancer",
-///     integrationType: "HTTP_PROXY",
-///     integrationUri: exampleAwsLbListener.arn,
-///     integrationMethod: "ANY",
-///     connectionType: "VPC_LINK",
-///     connectionId: exampleAwsApigatewayv2VpcLink.id,
 ///     tlsConfig: {
 ///         serverNameToVerify: "example.com",
-///     },
-///     requestParameters: {
-///         "append:header.authforintegration": "$context.authorizer.authorizerResponse",
-///         "overwrite:path": "staticValueForIntegration",
 ///     },
 ///     responseParameters: [
 ///         {
@@ -527,6 +516,18 @@ import 'integration_tls_config.dart';
 ///             },
 ///         },
 ///     ],
+///     apiId: exampleAwsApigatewayv2Api.id,
+///     credentialsArn: exampleAwsIamRole.arn,
+///     description: "Example with a load balancer",
+///     integrationType: "HTTP_PROXY",
+///     integrationUri: exampleAwsLbListener.arn,
+///     integrationMethod: "ANY",
+///     connectionType: "VPC_LINK",
+///     connectionId: exampleAwsApigatewayv2VpcLink.id,
+///     requestParameters: {
+///         "append:header.authforintegration": "$context.authorizer.authorizerResponse",
+///         "overwrite:path": "staticValueForIntegration",
+///     },
 /// });
 /// ```
 /// ```python
@@ -534,20 +535,8 @@ import 'integration_tls_config.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.apigatewayv2.Integration("example",
-///     api_id=example_aws_apigatewayv2_api["id"],
-///     credentials_arn=example_aws_iam_role["arn"],
-///     description="Example with a load balancer",
-///     integration_type="HTTP_PROXY",
-///     integration_uri=example_aws_lb_listener["arn"],
-///     integration_method="ANY",
-///     connection_type="VPC_LINK",
-///     connection_id=example_aws_apigatewayv2_vpc_link["id"],
 ///     tls_config={
 ///         "server_name_to_verify": "example.com",
-///     },
-///     request_parameters={
-///         "append:header.authforintegration": "$context.authorizer.authorizerResponse",
-///         "overwrite:path": "staticValueForIntegration",
 ///     },
 ///     response_parameters=[
 ///         {
@@ -562,7 +551,19 @@ import 'integration_tls_config.dart';
 ///                 "overwrite:statuscode": "204",
 ///             },
 ///         },
-///     ])
+///     ],
+///     api_id=example_aws_apigatewayv2_api["id"],
+///     credentials_arn=example_aws_iam_role["arn"],
+///     description="Example with a load balancer",
+///     integration_type="HTTP_PROXY",
+///     integration_uri=example_aws_lb_listener["arn"],
+///     integration_method="ANY",
+///     connection_type="VPC_LINK",
+///     connection_id=example_aws_apigatewayv2_vpc_link["id"],
+///     request_parameters={
+///         "append:header.authforintegration": "$context.authorizer.authorizerResponse",
+///         "overwrite:path": "staticValueForIntegration",
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -574,22 +575,9 @@ import 'integration_tls_config.dart';
 /// {
 ///     var example = new Aws.ApiGatewayV2.Integration("example", new()
 ///     {
-///         ApiId = exampleAwsApigatewayv2Api.Id,
-///         CredentialsArn = exampleAwsIamRole.Arn,
-///         Description = "Example with a load balancer",
-///         IntegrationType = "HTTP_PROXY",
-///         IntegrationUri = exampleAwsLbListener.Arn,
-///         IntegrationMethod = "ANY",
-///         ConnectionType = "VPC_LINK",
-///         ConnectionId = exampleAwsApigatewayv2VpcLink.Id,
 ///         TlsConfig = new Aws.ApiGatewayV2.Inputs.IntegrationTlsConfigArgs
 ///         {
 ///             ServerNameToVerify = "example.com",
-///         },
-///         RequestParameters =
-///         {
-///             { "append:header.authforintegration", "$context.authorizer.authorizerResponse" },
-///             { "overwrite:path", "staticValueForIntegration" },
 ///         },
 ///         ResponseParameters = new[]
 ///         {
@@ -610,6 +598,19 @@ import 'integration_tls_config.dart';
 ///                 },
 ///             },
 ///         },
+///         ApiId = exampleAwsApigatewayv2Api.Id,
+///         CredentialsArn = exampleAwsIamRole.Arn,
+///         Description = "Example with a load balancer",
+///         IntegrationType = "HTTP_PROXY",
+///         IntegrationUri = exampleAwsLbListener.Arn,
+///         IntegrationMethod = "ANY",
+///         ConnectionType = "VPC_LINK",
+///         ConnectionId = exampleAwsApigatewayv2VpcLink.Id,
+///         RequestParameters =
+///         {
+///             { "append:header.authforintegration", "$context.authorizer.authorizerResponse" },
+///             { "overwrite:path", "staticValueForIntegration" },
+///         },
 ///     });
 ///
 /// });
@@ -625,20 +626,8 @@ import 'integration_tls_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := apigatewayv2.NewIntegration(ctx, "example", &apigatewayv2.IntegrationArgs{
-/// 			ApiId:             pulumi.Any(exampleAwsApigatewayv2Api.Id),
-/// 			CredentialsArn:    pulumi.Any(exampleAwsIamRole.Arn),
-/// 			Description:       pulumi.String("Example with a load balancer"),
-/// 			IntegrationType:   pulumi.String("HTTP_PROXY"),
-/// 			IntegrationUri:    pulumi.Any(exampleAwsLbListener.Arn),
-/// 			IntegrationMethod: pulumi.String("ANY"),
-/// 			ConnectionType:    pulumi.String("VPC_LINK"),
-/// 			ConnectionId:      pulumi.Any(exampleAwsApigatewayv2VpcLink.Id),
 /// 			TlsConfig: &apigatewayv2.IntegrationTlsConfigArgs{
 /// 				ServerNameToVerify: pulumi.String("example.com"),
-/// 			},
-/// 			RequestParameters: pulumi.StringMap{
-/// 				"append:header.authforintegration": pulumi.String("$context.authorizer.authorizerResponse"),
-/// 				"overwrite:path":                   pulumi.String("staticValueForIntegration"),
 /// 			},
 /// 			ResponseParameters: apigatewayv2.IntegrationResponseParameterArray{
 /// 				&apigatewayv2.IntegrationResponseParameterArgs{
@@ -653,6 +642,18 @@ import 'integration_tls_config.dart';
 /// 						"overwrite:statuscode": pulumi.String("204"),
 /// 					},
 /// 				},
+/// 			},
+/// 			ApiId:             pulumi.Any(exampleAwsApigatewayv2Api.Id),
+/// 			CredentialsArn:    pulumi.Any(exampleAwsIamRole.Arn),
+/// 			Description:       pulumi.String("Example with a load balancer"),
+/// 			IntegrationType:   pulumi.String("HTTP_PROXY"),
+/// 			IntegrationUri:    pulumi.Any(exampleAwsLbListener.Arn),
+/// 			IntegrationMethod: pulumi.String("ANY"),
+/// 			ConnectionType:    pulumi.String("VPC_LINK"),
+/// 			ConnectionId:      pulumi.Any(exampleAwsApigatewayv2VpcLink.Id),
+/// 			RequestParameters: pulumi.StringMap{
+/// 				"append:header.authforintegration": pulumi.String("$context.authorizer.authorizerResponse"),
+/// 				"overwrite:path":                   pulumi.String("staticValueForIntegration"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -672,20 +673,8 @@ import 'integration_tls_config.dart';
 /// }
 ///
 /// resource "aws_apigatewayv2_integration" "example" {
-///   api_id             = exampleAwsApigatewayv2Api.id
-///   credentials_arn    = exampleAwsIamRole.arn
-///   description        = "Example with a load balancer"
-///   integration_type   = "HTTP_PROXY"
-///   integration_uri    = exampleAwsLbListener.arn
-///   integration_method = "ANY"
-///   connection_type    = "VPC_LINK"
-///   connection_id      = exampleAwsApigatewayv2VpcLink.id
 ///   tls_config = {
 ///     server_name_to_verify = "example.com"
-///   }
-///   request_parameters = {
-///     "append:header.authforintegration" = "$context.authorizer.authorizerResponse"
-///     "overwrite:path"                   = "staticValueForIntegration"
 ///   }
 ///   response_parameters {
 ///     status_code = 403
@@ -698,6 +687,18 @@ import 'integration_tls_config.dart';
 ///     mappings = {
 ///       "overwrite:statuscode" = "204"
 ///     }
+///   }
+///   api_id             = exampleAwsApigatewayv2Api.id
+///   credentials_arn    = exampleAwsIamRole.arn
+///   description        = "Example with a load balancer"
+///   integration_type   = "HTTP_PROXY"
+///   integration_uri    = exampleAwsLbListener.arn
+///   integration_method = "ANY"
+///   connection_type    = "VPC_LINK"
+///   connection_id      = exampleAwsApigatewayv2VpcLink.id
+///   request_parameters = {
+///     "append:header.authforintegration" = "$context.authorizer.authorizerResponse"
+///     "overwrite:path"                   = "staticValueForIntegration"
 ///   }
 /// }
 /// ```
@@ -725,21 +726,9 @@ import 'integration_tls_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Integration("example", IntegrationArgs.builder()
-///             .apiId(exampleAwsApigatewayv2Api.id())
-///             .credentialsArn(exampleAwsIamRole.arn())
-///             .description("Example with a load balancer")
-///             .integrationType("HTTP_PROXY")
-///             .integrationUri(exampleAwsLbListener.arn())
-///             .integrationMethod("ANY")
-///             .connectionType("VPC_LINK")
-///             .connectionId(exampleAwsApigatewayv2VpcLink.id())
 ///             .tlsConfig(IntegrationTlsConfigArgs.builder()
 ///                 .serverNameToVerify("example.com")
 ///                 .build())
-///             .requestParameters(Map.ofEntries(
-///                 Map.entry("append:header.authforintegration", "$context.authorizer.authorizerResponse"),
-///                 Map.entry("overwrite:path", "staticValueForIntegration")
-///             ))
 ///             .responseParameters(
 ///                 IntegrationResponseParameterArgs.builder()
 ///                     .statusCode("403")
@@ -749,6 +738,18 @@ import 'integration_tls_config.dart';
 ///                     .statusCode("200")
 ///                     .mappings(Map.of("overwrite:statuscode", "204"))
 ///                     .build())
+///             .apiId(exampleAwsApigatewayv2Api.id())
+///             .credentialsArn(exampleAwsIamRole.arn())
+///             .description("Example with a load balancer")
+///             .integrationType("HTTP_PROXY")
+///             .integrationUri(exampleAwsLbListener.arn())
+///             .integrationMethod("ANY")
+///             .connectionType("VPC_LINK")
+///             .connectionId(exampleAwsApigatewayv2VpcLink.id())
+///             .requestParameters(Map.ofEntries(
+///                 Map.entry("append:header.authforintegration", "$context.authorizer.authorizerResponse"),
+///                 Map.entry("overwrite:path", "staticValueForIntegration")
+///             ))
 ///             .build());
 ///
 ///     }
@@ -759,6 +760,15 @@ import 'integration_tls_config.dart';
 ///   example:
 ///     type: aws:apigatewayv2:Integration
 ///     properties:
+///       tlsConfig:
+///         serverNameToVerify: example.com
+///       responseParameters:
+///         - statusCode: 403
+///           mappings:
+///             append:header.auth: $context.authorizer.authorizerResponse
+///         - statusCode: 200
+///           mappings:
+///             overwrite:statuscode: '204'
 ///       apiId: ${exampleAwsApigatewayv2Api.id}
 ///       credentialsArn: ${exampleAwsIamRole.arn}
 ///       description: Example with a load balancer
@@ -767,18 +777,9 @@ import 'integration_tls_config.dart';
 ///       integrationMethod: ANY
 ///       connectionType: VPC_LINK
 ///       connectionId: ${exampleAwsApigatewayv2VpcLink.id}
-///       tlsConfig:
-///         serverNameToVerify: example.com
 ///       requestParameters:
 ///         append:header.authforintegration: $context.authorizer.authorizerResponse
 ///         overwrite:path: staticValueForIntegration
-///       responseParameters:
-///         - statusCode: 403
-///           mappings:
-///             append:header.auth: $context.authorizer.authorizerResponse
-///         - statusCode: 200
-///           mappings:
-///             overwrite:statuscode: '204'
 /// ```
 ///
 ///
@@ -825,7 +826,7 @@ class Integration extends pulumi.CustomResource {
   /// Map of [Velocity](https://velocity.apache.org/) templates that are applied on the request payload based on the value of the Content-Type header sent by the client. Supported only for WebSocket APIs.
   late final pulumi.Output<Map<String, String>?> requestTemplates;
   /// Mappings to transform the HTTP response from a backend integration before returning the response to clients. Supported only for HTTP APIs.
-  late final pulumi.Output<List<Map<String, dynamic>>?> responseParameters;
+  late final pulumi.Output<List<IntegrationResponseParameter>?> responseParameters;
   /// [Template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration.
   late final pulumi.Output<String?> templateSelectionExpression;
   /// Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and between 50 and 30,000 milliseconds for HTTP APIs. The default timeout is 29 seconds for WebSocket APIs and 30 seconds for HTTP APIs. this provider will only perform drift detection of its value when present in a configuration.
@@ -845,7 +846,7 @@ class Integration extends pulumi.CustomResource {
           'aws:apigatewayv2/integration:Integration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     connectionId = registerOutput<String?>('connectionId');
@@ -861,9 +862,9 @@ class Integration extends pulumi.CustomResource {
     passthroughBehavior = registerOutput<String?>('passthroughBehavior');
     payloadFormatVersion = registerOutput<String?>('payloadFormatVersion');
     region = registerOutput<String>('region');
-    requestParameters = registerOutput<Map<String, String>?>('requestParameters');
-    requestTemplates = registerOutput<Map<String, String>?>('requestTemplates');
-    responseParameters = registerOutput<List<Map<String, dynamic>>?>('responseParameters');
+    requestParameters = registerOutput<Map<String, String>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestTemplates = registerOutput<Map<String, String>?>('requestTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseParameters = registerOutput<List<IntegrationResponseParameter>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationResponseParameter>(guardedValue, (value) => IntegrationResponseParameter.fromMap((value as Map).cast<String, dynamic>())); });
     templateSelectionExpression = registerOutput<String?>('templateSelectionExpression');
     timeoutMilliseconds = registerOutput<int>('timeoutMilliseconds');
     tlsConfig = registerOutput<IntegrationTlsConfig?>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -874,11 +875,12 @@ class Integration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Integration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -906,9 +908,40 @@ class Integration extends pulumi.CustomResource {
     passthroughBehavior = registerOutput<String?>('passthroughBehavior');
     payloadFormatVersion = registerOutput<String?>('payloadFormatVersion');
     region = registerOutput<String>('region');
-    requestParameters = registerOutput<Map<String, String>?>('requestParameters');
-    requestTemplates = registerOutput<Map<String, String>?>('requestTemplates');
-    responseParameters = registerOutput<List<Map<String, dynamic>>?>('responseParameters');
+    requestParameters = registerOutput<Map<String, String>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestTemplates = registerOutput<Map<String, String>?>('requestTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseParameters = registerOutput<List<IntegrationResponseParameter>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationResponseParameter>(guardedValue, (value) => IntegrationResponseParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    templateSelectionExpression = registerOutput<String?>('templateSelectionExpression');
+    timeoutMilliseconds = registerOutput<int>('timeoutMilliseconds');
+    tlsConfig = registerOutput<IntegrationTlsConfig?>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Integration] resource.
+  Integration.reference(String urn)
+    : super(
+        'aws:apigatewayv2/integration:Integration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiId = registerOutput<String>('apiId');
+    connectionId = registerOutput<String?>('connectionId');
+    connectionType = registerOutput<String?>('connectionType');
+    contentHandlingStrategy = registerOutput<String?>('contentHandlingStrategy');
+    credentialsArn = registerOutput<String?>('credentialsArn');
+    description = registerOutput<String?>('description');
+    integrationMethod = registerOutput<String?>('integrationMethod');
+    integrationResponseSelectionExpression = registerOutput<String>('integrationResponseSelectionExpression');
+    integrationSubtype = registerOutput<String?>('integrationSubtype');
+    integrationType = registerOutput<String>('integrationType');
+    integrationUri = registerOutput<String?>('integrationUri');
+    passthroughBehavior = registerOutput<String?>('passthroughBehavior');
+    payloadFormatVersion = registerOutput<String?>('payloadFormatVersion');
+    region = registerOutput<String>('region');
+    requestParameters = registerOutput<Map<String, String>?>('requestParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    requestTemplates = registerOutput<Map<String, String>?>('requestTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    responseParameters = registerOutput<List<IntegrationResponseParameter>?>('responseParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IntegrationResponseParameter>(guardedValue, (value) => IntegrationResponseParameter.fromMap((value as Map).cast<String, dynamic>())); });
     templateSelectionExpression = registerOutput<String?>('templateSelectionExpression');
     timeoutMilliseconds = registerOutput<int>('timeoutMilliseconds');
     tlsConfig = registerOutput<IntegrationTlsConfig?>('tlsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

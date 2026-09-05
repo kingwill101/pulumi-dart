@@ -135,7 +135,7 @@ class EnrollmentStatus extends pulumi.CustomResource {
           'aws:computeoptimizer/enrollmentStatus:EnrollmentStatus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
         ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
     numberOfMemberAccountsOptedIn = registerOutput<int>('numberOfMemberAccountsOptedIn');
@@ -149,11 +149,12 @@ class EnrollmentStatus extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnrollmentStatusState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnrollmentStatus._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -167,6 +168,22 @@ class EnrollmentStatus extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
+    numberOfMemberAccountsOptedIn = registerOutput<int>('numberOfMemberAccountsOptedIn');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    timeouts = registerOutput<EnrollmentStatusTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnrollmentStatusTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EnrollmentStatus] resource.
+  EnrollmentStatus.reference(String urn)
+    : super(
+        'aws:computeoptimizer/enrollmentStatus:EnrollmentStatus',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
     numberOfMemberAccountsOptedIn = registerOutput<int>('numberOfMemberAccountsOptedIn');
     region = registerOutput<String>('region');

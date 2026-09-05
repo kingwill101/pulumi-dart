@@ -9,7 +9,7 @@ class GetScriptDagNode {
   /// Node identifier that is unique within the node's graph.
   final pulumi.Input<String> id;
   /// Line number of the node.
-  final pulumi.Input<int>? lineNumber;
+  final pulumi.Input<int?>? lineNumber;
   /// Type of node this is.
   final pulumi.Input<String> nodeType;
 
@@ -38,7 +38,7 @@ class GetScriptDagNode {
     return GetScriptDagNode(
       args: pulumi.Input.fromValue(pulumi.Input.decodeList<GetScriptDagNodeArg>(map['args']!, (value) => GetScriptDagNodeArg.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
-      lineNumber: (() { final guardedValue = map['lineNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      lineNumber: (() { final guardedValue = map['lineNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
     );
   }

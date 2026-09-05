@@ -6,18 +6,18 @@ import 'application_monitoring_configuration_cloudwatch_logging_configuration_lo
 class ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration {
   /// Enables CloudWatch logging.
   final pulumi.Input<bool> enabled;
-  /// The AWS Key Management Service (KMS) key ARN to encrypt the logs that you store in CloudWatch Logs.
-  final pulumi.Input<String>? encryptionKeyArn;
+  /// KMS key ARN to encrypt the logs that you store in CloudWatch Logs.
+  final pulumi.Input<String?>? encryptionKeyArn;
   /// The name of the log group in Amazon CloudWatch Logs where you want to publish your logs.
-  final pulumi.Input<String>? logGroupName;
+  final pulumi.Input<String?>? logGroupName;
   /// Prefix for the CloudWatch log stream name.
-  final pulumi.Input<String>? logStreamNamePrefix;
+  final pulumi.Input<String?>? logStreamNamePrefix;
   /// The types of logs that you want to publish to CloudWatch. If you don't specify any log types, driver STDOUT and STDERR logs will be published to CloudWatch Logs by default. See logTypes for more details.
-  final pulumi.Input<List<ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType>>? logTypes;
+  final pulumi.Input<List<ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType>?>? logTypes;
 
   /// Creates a new [ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration].
   /// [enabled] Enables CloudWatch logging.
-  /// [encryptionKeyArn] The AWS Key Management Service (KMS) key ARN to encrypt the logs that you store in CloudWatch Logs.
+  /// [encryptionKeyArn] KMS key ARN to encrypt the logs that you store in CloudWatch Logs.
   /// [logGroupName] The name of the log group in Amazon CloudWatch Logs where you want to publish your logs.
   /// [logStreamNamePrefix] Prefix for the CloudWatch log stream name.
   /// [logTypes] The types of logs that you want to publish to CloudWatch. If you don't specify any log types, driver STDOUT and STDERR logs will be published to CloudWatch Logs by default. See logTypes for more details.

@@ -9,7 +9,7 @@ class FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig {
   final pulumi.Input<List<String>> securityGroupIds;
   /// A list of subnet IDs to associate with Kinesis Firehose.
   final pulumi.Input<List<String>> subnetIds;
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig].
   /// [roleArn] The ARN of the IAM role to be assumed by Firehose for calling the Amazon EC2 configuration API and for creating network interfaces. Make sure role has necessary [IAM permissions](https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-es-vpc)
